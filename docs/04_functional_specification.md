@@ -51,6 +51,49 @@ Remaining functional requirements are scheduled per roadmap phases 3–8.
 
 ---
 
+## Conceptual References
+
+Domain entities and the decision loop: [06_domain_model.md](06_domain_model.md).
+
+Engineering tradeoffs during implementation: [05_engineering_principles.md](05_engineering_principles.md).
+
+Phase 2 completion criteria: [10_roadmap.md](10_roadmap.md) § Phase 2 Exit Criteria.
+
+---
+
+## Assessment and Tier Semantics
+
+This section defines what Phase 2 fit dimensions and application tiers mean. It is the authoritative source for assessment vocabulary.
+
+### Fit Dimensions (Phase 2)
+
+**Technical Fit** — Alignment between the role's technical requirements and the candidate's demonstrated skills and experience. Evidence comes from the job description and career profile. Covers technologies, seniority expectations, domain knowledge, and production experience where stated.
+
+**Commercial Fit** — Alignment between the role and the candidate's commercial goals and constraints. Evidence includes salary range, employment type, location, company stage, and role scope relative to stated preferences and career direction.
+
+**Portfolio Fit** — Alignment between the role's requirements and the candidate's portfolio projects. Evidence comes from project descriptions and the specific technologies, domains, or problem types the role emphasises. Informs which projects to lead with if the user pursues the opportunity.
+
+Where evidence is unavailable (e.g. salary not listed), the assessment must state assumptions explicitly rather than infer silently.
+
+### Application Tier Semantics
+
+Tiers translate fit analysis into effort allocation guidance. The system recommends; the user decides.
+
+| Tier | Pursuit posture | Effort investment |
+|------|-----------------|-------------------|
+| **Platinum** | Strong candidate — pursue actively | Full tailoring where materially beneficial; portfolio-led application; interview preparation investment warranted |
+| **Gold** | Good candidate — pursue with confidence | Master CV with targeted adjustments; selective tailoring; moderate preparation |
+| **Silver** | Viable but not ideal — pursue selectively | Master CV; minimal customisation; apply when capacity allows |
+| **Skip** | Poor return on effort — do not pursue | No application effort; log rationale for future reference |
+
+Tier assignment must be explained by referencing fit dimensions and cited evidence (FR-003, FR-005).
+
+### Legacy Terminology
+
+Operational data predating v1.2 may use "Tier 1" language. **Tier 1 maps to Platinum** in product documentation. Reconcile operational files when the owner approves. See [00_repository_guide.md](00_repository_guide.md) § Operational Data Conventions.
+
+---
+
 # Functional Requirements
 
 ## FR-001 Career Profile
@@ -108,6 +151,8 @@ Acceptance Criteria
 
 The system shall assess each opportunity and produce evidence-backed fit analysis.
 
+Fit dimension definitions: see § Assessment and Tier Semantics.
+
 ### Phase 2 dimensions
 
 - Technical Fit
@@ -153,6 +198,8 @@ Acceptance Criteria
 **Phase:** 2
 
 The system shall recommend an application tier and effort investment.
+
+Tier definitions and effort guidance: see § Assessment and Tier Semantics.
 
 Tiers:
 

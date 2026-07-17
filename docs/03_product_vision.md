@@ -400,6 +400,14 @@ Rather than treating Cursor as a coding assistant, the project will explore prof
 
 
 
+Agent behaviour, read order, and engineering tradeoffs are defined in [AGENTS.md](../AGENTS.md) and [05_engineering_principles.md](05_engineering_principles.md). This document defines product direction — not how agents or engineers should make implementation decisions.
+
+
+
+Repository orientation: [00_repository_guide.md](00_repository_guide.md).
+
+
+
 ---
 
 

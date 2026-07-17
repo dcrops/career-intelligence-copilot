@@ -1,3 +1,25 @@
+# Changelog
+
+Records product strategy and engineering knowledge changes. Routine typo fixes and minor edits are not recorded here.
+
+---
+
+## Version 1.3
+
+### Engineering knowledge capture
+
+- Added [00_repository_guide.md](00_repository_guide.md) — canonical repository entry point, documentation authority map, folder semantics, operational data conventions.
+- Added [AGENTS.md](../AGENTS.md) — Cursor agent bootstrap, scope boundaries, engineering invariants.
+- Added [05_engineering_principles.md](05_engineering_principles.md) — engineering decision framework for Phase 2.
+- Added [06_domain_model.md](06_domain_model.md) — conceptual domain model and decision loop.
+- Merged **assessment and tier semantics** into [04_functional_specification.md](04_functional_specification.md) — fit dimension definitions, tier effort guidance, legacy Tier 1 → Platinum mapping.
+- Merged **Phase 2 exit criteria** into [10_roadmap.md](10_roadmap.md) — engineering, adoption, and non-criteria boundaries.
+- Updated README, product vision, and cross-references across documentation.
+- Clarified architecture status: intentionally undecided; no ADR infrastructure until first implementation decision.
+- Open item: reconcile legacy "Tier 1" terminology in operational tracker data.
+
+---
+
 ## Version 1.2
 
 ### Approved strategic clarification — success horizons and near-term priority
