@@ -42,7 +42,21 @@ Each stage produces a durable artifact that downstream stages and future assessm
 
 A structured representation of the candidate: experience, skills, projects, certifications, goals, and preferences. Available to every decision.
 
-**Operational precursor:** `career-documents/` (Master CV) and implicit owner knowledge not yet structured in the repository.
+Experience is a broad professional-history facet, not an employment list. Each entry is
+explicitly typed by `kind` — `employment`, `independent_engineering`, or
+`professional_development` — so independent engineering work and structured professional
+development are never misrepresented as employment. No separate career-phase ontology exists;
+phases are derived from dated, typed entries when needed.
+
+Certifications carry an explicit `status` (`active` or `expired`) and an optional expiry
+date, so lapsed credentials remain part of the historical record without being surfaced as
+current.
+
+**Implementation:** The typed schema is defined in
+`src/career_intelligence/profile/models.py`; the current structured instance is
+`data/career_profile.yaml`. Downstream stages access it through the public profile service.
+
+**Operational source:** `career-documents/` (Master CV) and owner-provided goals and preferences.
 
 ---
 

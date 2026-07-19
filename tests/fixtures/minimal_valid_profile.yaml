@@ -1,0 +1,50 @@
+schema_version: "1"
+identity:
+  full_name: Test Candidate
+  target_role: AI Engineer
+  summary: Builds evidence-backed systems.
+experience:
+  - id: example-role
+    kind: employment
+    organisation: Example Company
+    title: Data Engineer
+    start_date: 2022-01
+    end_date: 2023-01
+    location: Melbourne
+    highlights:
+      - Built validated data pipelines.
+    technologies:
+      - Python
+skills:
+  technical:
+    - name: Python
+      evidence: experience:example-role
+  domain: []
+  soft: []
+projects:
+  - id: example-project
+    name: Example Project
+    summary: A production-minded example.
+    technologies:
+      - Python
+    outcomes:
+      - Produced a traceable result.
+    url: null
+    demonstrates:
+      - Evidence-backed decision support
+certifications: []
+goals:
+  primary: Secure an AI Engineering role.
+  secondary: []
+  horizon_notes: null
+preferences:
+  locations:
+    - Melbourne
+  employment_types:
+    - full_time
+  salary_min: null
+  salary_currency: AUD
+  remote: flexible
+  company_stages: []
+  must_haves: []
+  deal_breakers: []

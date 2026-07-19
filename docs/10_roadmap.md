@@ -50,17 +50,18 @@ Current focus:
 
 - Repository setup
 
-- Initial architecture (intentionally undecided — no stack or architecture document exists yet)
+- Initial architecture decision deferred until implementation
 
 - Engineering knowledge capture
 
 
 
-Status: In Progress (Phase 2 MVP scope approved; implementation not started)
+Status: Complete (Phase 2 MVP scope approved)
 
 
 
-Architecture and technology decisions will be recorded when the first irreversible implementation choice requires them. Until then, absence of an architecture document is expected.
+The first implementation decision is now recorded in
+[ADR-001](adr/001_python_yaml_profile_foundation.md).
 
 
 
@@ -68,11 +69,14 @@ Architecture and technology decisions will be recorded when the first irreversib
 
 
 
-## Planned Development
+## Active and Planned Development
 
 
 
 ### Phase 2 — Job Intelligence (MVP)
+
+**Status:** In progress. FR-001 Career Profile is implemented; FR-002 and the remaining
+decision-loop stages are not yet implemented.
 
 
 

@@ -4,6 +4,70 @@ Records product strategy and engineering knowledge changes. Routine typo fixes a
 
 ---
 
+## Version 1.4
+
+### Phase 2 implementation begins — FR-001 Career Profile
+
+- Implemented the evidence-based Career Profile domain model with Python 3.11+ and Pydantic.
+- Added replaceable YAML persistence behind a public service boundary.
+- Added the `validate`, `summary`, `show`, and `init` profile CLI commands.
+- Manually structured the initial profile from the Master CV; runtime PDF parsing remains
+  deferred.
+- Added unit, functional, and golden user journey coverage for FR-001.
+- Added [07_testing_strategy.md](07_testing_strategy.md) as the testing authority for future
+  implementation work.
+- Recorded the first implementation decision in
+  [ADR-001](adr/001_python_yaml_profile_foundation.md).
+- Advanced the roadmap from Product Definition to Phase 2 implementation.
+
+### FR-001 product review
+
+- Added [08_implementation_notes.md](08_implementation_notes.md) — career-profile data
+  provenance, plan deviations, and the future-improvements backlog.
+- Marked assumed/inferred career-profile values (goals, preferences, and the inferred Chase
+  R&D start date) as `OWNER-CONFIRM` rather than presenting them as CV-sourced fact.
+- Recorded two intentional FR-001 plan deviations: preference validation implemented via a
+  required `remote` field instead of a standalone validator, and the inferred employment date
+  moved from an experience highlight to a provenance comment. Neither changes ADR-001.
+- Owner confirmed all flagged profile assumptions (2026-07-19): goals, locations, full-time
+  employment, flexible remote arrangement, AUD with no salary minimum, and must-haves confirmed
+  as recorded; the Chase R&D start date corrected from the inferred 2023-11 to 2025-12.
+  FR-001 approved for merge.
+
+### Career-history domain refinement (pre-merge)
+
+- Experience entries are now explicitly typed by
+  `kind: employment | independent_engineering | professional_development`; experience is a
+  professional-history facet, not an employment list. `company` renamed to `organisation`.
+- Chase Risk & Compliance reclassified as `independent_engineering` — an independent AI
+  Engineering R&D and portfolio brand, not employment.
+- Added two owner-directed professional-development periods: Data Engineering upskilling and
+  career transition (Oct 2023 – Jun 2025) and AI Engineering study with portfolio development
+  (Jul 2025 – Nov 2025), closing the previous timeline gap.
+- Retired the informal `professional-development:master-cv` evidence namespace; skill evidence
+  now cites experience or project IDs.
+- No new top-level career-phase ontology, separate collections, or project attribution links
+  were introduced. ADR-001 unchanged.
+
+### Career-profile accuracy and provenance refinement (pre-merge)
+
+- Added owner-supplied pre-nbn history absent from the Master CV: Bakers Delight (2009–2012,
+  2015–2018, and Aug–Sep 2019), Console (2012–2014), and AccessHQ consulting to Public
+  Transport Victoria (2018–2019) as `employment` Test Analyst roles, plus the General Assembly
+  Data Science Immersive (Sep–Dec 2019) as `professional_development`.
+- `Certification` now requires `status: active | expired` and supports an optional
+  `expiry_date`, so lapsed credentials are represented truthfully. Recorded both Databricks
+  Data Engineer certifications (Associate — expired Jul 2026; Professional — active until
+  Aug 2026) alongside the active AWS Certified Developer - Associate (expires Sep 2026).
+- Professional summary now distinguishes total commercial technology experience since 2009,
+  3.5 years of commercial Data Engineering, and independent AI Engineering/portfolio
+  development — without implying commercial AI Engineering employment.
+- Added QA-era skills (Selenium WebDriver, Jenkins, Maven, Cucumber; software quality
+  assurance and test automation domains) with evidence citing the new experience entries.
+  ADR-001 unchanged.
+
+---
+
 ## Version 1.3
 
 ### Engineering knowledge capture

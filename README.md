@@ -66,7 +66,7 @@ When Horizon 1 and Horizon 2 compete, Horizon 1 takes priority.
 
 
 
-Phase: Product Definition (Phase 2 MVP scope approved; implementation not yet started)
+Phase: Phase 2 Job Intelligence implementation
 
 
 
@@ -74,13 +74,11 @@ Current focus:
 
 
 
-- Product documentation alignment
+- FR-001 Career Profile implemented
 
-- Engineering knowledge capture
+- FR-002 Job Analysis next
 
-- Phase 2 Job Intelligence MVP scope
-
-- Initial architecture (intentionally undecided)
+- Completing the Phase 2 decision loop without expanding scope
 
 
 
@@ -99,6 +97,9 @@ See [docs/00_repository_guide.md](docs/00_repository_guide.md) for full orientat
 | Path | Purpose |
 |------|---------|
 | `docs/` | Product and engineering documentation |
+| `src/` | Python implementation |
+| `tests/` | Unit, functional, and golden journey tests |
+| `data/` | Structured operational data, including the career profile |
 | `applications/` | Live job search — applications, network contacts, company notes |
 | `career-documents/` | Career artifacts (e.g. Master CV) |
 | `templates/` | Message and document templates (placeholders) |
@@ -134,6 +135,8 @@ Start with [docs/00_repository_guide.md](docs/00_repository_guide.md).
 - [docs/05_engineering_principles.md](docs/05_engineering_principles.md) — engineering tradeoffs
 
 - [docs/06_domain_model.md](docs/06_domain_model.md) — domain concepts
+
+- [docs/07_testing_strategy.md](docs/07_testing_strategy.md) — testing and regression strategy
 
 - [AGENTS.md](AGENTS.md) — agent behaviour
 
@@ -176,5 +179,52 @@ Start with [docs/00_repository_guide.md](docs/00_repository_guide.md).
 
 
 Near-term capabilities should improve the likelihood of securing relevant interviews or offers, or reduce the manual effort required to run an effective job search.
+
+
+
+---
+
+
+
+## Career Profile
+
+
+
+FR-001 provides an evidence-based, typed career profile backed by
+`data/career_profile.yaml`. Install the package and development tools:
+
+
+
+```powershell
+python -m pip install -e ".[dev]"
+```
+
+
+
+Use the thin CLI:
+
+
+
+```powershell
+cic profile validate
+cic profile summary
+cic profile show projects
+cic profile init --path path/to/new_profile.yaml
+```
+
+
+
+Edit YAML directly for profile updates, then run `cic profile validate`. The CLI intentionally
+does not provide partial update commands in this slice.
+
+
+
+Run the complete test suite:
+
+
+
+```powershell
+python -m pytest
+```
 
 

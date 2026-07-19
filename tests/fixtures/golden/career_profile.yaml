@@ -1,0 +1,331 @@
+schema_version: "1"
+identity:
+  full_name: David Cropper
+  target_role: AI Engineer
+  summary: >-
+    AI Engineer with commercial technology experience since 2009 spanning
+    software quality assurance, test automation, and Data Engineering,
+    including 3.5 years of commercial enterprise Data Engineering experience,
+    plus independent AI Engineering and portfolio development.
+experience:
+  - id: chase-risk-compliance-ai-engineer
+    kind: independent_engineering
+    organisation: Chase Risk & Compliance
+    title: AI Engineer - Independent Research & Development
+    start_date: 2025-12
+    end_date: null
+    location: Melbourne, VIC
+    highlights:
+      - >-
+        Independently develops progressively more complex production-minded AI
+        Engineering projects under a dedicated portfolio brand.
+    technologies:
+      - Python
+      - FastAPI
+      - Docker
+      - OpenAI APIs
+      - PyTest
+  - id: ai-engineering-development-2025
+    kind: professional_development
+    organisation: Independent study
+    title: AI Engineering Professional Development and Portfolio Development
+    start_date: 2025-07
+    end_date: 2025-11
+    location: Melbourne, VIC
+    highlights:
+      - Pivoted from Data Engineering to AI Engineering as the primary focus.
+      - Undertook structured AI Engineering study.
+      - Developed progressively more sophisticated portfolio projects.
+    technologies:
+      - Python
+      - OpenAI APIs
+      - LangChain
+      - Git
+      - PyTest
+  - id: data-engineering-development-2023
+    kind: professional_development
+    organisation: Independent study
+    title: Data Engineering Professional Development and Career Transition
+    start_date: 2023-10
+    end_date: 2025-06
+    location: Melbourne, VIC
+    highlights:
+      - Began with a personal break following the nbn Australia role.
+      - Undertook structured upskilling in modern Data Engineering.
+    technologies:
+      - Microsoft Fabric
+      - Databricks
+      - Snowflake
+      - dbt
+      - Azure Data Factory
+  - id: nbn-data-engineer-2020
+    kind: employment
+    organisation: nbn Australia
+    title: Data Engineer
+    start_date: 2020-03
+    end_date: 2023-10
+    location: null
+    highlights:
+      - Developed enterprise data pipelines and operational reporting solutions.
+      - Performed SQL transformations and data validation.
+    technologies:
+      - Python
+      - SQL
+      - Apache NiFi
+      - Git
+      - PyTest
+  - id: general-assembly-data-science-2019
+    kind: professional_development
+    organisation: General Assembly
+    title: Data Science Immersive
+    start_date: 2019-09
+    end_date: 2019-12
+    location: Melbourne, VIC
+    highlights:
+      - Completed the General Assembly Data Science Immersive course.
+      - >-
+        Gathered data via web scraping of job listings, applying predictive
+        modelling and NLP text classification.
+    technologies:
+      - Python
+  - id: bakers-delight-test-analyst-2019
+    kind: employment
+    organisation: Bakers Delight
+    title: Test Analyst
+    start_date: 2019-08
+    end_date: 2019-09
+    location: Melbourne, VIC
+    highlights:
+      - Returned for a short engagement prior to Data Science study.
+    technologies: []
+  - id: accesshq-test-analyst-2018
+    kind: employment
+    organisation: AccessHQ
+    title: Test Analyst
+    start_date: 2018-10
+    end_date: 2019-06
+    location: Melbourne, VIC
+    highlights:
+      - >-
+        Built Selenium test cases and API test suites for Myki / Public
+        Transport Victoria (PTV) systems as a consultant to PTV.
+      - Conducted mobile and functional testing with Jira.
+    technologies:
+      - Selenium
+      - Jira
+  - id: bakers-delight-test-analyst-2015
+    kind: employment
+    organisation: Bakers Delight
+    title: Test Analyst
+    start_date: 2015-01
+    end_date: 2018-10
+    location: Melbourne, VIC
+    highlights:
+      - >-
+        Contributed to the main project replacing the outdated POS system for
+        750 bakeries in 4 countries with a new tablet-based platform.
+      - Designed and implemented an automation framework.
+      - >-
+        Developed web automation test cases using Selenium WebDriver with
+        Java, with Maven and Jenkins.
+    technologies:
+      - Selenium WebDriver
+      - Java
+      - Maven
+      - Jenkins
+  - id: console-test-analyst-2012
+    kind: employment
+    organisation: Console
+    title: Test Analyst
+    start_date: 2012-06
+    end_date: 2014-12
+    location: Melbourne, VIC
+    highlights:
+      - Developed and maintained automation scripts with Ruby on Rails.
+      - Created user story tests with Gherkin and Cucumber.
+    technologies:
+      - Ruby on Rails
+      - Gherkin
+      - Cucumber
+  - id: bakers-delight-test-analyst-2009
+    kind: employment
+    organisation: Bakers Delight
+    title: Test Analyst
+    start_date: 2009-03
+    end_date: 2012-06
+    location: Melbourne, VIC
+    highlights: []
+    technologies: []
+skills:
+  technical:
+    - name: Python
+      evidence: experience:chase-risk-compliance-ai-engineer; experience:nbn-data-engineer-2020
+    - name: FastAPI
+      evidence: project:operational-intelligence-copilot; project:governance-document-rag
+    - name: Docker
+      evidence: project:governance-document-rag
+    - name: OpenAI APIs
+      evidence: project:operational-intelligence-copilot; project:governance-document-rag
+    - name: PyTest
+      evidence: experience:chase-risk-compliance-ai-engineer; experience:nbn-data-engineer-2020
+    - name: SQL
+      evidence: experience:nbn-data-engineer-2020
+    - name: LangChain
+      evidence: project:governance-document-rag
+    - name: ChromaDB
+      evidence: project:governance-document-rag
+    - name: Pandas
+      evidence: project:payroll-diagnostics-engine
+    - name: REST APIs
+      evidence: project:public-holiday-entitlements
+    - name: Microsoft Fabric
+      evidence: experience:data-engineering-development-2023
+    - name: Databricks
+      evidence: experience:data-engineering-development-2023
+    - name: Snowflake
+      evidence: experience:data-engineering-development-2023
+    - name: dbt
+      evidence: experience:data-engineering-development-2023
+    - name: Azure Data Factory
+      evidence: experience:data-engineering-development-2023
+    - name: Selenium WebDriver
+      evidence: experience:bakers-delight-test-analyst-2015; experience:accesshq-test-analyst-2018
+  domain:
+    - name: Retrieval-Augmented Generation
+      evidence: project:governance-document-rag
+    - name: Operational intelligence
+      evidence: project:operational-intelligence-copilot
+    - name: Explainable AI
+      evidence: project:operational-intelligence-copilot
+    - name: Enterprise decision support
+      evidence: project:payroll-diagnostics-engine
+    - name: Data engineering
+      evidence: experience:nbn-data-engineer-2020
+    - name: LLM application development
+      evidence: experience:ai-engineering-development-2025
+    - name: Software quality assurance
+      evidence: >-
+        experience:console-test-analyst-2012;
+        experience:bakers-delight-test-analyst-2015;
+        experience:accesshq-test-analyst-2018
+  soft:
+    - name: Architecture-first design
+      evidence: experience:chase-risk-compliance-ai-engineer
+projects:
+  - id: operational-intelligence-copilot
+    name: Operational Intelligence Copilot
+    summary: >-
+      Platform combining deterministic analytics with Large Language Model
+      reasoning to generate explainable, evidence-backed executive insights.
+    technologies:
+      - Python
+      - FastAPI
+      - OpenAI APIs
+      - PyTest
+      - Git
+    outcomes:
+      - Produces evidence-backed executive reporting.
+      - Maintains decision traceability.
+    url: null
+    demonstrates:
+      - Intelligent intent routing
+      - Dataset profiling
+      - Anomaly detection
+      - Explainable AI recommendations
+  - id: governance-document-rag
+    name: Governance-Aware Document Intelligence RAG
+    summary: >-
+      Enterprise retrieval-augmented generation platform supporting trustworthy
+      AI responses over organisational knowledge.
+    technologies:
+      - Python
+      - FastAPI
+      - Docker
+      - LangChain
+      - ChromaDB
+      - OpenAI
+      - PyTest
+      - Git
+    outcomes:
+      - Supports grounded responses over multi-format organisational documents.
+    url: null
+    demonstrates:
+      - Multi-format document ingestion
+      - Retrieval orchestration
+      - Evaluation frameworks
+      - Grounding validation
+  - id: payroll-diagnostics-engine
+    name: Payroll Diagnostics Engine
+    summary: >-
+      Rule-based decision-support platform that identifies payroll anomalies
+      through deterministic business-rule evaluation.
+    technologies:
+      - Python
+      - Pandas
+      - OpenPyXL
+      - PyTest
+      - Git
+    outcomes:
+      - Produces explainable operational findings.
+    url: null
+    demonstrates:
+      - Rule engines
+      - Explainable diagnostics
+      - Automated validation
+  - id: public-holiday-entitlements
+    name: Public Holiday Entitlements Application
+    summary: >-
+      Business-rules platform combining geospatial processing and external APIs
+      to determine Australian public-holiday entitlements.
+    technologies:
+      - Python
+      - REST APIs
+      - Geospatial Processing
+      - Git
+    outcomes:
+      - Produces compliance-oriented reporting.
+    url: null
+    demonstrates:
+      - Geospatial logic
+      - Business rules
+      - API integration
+certifications:
+  - id: aws-certified-developer-associate
+    name: AWS Certified Developer - Associate
+    issuer: Amazon Web Services
+    status: active
+    date_obtained: null
+    expiry_date: 2026-09
+    url: null
+  - id: databricks-certified-data-engineer-associate
+    name: Databricks Certified Data Engineer Associate
+    issuer: Databricks
+    status: expired
+    date_obtained: null
+    expiry_date: 2026-07
+    url: null
+  - id: databricks-certified-data-engineer-professional
+    name: Databricks Certified Data Engineer Professional
+    issuer: Databricks
+    status: active
+    date_obtained: null
+    expiry_date: 2026-08
+    url: null
+goals:
+  primary: Secure a suitable AI Engineering role sooner.
+  secondary:
+    - Reduce repetitive job-search effort.
+  horizon_notes: Horizon 1 takes priority when objectives compete.
+preferences:
+  locations:
+    - Melbourne, VIC
+    - Remote Australia
+  employment_types:
+    - full_time
+  salary_min: null
+  salary_currency: AUD
+  remote: flexible
+  company_stages: []
+  must_haves:
+    - Role scope involving applied AI Engineering.
+  deal_breakers: []

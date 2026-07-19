@@ -10,15 +10,19 @@ It explains what the repository contains, which documents are authoritative, how
 
 ## What This Repository Is
 
-Career Intelligence Copilot is a pre-implementation project with two coexisting layers:
+Career Intelligence Copilot has three coexisting layers:
 
 **Specification layer** — product intent, requirements, delivery phasing, and engineering decision guidance in `docs/` and `AGENTS.md`.
 
 **Operational layer** — the repository owner's live job search: application tracking, network contacts, career artifacts, and placeholders for future workflows.
 
+**Implementation layer** — the Phase 2 Python package, structured data, and tests in `src/`,
+`data/`, and `tests/`.
+
 The repository is simultaneously a career tool, a portfolio project, and a Cursor learning laboratory. See [03_product_vision.md](03_product_vision.md) § Project Objectives.
 
-Implementation has not started. Phase 2 MVP scope is approved. Architecture and technology choices are intentionally undecided.
+Phase 2 implementation has started. FR-001 Career Profile is implemented; later decision-loop
+stages remain to be built. Architecture decisions are recorded under `docs/adr/`.
 
 ---
 
@@ -32,6 +36,8 @@ Implementation has not started. Phase 2 MVP scope is approved. Architecture and 
 | [03_product_vision.md](03_product_vision.md) | **Authoritative — product direction** | Vision, principles, horizons, capability domains |
 | [05_engineering_principles.md](05_engineering_principles.md) | **Authoritative — engineering tradeoffs** | How to make implementation decisions |
 | [06_domain_model.md](06_domain_model.md) | **Authoritative — domain concepts** | Entities, decision loop, operational mapping |
+| [07_testing_strategy.md](07_testing_strategy.md) | **Authoritative — testing** | Test layers, regression philosophy, future suite growth |
+| [08_implementation_notes.md](08_implementation_notes.md) | Supporting | Data provenance, plan deviations, future-improvements backlog |
 | [01_executive_summary.md](01_executive_summary.md) | Supporting | Quick narrative overview |
 | [02_problem_statement.md](02_problem_statement.md) | Supporting | Problem context and rationale |
 | [11_changelog.md](11_changelog.md) | Historical | Why documentation changed across versions |
@@ -50,8 +56,9 @@ When documents overlap, prefer the authoritative source for that concern. Do not
 3. [04_functional_specification.md](04_functional_specification.md) — Phase 2 scope and requirements
 4. [06_domain_model.md](06_domain_model.md) — conceptual model
 5. [05_engineering_principles.md](05_engineering_principles.md) — decision invariants
-6. [10_roadmap.md](10_roadmap.md) — current phase and exit criteria
-7. [03_product_vision.md](03_product_vision.md) — when product context is needed
+6. [07_testing_strategy.md](07_testing_strategy.md) — test and regression conventions
+7. [10_roadmap.md](10_roadmap.md) — current phase and exit criteria
+8. [03_product_vision.md](03_product_vision.md) — when product context is needed
 
 Supporting documents (01, 02) are optional for onboarding.
 
@@ -62,6 +69,9 @@ Supporting documents (01, 02) are optional for onboarding.
 | Path | Layer | Purpose |
 |------|-------|---------|
 | `docs/` | Specification | Product and engineering knowledge |
+| `src/` | Implementation | Python package and public capability boundaries |
+| `tests/` | Implementation | Unit, functional, and golden journey regression tests |
+| `data/` | Operational | Structured career profile consumed by the system |
 | `applications/` | Operational | Live application pipeline, company notes, network tracking |
 | `career-documents/` | Operational | Career artifacts (e.g. Master CV) |
 | `templates/` | Operational | Message and document templates — intentional placeholders, currently empty |
@@ -89,13 +99,13 @@ The operational layer is the domain the future system must serve. Phase 2 pipeli
 
 ## Current Status
 
-**Phase:** Product Definition (Phase 1 — in progress)
+**Phase:** Phase 2 — Job Intelligence implementation
 
 **Approved:** Phase 2 Job Intelligence MVP scope
 
-**Not started:** Implementation, architecture decisions, technology selection
+**Implemented:** FR-001 Career Profile
 
-**In progress:** Product documentation alignment, engineering knowledge capture, initial architecture (undecided)
+**In progress:** Remaining Phase 2 decision loop, beginning with FR-002 Job Analysis
 
 See [10_roadmap.md](10_roadmap.md) for phase detail and Phase 2 exit criteria.
 
@@ -113,7 +123,7 @@ See [10_roadmap.md](10_roadmap.md) for phase detail and Phase 2 exit criteria.
 
 - API keys, credentials, or secrets
 - Duplicated recruiter contact details in docs or agent rules
-- Architecture or stack choices before they are actually decided
+- Unrecorded or speculative architecture choices
 - Speculative features not approved in the functional specification or roadmap
 
 ---
@@ -127,4 +137,5 @@ Engineering and product decisions made during development should be recorded in 
 - **Requirement or semantic changes** → [04_functional_specification.md](04_functional_specification.md) and changelog
 - **Phase or scope changes** → [10_roadmap.md](10_roadmap.md) and changelog
 
-Architecture Decision Records will be introduced when the first irreversible implementation decision is made. No ADR infrastructure exists yet by design.
+Architecture Decision Records live under `docs/adr/`. See
+[ADR-001](adr/001_python_yaml_profile_foundation.md) for the Phase 2 profile foundation.

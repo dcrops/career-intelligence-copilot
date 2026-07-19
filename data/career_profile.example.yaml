@@ -1,0 +1,34 @@
+schema_version: "1"
+identity:
+  full_name: Your Name
+  target_role: AI Engineer
+  summary: Replace this summary with evidence from your career history.
+experience: []
+skills:
+  technical:
+    - name: Add a technical skill
+      evidence: Replace with an experience, project, or certification reference
+  domain: []
+  soft: []
+projects:
+  - id: replace-with-project
+    name: Replace with a portfolio project
+    summary: Describe what was built and why.
+    technologies: []
+    outcomes: []
+    url: null
+    demonstrates: []
+certifications: []
+goals:
+  primary: Define the primary career goal
+  secondary: []
+  horizon_notes: null
+preferences:
+  locations: []
+  employment_types: []
+  salary_min: null
+  salary_currency: null
+  remote: flexible
+  company_stages: []
+  must_haves: []
+  deal_breakers: []

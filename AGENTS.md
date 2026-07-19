@@ -14,7 +14,8 @@ The repository — not conversation history — is the project's long-term memor
 2. [docs/04_functional_specification.md](docs/04_functional_specification.md) — requirements and Phase 2 scope
 3. [docs/06_domain_model.md](docs/06_domain_model.md) — decision loop and entities
 4. [docs/05_engineering_principles.md](docs/05_engineering_principles.md) — engineering tradeoffs
-5. [docs/10_roadmap.md](docs/10_roadmap.md) — current phase and exit criteria
+5. [docs/07_testing_strategy.md](docs/07_testing_strategy.md) — testing and regression conventions
+6. [docs/10_roadmap.md](docs/10_roadmap.md) — current phase and exit criteria
 
 ---
 
@@ -22,7 +23,12 @@ The repository — not conversation history — is the project's long-term memor
 
 Career Intelligence Copilot is a decision-support system for job search — not an application automation tool.
 
-**Current phase:** Product Definition. Phase 2 MVP scope approved. **Implementation not started.**
+**Current phase:** Phase 2 Job Intelligence implementation. FR-001 Career Profile is
+implemented; later decision-loop stages remain in progress.
+
+**Implementation foundation:** Python 3.11+, Pydantic, YAML storage, and the public profile
+service boundary are recorded in
+[ADR-001](docs/adr/001_python_yaml_profile_foundation.md).
 
 **Immediate priority (Horizon 1):** Help the repository owner secure a suitable AI Engineering role sooner while reducing job-search effort. Horizon 1 wins when objectives conflict. See [docs/03_product_vision.md](docs/03_product_vision.md).
 
@@ -52,6 +58,8 @@ Apply [docs/05_engineering_principles.md](docs/05_engineering_principles.md) for
 - **Explainability** — assessments must cite evidence from job description and profile
 - **Outcome logging** — decisions and results must be recordable (FR-013)
 - **Operational continuity** — the built system must connect to existing tracking in `applications/`, not run parallel to it
+- **Public profile boundary** — downstream capabilities obtain the career profile through
+  `career_intelligence.profile`, never through its YAML storage adapter
 
 ---
 
