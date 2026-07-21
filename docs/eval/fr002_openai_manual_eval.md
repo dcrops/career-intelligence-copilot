@@ -192,3 +192,148 @@ print(analysis.model_dump(mode="json"))
 **First real-world manual evaluation complete.** FR-002 OpenAI extraction is usable for
 personal search with prompt **v5**, offline regressions for live failure modes, and
 documented follow-ons for acquisition automation and duplicate detection.
+
+---
+
+# Additional Real-World Evaluation
+
+Following the initial synthetic and live evaluations, three further production-style job advertisements were manually evaluated to assess extraction quality, robustness and behavioural consistency.
+
+## Evaluation Summary
+
+| Job | Source | Result | Notes |
+|------|--------|--------|-------|
+| AI Full-Stack Developer | SEEK | PASS | Strong AI engineering extraction. Required/preferred classification observed for future review. |
+| Developer Programmer | SEEK | PASS | Salary extraction validated. Broad technology stack correctly identified. |
+| AI Engineer | LinkedIn | PASS | Correctly avoided hallucinating technologies. Highlighted future model opportunities. |
+
+---
+
+## Evaluation 3 – AI Full-Stack Developer (SEEK)
+
+### Outcome
+
+PASS
+
+### Validated
+
+- Correct AI Engineering role classification.
+- Correct extraction of:
+  - location
+  - hybrid work arrangement
+  - full-time employment
+  - experience requirements
+- Evidence correctly supplied for all extracted claims.
+- Employment and location extracted only from explicit evidence.
+
+### Quality observations
+
+- Required vs Preferred classification may warrant future refinement.
+- Core AI technologies were extracted successfully, although some secondary AI ecosystem technologies were omitted.
+- No validation failures.
+
+---
+
+## Evaluation 4 – Developer Programmer (SEEK)
+
+### Outcome
+
+PASS
+
+### Validated
+
+- Salary extraction successfully validated.
+
+Extracted correctly:
+
+- AUD 85,000–90,000
+- annual period
+- permanent employment
+- full-time
+- Melbourne location
+
+Technology extraction successfully identified multiple required programming languages and frameworks.
+
+### Engineering observation
+
+The initial evaluation incorrectly displayed the title and company from the previous advertisement.
+
+Root cause:
+
+The manual smoke-test script had only been updated with the new JOB_TEXT while the JobPosting metadata (title, company and source URL) still referenced the previous evaluation.
+
+This was a manual evaluation harness issue and **not** an extractor defect.
+
+After correcting the smoke-test inputs, extraction completed successfully.
+
+### Product observation
+
+The advertisement requested an unusually broad technical capability relative to the advertised salary.
+
+This is considered a candidate decision-support concern rather than an extraction concern and will become relevant during Candidate Fit Analysis (FR-003).
+
+---
+
+## Evaluation 5 – AI Engineer (LinkedIn)
+
+### Outcome
+
+PASS
+
+### Validated
+
+Correct extraction of:
+
+- AI Engineering role family
+- salary range
+- location
+- on-site work arrangement
+- employment type
+
+### Positive behaviour
+
+The advertisement deliberately avoided naming specific technologies.
+
+The extractor correctly returned an empty technology list rather than hallucinating technologies.
+
+This behaviour is considered desirable and demonstrates evidence-based extraction.
+
+### Quality observations
+
+One extracted responsibility more closely represented a candidate requirement than an operational responsibility.
+
+This is acceptable for FR-002 but will be monitored in future evaluations.
+
+---
+
+# Overall Quality Assessment
+
+Following multiple real-world evaluations across SEEK and LinkedIn advertisements, the extraction engine demonstrates strong consistency.
+
+| Capability | Assessment |
+|------------|------------|
+| Role Family | Excellent |
+| Employment Extraction | Excellent |
+| Compensation Extraction | Excellent |
+| Location Extraction | Excellent |
+| Evidence Grounding | Excellent |
+| Responsibilities | Very Good |
+| Technology Extraction | Very Good |
+| Seniority | Good |
+| Required vs Preferred Classification | Monitor |
+| Candidate Requirement vs Responsibility Classification | Monitor |
+
+---
+
+# Lessons Learned
+
+The real-world evaluation process produced several valuable engineering outcomes.
+
+- Synthetic tests alone were insufficient to identify prompt regressions.
+- Live production advertisements exposed prompt weaknesses that unit tests did not.
+- Prompt evolution (v3 → v5) substantially improved evidence discipline.
+- Strict domain validation prevented unsupported extractions from entering the trusted domain model.
+- Maintaining a reusable manual evaluation harness significantly accelerated prompt refinement.
+- Real-world evaluation continues to provide valuable guidance for future Candidate Fit Analysis (FR-003).
+
+No additional production code changes are considered necessary before commencing FR-003.

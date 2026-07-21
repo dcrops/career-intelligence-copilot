@@ -11,72 +11,62 @@ from career_intelligence.job_analysis.openai_extractor import OpenAIJobExtractor
 
 
 JOB_TEXT = """
-Software Engineer (AI)
+AI Engineer
 
-Jonas Software Australia 
-View all jobs
-Cremorne, Melbourne VIC (Hybrid)
-Developers/Programmers (Information & Communication Technology)
-Full time
-About Us
-The Jonas Software Group acquires, manages, and builds industry-specific software companies globally. With 100+ companies and 2,500+ employees, our people are at the core of everything we do.
+Greater Melbourne Are
 
-The Caudex Group is a Melbourne-based technology company building a portfolio of purpose-built software products for Australian industries. We’re a small, ambitious team with a broad remit – multiple products, fast cycles, and a genuine commitment to building software the modern way. If you want to work somewhere your output ships quickly and your ideas get heard, this is it.
+150K AUD/yr - 180K AUD/yr
+On-site
+Full-time
+
+About the job
+AI Engineer
+
+Melbourne based, must have full working rights in Australia
 
 
 
 About the Role
-We’re looking for a Software Engineer (AI) who genuinely loves working with AI—not as a buzzword, but as a core part of how you build, think, and solve problems.
 
-This is a junior-to-mid level opportunity (2–5 years’ experience) where you’ll work across multiple products, contributing end-to-end and shipping quickly in a highly collaborative, in-office environment. You’ll be part of a small product team shaping how modern, AI-first software gets built at Caudex.
-
-
-
-Key responsibilities include:
-Contributing across multiple product initiatives, adapting to shifting priorities and fast delivery cycles.
-
-Building full stack features end-to-end, including front-end, back-end, APIs, and databases.
-
-Working within an AI-native development workflow, leveraging tools to accelerate development and reduce repetitive work.
-
-Integrating with real-world data sources, including APIs, ETL pipelines, and third-party platforms.
-
-Supporting ongoing tech modernisation, including tools, infrastructure, and development practices.
-
-Collaborating closely with product, design, and stakeholders to deliver practical, high-impact solutions.
+Our client is building out its internal AI capability and needs an AI Engineer to turn redesigned workflows into production grade solutions. This is not a role where you use AI tools to help you code faster. This is a role where you build the AI systems the rest of the business relies on every day.
 
 
 
-About You:
-2–5 years’ experience in software development, with exposure across the full stack.
+What You'll Do
 
-Comfortable working with technologies such as JavaScript/TypeScript, React, Python, C#, Node.js, and SQL/NoSQL databases.
+You'll take redesigned business workflows and turn them into AI systems that actually run in production, end to end. That spans everything from the underlying models and orchestration through to the infrastructure they run on and the systems they connect to. You'll also work directly with the business people who use what you build, so it needs to actually land, not just work in a demo.
 
-Strong AI fluency, actively using AI tools in your development workflow (beyond basic prompting).
 
-Ability to context-switch across multiple products or codebases without losing momentum.
 
-A bias toward action, with experience working in short delivery cycles and iterating quickly.
+What You'll Bring
 
-Self-directed, proactive, and comfortable working in a fast-paced, evolving environment.
+This is a hands on role for someone who has genuinely built and shipped AI powered systems, not someone who has used AI tools to help them ship other things faster. You'll have several years in software, data, or automation work, a solid technical foundation, and a track record you can speak to in detail rather than describe in generalities.
 
-Strong communication skills and ability to work directly with stakeholders.
 
-Nice to have:
 
-Experience with cloud platforms (AWS/Azure), Docker, or CI/CD pipelines.
+*************Important: How to Apply*************
 
-Exposure to search/analytics tools or third-party integrations.
+This role is genuinely about building AI systems, not using AI assisted coding tools to ship other things faster. If most of your experience is using existing AI products rather than designing and deploying your own, this likely isn't the right fit.
 
-Interest in industries such as retail, FMCG, or liquor.
+
+
+To apply, email your resume to kieran@discoveredpeople.com.au along with a short note (no more than 300 words) describing something you built, the problem it solved, and one thing you'd do differently in hindsight.
+
+
+
+We're looking for evidence of things you've actually built, not tools you've operated. Applications without this note will not be considered.
+
+
+
+MUST HAVE CURRENT, FULL WORKING RIGHTS IN AUSTRALIA
 """
 
 
 def main() -> None:
     posting = JobPosting(
-        title="Software Engineer (AI)",
-        company="The Caudex Group",
-        source_url="https://au.seek.com/job/93285002?ref=applied",
+        title="AI Engineer",
+        company="Discovered People",
+        source_url="https://www.linkedin.com/jobs/search-results/?currentJobId=4438611311&eBP=CwEAAAGfgzwwv3SDTDul-PDUYtezBmV1fNWeZfNod-jgpsml0CFS29P4rZyLfBGNjEWGfI16RkozmQZMXxIiuSZxrFaQNekPrhnSl3nbFhsdROAMAab81RPE6HNXrpLnCskwie4st9mIzK2OkjOmPyU9hKuCtPdoBoixLi0hsZfvglajxGCL9uy6HVhqKedLx3TDAvZFlfe4SIMKfxoU7IwodqivdZQfEeRFeSIGGegaCpWmLgb4IWhFSY-h23EIfLhbopbJaY-c24j8vw_j3WxVuZPsgGz5qfpNJbTdTJ86H_mvvcHQzkKvFntKV5TsebU0aAmga5U7jpE705k4wHPWba2gwvqr0pKZKWUwILStaESSZDvINI9DZJpfJ8-4THDcvyn4cQbXbKVJXe-boaNPNy8N2dd-GSqLL3zaYCCth0_W2n7VLJ1fRVGxbFga0dIvZLittd6qh_5cz5RUUlYLg-UwvOK4gTqVyx0OQ2NlXfzf3OTFibyMOw&refId=4YaaZN%2FEs3R1j8NKlp83FQ%3D%3D&trackingId=p9kh7ncJPyYjtb9egFj4xg%3D%3D&keywords=full-time%20AI%20Engineer%20or%20Machine%20Learning%20Engineer%20or%20Software%20Engineer%20or%20Data%20Engineer%2C%20on-site%20or%20hybrid&origin=PREFERENCES_LANDING&originToLandingJobPostings=4435396315%2C4431071679%2C4380084305&geoId=90009521",
         raw_text=JOB_TEXT.strip(),
     )
 
