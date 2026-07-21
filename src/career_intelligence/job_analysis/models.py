@@ -124,9 +124,11 @@ class RoleFamilyAssessment(JobAnalysisModel):
 class SeniorityAssessment(JobAnalysisModel):
     """Seniority as stated by the posting.
 
-    When the posting conflicts, set ``ambiguous=True``, ``level="unknown"``, and retain at
-    least one plausible ``candidate_levels`` value with supporting evidence. Do not force a
-    single classification.
+    - No seniority information: ``level="unknown"``, ``ambiguous=False``, empty
+      ``candidate_levels`` and ``evidence``.
+    - Conflicting / multiple plausible levels: ``ambiguous=True``, ``level="unknown"``,
+      ``candidate_levels`` listing the supported non-unknown levels, plus evidence that
+      cites the conflict. Do not force a single classification.
     """
 
     level: SeniorityLevel
@@ -155,7 +157,12 @@ class SeniorityAssessment(JobAnalysisModel):
 
 
 class Compensation(JobAnalysisModel):
-    """Compensation as written in the posting — no annualisation or currency conversion."""
+    """Compensation as written in the posting — no annualisation or currency conversion.
+
+    Unstated compensation must have null amounts/currency/period/raw_text and empty
+    evidence. Explicit nulls are equivalent to omission (structured-output friendly).
+    Do not invent amounts or treat vague "competitive" wording as stated compensation.
+    """
 
     clarity: Clarity
     minimum: float | None = Field(default=None, ge=0)
@@ -234,7 +241,12 @@ class WorkArrangement(JobAnalysisModel):
 
 
 class EmploymentInfo(JobAnalysisModel):
-    """Working hours and engagement type as separate dimensions."""
+    """Working hours and engagement type as separate dimensions.
+
+    Populate a dimension only when the posting explicitly states it. Do not infer from
+    hybrid/office wording, seniority, benefits, or recruiter tone. Known values require
+    evidence; fully unspecified employment must omit evidence.
+    """
 
     working_hours: WorkingHours = "unspecified"
     engagement_type: EngagementType = "unspecified"

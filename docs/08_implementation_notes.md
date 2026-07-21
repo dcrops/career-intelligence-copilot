@@ -7,6 +7,105 @@ improvements. It complements — and does not override — the authoritative doc
 
 ---
 
+## FR-002 Job Analysis — Implementation Notes
+
+### Architecture
+
+`JobAnalysisService` is the public trust boundary. Callers supply a validated
+`JobPosting` and an explicit extractor. The extractor returns an untrusted
+`JobAnalysisPayload` that must **not** include `posting`. The service rejects
+embedded postings, binds the caller-supplied `JobPosting`, and validates a
+trusted `JobAnalysis`.
+
+```
+Caller-owned JobPosting
+        ↓
+JobAnalysisService
+        ↓
+JobExtractor
+        ↓
+JobAnalysisPayload (untrusted)
+        ↓
+Service rejects embedded posting
+        ↓
+Service binds original JobPosting
+        ↓
+JobAnalysis.model_validate(...)
+        ↓
+Trusted JobAnalysis
+```
+
+### Extractors
+
+- **`FixtureExtractor`** — deterministic offline scaffolding for tests. Matched by
+  fixture markers in `raw_text`. Never a public default; callers must pass it
+  explicitly.
+- **`OpenAIJobExtractor`** — production-oriented extractor using the official OpenAI
+  Python SDK Responses API (`client.responses.parse`) with structured output
+  (`text_format=JobAnalysisExtraction`). Requires `openai>=1.66.0` (first release
+  shipping `/v1/responses` and `responses.parse`). Default model: `gpt-4o-mini`
+  (current default only). Configuration is limited to API key (SDK `OPENAI_API_KEY`
+  or constructor override), model, and timeout. An OpenAI client may be injected for
+  offline tests.
+- **Complete posting input** — the extractor formats trusted `JobPosting` metadata as
+  tagged sections (`JobTitle`, `Company`, `SourceURL`, `JobDescription`) so the model
+  sees provenance, not only the description body. Titles often carry seniority that the
+  body never repeats (e.g. "Principal AI Engineer"); analysing the complete posting
+  prevents under-classified seniority. Location is not a `JobPosting` field today and is
+  still extracted from the description into `LocationInfo`. `SourceURL` is provenance
+  only. Responsibilities and technologies remain body-led. Trust boundary unchanged:
+  caller-owned posting → extractor payload without `posting` → service bind/validate.
+
+### JobAnalysisExtraction
+
+Internal Pydantic model listing exactly the fields an extractor may produce
+(all `JobAnalysis` fields except `posting`). Nested domain types are reused; the
+model is checked in (not created with `create_model` or JSON Schema surgery). It
+is not exported from `career_intelligence.job_analysis`. A unit parity test locks
+field-set equality against `JobAnalysis` minus `posting`.
+
+### Prompt
+
+`extraction_prompt.py` holds `EXTRACTION_PROMPT_VERSION` and
+`EXTRACTION_INSTRUCTIONS_V1` (constant name retained across versions). Instructions
+forbid candidate comparison, recommendations, invention of missing facts, and emission
+of `posting`.
+
+#### Prompt evolution (why, not only what)
+
+Live evaluation — not offline fixtures alone — forced successive prompt hardening.
+Domain validators stayed strict; prompts had to teach the model the same discipline.
+Full evaluation narrative:
+[eval/fr002_openai_manual_eval.md](eval/fr002_openai_manual_eval.md).
+
+| Version | Intent | Outcome |
+|---------|--------|---------|
+| **v3** | Tagged complete posting (`JobTitle`, `Company`, `SourceURL`, `JobDescription`); prefer clear title seniority with `"Job title"` evidence | Fixed body-only under-classification (e.g. Principal only in title) |
+| **v4** | Strict employment non-inference: set `working_hours` / `engagement_type` only from explicit wording; otherwise unspecified | Fixed invented full-time/permanent; **regressed** global evidence — known claims emitted `evidence=[]` |
+| **v5** | Compact **global** evidence rule near the top (every known claim needs an excerpt); keep employment non-inference; drop “empty evidence” negative heading that generalised badly | Restored evidence discipline without weakening employment rules |
+
+**Why prompt engineering was required:** OpenAI strict structured output requires the
+`evidence` field but allows empty arrays. Validators catch empty evidence after the
+fact. The model follows the loudest recent instructions — an employment-centric
+“leave evidence=[] when unspecified” pattern generalised to technologies and
+responsibilities. A short global evidence rule must stay prominent so field-specific
+rules cannot displace it.
+
+### Testing
+
+All automated tests run offline. OpenAI coverage injects a tiny fake client with a
+`responses.parse` method — no network, no API credits, no deep SDK mocks. Functional
+tests cover both `FixtureExtractor` and `OpenAIJobExtractor` through
+`JobAnalysisService`.
+
+**Regression approach:** live failures become offline fixtures through the fake
+client — title-only Principal seniority, employment non-inference (Software Engineer
+(AI) / Principal), known claims with required evidence, and empty-evidence payloads
+that must still raise `JobAnalysisValidationError`. Manual live checks remain in
+[eval/fr002_openai_manual_eval.md](eval/fr002_openai_manual_eval.md).
+
+---
+
 ## FR-001 Career Profile — Data Provenance
 
 Every value in `data/career_profile.yaml` falls into one of three categories. Values that are

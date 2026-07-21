@@ -202,7 +202,9 @@ Job Analysis is produced through `JobAnalysisService`, which is the public trust
 boundary. An extractor returns untrusted structured data only; the service validates
 that payload, binds the caller-supplied Job Posting, and returns a trusted Job
 Analysis. Fixture extraction is deterministic test scaffolding and is never a public
-default — production callers must supply an extractor explicitly.
+default — production callers must supply an extractor explicitly. Live OpenAI extraction
+completed its first manual evaluation with prompt hardening through v5; see
+[eval/fr002_openai_manual_eval.md](eval/fr002_openai_manual_eval.md).
 
 ---
 
@@ -419,6 +421,42 @@ Acceptance Criteria
 ✓ Outcomes can be recorded against assessed opportunities.
 
 ✓ Outcome history is available to inform future assessments.
+
+---
+
+## FR-014 Duplicate Application Detection
+
+**Phase:** Post–Phase 2 (future)
+
+The system shall recognise opportunities the user has already considered or applied to,
+so effort is not wasted on repeats and pipeline history stays coherent.
+
+Career Copilot should:
+
+- recognise previously applied or assessed jobs
+- store platform job IDs when available
+- compare canonical URLs
+- compare company / title / location
+- optionally compare description fingerprints (stable digests of employer description
+  text, not UI chrome)
+
+When a platform exposes application status (for example “Applied”), that status should
+be captured as **acquisition metadata** — not analysed as part of the employer’s job
+description. Duplicate detection belongs with acquisition and pipeline continuity; it
+must not be embedded in Job Analysis extractors.
+
+See [10_roadmap.md](10_roadmap.md) § Automated Job Acquisition and
+[06_domain_model.md](06_domain_model.md) § Job Posting — Future Evolution.
+
+Acceptance Criteria
+
+✓ Previously seen opportunities can be matched by platform ID and/or canonical URL.
+
+✓ Company / title / location matching supports review when IDs are absent.
+
+✓ Optional description fingerprinting reduces false novelty on near-identical ads.
+
+✓ Platform application status is stored as acquisition metadata, separate from Job Analysis.
 
 ---
 

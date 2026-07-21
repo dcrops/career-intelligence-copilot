@@ -75,8 +75,12 @@ The first implementation decision is now recorded in
 
 ### Phase 2 — Job Intelligence (MVP)
 
-**Status:** In progress. FR-001 Career Profile is implemented; FR-002 and the remaining
-decision-loop stages are not yet implemented.
+**Status:** In progress. FR-001 Career Profile is implemented. FR-002 Job Analysis
+is implemented (domain models, `JobAnalysisService`, `FixtureExtractor`,
+`OpenAIJobExtractor`) and has completed its first real-world manual evaluation with
+prompt v5 and offline regressions for live failure modes — see
+[eval/fr002_openai_manual_eval.md](eval/fr002_openai_manual_eval.md). Remaining
+decision-loop stages (FR-003+) are not yet implemented.
 
 
 
@@ -315,6 +319,70 @@ Potential future enhancements (Horizon 2):
 
 
 Future ideas are deferred unless they directly support Horizon 1 during the active job search.
+
+
+
+---
+
+
+
+## Automated Job Acquisition
+
+
+
+**Status:** Future work (not Phase 2 exit criteria). Manual copy/paste of job text into
+`JobPosting` is an **MVP evaluation technique only** — sufficient to harden FR-002
+extraction, not the intended long-term owner workflow.
+
+
+
+**Intended production workflow:**
+
+
+
+```
+Job Discovery
+      ↓
+Job Acquisition
+      ↓
+Metadata Normalisation
+      ↓
+Duplicate Detection
+      ↓
+Job Extraction (FR-002)
+      ↓
+Candidate Fit Analysis (FR-003+)
+```
+
+
+
+**Potential acquisition mechanisms** (choose later by dual-value test):
+
+
+
+- browser automation
+- browser extension
+- recruiter emails
+- supported platform APIs
+- platform alerts
+
+
+
+**Architectural separation (non-negotiable):**
+
+
+
+| Concern | Responsibility |
+|---------|----------------|
+| **Job Acquisition** | Obtain raw listing content and platform metadata (IDs, URLs, application status, UI noise stripped or segregated) |
+| **Job Analysis** | Extract structured `JobAnalysis` from a trusted `JobPosting` — no discovery, scraping, or duplicate logic |
+
+
+
+Acquisition must not be embedded inside extractors. Analysis must not scrape job boards.
+Duplicate detection is specified as FR-014 in
+[04_functional_specification.md](04_functional_specification.md). Related domain note:
+[06_domain_model.md](06_domain_model.md) § Job Posting — Future Evolution.
 
 
 

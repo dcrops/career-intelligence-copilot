@@ -64,6 +64,21 @@ current.
 
 The raw input for a single opportunity — typically a job description provided by the user. Phase 2 does not include automated job discovery.
 
+**Implementation (Phase 2):** Callers supply a typed `JobPosting` (`raw_text` plus
+optional `title`, `company`, `source_url`). The OpenAI extractor formats these as
+tagged sections so analysis uses the complete posting, not only the body. Manual
+paste is the current ingestion path; automated acquisition is future work — see
+[10_roadmap.md](10_roadmap.md) § Automated Job Acquisition.
+
+#### Future Evolution
+
+Do not redesign the Phase 2 model here. Future ingestion may attach **structured
+metadata already known at acquisition time** — for example location, employment,
+salary, category, and platform metadata (job IDs, canonical URLs, application
+status) — so Job Analysis need not rediscover facts that the platform already
+stated. Platform UI noise and personalised match content remain acquisition concerns,
+not employer job-description content. Duplicate recognition is FR-014.
+
 ---
 
 ### Job Analysis
@@ -84,7 +99,9 @@ Assessment (FR-003).
 `src/career_intelligence/job_analysis/`. Extractors return untrusted structured payloads;
 the service alone validates the result and binds the caller-supplied Job Posting.
 `FixtureExtractor` is deterministic offline scaffolding for tests and must be passed
-explicitly — it is not a public default.
+explicitly — it is not a public default. `OpenAIJobExtractor` is the live Responses API
+path; first manual evaluation and prompt hardening (through v5) are recorded in
+[eval/fr002_openai_manual_eval.md](eval/fr002_openai_manual_eval.md).
 
 ---
 
@@ -197,5 +214,6 @@ Phase 2 engineering must respect this mapping. The future system should absorb o
 | Portfolio Match | FR-004 |
 | Application Strategy | FR-005 |
 | Outcome Record | FR-013 |
+| Duplicate Application Detection | FR-014 (future) |
 | Ranked Comparison | FR-012 (partial — job opportunities only) |
 | Pipeline tracking | Phase 2 in-scope (see roadmap) |

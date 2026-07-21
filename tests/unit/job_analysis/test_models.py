@@ -162,6 +162,40 @@ def test_unknown_seniority_without_evidence_is_valid() -> None:
     assert seniority.evidence == []
 
 
+def test_unknown_seniority_must_not_be_marked_ambiguous_without_candidates() -> None:
+    """Live smoke regression: missing seniority is unknown, not empty-ambiguous."""
+    with pytest.raises(ValidationError, match="non-unknown candidate level"):
+        SeniorityAssessment.model_validate(
+            {
+                "level": "unknown",
+                "ambiguous": True,
+                "candidate_levels": [],
+                "evidence": [],
+            }
+        )
+
+    with pytest.raises(ValidationError, match="non-unknown candidate level"):
+        SeniorityAssessment.model_validate(
+            {
+                "level": "unknown",
+                "ambiguous": True,
+                "candidate_levels": ["unknown"],
+                "evidence": [_evidence("no level stated", "about")],
+            }
+        )
+
+    seniority = SeniorityAssessment.model_validate(
+        {
+            "level": "unknown",
+            "ambiguous": False,
+            "candidate_levels": [],
+            "evidence": [],
+        }
+    )
+    assert seniority.ambiguous is False
+    assert seniority.candidate_levels == []
+
+
 def test_ambiguous_seniority_with_one_candidate_and_evidence_is_valid() -> None:
     analysis = JobAnalysis.model_validate(
         _valid_analysis(
@@ -216,6 +250,56 @@ def test_missing_salary_represented_without_invention() -> None:
     assert analysis.compensation.evidence == []
 
 
+def test_unstated_compensation_accepts_explicit_nulls_and_empty_evidence() -> None:
+    """OpenAI strict structured output emits nulls; they must equal omission."""
+    compensation = Compensation.model_validate(
+        {
+            "clarity": "unstated",
+            "minimum": None,
+            "maximum": None,
+            "currency": None,
+            "period": None,
+            "raw_text": None,
+            "evidence": [],
+        }
+    )
+
+    assert compensation.clarity == "unstated"
+    assert compensation.minimum is None
+    assert compensation.maximum is None
+    assert compensation.currency is None
+    assert compensation.period is None
+    assert compensation.raw_text is None
+    assert compensation.evidence == []
+
+
+@pytest.mark.parametrize(
+    "overrides",
+    [
+        {"minimum": 120_000},
+        {"maximum": 150_000},
+        {"currency": "AUD"},
+        {"period": "year"},
+        {"raw_text": "Competitive salary"},
+        {"evidence": [{"excerpt": "Competitive salary package", "section": "compensation"}]},
+    ],
+)
+def test_unstated_compensation_rejects_invented_content(overrides: dict[str, object]) -> None:
+    payload: dict[str, object] = {
+        "clarity": "unstated",
+        "minimum": None,
+        "maximum": None,
+        "currency": None,
+        "period": None,
+        "raw_text": None,
+        "evidence": [],
+    }
+    payload.update(overrides)
+
+    with pytest.raises(ValidationError, match="unstated compensation"):
+        Compensation.model_validate(payload)
+
+
 def test_stated_compensation_without_evidence_is_rejected() -> None:
     with pytest.raises(ValidationError, match="at least one evidence item"):
         Compensation.model_validate(
@@ -239,7 +323,6 @@ def test_unstated_compensation_rejects_invented_amount() -> None:
                 "period": "year",
             }
         )
-
 
 def test_stated_location_without_evidence_is_rejected() -> None:
     with pytest.raises(ValidationError, match="at least one evidence item"):
@@ -350,6 +433,71 @@ def test_unspecified_employment_allows_empty_evidence() -> None:
     assert employment.working_hours == "unspecified"
     assert employment.engagement_type == "unspecified"
     assert employment.evidence == []
+
+
+def test_explicit_full_time_permanent_employment_with_evidence() -> None:
+    employment = EmploymentInfo.model_validate(
+        {
+            "working_hours": "full_time",
+            "engagement_type": "permanent",
+            "evidence": [_evidence("Full-time permanent role", "employment")],
+        }
+    )
+
+    assert employment.working_hours == "full_time"
+    assert employment.engagement_type == "permanent"
+    assert employment.evidence[0].excerpt == "Full-time permanent role"
+
+
+def test_explicit_contract_engagement_with_evidence() -> None:
+    employment = EmploymentInfo.model_validate(
+        {
+            "working_hours": "unspecified",
+            "engagement_type": "contract",
+            "evidence": [_evidence("6 month contract", "employment")],
+        }
+    )
+
+    assert employment.working_hours == "unspecified"
+    assert employment.engagement_type == "contract"
+    assert employment.evidence
+
+
+def test_explicit_part_time_working_hours_with_evidence() -> None:
+    employment = EmploymentInfo.model_validate(
+        {
+            "working_hours": "part_time",
+            "engagement_type": "unspecified",
+            "evidence": [_evidence("Part-time", "employment")],
+        }
+    )
+
+    assert employment.working_hours == "part_time"
+    assert employment.engagement_type == "unspecified"
+
+
+def test_inferred_employment_language_must_remain_unspecified() -> None:
+    """Recruiter/office/seniority wording is not employment evidence."""
+    employment = EmploymentInfo.model_validate(
+        {
+            "working_hours": "unspecified",
+            "engagement_type": "unspecified",
+            "evidence": [],
+        }
+    )
+
+    assert employment.working_hours == "unspecified"
+    assert employment.engagement_type == "unspecified"
+    assert employment.evidence == []
+
+    with pytest.raises(ValidationError, match="at least one evidence item"):
+        EmploymentInfo.model_validate(
+            {
+                "working_hours": "full_time",
+                "engagement_type": "permanent",
+                "evidence": [],
+            }
+        )
 
 
 def test_multiple_experience_requirements_can_coexist() -> None:

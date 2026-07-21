@@ -6,6 +6,45 @@ Records product strategy and engineering knowledge changes. Routine typo fixes a
 
 ## Version 1.4
 
+### FR-002 manual evaluation completed
+
+- Completed the first real-world manual evaluation of OpenAI job extraction (synthetic
+  smoke + Principal AI Engineer + Software Engineer (AI)). Record:
+  [eval/fr002_openai_manual_eval.md](eval/fr002_openai_manual_eval.md).
+- Hardened the extraction prompt through live production-style advertisements:
+  title-aware complete posting (v3), employment non-inference (v4), then a compact
+  **global evidence** rule (v5) after v4’s employment wording caused empty `evidence`
+  arrays on otherwise correct claims.
+- Added offline regression coverage for live failure modes (title-only seniority,
+  employment non-inference, known claims requiring evidence, empty-evidence rejection).
+- Improved evidence discipline without weakening domain validators.
+- Documented future **Automated Job Acquisition** (roadmap) and **Duplicate Application
+  Detection** (FR-014), keeping acquisition separate from Job Analysis.
+
+### FR-002 OpenAI job extraction
+
+- Added `OpenAIJobExtractor` using the official OpenAI Python SDK Responses API
+  (`responses.parse`) with structured output into internal `JobAnalysisExtraction`
+  (all `JobAnalysis` fields except `posting`).
+- Kept `JobAnalysisService` as the trust boundary: extractors return untrusted
+  payloads; the service rejects embedded `posting`, binds the caller-supplied
+  `JobPosting`, and validates trusted `JobAnalysis`.
+- Configuration limited to API key (SDK `OPENAI_API_KEY` / optional override),
+  model (default `gpt-4o-mini`), and timeout; client injection for offline tests.
+- Automated tests remain fully offline via a tiny fake OpenAI client; added
+  [eval/fr002_openai_manual_eval.md](eval/fr002_openai_manual_eval.md) for manual
+  quality checks on real advertisements.
+- `FixtureExtractor` remains deterministic offline scaffolding and is unchanged as
+  a non-default test path.
+- Prompt v3 formats the complete `JobPosting` as tagged sections (`JobTitle`,
+  `Company`, `SourceURL`, `JobDescription`) so seniority can be taken from the title
+  when the body never repeats it; title/body conflicts remain ambiguous with evidence.
+- Prompt v4 requires evidence-backed employment only: do not infer full-time/permanent
+  from office, hybrid, seniority, or recruiter wording.
+- Prompt v5 adds a compact global evidence rule so known role-family, technology, and
+  responsibility claims never emit empty evidence arrays (v4 employment wording
+  regression).
+
 ### Phase 2 implementation begins — FR-001 Career Profile
 
 - Implemented the evidence-based Career Profile domain model with Python 3.11+ and Pydantic.
