@@ -121,27 +121,88 @@ Acceptance Criteria
 
 **Phase:** 2
 
-The system shall analyse job descriptions.
+The system shall analyse job descriptions and produce a structured **Job Analysis** of the
+posting alone.
 
-Extract:
+FR-002 extracts and organises what the job asks for. It does **not** evaluate candidate fit,
+assign application tiers, recommend whether to apply, match portfolio projects, or generate
+application content. Those behaviours belong to FR-003 and later requirements.
 
-- technologies
+### Structured output
+
+Analysis captures:
+
+- technologies (each tagged required, preferred, or unspecified)
 - responsibilities
+- role family
 - seniority
 - location
-- salary
-- employment type
-- required experience
+- work arrangement (onsite, hybrid, remote, or unspecified), with optional details such as
+  office days or geographic limits
+- compensation (salary or rate where available)
+- employment as two dimensions: working hours (full-time / part-time / unspecified) and
+  engagement type (permanent / fixed-term / contract / casual / internship / unspecified)
+- experience requirements as an evidence-backed list (each required, preferred, or
+  unspecified), not a single aggregate years field
+
+### Role-family taxonomy
+
+- `ai_engineering`
+- `ai_solutions`
+- `data_engineering`
+- `software_engineering`
+- `ml_engineering`
+- `ai_adjacent`
+- `other`
+- `unknown`
+
+### Seniority taxonomy
+
+- `entry`
+- `mid`
+- `senior`
+- `lead`
+- `principal`
+- `manager`
+- `unknown`
+
+### Requirements, evidence, and unknowns
+
+- Technology and experience requirements must distinguish **required**, **preferred**, and
+  **unspecified**. Unspecified means the posting does not make the obligation clear.
+- Material positive claims require at least one **source evidence** item: a short excerpt from
+  the posting and, optionally, the section it came from. Evidence may be empty only for
+  explicitly unknown, unspecified, or unstated values. Evidence does not invent character
+  offsets, confidence scores, or stable evidence identifiers.
+- Unknown, unstated, or ambiguous information must be represented explicitly. The system must
+  not guess missing salary, force a seniority when the posting conflicts, or invent a role
+  family. Ambiguous seniority keeps `level` as `unknown`, retains at least one plausible
+  candidate level, and cites conflicting evidence — without selecting a false single
+  classification.
+- Work arrangement is part of Job Analysis (not deferred to Commercial Fit). Commercial Fit
+  later compares analysed arrangement and compensation against the career profile.
 
 Acceptance Criteria
 
-✓ Technologies identified.
+✓ Technologies identified with required / preferred / unspecified distinction.
 
-✓ Role classified.
+✓ Role classified using the role-family taxonomy (including `unknown`).
 
-✓ Salary extracted where available.
+✓ Salary or rate extracted where available; absence recorded without invention.
+
+✓ Seniority and other ambiguous fields represented without forced classification.
+
+✓ Positive extracted claims cite source evidence.
 
 ✓ Analysis reduces manual extraction effort compared to unassisted review.
+
+### Service trust boundary (implementation)
+
+Job Analysis is produced through `JobAnalysisService`, which is the public trust
+boundary. An extractor returns untrusted structured data only; the service validates
+that payload, binds the caller-supplied Job Posting, and returns a trusted Job
+Analysis. Fixture extraction is deterministic test scaffolding and is never a public
+default — production callers must supply an extractor explicitly.
 
 ---
 

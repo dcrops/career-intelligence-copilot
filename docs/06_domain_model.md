@@ -70,7 +70,21 @@ The raw input for a single opportunity — typically a job description provided 
 
 **Maps to:** FR-002
 
-Structured extraction from a job posting: technologies, responsibilities, seniority, location, salary, employment type, required experience. Reduces manual reading and extraction effort.
+Structured extraction from a job posting alone: technologies and experience requirements
+(required / preferred / unspecified), responsibilities, role family, seniority, location,
+work arrangement (with optional details), compensation, and employment as working hours plus
+engagement type. Material positive claims require short source evidence from the posting;
+unknown, unspecified, and unstated values may omit evidence.
+
+FR-002 does not assess candidate fit. Ambiguous seniority keeps conflicting signals without
+forcing a single level. Fit evaluation against the career profile begins at Opportunity
+Assessment (FR-003).
+
+**Implementation:** Typed domain models and `JobAnalysisService` live in
+`src/career_intelligence/job_analysis/`. Extractors return untrusted structured payloads;
+the service alone validates the result and binds the caller-supplied Job Posting.
+`FixtureExtractor` is deterministic offline scaffolding for tests and must be passed
+explicitly — it is not a public default.
 
 ---
 
