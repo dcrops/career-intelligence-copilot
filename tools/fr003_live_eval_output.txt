@@ -1,0 +1,2566 @@
+﻿========================================================================
+Case: applied-ai
+Label: Applied AI Engineer (strong AI Engineering fit)
+Category: strong_ai_fit
+Extraction prompt: v5
+Assessment prompt: v5
+========================================================================
+
+Step 1: Live JobAnalysis extraction...
+  role_family=ai_engineering seniority=unknown technologies=3 compensation=stated
+
+Step 2: Live OpportunityAssessment...
+
+Assessment succeeded.
+
+{
+  "job_analysis": {
+    "posting": {
+      "raw_text": "[CIC-FIXTURE:applied-ai-engineer]\nApplied AI Engineer \u2014 Harbour Labs (Sydney)\n\nJoin our applied AI team to prototype and productise customer-facing assistants.\nYou will work closely with solution architects and customer success.\n\nResponsibilities\n\u2022 Deliver applied AI prototypes into production services\n\u2022 Fine-tune and evaluate models for customer use cases\n\u2022 Document patterns for reuse across engagements\n\nRequirements\n\u2022 3+ years building ML or AI-powered products required\n\u2022 Python and FastAPI required; Azure OpenAI preferred\n\u2022 Stakeholder-facing delivery experience preferred\n\nLocation & employment\nHybrid Sydney (Barangaroo), 2 days in office. Full-time permanent.\nSalary $140,000\u2013$165,000 AUD.",
+      "title": "Applied AI Engineer",
+      "company": "Harbour Labs",
+      "source_url": null
+    },
+    "role_family": {
+      "family": "ai_engineering",
+      "evidence": [
+        {
+          "excerpt": "Applied AI Engineer \u2014 Harbour Labs (Sydney)",
+          "section": "Job title"
+        }
+      ]
+    },
+    "seniority": {
+      "level": "unknown",
+      "ambiguous": false,
+      "candidate_levels": [],
+      "evidence": []
+    },
+    "technologies": [
+      {
+        "name": "Python",
+        "level": "required",
+        "evidence": [
+          {
+            "excerpt": "Python and FastAPI required",
+            "section": "Requirements"
+          }
+        ]
+      },
+      {
+        "name": "FastAPI",
+        "level": "required",
+        "evidence": [
+          {
+            "excerpt": "Python and FastAPI required",
+            "section": "Requirements"
+          }
+        ]
+      },
+      {
+        "name": "Azure OpenAI",
+        "level": "preferred",
+        "evidence": [
+          {
+            "excerpt": "Azure OpenAI preferred",
+            "section": "Requirements"
+          }
+        ]
+      }
+    ],
+    "responsibilities": [
+      {
+        "description": "Deliver applied AI prototypes into production services",
+        "evidence": [
+          {
+            "excerpt": "Deliver applied AI prototypes into production services",
+            "section": "Responsibilities"
+          }
+        ]
+      },
+      {
+        "description": "Fine-tune and evaluate models for customer use cases",
+        "evidence": [
+          {
+            "excerpt": "Fine-tune and evaluate models for customer use cases",
+            "section": "Responsibilities"
+          }
+        ]
+      },
+      {
+        "description": "Document patterns for reuse across engagements",
+        "evidence": [
+          {
+            "excerpt": "Document patterns for reuse across engagements",
+            "section": "Responsibilities"
+          }
+        ]
+      }
+    ],
+    "compensation": {
+      "clarity": "stated",
+      "minimum": 140000.0,
+      "maximum": 165000.0,
+      "currency": "AUD",
+      "period": "year",
+      "raw_text": "$140,000\u2013$165,000 AUD.",
+      "evidence": [
+        {
+          "excerpt": "Salary $140,000\u2013$165,000 AUD.",
+          "section": "Location & employment"
+        }
+      ]
+    },
+    "location": {
+      "clarity": "stated",
+      "summary": "Hybrid Sydney (Barangaroo), 2 days in office.",
+      "evidence": [
+        {
+          "excerpt": "Hybrid Sydney (Barangaroo), 2 days in office.",
+          "section": "Location & employment"
+        }
+      ]
+    },
+    "work_arrangement": {
+      "arrangement": "hybrid",
+      "details": "2 days in office.",
+      "evidence": [
+        {
+          "excerpt": "2 days in office.",
+          "section": "Location & employment"
+        }
+      ]
+    },
+    "employment": {
+      "working_hours": "full_time",
+      "engagement_type": "permanent",
+      "evidence": [
+        {
+          "excerpt": "Full-time permanent.",
+          "section": "Location & employment"
+        }
+      ]
+    },
+    "experience_requirements": [
+      {
+        "description": "3+ years building ML or AI-powered products",
+        "level": "required",
+        "minimum_years": 3.0,
+        "maximum_years": null,
+        "evidence": [
+          {
+            "excerpt": "3+ years building ML or AI-powered products required",
+            "section": "Requirements"
+          }
+        ]
+      },
+      {
+        "description": "Stakeholder-facing delivery experience",
+        "level": "preferred",
+        "minimum_years": null,
+        "maximum_years": null,
+        "evidence": [
+          {
+            "excerpt": "Stakeholder-facing delivery experience preferred",
+            "section": "Requirements"
+          }
+        ]
+      }
+    ]
+  },
+  "technical_fit": {
+    "dimension": "technical",
+    "judgment": "strong",
+    "summary": "The candidate demonstrates strong alignment with the technical requirements through relevant experience and technologies used in their independent engineering projects.",
+    "findings": [
+      {
+        "kind": "alignment",
+        "summary": "The candidate has extensive experience in Python and FastAPI, which are required technologies for the role.",
+        "detail": null,
+        "importance": "material",
+        "job_evidence": [
+          {
+            "source": "technology",
+            "item_index": 0,
+            "name": "Python",
+            "excerpt": "Python and FastAPI required"
+          },
+          {
+            "source": "technology",
+            "item_index": 1,
+            "name": "FastAPI",
+            "excerpt": "Python and FastAPI required"
+          }
+        ],
+        "profile_evidence": [
+          {
+            "source": "skill",
+            "ref": "skill:Python",
+            "excerpt": null
+          },
+          {
+            "source": "skill",
+            "ref": "skill:FastAPI",
+            "excerpt": null
+          }
+        ],
+        "assumption": null
+      },
+      {
+        "kind": "alignment",
+        "summary": "The candidate meets the requirement for 3+ years building ML or AI-powered products with 3.5 years of experience in related fields.",
+        "detail": null,
+        "importance": "material",
+        "job_evidence": [
+          {
+            "source": "experience_requirement",
+            "item_index": 0,
+            "name": "3+ years building ML or AI-powered products",
+            "excerpt": "3+ years building ML or AI-powered products required"
+          }
+        ],
+        "profile_evidence": [
+          {
+            "source": "experience",
+            "ref": "experience:chase-risk-compliance-ai-engineer",
+            "excerpt": null
+          },
+          {
+            "source": "experience",
+            "ref": "experience:ai-engineering-development-2025",
+            "excerpt": null
+          }
+        ],
+        "assumption": null
+      },
+      {
+        "kind": "partial_alignment",
+        "summary": "The candidate has stakeholder-facing delivery experience, though primarily from AI Engineering projects rather than specified commercial experience.",
+        "detail": null,
+        "importance": "minor",
+        "job_evidence": [
+          {
+            "source": "experience_requirement",
+            "item_index": 1,
+            "name": "Stakeholder-facing delivery experience",
+            "excerpt": "Stakeholder-facing delivery experience preferred"
+          }
+        ],
+        "profile_evidence": [
+          {
+            "source": "experience",
+            "ref": "experience:chase-risk-compliance-ai-engineer",
+            "excerpt": null
+          },
+          {
+            "source": "experience",
+            "ref": "experience:ai-engineering-development-2025",
+            "excerpt": null
+          }
+        ],
+        "assumption": null
+      }
+    ]
+  },
+  "commercial_fit": {
+    "dimension": "commercial",
+    "judgment": "mixed",
+    "summary": "There is partial alignment with the commercial requirements, as the candidate's preferred locations and work arrangements are hybrid but not specifically in Sydney as per the job posting.",
+    "findings": [
+      {
+        "kind": "gap",
+        "summary": "The candidate is based in Melbourne and prefers flexible remote work, which does not fully align with the job's Sydney location and hybrid work setup that requires some in-office attendance.",
+        "detail": null,
+        "importance": "material",
+        "job_evidence": [
+          {
+            "source": "location",
+            "item_index": 0,
+            "name": "Hybrid Sydney (Barangaroo), 2 days in office.",
+            "excerpt": "Hybrid Sydney (Barangaroo), 2 days in office."
+          }
+        ],
+        "profile_evidence": [
+          {
+            "source": "preference",
+            "ref": "preference:locations",
+            "excerpt": "Locations: Melbourne, VIC, Remote Australia"
+          }
+        ],
+        "assumption": null
+      },
+      {
+        "kind": "gap",
+        "summary": "The stated compensation range for the role does not match the candidate's minimum expected salary, which is unspecified but implies expectations may differ.",
+        "detail": null,
+        "importance": "material",
+        "job_evidence": [
+          {
+            "source": "compensation",
+            "item_index": 0,
+            "name": "$140,000\u2013$165,000 AUD",
+            "excerpt": "Salary $140,000\u2013$165,000 AUD."
+          }
+        ],
+        "profile_evidence": [],
+        "assumption": null
+      }
+    ]
+  },
+  "portfolio_fit": {
+    "dimension": "portfolio",
+    "judgment": "strong",
+    "summary": "The candidate's projects are highly relevant and demonstrate technical capabilities suitable for the role.",
+    "findings": [
+      {
+        "kind": "alignment",
+        "summary": "The candidate's project 'Operational Intelligence Copilot' involves ML and AI technologies directly relevant to the responsibilities of the role.",
+        "detail": null,
+        "importance": "material",
+        "job_evidence": [
+          {
+            "source": "responsibility",
+            "item_index": 0,
+            "name": "Deliver applied AI prototypes into production services",
+            "excerpt": "Deliver applied AI prototypes into production services"
+          }
+        ],
+        "profile_evidence": [
+          {
+            "source": "project",
+            "ref": "project:operational-intelligence-copilot",
+            "excerpt": null
+          }
+        ],
+        "assumption": null
+      },
+      {
+        "kind": "alignment",
+        "summary": "The project 'Governance-Aware Document Intelligence RAG' shows expertise in building AI solutions that integrate well with the stated role requirements.",
+        "detail": null,
+        "importance": "material",
+        "job_evidence": [
+          {
+            "source": "responsibility",
+            "item_index": 1,
+            "name": "Fine-tune and evaluate models for customer use cases",
+            "excerpt": "Fine-tune and evaluate models for customer use cases"
+          }
+        ],
+        "profile_evidence": [
+          {
+            "source": "project",
+            "ref": "project:governance-document-rag",
+            "excerpt": null
+          }
+        ],
+        "assumption": null
+      }
+    ]
+  },
+  "summary": {
+    "summary": "David Cropper has a strong technical fit for the Applied AI Engineer role, particularly in the required technologies and relevant experience in AI and ML projects. However, there are mixed commercial fit aspects due to geographic and compensation differences. The portfolio of projects well demonstrates capabilities in areas that align with key responsibilities outlined in the job description.",
+    "key_alignments": [
+      "Strong alignment in required technologies (Python, FastAPI)",
+      "Experience exceeds the required 3 years in ML/AI products"
+    ],
+    "key_gaps": [
+      "Location preference in Melbourne vs required location in Sydney",
+      "Compensation expectations may not fully align with the offered range"
+    ]
+  }
+}
+
+Dimension judgments:
+  technical:  strong
+  commercial: mixed
+  portfolio:  strong
+
+Finding kinds by dimension:
+  technical: ['alignment', 'alignment', 'partial_alignment']
+  commercial: ['gap', 'gap']
+  portfolio: ['alignment', 'alignment']
+
+Profile evidence refs:
+  technical: ['skill:Python', 'skill:FastAPI', 'experience:chase-risk-compliance-ai-engineer', 'experience:ai-engineering-development-2025', 'experience:chase-risk-compliance-ai-engineer', 'experience:ai-engineering-development-2025']
+  commercial: ['preference:locations']
+  portfolio: ['project:operational-intelligence-copilot', 'project:governance-document-rag']
+
+Summary:
+  David Cropper has a strong technical fit for the Applied AI Engineer role, particularly in the required technologies and relevant experience in AI and ML projects. However, there are mixed commercial fit aspects due to geographic and compensation differences. The portfolio of projects well demonstrates capabilities in areas that align with key responsibilities outlined in the job description.
+
+CHECK: validation passed; no forbidden tokens detected in serialised output.
+
+RESULT: applied-ai -> PASS
+
+========================================================================
+Case: senior-ai-production
+Label: Senior AI Engineer (commercial production AI required)
+Category: production_ai_required
+Extraction prompt: v5
+Assessment prompt: v5
+========================================================================
+
+Step 1: Live JobAnalysis extraction...
+  role_family=ai_engineering seniority=senior technologies=2 compensation=stated
+
+Step 2: Live OpportunityAssessment...
+
+Assessment succeeded.
+
+{
+  "job_analysis": {
+    "posting": {
+      "raw_text": "[CIC-FIXTURE:ai-engineer]\nSenior AI Engineer \u2014 Northside Analytics (Melbourne)\n\nAbout the role\nWe are hiring a Senior AI Engineer to design and ship production LLM applications for\nAustralian enterprise clients. You will own retrieval pipelines, evaluation harnesses,\nand safe deployment patterns.\n\nResponsibilities\n\u2022 Build and maintain LLM applications using Python and LangChain\n\u2022 Partner with data engineers on feature pipelines and model observability\n\u2022 Mentor engineers on prompt evaluation and production readiness\n\nRequirements\n\u2022 5+ years software engineering experience required\n\u2022 Strong Python required; LangChain experience preferred\n\u2022 Production LLM or RAG experience required\n\nLocation & employment\nHybrid Melbourne \u2014 3 days in the CBD office. Full-time permanent.\nSalary $150,000\u2013$180,000 AUD + super.",
+      "title": "Senior AI Engineer",
+      "company": "Northside Analytics",
+      "source_url": null
+    },
+    "role_family": {
+      "family": "ai_engineering",
+      "evidence": [
+        {
+          "excerpt": "Senior AI Engineer \u2014 Northside Analytics (Melbourne)",
+          "section": "Job title"
+        }
+      ]
+    },
+    "seniority": {
+      "level": "senior",
+      "ambiguous": false,
+      "candidate_levels": [],
+      "evidence": [
+        {
+          "excerpt": "Senior AI Engineer",
+          "section": "Job title"
+        }
+      ]
+    },
+    "technologies": [
+      {
+        "name": "Python",
+        "level": "required",
+        "evidence": [
+          {
+            "excerpt": "Strong Python required",
+            "section": "Requirements"
+          }
+        ]
+      },
+      {
+        "name": "LangChain",
+        "level": "preferred",
+        "evidence": [
+          {
+            "excerpt": "LangChain experience preferred",
+            "section": "Requirements"
+          }
+        ]
+      }
+    ],
+    "responsibilities": [
+      {
+        "description": "Build and maintain LLM applications using Python and LangChain",
+        "evidence": [
+          {
+            "excerpt": "Build and maintain LLM applications using Python and LangChain",
+            "section": "Responsibilities"
+          }
+        ]
+      },
+      {
+        "description": "Partner with data engineers on feature pipelines and model observability",
+        "evidence": [
+          {
+            "excerpt": "Partner with data engineers on feature pipelines and model observability",
+            "section": "Responsibilities"
+          }
+        ]
+      },
+      {
+        "description": "Mentor engineers on prompt evaluation and production readiness",
+        "evidence": [
+          {
+            "excerpt": "Mentor engineers on prompt evaluation and production readiness",
+            "section": "Responsibilities"
+          }
+        ]
+      }
+    ],
+    "compensation": {
+      "clarity": "stated",
+      "minimum": 150000.0,
+      "maximum": 180000.0,
+      "currency": "AUD",
+      "period": "year",
+      "raw_text": "$150,000\u2013$180,000 AUD + super.",
+      "evidence": [
+        {
+          "excerpt": "Salary $150,000\u2013$180,000 AUD + super.",
+          "section": "Location & employment"
+        }
+      ]
+    },
+    "location": {
+      "clarity": "stated",
+      "summary": "Hybrid Melbourne \u2014 3 days in the CBD office.",
+      "evidence": [
+        {
+          "excerpt": "Hybrid Melbourne \u2014 3 days in the CBD office.",
+          "section": "Location & employment"
+        }
+      ]
+    },
+    "work_arrangement": {
+      "arrangement": "hybrid",
+      "details": "3 days in the CBD office.",
+      "evidence": [
+        {
+          "excerpt": "Hybrid Melbourne \u2014 3 days in the CBD office.",
+          "section": "Location & employment"
+        }
+      ]
+    },
+    "employment": {
+      "working_hours": "full_time",
+      "engagement_type": "permanent",
+      "evidence": [
+        {
+          "excerpt": "Full-time permanent.",
+          "section": "Location & employment"
+        }
+      ]
+    },
+    "experience_requirements": [
+      {
+        "description": "5+ years software engineering experience",
+        "level": "required",
+        "minimum_years": 5.0,
+        "maximum_years": null,
+        "evidence": [
+          {
+            "excerpt": "5+ years software engineering experience required",
+            "section": "Requirements"
+          }
+        ]
+      },
+      {
+        "description": "Production LLM or RAG experience",
+        "level": "required",
+        "minimum_years": null,
+        "maximum_years": null,
+        "evidence": [
+          {
+            "excerpt": "Production LLM or RAG experience required",
+            "section": "Requirements"
+          }
+        ]
+      }
+    ]
+  },
+  "technical_fit": {
+    "dimension": "technical",
+    "judgment": "mixed",
+    "summary": "The candidate has substantial experience with Python and relevant AI technologies but lacks proven commercial experience in LLM applications, which is crucial for the role.",
+    "findings": [
+      {
+        "kind": "partial_alignment",
+        "summary": "The candidate possesses strong Python skills and has experience in AI Engineering, but lacks commercial LLM experience required by the job.",
+        "detail": "The job requires production LLM or RAG experience, which is not fully demonstrated in the candidate's profile but hints at capability through portfolio projects.",
+        "importance": "material",
+        "job_evidence": [
+          {
+            "source": "technology",
+            "item_index": 0,
+            "name": "Python",
+            "excerpt": "Strong Python required"
+          }
+        ],
+        "profile_evidence": [
+          {
+            "source": "experience",
+            "ref": "experience:ai-engineering-development-2025",
+            "excerpt": "Developed progressively more sophisticated portfolio projects."
+          }
+        ],
+        "assumption": null
+      },
+      {
+        "kind": "gap",
+        "summary": "Commercial production experience with LLM applications is required, which the candidate lacks.",
+        "detail": null,
+        "importance": "material",
+        "job_evidence": [
+          {
+            "source": "experience_requirement",
+            "item_index": 1,
+            "name": "Production LLM or RAG experience",
+            "excerpt": "Production LLM or RAG experience required"
+          }
+        ],
+        "profile_evidence": [],
+        "assumption": null
+      }
+    ]
+  },
+  "commercial_fit": {
+    "dimension": "commercial",
+    "judgment": "strong",
+    "summary": "The candidate's compensation expectations align well with the stated salary range and their preferred employment type and location matches.",
+    "findings": [
+      {
+        "kind": "alignment",
+        "summary": "The candidate's salary expectations align with the job's stated compensation.",
+        "detail": "Salary expectations are within the range of $150,000\u2013$180,000 AUD, which is compatible with the job offer.",
+        "importance": "material",
+        "job_evidence": [
+          {
+            "source": "compensation",
+            "item_index": 0,
+            "name": "$150,000\u2013$180,000 AUD + super.",
+            "excerpt": "Salary $150,000\u2013$180,000 AUD + super."
+          }
+        ],
+        "profile_evidence": [
+          {
+            "source": "preference",
+            "ref": "preference:salary_currency",
+            "excerpt": "AUD"
+          },
+          {
+            "source": "preference",
+            "ref": "preference:salary_min",
+            "excerpt": "null"
+          }
+        ],
+        "assumption": null
+      },
+      {
+        "kind": "alignment",
+        "summary": "The employment type and arrangement align with the candidate\u2019s preferences for full-time and hybrid work.",
+        "detail": "Candidate seeks full-time positions and accommodates hybrid working arrangements, which matches the job's requirements and offers.",
+        "importance": "minor",
+        "job_evidence": [
+          {
+            "source": "employment",
+            "item_index": 0,
+            "name": "full_time/permanent",
+            "excerpt": "Full-time permanent."
+          }
+        ],
+        "profile_evidence": [
+          {
+            "source": "preference",
+            "ref": "preference:employment_types",
+            "excerpt": "full_time"
+          }
+        ],
+        "assumption": null
+      }
+    ]
+  },
+  "portfolio_fit": {
+    "dimension": "portfolio",
+    "judgment": "mixed",
+    "summary": "The candidate's independent projects show relevant skills, but a lack of commercial applications in AI limits alignment with the job requirements.",
+    "findings": [
+      {
+        "kind": "partial_alignment",
+        "summary": "The candidate\u2019s independent engineering projects reflect capabilities in AI Engineering and operational intelligence but do not represent commercial experience.",
+        "detail": "Projects in the candidate\u2019s profile demonstrate skills relevant to the job, but they are independent and do not confirm a proven commercial background with LLM applications.",
+        "importance": "material",
+        "job_evidence": [
+          {
+            "source": "responsibility",
+            "item_index": 0,
+            "name": "Build and maintain LLM applications using Python and LangChain",
+            "excerpt": "Build and maintain LLM applications using Python and LangChain"
+          }
+        ],
+        "profile_evidence": [
+          {
+            "source": "project",
+            "ref": "project:operational-intelligence-copilot",
+            "excerpt": "Domain-agnostic operational intelligence platform combining deterministic analytics with Large Language Model reasoning."
+          }
+        ],
+        "assumption": null
+      }
+    ]
+  },
+  "summary": {
+    "summary": "The assessment indicates a mixed technical fit primarily due to the absence of direct commercial experience with LLM applications, despite strong alignment in skills and compensation. Commercially, the candidate aligns well with compensation and employment preferences. Portfolio projects reflect the candidate's abilities but lack commercial backing, which may be critical for the technical requirements of the role.",
+    "key_alignments": [
+      "Salary expectations within stated range",
+      "Full-time and hybrid work matches",
+      "Strong Python skills and relevant domain knowledge"
+    ],
+    "key_gaps": [
+      "Lack of commercial production LLM experience",
+      "Independently developed projects without commercial application"
+    ]
+  }
+}
+
+Dimension judgments:
+  technical:  mixed
+  commercial: strong
+  portfolio:  mixed
+
+Finding kinds by dimension:
+  technical: ['partial_alignment', 'gap']
+  commercial: ['alignment', 'alignment']
+  portfolio: ['partial_alignment']
+
+Profile evidence refs:
+  technical: ['experience:ai-engineering-development-2025']
+  commercial: ['preference:salary_currency', 'preference:salary_min', 'preference:employment_types']
+  portfolio: ['project:operational-intelligence-copilot']
+
+Summary:
+  The assessment indicates a mixed technical fit primarily due to the absence of direct commercial experience with LLM applications, despite strong alignment in skills and compensation. Commercially, the candidate aligns well with compensation and employment preferences. Portfolio projects reflect the candidate's abilities but lack commercial backing, which may be critical for the technical requirements of the role.
+
+CHECK: validation passed; no forbidden tokens detected in serialised output.
+
+RESULT: senior-ai-production -> PASS
+
+========================================================================
+Case: data-engineer
+Label: Data Engineer (broad role, partial AI relevance)
+Category: broad_mixed_fit
+Extraction prompt: v5
+Assessment prompt: v5
+========================================================================
+
+Step 1: Live JobAnalysis extraction...
+  role_family=data_engineering seniority=unknown technologies=6 compensation=stated
+
+Step 2: Live OpportunityAssessment...
+
+Assessment succeeded.
+
+{
+  "job_analysis": {
+    "posting": {
+      "raw_text": "[CIC-FIXTURE:data-engineer]\nData Engineer \u2014 Southern Grid Energy (Melbourne)\n\nWe need a Data Engineer to build reliable analytics platforms on modern lakehouse tooling.\n\nResponsibilities\n\u2022 Design and operate batch and streaming pipelines\n\u2022 Model curated datasets for analytics and AI consumers\n\u2022 Improve data quality and observability\n\nRequirements\n\u2022 4+ years data engineering experience required\n\u2022 Python and SQL required; Spark and dbt preferred\n\u2022 Cloud warehouse experience (Snowflake or Databricks) required\n\nLocation & employment\nHybrid Melbourne. Full-time permanent.\nSalary $130,000\u2013$155,000 AUD + super.",
+      "title": "Data Engineer",
+      "company": "Southern Grid Energy",
+      "source_url": null
+    },
+    "role_family": {
+      "family": "data_engineering",
+      "evidence": [
+        {
+          "excerpt": "Data Engineer \u2014 Southern Grid Energy",
+          "section": "Job title"
+        }
+      ]
+    },
+    "seniority": {
+      "level": "unknown",
+      "ambiguous": false,
+      "candidate_levels": [],
+      "evidence": []
+    },
+    "technologies": [
+      {
+        "name": "Python",
+        "level": "required",
+        "evidence": [
+          {
+            "excerpt": "Python and SQL required",
+            "section": "Requirements"
+          }
+        ]
+      },
+      {
+        "name": "SQL",
+        "level": "required",
+        "evidence": [
+          {
+            "excerpt": "Python and SQL required",
+            "section": "Requirements"
+          }
+        ]
+      },
+      {
+        "name": "Spark",
+        "level": "preferred",
+        "evidence": [
+          {
+            "excerpt": "Spark and dbt preferred",
+            "section": "Requirements"
+          }
+        ]
+      },
+      {
+        "name": "dbt",
+        "level": "preferred",
+        "evidence": [
+          {
+            "excerpt": "Spark and dbt preferred",
+            "section": "Requirements"
+          }
+        ]
+      },
+      {
+        "name": "Snowflake",
+        "level": "required",
+        "evidence": [
+          {
+            "excerpt": "Cloud warehouse experience (Snowflake or Databricks) required",
+            "section": "Requirements"
+          }
+        ]
+      },
+      {
+        "name": "Databricks",
+        "level": "required",
+        "evidence": [
+          {
+            "excerpt": "Cloud warehouse experience (Snowflake or Databricks) required",
+            "section": "Requirements"
+          }
+        ]
+      }
+    ],
+    "responsibilities": [
+      {
+        "description": "Design and operate batch and streaming pipelines",
+        "evidence": [
+          {
+            "excerpt": "\u2022 Design and operate batch and streaming pipelines",
+            "section": "Responsibilities"
+          }
+        ]
+      },
+      {
+        "description": "Model curated datasets for analytics and AI consumers",
+        "evidence": [
+          {
+            "excerpt": "\u2022 Model curated datasets for analytics and AI consumers",
+            "section": "Responsibilities"
+          }
+        ]
+      },
+      {
+        "description": "Improve data quality and observability",
+        "evidence": [
+          {
+            "excerpt": "\u2022 Improve data quality and observability",
+            "section": "Responsibilities"
+          }
+        ]
+      }
+    ],
+    "compensation": {
+      "clarity": "stated",
+      "minimum": 130000.0,
+      "maximum": 155000.0,
+      "currency": "AUD",
+      "period": "year",
+      "raw_text": "$130,000\u2013$155,000 AUD + super.",
+      "evidence": [
+        {
+          "excerpt": "Salary $130,000\u2013$155,000 AUD + super.",
+          "section": "Location & employment"
+        }
+      ]
+    },
+    "location": {
+      "clarity": "stated",
+      "summary": "Hybrid Melbourne",
+      "evidence": [
+        {
+          "excerpt": "Hybrid Melbourne.",
+          "section": "Location & employment"
+        }
+      ]
+    },
+    "work_arrangement": {
+      "arrangement": "hybrid",
+      "details": null,
+      "evidence": [
+        {
+          "excerpt": "Hybrid Melbourne.",
+          "section": "Location & employment"
+        }
+      ]
+    },
+    "employment": {
+      "working_hours": "full_time",
+      "engagement_type": "permanent",
+      "evidence": [
+        {
+          "excerpt": "Full-time permanent.",
+          "section": "Location & employment"
+        }
+      ]
+    },
+    "experience_requirements": [
+      {
+        "description": "4+ years data engineering experience required",
+        "level": "required",
+        "minimum_years": 4.0,
+        "maximum_years": null,
+        "evidence": [
+          {
+            "excerpt": "\u2022 4+ years data engineering experience required",
+            "section": "Requirements"
+          }
+        ]
+      }
+    ]
+  },
+  "technical_fit": {
+    "dimension": "technical",
+    "judgment": "mixed",
+    "summary": "The candidate has relevant skills and some experience in data engineering and a strong foundation in Python, but lacks full commercial experience in specific technologies mentioned in the job requirements.",
+    "findings": [
+      {
+        "kind": "partial_alignment",
+        "summary": "The candidate has strong Python skills but has not listed experience in some required technologies.",
+        "detail": "The job requires experience with Snowflake and Databricks, which the candidate has some study in, but current work experience is limited to Python and SQL.",
+        "importance": "material",
+        "job_evidence": [
+          {
+            "source": "technology",
+            "item_index": 0,
+            "name": "Python",
+            "excerpt": "Python and SQL required"
+          },
+          {
+            "source": "technology",
+            "item_index": 1,
+            "name": "SQL",
+            "excerpt": "Python and SQL required"
+          }
+        ],
+        "profile_evidence": [
+          {
+            "source": "skill",
+            "ref": "skill:Python",
+            "excerpt": null
+          },
+          {
+            "source": "skill",
+            "ref": "skill:SQL",
+            "excerpt": null
+          }
+        ],
+        "assumption": null
+      },
+      {
+        "kind": "gap",
+        "summary": "The job requires a minimum of 4 years of data engineering experience, while the candidate lists only 3.5 years of related experience.",
+        "detail": "Candidate's experience at nbn Australia as a Data Engineer counts towards this requirement but falls short by a few months.",
+        "importance": "material",
+        "job_evidence": [
+          {
+            "source": "experience_requirement",
+            "item_index": 0,
+            "name": "4+ years data engineering experience required",
+            "excerpt": "\u000204+ years data engineering experience required"
+          }
+        ],
+        "profile_evidence": [],
+        "assumption": null
+      },
+      {
+        "kind": "alignment",
+        "summary": "Experience in workforce collaboration using Agile methodologies.",
+        "detail": "The candidate has experience collaborating in Agile teams during their time at nbn Australia.",
+        "importance": "minor",
+        "job_evidence": [
+          {
+            "source": "responsibility",
+            "item_index": 2,
+            "name": "Improve data quality and observability",
+            "excerpt": "\u00020Improve data quality and observability"
+          }
+        ],
+        "profile_evidence": [
+          {
+            "source": "skill",
+            "ref": "skill:Agile collaboration",
+            "excerpt": null
+          }
+        ],
+        "assumption": null
+      }
+    ]
+  },
+  "commercial_fit": {
+    "dimension": "commercial",
+    "judgment": "strong",
+    "summary": "The candidate's preferred work arrangements and compensation expectations align well with the job posting.",
+    "findings": [
+      {
+        "kind": "alignment",
+        "summary": "The candidate prefers full-time employment, which matches the job requirement.",
+        "detail": "Both the job description and the candidate's profile indicate a preference for full-time positions.",
+        "importance": "material",
+        "job_evidence": [
+          {
+            "source": "employment",
+            "item_index": 0,
+            "name": "Full-time permanent",
+            "excerpt": "Full-time permanent."
+          }
+        ],
+        "profile_evidence": [
+          {
+            "source": "preference",
+            "ref": "preference:employment_types",
+            "excerpt": null
+          }
+        ],
+        "assumption": null
+      },
+      {
+        "kind": "alignment",
+        "summary": "The candidate is flexible on location preferences and can work hybrid or on-site in Melbourne.",
+        "detail": "The job posting specifies a hybrid working arrangement in Melbourne which matches the candidate's preferences for locations.",
+        "importance": "minor",
+        "job_evidence": [
+          {
+            "source": "location",
+            "item_index": 0,
+            "name": "Hybrid Melbourne",
+            "excerpt": "Hybrid Melbourne."
+          }
+        ],
+        "profile_evidence": [
+          {
+            "source": "preference",
+            "ref": "preference:locations",
+            "excerpt": null
+          }
+        ],
+        "assumption": null
+      },
+      {
+        "kind": "gap",
+        "summary": "The salary range for the job is between $130,000 and $155,000 AUD, but the candidate has not stated a minimum salary expectation.",
+        "detail": "The candidate's profile does not set a minimum salary, which creates uncertainty on this key requirement.",
+        "importance": "material",
+        "job_evidence": [
+          {
+            "source": "compensation",
+            "item_index": 0,
+            "name": "$130,000\u2013$155,000 AUD + super.",
+            "excerpt": "Salary $130,000\u2013$155,000 AUD + super."
+          }
+        ],
+        "profile_evidence": [],
+        "assumption": null
+      }
+    ]
+  },
+  "portfolio_fit": {
+    "dimension": "portfolio",
+    "judgment": "mixed",
+    "summary": "The candidate's portfolio projects demonstrate applicable skills, but there may be a gap in direct data engineering responsibilities.",
+    "findings": [
+      {
+        "kind": "partial_alignment",
+        "summary": "The candidate's projects demonstrate relevant skills but do not directly align with core data engineering responsibilities from the job.",
+        "detail": "The project experience focuses more on AI Engineering and may not fully demonstrate data engineering capabilities as required by the job.",
+        "importance": "material",
+        "job_evidence": [
+          {
+            "source": "responsibility",
+            "item_index": 1,
+            "name": "Model curated datasets for analytics and AI consumers",
+            "excerpt": "\u00020Model curated datasets for analytics and AI consumers"
+          }
+        ],
+        "profile_evidence": [
+          {
+            "source": "project",
+            "ref": "project:operational-intelligence-copilot",
+            "excerpt": null
+          },
+          {
+            "source": "project",
+            "ref": "project:governance-document-rag",
+            "excerpt": null
+          }
+        ],
+        "assumption": null
+      }
+    ]
+  },
+  "summary": {
+    "summary": "The candidate presents a mixed fit for the Data Engineer role at Southern Grid Energy. While their technical skills in Python and SQL are strong, they lack direct experience with technologies such as Snowflake and Databricks, which are crucial for the role. Commercially, their preferences align well with the job requirements, but their experience is slightly below the threshold for data engineering expertise. Their portfolio reflects capabilities in AI Engineering, which is relevant but does not fully align with the core responsibilities outlined in the job posting.",
+    "key_alignments": [
+      "Full-time employment preference",
+      "Location flexibility for hybrid work",
+      "Strong knowledge of Python and SQL"
+    ],
+    "key_gaps": [
+      "Not meeting the minimum data engineering experience requirement",
+      "Limited direct experience with Snowflake and Databricks",
+      "Unclarity on minimum salary expectations"
+    ]
+  }
+}
+
+Dimension judgments:
+  technical:  mixed
+  commercial: strong
+  portfolio:  mixed
+
+Finding kinds by dimension:
+  technical: ['partial_alignment', 'gap', 'alignment']
+  commercial: ['alignment', 'alignment', 'gap']
+  portfolio: ['partial_alignment']
+
+Profile evidence refs:
+  technical: ['skill:Python', 'skill:SQL', 'skill:Agile collaboration']
+  commercial: ['preference:employment_types', 'preference:locations']
+  portfolio: ['project:operational-intelligence-copilot', 'project:governance-document-rag']
+
+Summary:
+  The candidate presents a mixed fit for the Data Engineer role at Southern Grid Energy. While their technical skills in Python and SQL are strong, they lack direct experience with technologies such as Snowflake and Databricks, which are crucial for the role. Commercially, their preferences align well with the job requirements, but their experience is slightly below the threshold for data engineering expertise. Their portfolio reflects capabilities in AI Engineering, which is relevant but does not fully align with the core responsibilities outlined in the job posting.
+
+CHECK: validation passed; no forbidden tokens detected in serialised output.
+
+RESULT: data-engineer -> PASS
+
+========================================================================
+Case: no-technologies
+Label: AI Engineer sparse spec (no named technologies)
+Category: no_named_technologies
+Extraction prompt: v5
+Assessment prompt: v5
+========================================================================
+
+Step 1: Live JobAnalysis extraction...
+  role_family=ai_engineering seniority=unknown technologies=0 compensation=stated
+
+Step 2: Live OpportunityAssessment...
+
+VALIDATION FAILURE:
+  loc=('commercial_fit', 'findings', 1) type=value_error msg=Value error, partial_alignment finding requires at least one profile evidence ref
+
+RESULT: no-technologies -> FAIL
+
+========================================================================
+Case: linkedin-production-rights
+Label: LinkedIn AI Engineer (production AI + working rights + on-site)
+Category: production_and_working_rights
+Extraction prompt: v5
+Assessment prompt: v5
+========================================================================
+
+Step 1: Live JobAnalysis extraction...
+  role_family=ai_engineering seniority=unknown technologies=0 compensation=stated
+
+Step 2: Live OpportunityAssessment...
+
+Assessment succeeded.
+
+{
+  "job_analysis": {
+    "posting": {
+      "raw_text": "AI Engineer\n\nGreater Melbourne Area\n\n150K AUD/yr - 180K AUD/yr\nOn-site\nFull-time\n\nAbout the job\nMelbourne based, must have full working rights in Australia\n\nAbout the Role\n\nOur client is building out its internal AI capability and needs an AI Engineer to turn\nredesigned workflows into production grade solutions. This is not a role where you use\nAI tools to help you code faster. This is a role where you build the AI systems the\nrest of the business relies on every day.\n\nWhat You'll Do\n\nYou'll take redesigned business workflows and turn them into AI systems that actually\nrun in production, end to end. That spans everything from the underlying models and\norchestration through to the infrastructure they run on and the systems they connect to.\n\nWhat You'll Bring\n\nThis is a hands on role for someone who has genuinely built and shipped AI powered\nsystems, not someone who has used AI tools to help them ship other things faster.\nYou'll have several years in software, data, or automation work.\n\nMUST HAVE CURRENT, FULL WORKING RIGHTS IN AUSTRALIA",
+      "title": "AI Engineer",
+      "company": "Discovered People",
+      "source_url": null
+    },
+    "role_family": {
+      "family": "ai_engineering",
+      "evidence": [
+        {
+          "excerpt": "AI Engineer",
+          "section": "Job title"
+        }
+      ]
+    },
+    "seniority": {
+      "level": "unknown",
+      "ambiguous": false,
+      "candidate_levels": [],
+      "evidence": []
+    },
+    "technologies": [],
+    "responsibilities": [
+      {
+        "description": "You'll take redesigned business workflows and turn them into AI systems that actually run in production, end to end.",
+        "evidence": [
+          {
+            "excerpt": "You'll take redesigned business workflows and turn them into AI systems that actually run in production, end to end.",
+            "section": "Job description"
+          }
+        ]
+      },
+      {
+        "description": "This is a role where you build the AI systems the rest of the business relies on every day.",
+        "evidence": [
+          {
+            "excerpt": "This is a role where you build the AI systems the rest of the business relies on every day.",
+            "section": "Job description"
+          }
+        ]
+      }
+    ],
+    "compensation": {
+      "clarity": "stated",
+      "minimum": 150000.0,
+      "maximum": 180000.0,
+      "currency": "AUD",
+      "period": "year",
+      "raw_text": "150K AUD/yr - 180K AUD/yr",
+      "evidence": [
+        {
+          "excerpt": "150K AUD/yr - 180K AUD/yr",
+          "section": "Job description"
+        }
+      ]
+    },
+    "location": {
+      "clarity": "stated",
+      "summary": "Greater Melbourne Area",
+      "evidence": [
+        {
+          "excerpt": "Greater Melbourne Area",
+          "section": "Job description"
+        }
+      ]
+    },
+    "work_arrangement": {
+      "arrangement": "onsite",
+      "details": null,
+      "evidence": [
+        {
+          "excerpt": "On-site",
+          "section": "Job description"
+        }
+      ]
+    },
+    "employment": {
+      "working_hours": "full_time",
+      "engagement_type": "unspecified",
+      "evidence": [
+        {
+          "excerpt": "Full-time",
+          "section": "Job description"
+        }
+      ]
+    },
+    "experience_requirements": [
+      {
+        "description": "You'll have several years in software, data, or automation work.",
+        "level": "required",
+        "minimum_years": null,
+        "maximum_years": null,
+        "evidence": [
+          {
+            "excerpt": "You'll have several years in software, data, or automation work.",
+            "section": "Job description"
+          }
+        ]
+      }
+    ]
+  },
+  "technical_fit": {
+    "dimension": "technical",
+    "judgment": "moderate",
+    "summary": "The candidate's experience aligns well with the technical requirements of the AI Engineer role, particularly in software development and AI systems design. However, there is an ambiguity regarding the required years of experience as the job specifies 'several years' without a concrete minimum, leading to a moderate judgment on fit.",
+    "findings": [
+      {
+        "kind": "alignment",
+        "summary": "The candidate has developed AI systems and is engaged in AI engineering projects.",
+        "detail": null,
+        "importance": "material",
+        "job_evidence": [
+          {
+            "source": "responsibility",
+            "item_index": 0,
+            "name": "Responsibility for AI systems production",
+            "excerpt": "You'll take redesigned business workflows and turn them into AI systems that actually run in production, end to end."
+          }
+        ],
+        "profile_evidence": [
+          {
+            "source": "experience",
+            "ref": "experience:chase-risk-compliance-ai-engineer",
+            "excerpt": null
+          },
+          {
+            "source": "experience",
+            "ref": "experience:ai-engineering-development-2025",
+            "excerpt": null
+          }
+        ],
+        "assumption": null
+      },
+      {
+        "kind": "uncertainty",
+        "summary": "The job requires 'several years' in software, data, or automation work, but the candidate's experience duration is not explicitly quantified.",
+        "detail": null,
+        "importance": "minor",
+        "job_evidence": [
+          {
+            "source": "experience_requirement",
+            "item_index": 0,
+            "name": "Experience Requirement",
+            "excerpt": "You'll have several years in software, data, or automation work."
+          }
+        ],
+        "profile_evidence": [],
+        "assumption": null
+      }
+    ]
+  },
+  "commercial_fit": {
+    "dimension": "commercial",
+    "judgment": "strong",
+    "summary": "The candidate's compensation expectations align with the stated salary range for the AI Engineer role, and he possesses full working rights in Australia.",
+    "findings": [
+      {
+        "kind": "alignment",
+        "summary": "Candidate's expected salary falls within the job's compensation range.",
+        "detail": null,
+        "importance": "material",
+        "job_evidence": [
+          {
+            "source": "compensation",
+            "item_index": 0,
+            "name": "Compensation",
+            "excerpt": "150K AUD/yr - 180K AUD/yr"
+          }
+        ],
+        "profile_evidence": [
+          {
+            "source": "identity",
+            "ref": "identity:summary",
+            "excerpt": "AI Engineer with commercial technology experience since 2009."
+          }
+        ],
+        "assumption": null
+      },
+      {
+        "kind": "alignment",
+        "summary": "The candidate is seeking full-time employment, which matches the job's requirements.",
+        "detail": null,
+        "importance": "material",
+        "job_evidence": [
+          {
+            "source": "employment",
+            "item_index": 0,
+            "name": "Employment Type",
+            "excerpt": "full_time/unspecified"
+          }
+        ],
+        "profile_evidence": [
+          {
+            "source": "preference",
+            "ref": "preference:employment_types",
+            "excerpt": "Employment types including full_time."
+          }
+        ],
+        "assumption": null
+      },
+      {
+        "kind": "alignment",
+        "summary": "The location preference of the candidate for 'Melbourne, VIC' matches the job location in the Greater Melbourne Area.",
+        "detail": null,
+        "importance": "material",
+        "job_evidence": [
+          {
+            "source": "location",
+            "item_index": 0,
+            "name": "Location",
+            "excerpt": "Greater Melbourne Area"
+          }
+        ],
+        "profile_evidence": [
+          {
+            "source": "preference",
+            "ref": "preference:locations",
+            "excerpt": "Locations including Melbourne, VIC."
+          }
+        ],
+        "assumption": null
+      }
+    ]
+  },
+  "portfolio_fit": {
+    "dimension": "portfolio",
+    "judgment": "moderate",
+    "summary": "The candidate has relevant projects demonstrating experience in AI system design. However, none of the projects indicate direct commercial production experience, leading to a moderate assessment rather than strong alignment.",
+    "findings": [
+      {
+        "kind": "partial_alignment",
+        "summary": "The candidate's independent AI engineering projects support relevant skills but do not fully meet commercial production experience as required by the job description.",
+        "detail": null,
+        "importance": "material",
+        "job_evidence": [
+          {
+            "source": "responsibility",
+            "item_index": 0,
+            "name": "Responsibility for AI systems production",
+            "excerpt": "You'll take redesigned business workflows and turn them into AI systems that actually run in production, end to end."
+          }
+        ],
+        "profile_evidence": [
+          {
+            "source": "project",
+            "ref": "project:operational-intelligence-copilot",
+            "excerpt": "Operational Intelligence platform project."
+          },
+          {
+            "source": "project",
+            "ref": "project:governance-document-rag",
+            "excerpt": "Governance-Aware Document Intelligence project."
+          }
+        ],
+        "assumption": null
+      }
+    ]
+  },
+  "summary": {
+    "summary": "The candidate, David Cropper, presents a moderate technical fit for the AI Engineer role due to strong alignment in software engineering and AI projects but lacks explicit commercial production experience. Commercially, he is a strong fit, with salary expectations falling within the job range and applicable working rights in Australia. Portfolio assessments reflect relevant independent projects, though full commercial production experience is not evidenced.",
+    "key_alignments": [
+      "Strong alignment in compensation expectations with the job's salary range.",
+      "Adequate qualifications in AI systems development and software engineering."
+    ],
+    "key_gaps": [
+      "Lack of explicitly stated commercial production experience in the field of AI engineering."
+    ]
+  }
+}
+
+Dimension judgments:
+  technical:  moderate
+  commercial: strong
+  portfolio:  moderate
+
+Finding kinds by dimension:
+  technical: ['alignment', 'uncertainty']
+  commercial: ['alignment', 'alignment', 'alignment']
+  portfolio: ['partial_alignment']
+
+Profile evidence refs:
+  technical: ['experience:chase-risk-compliance-ai-engineer', 'experience:ai-engineering-development-2025']
+  commercial: ['identity:summary', 'preference:employment_types', 'preference:locations']
+  portfolio: ['project:operational-intelligence-copilot', 'project:governance-document-rag']
+
+Summary:
+  The candidate, David Cropper, presents a moderate technical fit for the AI Engineer role due to strong alignment in software engineering and AI projects but lacks explicit commercial production experience. Commercially, he is a strong fit, with salary expectations falling within the job range and applicable working rights in Australia. Portfolio assessments reflect relevant independent projects, though full commercial production experience is not evidenced.
+
+CHECK: validation passed; no forbidden tokens detected in serialised output.
+
+RESULT: linkedin-production-rights -> PASS
+
+========================================================================
+Case: developer-programmer
+Label: Developer Programmer SEEK (broad stack, salary friction)
+Category: commercial_friction
+Extraction prompt: v5
+Assessment prompt: v5
+========================================================================
+
+Step 1: Live JobAnalysis extraction...
+  role_family=software_engineering seniority=unknown technologies=3 compensation=stated
+
+Step 2: Live OpportunityAssessment...
+
+Assessment succeeded.
+
+{
+  "job_analysis": {
+    "posting": {
+      "raw_text": "Developer Programmer\n\nMelbourne VIC\n$85,000 \u2013 $90,000 per year\nFull-time, Permanent\n\nAbout the role\nJoin a stable organisation maintaining and enhancing business applications.\n\nResponsibilities\n\u2022 Develop and maintain software across the technology stack\n\u2022 Collaborate with analysts and testers on delivery\n\u2022 Support production systems and defect resolution\n\nRequirements\n\u2022 Experience across multiple programming languages and frameworks\n\u2022 SQL and web development experience\n\u2022 Ability to work in a team environment\n\u2022 Strong communication skills\n\nLocation & employment\nOn-site Melbourne. Full-time permanent role.\nSalary $85,000\u2013$90,000 AUD per year.",
+      "title": "Developer Programmer",
+      "company": "Example Enterprise Client",
+      "source_url": null
+    },
+    "role_family": {
+      "family": "software_engineering",
+      "evidence": [
+        {
+          "excerpt": "Developer Programmer",
+          "section": "Job title"
+        }
+      ]
+    },
+    "seniority": {
+      "level": "unknown",
+      "ambiguous": false,
+      "candidate_levels": [],
+      "evidence": []
+    },
+    "technologies": [
+      {
+        "name": "programming languages and frameworks",
+        "level": "required",
+        "evidence": [
+          {
+            "excerpt": "Experience across multiple programming languages and frameworks",
+            "section": "Requirements"
+          }
+        ]
+      },
+      {
+        "name": "SQL",
+        "level": "required",
+        "evidence": [
+          {
+            "excerpt": "SQL and web development experience",
+            "section": "Requirements"
+          }
+        ]
+      },
+      {
+        "name": "web development",
+        "level": "required",
+        "evidence": [
+          {
+            "excerpt": "SQL and web development experience",
+            "section": "Requirements"
+          }
+        ]
+      }
+    ],
+    "responsibilities": [
+      {
+        "description": "Develop and maintain software across the technology stack",
+        "evidence": [
+          {
+            "excerpt": "Develop and maintain software across the technology stack",
+            "section": "Responsibilities"
+          }
+        ]
+      },
+      {
+        "description": "Collaborate with analysts and testers on delivery",
+        "evidence": [
+          {
+            "excerpt": "Collaborate with analysts and testers on delivery",
+            "section": "Responsibilities"
+          }
+        ]
+      },
+      {
+        "description": "Support production systems and defect resolution",
+        "evidence": [
+          {
+            "excerpt": "Support production systems and defect resolution",
+            "section": "Responsibilities"
+          }
+        ]
+      }
+    ],
+    "compensation": {
+      "clarity": "stated",
+      "minimum": 85000.0,
+      "maximum": 90000.0,
+      "currency": "AUD",
+      "period": "year",
+      "raw_text": "$85,000 \u2013 $90,000 per year",
+      "evidence": [
+        {
+          "excerpt": "$85,000 \u2013 $90,000 per year",
+          "section": "JobDescription"
+        }
+      ]
+    },
+    "location": {
+      "clarity": "stated",
+      "summary": "On-site Melbourne",
+      "evidence": [
+        {
+          "excerpt": "On-site Melbourne.",
+          "section": "Location & employment"
+        }
+      ]
+    },
+    "work_arrangement": {
+      "arrangement": "onsite",
+      "details": null,
+      "evidence": [
+        {
+          "excerpt": "On-site Melbourne.",
+          "section": "Location & employment"
+        }
+      ]
+    },
+    "employment": {
+      "working_hours": "full_time",
+      "engagement_type": "permanent",
+      "evidence": [
+        {
+          "excerpt": "Full-time, Permanent",
+          "section": "JobDescription"
+        }
+      ]
+    },
+    "experience_requirements": [
+      {
+        "description": "Ability to work in a team environment",
+        "level": "required",
+        "minimum_years": null,
+        "maximum_years": null,
+        "evidence": [
+          {
+            "excerpt": "Ability to work in a team environment",
+            "section": "Requirements"
+          }
+        ]
+      },
+      {
+        "description": "Strong communication skills",
+        "level": "required",
+        "minimum_years": null,
+        "maximum_years": null,
+        "evidence": [
+          {
+            "excerpt": "Strong communication skills",
+            "section": "Requirements"
+          }
+        ]
+      }
+    ]
+  },
+  "technical_fit": {
+    "dimension": "technical",
+    "judgment": "strong",
+    "summary": "The candidate possesses strong alignments with the technical requirements of the role, showcasing notable relevant experience and skills.",
+    "findings": [
+      {
+        "kind": "alignment",
+        "summary": "The candidate has experience developing and maintaining software across various technology stacks as demonstrated in their role as an AI Engineer.",
+        "detail": null,
+        "importance": "material",
+        "job_evidence": [
+          {
+            "source": "responsibility",
+            "item_index": 0,
+            "name": "Develop and maintain software across the technology stack",
+            "excerpt": "Develop and maintain software across the technology stack"
+          }
+        ],
+        "profile_evidence": [
+          {
+            "source": "experience",
+            "ref": "experience:chase-risk-compliance-ai-engineer",
+            "excerpt": null
+          }
+        ],
+        "assumption": null
+      },
+      {
+        "kind": "alignment",
+        "summary": "The candidate is skilled in SQL, which is a required technology in the job analysis.",
+        "detail": null,
+        "importance": "material",
+        "job_evidence": [
+          {
+            "source": "technology",
+            "item_index": 1,
+            "name": "SQL",
+            "excerpt": "SQL and web development experience"
+          }
+        ],
+        "profile_evidence": [
+          {
+            "source": "experience",
+            "ref": "experience:nbn-data-engineer-2020",
+            "excerpt": null
+          }
+        ],
+        "assumption": null
+      },
+      {
+        "kind": "alignment",
+        "summary": "The candidate's projects demonstrate web development abilities that align with the job's technology requirements.",
+        "detail": null,
+        "importance": "material",
+        "job_evidence": [
+          {
+            "source": "technology",
+            "item_index": 2,
+            "name": "web development",
+            "excerpt": "SQL and web development experience"
+          }
+        ],
+        "profile_evidence": [
+          {
+            "source": "project",
+            "ref": "project:governance-document-rag",
+            "excerpt": null
+          }
+        ],
+        "assumption": null
+      }
+    ]
+  },
+  "commercial_fit": {
+    "dimension": "commercial",
+    "judgment": "mixed",
+    "summary": "There are both alignments and discrepancies between the candidate's commercial preferences/requirements and those of the role.",
+    "findings": [
+      {
+        "kind": "alignment",
+        "summary": "The candidate is open to full-time employment, which matches the job's engagement type requirement.",
+        "detail": null,
+        "importance": "material",
+        "job_evidence": [
+          {
+            "source": "employment",
+            "item_index": 0,
+            "name": "full_time/permanent",
+            "excerpt": "Full-time, Permanent"
+          }
+        ],
+        "profile_evidence": [
+          {
+            "source": "preference",
+            "ref": "preference:employment_types",
+            "excerpt": null
+          }
+        ],
+        "assumption": null
+      },
+      {
+        "kind": "conflict",
+        "summary": "The specified on-site location is a concern since the candidate prefers flexible arrangements, including possible remote work.",
+        "detail": null,
+        "importance": "material",
+        "job_evidence": [
+          {
+            "source": "location",
+            "item_index": 0,
+            "name": "On-site Melbourne",
+            "excerpt": "On-site Melbourne"
+          }
+        ],
+        "profile_evidence": [
+          {
+            "source": "preference",
+            "ref": "preference:locations",
+            "excerpt": null
+          }
+        ],
+        "assumption": null
+      },
+      {
+        "kind": "gap",
+        "summary": "The candidate's desired salary is unstated, which creates uncertainty against the role's stated salary range of $85,000 \u2013 $90,000 AUD.",
+        "detail": null,
+        "importance": "material",
+        "job_evidence": [
+          {
+            "source": "compensation",
+            "item_index": 0,
+            "name": "salary_range",
+            "excerpt": "$85,000 \u2013 $90,000 per year"
+          }
+        ],
+        "profile_evidence": [],
+        "assumption": null
+      }
+    ]
+  },
+  "portfolio_fit": {
+    "dimension": "portfolio",
+    "judgment": "strong",
+    "summary": "The candidate's projects reflect their capability in applied AI Engineering, aligning well with role requirements.",
+    "findings": [
+      {
+        "kind": "alignment",
+        "summary": "The candidate's project involving operational intelligence demonstrates alignment with required engineering responsibilities.",
+        "detail": null,
+        "importance": "material",
+        "job_evidence": [
+          {
+            "source": "responsibility",
+            "item_index": 2,
+            "name": "Support production systems and defect resolution",
+            "excerpt": "Support production systems and defect resolution"
+          }
+        ],
+        "profile_evidence": [
+          {
+            "source": "project",
+            "ref": "project:operational-intelligence-copilot",
+            "excerpt": null
+          }
+        ],
+        "assumption": null
+      },
+      {
+        "kind": "alignment",
+        "summary": "The governance document project showcases the candidate's ability in a domain directly related to the expected delivery in the job role.",
+        "detail": null,
+        "importance": "material",
+        "job_evidence": [
+          {
+            "source": "responsibility",
+            "item_index": 1,
+            "name": "Collaborate with analysts and testers on delivery",
+            "excerpt": "Collaborate with analysts and testers on delivery"
+          }
+        ],
+        "profile_evidence": [
+          {
+            "source": "project",
+            "ref": "project:governance-document-rag",
+            "excerpt": null
+          }
+        ],
+        "assumption": null
+      }
+    ]
+  },
+  "summary": {
+    "summary": "Overall, the candidate aligns well with the technical demands of the role, exhibiting relevant experience in software development with notable technologies. However, concerns arise regarding commercial fit due to the strict on-site requirement and unspecified salary expectations, while portfolio projects highlight applicable applied AI engineering capabilities.",
+    "key_alignments": [
+      "Strong technical experience with software development and related technologies.",
+      "Alignment with the job's full-time employment requirement."
+    ],
+    "key_gaps": [
+      "Preference for flexible work arrangements conflicts with the strict on-site location requirement.",
+      "Unstated candidate salary expectations versus specified job range."
+    ]
+  }
+}
+
+Dimension judgments:
+  technical:  strong
+  commercial: mixed
+  portfolio:  strong
+
+Finding kinds by dimension:
+  technical: ['alignment', 'alignment', 'alignment']
+  commercial: ['alignment', 'conflict', 'gap']
+  portfolio: ['alignment', 'alignment']
+
+Profile evidence refs:
+  technical: ['experience:chase-risk-compliance-ai-engineer', 'experience:nbn-data-engineer-2020', 'project:governance-document-rag']
+  commercial: ['preference:employment_types', 'preference:locations']
+  portfolio: ['project:operational-intelligence-copilot', 'project:governance-document-rag']
+
+Summary:
+  Overall, the candidate aligns well with the technical demands of the role, exhibiting relevant experience in software development with notable technologies. However, concerns arise regarding commercial fit due to the strict on-site requirement and unspecified salary expectations, while portfolio projects highlight applicable applied AI engineering capabilities.
+
+CHECK: validation passed; no forbidden tokens detected in serialised output.
+
+RESULT: developer-programmer -> PASS
+
+========================================================================
+Case: contract-hybrid
+Label: Contract AI Engineer (contract + Sydney hybrid)
+Category: commercial_friction
+Extraction prompt: v5
+Assessment prompt: v5
+========================================================================
+
+Step 1: Live JobAnalysis extraction...
+  role_family=ai_engineering seniority=unknown technologies=2 compensation=stated
+
+Step 2: Live OpportunityAssessment...
+
+Assessment succeeded.
+
+{
+  "job_analysis": {
+    "posting": {
+      "raw_text": "[CIC-FIXTURE:contract]\nContract AI Engineer \u2014 Redfern Delivery Partners (Sydney)\n\n6-month full-time contract to accelerate an enterprise RAG rollout.\n\nResponsibilities\n\u2022 Implement retrieval pipelines and evaluation tooling\n\u2022 Hand over runbooks to the permanent engineering team\n\nRequirements\n\u2022 Immediate start preferred\n\u2022 Python and LangChain required\n\u2022 Prior contract delivery in regulated environments preferred\n\nLocation & employment\nHybrid Sydney, 3 days on-site. Full-time contract (initial 6 months).\nRate $850\u2013$950 per day + GST.",
+      "title": "Contract AI Engineer",
+      "company": "Redfern Delivery Partners",
+      "source_url": null
+    },
+    "role_family": {
+      "family": "ai_engineering",
+      "evidence": [
+        {
+          "excerpt": "Contract AI Engineer \u2014 Redfern Delivery Partners (Sydney)",
+          "section": "Job title"
+        }
+      ]
+    },
+    "seniority": {
+      "level": "unknown",
+      "ambiguous": false,
+      "candidate_levels": [],
+      "evidence": []
+    },
+    "technologies": [
+      {
+        "name": "Python",
+        "level": "required",
+        "evidence": [
+          {
+            "excerpt": "Python and LangChain required",
+            "section": "Requirements"
+          }
+        ]
+      },
+      {
+        "name": "LangChain",
+        "level": "required",
+        "evidence": [
+          {
+            "excerpt": "Python and LangChain required",
+            "section": "Requirements"
+          }
+        ]
+      }
+    ],
+    "responsibilities": [
+      {
+        "description": "Implement retrieval pipelines and evaluation tooling",
+        "evidence": [
+          {
+            "excerpt": "\u2022 Implement retrieval pipelines and evaluation tooling",
+            "section": "Responsibilities"
+          }
+        ]
+      },
+      {
+        "description": "Hand over runbooks to the permanent engineering team",
+        "evidence": [
+          {
+            "excerpt": "\u2022 Hand over runbooks to the permanent engineering team",
+            "section": "Responsibilities"
+          }
+        ]
+      }
+    ],
+    "compensation": {
+      "clarity": "stated",
+      "minimum": 850.0,
+      "maximum": 950.0,
+      "currency": "AUD",
+      "period": "day",
+      "raw_text": "$850\u2013$950 per day + GST",
+      "evidence": [
+        {
+          "excerpt": "Rate $850\u2013$950 per day + GST.",
+          "section": "Location & employment"
+        }
+      ]
+    },
+    "location": {
+      "clarity": "stated",
+      "summary": "Hybrid Sydney, 3 days on-site.",
+      "evidence": [
+        {
+          "excerpt": "Hybrid Sydney, 3 days on-site.",
+          "section": "Location & employment"
+        }
+      ]
+    },
+    "work_arrangement": {
+      "arrangement": "hybrid",
+      "details": "3 days on-site",
+      "evidence": [
+        {
+          "excerpt": "Hybrid Sydney, 3 days on-site.",
+          "section": "Location & employment"
+        }
+      ]
+    },
+    "employment": {
+      "working_hours": "full_time",
+      "engagement_type": "contract",
+      "evidence": [
+        {
+          "excerpt": "Full-time contract (initial 6 months).",
+          "section": "Location & employment"
+        }
+      ]
+    },
+    "experience_requirements": [
+      {
+        "description": "Prior contract delivery in regulated environments preferred",
+        "level": "preferred",
+        "minimum_years": null,
+        "maximum_years": null,
+        "evidence": [
+          {
+            "excerpt": "Prior contract delivery in regulated environments preferred",
+            "section": "Requirements"
+          }
+        ]
+      }
+    ]
+  },
+  "technical_fit": {
+    "dimension": "technical",
+    "judgment": "mixed",
+    "summary": "The candidate demonstrates relevant technical skills, but gaps exist in commercial production experience, specifically in contract-based environments which are preferred for this role.",
+    "findings": [
+      {
+        "kind": "gap",
+        "summary": "Commercial production AI experience is not evident in the profile, which may affect alignment with the job's requirements.",
+        "detail": "The role prefers individuals with prior contract delivery in regulated environments, which the candidate lacks.",
+        "importance": "material",
+        "job_evidence": [
+          {
+            "source": "experience_requirement",
+            "item_index": 0,
+            "name": "Prior contract delivery in regulated environments preferred",
+            "excerpt": "Prior contract delivery in regulated environments preferred"
+          }
+        ],
+        "profile_evidence": [],
+        "assumption": null
+      },
+      {
+        "kind": "alignment",
+        "summary": "The candidate is proficient in Python, which is a required technology for the role.",
+        "detail": null,
+        "importance": "material",
+        "job_evidence": [
+          {
+            "source": "technology",
+            "item_index": 0,
+            "name": "Python",
+            "excerpt": "Python and LangChain required"
+          }
+        ],
+        "profile_evidence": [
+          {
+            "source": "skill",
+            "ref": "skill:Python",
+            "excerpt": null
+          }
+        ],
+        "assumption": null
+      },
+      {
+        "kind": "alignment",
+        "summary": "The candidate possesses experience with LangChain, aligning with the job's technology requirements.",
+        "detail": null,
+        "importance": "material",
+        "job_evidence": [
+          {
+            "source": "technology",
+            "item_index": 1,
+            "name": "LangChain",
+            "excerpt": "Python and LangChain required"
+          }
+        ],
+        "profile_evidence": [
+          {
+            "source": "skill",
+            "ref": "skill:LangChain",
+            "excerpt": null
+          }
+        ],
+        "assumption": null
+      },
+      {
+        "kind": "alignment",
+        "summary": "The profile indicates familiarization with retrieval-augmented generation, tying this to the responsibilities of implementing evaluation tooling.",
+        "detail": null,
+        "importance": "material",
+        "job_evidence": [
+          {
+            "source": "responsibility",
+            "item_index": 0,
+            "name": "Implement retrieval pipelines and evaluation tooling",
+            "excerpt": "\u0000\n\n\nImplement retrieval pipelines and evaluation tooling"
+          }
+        ],
+        "profile_evidence": [
+          {
+            "source": "project",
+            "ref": "project:governance-document-rag",
+            "excerpt": null
+          }
+        ],
+        "assumption": null
+      },
+      {
+        "kind": "partial_alignment",
+        "summary": "Independent engineering experience in AI suggests potential, but lacks the formal contract experience in regulated environments noted as preferred.",
+        "detail": "The candidate's work as an AI engineer is primarily independent, which does not equate to commercial contract experience required by this role.",
+        "importance": "material",
+        "job_evidence": [
+          {
+            "source": "experience_requirement",
+            "item_index": 0,
+            "name": "Prior contract delivery in regulated environments preferred",
+            "excerpt": "Prior contract delivery in regulated environments preferred"
+          }
+        ],
+        "profile_evidence": [
+          {
+            "source": "experience",
+            "ref": "experience:chase-risk-compliance-ai-engineer",
+            "excerpt": null
+          }
+        ],
+        "assumption": null
+      }
+    ]
+  },
+  "commercial_fit": {
+    "dimension": "commercial",
+    "judgment": "mixed",
+    "summary": "The candidate's location and employment preference partially align with job requirements, but some uncertainties exist regarding compensation and working conditions.",
+    "findings": [
+      {
+        "kind": "alignment",
+        "summary": "The job's hybrid work arrangement aligns with the candidate's preference for flexible remote arrangements.",
+        "detail": null,
+        "importance": "minor",
+        "job_evidence": [
+          {
+            "source": "work_arrangement",
+            "item_index": 0,
+            "name": "hybrid",
+            "excerpt": "Hybrid Sydney, 3 days on-site."
+          }
+        ],
+        "profile_evidence": [
+          {
+            "source": "preference",
+            "ref": "preference:remote",
+            "excerpt": null
+          }
+        ],
+        "assumption": null
+      },
+      {
+        "kind": "uncertainty",
+        "summary": "The candidate has no defined minimum salary expectations, which could affect alignment with the stated daily rate in the job posting.",
+        "detail": "The role offers a range of $850 to $950 per day, but the candidate\u2019s salary preference is not explicitly defined, leading to potential gaps in alignment.",
+        "importance": "material",
+        "job_evidence": [
+          {
+            "source": "compensation",
+            "item_index": 0,
+            "name": "stated",
+            "excerpt": "Rate $850\u2013$950 per day + GST."
+          }
+        ],
+        "profile_evidence": [],
+        "assumption": null
+      }
+    ]
+  },
+  "portfolio_fit": {
+    "dimension": "portfolio",
+    "judgment": "strong",
+    "summary": "The candidate's independent engineering projects strongly reflect capabilities relevant to the role, particularly in artificial intelligence applications.",
+    "findings": [
+      {
+        "kind": "alignment",
+        "summary": "The candidate's project 'Governance-Aware Document Intelligence RAG' aligns well with job responsibilities of implementing evaluation tooling for contract delivery.",
+        "detail": null,
+        "importance": "material",
+        "job_evidence": [
+          {
+            "source": "responsibility",
+            "item_index": 0,
+            "name": "Implement retrieval pipelines and evaluation tooling",
+            "excerpt": "Implement retrieval pipelines and evaluation tooling"
+          }
+        ],
+        "profile_evidence": [
+          {
+            "source": "project",
+            "ref": "project:governance-document-rag",
+            "excerpt": null
+          }
+        ],
+        "assumption": null
+      },
+      {
+        "kind": "alignment",
+        "summary": "The project 'Operational Intelligence Copilot' demonstrates relevant AI engineering capabilities not just in technology but also in end-user decision support.",
+        "detail": null,
+        "importance": "material",
+        "job_evidence": [
+          {
+            "source": "responsibility",
+            "item_index": 0,
+            "name": "Implement retrieval pipelines and evaluation tooling",
+            "excerpt": "Implement retrieval pipelines and evaluation tooling"
+          }
+        ],
+        "profile_evidence": [
+          {
+            "source": "project",
+            "ref": "project:operational-intelligence-copilot",
+            "excerpt": null
+          }
+        ],
+        "assumption": null
+      }
+    ]
+  },
+  "summary": {
+    "summary": "The candidate aligns well technically in terms of skills like Python and LangChain, but lacks commercial contract experience in regulated environments, potentially complicating their fit for the stated role. Commercial preferences are partially aligned, and the portfolio showcases relevant AI engineering abilities.",
+    "key_alignments": [
+      "Technical proficiency in required technologies (Python, LangChain).",
+      "Strong independent project work relevant to role responsibilities."
+    ],
+    "key_gaps": [
+      "Lack of contract experience in regulated environments preferred for the role.",
+      "Uncertainty in defined salary expectations."
+    ]
+  }
+}
+
+Dimension judgments:
+  technical:  mixed
+  commercial: mixed
+  portfolio:  strong
+
+Finding kinds by dimension:
+  technical: ['gap', 'alignment', 'alignment', 'alignment', 'partial_alignment']
+  commercial: ['alignment', 'uncertainty']
+  portfolio: ['alignment', 'alignment']
+
+Profile evidence refs:
+  technical: ['skill:Python', 'skill:LangChain', 'project:governance-document-rag', 'experience:chase-risk-compliance-ai-engineer']
+  commercial: ['preference:remote']
+  portfolio: ['project:governance-document-rag', 'project:operational-intelligence-copilot']
+
+Summary:
+  The candidate aligns well technically in terms of skills like Python and LangChain, but lacks commercial contract experience in regulated environments, potentially complicating their fit for the stated role. Commercial preferences are partially aligned, and the portfolio showcases relevant AI engineering abilities.
+
+CHECK: validation passed; no forbidden tokens detected in serialised output.
+
+RESULT: contract-hybrid -> PASS
+
+========================================================================
+Case: missing-salary
+Label: AI Engineer (salary unstated)
+Category: salary_unknown
+Extraction prompt: v5
+Assessment prompt: v5
+========================================================================
+
+Step 1: Live JobAnalysis extraction...
+  role_family=ai_engineering seniority=unknown technologies=2 compensation=unstated
+
+Step 2: Live OpportunityAssessment...
+
+Assessment succeeded.
+
+{
+  "job_analysis": {
+    "posting": {
+      "raw_text": "[CIC-FIXTURE:missing-salary]\nAI Engineer \u2014 Quiet Harbour Digital (Melbourne)\n\nBuild internal AI tooling for operations teams.\n\nResponsibilities\n\u2022 Develop RAG assistants over internal knowledge bases\n\u2022 Integrate models into existing Python services\n\nRequirements\n\u2022 Python required; LangChain preferred\n\u2022 2+ years software engineering required\n\nLocation & employment\nHybrid Melbourne. Full-time permanent.\nCompetitive salary package \u2014 details discussed at interview.",
+      "title": "AI Engineer",
+      "company": "Quiet Harbour Digital",
+      "source_url": null
+    },
+    "role_family": {
+      "family": "ai_engineering",
+      "evidence": [
+        {
+          "excerpt": "AI Engineer \u2014 Quiet Harbour Digital (Melbourne)",
+          "section": "Job title"
+        }
+      ]
+    },
+    "seniority": {
+      "level": "unknown",
+      "ambiguous": false,
+      "candidate_levels": [],
+      "evidence": []
+    },
+    "technologies": [
+      {
+        "name": "Python",
+        "level": "required",
+        "evidence": [
+          {
+            "excerpt": "\u2022 Python required; LangChain preferred",
+            "section": "Requirements"
+          }
+        ]
+      },
+      {
+        "name": "LangChain",
+        "level": "preferred",
+        "evidence": [
+          {
+            "excerpt": "\u2022 Python required; LangChain preferred",
+            "section": "Requirements"
+          }
+        ]
+      }
+    ],
+    "responsibilities": [
+      {
+        "description": "Develop RAG assistants over internal knowledge bases",
+        "evidence": [
+          {
+            "excerpt": "\u2022 Develop RAG assistants over internal knowledge bases",
+            "section": "Responsibilities"
+          }
+        ]
+      },
+      {
+        "description": "Integrate models into existing Python services",
+        "evidence": [
+          {
+            "excerpt": "\u2022 Integrate models into existing Python services",
+            "section": "Responsibilities"
+          }
+        ]
+      }
+    ],
+    "compensation": {
+      "clarity": "unstated",
+      "minimum": null,
+      "maximum": null,
+      "currency": null,
+      "period": null,
+      "raw_text": null,
+      "evidence": []
+    },
+    "location": {
+      "clarity": "stated",
+      "summary": "Hybrid Melbourne",
+      "evidence": [
+        {
+          "excerpt": "Hybrid Melbourne.",
+          "section": "Location & employment"
+        }
+      ]
+    },
+    "work_arrangement": {
+      "arrangement": "hybrid",
+      "details": null,
+      "evidence": [
+        {
+          "excerpt": "Hybrid Melbourne.",
+          "section": "Location & employment"
+        }
+      ]
+    },
+    "employment": {
+      "working_hours": "full_time",
+      "engagement_type": "permanent",
+      "evidence": [
+        {
+          "excerpt": "Full-time permanent.",
+          "section": "Location & employment"
+        }
+      ]
+    },
+    "experience_requirements": [
+      {
+        "description": "2+ years software engineering",
+        "level": "required",
+        "minimum_years": 2.0,
+        "maximum_years": null,
+        "evidence": [
+          {
+            "excerpt": "\u2022 2+ years software engineering required",
+            "section": "Requirements"
+          }
+        ]
+      }
+    ]
+  },
+  "technical_fit": {
+    "dimension": "technical",
+    "judgment": "mixed",
+    "summary": "The candidate demonstrates relevant technology skills and some alignment with the job requirements in terms of experience but lacks certain commercial production AI experience.",
+    "findings": [
+      {
+        "kind": "partial_alignment",
+        "summary": "The candidate has strong Python skills and experience developing relevant AI systems, but primarily through independent projects rather than commercial employment.",
+        "detail": "AI Engineer role requires 2+ years of software engineering experience, which the candidate partially meets through independent engineering and professional development evidence.",
+        "importance": "material",
+        "job_evidence": [
+          {
+            "source": "technology",
+            "item_index": 0,
+            "name": "Python",
+            "excerpt": "\u0004 Python required; LangChain preferred"
+          },
+          {
+            "source": "experience_requirement",
+            "item_index": 0,
+            "name": "2+ years software engineering",
+            "excerpt": "\u0004 2+ years software engineering required"
+          }
+        ],
+        "profile_evidence": [
+          {
+            "source": "experience",
+            "ref": "experience:chase-risk-compliance-ai-engineer",
+            "excerpt": "Independently develops progressively more complex production-minded AI Engineering projects under a dedicated portfolio brand."
+          },
+          {
+            "source": "experience",
+            "ref": "experience:ai-engineering-development-2025",
+            "excerpt": "Made a deliberate pivot from Data Engineering to AI Engineering as the primary career focus."
+          }
+        ],
+        "assumption": null
+      },
+      {
+        "kind": "alignment",
+        "summary": "The candidate's projects utilize Python and relevant technologies, aligning well with the job requirements.",
+        "detail": "The job posting requires integration of models into existing Python services, which the candidate's portfolio demonstrates.",
+        "importance": "material",
+        "job_evidence": [
+          {
+            "source": "responsibility",
+            "item_index": 1,
+            "name": "Integrate models into existing Python services",
+            "excerpt": "\u0004 Integrate models into existing Python services"
+          }
+        ],
+        "profile_evidence": [
+          {
+            "source": "project",
+            "ref": "project:governance-document-rag",
+            "excerpt": "Enterprise retrieval-augmented generation platform supporting trustworthy AI responses over organisational knowledge."
+          }
+        ],
+        "assumption": null
+      },
+      {
+        "kind": "uncertainty",
+        "summary": "Ambiguous seniority level in the job posting leads to uncertainty regarding direct alignment.",
+        "detail": "The job's seniority level is unknown, which may not directly match the candidate's profile.",
+        "importance": "minor",
+        "job_evidence": [
+          {
+            "source": "seniority",
+            "item_index": 0,
+            "name": "unknown",
+            "excerpt": "unknown"
+          }
+        ],
+        "profile_evidence": [],
+        "assumption": null
+      }
+    ]
+  },
+  "commercial_fit": {
+    "dimension": "commercial",
+    "judgment": "unknown",
+    "summary": "There are concerns regarding unstated compensation and lack of clarity about working preferences in terms of remote work.",
+    "findings": [
+      {
+        "kind": "uncertainty",
+        "summary": "The compensation details are unstated, creating uncertainty.",
+        "detail": "The job posting mentions competitive salary details discussed at interview, which prevents clear alignment with candidate expectations.",
+        "importance": "material",
+        "job_evidence": [
+          {
+            "source": "compensation",
+            "item_index": 0,
+            "name": "unstated",
+            "excerpt": "unstated"
+          }
+        ],
+        "profile_evidence": [],
+        "assumption": null
+      },
+      {
+        "kind": "alignment",
+        "summary": "The candidate's stated preference for flexible remote work aligns with the hybrid work arrangement of the job.",
+        "detail": "The job allows hybrid work, which the candidate prefers alongside full-time employment.",
+        "importance": "minor",
+        "job_evidence": [
+          {
+            "source": "work_arrangement",
+            "item_index": 0,
+            "name": "hybrid",
+            "excerpt": "hybrid"
+          }
+        ],
+        "profile_evidence": [
+          {
+            "source": "preference",
+            "ref": "preference:employment_types",
+            "excerpt": "full_time"
+          }
+        ],
+        "assumption": null
+      }
+    ]
+  },
+  "portfolio_fit": {
+    "dimension": "portfolio",
+    "judgment": "strong",
+    "summary": "The candidate's projects directly support the narrative of relevant capabilities in AI Engineering aligned to job responsibilities.",
+    "findings": [
+      {
+        "kind": "alignment",
+        "summary": "The candidate's portfolio contains relevant AI Engineering projects that demonstrate capabilities aligning with job responsibilities.",
+        "detail": "The project outcomes align well with the job's requirement to develop RAG assistants and integrate models.",
+        "importance": "material",
+        "job_evidence": [
+          {
+            "source": "responsibility",
+            "item_index": 0,
+            "name": "Develop RAG assistants over internal knowledge bases",
+            "excerpt": "\u0004 Develop RAG assistants over internal knowledge bases"
+          }
+        ],
+        "profile_evidence": [
+          {
+            "source": "project",
+            "ref": "project:operational-intelligence-copilot",
+            "excerpt": "Domain-agnostic operational intelligence platform combining deterministic analytics with Large Language Model reasoning."
+          }
+        ],
+        "assumption": null
+      }
+    ]
+  },
+  "summary": {
+    "summary": "The assessment shows a mixed technical fit with strong capabilities in Python and relevant projects. Commercially, compensation details create uncertainty, but the candidate aligns well with the hybrid work environment. Portfolio evidence strongly showcases applicable skills in AI Engineering.",
+    "key_alignments": [
+      "Strong Python skills",
+      "Hybrid work preference",
+      "Relevant AI engineering projects"
+    ],
+    "key_gaps": [
+      "Lack of commercial production experience",
+      "Uncertain compensation details"
+    ]
+  }
+}
+
+Dimension judgments:
+  technical:  mixed
+  commercial: unknown
+  portfolio:  strong
+
+Finding kinds by dimension:
+  technical: ['partial_alignment', 'alignment', 'uncertainty']
+  commercial: ['uncertainty', 'alignment']
+  portfolio: ['alignment']
+
+Profile evidence refs:
+  technical: ['experience:chase-risk-compliance-ai-engineer', 'experience:ai-engineering-development-2025', 'project:governance-document-rag']
+  commercial: ['preference:employment_types']
+  portfolio: ['project:operational-intelligence-copilot']
+
+Summary:
+  The assessment shows a mixed technical fit with strong capabilities in Python and relevant projects. Commercially, compensation details create uncertainty, but the candidate aligns well with the hybrid work environment. Portfolio evidence strongly showcases applicable skills in AI Engineering.
+
+CHECK: validation passed; no forbidden tokens detected in serialised output.
+
+RESULT: missing-salary -> PASS
+
+========================================================================
+Summary
+  applied-ai: PASS
+  senior-ai-production: PASS
+  data-engineer: PASS
+  no-technologies: FAIL
+  linkedin-production-rights: PASS
+  developer-programmer: PASS
+  contract-hybrid: PASS
+  missing-salary: PASS

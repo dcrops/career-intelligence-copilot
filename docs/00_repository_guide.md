@@ -21,8 +21,9 @@ Career Intelligence Copilot has three coexisting layers:
 
 The repository is simultaneously a career tool, a portfolio project, and a Cursor learning laboratory. See [03_product_vision.md](03_product_vision.md) § Project Objectives.
 
-Phase 2 implementation has started. FR-001 Career Profile is implemented; later decision-loop
-stages remain to be built. Architecture decisions are recorded under `docs/adr/`.
+Phase 2 implementation has started. FR-001 Career Profile, FR-002 Job Analysis, and
+FR-003 Opportunity Assessment are implemented; later decision-loop stages (FR-004+) remain
+to be built. Architecture decisions are recorded under `docs/adr/`.
 
 ---
 
@@ -37,7 +38,9 @@ stages remain to be built. Architecture decisions are recorded under `docs/adr/`
 | [05_engineering_principles.md](05_engineering_principles.md) | **Authoritative — engineering tradeoffs** | How to make implementation decisions |
 | [06_domain_model.md](06_domain_model.md) | **Authoritative — domain concepts** | Entities, decision loop, operational mapping |
 | [07_testing_strategy.md](07_testing_strategy.md) | **Authoritative — testing** | Test layers, regression philosophy, future suite growth |
-| [08_implementation_notes.md](08_implementation_notes.md) | Supporting | Data provenance, plan deviations, future-improvements backlog |
+| [08_implementation_notes.md](08_implementation_notes.md) | Supporting | Implementation architecture notes, provenance, deviations, FR-002/FR-003 verification |
+| [eval/fr002_openai_manual_eval.md](eval/fr002_openai_manual_eval.md) | Supporting | FR-002 live OpenAI evaluation record |
+| [eval/fr003_openai_manual_eval.md](eval/fr003_openai_manual_eval.md) | Supporting | FR-003 live OpenAI evaluation record (PARTIAL PASS) |
 | [01_executive_summary.md](01_executive_summary.md) | Supporting | Quick narrative overview |
 | [02_problem_statement.md](02_problem_statement.md) | Supporting | Problem context and rationale |
 | [11_changelog.md](11_changelog.md) | Historical | Why documentation changed across versions |
@@ -69,6 +72,7 @@ Supporting documents (01, 02) are optional for onboarding.
 | Path | Layer | Purpose |
 |------|-------|---------|
 | `docs/` | Specification | Product and engineering knowledge |
+| `docs/assets/` | Specification | Diagrams and verification overview images |
 | `src/` | Implementation | Python package and public capability boundaries |
 | `tests/` | Implementation | Unit, functional, and golden journey regression tests |
 | `data/` | Operational | Structured career profile consumed by the system |
@@ -77,6 +81,7 @@ Supporting documents (01, 02) are optional for onboarding.
 | `templates/` | Operational | Message and document templates — intentional placeholders, currently empty |
 | `metrics/` | Operational | Review and analytics placeholders — intentional placeholders, currently empty |
 | `career-log.md` | Operational | Dated log of career milestones and actions |
+| `tools/` | Implementation | Engineering evaluation harnesses (not product CLIs) |
 | `images/` | Reserved | Listed in README; not yet populated |
 
 The operational layer is the domain the future system must serve. Phase 2 pipeline and outcome logging (FR-013) are the automated counterparts to manual tracking in `applications/`.
@@ -103,9 +108,10 @@ The operational layer is the domain the future system must serve. Phase 2 pipeli
 
 **Approved:** Phase 2 Job Intelligence MVP scope
 
-**Implemented:** FR-001 Career Profile
+**Implemented:** FR-001 Career Profile → FR-002 Job Analysis → FR-003 Opportunity Assessment
+(**Complete**; FR-003 live eval **PARTIAL PASS**, assessment prompt v6)
 
-**In progress:** Remaining Phase 2 decision loop, beginning with FR-002 Job Analysis
+**In progress:** Remaining Phase 2 decision loop, beginning with FR-004 Portfolio Matching
 
 See [10_roadmap.md](10_roadmap.md) for phase detail and Phase 2 exit criteria.
 

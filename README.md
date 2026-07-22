@@ -74,11 +74,29 @@ Current focus:
 
 
 
-- FR-001 Career Profile implemented
+- FR-001 Career Profile — complete
 
-- FR-002 Job Analysis next
+- FR-002 Job Analysis — complete
+
+- FR-003 Opportunity Assessment — complete
+
+- FR-004 Portfolio Matching — next
 
 - Completing the Phase 2 decision loop without expanding scope
+
+
+
+Completed pipeline so far:
+
+
+
+```
+FR-001 Career Profile
+        ↓
+FR-002 Job Analysis
+        ↓
+FR-003 Opportunity Assessment
+```
 
 
 
@@ -97,6 +115,7 @@ See [docs/00_repository_guide.md](docs/00_repository_guide.md) for full orientat
 | Path | Purpose |
 |------|---------|
 | `docs/` | Product and engineering documentation |
+| `docs/assets/` | Architecture and verification overview images |
 | `src/` | Python implementation |
 | `tests/` | Unit, functional, and golden journey tests |
 | `data/` | Structured operational data, including the career profile |
@@ -104,6 +123,7 @@ See [docs/00_repository_guide.md](docs/00_repository_guide.md) for full orientat
 | `career-documents/` | Career artifacts (e.g. Master CV) |
 | `templates/` | Message and document templates (placeholders) |
 | `metrics/` | Review and analytics placeholders |
+| `tools/` | Engineering evaluation harnesses (not product CLIs) |
 | `images/` | Reserved — not yet populated |
 | `career-log.md` | Dated career milestones and actions |
 | `AGENTS.md` | Cursor agent bootstrap instructions |
@@ -149,6 +169,10 @@ Start with [docs/00_repository_guide.md](docs/00_repository_guide.md).
 - [docs/01_executive_summary.md](docs/01_executive_summary.md)
 
 - [docs/02_problem_statement.md](docs/02_problem_statement.md)
+
+- [docs/08_implementation_notes.md](docs/08_implementation_notes.md) — FR-001–FR-003 implementation notes
+
+- [docs/eval/fr003_openai_manual_eval.md](docs/eval/fr003_openai_manual_eval.md) — FR-003 live eval (PARTIAL PASS)
 
 - [docs/11_changelog.md](docs/11_changelog.md)
 

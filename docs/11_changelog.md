@@ -4,6 +4,43 @@ Records product strategy and engineering knowledge changes. Routine typo fixes a
 
 ---
 
+## Version 1.5
+
+### FR-003 Opportunity Assessment complete
+
+- Implemented the opportunity-assessment domain model with three Phase 2 fit dimensions
+  (Technical, Commercial, Portfolio), qualitative judgments only (no percentage scores),
+  and evidence-backed findings via `JobEvidenceRef` / `ProfileEvidenceRef`.
+- Added `OpportunityAssessmentService` as the public trust boundary: assessors return
+  untrusted payloads; the service binds caller-owned `JobAnalysis`, validates schema, and
+  rejects invalid evidence references.
+- Added deterministic `FixtureAssessor` and shared FR-002 fixture markers (including
+  no-technologies and working-rights) so offline journeys chain
+  JobAnalysisService → OpportunityAssessmentService.
+- Added package-private `OpenAIAssessor` (`responses.parse` →
+  `OpportunityAssessmentExtraction`) with prompt versioning through **v6**.
+- Hardened assessor input presentation after live bare-ref recurrence on
+  `senior-ai-production`: `<ValidProfileReferences>` lists complete `namespace:id`
+  tokens only; assessor-facing `<CareerProfile>` uses `ref=` pointers instead of bare
+  entity ids / preference keys (service validation unchanged — no ref repair).
+- Completed live manual evaluation across eight representative scenarios — verdict
+  **PARTIAL PASS** (not full PASS). After prompt **v6** input-presentation hardening,
+  owner-confirmed live structural passes for `applied-ai` and `senior-ai-production`
+  with valid `namespace:id` profile refs. Record:
+  [eval/fr003_openai_manual_eval.md](eval/fr003_openai_manual_eval.md).
+- Added cross-stage golden journeys proving CareerProfile → JobAnalysis →
+  OpportunityAssessment offline.
+- Documented architecture and verification overview in
+  [08_implementation_notes.md](08_implementation_notes.md) § FR-003, with overview image at
+  [assets/fr003_opportunity_assessment_architecture_overview.png](assets/fr003_opportunity_assessment_architecture_overview.png).
+- Accepted known live semantic limitations at closeout (`salary_min=null` friction prose,
+  sparse-spec variance, occasional scalar `item_index`, upstream JobAnalysis coupling,
+  live nondeterminism). Offline architecture and CI remain authoritative.
+- Explicitly excluded from FR-003: Apply/Skip/Defer, tiers, effort, JobSeeker quota,
+  `SearchOperatingContext`, inferred working rights, and invented commercial AI employment
+  from independent engineering / portfolio evidence.
+- Phase H documentation closeout complete; next Phase 2 stage is FR-004.
+
 ## Version 1.4
 
 ### FR-002 manual evaluation completed

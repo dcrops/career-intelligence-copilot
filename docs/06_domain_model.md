@@ -109,9 +109,27 @@ path; first manual evaluation and prompt hardening (through v5) are recorded in
 
 **Maps to:** FR-003
 
-Evidence-backed fit analysis across three Phase 2 dimensions: Technical Fit, Commercial Fit, and Portfolio Fit. Produces an explainable summary with cited evidence from the job posting and career profile.
+**Status:** Implemented.
 
-Post–Phase 2 dimensions (Recruiter Confidence, Interview Probability, Strategic Value) are deferred.
+Evidence-backed fit analysis across three Phase 2 dimensions: Technical Fit, Commercial Fit,
+and Portfolio Fit. Produced by `OpportunityAssessmentService`, which binds a caller-owned
+`JobAnalysis`, validates schema and evidence-reference integrity, and returns a trusted
+`OpportunityAssessment`. Assessors (`FixtureAssessor`, package-private `OpenAIAssessor`)
+return untrusted payloads only.
+
+Judgments are qualitative (`strong`, `moderate`, `mixed`, `weak`, `misaligned`, `unknown`) —
+not percentage scores. Findings cite `JobEvidenceRef` and `ProfileEvidenceRef` entries.
+Independent engineering and portfolio projects demonstrate capability but are not treated as
+commercial AI employment. Working rights are never inferred for the candidate.
+
+FR-003 does **not** emit Apply/Skip/Defer, application tiers, effort guidance, or JobSeeker
+quota fields — those belong to FR-005. Architecture and verification overview:
+[08_implementation_notes.md](08_implementation_notes.md) § FR-003. Manual evaluation:
+[eval/fr003_openai_manual_eval.md](eval/fr003_openai_manual_eval.md) (PARTIAL PASS;
+assessment prompt v6).
+
+Post–Phase 2 dimensions (Recruiter Confidence, Interview Probability, Strategic Value) remain
+deferred.
 
 ---
 

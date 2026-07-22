@@ -25,6 +25,8 @@ MARKER_AMBIGUOUS_SENIORITY = "[CIC-FIXTURE:ambiguous-seniority]"
 MARKER_MISSING_SALARY = "[CIC-FIXTURE:missing-salary]"
 MARKER_REMOTE = "[CIC-FIXTURE:remote]"
 MARKER_CONTRACT = "[CIC-FIXTURE:contract]"
+MARKER_NO_TECHNOLOGIES = "[CIC-FIXTURE:no-technologies]"
+MARKER_WORKING_RIGHTS = "[CIC-FIXTURE:working-rights]"
 
 
 def _ev(excerpt: str, section: str | None = None) -> dict[str, str]:
@@ -219,6 +221,53 @@ Requirements
 Location & employment
 Fully remote within Australia. Full-time permanent.
 Salary $145,000–$170,000 AUD.
+""".strip(),
+    )
+
+
+def posting_no_technologies() -> JobPosting:
+    """Outcome-focused AI role with no named technology stack."""
+    return JobPosting(
+        title="AI Engineer",
+        company="Sparse Spec AI",
+        raw_text=f"""
+{MARKER_NO_TECHNOLOGIES}
+AI Engineer — Sparse Spec AI (Remote Australia)
+
+Outcome-focused role building internal AI assistants for operations teams.
+
+Responsibilities
+• Improve operational workflows with AI-assisted tooling
+• Collaborate with business stakeholders on adoption
+
+Requirements
+• Demonstrated ability to deliver AI solutions in production environments
+• Strong communication skills
+
+Location & employment
+Fully remote within Australia. Full-time permanent.
+Salary $145,000–$170,000 AUD.
+""".strip(),
+    )
+
+
+def posting_working_rights() -> JobPosting:
+    """AI role stating Australian working-rights without candidate eligibility evidence."""
+    return JobPosting(
+        title="AI Engineer",
+        company="National Systems Group",
+        raw_text=f"""
+{MARKER_WORKING_RIGHTS}
+AI Engineer — National Systems Group (Melbourne)
+
+Build internal AI tooling for enterprise clients.
+
+Requirements
+• Must have unrestricted Australian working rights
+• Experience delivering AI solutions
+
+Location & employment
+Hybrid Melbourne. Full-time permanent.
 """.strip(),
     )
 
@@ -825,6 +874,107 @@ def analysis_for_contract() -> JobAnalysisPayload:
     }
 
 
+def analysis_for_no_technologies() -> JobAnalysisPayload:
+    """Sparse AI advert — no named technologies; experience requirements only."""
+    return {
+        "role_family": {
+            "family": "ai_engineering",
+            "evidence": [_ev("AI Engineer", "title")],
+        },
+        "seniority": {"level": "unknown", "ambiguous": False},
+        "technologies": [],
+        "responsibilities": [
+            {
+                "description": "Improve operational workflows with AI-assisted tooling",
+                "evidence": [
+                    _ev(
+                        "Improve operational workflows with AI-assisted tooling",
+                        "responsibilities",
+                    )
+                ],
+            }
+        ],
+        "compensation": {
+            "clarity": "stated",
+            "minimum": 145_000,
+            "maximum": 170_000,
+            "currency": "AUD",
+            "period": "year",
+            "raw_text": "Salary $145,000–$170,000 AUD",
+            "evidence": [_ev("Salary $145,000–$170,000 AUD", "compensation")],
+        },
+        "location": {
+            "clarity": "stated",
+            "summary": "Remote Australia",
+            "evidence": [_ev("Fully remote within Australia", "location")],
+        },
+        "work_arrangement": {
+            "arrangement": "remote",
+            "details": "remote within Australia only",
+            "evidence": [_ev("Fully remote within Australia", "location")],
+        },
+        "employment": {
+            "working_hours": "full_time",
+            "engagement_type": "permanent",
+            "evidence": [_ev("Full-time permanent", "employment")],
+        },
+        "experience_requirements": [
+            {
+                "description": (
+                    "Demonstrated ability to deliver AI solutions in production environments"
+                ),
+                "level": "required",
+                "evidence": [
+                    _ev(
+                        "Demonstrated ability to deliver AI solutions in production environments",
+                        "requirements",
+                    )
+                ],
+            }
+        ],
+    }
+
+
+def analysis_for_working_rights() -> JobAnalysisPayload:
+    """Working-rights requirement present; no technology stack named."""
+    return {
+        "role_family": {
+            "family": "ai_engineering",
+            "evidence": [_ev("AI Engineer", "title")],
+        },
+        "seniority": {"level": "unknown", "ambiguous": False},
+        "technologies": [],
+        "responsibilities": [],
+        "compensation": {"clarity": "unstated"},
+        "location": {
+            "clarity": "stated",
+            "summary": "Melbourne",
+            "evidence": [_ev("Hybrid Melbourne", "location")],
+        },
+        "work_arrangement": {
+            "arrangement": "hybrid",
+            "evidence": [_ev("Hybrid Melbourne", "location")],
+        },
+        "employment": {
+            "working_hours": "full_time",
+            "engagement_type": "permanent",
+            "evidence": [_ev("Full-time permanent", "employment")],
+        },
+        "experience_requirements": [
+            {
+                "description": "Unrestricted Australian working rights",
+                "level": "required",
+                "evidence": [
+                    _ev(
+                        "Must have unrestricted Australian working rights",
+                        "requirements",
+                    )
+                ],
+            }
+        ],
+    }
+
+
 FIXTURE_BUILDERS: dict[str, PayloadBuilder] = {
     MARKER_AI_ENGINEER: analysis_for_ai_engineer,
     MARKER_APPLIED_AI: analysis_for_applied_ai,
@@ -834,6 +984,8 @@ FIXTURE_BUILDERS: dict[str, PayloadBuilder] = {
     MARKER_MISSING_SALARY: analysis_for_missing_salary,
     MARKER_REMOTE: analysis_for_remote,
     MARKER_CONTRACT: analysis_for_contract,
+    MARKER_NO_TECHNOLOGIES: analysis_for_no_technologies,
+    MARKER_WORKING_RIGHTS: analysis_for_working_rights,
 }
 
 REPRESENTATIVE_POSTINGS = {
@@ -845,4 +997,6 @@ REPRESENTATIVE_POSTINGS = {
     "missing_salary": posting_missing_salary,
     "remote": posting_remote,
     "contract": posting_contract,
+    "no_technologies": posting_no_technologies,
+    "working_rights": posting_working_rights,
 }

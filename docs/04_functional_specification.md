@@ -212,9 +212,21 @@ completed its first manual evaluation with prompt hardening through v5; see
 
 **Phase:** 2 (scoped)
 
-The system shall assess each opportunity and produce evidence-backed fit analysis.
+**Status:** Implemented.
+
+The system shall assess each opportunity and produce evidence-backed fit analysis comparing
+a trusted Career Profile with a trusted Job Analysis.
 
 Fit dimension definitions: see § Assessment and Tier Semantics.
+
+Opportunity Assessment is produced through `OpportunityAssessmentService`, which is the
+public trust boundary. An assessor returns untrusted structured data only; the service
+validates that payload, binds the caller-supplied Job Analysis, checks evidence-reference
+integrity, and returns a trusted Opportunity Assessment. Fixture assessment is deterministic
+test scaffolding and is never a public default. Live OpenAI assessment completed manual
+evaluation at **PARTIAL PASS** with prompt hardening through **v6**; see
+[eval/fr003_openai_manual_eval.md](eval/fr003_openai_manual_eval.md) and
+[08_implementation_notes.md](08_implementation_notes.md) § FR-003.
 
 ### Phase 2 dimensions
 
@@ -224,7 +236,12 @@ Fit dimension definitions: see § Assessment and Tier Semantics.
 
 ### Phase 2 synthesis output
 
-- Assessment summary with explainable recommendation rationale
+- Assessment summary with explainable, evidence-backed rationale (no tier assignment)
+
+### Explicitly not produced by FR-003
+
+Apply / Skip / Defer recommendations, application tiers, effort guidance, JobSeeker quota
+logic, interview probabilities, or percentage fit scores (FR-005 and later).
 
 ### Post–Phase 2 dimensions (deferred)
 
@@ -236,9 +253,9 @@ Acceptance Criteria (Phase 2)
 
 ✓ All three Phase 2 fit dimensions assessed.
 
-✓ Explanation generated with cited evidence from the job description and user profile.
+✓ Explanation generated with cited evidence from the job analysis and user profile.
 
-✓ Assessment supports tier recommendation (FR-005).
+✓ Assessment supports tier recommendation (FR-005) without performing tiering itself.
 
 ---
 

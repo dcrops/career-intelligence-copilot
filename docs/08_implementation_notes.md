@@ -7,6 +7,182 @@ improvements. It complements — and does not override — the authoritative doc
 
 ---
 
+## FR-003 Opportunity Assessment — Architecture and Verification Overview
+
+![FR-003 Opportunity Assessment architecture and verification overview](assets/fr003_opportunity_assessment_architecture_overview.png)
+
+*FR-003 architecture and verification overview — service flow, trust boundaries,
+assessor implementations, evidence model, design principles, and closeout guidance.*
+
+### Purpose
+
+FR-003 compares a trusted `CareerProfile` (FR-001) with a trusted `JobAnalysis` (FR-002)
+and produces an evidence-backed `OpportunityAssessment`. It assesses fit across Technical,
+Commercial, and Portfolio dimensions. It does **not** decide whether the user should apply,
+assign an application tier, or allocate JobSeeker effort — those concerns belong to
+downstream strategy (especially FR-005).
+
+### Inputs and output
+
+| Direction | Artifact |
+|-----------|----------|
+| Input | `CareerProfile` from `CareerProfileService` |
+| Input | `JobAnalysis` from `JobAnalysisService` |
+| Output | `OpportunityAssessment` with `technical_fit`, `commercial_fit`, `portfolio_fit`, `summary`, evidence-backed findings, and the caller-owned `JobAnalysis` |
+
+### Service composition
+
+```
+CareerProfileService
+        ↓
+CareerProfile
+
+JobPosting
+        ↓
+JobAnalysisService
+        ↓
+JobAnalysis
+
+JobAnalysis + CareerProfile
+        ↓
+OpportunityAssessmentService
+        ↓
+OpportunityAssessment
+```
+
+### Trust boundary
+
+`OpportunityAssessmentService` is the public trust boundary (mirrors FR-002):
+
+1. Callers supply validated `JobAnalysis` and `CareerProfile` plus an explicit assessor.
+2. The assessor returns an untrusted `OpportunityAssessmentPayload` that must **not**
+   include `job_analysis`, `profile`, or `career_profile`.
+3. The service rejects embedded caller-owned inputs, binds the original `JobAnalysis`,
+   validates schema, and checks referential integrity of job and profile evidence refs.
+4. Invalid references are rejected as `OpportunityAssessmentValidationError`.
+5. The LLM never owns the final trusted domain artifact.
+
+There is **no silent production default assessor** — callers must inject one.
+
+### Assessor implementations
+
+| Assessor | Role |
+|----------|------|
+| **`FixtureAssessor`** | Deterministic offline scaffolding. Matched by shared FR-002 fixture markers in `job_analysis.posting.raw_text`. Used in unit, functional, and golden journey tests. Never a public default. |
+| **`OpenAIAssessor`** | Package-private live path via OpenAI Responses API (`responses.parse`) into internal `OpportunityAssessmentExtraction`. Prompt version **v6**. Default model `gpt-4o-mini`. Client injectable for offline tests. Not exported from `career_intelligence.opportunity_assessment`. |
+
+### Evidence model
+
+- **`JobEvidenceRef`** cites facts from the bound `JobAnalysis` (`source`, optional
+  `item_index`, optional excerpt).
+- **`ProfileEvidenceRef`** cites facts from the bound `CareerProfile` using
+  `namespace:id` refs (e.g. `skill:Python`, `project:governance-document-rag`,
+  `preference:remote`).
+- Alignments, partial alignments, transferable alignments, and conflicts require
+  evidence from **both** sides.
+- Gaps require at least one job evidence ref; profile evidence may be empty.
+- List sources (`technology`, `responsibility`, `experience_requirement`) require a
+  valid `item_index`. Scalar sources (`role_family`, `seniority`, `compensation`,
+  `location`, `work_arrangement`, `employment`) must omit `item_index`.
+
+### Qualitative judgments
+
+Permitted dimension judgments: `strong`, `moderate`, `mixed`, `weak`, `misaligned`,
+`unknown`. FR-003 deliberately avoids numerical fit percentages and interview
+probabilities.
+
+### Experience honesty
+
+Profile experience kinds remain distinct:
+
+- `employment`
+- `independent_engineering`
+- `professional_development`
+- portfolio / project evidence
+
+Independent engineering and portfolio projects may demonstrate capability via
+`partial_alignment` or `transferable_alignment`. They must **not** be described as
+commercial AI employment or paid commercial AI tenure unless an employment entry
+supports that claim.
+
+### Scope boundary — not produced by FR-003
+
+Apply, Skip, Defer, application tiers, effort recommendations, JobSeeker quota logic,
+`SearchOperatingContext`, interview probabilities, or percentage fit scores. Deferred to
+FR-005 and later strategy stages.
+
+### Approved design decisions
+
+- `OpportunityAssessment` is a pure business-domain artifact (no
+  `profile_schema_version`, no operational metadata).
+- JobSeeker quota and `SearchOperatingContext` remain FR-005 concerns.
+- Candidate working rights are never inferred from location, citizenship, or history.
+- `salary_min = null` means no candidate salary threshold — do not invent conflict from
+  currency alone.
+- Live OpenAI evaluation closed at **PARTIAL PASS**; offline architecture and golden
+  journeys remain authoritative for CI.
+
+### Implementation status
+
+Delivered:
+
+- Domain models and validators
+- `OpportunityAssessmentService` + assessor protocol
+- Deterministic assessment fixtures keyed by shared FR-002 markers
+- Functional acceptance suite (`tests/functional/test_fr003_acceptance.py`)
+- `OpenAIAssessor` with structured output and prompt versioning through **v6**
+- Live manual evaluation ([eval/fr003_openai_manual_eval.md](eval/fr003_openai_manual_eval.md))
+- Cross-stage golden journeys (`tests/golden/test_opportunity_assessment_user_journey.py`)
+- FR-001 → FR-002 → FR-003 offline integration
+
+### Testing and evaluation evidence
+
+Automated tests are offline only. Live API calls use
+`tools/manual_eval_openai_assessor.py` and are not part of CI.
+
+| Suite | Result (Phase H verification) |
+|-------|-------------------------------|
+| Golden journey | **8 passed** |
+| FR-003 unit + functional + golden | **94 passed** |
+| Full suite | **260 passed** |
+
+### Known limitations (accepted at closeout)
+
+1. **`salary_min=null`** — live model may occasionally describe salary friction with no
+   candidate threshold.
+2. **Sparse-specification variance** — thin adverts can yield run-to-run variation or
+   incomplete evidence.
+3. **Scalar `item_index`** — live model may attach an unnecessary `item_index` to scalar
+   job evidence (schema allows; prompt discourages).
+4. **JobAnalysis dependency** — assessment quality partly tracks upstream FR-002 stability.
+5. **Live nondeterminism** — manual evaluation only; not suitable for deterministic CI.
+
+Validation catches structural failures (empty evidence, bad refs, assumption misuse)
+where possible. These limitations do not invalidate the offline architecture. Revisit
+through observed production evidence rather than speculative prompt churn.
+
+### Prompt evolution (v1 → v6)
+
+| Version | Justifying live failure |
+|---------|-------------------------|
+| v1 | Initial instructions |
+| v2 | Bare profile refs without `namespace:id` |
+| v3 | Empty `job_evidence`; `assumption` field misuse |
+| v4 | Persistent empty evidence — cite-as JSON in input catalogue |
+| v5 | Portfolio-only findings; scalar `item_index` discipline |
+| v6 | Bare profile refs recurred (`Python`, project/experience ids, `salary_min`) because `<CareerProfile>` JSON exposed copyable bare identifiers; assessor input now catalogues complete refs only and rewrites profile pointers as `ref=` |
+
+Current: `ASSESSMENT_PROMPT_VERSION = "v6"`.
+
+### Fixture marker ownership
+
+Shared markers such as `[CIC-FIXTURE:no-technologies]` and
+`[CIC-FIXTURE:working-rights]` live in `job_analysis.fixtures`. Assessment payloads live
+in `opportunity_assessment.fixtures` and key off the same markers. Fixture implementations
+are not public exports.
+
+---
+
 ## FR-002 Job Analysis — Implementation Notes
 
 ### Architecture
@@ -257,11 +433,13 @@ deferred, not defects. Evaluate against the dual-value test before promoting any
 - **Evidence resolution.** Skill/`demonstrates` `evidence` strings are free text and are not
   checked against real experience/project IDs. (The informal
   `professional-development:master-cv` namespace was retired in the career-history refinement;
-  all skill evidence now cites `experience:` or `project:` IDs.) FR-003/FR-004 — the first real
-  consumers of evidence — may need referential validation.
+  all skill evidence now cites `experience:` or `project:` IDs.) FR-003 validates
+  `ProfileEvidenceRef` / `JobEvidenceRef` integrity at assessment time; skill-evidence
+  strings inside the career profile itself remain unchecked.
 - **Project attribution links.** Projects are not linked to the independent-engineering
   context that produced them. A `context_id` reference to an experience entry may aid
-  explainability in FR-003/FR-004; deliberately excluded from the career-history refinement.
+  explainability; deliberately excluded from the career-history refinement. FR-003 cites
+  projects and experience kinds separately via evidence refs.
 - **Profile load caching.** `get_section` and `summary` each re-read and re-parse the file.
   Acceptable for occasional interactive use; revisit if a downstream flow reads many sections
   per operation.

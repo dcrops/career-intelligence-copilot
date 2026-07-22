@@ -100,3 +100,19 @@ personal data.
 Tests spanning FR-002 and later must obtain the career profile through
 `career_intelligence.profile`, never through the YAML storage adapter. This preserves the public
 service boundary and keeps regression tests valid if storage changes.
+
+---
+
+## FR-003 Opportunity Assessment coverage
+
+FR-003 adds:
+
+- unit tests under `tests/unit/opportunity_assessment/` (models, service, fixtures,
+  OpenAI assessor with fake client);
+- `tests/functional/test_fr003_acceptance.py` for the public service contract; and
+- `tests/golden/test_opportunity_assessment_user_journey.py` for the offline
+  CareerProfile → JobAnalysis → OpportunityAssessment journey.
+
+Shared fixture markers in `job_analysis` link deterministic extraction to deterministic
+assessment. Live OpenAI evaluation is manual only
+([eval/fr003_openai_manual_eval.md](eval/fr003_openai_manual_eval.md)) and must not run in CI.

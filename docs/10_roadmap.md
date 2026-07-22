@@ -75,12 +75,14 @@ The first implementation decision is now recorded in
 
 ### Phase 2 — Job Intelligence (MVP)
 
-**Status:** In progress. FR-001 Career Profile is implemented. FR-002 Job Analysis
-is implemented (domain models, `JobAnalysisService`, `FixtureExtractor`,
-`OpenAIJobExtractor`) and has completed its first real-world manual evaluation with
-prompt v5 and offline regressions for live failure modes — see
-[eval/fr002_openai_manual_eval.md](eval/fr002_openai_manual_eval.md). Remaining
-decision-loop stages (FR-003+) are not yet implemented.
+**Status:** In progress. FR-001 Career Profile, FR-002 Job Analysis, and FR-003
+Opportunity Assessment are **complete**. FR-002 manual evaluation closed with extraction
+prompt v5. FR-003 closed with assessment prompt **v6**, offline golden journeys, and live
+manual evaluation at **PARTIAL PASS** (representative cases `applied-ai` and
+`senior-ai-production` confirmed passing after the v6 input-presentation fix) — see
+[eval/fr002_openai_manual_eval.md](eval/fr002_openai_manual_eval.md) and
+[eval/fr003_openai_manual_eval.md](eval/fr003_openai_manual_eval.md). Next decision-loop
+stage: FR-004 Portfolio Matching.
 
 
 
@@ -96,11 +98,11 @@ decision-loop stages (FR-003+) are not yet implemented.
 
 
 
-- Career profile (FR-001)
+- Career profile (FR-001) — **Complete**
 
-- Job description analysis (FR-002)
+- Job description analysis (FR-002) — **Complete**
 
-- Opportunity assessment — Technical, Commercial, and Portfolio Fit (FR-003 scoped)
+- Opportunity assessment — Technical, Commercial, and Portfolio Fit (FR-003) — **Complete**
 
 - Portfolio matching (FR-004)
 
