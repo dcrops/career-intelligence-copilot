@@ -4,6 +4,118 @@ Records product strategy and engineering knowledge changes. Routine typo fixes a
 
 ---
 
+## Version 1.12
+
+### FR-005 seniority-aware application strategy policy
+
+- Deterministic planner caps AI-target senior roles at `consider` / Silver /
+  `acceptable_opportunity` when material senior commercial / leadership gaps are
+  present, commercial fit is not strong, and the profile lacks direct senior commercial
+  AI **employment** evidence (`experience.kind=employment` with AI + ownership markers).
+- Independent engineering remains distinguishable from commercial employment.
+- Salary-only commercial uncertainty does not trigger the cap; findings (not only the
+  commercial fit label) drive the seniority mismatch.
+- Credible stretch with strong technical + portfolio fit may use Silver + **targeted**
+  effort (narrow exception to the usual Silver→minimal mapping); not a blanket
+  “senior = silver” rule.
+- No FR-002 / FR-003 / FR-004 policy changes. FR-013 not started.
+
+---
+
+## Version 1.11
+
+### FR-003 assumption field-contract hardening
+
+- Opportunity Assessment prompt **v8**: select finding kind first; `assumption` text is
+  allowed only when `kind="assumption"`; non-assumption kinds must set `assumption=null`
+  and put commentary in `summary`/`detail`.
+- Assessor input adds `<FindingFieldGuide>` (per-kind allowed/forbidden fields).
+- Schema invariant retained — no post-parse cleanup, no discriminated-union redesign.
+- Regression tests for invalid assumption side-channels on gap/partial/transferable findings.
+- No FR-004/FR-005 policy changes. FR-013 not started.
+
+---
+
+## Version 1.10
+
+### FR-003 evidence-contract hardening
+
+- Opportunity Assessment prompt **v7**: per-finding-kind evidence requirements for
+  `alignment`, `partial_alignment`, `transferable_alignment`, `gap`, `conflict`,
+  `uncertainty`, and `assumption`; explicit ban on empty required evidence arrays;
+  hybrid AI Product Manager conceptual examples.
+- Assessor input now includes `<ProfileEvidenceCiteGuide>` cite-as JSON for every
+  catalogue profile ref (mirrors JobEvidenceIndexes discipline).
+- Validation invariants retained (`partial_alignment` / `transferable_alignment` still
+  require profile evidence). No fabricated refs; no retry loop.
+- Richer `OpportunityAssessmentValidationError` messages for manual-runner diagnostics.
+- No FR-004/FR-005 policy or threshold changes. FR-013 not started.
+
+---
+
+## Version 1.9
+
+### Hybrid role-family extraction (FR-002)
+
+- Extended role-family taxonomy with `network_engineering` (narrowest addition for
+  network-primary hybrid Automation & AI roles).
+- Extraction prompt **v7**: classify hybrid roles by dominant profession; AI/automation
+  capabilities do not redefine family; known families (including `other`) still require
+  evidence — empty-evidence `other` remains invalid.
+- Manual runner prints concise validation diagnostics (component, field, reason) without
+  dumping full request payloads.
+- Added hybrid-role regression fixtures/tests. No FR-003/004/005 policy changes.
+  FR-013 not started.
+
+---
+
+## Version 1.8
+
+### Manual-validation quality pass (FR-002 extraction + FR-005 location/wording)
+
+- Fixed FR-005 soft location matching: normalize punctuation, whitespace, parenthetical
+  arrangement suffixes, and common Australian state aliases so values such as
+  `Melbourne, VIC` and `Melbourne VIC (Hybrid)` no longer false-conflict.
+- Hardened FR-002 OpenAI extraction prompt to **v6**: de-prioritise SEEK/job-board
+  chrome (“How you match”, profile-match tags, volume labels, employer questions),
+  split grouped technologies, and extract multiple employer-authored responsibilities.
+- Corrected FR-005 explanation wording so only true AI-target families are labelled
+  “AI-aligned”; software/data engineering reasons use the actual role family.
+- Fixed manual-runner evidence display so `preference:locations` is not rendered as
+  `preference:preference:locations` (model refs unchanged).
+- Added junior software/DevOps offline fixture and regression tests. No FR-003,
+  FR-004, or FR-005 threshold/weight policy changes. FR-013 not started.
+
+---
+
+## Version 1.7
+
+### FR-005 Application Strategy complete
+
+- Implemented Application Strategy domain model with PursuitPosture as the primary
+  recommendation and ApplicationTier as effort investment only (Platinum / Gold /
+  Silver / **Bronze**). Bronze replaces the legacy Skip tier name and does **not** mean
+  “never apply.”
+- Added `ApplicationStrategyService` as the public trust boundary: planners return
+  untrusted payloads; the service binds caller-owned `JobAnalysis`, validates schema and
+  evidence references, and rejects mismatched OpportunityAssessment / PortfolioMatch
+  posting identity.
+- Added package-private `DeterministicStrategyPlanner` (production policy): rule-based
+  posture/tier/effort, portfolio emphasis from Portfolio Match (no rerank), advisory
+  `consider_*` next_actions, optional `SearchOperatingContext.volume_applications_enabled`
+  (default false; no quotas).
+- Added package-private `FixtureStrategyPlanner` and marker-keyed fixtures (shared FR-002
+  markers plus strategy-only salary-conflict / weak-portfolio / volume markers).
+- Documented the five-question acceptance standard answered by existing fields (reasons,
+  risks, next_actions, evidence, manual_checks, assumptions/blockers).
+- Added functional acceptance and golden journeys for
+  CareerProfile → JobAnalysis → OpportunityAssessment → PortfolioMatch →
+  ApplicationStrategy.
+- Explicitly excluded: CV/cover-letter generation, outreach, submission, percentage
+  scores, autonomous apply/skip, mandatory OpenAI narrative.
+
+---
+
 ## Version 1.6
 
 ### FR-004 Portfolio Matching complete

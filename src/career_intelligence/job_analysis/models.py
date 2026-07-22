@@ -30,6 +30,7 @@ RoleFamily = Literal[
     "data_engineering",
     "software_engineering",
     "ml_engineering",
+    "network_engineering",
     "ai_adjacent",
     "other",
     "unknown",

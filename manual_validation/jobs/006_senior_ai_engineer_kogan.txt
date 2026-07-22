@@ -1,0 +1,52 @@
+Senior AI Engineer
+Kogan.com
+3.7
+20 reviews
+·
+View all jobs
+
+South Melbourne, Melbourne VIC
+Developers/Programmers (Information & Communication Technology)
+Full time
+Posted 26d ago
+
+How you match
+Matches based on your career history
+API Integration
+
+Customer Service
+
+Show all⁠
+This is not a standard AI role.
+
+At Kogan.com, you will sit at the centre of how we rethink the business through AI. Working directly with the CEO and CTO, you will lead high-impact initiatives while embedding intelligent automation across every function.
+
+We are looking for someone who doesn't just experiment with AI, but builds real systems that scale. Someone who understands how to turn cutting-edge tools into a measurable competitive advantage.
+
+If you are already operating at the frontier of autonomous agents, multi-agent systems, and AI-driven software development, this role gives you the mandate and backing to go further.
+
+Partnering with departments across Kogan.com to build AI solutions that make their work faster and get things shipped quickly.
+Working one-on-one with the CEO/CTO on high-impact, special projects to give us an unfair competitive advantage.
+Rapidly prototyping and deploying production-ready software using AI-assisted "vibe coding."
+Architecting and deploying autonomous agents (OpenClaw, OpenHands, LangGraph) to automate complex workflows in supply chain, marketing, and customer service.
+Designing Human-in-the-Loop (HITL) workflows to ensure AI bots have appropriate guardrails and approval gates before executing high-stakes production tasks.
+Connecting AI agents securely to our e-commerce stack, ERPs, CRM, and internal databases.
+You move fast and get things done. You don't wait for permission, you find the fastest path to a working solution and take it.
+Strong foundation in computer science, systems architecture, and API integrations.
+Proven experience with the absolute latest AI automation tools, multi-agent frameworks, and advanced workflow builders (n8n, Make.com).
+Deep understanding of AI security protocols, containerization (Docker), and permission allowlists to protect enterprise data from prompt injections and rogue agent behavior.
+Strong commercial awareness of LLM API costs to prevent resource drain and optimize token usage.
+A relentless passion for AI and a habit of staying three steps ahead of industry trends.
+Apply now and help us build the future of retail.
+
+You will have direct access to executive decision-making, real scale, and the freedom to build.
+This is an opportunity to define how AI is actually used inside one of Australia’s leading digital retailers, not just experiment on the sidelines.
+Our culture is unlike anywhere else and regardless of where you are in your career journey, we empower you to do your best work and have a big impact. Check out https://devblog.kogan.com/ and https://goodteams.app/engineering/kogan.com.
+Work with an incredible team to solve important challenges, helping to drive Australia and New Zealand’s eCommerce future.
+Your role has a lot of ownership, autonomy and little red tape. You’ll be empowered to achieve positive outcomes and your work will have a real impact.
+You’ll be at the forefront of the eCommerce industry and be part of a company that are the Pioneers of eCommerce in Australia.
+Be an Intrepreneur, playing a hands on role in shaping our strategy at our HQ.
+A range of employee benefits such as; Meaningful Learning budget. Complimentary Kogan First Membership, team exclusive discounts, Health & Wellness program, Learning & Development and Lunch & Learns, Hackathons, Team member referral program, Companyand team events and celebrations, community engagement (volunteering) and extensive career development opportunities plus loads more!
+AI-enabled. Human-driven. Shipping smarter every day.
+
+Kogan.com is a pioneer of Australian eCommerce, and the software we build is used by millions of customers every day. You'll join a fast-moving engineering team with real ownership, shipping to production daily and using AI as part of how we work.

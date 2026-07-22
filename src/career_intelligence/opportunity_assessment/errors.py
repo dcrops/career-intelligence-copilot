@@ -28,4 +28,18 @@ class OpportunityAssessmentValidationError(OpportunityAssessmentError):
 
     def __init__(self, errors: list[ErrorDetail]) -> None:
         self.errors = errors
-        super().__init__("Opportunity assessment validation failed")
+        super().__init__(self._format_message(errors))
+
+    @staticmethod
+    def _format_message(errors: list[ErrorDetail]) -> str:
+        if not errors:
+            return "Opportunity assessment validation failed"
+        rendered = "; ".join(
+            f"{_format_loc(item.loc)}: {item.msg}" for item in errors[:5]
+        )
+        suffix = "" if len(errors) <= 5 else f" (+{len(errors) - 5} more)"
+        return f"Opportunity assessment validation failed ({rendered}{suffix})"
+
+
+def _format_loc(loc: tuple[str | int, ...]) -> str:
+    return ".".join(str(part) for part in loc) if loc else "(root)"

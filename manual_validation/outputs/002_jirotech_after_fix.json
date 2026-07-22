@@ -1,0 +1,1872 @@
+{
+  "components": [
+    {
+      "name": "CareerProfile",
+      "implementation": "CareerProfileService / YAML",
+      "mode": "deterministic_production"
+    },
+    {
+      "name": "JobAnalysis",
+      "implementation": "OpenAIJobExtractor",
+      "mode": "openai_production"
+    },
+    {
+      "name": "OpportunityAssessment",
+      "implementation": "OpenAIAssessor",
+      "mode": "openai_production"
+    },
+    {
+      "name": "PortfolioMatch",
+      "implementation": "DeterministicMatcher",
+      "mode": "deterministic_production"
+    },
+    {
+      "name": "ApplicationStrategy",
+      "implementation": "DeterministicStrategyPlanner",
+      "mode": "deterministic_production"
+    }
+  ],
+  "volume_applications_enabled": false,
+  "profile_identity": {
+    "full_name": "David Cropper",
+    "target_role": "AI Engineer"
+  },
+  "posting": {
+    "raw_text": "Junior Software / DevOps Engineer\n\nJirotech Pty Ltd \nView all jobs\n\nMelbourne VIC\nDevelopers/Programmers (Information & Communication Technology)\nFull time\nPosted 7d ago\n•\nHigh application volume\n\nHow you match\n1 skill or credential matches your profile\n Python Programming\nShow all⁠\nJirotech is a Solutions Integration company. We are seeking an enthusiastic junior software / devops engineer with a passion for technology to join our Melbourne team.  We offer a challenging environment with a broad range of constantly changing technologies and a platform to build your career.\n\nThis role will involve a mix of software and database development, including integrations with existing CI/CD processes and the development of new ones. The successful candidate will mainly deliver project-based work, support key customers, and help manage internal systems. If you have excellent communications skills, are self-motivated and can think independently while also working as part of a team, then this is the job for you.\n\nA degree in computing or relevant experience would be an advantage, but a desire to learn new technologies is a must. Preferably coupled with experience in some of the following areas:\n\nLinux (or other UNIX) installation and management, including working from a shell\n\nReading and writing scripted languages (such as BASH or Python)\n\nInfrastructure as code, automation and configuration technologies (such as YAML, JSON, Ansible, CloudFormation or Terraform)\n\nCompiling and installing open-source software (understanding of OSS, using GCC/configure/make)\n\nWorking knowledge of Relational / NoSQL database\n\nCombining multiple different software products to solve problems\n\nExposure to concepts such as virtualization, containers, configuration management, source management, and application deployment\n\nNetworking fundamentals is also considered a PLUS\n\nThe position is an excellent opportunity for a talented junior software / devops engineer or IT graduate to obtain experience with a wide range of technology in mission critical environments. Additionally, you will be encouraged to obtain industry certifications.\n\n If you think you've got what it takes to succeed in this position, we would love to see your resume.\n\n** No Agencies Please\n\nEmployer questions\nYour application will include the following questions:\nWhich of the following statements best describes your right to work in Australia?\nHow many years' experience do you have as a devops engineer?\nWhich of the following Linux distributions are you familiar with?\nWhich of the following programming languages are you experienced in?\nWhich of the following types of infrastructure project do you have experience with?\nDo you have experience with Relational Database Management Systems (RDBMS)?\nWhich of the following configuration management tools are you experienced with?\nWhich of the following Microsoft Azure certifications have you completed?",
+    "title": "Junior Software / DevOps Engineer",
+    "company": "Jirotech Pty Ltd",
+    "source_url": "https://au.seek.com/job/93335527"
+  },
+  "job_analysis": {
+    "posting": {
+      "raw_text": "Junior Software / DevOps Engineer\n\nJirotech Pty Ltd \nView all jobs\n\nMelbourne VIC\nDevelopers/Programmers (Information & Communication Technology)\nFull time\nPosted 7d ago\n•\nHigh application volume\n\nHow you match\n1 skill or credential matches your profile\n Python Programming\nShow all⁠\nJirotech is a Solutions Integration company. We are seeking an enthusiastic junior software / devops engineer with a passion for technology to join our Melbourne team.  We offer a challenging environment with a broad range of constantly changing technologies and a platform to build your career.\n\nThis role will involve a mix of software and database development, including integrations with existing CI/CD processes and the development of new ones. The successful candidate will mainly deliver project-based work, support key customers, and help manage internal systems. If you have excellent communications skills, are self-motivated and can think independently while also working as part of a team, then this is the job for you.\n\nA degree in computing or relevant experience would be an advantage, but a desire to learn new technologies is a must. Preferably coupled with experience in some of the following areas:\n\nLinux (or other UNIX) installation and management, including working from a shell\n\nReading and writing scripted languages (such as BASH or Python)\n\nInfrastructure as code, automation and configuration technologies (such as YAML, JSON, Ansible, CloudFormation or Terraform)\n\nCompiling and installing open-source software (understanding of OSS, using GCC/configure/make)\n\nWorking knowledge of Relational / NoSQL database\n\nCombining multiple different software products to solve problems\n\nExposure to concepts such as virtualization, containers, configuration management, source management, and application deployment\n\nNetworking fundamentals is also considered a PLUS\n\nThe position is an excellent opportunity for a talented junior software / devops engineer or IT graduate to obtain experience with a wide range of technology in mission critical environments. Additionally, you will be encouraged to obtain industry certifications.\n\n If you think you've got what it takes to succeed in this position, we would love to see your resume.\n\n** No Agencies Please\n\nEmployer questions\nYour application will include the following questions:\nWhich of the following statements best describes your right to work in Australia?\nHow many years' experience do you have as a devops engineer?\nWhich of the following Linux distributions are you familiar with?\nWhich of the following programming languages are you experienced in?\nWhich of the following types of infrastructure project do you have experience with?\nDo you have experience with Relational Database Management Systems (RDBMS)?\nWhich of the following configuration management tools are you experienced with?\nWhich of the following Microsoft Azure certifications have you completed?",
+      "title": "Junior Software / DevOps Engineer",
+      "company": "Jirotech Pty Ltd",
+      "source_url": "https://au.seek.com/job/93335527"
+    },
+    "role_family": {
+      "family": "software_engineering",
+      "evidence": [
+        {
+          "excerpt": "Junior Software / DevOps Engineer",
+          "section": "Job title"
+        }
+      ]
+    },
+    "seniority": {
+      "level": "entry",
+      "ambiguous": false,
+      "candidate_levels": [],
+      "evidence": [
+        {
+          "excerpt": "Junior Software / DevOps Engineer",
+          "section": "Job title"
+        }
+      ]
+    },
+    "technologies": [
+      {
+        "name": "Linux",
+        "level": "preferred",
+        "evidence": [
+          {
+            "excerpt": "Linux (or other UNIX) installation and management",
+            "section": "JobDescription"
+          }
+        ]
+      },
+      {
+        "name": "BASH",
+        "level": "preferred",
+        "evidence": [
+          {
+            "excerpt": "Reading and writing scripted languages (such as BASH or Python)",
+            "section": "JobDescription"
+          }
+        ]
+      },
+      {
+        "name": "Python",
+        "level": "preferred",
+        "evidence": [
+          {
+            "excerpt": "Reading and writing scripted languages (such as BASH or Python)",
+            "section": "JobDescription"
+          }
+        ]
+      },
+      {
+        "name": "YAML",
+        "level": "preferred",
+        "evidence": [
+          {
+            "excerpt": "Infrastructure as code, automation and configuration technologies (such as YAML, JSON, Ansible, CloudFormation or Terraform)",
+            "section": "JobDescription"
+          }
+        ]
+      },
+      {
+        "name": "JSON",
+        "level": "preferred",
+        "evidence": [
+          {
+            "excerpt": "Infrastructure as code, automation and configuration technologies (such as YAML, JSON, Ansible, CloudFormation or Terraform)",
+            "section": "JobDescription"
+          }
+        ]
+      },
+      {
+        "name": "Ansible",
+        "level": "preferred",
+        "evidence": [
+          {
+            "excerpt": "Infrastructure as code, automation and configuration technologies (such as YAML, JSON, Ansible, CloudFormation or Terraform)",
+            "section": "JobDescription"
+          }
+        ]
+      },
+      {
+        "name": "CloudFormation",
+        "level": "preferred",
+        "evidence": [
+          {
+            "excerpt": "Infrastructure as code, automation and configuration technologies (such as YAML, JSON, Ansible, CloudFormation or Terraform)",
+            "section": "JobDescription"
+          }
+        ]
+      },
+      {
+        "name": "Terraform",
+        "level": "preferred",
+        "evidence": [
+          {
+            "excerpt": "Infrastructure as code, automation and configuration technologies (such as YAML, JSON, Ansible, CloudFormation or Terraform)",
+            "section": "JobDescription"
+          }
+        ]
+      },
+      {
+        "name": "GCC",
+        "level": "preferred",
+        "evidence": [
+          {
+            "excerpt": "understanding of OSS, using GCC/configure/make",
+            "section": "JobDescription"
+          }
+        ]
+      },
+      {
+        "name": "Relational Database Management Systems",
+        "level": "preferred",
+        "evidence": [
+          {
+            "excerpt": "Working knowledge of Relational / NoSQL database",
+            "section": "JobDescription"
+          }
+        ]
+      },
+      {
+        "name": "NoSQL",
+        "level": "preferred",
+        "evidence": [
+          {
+            "excerpt": "Working knowledge of Relational / NoSQL database",
+            "section": "JobDescription"
+          }
+        ]
+      },
+      {
+        "name": "virtualization",
+        "level": "preferred",
+        "evidence": [
+          {
+            "excerpt": "Exposure to concepts such as virtualization, containers, configuration management, source management, and application deployment",
+            "section": "JobDescription"
+          }
+        ]
+      },
+      {
+        "name": "containers",
+        "level": "preferred",
+        "evidence": [
+          {
+            "excerpt": "Exposure to concepts such as virtualization, containers, configuration management, source management, and application deployment",
+            "section": "JobDescription"
+          }
+        ]
+      },
+      {
+        "name": "configuration management",
+        "level": "preferred",
+        "evidence": [
+          {
+            "excerpt": "Exposure to concepts such as virtualization, containers, configuration management, source management, and application deployment",
+            "section": "JobDescription"
+          }
+        ]
+      },
+      {
+        "name": "source management",
+        "level": "preferred",
+        "evidence": [
+          {
+            "excerpt": "Exposure to concepts such as virtualization, containers, configuration management, source management, and application deployment",
+            "section": "JobDescription"
+          }
+        ]
+      },
+      {
+        "name": "application deployment",
+        "level": "preferred",
+        "evidence": [
+          {
+            "excerpt": "Exposure to concepts such as virtualization, containers, configuration management, source management, and application deployment",
+            "section": "JobDescription"
+          }
+        ]
+      },
+      {
+        "name": "networking fundamentals",
+        "level": "preferred",
+        "evidence": [
+          {
+            "excerpt": "Networking fundamentals is also considered a PLUS",
+            "section": "JobDescription"
+          }
+        ]
+      }
+    ],
+    "responsibilities": [
+      {
+        "description": "Mix of software and database development, including integrations with existing CI/CD processes and the development of new ones.",
+        "evidence": [
+          {
+            "excerpt": "This role will involve a mix of software and database development, including integrations with existing CI/CD processes and the development of new ones.",
+            "section": "JobDescription"
+          }
+        ]
+      },
+      {
+        "description": "Deliver project-based work.",
+        "evidence": [
+          {
+            "excerpt": "The successful candidate will mainly deliver project-based work",
+            "section": "JobDescription"
+          }
+        ]
+      },
+      {
+        "description": "Support key customers.",
+        "evidence": [
+          {
+            "excerpt": "support key customers",
+            "section": "JobDescription"
+          }
+        ]
+      },
+      {
+        "description": "Help manage internal systems.",
+        "evidence": [
+          {
+            "excerpt": "help manage internal systems.",
+            "section": "JobDescription"
+          }
+        ]
+      }
+    ],
+    "compensation": {
+      "clarity": "unstated",
+      "minimum": null,
+      "maximum": null,
+      "currency": null,
+      "period": null,
+      "raw_text": null,
+      "evidence": []
+    },
+    "location": {
+      "clarity": "stated",
+      "summary": "Melbourne VIC",
+      "evidence": [
+        {
+          "excerpt": "Melbourne VIC",
+          "section": "JobDescription"
+        }
+      ]
+    },
+    "work_arrangement": {
+      "arrangement": "onsite",
+      "details": null,
+      "evidence": [
+        {
+          "excerpt": "join our Melbourne team",
+          "section": "JobDescription"
+        }
+      ]
+    },
+    "employment": {
+      "working_hours": "full_time",
+      "engagement_type": "unspecified",
+      "evidence": [
+        {
+          "excerpt": "Full time",
+          "section": "JobDescription"
+        }
+      ]
+    },
+    "experience_requirements": [
+      {
+        "description": "A degree in computing or relevant experience would be an advantage.",
+        "level": "preferred",
+        "minimum_years": null,
+        "maximum_years": null,
+        "evidence": [
+          {
+            "excerpt": "A degree in computing or relevant experience would be an advantage",
+            "section": "JobDescription"
+          }
+        ]
+      },
+      {
+        "description": "Desire to learn new technologies is a must.",
+        "level": "required",
+        "minimum_years": null,
+        "maximum_years": null,
+        "evidence": [
+          {
+            "excerpt": "a desire to learn new technologies is a must.",
+            "section": "JobDescription"
+          }
+        ]
+      }
+    ]
+  },
+  "opportunity_assessment": {
+    "job_analysis": {
+      "posting": {
+        "raw_text": "Junior Software / DevOps Engineer\n\nJirotech Pty Ltd \nView all jobs\n\nMelbourne VIC\nDevelopers/Programmers (Information & Communication Technology)\nFull time\nPosted 7d ago\n•\nHigh application volume\n\nHow you match\n1 skill or credential matches your profile\n Python Programming\nShow all⁠\nJirotech is a Solutions Integration company. We are seeking an enthusiastic junior software / devops engineer with a passion for technology to join our Melbourne team.  We offer a challenging environment with a broad range of constantly changing technologies and a platform to build your career.\n\nThis role will involve a mix of software and database development, including integrations with existing CI/CD processes and the development of new ones. The successful candidate will mainly deliver project-based work, support key customers, and help manage internal systems. If you have excellent communications skills, are self-motivated and can think independently while also working as part of a team, then this is the job for you.\n\nA degree in computing or relevant experience would be an advantage, but a desire to learn new technologies is a must. Preferably coupled with experience in some of the following areas:\n\nLinux (or other UNIX) installation and management, including working from a shell\n\nReading and writing scripted languages (such as BASH or Python)\n\nInfrastructure as code, automation and configuration technologies (such as YAML, JSON, Ansible, CloudFormation or Terraform)\n\nCompiling and installing open-source software (understanding of OSS, using GCC/configure/make)\n\nWorking knowledge of Relational / NoSQL database\n\nCombining multiple different software products to solve problems\n\nExposure to concepts such as virtualization, containers, configuration management, source management, and application deployment\n\nNetworking fundamentals is also considered a PLUS\n\nThe position is an excellent opportunity for a talented junior software / devops engineer or IT graduate to obtain experience with a wide range of technology in mission critical environments. Additionally, you will be encouraged to obtain industry certifications.\n\n If you think you've got what it takes to succeed in this position, we would love to see your resume.\n\n** No Agencies Please\n\nEmployer questions\nYour application will include the following questions:\nWhich of the following statements best describes your right to work in Australia?\nHow many years' experience do you have as a devops engineer?\nWhich of the following Linux distributions are you familiar with?\nWhich of the following programming languages are you experienced in?\nWhich of the following types of infrastructure project do you have experience with?\nDo you have experience with Relational Database Management Systems (RDBMS)?\nWhich of the following configuration management tools are you experienced with?\nWhich of the following Microsoft Azure certifications have you completed?",
+        "title": "Junior Software / DevOps Engineer",
+        "company": "Jirotech Pty Ltd",
+        "source_url": "https://au.seek.com/job/93335527"
+      },
+      "role_family": {
+        "family": "software_engineering",
+        "evidence": [
+          {
+            "excerpt": "Junior Software / DevOps Engineer",
+            "section": "Job title"
+          }
+        ]
+      },
+      "seniority": {
+        "level": "entry",
+        "ambiguous": false,
+        "candidate_levels": [],
+        "evidence": [
+          {
+            "excerpt": "Junior Software / DevOps Engineer",
+            "section": "Job title"
+          }
+        ]
+      },
+      "technologies": [
+        {
+          "name": "Linux",
+          "level": "preferred",
+          "evidence": [
+            {
+              "excerpt": "Linux (or other UNIX) installation and management",
+              "section": "JobDescription"
+            }
+          ]
+        },
+        {
+          "name": "BASH",
+          "level": "preferred",
+          "evidence": [
+            {
+              "excerpt": "Reading and writing scripted languages (such as BASH or Python)",
+              "section": "JobDescription"
+            }
+          ]
+        },
+        {
+          "name": "Python",
+          "level": "preferred",
+          "evidence": [
+            {
+              "excerpt": "Reading and writing scripted languages (such as BASH or Python)",
+              "section": "JobDescription"
+            }
+          ]
+        },
+        {
+          "name": "YAML",
+          "level": "preferred",
+          "evidence": [
+            {
+              "excerpt": "Infrastructure as code, automation and configuration technologies (such as YAML, JSON, Ansible, CloudFormation or Terraform)",
+              "section": "JobDescription"
+            }
+          ]
+        },
+        {
+          "name": "JSON",
+          "level": "preferred",
+          "evidence": [
+            {
+              "excerpt": "Infrastructure as code, automation and configuration technologies (such as YAML, JSON, Ansible, CloudFormation or Terraform)",
+              "section": "JobDescription"
+            }
+          ]
+        },
+        {
+          "name": "Ansible",
+          "level": "preferred",
+          "evidence": [
+            {
+              "excerpt": "Infrastructure as code, automation and configuration technologies (such as YAML, JSON, Ansible, CloudFormation or Terraform)",
+              "section": "JobDescription"
+            }
+          ]
+        },
+        {
+          "name": "CloudFormation",
+          "level": "preferred",
+          "evidence": [
+            {
+              "excerpt": "Infrastructure as code, automation and configuration technologies (such as YAML, JSON, Ansible, CloudFormation or Terraform)",
+              "section": "JobDescription"
+            }
+          ]
+        },
+        {
+          "name": "Terraform",
+          "level": "preferred",
+          "evidence": [
+            {
+              "excerpt": "Infrastructure as code, automation and configuration technologies (such as YAML, JSON, Ansible, CloudFormation or Terraform)",
+              "section": "JobDescription"
+            }
+          ]
+        },
+        {
+          "name": "GCC",
+          "level": "preferred",
+          "evidence": [
+            {
+              "excerpt": "understanding of OSS, using GCC/configure/make",
+              "section": "JobDescription"
+            }
+          ]
+        },
+        {
+          "name": "Relational Database Management Systems",
+          "level": "preferred",
+          "evidence": [
+            {
+              "excerpt": "Working knowledge of Relational / NoSQL database",
+              "section": "JobDescription"
+            }
+          ]
+        },
+        {
+          "name": "NoSQL",
+          "level": "preferred",
+          "evidence": [
+            {
+              "excerpt": "Working knowledge of Relational / NoSQL database",
+              "section": "JobDescription"
+            }
+          ]
+        },
+        {
+          "name": "virtualization",
+          "level": "preferred",
+          "evidence": [
+            {
+              "excerpt": "Exposure to concepts such as virtualization, containers, configuration management, source management, and application deployment",
+              "section": "JobDescription"
+            }
+          ]
+        },
+        {
+          "name": "containers",
+          "level": "preferred",
+          "evidence": [
+            {
+              "excerpt": "Exposure to concepts such as virtualization, containers, configuration management, source management, and application deployment",
+              "section": "JobDescription"
+            }
+          ]
+        },
+        {
+          "name": "configuration management",
+          "level": "preferred",
+          "evidence": [
+            {
+              "excerpt": "Exposure to concepts such as virtualization, containers, configuration management, source management, and application deployment",
+              "section": "JobDescription"
+            }
+          ]
+        },
+        {
+          "name": "source management",
+          "level": "preferred",
+          "evidence": [
+            {
+              "excerpt": "Exposure to concepts such as virtualization, containers, configuration management, source management, and application deployment",
+              "section": "JobDescription"
+            }
+          ]
+        },
+        {
+          "name": "application deployment",
+          "level": "preferred",
+          "evidence": [
+            {
+              "excerpt": "Exposure to concepts such as virtualization, containers, configuration management, source management, and application deployment",
+              "section": "JobDescription"
+            }
+          ]
+        },
+        {
+          "name": "networking fundamentals",
+          "level": "preferred",
+          "evidence": [
+            {
+              "excerpt": "Networking fundamentals is also considered a PLUS",
+              "section": "JobDescription"
+            }
+          ]
+        }
+      ],
+      "responsibilities": [
+        {
+          "description": "Mix of software and database development, including integrations with existing CI/CD processes and the development of new ones.",
+          "evidence": [
+            {
+              "excerpt": "This role will involve a mix of software and database development, including integrations with existing CI/CD processes and the development of new ones.",
+              "section": "JobDescription"
+            }
+          ]
+        },
+        {
+          "description": "Deliver project-based work.",
+          "evidence": [
+            {
+              "excerpt": "The successful candidate will mainly deliver project-based work",
+              "section": "JobDescription"
+            }
+          ]
+        },
+        {
+          "description": "Support key customers.",
+          "evidence": [
+            {
+              "excerpt": "support key customers",
+              "section": "JobDescription"
+            }
+          ]
+        },
+        {
+          "description": "Help manage internal systems.",
+          "evidence": [
+            {
+              "excerpt": "help manage internal systems.",
+              "section": "JobDescription"
+            }
+          ]
+        }
+      ],
+      "compensation": {
+        "clarity": "unstated",
+        "minimum": null,
+        "maximum": null,
+        "currency": null,
+        "period": null,
+        "raw_text": null,
+        "evidence": []
+      },
+      "location": {
+        "clarity": "stated",
+        "summary": "Melbourne VIC",
+        "evidence": [
+          {
+            "excerpt": "Melbourne VIC",
+            "section": "JobDescription"
+          }
+        ]
+      },
+      "work_arrangement": {
+        "arrangement": "onsite",
+        "details": null,
+        "evidence": [
+          {
+            "excerpt": "join our Melbourne team",
+            "section": "JobDescription"
+          }
+        ]
+      },
+      "employment": {
+        "working_hours": "full_time",
+        "engagement_type": "unspecified",
+        "evidence": [
+          {
+            "excerpt": "Full time",
+            "section": "JobDescription"
+          }
+        ]
+      },
+      "experience_requirements": [
+        {
+          "description": "A degree in computing or relevant experience would be an advantage.",
+          "level": "preferred",
+          "minimum_years": null,
+          "maximum_years": null,
+          "evidence": [
+            {
+              "excerpt": "A degree in computing or relevant experience would be an advantage",
+              "section": "JobDescription"
+            }
+          ]
+        },
+        {
+          "description": "Desire to learn new technologies is a must.",
+          "level": "required",
+          "minimum_years": null,
+          "maximum_years": null,
+          "evidence": [
+            {
+              "excerpt": "a desire to learn new technologies is a must.",
+              "section": "JobDescription"
+            }
+          ]
+        }
+      ]
+    },
+    "technical_fit": {
+      "dimension": "technical",
+      "judgment": "strong",
+      "summary": "The candidate demonstrates a strong alignment with the technical requirements of the Junior Software / DevOps Engineer role at Jirotech, particularly in programming and infrastructure management.",
+      "findings": [
+        {
+          "kind": "alignment",
+          "summary": "The candidate has strong skills in Python, which is essential for reading and writing scripted languages.",
+          "detail": null,
+          "importance": "material",
+          "job_evidence": [
+            {
+              "source": "technology",
+              "item_index": 2,
+              "name": "Python",
+              "excerpt": "Reading and writing scripted languages (such as BASH or Python)"
+            }
+          ],
+          "profile_evidence": [
+            {
+              "source": "skill",
+              "ref": "skill:Python",
+              "excerpt": null
+            }
+          ],
+          "assumption": null
+        },
+        {
+          "kind": "alignment",
+          "summary": "The candidate possesses relevant experience with Linux, which is preferred for the role.",
+          "detail": null,
+          "importance": "material",
+          "job_evidence": [
+            {
+              "source": "technology",
+              "item_index": 0,
+              "name": "Linux",
+              "excerpt": "Linux (or other UNIX) installation and management"
+            }
+          ],
+          "profile_evidence": [
+            {
+              "source": "skill",
+              "ref": "skill:Python",
+              "excerpt": null
+            }
+          ],
+          "assumption": null
+        },
+        {
+          "kind": "partial_alignment",
+          "summary": "The candidate's independent engineering work involves modern technologies relevant to the role, although they lack commercial production experience in similar environments.",
+          "detail": "This limitation may affect their adaptability in a direct commercial environment.",
+          "importance": "minor",
+          "job_evidence": [
+            {
+              "source": "responsibility",
+              "item_index": 1,
+              "name": "Deliver project-based work",
+              "excerpt": "The successful candidate will mainly deliver project-based work"
+            }
+          ],
+          "profile_evidence": [
+            {
+              "source": "experience",
+              "ref": "experience:chase-risk-compliance-ai-engineer",
+              "excerpt": null
+            }
+          ],
+          "assumption": null
+        },
+        {
+          "kind": "gap",
+          "summary": "The role prefers familiarity with configuration management tools, which is not explicitly demonstrated in the candidate's profile.",
+          "detail": "The candidate's experience does not mention tools like Ansible or CloudFormation directly, potentially representing a gap.",
+          "importance": "material",
+          "job_evidence": [
+            {
+              "source": "technology",
+              "item_index": 5,
+              "name": "Ansible",
+              "excerpt": "Infrastructure as code, automation and configuration technologies (such as YAML, JSON, Ansible, CloudFormation or Terraform)"
+            }
+          ],
+          "profile_evidence": [],
+          "assumption": null
+        }
+      ]
+    },
+    "commercial_fit": {
+      "dimension": "commercial",
+      "judgment": "unknown",
+      "summary": "The compensation for the role is unstated, and while the candidate is located in a suitable area, specific compensation expectations are unclear.",
+      "findings": [
+        {
+          "kind": "uncertainty",
+          "summary": "The job posting does not specify a salary range, leading to uncertainty regarding compensation alignment.",
+          "detail": null,
+          "importance": "material",
+          "job_evidence": [
+            {
+              "source": "compensation",
+              "item_index": 0,
+              "name": "unstated",
+              "excerpt": "unstated"
+            }
+          ],
+          "profile_evidence": [],
+          "assumption": null
+        },
+        {
+          "kind": "alignment",
+          "summary": "The candidate's location in Melbourne aligns with the job's location requirement.",
+          "detail": null,
+          "importance": "material",
+          "job_evidence": [
+            {
+              "source": "location",
+              "item_index": 0,
+              "name": "Melbourne VIC",
+              "excerpt": "Melbourne VIC"
+            }
+          ],
+          "profile_evidence": [
+            {
+              "source": "preference",
+              "ref": "preference:locations",
+              "excerpt": null
+            }
+          ],
+          "assumption": null
+        }
+      ]
+    },
+    "portfolio_fit": {
+      "dimension": "portfolio",
+      "judgment": "strong",
+      "summary": "The candidate's projects demonstrate relevant technical capabilities that align with the responsibilities of the position, particularly in API development and operational analytics.",
+      "findings": [
+        {
+          "kind": "alignment",
+          "summary": "The candidate's project experience in API development correlates strongly with the job's need for delivering project-based work involving software solutions.",
+          "detail": null,
+          "importance": "material",
+          "job_evidence": [
+            {
+              "source": "responsibility",
+              "item_index": 0,
+              "name": "Mix of software and database development",
+              "excerpt": "This role will involve a mix of software and database development including integrations with existing CI/CD processes and the development of new ones."
+            }
+          ],
+          "profile_evidence": [
+            {
+              "source": "project",
+              "ref": "project:operational-intelligence-copilot",
+              "excerpt": null
+            }
+          ],
+          "assumption": null
+        },
+        {
+          "kind": "alignment",
+          "summary": "The candidate has developed operational intelligence solutions that align with the job responsibilities regarding integrations and advanced software solutions.",
+          "detail": null,
+          "importance": "material",
+          "job_evidence": [
+            {
+              "source": "responsibility",
+              "item_index": 0,
+              "name": "Mix of software and database development",
+              "excerpt": "This role will involve a mix of software and database development including integrations with existing CI/CD processes and the development of new ones."
+            }
+          ],
+          "profile_evidence": [
+            {
+              "source": "project",
+              "ref": "project:governance-document-rag",
+              "excerpt": null
+            }
+          ],
+          "assumption": null
+        }
+      ]
+    },
+    "summary": {
+      "summary": "Overall, the assessment shows that the candidate has a strong fit for the technical aspects of the Junior Software / DevOps Engineer role, particularly through their programming skills and relevant project experience. However, gaps in commercial exposure and specific tool familiarity may pose challenges. The compensation aspect remains unclear, but the candidate is situated in a suitable location aligning with job expectations.",
+      "key_alignments": [
+        "Python proficiency aligned with scripting requirements",
+        "Linux experience relevant for systems management",
+        "Strong project experience in relevant software development"
+      ],
+      "key_gaps": [
+        "Lack of commercial production AI experience",
+        "Unclear compensation expectations"
+      ]
+    }
+  },
+  "portfolio_match": {
+    "job_analysis": {
+      "posting": {
+        "raw_text": "Junior Software / DevOps Engineer\n\nJirotech Pty Ltd \nView all jobs\n\nMelbourne VIC\nDevelopers/Programmers (Information & Communication Technology)\nFull time\nPosted 7d ago\n•\nHigh application volume\n\nHow you match\n1 skill or credential matches your profile\n Python Programming\nShow all⁠\nJirotech is a Solutions Integration company. We are seeking an enthusiastic junior software / devops engineer with a passion for technology to join our Melbourne team.  We offer a challenging environment with a broad range of constantly changing technologies and a platform to build your career.\n\nThis role will involve a mix of software and database development, including integrations with existing CI/CD processes and the development of new ones. The successful candidate will mainly deliver project-based work, support key customers, and help manage internal systems. If you have excellent communications skills, are self-motivated and can think independently while also working as part of a team, then this is the job for you.\n\nA degree in computing or relevant experience would be an advantage, but a desire to learn new technologies is a must. Preferably coupled with experience in some of the following areas:\n\nLinux (or other UNIX) installation and management, including working from a shell\n\nReading and writing scripted languages (such as BASH or Python)\n\nInfrastructure as code, automation and configuration technologies (such as YAML, JSON, Ansible, CloudFormation or Terraform)\n\nCompiling and installing open-source software (understanding of OSS, using GCC/configure/make)\n\nWorking knowledge of Relational / NoSQL database\n\nCombining multiple different software products to solve problems\n\nExposure to concepts such as virtualization, containers, configuration management, source management, and application deployment\n\nNetworking fundamentals is also considered a PLUS\n\nThe position is an excellent opportunity for a talented junior software / devops engineer or IT graduate to obtain experience with a wide range of technology in mission critical environments. Additionally, you will be encouraged to obtain industry certifications.\n\n If you think you've got what it takes to succeed in this position, we would love to see your resume.\n\n** No Agencies Please\n\nEmployer questions\nYour application will include the following questions:\nWhich of the following statements best describes your right to work in Australia?\nHow many years' experience do you have as a devops engineer?\nWhich of the following Linux distributions are you familiar with?\nWhich of the following programming languages are you experienced in?\nWhich of the following types of infrastructure project do you have experience with?\nDo you have experience with Relational Database Management Systems (RDBMS)?\nWhich of the following configuration management tools are you experienced with?\nWhich of the following Microsoft Azure certifications have you completed?",
+        "title": "Junior Software / DevOps Engineer",
+        "company": "Jirotech Pty Ltd",
+        "source_url": "https://au.seek.com/job/93335527"
+      },
+      "role_family": {
+        "family": "software_engineering",
+        "evidence": [
+          {
+            "excerpt": "Junior Software / DevOps Engineer",
+            "section": "Job title"
+          }
+        ]
+      },
+      "seniority": {
+        "level": "entry",
+        "ambiguous": false,
+        "candidate_levels": [],
+        "evidence": [
+          {
+            "excerpt": "Junior Software / DevOps Engineer",
+            "section": "Job title"
+          }
+        ]
+      },
+      "technologies": [
+        {
+          "name": "Linux",
+          "level": "preferred",
+          "evidence": [
+            {
+              "excerpt": "Linux (or other UNIX) installation and management",
+              "section": "JobDescription"
+            }
+          ]
+        },
+        {
+          "name": "BASH",
+          "level": "preferred",
+          "evidence": [
+            {
+              "excerpt": "Reading and writing scripted languages (such as BASH or Python)",
+              "section": "JobDescription"
+            }
+          ]
+        },
+        {
+          "name": "Python",
+          "level": "preferred",
+          "evidence": [
+            {
+              "excerpt": "Reading and writing scripted languages (such as BASH or Python)",
+              "section": "JobDescription"
+            }
+          ]
+        },
+        {
+          "name": "YAML",
+          "level": "preferred",
+          "evidence": [
+            {
+              "excerpt": "Infrastructure as code, automation and configuration technologies (such as YAML, JSON, Ansible, CloudFormation or Terraform)",
+              "section": "JobDescription"
+            }
+          ]
+        },
+        {
+          "name": "JSON",
+          "level": "preferred",
+          "evidence": [
+            {
+              "excerpt": "Infrastructure as code, automation and configuration technologies (such as YAML, JSON, Ansible, CloudFormation or Terraform)",
+              "section": "JobDescription"
+            }
+          ]
+        },
+        {
+          "name": "Ansible",
+          "level": "preferred",
+          "evidence": [
+            {
+              "excerpt": "Infrastructure as code, automation and configuration technologies (such as YAML, JSON, Ansible, CloudFormation or Terraform)",
+              "section": "JobDescription"
+            }
+          ]
+        },
+        {
+          "name": "CloudFormation",
+          "level": "preferred",
+          "evidence": [
+            {
+              "excerpt": "Infrastructure as code, automation and configuration technologies (such as YAML, JSON, Ansible, CloudFormation or Terraform)",
+              "section": "JobDescription"
+            }
+          ]
+        },
+        {
+          "name": "Terraform",
+          "level": "preferred",
+          "evidence": [
+            {
+              "excerpt": "Infrastructure as code, automation and configuration technologies (such as YAML, JSON, Ansible, CloudFormation or Terraform)",
+              "section": "JobDescription"
+            }
+          ]
+        },
+        {
+          "name": "GCC",
+          "level": "preferred",
+          "evidence": [
+            {
+              "excerpt": "understanding of OSS, using GCC/configure/make",
+              "section": "JobDescription"
+            }
+          ]
+        },
+        {
+          "name": "Relational Database Management Systems",
+          "level": "preferred",
+          "evidence": [
+            {
+              "excerpt": "Working knowledge of Relational / NoSQL database",
+              "section": "JobDescription"
+            }
+          ]
+        },
+        {
+          "name": "NoSQL",
+          "level": "preferred",
+          "evidence": [
+            {
+              "excerpt": "Working knowledge of Relational / NoSQL database",
+              "section": "JobDescription"
+            }
+          ]
+        },
+        {
+          "name": "virtualization",
+          "level": "preferred",
+          "evidence": [
+            {
+              "excerpt": "Exposure to concepts such as virtualization, containers, configuration management, source management, and application deployment",
+              "section": "JobDescription"
+            }
+          ]
+        },
+        {
+          "name": "containers",
+          "level": "preferred",
+          "evidence": [
+            {
+              "excerpt": "Exposure to concepts such as virtualization, containers, configuration management, source management, and application deployment",
+              "section": "JobDescription"
+            }
+          ]
+        },
+        {
+          "name": "configuration management",
+          "level": "preferred",
+          "evidence": [
+            {
+              "excerpt": "Exposure to concepts such as virtualization, containers, configuration management, source management, and application deployment",
+              "section": "JobDescription"
+            }
+          ]
+        },
+        {
+          "name": "source management",
+          "level": "preferred",
+          "evidence": [
+            {
+              "excerpt": "Exposure to concepts such as virtualization, containers, configuration management, source management, and application deployment",
+              "section": "JobDescription"
+            }
+          ]
+        },
+        {
+          "name": "application deployment",
+          "level": "preferred",
+          "evidence": [
+            {
+              "excerpt": "Exposure to concepts such as virtualization, containers, configuration management, source management, and application deployment",
+              "section": "JobDescription"
+            }
+          ]
+        },
+        {
+          "name": "networking fundamentals",
+          "level": "preferred",
+          "evidence": [
+            {
+              "excerpt": "Networking fundamentals is also considered a PLUS",
+              "section": "JobDescription"
+            }
+          ]
+        }
+      ],
+      "responsibilities": [
+        {
+          "description": "Mix of software and database development, including integrations with existing CI/CD processes and the development of new ones.",
+          "evidence": [
+            {
+              "excerpt": "This role will involve a mix of software and database development, including integrations with existing CI/CD processes and the development of new ones.",
+              "section": "JobDescription"
+            }
+          ]
+        },
+        {
+          "description": "Deliver project-based work.",
+          "evidence": [
+            {
+              "excerpt": "The successful candidate will mainly deliver project-based work",
+              "section": "JobDescription"
+            }
+          ]
+        },
+        {
+          "description": "Support key customers.",
+          "evidence": [
+            {
+              "excerpt": "support key customers",
+              "section": "JobDescription"
+            }
+          ]
+        },
+        {
+          "description": "Help manage internal systems.",
+          "evidence": [
+            {
+              "excerpt": "help manage internal systems.",
+              "section": "JobDescription"
+            }
+          ]
+        }
+      ],
+      "compensation": {
+        "clarity": "unstated",
+        "minimum": null,
+        "maximum": null,
+        "currency": null,
+        "period": null,
+        "raw_text": null,
+        "evidence": []
+      },
+      "location": {
+        "clarity": "stated",
+        "summary": "Melbourne VIC",
+        "evidence": [
+          {
+            "excerpt": "Melbourne VIC",
+            "section": "JobDescription"
+          }
+        ]
+      },
+      "work_arrangement": {
+        "arrangement": "onsite",
+        "details": null,
+        "evidence": [
+          {
+            "excerpt": "join our Melbourne team",
+            "section": "JobDescription"
+          }
+        ]
+      },
+      "employment": {
+        "working_hours": "full_time",
+        "engagement_type": "unspecified",
+        "evidence": [
+          {
+            "excerpt": "Full time",
+            "section": "JobDescription"
+          }
+        ]
+      },
+      "experience_requirements": [
+        {
+          "description": "A degree in computing or relevant experience would be an advantage.",
+          "level": "preferred",
+          "minimum_years": null,
+          "maximum_years": null,
+          "evidence": [
+            {
+              "excerpt": "A degree in computing or relevant experience would be an advantage",
+              "section": "JobDescription"
+            }
+          ]
+        },
+        {
+          "description": "Desire to learn new technologies is a must.",
+          "level": "required",
+          "minimum_years": null,
+          "maximum_years": null,
+          "evidence": [
+            {
+              "excerpt": "a desire to learn new technologies is a must.",
+              "section": "JobDescription"
+            }
+          ]
+        }
+      ]
+    },
+    "ranked_projects": [
+      {
+        "rank": 1,
+        "project_id": "payroll-diagnostics-engine",
+        "rationale": "Project 'payroll-diagnostics-engine' ranked on 1 preferred technology hit(s), 2 responsibility overlap(s).",
+        "factors": [
+          {
+            "kind": "preferred_technology",
+            "summary": "Project evidence supports preferred technology 'Python'.",
+            "job_evidence": [
+              {
+                "source": "technology",
+                "item_index": 2,
+                "name": "Python",
+                "excerpt": "Reading and writing scripted languages (such as BASH or Python)"
+              }
+            ],
+            "profile_evidence": [
+              {
+                "source": "project",
+                "ref": "project:payroll-diagnostics-engine",
+                "excerpt": "Python"
+              }
+            ]
+          },
+          {
+            "kind": "responsibility_overlap",
+            "summary": "Project summary, outcomes, or technologies overlap responsibility 'Deliver project-based work.'.",
+            "job_evidence": [
+              {
+                "source": "responsibility",
+                "item_index": 1,
+                "name": null,
+                "excerpt": "The successful candidate will mainly deliver project-based work"
+              }
+            ],
+            "profile_evidence": [
+              {
+                "source": "project",
+                "ref": "project:payroll-diagnostics-engine",
+                "excerpt": "Rule-based operational decision-support platform that identifies payroll anomalies through deterministic business-rule evaluation."
+              }
+            ]
+          },
+          {
+            "kind": "responsibility_overlap",
+            "summary": "Project summary, outcomes, or technologies overlap responsibility 'Support key customers.'.",
+            "job_evidence": [
+              {
+                "source": "responsibility",
+                "item_index": 2,
+                "name": null,
+                "excerpt": "support key customers"
+              }
+            ],
+            "profile_evidence": [
+              {
+                "source": "project",
+                "ref": "project:payroll-diagnostics-engine",
+                "excerpt": "Rule-based operational decision-support platform that identifies payroll anomalies through deterministic business-rule evaluation."
+              }
+            ]
+          }
+        ],
+        "tie_group": null,
+        "tie_break_reason": null
+      },
+      {
+        "rank": 2,
+        "project_id": "governance-document-rag",
+        "rationale": "Project 'governance-document-rag' ranked on 1 preferred technology hit(s).",
+        "factors": [
+          {
+            "kind": "preferred_technology",
+            "summary": "Project evidence supports preferred technology 'Python'.",
+            "job_evidence": [
+              {
+                "source": "technology",
+                "item_index": 2,
+                "name": "Python",
+                "excerpt": "Reading and writing scripted languages (such as BASH or Python)"
+              }
+            ],
+            "profile_evidence": [
+              {
+                "source": "project",
+                "ref": "project:governance-document-rag",
+                "excerpt": "Python"
+              }
+            ]
+          }
+        ],
+        "tie_group": 1,
+        "tie_break_reason": "Equal primary ranking signals; ordered by stable project_id ascending"
+      },
+      {
+        "rank": 3,
+        "project_id": "operational-intelligence-copilot",
+        "rationale": "Project 'operational-intelligence-copilot' ranked on 1 preferred technology hit(s).",
+        "factors": [
+          {
+            "kind": "preferred_technology",
+            "summary": "Project evidence supports preferred technology 'Python'.",
+            "job_evidence": [
+              {
+                "source": "technology",
+                "item_index": 2,
+                "name": "Python",
+                "excerpt": "Reading and writing scripted languages (such as BASH or Python)"
+              }
+            ],
+            "profile_evidence": [
+              {
+                "source": "project",
+                "ref": "project:operational-intelligence-copilot",
+                "excerpt": "Python"
+              }
+            ]
+          }
+        ],
+        "tie_group": 1,
+        "tie_break_reason": "Equal primary ranking signals; ordered by stable project_id ascending"
+      },
+      {
+        "rank": 4,
+        "project_id": "public-holiday-entitlements",
+        "rationale": "Project 'public-holiday-entitlements' ranked on 1 preferred technology hit(s).",
+        "factors": [
+          {
+            "kind": "preferred_technology",
+            "summary": "Project evidence supports preferred technology 'Python'.",
+            "job_evidence": [
+              {
+                "source": "technology",
+                "item_index": 2,
+                "name": "Python",
+                "excerpt": "Reading and writing scripted languages (such as BASH or Python)"
+              }
+            ],
+            "profile_evidence": [
+              {
+                "source": "project",
+                "ref": "project:public-holiday-entitlements",
+                "excerpt": "Python"
+              }
+            ]
+          }
+        ],
+        "tie_group": 1,
+        "tie_break_reason": "Equal primary ranking signals; ordered by stable project_id ascending"
+      }
+    ],
+    "unranked_project_ids": [],
+    "summary": "Ranked 4 project(s); lead with 'payroll-diagnostics-engine'. 0 project(s) had no matching factors.",
+    "insufficient_evidence": false
+  },
+  "application_strategy": {
+    "job_analysis": {
+      "posting": {
+        "raw_text": "Junior Software / DevOps Engineer\n\nJirotech Pty Ltd \nView all jobs\n\nMelbourne VIC\nDevelopers/Programmers (Information & Communication Technology)\nFull time\nPosted 7d ago\n•\nHigh application volume\n\nHow you match\n1 skill or credential matches your profile\n Python Programming\nShow all⁠\nJirotech is a Solutions Integration company. We are seeking an enthusiastic junior software / devops engineer with a passion for technology to join our Melbourne team.  We offer a challenging environment with a broad range of constantly changing technologies and a platform to build your career.\n\nThis role will involve a mix of software and database development, including integrations with existing CI/CD processes and the development of new ones. The successful candidate will mainly deliver project-based work, support key customers, and help manage internal systems. If you have excellent communications skills, are self-motivated and can think independently while also working as part of a team, then this is the job for you.\n\nA degree in computing or relevant experience would be an advantage, but a desire to learn new technologies is a must. Preferably coupled with experience in some of the following areas:\n\nLinux (or other UNIX) installation and management, including working from a shell\n\nReading and writing scripted languages (such as BASH or Python)\n\nInfrastructure as code, automation and configuration technologies (such as YAML, JSON, Ansible, CloudFormation or Terraform)\n\nCompiling and installing open-source software (understanding of OSS, using GCC/configure/make)\n\nWorking knowledge of Relational / NoSQL database\n\nCombining multiple different software products to solve problems\n\nExposure to concepts such as virtualization, containers, configuration management, source management, and application deployment\n\nNetworking fundamentals is also considered a PLUS\n\nThe position is an excellent opportunity for a talented junior software / devops engineer or IT graduate to obtain experience with a wide range of technology in mission critical environments. Additionally, you will be encouraged to obtain industry certifications.\n\n If you think you've got what it takes to succeed in this position, we would love to see your resume.\n\n** No Agencies Please\n\nEmployer questions\nYour application will include the following questions:\nWhich of the following statements best describes your right to work in Australia?\nHow many years' experience do you have as a devops engineer?\nWhich of the following Linux distributions are you familiar with?\nWhich of the following programming languages are you experienced in?\nWhich of the following types of infrastructure project do you have experience with?\nDo you have experience with Relational Database Management Systems (RDBMS)?\nWhich of the following configuration management tools are you experienced with?\nWhich of the following Microsoft Azure certifications have you completed?",
+        "title": "Junior Software / DevOps Engineer",
+        "company": "Jirotech Pty Ltd",
+        "source_url": "https://au.seek.com/job/93335527"
+      },
+      "role_family": {
+        "family": "software_engineering",
+        "evidence": [
+          {
+            "excerpt": "Junior Software / DevOps Engineer",
+            "section": "Job title"
+          }
+        ]
+      },
+      "seniority": {
+        "level": "entry",
+        "ambiguous": false,
+        "candidate_levels": [],
+        "evidence": [
+          {
+            "excerpt": "Junior Software / DevOps Engineer",
+            "section": "Job title"
+          }
+        ]
+      },
+      "technologies": [
+        {
+          "name": "Linux",
+          "level": "preferred",
+          "evidence": [
+            {
+              "excerpt": "Linux (or other UNIX) installation and management",
+              "section": "JobDescription"
+            }
+          ]
+        },
+        {
+          "name": "BASH",
+          "level": "preferred",
+          "evidence": [
+            {
+              "excerpt": "Reading and writing scripted languages (such as BASH or Python)",
+              "section": "JobDescription"
+            }
+          ]
+        },
+        {
+          "name": "Python",
+          "level": "preferred",
+          "evidence": [
+            {
+              "excerpt": "Reading and writing scripted languages (such as BASH or Python)",
+              "section": "JobDescription"
+            }
+          ]
+        },
+        {
+          "name": "YAML",
+          "level": "preferred",
+          "evidence": [
+            {
+              "excerpt": "Infrastructure as code, automation and configuration technologies (such as YAML, JSON, Ansible, CloudFormation or Terraform)",
+              "section": "JobDescription"
+            }
+          ]
+        },
+        {
+          "name": "JSON",
+          "level": "preferred",
+          "evidence": [
+            {
+              "excerpt": "Infrastructure as code, automation and configuration technologies (such as YAML, JSON, Ansible, CloudFormation or Terraform)",
+              "section": "JobDescription"
+            }
+          ]
+        },
+        {
+          "name": "Ansible",
+          "level": "preferred",
+          "evidence": [
+            {
+              "excerpt": "Infrastructure as code, automation and configuration technologies (such as YAML, JSON, Ansible, CloudFormation or Terraform)",
+              "section": "JobDescription"
+            }
+          ]
+        },
+        {
+          "name": "CloudFormation",
+          "level": "preferred",
+          "evidence": [
+            {
+              "excerpt": "Infrastructure as code, automation and configuration technologies (such as YAML, JSON, Ansible, CloudFormation or Terraform)",
+              "section": "JobDescription"
+            }
+          ]
+        },
+        {
+          "name": "Terraform",
+          "level": "preferred",
+          "evidence": [
+            {
+              "excerpt": "Infrastructure as code, automation and configuration technologies (such as YAML, JSON, Ansible, CloudFormation or Terraform)",
+              "section": "JobDescription"
+            }
+          ]
+        },
+        {
+          "name": "GCC",
+          "level": "preferred",
+          "evidence": [
+            {
+              "excerpt": "understanding of OSS, using GCC/configure/make",
+              "section": "JobDescription"
+            }
+          ]
+        },
+        {
+          "name": "Relational Database Management Systems",
+          "level": "preferred",
+          "evidence": [
+            {
+              "excerpt": "Working knowledge of Relational / NoSQL database",
+              "section": "JobDescription"
+            }
+          ]
+        },
+        {
+          "name": "NoSQL",
+          "level": "preferred",
+          "evidence": [
+            {
+              "excerpt": "Working knowledge of Relational / NoSQL database",
+              "section": "JobDescription"
+            }
+          ]
+        },
+        {
+          "name": "virtualization",
+          "level": "preferred",
+          "evidence": [
+            {
+              "excerpt": "Exposure to concepts such as virtualization, containers, configuration management, source management, and application deployment",
+              "section": "JobDescription"
+            }
+          ]
+        },
+        {
+          "name": "containers",
+          "level": "preferred",
+          "evidence": [
+            {
+              "excerpt": "Exposure to concepts such as virtualization, containers, configuration management, source management, and application deployment",
+              "section": "JobDescription"
+            }
+          ]
+        },
+        {
+          "name": "configuration management",
+          "level": "preferred",
+          "evidence": [
+            {
+              "excerpt": "Exposure to concepts such as virtualization, containers, configuration management, source management, and application deployment",
+              "section": "JobDescription"
+            }
+          ]
+        },
+        {
+          "name": "source management",
+          "level": "preferred",
+          "evidence": [
+            {
+              "excerpt": "Exposure to concepts such as virtualization, containers, configuration management, source management, and application deployment",
+              "section": "JobDescription"
+            }
+          ]
+        },
+        {
+          "name": "application deployment",
+          "level": "preferred",
+          "evidence": [
+            {
+              "excerpt": "Exposure to concepts such as virtualization, containers, configuration management, source management, and application deployment",
+              "section": "JobDescription"
+            }
+          ]
+        },
+        {
+          "name": "networking fundamentals",
+          "level": "preferred",
+          "evidence": [
+            {
+              "excerpt": "Networking fundamentals is also considered a PLUS",
+              "section": "JobDescription"
+            }
+          ]
+        }
+      ],
+      "responsibilities": [
+        {
+          "description": "Mix of software and database development, including integrations with existing CI/CD processes and the development of new ones.",
+          "evidence": [
+            {
+              "excerpt": "This role will involve a mix of software and database development, including integrations with existing CI/CD processes and the development of new ones.",
+              "section": "JobDescription"
+            }
+          ]
+        },
+        {
+          "description": "Deliver project-based work.",
+          "evidence": [
+            {
+              "excerpt": "The successful candidate will mainly deliver project-based work",
+              "section": "JobDescription"
+            }
+          ]
+        },
+        {
+          "description": "Support key customers.",
+          "evidence": [
+            {
+              "excerpt": "support key customers",
+              "section": "JobDescription"
+            }
+          ]
+        },
+        {
+          "description": "Help manage internal systems.",
+          "evidence": [
+            {
+              "excerpt": "help manage internal systems.",
+              "section": "JobDescription"
+            }
+          ]
+        }
+      ],
+      "compensation": {
+        "clarity": "unstated",
+        "minimum": null,
+        "maximum": null,
+        "currency": null,
+        "period": null,
+        "raw_text": null,
+        "evidence": []
+      },
+      "location": {
+        "clarity": "stated",
+        "summary": "Melbourne VIC",
+        "evidence": [
+          {
+            "excerpt": "Melbourne VIC",
+            "section": "JobDescription"
+          }
+        ]
+      },
+      "work_arrangement": {
+        "arrangement": "onsite",
+        "details": null,
+        "evidence": [
+          {
+            "excerpt": "join our Melbourne team",
+            "section": "JobDescription"
+          }
+        ]
+      },
+      "employment": {
+        "working_hours": "full_time",
+        "engagement_type": "unspecified",
+        "evidence": [
+          {
+            "excerpt": "Full time",
+            "section": "JobDescription"
+          }
+        ]
+      },
+      "experience_requirements": [
+        {
+          "description": "A degree in computing or relevant experience would be an advantage.",
+          "level": "preferred",
+          "minimum_years": null,
+          "maximum_years": null,
+          "evidence": [
+            {
+              "excerpt": "A degree in computing or relevant experience would be an advantage",
+              "section": "JobDescription"
+            }
+          ]
+        },
+        {
+          "description": "Desire to learn new technologies is a must.",
+          "level": "required",
+          "minimum_years": null,
+          "maximum_years": null,
+          "evidence": [
+            {
+              "excerpt": "a desire to learn new technologies is a must.",
+              "section": "JobDescription"
+            }
+          ]
+        }
+      ]
+    },
+    "application_tier": "silver",
+    "pursuit_posture": "consider",
+    "practical_value": "acceptable_opportunity",
+    "effort_level": "minimal",
+    "summary": "Recommend posture 'consider' with effort tier 'silver' (minimal). Technical fit 'strong', commercial fit 'unknown', portfolio fit 'strong'. Owner review is required before any application action.",
+    "reasons": [
+      {
+        "kind": "alignment",
+        "summary": "Technical fit is 'strong' and portfolio fit is 'strong' for this opportunity.",
+        "importance": "material",
+        "evidence": [
+          {
+            "origin": "opportunity_assessment",
+            "job_evidence": null,
+            "profile_evidence": null,
+            "assessment_dimension": "technical",
+            "assessment_judgment": "strong",
+            "portfolio_project_id": null,
+            "excerpt": null
+          },
+          {
+            "origin": "opportunity_assessment",
+            "job_evidence": null,
+            "profile_evidence": null,
+            "assessment_dimension": "portfolio",
+            "assessment_judgment": "strong",
+            "portfolio_project_id": null,
+            "excerpt": null
+          }
+        ]
+      },
+      {
+        "kind": "priority",
+        "summary": "Pursuit posture 'consider' with effort tier 'silver' reflects commercial fit 'unknown' and software engineering role family.",
+        "importance": "material",
+        "evidence": [
+          {
+            "origin": "opportunity_assessment",
+            "job_evidence": null,
+            "profile_evidence": null,
+            "assessment_dimension": "commercial",
+            "assessment_judgment": "unknown",
+            "portfolio_project_id": null,
+            "excerpt": null
+          },
+          {
+            "origin": "job_analysis",
+            "job_evidence": {
+              "source": "role_family",
+              "item_index": null,
+              "name": null,
+              "excerpt": null
+            },
+            "profile_evidence": null,
+            "assessment_dimension": null,
+            "assessment_judgment": null,
+            "portfolio_project_id": null,
+            "excerpt": null
+          }
+        ]
+      }
+    ],
+    "risks_or_gaps": [
+      {
+        "summary": "Commercial fit is 'unknown', which may reduce the value of investing significant effort.",
+        "importance": "material",
+        "evidence": [
+          {
+            "origin": "opportunity_assessment",
+            "job_evidence": null,
+            "profile_evidence": null,
+            "assessment_dimension": "commercial",
+            "assessment_judgment": "unknown",
+            "portfolio_project_id": null,
+            "excerpt": null
+          }
+        ]
+      },
+      {
+        "summary": "The role prefers familiarity with configuration management tools, which is not explicitly demonstrated in the candidate's profile.",
+        "importance": "material",
+        "evidence": [
+          {
+            "origin": "opportunity_assessment",
+            "job_evidence": null,
+            "profile_evidence": null,
+            "assessment_dimension": "technical",
+            "assessment_judgment": "strong",
+            "portfolio_project_id": null,
+            "excerpt": null
+          }
+        ]
+      }
+    ],
+    "manual_checks": [
+      {
+        "summary": "Review compensation once salary or rate information is available.",
+        "why_it_matters": "Compensation clarity can change commercial priority; no salary conflict was invented from missing data.",
+        "could_change_recommendation": true,
+        "evidence": [
+          {
+            "origin": "job_analysis",
+            "job_evidence": {
+              "source": "compensation",
+              "item_index": null,
+              "name": null,
+              "excerpt": null
+            },
+            "profile_evidence": null,
+            "assessment_dimension": null,
+            "assessment_judgment": null,
+            "portfolio_project_id": null,
+            "excerpt": null
+          }
+        ]
+      },
+      {
+        "summary": "Verify working-rights wording against your own eligibility.",
+        "why_it_matters": "The posting states a working-rights requirement; the system does not infer owner eligibility.",
+        "could_change_recommendation": true,
+        "evidence": [
+          {
+            "origin": "opportunity_assessment",
+            "job_evidence": null,
+            "profile_evidence": null,
+            "assessment_dimension": "commercial",
+            "assessment_judgment": "unknown",
+            "portfolio_project_id": null,
+            "excerpt": null
+          }
+        ]
+      }
+    ],
+    "next_actions": [
+      {
+        "kind": "consider_verifying_working_rights",
+        "summary": "Consider verifying working-rights wording against your eligibility.",
+        "related_project_id": null,
+        "evidence": [
+          {
+            "origin": "opportunity_assessment",
+            "job_evidence": null,
+            "profile_evidence": null,
+            "assessment_dimension": "commercial",
+            "assessment_judgment": "unknown",
+            "portfolio_project_id": null,
+            "excerpt": null
+          }
+        ]
+      },
+      {
+        "kind": "consider_reviewing_compensation",
+        "summary": "Consider reviewing compensation before investing significant effort.",
+        "related_project_id": null,
+        "evidence": [
+          {
+            "origin": "job_analysis",
+            "job_evidence": {
+              "source": "compensation",
+              "item_index": null,
+              "name": null,
+              "excerpt": null
+            },
+            "profile_evidence": null,
+            "assessment_dimension": null,
+            "assessment_judgment": null,
+            "portfolio_project_id": null,
+            "excerpt": null
+          }
+        ]
+      },
+      {
+        "kind": "consider_emphasising_portfolio_projects",
+        "summary": "Consider emphasising the strongest matched portfolio project(s) in any application materials you prepare.",
+        "related_project_id": "payroll-diagnostics-engine",
+        "evidence": [
+          {
+            "origin": "portfolio_match",
+            "job_evidence": null,
+            "profile_evidence": null,
+            "assessment_dimension": null,
+            "assessment_judgment": null,
+            "portfolio_project_id": "payroll-diagnostics-engine",
+            "excerpt": null
+          }
+        ]
+      },
+      {
+        "kind": "consider_owner_review",
+        "summary": "Consider reviewing this full strategy before taking any external action.",
+        "related_project_id": null,
+        "evidence": [
+          {
+            "origin": "opportunity_assessment",
+            "job_evidence": null,
+            "profile_evidence": null,
+            "assessment_dimension": "technical",
+            "assessment_judgment": "strong",
+            "portfolio_project_id": null,
+            "excerpt": null
+          }
+        ]
+      }
+    ],
+    "portfolio_emphasis": [
+      {
+        "project_id": "payroll-diagnostics-engine",
+        "source_rank": 1,
+        "summary": "Consider emphasising 'payroll-diagnostics-engine' (PortfolioMatch rank 1).",
+        "evidence": [
+          {
+            "origin": "portfolio_match",
+            "job_evidence": null,
+            "profile_evidence": null,
+            "assessment_dimension": null,
+            "assessment_judgment": null,
+            "portfolio_project_id": "payroll-diagnostics-engine",
+            "excerpt": null
+          }
+        ]
+      },
+      {
+        "project_id": "governance-document-rag",
+        "source_rank": 2,
+        "summary": "Consider emphasising 'governance-document-rag' (PortfolioMatch rank 2).",
+        "evidence": [
+          {
+            "origin": "portfolio_match",
+            "job_evidence": null,
+            "profile_evidence": null,
+            "assessment_dimension": null,
+            "assessment_judgment": null,
+            "portfolio_project_id": "governance-document-rag",
+            "excerpt": null
+          }
+        ]
+      },
+      {
+        "project_id": "operational-intelligence-copilot",
+        "source_rank": 3,
+        "summary": "Consider emphasising 'operational-intelligence-copilot' (PortfolioMatch rank 3).",
+        "evidence": [
+          {
+            "origin": "portfolio_match",
+            "job_evidence": null,
+            "profile_evidence": null,
+            "assessment_dimension": null,
+            "assessment_judgment": null,
+            "portfolio_project_id": "operational-intelligence-copilot",
+            "excerpt": null
+          }
+        ]
+      }
+    ],
+    "assumptions": [
+      "Compensation fit is not scored because salary/rate evidence is missing or ambiguous.",
+      "No candidate salary minimum is configured, so compensation was not treated as a hard threshold conflict.",
+      "Owner working-rights eligibility is unknown to the system and was not inferred."
+    ],
+    "decision_blockers": [],
+    "owner_review_required": true,
+    "insufficient_information": false
+  }
+}

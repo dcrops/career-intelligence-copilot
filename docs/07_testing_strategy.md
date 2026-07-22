@@ -134,3 +134,27 @@ service-composition isolation (including an explicit tie-contract marker). Share
 fixture markers link extraction to fixture matching. FR-004 does not require
 OpportunityAssessment and must not emit Apply/Skip, tiers, CV strategy, or
 `portfolio_fit` fields.
+
+---
+
+## FR-005 Application Strategy coverage
+
+FR-005 adds:
+
+- unit tests under `tests/unit/application_strategy/` (models, context, refs, service,
+  DeterministicStrategyPlanner, FixtureStrategyPlanner);
+- `tests/functional/test_fr005_acceptance.py` for the public service contract and
+  production policy acceptance scenarios; and
+- `tests/golden/test_application_strategy_user_journey.py` for offline
+  CareerProfile → JobAnalysis → OpportunityAssessment → PortfolioMatch →
+  ApplicationStrategy journeys.
+
+Product-behaviour assertions prefer `DeterministicStrategyPlanner`.
+`FixtureStrategyPlanner` is used for service-composition isolation and predictable
+contract output, keyed to shared FR-002 markers (plus a small set of strategy-only
+markers). FR-005 does not require OpenAI, must not emit CV/cover-letter content or
+autonomous apply decisions, and must keep `owner_review_required=True`.
+
+Seniority-aware stretch policy is covered in
+`tests/unit/application_strategy/test_seniority_mismatch.py` (cap vs unlock, salary-only
+mixed, unknown seniority, independent engineering vs employment, non-AI senior roles).

@@ -1,0 +1,57 @@
+AI Engineer
+
+Allura Partners 
+View all jobs
+
+Melbourne VIC (Hybrid)
+Engineering - Software (Information & Communication Technology)
+Full time
+190000
+Posted 4d ago
+•
+Medium application volume
+
+How you match
+3 skills and credentials match your profile
+ Python Programming
+ Google Cloud
+ REST APIs
+Show all⁠
+AI Engineer / Permanent / Melbourne / up to $190,000 + super + bonus
+
+About the Company
+Our client is a well established, ASX listed FMCG and retail operations business with a national footprint and a multi decade track record. AI is a core part of how the business runs, and they're building a small, high impact team to lead that work.
+
+They are looking for an AI Engineer to join their Melbourne team.
+
+About the Role
+This AI Engineer role is a hands on build and deploy role combining deep technical delivery with a growing stakeholder facing dimension. You'll design, build and deploy AI solutions that solve real operational problems, acting as the technical anchor between business problems and working systems, and growing into a role shaping AI adoption across the business.
+
+Benefits
+$170,000 to $190,000 + super + a bonus
+
+This is a genuine build and own opportunity, not a maintenance role, with real scope to shape how AI is adopted across a large, established business. You'll work close to the business rather than buried in a back office function, with room to grow into a broader governance and adoption remit as the function matures.
+
+Duties / Key Responsibilities
+Design, build and deploy AI models, LLM based tools and agentic workflows, including the evaluation and monitoring needed to trust them in production
+Build and maintain scalable AI infrastructure, data pipelines and integrations back into core business systems
+Own the full delivery cycle: solution design, build, testing, validation, deployment and ongoing support
+Partner directly with stakeholders to translate requirements into technical deliverables, through UAT and into real adoption
+Contribute to AI governance, risk and compliance, keeping documentation and reusable components in good shape so capability scales past one person
+Skills and Experience
+5+ years across software development, data engineering or AI and automation, with real production experience shipping LLM powered applications
+Strong Python skills, including async work, API frameworks and solid testing practices
+Practical cloud experience running AI and ML workloads day to day, ideally with Azure, AWS or GCP exposure or certification
+Comfort with REST APIs, auth, event driven integration, relational databases and data pipelines
+Working knowledge of MLOps, DevOps and solid software engineering practice
+A track record of owning delivery end to end, including working directly with non technical stakeholders, ideally in cross functional or agile teams
+Clear written and verbal communication, with the ability to explain a technical tradeoff to a non technical audience
+Exposure to retail, supply chain or FMCG adjacent AI applications is a plus, as is an interest in AI governance and ethics
+Formal study in a relevant field is useful but not the bar. A strong body of shipped work counts for just as much
+If you're interested in this opportunity and feel you're the right fit, please click "Apply".
+
+About Allura Partners
+
+Allura Partners was founded to support private equity firms by placing C-Suites to lead, transform, and scale portfolio companies. Today, in addition to our proven private equity specialisation, we've become a trusted partner for major ASX-listed and private enterprises in Australia, offering executive search, recruitment, and business transformation. Known for integrity, reliability, and results, our expertise spans Executive Search, Accounting & Finance, Transformation & Change, and Technology & Digital. We connect businesses and top-tier talent, exceeding expectations and driving lasting impact.
+
+AI Engineer / Permanent / Melbourne / up to $190,000 + super + bonus

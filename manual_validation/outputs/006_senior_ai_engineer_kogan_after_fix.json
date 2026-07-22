@@ -1,0 +1,1513 @@
+{
+  "components": [
+    {
+      "name": "CareerProfile",
+      "implementation": "CareerProfileService / YAML",
+      "mode": "deterministic_production"
+    },
+    {
+      "name": "JobAnalysis",
+      "implementation": "OpenAIJobExtractor",
+      "mode": "openai_production"
+    },
+    {
+      "name": "OpportunityAssessment",
+      "implementation": "OpenAIAssessor",
+      "mode": "openai_production"
+    },
+    {
+      "name": "PortfolioMatch",
+      "implementation": "DeterministicMatcher",
+      "mode": "deterministic_production"
+    },
+    {
+      "name": "ApplicationStrategy",
+      "implementation": "DeterministicStrategyPlanner",
+      "mode": "deterministic_production"
+    }
+  ],
+  "volume_applications_enabled": false,
+  "profile_identity": {
+    "full_name": "David Cropper",
+    "target_role": "AI Engineer"
+  },
+  "posting": {
+    "raw_text": "Senior AI Engineer\nKogan.com\n3.7\n20 reviews\n·\nView all jobs\n\nSouth Melbourne, Melbourne VIC\nDevelopers/Programmers (Information & Communication Technology)\nFull time\nPosted 26d ago\n\nHow you match\nMatches based on your career history\nAPI Integration\n\nCustomer Service\n\nShow all⁠\nThis is not a standard AI role.\n\nAt Kogan.com, you will sit at the centre of how we rethink the business through AI. Working directly with the CEO and CTO, you will lead high-impact initiatives while embedding intelligent automation across every function.\n\nWe are looking for someone who doesn't just experiment with AI, but builds real systems that scale. Someone who understands how to turn cutting-edge tools into a measurable competitive advantage.\n\nIf you are already operating at the frontier of autonomous agents, multi-agent systems, and AI-driven software development, this role gives you the mandate and backing to go further.\n\nPartnering with departments across Kogan.com to build AI solutions that make their work faster and get things shipped quickly.\nWorking one-on-one with the CEO/CTO on high-impact, special projects to give us an unfair competitive advantage.\nRapidly prototyping and deploying production-ready software using AI-assisted \"vibe coding.\"\nArchitecting and deploying autonomous agents (OpenClaw, OpenHands, LangGraph) to automate complex workflows in supply chain, marketing, and customer service.\nDesigning Human-in-the-Loop (HITL) workflows to ensure AI bots have appropriate guardrails and approval gates before executing high-stakes production tasks.\nConnecting AI agents securely to our e-commerce stack, ERPs, CRM, and internal databases.\nYou move fast and get things done. You don't wait for permission, you find the fastest path to a working solution and take it.\nStrong foundation in computer science, systems architecture, and API integrations.\nProven experience with the absolute latest AI automation tools, multi-agent frameworks, and advanced workflow builders (n8n, Make.com).\nDeep understanding of AI security protocols, containerization (Docker), and permission allowlists to protect enterprise data from prompt injections and rogue agent behavior.\nStrong commercial awareness of LLM API costs to prevent resource drain and optimize token usage.\nA relentless passion for AI and a habit of staying three steps ahead of industry trends.\nApply now and help us build the future of retail.\n\nYou will have direct access to executive decision-making, real scale, and the freedom to build.\nThis is an opportunity to define how AI is actually used inside one of Australia’s leading digital retailers, not just experiment on the sidelines.\nOur culture is unlike anywhere else and regardless of where you are in your career journey, we empower you to do your best work and have a big impact. Check out https://devblog.kogan.com/ and https://goodteams.app/engineering/kogan.com.\nWork with an incredible team to solve important challenges, helping to drive Australia and New Zealand’s eCommerce future.\nYour role has a lot of ownership, autonomy and little red tape. You’ll be empowered to achieve positive outcomes and your work will have a real impact.\nYou’ll be at the forefront of the eCommerce industry and be part of a company that are the Pioneers of eCommerce in Australia.\nBe an Intrepreneur, playing a hands on role in shaping our strategy at our HQ.\nA range of employee benefits such as; Meaningful Learning budget. Complimentary Kogan First Membership, team exclusive discounts, Health & Wellness program, Learning & Development and Lunch & Learns, Hackathons, Team member referral program, Companyand team events and celebrations, community engagement (volunteering) and extensive career development opportunities plus loads more!\nAI-enabled. Human-driven. Shipping smarter every day.\n\nKogan.com is a pioneer of Australian eCommerce, and the software we build is used by millions of customers every day. You'll join a fast-moving engineering team with real ownership, shipping to production daily and using AI as part of how we work.",
+    "title": "Senior AI Engineer",
+    "company": "Kogan.com",
+    "source_url": "https://jobs.lever.co/kogan/07f623e0-e5eb-494d-acec-d37ffdfdeb34"
+  },
+  "job_analysis": {
+    "posting": {
+      "raw_text": "Senior AI Engineer\nKogan.com\n3.7\n20 reviews\n·\nView all jobs\n\nSouth Melbourne, Melbourne VIC\nDevelopers/Programmers (Information & Communication Technology)\nFull time\nPosted 26d ago\n\nHow you match\nMatches based on your career history\nAPI Integration\n\nCustomer Service\n\nShow all⁠\nThis is not a standard AI role.\n\nAt Kogan.com, you will sit at the centre of how we rethink the business through AI. Working directly with the CEO and CTO, you will lead high-impact initiatives while embedding intelligent automation across every function.\n\nWe are looking for someone who doesn't just experiment with AI, but builds real systems that scale. Someone who understands how to turn cutting-edge tools into a measurable competitive advantage.\n\nIf you are already operating at the frontier of autonomous agents, multi-agent systems, and AI-driven software development, this role gives you the mandate and backing to go further.\n\nPartnering with departments across Kogan.com to build AI solutions that make their work faster and get things shipped quickly.\nWorking one-on-one with the CEO/CTO on high-impact, special projects to give us an unfair competitive advantage.\nRapidly prototyping and deploying production-ready software using AI-assisted \"vibe coding.\"\nArchitecting and deploying autonomous agents (OpenClaw, OpenHands, LangGraph) to automate complex workflows in supply chain, marketing, and customer service.\nDesigning Human-in-the-Loop (HITL) workflows to ensure AI bots have appropriate guardrails and approval gates before executing high-stakes production tasks.\nConnecting AI agents securely to our e-commerce stack, ERPs, CRM, and internal databases.\nYou move fast and get things done. You don't wait for permission, you find the fastest path to a working solution and take it.\nStrong foundation in computer science, systems architecture, and API integrations.\nProven experience with the absolute latest AI automation tools, multi-agent frameworks, and advanced workflow builders (n8n, Make.com).\nDeep understanding of AI security protocols, containerization (Docker), and permission allowlists to protect enterprise data from prompt injections and rogue agent behavior.\nStrong commercial awareness of LLM API costs to prevent resource drain and optimize token usage.\nA relentless passion for AI and a habit of staying three steps ahead of industry trends.\nApply now and help us build the future of retail.\n\nYou will have direct access to executive decision-making, real scale, and the freedom to build.\nThis is an opportunity to define how AI is actually used inside one of Australia’s leading digital retailers, not just experiment on the sidelines.\nOur culture is unlike anywhere else and regardless of where you are in your career journey, we empower you to do your best work and have a big impact. Check out https://devblog.kogan.com/ and https://goodteams.app/engineering/kogan.com.\nWork with an incredible team to solve important challenges, helping to drive Australia and New Zealand’s eCommerce future.\nYour role has a lot of ownership, autonomy and little red tape. You’ll be empowered to achieve positive outcomes and your work will have a real impact.\nYou’ll be at the forefront of the eCommerce industry and be part of a company that are the Pioneers of eCommerce in Australia.\nBe an Intrepreneur, playing a hands on role in shaping our strategy at our HQ.\nA range of employee benefits such as; Meaningful Learning budget. Complimentary Kogan First Membership, team exclusive discounts, Health & Wellness program, Learning & Development and Lunch & Learns, Hackathons, Team member referral program, Companyand team events and celebrations, community engagement (volunteering) and extensive career development opportunities plus loads more!\nAI-enabled. Human-driven. Shipping smarter every day.\n\nKogan.com is a pioneer of Australian eCommerce, and the software we build is used by millions of customers every day. You'll join a fast-moving engineering team with real ownership, shipping to production daily and using AI as part of how we work.",
+      "title": "Senior AI Engineer",
+      "company": "Kogan.com",
+      "source_url": "https://jobs.lever.co/kogan/07f623e0-e5eb-494d-acec-d37ffdfdeb34"
+    },
+    "role_family": {
+      "family": "ai_engineering",
+      "evidence": [
+        {
+          "excerpt": "At Kogan.com, you will sit at the centre of how we rethink the business through AI.",
+          "section": "Job description"
+        }
+      ]
+    },
+    "seniority": {
+      "level": "senior",
+      "ambiguous": false,
+      "candidate_levels": [],
+      "evidence": [
+        {
+          "excerpt": "Senior AI Engineer",
+          "section": "Job title"
+        }
+      ]
+    },
+    "technologies": [
+      {
+        "name": "AI automation tools",
+        "level": "required",
+        "evidence": [
+          {
+            "excerpt": "Proven experience with the absolute latest AI automation tools, multi-agent frameworks, and advanced workflow builders (n8n, Make.com).",
+            "section": "Job description"
+          }
+        ]
+      },
+      {
+        "name": "multi-agent systems",
+        "level": "required",
+        "evidence": [
+          {
+            "excerpt": "If you are already operating at the frontier of autonomous agents, multi-agent systems, and AI-driven software development, this role gives you the mandate and backing to go further.",
+            "section": "Job description"
+          }
+        ]
+      },
+      {
+        "name": "n8n",
+        "level": "required",
+        "evidence": [
+          {
+            "excerpt": "...multi-agent frameworks, and advanced workflow builders (n8n, Make.com).",
+            "section": "Job description"
+          }
+        ]
+      },
+      {
+        "name": "Make.com",
+        "level": "required",
+        "evidence": [
+          {
+            "excerpt": "...multi-agent frameworks, and advanced workflow builders (n8n, Make.com).",
+            "section": "Job description"
+          }
+        ]
+      },
+      {
+        "name": "Docker",
+        "level": "required",
+        "evidence": [
+          {
+            "excerpt": "Deep understanding of AI security protocols, containerization (Docker), and permission allowlists to protect enterprise data from prompt injections and rogue agent behavior.",
+            "section": "Job description"
+          }
+        ]
+      }
+    ],
+    "responsibilities": [
+      {
+        "description": "Lead high-impact initiatives while embedding intelligent automation across every function.",
+        "evidence": [
+          {
+            "excerpt": "...lead high-impact initiatives while embedding intelligent automation across every function.",
+            "section": "Job description"
+          }
+        ]
+      },
+      {
+        "description": "Partner with departments across Kogan.com to build AI solutions that make their work faster and get things shipped quickly.",
+        "evidence": [
+          {
+            "excerpt": "Partnering with departments across Kogan.com to build AI solutions that make their work faster and get things shipped quickly.",
+            "section": "Job description"
+          }
+        ]
+      },
+      {
+        "description": "Rapidly prototype and deploy production-ready software using AI-assisted \"vibe coding.\"",
+        "evidence": [
+          {
+            "excerpt": "Rapidly prototyping and deploying production-ready software using AI-assisted \"vibe coding.\"",
+            "section": "Job description"
+          }
+        ]
+      },
+      {
+        "description": "Architect and deploy autonomous agents (OpenClaw, OpenHands, LangGraph) to automate complex workflows in supply chain, marketing, and customer service.",
+        "evidence": [
+          {
+            "excerpt": "Architecting and deploying autonomous agents (OpenClaw, OpenHands, LangGraph) to automate complex workflows in supply chain, marketing, and customer service.",
+            "section": "Job description"
+          }
+        ]
+      },
+      {
+        "description": "Design Human-in-the-Loop (HITL) workflows to ensure AI bots have appropriate guardrails and approval gates.",
+        "evidence": [
+          {
+            "excerpt": "Designing Human-in-the-Loop (HITL) workflows to ensure AI bots have appropriate guardrails and approval gates before executing high-stakes production tasks.",
+            "section": "Job description"
+          }
+        ]
+      },
+      {
+        "description": "Connect AI agents securely to our e-commerce stack, ERPs, CRM, and internal databases.",
+        "evidence": [
+          {
+            "excerpt": "Connecting AI agents securely to our e-commerce stack, ERPs, CRM, and internal databases.",
+            "section": "Job description"
+          }
+        ]
+      }
+    ],
+    "compensation": {
+      "clarity": "unstated",
+      "minimum": null,
+      "maximum": null,
+      "currency": null,
+      "period": null,
+      "raw_text": null,
+      "evidence": []
+    },
+    "location": {
+      "clarity": "stated",
+      "summary": "South Melbourne, Melbourne VIC",
+      "evidence": [
+        {
+          "excerpt": "South Melbourne, Melbourne VIC",
+          "section": "Job description"
+        }
+      ]
+    },
+    "work_arrangement": {
+      "arrangement": "onsite",
+      "details": null,
+      "evidence": [
+        {
+          "excerpt": "...you will sit at the centre of how we rethink the business through AI. Working directly with the CEO and CTO...",
+          "section": "Job description"
+        }
+      ]
+    },
+    "employment": {
+      "working_hours": "full_time",
+      "engagement_type": "unspecified",
+      "evidence": [
+        {
+          "excerpt": "Full time",
+          "section": "Job description"
+        }
+      ]
+    },
+    "experience_requirements": [
+      {
+        "description": "Strong foundation in computer science, systems architecture, and API integrations.",
+        "level": "required",
+        "minimum_years": null,
+        "maximum_years": null,
+        "evidence": [
+          {
+            "excerpt": "Strong foundation in computer science, systems architecture, and API integrations.",
+            "section": "Job description"
+          }
+        ]
+      }
+    ]
+  },
+  "opportunity_assessment": {
+    "job_analysis": {
+      "posting": {
+        "raw_text": "Senior AI Engineer\nKogan.com\n3.7\n20 reviews\n·\nView all jobs\n\nSouth Melbourne, Melbourne VIC\nDevelopers/Programmers (Information & Communication Technology)\nFull time\nPosted 26d ago\n\nHow you match\nMatches based on your career history\nAPI Integration\n\nCustomer Service\n\nShow all⁠\nThis is not a standard AI role.\n\nAt Kogan.com, you will sit at the centre of how we rethink the business through AI. Working directly with the CEO and CTO, you will lead high-impact initiatives while embedding intelligent automation across every function.\n\nWe are looking for someone who doesn't just experiment with AI, but builds real systems that scale. Someone who understands how to turn cutting-edge tools into a measurable competitive advantage.\n\nIf you are already operating at the frontier of autonomous agents, multi-agent systems, and AI-driven software development, this role gives you the mandate and backing to go further.\n\nPartnering with departments across Kogan.com to build AI solutions that make their work faster and get things shipped quickly.\nWorking one-on-one with the CEO/CTO on high-impact, special projects to give us an unfair competitive advantage.\nRapidly prototyping and deploying production-ready software using AI-assisted \"vibe coding.\"\nArchitecting and deploying autonomous agents (OpenClaw, OpenHands, LangGraph) to automate complex workflows in supply chain, marketing, and customer service.\nDesigning Human-in-the-Loop (HITL) workflows to ensure AI bots have appropriate guardrails and approval gates before executing high-stakes production tasks.\nConnecting AI agents securely to our e-commerce stack, ERPs, CRM, and internal databases.\nYou move fast and get things done. You don't wait for permission, you find the fastest path to a working solution and take it.\nStrong foundation in computer science, systems architecture, and API integrations.\nProven experience with the absolute latest AI automation tools, multi-agent frameworks, and advanced workflow builders (n8n, Make.com).\nDeep understanding of AI security protocols, containerization (Docker), and permission allowlists to protect enterprise data from prompt injections and rogue agent behavior.\nStrong commercial awareness of LLM API costs to prevent resource drain and optimize token usage.\nA relentless passion for AI and a habit of staying three steps ahead of industry trends.\nApply now and help us build the future of retail.\n\nYou will have direct access to executive decision-making, real scale, and the freedom to build.\nThis is an opportunity to define how AI is actually used inside one of Australia’s leading digital retailers, not just experiment on the sidelines.\nOur culture is unlike anywhere else and regardless of where you are in your career journey, we empower you to do your best work and have a big impact. Check out https://devblog.kogan.com/ and https://goodteams.app/engineering/kogan.com.\nWork with an incredible team to solve important challenges, helping to drive Australia and New Zealand’s eCommerce future.\nYour role has a lot of ownership, autonomy and little red tape. You’ll be empowered to achieve positive outcomes and your work will have a real impact.\nYou’ll be at the forefront of the eCommerce industry and be part of a company that are the Pioneers of eCommerce in Australia.\nBe an Intrepreneur, playing a hands on role in shaping our strategy at our HQ.\nA range of employee benefits such as; Meaningful Learning budget. Complimentary Kogan First Membership, team exclusive discounts, Health & Wellness program, Learning & Development and Lunch & Learns, Hackathons, Team member referral program, Companyand team events and celebrations, community engagement (volunteering) and extensive career development opportunities plus loads more!\nAI-enabled. Human-driven. Shipping smarter every day.\n\nKogan.com is a pioneer of Australian eCommerce, and the software we build is used by millions of customers every day. You'll join a fast-moving engineering team with real ownership, shipping to production daily and using AI as part of how we work.",
+        "title": "Senior AI Engineer",
+        "company": "Kogan.com",
+        "source_url": "https://jobs.lever.co/kogan/07f623e0-e5eb-494d-acec-d37ffdfdeb34"
+      },
+      "role_family": {
+        "family": "ai_engineering",
+        "evidence": [
+          {
+            "excerpt": "At Kogan.com, you will sit at the centre of how we rethink the business through AI.",
+            "section": "Job description"
+          }
+        ]
+      },
+      "seniority": {
+        "level": "senior",
+        "ambiguous": false,
+        "candidate_levels": [],
+        "evidence": [
+          {
+            "excerpt": "Senior AI Engineer",
+            "section": "Job title"
+          }
+        ]
+      },
+      "technologies": [
+        {
+          "name": "AI automation tools",
+          "level": "required",
+          "evidence": [
+            {
+              "excerpt": "Proven experience with the absolute latest AI automation tools, multi-agent frameworks, and advanced workflow builders (n8n, Make.com).",
+              "section": "Job description"
+            }
+          ]
+        },
+        {
+          "name": "multi-agent systems",
+          "level": "required",
+          "evidence": [
+            {
+              "excerpt": "If you are already operating at the frontier of autonomous agents, multi-agent systems, and AI-driven software development, this role gives you the mandate and backing to go further.",
+              "section": "Job description"
+            }
+          ]
+        },
+        {
+          "name": "n8n",
+          "level": "required",
+          "evidence": [
+            {
+              "excerpt": "...multi-agent frameworks, and advanced workflow builders (n8n, Make.com).",
+              "section": "Job description"
+            }
+          ]
+        },
+        {
+          "name": "Make.com",
+          "level": "required",
+          "evidence": [
+            {
+              "excerpt": "...multi-agent frameworks, and advanced workflow builders (n8n, Make.com).",
+              "section": "Job description"
+            }
+          ]
+        },
+        {
+          "name": "Docker",
+          "level": "required",
+          "evidence": [
+            {
+              "excerpt": "Deep understanding of AI security protocols, containerization (Docker), and permission allowlists to protect enterprise data from prompt injections and rogue agent behavior.",
+              "section": "Job description"
+            }
+          ]
+        }
+      ],
+      "responsibilities": [
+        {
+          "description": "Lead high-impact initiatives while embedding intelligent automation across every function.",
+          "evidence": [
+            {
+              "excerpt": "...lead high-impact initiatives while embedding intelligent automation across every function.",
+              "section": "Job description"
+            }
+          ]
+        },
+        {
+          "description": "Partner with departments across Kogan.com to build AI solutions that make their work faster and get things shipped quickly.",
+          "evidence": [
+            {
+              "excerpt": "Partnering with departments across Kogan.com to build AI solutions that make their work faster and get things shipped quickly.",
+              "section": "Job description"
+            }
+          ]
+        },
+        {
+          "description": "Rapidly prototype and deploy production-ready software using AI-assisted \"vibe coding.\"",
+          "evidence": [
+            {
+              "excerpt": "Rapidly prototyping and deploying production-ready software using AI-assisted \"vibe coding.\"",
+              "section": "Job description"
+            }
+          ]
+        },
+        {
+          "description": "Architect and deploy autonomous agents (OpenClaw, OpenHands, LangGraph) to automate complex workflows in supply chain, marketing, and customer service.",
+          "evidence": [
+            {
+              "excerpt": "Architecting and deploying autonomous agents (OpenClaw, OpenHands, LangGraph) to automate complex workflows in supply chain, marketing, and customer service.",
+              "section": "Job description"
+            }
+          ]
+        },
+        {
+          "description": "Design Human-in-the-Loop (HITL) workflows to ensure AI bots have appropriate guardrails and approval gates.",
+          "evidence": [
+            {
+              "excerpt": "Designing Human-in-the-Loop (HITL) workflows to ensure AI bots have appropriate guardrails and approval gates before executing high-stakes production tasks.",
+              "section": "Job description"
+            }
+          ]
+        },
+        {
+          "description": "Connect AI agents securely to our e-commerce stack, ERPs, CRM, and internal databases.",
+          "evidence": [
+            {
+              "excerpt": "Connecting AI agents securely to our e-commerce stack, ERPs, CRM, and internal databases.",
+              "section": "Job description"
+            }
+          ]
+        }
+      ],
+      "compensation": {
+        "clarity": "unstated",
+        "minimum": null,
+        "maximum": null,
+        "currency": null,
+        "period": null,
+        "raw_text": null,
+        "evidence": []
+      },
+      "location": {
+        "clarity": "stated",
+        "summary": "South Melbourne, Melbourne VIC",
+        "evidence": [
+          {
+            "excerpt": "South Melbourne, Melbourne VIC",
+            "section": "Job description"
+          }
+        ]
+      },
+      "work_arrangement": {
+        "arrangement": "onsite",
+        "details": null,
+        "evidence": [
+          {
+            "excerpt": "...you will sit at the centre of how we rethink the business through AI. Working directly with the CEO and CTO...",
+            "section": "Job description"
+          }
+        ]
+      },
+      "employment": {
+        "working_hours": "full_time",
+        "engagement_type": "unspecified",
+        "evidence": [
+          {
+            "excerpt": "Full time",
+            "section": "Job description"
+          }
+        ]
+      },
+      "experience_requirements": [
+        {
+          "description": "Strong foundation in computer science, systems architecture, and API integrations.",
+          "level": "required",
+          "minimum_years": null,
+          "maximum_years": null,
+          "evidence": [
+            {
+              "excerpt": "Strong foundation in computer science, systems architecture, and API integrations.",
+              "section": "Job description"
+            }
+          ]
+        }
+      ]
+    },
+    "technical_fit": {
+      "dimension": "technical",
+      "judgment": "strong",
+      "summary": "The candidate's skills and experience align significantly with the technical requirements of the Senior AI Engineer role at Kogan.com. Strong evidence in AI automation tools, multi-agent systems, and relevant programming skills supports this alignment.",
+      "findings": [
+        {
+          "kind": "alignment",
+          "summary": "The candidate has extensive experience using AI automation tools as evidenced in independent projects and roles.",
+          "detail": "This aligns well with the job requirement for proven experience with AI automation tools, including frameworks like n8n and Make.com necessary for the role.",
+          "importance": "material",
+          "job_evidence": [
+            {
+              "source": "technology",
+              "item_index": 0,
+              "name": "AI automation tools",
+              "excerpt": "Proven experience with the absolute latest AI automation tools, multi-agent frameworks, and advanced workflow builders ("
+            }
+          ],
+          "profile_evidence": [
+            {
+              "source": "experience",
+              "ref": "experience:chase-risk-compliance-ai-engineer",
+              "excerpt": "Independently develops progressively more complex production-minded AI Engineering projects under a dedicated portfolio brand."
+            },
+            {
+              "source": "project",
+              "ref": "project:governance-document-rag",
+              "excerpt": "Enterprise retrieval-augmented generation platform supporting trustworthy AI responses over organisational knowledge."
+            }
+          ],
+          "assumption": null
+        },
+        {
+          "kind": "alignment",
+          "summary": "The candidate's experience with multi-agent systems is robust, matching the role's requirements to architect and deploy such systems.",
+          "detail": "Experience aligns with the needs of the role to implement strategies across various functions.",
+          "importance": "material",
+          "job_evidence": [
+            {
+              "source": "technology",
+              "item_index": 1,
+              "name": "multi-agent systems",
+              "excerpt": "If you are already operating at the frontier of autonomous agents, multi-agent systems, and AI-driven software development, this role gives you the mandate and backing to go further."
+            }
+          ],
+          "profile_evidence": [
+            {
+              "source": "experience",
+              "ref": "experience:chase-risk-compliance-ai-engineer",
+              "excerpt": "Builds engineering capability across retrieval-augmented generation, operational intelligence, explainable AI, and enterprise decision-support project areas."
+            },
+            {
+              "source": "project",
+              "ref": "project:operational-intelligence-copilot",
+              "excerpt": "Domain-agnostic operational intelligence platform combining deterministic analytics with Large Language Model reasoning to analyse structured business data."
+            }
+          ],
+          "assumption": null
+        },
+        {
+          "kind": "alignment",
+          "summary": "Strong alignment with required skills in Docker, which is essential for the role's responsibility concerning security protocols and containerization.",
+          "detail": "The candidate's understanding of Docker aligns perfectly with the need for expertise in AI security protocols for protecting enterprise data.",
+          "importance": "material",
+          "job_evidence": [
+            {
+              "source": "technology",
+              "item_index": 4,
+              "name": "Docker",
+              "excerpt": "Deep understanding of AI security protocols, containerization (Docker), and permission allowlists to protect enterprise data from prompt injections and rogue agent behavior."
+            }
+          ],
+          "profile_evidence": [
+            {
+              "source": "experience",
+              "ref": "experience:chase-risk-compliance-ai-engineer",
+              "excerpt": "Independently develops progressively more complex production-minded AI Engineering projects under a dedicated portfolio brand."
+            },
+            {
+              "source": "project",
+              "ref": "project:governance-document-rag",
+              "excerpt": "Enterprise retrieval-augmented generation platform supporting trustworthy AI responses over organisational knowledge."
+            }
+          ],
+          "assumption": null
+        }
+      ]
+    },
+    "commercial_fit": {
+      "dimension": "commercial",
+      "judgment": "mixed",
+      "summary": "The candidate's commercial experience is somewhat aligned with the position's requirements and expectations, particularly in building AI solutions within a commercial framework but lacks direct experience in leading high-impact initiatives on an executive level.",
+      "findings": [
+        {
+          "kind": "gap",
+          "summary": "While the candidate has experience in AI engineering, there is no direct evidence of having worked closely with executives on business initiatives.",
+          "detail": "The role demands partnership with executives like the CEO and CTO, which is absent in the candidate's experience.",
+          "importance": "material",
+          "job_evidence": [
+            {
+              "source": "employment",
+              "item_index": 0,
+              "name": "full_time",
+              "excerpt": "Full time"
+            }
+          ],
+          "profile_evidence": [],
+          "assumption": null
+        },
+        {
+          "kind": "partial_alignment",
+          "summary": "The candidate shows a strong foundation in working on AI engineering projects but lacks demonstrated experience delivering such initiatives at an executive level, as the role might require for close collaboration.",
+          "detail": "They have experience building AI solutions but not in leading them alongside C-level executives.",
+          "importance": "material",
+          "job_evidence": [
+            {
+              "source": "responsibility",
+              "item_index": 3,
+              "name": "Architect and deploy autonomous agents (OpenClaw, OpenHands, LangGraph) to automate complex workflows",
+              "excerpt": "Architecting and deploying autonomous agents (OpenClaw, OpenHands, LangGraph) to automate complex workflows in supply chain, marketing, and customer service."
+            }
+          ],
+          "profile_evidence": [
+            {
+              "source": "experience",
+              "ref": "experience:chase-risk-compliance-ai-engineer",
+              "excerpt": "Independently develops progressively more complex production-minded AI Engineering projects under a dedicated portfolio brand."
+            }
+          ],
+          "assumption": null
+        }
+      ]
+    },
+    "portfolio_fit": {
+      "dimension": "portfolio",
+      "judgment": "strong",
+      "summary": "The candidate's projects demonstrate a high level of capability in AI Engineering that closely matches the expectations of the role.",
+      "findings": [
+        {
+          "kind": "alignment",
+          "summary": "The projects listed in the candidate's portfolio directly correlate with the AI engineering tasks outlined in the job description.",
+          "detail": "Each project shows relevant skills applied in real-world scenarios that would benefit Kogan.com.",
+          "importance": "material",
+          "job_evidence": [
+            {
+              "source": "responsibility",
+              "item_index": 2,
+              "name": "Rapidly prototype and deploy production-ready software using AI-assisted \"vibe coding\"",
+              "excerpt": "Rapidly prototyping and deploying production-ready software using AI-assisted \"vibe coding.\""
+            }
+          ],
+          "profile_evidence": [
+            {
+              "source": "project",
+              "ref": "project:operational-intelligence-copilot",
+              "excerpt": "Produces evidence-backed executive reporting."
+            },
+            {
+              "source": "project",
+              "ref": "project:governance-document-rag",
+              "excerpt": "Supports grounded responses over multi-format organisational documents."
+            },
+            {
+              "source": "project",
+              "ref": "project:payroll-diagnostics-engine",
+              "excerpt": "Produces explainable operational findings."
+            }
+          ],
+          "assumption": null
+        }
+      ]
+    },
+    "summary": {
+      "summary": "The assessment shows a strong technical fit due to the candidate's relevant skills and independent work in AI engineering, with a mixed commercial fit where some gaps exist in experience working on executive-level projects. The portfolio fit is strong, showcasing applicable projects that align with the job's expectations.",
+      "key_alignments": [
+        "Strong technical background in AI engineering",
+        "Strong understanding of multi-agent systems",
+        "Extensive portfolio in AI projects"
+      ],
+      "key_gaps": [
+        "Experience leading high-stakes projects alongside C-suite executives",
+        "Absence of direct commercial execution in partnerships with higher management"
+      ]
+    }
+  },
+  "portfolio_match": {
+    "job_analysis": {
+      "posting": {
+        "raw_text": "Senior AI Engineer\nKogan.com\n3.7\n20 reviews\n·\nView all jobs\n\nSouth Melbourne, Melbourne VIC\nDevelopers/Programmers (Information & Communication Technology)\nFull time\nPosted 26d ago\n\nHow you match\nMatches based on your career history\nAPI Integration\n\nCustomer Service\n\nShow all⁠\nThis is not a standard AI role.\n\nAt Kogan.com, you will sit at the centre of how we rethink the business through AI. Working directly with the CEO and CTO, you will lead high-impact initiatives while embedding intelligent automation across every function.\n\nWe are looking for someone who doesn't just experiment with AI, but builds real systems that scale. Someone who understands how to turn cutting-edge tools into a measurable competitive advantage.\n\nIf you are already operating at the frontier of autonomous agents, multi-agent systems, and AI-driven software development, this role gives you the mandate and backing to go further.\n\nPartnering with departments across Kogan.com to build AI solutions that make their work faster and get things shipped quickly.\nWorking one-on-one with the CEO/CTO on high-impact, special projects to give us an unfair competitive advantage.\nRapidly prototyping and deploying production-ready software using AI-assisted \"vibe coding.\"\nArchitecting and deploying autonomous agents (OpenClaw, OpenHands, LangGraph) to automate complex workflows in supply chain, marketing, and customer service.\nDesigning Human-in-the-Loop (HITL) workflows to ensure AI bots have appropriate guardrails and approval gates before executing high-stakes production tasks.\nConnecting AI agents securely to our e-commerce stack, ERPs, CRM, and internal databases.\nYou move fast and get things done. You don't wait for permission, you find the fastest path to a working solution and take it.\nStrong foundation in computer science, systems architecture, and API integrations.\nProven experience with the absolute latest AI automation tools, multi-agent frameworks, and advanced workflow builders (n8n, Make.com).\nDeep understanding of AI security protocols, containerization (Docker), and permission allowlists to protect enterprise data from prompt injections and rogue agent behavior.\nStrong commercial awareness of LLM API costs to prevent resource drain and optimize token usage.\nA relentless passion for AI and a habit of staying three steps ahead of industry trends.\nApply now and help us build the future of retail.\n\nYou will have direct access to executive decision-making, real scale, and the freedom to build.\nThis is an opportunity to define how AI is actually used inside one of Australia’s leading digital retailers, not just experiment on the sidelines.\nOur culture is unlike anywhere else and regardless of where you are in your career journey, we empower you to do your best work and have a big impact. Check out https://devblog.kogan.com/ and https://goodteams.app/engineering/kogan.com.\nWork with an incredible team to solve important challenges, helping to drive Australia and New Zealand’s eCommerce future.\nYour role has a lot of ownership, autonomy and little red tape. You’ll be empowered to achieve positive outcomes and your work will have a real impact.\nYou’ll be at the forefront of the eCommerce industry and be part of a company that are the Pioneers of eCommerce in Australia.\nBe an Intrepreneur, playing a hands on role in shaping our strategy at our HQ.\nA range of employee benefits such as; Meaningful Learning budget. Complimentary Kogan First Membership, team exclusive discounts, Health & Wellness program, Learning & Development and Lunch & Learns, Hackathons, Team member referral program, Companyand team events and celebrations, community engagement (volunteering) and extensive career development opportunities plus loads more!\nAI-enabled. Human-driven. Shipping smarter every day.\n\nKogan.com is a pioneer of Australian eCommerce, and the software we build is used by millions of customers every day. You'll join a fast-moving engineering team with real ownership, shipping to production daily and using AI as part of how we work.",
+        "title": "Senior AI Engineer",
+        "company": "Kogan.com",
+        "source_url": "https://jobs.lever.co/kogan/07f623e0-e5eb-494d-acec-d37ffdfdeb34"
+      },
+      "role_family": {
+        "family": "ai_engineering",
+        "evidence": [
+          {
+            "excerpt": "At Kogan.com, you will sit at the centre of how we rethink the business through AI.",
+            "section": "Job description"
+          }
+        ]
+      },
+      "seniority": {
+        "level": "senior",
+        "ambiguous": false,
+        "candidate_levels": [],
+        "evidence": [
+          {
+            "excerpt": "Senior AI Engineer",
+            "section": "Job title"
+          }
+        ]
+      },
+      "technologies": [
+        {
+          "name": "AI automation tools",
+          "level": "required",
+          "evidence": [
+            {
+              "excerpt": "Proven experience with the absolute latest AI automation tools, multi-agent frameworks, and advanced workflow builders (n8n, Make.com).",
+              "section": "Job description"
+            }
+          ]
+        },
+        {
+          "name": "multi-agent systems",
+          "level": "required",
+          "evidence": [
+            {
+              "excerpt": "If you are already operating at the frontier of autonomous agents, multi-agent systems, and AI-driven software development, this role gives you the mandate and backing to go further.",
+              "section": "Job description"
+            }
+          ]
+        },
+        {
+          "name": "n8n",
+          "level": "required",
+          "evidence": [
+            {
+              "excerpt": "...multi-agent frameworks, and advanced workflow builders (n8n, Make.com).",
+              "section": "Job description"
+            }
+          ]
+        },
+        {
+          "name": "Make.com",
+          "level": "required",
+          "evidence": [
+            {
+              "excerpt": "...multi-agent frameworks, and advanced workflow builders (n8n, Make.com).",
+              "section": "Job description"
+            }
+          ]
+        },
+        {
+          "name": "Docker",
+          "level": "required",
+          "evidence": [
+            {
+              "excerpt": "Deep understanding of AI security protocols, containerization (Docker), and permission allowlists to protect enterprise data from prompt injections and rogue agent behavior.",
+              "section": "Job description"
+            }
+          ]
+        }
+      ],
+      "responsibilities": [
+        {
+          "description": "Lead high-impact initiatives while embedding intelligent automation across every function.",
+          "evidence": [
+            {
+              "excerpt": "...lead high-impact initiatives while embedding intelligent automation across every function.",
+              "section": "Job description"
+            }
+          ]
+        },
+        {
+          "description": "Partner with departments across Kogan.com to build AI solutions that make their work faster and get things shipped quickly.",
+          "evidence": [
+            {
+              "excerpt": "Partnering with departments across Kogan.com to build AI solutions that make their work faster and get things shipped quickly.",
+              "section": "Job description"
+            }
+          ]
+        },
+        {
+          "description": "Rapidly prototype and deploy production-ready software using AI-assisted \"vibe coding.\"",
+          "evidence": [
+            {
+              "excerpt": "Rapidly prototyping and deploying production-ready software using AI-assisted \"vibe coding.\"",
+              "section": "Job description"
+            }
+          ]
+        },
+        {
+          "description": "Architect and deploy autonomous agents (OpenClaw, OpenHands, LangGraph) to automate complex workflows in supply chain, marketing, and customer service.",
+          "evidence": [
+            {
+              "excerpt": "Architecting and deploying autonomous agents (OpenClaw, OpenHands, LangGraph) to automate complex workflows in supply chain, marketing, and customer service.",
+              "section": "Job description"
+            }
+          ]
+        },
+        {
+          "description": "Design Human-in-the-Loop (HITL) workflows to ensure AI bots have appropriate guardrails and approval gates.",
+          "evidence": [
+            {
+              "excerpt": "Designing Human-in-the-Loop (HITL) workflows to ensure AI bots have appropriate guardrails and approval gates before executing high-stakes production tasks.",
+              "section": "Job description"
+            }
+          ]
+        },
+        {
+          "description": "Connect AI agents securely to our e-commerce stack, ERPs, CRM, and internal databases.",
+          "evidence": [
+            {
+              "excerpt": "Connecting AI agents securely to our e-commerce stack, ERPs, CRM, and internal databases.",
+              "section": "Job description"
+            }
+          ]
+        }
+      ],
+      "compensation": {
+        "clarity": "unstated",
+        "minimum": null,
+        "maximum": null,
+        "currency": null,
+        "period": null,
+        "raw_text": null,
+        "evidence": []
+      },
+      "location": {
+        "clarity": "stated",
+        "summary": "South Melbourne, Melbourne VIC",
+        "evidence": [
+          {
+            "excerpt": "South Melbourne, Melbourne VIC",
+            "section": "Job description"
+          }
+        ]
+      },
+      "work_arrangement": {
+        "arrangement": "onsite",
+        "details": null,
+        "evidence": [
+          {
+            "excerpt": "...you will sit at the centre of how we rethink the business through AI. Working directly with the CEO and CTO...",
+            "section": "Job description"
+          }
+        ]
+      },
+      "employment": {
+        "working_hours": "full_time",
+        "engagement_type": "unspecified",
+        "evidence": [
+          {
+            "excerpt": "Full time",
+            "section": "Job description"
+          }
+        ]
+      },
+      "experience_requirements": [
+        {
+          "description": "Strong foundation in computer science, systems architecture, and API integrations.",
+          "level": "required",
+          "minimum_years": null,
+          "maximum_years": null,
+          "evidence": [
+            {
+              "excerpt": "Strong foundation in computer science, systems architecture, and API integrations.",
+              "section": "Job description"
+            }
+          ]
+        }
+      ]
+    },
+    "ranked_projects": [
+      {
+        "rank": 1,
+        "project_id": "governance-document-rag",
+        "rationale": "Project 'governance-document-rag' ranked on 1 required technology hit(s), 1 demonstrates overlap(s), 4 responsibility overlap(s).",
+        "factors": [
+          {
+            "kind": "required_technology",
+            "summary": "Project evidence supports required technology 'Docker'.",
+            "job_evidence": [
+              {
+                "source": "technology",
+                "item_index": 4,
+                "name": "Docker",
+                "excerpt": "Deep understanding of AI security protocols, containerization (Docker), and permission allowlists to protect enterprise data from prompt injections and rogue a…"
+              }
+            ],
+            "profile_evidence": [
+              {
+                "source": "project",
+                "ref": "project:governance-document-rag",
+                "excerpt": "Docker"
+              }
+            ]
+          },
+          {
+            "kind": "demonstrates_overlap",
+            "summary": "Project demonstrates capabilities overlapping responsibility 'Lead high-impact initiatives while embedding intelligent automation across every function.'.",
+            "job_evidence": [
+              {
+                "source": "responsibility",
+                "item_index": 0,
+                "name": null,
+                "excerpt": "...lead high-impact initiatives while embedding intelligent automation across every function."
+              }
+            ],
+            "profile_evidence": [
+              {
+                "source": "project",
+                "ref": "project:governance-document-rag",
+                "excerpt": "Embedding generation"
+              }
+            ]
+          },
+          {
+            "kind": "responsibility_overlap",
+            "summary": "Project summary, outcomes, or technologies overlap responsibility 'Partner with departments across Kogan.com to build AI solutions that make their work faster and get things shipped quickly.'.",
+            "job_evidence": [
+              {
+                "source": "responsibility",
+                "item_index": 1,
+                "name": null,
+                "excerpt": "Partnering with departments across Kogan.com to build AI solutions that make their work faster and get things shipped quickly."
+              }
+            ],
+            "profile_evidence": [
+              {
+                "source": "project",
+                "ref": "project:governance-document-rag",
+                "excerpt": "Enterprise retrieval-augmented generation platform supporting trustworthy AI responses over organisational knowledge."
+              }
+            ]
+          },
+          {
+            "kind": "responsibility_overlap",
+            "summary": "Project summary, outcomes, or technologies overlap responsibility 'Rapidly prototype and deploy production-ready software using AI-assisted \"vibe coding.\"'.",
+            "job_evidence": [
+              {
+                "source": "responsibility",
+                "item_index": 2,
+                "name": null,
+                "excerpt": "Rapidly prototyping and deploying production-ready software using AI-assisted \"vibe coding.\""
+              }
+            ],
+            "profile_evidence": [
+              {
+                "source": "project",
+                "ref": "project:governance-document-rag",
+                "excerpt": "Enterprise retrieval-augmented generation platform supporting trustworthy AI responses over organisational knowledge."
+              }
+            ]
+          },
+          {
+            "kind": "responsibility_overlap",
+            "summary": "Project summary, outcomes, or technologies overlap responsibility 'Design Human-in-the-Loop (HITL) workflows to ensure AI bots have appropriate guardrails and approval gates.'.",
+            "job_evidence": [
+              {
+                "source": "responsibility",
+                "item_index": 4,
+                "name": null,
+                "excerpt": "Designing Human-in-the-Loop (HITL) workflows to ensure AI bots have appropriate guardrails and approval gates before executing high-stakes production tasks."
+              }
+            ],
+            "profile_evidence": [
+              {
+                "source": "project",
+                "ref": "project:governance-document-rag",
+                "excerpt": "Enterprise retrieval-augmented generation platform supporting trustworthy AI responses over organisational knowledge."
+              }
+            ]
+          },
+          {
+            "kind": "responsibility_overlap",
+            "summary": "Project summary, outcomes, or technologies overlap responsibility 'Connect AI agents securely to our e-commerce stack, ERPs, CRM, and internal databases.'.",
+            "job_evidence": [
+              {
+                "source": "responsibility",
+                "item_index": 5,
+                "name": null,
+                "excerpt": "Connecting AI agents securely to our e-commerce stack, ERPs, CRM, and internal databases."
+              }
+            ],
+            "profile_evidence": [
+              {
+                "source": "project",
+                "ref": "project:governance-document-rag",
+                "excerpt": "Enterprise retrieval-augmented generation platform supporting trustworthy AI responses over organisational knowledge."
+              }
+            ]
+          }
+        ],
+        "tie_group": null,
+        "tie_break_reason": null
+      },
+      {
+        "rank": 2,
+        "project_id": "operational-intelligence-copilot",
+        "rationale": "Project 'operational-intelligence-copilot' ranked on 6 demonstrates overlap(s).",
+        "factors": [
+          {
+            "kind": "demonstrates_overlap",
+            "summary": "Project demonstrates capabilities overlapping responsibility 'Lead high-impact initiatives while embedding intelligent automation across every function.'.",
+            "job_evidence": [
+              {
+                "source": "responsibility",
+                "item_index": 0,
+                "name": null,
+                "excerpt": "...lead high-impact initiatives while embedding intelligent automation across every function."
+              }
+            ],
+            "profile_evidence": [
+              {
+                "source": "project",
+                "ref": "project:operational-intelligence-copilot",
+                "excerpt": "Intelligent intent routing"
+              }
+            ]
+          },
+          {
+            "kind": "demonstrates_overlap",
+            "summary": "Project demonstrates capabilities overlapping responsibility 'Partner with departments across Kogan.com to build AI solutions that make their work faster and get things shipped quickly.'.",
+            "job_evidence": [
+              {
+                "source": "responsibility",
+                "item_index": 1,
+                "name": null,
+                "excerpt": "Partnering with departments across Kogan.com to build AI solutions that make their work faster and get things shipped quickly."
+              }
+            ],
+            "profile_evidence": [
+              {
+                "source": "project",
+                "ref": "project:operational-intelligence-copilot",
+                "excerpt": "Explainable AI recommendations"
+              }
+            ]
+          },
+          {
+            "kind": "demonstrates_overlap",
+            "summary": "Project demonstrates capabilities overlapping responsibility 'Rapidly prototype and deploy production-ready software using AI-assisted \"vibe coding.\"'.",
+            "job_evidence": [
+              {
+                "source": "responsibility",
+                "item_index": 2,
+                "name": null,
+                "excerpt": "Rapidly prototyping and deploying production-ready software using AI-assisted \"vibe coding.\""
+              }
+            ],
+            "profile_evidence": [
+              {
+                "source": "project",
+                "ref": "project:operational-intelligence-copilot",
+                "excerpt": "Explainable AI recommendations"
+              }
+            ]
+          },
+          {
+            "kind": "demonstrates_overlap",
+            "summary": "Project demonstrates capabilities overlapping responsibility 'Architect and deploy autonomous agents (OpenClaw, OpenHands, LangGraph) to automate complex workflows in supply chain, marketing, and customer service.'.",
+            "job_evidence": [
+              {
+                "source": "responsibility",
+                "item_index": 3,
+                "name": null,
+                "excerpt": "Architecting and deploying autonomous agents (OpenClaw, OpenHands, LangGraph) to automate complex workflows in supply chain, marketing, and customer service."
+              }
+            ],
+            "profile_evidence": [
+              {
+                "source": "project",
+                "ref": "project:operational-intelligence-copilot",
+                "excerpt": "Regression-tested analytics workflows"
+              }
+            ]
+          },
+          {
+            "kind": "demonstrates_overlap",
+            "summary": "Project demonstrates capabilities overlapping responsibility 'Design Human-in-the-Loop (HITL) workflows to ensure AI bots have appropriate guardrails and approval gates.'.",
+            "job_evidence": [
+              {
+                "source": "responsibility",
+                "item_index": 4,
+                "name": null,
+                "excerpt": "Designing Human-in-the-Loop (HITL) workflows to ensure AI bots have appropriate guardrails and approval gates before executing high-stakes production tasks."
+              }
+            ],
+            "profile_evidence": [
+              {
+                "source": "project",
+                "ref": "project:operational-intelligence-copilot",
+                "excerpt": "Regression-tested analytics workflows"
+              }
+            ]
+          },
+          {
+            "kind": "demonstrates_overlap",
+            "summary": "Project demonstrates capabilities overlapping responsibility 'Connect AI agents securely to our e-commerce stack, ERPs, CRM, and internal databases.'.",
+            "job_evidence": [
+              {
+                "source": "responsibility",
+                "item_index": 5,
+                "name": null,
+                "excerpt": "Connecting AI agents securely to our e-commerce stack, ERPs, CRM, and internal databases."
+              }
+            ],
+            "profile_evidence": [
+              {
+                "source": "project",
+                "ref": "project:operational-intelligence-copilot",
+                "excerpt": "Explainable AI recommendations"
+              }
+            ]
+          }
+        ],
+        "tie_group": null,
+        "tie_break_reason": null
+      },
+      {
+        "rank": 3,
+        "project_id": "payroll-diagnostics-engine",
+        "rationale": "Project 'payroll-diagnostics-engine' ranked on 1 responsibility overlap(s).",
+        "factors": [
+          {
+            "kind": "responsibility_overlap",
+            "summary": "Project summary, outcomes, or technologies overlap responsibility 'Rapidly prototype and deploy production-ready software using AI-assisted \"vibe coding.\"'.",
+            "job_evidence": [
+              {
+                "source": "responsibility",
+                "item_index": 2,
+                "name": null,
+                "excerpt": "Rapidly prototyping and deploying production-ready software using AI-assisted \"vibe coding.\""
+              }
+            ],
+            "profile_evidence": [
+              {
+                "source": "project",
+                "ref": "project:payroll-diagnostics-engine",
+                "excerpt": "Generates executive-ready reporting."
+              }
+            ]
+          }
+        ],
+        "tie_group": null,
+        "tie_break_reason": null
+      }
+    ],
+    "unranked_project_ids": [
+      "public-holiday-entitlements"
+    ],
+    "summary": "Ranked 3 project(s); lead with 'governance-document-rag'. 1 project(s) had no matching factors.",
+    "insufficient_evidence": false
+  },
+  "application_strategy": {
+    "job_analysis": {
+      "posting": {
+        "raw_text": "Senior AI Engineer\nKogan.com\n3.7\n20 reviews\n·\nView all jobs\n\nSouth Melbourne, Melbourne VIC\nDevelopers/Programmers (Information & Communication Technology)\nFull time\nPosted 26d ago\n\nHow you match\nMatches based on your career history\nAPI Integration\n\nCustomer Service\n\nShow all⁠\nThis is not a standard AI role.\n\nAt Kogan.com, you will sit at the centre of how we rethink the business through AI. Working directly with the CEO and CTO, you will lead high-impact initiatives while embedding intelligent automation across every function.\n\nWe are looking for someone who doesn't just experiment with AI, but builds real systems that scale. Someone who understands how to turn cutting-edge tools into a measurable competitive advantage.\n\nIf you are already operating at the frontier of autonomous agents, multi-agent systems, and AI-driven software development, this role gives you the mandate and backing to go further.\n\nPartnering with departments across Kogan.com to build AI solutions that make their work faster and get things shipped quickly.\nWorking one-on-one with the CEO/CTO on high-impact, special projects to give us an unfair competitive advantage.\nRapidly prototyping and deploying production-ready software using AI-assisted \"vibe coding.\"\nArchitecting and deploying autonomous agents (OpenClaw, OpenHands, LangGraph) to automate complex workflows in supply chain, marketing, and customer service.\nDesigning Human-in-the-Loop (HITL) workflows to ensure AI bots have appropriate guardrails and approval gates before executing high-stakes production tasks.\nConnecting AI agents securely to our e-commerce stack, ERPs, CRM, and internal databases.\nYou move fast and get things done. You don't wait for permission, you find the fastest path to a working solution and take it.\nStrong foundation in computer science, systems architecture, and API integrations.\nProven experience with the absolute latest AI automation tools, multi-agent frameworks, and advanced workflow builders (n8n, Make.com).\nDeep understanding of AI security protocols, containerization (Docker), and permission allowlists to protect enterprise data from prompt injections and rogue agent behavior.\nStrong commercial awareness of LLM API costs to prevent resource drain and optimize token usage.\nA relentless passion for AI and a habit of staying three steps ahead of industry trends.\nApply now and help us build the future of retail.\n\nYou will have direct access to executive decision-making, real scale, and the freedom to build.\nThis is an opportunity to define how AI is actually used inside one of Australia’s leading digital retailers, not just experiment on the sidelines.\nOur culture is unlike anywhere else and regardless of where you are in your career journey, we empower you to do your best work and have a big impact. Check out https://devblog.kogan.com/ and https://goodteams.app/engineering/kogan.com.\nWork with an incredible team to solve important challenges, helping to drive Australia and New Zealand’s eCommerce future.\nYour role has a lot of ownership, autonomy and little red tape. You’ll be empowered to achieve positive outcomes and your work will have a real impact.\nYou’ll be at the forefront of the eCommerce industry and be part of a company that are the Pioneers of eCommerce in Australia.\nBe an Intrepreneur, playing a hands on role in shaping our strategy at our HQ.\nA range of employee benefits such as; Meaningful Learning budget. Complimentary Kogan First Membership, team exclusive discounts, Health & Wellness program, Learning & Development and Lunch & Learns, Hackathons, Team member referral program, Companyand team events and celebrations, community engagement (volunteering) and extensive career development opportunities plus loads more!\nAI-enabled. Human-driven. Shipping smarter every day.\n\nKogan.com is a pioneer of Australian eCommerce, and the software we build is used by millions of customers every day. You'll join a fast-moving engineering team with real ownership, shipping to production daily and using AI as part of how we work.",
+        "title": "Senior AI Engineer",
+        "company": "Kogan.com",
+        "source_url": "https://jobs.lever.co/kogan/07f623e0-e5eb-494d-acec-d37ffdfdeb34"
+      },
+      "role_family": {
+        "family": "ai_engineering",
+        "evidence": [
+          {
+            "excerpt": "At Kogan.com, you will sit at the centre of how we rethink the business through AI.",
+            "section": "Job description"
+          }
+        ]
+      },
+      "seniority": {
+        "level": "senior",
+        "ambiguous": false,
+        "candidate_levels": [],
+        "evidence": [
+          {
+            "excerpt": "Senior AI Engineer",
+            "section": "Job title"
+          }
+        ]
+      },
+      "technologies": [
+        {
+          "name": "AI automation tools",
+          "level": "required",
+          "evidence": [
+            {
+              "excerpt": "Proven experience with the absolute latest AI automation tools, multi-agent frameworks, and advanced workflow builders (n8n, Make.com).",
+              "section": "Job description"
+            }
+          ]
+        },
+        {
+          "name": "multi-agent systems",
+          "level": "required",
+          "evidence": [
+            {
+              "excerpt": "If you are already operating at the frontier of autonomous agents, multi-agent systems, and AI-driven software development, this role gives you the mandate and backing to go further.",
+              "section": "Job description"
+            }
+          ]
+        },
+        {
+          "name": "n8n",
+          "level": "required",
+          "evidence": [
+            {
+              "excerpt": "...multi-agent frameworks, and advanced workflow builders (n8n, Make.com).",
+              "section": "Job description"
+            }
+          ]
+        },
+        {
+          "name": "Make.com",
+          "level": "required",
+          "evidence": [
+            {
+              "excerpt": "...multi-agent frameworks, and advanced workflow builders (n8n, Make.com).",
+              "section": "Job description"
+            }
+          ]
+        },
+        {
+          "name": "Docker",
+          "level": "required",
+          "evidence": [
+            {
+              "excerpt": "Deep understanding of AI security protocols, containerization (Docker), and permission allowlists to protect enterprise data from prompt injections and rogue agent behavior.",
+              "section": "Job description"
+            }
+          ]
+        }
+      ],
+      "responsibilities": [
+        {
+          "description": "Lead high-impact initiatives while embedding intelligent automation across every function.",
+          "evidence": [
+            {
+              "excerpt": "...lead high-impact initiatives while embedding intelligent automation across every function.",
+              "section": "Job description"
+            }
+          ]
+        },
+        {
+          "description": "Partner with departments across Kogan.com to build AI solutions that make their work faster and get things shipped quickly.",
+          "evidence": [
+            {
+              "excerpt": "Partnering with departments across Kogan.com to build AI solutions that make their work faster and get things shipped quickly.",
+              "section": "Job description"
+            }
+          ]
+        },
+        {
+          "description": "Rapidly prototype and deploy production-ready software using AI-assisted \"vibe coding.\"",
+          "evidence": [
+            {
+              "excerpt": "Rapidly prototyping and deploying production-ready software using AI-assisted \"vibe coding.\"",
+              "section": "Job description"
+            }
+          ]
+        },
+        {
+          "description": "Architect and deploy autonomous agents (OpenClaw, OpenHands, LangGraph) to automate complex workflows in supply chain, marketing, and customer service.",
+          "evidence": [
+            {
+              "excerpt": "Architecting and deploying autonomous agents (OpenClaw, OpenHands, LangGraph) to automate complex workflows in supply chain, marketing, and customer service.",
+              "section": "Job description"
+            }
+          ]
+        },
+        {
+          "description": "Design Human-in-the-Loop (HITL) workflows to ensure AI bots have appropriate guardrails and approval gates.",
+          "evidence": [
+            {
+              "excerpt": "Designing Human-in-the-Loop (HITL) workflows to ensure AI bots have appropriate guardrails and approval gates before executing high-stakes production tasks.",
+              "section": "Job description"
+            }
+          ]
+        },
+        {
+          "description": "Connect AI agents securely to our e-commerce stack, ERPs, CRM, and internal databases.",
+          "evidence": [
+            {
+              "excerpt": "Connecting AI agents securely to our e-commerce stack, ERPs, CRM, and internal databases.",
+              "section": "Job description"
+            }
+          ]
+        }
+      ],
+      "compensation": {
+        "clarity": "unstated",
+        "minimum": null,
+        "maximum": null,
+        "currency": null,
+        "period": null,
+        "raw_text": null,
+        "evidence": []
+      },
+      "location": {
+        "clarity": "stated",
+        "summary": "South Melbourne, Melbourne VIC",
+        "evidence": [
+          {
+            "excerpt": "South Melbourne, Melbourne VIC",
+            "section": "Job description"
+          }
+        ]
+      },
+      "work_arrangement": {
+        "arrangement": "onsite",
+        "details": null,
+        "evidence": [
+          {
+            "excerpt": "...you will sit at the centre of how we rethink the business through AI. Working directly with the CEO and CTO...",
+            "section": "Job description"
+          }
+        ]
+      },
+      "employment": {
+        "working_hours": "full_time",
+        "engagement_type": "unspecified",
+        "evidence": [
+          {
+            "excerpt": "Full time",
+            "section": "Job description"
+          }
+        ]
+      },
+      "experience_requirements": [
+        {
+          "description": "Strong foundation in computer science, systems architecture, and API integrations.",
+          "level": "required",
+          "minimum_years": null,
+          "maximum_years": null,
+          "evidence": [
+            {
+              "excerpt": "Strong foundation in computer science, systems architecture, and API integrations.",
+              "section": "Job description"
+            }
+          ]
+        }
+      ]
+    },
+    "application_tier": "gold",
+    "pursuit_posture": "pursue",
+    "practical_value": "career_priority",
+    "effort_level": "targeted",
+    "summary": "Recommend posture 'pursue' with effort tier 'gold' (targeted). Technical fit 'strong', commercial fit 'mixed', portfolio fit 'strong'. Owner review is required before any application action.",
+    "reasons": [
+      {
+        "kind": "alignment",
+        "summary": "Technical fit is 'strong' and portfolio fit is 'strong' for this opportunity.",
+        "importance": "material",
+        "evidence": [
+          {
+            "origin": "opportunity_assessment",
+            "job_evidence": null,
+            "profile_evidence": null,
+            "assessment_dimension": "technical",
+            "assessment_judgment": "strong",
+            "portfolio_project_id": null,
+            "excerpt": null
+          },
+          {
+            "origin": "opportunity_assessment",
+            "job_evidence": null,
+            "profile_evidence": null,
+            "assessment_dimension": "portfolio",
+            "assessment_judgment": "strong",
+            "portfolio_project_id": null,
+            "excerpt": null
+          }
+        ]
+      },
+      {
+        "kind": "priority",
+        "summary": "Pursuit posture 'pursue' with effort tier 'gold' reflects commercial fit 'mixed' and AI-aligned role family.",
+        "importance": "material",
+        "evidence": [
+          {
+            "origin": "opportunity_assessment",
+            "job_evidence": null,
+            "profile_evidence": null,
+            "assessment_dimension": "commercial",
+            "assessment_judgment": "mixed",
+            "portfolio_project_id": null,
+            "excerpt": null
+          },
+          {
+            "origin": "job_analysis",
+            "job_evidence": {
+              "source": "role_family",
+              "item_index": null,
+              "name": null,
+              "excerpt": null
+            },
+            "profile_evidence": null,
+            "assessment_dimension": null,
+            "assessment_judgment": null,
+            "portfolio_project_id": null,
+            "excerpt": null
+          }
+        ]
+      },
+      {
+        "kind": "effort",
+        "summary": "Effort level 'targeted' is justified by the current fit evidence for this AI engineering opportunity.",
+        "importance": "minor",
+        "evidence": [
+          {
+            "origin": "opportunity_assessment",
+            "job_evidence": null,
+            "profile_evidence": null,
+            "assessment_dimension": "technical",
+            "assessment_judgment": "strong",
+            "portfolio_project_id": null,
+            "excerpt": null
+          }
+        ]
+      }
+    ],
+    "risks_or_gaps": [
+      {
+        "summary": "Commercial fit is 'mixed', which may reduce the value of investing significant effort.",
+        "importance": "minor",
+        "evidence": [
+          {
+            "origin": "opportunity_assessment",
+            "job_evidence": null,
+            "profile_evidence": null,
+            "assessment_dimension": "commercial",
+            "assessment_judgment": "mixed",
+            "portfolio_project_id": null,
+            "excerpt": null
+          }
+        ]
+      }
+    ],
+    "manual_checks": [
+      {
+        "summary": "Review compensation once salary or rate information is available.",
+        "why_it_matters": "Compensation clarity can change commercial priority; no salary conflict was invented from missing data.",
+        "could_change_recommendation": true,
+        "evidence": [
+          {
+            "origin": "job_analysis",
+            "job_evidence": {
+              "source": "compensation",
+              "item_index": null,
+              "name": null,
+              "excerpt": null
+            },
+            "profile_evidence": null,
+            "assessment_dimension": null,
+            "assessment_judgment": null,
+            "portfolio_project_id": null,
+            "excerpt": null
+          }
+        ]
+      }
+    ],
+    "next_actions": [
+      {
+        "kind": "consider_reviewing_compensation",
+        "summary": "Consider reviewing compensation before investing significant effort.",
+        "related_project_id": null,
+        "evidence": [
+          {
+            "origin": "job_analysis",
+            "job_evidence": {
+              "source": "compensation",
+              "item_index": null,
+              "name": null,
+              "excerpt": null
+            },
+            "profile_evidence": null,
+            "assessment_dimension": null,
+            "assessment_judgment": null,
+            "portfolio_project_id": null,
+            "excerpt": null
+          }
+        ]
+      },
+      {
+        "kind": "consider_emphasising_portfolio_projects",
+        "summary": "Consider emphasising the strongest matched portfolio project(s) in any application materials you prepare.",
+        "related_project_id": "governance-document-rag",
+        "evidence": [
+          {
+            "origin": "portfolio_match",
+            "job_evidence": null,
+            "profile_evidence": null,
+            "assessment_dimension": null,
+            "assessment_judgment": null,
+            "portfolio_project_id": "governance-document-rag",
+            "excerpt": null
+          }
+        ]
+      },
+      {
+        "kind": "consider_cv_tailoring",
+        "summary": "Consider whether CV tailoring is worth the effort for this opportunity.",
+        "related_project_id": null,
+        "evidence": [
+          {
+            "origin": "opportunity_assessment",
+            "job_evidence": null,
+            "profile_evidence": null,
+            "assessment_dimension": "technical",
+            "assessment_judgment": "strong",
+            "portfolio_project_id": null,
+            "excerpt": null
+          }
+        ]
+      },
+      {
+        "kind": "consider_owner_review",
+        "summary": "Consider reviewing this full strategy before taking any external action.",
+        "related_project_id": null,
+        "evidence": [
+          {
+            "origin": "opportunity_assessment",
+            "job_evidence": null,
+            "profile_evidence": null,
+            "assessment_dimension": "technical",
+            "assessment_judgment": "strong",
+            "portfolio_project_id": null,
+            "excerpt": null
+          }
+        ]
+      }
+    ],
+    "portfolio_emphasis": [
+      {
+        "project_id": "governance-document-rag",
+        "source_rank": 1,
+        "summary": "Consider emphasising 'governance-document-rag' (PortfolioMatch rank 1).",
+        "evidence": [
+          {
+            "origin": "portfolio_match",
+            "job_evidence": null,
+            "profile_evidence": null,
+            "assessment_dimension": null,
+            "assessment_judgment": null,
+            "portfolio_project_id": "governance-document-rag",
+            "excerpt": null
+          }
+        ]
+      },
+      {
+        "project_id": "operational-intelligence-copilot",
+        "source_rank": 2,
+        "summary": "Consider emphasising 'operational-intelligence-copilot' (PortfolioMatch rank 2).",
+        "evidence": [
+          {
+            "origin": "portfolio_match",
+            "job_evidence": null,
+            "profile_evidence": null,
+            "assessment_dimension": null,
+            "assessment_judgment": null,
+            "portfolio_project_id": "operational-intelligence-copilot",
+            "excerpt": null
+          }
+        ]
+      },
+      {
+        "project_id": "payroll-diagnostics-engine",
+        "source_rank": 3,
+        "summary": "Consider emphasising 'payroll-diagnostics-engine' (PortfolioMatch rank 3).",
+        "evidence": [
+          {
+            "origin": "portfolio_match",
+            "job_evidence": null,
+            "profile_evidence": null,
+            "assessment_dimension": null,
+            "assessment_judgment": null,
+            "portfolio_project_id": "payroll-diagnostics-engine",
+            "excerpt": null
+          }
+        ]
+      }
+    ],
+    "assumptions": [
+      "Compensation fit is not scored because salary/rate evidence is missing or ambiguous.",
+      "No candidate salary minimum is configured, so compensation was not treated as a hard threshold conflict."
+    ],
+    "decision_blockers": [],
+    "owner_review_required": true,
+    "insufficient_information": false
+  }
+}

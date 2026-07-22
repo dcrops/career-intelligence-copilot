@@ -24,8 +24,9 @@ The repository — not conversation history — is the project's long-term memor
 Career Intelligence Copilot is a decision-support system for job search — not an application automation tool.
 
 **Current phase:** Phase 2 Job Intelligence implementation. FR-001 Career Profile,
-FR-002 Job Analysis, FR-003 Opportunity Assessment, and FR-004 Portfolio Matching are
-implemented; later decision-loop stages (FR-005+) remain in progress.
+FR-002 Job Analysis, FR-003 Opportunity Assessment, FR-004 Portfolio Matching, and
+FR-005 Application Strategy are implemented; later decision-loop stages (pipeline
+tracking, FR-013, ranked comparison) remain in progress.
 
 **Implementation foundation:** Python 3.11+, Pydantic, YAML storage, and the public profile
 service boundary are recorded in
@@ -39,7 +40,7 @@ service boundary are recorded in
 
 ## Phase 2 Scope Boundaries
 
-**In scope:** Career profile, job analysis, opportunity assessment (Technical, Commercial, Portfolio Fit), portfolio matching, application tiering, pipeline tracking, outcome logging, ranked comparison of open opportunities.
+**In scope:** Career profile, job analysis, opportunity assessment (Technical, Commercial, Portfolio Fit), portfolio matching, application strategy (pursuit posture + effort tiers), pipeline tracking, outcome logging, ranked comparison of open opportunities.
 
 **Out of scope:** CV/cover letter generation, recruiter outreach, interview preparation, full dashboard, market intelligence, cross-domain daily prioritisation, automated job discovery, predictive scoring (Interview Probability, Recruiter Confidence).
 
@@ -80,7 +81,8 @@ Apply [docs/05_engineering_principles.md](docs/05_engineering_principles.md) for
 `applications/`, `career-documents/`, `career-log.md`, `templates/`, and `metrics/` contain live or placeholder operational data.
 
 - Respect existing tracker formats and terminology during transition
-- Legacy "Tier 1" in operational data maps to **Platinum** in product docs — see functional specification
+- Legacy "Tier 1" in operational data maps to **Platinum** in product docs; legacy product
+  tier name Skip is now **Bronze** (effort only) — see functional specification
 - Empty template and metrics files are intentional placeholders
 
 ---

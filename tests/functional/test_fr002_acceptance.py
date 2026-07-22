@@ -172,6 +172,29 @@ def test_representative_fixtures_extract(
     assert analysis.work_arrangement.arrangement == expected_arrangement
 
 
+def test_junior_software_devops_fixture_extracts_multiple_duties() -> None:
+    analysis = _fixture_service().analyse(REPRESENTATIVE_POSTINGS["junior_software_devops"]())
+
+    assert analysis.role_family.family == "software_engineering"
+    assert analysis.seniority.level == "entry"
+    assert len(analysis.responsibilities) >= 5
+    tech_names = {tech.name.casefold() for tech in analysis.technologies}
+    assert {"python", "linux", "terraform", "ansible"} <= tech_names
+    assert analysis.location.summary.startswith("Melbourne")
+
+
+def test_network_engineer_automation_ai_fixture_classifies_network() -> None:
+    analysis = _fixture_service().analyse(
+        REPRESENTATIVE_POSTINGS["network_engineer_automation_ai"]()
+    )
+
+    assert analysis.role_family.family == "network_engineering"
+    assert analysis.role_family.evidence
+    tech_names = {tech.name.casefold() for tech in analysis.technologies}
+    assert "rag" in tech_names
+    assert any("llm" in name for name in tech_names)
+
+
 def test_ambiguous_seniority_fixture_preserves_conflict() -> None:
     analysis = _fixture_service().analyse(posting_ambiguous_seniority())
 

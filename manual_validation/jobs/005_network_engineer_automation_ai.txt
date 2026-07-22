@@ -1,0 +1,71 @@
+Network Engineer- Automation & AI
+
+Capgemini Australia Pty Ltd 
+2.9
+82 reviews
+·
+View all jobs
+Docklands, Melbourne VIC (Hybrid)
+Engineering - Network (Information & Communication Technology)
+Full time
+Posted 29d ago
+
+How you match
+4 skills and credentials match your profile
+ Large Language Models
+ Prompt Engineering
+ Retrieval Augmented Generation
+ Python Programming
+Show all⁠
+Company description:
+
+At Capgemini Engineering, the world leader in engineering services, we bring together a global team of engineers, scientists, and architects to help the world's most innovative companies unleash their potential. From autonomous cars to life-saving robots, our digital and software technology experts think outside the box as they provide unique R&D and engineering services across all industries. Join us for a career full of opportunities. Where you can make a difference. Where no two days are the same.
+
+
+
+
+
+Job description:
+
+Your role
+As an Access Network Engineer with a specialised focus on introducing AI & Automation to solution engineering and the delivery lifecycle, you will play a key role in building and scaling AI & Automation-powered engineering capabilities that improve efficiency, reduce manual effort, and enhance decision-making across design, testing, and deployment workflows.
+
+
+This is a hands-on engineering role focused on delivering real, production-grade solutions—from AI assistants to end-to-end automation pipelines—that will be used daily by engineering teams, transforming the way they design, test, and deploy network solutions.
+
+
+You will play a key role in:
+
+
+Developing AI assistants to support engineering teams, including backlog management, development, test, knowledge retrieval, troubleshooting, and insights generation.
+Implementing "human-in-the-loop" models to ensure accuracy and trust, while ensuring security and responsible AI standards are followed.
+Building solutions leveraging existing Large Language Models (LLMs), prompt engineering, retrieval-augmented generation (RAG) & machine learning models for analysis and prediction.
+Identifying and automating repetitive or manual processes across design, test, and deployment workflows
+
+
+
+
+
+Profile description:
+
+Your profile
+6+ years in Layer 2 & 3 network engineering and solution development, with hands-on experience in building automation or AI/ML solutions
+Hands on experience building automation workflows, scripts, or pipelines.
+Hands-on experience with AI/ML or Generative AI technologies (LLMs, prompt engineering, RAG)
+Experience building AI assistants and managing the lifecycle of the assistants
+CI/CD and DevOps practices (e.g. Jenkins, Ansible, GitHub Actions, Python, ArgoCD)
+Exposure in one or both the below areas:
+FTTx Access Network: GPON/XGSPON (OLT, ONT), Intent Based Networking
+FTTx EMS Applications: Containerised (AAC), Virtualised (ACS, AMS),
+
+
+
+We offer:
+
+What you'll love about working here
+Experience a Positive Work-Life Balance: We prioritize your well-being with hybrid and flexible working arrangements, making it easy to balance your personal and professional life.
+Own your Growth: Dive into endless learning opportunities with courses from Capgemini University and numerous external certifications. Benefit from digital learning platforms and specialized campuses in AI, Cloud, Data, and Sustainability. Propel your career with our award-winning Career Acceleration programs.
+Thrive in an Inclusive Environment: We don't just believe in inclusion; we live it. Be part of a workplace that values authenticity, inclusion, and belonging. We encourage applications from all backgrounds, even if you don't meet every requirement. Research shows that individuals from underrepresented groups often hesitate to apply unless they meet every criterion. If you're excited about this role, we welcome your application and invite you to share what you can bring.
+Work with Integrity: Join a company recognized by Ethisphere as one of the World's most Ethical companies.
+Collaborate with Industry Leaders: Gain exposure to top global companies, including 145 of the Fortune 500, through your work with Capgemini.
+Showcase Your Skills: Participate in our internal annual global tech challenges and help address world issues.

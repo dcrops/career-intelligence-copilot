@@ -77,20 +77,27 @@ Where evidence is unavailable (e.g. salary not listed), the assessment must stat
 
 ### Application Tier Semantics
 
-Tiers translate fit analysis into effort allocation guidance. The system recommends; the user decides.
+Tiers translate fit analysis into **effort investment** guidance. They are not apply/skip
+decisions. The system recommends; the user decides (FR-013).
 
-| Tier | Pursuit posture | Effort investment |
-|------|-----------------|-------------------|
-| **Platinum** | Strong candidate — pursue actively | Full tailoring where materially beneficial; portfolio-led application; interview preparation investment warranted |
-| **Gold** | Good candidate — pursue with confidence | Master CV with targeted adjustments; selective tailoring; moderate preparation |
-| **Silver** | Viable but not ideal — pursue selectively | Master CV; minimal customisation; apply when capacity allows |
-| **Skip** | Poor return on effort — do not pursue | No application effort; log rationale for future reference |
+| Tier | Effort investment |
+|------|-------------------|
+| **Platinum** | Full investment — full tailoring where materially beneficial; portfolio-led application; interview preparation investment warranted |
+| **Gold** | Targeted investment — Master CV with selective adjustments; moderate preparation |
+| **Silver** | Minimal customisation — Master CV; apply when capacity allows. **Exception:** for a credible AI seniority stretch (`consider` posture, strong technical and portfolio fit, missing senior commercial AI employment evidence), Silver may use **targeted** effort without elevating pursuit to Gold. |
+| **Bronze** | Do **not** invest significant effort — log rationale; may still submit as a low-effort/volume application if the owner chooses |
+
+**Bronze does not mean “never apply.”** It means significant effort is not justified.
+Final apply / skip / defer remains an owner decision.
+
+For FR-005, **PursuitPosture** is the primary recommendation (attention / pursuit nuance).
+**ApplicationTier** is the effort band. See FR-005.
 
 Tier assignment must be explained by referencing fit dimensions and cited evidence (FR-003, FR-005).
 
 ### Legacy Terminology
 
-Operational data predating v1.2 may use "Tier 1" language. **Tier 1 maps to Platinum** in product documentation. Reconcile operational files when the owner approves. See [00_repository_guide.md](00_repository_guide.md) § Operational Data Conventions.
+Operational data predating v1.2 may use "Tier 1" language. **Tier 1 maps to Platinum** in product documentation. The former product tier name **Skip** is renamed **Bronze** (effort band only; not a never-apply decision). Reconcile operational files when the owner approves. See [00_repository_guide.md](00_repository_guide.md) § Operational Data Conventions.
 
 ---
 
@@ -152,6 +159,7 @@ Analysis captures:
 - `data_engineering`
 - `software_engineering`
 - `ml_engineering`
+- `network_engineering`
 - `ai_adjacent`
 - `other`
 - `unknown`
@@ -305,24 +313,103 @@ Acceptance Criteria
 
 **Phase:** 2
 
-The system shall recommend an application tier and effort investment.
+**Status:** Implemented.
 
-Tier definitions and effort guidance: see § Assessment and Tier Semantics.
+The system shall produce an evidence-backed **Application Strategy** for an opportunity by
+consuming trusted upstream artifacts — Career Profile, Opportunity Assessment, and
+Portfolio Match (with Job Analysis bound for provenance) — without redoing job extraction,
+fit assessment, or portfolio ranking.
 
-Tiers:
+Application Strategy answers:
 
-- Platinum
-- Gold
-- Silver
-- Skip
+1. Why is this the recommendation? (`summary`, `reasons`, posture/tier/practical value)
+2. Why might it not be the right recommendation? (`risks_or_gaps`, `decision_blockers`)
+3. What should the owner do next? (`next_actions`)
+4. What evidence supports the recommendation? (evidence refs on reasons, risks, checks, actions)
+5. What information could change the recommendation? (`manual_checks`, `assumptions`)
+
+### Recommendation semantics
+
+- **PursuitPosture** (primary recommendation): `prioritise`, `pursue`, `consider`,
+  `low_effort_submit`, `do_not_prioritise`, `insufficient_information`
+- **ApplicationTier** (effort band only): Platinum, Gold, Silver, Bronze — see
+  § Application Tier Semantics
+- **EffortLevel**: `full` / `targeted` / `minimal` / `none` (must align with tier)
+- **PracticalValue**: `career_priority`, `acceptable_opportunity`, `volume_obligation`,
+  `deferred_pending_information`
+
+There is no system-owned binary Apply/Skip field. Owner apply / skip / defer belongs to
+FR-013.
+
+### SearchOperatingContext
+
+Optional caller-supplied search posture for strategy planning:
+
+- `volume_applications_enabled` defaults to `False`
+- optional `notes`
+- no quotas, counters, or JobSeeker numeric state in FR-005 v1
+
+When volume mode is enabled, lower strategic fit may still yield `low_effort_submit` with
+Silver / minimal effort and `practical_value=volume_obligation`. The owner still decides.
+
+### Seniority-aware stretch (AI target families)
+
+For primary AI target families (`ai_engineering`, `ai_solutions`, `ml_engineering`), FR-005
+may cap priority when the job is explicitly senior (or lead/principal/manager) and the
+profile lacks **direct senior commercial AI employment** evidence:
+
+- Independent engineering / professional development support technical and portfolio fit
+  but do **not** count as senior commercial AI employment.
+- Commercial `mixed`/`weak` caused only by salary uncertainty does **not** trigger the cap.
+- Material assessment findings about seniority, leadership, commercial ownership, executive
+  partnership, or production-leadership gaps are required for explicit `senior` level.
+- Cap outcome: `consider` / Silver / `acceptable_opportunity`, with targeted effort when
+  technical and portfolio fits remain strong (credible stretch, not rejection).
+- Commercial fit need not be labelled `mixed` if material senior/leadership gap findings
+  are present and commercial is not `strong`; salary-only uncertainty still does not cap.
+- This is **not** a blanket “senior = silver” rule: matching commercial AI employment with
+  senior ownership markers keeps Gold/Platinum possible.
+
+### next_actions
+
+Advisory follow-ups only (`consider_*` taxonomy). They must not generate CV/cover-letter
+content, contact recruiters, or submit applications.
+
+### Service trust boundary (implementation)
+
+`ApplicationStrategyService` is the public trust boundary. A planner returns untrusted
+structured data only; the service validates the payload, binds caller-owned `JobAnalysis`
+(from Opportunity Assessment after posting-identity checks against Portfolio Match),
+validates evidence references, and returns a trusted Application Strategy.
+`DeterministicStrategyPlanner` is the production path; `FixtureStrategyPlanner` is offline
+scaffolding. Neither is a public default — callers inject a planner explicitly. OpenAI is
+not required for FR-005.
+
+### Explicitly not produced by FR-005
+
+CV or cover-letter content, recruiter outreach, application submission, browser automation,
+percentage scores, autonomous apply/skip commitment, or modification of Career Profile /
+Job Analysis / Opportunity Assessment / Portfolio Match.
 
 Acceptance Criteria
 
-✓ Tier assigned.
+✓ PursuitPosture assigned as the primary recommendation.
 
-✓ Time investment recommended.
+✓ ApplicationTier and EffortLevel assigned as effort guidance (Bronze ≠ never apply).
 
-✓ Rationale explains why the tier was assigned.
+✓ Practical value distinguished (including optional volume obligation).
+
+✓ Rationale is evidence-backed (reasons, risks/gaps, assumptions, blockers as applicable).
+
+✓ Portfolio emphasis drawn from Portfolio Match without reranking.
+
+✓ Advisory next_actions present (closed `consider_*` kinds; max five).
+
+✓ Manual checks and assumptions surface information that could change the recommendation.
+
+✓ owner_review_required is always true.
+
+✓ Strategy answers the five conceptual questions above using existing fields.
 
 ---
 

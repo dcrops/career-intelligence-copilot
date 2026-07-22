@@ -95,7 +95,7 @@ def _extractor_with(
 
 
 def test_prompt_version_and_instructions_are_defined() -> None:
-    assert EXTRACTION_PROMPT_VERSION == "v5"
+    assert EXTRACTION_PROMPT_VERSION == "v7"
     assert "Evidence (global" in EXTRACTION_INSTRUCTIONS_V1
     assert "Never emit a known role family" in EXTRACTION_INSTRUCTIONS_V1
     assert "never invent compensation" in EXTRACTION_INSTRUCTIONS_V1.lower()
@@ -105,6 +105,8 @@ def test_prompt_version_and_instructions_are_defined() -> None:
     assert "job title" in EXTRACTION_INSTRUCTIONS_V1.lower()
     assert "employment" in EXTRACTION_INSTRUCTIONS_V1.lower()
     assert "never infer" in EXTRACTION_INSTRUCTIONS_V1.lower()
+    assert "How you match" in EXTRACTION_INSTRUCTIONS_V1
+    assert "network_engineering" in EXTRACTION_INSTRUCTIONS_V1
     assert "Negative examples (must remain unspecified / empty evidence)" not in (
         EXTRACTION_INSTRUCTIONS_V1
     )

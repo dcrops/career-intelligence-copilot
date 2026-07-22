@@ -82,13 +82,12 @@ Current focus:
 
 - FR-004 Portfolio Matching — complete
 
-- FR-005 Application Strategy — next
+- FR-005 Application Strategy — complete
 
-- Completing the Phase 2 decision loop without expanding scope
+- Next: pipeline tracking, FR-013 Outcome Logging, ranked comparison of open opportunities
 
 
-
-Completed pipeline so far:
+Completed decision-loop slice:
 
 
 
@@ -99,11 +98,19 @@ FR-002 Job Analysis
         ↓
         ├─→ FR-003 Opportunity Assessment
         └─→ FR-004 Portfolio Matching
+                  ↓
+        FR-005 Application Strategy
 ```
 
 
 
 See [docs/00_repository_guide.md](docs/00_repository_guide.md) for full orientation and [docs/10_roadmap.md](docs/10_roadmap.md) for phase status.
+
+Owner manual validation of the FR-001→FR-005 pipeline:
+
+`python scripts/run_application_strategy_manual.py --job-file path/to/real_job.txt`
+
+Details: [docs/08_implementation_notes.md](docs/08_implementation_notes.md) § Owner manual validation runner.
 
 
 
@@ -173,7 +180,7 @@ Start with [docs/00_repository_guide.md](docs/00_repository_guide.md).
 
 - [docs/02_problem_statement.md](docs/02_problem_statement.md)
 
-- [docs/08_implementation_notes.md](docs/08_implementation_notes.md) — FR-001–FR-004 implementation notes
+- [docs/08_implementation_notes.md](docs/08_implementation_notes.md) — FR-001–FR-005 implementation notes and owner manual-validation runner
 
 - [docs/eval/fr003_openai_manual_eval.md](docs/eval/fr003_openai_manual_eval.md) — FR-003 live eval (PARTIAL PASS)
 

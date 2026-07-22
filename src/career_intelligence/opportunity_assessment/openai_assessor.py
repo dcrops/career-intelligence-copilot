@@ -108,6 +108,8 @@ def format_assessment_input(job_analysis: JobAnalysis, profile: CareerProfile) -
         _tagged("ValidProfileReferences", "\n".join(catalogue)),
         _tagged("CareerProfile", _serialise(_assessment_profile_payload(profile, catalogue))),
         _tagged("JobEvidenceIndexes", _build_job_evidence_index_guide(job_analysis)),
+        _tagged("ProfileEvidenceCiteGuide", _build_profile_evidence_cite_guide(catalogue)),
+        _tagged("FindingFieldGuide", _build_finding_field_guide()),
     ]
     return "\n\n".join(parts)
 
@@ -225,6 +227,73 @@ def _assessment_profile_payload(
         "identity": identity,
         "preferences": preferences,
     }
+
+
+def _build_finding_field_guide() -> str:
+    """Per-kind allowed/forbidden fields for FitFinding structured output."""
+    return "\n".join(
+        [
+            "Select kind first, then populate only permitted fields.",
+            "Field names: kind, summary, detail, importance, job_evidence,",
+            "profile_evidence, assumption.",
+            "",
+            "alignment:",
+            "  job_evidence: required (non-empty)",
+            "  profile_evidence: required (non-empty)",
+            "  assumption: forbidden (must be null)",
+            "",
+            "partial_alignment:",
+            "  job_evidence: required (non-empty)",
+            "  profile_evidence: required (non-empty)",
+            "  assumption: forbidden (must be null)",
+            "",
+            "transferable_alignment:",
+            "  job_evidence: required (non-empty)",
+            "  profile_evidence: required (non-empty)",
+            "  assumption: forbidden (must be null)",
+            "",
+            "gap:",
+            "  job_evidence: required (non-empty)",
+            "  profile_evidence: optional (may be [])",
+            "  assumption: forbidden (must be null)",
+            "",
+            "conflict:",
+            "  job_evidence: required (non-empty)",
+            "  profile_evidence: required (non-empty)",
+            "  assumption: forbidden (must be null)",
+            "",
+            "uncertainty:",
+            "  job_evidence: include when the JobAnalysis field is known",
+            "  profile_evidence: optional",
+            "  assumption: forbidden (must be null)",
+            "",
+            "assumption:",
+            "  assumption: required (non-empty text)",
+            "  job_evidence: optional",
+            "  profile_evidence: optional",
+            "  Do not present assumptions as established evidence.",
+            "",
+            "Invalid: kind=gap|partial_alignment|... with assumption=\"...\".",
+            "Put commentary in summary/detail; set assumption=null.",
+        ]
+    )
+
+
+def _build_profile_evidence_cite_guide(catalogue: list[str]) -> str:
+    """Cite-as examples for profile_evidence — mirrors JobEvidenceIndexes discipline."""
+    lines: list[str] = [
+        "Copy cite-as JSON when populating profile_evidence on every alignment-style finding.",
+        "alignment, partial_alignment, transferable_alignment, and conflict REQUIRE "
+        "non-empty profile_evidence. Never emit profile_evidence=[] for those kinds.",
+        'Shape: {"source":"<namespace>","ref":"<namespace:id>"} using only catalogue refs.',
+    ]
+    for token in catalogue:
+        namespace, _, _identifier = token.partition(":")
+        if not namespace or not _identifier:
+            continue
+        cite = {"source": namespace, "ref": token}
+        lines.append(f"{token} → cite: {json.dumps(cite, ensure_ascii=False)}")
+    return "\n".join(lines)
 
 
 def _build_job_evidence_index_guide(job_analysis: JobAnalysis) -> str:

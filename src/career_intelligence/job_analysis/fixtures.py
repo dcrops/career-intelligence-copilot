@@ -27,6 +27,8 @@ MARKER_REMOTE = "[CIC-FIXTURE:remote]"
 MARKER_CONTRACT = "[CIC-FIXTURE:contract]"
 MARKER_NO_TECHNOLOGIES = "[CIC-FIXTURE:no-technologies]"
 MARKER_WORKING_RIGHTS = "[CIC-FIXTURE:working-rights]"
+MARKER_JUNIOR_SOFTWARE_DEVOPS = "[CIC-FIXTURE:junior-software-devops]"
+MARKER_NETWORK_ENGINEER_AI = "[CIC-FIXTURE:network-engineer-automation-ai]"
 
 
 def _ev(excerpt: str, section: str | None = None) -> dict[str, str]:
@@ -294,6 +296,112 @@ Requirements
 Location & employment
 Hybrid Sydney, 3 days on-site. Full-time contract (initial 6 months).
 Rate $850–$950 per day + GST.
+""".strip(),
+    )
+
+
+def posting_junior_software_devops() -> JobPosting:
+    """Junior software/DevOps SEEK-style advert with chrome and multiple duties.
+
+    Compact regression fixture modelled on real manual-validation Job 002
+    (Jirotech). Includes SEEK "How you match" chrome that must not dominate
+    technology extraction, plus several employer-authored duties.
+    """
+    return JobPosting(
+        title="Junior Software / DevOps Engineer",
+        company="Jirotech Pty Ltd",
+        raw_text=f"""
+{MARKER_JUNIOR_SOFTWARE_DEVOPS}
+Junior Software / DevOps Engineer
+
+Jirotech Pty Ltd
+View all jobs
+
+Melbourne VIC
+Developers/Programmers (Information & Communication Technology)
+Full time
+Posted 7d ago
+•
+High application volume
+
+How you match
+1 skill or credential matches your profile
+ Python Programming
+Show all
+Jirotech is a Solutions Integration company. We are seeking an enthusiastic junior
+software / devops engineer with a passion for technology to join our Melbourne team.
+
+This role will involve a mix of software and database development, including
+integrations with existing CI/CD processes and the development of new ones. The
+successful candidate will mainly deliver project-based work, support key customers,
+and help manage internal systems. If you have excellent communications skills, are
+self-motivated and can think independently while also working as part of a team,
+then this is the job for you.
+
+A degree in computing or relevant experience would be an advantage, but a desire to
+learn new technologies is a must. Preferably coupled with experience in some of the
+following areas:
+
+Linux (or other UNIX) installation and management, including working from a shell
+
+Reading and writing scripted languages (such as BASH or Python)
+
+Infrastructure as code, automation and configuration technologies (such as YAML,
+JSON, Ansible, CloudFormation or Terraform)
+
+Working knowledge of Relational / NoSQL database
+
+Networking fundamentals is also considered a PLUS
+
+Employer questions
+Your application will include the following questions:
+Which of the following statements best describes your right to work in Australia?
+""".strip(),
+    )
+
+
+def posting_network_engineer_automation_ai() -> JobPosting:
+    """Hybrid network + AI/automation role; dominant profession is networking."""
+    return JobPosting(
+        title="Network Engineer - Automation & AI",
+        company="Capgemini Australia Pty Ltd",
+        raw_text=f"""
+{MARKER_NETWORK_ENGINEER_AI}
+Network Engineer - Automation & AI
+
+Capgemini Australia Pty Ltd
+View all jobs
+Docklands, Melbourne VIC (Hybrid)
+Engineering - Network (Information & Communication Technology)
+Full time
+
+How you match
+4 skills and credentials match your profile
+ Large Language Models
+ Prompt Engineering
+ Retrieval Augmented Generation
+ Python Programming
+Show all
+
+Your role
+As an Access Network Engineer with a specialised focus on introducing AI & Automation
+to solution engineering and the delivery lifecycle, you will play a key role in
+building and scaling AI & Automation-powered engineering capabilities.
+
+Developing AI assistants to support engineering teams.
+Building solutions leveraging existing Large Language Models (LLMs), prompt
+engineering, retrieval-augmented generation (RAG) & machine learning models.
+Identifying and automating repetitive or manual processes across design, test, and
+deployment workflows.
+
+Your profile
+6+ years in Layer 2 & 3 network engineering and solution development, with hands-on
+experience in building automation or AI/ML solutions
+Hands-on experience with AI/ML or Generative AI technologies (LLMs, prompt engineering, RAG)
+CI/CD and DevOps practices (e.g. Jenkins, Ansible, GitHub Actions, Python, ArgoCD)
+Exposure in one or both the below areas:
+FTTx Access Network: GPON/XGSPON (OLT, ONT), Intent Based Networking
+FTTx EMS Applications: Containerised (AAC), Virtualised (ACS, AMS)
 """.strip(),
     )
 
@@ -975,6 +1083,330 @@ def analysis_for_working_rights() -> JobAnalysisPayload:
     }
 
 
+def analysis_for_junior_software_devops() -> JobAnalysisPayload:
+    """Expected structured extraction shape for the junior software/DevOps fixture."""
+    return {
+        "role_family": {
+            "family": "software_engineering",
+            "evidence": [_ev("Junior Software / DevOps Engineer", "Job title")],
+        },
+        "seniority": {
+            "level": "entry",
+            "ambiguous": False,
+            "evidence": [_ev("Junior Software / DevOps Engineer", "Job title")],
+        },
+        "technologies": [
+            {
+                "name": "Python",
+                "level": "preferred",
+                "evidence": [
+                    _ev(
+                        "Reading and writing scripted languages (such as BASH or Python)",
+                        "JobDescription",
+                    )
+                ],
+            },
+            {
+                "name": "Linux",
+                "level": "preferred",
+                "evidence": [
+                    _ev(
+                        "Linux (or other UNIX) installation and management",
+                        "JobDescription",
+                    )
+                ],
+            },
+            {
+                "name": "infrastructure as code",
+                "level": "preferred",
+                "evidence": [
+                    _ev(
+                        "Infrastructure as code, automation and configuration technologies",
+                        "JobDescription",
+                    )
+                ],
+            },
+            {
+                "name": "YAML",
+                "level": "preferred",
+                "evidence": [
+                    _ev(
+                        "YAML, JSON, Ansible, CloudFormation or Terraform",
+                        "JobDescription",
+                    )
+                ],
+            },
+            {
+                "name": "JSON",
+                "level": "preferred",
+                "evidence": [
+                    _ev(
+                        "YAML, JSON, Ansible, CloudFormation or Terraform",
+                        "JobDescription",
+                    )
+                ],
+            },
+            {
+                "name": "Ansible",
+                "level": "preferred",
+                "evidence": [
+                    _ev(
+                        "YAML, JSON, Ansible, CloudFormation or Terraform",
+                        "JobDescription",
+                    )
+                ],
+            },
+            {
+                "name": "CloudFormation",
+                "level": "preferred",
+                "evidence": [
+                    _ev(
+                        "YAML, JSON, Ansible, CloudFormation or Terraform",
+                        "JobDescription",
+                    )
+                ],
+            },
+            {
+                "name": "Terraform",
+                "level": "preferred",
+                "evidence": [
+                    _ev(
+                        "YAML, JSON, Ansible, CloudFormation or Terraform",
+                        "JobDescription",
+                    )
+                ],
+            },
+            {
+                "name": "relational databases",
+                "level": "preferred",
+                "evidence": [
+                    _ev(
+                        "Working knowledge of Relational / NoSQL database",
+                        "JobDescription",
+                    )
+                ],
+            },
+            {
+                "name": "NoSQL databases",
+                "level": "preferred",
+                "evidence": [
+                    _ev(
+                        "Working knowledge of Relational / NoSQL database",
+                        "JobDescription",
+                    )
+                ],
+            },
+        ],
+        "responsibilities": [
+            {
+                "description": "Software development",
+                "evidence": [
+                    _ev(
+                        "a mix of software and database development",
+                        "JobDescription",
+                    )
+                ],
+            },
+            {
+                "description": "Database development",
+                "evidence": [
+                    _ev(
+                        "a mix of software and database development",
+                        "JobDescription",
+                    )
+                ],
+            },
+            {
+                "description": "Integration with existing CI/CD processes",
+                "evidence": [
+                    _ev(
+                        "integrations with existing CI/CD processes",
+                        "JobDescription",
+                    )
+                ],
+            },
+            {
+                "description": "Development of new CI/CD processes",
+                "evidence": [
+                    _ev(
+                        "the development of new ones",
+                        "JobDescription",
+                    )
+                ],
+            },
+            {
+                "description": "Delivery of project-based work",
+                "evidence": [
+                    _ev(
+                        "deliver project-based work",
+                        "JobDescription",
+                    )
+                ],
+            },
+            {
+                "description": "Customer support",
+                "evidence": [
+                    _ev("support key customers", "JobDescription")
+                ],
+            },
+            {
+                "description": "Management and support of internal systems",
+                "evidence": [
+                    _ev("help manage internal systems", "JobDescription")
+                ],
+            },
+        ],
+        "compensation": {"clarity": "unstated"},
+        "location": {
+            "clarity": "stated",
+            "summary": "Melbourne, VIC",
+            "evidence": [_ev("Melbourne VIC", "JobDescription")],
+        },
+        "work_arrangement": {
+            "arrangement": "unspecified",
+            "evidence": [],
+        },
+        "employment": {
+            "working_hours": "full_time",
+            "engagement_type": "unspecified",
+            "evidence": [_ev("Full time", "JobDescription")],
+        },
+        "experience_requirements": [
+            {
+                "description": "Desire to learn new technologies; computing degree or relevant experience an advantage",
+                "level": "preferred",
+                "evidence": [
+                    _ev(
+                        "a desire to learn new technologies is a must",
+                        "JobDescription",
+                    )
+                ],
+            }
+        ],
+    }
+
+
+def analysis_for_network_engineer_automation_ai() -> JobAnalysisPayload:
+    """Dominant profession is network engineering; AI capabilities are supporting."""
+    return {
+        "role_family": {
+            "family": "network_engineering",
+            "evidence": [
+                _ev("Access Network Engineer", "JobDescription"),
+                _ev(
+                    "6+ years in Layer 2 & 3 network engineering and solution development",
+                    "JobDescription",
+                ),
+            ],
+        },
+        "seniority": {
+            "level": "unknown",
+            "ambiguous": False,
+            "evidence": [],
+        },
+        "technologies": [
+            {
+                "name": "GPON",
+                "level": "required",
+                "evidence": [_ev("GPON/XGSPON (OLT, ONT)", "JobDescription")],
+            },
+            {
+                "name": "XGSPON",
+                "level": "required",
+                "evidence": [_ev("GPON/XGSPON (OLT, ONT)", "JobDescription")],
+            },
+            {
+                "name": "LLMs",
+                "level": "required",
+                "evidence": [
+                    _ev(
+                        "Large Language Models (LLMs), prompt engineering, retrieval-augmented generation (RAG)",
+                        "JobDescription",
+                    )
+                ],
+            },
+            {
+                "name": "RAG",
+                "level": "required",
+                "evidence": [
+                    _ev(
+                        "retrieval-augmented generation (RAG)",
+                        "JobDescription",
+                    )
+                ],
+            },
+            {
+                "name": "Python",
+                "level": "preferred",
+                "evidence": [
+                    _ev(
+                        "Jenkins, Ansible, GitHub Actions, Python, ArgoCD",
+                        "JobDescription",
+                    )
+                ],
+            },
+            {
+                "name": "Ansible",
+                "level": "preferred",
+                "evidence": [
+                    _ev(
+                        "Jenkins, Ansible, GitHub Actions, Python, ArgoCD",
+                        "JobDescription",
+                    )
+                ],
+            },
+        ],
+        "responsibilities": [
+            {
+                "description": "Develop AI assistants to support engineering teams",
+                "evidence": [
+                    _ev(
+                        "Developing AI assistants to support engineering teams",
+                        "JobDescription",
+                    )
+                ],
+            },
+            {
+                "description": "Build automation pipelines across design, test, and deployment",
+                "evidence": [
+                    _ev(
+                        "automating repetitive or manual processes across design, test, and deployment workflows",
+                        "JobDescription",
+                    )
+                ],
+            },
+        ],
+        "compensation": {"clarity": "unstated"},
+        "location": {
+            "clarity": "stated",
+            "summary": "Docklands, Melbourne VIC (Hybrid)",
+            "evidence": [_ev("Docklands, Melbourne VIC (Hybrid)", "JobDescription")],
+        },
+        "work_arrangement": {
+            "arrangement": "hybrid",
+            "evidence": [_ev("Docklands, Melbourne VIC (Hybrid)", "JobDescription")],
+        },
+        "employment": {
+            "working_hours": "full_time",
+            "engagement_type": "unspecified",
+            "evidence": [_ev("Full time", "JobDescription")],
+        },
+        "experience_requirements": [
+            {
+                "description": "6+ years in Layer 2 & 3 network engineering and solution development",
+                "level": "required",
+                "minimum_years": 6.0,
+                "evidence": [
+                    _ev(
+                        "6+ years in Layer 2 & 3 network engineering and solution development",
+                        "JobDescription",
+                    )
+                ],
+            }
+        ],
+    }
+
+
 FIXTURE_BUILDERS: dict[str, PayloadBuilder] = {
     MARKER_AI_ENGINEER: analysis_for_ai_engineer,
     MARKER_APPLIED_AI: analysis_for_applied_ai,
@@ -986,6 +1418,8 @@ FIXTURE_BUILDERS: dict[str, PayloadBuilder] = {
     MARKER_CONTRACT: analysis_for_contract,
     MARKER_NO_TECHNOLOGIES: analysis_for_no_technologies,
     MARKER_WORKING_RIGHTS: analysis_for_working_rights,
+    MARKER_JUNIOR_SOFTWARE_DEVOPS: analysis_for_junior_software_devops,
+    MARKER_NETWORK_ENGINEER_AI: analysis_for_network_engineer_automation_ai,
 }
 
 REPRESENTATIVE_POSTINGS = {
@@ -999,4 +1433,6 @@ REPRESENTATIVE_POSTINGS = {
     "contract": posting_contract,
     "no_technologies": posting_no_technologies,
     "working_rights": posting_working_rights,
+    "junior_software_devops": posting_junior_software_devops,
+    "network_engineer_automation_ai": posting_network_engineer_automation_ai,
 }

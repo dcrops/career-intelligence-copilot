@@ -1,0 +1,54 @@
+Junior Software / DevOps Engineer
+
+Jirotech Pty Ltd 
+View all jobs
+
+Melbourne VIC
+Developers/Programmers (Information & Communication Technology)
+Full time
+Posted 7d ago
+•
+High application volume
+
+How you match
+1 skill or credential matches your profile
+ Python Programming
+Show all⁠
+Jirotech is a Solutions Integration company. We are seeking an enthusiastic junior software / devops engineer with a passion for technology to join our Melbourne team.  We offer a challenging environment with a broad range of constantly changing technologies and a platform to build your career.
+
+This role will involve a mix of software and database development, including integrations with existing CI/CD processes and the development of new ones. The successful candidate will mainly deliver project-based work, support key customers, and help manage internal systems. If you have excellent communications skills, are self-motivated and can think independently while also working as part of a team, then this is the job for you.
+
+A degree in computing or relevant experience would be an advantage, but a desire to learn new technologies is a must. Preferably coupled with experience in some of the following areas:
+
+Linux (or other UNIX) installation and management, including working from a shell
+
+Reading and writing scripted languages (such as BASH or Python)
+
+Infrastructure as code, automation and configuration technologies (such as YAML, JSON, Ansible, CloudFormation or Terraform)
+
+Compiling and installing open-source software (understanding of OSS, using GCC/configure/make)
+
+Working knowledge of Relational / NoSQL database
+
+Combining multiple different software products to solve problems
+
+Exposure to concepts such as virtualization, containers, configuration management, source management, and application deployment
+
+Networking fundamentals is also considered a PLUS
+
+The position is an excellent opportunity for a talented junior software / devops engineer or IT graduate to obtain experience with a wide range of technology in mission critical environments. Additionally, you will be encouraged to obtain industry certifications.
+
+ If you think you've got what it takes to succeed in this position, we would love to see your resume.
+
+** No Agencies Please
+
+Employer questions
+Your application will include the following questions:
+Which of the following statements best describes your right to work in Australia?
+How many years' experience do you have as a devops engineer?
+Which of the following Linux distributions are you familiar with?
+Which of the following programming languages are you experienced in?
+Which of the following types of infrastructure project do you have experience with?
+Do you have experience with Relational Database Management Systems (RDBMS)?
+Which of the following configuration management tools are you experienced with?
+Which of the following Microsoft Azure certifications have you completed?

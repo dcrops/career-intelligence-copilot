@@ -22,7 +22,7 @@ Job Analysis
       ├─→ Opportunity Assessment   (whether the role fits — FR-003)
       └─→ Portfolio Matching       (which projects to lead with — FR-004)
       ↓
-Application Strategy (tier + effort)
+Application Strategy (FR-005: posture + effort tier + advisory next actions)
       ↓
 User Decision
       ↓
@@ -32,9 +32,10 @@ Ranked Comparison (among open opportunities)
 ```
 
 Opportunity Assessment and Portfolio Matching are sibling consumers of Career Profile +
-Job Analysis. Neither feeds or modifies the other. Each stage produces a durable artifact
-that downstream stages and future assessments can reference. The loop repeats for every
-new opportunity.
+Job Analysis. Neither feeds or modifies the other. Application Strategy is the downstream
+consumer of **both** sibling artifacts (plus Career Profile). Each stage produces a durable
+artifact that downstream stages and future assessments can reference. The loop repeats for
+every new opportunity.
 
 ---
 
@@ -164,9 +165,22 @@ markers. Neither is exported as a public default — callers inject a matcher ex
 
 **Maps to:** FR-005
 
-A tier recommendation (Platinum, Gold, Silver, Skip) with effort investment guidance and rationale linking fit dimensions to the tier.
+**Status:** Implemented.
 
-The tier is a recommendation. The user decides whether to act on it.
+Evidence-backed application strategy for one opportunity. Produced by
+`ApplicationStrategyService` from a trusted `CareerProfile`, `OpportunityAssessment`, and
+`PortfolioMatch` (optional `SearchOperatingContext`). The service binds `JobAnalysis` from
+the assessment after verifying posting identity against the portfolio match.
+
+**PursuitPosture** is the primary recommendation. **ApplicationTier** (Platinum / Gold /
+Silver / Bronze) is effort investment only — Bronze does not mean never apply. Advisory
+`next_actions` use a closed `consider_*` taxonomy. Final apply / skip / defer is an owner
+decision (FR-013).
+
+**Implementation:** Typed domain models and `ApplicationStrategyService` live in
+`src/career_intelligence/application_strategy/`. `DeterministicStrategyPlanner` is the
+production path; `FixtureStrategyPlanner` is offline scaffolding. Neither is exported as a
+public default — callers inject a planner explicitly. OpenAI is not required.
 
 ---
 
@@ -196,17 +210,20 @@ A prioritised ordering of open assessed opportunities to support effort allocati
 |------|-----|--------------|
 | Career Profile | Opportunity Assessment | Profile evidence cited in fit analysis |
 | Career Profile | Portfolio Match | Projects ranked with `project:<id>` evidence |
+| Career Profile | Application Strategy | Preferences and goals inform policy; profile evidence cited |
 | Job Posting | Job Analysis | Analysis extracts structure from posting |
 | Job Analysis | Opportunity Assessment | Extracted requirements inform fit dimensions |
 | Job Analysis | Portfolio Match | Technologies and responsibilities drive ranking |
-| Opportunity Assessment | Application Strategy | Fit dimensions drive tier recommendation |
-| Application Strategy | User Decision | User accepts, overrides, or defers tier |
+| Job Analysis | Application Strategy | Bound for provenance; facts cited in strategy evidence |
+| Opportunity Assessment | Application Strategy | Fit judgments and findings drive posture/tier |
+| Portfolio Match | Application Strategy | Ranked projects inform portfolio emphasis (no rerank) |
+| Application Strategy | User Decision | User accepts, overrides, or defers the recommendation |
 | User Decision | Outcome Record | Decision and subsequent events logged |
 | Outcome Record | Opportunity Assessment | History informs future assessments (over time) |
 | Pipeline Entry | Ranked Comparison | Open entries compared for prioritisation |
 
-Portfolio Match and Opportunity Assessment are siblings. There is no
-Portfolio Match → Opportunity Assessment dependency.
+Portfolio Match and Opportunity Assessment are siblings. Both feed Application Strategy.
+There is no Portfolio Match → Opportunity Assessment dependency.
 
 ---
 
@@ -219,7 +236,7 @@ Portfolio Match → Opportunity Assessment dependency.
 | Pursuit decisions | Outcome Records |
 | — | Opportunity Assessment with evidence |
 | — | Portfolio Match ranking |
-| — | Application Strategy (tier + effort) |
+| — | Application Strategy (posture + effort tier + next actions) |
 | — | Ranked Comparison of open opportunities |
 
 The system advises. The user commits. Important decisions remain reviewable.

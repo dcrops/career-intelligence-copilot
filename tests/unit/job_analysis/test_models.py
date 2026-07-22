@@ -148,6 +148,27 @@ def test_known_role_family_without_evidence_is_rejected() -> None:
         RoleFamilyAssessment.model_validate({"family": "ai_engineering"})
 
 
+def test_other_role_family_requires_evidence() -> None:
+    with pytest.raises(ValidationError, match="at least one evidence item"):
+        RoleFamilyAssessment.model_validate({"family": "other", "evidence": []})
+
+
+def test_network_engineering_role_family_accepts_evidence() -> None:
+    assessment = RoleFamilyAssessment.model_validate(
+        {
+            "family": "network_engineering",
+            "evidence": [
+                {
+                    "excerpt": "6+ years in Layer 2 & 3 network engineering",
+                    "section": "profile",
+                }
+            ],
+        }
+    )
+    assert assessment.family == "network_engineering"
+    assert assessment.evidence
+
+
 def test_known_seniority_without_evidence_is_rejected() -> None:
     with pytest.raises(ValidationError, match="at least one evidence item"):
         SeniorityAssessment.model_validate({"level": "senior", "ambiguous": False})

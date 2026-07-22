@@ -1,0 +1,19 @@
+[CIC-FIXTURE:applied-ai-engineer]
+Applied AI Engineer — Harbour Labs (Sydney)
+
+Join our applied AI team to prototype and productise customer-facing assistants.
+You will work closely with solution architects and customer success.
+
+Responsibilities
+• Deliver applied AI prototypes into production services
+• Fine-tune and evaluate models for customer use cases
+• Document patterns for reuse across engagements
+
+Requirements
+• 3+ years building ML or AI-powered products required
+• Python and FastAPI required; Azure OpenAI preferred
+• Stakeholder-facing delivery experience preferred
+
+Location & employment
+Hybrid Sydney (Barangaroo), 2 days in office. Full-time permanent.
+Salary $140,000–$165,000 AUD.

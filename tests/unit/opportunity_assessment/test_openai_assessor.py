@@ -107,7 +107,7 @@ def _assessor_with(
 
 
 def test_prompt_version_and_instructions_are_defined() -> None:
-    assert ASSESSMENT_PROMPT_VERSION == "v6"
+    assert ASSESSMENT_PROMPT_VERSION == "v8"
     assert "Technical Fit" in ASSESSMENT_INSTRUCTIONS_V1 or "technical" in ASSESSMENT_INSTRUCTIONS_V1.lower()
     assert "commercial" in ASSESSMENT_INSTRUCTIONS_V1.lower()
     assert "portfolio" in ASSESSMENT_INSTRUCTIONS_V1.lower()
@@ -116,10 +116,16 @@ def test_prompt_version_and_instructions_are_defined() -> None:
     assert "quota" in ASSESSMENT_INSTRUCTIONS_V1.lower()
     assert "working rights" in ASSESSMENT_INSTRUCTIONS_V1.lower()
     assert "job_analysis" in ASSESSMENT_INSTRUCTIONS_V1.lower()
-    assert "Never emit these kinds with job_evidence=[]" in ASSESSMENT_INSTRUCTIONS_V1
+    assert "Never emit a required evidence-reference array as empty" in ASSESSMENT_INSTRUCTIONS_V1
+    assert "partial_alignment" in ASSESSMENT_INSTRUCTIONS_V1
+    assert "transferable_alignment" in ASSESSMENT_INSTRUCTIONS_V1
+    assert 'kind is exactly "assumption"' in ASSESSMENT_INSTRUCTIONS_V1 or "kind=\"assumption\"" in ASSESSMENT_INSTRUCTIONS_V1
+    assert "assumption MUST be null" in ASSESSMENT_INSTRUCTIONS_V1 or "assumption: forbidden" in ASSESSMENT_INSTRUCTIONS_V1
     assert "cite-as" in ASSESSMENT_INSTRUCTIONS_V1.lower() or "cite-as JSON" in ASSESSMENT_INSTRUCTIONS_V1
     assert "verbatim" in ASSESSMENT_INSTRUCTIONS_V1.lower()
     assert "bare ids" in ASSESSMENT_INSTRUCTIONS_V1.lower()
+    assert "ProfileEvidenceCiteGuide" in ASSESSMENT_INSTRUCTIONS_V1
+    assert "FindingFieldGuide" in ASSESSMENT_INSTRUCTIONS_V1
 
 
 def test_format_assessment_input_includes_trusted_sections_and_catalogues() -> None:
@@ -132,6 +138,9 @@ def test_format_assessment_input_includes_trusted_sections_and_catalogues() -> N
     assert "<CareerProfile>" in rendered
     assert "<ValidProfileReferences>" in rendered
     assert "<JobEvidenceIndexes>" in rendered
+    assert "<ProfileEvidenceCiteGuide>" in rendered
+    assert "<FindingFieldGuide>" in rendered
+    assert "assumption: forbidden" in rendered
     assert "experience:nbn-data-engineer-2020" in rendered
     assert "project:operational-intelligence-copilot" in rendered
     assert "skill:Python" in rendered
@@ -140,6 +149,11 @@ def test_format_assessment_input_includes_trusted_sections_and_catalogues() -> N
     assert '"posting"' in rendered
     assert "technology[0]:" in rendered
     assert "cite:" in rendered
+    assert '"source": "skill"' in rendered[
+        rendered.index("<ProfileEvidenceCiteGuide>") : rendered.index(
+            "</ProfileEvidenceCiteGuide>"
+        )
+    ]
     # Catalogue appears before CareerProfile so selectable refs are primary.
     assert rendered.index("<ValidProfileReferences>") < rendered.index("<CareerProfile>")
 

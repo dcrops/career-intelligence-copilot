@@ -31,7 +31,7 @@ Decision quality is the product. Automation serves intelligence — it does not 
 
 ### Human review on consequential outputs
 
-Tier recommendations, ranked comparisons that drive daily effort, and any future externally visible content require user review and override capability.
+Tier recommendations, ranked comparisons that drive daily effort, and any future externally visible content require user review and override capability. Application tiers are effort guidance only — they are not autonomous apply/skip decisions.
 
 ### Dual-value gate
 

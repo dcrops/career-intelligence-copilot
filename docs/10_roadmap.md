@@ -76,12 +76,13 @@ The first implementation decision is now recorded in
 ### Phase 2 — Job Intelligence (MVP)
 
 **Status:** In progress. FR-001 Career Profile, FR-002 Job Analysis, FR-003
-Opportunity Assessment, and FR-004 Portfolio Matching are **complete**. FR-002 manual
-evaluation closed with extraction prompt v5. FR-003 closed with assessment prompt **v6**,
-offline golden journeys, and live manual evaluation at **PARTIAL PASS** — see
-[eval/fr002_openai_manual_eval.md](eval/fr002_openai_manual_eval.md) and
-[eval/fr003_openai_manual_eval.md](eval/fr003_openai_manual_eval.md). Next decision-loop
-stage: FR-005 Application Strategy.
+Opportunity Assessment, FR-004 Portfolio Matching, and FR-005 Application Strategy are
+**complete**. FR-002 manual evaluation closed with extraction prompt v5. FR-003 closed with
+assessment prompt **v6**, offline golden journeys, and live manual evaluation at
+**PARTIAL PASS** — see [eval/fr002_openai_manual_eval.md](eval/fr002_openai_manual_eval.md)
+and [eval/fr003_openai_manual_eval.md](eval/fr003_openai_manual_eval.md). Next decision-loop
+stages: job opportunity pipeline tracking and outcome logging (FR-013), then ranked
+comparison of open assessed opportunities.
 
 
 
@@ -105,7 +106,8 @@ stage: FR-005 Application Strategy.
 
 - Portfolio matching (FR-004) — **Complete**
 
-- Application tiering — Platinum, Gold, Silver, Skip — with effort guidance (FR-005)
+- Application tiering — Platinum, Gold, Silver, Bronze — with pursuit posture, effort
+  guidance, and advisory next actions (FR-005) — **Complete**
 
 - Job opportunity pipeline and outcome logging (FR-013)
 
@@ -159,7 +161,8 @@ Phase 2 is complete when the decision loop described in [06_domain_model.md](06_
 
 - Portfolio projects can be ranked per opportunity with explanation (FR-004)
 
-- Tier recommendations include effort guidance and cited rationale (FR-005)
+- Tier recommendations include pursuit posture, effort guidance, advisory next actions,
+  and cited rationale (FR-005)
 
 - Outcomes can be recorded and retrieved against assessed opportunities (FR-013)
 

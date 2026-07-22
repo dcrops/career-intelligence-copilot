@@ -22,9 +22,10 @@ Career Intelligence Copilot has three coexisting layers:
 The repository is simultaneously a career tool, a portfolio project, and a Cursor learning laboratory. See [03_product_vision.md](03_product_vision.md) § Project Objectives.
 
 Phase 2 implementation has started. FR-001 Career Profile, FR-002 Job Analysis,
-FR-003 Opportunity Assessment, and FR-004 Portfolio Matching are implemented; later
-decision-loop stages (FR-005+) remain to be built. Architecture decisions are recorded
-under `docs/adr/`.
+FR-003 Opportunity Assessment, FR-004 Portfolio Matching, and FR-005 Application Strategy
+are implemented; later decision-loop stages (pipeline tracking, FR-013 outcome logging,
+ranked comparison) remain to be built. Architecture decisions are recorded under
+`docs/adr/`.
 
 ---
 
@@ -39,7 +40,7 @@ under `docs/adr/`.
 | [05_engineering_principles.md](05_engineering_principles.md) | **Authoritative — engineering tradeoffs** | How to make implementation decisions |
 | [06_domain_model.md](06_domain_model.md) | **Authoritative — domain concepts** | Entities, decision loop, operational mapping |
 | [07_testing_strategy.md](07_testing_strategy.md) | **Authoritative — testing** | Test layers, regression philosophy, future suite growth |
-| [08_implementation_notes.md](08_implementation_notes.md) | Supporting | Implementation architecture notes, provenance, deviations, FR-002/FR-003/FR-004 verification |
+| [08_implementation_notes.md](08_implementation_notes.md) | Supporting | Implementation architecture notes, provenance, deviations, FR-002/FR-003/FR-004/FR-005 verification |
 | [eval/fr002_openai_manual_eval.md](eval/fr002_openai_manual_eval.md) | Supporting | FR-002 live OpenAI evaluation record |
 | [eval/fr003_openai_manual_eval.md](eval/fr003_openai_manual_eval.md) | Supporting | FR-003 live OpenAI evaluation record (PARTIAL PASS) |
 | [01_executive_summary.md](01_executive_summary.md) | Supporting | Quick narrative overview |
@@ -83,6 +84,7 @@ Supporting documents (01, 02) are optional for onboarding.
 | `metrics/` | Operational | Review and analytics placeholders — intentional placeholders, currently empty |
 | `career-log.md` | Operational | Dated log of career milestones and actions |
 | `tools/` | Implementation | Engineering evaluation harnesses (not product CLIs) |
+| `scripts/` | Implementation | Developer/owner manual validation runners |
 | `images/` | Reserved | Listed in README; not yet populated |
 
 The operational layer is the domain the future system must serve. Phase 2 pipeline and outcome logging (FR-013) are the automated counterparts to manual tracking in `applications/`.
@@ -97,7 +99,7 @@ The operational layer is the domain the future system must serve. Phase 2 pipeli
 
 **Company notes** (`applications/company_notes/`) — per-company pursuit notes and interview records.
 
-**Terminology reconciliation:** Operational data may use legacy tier language (e.g. "Tier 1"). Product documentation standardises on **Platinum, Gold, Silver, Skip**. See [04_functional_specification.md](04_functional_specification.md) § Application Tier Semantics. Operational files will be reconciled when the owner approves.
+**Terminology reconciliation:** Operational data may use legacy tier language (e.g. "Tier 1"). Product documentation standardises on **Platinum, Gold, Silver, Bronze**. The former product tier name Skip is renamed Bronze (effort band only). See [04_functional_specification.md](04_functional_specification.md) § Application Tier Semantics. Operational files will be reconciled when the owner approves.
 
 **External reference:** Application notes may reference systems outside this repository (e.g. "Career Platform v1.0"). Those systems are not documented here. This repository is the authoritative home for the Career Intelligence Copilot platform under definition.
 
@@ -110,10 +112,13 @@ The operational layer is the domain the future system must serve. Phase 2 pipeli
 **Approved:** Phase 2 Job Intelligence MVP scope
 
 **Implemented:** FR-001 Career Profile → FR-002 Job Analysis → FR-003 Opportunity Assessment
-(**Complete**; FR-003 live eval **PARTIAL PASS**, assessment prompt v6) and FR-004 Portfolio
-Matching (**Complete**; deterministic ranking + offline golden journeys)
+(**Complete**; FR-003 live eval **PARTIAL PASS**, assessment prompt v6), FR-004 Portfolio
+Matching (**Complete**; deterministic ranking + offline golden journeys), and FR-005
+Application Strategy (**Complete**; deterministic posture/tier policy + offline golden
+journeys)
 
-**In progress:** Remaining Phase 2 decision loop, beginning with FR-005 Application Strategy
+**In progress:** Remaining Phase 2 decision loop — pipeline tracking, FR-013 Outcome
+Logging, and ranked comparison of open assessed opportunities
 
 See [10_roadmap.md](10_roadmap.md) for phase detail and Phase 2 exit criteria.
 

@@ -150,6 +150,50 @@ def test_alignment_finding_requires_job_and_profile_evidence() -> None:
         FitFinding.model_validate(_finding(job_evidence=[]))
 
 
+def test_partial_alignment_requires_profile_evidence() -> None:
+    with pytest.raises(ValidationError, match="partial_alignment"):
+        FitFinding.model_validate(
+            _finding(kind="partial_alignment", profile_evidence=[])
+        )
+
+    finding = FitFinding.model_validate(
+        _finding(
+            kind="partial_alignment",
+            summary="AI delivery overlaps product work; direct PM tenure is missing.",
+            profile_evidence=[
+                {
+                    "source": "experience",
+                    "ref": "experience:chase-risk-compliance-ai-engineer",
+                }
+            ],
+        )
+    )
+    assert finding.kind == "partial_alignment"
+    assert finding.profile_evidence
+
+
+def test_transferable_alignment_requires_profile_evidence() -> None:
+    with pytest.raises(ValidationError, match="transferable_alignment"):
+        FitFinding.model_validate(
+            _finding(kind="transferable_alignment", profile_evidence=[])
+        )
+
+    finding = FitFinding.model_validate(
+        _finding(
+            kind="transferable_alignment",
+            summary="Portfolio problem framing transfers to product discovery work.",
+            profile_evidence=[
+                {
+                    "source": "project",
+                    "ref": "project:operational-intelligence-copilot",
+                }
+            ],
+        )
+    )
+    assert finding.kind == "transferable_alignment"
+    assert finding.profile_evidence
+
+
 def test_gap_finding_allows_missing_profile_evidence() -> None:
     finding = FitFinding.model_validate(
         _finding(

@@ -1,0 +1,986 @@
+{
+  "components": [
+    {
+      "name": "CareerProfile",
+      "implementation": "CareerProfileService / YAML",
+      "mode": "deterministic_production"
+    },
+    {
+      "name": "JobAnalysis",
+      "implementation": "OpenAIJobExtractor",
+      "mode": "openai_production"
+    },
+    {
+      "name": "OpportunityAssessment",
+      "implementation": "OpenAIAssessor",
+      "mode": "openai_production"
+    },
+    {
+      "name": "PortfolioMatch",
+      "implementation": "DeterministicMatcher",
+      "mode": "deterministic_production"
+    },
+    {
+      "name": "ApplicationStrategy",
+      "implementation": "DeterministicStrategyPlanner",
+      "mode": "deterministic_production"
+    }
+  ],
+  "volume_applications_enabled": false,
+  "profile_identity": {
+    "full_name": "David Cropper",
+    "target_role": "AI Engineer"
+  },
+  "posting": {
+    "raw_text": "Associate AI Product Manager\n\nSEEK Limited \n4.6\n201 reviews\n·\nView all jobs\nCremorne, Melbourne VIC (Hybrid)\nProduct Management & Development (Information & Communication Technology)\nFull time\nPosted 3h ago\n\nHow you match\nMatches based on your career history\nSoftware Development\n\nShow all⁠\nCompany Description\nAbout SEEK\n\nSEEK’s portfolio of diverse businesses make a positive impact on a truly global scale. Our purpose is to help people live more fulfilling and productive working lives and help organisations succeed. We create world-class technology solutions to connect more people to relevant employment, education, small business and volunteer opportunities. We have a culture of high-performance in our workplaces and celebrate the diversity of our employees who contribute to the success of our organisation.\n\nLife at SEEK\n\nSEEK’s purpose is at the centre of everything we do. Our SEEK, which defines the way we work, is all about what makes us unique and a little bit different. Passion, Team, Delivery and Future are our principles that drive innovation and creativity. SEEK strives to support employee wellbeing by providing an amazing experience at work which led us to being named AFR BOSS Top 10 Best Places to Work in Technology (2021-2024). We are proud to work in an environment that's inclusive where everyone's unique ideas, experiences and perspectives are valued.\n\nOur award-winning head office in Cremorne (just a 4 min walk from Richmond station) provides an exceptional space to collaborate with colleagues. The building provides sweeping views of the city, a games area, sit and stand desks at every workstation, modern end-of-trip facilities and Thursday night drinks which gives our people an opportunity to connect in a social setting.\n\nJob Description\nThe Role\n\nAI Product Managers at SEEK are a specialisation of the Product Manager role – they form the critical connection between SEEK’s strategy and customer ambitions, and the possibilities that can be unlocked by AI and data. AI Product Managers work within cross-functional teams with Data Scientists, Engineers and other specialists, who build AI and data-driven products to solve our most important customer and business problems.\n\nThe Pricing and Performance team works at the intersection of SEEK’s commercial ambitions, business strategy and AI capability. In this role, you will support products and services that improve ad performance and help SEEK balance trade-offs between candidate engagement, job placements and revenue.\n\nThe role will initially focus on improving how SEEK helps employers get better hiring results from their job ads. This includes working on products and systems that predict ad performance, help employers understand the results they can expect, and support the systems that determine how job ads are ranked and shown across SEEK.\n\nThis is an exciting and ambiguous space that requires structured problem solving, strong product judgement and a growing appreciation of how AI, marketplace dynamics and commercial objectives interact.\n\nYou will work with the Principal AI Product Manager and will own appropriately scoped product problems, coordinate delivery with the squad, and partner with teams across AIPS and the broader business.\n \n\nThe Team\n\nAI Platform Services is a team dedicated to building global AI-driven services to the SEEK Group. Pricing and Performance is one squad within the AI Platform Services team and has approx. 25 Data Scientists and Engineers.\nYou will report to the Principal Product Manager – Pricing and Performance.\n\nKey Responsibilities\n\nStrategy\n\nUnderstand strategic priorities that may influence, or be dependent on, ad performance\nWork with the team to frame and articulate the squad’s strategic direction, ambition and roadmap\nEnsure the team has visibility of strategic priorities (SEEK Group, partners and AIPS)\nWork with the partners, AIPS and the squad to set quarterly OKRs\nSupport the team to frame problems and trade-offs in a structured way that leads to robust decisions\nPartners\n\nWork with partners (commercial, product and strategy) and the Principal Product Manager in the team to frame opportunities\nWork with current and potential product and AIPS partners to understand  business objectives and identify opportunities for collaboration\nCoordinate squad engagement with partner teams to define, build and integrate new products and services\nManage contracts and ongoing engagement with partner teams\nProduct ownership\n\nWork with the Principal Product Manager and partners to define measures of success for our products and services, track progress and identify opportunities to improve\nWork with Principal Product Manager and the Experiments team to coordinate experiments – defining objectives, interpreting results and agreeing implications\nTeam facilitation\n\nWork with the team to establish good team processes\nAct as the Agile ‘product owner’ for the team’s products and services\nIdentify and manage dependencies on other AIPS squads or partner teams\nCoordinate updates to stakeholders \nQualifications\nEssential Qualifications, Skills and Experience\n\nProven ability to identify, define and work through ambiguous opportunities supported by clear articulation of hypotheses, and connecting these to key questions and a work plan\nLogical and data-driven approach to problem solving and decision-making\nAbility to understand SEEK’s business objectives and strategy, and translate that to different audiences including technical team members\nWillingness and ability to learn about software engineering and AI, and work with engineers and data scientists to design analytical and technical solutions that align with the strategy and business goals\nWillingness to be ‘hands on’ with the team – e.g. driving prioritisation, standups; using simple analysis to identify opportunities\nOther Qualifications, Skills and Experience\n\nPassionate about achieving great outcomes for customers and for SEEK\nAble to form connections with senior and mid-level stakeholders (including strategy, product, commercial excellence and technical team members), backed by strong communication skills\nWillingness to engage in constructive challenge and healthy debate\nPragmatic – able to make trade-offs to move forward\nExperience in translating conceptual ideas into tangible tasks, and seeing them through to completion\nAdditional Information\nPerks and benefits\nAt SEEK we offer:\n\nAnnual Performance Bonus Plan\nSupport of flexible working, including a mix of office and work from home days depending on your role.\nPaid and unpaid leave benefits including Personal Flexi Days and Volunteer Days, as well as the opportunity to purchase additional leave\nThe opportunity to work from anywhere for up to 4 weeks per financial year\nCasual dress – every day\n \n\nAt SEEK, we are passionate about fostering a culture of inclusion and wellbeing that embraces and values the diversity of our people. We are a purpose driven business that works with heart.\n\nWe know teams with diverse ideas, experiences and perspectives are more creative and are critical to ensuring effective delivery and innovating to enable our future success. As such, we welcome applications from people with diverse backgrounds and life experiences, especially as they relate to gender, sexual identity, culture, faith, disability and life stages. If you have the skills, curiosity and an adaptable mindset but don't meet every responsibility or qualification listed in this advertisement, please still get in touch with us.\n\nShould you require any specific support or adjustments throughout the recruitment process and beyond, please advise us and we will be happy to assist.\n\nFor this role, only those candidates with the eligible right to work will be considered.\n\nAt SEEK, we may use AI tools to support parts of the hiring process, including reviewing applications or assessing responses. These tools are designed to assist our hiring teams, not replace human judgment. All hiring decisions are made by people. If you’d like more information about how your information is managed during recruitment, please contact the Talent Acquisition Team.\n\nSEEK kindly requests no unsolicited resumes or approaches from recruitment agencies and will not be responsible for any associated fees.",
+    "title": "Associate AI Product Manager",
+    "company": "SEEK Limited",
+    "source_url": "https://au.seek.com/job/93479400?ref=search-standalone&type=promoted&origin=showNewTab#sol=d7fb20ae22cc3fef00911d3b513e8a031f57b585"
+  },
+  "job_analysis": {
+    "posting": {
+      "raw_text": "Associate AI Product Manager\n\nSEEK Limited \n4.6\n201 reviews\n·\nView all jobs\nCremorne, Melbourne VIC (Hybrid)\nProduct Management & Development (Information & Communication Technology)\nFull time\nPosted 3h ago\n\nHow you match\nMatches based on your career history\nSoftware Development\n\nShow all⁠\nCompany Description\nAbout SEEK\n\nSEEK’s portfolio of diverse businesses make a positive impact on a truly global scale. Our purpose is to help people live more fulfilling and productive working lives and help organisations succeed. We create world-class technology solutions to connect more people to relevant employment, education, small business and volunteer opportunities. We have a culture of high-performance in our workplaces and celebrate the diversity of our employees who contribute to the success of our organisation.\n\nLife at SEEK\n\nSEEK’s purpose is at the centre of everything we do. Our SEEK, which defines the way we work, is all about what makes us unique and a little bit different. Passion, Team, Delivery and Future are our principles that drive innovation and creativity. SEEK strives to support employee wellbeing by providing an amazing experience at work which led us to being named AFR BOSS Top 10 Best Places to Work in Technology (2021-2024). We are proud to work in an environment that's inclusive where everyone's unique ideas, experiences and perspectives are valued.\n\nOur award-winning head office in Cremorne (just a 4 min walk from Richmond station) provides an exceptional space to collaborate with colleagues. The building provides sweeping views of the city, a games area, sit and stand desks at every workstation, modern end-of-trip facilities and Thursday night drinks which gives our people an opportunity to connect in a social setting.\n\nJob Description\nThe Role\n\nAI Product Managers at SEEK are a specialisation of the Product Manager role – they form the critical connection between SEEK’s strategy and customer ambitions, and the possibilities that can be unlocked by AI and data. AI Product Managers work within cross-functional teams with Data Scientists, Engineers and other specialists, who build AI and data-driven products to solve our most important customer and business problems.\n\nThe Pricing and Performance team works at the intersection of SEEK’s commercial ambitions, business strategy and AI capability. In this role, you will support products and services that improve ad performance and help SEEK balance trade-offs between candidate engagement, job placements and revenue.\n\nThe role will initially focus on improving how SEEK helps employers get better hiring results from their job ads. This includes working on products and systems that predict ad performance, help employers understand the results they can expect, and support the systems that determine how job ads are ranked and shown across SEEK.\n\nThis is an exciting and ambiguous space that requires structured problem solving, strong product judgement and a growing appreciation of how AI, marketplace dynamics and commercial objectives interact.\n\nYou will work with the Principal AI Product Manager and will own appropriately scoped product problems, coordinate delivery with the squad, and partner with teams across AIPS and the broader business.\n \n\nThe Team\n\nAI Platform Services is a team dedicated to building global AI-driven services to the SEEK Group. Pricing and Performance is one squad within the AI Platform Services team and has approx. 25 Data Scientists and Engineers.\nYou will report to the Principal Product Manager – Pricing and Performance.\n\nKey Responsibilities\n\nStrategy\n\nUnderstand strategic priorities that may influence, or be dependent on, ad performance\nWork with the team to frame and articulate the squad’s strategic direction, ambition and roadmap\nEnsure the team has visibility of strategic priorities (SEEK Group, partners and AIPS)\nWork with the partners, AIPS and the squad to set quarterly OKRs\nSupport the team to frame problems and trade-offs in a structured way that leads to robust decisions\nPartners\n\nWork with partners (commercial, product and strategy) and the Principal Product Manager in the team to frame opportunities\nWork with current and potential product and AIPS partners to understand  business objectives and identify opportunities for collaboration\nCoordinate squad engagement with partner teams to define, build and integrate new products and services\nManage contracts and ongoing engagement with partner teams\nProduct ownership\n\nWork with the Principal Product Manager and partners to define measures of success for our products and services, track progress and identify opportunities to improve\nWork with Principal Product Manager and the Experiments team to coordinate experiments – defining objectives, interpreting results and agreeing implications\nTeam facilitation\n\nWork with the team to establish good team processes\nAct as the Agile ‘product owner’ for the team’s products and services\nIdentify and manage dependencies on other AIPS squads or partner teams\nCoordinate updates to stakeholders \nQualifications\nEssential Qualifications, Skills and Experience\n\nProven ability to identify, define and work through ambiguous opportunities supported by clear articulation of hypotheses, and connecting these to key questions and a work plan\nLogical and data-driven approach to problem solving and decision-making\nAbility to understand SEEK’s business objectives and strategy, and translate that to different audiences including technical team members\nWillingness and ability to learn about software engineering and AI, and work with engineers and data scientists to design analytical and technical solutions that align with the strategy and business goals\nWillingness to be ‘hands on’ with the team – e.g. driving prioritisation, standups; using simple analysis to identify opportunities\nOther Qualifications, Skills and Experience\n\nPassionate about achieving great outcomes for customers and for SEEK\nAble to form connections with senior and mid-level stakeholders (including strategy, product, commercial excellence and technical team members), backed by strong communication skills\nWillingness to engage in constructive challenge and healthy debate\nPragmatic – able to make trade-offs to move forward\nExperience in translating conceptual ideas into tangible tasks, and seeing them through to completion\nAdditional Information\nPerks and benefits\nAt SEEK we offer:\n\nAnnual Performance Bonus Plan\nSupport of flexible working, including a mix of office and work from home days depending on your role.\nPaid and unpaid leave benefits including Personal Flexi Days and Volunteer Days, as well as the opportunity to purchase additional leave\nThe opportunity to work from anywhere for up to 4 weeks per financial year\nCasual dress – every day\n \n\nAt SEEK, we are passionate about fostering a culture of inclusion and wellbeing that embraces and values the diversity of our people. We are a purpose driven business that works with heart.\n\nWe know teams with diverse ideas, experiences and perspectives are more creative and are critical to ensuring effective delivery and innovating to enable our future success. As such, we welcome applications from people with diverse backgrounds and life experiences, especially as they relate to gender, sexual identity, culture, faith, disability and life stages. If you have the skills, curiosity and an adaptable mindset but don't meet every responsibility or qualification listed in this advertisement, please still get in touch with us.\n\nShould you require any specific support or adjustments throughout the recruitment process and beyond, please advise us and we will be happy to assist.\n\nFor this role, only those candidates with the eligible right to work will be considered.\n\nAt SEEK, we may use AI tools to support parts of the hiring process, including reviewing applications or assessing responses. These tools are designed to assist our hiring teams, not replace human judgment. All hiring decisions are made by people. If you’d like more information about how your information is managed during recruitment, please contact the Talent Acquisition Team.\n\nSEEK kindly requests no unsolicited resumes or approaches from recruitment agencies and will not be responsible for any associated fees.",
+      "title": "Associate AI Product Manager",
+      "company": "SEEK Limited",
+      "source_url": "https://au.seek.com/job/93479400?ref=search-standalone&type=promoted&origin=showNewTab#sol=d7fb20ae22cc3fef00911d3b513e8a031f57b585"
+    },
+    "role_family": {
+      "family": "ai_adjacent",
+      "evidence": [
+        {
+          "excerpt": "AI Product Managers at SEEK are a specialisation of the Product Manager role – they form the critical connection between SEEK’s strategy and customer ambitions, and the possibilities that can be unlocked by AI and data.",
+          "section": "Job Description"
+        }
+      ]
+    },
+    "seniority": {
+      "level": "unknown",
+      "ambiguous": false,
+      "candidate_levels": [],
+      "evidence": []
+    },
+    "technologies": [],
+    "responsibilities": [
+      {
+        "description": "Understand strategic priorities that may influence, or be dependent on, ad performance.",
+        "evidence": [
+          {
+            "excerpt": "Understand strategic priorities that may influence, or be dependent on, ad performance.",
+            "section": "Key Responsibilities"
+          }
+        ]
+      },
+      {
+        "description": "Work with the team to frame and articulate the squad’s strategic direction, ambition and roadmap.",
+        "evidence": [
+          {
+            "excerpt": "Work with the team to frame and articulate the squad’s strategic direction, ambition and roadmap.",
+            "section": "Key Responsibilities"
+          }
+        ]
+      },
+      {
+        "description": "Support the team to frame problems and trade-offs in a structured way that leads to robust decisions.",
+        "evidence": [
+          {
+            "excerpt": "Support the team to frame problems and trade-offs in a structured way that leads to robust decisions.",
+            "section": "Key Responsibilities"
+          }
+        ]
+      },
+      {
+        "description": "Work with partners to frame opportunities and identify opportunities for collaboration.",
+        "evidence": [
+          {
+            "excerpt": "Work with partners (commercial, product and strategy) and the Principal Product Manager in the team to frame opportunities.",
+            "section": "Key Responsibilities"
+          }
+        ]
+      },
+      {
+        "description": "Coordinate squad engagement with partner teams to define, build and integrate new products and services.",
+        "evidence": [
+          {
+            "excerpt": "Coordinate squad engagement with partner teams to define, build and integrate new products and services.",
+            "section": "Key Responsibilities"
+          }
+        ]
+      },
+      {
+        "description": "Work with the Principal Product Manager and partners to define measures of success for our products and services.",
+        "evidence": [
+          {
+            "excerpt": "Work with the Principal Product Manager and partners to define measures of success for our products and services.",
+            "section": "Key Responsibilities"
+          }
+        ]
+      },
+      {
+        "description": "Act as the Agile ‘product owner’ for the team’s products and services.",
+        "evidence": [
+          {
+            "excerpt": "Act as the Agile ‘product owner’ for the team’s products and services.",
+            "section": "Key Responsibilities"
+          }
+        ]
+      }
+    ],
+    "compensation": {
+      "clarity": "unstated",
+      "minimum": null,
+      "maximum": null,
+      "currency": null,
+      "period": null,
+      "raw_text": null,
+      "evidence": []
+    },
+    "location": {
+      "clarity": "stated",
+      "summary": "Cremorne, Melbourne VIC (Hybrid)",
+      "evidence": [
+        {
+          "excerpt": "Cremorne, Melbourne VIC (Hybrid)",
+          "section": "Job Description"
+        }
+      ]
+    },
+    "work_arrangement": {
+      "arrangement": "hybrid",
+      "details": null,
+      "evidence": [
+        {
+          "excerpt": "Cremorne, Melbourne VIC (Hybrid)",
+          "section": "Job Description"
+        }
+      ]
+    },
+    "employment": {
+      "working_hours": "full_time",
+      "engagement_type": "unspecified",
+      "evidence": [
+        {
+          "excerpt": "Full time",
+          "section": "Job Description"
+        }
+      ]
+    },
+    "experience_requirements": []
+  },
+  "opportunity_assessment": {
+    "job_analysis": {
+      "posting": {
+        "raw_text": "Associate AI Product Manager\n\nSEEK Limited \n4.6\n201 reviews\n·\nView all jobs\nCremorne, Melbourne VIC (Hybrid)\nProduct Management & Development (Information & Communication Technology)\nFull time\nPosted 3h ago\n\nHow you match\nMatches based on your career history\nSoftware Development\n\nShow all⁠\nCompany Description\nAbout SEEK\n\nSEEK’s portfolio of diverse businesses make a positive impact on a truly global scale. Our purpose is to help people live more fulfilling and productive working lives and help organisations succeed. We create world-class technology solutions to connect more people to relevant employment, education, small business and volunteer opportunities. We have a culture of high-performance in our workplaces and celebrate the diversity of our employees who contribute to the success of our organisation.\n\nLife at SEEK\n\nSEEK’s purpose is at the centre of everything we do. Our SEEK, which defines the way we work, is all about what makes us unique and a little bit different. Passion, Team, Delivery and Future are our principles that drive innovation and creativity. SEEK strives to support employee wellbeing by providing an amazing experience at work which led us to being named AFR BOSS Top 10 Best Places to Work in Technology (2021-2024). We are proud to work in an environment that's inclusive where everyone's unique ideas, experiences and perspectives are valued.\n\nOur award-winning head office in Cremorne (just a 4 min walk from Richmond station) provides an exceptional space to collaborate with colleagues. The building provides sweeping views of the city, a games area, sit and stand desks at every workstation, modern end-of-trip facilities and Thursday night drinks which gives our people an opportunity to connect in a social setting.\n\nJob Description\nThe Role\n\nAI Product Managers at SEEK are a specialisation of the Product Manager role – they form the critical connection between SEEK’s strategy and customer ambitions, and the possibilities that can be unlocked by AI and data. AI Product Managers work within cross-functional teams with Data Scientists, Engineers and other specialists, who build AI and data-driven products to solve our most important customer and business problems.\n\nThe Pricing and Performance team works at the intersection of SEEK’s commercial ambitions, business strategy and AI capability. In this role, you will support products and services that improve ad performance and help SEEK balance trade-offs between candidate engagement, job placements and revenue.\n\nThe role will initially focus on improving how SEEK helps employers get better hiring results from their job ads. This includes working on products and systems that predict ad performance, help employers understand the results they can expect, and support the systems that determine how job ads are ranked and shown across SEEK.\n\nThis is an exciting and ambiguous space that requires structured problem solving, strong product judgement and a growing appreciation of how AI, marketplace dynamics and commercial objectives interact.\n\nYou will work with the Principal AI Product Manager and will own appropriately scoped product problems, coordinate delivery with the squad, and partner with teams across AIPS and the broader business.\n \n\nThe Team\n\nAI Platform Services is a team dedicated to building global AI-driven services to the SEEK Group. Pricing and Performance is one squad within the AI Platform Services team and has approx. 25 Data Scientists and Engineers.\nYou will report to the Principal Product Manager – Pricing and Performance.\n\nKey Responsibilities\n\nStrategy\n\nUnderstand strategic priorities that may influence, or be dependent on, ad performance\nWork with the team to frame and articulate the squad’s strategic direction, ambition and roadmap\nEnsure the team has visibility of strategic priorities (SEEK Group, partners and AIPS)\nWork with the partners, AIPS and the squad to set quarterly OKRs\nSupport the team to frame problems and trade-offs in a structured way that leads to robust decisions\nPartners\n\nWork with partners (commercial, product and strategy) and the Principal Product Manager in the team to frame opportunities\nWork with current and potential product and AIPS partners to understand  business objectives and identify opportunities for collaboration\nCoordinate squad engagement with partner teams to define, build and integrate new products and services\nManage contracts and ongoing engagement with partner teams\nProduct ownership\n\nWork with the Principal Product Manager and partners to define measures of success for our products and services, track progress and identify opportunities to improve\nWork with Principal Product Manager and the Experiments team to coordinate experiments – defining objectives, interpreting results and agreeing implications\nTeam facilitation\n\nWork with the team to establish good team processes\nAct as the Agile ‘product owner’ for the team’s products and services\nIdentify and manage dependencies on other AIPS squads or partner teams\nCoordinate updates to stakeholders \nQualifications\nEssential Qualifications, Skills and Experience\n\nProven ability to identify, define and work through ambiguous opportunities supported by clear articulation of hypotheses, and connecting these to key questions and a work plan\nLogical and data-driven approach to problem solving and decision-making\nAbility to understand SEEK’s business objectives and strategy, and translate that to different audiences including technical team members\nWillingness and ability to learn about software engineering and AI, and work with engineers and data scientists to design analytical and technical solutions that align with the strategy and business goals\nWillingness to be ‘hands on’ with the team – e.g. driving prioritisation, standups; using simple analysis to identify opportunities\nOther Qualifications, Skills and Experience\n\nPassionate about achieving great outcomes for customers and for SEEK\nAble to form connections with senior and mid-level stakeholders (including strategy, product, commercial excellence and technical team members), backed by strong communication skills\nWillingness to engage in constructive challenge and healthy debate\nPragmatic – able to make trade-offs to move forward\nExperience in translating conceptual ideas into tangible tasks, and seeing them through to completion\nAdditional Information\nPerks and benefits\nAt SEEK we offer:\n\nAnnual Performance Bonus Plan\nSupport of flexible working, including a mix of office and work from home days depending on your role.\nPaid and unpaid leave benefits including Personal Flexi Days and Volunteer Days, as well as the opportunity to purchase additional leave\nThe opportunity to work from anywhere for up to 4 weeks per financial year\nCasual dress – every day\n \n\nAt SEEK, we are passionate about fostering a culture of inclusion and wellbeing that embraces and values the diversity of our people. We are a purpose driven business that works with heart.\n\nWe know teams with diverse ideas, experiences and perspectives are more creative and are critical to ensuring effective delivery and innovating to enable our future success. As such, we welcome applications from people with diverse backgrounds and life experiences, especially as they relate to gender, sexual identity, culture, faith, disability and life stages. If you have the skills, curiosity and an adaptable mindset but don't meet every responsibility or qualification listed in this advertisement, please still get in touch with us.\n\nShould you require any specific support or adjustments throughout the recruitment process and beyond, please advise us and we will be happy to assist.\n\nFor this role, only those candidates with the eligible right to work will be considered.\n\nAt SEEK, we may use AI tools to support parts of the hiring process, including reviewing applications or assessing responses. These tools are designed to assist our hiring teams, not replace human judgment. All hiring decisions are made by people. If you’d like more information about how your information is managed during recruitment, please contact the Talent Acquisition Team.\n\nSEEK kindly requests no unsolicited resumes or approaches from recruitment agencies and will not be responsible for any associated fees.",
+        "title": "Associate AI Product Manager",
+        "company": "SEEK Limited",
+        "source_url": "https://au.seek.com/job/93479400?ref=search-standalone&type=promoted&origin=showNewTab#sol=d7fb20ae22cc3fef00911d3b513e8a031f57b585"
+      },
+      "role_family": {
+        "family": "ai_adjacent",
+        "evidence": [
+          {
+            "excerpt": "AI Product Managers at SEEK are a specialisation of the Product Manager role – they form the critical connection between SEEK’s strategy and customer ambitions, and the possibilities that can be unlocked by AI and data.",
+            "section": "Job Description"
+          }
+        ]
+      },
+      "seniority": {
+        "level": "unknown",
+        "ambiguous": false,
+        "candidate_levels": [],
+        "evidence": []
+      },
+      "technologies": [],
+      "responsibilities": [
+        {
+          "description": "Understand strategic priorities that may influence, or be dependent on, ad performance.",
+          "evidence": [
+            {
+              "excerpt": "Understand strategic priorities that may influence, or be dependent on, ad performance.",
+              "section": "Key Responsibilities"
+            }
+          ]
+        },
+        {
+          "description": "Work with the team to frame and articulate the squad’s strategic direction, ambition and roadmap.",
+          "evidence": [
+            {
+              "excerpt": "Work with the team to frame and articulate the squad’s strategic direction, ambition and roadmap.",
+              "section": "Key Responsibilities"
+            }
+          ]
+        },
+        {
+          "description": "Support the team to frame problems and trade-offs in a structured way that leads to robust decisions.",
+          "evidence": [
+            {
+              "excerpt": "Support the team to frame problems and trade-offs in a structured way that leads to robust decisions.",
+              "section": "Key Responsibilities"
+            }
+          ]
+        },
+        {
+          "description": "Work with partners to frame opportunities and identify opportunities for collaboration.",
+          "evidence": [
+            {
+              "excerpt": "Work with partners (commercial, product and strategy) and the Principal Product Manager in the team to frame opportunities.",
+              "section": "Key Responsibilities"
+            }
+          ]
+        },
+        {
+          "description": "Coordinate squad engagement with partner teams to define, build and integrate new products and services.",
+          "evidence": [
+            {
+              "excerpt": "Coordinate squad engagement with partner teams to define, build and integrate new products and services.",
+              "section": "Key Responsibilities"
+            }
+          ]
+        },
+        {
+          "description": "Work with the Principal Product Manager and partners to define measures of success for our products and services.",
+          "evidence": [
+            {
+              "excerpt": "Work with the Principal Product Manager and partners to define measures of success for our products and services.",
+              "section": "Key Responsibilities"
+            }
+          ]
+        },
+        {
+          "description": "Act as the Agile ‘product owner’ for the team’s products and services.",
+          "evidence": [
+            {
+              "excerpt": "Act as the Agile ‘product owner’ for the team’s products and services.",
+              "section": "Key Responsibilities"
+            }
+          ]
+        }
+      ],
+      "compensation": {
+        "clarity": "unstated",
+        "minimum": null,
+        "maximum": null,
+        "currency": null,
+        "period": null,
+        "raw_text": null,
+        "evidence": []
+      },
+      "location": {
+        "clarity": "stated",
+        "summary": "Cremorne, Melbourne VIC (Hybrid)",
+        "evidence": [
+          {
+            "excerpt": "Cremorne, Melbourne VIC (Hybrid)",
+            "section": "Job Description"
+          }
+        ]
+      },
+      "work_arrangement": {
+        "arrangement": "hybrid",
+        "details": null,
+        "evidence": [
+          {
+            "excerpt": "Cremorne, Melbourne VIC (Hybrid)",
+            "section": "Job Description"
+          }
+        ]
+      },
+      "employment": {
+        "working_hours": "full_time",
+        "engagement_type": "unspecified",
+        "evidence": [
+          {
+            "excerpt": "Full time",
+            "section": "Job Description"
+          }
+        ]
+      },
+      "experience_requirements": []
+    },
+    "technical_fit": {
+      "dimension": "technical",
+      "judgment": "mixed",
+      "summary": "The candidate has relevant AI engineering experience, having developed projects independently. However, no direct employment history in AI product management limits alignment with specific responsibilities of the role.",
+      "findings": [
+        {
+          "kind": "partial_alignment",
+          "summary": "The candidate's experience as an AI Engineer supports responsibilities like understanding strategic priorities and coordinating with teams, though it lacks formal product management experience.",
+          "detail": null,
+          "importance": "material",
+          "job_evidence": [
+            {
+              "source": "responsibility",
+              "item_index": 0,
+              "name": "Understand strategic priorities that may influence, or be dependent on, ad performance.",
+              "excerpt": "Understand strategic priorities that may influence, or be dependent on, ad performance."
+            },
+            {
+              "source": "responsibility",
+              "item_index": 4,
+              "name": "Coordinate squad engagement with partner teams to define, build and integrate new products and services.",
+              "excerpt": "Coordinate squad engagement with partner teams to define, build and integrate new products and services."
+            }
+          ],
+          "profile_evidence": [
+            {
+              "source": "experience",
+              "ref": "experience:chase-risk-compliance-ai-engineer",
+              "excerpt": "Independently develops progressively more complex production-minded AI Engineering projects."
+            }
+          ],
+          "assumption": null
+        },
+        {
+          "kind": "gap",
+          "summary": "Missing direct experience in product management applied to AI technology, which is essential for fully supporting identified responsibilities in product ownership.",
+          "detail": null,
+          "importance": "material",
+          "job_evidence": [
+            {
+              "source": "responsibility",
+              "item_index": 5,
+              "name": "Work with the Principal Product Manager and partners to define measures of success for our products and services.",
+              "excerpt": "Work with the Principal Product Manager and partners to define measures of success for our products and services."
+            }
+          ],
+          "profile_evidence": [],
+          "assumption": null
+        }
+      ]
+    },
+    "commercial_fit": {
+      "dimension": "commercial",
+      "judgment": "unknown",
+      "summary": "No specific compensation details are provided by the job or candidate profile, leading to uncertainty regarding fit.",
+      "findings": [
+        {
+          "kind": "uncertainty",
+          "summary": "Both the job posting and candidate profile do not specify a clear compensation structure, leading to ambiguity in commercial expectations.",
+          "detail": null,
+          "importance": "minor",
+          "job_evidence": [
+            {
+              "source": "compensation",
+              "item_index": 0,
+              "name": "unstated",
+              "excerpt": "unstated"
+            }
+          ],
+          "profile_evidence": [],
+          "assumption": null
+        }
+      ]
+    },
+    "portfolio_fit": {
+      "dimension": "portfolio",
+      "judgment": "strong",
+      "summary": "The candidate's independent projects closely align with the role's responsibility for AI-driven product development.",
+      "findings": [
+        {
+          "kind": "alignment",
+          "summary": "The candidate's project, 'Operational Intelligence Copilot', validates successful application of AI in a relevant domain, corresponding well with the role's strategic focus on ad performance.",
+          "detail": null,
+          "importance": "material",
+          "job_evidence": [
+            {
+              "source": "role_family",
+              "item_index": 0,
+              "name": "ai_adjacent",
+              "excerpt": "AI Product Managers at SEEK are a specialization of the Product Manager role."
+            }
+          ],
+          "profile_evidence": [
+            {
+              "source": "project",
+              "ref": "project:operational-intelligence-copilot",
+              "excerpt": "Domain-agnostic operational intelligence platform combining deterministic analytics with Large Language Model reasoning."
+            }
+          ],
+          "assumption": null
+        }
+      ]
+    },
+    "summary": {
+      "summary": "The candidate shows mixed potential fit for the Associate AI Product Manager role at SEEK. Technical alignment is somewhat moderate due to a lack of product management experience, whereas the candidate's portfolio demonstrates strong capabilities in AI application development. Commercial fit remains unknown due to unclear compensation details.",
+      "key_alignments": [
+        "AI engineering expertise",
+        "Independent project development"
+      ],
+      "key_gaps": [
+        "Missing direct product management experience",
+        "Unstated compensation details"
+      ]
+    }
+  },
+  "portfolio_match": {
+    "job_analysis": {
+      "posting": {
+        "raw_text": "Associate AI Product Manager\n\nSEEK Limited \n4.6\n201 reviews\n·\nView all jobs\nCremorne, Melbourne VIC (Hybrid)\nProduct Management & Development (Information & Communication Technology)\nFull time\nPosted 3h ago\n\nHow you match\nMatches based on your career history\nSoftware Development\n\nShow all⁠\nCompany Description\nAbout SEEK\n\nSEEK’s portfolio of diverse businesses make a positive impact on a truly global scale. Our purpose is to help people live more fulfilling and productive working lives and help organisations succeed. We create world-class technology solutions to connect more people to relevant employment, education, small business and volunteer opportunities. We have a culture of high-performance in our workplaces and celebrate the diversity of our employees who contribute to the success of our organisation.\n\nLife at SEEK\n\nSEEK’s purpose is at the centre of everything we do. Our SEEK, which defines the way we work, is all about what makes us unique and a little bit different. Passion, Team, Delivery and Future are our principles that drive innovation and creativity. SEEK strives to support employee wellbeing by providing an amazing experience at work which led us to being named AFR BOSS Top 10 Best Places to Work in Technology (2021-2024). We are proud to work in an environment that's inclusive where everyone's unique ideas, experiences and perspectives are valued.\n\nOur award-winning head office in Cremorne (just a 4 min walk from Richmond station) provides an exceptional space to collaborate with colleagues. The building provides sweeping views of the city, a games area, sit and stand desks at every workstation, modern end-of-trip facilities and Thursday night drinks which gives our people an opportunity to connect in a social setting.\n\nJob Description\nThe Role\n\nAI Product Managers at SEEK are a specialisation of the Product Manager role – they form the critical connection between SEEK’s strategy and customer ambitions, and the possibilities that can be unlocked by AI and data. AI Product Managers work within cross-functional teams with Data Scientists, Engineers and other specialists, who build AI and data-driven products to solve our most important customer and business problems.\n\nThe Pricing and Performance team works at the intersection of SEEK’s commercial ambitions, business strategy and AI capability. In this role, you will support products and services that improve ad performance and help SEEK balance trade-offs between candidate engagement, job placements and revenue.\n\nThe role will initially focus on improving how SEEK helps employers get better hiring results from their job ads. This includes working on products and systems that predict ad performance, help employers understand the results they can expect, and support the systems that determine how job ads are ranked and shown across SEEK.\n\nThis is an exciting and ambiguous space that requires structured problem solving, strong product judgement and a growing appreciation of how AI, marketplace dynamics and commercial objectives interact.\n\nYou will work with the Principal AI Product Manager and will own appropriately scoped product problems, coordinate delivery with the squad, and partner with teams across AIPS and the broader business.\n \n\nThe Team\n\nAI Platform Services is a team dedicated to building global AI-driven services to the SEEK Group. Pricing and Performance is one squad within the AI Platform Services team and has approx. 25 Data Scientists and Engineers.\nYou will report to the Principal Product Manager – Pricing and Performance.\n\nKey Responsibilities\n\nStrategy\n\nUnderstand strategic priorities that may influence, or be dependent on, ad performance\nWork with the team to frame and articulate the squad’s strategic direction, ambition and roadmap\nEnsure the team has visibility of strategic priorities (SEEK Group, partners and AIPS)\nWork with the partners, AIPS and the squad to set quarterly OKRs\nSupport the team to frame problems and trade-offs in a structured way that leads to robust decisions\nPartners\n\nWork with partners (commercial, product and strategy) and the Principal Product Manager in the team to frame opportunities\nWork with current and potential product and AIPS partners to understand  business objectives and identify opportunities for collaboration\nCoordinate squad engagement with partner teams to define, build and integrate new products and services\nManage contracts and ongoing engagement with partner teams\nProduct ownership\n\nWork with the Principal Product Manager and partners to define measures of success for our products and services, track progress and identify opportunities to improve\nWork with Principal Product Manager and the Experiments team to coordinate experiments – defining objectives, interpreting results and agreeing implications\nTeam facilitation\n\nWork with the team to establish good team processes\nAct as the Agile ‘product owner’ for the team’s products and services\nIdentify and manage dependencies on other AIPS squads or partner teams\nCoordinate updates to stakeholders \nQualifications\nEssential Qualifications, Skills and Experience\n\nProven ability to identify, define and work through ambiguous opportunities supported by clear articulation of hypotheses, and connecting these to key questions and a work plan\nLogical and data-driven approach to problem solving and decision-making\nAbility to understand SEEK’s business objectives and strategy, and translate that to different audiences including technical team members\nWillingness and ability to learn about software engineering and AI, and work with engineers and data scientists to design analytical and technical solutions that align with the strategy and business goals\nWillingness to be ‘hands on’ with the team – e.g. driving prioritisation, standups; using simple analysis to identify opportunities\nOther Qualifications, Skills and Experience\n\nPassionate about achieving great outcomes for customers and for SEEK\nAble to form connections with senior and mid-level stakeholders (including strategy, product, commercial excellence and technical team members), backed by strong communication skills\nWillingness to engage in constructive challenge and healthy debate\nPragmatic – able to make trade-offs to move forward\nExperience in translating conceptual ideas into tangible tasks, and seeing them through to completion\nAdditional Information\nPerks and benefits\nAt SEEK we offer:\n\nAnnual Performance Bonus Plan\nSupport of flexible working, including a mix of office and work from home days depending on your role.\nPaid and unpaid leave benefits including Personal Flexi Days and Volunteer Days, as well as the opportunity to purchase additional leave\nThe opportunity to work from anywhere for up to 4 weeks per financial year\nCasual dress – every day\n \n\nAt SEEK, we are passionate about fostering a culture of inclusion and wellbeing that embraces and values the diversity of our people. We are a purpose driven business that works with heart.\n\nWe know teams with diverse ideas, experiences and perspectives are more creative and are critical to ensuring effective delivery and innovating to enable our future success. As such, we welcome applications from people with diverse backgrounds and life experiences, especially as they relate to gender, sexual identity, culture, faith, disability and life stages. If you have the skills, curiosity and an adaptable mindset but don't meet every responsibility or qualification listed in this advertisement, please still get in touch with us.\n\nShould you require any specific support or adjustments throughout the recruitment process and beyond, please advise us and we will be happy to assist.\n\nFor this role, only those candidates with the eligible right to work will be considered.\n\nAt SEEK, we may use AI tools to support parts of the hiring process, including reviewing applications or assessing responses. These tools are designed to assist our hiring teams, not replace human judgment. All hiring decisions are made by people. If you’d like more information about how your information is managed during recruitment, please contact the Talent Acquisition Team.\n\nSEEK kindly requests no unsolicited resumes or approaches from recruitment agencies and will not be responsible for any associated fees.",
+        "title": "Associate AI Product Manager",
+        "company": "SEEK Limited",
+        "source_url": "https://au.seek.com/job/93479400?ref=search-standalone&type=promoted&origin=showNewTab#sol=d7fb20ae22cc3fef00911d3b513e8a031f57b585"
+      },
+      "role_family": {
+        "family": "ai_adjacent",
+        "evidence": [
+          {
+            "excerpt": "AI Product Managers at SEEK are a specialisation of the Product Manager role – they form the critical connection between SEEK’s strategy and customer ambitions, and the possibilities that can be unlocked by AI and data.",
+            "section": "Job Description"
+          }
+        ]
+      },
+      "seniority": {
+        "level": "unknown",
+        "ambiguous": false,
+        "candidate_levels": [],
+        "evidence": []
+      },
+      "technologies": [],
+      "responsibilities": [
+        {
+          "description": "Understand strategic priorities that may influence, or be dependent on, ad performance.",
+          "evidence": [
+            {
+              "excerpt": "Understand strategic priorities that may influence, or be dependent on, ad performance.",
+              "section": "Key Responsibilities"
+            }
+          ]
+        },
+        {
+          "description": "Work with the team to frame and articulate the squad’s strategic direction, ambition and roadmap.",
+          "evidence": [
+            {
+              "excerpt": "Work with the team to frame and articulate the squad’s strategic direction, ambition and roadmap.",
+              "section": "Key Responsibilities"
+            }
+          ]
+        },
+        {
+          "description": "Support the team to frame problems and trade-offs in a structured way that leads to robust decisions.",
+          "evidence": [
+            {
+              "excerpt": "Support the team to frame problems and trade-offs in a structured way that leads to robust decisions.",
+              "section": "Key Responsibilities"
+            }
+          ]
+        },
+        {
+          "description": "Work with partners to frame opportunities and identify opportunities for collaboration.",
+          "evidence": [
+            {
+              "excerpt": "Work with partners (commercial, product and strategy) and the Principal Product Manager in the team to frame opportunities.",
+              "section": "Key Responsibilities"
+            }
+          ]
+        },
+        {
+          "description": "Coordinate squad engagement with partner teams to define, build and integrate new products and services.",
+          "evidence": [
+            {
+              "excerpt": "Coordinate squad engagement with partner teams to define, build and integrate new products and services.",
+              "section": "Key Responsibilities"
+            }
+          ]
+        },
+        {
+          "description": "Work with the Principal Product Manager and partners to define measures of success for our products and services.",
+          "evidence": [
+            {
+              "excerpt": "Work with the Principal Product Manager and partners to define measures of success for our products and services.",
+              "section": "Key Responsibilities"
+            }
+          ]
+        },
+        {
+          "description": "Act as the Agile ‘product owner’ for the team’s products and services.",
+          "evidence": [
+            {
+              "excerpt": "Act as the Agile ‘product owner’ for the team’s products and services.",
+              "section": "Key Responsibilities"
+            }
+          ]
+        }
+      ],
+      "compensation": {
+        "clarity": "unstated",
+        "minimum": null,
+        "maximum": null,
+        "currency": null,
+        "period": null,
+        "raw_text": null,
+        "evidence": []
+      },
+      "location": {
+        "clarity": "stated",
+        "summary": "Cremorne, Melbourne VIC (Hybrid)",
+        "evidence": [
+          {
+            "excerpt": "Cremorne, Melbourne VIC (Hybrid)",
+            "section": "Job Description"
+          }
+        ]
+      },
+      "work_arrangement": {
+        "arrangement": "hybrid",
+        "details": null,
+        "evidence": [
+          {
+            "excerpt": "Cremorne, Melbourne VIC (Hybrid)",
+            "section": "Job Description"
+          }
+        ]
+      },
+      "employment": {
+        "working_hours": "full_time",
+        "engagement_type": "unspecified",
+        "evidence": [
+          {
+            "excerpt": "Full time",
+            "section": "Job Description"
+          }
+        ]
+      },
+      "experience_requirements": []
+    },
+    "ranked_projects": [
+      {
+        "rank": 1,
+        "project_id": "operational-intelligence-copilot",
+        "rationale": "Project 'operational-intelligence-copilot' ranked on 1 responsibility overlap(s).",
+        "factors": [
+          {
+            "kind": "responsibility_overlap",
+            "summary": "Project summary, outcomes, or technologies overlap responsibility 'Support the team to frame problems and trade-offs in a structured way that leads to robust decisions.'.",
+            "job_evidence": [
+              {
+                "source": "responsibility",
+                "item_index": 2,
+                "name": null,
+                "excerpt": "Support the team to frame problems and trade-offs in a structured way that leads to robust decisions."
+              }
+            ],
+            "profile_evidence": [
+              {
+                "source": "project",
+                "ref": "project:operational-intelligence-copilot",
+                "excerpt": "Domain-agnostic operational intelligence platform combining deterministic analytics with Large Language Model reasoning to analyse structured business data and…"
+              }
+            ]
+          }
+        ],
+        "tie_group": 1,
+        "tie_break_reason": "Equal primary ranking signals; ordered by stable project_id ascending"
+      },
+      {
+        "rank": 2,
+        "project_id": "payroll-diagnostics-engine",
+        "rationale": "Project 'payroll-diagnostics-engine' ranked on 1 responsibility overlap(s).",
+        "factors": [
+          {
+            "kind": "responsibility_overlap",
+            "summary": "Project summary, outcomes, or technologies overlap responsibility 'Support the team to frame problems and trade-offs in a structured way that leads to robust decisions.'.",
+            "job_evidence": [
+              {
+                "source": "responsibility",
+                "item_index": 2,
+                "name": null,
+                "excerpt": "Support the team to frame problems and trade-offs in a structured way that leads to robust decisions."
+              }
+            ],
+            "profile_evidence": [
+              {
+                "source": "project",
+                "ref": "project:payroll-diagnostics-engine",
+                "excerpt": "Rule-based operational decision-support platform that identifies payroll anomalies through deterministic business-rule evaluation."
+              }
+            ]
+          }
+        ],
+        "tie_group": 1,
+        "tie_break_reason": "Equal primary ranking signals; ordered by stable project_id ascending"
+      }
+    ],
+    "unranked_project_ids": [
+      "governance-document-rag",
+      "public-holiday-entitlements"
+    ],
+    "summary": "Ranked 2 project(s); lead with 'operational-intelligence-copilot'. 2 project(s) had no matching factors.",
+    "insufficient_evidence": false
+  },
+  "application_strategy": {
+    "job_analysis": {
+      "posting": {
+        "raw_text": "Associate AI Product Manager\n\nSEEK Limited \n4.6\n201 reviews\n·\nView all jobs\nCremorne, Melbourne VIC (Hybrid)\nProduct Management & Development (Information & Communication Technology)\nFull time\nPosted 3h ago\n\nHow you match\nMatches based on your career history\nSoftware Development\n\nShow all⁠\nCompany Description\nAbout SEEK\n\nSEEK’s portfolio of diverse businesses make a positive impact on a truly global scale. Our purpose is to help people live more fulfilling and productive working lives and help organisations succeed. We create world-class technology solutions to connect more people to relevant employment, education, small business and volunteer opportunities. We have a culture of high-performance in our workplaces and celebrate the diversity of our employees who contribute to the success of our organisation.\n\nLife at SEEK\n\nSEEK’s purpose is at the centre of everything we do. Our SEEK, which defines the way we work, is all about what makes us unique and a little bit different. Passion, Team, Delivery and Future are our principles that drive innovation and creativity. SEEK strives to support employee wellbeing by providing an amazing experience at work which led us to being named AFR BOSS Top 10 Best Places to Work in Technology (2021-2024). We are proud to work in an environment that's inclusive where everyone's unique ideas, experiences and perspectives are valued.\n\nOur award-winning head office in Cremorne (just a 4 min walk from Richmond station) provides an exceptional space to collaborate with colleagues. The building provides sweeping views of the city, a games area, sit and stand desks at every workstation, modern end-of-trip facilities and Thursday night drinks which gives our people an opportunity to connect in a social setting.\n\nJob Description\nThe Role\n\nAI Product Managers at SEEK are a specialisation of the Product Manager role – they form the critical connection between SEEK’s strategy and customer ambitions, and the possibilities that can be unlocked by AI and data. AI Product Managers work within cross-functional teams with Data Scientists, Engineers and other specialists, who build AI and data-driven products to solve our most important customer and business problems.\n\nThe Pricing and Performance team works at the intersection of SEEK’s commercial ambitions, business strategy and AI capability. In this role, you will support products and services that improve ad performance and help SEEK balance trade-offs between candidate engagement, job placements and revenue.\n\nThe role will initially focus on improving how SEEK helps employers get better hiring results from their job ads. This includes working on products and systems that predict ad performance, help employers understand the results they can expect, and support the systems that determine how job ads are ranked and shown across SEEK.\n\nThis is an exciting and ambiguous space that requires structured problem solving, strong product judgement and a growing appreciation of how AI, marketplace dynamics and commercial objectives interact.\n\nYou will work with the Principal AI Product Manager and will own appropriately scoped product problems, coordinate delivery with the squad, and partner with teams across AIPS and the broader business.\n \n\nThe Team\n\nAI Platform Services is a team dedicated to building global AI-driven services to the SEEK Group. Pricing and Performance is one squad within the AI Platform Services team and has approx. 25 Data Scientists and Engineers.\nYou will report to the Principal Product Manager – Pricing and Performance.\n\nKey Responsibilities\n\nStrategy\n\nUnderstand strategic priorities that may influence, or be dependent on, ad performance\nWork with the team to frame and articulate the squad’s strategic direction, ambition and roadmap\nEnsure the team has visibility of strategic priorities (SEEK Group, partners and AIPS)\nWork with the partners, AIPS and the squad to set quarterly OKRs\nSupport the team to frame problems and trade-offs in a structured way that leads to robust decisions\nPartners\n\nWork with partners (commercial, product and strategy) and the Principal Product Manager in the team to frame opportunities\nWork with current and potential product and AIPS partners to understand  business objectives and identify opportunities for collaboration\nCoordinate squad engagement with partner teams to define, build and integrate new products and services\nManage contracts and ongoing engagement with partner teams\nProduct ownership\n\nWork with the Principal Product Manager and partners to define measures of success for our products and services, track progress and identify opportunities to improve\nWork with Principal Product Manager and the Experiments team to coordinate experiments – defining objectives, interpreting results and agreeing implications\nTeam facilitation\n\nWork with the team to establish good team processes\nAct as the Agile ‘product owner’ for the team’s products and services\nIdentify and manage dependencies on other AIPS squads or partner teams\nCoordinate updates to stakeholders \nQualifications\nEssential Qualifications, Skills and Experience\n\nProven ability to identify, define and work through ambiguous opportunities supported by clear articulation of hypotheses, and connecting these to key questions and a work plan\nLogical and data-driven approach to problem solving and decision-making\nAbility to understand SEEK’s business objectives and strategy, and translate that to different audiences including technical team members\nWillingness and ability to learn about software engineering and AI, and work with engineers and data scientists to design analytical and technical solutions that align with the strategy and business goals\nWillingness to be ‘hands on’ with the team – e.g. driving prioritisation, standups; using simple analysis to identify opportunities\nOther Qualifications, Skills and Experience\n\nPassionate about achieving great outcomes for customers and for SEEK\nAble to form connections with senior and mid-level stakeholders (including strategy, product, commercial excellence and technical team members), backed by strong communication skills\nWillingness to engage in constructive challenge and healthy debate\nPragmatic – able to make trade-offs to move forward\nExperience in translating conceptual ideas into tangible tasks, and seeing them through to completion\nAdditional Information\nPerks and benefits\nAt SEEK we offer:\n\nAnnual Performance Bonus Plan\nSupport of flexible working, including a mix of office and work from home days depending on your role.\nPaid and unpaid leave benefits including Personal Flexi Days and Volunteer Days, as well as the opportunity to purchase additional leave\nThe opportunity to work from anywhere for up to 4 weeks per financial year\nCasual dress – every day\n \n\nAt SEEK, we are passionate about fostering a culture of inclusion and wellbeing that embraces and values the diversity of our people. We are a purpose driven business that works with heart.\n\nWe know teams with diverse ideas, experiences and perspectives are more creative and are critical to ensuring effective delivery and innovating to enable our future success. As such, we welcome applications from people with diverse backgrounds and life experiences, especially as they relate to gender, sexual identity, culture, faith, disability and life stages. If you have the skills, curiosity and an adaptable mindset but don't meet every responsibility or qualification listed in this advertisement, please still get in touch with us.\n\nShould you require any specific support or adjustments throughout the recruitment process and beyond, please advise us and we will be happy to assist.\n\nFor this role, only those candidates with the eligible right to work will be considered.\n\nAt SEEK, we may use AI tools to support parts of the hiring process, including reviewing applications or assessing responses. These tools are designed to assist our hiring teams, not replace human judgment. All hiring decisions are made by people. If you’d like more information about how your information is managed during recruitment, please contact the Talent Acquisition Team.\n\nSEEK kindly requests no unsolicited resumes or approaches from recruitment agencies and will not be responsible for any associated fees.",
+        "title": "Associate AI Product Manager",
+        "company": "SEEK Limited",
+        "source_url": "https://au.seek.com/job/93479400?ref=search-standalone&type=promoted&origin=showNewTab#sol=d7fb20ae22cc3fef00911d3b513e8a031f57b585"
+      },
+      "role_family": {
+        "family": "ai_adjacent",
+        "evidence": [
+          {
+            "excerpt": "AI Product Managers at SEEK are a specialisation of the Product Manager role – they form the critical connection between SEEK’s strategy and customer ambitions, and the possibilities that can be unlocked by AI and data.",
+            "section": "Job Description"
+          }
+        ]
+      },
+      "seniority": {
+        "level": "unknown",
+        "ambiguous": false,
+        "candidate_levels": [],
+        "evidence": []
+      },
+      "technologies": [],
+      "responsibilities": [
+        {
+          "description": "Understand strategic priorities that may influence, or be dependent on, ad performance.",
+          "evidence": [
+            {
+              "excerpt": "Understand strategic priorities that may influence, or be dependent on, ad performance.",
+              "section": "Key Responsibilities"
+            }
+          ]
+        },
+        {
+          "description": "Work with the team to frame and articulate the squad’s strategic direction, ambition and roadmap.",
+          "evidence": [
+            {
+              "excerpt": "Work with the team to frame and articulate the squad’s strategic direction, ambition and roadmap.",
+              "section": "Key Responsibilities"
+            }
+          ]
+        },
+        {
+          "description": "Support the team to frame problems and trade-offs in a structured way that leads to robust decisions.",
+          "evidence": [
+            {
+              "excerpt": "Support the team to frame problems and trade-offs in a structured way that leads to robust decisions.",
+              "section": "Key Responsibilities"
+            }
+          ]
+        },
+        {
+          "description": "Work with partners to frame opportunities and identify opportunities for collaboration.",
+          "evidence": [
+            {
+              "excerpt": "Work with partners (commercial, product and strategy) and the Principal Product Manager in the team to frame opportunities.",
+              "section": "Key Responsibilities"
+            }
+          ]
+        },
+        {
+          "description": "Coordinate squad engagement with partner teams to define, build and integrate new products and services.",
+          "evidence": [
+            {
+              "excerpt": "Coordinate squad engagement with partner teams to define, build and integrate new products and services.",
+              "section": "Key Responsibilities"
+            }
+          ]
+        },
+        {
+          "description": "Work with the Principal Product Manager and partners to define measures of success for our products and services.",
+          "evidence": [
+            {
+              "excerpt": "Work with the Principal Product Manager and partners to define measures of success for our products and services.",
+              "section": "Key Responsibilities"
+            }
+          ]
+        },
+        {
+          "description": "Act as the Agile ‘product owner’ for the team’s products and services.",
+          "evidence": [
+            {
+              "excerpt": "Act as the Agile ‘product owner’ for the team’s products and services.",
+              "section": "Key Responsibilities"
+            }
+          ]
+        }
+      ],
+      "compensation": {
+        "clarity": "unstated",
+        "minimum": null,
+        "maximum": null,
+        "currency": null,
+        "period": null,
+        "raw_text": null,
+        "evidence": []
+      },
+      "location": {
+        "clarity": "stated",
+        "summary": "Cremorne, Melbourne VIC (Hybrid)",
+        "evidence": [
+          {
+            "excerpt": "Cremorne, Melbourne VIC (Hybrid)",
+            "section": "Job Description"
+          }
+        ]
+      },
+      "work_arrangement": {
+        "arrangement": "hybrid",
+        "details": null,
+        "evidence": [
+          {
+            "excerpt": "Cremorne, Melbourne VIC (Hybrid)",
+            "section": "Job Description"
+          }
+        ]
+      },
+      "employment": {
+        "working_hours": "full_time",
+        "engagement_type": "unspecified",
+        "evidence": [
+          {
+            "excerpt": "Full time",
+            "section": "Job Description"
+          }
+        ]
+      },
+      "experience_requirements": []
+    },
+    "application_tier": "silver",
+    "pursuit_posture": "consider",
+    "practical_value": "acceptable_opportunity",
+    "effort_level": "minimal",
+    "summary": "Recommend posture 'consider' with effort tier 'silver' (minimal). Technical fit 'mixed', commercial fit 'unknown', portfolio fit 'strong'. Owner review is required before any application action.",
+    "reasons": [
+      {
+        "kind": "alignment",
+        "summary": "Technical fit is 'mixed' and portfolio fit is 'strong' for this opportunity.",
+        "importance": "material",
+        "evidence": [
+          {
+            "origin": "opportunity_assessment",
+            "job_evidence": null,
+            "profile_evidence": null,
+            "assessment_dimension": "technical",
+            "assessment_judgment": "mixed",
+            "portfolio_project_id": null,
+            "excerpt": null
+          },
+          {
+            "origin": "opportunity_assessment",
+            "job_evidence": null,
+            "profile_evidence": null,
+            "assessment_dimension": "portfolio",
+            "assessment_judgment": "strong",
+            "portfolio_project_id": null,
+            "excerpt": null
+          }
+        ]
+      },
+      {
+        "kind": "priority",
+        "summary": "Pursuit posture 'consider' with effort tier 'silver' reflects commercial fit 'unknown' and AI-adjacent role family.",
+        "importance": "material",
+        "evidence": [
+          {
+            "origin": "opportunity_assessment",
+            "job_evidence": null,
+            "profile_evidence": null,
+            "assessment_dimension": "commercial",
+            "assessment_judgment": "unknown",
+            "portfolio_project_id": null,
+            "excerpt": null
+          },
+          {
+            "origin": "job_analysis",
+            "job_evidence": {
+              "source": "role_family",
+              "item_index": null,
+              "name": null,
+              "excerpt": null
+            },
+            "profile_evidence": null,
+            "assessment_dimension": null,
+            "assessment_judgment": null,
+            "portfolio_project_id": null,
+            "excerpt": null
+          }
+        ]
+      }
+    ],
+    "risks_or_gaps": [
+      {
+        "summary": "Commercial fit is 'unknown', which may reduce the value of investing significant effort.",
+        "importance": "material",
+        "evidence": [
+          {
+            "origin": "opportunity_assessment",
+            "job_evidence": null,
+            "profile_evidence": null,
+            "assessment_dimension": "commercial",
+            "assessment_judgment": "unknown",
+            "portfolio_project_id": null,
+            "excerpt": null
+          }
+        ]
+      },
+      {
+        "summary": "Missing direct experience in product management applied to AI technology, which is essential for fully supporting identified responsibilities in product ownership.",
+        "importance": "material",
+        "evidence": [
+          {
+            "origin": "opportunity_assessment",
+            "job_evidence": null,
+            "profile_evidence": null,
+            "assessment_dimension": "technical",
+            "assessment_judgment": "mixed",
+            "portfolio_project_id": null,
+            "excerpt": null
+          }
+        ]
+      }
+    ],
+    "manual_checks": [
+      {
+        "summary": "Review compensation once salary or rate information is available.",
+        "why_it_matters": "Compensation clarity can change commercial priority; no salary conflict was invented from missing data.",
+        "could_change_recommendation": true,
+        "evidence": [
+          {
+            "origin": "job_analysis",
+            "job_evidence": {
+              "source": "compensation",
+              "item_index": null,
+              "name": null,
+              "excerpt": null
+            },
+            "profile_evidence": null,
+            "assessment_dimension": null,
+            "assessment_judgment": null,
+            "portfolio_project_id": null,
+            "excerpt": null
+          }
+        ]
+      },
+      {
+        "summary": "Verify working-rights wording against your own eligibility.",
+        "why_it_matters": "The posting states a working-rights requirement; the system does not infer owner eligibility.",
+        "could_change_recommendation": true,
+        "evidence": [
+          {
+            "origin": "opportunity_assessment",
+            "job_evidence": null,
+            "profile_evidence": null,
+            "assessment_dimension": "commercial",
+            "assessment_judgment": "unknown",
+            "portfolio_project_id": null,
+            "excerpt": null
+          }
+        ]
+      }
+    ],
+    "next_actions": [
+      {
+        "kind": "consider_verifying_working_rights",
+        "summary": "Consider verifying working-rights wording against your eligibility.",
+        "related_project_id": null,
+        "evidence": [
+          {
+            "origin": "opportunity_assessment",
+            "job_evidence": null,
+            "profile_evidence": null,
+            "assessment_dimension": "commercial",
+            "assessment_judgment": "unknown",
+            "portfolio_project_id": null,
+            "excerpt": null
+          }
+        ]
+      },
+      {
+        "kind": "consider_reviewing_compensation",
+        "summary": "Consider reviewing compensation before investing significant effort.",
+        "related_project_id": null,
+        "evidence": [
+          {
+            "origin": "job_analysis",
+            "job_evidence": {
+              "source": "compensation",
+              "item_index": null,
+              "name": null,
+              "excerpt": null
+            },
+            "profile_evidence": null,
+            "assessment_dimension": null,
+            "assessment_judgment": null,
+            "portfolio_project_id": null,
+            "excerpt": null
+          }
+        ]
+      },
+      {
+        "kind": "consider_emphasising_portfolio_projects",
+        "summary": "Consider emphasising the strongest matched portfolio project(s) in any application materials you prepare.",
+        "related_project_id": "operational-intelligence-copilot",
+        "evidence": [
+          {
+            "origin": "portfolio_match",
+            "job_evidence": null,
+            "profile_evidence": null,
+            "assessment_dimension": null,
+            "assessment_judgment": null,
+            "portfolio_project_id": "operational-intelligence-copilot",
+            "excerpt": null
+          }
+        ]
+      },
+      {
+        "kind": "consider_owner_review",
+        "summary": "Consider reviewing this full strategy before taking any external action.",
+        "related_project_id": null,
+        "evidence": [
+          {
+            "origin": "opportunity_assessment",
+            "job_evidence": null,
+            "profile_evidence": null,
+            "assessment_dimension": "technical",
+            "assessment_judgment": "mixed",
+            "portfolio_project_id": null,
+            "excerpt": null
+          }
+        ]
+      }
+    ],
+    "portfolio_emphasis": [
+      {
+        "project_id": "operational-intelligence-copilot",
+        "source_rank": 1,
+        "summary": "Consider emphasising 'operational-intelligence-copilot' (PortfolioMatch rank 1).",
+        "evidence": [
+          {
+            "origin": "portfolio_match",
+            "job_evidence": null,
+            "profile_evidence": null,
+            "assessment_dimension": null,
+            "assessment_judgment": null,
+            "portfolio_project_id": "operational-intelligence-copilot",
+            "excerpt": null
+          }
+        ]
+      },
+      {
+        "project_id": "payroll-diagnostics-engine",
+        "source_rank": 2,
+        "summary": "Consider emphasising 'payroll-diagnostics-engine' (PortfolioMatch rank 2).",
+        "evidence": [
+          {
+            "origin": "portfolio_match",
+            "job_evidence": null,
+            "profile_evidence": null,
+            "assessment_dimension": null,
+            "assessment_judgment": null,
+            "portfolio_project_id": "payroll-diagnostics-engine",
+            "excerpt": null
+          }
+        ]
+      }
+    ],
+    "assumptions": [
+      "Compensation fit is not scored because salary/rate evidence is missing or ambiguous.",
+      "No candidate salary minimum is configured, so compensation was not treated as a hard threshold conflict.",
+      "Owner working-rights eligibility is unknown to the system and was not inferred."
+    ],
+    "decision_blockers": [],
+    "owner_review_required": true,
+    "insufficient_information": false
+  }
+}

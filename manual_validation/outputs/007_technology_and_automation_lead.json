@@ -1,0 +1,1643 @@
+{
+  "components": [
+    {
+      "name": "CareerProfile",
+      "implementation": "CareerProfileService / YAML",
+      "mode": "deterministic_production"
+    },
+    {
+      "name": "JobAnalysis",
+      "implementation": "OpenAIJobExtractor",
+      "mode": "openai_production"
+    },
+    {
+      "name": "OpportunityAssessment",
+      "implementation": "OpenAIAssessor",
+      "mode": "openai_production"
+    },
+    {
+      "name": "PortfolioMatch",
+      "implementation": "DeterministicMatcher",
+      "mode": "deterministic_production"
+    },
+    {
+      "name": "ApplicationStrategy",
+      "implementation": "DeterministicStrategyPlanner",
+      "mode": "deterministic_production"
+    }
+  ],
+  "volume_applications_enabled": false,
+  "profile_identity": {
+    "full_name": "David Cropper",
+    "target_role": "AI Engineer"
+  },
+  "posting": {
+    "raw_text": "Technology and Automation Lead\n\nBuildlab \nView all jobs\nSouth Melbourne, Melbourne VIC (Hybrid)\nBusiness/Systems Analysts (Information & Communication Technology)\nFull time\n$140,000 – $150,000 per year\nPosted 12d ago\n•\nHigh application volume\n\nWhy this role is exciting\n\nBuildlab has recently completed a major tech refresh. Evolve, Xero and Employment Hero are now live, our AI automation roadmap is ready, and we need someone who can turn good ideas into practical systems that save time, reduce friction and help our teams do their best work.\n\nThis is a hands-on role for someone who enjoys the space between business problems, systems, people and delivery partners. You will not just advise from the sidelines — you will help make things happen.\n\nWhat you’ll make happen\n\nEmbed systems: stabilise the platforms, support users and improve workflows after go-live\n\nBring automation to life: prioritise, brief and deliver AI-enabled automation that removes manual work\n\nDrive partner performance: keep vendors clear on scope, timelines, accountability and outcomes\n\nTurn problems into briefs: run workshops, capture requirements and translate business needs into build-ready specifications\n\nProve the value: track efficiency gains and show how technology is improving the business\n\nYou’ll enjoy this role if you are...\n\nCommercial, curious and practical. You can talk to leaders, listen to users, challenge vendors and still get into the detail when a system, workflow or requirement needs testing.\n\nWhat you’ll bring\n\nExperience in a technology, systems, business systems or automation leadership role\n\nHands-on experience with construction platforms such as Evolve, Procore, Databuild or Cheops\n\nWorking knowledge of Xero and Microsoft 365\n\nExperience managing external IT, technology or automation partners\n\nConfidence running workshops, documenting requirements and communicating with senior stakeholders\n\nA practical mindset — you care about outcomes, not technology for technology’s sake\n\nBonus points for\n\nAI automation, RPA or workflow tools such as n8n, Make, Zapier or similar\n\nResidential construction, land lease, property development or building industry experience\n\nData migration, governance or system decommissioning experience\n\nWhy join Buildlab?\n\nOwn meaningful work: help shape how a growing construction business uses technology\n\nBe close to decision-making: work directly with senior leaders and key delivery partners\n\nMake practical innovation real: deliver systems and automation that people actually use\n\nWork flexibly: hybrid arrangement with 2 days in the office\n\nHow to apply\n\nIf you like solving real business problems, making systems work better and seeing your work create visible impact, we would love to hear from you.\n\nApply with your resume and a short note outlining your experience delivering technology, systems or automation outcomes.\n\nNote: Successful applications will proceed to a screening call with Kate, our friendly AI interviewer who will help us to assess candidate suitability.\n\nEmployer questions\nYour application will include the following questions:\nWhich of the following statements best describes your right to work in Australia?\nHow many years' experience do you have as an Automation Lead?\nDo you have experience working towards targets and KPIs?",
+    "title": "Technology and Automation Lead",
+    "company": "Buildlab",
+    "source_url": "https://au.seek.com/job/93242776?ref=search-standalone&type=promoted&origin=showNewTab#sol=48e50b817ed36812c81b299ad821736bf0633763%3E"
+  },
+  "job_analysis": {
+    "posting": {
+      "raw_text": "Technology and Automation Lead\n\nBuildlab \nView all jobs\nSouth Melbourne, Melbourne VIC (Hybrid)\nBusiness/Systems Analysts (Information & Communication Technology)\nFull time\n$140,000 – $150,000 per year\nPosted 12d ago\n•\nHigh application volume\n\nWhy this role is exciting\n\nBuildlab has recently completed a major tech refresh. Evolve, Xero and Employment Hero are now live, our AI automation roadmap is ready, and we need someone who can turn good ideas into practical systems that save time, reduce friction and help our teams do their best work.\n\nThis is a hands-on role for someone who enjoys the space between business problems, systems, people and delivery partners. You will not just advise from the sidelines — you will help make things happen.\n\nWhat you’ll make happen\n\nEmbed systems: stabilise the platforms, support users and improve workflows after go-live\n\nBring automation to life: prioritise, brief and deliver AI-enabled automation that removes manual work\n\nDrive partner performance: keep vendors clear on scope, timelines, accountability and outcomes\n\nTurn problems into briefs: run workshops, capture requirements and translate business needs into build-ready specifications\n\nProve the value: track efficiency gains and show how technology is improving the business\n\nYou’ll enjoy this role if you are...\n\nCommercial, curious and practical. You can talk to leaders, listen to users, challenge vendors and still get into the detail when a system, workflow or requirement needs testing.\n\nWhat you’ll bring\n\nExperience in a technology, systems, business systems or automation leadership role\n\nHands-on experience with construction platforms such as Evolve, Procore, Databuild or Cheops\n\nWorking knowledge of Xero and Microsoft 365\n\nExperience managing external IT, technology or automation partners\n\nConfidence running workshops, documenting requirements and communicating with senior stakeholders\n\nA practical mindset — you care about outcomes, not technology for technology’s sake\n\nBonus points for\n\nAI automation, RPA or workflow tools such as n8n, Make, Zapier or similar\n\nResidential construction, land lease, property development or building industry experience\n\nData migration, governance or system decommissioning experience\n\nWhy join Buildlab?\n\nOwn meaningful work: help shape how a growing construction business uses technology\n\nBe close to decision-making: work directly with senior leaders and key delivery partners\n\nMake practical innovation real: deliver systems and automation that people actually use\n\nWork flexibly: hybrid arrangement with 2 days in the office\n\nHow to apply\n\nIf you like solving real business problems, making systems work better and seeing your work create visible impact, we would love to hear from you.\n\nApply with your resume and a short note outlining your experience delivering technology, systems or automation outcomes.\n\nNote: Successful applications will proceed to a screening call with Kate, our friendly AI interviewer who will help us to assess candidate suitability.\n\nEmployer questions\nYour application will include the following questions:\nWhich of the following statements best describes your right to work in Australia?\nHow many years' experience do you have as an Automation Lead?\nDo you have experience working towards targets and KPIs?",
+      "title": "Technology and Automation Lead",
+      "company": "Buildlab",
+      "source_url": "https://au.seek.com/job/93242776?ref=search-standalone&type=promoted&origin=showNewTab#sol=48e50b817ed36812c81b299ad821736bf0633763%3E"
+    },
+    "role_family": {
+      "family": "ai_adjacent",
+      "evidence": [
+        {
+          "excerpt": "you will help make things happen",
+          "section": "JobDescription"
+        }
+      ]
+    },
+    "seniority": {
+      "level": "unknown",
+      "ambiguous": false,
+      "candidate_levels": [],
+      "evidence": []
+    },
+    "technologies": [
+      {
+        "name": "Evolve",
+        "level": "required",
+        "evidence": [
+          {
+            "excerpt": "Hands-on experience with construction platforms such as Evolve",
+            "section": "JobDescription"
+          }
+        ]
+      },
+      {
+        "name": "Procore",
+        "level": "required",
+        "evidence": [
+          {
+            "excerpt": "Hands-on experience with construction platforms such as Procore",
+            "section": "JobDescription"
+          }
+        ]
+      },
+      {
+        "name": "Databuild",
+        "level": "required",
+        "evidence": [
+          {
+            "excerpt": "Hands-on experience with construction platforms such as Databuild",
+            "section": "JobDescription"
+          }
+        ]
+      },
+      {
+        "name": "Cheops",
+        "level": "required",
+        "evidence": [
+          {
+            "excerpt": "Hands-on experience with construction platforms such as Cheops",
+            "section": "JobDescription"
+          }
+        ]
+      },
+      {
+        "name": "Xero",
+        "level": "required",
+        "evidence": [
+          {
+            "excerpt": "Working knowledge of Xero",
+            "section": "JobDescription"
+          }
+        ]
+      },
+      {
+        "name": "Microsoft 365",
+        "level": "required",
+        "evidence": [
+          {
+            "excerpt": "Working knowledge of Microsoft 365",
+            "section": "JobDescription"
+          }
+        ]
+      },
+      {
+        "name": "AI automation",
+        "level": "preferred",
+        "evidence": [
+          {
+            "excerpt": "Bonus points for AI automation, RPA or workflow tools",
+            "section": "JobDescription"
+          }
+        ]
+      },
+      {
+        "name": "RPA",
+        "level": "preferred",
+        "evidence": [
+          {
+            "excerpt": "Bonus points for AI automation, RPA or workflow tools",
+            "section": "JobDescription"
+          }
+        ]
+      },
+      {
+        "name": "n8n",
+        "level": "preferred",
+        "evidence": [
+          {
+            "excerpt": "Bonus points for AI automation, RPA or workflow tools such as n8n",
+            "section": "JobDescription"
+          }
+        ]
+      },
+      {
+        "name": "Make",
+        "level": "preferred",
+        "evidence": [
+          {
+            "excerpt": "Bonus points for AI automation, RPA or workflow tools such as Make",
+            "section": "JobDescription"
+          }
+        ]
+      },
+      {
+        "name": "Zapier",
+        "level": "preferred",
+        "evidence": [
+          {
+            "excerpt": "Bonus points for AI automation, RPA or workflow tools such as Zapier",
+            "section": "JobDescription"
+          }
+        ]
+      }
+    ],
+    "responsibilities": [
+      {
+        "description": "Embed systems: stabilise the platforms, support users and improve workflows after go-live",
+        "evidence": [
+          {
+            "excerpt": "Embed systems: stabilise the platforms, support users and improve workflows after go-live",
+            "section": "JobDescription"
+          }
+        ]
+      },
+      {
+        "description": "Bring automation to life: prioritise, brief and deliver AI-enabled automation that removes manual work",
+        "evidence": [
+          {
+            "excerpt": "Bring automation to life: prioritise, brief and deliver AI-enabled automation that removes manual work",
+            "section": "JobDescription"
+          }
+        ]
+      },
+      {
+        "description": "Drive partner performance: keep vendors clear on scope, timelines, accountability and outcomes",
+        "evidence": [
+          {
+            "excerpt": "Drive partner performance: keep vendors clear on scope, timelines, accountability and outcomes",
+            "section": "JobDescription"
+          }
+        ]
+      },
+      {
+        "description": "Turn problems into briefs: run workshops, capture requirements and translate business needs into build-ready specifications",
+        "evidence": [
+          {
+            "excerpt": "Turn problems into briefs: run workshops, capture requirements and translate business needs into build-ready specifications",
+            "section": "JobDescription"
+          }
+        ]
+      },
+      {
+        "description": "Prove the value: track efficiency gains and show how technology is improving the business",
+        "evidence": [
+          {
+            "excerpt": "Prove the value: track efficiency gains and show how technology is improving the business",
+            "section": "JobDescription"
+          }
+        ]
+      }
+    ],
+    "compensation": {
+      "clarity": "stated",
+      "minimum": 140000.0,
+      "maximum": 150000.0,
+      "currency": "AUD",
+      "period": "year",
+      "raw_text": "$140,000 – $150,000 per year",
+      "evidence": [
+        {
+          "excerpt": "$140,000 – $150,000 per year",
+          "section": "JobDescription"
+        }
+      ]
+    },
+    "location": {
+      "clarity": "stated",
+      "summary": "South Melbourne, Melbourne VIC (Hybrid)",
+      "evidence": [
+        {
+          "excerpt": "South Melbourne, Melbourne VIC (Hybrid)",
+          "section": "JobDescription"
+        }
+      ]
+    },
+    "work_arrangement": {
+      "arrangement": "hybrid",
+      "details": "2 days in the office",
+      "evidence": [
+        {
+          "excerpt": "hybrid arrangement with 2 days in the office",
+          "section": "JobDescription"
+        }
+      ]
+    },
+    "employment": {
+      "working_hours": "full_time",
+      "engagement_type": "unspecified",
+      "evidence": [
+        {
+          "excerpt": "Full time",
+          "section": "JobDescription"
+        }
+      ]
+    },
+    "experience_requirements": [
+      {
+        "description": "Experience in a technology, systems, business systems or automation leadership role",
+        "level": "required",
+        "minimum_years": null,
+        "maximum_years": null,
+        "evidence": [
+          {
+            "excerpt": "Experience in a technology, systems, business systems or automation leadership role",
+            "section": "JobDescription"
+          }
+        ]
+      },
+      {
+        "description": "Experience managing external IT, technology or automation partners",
+        "level": "required",
+        "minimum_years": null,
+        "maximum_years": null,
+        "evidence": [
+          {
+            "excerpt": "Experience managing external IT, technology or automation partners",
+            "section": "JobDescription"
+          }
+        ]
+      }
+    ]
+  },
+  "opportunity_assessment": {
+    "job_analysis": {
+      "posting": {
+        "raw_text": "Technology and Automation Lead\n\nBuildlab \nView all jobs\nSouth Melbourne, Melbourne VIC (Hybrid)\nBusiness/Systems Analysts (Information & Communication Technology)\nFull time\n$140,000 – $150,000 per year\nPosted 12d ago\n•\nHigh application volume\n\nWhy this role is exciting\n\nBuildlab has recently completed a major tech refresh. Evolve, Xero and Employment Hero are now live, our AI automation roadmap is ready, and we need someone who can turn good ideas into practical systems that save time, reduce friction and help our teams do their best work.\n\nThis is a hands-on role for someone who enjoys the space between business problems, systems, people and delivery partners. You will not just advise from the sidelines — you will help make things happen.\n\nWhat you’ll make happen\n\nEmbed systems: stabilise the platforms, support users and improve workflows after go-live\n\nBring automation to life: prioritise, brief and deliver AI-enabled automation that removes manual work\n\nDrive partner performance: keep vendors clear on scope, timelines, accountability and outcomes\n\nTurn problems into briefs: run workshops, capture requirements and translate business needs into build-ready specifications\n\nProve the value: track efficiency gains and show how technology is improving the business\n\nYou’ll enjoy this role if you are...\n\nCommercial, curious and practical. You can talk to leaders, listen to users, challenge vendors and still get into the detail when a system, workflow or requirement needs testing.\n\nWhat you’ll bring\n\nExperience in a technology, systems, business systems or automation leadership role\n\nHands-on experience with construction platforms such as Evolve, Procore, Databuild or Cheops\n\nWorking knowledge of Xero and Microsoft 365\n\nExperience managing external IT, technology or automation partners\n\nConfidence running workshops, documenting requirements and communicating with senior stakeholders\n\nA practical mindset — you care about outcomes, not technology for technology’s sake\n\nBonus points for\n\nAI automation, RPA or workflow tools such as n8n, Make, Zapier or similar\n\nResidential construction, land lease, property development or building industry experience\n\nData migration, governance or system decommissioning experience\n\nWhy join Buildlab?\n\nOwn meaningful work: help shape how a growing construction business uses technology\n\nBe close to decision-making: work directly with senior leaders and key delivery partners\n\nMake practical innovation real: deliver systems and automation that people actually use\n\nWork flexibly: hybrid arrangement with 2 days in the office\n\nHow to apply\n\nIf you like solving real business problems, making systems work better and seeing your work create visible impact, we would love to hear from you.\n\nApply with your resume and a short note outlining your experience delivering technology, systems or automation outcomes.\n\nNote: Successful applications will proceed to a screening call with Kate, our friendly AI interviewer who will help us to assess candidate suitability.\n\nEmployer questions\nYour application will include the following questions:\nWhich of the following statements best describes your right to work in Australia?\nHow many years' experience do you have as an Automation Lead?\nDo you have experience working towards targets and KPIs?",
+        "title": "Technology and Automation Lead",
+        "company": "Buildlab",
+        "source_url": "https://au.seek.com/job/93242776?ref=search-standalone&type=promoted&origin=showNewTab#sol=48e50b817ed36812c81b299ad821736bf0633763%3E"
+      },
+      "role_family": {
+        "family": "ai_adjacent",
+        "evidence": [
+          {
+            "excerpt": "you will help make things happen",
+            "section": "JobDescription"
+          }
+        ]
+      },
+      "seniority": {
+        "level": "unknown",
+        "ambiguous": false,
+        "candidate_levels": [],
+        "evidence": []
+      },
+      "technologies": [
+        {
+          "name": "Evolve",
+          "level": "required",
+          "evidence": [
+            {
+              "excerpt": "Hands-on experience with construction platforms such as Evolve",
+              "section": "JobDescription"
+            }
+          ]
+        },
+        {
+          "name": "Procore",
+          "level": "required",
+          "evidence": [
+            {
+              "excerpt": "Hands-on experience with construction platforms such as Procore",
+              "section": "JobDescription"
+            }
+          ]
+        },
+        {
+          "name": "Databuild",
+          "level": "required",
+          "evidence": [
+            {
+              "excerpt": "Hands-on experience with construction platforms such as Databuild",
+              "section": "JobDescription"
+            }
+          ]
+        },
+        {
+          "name": "Cheops",
+          "level": "required",
+          "evidence": [
+            {
+              "excerpt": "Hands-on experience with construction platforms such as Cheops",
+              "section": "JobDescription"
+            }
+          ]
+        },
+        {
+          "name": "Xero",
+          "level": "required",
+          "evidence": [
+            {
+              "excerpt": "Working knowledge of Xero",
+              "section": "JobDescription"
+            }
+          ]
+        },
+        {
+          "name": "Microsoft 365",
+          "level": "required",
+          "evidence": [
+            {
+              "excerpt": "Working knowledge of Microsoft 365",
+              "section": "JobDescription"
+            }
+          ]
+        },
+        {
+          "name": "AI automation",
+          "level": "preferred",
+          "evidence": [
+            {
+              "excerpt": "Bonus points for AI automation, RPA or workflow tools",
+              "section": "JobDescription"
+            }
+          ]
+        },
+        {
+          "name": "RPA",
+          "level": "preferred",
+          "evidence": [
+            {
+              "excerpt": "Bonus points for AI automation, RPA or workflow tools",
+              "section": "JobDescription"
+            }
+          ]
+        },
+        {
+          "name": "n8n",
+          "level": "preferred",
+          "evidence": [
+            {
+              "excerpt": "Bonus points for AI automation, RPA or workflow tools such as n8n",
+              "section": "JobDescription"
+            }
+          ]
+        },
+        {
+          "name": "Make",
+          "level": "preferred",
+          "evidence": [
+            {
+              "excerpt": "Bonus points for AI automation, RPA or workflow tools such as Make",
+              "section": "JobDescription"
+            }
+          ]
+        },
+        {
+          "name": "Zapier",
+          "level": "preferred",
+          "evidence": [
+            {
+              "excerpt": "Bonus points for AI automation, RPA or workflow tools such as Zapier",
+              "section": "JobDescription"
+            }
+          ]
+        }
+      ],
+      "responsibilities": [
+        {
+          "description": "Embed systems: stabilise the platforms, support users and improve workflows after go-live",
+          "evidence": [
+            {
+              "excerpt": "Embed systems: stabilise the platforms, support users and improve workflows after go-live",
+              "section": "JobDescription"
+            }
+          ]
+        },
+        {
+          "description": "Bring automation to life: prioritise, brief and deliver AI-enabled automation that removes manual work",
+          "evidence": [
+            {
+              "excerpt": "Bring automation to life: prioritise, brief and deliver AI-enabled automation that removes manual work",
+              "section": "JobDescription"
+            }
+          ]
+        },
+        {
+          "description": "Drive partner performance: keep vendors clear on scope, timelines, accountability and outcomes",
+          "evidence": [
+            {
+              "excerpt": "Drive partner performance: keep vendors clear on scope, timelines, accountability and outcomes",
+              "section": "JobDescription"
+            }
+          ]
+        },
+        {
+          "description": "Turn problems into briefs: run workshops, capture requirements and translate business needs into build-ready specifications",
+          "evidence": [
+            {
+              "excerpt": "Turn problems into briefs: run workshops, capture requirements and translate business needs into build-ready specifications",
+              "section": "JobDescription"
+            }
+          ]
+        },
+        {
+          "description": "Prove the value: track efficiency gains and show how technology is improving the business",
+          "evidence": [
+            {
+              "excerpt": "Prove the value: track efficiency gains and show how technology is improving the business",
+              "section": "JobDescription"
+            }
+          ]
+        }
+      ],
+      "compensation": {
+        "clarity": "stated",
+        "minimum": 140000.0,
+        "maximum": 150000.0,
+        "currency": "AUD",
+        "period": "year",
+        "raw_text": "$140,000 – $150,000 per year",
+        "evidence": [
+          {
+            "excerpt": "$140,000 – $150,000 per year",
+            "section": "JobDescription"
+          }
+        ]
+      },
+      "location": {
+        "clarity": "stated",
+        "summary": "South Melbourne, Melbourne VIC (Hybrid)",
+        "evidence": [
+          {
+            "excerpt": "South Melbourne, Melbourne VIC (Hybrid)",
+            "section": "JobDescription"
+          }
+        ]
+      },
+      "work_arrangement": {
+        "arrangement": "hybrid",
+        "details": "2 days in the office",
+        "evidence": [
+          {
+            "excerpt": "hybrid arrangement with 2 days in the office",
+            "section": "JobDescription"
+          }
+        ]
+      },
+      "employment": {
+        "working_hours": "full_time",
+        "engagement_type": "unspecified",
+        "evidence": [
+          {
+            "excerpt": "Full time",
+            "section": "JobDescription"
+          }
+        ]
+      },
+      "experience_requirements": [
+        {
+          "description": "Experience in a technology, systems, business systems or automation leadership role",
+          "level": "required",
+          "minimum_years": null,
+          "maximum_years": null,
+          "evidence": [
+            {
+              "excerpt": "Experience in a technology, systems, business systems or automation leadership role",
+              "section": "JobDescription"
+            }
+          ]
+        },
+        {
+          "description": "Experience managing external IT, technology or automation partners",
+          "level": "required",
+          "minimum_years": null,
+          "maximum_years": null,
+          "evidence": [
+            {
+              "excerpt": "Experience managing external IT, technology or automation partners",
+              "section": "JobDescription"
+            }
+          ]
+        }
+      ]
+    },
+    "technical_fit": {
+      "dimension": "technical",
+      "judgment": "mixed",
+      "summary": "The candidate has aligned experience with some of the required technologies, but lacks specific experience with a few critical platforms referenced in the job.",
+      "findings": [
+        {
+          "kind": "partial_alignment",
+          "summary": "The candidate has experience in AI Engineering but lacks direct experience with construction platforms such as Evolve, Procore, Databuild, or Cheops.",
+          "detail": "The role requires hands-on experience with specific technology platforms not fully validated in the profile.",
+          "importance": "material",
+          "job_evidence": [
+            {
+              "source": "technology",
+              "item_index": 0,
+              "name": "Evolve",
+              "excerpt": "Hands-on experience with construction platforms such as Evolve"
+            },
+            {
+              "source": "technology",
+              "item_index": 1,
+              "name": "Procore",
+              "excerpt": "Hands-on experience with construction platforms such as Procore"
+            },
+            {
+              "source": "technology",
+              "item_index": 2,
+              "name": "Databuild",
+              "excerpt": "Hands-on experience with construction platforms such as Databuild"
+            },
+            {
+              "source": "technology",
+              "item_index": 3,
+              "name": "Cheops",
+              "excerpt": "Hands-on experience with construction platforms such as Cheops"
+            }
+          ],
+          "profile_evidence": [
+            {
+              "source": "experience",
+              "ref": "experience:chase-risk-compliance-ai-engineer",
+              "excerpt": "Independently develops progressively more complex production-minded AI Engineering projects."
+            }
+          ],
+          "assumption": null
+        }
+      ]
+    },
+    "commercial_fit": {
+      "dimension": "commercial",
+      "judgment": "strong",
+      "summary": "The profile matches well with the commercial requirements outlined in the job details, including flexibility on remuneration and full-time work arrangement.",
+      "findings": [
+        {
+          "kind": "alignment",
+          "summary": "The candidate prefers full-time employment and is willing to engage in a hybrid work arrangement.",
+          "detail": "The job is a full-time role based in South Melbourne with a stated compensation range.",
+          "importance": "material",
+          "job_evidence": [
+            {
+              "source": "employment",
+              "item_index": 0,
+              "name": "Full time",
+              "excerpt": "Full time"
+            }
+          ],
+          "profile_evidence": [
+            {
+              "source": "preference",
+              "ref": "preference:employment_types",
+              "excerpt": "full_time"
+            },
+            {
+              "source": "preference",
+              "ref": "preference:locations",
+              "excerpt": "Melbourne, VIC"
+            }
+          ],
+          "assumption": null
+        }
+      ]
+    },
+    "portfolio_fit": {
+      "dimension": "portfolio",
+      "judgment": "weak",
+      "summary": "The candidate's projects do not directly match the required operational context or technologies for this role, limiting their fit.",
+      "findings": [
+        {
+          "kind": "gap",
+          "summary": "The job requires specific experience with construction-related technology platforms, which is not evidenced in the candidate's project portfolio.",
+          "detail": "While the candidate has relevant AI projects, none directly reference the construction technology platforms mentioned in the job.",
+          "importance": "material",
+          "job_evidence": [
+            {
+              "source": "responsibility",
+              "item_index": 0,
+              "name": "Embed systems: stabilise the platforms, support users and improve workflows after go-live",
+              "excerpt": "Embed systems: stabilise the platforms, support users and improve workflows after go-live"
+            }
+          ],
+          "profile_evidence": [],
+          "assumption": null
+        }
+      ]
+    },
+    "summary": {
+      "summary": "The candidate exhibits strong commercial fit due to their willingness for full-time hybrid work and alignment in preferred salary range. However, there are mixed technical fit regarding platform experience, and a weak alignment in portfolio fit related to required specific technologies.",
+      "key_alignments": [
+        "Strong alignment in commercial criteria with full-time availability.",
+        "Experience in relevant AI engineering projects.",
+        "Willingness to work in a hybrid environment."
+      ],
+      "key_gaps": [
+        "Lack of specific experience with required construction technology platforms.",
+        "No direct involvement with operational projects in the construction domain."
+      ]
+    }
+  },
+  "portfolio_match": {
+    "job_analysis": {
+      "posting": {
+        "raw_text": "Technology and Automation Lead\n\nBuildlab \nView all jobs\nSouth Melbourne, Melbourne VIC (Hybrid)\nBusiness/Systems Analysts (Information & Communication Technology)\nFull time\n$140,000 – $150,000 per year\nPosted 12d ago\n•\nHigh application volume\n\nWhy this role is exciting\n\nBuildlab has recently completed a major tech refresh. Evolve, Xero and Employment Hero are now live, our AI automation roadmap is ready, and we need someone who can turn good ideas into practical systems that save time, reduce friction and help our teams do their best work.\n\nThis is a hands-on role for someone who enjoys the space between business problems, systems, people and delivery partners. You will not just advise from the sidelines — you will help make things happen.\n\nWhat you’ll make happen\n\nEmbed systems: stabilise the platforms, support users and improve workflows after go-live\n\nBring automation to life: prioritise, brief and deliver AI-enabled automation that removes manual work\n\nDrive partner performance: keep vendors clear on scope, timelines, accountability and outcomes\n\nTurn problems into briefs: run workshops, capture requirements and translate business needs into build-ready specifications\n\nProve the value: track efficiency gains and show how technology is improving the business\n\nYou’ll enjoy this role if you are...\n\nCommercial, curious and practical. You can talk to leaders, listen to users, challenge vendors and still get into the detail when a system, workflow or requirement needs testing.\n\nWhat you’ll bring\n\nExperience in a technology, systems, business systems or automation leadership role\n\nHands-on experience with construction platforms such as Evolve, Procore, Databuild or Cheops\n\nWorking knowledge of Xero and Microsoft 365\n\nExperience managing external IT, technology or automation partners\n\nConfidence running workshops, documenting requirements and communicating with senior stakeholders\n\nA practical mindset — you care about outcomes, not technology for technology’s sake\n\nBonus points for\n\nAI automation, RPA or workflow tools such as n8n, Make, Zapier or similar\n\nResidential construction, land lease, property development or building industry experience\n\nData migration, governance or system decommissioning experience\n\nWhy join Buildlab?\n\nOwn meaningful work: help shape how a growing construction business uses technology\n\nBe close to decision-making: work directly with senior leaders and key delivery partners\n\nMake practical innovation real: deliver systems and automation that people actually use\n\nWork flexibly: hybrid arrangement with 2 days in the office\n\nHow to apply\n\nIf you like solving real business problems, making systems work better and seeing your work create visible impact, we would love to hear from you.\n\nApply with your resume and a short note outlining your experience delivering technology, systems or automation outcomes.\n\nNote: Successful applications will proceed to a screening call with Kate, our friendly AI interviewer who will help us to assess candidate suitability.\n\nEmployer questions\nYour application will include the following questions:\nWhich of the following statements best describes your right to work in Australia?\nHow many years' experience do you have as an Automation Lead?\nDo you have experience working towards targets and KPIs?",
+        "title": "Technology and Automation Lead",
+        "company": "Buildlab",
+        "source_url": "https://au.seek.com/job/93242776?ref=search-standalone&type=promoted&origin=showNewTab#sol=48e50b817ed36812c81b299ad821736bf0633763%3E"
+      },
+      "role_family": {
+        "family": "ai_adjacent",
+        "evidence": [
+          {
+            "excerpt": "you will help make things happen",
+            "section": "JobDescription"
+          }
+        ]
+      },
+      "seniority": {
+        "level": "unknown",
+        "ambiguous": false,
+        "candidate_levels": [],
+        "evidence": []
+      },
+      "technologies": [
+        {
+          "name": "Evolve",
+          "level": "required",
+          "evidence": [
+            {
+              "excerpt": "Hands-on experience with construction platforms such as Evolve",
+              "section": "JobDescription"
+            }
+          ]
+        },
+        {
+          "name": "Procore",
+          "level": "required",
+          "evidence": [
+            {
+              "excerpt": "Hands-on experience with construction platforms such as Procore",
+              "section": "JobDescription"
+            }
+          ]
+        },
+        {
+          "name": "Databuild",
+          "level": "required",
+          "evidence": [
+            {
+              "excerpt": "Hands-on experience with construction platforms such as Databuild",
+              "section": "JobDescription"
+            }
+          ]
+        },
+        {
+          "name": "Cheops",
+          "level": "required",
+          "evidence": [
+            {
+              "excerpt": "Hands-on experience with construction platforms such as Cheops",
+              "section": "JobDescription"
+            }
+          ]
+        },
+        {
+          "name": "Xero",
+          "level": "required",
+          "evidence": [
+            {
+              "excerpt": "Working knowledge of Xero",
+              "section": "JobDescription"
+            }
+          ]
+        },
+        {
+          "name": "Microsoft 365",
+          "level": "required",
+          "evidence": [
+            {
+              "excerpt": "Working knowledge of Microsoft 365",
+              "section": "JobDescription"
+            }
+          ]
+        },
+        {
+          "name": "AI automation",
+          "level": "preferred",
+          "evidence": [
+            {
+              "excerpt": "Bonus points for AI automation, RPA or workflow tools",
+              "section": "JobDescription"
+            }
+          ]
+        },
+        {
+          "name": "RPA",
+          "level": "preferred",
+          "evidence": [
+            {
+              "excerpt": "Bonus points for AI automation, RPA or workflow tools",
+              "section": "JobDescription"
+            }
+          ]
+        },
+        {
+          "name": "n8n",
+          "level": "preferred",
+          "evidence": [
+            {
+              "excerpt": "Bonus points for AI automation, RPA or workflow tools such as n8n",
+              "section": "JobDescription"
+            }
+          ]
+        },
+        {
+          "name": "Make",
+          "level": "preferred",
+          "evidence": [
+            {
+              "excerpt": "Bonus points for AI automation, RPA or workflow tools such as Make",
+              "section": "JobDescription"
+            }
+          ]
+        },
+        {
+          "name": "Zapier",
+          "level": "preferred",
+          "evidence": [
+            {
+              "excerpt": "Bonus points for AI automation, RPA or workflow tools such as Zapier",
+              "section": "JobDescription"
+            }
+          ]
+        }
+      ],
+      "responsibilities": [
+        {
+          "description": "Embed systems: stabilise the platforms, support users and improve workflows after go-live",
+          "evidence": [
+            {
+              "excerpt": "Embed systems: stabilise the platforms, support users and improve workflows after go-live",
+              "section": "JobDescription"
+            }
+          ]
+        },
+        {
+          "description": "Bring automation to life: prioritise, brief and deliver AI-enabled automation that removes manual work",
+          "evidence": [
+            {
+              "excerpt": "Bring automation to life: prioritise, brief and deliver AI-enabled automation that removes manual work",
+              "section": "JobDescription"
+            }
+          ]
+        },
+        {
+          "description": "Drive partner performance: keep vendors clear on scope, timelines, accountability and outcomes",
+          "evidence": [
+            {
+              "excerpt": "Drive partner performance: keep vendors clear on scope, timelines, accountability and outcomes",
+              "section": "JobDescription"
+            }
+          ]
+        },
+        {
+          "description": "Turn problems into briefs: run workshops, capture requirements and translate business needs into build-ready specifications",
+          "evidence": [
+            {
+              "excerpt": "Turn problems into briefs: run workshops, capture requirements and translate business needs into build-ready specifications",
+              "section": "JobDescription"
+            }
+          ]
+        },
+        {
+          "description": "Prove the value: track efficiency gains and show how technology is improving the business",
+          "evidence": [
+            {
+              "excerpt": "Prove the value: track efficiency gains and show how technology is improving the business",
+              "section": "JobDescription"
+            }
+          ]
+        }
+      ],
+      "compensation": {
+        "clarity": "stated",
+        "minimum": 140000.0,
+        "maximum": 150000.0,
+        "currency": "AUD",
+        "period": "year",
+        "raw_text": "$140,000 – $150,000 per year",
+        "evidence": [
+          {
+            "excerpt": "$140,000 – $150,000 per year",
+            "section": "JobDescription"
+          }
+        ]
+      },
+      "location": {
+        "clarity": "stated",
+        "summary": "South Melbourne, Melbourne VIC (Hybrid)",
+        "evidence": [
+          {
+            "excerpt": "South Melbourne, Melbourne VIC (Hybrid)",
+            "section": "JobDescription"
+          }
+        ]
+      },
+      "work_arrangement": {
+        "arrangement": "hybrid",
+        "details": "2 days in the office",
+        "evidence": [
+          {
+            "excerpt": "hybrid arrangement with 2 days in the office",
+            "section": "JobDescription"
+          }
+        ]
+      },
+      "employment": {
+        "working_hours": "full_time",
+        "engagement_type": "unspecified",
+        "evidence": [
+          {
+            "excerpt": "Full time",
+            "section": "JobDescription"
+          }
+        ]
+      },
+      "experience_requirements": [
+        {
+          "description": "Experience in a technology, systems, business systems or automation leadership role",
+          "level": "required",
+          "minimum_years": null,
+          "maximum_years": null,
+          "evidence": [
+            {
+              "excerpt": "Experience in a technology, systems, business systems or automation leadership role",
+              "section": "JobDescription"
+            }
+          ]
+        },
+        {
+          "description": "Experience managing external IT, technology or automation partners",
+          "level": "required",
+          "minimum_years": null,
+          "maximum_years": null,
+          "evidence": [
+            {
+              "excerpt": "Experience managing external IT, technology or automation partners",
+              "section": "JobDescription"
+            }
+          ]
+        }
+      ]
+    },
+    "ranked_projects": [
+      {
+        "rank": 1,
+        "project_id": "operational-intelligence-copilot",
+        "rationale": "Project 'operational-intelligence-copilot' ranked on 2 demonstrates overlap(s), 2 responsibility overlap(s).",
+        "factors": [
+          {
+            "kind": "demonstrates_overlap",
+            "summary": "Project demonstrates capabilities overlapping responsibility 'Embed systems: stabilise the platforms, support users and improve workflows after go-live'.",
+            "job_evidence": [
+              {
+                "source": "responsibility",
+                "item_index": 0,
+                "name": null,
+                "excerpt": "Embed systems: stabilise the platforms, support users and improve workflows after go-live"
+              }
+            ],
+            "profile_evidence": [
+              {
+                "source": "project",
+                "ref": "project:operational-intelligence-copilot",
+                "excerpt": "Regression-tested analytics workflows"
+              }
+            ]
+          },
+          {
+            "kind": "demonstrates_overlap",
+            "summary": "Project demonstrates capabilities overlapping responsibility 'Bring automation to life: prioritise, brief and deliver AI-enabled automation that removes manual work'.",
+            "job_evidence": [
+              {
+                "source": "responsibility",
+                "item_index": 1,
+                "name": null,
+                "excerpt": "Bring automation to life: prioritise, brief and deliver AI-enabled automation that removes manual work"
+              }
+            ],
+            "profile_evidence": [
+              {
+                "source": "project",
+                "ref": "project:operational-intelligence-copilot",
+                "excerpt": "Explainable AI recommendations"
+              }
+            ]
+          },
+          {
+            "kind": "responsibility_overlap",
+            "summary": "Project summary, outcomes, or technologies overlap responsibility 'Turn problems into briefs: run workshops, capture requirements and translate business needs into build-ready specifications'.",
+            "job_evidence": [
+              {
+                "source": "responsibility",
+                "item_index": 3,
+                "name": null,
+                "excerpt": "Turn problems into briefs: run workshops, capture requirements and translate business needs into build-ready specifications"
+              }
+            ],
+            "profile_evidence": [
+              {
+                "source": "project",
+                "ref": "project:operational-intelligence-copilot",
+                "excerpt": "Domain-agnostic operational intelligence platform combining deterministic analytics with Large Language Model reasoning to analyse structured business data and…"
+              }
+            ]
+          },
+          {
+            "kind": "responsibility_overlap",
+            "summary": "Project summary, outcomes, or technologies overlap responsibility 'Prove the value: track efficiency gains and show how technology is improving the business'.",
+            "job_evidence": [
+              {
+                "source": "responsibility",
+                "item_index": 4,
+                "name": null,
+                "excerpt": "Prove the value: track efficiency gains and show how technology is improving the business"
+              }
+            ],
+            "profile_evidence": [
+              {
+                "source": "project",
+                "ref": "project:operational-intelligence-copilot",
+                "excerpt": "Domain-agnostic operational intelligence platform combining deterministic analytics with Large Language Model reasoning to analyse structured business data and…"
+              }
+            ]
+          }
+        ],
+        "tie_group": 1,
+        "tie_break_reason": "Equal primary ranking signals; ordered by stable project_id ascending"
+      },
+      {
+        "rank": 2,
+        "project_id": "public-holiday-entitlements",
+        "rationale": "Project 'public-holiday-entitlements' ranked on 2 demonstrates overlap(s), 2 responsibility overlap(s).",
+        "factors": [
+          {
+            "kind": "demonstrates_overlap",
+            "summary": "Project demonstrates capabilities overlapping responsibility 'Turn problems into briefs: run workshops, capture requirements and translate business needs into build-ready specifications'.",
+            "job_evidence": [
+              {
+                "source": "responsibility",
+                "item_index": 3,
+                "name": null,
+                "excerpt": "Turn problems into briefs: run workshops, capture requirements and translate business needs into build-ready specifications"
+              }
+            ],
+            "profile_evidence": [
+              {
+                "source": "project",
+                "ref": "project:public-holiday-entitlements",
+                "excerpt": "Business rules"
+              }
+            ]
+          },
+          {
+            "kind": "responsibility_overlap",
+            "summary": "Project summary, outcomes, or technologies overlap responsibility 'Turn problems into briefs: run workshops, capture requirements and translate business needs into build-ready specifications'.",
+            "job_evidence": [
+              {
+                "source": "responsibility",
+                "item_index": 3,
+                "name": null,
+                "excerpt": "Turn problems into briefs: run workshops, capture requirements and translate business needs into build-ready specifications"
+              }
+            ],
+            "profile_evidence": [
+              {
+                "source": "project",
+                "ref": "project:public-holiday-entitlements",
+                "excerpt": "Business-rules platform combining geospatial processing and external APIs to determine Australian public-holiday entitlements."
+              }
+            ]
+          },
+          {
+            "kind": "demonstrates_overlap",
+            "summary": "Project demonstrates capabilities overlapping responsibility 'Prove the value: track efficiency gains and show how technology is improving the business'.",
+            "job_evidence": [
+              {
+                "source": "responsibility",
+                "item_index": 4,
+                "name": null,
+                "excerpt": "Prove the value: track efficiency gains and show how technology is improving the business"
+              }
+            ],
+            "profile_evidence": [
+              {
+                "source": "project",
+                "ref": "project:public-holiday-entitlements",
+                "excerpt": "Business rules"
+              }
+            ]
+          },
+          {
+            "kind": "responsibility_overlap",
+            "summary": "Project summary, outcomes, or technologies overlap responsibility 'Prove the value: track efficiency gains and show how technology is improving the business'.",
+            "job_evidence": [
+              {
+                "source": "responsibility",
+                "item_index": 4,
+                "name": null,
+                "excerpt": "Prove the value: track efficiency gains and show how technology is improving the business"
+              }
+            ],
+            "profile_evidence": [
+              {
+                "source": "project",
+                "ref": "project:public-holiday-entitlements",
+                "excerpt": "Business-rules platform combining geospatial processing and external APIs to determine Australian public-holiday entitlements."
+              }
+            ]
+          }
+        ],
+        "tie_group": 1,
+        "tie_break_reason": "Equal primary ranking signals; ordered by stable project_id ascending"
+      },
+      {
+        "rank": 3,
+        "project_id": "payroll-diagnostics-engine",
+        "rationale": "Project 'payroll-diagnostics-engine' ranked on 3 responsibility overlap(s).",
+        "factors": [
+          {
+            "kind": "responsibility_overlap",
+            "summary": "Project summary, outcomes, or technologies overlap responsibility 'Embed systems: stabilise the platforms, support users and improve workflows after go-live'.",
+            "job_evidence": [
+              {
+                "source": "responsibility",
+                "item_index": 0,
+                "name": null,
+                "excerpt": "Embed systems: stabilise the platforms, support users and improve workflows after go-live"
+              }
+            ],
+            "profile_evidence": [
+              {
+                "source": "project",
+                "ref": "project:payroll-diagnostics-engine",
+                "excerpt": "Rule-based operational decision-support platform that identifies payroll anomalies through deterministic business-rule evaluation."
+              }
+            ]
+          },
+          {
+            "kind": "responsibility_overlap",
+            "summary": "Project summary, outcomes, or technologies overlap responsibility 'Turn problems into briefs: run workshops, capture requirements and translate business needs into build-ready specifications'.",
+            "job_evidence": [
+              {
+                "source": "responsibility",
+                "item_index": 3,
+                "name": null,
+                "excerpt": "Turn problems into briefs: run workshops, capture requirements and translate business needs into build-ready specifications"
+              }
+            ],
+            "profile_evidence": [
+              {
+                "source": "project",
+                "ref": "project:payroll-diagnostics-engine",
+                "excerpt": "Rule-based operational decision-support platform that identifies payroll anomalies through deterministic business-rule evaluation."
+              }
+            ]
+          },
+          {
+            "kind": "responsibility_overlap",
+            "summary": "Project summary, outcomes, or technologies overlap responsibility 'Prove the value: track efficiency gains and show how technology is improving the business'.",
+            "job_evidence": [
+              {
+                "source": "responsibility",
+                "item_index": 4,
+                "name": null,
+                "excerpt": "Prove the value: track efficiency gains and show how technology is improving the business"
+              }
+            ],
+            "profile_evidence": [
+              {
+                "source": "project",
+                "ref": "project:payroll-diagnostics-engine",
+                "excerpt": "Rule-based operational decision-support platform that identifies payroll anomalies through deterministic business-rule evaluation."
+              }
+            ]
+          }
+        ],
+        "tie_group": null,
+        "tie_break_reason": null
+      },
+      {
+        "rank": 4,
+        "project_id": "governance-document-rag",
+        "rationale": "Project 'governance-document-rag' ranked on 1 responsibility overlap(s).",
+        "factors": [
+          {
+            "kind": "responsibility_overlap",
+            "summary": "Project summary, outcomes, or technologies overlap responsibility 'Bring automation to life: prioritise, brief and deliver AI-enabled automation that removes manual work'.",
+            "job_evidence": [
+              {
+                "source": "responsibility",
+                "item_index": 1,
+                "name": null,
+                "excerpt": "Bring automation to life: prioritise, brief and deliver AI-enabled automation that removes manual work"
+              }
+            ],
+            "profile_evidence": [
+              {
+                "source": "project",
+                "ref": "project:governance-document-rag",
+                "excerpt": "Enterprise retrieval-augmented generation platform supporting trustworthy AI responses over organisational knowledge."
+              }
+            ]
+          }
+        ],
+        "tie_group": null,
+        "tie_break_reason": null
+      }
+    ],
+    "unranked_project_ids": [],
+    "summary": "Ranked 4 project(s); lead with 'operational-intelligence-copilot'. 0 project(s) had no matching factors.",
+    "insufficient_evidence": false
+  },
+  "application_strategy": {
+    "job_analysis": {
+      "posting": {
+        "raw_text": "Technology and Automation Lead\n\nBuildlab \nView all jobs\nSouth Melbourne, Melbourne VIC (Hybrid)\nBusiness/Systems Analysts (Information & Communication Technology)\nFull time\n$140,000 – $150,000 per year\nPosted 12d ago\n•\nHigh application volume\n\nWhy this role is exciting\n\nBuildlab has recently completed a major tech refresh. Evolve, Xero and Employment Hero are now live, our AI automation roadmap is ready, and we need someone who can turn good ideas into practical systems that save time, reduce friction and help our teams do their best work.\n\nThis is a hands-on role for someone who enjoys the space between business problems, systems, people and delivery partners. You will not just advise from the sidelines — you will help make things happen.\n\nWhat you’ll make happen\n\nEmbed systems: stabilise the platforms, support users and improve workflows after go-live\n\nBring automation to life: prioritise, brief and deliver AI-enabled automation that removes manual work\n\nDrive partner performance: keep vendors clear on scope, timelines, accountability and outcomes\n\nTurn problems into briefs: run workshops, capture requirements and translate business needs into build-ready specifications\n\nProve the value: track efficiency gains and show how technology is improving the business\n\nYou’ll enjoy this role if you are...\n\nCommercial, curious and practical. You can talk to leaders, listen to users, challenge vendors and still get into the detail when a system, workflow or requirement needs testing.\n\nWhat you’ll bring\n\nExperience in a technology, systems, business systems or automation leadership role\n\nHands-on experience with construction platforms such as Evolve, Procore, Databuild or Cheops\n\nWorking knowledge of Xero and Microsoft 365\n\nExperience managing external IT, technology or automation partners\n\nConfidence running workshops, documenting requirements and communicating with senior stakeholders\n\nA practical mindset — you care about outcomes, not technology for technology’s sake\n\nBonus points for\n\nAI automation, RPA or workflow tools such as n8n, Make, Zapier or similar\n\nResidential construction, land lease, property development or building industry experience\n\nData migration, governance or system decommissioning experience\n\nWhy join Buildlab?\n\nOwn meaningful work: help shape how a growing construction business uses technology\n\nBe close to decision-making: work directly with senior leaders and key delivery partners\n\nMake practical innovation real: deliver systems and automation that people actually use\n\nWork flexibly: hybrid arrangement with 2 days in the office\n\nHow to apply\n\nIf you like solving real business problems, making systems work better and seeing your work create visible impact, we would love to hear from you.\n\nApply with your resume and a short note outlining your experience delivering technology, systems or automation outcomes.\n\nNote: Successful applications will proceed to a screening call with Kate, our friendly AI interviewer who will help us to assess candidate suitability.\n\nEmployer questions\nYour application will include the following questions:\nWhich of the following statements best describes your right to work in Australia?\nHow many years' experience do you have as an Automation Lead?\nDo you have experience working towards targets and KPIs?",
+        "title": "Technology and Automation Lead",
+        "company": "Buildlab",
+        "source_url": "https://au.seek.com/job/93242776?ref=search-standalone&type=promoted&origin=showNewTab#sol=48e50b817ed36812c81b299ad821736bf0633763%3E"
+      },
+      "role_family": {
+        "family": "ai_adjacent",
+        "evidence": [
+          {
+            "excerpt": "you will help make things happen",
+            "section": "JobDescription"
+          }
+        ]
+      },
+      "seniority": {
+        "level": "unknown",
+        "ambiguous": false,
+        "candidate_levels": [],
+        "evidence": []
+      },
+      "technologies": [
+        {
+          "name": "Evolve",
+          "level": "required",
+          "evidence": [
+            {
+              "excerpt": "Hands-on experience with construction platforms such as Evolve",
+              "section": "JobDescription"
+            }
+          ]
+        },
+        {
+          "name": "Procore",
+          "level": "required",
+          "evidence": [
+            {
+              "excerpt": "Hands-on experience with construction platforms such as Procore",
+              "section": "JobDescription"
+            }
+          ]
+        },
+        {
+          "name": "Databuild",
+          "level": "required",
+          "evidence": [
+            {
+              "excerpt": "Hands-on experience with construction platforms such as Databuild",
+              "section": "JobDescription"
+            }
+          ]
+        },
+        {
+          "name": "Cheops",
+          "level": "required",
+          "evidence": [
+            {
+              "excerpt": "Hands-on experience with construction platforms such as Cheops",
+              "section": "JobDescription"
+            }
+          ]
+        },
+        {
+          "name": "Xero",
+          "level": "required",
+          "evidence": [
+            {
+              "excerpt": "Working knowledge of Xero",
+              "section": "JobDescription"
+            }
+          ]
+        },
+        {
+          "name": "Microsoft 365",
+          "level": "required",
+          "evidence": [
+            {
+              "excerpt": "Working knowledge of Microsoft 365",
+              "section": "JobDescription"
+            }
+          ]
+        },
+        {
+          "name": "AI automation",
+          "level": "preferred",
+          "evidence": [
+            {
+              "excerpt": "Bonus points for AI automation, RPA or workflow tools",
+              "section": "JobDescription"
+            }
+          ]
+        },
+        {
+          "name": "RPA",
+          "level": "preferred",
+          "evidence": [
+            {
+              "excerpt": "Bonus points for AI automation, RPA or workflow tools",
+              "section": "JobDescription"
+            }
+          ]
+        },
+        {
+          "name": "n8n",
+          "level": "preferred",
+          "evidence": [
+            {
+              "excerpt": "Bonus points for AI automation, RPA or workflow tools such as n8n",
+              "section": "JobDescription"
+            }
+          ]
+        },
+        {
+          "name": "Make",
+          "level": "preferred",
+          "evidence": [
+            {
+              "excerpt": "Bonus points for AI automation, RPA or workflow tools such as Make",
+              "section": "JobDescription"
+            }
+          ]
+        },
+        {
+          "name": "Zapier",
+          "level": "preferred",
+          "evidence": [
+            {
+              "excerpt": "Bonus points for AI automation, RPA or workflow tools such as Zapier",
+              "section": "JobDescription"
+            }
+          ]
+        }
+      ],
+      "responsibilities": [
+        {
+          "description": "Embed systems: stabilise the platforms, support users and improve workflows after go-live",
+          "evidence": [
+            {
+              "excerpt": "Embed systems: stabilise the platforms, support users and improve workflows after go-live",
+              "section": "JobDescription"
+            }
+          ]
+        },
+        {
+          "description": "Bring automation to life: prioritise, brief and deliver AI-enabled automation that removes manual work",
+          "evidence": [
+            {
+              "excerpt": "Bring automation to life: prioritise, brief and deliver AI-enabled automation that removes manual work",
+              "section": "JobDescription"
+            }
+          ]
+        },
+        {
+          "description": "Drive partner performance: keep vendors clear on scope, timelines, accountability and outcomes",
+          "evidence": [
+            {
+              "excerpt": "Drive partner performance: keep vendors clear on scope, timelines, accountability and outcomes",
+              "section": "JobDescription"
+            }
+          ]
+        },
+        {
+          "description": "Turn problems into briefs: run workshops, capture requirements and translate business needs into build-ready specifications",
+          "evidence": [
+            {
+              "excerpt": "Turn problems into briefs: run workshops, capture requirements and translate business needs into build-ready specifications",
+              "section": "JobDescription"
+            }
+          ]
+        },
+        {
+          "description": "Prove the value: track efficiency gains and show how technology is improving the business",
+          "evidence": [
+            {
+              "excerpt": "Prove the value: track efficiency gains and show how technology is improving the business",
+              "section": "JobDescription"
+            }
+          ]
+        }
+      ],
+      "compensation": {
+        "clarity": "stated",
+        "minimum": 140000.0,
+        "maximum": 150000.0,
+        "currency": "AUD",
+        "period": "year",
+        "raw_text": "$140,000 – $150,000 per year",
+        "evidence": [
+          {
+            "excerpt": "$140,000 – $150,000 per year",
+            "section": "JobDescription"
+          }
+        ]
+      },
+      "location": {
+        "clarity": "stated",
+        "summary": "South Melbourne, Melbourne VIC (Hybrid)",
+        "evidence": [
+          {
+            "excerpt": "South Melbourne, Melbourne VIC (Hybrid)",
+            "section": "JobDescription"
+          }
+        ]
+      },
+      "work_arrangement": {
+        "arrangement": "hybrid",
+        "details": "2 days in the office",
+        "evidence": [
+          {
+            "excerpt": "hybrid arrangement with 2 days in the office",
+            "section": "JobDescription"
+          }
+        ]
+      },
+      "employment": {
+        "working_hours": "full_time",
+        "engagement_type": "unspecified",
+        "evidence": [
+          {
+            "excerpt": "Full time",
+            "section": "JobDescription"
+          }
+        ]
+      },
+      "experience_requirements": [
+        {
+          "description": "Experience in a technology, systems, business systems or automation leadership role",
+          "level": "required",
+          "minimum_years": null,
+          "maximum_years": null,
+          "evidence": [
+            {
+              "excerpt": "Experience in a technology, systems, business systems or automation leadership role",
+              "section": "JobDescription"
+            }
+          ]
+        },
+        {
+          "description": "Experience managing external IT, technology or automation partners",
+          "level": "required",
+          "minimum_years": null,
+          "maximum_years": null,
+          "evidence": [
+            {
+              "excerpt": "Experience managing external IT, technology or automation partners",
+              "section": "JobDescription"
+            }
+          ]
+        }
+      ]
+    },
+    "application_tier": "silver",
+    "pursuit_posture": "consider",
+    "practical_value": "acceptable_opportunity",
+    "effort_level": "minimal",
+    "summary": "Recommend posture 'consider' with effort tier 'silver' (minimal). Technical fit 'mixed', commercial fit 'strong', portfolio fit 'weak'. Owner review is required before any application action.",
+    "reasons": [
+      {
+        "kind": "alignment",
+        "summary": "Technical fit is 'mixed' and portfolio fit is 'weak' for this opportunity.",
+        "importance": "material",
+        "evidence": [
+          {
+            "origin": "opportunity_assessment",
+            "job_evidence": null,
+            "profile_evidence": null,
+            "assessment_dimension": "technical",
+            "assessment_judgment": "mixed",
+            "portfolio_project_id": null,
+            "excerpt": null
+          },
+          {
+            "origin": "opportunity_assessment",
+            "job_evidence": null,
+            "profile_evidence": null,
+            "assessment_dimension": "portfolio",
+            "assessment_judgment": "weak",
+            "portfolio_project_id": null,
+            "excerpt": null
+          }
+        ]
+      },
+      {
+        "kind": "priority",
+        "summary": "Pursuit posture 'consider' with effort tier 'silver' reflects commercial fit 'strong' and AI-adjacent role family.",
+        "importance": "material",
+        "evidence": [
+          {
+            "origin": "opportunity_assessment",
+            "job_evidence": null,
+            "profile_evidence": null,
+            "assessment_dimension": "commercial",
+            "assessment_judgment": "strong",
+            "portfolio_project_id": null,
+            "excerpt": null
+          },
+          {
+            "origin": "job_analysis",
+            "job_evidence": {
+              "source": "role_family",
+              "item_index": null,
+              "name": null,
+              "excerpt": null
+            },
+            "profile_evidence": null,
+            "assessment_dimension": null,
+            "assessment_judgment": null,
+            "portfolio_project_id": null,
+            "excerpt": null
+          }
+        ]
+      }
+    ],
+    "risks_or_gaps": [
+      {
+        "summary": "Portfolio fit is limited relative to the role; emphasise only honest project evidence.",
+        "importance": "material",
+        "evidence": [
+          {
+            "origin": "opportunity_assessment",
+            "job_evidence": null,
+            "profile_evidence": null,
+            "assessment_dimension": "portfolio",
+            "assessment_judgment": "weak",
+            "portfolio_project_id": null,
+            "excerpt": null
+          }
+        ]
+      }
+    ],
+    "manual_checks": [
+      {
+        "summary": "Verify working-rights wording against your own eligibility.",
+        "why_it_matters": "The posting states a working-rights requirement; the system does not infer owner eligibility.",
+        "could_change_recommendation": true,
+        "evidence": [
+          {
+            "origin": "opportunity_assessment",
+            "job_evidence": null,
+            "profile_evidence": null,
+            "assessment_dimension": "commercial",
+            "assessment_judgment": "strong",
+            "portfolio_project_id": null,
+            "excerpt": null
+          }
+        ]
+      }
+    ],
+    "next_actions": [
+      {
+        "kind": "consider_verifying_working_rights",
+        "summary": "Consider verifying working-rights wording against your eligibility.",
+        "related_project_id": null,
+        "evidence": [
+          {
+            "origin": "opportunity_assessment",
+            "job_evidence": null,
+            "profile_evidence": null,
+            "assessment_dimension": "commercial",
+            "assessment_judgment": "strong",
+            "portfolio_project_id": null,
+            "excerpt": null
+          }
+        ]
+      },
+      {
+        "kind": "consider_emphasising_portfolio_projects",
+        "summary": "Consider emphasising the strongest matched portfolio project(s) in any application materials you prepare.",
+        "related_project_id": "operational-intelligence-copilot",
+        "evidence": [
+          {
+            "origin": "portfolio_match",
+            "job_evidence": null,
+            "profile_evidence": null,
+            "assessment_dimension": null,
+            "assessment_judgment": null,
+            "portfolio_project_id": "operational-intelligence-copilot",
+            "excerpt": null
+          }
+        ]
+      },
+      {
+        "kind": "consider_owner_review",
+        "summary": "Consider reviewing this full strategy before taking any external action.",
+        "related_project_id": null,
+        "evidence": [
+          {
+            "origin": "opportunity_assessment",
+            "job_evidence": null,
+            "profile_evidence": null,
+            "assessment_dimension": "technical",
+            "assessment_judgment": "mixed",
+            "portfolio_project_id": null,
+            "excerpt": null
+          }
+        ]
+      }
+    ],
+    "portfolio_emphasis": [
+      {
+        "project_id": "operational-intelligence-copilot",
+        "source_rank": 1,
+        "summary": "Consider emphasising 'operational-intelligence-copilot' (PortfolioMatch rank 1).",
+        "evidence": [
+          {
+            "origin": "portfolio_match",
+            "job_evidence": null,
+            "profile_evidence": null,
+            "assessment_dimension": null,
+            "assessment_judgment": null,
+            "portfolio_project_id": "operational-intelligence-copilot",
+            "excerpt": null
+          }
+        ]
+      },
+      {
+        "project_id": "public-holiday-entitlements",
+        "source_rank": 2,
+        "summary": "Consider emphasising 'public-holiday-entitlements' (PortfolioMatch rank 2).",
+        "evidence": [
+          {
+            "origin": "portfolio_match",
+            "job_evidence": null,
+            "profile_evidence": null,
+            "assessment_dimension": null,
+            "assessment_judgment": null,
+            "portfolio_project_id": "public-holiday-entitlements",
+            "excerpt": null
+          }
+        ]
+      },
+      {
+        "project_id": "payroll-diagnostics-engine",
+        "source_rank": 3,
+        "summary": "Consider emphasising 'payroll-diagnostics-engine' (PortfolioMatch rank 3).",
+        "evidence": [
+          {
+            "origin": "portfolio_match",
+            "job_evidence": null,
+            "profile_evidence": null,
+            "assessment_dimension": null,
+            "assessment_judgment": null,
+            "portfolio_project_id": "payroll-diagnostics-engine",
+            "excerpt": null
+          }
+        ]
+      }
+    ],
+    "assumptions": [
+      "No candidate salary minimum is configured, so compensation was not treated as a hard threshold conflict.",
+      "Owner working-rights eligibility is unknown to the system and was not inferred."
+    ],
+    "decision_blockers": [],
+    "owner_review_required": true,
+    "insufficient_information": false
+  }
+}

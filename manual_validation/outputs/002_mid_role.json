@@ -1,0 +1,1644 @@
+{
+  "components": [
+    {
+      "name": "CareerProfile",
+      "implementation": "CareerProfileService / YAML",
+      "mode": "deterministic_production"
+    },
+    {
+      "name": "JobAnalysis",
+      "implementation": "OpenAIJobExtractor",
+      "mode": "openai_production"
+    },
+    {
+      "name": "OpportunityAssessment",
+      "implementation": "OpenAIAssessor",
+      "mode": "openai_production"
+    },
+    {
+      "name": "PortfolioMatch",
+      "implementation": "DeterministicMatcher",
+      "mode": "deterministic_production"
+    },
+    {
+      "name": "ApplicationStrategy",
+      "implementation": "DeterministicStrategyPlanner",
+      "mode": "deterministic_production"
+    }
+  ],
+  "volume_applications_enabled": false,
+  "profile_identity": {
+    "full_name": "David Cropper",
+    "target_role": "AI Engineer"
+  },
+  "posting": {
+    "raw_text": "AI Engineer\n\nAllura Partners \nView all jobs\n\nMelbourne VIC (Hybrid)\nEngineering - Software (Information & Communication Technology)\nFull time\n190000\nPosted 4d ago\n•\nMedium application volume\n\nHow you match\n3 skills and credentials match your profile\n Python Programming\n Google Cloud\n REST APIs\nShow all⁠\nAI Engineer / Permanent / Melbourne / up to $190,000 + super + bonus\n\nAbout the Company\nOur client is a well established, ASX listed FMCG and retail operations business with a national footprint and a multi decade track record. AI is a core part of how the business runs, and they're building a small, high impact team to lead that work.\n\nThey are looking for an AI Engineer to join their Melbourne team.\n\nAbout the Role\nThis AI Engineer role is a hands on build and deploy role combining deep technical delivery with a growing stakeholder facing dimension. You'll design, build and deploy AI solutions that solve real operational problems, acting as the technical anchor between business problems and working systems, and growing into a role shaping AI adoption across the business.\n\nBenefits\n$170,000 to $190,000 + super + a bonus\n\nThis is a genuine build and own opportunity, not a maintenance role, with real scope to shape how AI is adopted across a large, established business. You'll work close to the business rather than buried in a back office function, with room to grow into a broader governance and adoption remit as the function matures.\n\nDuties / Key Responsibilities\nDesign, build and deploy AI models, LLM based tools and agentic workflows, including the evaluation and monitoring needed to trust them in production\nBuild and maintain scalable AI infrastructure, data pipelines and integrations back into core business systems\nOwn the full delivery cycle: solution design, build, testing, validation, deployment and ongoing support\nPartner directly with stakeholders to translate requirements into technical deliverables, through UAT and into real adoption\nContribute to AI governance, risk and compliance, keeping documentation and reusable components in good shape so capability scales past one person\nSkills and Experience\n5+ years across software development, data engineering or AI and automation, with real production experience shipping LLM powered applications\nStrong Python skills, including async work, API frameworks and solid testing practices\nPractical cloud experience running AI and ML workloads day to day, ideally with Azure, AWS or GCP exposure or certification\nComfort with REST APIs, auth, event driven integration, relational databases and data pipelines\nWorking knowledge of MLOps, DevOps and solid software engineering practice\nA track record of owning delivery end to end, including working directly with non technical stakeholders, ideally in cross functional or agile teams\nClear written and verbal communication, with the ability to explain a technical tradeoff to a non technical audience\nExposure to retail, supply chain or FMCG adjacent AI applications is a plus, as is an interest in AI governance and ethics\nFormal study in a relevant field is useful but not the bar. A strong body of shipped work counts for just as much\nIf you're interested in this opportunity and feel you're the right fit, please click \"Apply\".\n\nAbout Allura Partners\n\nAllura Partners was founded to support private equity firms by placing C-Suites to lead, transform, and scale portfolio companies. Today, in addition to our proven private equity specialisation, we've become a trusted partner for major ASX-listed and private enterprises in Australia, offering executive search, recruitment, and business transformation. Known for integrity, reliability, and results, our expertise spans Executive Search, Accounting & Finance, Transformation & Change, and Technology & Digital. We connect businesses and top-tier talent, exceeding expectations and driving lasting impact.\n\nAI Engineer / Permanent / Melbourne / up to $190,000 + super + bonus",
+    "title": "Junior Software / DevOps Engineer",
+    "company": "Jirotech Pty Ltd",
+    "source_url": "https://au.seek.com/job/93335527?ref=recom-homepage&pos=4&origin=showNewTab#sol=e4e928d2a2376b29a212b2ffd55f8b0cd2f41ff63"
+  },
+  "job_analysis": {
+    "posting": {
+      "raw_text": "AI Engineer\n\nAllura Partners \nView all jobs\n\nMelbourne VIC (Hybrid)\nEngineering - Software (Information & Communication Technology)\nFull time\n190000\nPosted 4d ago\n•\nMedium application volume\n\nHow you match\n3 skills and credentials match your profile\n Python Programming\n Google Cloud\n REST APIs\nShow all⁠\nAI Engineer / Permanent / Melbourne / up to $190,000 + super + bonus\n\nAbout the Company\nOur client is a well established, ASX listed FMCG and retail operations business with a national footprint and a multi decade track record. AI is a core part of how the business runs, and they're building a small, high impact team to lead that work.\n\nThey are looking for an AI Engineer to join their Melbourne team.\n\nAbout the Role\nThis AI Engineer role is a hands on build and deploy role combining deep technical delivery with a growing stakeholder facing dimension. You'll design, build and deploy AI solutions that solve real operational problems, acting as the technical anchor between business problems and working systems, and growing into a role shaping AI adoption across the business.\n\nBenefits\n$170,000 to $190,000 + super + a bonus\n\nThis is a genuine build and own opportunity, not a maintenance role, with real scope to shape how AI is adopted across a large, established business. You'll work close to the business rather than buried in a back office function, with room to grow into a broader governance and adoption remit as the function matures.\n\nDuties / Key Responsibilities\nDesign, build and deploy AI models, LLM based tools and agentic workflows, including the evaluation and monitoring needed to trust them in production\nBuild and maintain scalable AI infrastructure, data pipelines and integrations back into core business systems\nOwn the full delivery cycle: solution design, build, testing, validation, deployment and ongoing support\nPartner directly with stakeholders to translate requirements into technical deliverables, through UAT and into real adoption\nContribute to AI governance, risk and compliance, keeping documentation and reusable components in good shape so capability scales past one person\nSkills and Experience\n5+ years across software development, data engineering or AI and automation, with real production experience shipping LLM powered applications\nStrong Python skills, including async work, API frameworks and solid testing practices\nPractical cloud experience running AI and ML workloads day to day, ideally with Azure, AWS or GCP exposure or certification\nComfort with REST APIs, auth, event driven integration, relational databases and data pipelines\nWorking knowledge of MLOps, DevOps and solid software engineering practice\nA track record of owning delivery end to end, including working directly with non technical stakeholders, ideally in cross functional or agile teams\nClear written and verbal communication, with the ability to explain a technical tradeoff to a non technical audience\nExposure to retail, supply chain or FMCG adjacent AI applications is a plus, as is an interest in AI governance and ethics\nFormal study in a relevant field is useful but not the bar. A strong body of shipped work counts for just as much\nIf you're interested in this opportunity and feel you're the right fit, please click \"Apply\".\n\nAbout Allura Partners\n\nAllura Partners was founded to support private equity firms by placing C-Suites to lead, transform, and scale portfolio companies. Today, in addition to our proven private equity specialisation, we've become a trusted partner for major ASX-listed and private enterprises in Australia, offering executive search, recruitment, and business transformation. Known for integrity, reliability, and results, our expertise spans Executive Search, Accounting & Finance, Transformation & Change, and Technology & Digital. We connect businesses and top-tier talent, exceeding expectations and driving lasting impact.\n\nAI Engineer / Permanent / Melbourne / up to $190,000 + super + bonus",
+      "title": "Junior Software / DevOps Engineer",
+      "company": "Jirotech Pty Ltd",
+      "source_url": "https://au.seek.com/job/93335527?ref=recom-homepage&pos=4&origin=showNewTab#sol=e4e928d2a2376b29a212b2ffd55f8b0cd2f41ff63"
+    },
+    "role_family": {
+      "family": "software_engineering",
+      "evidence": [
+        {
+          "excerpt": "AI Engineer",
+          "section": "Job title"
+        }
+      ]
+    },
+    "seniority": {
+      "level": "unknown",
+      "ambiguous": false,
+      "candidate_levels": [],
+      "evidence": []
+    },
+    "technologies": [
+      {
+        "name": "Python",
+        "level": "required",
+        "evidence": [
+          {
+            "excerpt": "Strong Python skills, including async work...",
+            "section": "Skills and Experience"
+          }
+        ]
+      },
+      {
+        "name": "Google Cloud",
+        "level": "preferred",
+        "evidence": [
+          {
+            "excerpt": "ideally with Azure, AWS or GCP exposure or certification",
+            "section": "Skills and Experience"
+          }
+        ]
+      },
+      {
+        "name": "REST APIs",
+        "level": "required",
+        "evidence": [
+          {
+            "excerpt": "Comfort with REST APIs, auth, event driven integration...",
+            "section": "Skills and Experience"
+          }
+        ]
+      }
+    ],
+    "responsibilities": [
+      {
+        "description": "Design, build and deploy AI models, LLM based tools and agentic workflows...",
+        "evidence": [
+          {
+            "excerpt": "Duties / Key Responsibilities",
+            "section": "JobDescription"
+          }
+        ]
+      },
+      {
+        "description": "Build and maintain scalable AI infrastructure, data pipelines and integrations back into core business systems",
+        "evidence": [
+          {
+            "excerpt": "Duties / Key Responsibilities",
+            "section": "JobDescription"
+          }
+        ]
+      },
+      {
+        "description": "Own the full delivery cycle: solution design, build, testing, validation, deployment and ongoing support",
+        "evidence": [
+          {
+            "excerpt": "Duties / Key Responsibilities",
+            "section": "JobDescription"
+          }
+        ]
+      },
+      {
+        "description": "Partner directly with stakeholders to translate requirements into technical deliverables...",
+        "evidence": [
+          {
+            "excerpt": "Duties / Key Responsibilities",
+            "section": "JobDescription"
+          }
+        ]
+      },
+      {
+        "description": "Contribute to AI governance, risk and compliance...",
+        "evidence": [
+          {
+            "excerpt": "Duties / Key Responsibilities",
+            "section": "JobDescription"
+          }
+        ]
+      }
+    ],
+    "compensation": {
+      "clarity": "stated",
+      "minimum": 170000.0,
+      "maximum": 190000.0,
+      "currency": "AUD",
+      "period": "year",
+      "raw_text": "$170,000 to $190,000 + super + a bonus",
+      "evidence": [
+        {
+          "excerpt": "AI Engineer / Permanent / Melbourne / up to $190,000 + super + bonus",
+          "section": "JobDescription"
+        }
+      ]
+    },
+    "location": {
+      "clarity": "stated",
+      "summary": "Melbourne VIC",
+      "evidence": [
+        {
+          "excerpt": "Melbourne VIC (Hybrid)",
+          "section": "JobDescription"
+        }
+      ]
+    },
+    "work_arrangement": {
+      "arrangement": "hybrid",
+      "details": null,
+      "evidence": [
+        {
+          "excerpt": "Melbourne VIC (Hybrid)",
+          "section": "JobDescription"
+        }
+      ]
+    },
+    "employment": {
+      "working_hours": "full_time",
+      "engagement_type": "permanent",
+      "evidence": [
+        {
+          "excerpt": "Full time",
+          "section": "JobDescription"
+        },
+        {
+          "excerpt": "AI Engineer / Permanent",
+          "section": "JobDescription"
+        }
+      ]
+    },
+    "experience_requirements": [
+      {
+        "description": "5+ years across software development, data engineering or AI and automation...",
+        "level": "required",
+        "minimum_years": 5.0,
+        "maximum_years": null,
+        "evidence": [
+          {
+            "excerpt": "5+ years across software development, data engineering or AI and automation...",
+            "section": "Skills and Experience"
+          }
+        ]
+      }
+    ]
+  },
+  "opportunity_assessment": {
+    "job_analysis": {
+      "posting": {
+        "raw_text": "AI Engineer\n\nAllura Partners \nView all jobs\n\nMelbourne VIC (Hybrid)\nEngineering - Software (Information & Communication Technology)\nFull time\n190000\nPosted 4d ago\n•\nMedium application volume\n\nHow you match\n3 skills and credentials match your profile\n Python Programming\n Google Cloud\n REST APIs\nShow all⁠\nAI Engineer / Permanent / Melbourne / up to $190,000 + super + bonus\n\nAbout the Company\nOur client is a well established, ASX listed FMCG and retail operations business with a national footprint and a multi decade track record. AI is a core part of how the business runs, and they're building a small, high impact team to lead that work.\n\nThey are looking for an AI Engineer to join their Melbourne team.\n\nAbout the Role\nThis AI Engineer role is a hands on build and deploy role combining deep technical delivery with a growing stakeholder facing dimension. You'll design, build and deploy AI solutions that solve real operational problems, acting as the technical anchor between business problems and working systems, and growing into a role shaping AI adoption across the business.\n\nBenefits\n$170,000 to $190,000 + super + a bonus\n\nThis is a genuine build and own opportunity, not a maintenance role, with real scope to shape how AI is adopted across a large, established business. You'll work close to the business rather than buried in a back office function, with room to grow into a broader governance and adoption remit as the function matures.\n\nDuties / Key Responsibilities\nDesign, build and deploy AI models, LLM based tools and agentic workflows, including the evaluation and monitoring needed to trust them in production\nBuild and maintain scalable AI infrastructure, data pipelines and integrations back into core business systems\nOwn the full delivery cycle: solution design, build, testing, validation, deployment and ongoing support\nPartner directly with stakeholders to translate requirements into technical deliverables, through UAT and into real adoption\nContribute to AI governance, risk and compliance, keeping documentation and reusable components in good shape so capability scales past one person\nSkills and Experience\n5+ years across software development, data engineering or AI and automation, with real production experience shipping LLM powered applications\nStrong Python skills, including async work, API frameworks and solid testing practices\nPractical cloud experience running AI and ML workloads day to day, ideally with Azure, AWS or GCP exposure or certification\nComfort with REST APIs, auth, event driven integration, relational databases and data pipelines\nWorking knowledge of MLOps, DevOps and solid software engineering practice\nA track record of owning delivery end to end, including working directly with non technical stakeholders, ideally in cross functional or agile teams\nClear written and verbal communication, with the ability to explain a technical tradeoff to a non technical audience\nExposure to retail, supply chain or FMCG adjacent AI applications is a plus, as is an interest in AI governance and ethics\nFormal study in a relevant field is useful but not the bar. A strong body of shipped work counts for just as much\nIf you're interested in this opportunity and feel you're the right fit, please click \"Apply\".\n\nAbout Allura Partners\n\nAllura Partners was founded to support private equity firms by placing C-Suites to lead, transform, and scale portfolio companies. Today, in addition to our proven private equity specialisation, we've become a trusted partner for major ASX-listed and private enterprises in Australia, offering executive search, recruitment, and business transformation. Known for integrity, reliability, and results, our expertise spans Executive Search, Accounting & Finance, Transformation & Change, and Technology & Digital. We connect businesses and top-tier talent, exceeding expectations and driving lasting impact.\n\nAI Engineer / Permanent / Melbourne / up to $190,000 + super + bonus",
+        "title": "Junior Software / DevOps Engineer",
+        "company": "Jirotech Pty Ltd",
+        "source_url": "https://au.seek.com/job/93335527?ref=recom-homepage&pos=4&origin=showNewTab#sol=e4e928d2a2376b29a212b2ffd55f8b0cd2f41ff63"
+      },
+      "role_family": {
+        "family": "software_engineering",
+        "evidence": [
+          {
+            "excerpt": "AI Engineer",
+            "section": "Job title"
+          }
+        ]
+      },
+      "seniority": {
+        "level": "unknown",
+        "ambiguous": false,
+        "candidate_levels": [],
+        "evidence": []
+      },
+      "technologies": [
+        {
+          "name": "Python",
+          "level": "required",
+          "evidence": [
+            {
+              "excerpt": "Strong Python skills, including async work...",
+              "section": "Skills and Experience"
+            }
+          ]
+        },
+        {
+          "name": "Google Cloud",
+          "level": "preferred",
+          "evidence": [
+            {
+              "excerpt": "ideally with Azure, AWS or GCP exposure or certification",
+              "section": "Skills and Experience"
+            }
+          ]
+        },
+        {
+          "name": "REST APIs",
+          "level": "required",
+          "evidence": [
+            {
+              "excerpt": "Comfort with REST APIs, auth, event driven integration...",
+              "section": "Skills and Experience"
+            }
+          ]
+        }
+      ],
+      "responsibilities": [
+        {
+          "description": "Design, build and deploy AI models, LLM based tools and agentic workflows...",
+          "evidence": [
+            {
+              "excerpt": "Duties / Key Responsibilities",
+              "section": "JobDescription"
+            }
+          ]
+        },
+        {
+          "description": "Build and maintain scalable AI infrastructure, data pipelines and integrations back into core business systems",
+          "evidence": [
+            {
+              "excerpt": "Duties / Key Responsibilities",
+              "section": "JobDescription"
+            }
+          ]
+        },
+        {
+          "description": "Own the full delivery cycle: solution design, build, testing, validation, deployment and ongoing support",
+          "evidence": [
+            {
+              "excerpt": "Duties / Key Responsibilities",
+              "section": "JobDescription"
+            }
+          ]
+        },
+        {
+          "description": "Partner directly with stakeholders to translate requirements into technical deliverables...",
+          "evidence": [
+            {
+              "excerpt": "Duties / Key Responsibilities",
+              "section": "JobDescription"
+            }
+          ]
+        },
+        {
+          "description": "Contribute to AI governance, risk and compliance...",
+          "evidence": [
+            {
+              "excerpt": "Duties / Key Responsibilities",
+              "section": "JobDescription"
+            }
+          ]
+        }
+      ],
+      "compensation": {
+        "clarity": "stated",
+        "minimum": 170000.0,
+        "maximum": 190000.0,
+        "currency": "AUD",
+        "period": "year",
+        "raw_text": "$170,000 to $190,000 + super + a bonus",
+        "evidence": [
+          {
+            "excerpt": "AI Engineer / Permanent / Melbourne / up to $190,000 + super + bonus",
+            "section": "JobDescription"
+          }
+        ]
+      },
+      "location": {
+        "clarity": "stated",
+        "summary": "Melbourne VIC",
+        "evidence": [
+          {
+            "excerpt": "Melbourne VIC (Hybrid)",
+            "section": "JobDescription"
+          }
+        ]
+      },
+      "work_arrangement": {
+        "arrangement": "hybrid",
+        "details": null,
+        "evidence": [
+          {
+            "excerpt": "Melbourne VIC (Hybrid)",
+            "section": "JobDescription"
+          }
+        ]
+      },
+      "employment": {
+        "working_hours": "full_time",
+        "engagement_type": "permanent",
+        "evidence": [
+          {
+            "excerpt": "Full time",
+            "section": "JobDescription"
+          },
+          {
+            "excerpt": "AI Engineer / Permanent",
+            "section": "JobDescription"
+          }
+        ]
+      },
+      "experience_requirements": [
+        {
+          "description": "5+ years across software development, data engineering or AI and automation...",
+          "level": "required",
+          "minimum_years": 5.0,
+          "maximum_years": null,
+          "evidence": [
+            {
+              "excerpt": "5+ years across software development, data engineering or AI and automation...",
+              "section": "Skills and Experience"
+            }
+          ]
+        }
+      ]
+    },
+    "technical_fit": {
+      "dimension": "technical",
+      "judgment": "strong",
+      "summary": "The candidate's skills, experience, and projects align well with the technical requirements of the job.",
+      "findings": [
+        {
+          "kind": "alignment",
+          "summary": "The candidate has strong Python skills as required by the job.",
+          "detail": null,
+          "importance": "material",
+          "job_evidence": [
+            {
+              "source": "technology",
+              "item_index": 0,
+              "name": "Python",
+              "excerpt": "Strong Python skills, including async work..."
+            }
+          ],
+          "profile_evidence": [
+            {
+              "source": "skill",
+              "ref": "skill:Python",
+              "excerpt": null
+            }
+          ],
+          "assumption": null
+        },
+        {
+          "kind": "alignment",
+          "summary": "The job requires experience in building and maintaining scalable AI infrastructure, which is supported by the candidate's experience in operational intelligence project work.",
+          "detail": null,
+          "importance": "material",
+          "job_evidence": [
+            {
+              "source": "responsibility",
+              "item_index": 1,
+              "name": null,
+              "excerpt": "Build and maintain scalable AI infrastructure, data pipelines and integrations back into core business systems"
+            }
+          ],
+          "profile_evidence": [
+            {
+              "source": "project",
+              "ref": "project:operational-intelligence-copilot",
+              "excerpt": null
+            }
+          ],
+          "assumption": null
+        },
+        {
+          "kind": "alignment",
+          "summary": "The job's requirement for experience with REST APIs is matched by the candidate's technical skills.",
+          "detail": null,
+          "importance": "material",
+          "job_evidence": [
+            {
+              "source": "technology",
+              "item_index": 2,
+              "name": "REST APIs",
+              "excerpt": "Comfort with REST APIs, auth, event driven integration..."
+            }
+          ],
+          "profile_evidence": [
+            {
+              "source": "skill",
+              "ref": "skill:REST APIs",
+              "excerpt": null
+            }
+          ],
+          "assumption": null
+        },
+        {
+          "kind": "alignment",
+          "summary": "The position demands at least 5 years of relevant experience, which the candidate has through their previous roles and ongoing projects.",
+          "detail": null,
+          "importance": "material",
+          "job_evidence": [
+            {
+              "source": "experience_requirement",
+              "item_index": 0,
+              "name": null,
+              "excerpt": "5+ years across software development, data engineering or AI and automation..."
+            }
+          ],
+          "profile_evidence": [
+            {
+              "source": "experience",
+              "ref": "experience:nbn-data-engineer-2020",
+              "excerpt": null
+            }
+          ],
+          "assumption": null
+        }
+      ]
+    },
+    "commercial_fit": {
+      "dimension": "commercial",
+      "judgment": "strong",
+      "summary": "The candidate’s preferences and the job's compensation are in alignment, making them a viable fit for the employment terms.",
+      "findings": [
+        {
+          "kind": "alignment",
+          "summary": "The job offers a salary range that aligns well with the candidate's expectations and practices.",
+          "detail": null,
+          "importance": "material",
+          "job_evidence": [
+            {
+              "source": "compensation",
+              "item_index": 0,
+              "name": null,
+              "excerpt": "AI Engineer / Permanent / Melbourne / up to $190,000 + super + bonus"
+            }
+          ],
+          "profile_evidence": [
+            {
+              "source": "preference",
+              "ref": "preference:salary_min",
+              "excerpt": null
+            }
+          ],
+          "assumption": null
+        },
+        {
+          "kind": "alignment",
+          "summary": "The job is a full-time permanent position, matching the candidate's preference for employment type.",
+          "detail": null,
+          "importance": "material",
+          "job_evidence": [
+            {
+              "source": "employment",
+              "item_index": 0,
+              "name": null,
+              "excerpt": "Full time"
+            }
+          ],
+          "profile_evidence": [
+            {
+              "source": "preference",
+              "ref": "preference:employment_types",
+              "excerpt": null
+            }
+          ],
+          "assumption": null
+        },
+        {
+          "kind": "alignment",
+          "summary": "The job location requirement in Melbourne VIC is well-aligned with the candidate’s stated preference for this location.",
+          "detail": null,
+          "importance": "material",
+          "job_evidence": [
+            {
+              "source": "location",
+              "item_index": 0,
+              "name": null,
+              "excerpt": "Melbourne VIC (Hybrid)"
+            }
+          ],
+          "profile_evidence": [
+            {
+              "source": "preference",
+              "ref": "preference:locations",
+              "excerpt": null
+            }
+          ],
+          "assumption": null
+        },
+        {
+          "kind": "assumption",
+          "summary": "The job posting does not indicate flexible remote work, which may affect the candidate’s preference for remote work, though some flexibility exists in the terms.",
+          "detail": null,
+          "importance": "minor",
+          "job_evidence": [],
+          "profile_evidence": [],
+          "assumption": "The candidate prefers flexible remote working options."
+        }
+      ]
+    },
+    "portfolio_fit": {
+      "dimension": "portfolio",
+      "judgment": "strong",
+      "summary": "The candidate's independent engineering projects and relevant skills significantly align with the portfolio expectations of the job.",
+      "findings": [
+        {
+          "kind": "alignment",
+          "summary": "The candidate's independent engineering project work demonstrates applicable skills that are aligned with the job requirements of AI model deployment and development.",
+          "detail": null,
+          "importance": "material",
+          "job_evidence": [
+            {
+              "source": "responsibility",
+              "item_index": 0,
+              "name": null,
+              "excerpt": "Design, build and deploy AI models, LLM based tools and agentic workflows..."
+            }
+          ],
+          "profile_evidence": [
+            {
+              "source": "project",
+              "ref": "project:operational-intelligence-copilot",
+              "excerpt": null
+            }
+          ],
+          "assumption": null
+        },
+        {
+          "kind": "partial_alignment",
+          "summary": "The required hands-on AI engineering experience is partially met through the candidate’s projects, although the role emphasizes direct production experience in running commercial AI applications.",
+          "detail": null,
+          "importance": "material",
+          "job_evidence": [
+            {
+              "source": "responsibility",
+              "item_index": 2,
+              "name": null,
+              "excerpt": "Own the full delivery cycle: solution design, build, testing, validation, deployment and ongoing support."
+            }
+          ],
+          "profile_evidence": [
+            {
+              "source": "project",
+              "ref": "project:governance-document-rag",
+              "excerpt": null
+            }
+          ],
+          "assumption": null
+        }
+      ]
+    },
+    "summary": {
+      "summary": "The candidate shows strong fit across technical and commercial aspects of the opportunity, along with a supportive portfolio backing their claims. Key alignments include strong matching of technical skills with job requirements, robust experience in AI and data engineering, and agreement on compensation expectations.",
+      "key_alignments": [
+        "Strong Python skills matching job requirements.",
+        "5+ years relevant experience as required by the job.",
+        "Commercial awareness displayed through alignment in compensation, location, and work arrangement preferences."
+      ],
+      "key_gaps": [
+        "Limited explicit commercial production AI tenure may affect alignment for hands-on roles."
+      ]
+    }
+  },
+  "portfolio_match": {
+    "job_analysis": {
+      "posting": {
+        "raw_text": "AI Engineer\n\nAllura Partners \nView all jobs\n\nMelbourne VIC (Hybrid)\nEngineering - Software (Information & Communication Technology)\nFull time\n190000\nPosted 4d ago\n•\nMedium application volume\n\nHow you match\n3 skills and credentials match your profile\n Python Programming\n Google Cloud\n REST APIs\nShow all⁠\nAI Engineer / Permanent / Melbourne / up to $190,000 + super + bonus\n\nAbout the Company\nOur client is a well established, ASX listed FMCG and retail operations business with a national footprint and a multi decade track record. AI is a core part of how the business runs, and they're building a small, high impact team to lead that work.\n\nThey are looking for an AI Engineer to join their Melbourne team.\n\nAbout the Role\nThis AI Engineer role is a hands on build and deploy role combining deep technical delivery with a growing stakeholder facing dimension. You'll design, build and deploy AI solutions that solve real operational problems, acting as the technical anchor between business problems and working systems, and growing into a role shaping AI adoption across the business.\n\nBenefits\n$170,000 to $190,000 + super + a bonus\n\nThis is a genuine build and own opportunity, not a maintenance role, with real scope to shape how AI is adopted across a large, established business. You'll work close to the business rather than buried in a back office function, with room to grow into a broader governance and adoption remit as the function matures.\n\nDuties / Key Responsibilities\nDesign, build and deploy AI models, LLM based tools and agentic workflows, including the evaluation and monitoring needed to trust them in production\nBuild and maintain scalable AI infrastructure, data pipelines and integrations back into core business systems\nOwn the full delivery cycle: solution design, build, testing, validation, deployment and ongoing support\nPartner directly with stakeholders to translate requirements into technical deliverables, through UAT and into real adoption\nContribute to AI governance, risk and compliance, keeping documentation and reusable components in good shape so capability scales past one person\nSkills and Experience\n5+ years across software development, data engineering or AI and automation, with real production experience shipping LLM powered applications\nStrong Python skills, including async work, API frameworks and solid testing practices\nPractical cloud experience running AI and ML workloads day to day, ideally with Azure, AWS or GCP exposure or certification\nComfort with REST APIs, auth, event driven integration, relational databases and data pipelines\nWorking knowledge of MLOps, DevOps and solid software engineering practice\nA track record of owning delivery end to end, including working directly with non technical stakeholders, ideally in cross functional or agile teams\nClear written and verbal communication, with the ability to explain a technical tradeoff to a non technical audience\nExposure to retail, supply chain or FMCG adjacent AI applications is a plus, as is an interest in AI governance and ethics\nFormal study in a relevant field is useful but not the bar. A strong body of shipped work counts for just as much\nIf you're interested in this opportunity and feel you're the right fit, please click \"Apply\".\n\nAbout Allura Partners\n\nAllura Partners was founded to support private equity firms by placing C-Suites to lead, transform, and scale portfolio companies. Today, in addition to our proven private equity specialisation, we've become a trusted partner for major ASX-listed and private enterprises in Australia, offering executive search, recruitment, and business transformation. Known for integrity, reliability, and results, our expertise spans Executive Search, Accounting & Finance, Transformation & Change, and Technology & Digital. We connect businesses and top-tier talent, exceeding expectations and driving lasting impact.\n\nAI Engineer / Permanent / Melbourne / up to $190,000 + super + bonus",
+        "title": "Junior Software / DevOps Engineer",
+        "company": "Jirotech Pty Ltd",
+        "source_url": "https://au.seek.com/job/93335527?ref=recom-homepage&pos=4&origin=showNewTab#sol=e4e928d2a2376b29a212b2ffd55f8b0cd2f41ff63"
+      },
+      "role_family": {
+        "family": "software_engineering",
+        "evidence": [
+          {
+            "excerpt": "AI Engineer",
+            "section": "Job title"
+          }
+        ]
+      },
+      "seniority": {
+        "level": "unknown",
+        "ambiguous": false,
+        "candidate_levels": [],
+        "evidence": []
+      },
+      "technologies": [
+        {
+          "name": "Python",
+          "level": "required",
+          "evidence": [
+            {
+              "excerpt": "Strong Python skills, including async work...",
+              "section": "Skills and Experience"
+            }
+          ]
+        },
+        {
+          "name": "Google Cloud",
+          "level": "preferred",
+          "evidence": [
+            {
+              "excerpt": "ideally with Azure, AWS or GCP exposure or certification",
+              "section": "Skills and Experience"
+            }
+          ]
+        },
+        {
+          "name": "REST APIs",
+          "level": "required",
+          "evidence": [
+            {
+              "excerpt": "Comfort with REST APIs, auth, event driven integration...",
+              "section": "Skills and Experience"
+            }
+          ]
+        }
+      ],
+      "responsibilities": [
+        {
+          "description": "Design, build and deploy AI models, LLM based tools and agentic workflows...",
+          "evidence": [
+            {
+              "excerpt": "Duties / Key Responsibilities",
+              "section": "JobDescription"
+            }
+          ]
+        },
+        {
+          "description": "Build and maintain scalable AI infrastructure, data pipelines and integrations back into core business systems",
+          "evidence": [
+            {
+              "excerpt": "Duties / Key Responsibilities",
+              "section": "JobDescription"
+            }
+          ]
+        },
+        {
+          "description": "Own the full delivery cycle: solution design, build, testing, validation, deployment and ongoing support",
+          "evidence": [
+            {
+              "excerpt": "Duties / Key Responsibilities",
+              "section": "JobDescription"
+            }
+          ]
+        },
+        {
+          "description": "Partner directly with stakeholders to translate requirements into technical deliverables...",
+          "evidence": [
+            {
+              "excerpt": "Duties / Key Responsibilities",
+              "section": "JobDescription"
+            }
+          ]
+        },
+        {
+          "description": "Contribute to AI governance, risk and compliance...",
+          "evidence": [
+            {
+              "excerpt": "Duties / Key Responsibilities",
+              "section": "JobDescription"
+            }
+          ]
+        }
+      ],
+      "compensation": {
+        "clarity": "stated",
+        "minimum": 170000.0,
+        "maximum": 190000.0,
+        "currency": "AUD",
+        "period": "year",
+        "raw_text": "$170,000 to $190,000 + super + a bonus",
+        "evidence": [
+          {
+            "excerpt": "AI Engineer / Permanent / Melbourne / up to $190,000 + super + bonus",
+            "section": "JobDescription"
+          }
+        ]
+      },
+      "location": {
+        "clarity": "stated",
+        "summary": "Melbourne VIC",
+        "evidence": [
+          {
+            "excerpt": "Melbourne VIC (Hybrid)",
+            "section": "JobDescription"
+          }
+        ]
+      },
+      "work_arrangement": {
+        "arrangement": "hybrid",
+        "details": null,
+        "evidence": [
+          {
+            "excerpt": "Melbourne VIC (Hybrid)",
+            "section": "JobDescription"
+          }
+        ]
+      },
+      "employment": {
+        "working_hours": "full_time",
+        "engagement_type": "permanent",
+        "evidence": [
+          {
+            "excerpt": "Full time",
+            "section": "JobDescription"
+          },
+          {
+            "excerpt": "AI Engineer / Permanent",
+            "section": "JobDescription"
+          }
+        ]
+      },
+      "experience_requirements": [
+        {
+          "description": "5+ years across software development, data engineering or AI and automation...",
+          "level": "required",
+          "minimum_years": 5.0,
+          "maximum_years": null,
+          "evidence": [
+            {
+              "excerpt": "5+ years across software development, data engineering or AI and automation...",
+              "section": "Skills and Experience"
+            }
+          ]
+        }
+      ]
+    },
+    "ranked_projects": [
+      {
+        "rank": 1,
+        "project_id": "public-holiday-entitlements",
+        "rationale": "Project 'public-holiday-entitlements' ranked on 2 required technology hit(s), 2 demonstrates overlap(s), 2 responsibility overlap(s).",
+        "factors": [
+          {
+            "kind": "required_technology",
+            "summary": "Project evidence supports required technology 'Python'.",
+            "job_evidence": [
+              {
+                "source": "technology",
+                "item_index": 0,
+                "name": "Python",
+                "excerpt": "Strong Python skills, including async work..."
+              }
+            ],
+            "profile_evidence": [
+              {
+                "source": "project",
+                "ref": "project:public-holiday-entitlements",
+                "excerpt": "Python"
+              }
+            ]
+          },
+          {
+            "kind": "required_technology",
+            "summary": "Project evidence supports required technology 'REST APIs'.",
+            "job_evidence": [
+              {
+                "source": "technology",
+                "item_index": 2,
+                "name": "REST APIs",
+                "excerpt": "Comfort with REST APIs, auth, event driven integration..."
+              }
+            ],
+            "profile_evidence": [
+              {
+                "source": "project",
+                "ref": "project:public-holiday-entitlements",
+                "excerpt": "REST APIs"
+              }
+            ]
+          },
+          {
+            "kind": "demonstrates_overlap",
+            "summary": "Project demonstrates capabilities overlapping responsibility 'Build and maintain scalable AI infrastructure, data pipelines and integrations back into core business systems'.",
+            "job_evidence": [
+              {
+                "source": "responsibility",
+                "item_index": 1,
+                "name": null,
+                "excerpt": "Duties / Key Responsibilities"
+              }
+            ],
+            "profile_evidence": [
+              {
+                "source": "project",
+                "ref": "project:public-holiday-entitlements",
+                "excerpt": "Business rules"
+              }
+            ]
+          },
+          {
+            "kind": "responsibility_overlap",
+            "summary": "Project summary, outcomes, or technologies overlap responsibility 'Build and maintain scalable AI infrastructure, data pipelines and integrations back into core business systems'.",
+            "job_evidence": [
+              {
+                "source": "responsibility",
+                "item_index": 1,
+                "name": null,
+                "excerpt": "Duties / Key Responsibilities"
+              }
+            ],
+            "profile_evidence": [
+              {
+                "source": "project",
+                "ref": "project:public-holiday-entitlements",
+                "excerpt": "Business-rules platform combining geospatial processing and external APIs to determine Australian public-holiday entitlements."
+              }
+            ]
+          },
+          {
+            "kind": "demonstrates_overlap",
+            "summary": "Project demonstrates capabilities overlapping responsibility 'Contribute to AI governance, risk and compliance...'.",
+            "job_evidence": [
+              {
+                "source": "responsibility",
+                "item_index": 4,
+                "name": null,
+                "excerpt": "Duties / Key Responsibilities"
+              }
+            ],
+            "profile_evidence": [
+              {
+                "source": "project",
+                "ref": "project:public-holiday-entitlements",
+                "excerpt": "Compliance reporting"
+              }
+            ]
+          },
+          {
+            "kind": "responsibility_overlap",
+            "summary": "Project summary, outcomes, or technologies overlap responsibility 'Contribute to AI governance, risk and compliance...'.",
+            "job_evidence": [
+              {
+                "source": "responsibility",
+                "item_index": 4,
+                "name": null,
+                "excerpt": "Duties / Key Responsibilities"
+              }
+            ],
+            "profile_evidence": [
+              {
+                "source": "project",
+                "ref": "project:public-holiday-entitlements",
+                "excerpt": "Produces compliance-oriented reporting."
+              }
+            ]
+          }
+        ],
+        "tie_group": null,
+        "tie_break_reason": null
+      },
+      {
+        "rank": 2,
+        "project_id": "operational-intelligence-copilot",
+        "rationale": "Project 'operational-intelligence-copilot' ranked on 1 required technology hit(s), 3 demonstrates overlap(s), 1 responsibility overlap(s).",
+        "factors": [
+          {
+            "kind": "required_technology",
+            "summary": "Project evidence supports required technology 'Python'.",
+            "job_evidence": [
+              {
+                "source": "technology",
+                "item_index": 0,
+                "name": "Python",
+                "excerpt": "Strong Python skills, including async work..."
+              }
+            ],
+            "profile_evidence": [
+              {
+                "source": "project",
+                "ref": "project:operational-intelligence-copilot",
+                "excerpt": "Python"
+              }
+            ]
+          },
+          {
+            "kind": "demonstrates_overlap",
+            "summary": "Project demonstrates capabilities overlapping responsibility 'Design, build and deploy AI models, LLM based tools and agentic workflows...'.",
+            "job_evidence": [
+              {
+                "source": "responsibility",
+                "item_index": 0,
+                "name": null,
+                "excerpt": "Duties / Key Responsibilities"
+              }
+            ],
+            "profile_evidence": [
+              {
+                "source": "project",
+                "ref": "project:operational-intelligence-copilot",
+                "excerpt": "Regression-tested analytics workflows"
+              }
+            ]
+          },
+          {
+            "kind": "demonstrates_overlap",
+            "summary": "Project demonstrates capabilities overlapping responsibility 'Build and maintain scalable AI infrastructure, data pipelines and integrations back into core business systems'.",
+            "job_evidence": [
+              {
+                "source": "responsibility",
+                "item_index": 1,
+                "name": null,
+                "excerpt": "Duties / Key Responsibilities"
+              }
+            ],
+            "profile_evidence": [
+              {
+                "source": "project",
+                "ref": "project:operational-intelligence-copilot",
+                "excerpt": "Explainable AI recommendations"
+              }
+            ]
+          },
+          {
+            "kind": "responsibility_overlap",
+            "summary": "Project summary, outcomes, or technologies overlap responsibility 'Build and maintain scalable AI infrastructure, data pipelines and integrations back into core business systems'.",
+            "job_evidence": [
+              {
+                "source": "responsibility",
+                "item_index": 1,
+                "name": null,
+                "excerpt": "Duties / Key Responsibilities"
+              }
+            ],
+            "profile_evidence": [
+              {
+                "source": "project",
+                "ref": "project:operational-intelligence-copilot",
+                "excerpt": "Domain-agnostic operational intelligence platform combining deterministic analytics with Large Language Model reasoning to analyse structured business data and…"
+              }
+            ]
+          },
+          {
+            "kind": "demonstrates_overlap",
+            "summary": "Project demonstrates capabilities overlapping responsibility 'Contribute to AI governance, risk and compliance...'.",
+            "job_evidence": [
+              {
+                "source": "responsibility",
+                "item_index": 4,
+                "name": null,
+                "excerpt": "Duties / Key Responsibilities"
+              }
+            ],
+            "profile_evidence": [
+              {
+                "source": "project",
+                "ref": "project:operational-intelligence-copilot",
+                "excerpt": "Explainable AI recommendations"
+              }
+            ]
+          }
+        ],
+        "tie_group": null,
+        "tie_break_reason": null
+      },
+      {
+        "rank": 3,
+        "project_id": "governance-document-rag",
+        "rationale": "Project 'governance-document-rag' ranked on 1 required technology hit(s), 1 demonstrates overlap(s), 3 responsibility overlap(s).",
+        "factors": [
+          {
+            "kind": "required_technology",
+            "summary": "Project evidence supports required technology 'Python'.",
+            "job_evidence": [
+              {
+                "source": "technology",
+                "item_index": 0,
+                "name": "Python",
+                "excerpt": "Strong Python skills, including async work..."
+              }
+            ],
+            "profile_evidence": [
+              {
+                "source": "project",
+                "ref": "project:governance-document-rag",
+                "excerpt": "Python"
+              }
+            ]
+          },
+          {
+            "kind": "responsibility_overlap",
+            "summary": "Project summary, outcomes, or technologies overlap responsibility 'Design, build and deploy AI models, LLM based tools and agentic workflows...'.",
+            "job_evidence": [
+              {
+                "source": "responsibility",
+                "item_index": 0,
+                "name": null,
+                "excerpt": "Duties / Key Responsibilities"
+              }
+            ],
+            "profile_evidence": [
+              {
+                "source": "project",
+                "ref": "project:governance-document-rag",
+                "excerpt": "Enterprise retrieval-augmented generation platform supporting trustworthy AI responses over organisational knowledge."
+              }
+            ]
+          },
+          {
+            "kind": "responsibility_overlap",
+            "summary": "Project summary, outcomes, or technologies overlap responsibility 'Build and maintain scalable AI infrastructure, data pipelines and integrations back into core business systems'.",
+            "job_evidence": [
+              {
+                "source": "responsibility",
+                "item_index": 1,
+                "name": null,
+                "excerpt": "Duties / Key Responsibilities"
+              }
+            ],
+            "profile_evidence": [
+              {
+                "source": "project",
+                "ref": "project:governance-document-rag",
+                "excerpt": "Enterprise retrieval-augmented generation platform supporting trustworthy AI responses over organisational knowledge."
+              }
+            ]
+          },
+          {
+            "kind": "demonstrates_overlap",
+            "summary": "Project demonstrates capabilities overlapping responsibility 'Own the full delivery cycle: solution design, build, testing, validation, deployment and ongoing support'.",
+            "job_evidence": [
+              {
+                "source": "responsibility",
+                "item_index": 2,
+                "name": null,
+                "excerpt": "Duties / Key Responsibilities"
+              }
+            ],
+            "profile_evidence": [
+              {
+                "source": "project",
+                "ref": "project:governance-document-rag",
+                "excerpt": "Grounding validation"
+              }
+            ]
+          },
+          {
+            "kind": "responsibility_overlap",
+            "summary": "Project summary, outcomes, or technologies overlap responsibility 'Contribute to AI governance, risk and compliance...'.",
+            "job_evidence": [
+              {
+                "source": "responsibility",
+                "item_index": 4,
+                "name": null,
+                "excerpt": "Duties / Key Responsibilities"
+              }
+            ],
+            "profile_evidence": [
+              {
+                "source": "project",
+                "ref": "project:governance-document-rag",
+                "excerpt": "Enterprise retrieval-augmented generation platform supporting trustworthy AI responses over organisational knowledge."
+              }
+            ]
+          }
+        ],
+        "tie_group": 1,
+        "tie_break_reason": "Equal primary ranking signals; ordered by stable project_id ascending"
+      },
+      {
+        "rank": 4,
+        "project_id": "payroll-diagnostics-engine",
+        "rationale": "Project 'payroll-diagnostics-engine' ranked on 1 required technology hit(s), 1 demonstrates overlap(s), 3 responsibility overlap(s).",
+        "factors": [
+          {
+            "kind": "required_technology",
+            "summary": "Project evidence supports required technology 'Python'.",
+            "job_evidence": [
+              {
+                "source": "technology",
+                "item_index": 0,
+                "name": "Python",
+                "excerpt": "Strong Python skills, including async work..."
+              }
+            ],
+            "profile_evidence": [
+              {
+                "source": "project",
+                "ref": "project:payroll-diagnostics-engine",
+                "excerpt": "Python"
+              }
+            ]
+          },
+          {
+            "kind": "responsibility_overlap",
+            "summary": "Project summary, outcomes, or technologies overlap responsibility 'Design, build and deploy AI models, LLM based tools and agentic workflows...'.",
+            "job_evidence": [
+              {
+                "source": "responsibility",
+                "item_index": 0,
+                "name": null,
+                "excerpt": "Duties / Key Responsibilities"
+              }
+            ],
+            "profile_evidence": [
+              {
+                "source": "project",
+                "ref": "project:payroll-diagnostics-engine",
+                "excerpt": "Rule-based operational decision-support platform that identifies payroll anomalies through deterministic business-rule evaluation."
+              }
+            ]
+          },
+          {
+            "kind": "responsibility_overlap",
+            "summary": "Project summary, outcomes, or technologies overlap responsibility 'Build and maintain scalable AI infrastructure, data pipelines and integrations back into core business systems'.",
+            "job_evidence": [
+              {
+                "source": "responsibility",
+                "item_index": 1,
+                "name": null,
+                "excerpt": "Duties / Key Responsibilities"
+              }
+            ],
+            "profile_evidence": [
+              {
+                "source": "project",
+                "ref": "project:payroll-diagnostics-engine",
+                "excerpt": "Rule-based operational decision-support platform that identifies payroll anomalies through deterministic business-rule evaluation."
+              }
+            ]
+          },
+          {
+            "kind": "demonstrates_overlap",
+            "summary": "Project demonstrates capabilities overlapping responsibility 'Own the full delivery cycle: solution design, build, testing, validation, deployment and ongoing support'.",
+            "job_evidence": [
+              {
+                "source": "responsibility",
+                "item_index": 2,
+                "name": null,
+                "excerpt": "Duties / Key Responsibilities"
+              }
+            ],
+            "profile_evidence": [
+              {
+                "source": "project",
+                "ref": "project:payroll-diagnostics-engine",
+                "excerpt": "Automated validation"
+              }
+            ]
+          },
+          {
+            "kind": "responsibility_overlap",
+            "summary": "Project summary, outcomes, or technologies overlap responsibility 'Own the full delivery cycle: solution design, build, testing, validation, deployment and ongoing support'.",
+            "job_evidence": [
+              {
+                "source": "responsibility",
+                "item_index": 2,
+                "name": null,
+                "excerpt": "Duties / Key Responsibilities"
+              }
+            ],
+            "profile_evidence": [
+              {
+                "source": "project",
+                "ref": "project:payroll-diagnostics-engine",
+                "excerpt": "Rule-based operational decision-support platform that identifies payroll anomalies through deterministic business-rule evaluation."
+              }
+            ]
+          }
+        ],
+        "tie_group": 1,
+        "tie_break_reason": "Equal primary ranking signals; ordered by stable project_id ascending"
+      }
+    ],
+    "unranked_project_ids": [],
+    "summary": "Ranked 4 project(s); lead with 'public-holiday-entitlements'. 0 project(s) had no matching factors.",
+    "insufficient_evidence": false
+  },
+  "application_strategy": {
+    "job_analysis": {
+      "posting": {
+        "raw_text": "AI Engineer\n\nAllura Partners \nView all jobs\n\nMelbourne VIC (Hybrid)\nEngineering - Software (Information & Communication Technology)\nFull time\n190000\nPosted 4d ago\n•\nMedium application volume\n\nHow you match\n3 skills and credentials match your profile\n Python Programming\n Google Cloud\n REST APIs\nShow all⁠\nAI Engineer / Permanent / Melbourne / up to $190,000 + super + bonus\n\nAbout the Company\nOur client is a well established, ASX listed FMCG and retail operations business with a national footprint and a multi decade track record. AI is a core part of how the business runs, and they're building a small, high impact team to lead that work.\n\nThey are looking for an AI Engineer to join their Melbourne team.\n\nAbout the Role\nThis AI Engineer role is a hands on build and deploy role combining deep technical delivery with a growing stakeholder facing dimension. You'll design, build and deploy AI solutions that solve real operational problems, acting as the technical anchor between business problems and working systems, and growing into a role shaping AI adoption across the business.\n\nBenefits\n$170,000 to $190,000 + super + a bonus\n\nThis is a genuine build and own opportunity, not a maintenance role, with real scope to shape how AI is adopted across a large, established business. You'll work close to the business rather than buried in a back office function, with room to grow into a broader governance and adoption remit as the function matures.\n\nDuties / Key Responsibilities\nDesign, build and deploy AI models, LLM based tools and agentic workflows, including the evaluation and monitoring needed to trust them in production\nBuild and maintain scalable AI infrastructure, data pipelines and integrations back into core business systems\nOwn the full delivery cycle: solution design, build, testing, validation, deployment and ongoing support\nPartner directly with stakeholders to translate requirements into technical deliverables, through UAT and into real adoption\nContribute to AI governance, risk and compliance, keeping documentation and reusable components in good shape so capability scales past one person\nSkills and Experience\n5+ years across software development, data engineering or AI and automation, with real production experience shipping LLM powered applications\nStrong Python skills, including async work, API frameworks and solid testing practices\nPractical cloud experience running AI and ML workloads day to day, ideally with Azure, AWS or GCP exposure or certification\nComfort with REST APIs, auth, event driven integration, relational databases and data pipelines\nWorking knowledge of MLOps, DevOps and solid software engineering practice\nA track record of owning delivery end to end, including working directly with non technical stakeholders, ideally in cross functional or agile teams\nClear written and verbal communication, with the ability to explain a technical tradeoff to a non technical audience\nExposure to retail, supply chain or FMCG adjacent AI applications is a plus, as is an interest in AI governance and ethics\nFormal study in a relevant field is useful but not the bar. A strong body of shipped work counts for just as much\nIf you're interested in this opportunity and feel you're the right fit, please click \"Apply\".\n\nAbout Allura Partners\n\nAllura Partners was founded to support private equity firms by placing C-Suites to lead, transform, and scale portfolio companies. Today, in addition to our proven private equity specialisation, we've become a trusted partner for major ASX-listed and private enterprises in Australia, offering executive search, recruitment, and business transformation. Known for integrity, reliability, and results, our expertise spans Executive Search, Accounting & Finance, Transformation & Change, and Technology & Digital. We connect businesses and top-tier talent, exceeding expectations and driving lasting impact.\n\nAI Engineer / Permanent / Melbourne / up to $190,000 + super + bonus",
+        "title": "Junior Software / DevOps Engineer",
+        "company": "Jirotech Pty Ltd",
+        "source_url": "https://au.seek.com/job/93335527?ref=recom-homepage&pos=4&origin=showNewTab#sol=e4e928d2a2376b29a212b2ffd55f8b0cd2f41ff63"
+      },
+      "role_family": {
+        "family": "software_engineering",
+        "evidence": [
+          {
+            "excerpt": "AI Engineer",
+            "section": "Job title"
+          }
+        ]
+      },
+      "seniority": {
+        "level": "unknown",
+        "ambiguous": false,
+        "candidate_levels": [],
+        "evidence": []
+      },
+      "technologies": [
+        {
+          "name": "Python",
+          "level": "required",
+          "evidence": [
+            {
+              "excerpt": "Strong Python skills, including async work...",
+              "section": "Skills and Experience"
+            }
+          ]
+        },
+        {
+          "name": "Google Cloud",
+          "level": "preferred",
+          "evidence": [
+            {
+              "excerpt": "ideally with Azure, AWS or GCP exposure or certification",
+              "section": "Skills and Experience"
+            }
+          ]
+        },
+        {
+          "name": "REST APIs",
+          "level": "required",
+          "evidence": [
+            {
+              "excerpt": "Comfort with REST APIs, auth, event driven integration...",
+              "section": "Skills and Experience"
+            }
+          ]
+        }
+      ],
+      "responsibilities": [
+        {
+          "description": "Design, build and deploy AI models, LLM based tools and agentic workflows...",
+          "evidence": [
+            {
+              "excerpt": "Duties / Key Responsibilities",
+              "section": "JobDescription"
+            }
+          ]
+        },
+        {
+          "description": "Build and maintain scalable AI infrastructure, data pipelines and integrations back into core business systems",
+          "evidence": [
+            {
+              "excerpt": "Duties / Key Responsibilities",
+              "section": "JobDescription"
+            }
+          ]
+        },
+        {
+          "description": "Own the full delivery cycle: solution design, build, testing, validation, deployment and ongoing support",
+          "evidence": [
+            {
+              "excerpt": "Duties / Key Responsibilities",
+              "section": "JobDescription"
+            }
+          ]
+        },
+        {
+          "description": "Partner directly with stakeholders to translate requirements into technical deliverables...",
+          "evidence": [
+            {
+              "excerpt": "Duties / Key Responsibilities",
+              "section": "JobDescription"
+            }
+          ]
+        },
+        {
+          "description": "Contribute to AI governance, risk and compliance...",
+          "evidence": [
+            {
+              "excerpt": "Duties / Key Responsibilities",
+              "section": "JobDescription"
+            }
+          ]
+        }
+      ],
+      "compensation": {
+        "clarity": "stated",
+        "minimum": 170000.0,
+        "maximum": 190000.0,
+        "currency": "AUD",
+        "period": "year",
+        "raw_text": "$170,000 to $190,000 + super + a bonus",
+        "evidence": [
+          {
+            "excerpt": "AI Engineer / Permanent / Melbourne / up to $190,000 + super + bonus",
+            "section": "JobDescription"
+          }
+        ]
+      },
+      "location": {
+        "clarity": "stated",
+        "summary": "Melbourne VIC",
+        "evidence": [
+          {
+            "excerpt": "Melbourne VIC (Hybrid)",
+            "section": "JobDescription"
+          }
+        ]
+      },
+      "work_arrangement": {
+        "arrangement": "hybrid",
+        "details": null,
+        "evidence": [
+          {
+            "excerpt": "Melbourne VIC (Hybrid)",
+            "section": "JobDescription"
+          }
+        ]
+      },
+      "employment": {
+        "working_hours": "full_time",
+        "engagement_type": "permanent",
+        "evidence": [
+          {
+            "excerpt": "Full time",
+            "section": "JobDescription"
+          },
+          {
+            "excerpt": "AI Engineer / Permanent",
+            "section": "JobDescription"
+          }
+        ]
+      },
+      "experience_requirements": [
+        {
+          "description": "5+ years across software development, data engineering or AI and automation...",
+          "level": "required",
+          "minimum_years": 5.0,
+          "maximum_years": null,
+          "evidence": [
+            {
+              "excerpt": "5+ years across software development, data engineering or AI and automation...",
+              "section": "Skills and Experience"
+            }
+          ]
+        }
+      ]
+    },
+    "application_tier": "gold",
+    "pursuit_posture": "pursue",
+    "practical_value": "career_priority",
+    "effort_level": "targeted",
+    "summary": "Recommend posture 'pursue' with effort tier 'gold' (targeted). Technical fit 'strong', commercial fit 'strong', portfolio fit 'strong'. Owner review is required before any application action.",
+    "reasons": [
+      {
+        "kind": "alignment",
+        "summary": "Technical fit is 'strong' and portfolio fit is 'strong' for this opportunity.",
+        "importance": "material",
+        "evidence": [
+          {
+            "origin": "opportunity_assessment",
+            "job_evidence": null,
+            "profile_evidence": null,
+            "assessment_dimension": "technical",
+            "assessment_judgment": "strong",
+            "portfolio_project_id": null,
+            "excerpt": null
+          },
+          {
+            "origin": "opportunity_assessment",
+            "job_evidence": null,
+            "profile_evidence": null,
+            "assessment_dimension": "portfolio",
+            "assessment_judgment": "strong",
+            "portfolio_project_id": null,
+            "excerpt": null
+          }
+        ]
+      },
+      {
+        "kind": "priority",
+        "summary": "Pursuit posture 'pursue' with effort tier 'gold' reflects commercial fit 'strong' and AI-aligned role family.",
+        "importance": "material",
+        "evidence": [
+          {
+            "origin": "opportunity_assessment",
+            "job_evidence": null,
+            "profile_evidence": null,
+            "assessment_dimension": "commercial",
+            "assessment_judgment": "strong",
+            "portfolio_project_id": null,
+            "excerpt": null
+          },
+          {
+            "origin": "job_analysis",
+            "job_evidence": {
+              "source": "role_family",
+              "item_index": null,
+              "name": null,
+              "excerpt": null
+            },
+            "profile_evidence": null,
+            "assessment_dimension": null,
+            "assessment_judgment": null,
+            "portfolio_project_id": null,
+            "excerpt": null
+          }
+        ]
+      },
+      {
+        "kind": "effort",
+        "summary": "Effort level 'targeted' is justified by the current fit evidence for an AI-aligned opportunity.",
+        "importance": "minor",
+        "evidence": [
+          {
+            "origin": "opportunity_assessment",
+            "job_evidence": null,
+            "profile_evidence": null,
+            "assessment_dimension": "technical",
+            "assessment_judgment": "strong",
+            "portfolio_project_id": null,
+            "excerpt": null
+          }
+        ]
+      }
+    ],
+    "risks_or_gaps": [
+      {
+        "summary": "Location or work-arrangement signals conflict with confirmed preferences; treat as a soft constraint unless the owner accepts it.",
+        "importance": "minor",
+        "evidence": [
+          {
+            "origin": "job_analysis",
+            "job_evidence": {
+              "source": "location",
+              "item_index": null,
+              "name": null,
+              "excerpt": null
+            },
+            "profile_evidence": null,
+            "assessment_dimension": null,
+            "assessment_judgment": null,
+            "portfolio_project_id": null,
+            "excerpt": null
+          },
+          {
+            "origin": "career_profile",
+            "job_evidence": null,
+            "profile_evidence": {
+              "source": "preference",
+              "ref": "preference:locations",
+              "excerpt": null
+            },
+            "assessment_dimension": null,
+            "assessment_judgment": null,
+            "portfolio_project_id": null,
+            "excerpt": null
+          }
+        ]
+      }
+    ],
+    "manual_checks": [
+      {
+        "summary": "Review location and work-arrangement expectations.",
+        "why_it_matters": "Soft location mismatches should be accepted consciously by the owner.",
+        "could_change_recommendation": true,
+        "evidence": [
+          {
+            "origin": "job_analysis",
+            "job_evidence": {
+              "source": "location",
+              "item_index": null,
+              "name": null,
+              "excerpt": null
+            },
+            "profile_evidence": null,
+            "assessment_dimension": null,
+            "assessment_judgment": null,
+            "portfolio_project_id": null,
+            "excerpt": null
+          }
+        ]
+      }
+    ],
+    "next_actions": [
+      {
+        "kind": "consider_reviewing_location_or_arrangement",
+        "summary": "Consider reviewing location or work-arrangement expectations.",
+        "related_project_id": null,
+        "evidence": [
+          {
+            "origin": "job_analysis",
+            "job_evidence": {
+              "source": "location",
+              "item_index": null,
+              "name": null,
+              "excerpt": null
+            },
+            "profile_evidence": null,
+            "assessment_dimension": null,
+            "assessment_judgment": null,
+            "portfolio_project_id": null,
+            "excerpt": null
+          }
+        ]
+      },
+      {
+        "kind": "consider_emphasising_portfolio_projects",
+        "summary": "Consider emphasising the strongest matched portfolio project(s) in any application materials you prepare.",
+        "related_project_id": "public-holiday-entitlements",
+        "evidence": [
+          {
+            "origin": "portfolio_match",
+            "job_evidence": null,
+            "profile_evidence": null,
+            "assessment_dimension": null,
+            "assessment_judgment": null,
+            "portfolio_project_id": "public-holiday-entitlements",
+            "excerpt": null
+          }
+        ]
+      },
+      {
+        "kind": "consider_cv_tailoring",
+        "summary": "Consider whether CV tailoring is worth the effort for this opportunity.",
+        "related_project_id": null,
+        "evidence": [
+          {
+            "origin": "opportunity_assessment",
+            "job_evidence": null,
+            "profile_evidence": null,
+            "assessment_dimension": "technical",
+            "assessment_judgment": "strong",
+            "portfolio_project_id": null,
+            "excerpt": null
+          }
+        ]
+      },
+      {
+        "kind": "consider_owner_review",
+        "summary": "Consider reviewing this full strategy before taking any external action.",
+        "related_project_id": null,
+        "evidence": [
+          {
+            "origin": "opportunity_assessment",
+            "job_evidence": null,
+            "profile_evidence": null,
+            "assessment_dimension": "technical",
+            "assessment_judgment": "strong",
+            "portfolio_project_id": null,
+            "excerpt": null
+          }
+        ]
+      }
+    ],
+    "portfolio_emphasis": [
+      {
+        "project_id": "public-holiday-entitlements",
+        "source_rank": 1,
+        "summary": "Consider emphasising 'public-holiday-entitlements' (PortfolioMatch rank 1).",
+        "evidence": [
+          {
+            "origin": "portfolio_match",
+            "job_evidence": null,
+            "profile_evidence": null,
+            "assessment_dimension": null,
+            "assessment_judgment": null,
+            "portfolio_project_id": "public-holiday-entitlements",
+            "excerpt": null
+          }
+        ]
+      },
+      {
+        "project_id": "operational-intelligence-copilot",
+        "source_rank": 2,
+        "summary": "Consider emphasising 'operational-intelligence-copilot' (PortfolioMatch rank 2).",
+        "evidence": [
+          {
+            "origin": "portfolio_match",
+            "job_evidence": null,
+            "profile_evidence": null,
+            "assessment_dimension": null,
+            "assessment_judgment": null,
+            "portfolio_project_id": "operational-intelligence-copilot",
+            "excerpt": null
+          }
+        ]
+      },
+      {
+        "project_id": "governance-document-rag",
+        "source_rank": 3,
+        "summary": "Consider emphasising 'governance-document-rag' (PortfolioMatch rank 3).",
+        "evidence": [
+          {
+            "origin": "portfolio_match",
+            "job_evidence": null,
+            "profile_evidence": null,
+            "assessment_dimension": null,
+            "assessment_judgment": null,
+            "portfolio_project_id": "governance-document-rag",
+            "excerpt": null
+          }
+        ]
+      }
+    ],
+    "assumptions": [
+      "No candidate salary minimum is configured, so compensation was not treated as a hard threshold conflict."
+    ],
+    "decision_blockers": [],
+    "owner_review_required": true,
+    "insufficient_information": false
+  }
+}

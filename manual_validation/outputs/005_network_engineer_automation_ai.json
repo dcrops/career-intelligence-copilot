@@ -1,0 +1,1597 @@
+{
+  "components": [
+    {
+      "name": "CareerProfile",
+      "implementation": "CareerProfileService / YAML",
+      "mode": "deterministic_production"
+    },
+    {
+      "name": "JobAnalysis",
+      "implementation": "OpenAIJobExtractor",
+      "mode": "openai_production"
+    },
+    {
+      "name": "OpportunityAssessment",
+      "implementation": "OpenAIAssessor",
+      "mode": "openai_production"
+    },
+    {
+      "name": "PortfolioMatch",
+      "implementation": "DeterministicMatcher",
+      "mode": "deterministic_production"
+    },
+    {
+      "name": "ApplicationStrategy",
+      "implementation": "DeterministicStrategyPlanner",
+      "mode": "deterministic_production"
+    }
+  ],
+  "volume_applications_enabled": false,
+  "profile_identity": {
+    "full_name": "David Cropper",
+    "target_role": "AI Engineer"
+  },
+  "posting": {
+    "raw_text": "Network Engineer- Automation & AI\n\nCapgemini Australia Pty Ltd \n2.9\n82 reviews\n·\nView all jobs\nDocklands, Melbourne VIC (Hybrid)\nEngineering - Network (Information & Communication Technology)\nFull time\nPosted 29d ago\n\nHow you match\n4 skills and credentials match your profile\n Large Language Models\n Prompt Engineering\n Retrieval Augmented Generation\n Python Programming\nShow all⁠\nCompany description:\n\nAt Capgemini Engineering, the world leader in engineering services, we bring together a global team of engineers, scientists, and architects to help the world's most innovative companies unleash their potential. From autonomous cars to life-saving robots, our digital and software technology experts think outside the box as they provide unique R&D and engineering services across all industries. Join us for a career full of opportunities. Where you can make a difference. Where no two days are the same.\n\n\n\n\n\nJob description:\n\nYour role\nAs an Access Network Engineer with a specialised focus on introducing AI & Automation to solution engineering and the delivery lifecycle, you will play a key role in building and scaling AI & Automation-powered engineering capabilities that improve efficiency, reduce manual effort, and enhance decision-making across design, testing, and deployment workflows.\n\n\nThis is a hands-on engineering role focused on delivering real, production-grade solutions—from AI assistants to end-to-end automation pipelines—that will be used daily by engineering teams, transforming the way they design, test, and deploy network solutions.\n\n\nYou will play a key role in:\n\n\nDeveloping AI assistants to support engineering teams, including backlog management, development, test, knowledge retrieval, troubleshooting, and insights generation.\nImplementing \"human-in-the-loop\" models to ensure accuracy and trust, while ensuring security and responsible AI standards are followed.\nBuilding solutions leveraging existing Large Language Models (LLMs), prompt engineering, retrieval-augmented generation (RAG) & machine learning models for analysis and prediction.\nIdentifying and automating repetitive or manual processes across design, test, and deployment workflows\n\n\n\n\n\nProfile description:\n\nYour profile\n6+ years in Layer 2 & 3 network engineering and solution development, with hands-on experience in building automation or AI/ML solutions\nHands on experience building automation workflows, scripts, or pipelines.\nHands-on experience with AI/ML or Generative AI technologies (LLMs, prompt engineering, RAG)\nExperience building AI assistants and managing the lifecycle of the assistants\nCI/CD and DevOps practices (e.g. Jenkins, Ansible, GitHub Actions, Python, ArgoCD)\nExposure in one or both the below areas:\nFTTx Access Network: GPON/XGSPON (OLT, ONT), Intent Based Networking\nFTTx EMS Applications: Containerised (AAC), Virtualised (ACS, AMS),\n\n\n\nWe offer:\n\nWhat you'll love about working here\nExperience a Positive Work-Life Balance: We prioritize your well-being with hybrid and flexible working arrangements, making it easy to balance your personal and professional life.\nOwn your Growth: Dive into endless learning opportunities with courses from Capgemini University and numerous external certifications. Benefit from digital learning platforms and specialized campuses in AI, Cloud, Data, and Sustainability. Propel your career with our award-winning Career Acceleration programs.\nThrive in an Inclusive Environment: We don't just believe in inclusion; we live it. Be part of a workplace that values authenticity, inclusion, and belonging. We encourage applications from all backgrounds, even if you don't meet every requirement. Research shows that individuals from underrepresented groups often hesitate to apply unless they meet every criterion. If you're excited about this role, we welcome your application and invite you to share what you can bring.\nWork with Integrity: Join a company recognized by Ethisphere as one of the World's most Ethical companies.\nCollaborate with Industry Leaders: Gain exposure to top global companies, including 145 of the Fortune 500, through your work with Capgemini.\nShowcase Your Skills: Participate in our internal annual global tech challenges and help address world issues.",
+    "title": "Network Engineer - Automation & AI",
+    "company": "Capgemini Australia Pty Ltd",
+    "source_url": "https://au.seek.com/job/92884969?ref=search-standalone&type=promoted&origin=showNewTab#sol=09cb503c292fd83a211a6cbd21bda3d52e7f525c"
+  },
+  "job_analysis": {
+    "posting": {
+      "raw_text": "Network Engineer- Automation & AI\n\nCapgemini Australia Pty Ltd \n2.9\n82 reviews\n·\nView all jobs\nDocklands, Melbourne VIC (Hybrid)\nEngineering - Network (Information & Communication Technology)\nFull time\nPosted 29d ago\n\nHow you match\n4 skills and credentials match your profile\n Large Language Models\n Prompt Engineering\n Retrieval Augmented Generation\n Python Programming\nShow all⁠\nCompany description:\n\nAt Capgemini Engineering, the world leader in engineering services, we bring together a global team of engineers, scientists, and architects to help the world's most innovative companies unleash their potential. From autonomous cars to life-saving robots, our digital and software technology experts think outside the box as they provide unique R&D and engineering services across all industries. Join us for a career full of opportunities. Where you can make a difference. Where no two days are the same.\n\n\n\n\n\nJob description:\n\nYour role\nAs an Access Network Engineer with a specialised focus on introducing AI & Automation to solution engineering and the delivery lifecycle, you will play a key role in building and scaling AI & Automation-powered engineering capabilities that improve efficiency, reduce manual effort, and enhance decision-making across design, testing, and deployment workflows.\n\n\nThis is a hands-on engineering role focused on delivering real, production-grade solutions—from AI assistants to end-to-end automation pipelines—that will be used daily by engineering teams, transforming the way they design, test, and deploy network solutions.\n\n\nYou will play a key role in:\n\n\nDeveloping AI assistants to support engineering teams, including backlog management, development, test, knowledge retrieval, troubleshooting, and insights generation.\nImplementing \"human-in-the-loop\" models to ensure accuracy and trust, while ensuring security and responsible AI standards are followed.\nBuilding solutions leveraging existing Large Language Models (LLMs), prompt engineering, retrieval-augmented generation (RAG) & machine learning models for analysis and prediction.\nIdentifying and automating repetitive or manual processes across design, test, and deployment workflows\n\n\n\n\n\nProfile description:\n\nYour profile\n6+ years in Layer 2 & 3 network engineering and solution development, with hands-on experience in building automation or AI/ML solutions\nHands on experience building automation workflows, scripts, or pipelines.\nHands-on experience with AI/ML or Generative AI technologies (LLMs, prompt engineering, RAG)\nExperience building AI assistants and managing the lifecycle of the assistants\nCI/CD and DevOps practices (e.g. Jenkins, Ansible, GitHub Actions, Python, ArgoCD)\nExposure in one or both the below areas:\nFTTx Access Network: GPON/XGSPON (OLT, ONT), Intent Based Networking\nFTTx EMS Applications: Containerised (AAC), Virtualised (ACS, AMS),\n\n\n\nWe offer:\n\nWhat you'll love about working here\nExperience a Positive Work-Life Balance: We prioritize your well-being with hybrid and flexible working arrangements, making it easy to balance your personal and professional life.\nOwn your Growth: Dive into endless learning opportunities with courses from Capgemini University and numerous external certifications. Benefit from digital learning platforms and specialized campuses in AI, Cloud, Data, and Sustainability. Propel your career with our award-winning Career Acceleration programs.\nThrive in an Inclusive Environment: We don't just believe in inclusion; we live it. Be part of a workplace that values authenticity, inclusion, and belonging. We encourage applications from all backgrounds, even if you don't meet every requirement. Research shows that individuals from underrepresented groups often hesitate to apply unless they meet every criterion. If you're excited about this role, we welcome your application and invite you to share what you can bring.\nWork with Integrity: Join a company recognized by Ethisphere as one of the World's most Ethical companies.\nCollaborate with Industry Leaders: Gain exposure to top global companies, including 145 of the Fortune 500, through your work with Capgemini.\nShowcase Your Skills: Participate in our internal annual global tech challenges and help address world issues.",
+      "title": "Network Engineer - Automation & AI",
+      "company": "Capgemini Australia Pty Ltd",
+      "source_url": "https://au.seek.com/job/92884969?ref=search-standalone&type=promoted&origin=showNewTab#sol=09cb503c292fd83a211a6cbd21bda3d52e7f525c"
+    },
+    "role_family": {
+      "family": "network_engineering",
+      "evidence": [
+        {
+          "excerpt": "As an Access Network Engineer with a specialised focus on introducing AI & Automation",
+          "section": "Job description"
+        }
+      ]
+    },
+    "seniority": {
+      "level": "unknown",
+      "ambiguous": false,
+      "candidate_levels": [],
+      "evidence": []
+    },
+    "technologies": [
+      {
+        "name": "Large Language Models",
+        "level": "required",
+        "evidence": [
+          {
+            "excerpt": "Building solutions leveraging existing Large Language Models (LLMs)",
+            "section": "Job description"
+          }
+        ]
+      },
+      {
+        "name": "Prompt Engineering",
+        "level": "required",
+        "evidence": [
+          {
+            "excerpt": "Building solutions leveraging existing Large Language Models (LLMs), prompt engineering",
+            "section": "Job description"
+          }
+        ]
+      },
+      {
+        "name": "Retrieval Augmented Generation",
+        "level": "required",
+        "evidence": [
+          {
+            "excerpt": "Building solutions leveraging... retrieval-augmented generation (RAG) & machine learning models",
+            "section": "Job description"
+          }
+        ]
+      },
+      {
+        "name": "Python",
+        "level": "required",
+        "evidence": [
+          {
+            "excerpt": "CI/CD and DevOps practices (e.g. Jenkins, Ansible, GitHub Actions, Python, ArgoCD)",
+            "section": "Profile description"
+          }
+        ]
+      },
+      {
+        "name": "Ansible",
+        "level": "preferred",
+        "evidence": [
+          {
+            "excerpt": "CI/CD and DevOps practices (e.g. Jenkins, Ansible, GitHub Actions, Python, ArgoCD)",
+            "section": "Profile description"
+          }
+        ]
+      },
+      {
+        "name": "GitHub Actions",
+        "level": "preferred",
+        "evidence": [
+          {
+            "excerpt": "CI/CD and DevOps practices (e.g. Jenkins, Ansible, GitHub Actions, Python, ArgoCD)",
+            "section": "Profile description"
+          }
+        ]
+      },
+      {
+        "name": "ArgoCD",
+        "level": "preferred",
+        "evidence": [
+          {
+            "excerpt": "CI/CD and DevOps practices (e.g. Jenkins, Ansible, GitHub Actions, Python, ArgoCD)",
+            "section": "Profile description"
+          }
+        ]
+      },
+      {
+        "name": "Jenkins",
+        "level": "preferred",
+        "evidence": [
+          {
+            "excerpt": "CI/CD and DevOps practices (e.g. Jenkins, Ansible, GitHub Actions, Python, ArgoCD)",
+            "section": "Profile description"
+          }
+        ]
+      }
+    ],
+    "responsibilities": [
+      {
+        "description": "Developing AI assistants to support engineering teams, including backlog management, development, test, knowledge retrieval, troubleshooting, and insights generation.",
+        "evidence": [
+          {
+            "excerpt": "Developing AI assistants to support engineering teams, including backlog management, development, test, knowledge retrieval, troubleshooting, and insights generation.",
+            "section": "Job description"
+          }
+        ]
+      },
+      {
+        "description": "Implementing 'human-in-the-loop' models to ensure accuracy and trust, while ensuring security and responsible AI standards are followed.",
+        "evidence": [
+          {
+            "excerpt": "Implementing 'human-in-the-loop' models to ensure accuracy and trust, while ensuring security and responsible AI standards are followed.",
+            "section": "Job description"
+          }
+        ]
+      },
+      {
+        "description": "Building solutions leveraging existing Large Language Models (LLMs), prompt engineering, retrieval-augmented generation (RAG) & machine learning models for analysis and prediction.",
+        "evidence": [
+          {
+            "excerpt": "Building solutions leveraging existing Large Language Models (LLMs), prompt engineering, retrieval-augmented generation (RAG) & machine learning models for analysis and prediction.",
+            "section": "Job description"
+          }
+        ]
+      },
+      {
+        "description": "Identifying and automating repetitive or manual processes across design, test, and deployment workflows.",
+        "evidence": [
+          {
+            "excerpt": "Identifying and automating repetitive or manual processes across design, test, and deployment workflows.",
+            "section": "Job description"
+          }
+        ]
+      }
+    ],
+    "compensation": {
+      "clarity": "unstated",
+      "minimum": null,
+      "maximum": null,
+      "currency": null,
+      "period": null,
+      "raw_text": null,
+      "evidence": []
+    },
+    "location": {
+      "clarity": "stated",
+      "summary": "Docklands, Melbourne VIC (Hybrid)",
+      "evidence": [
+        {
+          "excerpt": "Docklands, Melbourne VIC (Hybrid)",
+          "section": "Job description"
+        }
+      ]
+    },
+    "work_arrangement": {
+      "arrangement": "hybrid",
+      "details": null,
+      "evidence": [
+        {
+          "excerpt": "Experience a Positive Work-Life Balance: We prioritize your well-being with hybrid and flexible working arrangements",
+          "section": "Job description"
+        }
+      ]
+    },
+    "employment": {
+      "working_hours": "full_time",
+      "engagement_type": "unspecified",
+      "evidence": [
+        {
+          "excerpt": "Full time",
+          "section": "Job description"
+        }
+      ]
+    },
+    "experience_requirements": [
+      {
+        "description": "6+ years in Layer 2 & 3 network engineering and solution development, with hands-on experience in building automation or AI/ML solutions.",
+        "level": "required",
+        "minimum_years": 6.0,
+        "maximum_years": null,
+        "evidence": [
+          {
+            "excerpt": "6+ years in Layer 2 & 3 network engineering and solution development, with hands-on experience in building automation or AI/ML solutions",
+            "section": "Profile description"
+          }
+        ]
+      }
+    ]
+  },
+  "opportunity_assessment": {
+    "job_analysis": {
+      "posting": {
+        "raw_text": "Network Engineer- Automation & AI\n\nCapgemini Australia Pty Ltd \n2.9\n82 reviews\n·\nView all jobs\nDocklands, Melbourne VIC (Hybrid)\nEngineering - Network (Information & Communication Technology)\nFull time\nPosted 29d ago\n\nHow you match\n4 skills and credentials match your profile\n Large Language Models\n Prompt Engineering\n Retrieval Augmented Generation\n Python Programming\nShow all⁠\nCompany description:\n\nAt Capgemini Engineering, the world leader in engineering services, we bring together a global team of engineers, scientists, and architects to help the world's most innovative companies unleash their potential. From autonomous cars to life-saving robots, our digital and software technology experts think outside the box as they provide unique R&D and engineering services across all industries. Join us for a career full of opportunities. Where you can make a difference. Where no two days are the same.\n\n\n\n\n\nJob description:\n\nYour role\nAs an Access Network Engineer with a specialised focus on introducing AI & Automation to solution engineering and the delivery lifecycle, you will play a key role in building and scaling AI & Automation-powered engineering capabilities that improve efficiency, reduce manual effort, and enhance decision-making across design, testing, and deployment workflows.\n\n\nThis is a hands-on engineering role focused on delivering real, production-grade solutions—from AI assistants to end-to-end automation pipelines—that will be used daily by engineering teams, transforming the way they design, test, and deploy network solutions.\n\n\nYou will play a key role in:\n\n\nDeveloping AI assistants to support engineering teams, including backlog management, development, test, knowledge retrieval, troubleshooting, and insights generation.\nImplementing \"human-in-the-loop\" models to ensure accuracy and trust, while ensuring security and responsible AI standards are followed.\nBuilding solutions leveraging existing Large Language Models (LLMs), prompt engineering, retrieval-augmented generation (RAG) & machine learning models for analysis and prediction.\nIdentifying and automating repetitive or manual processes across design, test, and deployment workflows\n\n\n\n\n\nProfile description:\n\nYour profile\n6+ years in Layer 2 & 3 network engineering and solution development, with hands-on experience in building automation or AI/ML solutions\nHands on experience building automation workflows, scripts, or pipelines.\nHands-on experience with AI/ML or Generative AI technologies (LLMs, prompt engineering, RAG)\nExperience building AI assistants and managing the lifecycle of the assistants\nCI/CD and DevOps practices (e.g. Jenkins, Ansible, GitHub Actions, Python, ArgoCD)\nExposure in one or both the below areas:\nFTTx Access Network: GPON/XGSPON (OLT, ONT), Intent Based Networking\nFTTx EMS Applications: Containerised (AAC), Virtualised (ACS, AMS),\n\n\n\nWe offer:\n\nWhat you'll love about working here\nExperience a Positive Work-Life Balance: We prioritize your well-being with hybrid and flexible working arrangements, making it easy to balance your personal and professional life.\nOwn your Growth: Dive into endless learning opportunities with courses from Capgemini University and numerous external certifications. Benefit from digital learning platforms and specialized campuses in AI, Cloud, Data, and Sustainability. Propel your career with our award-winning Career Acceleration programs.\nThrive in an Inclusive Environment: We don't just believe in inclusion; we live it. Be part of a workplace that values authenticity, inclusion, and belonging. We encourage applications from all backgrounds, even if you don't meet every requirement. Research shows that individuals from underrepresented groups often hesitate to apply unless they meet every criterion. If you're excited about this role, we welcome your application and invite you to share what you can bring.\nWork with Integrity: Join a company recognized by Ethisphere as one of the World's most Ethical companies.\nCollaborate with Industry Leaders: Gain exposure to top global companies, including 145 of the Fortune 500, through your work with Capgemini.\nShowcase Your Skills: Participate in our internal annual global tech challenges and help address world issues.",
+        "title": "Network Engineer - Automation & AI",
+        "company": "Capgemini Australia Pty Ltd",
+        "source_url": "https://au.seek.com/job/92884969?ref=search-standalone&type=promoted&origin=showNewTab#sol=09cb503c292fd83a211a6cbd21bda3d52e7f525c"
+      },
+      "role_family": {
+        "family": "network_engineering",
+        "evidence": [
+          {
+            "excerpt": "As an Access Network Engineer with a specialised focus on introducing AI & Automation",
+            "section": "Job description"
+          }
+        ]
+      },
+      "seniority": {
+        "level": "unknown",
+        "ambiguous": false,
+        "candidate_levels": [],
+        "evidence": []
+      },
+      "technologies": [
+        {
+          "name": "Large Language Models",
+          "level": "required",
+          "evidence": [
+            {
+              "excerpt": "Building solutions leveraging existing Large Language Models (LLMs)",
+              "section": "Job description"
+            }
+          ]
+        },
+        {
+          "name": "Prompt Engineering",
+          "level": "required",
+          "evidence": [
+            {
+              "excerpt": "Building solutions leveraging existing Large Language Models (LLMs), prompt engineering",
+              "section": "Job description"
+            }
+          ]
+        },
+        {
+          "name": "Retrieval Augmented Generation",
+          "level": "required",
+          "evidence": [
+            {
+              "excerpt": "Building solutions leveraging... retrieval-augmented generation (RAG) & machine learning models",
+              "section": "Job description"
+            }
+          ]
+        },
+        {
+          "name": "Python",
+          "level": "required",
+          "evidence": [
+            {
+              "excerpt": "CI/CD and DevOps practices (e.g. Jenkins, Ansible, GitHub Actions, Python, ArgoCD)",
+              "section": "Profile description"
+            }
+          ]
+        },
+        {
+          "name": "Ansible",
+          "level": "preferred",
+          "evidence": [
+            {
+              "excerpt": "CI/CD and DevOps practices (e.g. Jenkins, Ansible, GitHub Actions, Python, ArgoCD)",
+              "section": "Profile description"
+            }
+          ]
+        },
+        {
+          "name": "GitHub Actions",
+          "level": "preferred",
+          "evidence": [
+            {
+              "excerpt": "CI/CD and DevOps practices (e.g. Jenkins, Ansible, GitHub Actions, Python, ArgoCD)",
+              "section": "Profile description"
+            }
+          ]
+        },
+        {
+          "name": "ArgoCD",
+          "level": "preferred",
+          "evidence": [
+            {
+              "excerpt": "CI/CD and DevOps practices (e.g. Jenkins, Ansible, GitHub Actions, Python, ArgoCD)",
+              "section": "Profile description"
+            }
+          ]
+        },
+        {
+          "name": "Jenkins",
+          "level": "preferred",
+          "evidence": [
+            {
+              "excerpt": "CI/CD and DevOps practices (e.g. Jenkins, Ansible, GitHub Actions, Python, ArgoCD)",
+              "section": "Profile description"
+            }
+          ]
+        }
+      ],
+      "responsibilities": [
+        {
+          "description": "Developing AI assistants to support engineering teams, including backlog management, development, test, knowledge retrieval, troubleshooting, and insights generation.",
+          "evidence": [
+            {
+              "excerpt": "Developing AI assistants to support engineering teams, including backlog management, development, test, knowledge retrieval, troubleshooting, and insights generation.",
+              "section": "Job description"
+            }
+          ]
+        },
+        {
+          "description": "Implementing 'human-in-the-loop' models to ensure accuracy and trust, while ensuring security and responsible AI standards are followed.",
+          "evidence": [
+            {
+              "excerpt": "Implementing 'human-in-the-loop' models to ensure accuracy and trust, while ensuring security and responsible AI standards are followed.",
+              "section": "Job description"
+            }
+          ]
+        },
+        {
+          "description": "Building solutions leveraging existing Large Language Models (LLMs), prompt engineering, retrieval-augmented generation (RAG) & machine learning models for analysis and prediction.",
+          "evidence": [
+            {
+              "excerpt": "Building solutions leveraging existing Large Language Models (LLMs), prompt engineering, retrieval-augmented generation (RAG) & machine learning models for analysis and prediction.",
+              "section": "Job description"
+            }
+          ]
+        },
+        {
+          "description": "Identifying and automating repetitive or manual processes across design, test, and deployment workflows.",
+          "evidence": [
+            {
+              "excerpt": "Identifying and automating repetitive or manual processes across design, test, and deployment workflows.",
+              "section": "Job description"
+            }
+          ]
+        }
+      ],
+      "compensation": {
+        "clarity": "unstated",
+        "minimum": null,
+        "maximum": null,
+        "currency": null,
+        "period": null,
+        "raw_text": null,
+        "evidence": []
+      },
+      "location": {
+        "clarity": "stated",
+        "summary": "Docklands, Melbourne VIC (Hybrid)",
+        "evidence": [
+          {
+            "excerpt": "Docklands, Melbourne VIC (Hybrid)",
+            "section": "Job description"
+          }
+        ]
+      },
+      "work_arrangement": {
+        "arrangement": "hybrid",
+        "details": null,
+        "evidence": [
+          {
+            "excerpt": "Experience a Positive Work-Life Balance: We prioritize your well-being with hybrid and flexible working arrangements",
+            "section": "Job description"
+          }
+        ]
+      },
+      "employment": {
+        "working_hours": "full_time",
+        "engagement_type": "unspecified",
+        "evidence": [
+          {
+            "excerpt": "Full time",
+            "section": "Job description"
+          }
+        ]
+      },
+      "experience_requirements": [
+        {
+          "description": "6+ years in Layer 2 & 3 network engineering and solution development, with hands-on experience in building automation or AI/ML solutions.",
+          "level": "required",
+          "minimum_years": 6.0,
+          "maximum_years": null,
+          "evidence": [
+            {
+              "excerpt": "6+ years in Layer 2 & 3 network engineering and solution development, with hands-on experience in building automation or AI/ML solutions",
+              "section": "Profile description"
+            }
+          ]
+        }
+      ]
+    },
+    "technical_fit": {
+      "dimension": "technical",
+      "judgment": "strong",
+      "summary": "The candidate demonstrates solid qualifications in network engineering and relevant technologies, aligning directly with job requirements for the Network Engineer position.",
+      "findings": [
+        {
+          "kind": "alignment",
+          "summary": "The candidate has more than 6 years of relevant experience in Layer 2 & 3 network engineering and solution development, meeting the required years of experience for the role.",
+          "detail": "The candidate's experience includes hands-on work with automation and AI/ML solutions, aligning with the job description.",
+          "importance": "material",
+          "job_evidence": [
+            {
+              "source": "experience_requirement",
+              "item_index": 0,
+              "name": "6+ years in Layer 2 & 3 network engineering and solution development",
+              "excerpt": "6+ years in Layer 2 & 3 network engineering and solution development, with hands-on experience in building automation or AI/ML solutions"
+            }
+          ],
+          "profile_evidence": [
+            {
+              "source": "experience",
+              "ref": "experience:nbn-data-engineer-2020",
+              "excerpt": null
+            }
+          ],
+          "assumption": null
+        },
+        {
+          "kind": "alignment",
+          "summary": "The candidate possesses hands-on experience with Python, a required technology for this role, which is directly cited in their profile.",
+          "detail": null,
+          "importance": "material",
+          "job_evidence": [
+            {
+              "source": "technology",
+              "item_index": 3,
+              "name": "Python",
+              "excerpt": "CI/CD and DevOps practices (e.g. Jenkins, Ansible, GitHub Actions, Python, ArgoCD)"
+            }
+          ],
+          "profile_evidence": [
+            {
+              "source": "skill",
+              "ref": "skill:Python",
+              "excerpt": null
+            }
+          ],
+          "assumption": null
+        },
+        {
+          "kind": "alignment",
+          "summary": "Proficient in utilizing Large Language Models and prompt engineering, critical for developing AI assistants as required in the job description.",
+          "detail": null,
+          "importance": "material",
+          "job_evidence": [
+            {
+              "source": "technology",
+              "item_index": 0,
+              "name": "Large Language Models",
+              "excerpt": "Building solutions leveraging existing Large Language Models (LLMs)"
+            }
+          ],
+          "profile_evidence": [
+            {
+              "source": "skill",
+              "ref": "skill:Retrieval-Augmented Generation",
+              "excerpt": null
+            },
+            {
+              "source": "skill",
+              "ref": "skill:Operational intelligence",
+              "excerpt": null
+            },
+            {
+              "source": "skill",
+              "ref": "skill:Explainable AI",
+              "excerpt": null
+            }
+          ],
+          "assumption": null
+        },
+        {
+          "kind": "alignment",
+          "summary": "The candidate has experience building solutions with Retrieval-Augmented Generation technologies, meeting job expectations for engineering capabilities in this area.",
+          "detail": null,
+          "importance": "material",
+          "job_evidence": [
+            {
+              "source": "technology",
+              "item_index": 2,
+              "name": "Retrieval Augmented Generation",
+              "excerpt": "Building solutions leveraging... retrieval-augmented generation (RAG) & machine learning models"
+            }
+          ],
+          "profile_evidence": [
+            {
+              "source": "project",
+              "ref": "project:governance-document-rag",
+              "excerpt": null
+            },
+            {
+              "source": "project",
+              "ref": "project:operational-intelligence-copilot",
+              "excerpt": null
+            }
+          ],
+          "assumption": null
+        }
+      ]
+    },
+    "commercial_fit": {
+      "dimension": "commercial",
+      "judgment": "unknown",
+      "summary": "Compensation is unstated in the job listing, creating uncertainty regarding alignment with the candidate's preferences.",
+      "findings": [
+        {
+          "kind": "uncertainty",
+          "summary": "Salary information for the position is not specified, making it unclear if it aligns with the candidate's expectations.",
+          "detail": "The candidate has indicated no salary minimum, but without predefined job compensation, this aspect remains uncertain.",
+          "importance": "minor",
+          "job_evidence": [
+            {
+              "source": "compensation",
+              "item_index": 0,
+              "name": "Compensation",
+              "excerpt": "unstated"
+            }
+          ],
+          "profile_evidence": [],
+          "assumption": null
+        },
+        {
+          "kind": "alignment",
+          "summary": "The job location aligns with the candidate’s preference for roles based in Melbourne, VIC, or flexible remote arrangements.",
+          "detail": null,
+          "importance": "material",
+          "job_evidence": [
+            {
+              "source": "location",
+              "item_index": 0,
+              "name": "Docklands, Melbourne VIC (Hybrid)",
+              "excerpt": "Docklands, Melbourne VIC (Hybrid)"
+            }
+          ],
+          "profile_evidence": [
+            {
+              "source": "preference",
+              "ref": "preference:locations",
+              "excerpt": null
+            }
+          ],
+          "assumption": null
+        },
+        {
+          "kind": "alignment",
+          "summary": "The role offers full-time employment, which aligns with the candidate's stated preference for employment type.",
+          "detail": null,
+          "importance": "material",
+          "job_evidence": [
+            {
+              "source": "employment",
+              "item_index": 0,
+              "name": "Full time",
+              "excerpt": "Full time"
+            }
+          ],
+          "profile_evidence": [
+            {
+              "source": "preference",
+              "ref": "preference:employment_types",
+              "excerpt": null
+            }
+          ],
+          "assumption": null
+        },
+        {
+          "kind": "alignment",
+          "summary": "The hybrid work arrangement of this role aligns with the candidate's preference for flexible remote work.",
+          "detail": null,
+          "importance": "material",
+          "job_evidence": [
+            {
+              "source": "work_arrangement",
+              "item_index": 0,
+              "name": "hybrid",
+              "excerpt": "Experience a Positive Work-Life Balance: We prioritize your well-being with hybrid and flexible working arrangements"
+            }
+          ],
+          "profile_evidence": [
+            {
+              "source": "preference",
+              "ref": "preference:remote",
+              "excerpt": null
+            }
+          ],
+          "assumption": null
+        }
+      ]
+    },
+    "portfolio_fit": {
+      "dimension": "portfolio",
+      "judgment": "strong",
+      "summary": "The candidate has relevant project experience that demonstrates capabilities associated with the responsibilities of this role.",
+      "findings": [
+        {
+          "kind": "partial_alignment",
+          "summary": "The candidate's independent engineering projects display relevant AI and automation skills; however, they lack commercial production experience in a direct network engineering role.",
+          "detail": "Projects focused on building operational intelligence and retrieval-augmented generation align with the job responsibilities but are from an independent context rather than commercial experience.",
+          "importance": "material",
+          "job_evidence": [
+            {
+              "source": "responsibility",
+              "item_index": 0,
+              "name": "Developing AI assistants to support engineering teams",
+              "excerpt": "Developing AI assistants to support engineering teams, including backlog management, development, test, knowledge retrieval, troubleshooting, and insights generation."
+            }
+          ],
+          "profile_evidence": [
+            {
+              "source": "project",
+              "ref": "project:operational-intelligence-copilot",
+              "excerpt": null
+            },
+            {
+              "source": "project",
+              "ref": "project:governance-document-rag",
+              "excerpt": null
+            }
+          ],
+          "assumption": null
+        },
+        {
+          "kind": "gap",
+          "summary": "The candidate lacks explicitly stated commercial experience in a full-time network engineering role that focuses specifically on automation and AI implementation.",
+          "detail": "While the candidate has strong independent engineering projects, the absence of commercial production experience may present a gap.",
+          "importance": "material",
+          "job_evidence": [
+            {
+              "source": "responsibility",
+              "item_index": 2,
+              "name": "Building solutions leveraging existing Large Language Models (LLMs), prompt engineering,...",
+              "excerpt": "Building solutions leveraging existing Large Language Models (LLMs), prompt engineering, retrieval-augmented generation (RAG) & machine learning models for analysis and prediction."
+            }
+          ],
+          "profile_evidence": [],
+          "assumption": null
+        }
+      ]
+    },
+    "summary": {
+      "summary": "David Cropper demonstrates strong foundational qualifications for the Network Engineer position in terms of technical capabilities, relevant technologies, and work arrangements. Despite lacking direct commercial employment in network engineering pertaining to AI and automation, the candidate’s substantial independent engineering work provides partial alignment in the areas of required project responsibilities.",
+      "key_alignments": [
+        "Strong experience in relevant network engineering technologies and roles.",
+        "Suitability for hybrid work arrangement and full-time employment.",
+        "Alignment in project experience related to AI and automation solutions."
+      ],
+      "key_gaps": [
+        "Absence of explicitly stated commercial network engineering experience with respect to job responsibilities.",
+        "Lack of clear salary and compensation expectations."
+      ]
+    }
+  },
+  "portfolio_match": {
+    "job_analysis": {
+      "posting": {
+        "raw_text": "Network Engineer- Automation & AI\n\nCapgemini Australia Pty Ltd \n2.9\n82 reviews\n·\nView all jobs\nDocklands, Melbourne VIC (Hybrid)\nEngineering - Network (Information & Communication Technology)\nFull time\nPosted 29d ago\n\nHow you match\n4 skills and credentials match your profile\n Large Language Models\n Prompt Engineering\n Retrieval Augmented Generation\n Python Programming\nShow all⁠\nCompany description:\n\nAt Capgemini Engineering, the world leader in engineering services, we bring together a global team of engineers, scientists, and architects to help the world's most innovative companies unleash their potential. From autonomous cars to life-saving robots, our digital and software technology experts think outside the box as they provide unique R&D and engineering services across all industries. Join us for a career full of opportunities. Where you can make a difference. Where no two days are the same.\n\n\n\n\n\nJob description:\n\nYour role\nAs an Access Network Engineer with a specialised focus on introducing AI & Automation to solution engineering and the delivery lifecycle, you will play a key role in building and scaling AI & Automation-powered engineering capabilities that improve efficiency, reduce manual effort, and enhance decision-making across design, testing, and deployment workflows.\n\n\nThis is a hands-on engineering role focused on delivering real, production-grade solutions—from AI assistants to end-to-end automation pipelines—that will be used daily by engineering teams, transforming the way they design, test, and deploy network solutions.\n\n\nYou will play a key role in:\n\n\nDeveloping AI assistants to support engineering teams, including backlog management, development, test, knowledge retrieval, troubleshooting, and insights generation.\nImplementing \"human-in-the-loop\" models to ensure accuracy and trust, while ensuring security and responsible AI standards are followed.\nBuilding solutions leveraging existing Large Language Models (LLMs), prompt engineering, retrieval-augmented generation (RAG) & machine learning models for analysis and prediction.\nIdentifying and automating repetitive or manual processes across design, test, and deployment workflows\n\n\n\n\n\nProfile description:\n\nYour profile\n6+ years in Layer 2 & 3 network engineering and solution development, with hands-on experience in building automation or AI/ML solutions\nHands on experience building automation workflows, scripts, or pipelines.\nHands-on experience with AI/ML or Generative AI technologies (LLMs, prompt engineering, RAG)\nExperience building AI assistants and managing the lifecycle of the assistants\nCI/CD and DevOps practices (e.g. Jenkins, Ansible, GitHub Actions, Python, ArgoCD)\nExposure in one or both the below areas:\nFTTx Access Network: GPON/XGSPON (OLT, ONT), Intent Based Networking\nFTTx EMS Applications: Containerised (AAC), Virtualised (ACS, AMS),\n\n\n\nWe offer:\n\nWhat you'll love about working here\nExperience a Positive Work-Life Balance: We prioritize your well-being with hybrid and flexible working arrangements, making it easy to balance your personal and professional life.\nOwn your Growth: Dive into endless learning opportunities with courses from Capgemini University and numerous external certifications. Benefit from digital learning platforms and specialized campuses in AI, Cloud, Data, and Sustainability. Propel your career with our award-winning Career Acceleration programs.\nThrive in an Inclusive Environment: We don't just believe in inclusion; we live it. Be part of a workplace that values authenticity, inclusion, and belonging. We encourage applications from all backgrounds, even if you don't meet every requirement. Research shows that individuals from underrepresented groups often hesitate to apply unless they meet every criterion. If you're excited about this role, we welcome your application and invite you to share what you can bring.\nWork with Integrity: Join a company recognized by Ethisphere as one of the World's most Ethical companies.\nCollaborate with Industry Leaders: Gain exposure to top global companies, including 145 of the Fortune 500, through your work with Capgemini.\nShowcase Your Skills: Participate in our internal annual global tech challenges and help address world issues.",
+        "title": "Network Engineer - Automation & AI",
+        "company": "Capgemini Australia Pty Ltd",
+        "source_url": "https://au.seek.com/job/92884969?ref=search-standalone&type=promoted&origin=showNewTab#sol=09cb503c292fd83a211a6cbd21bda3d52e7f525c"
+      },
+      "role_family": {
+        "family": "network_engineering",
+        "evidence": [
+          {
+            "excerpt": "As an Access Network Engineer with a specialised focus on introducing AI & Automation",
+            "section": "Job description"
+          }
+        ]
+      },
+      "seniority": {
+        "level": "unknown",
+        "ambiguous": false,
+        "candidate_levels": [],
+        "evidence": []
+      },
+      "technologies": [
+        {
+          "name": "Large Language Models",
+          "level": "required",
+          "evidence": [
+            {
+              "excerpt": "Building solutions leveraging existing Large Language Models (LLMs)",
+              "section": "Job description"
+            }
+          ]
+        },
+        {
+          "name": "Prompt Engineering",
+          "level": "required",
+          "evidence": [
+            {
+              "excerpt": "Building solutions leveraging existing Large Language Models (LLMs), prompt engineering",
+              "section": "Job description"
+            }
+          ]
+        },
+        {
+          "name": "Retrieval Augmented Generation",
+          "level": "required",
+          "evidence": [
+            {
+              "excerpt": "Building solutions leveraging... retrieval-augmented generation (RAG) & machine learning models",
+              "section": "Job description"
+            }
+          ]
+        },
+        {
+          "name": "Python",
+          "level": "required",
+          "evidence": [
+            {
+              "excerpt": "CI/CD and DevOps practices (e.g. Jenkins, Ansible, GitHub Actions, Python, ArgoCD)",
+              "section": "Profile description"
+            }
+          ]
+        },
+        {
+          "name": "Ansible",
+          "level": "preferred",
+          "evidence": [
+            {
+              "excerpt": "CI/CD and DevOps practices (e.g. Jenkins, Ansible, GitHub Actions, Python, ArgoCD)",
+              "section": "Profile description"
+            }
+          ]
+        },
+        {
+          "name": "GitHub Actions",
+          "level": "preferred",
+          "evidence": [
+            {
+              "excerpt": "CI/CD and DevOps practices (e.g. Jenkins, Ansible, GitHub Actions, Python, ArgoCD)",
+              "section": "Profile description"
+            }
+          ]
+        },
+        {
+          "name": "ArgoCD",
+          "level": "preferred",
+          "evidence": [
+            {
+              "excerpt": "CI/CD and DevOps practices (e.g. Jenkins, Ansible, GitHub Actions, Python, ArgoCD)",
+              "section": "Profile description"
+            }
+          ]
+        },
+        {
+          "name": "Jenkins",
+          "level": "preferred",
+          "evidence": [
+            {
+              "excerpt": "CI/CD and DevOps practices (e.g. Jenkins, Ansible, GitHub Actions, Python, ArgoCD)",
+              "section": "Profile description"
+            }
+          ]
+        }
+      ],
+      "responsibilities": [
+        {
+          "description": "Developing AI assistants to support engineering teams, including backlog management, development, test, knowledge retrieval, troubleshooting, and insights generation.",
+          "evidence": [
+            {
+              "excerpt": "Developing AI assistants to support engineering teams, including backlog management, development, test, knowledge retrieval, troubleshooting, and insights generation.",
+              "section": "Job description"
+            }
+          ]
+        },
+        {
+          "description": "Implementing 'human-in-the-loop' models to ensure accuracy and trust, while ensuring security and responsible AI standards are followed.",
+          "evidence": [
+            {
+              "excerpt": "Implementing 'human-in-the-loop' models to ensure accuracy and trust, while ensuring security and responsible AI standards are followed.",
+              "section": "Job description"
+            }
+          ]
+        },
+        {
+          "description": "Building solutions leveraging existing Large Language Models (LLMs), prompt engineering, retrieval-augmented generation (RAG) & machine learning models for analysis and prediction.",
+          "evidence": [
+            {
+              "excerpt": "Building solutions leveraging existing Large Language Models (LLMs), prompt engineering, retrieval-augmented generation (RAG) & machine learning models for analysis and prediction.",
+              "section": "Job description"
+            }
+          ]
+        },
+        {
+          "description": "Identifying and automating repetitive or manual processes across design, test, and deployment workflows.",
+          "evidence": [
+            {
+              "excerpt": "Identifying and automating repetitive or manual processes across design, test, and deployment workflows.",
+              "section": "Job description"
+            }
+          ]
+        }
+      ],
+      "compensation": {
+        "clarity": "unstated",
+        "minimum": null,
+        "maximum": null,
+        "currency": null,
+        "period": null,
+        "raw_text": null,
+        "evidence": []
+      },
+      "location": {
+        "clarity": "stated",
+        "summary": "Docklands, Melbourne VIC (Hybrid)",
+        "evidence": [
+          {
+            "excerpt": "Docklands, Melbourne VIC (Hybrid)",
+            "section": "Job description"
+          }
+        ]
+      },
+      "work_arrangement": {
+        "arrangement": "hybrid",
+        "details": null,
+        "evidence": [
+          {
+            "excerpt": "Experience a Positive Work-Life Balance: We prioritize your well-being with hybrid and flexible working arrangements",
+            "section": "Job description"
+          }
+        ]
+      },
+      "employment": {
+        "working_hours": "full_time",
+        "engagement_type": "unspecified",
+        "evidence": [
+          {
+            "excerpt": "Full time",
+            "section": "Job description"
+          }
+        ]
+      },
+      "experience_requirements": [
+        {
+          "description": "6+ years in Layer 2 & 3 network engineering and solution development, with hands-on experience in building automation or AI/ML solutions.",
+          "level": "required",
+          "minimum_years": 6.0,
+          "maximum_years": null,
+          "evidence": [
+            {
+              "excerpt": "6+ years in Layer 2 & 3 network engineering and solution development, with hands-on experience in building automation or AI/ML solutions",
+              "section": "Profile description"
+            }
+          ]
+        }
+      ]
+    },
+    "ranked_projects": [
+      {
+        "rank": 1,
+        "project_id": "operational-intelligence-copilot",
+        "rationale": "Project 'operational-intelligence-copilot' ranked on 1 required technology hit(s), 3 demonstrates overlap(s), 2 responsibility overlap(s).",
+        "factors": [
+          {
+            "kind": "required_technology",
+            "summary": "Project evidence supports required technology 'Python'.",
+            "job_evidence": [
+              {
+                "source": "technology",
+                "item_index": 3,
+                "name": "Python",
+                "excerpt": "CI/CD and DevOps practices (e.g. Jenkins, Ansible, GitHub Actions, Python, ArgoCD)"
+              }
+            ],
+            "profile_evidence": [
+              {
+                "source": "project",
+                "ref": "project:operational-intelligence-copilot",
+                "excerpt": "Python"
+              }
+            ]
+          },
+          {
+            "kind": "demonstrates_overlap",
+            "summary": "Project demonstrates capabilities overlapping responsibility 'Developing AI assistants to support engineering teams, including backlog management, development, test, knowledge retrieval, troubleshooting, and insights gene…'.",
+            "job_evidence": [
+              {
+                "source": "responsibility",
+                "item_index": 0,
+                "name": null,
+                "excerpt": "Developing AI assistants to support engineering teams, including backlog management, development, test, knowledge retrieval, troubleshooting, and insights gene…"
+              }
+            ],
+            "profile_evidence": [
+              {
+                "source": "project",
+                "ref": "project:operational-intelligence-copilot",
+                "excerpt": "Explainable AI recommendations"
+              }
+            ]
+          },
+          {
+            "kind": "responsibility_overlap",
+            "summary": "Project summary, outcomes, or technologies overlap responsibility 'Developing AI assistants to support engineering teams, including backlog management, development, test, knowledge retrieval, troubleshooting, and insights gene…'.",
+            "job_evidence": [
+              {
+                "source": "responsibility",
+                "item_index": 0,
+                "name": null,
+                "excerpt": "Developing AI assistants to support engineering teams, including backlog management, development, test, knowledge retrieval, troubleshooting, and insights gene…"
+              }
+            ],
+            "profile_evidence": [
+              {
+                "source": "project",
+                "ref": "project:operational-intelligence-copilot",
+                "excerpt": "Domain-agnostic operational intelligence platform combining deterministic analytics with Large Language Model reasoning to analyse structured business data and…"
+              }
+            ]
+          },
+          {
+            "kind": "demonstrates_overlap",
+            "summary": "Project demonstrates capabilities overlapping responsibility 'Implementing 'human-in-the-loop' models to ensure accuracy and trust, while ensuring security and responsible AI standards are followed.'.",
+            "job_evidence": [
+              {
+                "source": "responsibility",
+                "item_index": 1,
+                "name": null,
+                "excerpt": "Implementing 'human-in-the-loop' models to ensure accuracy and trust, while ensuring security and responsible AI standards are followed."
+              }
+            ],
+            "profile_evidence": [
+              {
+                "source": "project",
+                "ref": "project:operational-intelligence-copilot",
+                "excerpt": "Explainable AI recommendations"
+              }
+            ]
+          },
+          {
+            "kind": "responsibility_overlap",
+            "summary": "Project summary, outcomes, or technologies overlap responsibility 'Building solutions leveraging existing Large Language Models (LLMs), prompt engineering, retrieval-augmented generation (RAG) & machine learning models for ana…'.",
+            "job_evidence": [
+              {
+                "source": "responsibility",
+                "item_index": 2,
+                "name": null,
+                "excerpt": "Building solutions leveraging existing Large Language Models (LLMs), prompt engineering, retrieval-augmented generation (RAG) & machine learning models for ana…"
+              }
+            ],
+            "profile_evidence": [
+              {
+                "source": "project",
+                "ref": "project:operational-intelligence-copilot",
+                "excerpt": "Domain-agnostic operational intelligence platform combining deterministic analytics with Large Language Model reasoning to analyse structured business data and…"
+              }
+            ]
+          },
+          {
+            "kind": "demonstrates_overlap",
+            "summary": "Project demonstrates capabilities overlapping responsibility 'Identifying and automating repetitive or manual processes across design, test, and deployment workflows.'.",
+            "job_evidence": [
+              {
+                "source": "responsibility",
+                "item_index": 3,
+                "name": null,
+                "excerpt": "Identifying and automating repetitive or manual processes across design, test, and deployment workflows."
+              }
+            ],
+            "profile_evidence": [
+              {
+                "source": "project",
+                "ref": "project:operational-intelligence-copilot",
+                "excerpt": "Regression-tested analytics workflows"
+              }
+            ]
+          }
+        ],
+        "tie_group": null,
+        "tie_break_reason": null
+      },
+      {
+        "rank": 2,
+        "project_id": "governance-document-rag",
+        "rationale": "Project 'governance-document-rag' ranked on 1 required technology hit(s), 2 demonstrates overlap(s), 3 responsibility overlap(s).",
+        "factors": [
+          {
+            "kind": "required_technology",
+            "summary": "Project evidence supports required technology 'Python'.",
+            "job_evidence": [
+              {
+                "source": "technology",
+                "item_index": 3,
+                "name": "Python",
+                "excerpt": "CI/CD and DevOps practices (e.g. Jenkins, Ansible, GitHub Actions, Python, ArgoCD)"
+              }
+            ],
+            "profile_evidence": [
+              {
+                "source": "project",
+                "ref": "project:governance-document-rag",
+                "excerpt": "Python"
+              }
+            ]
+          },
+          {
+            "kind": "demonstrates_overlap",
+            "summary": "Project demonstrates capabilities overlapping responsibility 'Developing AI assistants to support engineering teams, including backlog management, development, test, knowledge retrieval, troubleshooting, and insights gene…'.",
+            "job_evidence": [
+              {
+                "source": "responsibility",
+                "item_index": 0,
+                "name": null,
+                "excerpt": "Developing AI assistants to support engineering teams, including backlog management, development, test, knowledge retrieval, troubleshooting, and insights gene…"
+              }
+            ],
+            "profile_evidence": [
+              {
+                "source": "project",
+                "ref": "project:governance-document-rag",
+                "excerpt": "Embedding generation"
+              }
+            ]
+          },
+          {
+            "kind": "responsibility_overlap",
+            "summary": "Project summary, outcomes, or technologies overlap responsibility 'Developing AI assistants to support engineering teams, including backlog management, development, test, knowledge retrieval, troubleshooting, and insights gene…'.",
+            "job_evidence": [
+              {
+                "source": "responsibility",
+                "item_index": 0,
+                "name": null,
+                "excerpt": "Developing AI assistants to support engineering teams, including backlog management, development, test, knowledge retrieval, troubleshooting, and insights gene…"
+              }
+            ],
+            "profile_evidence": [
+              {
+                "source": "project",
+                "ref": "project:governance-document-rag",
+                "excerpt": "Enterprise retrieval-augmented generation platform supporting trustworthy AI responses over organisational knowledge."
+              }
+            ]
+          },
+          {
+            "kind": "responsibility_overlap",
+            "summary": "Project summary, outcomes, or technologies overlap responsibility 'Implementing 'human-in-the-loop' models to ensure accuracy and trust, while ensuring security and responsible AI standards are followed.'.",
+            "job_evidence": [
+              {
+                "source": "responsibility",
+                "item_index": 1,
+                "name": null,
+                "excerpt": "Implementing 'human-in-the-loop' models to ensure accuracy and trust, while ensuring security and responsible AI standards are followed."
+              }
+            ],
+            "profile_evidence": [
+              {
+                "source": "project",
+                "ref": "project:governance-document-rag",
+                "excerpt": "Enterprise retrieval-augmented generation platform supporting trustworthy AI responses over organisational knowledge."
+              }
+            ]
+          },
+          {
+            "kind": "demonstrates_overlap",
+            "summary": "Project demonstrates capabilities overlapping responsibility 'Building solutions leveraging existing Large Language Models (LLMs), prompt engineering, retrieval-augmented generation (RAG) & machine learning models for ana…'.",
+            "job_evidence": [
+              {
+                "source": "responsibility",
+                "item_index": 2,
+                "name": null,
+                "excerpt": "Building solutions leveraging existing Large Language Models (LLMs), prompt engineering, retrieval-augmented generation (RAG) & machine learning models for ana…"
+              }
+            ],
+            "profile_evidence": [
+              {
+                "source": "project",
+                "ref": "project:governance-document-rag",
+                "excerpt": "Embedding generation"
+              }
+            ]
+          },
+          {
+            "kind": "responsibility_overlap",
+            "summary": "Project summary, outcomes, or technologies overlap responsibility 'Building solutions leveraging existing Large Language Models (LLMs), prompt engineering, retrieval-augmented generation (RAG) & machine learning models for ana…'.",
+            "job_evidence": [
+              {
+                "source": "responsibility",
+                "item_index": 2,
+                "name": null,
+                "excerpt": "Building solutions leveraging existing Large Language Models (LLMs), prompt engineering, retrieval-augmented generation (RAG) & machine learning models for ana…"
+              }
+            ],
+            "profile_evidence": [
+              {
+                "source": "project",
+                "ref": "project:governance-document-rag",
+                "excerpt": "Enterprise retrieval-augmented generation platform supporting trustworthy AI responses over organisational knowledge."
+              }
+            ]
+          }
+        ],
+        "tie_group": null,
+        "tie_break_reason": null
+      },
+      {
+        "rank": 3,
+        "project_id": "payroll-diagnostics-engine",
+        "rationale": "Project 'payroll-diagnostics-engine' ranked on 1 required technology hit(s), 1 responsibility overlap(s).",
+        "factors": [
+          {
+            "kind": "required_technology",
+            "summary": "Project evidence supports required technology 'Python'.",
+            "job_evidence": [
+              {
+                "source": "technology",
+                "item_index": 3,
+                "name": "Python",
+                "excerpt": "CI/CD and DevOps practices (e.g. Jenkins, Ansible, GitHub Actions, Python, ArgoCD)"
+              }
+            ],
+            "profile_evidence": [
+              {
+                "source": "project",
+                "ref": "project:payroll-diagnostics-engine",
+                "excerpt": "Python"
+              }
+            ]
+          },
+          {
+            "kind": "responsibility_overlap",
+            "summary": "Project summary, outcomes, or technologies overlap responsibility 'Developing AI assistants to support engineering teams, including backlog management, development, test, knowledge retrieval, troubleshooting, and insights gene…'.",
+            "job_evidence": [
+              {
+                "source": "responsibility",
+                "item_index": 0,
+                "name": null,
+                "excerpt": "Developing AI assistants to support engineering teams, including backlog management, development, test, knowledge retrieval, troubleshooting, and insights gene…"
+              }
+            ],
+            "profile_evidence": [
+              {
+                "source": "project",
+                "ref": "project:payroll-diagnostics-engine",
+                "excerpt": "Rule-based operational decision-support platform that identifies payroll anomalies through deterministic business-rule evaluation."
+              }
+            ]
+          }
+        ],
+        "tie_group": null,
+        "tie_break_reason": null
+      },
+      {
+        "rank": 4,
+        "project_id": "public-holiday-entitlements",
+        "rationale": "Project 'public-holiday-entitlements' ranked on 1 required technology hit(s).",
+        "factors": [
+          {
+            "kind": "required_technology",
+            "summary": "Project evidence supports required technology 'Python'.",
+            "job_evidence": [
+              {
+                "source": "technology",
+                "item_index": 3,
+                "name": "Python",
+                "excerpt": "CI/CD and DevOps practices (e.g. Jenkins, Ansible, GitHub Actions, Python, ArgoCD)"
+              }
+            ],
+            "profile_evidence": [
+              {
+                "source": "project",
+                "ref": "project:public-holiday-entitlements",
+                "excerpt": "Python"
+              }
+            ]
+          }
+        ],
+        "tie_group": null,
+        "tie_break_reason": null
+      }
+    ],
+    "unranked_project_ids": [],
+    "summary": "Ranked 4 project(s); lead with 'operational-intelligence-copilot'. 0 project(s) had no matching factors.",
+    "insufficient_evidence": false
+  },
+  "application_strategy": {
+    "job_analysis": {
+      "posting": {
+        "raw_text": "Network Engineer- Automation & AI\n\nCapgemini Australia Pty Ltd \n2.9\n82 reviews\n·\nView all jobs\nDocklands, Melbourne VIC (Hybrid)\nEngineering - Network (Information & Communication Technology)\nFull time\nPosted 29d ago\n\nHow you match\n4 skills and credentials match your profile\n Large Language Models\n Prompt Engineering\n Retrieval Augmented Generation\n Python Programming\nShow all⁠\nCompany description:\n\nAt Capgemini Engineering, the world leader in engineering services, we bring together a global team of engineers, scientists, and architects to help the world's most innovative companies unleash their potential. From autonomous cars to life-saving robots, our digital and software technology experts think outside the box as they provide unique R&D and engineering services across all industries. Join us for a career full of opportunities. Where you can make a difference. Where no two days are the same.\n\n\n\n\n\nJob description:\n\nYour role\nAs an Access Network Engineer with a specialised focus on introducing AI & Automation to solution engineering and the delivery lifecycle, you will play a key role in building and scaling AI & Automation-powered engineering capabilities that improve efficiency, reduce manual effort, and enhance decision-making across design, testing, and deployment workflows.\n\n\nThis is a hands-on engineering role focused on delivering real, production-grade solutions—from AI assistants to end-to-end automation pipelines—that will be used daily by engineering teams, transforming the way they design, test, and deploy network solutions.\n\n\nYou will play a key role in:\n\n\nDeveloping AI assistants to support engineering teams, including backlog management, development, test, knowledge retrieval, troubleshooting, and insights generation.\nImplementing \"human-in-the-loop\" models to ensure accuracy and trust, while ensuring security and responsible AI standards are followed.\nBuilding solutions leveraging existing Large Language Models (LLMs), prompt engineering, retrieval-augmented generation (RAG) & machine learning models for analysis and prediction.\nIdentifying and automating repetitive or manual processes across design, test, and deployment workflows\n\n\n\n\n\nProfile description:\n\nYour profile\n6+ years in Layer 2 & 3 network engineering and solution development, with hands-on experience in building automation or AI/ML solutions\nHands on experience building automation workflows, scripts, or pipelines.\nHands-on experience with AI/ML or Generative AI technologies (LLMs, prompt engineering, RAG)\nExperience building AI assistants and managing the lifecycle of the assistants\nCI/CD and DevOps practices (e.g. Jenkins, Ansible, GitHub Actions, Python, ArgoCD)\nExposure in one or both the below areas:\nFTTx Access Network: GPON/XGSPON (OLT, ONT), Intent Based Networking\nFTTx EMS Applications: Containerised (AAC), Virtualised (ACS, AMS),\n\n\n\nWe offer:\n\nWhat you'll love about working here\nExperience a Positive Work-Life Balance: We prioritize your well-being with hybrid and flexible working arrangements, making it easy to balance your personal and professional life.\nOwn your Growth: Dive into endless learning opportunities with courses from Capgemini University and numerous external certifications. Benefit from digital learning platforms and specialized campuses in AI, Cloud, Data, and Sustainability. Propel your career with our award-winning Career Acceleration programs.\nThrive in an Inclusive Environment: We don't just believe in inclusion; we live it. Be part of a workplace that values authenticity, inclusion, and belonging. We encourage applications from all backgrounds, even if you don't meet every requirement. Research shows that individuals from underrepresented groups often hesitate to apply unless they meet every criterion. If you're excited about this role, we welcome your application and invite you to share what you can bring.\nWork with Integrity: Join a company recognized by Ethisphere as one of the World's most Ethical companies.\nCollaborate with Industry Leaders: Gain exposure to top global companies, including 145 of the Fortune 500, through your work with Capgemini.\nShowcase Your Skills: Participate in our internal annual global tech challenges and help address world issues.",
+        "title": "Network Engineer - Automation & AI",
+        "company": "Capgemini Australia Pty Ltd",
+        "source_url": "https://au.seek.com/job/92884969?ref=search-standalone&type=promoted&origin=showNewTab#sol=09cb503c292fd83a211a6cbd21bda3d52e7f525c"
+      },
+      "role_family": {
+        "family": "network_engineering",
+        "evidence": [
+          {
+            "excerpt": "As an Access Network Engineer with a specialised focus on introducing AI & Automation",
+            "section": "Job description"
+          }
+        ]
+      },
+      "seniority": {
+        "level": "unknown",
+        "ambiguous": false,
+        "candidate_levels": [],
+        "evidence": []
+      },
+      "technologies": [
+        {
+          "name": "Large Language Models",
+          "level": "required",
+          "evidence": [
+            {
+              "excerpt": "Building solutions leveraging existing Large Language Models (LLMs)",
+              "section": "Job description"
+            }
+          ]
+        },
+        {
+          "name": "Prompt Engineering",
+          "level": "required",
+          "evidence": [
+            {
+              "excerpt": "Building solutions leveraging existing Large Language Models (LLMs), prompt engineering",
+              "section": "Job description"
+            }
+          ]
+        },
+        {
+          "name": "Retrieval Augmented Generation",
+          "level": "required",
+          "evidence": [
+            {
+              "excerpt": "Building solutions leveraging... retrieval-augmented generation (RAG) & machine learning models",
+              "section": "Job description"
+            }
+          ]
+        },
+        {
+          "name": "Python",
+          "level": "required",
+          "evidence": [
+            {
+              "excerpt": "CI/CD and DevOps practices (e.g. Jenkins, Ansible, GitHub Actions, Python, ArgoCD)",
+              "section": "Profile description"
+            }
+          ]
+        },
+        {
+          "name": "Ansible",
+          "level": "preferred",
+          "evidence": [
+            {
+              "excerpt": "CI/CD and DevOps practices (e.g. Jenkins, Ansible, GitHub Actions, Python, ArgoCD)",
+              "section": "Profile description"
+            }
+          ]
+        },
+        {
+          "name": "GitHub Actions",
+          "level": "preferred",
+          "evidence": [
+            {
+              "excerpt": "CI/CD and DevOps practices (e.g. Jenkins, Ansible, GitHub Actions, Python, ArgoCD)",
+              "section": "Profile description"
+            }
+          ]
+        },
+        {
+          "name": "ArgoCD",
+          "level": "preferred",
+          "evidence": [
+            {
+              "excerpt": "CI/CD and DevOps practices (e.g. Jenkins, Ansible, GitHub Actions, Python, ArgoCD)",
+              "section": "Profile description"
+            }
+          ]
+        },
+        {
+          "name": "Jenkins",
+          "level": "preferred",
+          "evidence": [
+            {
+              "excerpt": "CI/CD and DevOps practices (e.g. Jenkins, Ansible, GitHub Actions, Python, ArgoCD)",
+              "section": "Profile description"
+            }
+          ]
+        }
+      ],
+      "responsibilities": [
+        {
+          "description": "Developing AI assistants to support engineering teams, including backlog management, development, test, knowledge retrieval, troubleshooting, and insights generation.",
+          "evidence": [
+            {
+              "excerpt": "Developing AI assistants to support engineering teams, including backlog management, development, test, knowledge retrieval, troubleshooting, and insights generation.",
+              "section": "Job description"
+            }
+          ]
+        },
+        {
+          "description": "Implementing 'human-in-the-loop' models to ensure accuracy and trust, while ensuring security and responsible AI standards are followed.",
+          "evidence": [
+            {
+              "excerpt": "Implementing 'human-in-the-loop' models to ensure accuracy and trust, while ensuring security and responsible AI standards are followed.",
+              "section": "Job description"
+            }
+          ]
+        },
+        {
+          "description": "Building solutions leveraging existing Large Language Models (LLMs), prompt engineering, retrieval-augmented generation (RAG) & machine learning models for analysis and prediction.",
+          "evidence": [
+            {
+              "excerpt": "Building solutions leveraging existing Large Language Models (LLMs), prompt engineering, retrieval-augmented generation (RAG) & machine learning models for analysis and prediction.",
+              "section": "Job description"
+            }
+          ]
+        },
+        {
+          "description": "Identifying and automating repetitive or manual processes across design, test, and deployment workflows.",
+          "evidence": [
+            {
+              "excerpt": "Identifying and automating repetitive or manual processes across design, test, and deployment workflows.",
+              "section": "Job description"
+            }
+          ]
+        }
+      ],
+      "compensation": {
+        "clarity": "unstated",
+        "minimum": null,
+        "maximum": null,
+        "currency": null,
+        "period": null,
+        "raw_text": null,
+        "evidence": []
+      },
+      "location": {
+        "clarity": "stated",
+        "summary": "Docklands, Melbourne VIC (Hybrid)",
+        "evidence": [
+          {
+            "excerpt": "Docklands, Melbourne VIC (Hybrid)",
+            "section": "Job description"
+          }
+        ]
+      },
+      "work_arrangement": {
+        "arrangement": "hybrid",
+        "details": null,
+        "evidence": [
+          {
+            "excerpt": "Experience a Positive Work-Life Balance: We prioritize your well-being with hybrid and flexible working arrangements",
+            "section": "Job description"
+          }
+        ]
+      },
+      "employment": {
+        "working_hours": "full_time",
+        "engagement_type": "unspecified",
+        "evidence": [
+          {
+            "excerpt": "Full time",
+            "section": "Job description"
+          }
+        ]
+      },
+      "experience_requirements": [
+        {
+          "description": "6+ years in Layer 2 & 3 network engineering and solution development, with hands-on experience in building automation or AI/ML solutions.",
+          "level": "required",
+          "minimum_years": 6.0,
+          "maximum_years": null,
+          "evidence": [
+            {
+              "excerpt": "6+ years in Layer 2 & 3 network engineering and solution development, with hands-on experience in building automation or AI/ML solutions",
+              "section": "Profile description"
+            }
+          ]
+        }
+      ]
+    },
+    "application_tier": "bronze",
+    "pursuit_posture": "do_not_prioritise",
+    "practical_value": "acceptable_opportunity",
+    "effort_level": "none",
+    "summary": "Do not prioritise significant effort for this opportunity (tier bronze, effort none). Bronze means low effort investment guidance, not an automatic never-apply decision.",
+    "reasons": [
+      {
+        "kind": "priority",
+        "summary": "Role family 'network_engineering' is outside the owner's current AI Engineering target set and is not recommended for significant effort.",
+        "importance": "material",
+        "evidence": [
+          {
+            "origin": "job_analysis",
+            "job_evidence": {
+              "source": "role_family",
+              "item_index": null,
+              "name": null,
+              "excerpt": null
+            },
+            "profile_evidence": null,
+            "assessment_dimension": null,
+            "assessment_judgment": null,
+            "portfolio_project_id": null,
+            "excerpt": null
+          }
+        ]
+      }
+    ],
+    "risks_or_gaps": [],
+    "manual_checks": [
+      {
+        "summary": "Review compensation once salary or rate information is available.",
+        "why_it_matters": "Compensation clarity can change commercial priority; no salary conflict was invented from missing data.",
+        "could_change_recommendation": true,
+        "evidence": [
+          {
+            "origin": "job_analysis",
+            "job_evidence": {
+              "source": "compensation",
+              "item_index": null,
+              "name": null,
+              "excerpt": null
+            },
+            "profile_evidence": null,
+            "assessment_dimension": null,
+            "assessment_judgment": null,
+            "portfolio_project_id": null,
+            "excerpt": null
+          }
+        ]
+      }
+    ],
+    "next_actions": [
+      {
+        "kind": "consider_reviewing_compensation",
+        "summary": "Consider reviewing compensation before investing significant effort.",
+        "related_project_id": null,
+        "evidence": [
+          {
+            "origin": "job_analysis",
+            "job_evidence": {
+              "source": "compensation",
+              "item_index": null,
+              "name": null,
+              "excerpt": null
+            },
+            "profile_evidence": null,
+            "assessment_dimension": null,
+            "assessment_judgment": null,
+            "portfolio_project_id": null,
+            "excerpt": null
+          }
+        ]
+      },
+      {
+        "kind": "consider_emphasising_portfolio_projects",
+        "summary": "Consider emphasising the strongest matched portfolio project(s) in any application materials you prepare.",
+        "related_project_id": "operational-intelligence-copilot",
+        "evidence": [
+          {
+            "origin": "portfolio_match",
+            "job_evidence": null,
+            "profile_evidence": null,
+            "assessment_dimension": null,
+            "assessment_judgment": null,
+            "portfolio_project_id": "operational-intelligence-copilot",
+            "excerpt": null
+          }
+        ]
+      },
+      {
+        "kind": "consider_logging_and_deprioritising",
+        "summary": "Consider logging the rationale and not investing significant effort.",
+        "related_project_id": null,
+        "evidence": [
+          {
+            "origin": "opportunity_assessment",
+            "job_evidence": null,
+            "profile_evidence": null,
+            "assessment_dimension": "technical",
+            "assessment_judgment": "strong",
+            "portfolio_project_id": null,
+            "excerpt": null
+          }
+        ]
+      },
+      {
+        "kind": "consider_owner_review",
+        "summary": "Consider reviewing this full strategy before taking any external action.",
+        "related_project_id": null,
+        "evidence": [
+          {
+            "origin": "opportunity_assessment",
+            "job_evidence": null,
+            "profile_evidence": null,
+            "assessment_dimension": "technical",
+            "assessment_judgment": "strong",
+            "portfolio_project_id": null,
+            "excerpt": null
+          }
+        ]
+      }
+    ],
+    "portfolio_emphasis": [
+      {
+        "project_id": "operational-intelligence-copilot",
+        "source_rank": 1,
+        "summary": "Consider emphasising 'operational-intelligence-copilot' (PortfolioMatch rank 1).",
+        "evidence": [
+          {
+            "origin": "portfolio_match",
+            "job_evidence": null,
+            "profile_evidence": null,
+            "assessment_dimension": null,
+            "assessment_judgment": null,
+            "portfolio_project_id": "operational-intelligence-copilot",
+            "excerpt": null
+          }
+        ]
+      },
+      {
+        "project_id": "governance-document-rag",
+        "source_rank": 2,
+        "summary": "Consider emphasising 'governance-document-rag' (PortfolioMatch rank 2).",
+        "evidence": [
+          {
+            "origin": "portfolio_match",
+            "job_evidence": null,
+            "profile_evidence": null,
+            "assessment_dimension": null,
+            "assessment_judgment": null,
+            "portfolio_project_id": "governance-document-rag",
+            "excerpt": null
+          }
+        ]
+      },
+      {
+        "project_id": "payroll-diagnostics-engine",
+        "source_rank": 3,
+        "summary": "Consider emphasising 'payroll-diagnostics-engine' (PortfolioMatch rank 3).",
+        "evidence": [
+          {
+            "origin": "portfolio_match",
+            "job_evidence": null,
+            "profile_evidence": null,
+            "assessment_dimension": null,
+            "assessment_judgment": null,
+            "portfolio_project_id": "payroll-diagnostics-engine",
+            "excerpt": null
+          }
+        ]
+      }
+    ],
+    "assumptions": [
+      "Compensation fit is not scored because salary/rate evidence is missing or ambiguous.",
+      "No candidate salary minimum is configured, so compensation was not treated as a hard threshold conflict."
+    ],
+    "decision_blockers": [],
+    "owner_review_required": true,
+    "insufficient_information": false
+  }
+}

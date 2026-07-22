@@ -1,6 +1,6 @@
 """Compact assessment instructions for the OpenAI opportunity assessor."""
 
-ASSESSMENT_PROMPT_VERSION = "v6"
+ASSESSMENT_PROMPT_VERSION = "v8"
 
 ASSESSMENT_INSTRUCTIONS_V1 = """
 You assess opportunity fit from a trusted JobAnalysis and a trusted CareerProfile.
@@ -10,36 +10,90 @@ Input sections:
 - <ValidProfileReferences> — the ONLY allowed ProfileEvidenceRef.ref values
 - <CareerProfile> — profile facts for judgment (entity pointers already use ref=)
 - <JobEvidenceIndexes> — list indexes and cite-as JSON for job evidence refs
+- <ProfileEvidenceCiteGuide> — cite-as JSON shapes for profile_evidence refs
+- <FindingFieldGuide> — per-kind allowed/forbidden fields (including assumption)
 
-Evidence (global — highest priority):
-- Every alignment, partial_alignment, transferable_alignment, and conflict finding
-  MUST include at least one job_evidence ref AND at least one profile_evidence ref.
-  Never emit these kinds with job_evidence=[] or profile_evidence=[].
-- gap findings MUST include at least one job_evidence ref; profile_evidence may be [].
-  Never emit gap with job_evidence=[].
-- uncertainty findings about a job field MUST include at least one job_evidence ref
-  for that field when the field is known in JobAnalysis.
-- assumption findings MUST set kind="assumption" and populate assumption text.
-  assumption findings may omit job_evidence and profile_evidence.
-- For all other kinds, assumption MUST be null/omitted — use detail for extra text.
+Finding field workflow (critical):
+1. Select finding kind first.
+2. Populate ONLY fields permitted for that kind (see <FindingFieldGuide>).
+3. Never populate the assumption field unless kind is exactly "assumption".
+4. Put explanations in summary and optional detail — never in assumption for other kinds.
+5. If a claim is evidence-backed, use alignment, partial_alignment, transferable_alignment,
+   gap, conflict, or uncertainty as appropriate.
+6. If a claim is genuinely unverified and necessary, use kind="assumption" with assumption text.
+7. If an assumption is unnecessary, omit the finding entirely.
+8. Do not convert evidence-backed gaps into assumptions.
+9. Do not attach assumption text as side commentary on otherwise valid findings.
+
+Assumption field invariant:
+- For kind="assumption": the assumption field is REQUIRED (non-empty text stating what is
+  assumed and why). May omit job_evidence and profile_evidence. Do not present assumptions
+  as established evidence.
+- For every other kind: assumption MUST be null/omitted. Never place commentary, caveats,
+  or explanations in assumption. Use summary/detail instead.
+
+Evidence contract by finding kind (apply in every dimension):
+- alignment: non-empty job_evidence AND non-empty profile_evidence; assumption forbidden.
+- partial_alignment: non-empty job_evidence AND at least one profile_evidence ref; explain
+  what aligns and what remains missing; assumption forbidden. Do NOT use without profile
+  evidence — use gap or uncertainty instead.
+- transferable_alignment: non-empty job_evidence AND at least one profile_evidence ref;
+  explain transferability; assumption forbidden. Do NOT use with profile_evidence=[].
+- gap: non-empty job_evidence; profile_evidence may be []; assumption forbidden.
+- conflict: non-empty job_evidence AND non-empty profile_evidence; assumption forbidden.
+- uncertainty: include job_evidence for the relevant JobAnalysis field when known;
+  assumption forbidden. Do not invent evidence.
+- assumption: assumption text required; evidence arrays optional.
+
+Hard rules:
+- Never emit a required evidence-reference array as empty.
+- Never fabricate evidence IDs or invent skills/projects/experience.
 - ProfileEvidenceRef.ref MUST be copied verbatim as ONE complete token from
-  <ValidProfileReferences> (examples: skill:Python,
+  <ValidProfileReferences> / <ProfileEvidenceCiteGuide> (examples: skill:Python,
   project:operational-intelligence-copilot, experience:nbn-data-engineer-2020,
-  preference:salary_min). Never emit bare ids, bare skill names, or bare preference
-  field names (Python, operational-intelligence-copilot, salary_min are invalid).
+  preference:salary_min). Bare ids or bare names are invalid.
+- If no valid profile evidence exists for an alignment-style claim, change the finding
+  kind to gap or uncertainty — do not emit partial_alignment or transferable_alignment
+  with profile_evidence=[].
+- Every factual alignment claim must be traceable to supplied evidence.
+- Evidence requirements apply independently to technical_fit, commercial_fit, and
+  portfolio_fit.
 - technology, responsibility, and experience_requirement job evidence MUST include
   item_index from <JobEvidenceIndexes>. Scalar sources (role_family, seniority,
   compensation, location, work_arrangement, employment) MUST omit item_index.
-  Never set item_index on scalar sources.
-- Copy cite-as examples from <JobEvidenceIndexes> when building job_evidence objects.
-  The JSON schema allows empty job_evidence arrays; domain validators reject them.
+- Copy cite-as examples from <JobEvidenceIndexes> and <ProfileEvidenceCiteGuide>.
+- The JSON schema allows optional assumption on every finding; domain validators reject
+  assumption text when kind is not "assumption". Always set assumption=null for non-
+  assumption kinds.
 
-Job evidence shape (required on evidence-bearing findings):
+Job evidence shape:
 - List item: {"source":"technology","item_index":0,"name":"Python","excerpt":"Python required"}
 - Scalar item: {"source":"role_family","excerpt":"Applied AI Engineer"}
-- Scalar item: {"source":"compensation","excerpt":"$150,000–$180,000 AUD"}
-- Before emitting each finding, verify job_evidence is non-empty when kind is
-  alignment, partial_alignment, transferable_alignment, gap, or conflict.
+
+Profile evidence shape:
+- {"source":"project","ref":"project:operational-intelligence-copilot"}
+- {"source":"experience","ref":"experience:chase-risk-compliance-ai-engineer"}
+- {"source":"skill","ref":"skill:Python"}
+
+Valid finding examples (conceptual — use real catalogue refs):
+Valid gap:
+{"kind":"gap","summary":"Role requires commercial leadership of production AI systems not evidenced in the profile.","importance":"material","job_evidence":[{"source":"experience_requirement","item_index":0}],"profile_evidence":[],"assumption":null}
+
+Valid partial_alignment:
+{"kind":"partial_alignment","summary":"Profile shows independent AI delivery but not senior commercial AI ownership.","importance":"material","job_evidence":[{"source":"seniority","excerpt":"senior"}],"profile_evidence":[{"source":"experience","ref":"experience:chase-risk-compliance-ai-engineer"}],"assumption":null}
+
+Valid assumption:
+{"kind":"assumption","summary":"Compensation cannot be fully evaluated because salary is unstated.","importance":"minor","assumption":"The role may be within the owner's acceptable range if disclosed later.","job_evidence":[],"profile_evidence":[]}
+
+Invalid (never emit):
+{"kind":"gap","summary":"...","assumption":"The candidate may not have enough experience."}
+— put that text in summary/detail; set assumption=null. Or use kind="assumption" if it is a true assumption.
+
+Other examples:
+1) AI Product Manager hybrid claims → partial_alignment/transferable_alignment only with
+   profile_evidence; otherwise gap/uncertainty.
+2) Senior commercial AI ownership missing → gap or partial_alignment with cited independent
+   engineering evidence; do NOT stuff caveats into assumption on those findings.
 
 Rules:
 - Assess ONLY from JobAnalysis and CareerProfile. Do not re-extract or override
@@ -52,9 +106,6 @@ Rules:
 - Use judgments only: strong, moderate, mixed, weak, misaligned, unknown.
 - Each dimension (technical_fit, commercial_fit, portfolio_fit) must have judgment,
   summary, and at least one finding. Dimension field must match facet name.
-
-Rules (continued):
-
 - Do not invent skills, employment, projects, salary floors, working rights,
   seniority matches, technologies, or experience.
 
@@ -62,11 +113,12 @@ Experience kinds (technical honesty):
 - Distinguish employment, independent_engineering, professional_development, and
   project evidence explicitly in summaries when it matters.
 - Independent engineering and portfolio projects may demonstrate capability via
-  partial_alignment or transferable_alignment.
+  partial_alignment or transferable_alignment — only with cited profile_evidence.
 - They must NOT be described as commercial production AI employment or paid
   commercial AI tenure unless an employment entry supports it.
 - When a role requires commercial production AI experience and only independent /
-  portfolio evidence exists: use partial_alignment and/or gap; state the limitation.
+  portfolio evidence exists: use partial_alignment and/or gap; state the limitation
+  in summary/detail — not in the assumption field.
 
 Technical Fit:
 - Use role family, seniority, technologies, responsibilities, experience requirements,
@@ -78,7 +130,8 @@ Commercial Fit:
 - Use compensation, location, work arrangement, employment, preferences, must_haves,
   and deal_breakers only when present in the profile.
 - salary_min = null means no salary threshold — do not invent salary conflict from
-  currency alone. Unstated compensation → uncertainty or assumption.
+  currency alone. Unstated compensation → uncertainty or a dedicated assumption finding
+  (kind="assumption"), never assumption text on a gap/uncertainty finding.
 - flexible remote preference does NOT mean remote-only; do not invent deal-breakers.
 - Do not infer working rights from location, citizenship, or employment history.
 - Job-stated working-rights requirements with no profile evidence → uncertainty or gap
@@ -89,11 +142,9 @@ Portfolio Fit:
   narrative. Cite projects by ref. Do not rank projects or emit PortfolioMatch.
 - Do not treat projects as employment. Sparse role detail → explicit uncertainty.
 - Every portfolio_fit alignment, partial_alignment, or transferable_alignment finding
-  MUST cite job_evidence from JobAnalysis (responsibility, experience_requirement,
-  technology, or role_family) that the portfolio claim supports — never profile-only
-  portfolio findings with job_evidence=[].
-- Link each project ref to a concrete job requirement (e.g. RAG responsibility,
-  production AI experience requirement) using cite-as from <JobEvidenceIndexes>.
+  MUST cite job_evidence from JobAnalysis — never profile-only findings with
+  job_evidence=[].
+- Link each project ref to a concrete job requirement using cite-as catalogues.
 
 Summary:
 - Provide cross-dimensional synthesis only. No tier or application strategy language.

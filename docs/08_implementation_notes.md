@@ -69,7 +69,7 @@ There is **no silent production default assessor** — callers must inject one.
 | Assessor | Role |
 |----------|------|
 | **`FixtureAssessor`** | Deterministic offline scaffolding. Matched by shared FR-002 fixture markers in `job_analysis.posting.raw_text`. Used in unit, functional, and golden journey tests. Never a public default. |
-| **`OpenAIAssessor`** | Package-private live path via OpenAI Responses API (`responses.parse`) into internal `OpportunityAssessmentExtraction`. Prompt version **v6**. Default model `gpt-4o-mini`. Client injectable for offline tests. Not exported from `career_intelligence.opportunity_assessment`. |
+| **`OpenAIAssessor`** | Package-private live path via OpenAI Responses API (`responses.parse`) into internal `OpportunityAssessmentExtraction`. Prompt version **v8**. Default model `gpt-4o-mini`. Client injectable for offline tests. Not exported from `career_intelligence.opportunity_assessment`. |
 
 ### Evidence model
 
@@ -130,7 +130,7 @@ Delivered:
 - `OpportunityAssessmentService` + assessor protocol
 - Deterministic assessment fixtures keyed by shared FR-002 markers
 - Functional acceptance suite (`tests/functional/test_fr003_acceptance.py`)
-- `OpenAIAssessor` with structured output and prompt versioning through **v6**
+- `OpenAIAssessor` with structured output and prompt versioning through **v8**
 - Live manual evaluation ([eval/fr003_openai_manual_eval.md](eval/fr003_openai_manual_eval.md))
 - Cross-stage golden journeys (`tests/golden/test_opportunity_assessment_user_journey.py`)
 - FR-001 → FR-002 → FR-003 offline integration
@@ -161,7 +161,7 @@ Validation catches structural failures (empty evidence, bad refs, assumption mis
 where possible. These limitations do not invalidate the offline architecture. Revisit
 through observed production evidence rather than speculative prompt churn.
 
-### Prompt evolution (v1 → v6)
+### Prompt evolution (v1 → v8)
 
 | Version | Justifying live failure |
 |---------|-------------------------|
@@ -171,8 +171,10 @@ through observed production evidence rather than speculative prompt churn.
 | v4 | Persistent empty evidence — cite-as JSON in input catalogue |
 | v5 | Portfolio-only findings; scalar `item_index` discipline |
 | v6 | Bare profile refs recurred (`Python`, project/experience ids, `salary_min`) because `<CareerProfile>` JSON exposed copyable bare identifiers; assessor input now catalogues complete refs only and rewrites profile pointers as `ref=` |
+| v7 | `partial_alignment` / `transferable_alignment` with `profile_evidence=[]` on hybrid AI Product Manager roles; per-kind evidence contract + `<ProfileEvidenceCiteGuide>` |
+| v8 | Non-assumption findings populated `assumption` text (Kogan Senior AI Engineer); `<FindingFieldGuide>` + explicit assume-only-when-kind rule |
 
-Current: `ASSESSMENT_PROMPT_VERSION = "v6"`.
+Current: `ASSESSMENT_PROMPT_VERSION = "v8"`.
 
 ### Fixture marker ownership
 
@@ -259,6 +261,8 @@ Full evaluation narrative:
 | **v3** | Tagged complete posting (`JobTitle`, `Company`, `SourceURL`, `JobDescription`); prefer clear title seniority with `"Job title"` evidence | Fixed body-only under-classification (e.g. Principal only in title) |
 | **v4** | Strict employment non-inference: set `working_hours` / `engagement_type` only from explicit wording; otherwise unspecified | Fixed invented full-time/permanent; **regressed** global evidence — known claims emitted `evidence=[]` |
 | **v5** | Compact **global** evidence rule near the top (every known claim needs an excerpt); keep employment non-inference; drop “empty evidence” negative heading that generalised badly | Restored evidence discipline without weakening employment rules |
+| **v6** | De-prioritise SEEK/job-board chrome; split grouped technologies; extract multiple employer-authored responsibilities; retain required/preferred/unspecified | Addresses manual-validation under-extraction and chrome contamination |
+| **v7** | Hybrid role-family guidance; prefer dominant profession over supporting AI/automation tech; add `network_engineering`; reinforce evidence for known families including `other` | Fixes Capgemini Network Engineer Automation & AI empty-evidence `other` failure |
 
 **Why prompt engineering was required:** OpenAI strict structured output requires the
 `evidence` field but allows empty arrays. Validators catch empty evidence after the
@@ -528,3 +532,181 @@ No percentage scores, embeddings, or retrieval infrastructure.
 - Token/phrase overlap is intentionally simple; an optional narrative layer may be considered
   later only if deterministic rationales prove too thin in live use.
 - Fixture match payloads are aligned to the golden career profile project set.
+
+---
+
+## FR-005 Application Strategy — Architecture Notes
+
+### Purpose
+
+FR-005 produces an evidence-backed `ApplicationStrategy` from trusted
+`CareerProfile`, `OpportunityAssessment`, and `PortfolioMatch` inputs. It answers how
+to pursue the opportunity (posture), how much effort is justified (tier), what to do
+next (advisory `next_actions`), and what could change the recommendation — without
+autonomous apply/skip or content generation.
+
+### Downstream consumption of siblings
+
+```
+CareerProfile + JobAnalysis
+        ├─→ OpportunityAssessment (FR-003)
+        └─→ PortfolioMatch (FR-004)
+                  ↓
+        ApplicationStrategyService
+                  ↓
+          ApplicationStrategy
+```
+
+Application Strategy does **not** redo job extraction, fit assessment, or portfolio
+ranking. Portfolio emphasis copies Portfolio Match order (cap 3); it does not rerank.
+
+### Trust boundary
+
+`ApplicationStrategyService` mirrors FR-002–004:
+
+1. Callers supply validated assessment, portfolio match, profile, and an explicit planner.
+2. Optional `SearchOperatingContext` defaults to `volume_applications_enabled=False`.
+3. Planner returns an untrusted payload that must **not** embed trusted inputs.
+4. Service rejects mismatched OpportunityAssessment / PortfolioMatch posting identity,
+   binds `job_analysis` from the assessment, validates schema and evidence refs.
+5. There is **no silent production default planner**.
+
+### Planner implementations
+
+| Planner | Role |
+|---------|------|
+| **`DeterministicStrategyPlanner`** | Production recommendation path. Explicit rule-based policy over fit judgments, role family, preferences, Portfolio Match, and volume context. Package-private; inject explicitly. |
+| **`FixtureStrategyPlanner`** | Offline canned payloads keyed to shared FR-002 markers (plus strategy-only markers). Never a public default. |
+
+### Recommendation semantics
+
+- **PursuitPosture** — primary recommendation
+- **ApplicationTier** — Platinum / Gold / Silver / **Bronze** (effort only; Bronze ≠ never apply)
+- **next_actions** — closed `consider_*` taxonomy; recommendations only
+- Final apply / skip / defer — owner decision (FR-013)
+
+### Seniority stretch policy
+
+`DeterministicStrategyPlanner` treats explicit seniority mismatch for AI-target families
+as a credible stretch, not automatic rejection:
+
+- Inputs used: `JobAnalysis.seniority` and job leadership/executive language,
+  Opportunity Assessment findings (commercial and technical), `CareerProfile.experience.kind`,
+  and commercial fit judgment.
+- Direct senior commercial AI evidence requires `employment` experience that is AI-related
+  and shows senior ownership / leadership / production markers. Independent engineering
+  does not satisfy that evidence bar.
+- Cap triggers from material OA senior/leadership gap findings **or** JobAnalysis text
+  signalling executive / commercial leadership expectations (not bare “Senior” title alone).
+- Cap: `consider` / Silver / `acceptable_opportunity`; targeted effort when technical and
+  portfolio fits are strong. Gold remains possible when matching commercial evidence exists.
+- Not a title-only or employer-specific rule.
+
+### Five-question standard
+
+Answered via existing fields: `reasons`, `risks_or_gaps`, `next_actions`, evidence refs,
+`manual_checks`, `assumptions` / `decision_blockers`.
+
+### Known limitations (accepted at closeout)
+
+1. Deterministic recommendation policy only — no mandatory OpenAI narrative synthesis.
+2. No CV / cover-letter generation, outreach, or application submission.
+3. No autonomous apply/skip commitment; `owner_review_required` is always true.
+4. Traditional Data Engineer roles are not specially optimised for the AI search.
+5. Fixture marker coverage is intentionally narrower than production-policy unit coverage;
+   prefer DeterministicStrategyPlanner for product-behaviour assertions.
+6. Soft location mismatch (e.g. Sydney hybrid vs Melbourne preference) can reduce an
+   otherwise strong opportunity from prioritise/platinum to pursue/gold — intentional.
+7. Location soft-matching normalizes punctuation, whitespace, parenthetical arrangement
+   suffixes, and common Australian state aliases (`VIC`/`Victoria`). False conflicts
+   between `Melbourne, VIC` and `Melbourne VIC (Hybrid)` were fixed after manual
+   validation Job 001; genuine city mismatches still warn.
+
+### Owner manual validation runner
+
+There was no existing full-pipeline CLI for FR-001→FR-005. Use:
+
+`scripts/run_application_strategy_manual.py`
+
+**Setup**
+
+- Install the package in editable mode (`pip install -e ".[dev]"`).
+- Live path requires `OPENAI_API_KEY` (OpenAI Python SDK).
+- Profile defaults to `data/career_profile.yaml`, or override with `CIC_PROFILE_PATH` /
+  `--profile-path`.
+
+**Live real-job command**
+
+```bash
+python scripts/run_application_strategy_manual.py \
+  --job-file path/to/real_job.txt \
+  --title "AI Engineer" \
+  --company "Example Co" \
+  --source-url "https://example.com/jobs/123" \
+  --output-json artifacts/manual_strategy.json
+```
+
+Optional volume mode:
+
+```bash
+python scripts/run_application_strategy_manual.py \
+  --job-file path/to/real_job.txt \
+  --volume-applications-enabled
+```
+
+Stdin is also supported when `--job-file` is omitted (non-interactive pipe only).
+
+**Offline smoke (explicit fixtures only)**
+
+Requires a job text containing a recognised `[CIC-FIXTURE:…]` marker. Write the file
+as UTF-8 (on PowerShell prefer Python write, not `>` redirection which may emit UTF-16):
+
+```bash
+python -c "from pathlib import Path; from career_intelligence.job_analysis.fixtures import posting_applied_ai_engineer; Path('tmp_fixture_job.txt').write_text(posting_applied_ai_engineer().raw_text, encoding='utf-8')"
+
+python scripts/run_application_strategy_manual.py \
+  --job-file tmp_fixture_job.txt \
+  --offline-fixtures \
+  --title "Applied AI Engineer" \
+  --company "Harbour Labs"
+```
+
+`--offline-fixtures` is never implied. Without it, a missing API key fails clearly.
+
+**Component modes**
+
+| Stage | Live default | Offline smoke |
+|-------|--------------|---------------|
+| Career profile | YAML via `CareerProfileService` | same |
+| Job analysis | `OpenAIJobExtractor` | `FixtureExtractor` (explicit) |
+| Opportunity assessment | `OpenAIAssessor` | `FixtureAssessor` (explicit) |
+| Portfolio match | `DeterministicMatcher` | `DeterministicMatcher` |
+| Application strategy | `DeterministicStrategyPlanner` | `DeterministicStrategyPlanner` |
+
+`FixtureStrategyPlanner` is **not** used by this runner.
+
+**Expected console output**
+
+Readable report with component modes, job identity, analysis/assessment/match summaries,
+pursuit posture, tier, practical value, effort, reasons, risks, blockers, manual checks,
+assumptions, portfolio emphasis, next actions, and evidence refs. Optional `--output-json`
+writes the full typed artifacts.
+
+**Five recommended real-job scenarios**
+
+1. Strong AI Engineer / Applied AI role (Melbourne or remote-friendly).
+2. AI role with commercial friction (e.g. Sydney onsite/hybrid).
+3. Senior/Principal production AI role (seniority stretch).
+4. Traditional Data Engineer role (outside-target / Bronze path).
+5. Sparse ad or working-rights-heavy ad (insufficient information / manual checks).
+
+Also try scenario 4 again with `--volume-applications-enabled`.
+
+**Known runner limitations**
+
+- Live quality depends on FR-002/FR-003 OpenAI extraction/assessment stability.
+- Does not persist pipeline entries, outcomes, or multi-job rankings (FR-013+).
+- Does not generate CVs, outreach, or submit applications.
+- Windows SSL environments may still need the same `truststore` workaround used by
+  `tools/manual_eval_openai_*.py` if the OpenAI client fails TLS handshake.
+
