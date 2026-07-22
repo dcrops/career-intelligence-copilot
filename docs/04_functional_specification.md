@@ -71,7 +71,7 @@ This section defines what Phase 2 fit dimensions and application tiers mean. It 
 
 **Commercial Fit** — Alignment between the role and the candidate's commercial goals and constraints. Evidence includes salary range, employment type, location, company stage, and role scope relative to stated preferences and career direction.
 
-**Portfolio Fit** — Alignment between the role's requirements and the candidate's portfolio projects. Evidence comes from project descriptions and the specific technologies, domains, or problem types the role emphasises. Informs which projects to lead with if the user pursues the opportunity.
+**Portfolio Fit** — Alignment between the role's requirements and the candidate's portfolio projects as a whole. Evidence comes from project descriptions and the specific technologies, domains, or problem types the role emphasises. Answers whether the portfolio supports the role. It does **not** rank which projects to lead with — that is FR-004 Portfolio Matching.
 
 Where evidence is unavailable (e.g. salary not listed), the assessment must state assumptions explicitly rather than infer silently.
 
@@ -263,15 +263,43 @@ Acceptance Criteria (Phase 2)
 
 **Phase:** 2
 
-The system shall identify the portfolio projects that best align with each opportunity.
+**Status:** Implemented.
+
+The system shall identify the portfolio projects that best align with each opportunity
+and produce a separate ranked **Portfolio Match** artifact.
+
+Given a trusted Career Profile and a trusted Job Analysis, Portfolio Matching answers:
+which projects should be highlighted for this role, in what order, and why?
+
+Portfolio Matching is produced through `PortfolioMatchingService`, which is the public
+trust boundary. A matcher returns untrusted structured data only; the service validates
+that payload, binds the caller-supplied Job Analysis, checks project coverage and
+evidence-reference integrity, and returns a trusted Portfolio Match. Deterministic
+matching is the production ranking path; fixture matching is offline test scaffolding
+and is never a public default.
+
+FR-004 is a **sibling** of FR-003 Opportunity Assessment. Both consume Career Profile +
+Job Analysis. Portfolio Match does **not** feed, modify, or depend on
+`OpportunityAssessment.portfolio_fit`. Portfolio Fit answers whether the portfolio
+supports the role; Portfolio Match answers which projects should lead.
+
+### Explicitly not produced by FR-004
+
+Apply / Skip / Defer recommendations, application tiers, effort guidance, CV strategy,
+outreach strategy, percentage match scores, or Opportunity Assessment fields.
 
 Acceptance Criteria
 
 ✓ Projects ranked.
 
-✓ Ranking explained.
+✓ Ranking explained with evidence-backed factors citing job analysis and
+  `project:<id>` profile references.
+
+✓ Zero-overlap projects are unranked; sparse jobs with no usable technologies or
+  responsibilities report insufficient evidence rather than inventing rankings.
 
 ---
+
 
 ## FR-005 Application Strategy
 

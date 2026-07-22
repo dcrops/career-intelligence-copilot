@@ -446,3 +446,85 @@ deferred, not defects. Evaluate against the dual-value test before promoting any
 - **Typed section access.** `CareerProfileService.get_section` returns `Any`. Downstream
   consumers should prefer `load()` for full typing; consider typed accessors or overloads if a
   dynamic section API proves necessary.
+
+---
+
+## FR-004 Portfolio Matching — Architecture Notes
+
+### Purpose
+
+FR-004 ranks portfolio projects for a trusted `CareerProfile` and `JobAnalysis`, producing
+a separate `PortfolioMatch` artifact. It answers which projects should lead, in what order,
+and why. It does **not** assess overall portfolio fit, assign tiers, or recommend Apply/Skip.
+
+### Sibling boundary with FR-003
+
+| Concern | FR-003 Portfolio Fit | FR-004 Portfolio Match |
+|---------|----------------------|------------------------|
+| Question | Does the portfolio support the role? | Which projects should lead, and why? |
+| Inputs | CareerProfile + JobAnalysis | CareerProfile + JobAnalysis |
+| Dependency | None on Portfolio Match | None on OpportunityAssessment |
+| Output facet | `portfolio_fit` dimension | Ranked `PortfolioMatch` artifact |
+
+Do not modify, replace, or repurpose `OpportunityAssessment.portfolio_fit` for ranking.
+
+### Inputs and output
+
+| Direction | Artifact |
+|-----------|----------|
+| Input | `CareerProfile` from `CareerProfileService` |
+| Input | `JobAnalysis` from `JobAnalysisService` |
+| Output | `PortfolioMatch` with `ranked_projects`, `unranked_project_ids`, `summary`, `insufficient_evidence`, and the caller-owned `JobAnalysis` |
+
+### Service composition
+
+```
+CareerProfileService → CareerProfile
+JobAnalysisService   → JobAnalysis
+
+CareerProfile + JobAnalysis
+        ↓
+PortfolioMatchingService
+        ↓
+PortfolioMatch
+```
+
+Opportunity Assessment is not on this path.
+
+### Trust boundary
+
+`PortfolioMatchingService` mirrors FR-002/FR-003:
+
+1. Callers supply validated `JobAnalysis` and `CareerProfile` plus an explicit matcher.
+2. The matcher returns an untrusted payload that must **not** include `job_analysis`,
+   `profile`, or `career_profile`.
+3. The service binds the original `JobAnalysis`, validates schema, and checks project
+   coverage plus evidence-reference integrity.
+4. There is **no silent production default matcher**.
+
+### Matcher implementations
+
+| Matcher | Role |
+|---------|------|
+| **`DeterministicMatcher`** | Production ranking path. Technology phrase matching and responsibility/demonstrates token overlap; ordered by required → preferred → demonstrates → responsibility → unspecified → stable `project_id`. Package-private; inject explicitly. |
+| **`FixtureMatcher`** | Offline canned payloads keyed to shared FR-002 markers (plus `MARKER_PORTFOLIO_TIE`). Never a public default. |
+
+### Ranking behaviour (deterministic)
+
+- Match job technologies against project `technologies`, `demonstrates`, `summary`, `outcomes`.
+- Match job responsibilities against project `demonstrates`, `summary`, `outcomes`, `technologies`.
+- Emit explainable `RankingFactor` entries with job + `project:<id>` profile evidence.
+- Zero-factor projects go to `unranked_project_ids`.
+- Empty technologies and responsibilities → `insufficient_evidence=True`, all projects unranked.
+- Equal primary keys share `tie_group`; display order uses stable `project_id` ascending.
+
+No percentage scores, embeddings, or retrieval infrastructure.
+
+### Known limitations
+
+- Shared baseline technologies (e.g. Python across all projects) can produce honest ties when
+  the job does not distinguish further stack evidence — accepted for non-target role families
+  such as Data Engineer; do not invent distinguishing evidence.
+- Token/phrase overlap is intentionally simple; an optional narrative layer may be considered
+  later only if deterministic rationales prove too thin in live use.
+- Fixture match payloads are aligned to the golden career profile project set.

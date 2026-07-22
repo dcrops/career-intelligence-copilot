@@ -75,14 +75,13 @@ The first implementation decision is now recorded in
 
 ### Phase 2 — Job Intelligence (MVP)
 
-**Status:** In progress. FR-001 Career Profile, FR-002 Job Analysis, and FR-003
-Opportunity Assessment are **complete**. FR-002 manual evaluation closed with extraction
-prompt v5. FR-003 closed with assessment prompt **v6**, offline golden journeys, and live
-manual evaluation at **PARTIAL PASS** (representative cases `applied-ai` and
-`senior-ai-production` confirmed passing after the v6 input-presentation fix) — see
+**Status:** In progress. FR-001 Career Profile, FR-002 Job Analysis, FR-003
+Opportunity Assessment, and FR-004 Portfolio Matching are **complete**. FR-002 manual
+evaluation closed with extraction prompt v5. FR-003 closed with assessment prompt **v6**,
+offline golden journeys, and live manual evaluation at **PARTIAL PASS** — see
 [eval/fr002_openai_manual_eval.md](eval/fr002_openai_manual_eval.md) and
 [eval/fr003_openai_manual_eval.md](eval/fr003_openai_manual_eval.md). Next decision-loop
-stage: FR-004 Portfolio Matching.
+stage: FR-005 Application Strategy.
 
 
 
@@ -104,7 +103,7 @@ stage: FR-004 Portfolio Matching.
 
 - Opportunity assessment — Technical, Commercial, and Portfolio Fit (FR-003) — **Complete**
 
-- Portfolio matching (FR-004)
+- Portfolio matching (FR-004) — **Complete**
 
 - Application tiering — Platinum, Gold, Silver, Skip — with effort guidance (FR-005)
 

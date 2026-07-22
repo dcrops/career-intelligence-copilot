@@ -116,3 +116,21 @@ FR-003 adds:
 Shared fixture markers in `job_analysis` link deterministic extraction to deterministic
 assessment. Live OpenAI evaluation is manual only
 ([eval/fr003_openai_manual_eval.md](eval/fr003_openai_manual_eval.md)) and must not run in CI.
+
+---
+
+## FR-004 Portfolio Matching coverage
+
+FR-004 adds:
+
+- unit tests under `tests/unit/portfolio_matching/` (models, service, refs,
+  DeterministicMatcher, FixtureMatcher, golden-profile scenarios);
+- `tests/functional/test_fr004_acceptance.py` for the public service contract; and
+- `tests/golden/test_portfolio_matching_user_journey.py` for the offline
+  CareerProfile → JobAnalysis → PortfolioMatch journey.
+
+Product-behaviour assertions prefer `DeterministicMatcher`. `FixtureMatcher` is used for
+service-composition isolation (including an explicit tie-contract marker). Shared FR-002
+fixture markers link extraction to fixture matching. FR-004 does not require
+OpportunityAssessment and must not emit Apply/Skip, tiers, CV strategy, or
+`portfolio_fit` fields.

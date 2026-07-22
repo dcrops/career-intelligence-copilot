@@ -24,8 +24,8 @@ The repository — not conversation history — is the project's long-term memor
 Career Intelligence Copilot is a decision-support system for job search — not an application automation tool.
 
 **Current phase:** Phase 2 Job Intelligence implementation. FR-001 Career Profile,
-FR-002 Job Analysis, and FR-003 Opportunity Assessment are implemented; later
-decision-loop stages (FR-004+) remain in progress.
+FR-002 Job Analysis, FR-003 Opportunity Assessment, and FR-004 Portfolio Matching are
+implemented; later decision-loop stages (FR-005+) remain in progress.
 
 **Implementation foundation:** Python 3.11+, Pydantic, YAML storage, and the public profile
 service boundary are recorded in

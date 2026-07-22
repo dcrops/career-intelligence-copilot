@@ -80,7 +80,9 @@ Current focus:
 
 - FR-003 Opportunity Assessment — complete
 
-- FR-004 Portfolio Matching — next
+- FR-004 Portfolio Matching — complete
+
+- FR-005 Application Strategy — next
 
 - Completing the Phase 2 decision loop without expanding scope
 
@@ -95,7 +97,8 @@ FR-001 Career Profile
         ↓
 FR-002 Job Analysis
         ↓
-FR-003 Opportunity Assessment
+        ├─→ FR-003 Opportunity Assessment
+        └─→ FR-004 Portfolio Matching
 ```
 
 
@@ -170,7 +173,7 @@ Start with [docs/00_repository_guide.md](docs/00_repository_guide.md).
 
 - [docs/02_problem_statement.md](docs/02_problem_statement.md)
 
-- [docs/08_implementation_notes.md](docs/08_implementation_notes.md) — FR-001–FR-003 implementation notes
+- [docs/08_implementation_notes.md](docs/08_implementation_notes.md) — FR-001–FR-004 implementation notes
 
 - [docs/eval/fr003_openai_manual_eval.md](docs/eval/fr003_openai_manual_eval.md) — FR-003 live eval (PARTIAL PASS)
 

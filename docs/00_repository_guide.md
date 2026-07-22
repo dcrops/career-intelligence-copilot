@@ -21,9 +21,10 @@ Career Intelligence Copilot has three coexisting layers:
 
 The repository is simultaneously a career tool, a portfolio project, and a Cursor learning laboratory. See [03_product_vision.md](03_product_vision.md) § Project Objectives.
 
-Phase 2 implementation has started. FR-001 Career Profile, FR-002 Job Analysis, and
-FR-003 Opportunity Assessment are implemented; later decision-loop stages (FR-004+) remain
-to be built. Architecture decisions are recorded under `docs/adr/`.
+Phase 2 implementation has started. FR-001 Career Profile, FR-002 Job Analysis,
+FR-003 Opportunity Assessment, and FR-004 Portfolio Matching are implemented; later
+decision-loop stages (FR-005+) remain to be built. Architecture decisions are recorded
+under `docs/adr/`.
 
 ---
 
@@ -38,7 +39,7 @@ to be built. Architecture decisions are recorded under `docs/adr/`.
 | [05_engineering_principles.md](05_engineering_principles.md) | **Authoritative — engineering tradeoffs** | How to make implementation decisions |
 | [06_domain_model.md](06_domain_model.md) | **Authoritative — domain concepts** | Entities, decision loop, operational mapping |
 | [07_testing_strategy.md](07_testing_strategy.md) | **Authoritative — testing** | Test layers, regression philosophy, future suite growth |
-| [08_implementation_notes.md](08_implementation_notes.md) | Supporting | Implementation architecture notes, provenance, deviations, FR-002/FR-003 verification |
+| [08_implementation_notes.md](08_implementation_notes.md) | Supporting | Implementation architecture notes, provenance, deviations, FR-002/FR-003/FR-004 verification |
 | [eval/fr002_openai_manual_eval.md](eval/fr002_openai_manual_eval.md) | Supporting | FR-002 live OpenAI evaluation record |
 | [eval/fr003_openai_manual_eval.md](eval/fr003_openai_manual_eval.md) | Supporting | FR-003 live OpenAI evaluation record (PARTIAL PASS) |
 | [01_executive_summary.md](01_executive_summary.md) | Supporting | Quick narrative overview |
@@ -109,9 +110,10 @@ The operational layer is the domain the future system must serve. Phase 2 pipeli
 **Approved:** Phase 2 Job Intelligence MVP scope
 
 **Implemented:** FR-001 Career Profile → FR-002 Job Analysis → FR-003 Opportunity Assessment
-(**Complete**; FR-003 live eval **PARTIAL PASS**, assessment prompt v6)
+(**Complete**; FR-003 live eval **PARTIAL PASS**, assessment prompt v6) and FR-004 Portfolio
+Matching (**Complete**; deterministic ranking + offline golden journeys)
 
-**In progress:** Remaining Phase 2 decision loop, beginning with FR-004 Portfolio Matching
+**In progress:** Remaining Phase 2 decision loop, beginning with FR-005 Application Strategy
 
 See [10_roadmap.md](10_roadmap.md) for phase detail and Phase 2 exit criteria.
 

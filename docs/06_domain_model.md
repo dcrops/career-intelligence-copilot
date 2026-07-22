@@ -19,7 +19,8 @@ Job Posting (input)
       ↓
 Job Analysis
       ↓
-Opportunity Assessment ← Portfolio Matching
+      ├─→ Opportunity Assessment   (whether the role fits — FR-003)
+      └─→ Portfolio Matching       (which projects to lead with — FR-004)
       ↓
 Application Strategy (tier + effort)
       ↓
@@ -30,7 +31,10 @@ Outcome Logging
 Ranked Comparison (among open opportunities)
 ```
 
-Each stage produces a durable artifact that downstream stages and future assessments can reference. The loop repeats for every new opportunity.
+Opportunity Assessment and Portfolio Matching are sibling consumers of Career Profile +
+Job Analysis. Neither feeds or modifies the other. Each stage produces a durable artifact
+that downstream stages and future assessments can reference. The loop repeats for every
+new opportunity.
 
 ---
 
@@ -137,7 +141,22 @@ deferred.
 
 **Maps to:** FR-004
 
-A ranked list of the candidate's portfolio projects aligned to the opportunity, with explained ordering. Feeds Portfolio Fit within the assessment.
+**Status:** Implemented.
+
+A ranked list of the candidate's portfolio projects aligned to the opportunity, with
+explained ordering and evidence-backed ranking factors. Produced by
+`PortfolioMatchingService` from a trusted `CareerProfile` and `JobAnalysis`. Projects
+with no matching factors remain unranked; jobs without usable technologies or
+responsibilities report insufficient evidence.
+
+Portfolio Match is independent of Opportunity Assessment. It does **not** feed or modify
+Portfolio Fit. Portfolio Fit (FR-003) answers whether the portfolio supports the role;
+Portfolio Match answers which projects should lead, in what order, and why.
+
+**Implementation:** Typed domain models and `PortfolioMatchingService` live in
+`src/career_intelligence/portfolio_matching/`. `DeterministicMatcher` is the production
+ranking path; `FixtureMatcher` is offline scaffolding keyed to shared FR-002 fixture
+markers. Neither is exported as a public default — callers inject a matcher explicitly.
 
 ---
 
@@ -176,14 +195,18 @@ A prioritised ordering of open assessed opportunities to support effort allocati
 | From | To | Relationship |
 |------|-----|--------------|
 | Career Profile | Opportunity Assessment | Profile evidence cited in fit analysis |
+| Career Profile | Portfolio Match | Projects ranked with `project:<id>` evidence |
 | Job Posting | Job Analysis | Analysis extracts structure from posting |
 | Job Analysis | Opportunity Assessment | Extracted requirements inform fit dimensions |
-| Portfolio Match | Opportunity Assessment | Ranking informs Portfolio Fit |
+| Job Analysis | Portfolio Match | Technologies and responsibilities drive ranking |
 | Opportunity Assessment | Application Strategy | Fit dimensions drive tier recommendation |
 | Application Strategy | User Decision | User accepts, overrides, or defers tier |
 | User Decision | Outcome Record | Decision and subsequent events logged |
 | Outcome Record | Opportunity Assessment | History informs future assessments (over time) |
 | Pipeline Entry | Ranked Comparison | Open entries compared for prioritisation |
+
+Portfolio Match and Opportunity Assessment are siblings. There is no
+Portfolio Match → Opportunity Assessment dependency.
 
 ---
 

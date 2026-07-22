@@ -4,6 +4,31 @@ Records product strategy and engineering knowledge changes. Routine typo fixes a
 
 ---
 
+## Version 1.6
+
+### FR-004 Portfolio Matching complete
+
+- Implemented the portfolio-matching domain model (`PortfolioMatch`,
+  `RankedPortfolioProject`, `RankingFactor`) with evidence-backed factors via local
+  `JobEvidenceRef` / `ProfileEvidenceRef` shapes and stable `project:<id>` references.
+- Added `PortfolioMatchingService` as the public trust boundary: matchers return
+  untrusted payloads; the service binds caller-owned `JobAnalysis`, validates schema,
+  enforces full project coverage, and rejects invalid evidence references.
+- Added package-private `DeterministicMatcher` (production ranking path): technology
+  phrase overlap and responsibility/demonstrates token overlap; ordered by required →
+  preferred → demonstrates → responsibility → unspecified → stable `project_id`.
+- Added package-private `FixtureMatcher` and shared FR-002 marker builders (plus
+  `MARKER_PORTFOLIO_TIE`) for offline service-composition tests.
+- Clarified sibling boundary with FR-003: Portfolio Fit answers whether the portfolio
+  supports the role; Portfolio Match answers which projects should lead. Neither feeds
+  or modifies the other; both consume CareerProfile + JobAnalysis only.
+- Accepted honest Data Engineer ties when only shared Python evidence exists; do not
+  invent SQL/Spark/dbt distinctions the profile does not claim.
+- Added functional acceptance and golden journeys for CareerProfile → JobAnalysis →
+  PortfolioMatch.
+- Explicitly excluded from FR-004: Apply/Skip/Defer, tiers, effort, CV/outreach strategy,
+  percentage scores, and any dependency on OpportunityAssessment.
+
 ## Version 1.5
 
 ### FR-003 Opportunity Assessment complete
