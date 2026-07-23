@@ -35,8 +35,7 @@ This specification describes the full platform capability set. Delivery is phase
 
 ### Phase 2 — Out of Scope
 
-- FR-006 CV Generation (deferred; tailor-yes/no guidance may be added as decision support)
-- FR-007 Cover Letter
+- Cover letter generation (FR-007) and later job-search platform capabilities below
 - FR-008 Recruiter Intelligence
 - FR-009 Interview Preparation
 - FR-010 Career Dashboard (full)
@@ -44,6 +43,16 @@ This specification describes the full platform capability set. Delivery is phase
 - FR-012 Daily Prioritisation (cross-domain)
 - Automated job discovery or external platform integration
 - Interview Probability and Recruiter Confidence scoring (insufficient data at launch)
+
+**Note:** FR-006 CV Generation was originally deferred from Phase 2 exit criteria and
+was later **completed** as an owner-sequenced post–Phase 2 capability. It is not a Phase 2
+exit blocker. See FR-006 below.
+
+**Phase 2 close-out progress:** M1 Opportunity persistence is **complete** (structured
+store under `data/opportunities/`; permanent `opp_<ULID>` ids; immutable artifact
+snapshots). Outcome logging (FR-013), CSV export, and ranked comparison remain for
+M2–M4. See [10_roadmap.md](10_roadmap.md) and
+[adr/002_opportunity_persistence.md](adr/002_opportunity_persistence.md).
 
 ### Post–Phase 2
 
@@ -417,13 +426,73 @@ Acceptance Criteria
 
 ## FR-006 CV Generation
 
-**Phase:** Post–Phase 2
+**Phase:** Post–Phase 2  
+**Status:** Completed
 
 The system shall generate tailored CVs when tailoring is materially beneficial and approved by the user.
 
+### Architecture
+
+```
+Career Profile (FR-001)
+        ↓
+Job Analysis (FR-002)
+        ↓
+Opportunity Assessment (FR-003)  +  Portfolio Matching (FR-004)
+        ↓
+Application Strategy (FR-005)
+        ↓
+Deterministic Tailoring Plan (FR-006 Phase A)
+        ↓
+CV Generation / Markdown render (FR-006 Phase B)
+        ↓
+Optional OpenAI Summary Rewrite (FR-006 Phase C)
+        ↓
+Owner Review (mandatory before external use)
+```
+
+**Invariants**
+
+- The deterministic Tailoring Plan is authoritative for emphasis (skills, projects,
+  themes, experience scope).
+- The LLM (when enabled) rewrites Professional Summary **presentation only** from
+  plan-derived structured inputs. It must not analyse the raw job description, rank
+  projects, select technologies, or invent unsupported evidence.
+- Fail-soft: if OpenAI rewrite fails or fails validation, the CV is still produced
+  using the Career Profile summary; `summary_source` records
+  `fallback_profile_copy`.
+
+### Delivery slices
+
+1. **Phase A** — Deterministic `TailoringPlan` (emphasis decisions only).
+2. **Phase B** — Deterministic `TailoredCv` render of an approved plan.
+3. **Phase C** — Optional OpenAI rewrite of the Professional Summary
+   (`rewrite_summary=True`; default off). Prompt files are versioned on disk
+   (`cv_summary_v1.md` historical; **`cv_summary_v2.md` current**).
+
+### Prompt versioning
+
+| Version | File | Role |
+|---------|------|------|
+| v1 | `src/career_intelligence/cv_generation/prompts/cv_summary_v1.md` | Historical baseline |
+| v2 | `src/career_intelligence/cv_generation/prompts/cv_summary_v2.md` | Current — employer-relevant lead, capabilities before chronology/project names |
+
+Bump `SUMMARY_PROMPT_VERSION` and add a new `cv_summary_vN.md` file for future prompt
+changes. Do not embed production prompts in Python source. Keep prior versions for diff
+and regression comparison.
+
+### Out of scope for FR-006 (do not implement as “Phase D”)
+
+Dynamic layouts, recruiter-focused section reordering, adaptive rendering, engineering
+highlight blocks, and richer document presentation formats are **not** part of FR-006.
+FR-006 decides **what** content belongs on the CV. If real-world usage later justifies
+smarter presentation, consider a **new** functional requirement (for example a future
+Intelligent Document Presentation FR) rather than extending FR-006. Do not create that
+FR unless the owner explicitly requests it.
+
 Acceptance Criteria
 
-✓ Summary rewritten.
+✓ Summary rewritten (Phase C, opt-in; otherwise profile summary is copied).
 
 ✓ Skills reordered.
 
@@ -432,6 +501,9 @@ Acceptance Criteria
 ✓ Truthfulness maintained.
 
 ✓ Output requires user review before use.
+
+Manual validation: [eval/fr006_manual_validation.md](eval/fr006_manual_validation.md).
+Design: [eval/fr006_phase_c_design.md](eval/fr006_phase_c_design.md).
 
 ---
 

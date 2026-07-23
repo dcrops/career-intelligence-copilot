@@ -34,7 +34,8 @@ Examples include domain validation, serialization, error translation, and persis
 round-trips. Unit tests may import internal modules. They may be revised during refactoring
 when public behaviour is preserved.
 
-Unit tests live under `tests/unit/`, grouped by capability.
+Unit tests live under `tests/unit/`, grouped by capability
+(including `tests/unit/opportunities/` for M1 persistence).
 
 ---
 
@@ -158,3 +159,18 @@ autonomous apply decisions, and must keep `owner_review_required=True`.
 Seniority-aware stretch policy is covered in
 `tests/unit/application_strategy/test_seniority_mismatch.py` (cap vs unlock, salary-only
 mixed, unknown seniority, independent engineering vs employment, non-AI senior roles).
+
+---
+
+## FR-006 CV Generation coverage
+
+FR-006 is **complete**. Coverage includes:
+
+- unit tests under `tests/unit/cv_generation/` (planner, generation service, fidelity,
+  Phase C rewriter/validation/runtime prep, corpus regression);
+- golden profile journey assertions for experience and skill boundaries; and
+- owner manual validation via `scripts/run_cv_generation_manual.py`
+  ([eval/fr006_manual_validation.md](eval/fr006_manual_validation.md)).
+
+Phase C OpenAI calls are opt-in (`--rewrite-summary`) and fail-soft. Automated tests
+use `FixtureSummaryRewriter` and fake OpenAI clients — no network in CI.

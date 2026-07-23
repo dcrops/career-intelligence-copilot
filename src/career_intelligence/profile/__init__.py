@@ -1,5 +1,12 @@
 """Public API for the career-profile capability."""
 
+from .evidence import (
+    SkillEvidenceKind,
+    evidence_strength_rank,
+    resolve_skill_evidence_refs,
+    strongest_evidence_kind,
+    strongest_evidence_kind_for_capability,
+)
 from .errors import (
     ErrorDetail,
     ProfileError,
@@ -18,6 +25,7 @@ from .models import (
     ProfileSummary,
     Project,
     Skill,
+    SkillEvidenceRef,
     Skills,
 )
 from .sections import ProfileSection
@@ -40,6 +48,12 @@ __all__ = [
     "ProfileValidationError",
     "Project",
     "Skill",
+    "SkillEvidenceKind",
+    "SkillEvidenceRef",
     "Skills",
     "UnknownSectionError",
+    "evidence_strength_rank",
+    "resolve_skill_evidence_refs",
+    "strongest_evidence_kind",
+    "strongest_evidence_kind_for_capability",
 ]

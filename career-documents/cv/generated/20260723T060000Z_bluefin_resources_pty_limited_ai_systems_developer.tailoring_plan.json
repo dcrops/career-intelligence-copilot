@@ -1,0 +1,788 @@
+{
+  "job_analysis": {
+    "posting": {
+      "raw_text": "AI Systems Developer\n\nBluefin Resources Pty Limited \nView all jobs\n\nMelbourne VIC (Hybrid)\nEngineering - Software (Information & Communication Technology)\nFull time\nPosted 20h ago\n•\nMedium application volume\n\nHow you match\n1 skill or credential matches your profile\n Systems Design\nShow all⁠\nAI Systems DeveloperMelbourne CBD | Hybrid (4 days office / 1 day WFH)\nSalary: Competitive package\nBuild and operate the AI systems shaping the future of fintech.\n\nWe’re partnering with an innovative Melbourne-based fintech that is transforming how businesses manage invoice payments and cash flow.\n\nAs they continue building an AI-native platform, they are looking for an AI Systems Developer to help take their AI capabilities from early development through to reliable, production-ready systems.\nThis is a unique opportunity for an engineer who enjoys the intersection of software engineering, artificial intelligence and platform reliability — someone who doesn’t just want to experiment with AI, but wants to build, deploy and own systems that create real business impact.\n\nThe Role: As an AI Systems Developer, you will be responsible for building and operating the production AI stack.\n\nYou’ll work across:\nLLM-powered applications\nAI agents and automation workflows\nData pipelines and retrieval systems\nModel serving and AI infrastructure\nMonitoring, observability and performance optimisation\nOnce AI capabilities are live, you’ll own their reliability — ensuring systems remain scalable, secure, cost-effective and performant.\n\nThis role sits within the Data, AI & Systems function and will work closely with engineering and product teams to safely embed AI into critical business processes.\n\nWhat You’ll Be Doing:\n\nBuild AI capabilities into production\nDesign, develop and deploy AI-powered features and services\nBuild data pipelines, retrieval systems and AI agents\nWork with LLM applications and model-serving infrastructure\nImprove engineering practices to safely integrate AI into the core platform\nOwn reliability and performance\nMonitor AI systems across uptime, latency, cost and accuracy\nBuild observability across metrics, logs, tracing and evaluations\nIdentify performance issues, model degradation and system failures\nOptimise AI systems for scale and efficiency\nSupport production operations\nParticipate in incident response and troubleshooting\nDevelop runbooks, processes and safeguards\nImplement safe deployment, rollback and change-management practices\nImprove systems to prevent recurring issues\nAbout You\n\nYou’re a strong software engineer who enjoys owning systems beyond just writing code.\nYou’ll ideally have:\n5+ years of software engineering experience\nExperience operating production systems at scale\nHands-on experience with AI/LLM applications, agents or ML systems\nStrong AWS experience\nInfrastructure-as-Code experience (Terraform preferred)\nExperience building data pipelines and working with databases (PostgreSQL preferred)\nExperience with monitoring, observability and incident response\nStrong understanding of reliability, scalability and system design\nExperience with the following would be advantageous:\nRuby on Rails\nDomain Driven Design\nFinancial services or other high-reliability industries\nKubernetes / cloud-native architectures\nWhy Join? This is an opportunity to be part of one of Australia’s most exciting AI-driven fintech journeys.\nYou’ll have the chance to:\nBuild AI systems from the ground up\nOwn technology that directly impacts customers and business outcomes\nWork with modern AI tooling and infrastructure\nShape how AI is implemented safely in a financial platform\nJoin a collaborative, high-performing engineering team\nAdditional benefits include:\nCompetitive salary and benefits package\nHybrid working model (Monday–Thursday in the Melbourne CBD office, Friday WFH)\nModern office environment\nRegular team events and interstate off-sites\nClear opportunities for growth and progression\nEmployer questions\nYour application will include the following questions:\nWhich of the following statements best describes your right to work in Australia?\nHow many years' experience do you have as a Systems Developer?",
+      "title": "AI Systems Developer",
+      "company": "Bluefin Resources Pty Limited",
+      "source_url": "https://au.seek.com/job/93487188?ref=recom-homepage&pos=1&origin=showNewTab#sol=082fc4e9ff6b3ed7c17c0602869ec5e7b80c81a8"
+    },
+    "role_family": {
+      "family": "ai_engineering",
+      "evidence": [
+        {
+          "excerpt": "Build and operate the AI systems shaping the future of fintech.",
+          "section": "Job description"
+        }
+      ]
+    },
+    "seniority": {
+      "level": "unknown",
+      "ambiguous": false,
+      "candidate_levels": [],
+      "evidence": []
+    },
+    "technologies": [
+      {
+        "name": "LLM",
+        "level": "required",
+        "evidence": [
+          {
+            "excerpt": "LLM-powered applications",
+            "section": "Job description"
+          }
+        ]
+      },
+      {
+        "name": "AWS",
+        "level": "required",
+        "evidence": [
+          {
+            "excerpt": "Strong AWS experience",
+            "section": "Job description"
+          }
+        ]
+      },
+      {
+        "name": "Terraform",
+        "level": "preferred",
+        "evidence": [
+          {
+            "excerpt": "Infrastructure-as-Code experience (Terraform preferred)",
+            "section": "Job description"
+          }
+        ]
+      },
+      {
+        "name": "PostgreSQL",
+        "level": "preferred",
+        "evidence": [
+          {
+            "excerpt": "Experience building data pipelines and working with databases (PostgreSQL preferred)",
+            "section": "Job description"
+          }
+        ]
+      },
+      {
+        "name": "Ruby on Rails",
+        "level": "preferred",
+        "evidence": [
+          {
+            "excerpt": "Experience with the following would be advantageous: Ruby on Rails",
+            "section": "Job description"
+          }
+        ]
+      },
+      {
+        "name": "Kubernetes",
+        "level": "preferred",
+        "evidence": [
+          {
+            "excerpt": "Kubernetes / cloud-native architectures",
+            "section": "Job description"
+          }
+        ]
+      }
+    ],
+    "responsibilities": [
+      {
+        "description": "Build AI capabilities into production",
+        "evidence": [
+          {
+            "excerpt": "Build AI capabilities into production",
+            "section": "Job description"
+          }
+        ]
+      },
+      {
+        "description": "Design, develop and deploy AI-powered features and services",
+        "evidence": [
+          {
+            "excerpt": "Design, develop and deploy AI-powered features and services",
+            "section": "Job description"
+          }
+        ]
+      },
+      {
+        "description": "Build data pipelines, retrieval systems and AI agents",
+        "evidence": [
+          {
+            "excerpt": "Build data pipelines, retrieval systems and AI agents",
+            "section": "Job description"
+          }
+        ]
+      },
+      {
+        "description": "Work with LLM applications and model-serving infrastructure",
+        "evidence": [
+          {
+            "excerpt": "Work with LLM applications and model-serving infrastructure",
+            "section": "Job description"
+          }
+        ]
+      },
+      {
+        "description": "Improve engineering practices to safely integrate AI into the core platform",
+        "evidence": [
+          {
+            "excerpt": "Improve engineering practices to safely integrate AI into the core platform",
+            "section": "Job description"
+          }
+        ]
+      },
+      {
+        "description": "Own reliability and performance",
+        "evidence": [
+          {
+            "excerpt": "Own reliability and performance",
+            "section": "Job description"
+          }
+        ]
+      },
+      {
+        "description": "Monitor AI systems across uptime, latency, cost and accuracy",
+        "evidence": [
+          {
+            "excerpt": "Monitor AI systems across uptime, latency, cost and accuracy",
+            "section": "Job description"
+          }
+        ]
+      },
+      {
+        "description": "Build observability across metrics, logs, tracing and evaluations",
+        "evidence": [
+          {
+            "excerpt": "Build observability across metrics, logs, tracing and evaluations",
+            "section": "Job description"
+          }
+        ]
+      },
+      {
+        "description": "Identify performance issues, model degradation and system failures",
+        "evidence": [
+          {
+            "excerpt": "Identify performance issues, model degradation and system failures",
+            "section": "Job description"
+          }
+        ]
+      },
+      {
+        "description": "Optimise AI systems for scale and efficiency",
+        "evidence": [
+          {
+            "excerpt": "Optimise AI systems for scale and efficiency",
+            "section": "Job description"
+          }
+        ]
+      },
+      {
+        "description": "Support production operations",
+        "evidence": [
+          {
+            "excerpt": "Support production operations",
+            "section": "Job description"
+          }
+        ]
+      },
+      {
+        "description": "Participate in incident response and troubleshooting",
+        "evidence": [
+          {
+            "excerpt": "Participate in incident response and troubleshooting",
+            "section": "Job description"
+          }
+        ]
+      },
+      {
+        "description": "Develop runbooks, processes and safeguards",
+        "evidence": [
+          {
+            "excerpt": "Develop runbooks, processes and safeguards",
+            "section": "Job description"
+          }
+        ]
+      },
+      {
+        "description": "Implement safe deployment, rollback and change-management practices",
+        "evidence": [
+          {
+            "excerpt": "Implement safe deployment, rollback and change-management practices",
+            "section": "Job description"
+          }
+        ]
+      },
+      {
+        "description": "Improve systems to prevent recurring issues",
+        "evidence": [
+          {
+            "excerpt": "Improve systems to prevent recurring issues",
+            "section": "Job description"
+          }
+        ]
+      }
+    ],
+    "compensation": {
+      "clarity": "ambiguous",
+      "minimum": null,
+      "maximum": null,
+      "currency": null,
+      "period": null,
+      "raw_text": "Competitive package",
+      "evidence": [
+        {
+          "excerpt": "Salary: Competitive package",
+          "section": "Job description"
+        }
+      ]
+    },
+    "location": {
+      "clarity": "stated",
+      "summary": "Melbourne VIC (Hybrid)",
+      "evidence": [
+        {
+          "excerpt": "Melbourne CBD | Hybrid (4 days office / 1 day WFH)",
+          "section": "Job description"
+        }
+      ]
+    },
+    "work_arrangement": {
+      "arrangement": "hybrid",
+      "details": "Monday–Thursday in the Melbourne CBD office, Friday WFH",
+      "evidence": [
+        {
+          "excerpt": "Hybrid working model (Monday–Thursday in the Melbourne CBD office, Friday WFH)",
+          "section": "Job description"
+        }
+      ]
+    },
+    "employment": {
+      "working_hours": "full_time",
+      "engagement_type": "unspecified",
+      "evidence": [
+        {
+          "excerpt": "Full time",
+          "section": "Job description"
+        }
+      ]
+    },
+    "experience_requirements": [
+      {
+        "description": "5+ years of software engineering experience",
+        "level": "required",
+        "minimum_years": 5.0,
+        "maximum_years": null,
+        "evidence": [
+          {
+            "excerpt": "You’ll ideally have: 5+ years of software engineering experience",
+            "section": "Job description"
+          }
+        ]
+      }
+    ]
+  },
+  "application_tier": "platinum",
+  "pursuit_posture": "prioritise",
+  "jd_priorities": [
+    {
+      "rank": 1,
+      "label": "LLM",
+      "kind": "technology",
+      "rationale": "LLM is listed as required in the job analysis (employer priority; candidate_support=supported).",
+      "evidence": [
+        {
+          "origin": "job_analysis",
+          "job_evidence": {
+            "source": "technology",
+            "item_index": 0,
+            "name": "LLM",
+            "excerpt": "LLM-powered applications"
+          },
+          "profile_evidence": null,
+          "portfolio_project_id": null,
+          "excerpt": null
+        }
+      ],
+      "candidate_support": "supported",
+      "related_profile_capability": "LLM application development"
+    },
+    {
+      "rank": 2,
+      "label": "AWS",
+      "kind": "technology",
+      "rationale": "AWS is listed as required in the job analysis (employer priority; candidate_support=unsupported).",
+      "evidence": [
+        {
+          "origin": "job_analysis",
+          "job_evidence": {
+            "source": "technology",
+            "item_index": 1,
+            "name": "AWS",
+            "excerpt": "Strong AWS experience"
+          },
+          "profile_evidence": null,
+          "portfolio_project_id": null,
+          "excerpt": null
+        }
+      ],
+      "candidate_support": "unsupported",
+      "related_profile_capability": null
+    },
+    {
+      "rank": 3,
+      "label": "Terraform",
+      "kind": "technology",
+      "rationale": "Terraform is listed as preferred in the job analysis (employer priority; candidate_support=unsupported).",
+      "evidence": [
+        {
+          "origin": "job_analysis",
+          "job_evidence": {
+            "source": "technology",
+            "item_index": 2,
+            "name": "Terraform",
+            "excerpt": "Infrastructure-as-Code experience (Terraform preferred)"
+          },
+          "profile_evidence": null,
+          "portfolio_project_id": null,
+          "excerpt": null
+        }
+      ],
+      "candidate_support": "unsupported",
+      "related_profile_capability": null
+    },
+    {
+      "rank": 4,
+      "label": "PostgreSQL",
+      "kind": "technology",
+      "rationale": "PostgreSQL is listed as preferred in the job analysis (employer priority; candidate_support=unsupported).",
+      "evidence": [
+        {
+          "origin": "job_analysis",
+          "job_evidence": {
+            "source": "technology",
+            "item_index": 3,
+            "name": "PostgreSQL",
+            "excerpt": "Experience building data pipelines and working with databases (PostgreSQL preferred)"
+          },
+          "profile_evidence": null,
+          "portfolio_project_id": null,
+          "excerpt": null
+        }
+      ],
+      "candidate_support": "unsupported",
+      "related_profile_capability": null
+    },
+    {
+      "rank": 5,
+      "label": "Ruby on Rails",
+      "kind": "technology",
+      "rationale": "Ruby on Rails is listed as preferred in the job analysis (employer priority; candidate_support=unsupported).",
+      "evidence": [
+        {
+          "origin": "job_analysis",
+          "job_evidence": {
+            "source": "technology",
+            "item_index": 4,
+            "name": "Ruby on Rails",
+            "excerpt": "Experience with the following would be advantageous: Ruby on Rails"
+          },
+          "profile_evidence": null,
+          "portfolio_project_id": null,
+          "excerpt": null
+        }
+      ],
+      "candidate_support": "unsupported",
+      "related_profile_capability": null
+    },
+    {
+      "rank": 6,
+      "label": "Kubernetes",
+      "kind": "technology",
+      "rationale": "Kubernetes is listed as preferred in the job analysis (employer priority; candidate_support=unsupported).",
+      "evidence": [
+        {
+          "origin": "job_analysis",
+          "job_evidence": {
+            "source": "technology",
+            "item_index": 5,
+            "name": "Kubernetes",
+            "excerpt": "Kubernetes / cloud-native architectures"
+          },
+          "profile_evidence": null,
+          "portfolio_project_id": null,
+          "excerpt": null
+        }
+      ],
+      "candidate_support": "unsupported",
+      "related_profile_capability": null
+    },
+    {
+      "rank": 7,
+      "label": "Ai Engineering",
+      "kind": "role_theme",
+      "rationale": "Role family 'ai_engineering' is an employer positioning signal (candidate_support=related).",
+      "evidence": [
+        {
+          "origin": "job_analysis",
+          "job_evidence": {
+            "source": "role_family",
+            "item_index": null,
+            "name": "ai_engineering",
+            "excerpt": "Build and operate the AI systems shaping the future of fintech."
+          },
+          "profile_evidence": null,
+          "portfolio_project_id": null,
+          "excerpt": null
+        }
+      ],
+      "candidate_support": "related",
+      "related_profile_capability": "Operational intelligence"
+    },
+    {
+      "rank": 8,
+      "label": "Build Capabilities Into Production",
+      "kind": "responsibility",
+      "rationale": "Responsibility appears in the job analysis as an employer priority (candidate_support=unsupported).",
+      "evidence": [
+        {
+          "origin": "job_analysis",
+          "job_evidence": {
+            "source": "responsibility",
+            "item_index": 0,
+            "name": null,
+            "excerpt": "Build AI capabilities into production"
+          },
+          "profile_evidence": null,
+          "portfolio_project_id": null,
+          "excerpt": null
+        }
+      ],
+      "candidate_support": "unsupported",
+      "related_profile_capability": null
+    }
+  ],
+  "projects_to_emphasise": [
+    {
+      "rank": 1,
+      "project_id": "operational-intelligence-copilot",
+      "rationale": "Consider emphasising 'operational-intelligence-copilot' (PortfolioMatch rank 1).",
+      "evidence": [
+        {
+          "origin": "application_strategy",
+          "job_evidence": null,
+          "profile_evidence": null,
+          "portfolio_project_id": "operational-intelligence-copilot",
+          "excerpt": "Consider emphasising 'operational-intelligence-copilot' (PortfolioMatch rank 1)."
+        }
+      ]
+    },
+    {
+      "rank": 2,
+      "project_id": "governance-document-rag",
+      "rationale": "Consider emphasising 'governance-document-rag' (PortfolioMatch rank 2).",
+      "evidence": [
+        {
+          "origin": "application_strategy",
+          "job_evidence": null,
+          "profile_evidence": null,
+          "portfolio_project_id": "governance-document-rag",
+          "excerpt": "Consider emphasising 'governance-document-rag' (PortfolioMatch rank 2)."
+        }
+      ]
+    },
+    {
+      "rank": 3,
+      "project_id": "payroll-diagnostics-engine",
+      "rationale": "Consider emphasising 'payroll-diagnostics-engine' (PortfolioMatch rank 3).",
+      "evidence": [
+        {
+          "origin": "application_strategy",
+          "job_evidence": null,
+          "profile_evidence": null,
+          "portfolio_project_id": "payroll-diagnostics-engine",
+          "excerpt": "Consider emphasising 'payroll-diagnostics-engine' (PortfolioMatch rank 3)."
+        }
+      ]
+    }
+  ],
+  "skills_to_promote": [
+    {
+      "rank": 1,
+      "skill_name": "LLM application development",
+      "category": "domain",
+      "rationale": "LLM application development promoted because it is both a key JD requirement (LLM, required) and strongly evidenced in the Career Profile.",
+      "evidence": [
+        {
+          "origin": "job_analysis",
+          "job_evidence": {
+            "source": "technology",
+            "item_index": 0,
+            "name": "LLM",
+            "excerpt": "LLM-powered applications"
+          },
+          "profile_evidence": null,
+          "portfolio_project_id": null,
+          "excerpt": null
+        },
+        {
+          "origin": "career_profile",
+          "job_evidence": null,
+          "profile_evidence": {
+            "source": "skill",
+            "ref": "skill:LLM application development",
+            "excerpt": null
+          },
+          "portfolio_project_id": null,
+          "excerpt": null
+        }
+      ]
+    }
+  ],
+  "skills_not_emphasised": [
+    {
+      "skill_name": "Python",
+      "category": "technical",
+      "rationale": "Python remains on the CV but is not emphasised because it does not support a candidate-backed JD technology."
+    },
+    {
+      "skill_name": "FastAPI",
+      "category": "technical",
+      "rationale": "FastAPI remains on the CV but is not emphasised because it does not support a candidate-backed JD technology."
+    },
+    {
+      "skill_name": "Docker",
+      "category": "technical",
+      "rationale": "Docker remains on the CV but is not emphasised because it does not support a candidate-backed JD technology."
+    },
+    {
+      "skill_name": "OpenAI APIs",
+      "category": "technical",
+      "rationale": "OpenAI APIs remains on the CV but is not emphasised because it does not support a candidate-backed JD technology."
+    },
+    {
+      "skill_name": "PyTest",
+      "category": "technical",
+      "rationale": "PyTest remains on the CV but is not emphasised because it does not support a candidate-backed JD technology."
+    },
+    {
+      "skill_name": "Git",
+      "category": "technical",
+      "rationale": "Git remains on the CV but is not emphasised because it does not support a candidate-backed JD technology."
+    },
+    {
+      "skill_name": "SQL",
+      "category": "technical",
+      "rationale": "SQL remains on the CV but is not emphasised because it does not support a candidate-backed JD technology."
+    },
+    {
+      "skill_name": "Apache NiFi",
+      "category": "technical",
+      "rationale": "Apache NiFi remains on the CV but is not emphasised because it does not support a candidate-backed JD technology."
+    },
+    {
+      "skill_name": "LangChain",
+      "category": "technical",
+      "rationale": "LangChain remains on the CV but is not emphasised because it does not support a candidate-backed JD technology."
+    },
+    {
+      "skill_name": "ChromaDB",
+      "category": "technical",
+      "rationale": "ChromaDB remains on the CV but is not emphasised because it does not support a candidate-backed JD technology."
+    },
+    {
+      "skill_name": "Pandas",
+      "category": "technical",
+      "rationale": "Pandas remains on the CV but is not emphasised because it does not support a candidate-backed JD technology."
+    },
+    {
+      "skill_name": "OpenPyXL",
+      "category": "technical",
+      "rationale": "OpenPyXL remains on the CV but is not emphasised because it does not support a candidate-backed JD technology."
+    },
+    {
+      "skill_name": "REST APIs",
+      "category": "technical",
+      "rationale": "REST APIs remains on the CV but is not emphasised because it does not support a candidate-backed JD technology."
+    },
+    {
+      "skill_name": "Microsoft Fabric",
+      "category": "technical",
+      "rationale": "Microsoft Fabric remains on the CV but is not emphasised because it does not support a candidate-backed JD technology."
+    },
+    {
+      "skill_name": "Databricks",
+      "category": "technical",
+      "rationale": "Databricks remains on the CV but is not emphasised because it does not support a candidate-backed JD technology."
+    },
+    {
+      "skill_name": "Snowflake",
+      "category": "technical",
+      "rationale": "Snowflake remains on the CV but is not emphasised because it does not support a candidate-backed JD technology."
+    },
+    {
+      "skill_name": "dbt",
+      "category": "technical",
+      "rationale": "dbt remains on the CV but is not emphasised because it does not support a candidate-backed JD technology."
+    },
+    {
+      "skill_name": "Azure Data Factory",
+      "category": "technical",
+      "rationale": "Azure Data Factory remains on the CV but is not emphasised because it does not support a candidate-backed JD technology."
+    },
+    {
+      "skill_name": "Selenium WebDriver",
+      "category": "technical",
+      "rationale": "Selenium WebDriver remains on the CV but is not emphasised because it does not support a candidate-backed JD technology."
+    },
+    {
+      "skill_name": "Jenkins",
+      "category": "technical",
+      "rationale": "Jenkins remains on the CV but is not emphasised because it does not support a candidate-backed JD technology."
+    },
+    {
+      "skill_name": "Maven",
+      "category": "technical",
+      "rationale": "Maven remains on the CV but is not emphasised because it does not support a candidate-backed JD technology."
+    },
+    {
+      "skill_name": "Cucumber",
+      "category": "technical",
+      "rationale": "Cucumber remains on the CV but is not emphasised because it does not support a candidate-backed JD technology."
+    },
+    {
+      "skill_name": "Retrieval-Augmented Generation",
+      "category": "domain",
+      "rationale": "Retrieval-Augmented Generation remains on the CV but is not emphasised because it does not support a candidate-backed JD technology."
+    },
+    {
+      "skill_name": "Operational intelligence",
+      "category": "domain",
+      "rationale": "Operational intelligence remains on the CV but is not emphasised because it does not support a candidate-backed JD technology."
+    },
+    {
+      "skill_name": "Explainable AI",
+      "category": "domain",
+      "rationale": "Explainable AI remains on the CV but is not emphasised because it does not support a candidate-backed JD technology."
+    },
+    {
+      "skill_name": "Enterprise decision support",
+      "category": "domain",
+      "rationale": "Enterprise decision support remains on the CV but is not emphasised because it does not support a candidate-backed JD technology."
+    },
+    {
+      "skill_name": "Data engineering",
+      "category": "domain",
+      "rationale": "Data engineering remains on the CV but is not emphasised because it does not support a candidate-backed JD technology."
+    },
+    {
+      "skill_name": "Geospatial processing",
+      "category": "domain",
+      "rationale": "Geospatial processing remains on the CV but is not emphasised because it does not support a candidate-backed JD technology."
+    },
+    {
+      "skill_name": "Software quality assurance",
+      "category": "domain",
+      "rationale": "Software quality assurance remains on the CV but is not emphasised because it does not support a candidate-backed JD technology."
+    },
+    {
+      "skill_name": "Test automation",
+      "category": "domain",
+      "rationale": "Test automation remains on the CV but is not emphasised because it does not support a candidate-backed JD technology."
+    },
+    {
+      "skill_name": "Architecture-first design",
+      "category": "soft",
+      "rationale": "Architecture-first design remains on the CV but is not emphasised because it does not support a candidate-backed JD technology."
+    },
+    {
+      "skill_name": "Agile collaboration",
+      "category": "soft",
+      "rationale": "Agile collaboration remains on the CV but is not emphasised because it does not support a candidate-backed JD technology."
+    }
+  ],
+  "summary_themes": [
+    {
+      "rank": 1,
+      "theme": "LLM application development",
+      "rationale": "Summary theme 'LLM application development' is both a JD priority (LLM) and evidenced in the Career Profile.",
+      "evidence": [
+        {
+          "origin": "job_analysis",
+          "job_evidence": {
+            "source": "technology",
+            "item_index": 0,
+            "name": "LLM",
+            "excerpt": "LLM-powered applications"
+          },
+          "profile_evidence": null,
+          "portfolio_project_id": null,
+          "excerpt": null
+        },
+        {
+          "origin": "career_profile",
+          "job_evidence": null,
+          "profile_evidence": {
+            "source": "skill",
+            "ref": "skill:LLM application development",
+            "excerpt": null
+          },
+          "portfolio_project_id": null,
+          "excerpt": null
+        }
+      ]
+    },
+    {
+      "rank": 2,
+      "theme": "Operational intelligence",
+      "rationale": "Summary theme 'Operational intelligence' is evidenced in the Career Profile and supports employer priority 'Ai Engineering' (related capability; not an unsupported claim).",
+      "evidence": [
+        {
+          "origin": "job_analysis",
+          "job_evidence": {
+            "source": "role_family",
+            "item_index": null,
+            "name": "ai_engineering",
+            "excerpt": "Build and operate the AI systems shaping the future of fintech."
+          },
+          "profile_evidence": null,
+          "portfolio_project_id": null,
+          "excerpt": null
+        },
+        {
+          "origin": "career_profile",
+          "job_evidence": null,
+          "profile_evidence": {
+            "source": "skill",
+            "ref": "skill:Operational intelligence",
+            "excerpt": null
+          },
+          "portfolio_project_id": null,
+          "excerpt": null
+        }
+      ]
+    }
+  ],
+  "experience_guidance": {
+    "kind": "master_cv_only",
+    "rationale": "Default Master-CV-aligned scope: extended pre-nbn history is excluded unless the caller opts in.",
+    "included_experience_ids": [
+      "chase-risk-compliance-ai-engineer",
+      "ai-engineering-development-2025",
+      "data-engineering-development-2023",
+      "nbn-data-engineer-2020"
+    ],
+    "excluded_experience_ids": [
+      "general-assembly-data-science-2019",
+      "bakers-delight-test-analyst-2019",
+      "accesshq-test-analyst-2018",
+      "bakers-delight-test-analyst-2015",
+      "console-test-analyst-2012",
+      "bakers-delight-test-analyst-2009"
+    ]
+  },
+  "assumptions": [
+    "Unsupported employer technology priorities (not used as summary themes or promoted skills): AWS, Terraform, PostgreSQL, Ruby on Rails, Kubernetes.",
+    "Material-benefit gate was overridden by the caller; tailoring proceeds despite tier/next-action signals."
+  ],
+  "owner_review_recommended": true,
+  "insufficient_evidence": false,
+  "material_benefit_override": true
+}

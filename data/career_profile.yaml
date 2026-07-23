@@ -15,7 +15,7 @@ identity:
     software quality assurance, test automation, and Data Engineering,
     including 3.5 years of commercial enterprise Data Engineering experience,
     plus independent AI Engineering and portfolio development producing
-    production-minded AI systems spanning retrieval-augmented generation,
+    production-oriented AI systems spanning retrieval-augmented generation,
     operational intelligence, explainable AI, and enterprise decision support.
 experience:
   - id: chase-risk-compliance-ai-engineer
@@ -30,7 +30,7 @@ experience:
     location: Melbourne, VIC
     highlights:
       - >-
-        Independently develops progressively more complex production-minded AI
+        Independently develops progressively more complex production-oriented AI
         Engineering projects under a dedicated portfolio brand.
       - >-
         Builds engineering capability across retrieval-augmented generation,
@@ -98,12 +98,18 @@ experience:
     end_date: 2023-10
     location: null
     highlights:
-      - Developed enterprise data pipelines and operational reporting solutions.
+      - Developed and maintained enterprise data pipelines using AWS services, Python, SQL and Apache NiFi.
       - Performed SQL transformations and data validation.
       - Worked in Agile teams supporting production systems.
     technologies:
       - Python
       - SQL
+      - AWS
+      - S3
+      - Athena
+      - Glue
+      - Cloudwatch
+      - DynamoDB
       - Apache NiFi
       - Git
       - PyTest
@@ -126,8 +132,12 @@ experience:
       - >-
         Cleaned, explored, and analysed a large real-estate dataset for a
         property sales price and renovation project.
+    # NLP and Web Scraping are course techniques from this immersive only —
+    # not promoted to global Skills (unused professionally since 2019).
     technologies:
       - Python
+      - NLP
+      - Web Scraping
   - id: bakers-delight-test-analyst-2019
     kind: employment
     organisation: Bakers Delight
@@ -219,6 +229,18 @@ skills:
     - name: Git
       evidence: experience:chase-risk-compliance-ai-engineer; experience:nbn-data-engineer-2020
     - name: SQL
+      evidence: experience:nbn-data-engineer-2020
+    - name: AWS
+      evidence: experience:nbn-data-engineer-2020
+    - name: S3
+      evidence: experience:nbn-data-engineer-2020
+    - name: Athena
+      evidence: experience:nbn-data-engineer-2020
+    - name: Glue
+      evidence: experience:nbn-data-engineer-2020
+    - name: Cloudwatch
+      evidence: experience:nbn-data-engineer-2020
+    - name: DynamoDB
       evidence: experience:nbn-data-engineer-2020
     - name: Apache NiFi
       evidence: experience:nbn-data-engineer-2020

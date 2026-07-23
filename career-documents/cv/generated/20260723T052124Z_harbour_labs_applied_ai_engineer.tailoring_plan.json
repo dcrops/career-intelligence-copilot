@@ -1,0 +1,581 @@
+{
+  "job_analysis": {
+    "posting": {
+      "raw_text": "[CIC-FIXTURE:applied-ai-engineer]\nApplied AI Engineer — Harbour Labs (Sydney)\n\nJoin our applied AI team to prototype and productise customer-facing assistants.\nYou will work closely with solution architects and customer success.\n\nResponsibilities\n• Deliver applied AI prototypes into production services\n• Fine-tune and evaluate models for customer use cases\n• Document patterns for reuse across engagements\n\nRequirements\n• 3+ years building ML or AI-powered products required\n• Python and FastAPI required; Azure OpenAI preferred\n• Stakeholder-facing delivery experience preferred\n\nLocation & employment\nHybrid Sydney (Barangaroo), 2 days in office. Full-time permanent.\nSalary $140,000–$165,000 AUD.",
+      "title": "Applied AI Engineer",
+      "company": "Harbour Labs",
+      "source_url": null
+    },
+    "role_family": {
+      "family": "ai_engineering",
+      "evidence": [
+        {
+          "excerpt": "Applied AI Engineer",
+          "section": "title"
+        }
+      ]
+    },
+    "seniority": {
+      "level": "unknown",
+      "ambiguous": false,
+      "candidate_levels": [],
+      "evidence": []
+    },
+    "technologies": [
+      {
+        "name": "Python",
+        "level": "required",
+        "evidence": [
+          {
+            "excerpt": "Python and FastAPI required",
+            "section": "requirements"
+          }
+        ]
+      },
+      {
+        "name": "FastAPI",
+        "level": "required",
+        "evidence": [
+          {
+            "excerpt": "Python and FastAPI required",
+            "section": "requirements"
+          }
+        ]
+      },
+      {
+        "name": "Azure OpenAI",
+        "level": "preferred",
+        "evidence": [
+          {
+            "excerpt": "Azure OpenAI preferred",
+            "section": "requirements"
+          }
+        ]
+      }
+    ],
+    "responsibilities": [
+      {
+        "description": "Deliver applied AI prototypes into production services",
+        "evidence": [
+          {
+            "excerpt": "Deliver applied AI prototypes into production services",
+            "section": "responsibilities"
+          }
+        ]
+      }
+    ],
+    "compensation": {
+      "clarity": "stated",
+      "minimum": 140000.0,
+      "maximum": 165000.0,
+      "currency": "AUD",
+      "period": "year",
+      "raw_text": "Salary $140,000–$165,000 AUD",
+      "evidence": [
+        {
+          "excerpt": "Salary $140,000–$165,000 AUD",
+          "section": "compensation"
+        }
+      ]
+    },
+    "location": {
+      "clarity": "stated",
+      "summary": "Sydney",
+      "evidence": [
+        {
+          "excerpt": "Hybrid Sydney (Barangaroo)",
+          "section": "location"
+        }
+      ]
+    },
+    "work_arrangement": {
+      "arrangement": "hybrid",
+      "details": "2 days in office",
+      "evidence": [
+        {
+          "excerpt": "Hybrid Sydney (Barangaroo), 2 days in office",
+          "section": "location"
+        }
+      ]
+    },
+    "employment": {
+      "working_hours": "full_time",
+      "engagement_type": "permanent",
+      "evidence": [
+        {
+          "excerpt": "Full-time permanent",
+          "section": "employment"
+        }
+      ]
+    },
+    "experience_requirements": [
+      {
+        "description": "3+ years building ML or AI-powered products",
+        "level": "required",
+        "minimum_years": 3.0,
+        "maximum_years": null,
+        "evidence": [
+          {
+            "excerpt": "3+ years building ML or AI-powered products required",
+            "section": "requirements"
+          }
+        ]
+      },
+      {
+        "description": "Stakeholder-facing delivery experience",
+        "level": "preferred",
+        "minimum_years": null,
+        "maximum_years": null,
+        "evidence": [
+          {
+            "excerpt": "Stakeholder-facing delivery experience preferred",
+            "section": "requirements"
+          }
+        ]
+      }
+    ]
+  },
+  "application_tier": "gold",
+  "pursuit_posture": "pursue",
+  "jd_priorities": [
+    {
+      "rank": 1,
+      "label": "Python",
+      "kind": "technology",
+      "rationale": "Python promoted because it is listed as required in the job analysis.",
+      "evidence": [
+        {
+          "origin": "job_analysis",
+          "job_evidence": {
+            "source": "technology",
+            "item_index": 0,
+            "name": "Python",
+            "excerpt": "Python and FastAPI required"
+          },
+          "profile_evidence": null,
+          "portfolio_project_id": null,
+          "excerpt": null
+        }
+      ]
+    },
+    {
+      "rank": 2,
+      "label": "FastAPI",
+      "kind": "technology",
+      "rationale": "FastAPI promoted because it is listed as required in the job analysis.",
+      "evidence": [
+        {
+          "origin": "job_analysis",
+          "job_evidence": {
+            "source": "technology",
+            "item_index": 1,
+            "name": "FastAPI",
+            "excerpt": "Python and FastAPI required"
+          },
+          "profile_evidence": null,
+          "portfolio_project_id": null,
+          "excerpt": null
+        }
+      ]
+    },
+    {
+      "rank": 3,
+      "label": "Azure OpenAI",
+      "kind": "technology",
+      "rationale": "Azure OpenAI promoted because it is listed as preferred in the job analysis.",
+      "evidence": [
+        {
+          "origin": "job_analysis",
+          "job_evidence": {
+            "source": "technology",
+            "item_index": 2,
+            "name": "Azure OpenAI",
+            "excerpt": "Azure OpenAI preferred"
+          },
+          "profile_evidence": null,
+          "portfolio_project_id": null,
+          "excerpt": null
+        }
+      ]
+    },
+    {
+      "rank": 4,
+      "label": "Ai Engineering",
+      "kind": "role_theme",
+      "rationale": "Role family 'ai_engineering' from job analysis should shape summary and positioning themes.",
+      "evidence": [
+        {
+          "origin": "job_analysis",
+          "job_evidence": {
+            "source": "role_family",
+            "item_index": null,
+            "name": "ai_engineering",
+            "excerpt": "Applied AI Engineer"
+          },
+          "profile_evidence": null,
+          "portfolio_project_id": null,
+          "excerpt": null
+        }
+      ]
+    },
+    {
+      "rank": 5,
+      "label": "Deliver Applied Prototypes Into Production Services",
+      "kind": "responsibility",
+      "rationale": "Responsibility appears in the job analysis and should inform CV emphasis.",
+      "evidence": [
+        {
+          "origin": "job_analysis",
+          "job_evidence": {
+            "source": "responsibility",
+            "item_index": 0,
+            "name": null,
+            "excerpt": "Deliver applied AI prototypes into production services"
+          },
+          "profile_evidence": null,
+          "portfolio_project_id": null,
+          "excerpt": null
+        }
+      ]
+    }
+  ],
+  "projects_to_emphasise": [
+    {
+      "rank": 1,
+      "project_id": "operational-intelligence-copilot",
+      "rationale": "Consider emphasising 'operational-intelligence-copilot' (PortfolioMatch rank 1).",
+      "evidence": [
+        {
+          "origin": "application_strategy",
+          "job_evidence": null,
+          "profile_evidence": null,
+          "portfolio_project_id": "operational-intelligence-copilot",
+          "excerpt": "Consider emphasising 'operational-intelligence-copilot' (PortfolioMatch rank 1)."
+        }
+      ]
+    },
+    {
+      "rank": 2,
+      "project_id": "governance-document-rag",
+      "rationale": "Consider emphasising 'governance-document-rag' (PortfolioMatch rank 2).",
+      "evidence": [
+        {
+          "origin": "application_strategy",
+          "job_evidence": null,
+          "profile_evidence": null,
+          "portfolio_project_id": "governance-document-rag",
+          "excerpt": "Consider emphasising 'governance-document-rag' (PortfolioMatch rank 2)."
+        }
+      ]
+    },
+    {
+      "rank": 3,
+      "project_id": "payroll-diagnostics-engine",
+      "rationale": "Consider emphasising 'payroll-diagnostics-engine' (PortfolioMatch rank 3).",
+      "evidence": [
+        {
+          "origin": "application_strategy",
+          "job_evidence": null,
+          "profile_evidence": null,
+          "portfolio_project_id": "payroll-diagnostics-engine",
+          "excerpt": "Consider emphasising 'payroll-diagnostics-engine' (PortfolioMatch rank 3)."
+        }
+      ]
+    }
+  ],
+  "skills_to_promote": [
+    {
+      "rank": 1,
+      "skill_name": "Python",
+      "category": "technical",
+      "rationale": "Python promoted because it overlaps with job technology 'Python' (required).",
+      "evidence": [
+        {
+          "origin": "job_analysis",
+          "job_evidence": {
+            "source": "technology",
+            "item_index": 0,
+            "name": "Python",
+            "excerpt": "Python and FastAPI required"
+          },
+          "profile_evidence": null,
+          "portfolio_project_id": null,
+          "excerpt": null
+        },
+        {
+          "origin": "career_profile",
+          "job_evidence": null,
+          "profile_evidence": {
+            "source": "skill",
+            "ref": "skill:Python",
+            "excerpt": null
+          },
+          "portfolio_project_id": null,
+          "excerpt": null
+        }
+      ]
+    },
+    {
+      "rank": 2,
+      "skill_name": "FastAPI",
+      "category": "technical",
+      "rationale": "FastAPI promoted because it overlaps with job technology 'FastAPI' (required).",
+      "evidence": [
+        {
+          "origin": "job_analysis",
+          "job_evidence": {
+            "source": "technology",
+            "item_index": 1,
+            "name": "FastAPI",
+            "excerpt": "Python and FastAPI required"
+          },
+          "profile_evidence": null,
+          "portfolio_project_id": null,
+          "excerpt": null
+        },
+        {
+          "origin": "career_profile",
+          "job_evidence": null,
+          "profile_evidence": {
+            "source": "skill",
+            "ref": "skill:FastAPI",
+            "excerpt": null
+          },
+          "portfolio_project_id": null,
+          "excerpt": null
+        }
+      ]
+    }
+  ],
+  "skills_not_emphasised": [
+    {
+      "skill_name": "Docker",
+      "category": "technical",
+      "rationale": "Docker remains on the CV but is not emphasised because it does not overlap promoted job technologies."
+    },
+    {
+      "skill_name": "OpenAI APIs",
+      "category": "technical",
+      "rationale": "OpenAI APIs remains on the CV but is not emphasised because it does not overlap promoted job technologies."
+    },
+    {
+      "skill_name": "PyTest",
+      "category": "technical",
+      "rationale": "PyTest remains on the CV but is not emphasised because it does not overlap promoted job technologies."
+    },
+    {
+      "skill_name": "SQL",
+      "category": "technical",
+      "rationale": "SQL remains on the CV but is not emphasised because it does not overlap promoted job technologies."
+    },
+    {
+      "skill_name": "LangChain",
+      "category": "technical",
+      "rationale": "LangChain remains on the CV but is not emphasised because it does not overlap promoted job technologies."
+    },
+    {
+      "skill_name": "ChromaDB",
+      "category": "technical",
+      "rationale": "ChromaDB remains on the CV but is not emphasised because it does not overlap promoted job technologies."
+    },
+    {
+      "skill_name": "Pandas",
+      "category": "technical",
+      "rationale": "Pandas remains on the CV but is not emphasised because it does not overlap promoted job technologies."
+    },
+    {
+      "skill_name": "REST APIs",
+      "category": "technical",
+      "rationale": "REST APIs remains on the CV but is not emphasised because it does not overlap promoted job technologies."
+    },
+    {
+      "skill_name": "Microsoft Fabric",
+      "category": "technical",
+      "rationale": "Microsoft Fabric remains on the CV but is not emphasised because it does not overlap promoted job technologies."
+    },
+    {
+      "skill_name": "Databricks",
+      "category": "technical",
+      "rationale": "Databricks remains on the CV but is not emphasised because it does not overlap promoted job technologies."
+    },
+    {
+      "skill_name": "Snowflake",
+      "category": "technical",
+      "rationale": "Snowflake remains on the CV but is not emphasised because it does not overlap promoted job technologies."
+    },
+    {
+      "skill_name": "dbt",
+      "category": "technical",
+      "rationale": "dbt remains on the CV but is not emphasised because it does not overlap promoted job technologies."
+    },
+    {
+      "skill_name": "Azure Data Factory",
+      "category": "technical",
+      "rationale": "Azure Data Factory remains on the CV but is not emphasised because it does not overlap promoted job technologies."
+    },
+    {
+      "skill_name": "Selenium WebDriver",
+      "category": "technical",
+      "rationale": "Selenium WebDriver remains on the CV but is not emphasised because it does not overlap promoted job technologies."
+    },
+    {
+      "skill_name": "Retrieval-Augmented Generation",
+      "category": "domain",
+      "rationale": "Retrieval-Augmented Generation remains on the CV but is not emphasised because it does not overlap promoted job technologies."
+    },
+    {
+      "skill_name": "Operational intelligence",
+      "category": "domain",
+      "rationale": "Operational intelligence remains on the CV but is not emphasised because it does not overlap promoted job technologies."
+    },
+    {
+      "skill_name": "Explainable AI",
+      "category": "domain",
+      "rationale": "Explainable AI remains on the CV but is not emphasised because it does not overlap promoted job technologies."
+    },
+    {
+      "skill_name": "Enterprise decision support",
+      "category": "domain",
+      "rationale": "Enterprise decision support remains on the CV but is not emphasised because it does not overlap promoted job technologies."
+    },
+    {
+      "skill_name": "Data engineering",
+      "category": "domain",
+      "rationale": "Data engineering remains on the CV but is not emphasised because it does not overlap promoted job technologies."
+    },
+    {
+      "skill_name": "LLM application development",
+      "category": "domain",
+      "rationale": "LLM application development remains on the CV but is not emphasised because it does not overlap promoted job technologies."
+    },
+    {
+      "skill_name": "Software quality assurance",
+      "category": "domain",
+      "rationale": "Software quality assurance remains on the CV but is not emphasised because it does not overlap promoted job technologies."
+    },
+    {
+      "skill_name": "Architecture-first design",
+      "category": "soft",
+      "rationale": "Architecture-first design remains on the CV but is not emphasised because it does not overlap promoted job technologies."
+    }
+  ],
+  "summary_themes": [
+    {
+      "rank": 1,
+      "theme": "Python",
+      "rationale": "Summary should reflect JD priority 'Python' (technology).",
+      "evidence": [
+        {
+          "origin": "job_analysis",
+          "job_evidence": {
+            "source": "technology",
+            "item_index": 0,
+            "name": "Python",
+            "excerpt": "Python and FastAPI required"
+          },
+          "profile_evidence": null,
+          "portfolio_project_id": null,
+          "excerpt": null
+        }
+      ]
+    },
+    {
+      "rank": 2,
+      "theme": "FastAPI",
+      "rationale": "Summary should reflect JD priority 'FastAPI' (technology).",
+      "evidence": [
+        {
+          "origin": "job_analysis",
+          "job_evidence": {
+            "source": "technology",
+            "item_index": 1,
+            "name": "FastAPI",
+            "excerpt": "Python and FastAPI required"
+          },
+          "profile_evidence": null,
+          "portfolio_project_id": null,
+          "excerpt": null
+        }
+      ]
+    },
+    {
+      "rank": 3,
+      "theme": "Azure OpenAI",
+      "rationale": "Summary should reflect JD priority 'Azure OpenAI' (technology).",
+      "evidence": [
+        {
+          "origin": "job_analysis",
+          "job_evidence": {
+            "source": "technology",
+            "item_index": 2,
+            "name": "Azure OpenAI",
+            "excerpt": "Azure OpenAI preferred"
+          },
+          "profile_evidence": null,
+          "portfolio_project_id": null,
+          "excerpt": null
+        }
+      ]
+    },
+    {
+      "rank": 4,
+      "theme": "Ai Engineering",
+      "rationale": "Summary should reflect JD priority 'Ai Engineering' (role_theme).",
+      "evidence": [
+        {
+          "origin": "job_analysis",
+          "job_evidence": {
+            "source": "role_family",
+            "item_index": null,
+            "name": "ai_engineering",
+            "excerpt": "Applied AI Engineer"
+          },
+          "profile_evidence": null,
+          "portfolio_project_id": null,
+          "excerpt": null
+        }
+      ]
+    },
+    {
+      "rank": 5,
+      "theme": "Deliver Applied Prototypes Into Production Services",
+      "rationale": "Summary should reflect JD priority 'Deliver Applied Prototypes Into Production Services' (responsibility).",
+      "evidence": [
+        {
+          "origin": "job_analysis",
+          "job_evidence": {
+            "source": "responsibility",
+            "item_index": 0,
+            "name": null,
+            "excerpt": "Deliver applied AI prototypes into production services"
+          },
+          "profile_evidence": null,
+          "portfolio_project_id": null,
+          "excerpt": null
+        }
+      ]
+    }
+  ],
+  "experience_guidance": {
+    "kind": "master_cv_only",
+    "rationale": "Default Master-CV-aligned scope: extended pre-nbn history is excluded unless the caller opts in.",
+    "included_experience_ids": [
+      "chase-risk-compliance-ai-engineer",
+      "ai-engineering-development-2025",
+      "data-engineering-development-2023",
+      "nbn-data-engineer-2020"
+    ],
+    "excluded_experience_ids": [
+      "general-assembly-data-science-2019",
+      "bakers-delight-test-analyst-2019",
+      "accesshq-test-analyst-2018",
+      "bakers-delight-test-analyst-2015",
+      "console-test-analyst-2012",
+      "bakers-delight-test-analyst-2009"
+    ]
+  },
+  "assumptions": [],
+  "owner_review_recommended": true,
+  "insufficient_evidence": false,
+  "material_benefit_override": false
+}

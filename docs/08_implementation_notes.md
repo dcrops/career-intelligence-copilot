@@ -300,6 +300,15 @@ date was corrected from the inferred 2023-11 to the owner-provided **2025-12**; 
 locations, full-time employment, flexible remote arrangement, AUD currency with no salary
 minimum, and the must-haves were confirmed as recorded.
 
+### Evidence strength (capability demonstration)
+
+Skills remain truthful claims. Downstream planners may distinguish *how* a skill is
+demonstrated via `SkillEvidenceRef.kind` (or legacy `Skill.evidence` resolved against
+experience/project/certification ids). Ordering is explainable, not a weighted score:
+employment → independent engineering → portfolio project → certification → professional
+development → coursework → unspecified. See
+[docs/eval/career_profile_evidence_model_refinement.md](eval/career_profile_evidence_model_refinement.md).
+
 ### Confirmed from the Master CV
 
 - Identity: full name, target role (AI Engineer), professional summary.
@@ -363,6 +372,17 @@ career-phase ontology, separate collections, or project attribution links were i
 Deliberately not modelled (present on the CV, out of scope for decision support): contact
 details, citizenship, and portfolio/GitHub URLs. These become relevant only for the deferred
 CV-generation requirements.
+
+**Enrichment sprint (owner-confirmed, 2026-07-23).** General Assembly technologies gained
+`NLP` and `Web Scraping` as course-only evidence on that experience entry; they are not
+global Skills. Java, Ruby on Rails, and Gherkin remain historical experience technologies
+only. Project and certification `url` fields stay null until the owner confirms per-project
+canonical links (certification URLs explicitly deferred). Personal links for CV generation
+belong on FR-006 `ContactDetails` (owner-confirmed values for callers: GitHub
+`https://github.com/dcrops`, portfolio
+`https://journey.chaseriskandcompliance.com.au/`, LinkedIn
+`https://www.linkedin.com/in/david-cropper/`). See
+[docs/eval/career_profile_enrichment_report.md](eval/career_profile_enrichment_report.md).
 
 ### Accuracy and provenance refinement (owner-supplied, 2026-07-19)
 
@@ -725,28 +745,113 @@ python scripts/run_application_strategy_manual.py \
 
 `FixtureStrategyPlanner` is **not** used by this runner.
 
-**Expected console output**
+**FR-006 CV Generation (complete):** after strategy is trusted, use
+`scripts/run_cv_generation_manual.py` for Tailoring Plan + Tailored CV drafts.
+Phase A/B are deterministic. Phase C summary rewrite is opt-in via
+`--rewrite-summary` (OpenAI `gpt-4o-mini`, fail-soft to profile summary; prompt
+**v2**). The Phase C runner applies the same Windows SSL preparation as FR-002/003 live
+manual paths (`truststore.inject_into_ssl()` before constructing
+`OpenAISummaryRewriter`), because corpus FR-006 runs reuse saved strategy JSON
+and otherwise never enter that branch.
+For the FR-005 real-job corpus, the FR-006 runner **reuses**
+saved `manual_validation/outputs/{stem}.json` (or `--strategy-json`). Do **not**
+use `--offline-fixtures` for those ads — that flag is only for `[CIC-FIXTURE:…]`
+smoke texts. Validation procedure:
+[eval/fr006_manual_validation.md](eval/fr006_manual_validation.md).
+Phase C design:
+[eval/fr006_phase_c_design.md](eval/fr006_phase_c_design.md).
 
-Readable report with component modes, job identity, analysis/assessment/match summaries,
-pursuit posture, tier, practical value, effort, reasons, risks, blockers, manual checks,
-assumptions, portfolio emphasis, next actions, and evidence refs. Optional `--output-json`
-writes the full typed artifacts.
+### FR-006 — architecture and Phase C summary rewrite
 
-**Five recommended real-job scenarios**
+End-to-end path:
 
-1. Strong AI Engineer / Applied AI role (Melbourne or remote-friendly).
-2. AI role with commercial friction (e.g. Sydney onsite/hybrid).
-3. Senior/Principal production AI role (seniority stretch).
-4. Traditional Data Engineer role (outside-target / Bronze path).
-5. Sparse ad or working-rights-heavy ad (insufficient information / manual checks).
+```
+Career Profile → Job Analysis → Opportunity Assessment → Portfolio Match
+  → Application Strategy → Deterministic Tailoring Plan → CV Generation
+  → Optional OpenAI Summary Rewrite → Owner Review
+```
 
-Also try scenario 4 again with `--volume-applications-enabled`.
+| Piece | Role |
+|-------|------|
+| `DeterministicTailoringPlanner` / `TailoringPlanService` | Authoritative emphasis |
+| `CvGenerationService` | Pure render; optional rewriter injection |
+| `SummaryRewriter` protocol | Package-private rendering seam |
+| `OpenAISummaryRewriter` | Live path; instructions from `prompts/cv_summary_v2.md` |
+| `FixtureSummaryRewriter` | Offline deterministic stub for tests |
+| `summary_validation` | Allowlist / prohibition checks; fail-soft on failure |
+| `CvGenerationOptions.rewrite_summary` | Default `False` (opt-in) |
+| `TailoredCv.summary_source` | `profile_copy` \| `openai_rewrite` \| `fixture_rewrite` \| `fallback_profile_copy` |
 
-**Known runner limitations**
+**Prompt versions:** `cv_summary_v1.md` (historical), `cv_summary_v2.md` (current —
+employer-relevant lead, capabilities before chronology). Bump
+`SUMMARY_PROMPT_VERSION` and add `cv_summary_vN.md` for future changes; keep prior
+files for diffs.
 
-- Live quality depends on FR-002/FR-003 OpenAI extraction/assessment stability.
-- Does not persist pipeline entries, outcomes, or multi-job rankings (FR-013+).
-- Does not generate CVs, outreach, or submit applications.
-- Windows SSL environments may still need the same `truststore` workaround used by
-  `tools/manual_eval_openai_*.py` if the OpenAI client fails TLS handshake.
+The LLM never receives raw job-description text and never changes the Tailoring Plan.
+FR-006 does **not** include presentation-layout “Phase D”; that would be a future FR if needed.
+
+Example (deterministic corpus validation):
+
+```bash
+python scripts/run_cv_generation_manual.py \
+  --job-file manual_validation/jobs/013_pay_com_au_ai_automation_engineer.txt
+```
+
+Optional summary rewrite (live OpenAI; requires `OPENAI_API_KEY`):
+
+```bash
+python scripts/run_cv_generation_manual.py \
+  --job-file manual_validation/jobs/002_bluefin_ai_systems_developer.txt \
+  --rewrite-summary
+```
+
+**Expected console / artifacts**
+
+Readable Tailoring Plan + Tailored CV Markdown under `career-documents/cv/generated/`,
+with `summary_source` reflecting `profile_copy`, `openai_rewrite`, or
+`fallback_profile_copy`. Owner review remains mandatory before external use.
+
+**Known runner / runtime notes**
+
+- OpenAI rewriting is optional (`rewrite_summary=False` by default).
+- Fail-soft: rewrite or validation failure keeps the deterministic CV and copies the
+  profile summary; metadata records `fallback_profile_copy`.
+- Corpus runs that reuse saved strategy JSON still inject `truststore` before Phase C
+  so Windows SSL matches FR-002/003 live manuals.
+- Opportunity persistence (M1) is available via `--persist` on the strategy runner —
+  see § M1 Opportunity Persistence below.
+- Does not record owner decisions, outcomes, or multi-job rankings (M2–M4).
+- Does not generate cover letters, outreach, or submit applications.
+
+---
+
+## M1 Opportunity Persistence
+
+**Status:** Complete (2026-07-23).
+
+**ADR:** [adr/002_opportunity_persistence.md](adr/002_opportunity_persistence.md)
+
+**Public boundary:** `career_intelligence.opportunities.OpportunityService`
+
+**Create path:** trusted FR-002–FR-005 artifacts → `create_from_strategy` →
+`opp_<ULID>` + `status=assessed` + five immutable JSON snapshots under
+`data/opportunities/artifacts/{id}/`.
+
+**CLI:** `cic opportunity list` / `cic opportunity show <id>` (`--dir` override).
+
+**Manual runner:**
+
+```bash
+python scripts/run_application_strategy_manual.py \
+  --job-file path/to/job.txt \
+  --offline-fixtures \
+  --persist \
+  --opportunities-dir path/to/temp_store
+```
+
+Use an isolated `--opportunities-dir` for validation so live `data/opportunities/` is
+not polluted. Structured store is the system of record; CSV export is M3.
+
+**Not in M1:** owner decisions / outcomes (M2), CSV (M3), ranked comparison (M4),
+FR-014 duplicate detection, OpenAI.
 

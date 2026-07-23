@@ -55,9 +55,13 @@ The built system must connect to the owner's existing workflow in `applications/
 
 ### Scope control
 
-Phase 2 is one vertical slice through the decision loop. Resist adjacent features — CV generation, recruiter modules, dashboards — that feel like job-search help but optimise the wrong end of the loop.
+Phase 2 is one vertical slice through the decision loop. Resist adjacent features —
+cover letters, recruiter modules, dashboards, and unofficial “Phase D” CV presentation
+extensions — that feel like job-search help but expand past the approved FR boundary.
+FR-006 (CV content decisions) is complete; do not reopen it for presentation polish.
 
-**Violate when:** An addition passes the dual-value test and can ship without delaying the core loop. Example: minimal tailor-yes/no guidance that directly follows tier assignment.
+**Violate when:** An addition passes the dual-value test, has an approved FR (or explicit
+owner request), and can ship without delaying remaining Phase 2 exit criteria.
 
 ### Simplicity over flexibility
 
@@ -109,7 +113,9 @@ Build extensible seams between decision stages; keep implementations inside each
 
 Avoid these patterns — they are the most likely causes of project failure in this repository:
 
-1. **Building Phase 3 while calling it Phase 2** — CV generation, recruiter outreach, and dashboards feel urgent but are explicitly out of scope
+1. **Building the next FR (or informal Phase D) while Phase 2 exit is incomplete** —
+   cover letters, recruiter outreach, dashboards, and CV *presentation* polish feel
+   urgent but must not displace remaining Phase 2 exit criteria or reopen FR-006
 2. **Confident assessments without evidence** — erodes trust during a live search after one bad recommendation
 3. **A system parallel to existing trackers** — the owner maintains two workflows; the manual one wins
 4. **Optimising portfolio or learning objectives over Horizon 1** — impressive engineering that does not shorten the job search

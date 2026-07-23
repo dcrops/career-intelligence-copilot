@@ -67,6 +67,13 @@ def test_real_profile_user_journey(tmp_path: Path, golden_profile_path: Path) ->
 
     general_assembly = experience["general-assembly-data-science-2019"]
     assert general_assembly.kind == "professional_development"
+    assert general_assembly.technologies == ["Python", "NLP", "Web Scraping"]
+    skill_names = {skill.name for skill in service.load().skills.technical}
+    assert "NLP" not in skill_names
+    assert "Web Scraping" not in skill_names
+    assert "Java" not in skill_names
+    assert "Ruby on Rails" not in skill_names
+    assert "Gherkin" not in skill_names
     assert experience["accesshq-test-analyst-2018"].kind == "employment"
     assert experience["console-test-analyst-2012"].organisation == "Console"
 

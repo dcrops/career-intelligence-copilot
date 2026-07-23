@@ -4,6 +4,107 @@ Records product strategy and engineering knowledge changes. Routine typo fixes a
 
 ---
 
+## Version 1.22
+
+### M1 Opportunity persistence
+
+- Added `career_intelligence.opportunities` with public `OpportunityService`, typed
+  `Opportunity` / `OpportunityIdentity` models, replaceable `OpportunityStore`, and
+  YAML-directory adapter under `data/opportunities/`.
+- Permanent ids use `opp_<ULID>`. Identity facets (platform id, canonical URL, fingerprint)
+  are stored for future FR-014 only — no duplicate detection in M1.
+- `--persist` on `scripts/run_application_strategy_manual.py` writes five immutable
+  artifact snapshots (posting, job analysis, assessment, portfolio match, strategy).
+- CLI: `cic opportunity list|show`.
+- ADR: [adr/002_opportunity_persistence.md](adr/002_opportunity_persistence.md).
+- Phase 2 remains **in progress**. M2 outcome logging, M3 CSV export, and M4 ranked
+  comparison are not implemented. FR-013 is not complete.
+
+---
+
+## Version 1.21
+
+### FR-006 CV Generation formally closed
+
+- **Status: Completed.** Deterministic Tailoring Plan + CV render + optional OpenAI
+  summary rewrite (prompt **v2**) are implemented and owner-validated (Bluefin:
+  `summary_source=openai_rewrite`, no unsupported technologies, planning unchanged).
+- Documentation updated across AGENTS, README, repository guide, functional
+  specification, roadmap, implementation notes, and FR-006 eval guides.
+- Presentation-only ideas discussed as informal “Phase D” (dynamic layouts, adaptive
+  section ordering, richer document presentation) are **out of scope for FR-006**.
+  If needed later, raise a **new** FR — do not extend FR-006.
+- Next planned functional requirement: **FR-007 Cover Letter**. Remaining Phase 2
+  exit criteria (pipeline tracking, FR-013, ranked comparison) unchanged.
+
+---
+
+## Version 1.20
+
+### FR-006 Phase C prompt v2 (quality only)
+
+- Summary rewrite instructions moved to `prompts/cv_summary_v2.md`.
+- Guides employer-relevant lead, capabilities over chronology, capabilities
+  before project names, and recruiter-scan readability — without changing
+  deterministic planning, validation, or fail-soft behaviour.
+- `cv_summary_v1.md` retained for history.
+
+---
+
+## Version 1.19
+
+### FR-006 Phase C — opt-in OpenAI summary rewrite
+
+- Added plan-driven Professional Summary rewrite behind `rewrite_summary=False`
+  (opt-in). Deterministic Tailoring Plan remains authoritative.
+- Prompt loaded from versioned file
+  `src/career_intelligence/cv_generation/prompts/cv_summary_v1.md` (not embedded;
+  superseded by v2 for quality guidance — see Version 1.20).
+- Fail-soft: OpenAI / validation failures copy the profile summary and set
+  `summary_source=fallback_profile_copy`.
+- Manual runner: `--rewrite-summary`. Design:
+  [docs/eval/fr006_phase_c_design.md](eval/fr006_phase_c_design.md).
+- Connection fix: Phase C runner now applies the same `truststore.inject_into_ssl()`
+  path as FR-002/003 live manuals before constructing `OpenAISummaryRewriter`
+  (corpus runs reuse saved JSON and previously skipped that branch). Provider
+  failures are classified (Connection / Auth / RateLimit / Timeout / APIStatus).
+
+---
+
+## Version 1.18
+
+### Career Profile enrichment sprint (owner-confirmed)
+
+- General Assembly experience technologies now include `NLP` and `Web Scraping`
+  (course techniques only; not promoted to global Skills).
+- Historical technologies (Java, Ruby on Rails, Gherkin) remain experience-local only.
+- Project and certification `url` fields left null: no per-project canonical URLs were
+  owner-confirmed in this sprint; certification URLs deferred by owner.
+- Personal links (GitHub, portfolio, LinkedIn) remain outside the Career Profile per
+  FR-001 separation; use FR-006 `ContactDetails` when generating CVs.
+- Report:
+  [docs/eval/career_profile_enrichment_report.md](eval/career_profile_enrichment_report.md).
+
+---
+
+## Version 1.17
+
+### Career Profile evidence-strength model
+
+- Skills remain truthful capability claims; optional `SkillEvidenceRef` records *how*
+  a capability is demonstrated (employment, independent engineering, portfolio project,
+  certification, professional development, coursework).
+- Legacy `Skill.evidence` strings (`experience:id; project:id`) resolve against the
+  profile for backwards compatibility; explicit `evidence_refs` take precedence.
+- FR-006 deterministic planner ranks promoted skills and summary themes by evidence
+  strength so PD-only capabilities (e.g. Snowflake from upskilling) stay recognised
+  but are not over-prioritised versus employment/portfolio demonstration.
+- Report:
+  [docs/eval/career_profile_evidence_model_refinement.md](eval/career_profile_evidence_model_refinement.md).
+- Phase C (LLM summary rewrite) not started.
+
+---
+
 ## Version 1.16
 
 ### FR-005 formally closed after owner manual validation

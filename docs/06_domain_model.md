@@ -184,9 +184,24 @@ public default — callers inject a planner explicitly. OpenAI is not required.
 
 ---
 
+### Opportunity (durable record)
+
+**Maps to:** Phase 2 pipeline tracking (M1 complete)
+
+A persisted assessed opportunity with permanent id `opp_<ULID>`, lifecycle
+`PipelineStatus`, strategy summary, and immutable FR-002–FR-005 artifact snapshots.
+Produced by `OpportunityService.create_from_strategy` after Application Strategy.
+Structured storage under `data/opportunities/` is the system of record (ADR-002).
+CSV export is M3. Owner decisions and outcomes are M2. Ranking is M4.
+
+**Implementation:** `src/career_intelligence/opportunities/`.
+
+---
+
 ### Pipeline Entry
 
-An assessed opportunity tracked through its lifecycle — from evaluation through pursuit to resolution. Phase 2 provides job opportunity pipeline tracking as the automated counterpart to `applications/application_tracker.csv`.
+Historical domain name for the durable Opportunity aggregate above. Prefer
+**Opportunity** / `OpportunityService` in implementation and new docs.
 
 ---
 
@@ -217,10 +232,11 @@ A prioritised ordering of open assessed opportunities to support effort allocati
 | Job Analysis | Application Strategy | Bound for provenance; facts cited in strategy evidence |
 | Opportunity Assessment | Application Strategy | Fit judgments and findings drive posture/tier |
 | Portfolio Match | Application Strategy | Ranked projects inform portfolio emphasis (no rerank) |
+| Application Strategy | Opportunity | Trusted artifacts may be persisted (M1) |
 | Application Strategy | User Decision | User accepts, overrides, or defers the recommendation |
-| User Decision | Outcome Record | Decision and subsequent events logged |
-| Outcome Record | Opportunity Assessment | History informs future assessments (over time) |
-| Pipeline Entry | Ranked Comparison | Open entries compared for prioritisation |
+| User Decision | Outcome Record | Decision and subsequent events logged (M2) |
+| Outcome Record | Opportunity | Outcomes attach to durable opportunities |
+| Opportunity | OpportunityComparison | Open opportunities compared for prioritisation (M4) |
 
 Portfolio Match and Opportunity Assessment are siblings. Both feed Application Strategy.
 There is no Portfolio Match → Opportunity Assessment dependency.
@@ -250,8 +266,8 @@ The operational layer is the manual precursor to the automated domain model.
 | Domain entity | Operational counterpart |
 |---------------|------------------------|
 | Career Profile | `career-documents/cv/`, owner knowledge |
-| Pipeline Entry | `applications/application_tracker.csv` |
-| Outcome Record | Status, Outcome, Notes columns in application tracker |
+| Opportunity (durable) | `data/opportunities/` (SoT); CSV export to tracker is M3 |
+| Outcome Record | Status / notes on Opportunity (M2); tracker Outcome column is export projection |
 | Network contacts | `applications/network/network_tracker.csv` (Phase 3+ domain) |
 | Company context | `applications/company_notes/` |
 | Career milestones | `career-log.md` |
@@ -271,7 +287,8 @@ Phase 2 engineering must respect this mapping. The future system should absorb o
 | Opportunity Assessment | FR-003 |
 | Portfolio Match | FR-004 |
 | Application Strategy | FR-005 |
-| Outcome Record | FR-013 |
+| Opportunity (durable persistence) | Phase 2 M1 (complete) |
+| Outcome Record | FR-013 (M2 remaining) |
 | Duplicate Application Detection | FR-014 (future) |
-| Ranked Comparison | FR-012 (partial — job opportunities only) |
-| Pipeline tracking | Phase 2 in-scope (see roadmap) |
+| Ranked Comparison | FR-012 (partial — job opportunities only; M4 remaining) |
+| Pipeline tracking | Phase 2 M1 (complete) + M2–M4 |

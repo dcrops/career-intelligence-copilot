@@ -16,6 +16,7 @@ Examples:
   Get-Content job.txt | python scripts/run_application_strategy_manual.py
   python scripts/run_application_strategy_manual.py --job-file job.txt --volume-applications-enabled
   python scripts/run_application_strategy_manual.py --job-file job.txt --output-json out.json
+  python scripts/run_application_strategy_manual.py --job-file job.txt --offline-fixtures --persist
   python scripts/run_application_strategy_manual.py --job-file tests/.../fixture.txt --offline-fixtures
 """
 
@@ -39,6 +40,7 @@ from career_intelligence.application_strategy.deterministic_planner import (
 )
 from career_intelligence.job_analysis import JobAnalysis, JobAnalysisService, JobPosting
 from career_intelligence.job_analysis.openai_extractor import OpenAIJobExtractor
+from career_intelligence.opportunities import Opportunity, OpportunityService
 from career_intelligence.opportunity_assessment import (
     OpportunityAssessment,
     OpportunityAssessmentService,
@@ -127,6 +129,20 @@ def build_parser() -> argparse.ArgumentParser:
         "--model",
         default=None,
         help="Optional OpenAI model override for extractor and assessor (live mode only).",
+    )
+    parser.add_argument(
+        "--persist",
+        action="store_true",
+        help=(
+            "Persist FR-002–FR-005 artifacts as a durable Opportunity "
+            "(immutable snapshots under data/opportunities/)."
+        ),
+    )
+    parser.add_argument(
+        "--opportunities-dir",
+        type=Path,
+        default=None,
+        help="Override opportunities store directory (used with --persist).",
     )
     return parser
 
@@ -513,6 +529,26 @@ def write_json(path: Path, result: PipelineResult) -> None:
     )
 
 
+def persist_opportunity(
+    result: PipelineResult,
+    *,
+    opportunities_dir: Path | None = None,
+) -> Opportunity:
+    """Persist trusted pipeline artifacts via OpportunityService (M1)."""
+    service = (
+        OpportunityService.from_path(opportunities_dir)
+        if opportunities_dir is not None
+        else OpportunityService()
+    )
+    return service.create_from_strategy(
+        posting=result.posting,
+        job_analysis=result.job_analysis,
+        assessment=result.assessment,
+        portfolio_match=result.portfolio_match,
+        strategy=result.strategy,
+    )
+
+
 def _format_pipeline_failure(exc: BaseException) -> str:
     """Concise developer-facing failure summary for the manual runner."""
     component = _failure_component(exc)
@@ -546,6 +582,8 @@ def _failure_component(exc: BaseException) -> str:
         return "PortfolioMatch"
     if "ApplicationStrategy" in name:
         return "ApplicationStrategy"
+    if "Opportunity" in name and "Assessment" not in name:
+        return "OpportunityPersistence"
     if "Profile" in name:
         return "CareerProfile"
     return "Pipeline"
@@ -580,6 +618,29 @@ def main(argv: list[str] | None = None) -> int:
     if args.output_json is not None:
         write_json(args.output_json, result)
         print(f"\nWrote JSON output to {args.output_json}")
+
+    if args.persist:
+        try:
+            opportunity = persist_opportunity(
+                result,
+                opportunities_dir=args.opportunities_dir,
+            )
+        except Exception as exc:
+            print(_format_pipeline_failure(exc), file=sys.stderr)
+            raise SystemExit(1) from exc
+        store_root = args.opportunities_dir or (
+            REPO_ROOT / "data" / "opportunities"
+        )
+        print("")
+        print("Opportunity persisted (M1)")
+        print("-" * 72)
+        print(f"  opportunity_id: {opportunity.opportunity_id}")
+        print(f"  status: {opportunity.status}")
+        print(f"  store: {store_root}")
+        print(f"  artifacts: {store_root / 'artifacts' / opportunity.opportunity_id}")
+        for name, relative in sorted(opportunity.artifact_paths.items()):
+            print(f"    - {name}: {relative}")
+
     return 0
 
 

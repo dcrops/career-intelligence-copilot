@@ -9,3 +9,5 @@ htmlcov/
 .venv/
 tmp_*.json
 tmp_*.txt
+data/opportunities/index.yaml
+data/opportunities/artifacts/

@@ -84,13 +84,18 @@ Current focus:
 
 - FR-005 Application Strategy — complete (formally closed after owner manual validation)
 
-- Next planned FR: FR-006 CV Generation
+- FR-006 CV Generation — complete (deterministic plan + optional OpenAI summary rewrite)
 
-- Remaining Phase 2 exit criteria: pipeline tracking, FR-013 Outcome Logging, ranked
-  comparison of open opportunities
+- M1 Opportunity persistence — complete (`OpportunityService`, `opp_<ULID>`, immutable artifacts)
+
+- Next planned FR after Phase 2 exit: FR-007 Cover Letter
+
+- Remaining Phase 2 exit work: M2 outcome logging (FR-013 subset), M3 CSV export,
+  M4 ranked comparison, M5 close-out
 
 
-Completed decision-loop slice:
+
+Completed decision-loop slice (plus CV generation and M1 persistence):
 
 
 
@@ -103,17 +108,24 @@ FR-002 Job Analysis
         └─→ FR-004 Portfolio Matching
                   ↓
         FR-005 Application Strategy
+                  ↓
+        FR-006 CV Generation (optional)
+                  ↓
+        M1 Opportunity persistence (--persist)
 ```
 
 
 
 See [docs/00_repository_guide.md](docs/00_repository_guide.md) for full orientation and [docs/10_roadmap.md](docs/10_roadmap.md) for phase status.
 
-Owner manual validation of the FR-001→FR-005 pipeline:
+Owner manual validation:
 
-`python scripts/run_application_strategy_manual.py --job-file path/to/real_job.txt`
+- FR-001→FR-005: `python scripts/run_application_strategy_manual.py --job-file path/to/real_job.txt`
+- Persist opportunity (M1): add `--persist` (optional `--opportunities-dir PATH`)
+- Inspect: `cic opportunity list` / `cic opportunity show <opp_id>`
+- FR-006: `python scripts/run_cv_generation_manual.py --job-file …` (optional `--rewrite-summary`)
 
-Details: [docs/08_implementation_notes.md](docs/08_implementation_notes.md) § Owner manual validation runner.
+Details: [docs/08_implementation_notes.md](docs/08_implementation_notes.md); FR-006 procedure: [docs/eval/fr006_manual_validation.md](docs/eval/fr006_manual_validation.md).
 
 
 

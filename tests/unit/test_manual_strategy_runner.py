@@ -39,6 +39,9 @@ def test_parser_accepts_volume_and_output_json() -> None:
             "--offline-fixtures",
             "--title",
             "AI Engineer",
+            "--persist",
+            "--opportunities-dir",
+            "tmp-opps",
         ]
     )
     assert args.job_file == Path("job.txt")
@@ -46,6 +49,8 @@ def test_parser_accepts_volume_and_output_json() -> None:
     assert args.output_json == Path("out.json")
     assert args.offline_fixtures is True
     assert args.title == "AI Engineer"
+    assert args.persist is True
+    assert args.opportunities_dir == Path("tmp-opps")
 
 
 def test_read_job_text_from_file(tmp_path: Path) -> None:
@@ -106,6 +111,65 @@ def test_offline_pipeline_and_report_serialisation(tmp_path: Path) -> None:
     assert "preference:preference:" not in report
     if "preference:locations" in report:
         assert "preference:preference:locations" not in report
+
+
+def test_default_run_does_not_persist(tmp_path: Path) -> None:
+    runner = _load_runner()
+    posting = posting_applied_ai_engineer()
+    result = runner.run_pipeline(
+        posting=posting,
+        profile_path=_REPO_ROOT / "tests" / "fixtures" / "golden" / "career_profile.yaml",
+        volume_applications_enabled=False,
+        offline_fixtures=True,
+        model=None,
+    )
+    assert result.strategy.owner_review_required is True
+    assert not (tmp_path / "index.yaml").exists()
+
+
+def test_persist_creates_opportunity_and_five_snapshots(tmp_path: Path) -> None:
+    runner = _load_runner()
+    posting = posting_applied_ai_engineer()
+    result = runner.run_pipeline(
+        posting=posting,
+        profile_path=_REPO_ROOT / "tests" / "fixtures" / "golden" / "career_profile.yaml",
+        volume_applications_enabled=False,
+        offline_fixtures=True,
+        model=None,
+    )
+    opportunity = runner.persist_opportunity(result, opportunities_dir=tmp_path)
+    assert opportunity.opportunity_id.startswith("opp_")
+    assert len(opportunity.opportunity_id) == 30
+    artifact_dir = tmp_path / "artifacts" / opportunity.opportunity_id
+    for name in (
+        "posting.json",
+        "job_analysis.json",
+        "assessment.json",
+        "portfolio_match.json",
+        "strategy.json",
+    ):
+        assert (artifact_dir / name).is_file()
+    assert (tmp_path / "index.yaml").is_file()
+
+
+def test_main_persist_flag_writes_store(tmp_path: Path) -> None:
+    runner = _load_runner()
+    job_file = tmp_path / "job.txt"
+    job_file.write_text(posting_applied_ai_engineer().raw_text, encoding="utf-8")
+    exit_code = runner.main(
+        [
+            "--job-file",
+            str(job_file),
+            "--offline-fixtures",
+            "--profile-path",
+            str(_REPO_ROOT / "tests" / "fixtures" / "golden" / "career_profile.yaml"),
+            "--persist",
+            "--opportunities-dir",
+            str(tmp_path / "opps"),
+        ]
+    )
+    assert exit_code == 0
+    assert (tmp_path / "opps" / "index.yaml").is_file()
 
 
 def test_live_mode_fails_clearly_without_api_key(

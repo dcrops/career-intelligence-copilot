@@ -23,12 +23,13 @@ The repository — not conversation history — is the project's long-term memor
 
 Career Intelligence Copilot is a decision-support system for job search — not an application automation tool.
 
-**Current phase:** Phase 2 Job Intelligence implementation. FR-001 Career Profile,
-FR-002 Job Analysis, FR-003 Opportunity Assessment, FR-004 Portfolio Matching, and
-FR-005 Application Strategy are implemented; FR-005 is formally closed after owner
-manual validation. Next planned functional requirement: FR-006 CV Generation.
-Remaining Phase 2 exit criteria (pipeline tracking, FR-013, ranked comparison) stay
-outstanding.
+**Current phase:** Phase 2 Job Intelligence implementation. FR-001–FR-005 are
+implemented and closed; **FR-006 CV Generation is complete** (deterministic
+tailoring + optional OpenAI summary rewrite; owner-validated). **M1 Opportunity
+persistence is complete** (`OpportunityService`, `opp_<ULID>`, immutable artifacts).
+Remaining Phase 2 exit work: M2 outcome logging (FR-013 subset), M3 CSV export,
+M4 ranked comparison, then M5 close-out. Next planned functional requirement after
+Phase 2 exit: **FR-007 Cover Letter**.
 
 **Implementation foundation:** Python 3.11+, Pydantic, YAML storage, and the public profile
 service boundary are recorded in
@@ -44,7 +45,12 @@ service boundary are recorded in
 
 **In scope:** Career profile, job analysis, opportunity assessment (Technical, Commercial, Portfolio Fit), portfolio matching, application strategy (pursuit posture + effort tiers), pipeline tracking, outcome logging, ranked comparison of open opportunities.
 
-**Out of scope:** CV/cover letter generation, recruiter outreach, interview preparation, full dashboard, market intelligence, cross-domain daily prioritisation, automated job discovery, predictive scoring (Interview Probability, Recruiter Confidence).
+**Out of scope for Phase 2 exit:** Cover letter generation, recruiter outreach, interview preparation, full dashboard, market intelligence, cross-domain daily prioritisation, automated job discovery, predictive scoring (Interview Probability, Recruiter Confidence).
+
+**Delivered outside Phase 2 exit criteria (owner-sequenced):** FR-006 CV Generation — complete; do not reopen as informal “Phase D” presentation work (see functional specification / changelog).
+
+**Phase 2 close-out progress:** M1 Opportunity persistence complete (structured store
+SoT under `data/opportunities/`; CSV export deferred to M3). M2–M5 not started.
 
 Full detail: [docs/04_functional_specification.md](docs/04_functional_specification.md) and [docs/10_roadmap.md](docs/10_roadmap.md).
 

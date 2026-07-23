@@ -1,0 +1,785 @@
+{
+  "job_analysis": {
+    "posting": {
+      "raw_text": "Company logo for, Officeworks.\nOfficeworks\n\n\nAI Engineer \n\nChadstone, Victoria, Australia · Reposted 2 weeks ago · Over 100 people clicked apply\n\nPromoted by hirer · Responses managed off LinkedIn\n\nFull-time\nApply\n\nSave\nYour profile and resume are missing some required qualifications\n\n\n\nShow match details\n\nBETA • Is this information helpful?\n\n\nPeople you can reach out to\n\nLeng Lim\n\n• 2nd\n\nSenior Experience Designer | Equal mix of creativity, positivity and empathy | Anthophile & Durian enthusiast 🌻🌷🌼\n\nPeople in your network\n\n\nConnect\nAbout the job\nAbout Us\n\nAt Officeworks we make bigger things happen. Our customers, our team, and our community are our heart and soul. And if our brilliant people have taught us anything, it is that we can do all kinds of incredible things, each and every day.\n\nFast paced. Innovative. Inspiring. With close to 10,000 team members and a national footprint of more than 173 retail stores Australia wide – we’re focused on delivering a wide range, low price and great service. We’re about inspiring new ideas and thinking outside the box. We’re about kicking goals, having a laugh and pushing each other. We are about being rewarded and supported. We’re about teaching a customer something new and supporting the community. We’re about making a difference.\n\nAbout The Role\n\nWe are scaling our AI team and investing in building real-world AI capability. As part of this growth, we are seeking an experienced AI Integration Engineer to design and build the infrastructure and AI agents that enables AI-powered solutions to operate within real business environments.\n\nThis is a hands-on role focused on integrating and development of AI agents into production systems, building scalable infrastructure, and delivering practical solutions that create measurable business value. You’ll work in a small, highly collaborative engineering team to turn strategic ideas into working products.\n\nImportant: This role requires demonstrated professional (commercial) experience delivering systems in real business environments. MLOPS experience and working with Agents in commercial setting will be highly regarded. Candidates with only, self-taught, or side-project experience will not be considered, but we encourage people from startup in series B and C to apply.\n\nWhat You’ll Do\n\n Build full-stack infrastructure for AI prototypes and MVPs (backend services, APIs, and front-end interfaces) \n Develop APIs and integration layers connecting AI agents with internal systems, databases, and third-party services \n Implement orchestration and communication across multiple AI agents \n Design and deliver scalable, secure systems from prototype through to production \n Collaborate closely with engineering and product stakeholders to deliver end-to-end AI solutions \n Build AI agents in collaboration with our Agent engineer \n Debug, optimise, and evolve prototypes into stable, production-ready systems \n\n\nAbout You\n\nYou are a hands-on engineer who enjoys solving real business problems and has a track record of delivering working systems in a professional environment.\n\nEssential Experience\n\n5+ years of professional (commercial) software engineering experience\nProven track record of delivering production-grade systems in real business environments\nStrong full-stack development capability\nStrong Python experience, plus JavaScript or TypeScript\nExperience building APIs and integrating systems in production\nExperience with relational and/or non-relational databases (Snowflake highly regarded)\nExperience with modern front-end frameworks (React, Angular, or Vue)\nExperience working with cloud platforms such as AWS or Google Cloud\n\n\nNice To Have\n\nExperience working with AI-enabled systems or data engineering pipelines\nMLOPS\nExperience in startup, scale-up, or innovation-driven environments\nExperience with complex system integrations or platform-level engineering\n\n\nOur culture\n\nBenefits\n\nIf you’re searching for an organisation that’s truly committed to its people, where you can thrive in a culture of togetherness, then join Officeworks and let’s make bigger things happen – for all of us! We celebrate our teams’ uniqueness by offering genuine team member benefits to the Officeworks family:\n\n We’re all about giving you the flexibility you need to keep things balanced to suit your individual needs. \n Enjoy generous discounts across Officeworks, Bunnings, Kmart, Target and the wider Wesfarmers brands. \n Access to our Officeworks benefits program for exclusive discounts and perks across entertainment, travel, lifestyle, and health. \n Our Growing Families Policy supports team members during the exciting and challenging times of expanding their family \n We prioritise safety, mental health and wellbeing, offering access to our Employee Assistance Program (EAP) as well as other ongoing programs \n OurFlexible Public Holidays Policy supports those who observe cultural or religious holidays different from the standard public holidays in Australia \n Take advantage of outstanding learning and development programs to support your career growth \n Explore fantastic career opportunities across the broader Wesfarmers Group. \n\n\nAt Officeworks, we operate best when our team represents the communities we serve. We proudly commit to providing a safe and supportive work environment for our team. We encourage applications from all candidates of all ages, cultures (including Aboriginal and Torres Strait Islander peoples), people with disabilities, and the LGBTQI+ community.",
+      "title": "AI Engineer",
+      "company": "Officeworks",
+      "source_url": "https://www.linkedin.com/jobs/search-results/?currentJobId=4427312832&eBP=CwEAAAGfjO1IwPFfobLY4Ns9tpjK21vDAGoiSX-j4aGIs9DpVUfWUn7HL5m0UDpy3teBcew2rinV5GjZIhNmvuRtY6G216PTa-abUbhczBuiSNPColpIF7bVsJgaYFDl43WO4XumqTD6nF37VoxVy3yCOuZ5N9L7VN9dbMHTscMeTuxEryAK0RVEYLkxXh1pVXTqR_yHFs_93Q2rUpchZspBm4VukpMbHYgzuKRBKvh6-4OEvuMbvu38-5wvSl3FjPY6MYZu-ecptiNaOEcgBAglDx8Sbjse_KKJ8lT14jUj8vGAg8Lz9MJqw6ok7M9z_NTeklEd0A8k4wCZq7yAVO4bGxEjvAJllPMc1Xd9OCaS98HjfVkXT3gE6vf4SAf15aDFdZbkXKOluRjHTrejoARk9nqg1S07mpYPgo1JKDMYDUcpO_qX3AVvd9TZJczO7KmSiuu3PJFwvednWDBjCBYARQLBeCjjVYAPsZhLXpW1GYBb&refId=kI7YYcveuaax8z8A2GDROA%3D%3D&trackingId=QCoC2y18sX1j6inS24KoqQ%3D%3D&keywords=ai%20engineer&origin=JOBS_HOME_SEARCH_BUTTON"
+    },
+    "role_family": {
+      "family": "ai_engineering",
+      "evidence": [
+        {
+          "excerpt": "we are seeking an experienced AI Integration Engineer to design and build the infrastructure and AI agents",
+          "section": "About The Role"
+        }
+      ]
+    },
+    "seniority": {
+      "level": "unknown",
+      "ambiguous": false,
+      "candidate_levels": [],
+      "evidence": []
+    },
+    "technologies": [
+      {
+        "name": "Python",
+        "level": "required",
+        "evidence": [
+          {
+            "excerpt": "Strong Python experience",
+            "section": "About You"
+          }
+        ]
+      },
+      {
+        "name": "JavaScript",
+        "level": "required",
+        "evidence": [
+          {
+            "excerpt": "Strong Python experience, plus JavaScript or TypeScript",
+            "section": "About You"
+          }
+        ]
+      },
+      {
+        "name": "TypeScript",
+        "level": "required",
+        "evidence": [
+          {
+            "excerpt": "Strong Python experience, plus JavaScript or TypeScript",
+            "section": "About You"
+          }
+        ]
+      },
+      {
+        "name": "Snowflake",
+        "level": "preferred",
+        "evidence": [
+          {
+            "excerpt": "Experience with relational and/or non-relational databases (Snowflake highly regarded)",
+            "section": "Essential Experience"
+          }
+        ]
+      },
+      {
+        "name": "React",
+        "level": "preferred",
+        "evidence": [
+          {
+            "excerpt": "Experience with modern front-end frameworks (React, Angular, or Vue)",
+            "section": "Essential Experience"
+          }
+        ]
+      },
+      {
+        "name": "Angular",
+        "level": "preferred",
+        "evidence": [
+          {
+            "excerpt": "Experience with modern front-end frameworks (React, Angular, or Vue)",
+            "section": "Essential Experience"
+          }
+        ]
+      },
+      {
+        "name": "Vue",
+        "level": "preferred",
+        "evidence": [
+          {
+            "excerpt": "Experience with modern front-end frameworks (React, Angular, or Vue)",
+            "section": "Essential Experience"
+          }
+        ]
+      },
+      {
+        "name": "AWS",
+        "level": "preferred",
+        "evidence": [
+          {
+            "excerpt": "Experience working with cloud platforms such as AWS or Google Cloud",
+            "section": "Essential Experience"
+          }
+        ]
+      },
+      {
+        "name": "Google Cloud",
+        "level": "preferred",
+        "evidence": [
+          {
+            "excerpt": "Experience working with cloud platforms such as AWS or Google Cloud",
+            "section": "Essential Experience"
+          }
+        ]
+      }
+    ],
+    "responsibilities": [
+      {
+        "description": "Build full-stack infrastructure for AI prototypes and MVPs (backend services, APIs, and front-end interfaces)",
+        "evidence": [
+          {
+            "excerpt": "Build full-stack infrastructure for AI prototypes and MVPs",
+            "section": "What You’ll Do"
+          }
+        ]
+      },
+      {
+        "description": "Develop APIs and integration layers connecting AI agents with internal systems, databases, and third-party services",
+        "evidence": [
+          {
+            "excerpt": "Develop APIs and integration layers connecting AI agents with internal systems, databases, and third-party services",
+            "section": "What You’ll Do"
+          }
+        ]
+      },
+      {
+        "description": "Implement orchestration and communication across multiple AI agents",
+        "evidence": [
+          {
+            "excerpt": "Implement orchestration and communication across multiple AI agents",
+            "section": "What You’ll Do"
+          }
+        ]
+      },
+      {
+        "description": "Design and deliver scalable, secure systems from prototype through to production",
+        "evidence": [
+          {
+            "excerpt": "Design and deliver scalable, secure systems from prototype through to production",
+            "section": "What You’ll Do"
+          }
+        ]
+      },
+      {
+        "description": "Collaborate closely with engineering and product stakeholders to deliver end-to-end AI solutions",
+        "evidence": [
+          {
+            "excerpt": "Collaborate closely with engineering and product stakeholders to deliver end-to-end AI solutions",
+            "section": "What You’ll Do"
+          }
+        ]
+      },
+      {
+        "description": "Build AI agents in collaboration with our Agent engineer",
+        "evidence": [
+          {
+            "excerpt": "Build AI agents in collaboration with our Agent engineer",
+            "section": "What You’ll Do"
+          }
+        ]
+      },
+      {
+        "description": "Debug, optimise, and evolve prototypes into stable, production-ready systems",
+        "evidence": [
+          {
+            "excerpt": "Debug, optimise, and evolve prototypes into stable, production-ready systems",
+            "section": "What You’ll Do"
+          }
+        ]
+      }
+    ],
+    "compensation": {
+      "clarity": "unstated",
+      "minimum": null,
+      "maximum": null,
+      "currency": null,
+      "period": null,
+      "raw_text": null,
+      "evidence": []
+    },
+    "location": {
+      "clarity": "stated",
+      "summary": "Chadstone, Victoria, Australia",
+      "evidence": [
+        {
+          "excerpt": "Chadstone, Victoria, Australia",
+          "section": "Job Description"
+        }
+      ]
+    },
+    "work_arrangement": {
+      "arrangement": "onsite",
+      "details": null,
+      "evidence": [
+        {
+          "excerpt": "Full-time",
+          "section": "Job Description"
+        }
+      ]
+    },
+    "employment": {
+      "working_hours": "full_time",
+      "engagement_type": "unspecified",
+      "evidence": [
+        {
+          "excerpt": "Full-time",
+          "section": "Job Description"
+        }
+      ]
+    },
+    "experience_requirements": [
+      {
+        "description": "5+ years of professional (commercial) software engineering experience",
+        "level": "required",
+        "minimum_years": 5.0,
+        "maximum_years": null,
+        "evidence": [
+          {
+            "excerpt": "5+ years of professional (commercial) software engineering experience",
+            "section": "Essential Experience"
+          }
+        ]
+      }
+    ]
+  },
+  "application_tier": "silver",
+  "pursuit_posture": "consider",
+  "jd_priorities": [
+    {
+      "rank": 1,
+      "label": "Python",
+      "kind": "technology",
+      "rationale": "Python promoted because it is listed as required in the job analysis.",
+      "evidence": [
+        {
+          "origin": "job_analysis",
+          "job_evidence": {
+            "source": "technology",
+            "item_index": 0,
+            "name": "Python",
+            "excerpt": "Strong Python experience"
+          },
+          "profile_evidence": null,
+          "portfolio_project_id": null,
+          "excerpt": null
+        }
+      ]
+    },
+    {
+      "rank": 2,
+      "label": "JavaScript",
+      "kind": "technology",
+      "rationale": "JavaScript promoted because it is listed as required in the job analysis.",
+      "evidence": [
+        {
+          "origin": "job_analysis",
+          "job_evidence": {
+            "source": "technology",
+            "item_index": 1,
+            "name": "JavaScript",
+            "excerpt": "Strong Python experience, plus JavaScript or TypeScript"
+          },
+          "profile_evidence": null,
+          "portfolio_project_id": null,
+          "excerpt": null
+        }
+      ]
+    },
+    {
+      "rank": 3,
+      "label": "TypeScript",
+      "kind": "technology",
+      "rationale": "TypeScript promoted because it is listed as required in the job analysis.",
+      "evidence": [
+        {
+          "origin": "job_analysis",
+          "job_evidence": {
+            "source": "technology",
+            "item_index": 2,
+            "name": "TypeScript",
+            "excerpt": "Strong Python experience, plus JavaScript or TypeScript"
+          },
+          "profile_evidence": null,
+          "portfolio_project_id": null,
+          "excerpt": null
+        }
+      ]
+    },
+    {
+      "rank": 4,
+      "label": "Snowflake",
+      "kind": "technology",
+      "rationale": "Snowflake promoted because it is listed as preferred in the job analysis.",
+      "evidence": [
+        {
+          "origin": "job_analysis",
+          "job_evidence": {
+            "source": "technology",
+            "item_index": 3,
+            "name": "Snowflake",
+            "excerpt": "Experience with relational and/or non-relational databases (Snowflake highly regarded)"
+          },
+          "profile_evidence": null,
+          "portfolio_project_id": null,
+          "excerpt": null
+        }
+      ]
+    },
+    {
+      "rank": 5,
+      "label": "React",
+      "kind": "technology",
+      "rationale": "React promoted because it is listed as preferred in the job analysis.",
+      "evidence": [
+        {
+          "origin": "job_analysis",
+          "job_evidence": {
+            "source": "technology",
+            "item_index": 4,
+            "name": "React",
+            "excerpt": "Experience with modern front-end frameworks (React, Angular, or Vue)"
+          },
+          "profile_evidence": null,
+          "portfolio_project_id": null,
+          "excerpt": null
+        }
+      ]
+    },
+    {
+      "rank": 6,
+      "label": "Angular",
+      "kind": "technology",
+      "rationale": "Angular promoted because it is listed as preferred in the job analysis.",
+      "evidence": [
+        {
+          "origin": "job_analysis",
+          "job_evidence": {
+            "source": "technology",
+            "item_index": 5,
+            "name": "Angular",
+            "excerpt": "Experience with modern front-end frameworks (React, Angular, or Vue)"
+          },
+          "profile_evidence": null,
+          "portfolio_project_id": null,
+          "excerpt": null
+        }
+      ]
+    },
+    {
+      "rank": 7,
+      "label": "Vue",
+      "kind": "technology",
+      "rationale": "Vue promoted because it is listed as preferred in the job analysis.",
+      "evidence": [
+        {
+          "origin": "job_analysis",
+          "job_evidence": {
+            "source": "technology",
+            "item_index": 6,
+            "name": "Vue",
+            "excerpt": "Experience with modern front-end frameworks (React, Angular, or Vue)"
+          },
+          "profile_evidence": null,
+          "portfolio_project_id": null,
+          "excerpt": null
+        }
+      ]
+    },
+    {
+      "rank": 8,
+      "label": "AWS",
+      "kind": "technology",
+      "rationale": "AWS promoted because it is listed as preferred in the job analysis.",
+      "evidence": [
+        {
+          "origin": "job_analysis",
+          "job_evidence": {
+            "source": "technology",
+            "item_index": 7,
+            "name": "AWS",
+            "excerpt": "Experience working with cloud platforms such as AWS or Google Cloud"
+          },
+          "profile_evidence": null,
+          "portfolio_project_id": null,
+          "excerpt": null
+        }
+      ]
+    }
+  ],
+  "projects_to_emphasise": [
+    {
+      "rank": 1,
+      "project_id": "operational-intelligence-copilot",
+      "rationale": "Consider emphasising 'operational-intelligence-copilot' (PortfolioMatch rank 1).",
+      "evidence": [
+        {
+          "origin": "application_strategy",
+          "job_evidence": null,
+          "profile_evidence": null,
+          "portfolio_project_id": "operational-intelligence-copilot",
+          "excerpt": "Consider emphasising 'operational-intelligence-copilot' (PortfolioMatch rank 1)."
+        }
+      ]
+    },
+    {
+      "rank": 2,
+      "project_id": "governance-document-rag",
+      "rationale": "Consider emphasising 'governance-document-rag' (PortfolioMatch rank 2).",
+      "evidence": [
+        {
+          "origin": "application_strategy",
+          "job_evidence": null,
+          "profile_evidence": null,
+          "portfolio_project_id": "governance-document-rag",
+          "excerpt": "Consider emphasising 'governance-document-rag' (PortfolioMatch rank 2)."
+        }
+      ]
+    },
+    {
+      "rank": 3,
+      "project_id": "public-holiday-entitlements",
+      "rationale": "Consider emphasising 'public-holiday-entitlements' (PortfolioMatch rank 3).",
+      "evidence": [
+        {
+          "origin": "application_strategy",
+          "job_evidence": null,
+          "profile_evidence": null,
+          "portfolio_project_id": "public-holiday-entitlements",
+          "excerpt": "Consider emphasising 'public-holiday-entitlements' (PortfolioMatch rank 3)."
+        }
+      ]
+    }
+  ],
+  "skills_to_promote": [
+    {
+      "rank": 1,
+      "skill_name": "Python",
+      "category": "technical",
+      "rationale": "Python promoted because it overlaps with job technology 'Python' (required).",
+      "evidence": [
+        {
+          "origin": "job_analysis",
+          "job_evidence": {
+            "source": "technology",
+            "item_index": 0,
+            "name": "Python",
+            "excerpt": "Strong Python experience"
+          },
+          "profile_evidence": null,
+          "portfolio_project_id": null,
+          "excerpt": null
+        },
+        {
+          "origin": "career_profile",
+          "job_evidence": null,
+          "profile_evidence": {
+            "source": "skill",
+            "ref": "skill:Python",
+            "excerpt": null
+          },
+          "portfolio_project_id": null,
+          "excerpt": null
+        }
+      ]
+    },
+    {
+      "rank": 2,
+      "skill_name": "Snowflake",
+      "category": "technical",
+      "rationale": "Snowflake promoted because it overlaps with job technology 'Snowflake' (preferred).",
+      "evidence": [
+        {
+          "origin": "job_analysis",
+          "job_evidence": {
+            "source": "technology",
+            "item_index": 3,
+            "name": "Snowflake",
+            "excerpt": "Experience with relational and/or non-relational databases (Snowflake highly regarded)"
+          },
+          "profile_evidence": null,
+          "portfolio_project_id": null,
+          "excerpt": null
+        },
+        {
+          "origin": "career_profile",
+          "job_evidence": null,
+          "profile_evidence": {
+            "source": "skill",
+            "ref": "skill:Snowflake",
+            "excerpt": null
+          },
+          "portfolio_project_id": null,
+          "excerpt": null
+        }
+      ]
+    }
+  ],
+  "skills_not_emphasised": [
+    {
+      "skill_name": "FastAPI",
+      "category": "technical",
+      "rationale": "FastAPI remains on the CV but is not emphasised because it does not overlap promoted job technologies."
+    },
+    {
+      "skill_name": "Docker",
+      "category": "technical",
+      "rationale": "Docker remains on the CV but is not emphasised because it does not overlap promoted job technologies."
+    },
+    {
+      "skill_name": "OpenAI APIs",
+      "category": "technical",
+      "rationale": "OpenAI APIs remains on the CV but is not emphasised because it does not overlap promoted job technologies."
+    },
+    {
+      "skill_name": "PyTest",
+      "category": "technical",
+      "rationale": "PyTest remains on the CV but is not emphasised because it does not overlap promoted job technologies."
+    },
+    {
+      "skill_name": "Git",
+      "category": "technical",
+      "rationale": "Git remains on the CV but is not emphasised because it does not overlap promoted job technologies."
+    },
+    {
+      "skill_name": "SQL",
+      "category": "technical",
+      "rationale": "SQL remains on the CV but is not emphasised because it does not overlap promoted job technologies."
+    },
+    {
+      "skill_name": "Apache NiFi",
+      "category": "technical",
+      "rationale": "Apache NiFi remains on the CV but is not emphasised because it does not overlap promoted job technologies."
+    },
+    {
+      "skill_name": "LangChain",
+      "category": "technical",
+      "rationale": "LangChain remains on the CV but is not emphasised because it does not overlap promoted job technologies."
+    },
+    {
+      "skill_name": "ChromaDB",
+      "category": "technical",
+      "rationale": "ChromaDB remains on the CV but is not emphasised because it does not overlap promoted job technologies."
+    },
+    {
+      "skill_name": "Pandas",
+      "category": "technical",
+      "rationale": "Pandas remains on the CV but is not emphasised because it does not overlap promoted job technologies."
+    },
+    {
+      "skill_name": "OpenPyXL",
+      "category": "technical",
+      "rationale": "OpenPyXL remains on the CV but is not emphasised because it does not overlap promoted job technologies."
+    },
+    {
+      "skill_name": "REST APIs",
+      "category": "technical",
+      "rationale": "REST APIs remains on the CV but is not emphasised because it does not overlap promoted job technologies."
+    },
+    {
+      "skill_name": "Microsoft Fabric",
+      "category": "technical",
+      "rationale": "Microsoft Fabric remains on the CV but is not emphasised because it does not overlap promoted job technologies."
+    },
+    {
+      "skill_name": "Databricks",
+      "category": "technical",
+      "rationale": "Databricks remains on the CV but is not emphasised because it does not overlap promoted job technologies."
+    },
+    {
+      "skill_name": "dbt",
+      "category": "technical",
+      "rationale": "dbt remains on the CV but is not emphasised because it does not overlap promoted job technologies."
+    },
+    {
+      "skill_name": "Azure Data Factory",
+      "category": "technical",
+      "rationale": "Azure Data Factory remains on the CV but is not emphasised because it does not overlap promoted job technologies."
+    },
+    {
+      "skill_name": "Selenium WebDriver",
+      "category": "technical",
+      "rationale": "Selenium WebDriver remains on the CV but is not emphasised because it does not overlap promoted job technologies."
+    },
+    {
+      "skill_name": "Jenkins",
+      "category": "technical",
+      "rationale": "Jenkins remains on the CV but is not emphasised because it does not overlap promoted job technologies."
+    },
+    {
+      "skill_name": "Maven",
+      "category": "technical",
+      "rationale": "Maven remains on the CV but is not emphasised because it does not overlap promoted job technologies."
+    },
+    {
+      "skill_name": "Cucumber",
+      "category": "technical",
+      "rationale": "Cucumber remains on the CV but is not emphasised because it does not overlap promoted job technologies."
+    },
+    {
+      "skill_name": "Retrieval-Augmented Generation",
+      "category": "domain",
+      "rationale": "Retrieval-Augmented Generation remains on the CV but is not emphasised because it does not overlap promoted job technologies."
+    },
+    {
+      "skill_name": "Operational intelligence",
+      "category": "domain",
+      "rationale": "Operational intelligence remains on the CV but is not emphasised because it does not overlap promoted job technologies."
+    },
+    {
+      "skill_name": "Explainable AI",
+      "category": "domain",
+      "rationale": "Explainable AI remains on the CV but is not emphasised because it does not overlap promoted job technologies."
+    },
+    {
+      "skill_name": "Enterprise decision support",
+      "category": "domain",
+      "rationale": "Enterprise decision support remains on the CV but is not emphasised because it does not overlap promoted job technologies."
+    },
+    {
+      "skill_name": "Data engineering",
+      "category": "domain",
+      "rationale": "Data engineering remains on the CV but is not emphasised because it does not overlap promoted job technologies."
+    },
+    {
+      "skill_name": "Geospatial processing",
+      "category": "domain",
+      "rationale": "Geospatial processing remains on the CV but is not emphasised because it does not overlap promoted job technologies."
+    },
+    {
+      "skill_name": "LLM application development",
+      "category": "domain",
+      "rationale": "LLM application development remains on the CV but is not emphasised because it does not overlap promoted job technologies."
+    },
+    {
+      "skill_name": "Software quality assurance",
+      "category": "domain",
+      "rationale": "Software quality assurance remains on the CV but is not emphasised because it does not overlap promoted job technologies."
+    },
+    {
+      "skill_name": "Test automation",
+      "category": "domain",
+      "rationale": "Test automation remains on the CV but is not emphasised because it does not overlap promoted job technologies."
+    },
+    {
+      "skill_name": "Architecture-first design",
+      "category": "soft",
+      "rationale": "Architecture-first design remains on the CV but is not emphasised because it does not overlap promoted job technologies."
+    },
+    {
+      "skill_name": "Agile collaboration",
+      "category": "soft",
+      "rationale": "Agile collaboration remains on the CV but is not emphasised because it does not overlap promoted job technologies."
+    }
+  ],
+  "summary_themes": [
+    {
+      "rank": 1,
+      "theme": "Python",
+      "rationale": "Summary should reflect JD priority 'Python' (technology).",
+      "evidence": [
+        {
+          "origin": "job_analysis",
+          "job_evidence": {
+            "source": "technology",
+            "item_index": 0,
+            "name": "Python",
+            "excerpt": "Strong Python experience"
+          },
+          "profile_evidence": null,
+          "portfolio_project_id": null,
+          "excerpt": null
+        }
+      ]
+    },
+    {
+      "rank": 2,
+      "theme": "JavaScript",
+      "rationale": "Summary should reflect JD priority 'JavaScript' (technology).",
+      "evidence": [
+        {
+          "origin": "job_analysis",
+          "job_evidence": {
+            "source": "technology",
+            "item_index": 1,
+            "name": "JavaScript",
+            "excerpt": "Strong Python experience, plus JavaScript or TypeScript"
+          },
+          "profile_evidence": null,
+          "portfolio_project_id": null,
+          "excerpt": null
+        }
+      ]
+    },
+    {
+      "rank": 3,
+      "theme": "TypeScript",
+      "rationale": "Summary should reflect JD priority 'TypeScript' (technology).",
+      "evidence": [
+        {
+          "origin": "job_analysis",
+          "job_evidence": {
+            "source": "technology",
+            "item_index": 2,
+            "name": "TypeScript",
+            "excerpt": "Strong Python experience, plus JavaScript or TypeScript"
+          },
+          "profile_evidence": null,
+          "portfolio_project_id": null,
+          "excerpt": null
+        }
+      ]
+    },
+    {
+      "rank": 4,
+      "theme": "Snowflake",
+      "rationale": "Summary should reflect JD priority 'Snowflake' (technology).",
+      "evidence": [
+        {
+          "origin": "job_analysis",
+          "job_evidence": {
+            "source": "technology",
+            "item_index": 3,
+            "name": "Snowflake",
+            "excerpt": "Experience with relational and/or non-relational databases (Snowflake highly regarded)"
+          },
+          "profile_evidence": null,
+          "portfolio_project_id": null,
+          "excerpt": null
+        }
+      ]
+    },
+    {
+      "rank": 5,
+      "theme": "React",
+      "rationale": "Summary should reflect JD priority 'React' (technology).",
+      "evidence": [
+        {
+          "origin": "job_analysis",
+          "job_evidence": {
+            "source": "technology",
+            "item_index": 4,
+            "name": "React",
+            "excerpt": "Experience with modern front-end frameworks (React, Angular, or Vue)"
+          },
+          "profile_evidence": null,
+          "portfolio_project_id": null,
+          "excerpt": null
+        }
+      ]
+    }
+  ],
+  "experience_guidance": {
+    "kind": "master_cv_only",
+    "rationale": "Default Master-CV-aligned scope: extended pre-nbn history is excluded unless the caller opts in.",
+    "included_experience_ids": [
+      "chase-risk-compliance-ai-engineer",
+      "ai-engineering-development-2025",
+      "data-engineering-development-2023",
+      "nbn-data-engineer-2020"
+    ],
+    "excluded_experience_ids": [
+      "general-assembly-data-science-2019",
+      "bakers-delight-test-analyst-2019",
+      "accesshq-test-analyst-2018",
+      "bakers-delight-test-analyst-2015",
+      "console-test-analyst-2012",
+      "bakers-delight-test-analyst-2009"
+    ]
+  },
+  "assumptions": [
+    "Material-benefit gate was overridden by the caller; tailoring proceeds despite tier/next-action signals."
+  ],
+  "owner_review_recommended": true,
+  "insufficient_evidence": false,
+  "material_benefit_override": true
+}

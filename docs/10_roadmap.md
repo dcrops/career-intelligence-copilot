@@ -80,16 +80,22 @@ Opportunity Assessment, FR-004 Portfolio Matching, and FR-005 Application Strate
 **complete**. FR-005 is **formally closed** after owner manual validation of the
 FR-001→FR-005 pipeline (real SEEK/LinkedIn jobs 001–013) — see
 [manual_validation/jobs/manual_validation_notes.md](../manual_validation/jobs/manual_validation_notes.md).
+**FR-006 CV Generation is complete** (owner-sequenced post–Phase 2; deterministic
+tailoring + optional OpenAI summary rewrite — see
+[eval/fr006_manual_validation.md](eval/fr006_manual_validation.md)).
+**M1 Opportunity persistence is complete** (`OpportunityService`, structured store
+under `data/opportunities/`, immutable FR-002–FR-005 artifacts, `opp_<ULID>` identity —
+see [adr/002_opportunity_persistence.md](adr/002_opportunity_persistence.md)).
 FR-003 live assessment prompt is currently **v11** (calibration and evidence-contract
 hardening after Jobs 009–012); earlier offline/live eval baselines remain in
 [eval/fr002_openai_manual_eval.md](eval/fr002_openai_manual_eval.md) and
 [eval/fr003_openai_manual_eval.md](eval/fr003_openai_manual_eval.md).
 
-**Next planned functional requirement:** FR-006 CV Generation.
+**Next planned functional requirement after Phase 2 exit:** FR-007 Cover Letter.
 
-**Remaining Phase 2 work** (still required for Phase 2 exit; sequenced after FR-005
-closure per owner priority): job opportunity pipeline tracking, outcome logging (FR-013),
-and ranked comparison of open assessed opportunities.
+**Remaining Phase 2 work** (still required for Phase 2 exit): M2 outcome logging
+(FR-013 subset), M3 CSV export (structured store remains SoT), M4 ranked comparison
+of open assessed opportunities, M5 Phase 2 close-out validation.
 
 
 
@@ -117,15 +123,18 @@ and ranked comparison of open assessed opportunities.
   guidance, and advisory next actions (FR-005) — **Complete** (formally closed after
   owner manual validation)
 
-- Job opportunity pipeline and outcome logging (FR-013) — remaining for Phase 2 exit
+- CV Generation (FR-006) — **Complete** (post–Phase 2; not a Phase 2 exit blocker)
 
-- Ranked comparison of open assessed opportunities — remaining for Phase 2 exit
+- Opportunity persistence (M1) — **Complete** (structured SoT; CSV export is M3)
+
+- Outcome logging (FR-013 subset, M2) — remaining for Phase 2 exit
+
+- Ranked comparison of open assessed opportunities (M4) — remaining for Phase 2 exit
 
 
 
-**Next planned functional requirement:** FR-006 CV Generation (post–Phase 2 capability;
-owner sequencing after FR-005 closure). Remaining Phase 2 exit criteria above are not
-waived.
+**Next planned functional requirement:** FR-007 Cover Letter. Remaining Phase 2 exit
+criteria above are not waived.
 
 
 
@@ -133,7 +142,7 @@ waived.
 
 
 
-- CV and cover letter generation
+- Cover letter generation (FR-007+)
 
 - Recruiter outreach generation
 

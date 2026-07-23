@@ -1,0 +1,682 @@
+{
+  "job_analysis": {
+    "posting": {
+      "raw_text": "AI Systems Developer\n\nBluefin Resources Pty Limited \nView all jobs\n\nMelbourne VIC (Hybrid)\nEngineering - Software (Information & Communication Technology)\nFull time\nPosted 20h ago\n•\nMedium application volume\n\nHow you match\n1 skill or credential matches your profile\n Systems Design\nShow all⁠\nAI Systems DeveloperMelbourne CBD | Hybrid (4 days office / 1 day WFH)\nSalary: Competitive package\nBuild and operate the AI systems shaping the future of fintech.\n\nWe’re partnering with an innovative Melbourne-based fintech that is transforming how businesses manage invoice payments and cash flow.\n\nAs they continue building an AI-native platform, they are looking for an AI Systems Developer to help take their AI capabilities from early development through to reliable, production-ready systems.\nThis is a unique opportunity for an engineer who enjoys the intersection of software engineering, artificial intelligence and platform reliability — someone who doesn’t just want to experiment with AI, but wants to build, deploy and own systems that create real business impact.\n\nThe Role: As an AI Systems Developer, you will be responsible for building and operating the production AI stack.\n\nYou’ll work across:\nLLM-powered applications\nAI agents and automation workflows\nData pipelines and retrieval systems\nModel serving and AI infrastructure\nMonitoring, observability and performance optimisation\nOnce AI capabilities are live, you’ll own their reliability — ensuring systems remain scalable, secure, cost-effective and performant.\n\nThis role sits within the Data, AI & Systems function and will work closely with engineering and product teams to safely embed AI into critical business processes.\n\nWhat You’ll Be Doing:\n\nBuild AI capabilities into production\nDesign, develop and deploy AI-powered features and services\nBuild data pipelines, retrieval systems and AI agents\nWork with LLM applications and model-serving infrastructure\nImprove engineering practices to safely integrate AI into the core platform\nOwn reliability and performance\nMonitor AI systems across uptime, latency, cost and accuracy\nBuild observability across metrics, logs, tracing and evaluations\nIdentify performance issues, model degradation and system failures\nOptimise AI systems for scale and efficiency\nSupport production operations\nParticipate in incident response and troubleshooting\nDevelop runbooks, processes and safeguards\nImplement safe deployment, rollback and change-management practices\nImprove systems to prevent recurring issues\nAbout You\n\nYou’re a strong software engineer who enjoys owning systems beyond just writing code.\nYou’ll ideally have:\n5+ years of software engineering experience\nExperience operating production systems at scale\nHands-on experience with AI/LLM applications, agents or ML systems\nStrong AWS experience\nInfrastructure-as-Code experience (Terraform preferred)\nExperience building data pipelines and working with databases (PostgreSQL preferred)\nExperience with monitoring, observability and incident response\nStrong understanding of reliability, scalability and system design\nExperience with the following would be advantageous:\nRuby on Rails\nDomain Driven Design\nFinancial services or other high-reliability industries\nKubernetes / cloud-native architectures\nWhy Join? This is an opportunity to be part of one of Australia’s most exciting AI-driven fintech journeys.\nYou’ll have the chance to:\nBuild AI systems from the ground up\nOwn technology that directly impacts customers and business outcomes\nWork with modern AI tooling and infrastructure\nShape how AI is implemented safely in a financial platform\nJoin a collaborative, high-performing engineering team\nAdditional benefits include:\nCompetitive salary and benefits package\nHybrid working model (Monday–Thursday in the Melbourne CBD office, Friday WFH)\nModern office environment\nRegular team events and interstate off-sites\nClear opportunities for growth and progression\nEmployer questions\nYour application will include the following questions:\nWhich of the following statements best describes your right to work in Australia?\nHow many years' experience do you have as a Systems Developer?",
+      "title": "AI Systems Developer",
+      "company": "Bluefin Resources Pty Limited",
+      "source_url": "https://au.seek.com/job/93487188?ref=recom-homepage&pos=1&origin=showNewTab#sol=082fc4e9ff6b3ed7c17c0602869ec5e7b80c81a8"
+    },
+    "role_family": {
+      "family": "ai_engineering",
+      "evidence": [
+        {
+          "excerpt": "Build and operate the AI systems shaping the future of fintech.",
+          "section": "Job description"
+        }
+      ]
+    },
+    "seniority": {
+      "level": "unknown",
+      "ambiguous": false,
+      "candidate_levels": [],
+      "evidence": []
+    },
+    "technologies": [
+      {
+        "name": "LLM",
+        "level": "required",
+        "evidence": [
+          {
+            "excerpt": "LLM-powered applications",
+            "section": "Job description"
+          }
+        ]
+      },
+      {
+        "name": "AWS",
+        "level": "required",
+        "evidence": [
+          {
+            "excerpt": "Strong AWS experience",
+            "section": "Job description"
+          }
+        ]
+      },
+      {
+        "name": "Terraform",
+        "level": "preferred",
+        "evidence": [
+          {
+            "excerpt": "Infrastructure-as-Code experience (Terraform preferred)",
+            "section": "Job description"
+          }
+        ]
+      },
+      {
+        "name": "PostgreSQL",
+        "level": "preferred",
+        "evidence": [
+          {
+            "excerpt": "Experience building data pipelines and working with databases (PostgreSQL preferred)",
+            "section": "Job description"
+          }
+        ]
+      },
+      {
+        "name": "Ruby on Rails",
+        "level": "preferred",
+        "evidence": [
+          {
+            "excerpt": "Experience with the following would be advantageous: Ruby on Rails",
+            "section": "Job description"
+          }
+        ]
+      },
+      {
+        "name": "Kubernetes",
+        "level": "preferred",
+        "evidence": [
+          {
+            "excerpt": "Kubernetes / cloud-native architectures",
+            "section": "Job description"
+          }
+        ]
+      }
+    ],
+    "responsibilities": [
+      {
+        "description": "Build AI capabilities into production",
+        "evidence": [
+          {
+            "excerpt": "Build AI capabilities into production",
+            "section": "Job description"
+          }
+        ]
+      },
+      {
+        "description": "Design, develop and deploy AI-powered features and services",
+        "evidence": [
+          {
+            "excerpt": "Design, develop and deploy AI-powered features and services",
+            "section": "Job description"
+          }
+        ]
+      },
+      {
+        "description": "Build data pipelines, retrieval systems and AI agents",
+        "evidence": [
+          {
+            "excerpt": "Build data pipelines, retrieval systems and AI agents",
+            "section": "Job description"
+          }
+        ]
+      },
+      {
+        "description": "Work with LLM applications and model-serving infrastructure",
+        "evidence": [
+          {
+            "excerpt": "Work with LLM applications and model-serving infrastructure",
+            "section": "Job description"
+          }
+        ]
+      },
+      {
+        "description": "Improve engineering practices to safely integrate AI into the core platform",
+        "evidence": [
+          {
+            "excerpt": "Improve engineering practices to safely integrate AI into the core platform",
+            "section": "Job description"
+          }
+        ]
+      },
+      {
+        "description": "Own reliability and performance",
+        "evidence": [
+          {
+            "excerpt": "Own reliability and performance",
+            "section": "Job description"
+          }
+        ]
+      },
+      {
+        "description": "Monitor AI systems across uptime, latency, cost and accuracy",
+        "evidence": [
+          {
+            "excerpt": "Monitor AI systems across uptime, latency, cost and accuracy",
+            "section": "Job description"
+          }
+        ]
+      },
+      {
+        "description": "Build observability across metrics, logs, tracing and evaluations",
+        "evidence": [
+          {
+            "excerpt": "Build observability across metrics, logs, tracing and evaluations",
+            "section": "Job description"
+          }
+        ]
+      },
+      {
+        "description": "Identify performance issues, model degradation and system failures",
+        "evidence": [
+          {
+            "excerpt": "Identify performance issues, model degradation and system failures",
+            "section": "Job description"
+          }
+        ]
+      },
+      {
+        "description": "Optimise AI systems for scale and efficiency",
+        "evidence": [
+          {
+            "excerpt": "Optimise AI systems for scale and efficiency",
+            "section": "Job description"
+          }
+        ]
+      },
+      {
+        "description": "Support production operations",
+        "evidence": [
+          {
+            "excerpt": "Support production operations",
+            "section": "Job description"
+          }
+        ]
+      },
+      {
+        "description": "Participate in incident response and troubleshooting",
+        "evidence": [
+          {
+            "excerpt": "Participate in incident response and troubleshooting",
+            "section": "Job description"
+          }
+        ]
+      },
+      {
+        "description": "Develop runbooks, processes and safeguards",
+        "evidence": [
+          {
+            "excerpt": "Develop runbooks, processes and safeguards",
+            "section": "Job description"
+          }
+        ]
+      },
+      {
+        "description": "Implement safe deployment, rollback and change-management practices",
+        "evidence": [
+          {
+            "excerpt": "Implement safe deployment, rollback and change-management practices",
+            "section": "Job description"
+          }
+        ]
+      },
+      {
+        "description": "Improve systems to prevent recurring issues",
+        "evidence": [
+          {
+            "excerpt": "Improve systems to prevent recurring issues",
+            "section": "Job description"
+          }
+        ]
+      }
+    ],
+    "compensation": {
+      "clarity": "ambiguous",
+      "minimum": null,
+      "maximum": null,
+      "currency": null,
+      "period": null,
+      "raw_text": "Competitive package",
+      "evidence": [
+        {
+          "excerpt": "Salary: Competitive package",
+          "section": "Job description"
+        }
+      ]
+    },
+    "location": {
+      "clarity": "stated",
+      "summary": "Melbourne VIC (Hybrid)",
+      "evidence": [
+        {
+          "excerpt": "Melbourne CBD | Hybrid (4 days office / 1 day WFH)",
+          "section": "Job description"
+        }
+      ]
+    },
+    "work_arrangement": {
+      "arrangement": "hybrid",
+      "details": "Monday–Thursday in the Melbourne CBD office, Friday WFH",
+      "evidence": [
+        {
+          "excerpt": "Hybrid working model (Monday–Thursday in the Melbourne CBD office, Friday WFH)",
+          "section": "Job description"
+        }
+      ]
+    },
+    "employment": {
+      "working_hours": "full_time",
+      "engagement_type": "unspecified",
+      "evidence": [
+        {
+          "excerpt": "Full time",
+          "section": "Job description"
+        }
+      ]
+    },
+    "experience_requirements": [
+      {
+        "description": "5+ years of software engineering experience",
+        "level": "required",
+        "minimum_years": 5.0,
+        "maximum_years": null,
+        "evidence": [
+          {
+            "excerpt": "You’ll ideally have: 5+ years of software engineering experience",
+            "section": "Job description"
+          }
+        ]
+      }
+    ]
+  },
+  "full_name": "David Cropper",
+  "target_role": "AI Engineer",
+  "summary": "AI Engineer with commercial technology experience since 2009 spanning software quality assurance, test automation, and Data Engineering, including 3.5 years of commercial enterprise Data Engineering experience, plus independent AI Engineering and portfolio development producing production-oriented AI systems spanning retrieval-augmented generation, operational intelligence, explainable AI, and enterprise decision support.",
+  "summary_themes": [
+    "AWS",
+    "LLM application development",
+    "Operational intelligence"
+  ],
+  "skills": [
+    {
+      "skill_name": "AWS",
+      "category": "technical",
+      "emphasised": true
+    },
+    {
+      "skill_name": "LLM application development",
+      "category": "domain",
+      "emphasised": true
+    },
+    {
+      "skill_name": "Python",
+      "category": "technical",
+      "emphasised": false
+    },
+    {
+      "skill_name": "FastAPI",
+      "category": "technical",
+      "emphasised": false
+    },
+    {
+      "skill_name": "Docker",
+      "category": "technical",
+      "emphasised": false
+    },
+    {
+      "skill_name": "OpenAI APIs",
+      "category": "technical",
+      "emphasised": false
+    },
+    {
+      "skill_name": "PyTest",
+      "category": "technical",
+      "emphasised": false
+    },
+    {
+      "skill_name": "Git",
+      "category": "technical",
+      "emphasised": false
+    },
+    {
+      "skill_name": "SQL",
+      "category": "technical",
+      "emphasised": false
+    },
+    {
+      "skill_name": "S3",
+      "category": "technical",
+      "emphasised": false
+    },
+    {
+      "skill_name": "Athena",
+      "category": "technical",
+      "emphasised": false
+    },
+    {
+      "skill_name": "Glue",
+      "category": "technical",
+      "emphasised": false
+    },
+    {
+      "skill_name": "Cloudwatch",
+      "category": "technical",
+      "emphasised": false
+    },
+    {
+      "skill_name": "DynamoDB",
+      "category": "technical",
+      "emphasised": false
+    },
+    {
+      "skill_name": "Apache NiFi",
+      "category": "technical",
+      "emphasised": false
+    },
+    {
+      "skill_name": "LangChain",
+      "category": "technical",
+      "emphasised": false
+    },
+    {
+      "skill_name": "ChromaDB",
+      "category": "technical",
+      "emphasised": false
+    },
+    {
+      "skill_name": "Pandas",
+      "category": "technical",
+      "emphasised": false
+    },
+    {
+      "skill_name": "OpenPyXL",
+      "category": "technical",
+      "emphasised": false
+    },
+    {
+      "skill_name": "REST APIs",
+      "category": "technical",
+      "emphasised": false
+    },
+    {
+      "skill_name": "Microsoft Fabric",
+      "category": "technical",
+      "emphasised": false
+    },
+    {
+      "skill_name": "Databricks",
+      "category": "technical",
+      "emphasised": false
+    },
+    {
+      "skill_name": "Snowflake",
+      "category": "technical",
+      "emphasised": false
+    },
+    {
+      "skill_name": "dbt",
+      "category": "technical",
+      "emphasised": false
+    },
+    {
+      "skill_name": "Azure Data Factory",
+      "category": "technical",
+      "emphasised": false
+    },
+    {
+      "skill_name": "Selenium WebDriver",
+      "category": "technical",
+      "emphasised": false
+    },
+    {
+      "skill_name": "Jenkins",
+      "category": "technical",
+      "emphasised": false
+    },
+    {
+      "skill_name": "Maven",
+      "category": "technical",
+      "emphasised": false
+    },
+    {
+      "skill_name": "Cucumber",
+      "category": "technical",
+      "emphasised": false
+    },
+    {
+      "skill_name": "Retrieval-Augmented Generation",
+      "category": "domain",
+      "emphasised": false
+    },
+    {
+      "skill_name": "Operational intelligence",
+      "category": "domain",
+      "emphasised": false
+    },
+    {
+      "skill_name": "Explainable AI",
+      "category": "domain",
+      "emphasised": false
+    },
+    {
+      "skill_name": "Enterprise decision support",
+      "category": "domain",
+      "emphasised": false
+    },
+    {
+      "skill_name": "Data engineering",
+      "category": "domain",
+      "emphasised": false
+    },
+    {
+      "skill_name": "Geospatial processing",
+      "category": "domain",
+      "emphasised": false
+    },
+    {
+      "skill_name": "Software quality assurance",
+      "category": "domain",
+      "emphasised": false
+    },
+    {
+      "skill_name": "Test automation",
+      "category": "domain",
+      "emphasised": false
+    },
+    {
+      "skill_name": "Architecture-first design",
+      "category": "soft",
+      "emphasised": false
+    },
+    {
+      "skill_name": "Agile collaboration",
+      "category": "soft",
+      "emphasised": false
+    }
+  ],
+  "projects": [
+    {
+      "project_id": "operational-intelligence-copilot",
+      "name": "Operational Intelligence Copilot",
+      "summary": "Domain-agnostic operational intelligence platform combining deterministic analytics with Large Language Model reasoning to analyse structured business data and generate explainable, evidence-backed executive insights.",
+      "technologies": [
+        "Python",
+        "FastAPI",
+        "OpenAI APIs",
+        "PyTest",
+        "Git"
+      ],
+      "outcomes": [
+        "Produces evidence-backed executive reporting.",
+        "Maintains decision traceability through explainable recommendations."
+      ],
+      "demonstrates": [
+        "Intelligent intent routing",
+        "Dataset profiling",
+        "Anomaly detection",
+        "Regression-tested analytics workflows",
+        "Explainable AI recommendations"
+      ]
+    },
+    {
+      "project_id": "governance-document-rag",
+      "name": "Governance-Aware Document Intelligence RAG",
+      "summary": "Enterprise retrieval-augmented generation platform supporting trustworthy AI responses over organisational knowledge.",
+      "technologies": [
+        "Python",
+        "FastAPI",
+        "Docker",
+        "LangChain",
+        "ChromaDB",
+        "OpenAI",
+        "PyTest",
+        "Git"
+      ],
+      "outcomes": [
+        "Supports grounded responses over multi-format organisational documents.",
+        "Provides evaluation, telemetry, and explainability controls."
+      ],
+      "demonstrates": [
+        "Multi-format document ingestion",
+        "Embedding generation",
+        "Retrieval orchestration",
+        "Evaluation frameworks",
+        "Grounding validation"
+      ]
+    },
+    {
+      "project_id": "payroll-diagnostics-engine",
+      "name": "Payroll Diagnostics Engine",
+      "summary": "Rule-based operational decision-support platform that identifies payroll anomalies through deterministic business-rule evaluation.",
+      "technologies": [
+        "Python",
+        "Pandas",
+        "OpenPyXL",
+        "PyTest",
+        "Git"
+      ],
+      "outcomes": [
+        "Produces explainable operational findings.",
+        "Generates executive-ready reporting."
+      ],
+      "demonstrates": [
+        "Rule engines",
+        "Explainable diagnostics",
+        "Operational analytics",
+        "Automated validation"
+      ]
+    }
+  ],
+  "experience": [
+    {
+      "experience_id": "chase-risk-compliance-ai-engineer",
+      "kind": "independent_engineering",
+      "organisation": "Chase Risk & Compliance",
+      "title": "AI Engineer - Independent Research & Development",
+      "start_date": "2025-12",
+      "end_date": null,
+      "location": "Melbourne, VIC",
+      "highlights": [
+        "Independently develops progressively more complex production-oriented AI Engineering projects under a dedicated portfolio brand.",
+        "Builds engineering capability across retrieval-augmented generation, operational intelligence, explainable AI, and enterprise decision-support project areas.",
+        "Applies architecture-first engineering practices using Cursor, Git, and PyTest across the complete development lifecycle."
+      ],
+      "technologies": [
+        "Python",
+        "FastAPI",
+        "Docker",
+        "OpenAI APIs",
+        "Cursor",
+        "Git",
+        "PyTest"
+      ]
+    },
+    {
+      "experience_id": "ai-engineering-development-2025",
+      "kind": "professional_development",
+      "organisation": "Independent study",
+      "title": "AI Engineering Professional Development and Portfolio Development",
+      "start_date": "2025-07",
+      "end_date": "2025-11",
+      "location": "Melbourne, VIC",
+      "highlights": [
+        "Made a deliberate pivot from Data Engineering to AI Engineering as the primary career focus.",
+        "Undertook structured AI Engineering study.",
+        "Developed progressively more sophisticated portfolio projects.",
+        "Adopted increasingly production-oriented engineering practices, including testing, documentation, and milestone-driven development."
+      ],
+      "technologies": [
+        "Python",
+        "OpenAI APIs",
+        "LangChain",
+        "Git",
+        "PyTest"
+      ]
+    },
+    {
+      "experience_id": "data-engineering-development-2023",
+      "kind": "professional_development",
+      "organisation": "Independent study",
+      "title": "Data Engineering Professional Development and Career Transition",
+      "start_date": "2023-10",
+      "end_date": "2025-06",
+      "location": "Melbourne, VIC",
+      "highlights": [
+        "Began with a personal break following the nbn Australia role.",
+        "Undertook structured upskilling in modern Data Engineering.",
+        "Developed skills across contemporary data platforms and tools, including Microsoft Fabric, Databricks, Snowflake, dbt, and Azure Data Factory.",
+        "Prepared for a return to Data Engineering work."
+      ],
+      "technologies": [
+        "Microsoft Fabric",
+        "Databricks",
+        "Snowflake",
+        "dbt",
+        "Azure Data Factory"
+      ]
+    },
+    {
+      "experience_id": "nbn-data-engineer-2020",
+      "kind": "employment",
+      "organisation": "nbn Australia",
+      "title": "Data Engineer",
+      "start_date": "2020-03",
+      "end_date": "2023-10",
+      "location": null,
+      "highlights": [
+        "Developed and maintained enterprise data pipelines using AWS services, Python, SQL and Apache NiFi.",
+        "Performed SQL transformations and data validation.",
+        "Worked in Agile teams supporting production systems."
+      ],
+      "technologies": [
+        "Python",
+        "SQL",
+        "AWS",
+        "S3",
+        "Athena",
+        "Glue",
+        "Cloudwatch",
+        "DynamoDB",
+        "Apache NiFi",
+        "Git",
+        "PyTest"
+      ]
+    }
+  ],
+  "certifications": [
+    {
+      "certification_id": "aws-certified-developer-associate",
+      "name": "AWS Certified Developer - Associate",
+      "issuer": "Amazon Web Services",
+      "status": "active"
+    },
+    {
+      "certification_id": "databricks-certified-data-engineer-professional",
+      "name": "Databricks Certified Data Engineer Professional",
+      "issuer": "Databricks",
+      "status": "active"
+    }
+  ],
+  "certifications_source": "profile_active_baseline",
+  "contact": null,
+  "rendered_markdown": "# David Cropper\n\n**Target role:** AI Engineer\n\n> Owner review required before any external use.\n\n## Summary\n\nAI Engineer with commercial technology experience since 2009 spanning software quality assurance, test automation, and Data Engineering, including 3.5 years of commercial enterprise Data Engineering experience, plus independent AI Engineering and portfolio development producing production-oriented AI systems spanning retrieval-augmented generation, operational intelligence, explainable AI, and enterprise decision support.\n\n## Summary themes (from Tailoring Plan)\n\n- AWS\n- LLM application development\n- Operational intelligence\n\n_Summary prose is copied from the career profile in Phase B; theme-guided rewriting is deferred to Phase C._\n\n## Skills\n\n### Emphasised\n\n- AWS (technical)\n- LLM application development (domain)\n\n### Additional\n\n- Python (technical)\n- FastAPI (technical)\n- Docker (technical)\n- OpenAI APIs (technical)\n- PyTest (technical)\n- Git (technical)\n- SQL (technical)\n- S3 (technical)\n- Athena (technical)\n- Glue (technical)\n- Cloudwatch (technical)\n- DynamoDB (technical)\n- Apache NiFi (technical)\n- LangChain (technical)\n- ChromaDB (technical)\n- Pandas (technical)\n- OpenPyXL (technical)\n- REST APIs (technical)\n- Microsoft Fabric (technical)\n- Databricks (technical)\n- Snowflake (technical)\n- dbt (technical)\n- Azure Data Factory (technical)\n- Selenium WebDriver (technical)\n- Jenkins (technical)\n- Maven (technical)\n- Cucumber (technical)\n- Retrieval-Augmented Generation (domain)\n- Operational intelligence (domain)\n- Explainable AI (domain)\n- Enterprise decision support (domain)\n- Data engineering (domain)\n- Geospatial processing (domain)\n- Software quality assurance (domain)\n- Test automation (domain)\n- Architecture-first design (soft)\n- Agile collaboration (soft)\n\n## Projects\n\n### Operational Intelligence Copilot\n\nDomain-agnostic operational intelligence platform combining deterministic analytics with Large Language Model reasoning to analyse structured business data and generate explainable, evidence-backed executive insights.\n\n**Technologies:** Python, FastAPI, OpenAI APIs, PyTest, Git\n\n**Outcomes:**\n\n- Produces evidence-backed executive reporting.\n- Maintains decision traceability through explainable recommendations.\n\n**Demonstrates:**\n\n- Intelligent intent routing\n- Dataset profiling\n- Anomaly detection\n- Regression-tested analytics workflows\n- Explainable AI recommendations\n\n### Governance-Aware Document Intelligence RAG\n\nEnterprise retrieval-augmented generation platform supporting trustworthy AI responses over organisational knowledge.\n\n**Technologies:** Python, FastAPI, Docker, LangChain, ChromaDB, OpenAI, PyTest, Git\n\n**Outcomes:**\n\n- Supports grounded responses over multi-format organisational documents.\n- Provides evaluation, telemetry, and explainability controls.\n\n**Demonstrates:**\n\n- Multi-format document ingestion\n- Embedding generation\n- Retrieval orchestration\n- Evaluation frameworks\n- Grounding validation\n\n### Payroll Diagnostics Engine\n\nRule-based operational decision-support platform that identifies payroll anomalies through deterministic business-rule evaluation.\n\n**Technologies:** Python, Pandas, OpenPyXL, PyTest, Git\n\n**Outcomes:**\n\n- Produces explainable operational findings.\n- Generates executive-ready reporting.\n\n**Demonstrates:**\n\n- Rule engines\n- Explainable diagnostics\n- Operational analytics\n- Automated validation\n\n## Experience\n\n### AI Engineer - Independent Research & Development — Chase Risk & Compliance\n\n*2025-12 – Present* · `independent_engineering`\n\nMelbourne, VIC\n\n- Independently develops progressively more complex production-oriented AI Engineering projects under a dedicated portfolio brand.\n- Builds engineering capability across retrieval-augmented generation, operational intelligence, explainable AI, and enterprise decision-support project areas.\n- Applies architecture-first engineering practices using Cursor, Git, and PyTest across the complete development lifecycle.\n\n**Technologies:** Python, FastAPI, Docker, OpenAI APIs, Cursor, Git, PyTest\n\n### AI Engineering Professional Development and Portfolio Development — Independent study\n\n*2025-07 – 2025-11* · `professional_development`\n\nMelbourne, VIC\n\n- Made a deliberate pivot from Data Engineering to AI Engineering as the primary career focus.\n- Undertook structured AI Engineering study.\n- Developed progressively more sophisticated portfolio projects.\n- Adopted increasingly production-oriented engineering practices, including testing, documentation, and milestone-driven development.\n\n**Technologies:** Python, OpenAI APIs, LangChain, Git, PyTest\n\n### Data Engineering Professional Development and Career Transition — Independent study\n\n*2023-10 – 2025-06* · `professional_development`\n\nMelbourne, VIC\n\n- Began with a personal break following the nbn Australia role.\n- Undertook structured upskilling in modern Data Engineering.\n- Developed skills across contemporary data platforms and tools, including Microsoft Fabric, Databricks, Snowflake, dbt, and Azure Data Factory.\n- Prepared for a return to Data Engineering work.\n\n**Technologies:** Microsoft Fabric, Databricks, Snowflake, dbt, Azure Data Factory\n\n### Data Engineer — nbn Australia\n\n*2020-03 – 2023-10* · `employment`\n\n- Developed and maintained enterprise data pipelines using AWS services, Python, SQL and Apache NiFi.\n- Performed SQL transformations and data validation.\n- Worked in Agile teams supporting production systems.\n\n**Technologies:** Python, SQL, AWS, S3, Athena, Glue, Cloudwatch, DynamoDB, Apache NiFi, Git, PyTest\n\n## Certifications (profile baseline — not tailored)\n\n- AWS Certified Developer - Associate (Amazon Web Services) — active\n- Databricks Certified Data Engineer Professional (Databricks) — active\n\n---\n\n_Experience guidance: `master_cv_only`. This draft must not be submitted without owner review._\n",
+  "owner_review_required": true,
+  "tailoring_plan_approved": true,
+  "experience_guidance_kind": "master_cv_only",
+  "assumptions": [
+    "Unsupported employer technology priorities (not used as summary themes or promoted skills): Terraform, PostgreSQL, Ruby on Rails, Kubernetes.",
+    "Material-benefit gate was overridden by the caller; tailoring proceeds despite tier/next-action signals.",
+    "Phase B copies the career-profile summary without rewriting; theme-guided summary rewriting is deferred to Phase C.",
+    "Certifications are rendered as a fixed profile baseline (active credentials only, profile order). They are not TailoringPlan-tailored content."
+  ]
+}

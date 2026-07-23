@@ -86,8 +86,12 @@ experience:
       - >-
         Gathered data via web scraping of job listings, applying predictive
         modelling and NLP text classification.
+    # NLP and Web Scraping are course techniques from this immersive only —
+    # not promoted to global Skills (unused professionally since 2019).
     technologies:
       - Python
+      - NLP
+      - Web Scraping
   - id: bakers-delight-test-analyst-2019
     kind: employment
     organisation: Bakers Delight

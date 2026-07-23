@@ -60,9 +60,31 @@ class ExperienceEntry(ProfileModel):
         return self
 
 
+class SkillEvidenceRef(ProfileModel):
+    """Structured demonstration source for a skill.
+
+    ``kind`` is the evidence-strength class used by downstream planners.
+    ``ref`` points at a profile entity (``experience:<id>``, ``project:<id>``,
+    ``certification:<id>``) or an explicit coursework note.
+    """
+
+    kind: Literal[
+        "employment",
+        "independent_engineering",
+        "portfolio_project",
+        "certification",
+        "professional_development",
+        "coursework",
+    ]
+    ref: NonEmptyString
+
+
 class Skill(ProfileModel):
     name: NonEmptyString
+    # Legacy free-text pointer string (e.g. "experience:nbn-...; project:...").
+    # Prefer evidence_refs for new edits; both are supported.
     evidence: NonEmptyString | None = None
+    evidence_refs: list[SkillEvidenceRef] = Field(default_factory=list)
 
 
 class Skills(ProfileModel):

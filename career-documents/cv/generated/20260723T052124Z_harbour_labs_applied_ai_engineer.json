@@ -1,0 +1,444 @@
+{
+  "job_analysis": {
+    "posting": {
+      "raw_text": "[CIC-FIXTURE:applied-ai-engineer]\nApplied AI Engineer — Harbour Labs (Sydney)\n\nJoin our applied AI team to prototype and productise customer-facing assistants.\nYou will work closely with solution architects and customer success.\n\nResponsibilities\n• Deliver applied AI prototypes into production services\n• Fine-tune and evaluate models for customer use cases\n• Document patterns for reuse across engagements\n\nRequirements\n• 3+ years building ML or AI-powered products required\n• Python and FastAPI required; Azure OpenAI preferred\n• Stakeholder-facing delivery experience preferred\n\nLocation & employment\nHybrid Sydney (Barangaroo), 2 days in office. Full-time permanent.\nSalary $140,000–$165,000 AUD.",
+      "title": "Applied AI Engineer",
+      "company": "Harbour Labs",
+      "source_url": null
+    },
+    "role_family": {
+      "family": "ai_engineering",
+      "evidence": [
+        {
+          "excerpt": "Applied AI Engineer",
+          "section": "title"
+        }
+      ]
+    },
+    "seniority": {
+      "level": "unknown",
+      "ambiguous": false,
+      "candidate_levels": [],
+      "evidence": []
+    },
+    "technologies": [
+      {
+        "name": "Python",
+        "level": "required",
+        "evidence": [
+          {
+            "excerpt": "Python and FastAPI required",
+            "section": "requirements"
+          }
+        ]
+      },
+      {
+        "name": "FastAPI",
+        "level": "required",
+        "evidence": [
+          {
+            "excerpt": "Python and FastAPI required",
+            "section": "requirements"
+          }
+        ]
+      },
+      {
+        "name": "Azure OpenAI",
+        "level": "preferred",
+        "evidence": [
+          {
+            "excerpt": "Azure OpenAI preferred",
+            "section": "requirements"
+          }
+        ]
+      }
+    ],
+    "responsibilities": [
+      {
+        "description": "Deliver applied AI prototypes into production services",
+        "evidence": [
+          {
+            "excerpt": "Deliver applied AI prototypes into production services",
+            "section": "responsibilities"
+          }
+        ]
+      }
+    ],
+    "compensation": {
+      "clarity": "stated",
+      "minimum": 140000.0,
+      "maximum": 165000.0,
+      "currency": "AUD",
+      "period": "year",
+      "raw_text": "Salary $140,000–$165,000 AUD",
+      "evidence": [
+        {
+          "excerpt": "Salary $140,000–$165,000 AUD",
+          "section": "compensation"
+        }
+      ]
+    },
+    "location": {
+      "clarity": "stated",
+      "summary": "Sydney",
+      "evidence": [
+        {
+          "excerpt": "Hybrid Sydney (Barangaroo)",
+          "section": "location"
+        }
+      ]
+    },
+    "work_arrangement": {
+      "arrangement": "hybrid",
+      "details": "2 days in office",
+      "evidence": [
+        {
+          "excerpt": "Hybrid Sydney (Barangaroo), 2 days in office",
+          "section": "location"
+        }
+      ]
+    },
+    "employment": {
+      "working_hours": "full_time",
+      "engagement_type": "permanent",
+      "evidence": [
+        {
+          "excerpt": "Full-time permanent",
+          "section": "employment"
+        }
+      ]
+    },
+    "experience_requirements": [
+      {
+        "description": "3+ years building ML or AI-powered products",
+        "level": "required",
+        "minimum_years": 3.0,
+        "maximum_years": null,
+        "evidence": [
+          {
+            "excerpt": "3+ years building ML or AI-powered products required",
+            "section": "requirements"
+          }
+        ]
+      },
+      {
+        "description": "Stakeholder-facing delivery experience",
+        "level": "preferred",
+        "minimum_years": null,
+        "maximum_years": null,
+        "evidence": [
+          {
+            "excerpt": "Stakeholder-facing delivery experience preferred",
+            "section": "requirements"
+          }
+        ]
+      }
+    ]
+  },
+  "full_name": "David Cropper",
+  "target_role": "AI Engineer",
+  "summary": "AI Engineer with commercial technology experience since 2009 spanning software quality assurance, test automation, and Data Engineering, including 3.5 years of commercial enterprise Data Engineering experience, plus independent AI Engineering and portfolio development.",
+  "summary_themes": [
+    "Python",
+    "FastAPI",
+    "Azure OpenAI",
+    "Ai Engineering",
+    "Deliver Applied Prototypes Into Production Services"
+  ],
+  "skills": [
+    {
+      "skill_name": "Python",
+      "category": "technical",
+      "emphasised": true
+    },
+    {
+      "skill_name": "FastAPI",
+      "category": "technical",
+      "emphasised": true
+    },
+    {
+      "skill_name": "Docker",
+      "category": "technical",
+      "emphasised": false
+    },
+    {
+      "skill_name": "OpenAI APIs",
+      "category": "technical",
+      "emphasised": false
+    },
+    {
+      "skill_name": "PyTest",
+      "category": "technical",
+      "emphasised": false
+    },
+    {
+      "skill_name": "SQL",
+      "category": "technical",
+      "emphasised": false
+    },
+    {
+      "skill_name": "LangChain",
+      "category": "technical",
+      "emphasised": false
+    },
+    {
+      "skill_name": "ChromaDB",
+      "category": "technical",
+      "emphasised": false
+    },
+    {
+      "skill_name": "Pandas",
+      "category": "technical",
+      "emphasised": false
+    },
+    {
+      "skill_name": "REST APIs",
+      "category": "technical",
+      "emphasised": false
+    },
+    {
+      "skill_name": "Microsoft Fabric",
+      "category": "technical",
+      "emphasised": false
+    },
+    {
+      "skill_name": "Databricks",
+      "category": "technical",
+      "emphasised": false
+    },
+    {
+      "skill_name": "Snowflake",
+      "category": "technical",
+      "emphasised": false
+    },
+    {
+      "skill_name": "dbt",
+      "category": "technical",
+      "emphasised": false
+    },
+    {
+      "skill_name": "Azure Data Factory",
+      "category": "technical",
+      "emphasised": false
+    },
+    {
+      "skill_name": "Selenium WebDriver",
+      "category": "technical",
+      "emphasised": false
+    },
+    {
+      "skill_name": "Retrieval-Augmented Generation",
+      "category": "domain",
+      "emphasised": false
+    },
+    {
+      "skill_name": "Operational intelligence",
+      "category": "domain",
+      "emphasised": false
+    },
+    {
+      "skill_name": "Explainable AI",
+      "category": "domain",
+      "emphasised": false
+    },
+    {
+      "skill_name": "Enterprise decision support",
+      "category": "domain",
+      "emphasised": false
+    },
+    {
+      "skill_name": "Data engineering",
+      "category": "domain",
+      "emphasised": false
+    },
+    {
+      "skill_name": "LLM application development",
+      "category": "domain",
+      "emphasised": false
+    },
+    {
+      "skill_name": "Software quality assurance",
+      "category": "domain",
+      "emphasised": false
+    },
+    {
+      "skill_name": "Architecture-first design",
+      "category": "soft",
+      "emphasised": false
+    }
+  ],
+  "projects": [
+    {
+      "project_id": "operational-intelligence-copilot",
+      "name": "Operational Intelligence Copilot",
+      "summary": "Platform combining deterministic analytics with Large Language Model reasoning to generate explainable, evidence-backed executive insights.",
+      "technologies": [
+        "Python",
+        "FastAPI",
+        "OpenAI APIs",
+        "PyTest",
+        "Git"
+      ],
+      "outcomes": [
+        "Produces evidence-backed executive reporting.",
+        "Maintains decision traceability."
+      ],
+      "demonstrates": [
+        "Intelligent intent routing",
+        "Dataset profiling",
+        "Anomaly detection",
+        "Explainable AI recommendations"
+      ]
+    },
+    {
+      "project_id": "governance-document-rag",
+      "name": "Governance-Aware Document Intelligence RAG",
+      "summary": "Enterprise retrieval-augmented generation platform supporting trustworthy AI responses over organisational knowledge.",
+      "technologies": [
+        "Python",
+        "FastAPI",
+        "Docker",
+        "LangChain",
+        "ChromaDB",
+        "OpenAI",
+        "PyTest",
+        "Git"
+      ],
+      "outcomes": [
+        "Supports grounded responses over multi-format organisational documents."
+      ],
+      "demonstrates": [
+        "Multi-format document ingestion",
+        "Retrieval orchestration",
+        "Evaluation frameworks",
+        "Grounding validation"
+      ]
+    },
+    {
+      "project_id": "payroll-diagnostics-engine",
+      "name": "Payroll Diagnostics Engine",
+      "summary": "Rule-based decision-support platform that identifies payroll anomalies through deterministic business-rule evaluation.",
+      "technologies": [
+        "Python",
+        "Pandas",
+        "OpenPyXL",
+        "PyTest",
+        "Git"
+      ],
+      "outcomes": [
+        "Produces explainable operational findings."
+      ],
+      "demonstrates": [
+        "Rule engines",
+        "Explainable diagnostics",
+        "Automated validation"
+      ]
+    }
+  ],
+  "experience": [
+    {
+      "experience_id": "chase-risk-compliance-ai-engineer",
+      "kind": "independent_engineering",
+      "organisation": "Chase Risk & Compliance",
+      "title": "AI Engineer - Independent Research & Development",
+      "start_date": "2025-12",
+      "end_date": null,
+      "location": "Melbourne, VIC",
+      "highlights": [
+        "Independently develops progressively more complex production-minded AI Engineering projects under a dedicated portfolio brand."
+      ],
+      "technologies": [
+        "Python",
+        "FastAPI",
+        "Docker",
+        "OpenAI APIs",
+        "PyTest"
+      ]
+    },
+    {
+      "experience_id": "ai-engineering-development-2025",
+      "kind": "professional_development",
+      "organisation": "Independent study",
+      "title": "AI Engineering Professional Development and Portfolio Development",
+      "start_date": "2025-07",
+      "end_date": "2025-11",
+      "location": "Melbourne, VIC",
+      "highlights": [
+        "Pivoted from Data Engineering to AI Engineering as the primary focus.",
+        "Undertook structured AI Engineering study.",
+        "Developed progressively more sophisticated portfolio projects."
+      ],
+      "technologies": [
+        "Python",
+        "OpenAI APIs",
+        "LangChain",
+        "Git",
+        "PyTest"
+      ]
+    },
+    {
+      "experience_id": "data-engineering-development-2023",
+      "kind": "professional_development",
+      "organisation": "Independent study",
+      "title": "Data Engineering Professional Development and Career Transition",
+      "start_date": "2023-10",
+      "end_date": "2025-06",
+      "location": "Melbourne, VIC",
+      "highlights": [
+        "Began with a personal break following the nbn Australia role.",
+        "Undertook structured upskilling in modern Data Engineering."
+      ],
+      "technologies": [
+        "Microsoft Fabric",
+        "Databricks",
+        "Snowflake",
+        "dbt",
+        "Azure Data Factory"
+      ]
+    },
+    {
+      "experience_id": "nbn-data-engineer-2020",
+      "kind": "employment",
+      "organisation": "nbn Australia",
+      "title": "Data Engineer",
+      "start_date": "2020-03",
+      "end_date": "2023-10",
+      "location": null,
+      "highlights": [
+        "Developed enterprise data pipelines and operational reporting solutions.",
+        "Performed SQL transformations and data validation."
+      ],
+      "technologies": [
+        "Python",
+        "SQL",
+        "Apache NiFi",
+        "Git",
+        "PyTest"
+      ]
+    }
+  ],
+  "certifications": [
+    {
+      "certification_id": "aws-certified-developer-associate",
+      "name": "AWS Certified Developer - Associate",
+      "issuer": "Amazon Web Services",
+      "status": "active"
+    },
+    {
+      "certification_id": "databricks-certified-data-engineer-professional",
+      "name": "Databricks Certified Data Engineer Professional",
+      "issuer": "Databricks",
+      "status": "active"
+    }
+  ],
+  "certifications_source": "profile_active_baseline",
+  "contact": null,
+  "rendered_markdown": "# David Cropper\n\n**Target role:** AI Engineer\n\n> Owner review required before any external use.\n\n## Summary\n\nAI Engineer with commercial technology experience since 2009 spanning software quality assurance, test automation, and Data Engineering, including 3.5 years of commercial enterprise Data Engineering experience, plus independent AI Engineering and portfolio development.\n\n## Summary themes (from Tailoring Plan)\n\n- Python\n- FastAPI\n- Azure OpenAI\n- Ai Engineering\n- Deliver Applied Prototypes Into Production Services\n\n_Summary prose is copied from the career profile in Phase B; theme-guided rewriting is deferred to Phase C._\n\n## Skills\n\n### Emphasised\n\n- Python (technical)\n- FastAPI (technical)\n\n### Additional\n\n- Docker (technical)\n- OpenAI APIs (technical)\n- PyTest (technical)\n- SQL (technical)\n- LangChain (technical)\n- ChromaDB (technical)\n- Pandas (technical)\n- REST APIs (technical)\n- Microsoft Fabric (technical)\n- Databricks (technical)\n- Snowflake (technical)\n- dbt (technical)\n- Azure Data Factory (technical)\n- Selenium WebDriver (technical)\n- Retrieval-Augmented Generation (domain)\n- Operational intelligence (domain)\n- Explainable AI (domain)\n- Enterprise decision support (domain)\n- Data engineering (domain)\n- LLM application development (domain)\n- Software quality assurance (domain)\n- Architecture-first design (soft)\n\n## Projects\n\n### Operational Intelligence Copilot\n\nPlatform combining deterministic analytics with Large Language Model reasoning to generate explainable, evidence-backed executive insights.\n\n**Technologies:** Python, FastAPI, OpenAI APIs, PyTest, Git\n\n**Outcomes:**\n\n- Produces evidence-backed executive reporting.\n- Maintains decision traceability.\n\n**Demonstrates:**\n\n- Intelligent intent routing\n- Dataset profiling\n- Anomaly detection\n- Explainable AI recommendations\n\n### Governance-Aware Document Intelligence RAG\n\nEnterprise retrieval-augmented generation platform supporting trustworthy AI responses over organisational knowledge.\n\n**Technologies:** Python, FastAPI, Docker, LangChain, ChromaDB, OpenAI, PyTest, Git\n\n**Outcomes:**\n\n- Supports grounded responses over multi-format organisational documents.\n\n**Demonstrates:**\n\n- Multi-format document ingestion\n- Retrieval orchestration\n- Evaluation frameworks\n- Grounding validation\n\n### Payroll Diagnostics Engine\n\nRule-based decision-support platform that identifies payroll anomalies through deterministic business-rule evaluation.\n\n**Technologies:** Python, Pandas, OpenPyXL, PyTest, Git\n\n**Outcomes:**\n\n- Produces explainable operational findings.\n\n**Demonstrates:**\n\n- Rule engines\n- Explainable diagnostics\n- Automated validation\n\n## Experience\n\n### AI Engineer - Independent Research & Development — Chase Risk & Compliance\n\n*2025-12 – Present* · `independent_engineering`\n\nMelbourne, VIC\n\n- Independently develops progressively more complex production-minded AI Engineering projects under a dedicated portfolio brand.\n\n**Technologies:** Python, FastAPI, Docker, OpenAI APIs, PyTest\n\n### AI Engineering Professional Development and Portfolio Development — Independent study\n\n*2025-07 – 2025-11* · `professional_development`\n\nMelbourne, VIC\n\n- Pivoted from Data Engineering to AI Engineering as the primary focus.\n- Undertook structured AI Engineering study.\n- Developed progressively more sophisticated portfolio projects.\n\n**Technologies:** Python, OpenAI APIs, LangChain, Git, PyTest\n\n### Data Engineering Professional Development and Career Transition — Independent study\n\n*2023-10 – 2025-06* · `professional_development`\n\nMelbourne, VIC\n\n- Began with a personal break following the nbn Australia role.\n- Undertook structured upskilling in modern Data Engineering.\n\n**Technologies:** Microsoft Fabric, Databricks, Snowflake, dbt, Azure Data Factory\n\n### Data Engineer — nbn Australia\n\n*2020-03 – 2023-10* · `employment`\n\n- Developed enterprise data pipelines and operational reporting solutions.\n- Performed SQL transformations and data validation.\n\n**Technologies:** Python, SQL, Apache NiFi, Git, PyTest\n\n## Certifications (profile baseline — not tailored)\n\n- AWS Certified Developer - Associate (Amazon Web Services) — active\n- Databricks Certified Data Engineer Professional (Databricks) — active\n\n---\n\n_Experience guidance: `master_cv_only`. This draft must not be submitted without owner review._\n",
+  "owner_review_required": true,
+  "tailoring_plan_approved": true,
+  "experience_guidance_kind": "master_cv_only",
+  "assumptions": [
+    "Phase B copies the career-profile summary without rewriting; theme-guided summary rewriting is deferred to Phase C.",
+    "Certifications are rendered as a fixed profile baseline (active credentials only, profile order). They are not TailoringPlan-tailored content."
+  ]
+}

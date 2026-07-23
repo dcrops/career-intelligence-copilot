@@ -21,12 +21,13 @@ Career Intelligence Copilot has three coexisting layers:
 
 The repository is simultaneously a career tool, a portfolio project, and a Cursor learning laboratory. See [03_product_vision.md](03_product_vision.md) § Project Objectives.
 
-Phase 2 implementation has started. FR-001 Career Profile, FR-002 Job Analysis,
-FR-003 Opportunity Assessment, FR-004 Portfolio Matching, and FR-005 Application Strategy
-are implemented; FR-005 is formally closed after owner manual validation. Next planned
-FR: FR-006 CV Generation. Remaining Phase 2 exit criteria (pipeline tracking, FR-013
-outcome logging, ranked comparison) stay outstanding. Architecture decisions are
-recorded under `docs/adr/`.
+Phase 2 implementation has started. FR-001–FR-005 are complete (FR-005 formally
+closed after owner manual validation). **FR-006 CV Generation is complete**
+(owner-sequenced post–Phase 2). **M1 Opportunity persistence is complete**
+(structured store under `data/opportunities/`; `OpportunityService`). Remaining
+Phase 2 exit work: M2 outcome logging (FR-013 subset), M3 CSV export, M4 ranked
+comparison, M5 close-out. Next planned FR after Phase 2 exit: **FR-007 Cover Letter**.
+Architecture decisions are recorded under `docs/adr/`.
 
 ---
 
@@ -115,13 +116,17 @@ The operational layer is the domain the future system must serve. Phase 2 pipeli
 **Implemented:** FR-001 Career Profile → FR-002 Job Analysis → FR-003 Opportunity Assessment
 (**Complete**; assessment prompt **v11** after calibration and evidence-contract hardening),
 FR-004 Portfolio Matching (**Complete**; deterministic ranking + offline golden journeys),
-and FR-005 Application Strategy (**Complete**; formally closed after owner manual
-validation — [manual_validation/jobs/manual_validation_notes.md](../manual_validation/jobs/manual_validation_notes.md))
+FR-005 Application Strategy (**Complete**; formally closed after owner manual
+validation — [manual_validation/jobs/manual_validation_notes.md](../manual_validation/jobs/manual_validation_notes.md)),
+and FR-006 CV Generation (**Complete**; deterministic Tailoring Plan + optional OpenAI
+summary rewrite — [eval/fr006_manual_validation.md](eval/fr006_manual_validation.md)).
+**M1 Opportunity persistence** is **Complete** (`OpportunityService`;
+[adr/002_opportunity_persistence.md](adr/002_opportunity_persistence.md)).
 
-**Next planned FR:** FR-006 CV Generation
+**Next planned FR after Phase 2 exit:** FR-007 Cover Letter
 
-**Remaining Phase 2 exit criteria:** pipeline tracking, FR-013 Outcome Logging, and
-ranked comparison of open assessed opportunities
+**Remaining Phase 2 exit criteria:** M2 outcome logging (FR-013 subset), M3 CSV export,
+M4 ranked comparison of open assessed opportunities, M5 close-out
 
 See [10_roadmap.md](10_roadmap.md) for phase detail and Phase 2 exit criteria.
 
