@@ -4,6 +4,70 @@ Records product strategy and engineering knowledge changes. Routine typo fixes a
 
 ---
 
+## Version 1.16
+
+### FR-005 formally closed after owner manual validation
+
+- Owner manual validation of the FR-001→FR-005 pipeline against real SEEK/LinkedIn roles is
+  **complete** (jobs 001–013). Record:
+  [manual_validation/jobs/manual_validation_notes.md](../manual_validation/jobs/manual_validation_notes.md).
+- Material upstream finding (Job 009 Forever New) was an **FR-003** commercial calibration /
+  grounding defect (`commercial_fit=strong` despite a material production AI gap; independent
+  engineering over-read as commercial production; mis-grounded retail alignment via nbn) —
+  not an FR-005 threshold defect. FR-005 posture/tier policy was intentionally left unchanged.
+- Supporting FR-003 hardening retained: commercial vs independent engineering distinction,
+  industry evidence grounding, strong judgment incompatible with material gaps, exact catalogue
+  evidence refs, trailing-punctuation rejection, portfolio alignment dual-evidence contract,
+  fail-closed validation (no silent repair).
+- One FR-005 implementation bug during the phase: leadership-token matching uses word
+  boundaries so `cto` does not match inside `Victoria`.
+- Next planned functional requirement: **FR-006** CV Generation. Remaining Phase 2 items
+  (pipeline tracking, FR-013 Outcome Logging, ranked comparison) stay in Phase 2 scope and
+  are required for Phase 2 exit, sequenced per owner priority after FR-005 closure.
+
+---
+
+## Version 1.15
+
+### FR-003 portfolio alignment dual-evidence prompt hardening
+
+- Live Job 012 failure: `portfolio_fit.findings.0` alignment with empty `job_evidence`.
+- Prompt **v11**: explicit portfolio alignment example with both job and profile evidence;
+  invalid empty-`job_evidence` example; hard rule restated for all dimensions.
+- `<FindingFieldGuide>` restates that alignment-style findings may not use `job_evidence=[]`.
+- Validation unchanged (fail closed; no silent repair). No FR-005 policy changes.
+
+---
+
+## Version 1.14
+
+### FR-003 exact profile evidence catalogue tokens
+
+- Live Job 010 failure: assessor emitted `experience:chase-risk-compliance-ai-engineer.`
+  (trailing period). The ID exists in the bound profile; the corrupted token does not.
+- Prompt **v10** + cite guide: copy catalogue refs character-for-character; no invented IDs;
+  no trailing punctuation.
+- `ProfileEvidenceRef` rejects trailing punctuation (fail closed; no silent strip/repair).
+- Reference validation hint when a near-miss trailing-punctuated experience id is detected.
+
+---
+
+## Version 1.13
+
+### FR-003 commercial judgment calibration + FR-005 token fix
+
+- Opportunity Assessment prompt **v9**: material gap/conflict findings forbid
+  `judgment=strong`; missing commercial production LLM/agent delivery cannot yield
+  commercial `strong`; industry alignments require genuine industry-supporting evidence;
+  independent engineering is not commercial production employment.
+- Domain validation rejects strong judgments with material gaps (no silent repair).
+- Service calibration rejects mis-grounded industry alignments (e.g. nbn as retail) and
+  commercial production alignments that cite independent/portfolio evidence as employment.
+- FR-005 leadership-token matching uses word boundaries so `cto` does not match inside
+  `Victoria`. No FR-005 threshold or stretch-policy changes. No FR-004 changes.
+
+---
+
 ## Version 1.12
 
 ### FR-005 seniority-aware application strategy policy

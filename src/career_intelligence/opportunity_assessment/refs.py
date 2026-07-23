@@ -154,7 +154,25 @@ def _validate_profile_ref(
             errors.append(_namespace_mismatch(loc, ref.source, namespace))
             return
         if not any(entry.id == identifier for entry in profile.experience):
-            errors.append(_unknown_entity(loc, "experience", identifier))
+            hint = ""
+            stripped = identifier.rstrip(".,;:!?)]")
+            if stripped != identifier and any(
+                entry.id == stripped for entry in profile.experience
+            ):
+                hint = (
+                    f"; catalogue has '{stripped}' — copy the token exactly with "
+                    "no trailing punctuation"
+                )
+            errors.append(
+                ErrorDetail(
+                    loc=(*loc, "ref"),
+                    msg=(
+                        f"unknown experience id '{identifier}' in bound career profile"
+                        f"{hint}"
+                    ),
+                    type="value_error",
+                )
+            )
         return
 
     if ref.source == "project":

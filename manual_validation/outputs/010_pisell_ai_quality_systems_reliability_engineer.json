@@ -1,0 +1,1272 @@
+{
+  "components": [
+    {
+      "name": "CareerProfile",
+      "implementation": "CareerProfileService / YAML",
+      "mode": "deterministic_production"
+    },
+    {
+      "name": "JobAnalysis",
+      "implementation": "OpenAIJobExtractor",
+      "mode": "openai_production"
+    },
+    {
+      "name": "OpportunityAssessment",
+      "implementation": "OpenAIAssessor",
+      "mode": "openai_production"
+    },
+    {
+      "name": "PortfolioMatch",
+      "implementation": "DeterministicMatcher",
+      "mode": "deterministic_production"
+    },
+    {
+      "name": "ApplicationStrategy",
+      "implementation": "DeterministicStrategyPlanner",
+      "mode": "deterministic_production"
+    }
+  ],
+  "volume_applications_enabled": false,
+  "profile_identity": {
+    "full_name": "David Cropper",
+    "target_role": "AI Engineer"
+  },
+  "posting": {
+    "raw_text": "AI Quality & Systems Reliability Engineer\nPisell\nView all jobs\nGlen Waverley, Melbourne VIC\nTesting & Quality Assurance (Information & Communication Technology)\nFull time\n$80,000 – $120,000 per year\nProfile salary match\n\nPosted 6d ago\n•\nMedium application volume\n\nHow you match\n2 skills and credentials match your profile\n Python Programming\n Java Programming\nShow all⁠\nAbout the Role\nWe are seeking an AI Quality & Systems Reliability Engineer to help build our AI-native testing capability and improve the reliability of our software, systems and connected devices in Melbourne.\n\nThis is an AI-native quality engineering role combining:\n\nAI-assisted and AI-driven software testing\n\nTest automation\n\nSystems reliability investigation\n\nSoftware, device and IoT integration testing\n\nOn-site operational research\n\nLocal test lab development\n\nYou will work across our SaaS platform, web applications, iOS and Android applications, POS systems, connected devices and IoT-enabled environments.\n\nThis role goes beyond executing test cases and reporting defects. You will be expected to use AI as a core part of the testing workflow, investigate complex issues, reproduce failures, identify root causes and follow problems through to verified resolution.\n\nYou will work closely with product, engineering, operations and customer-facing teams to improve product quality and system stability in real operating environments.\n\nKey Responsibilities\nAI-Native Quality Engineering\nBuild and improve an AI-native quality engineering approach across web, mobile, POS and integrated systems.\n\nUse AI throughout the testing lifecycle, including test design, exploratory testing, test-data generation, defect analysis, automation development and maintenance.\n\nEvaluate and introduce AI testing tools, coding agents and automated workflows that improve test coverage, speed and consistency.\n\nConvert product requirements, production issues and customer feedback into effective test scenarios.\n\nIdentify quality risks early and recommend practical prevention and improvement measures.\n\nTest Automation and Quality Validation\nDesign, build and maintain automated tests for web, iOS and Android applications.\n\nDevelop automated regression, smoke, integration and end-to-end test coverage for critical business workflows.\n\nImprove the reliability, maintainability and efficiency of automated testing.\n\nPerform exploratory, functional, compatibility and stability testing where automation alone is insufficient.\n\nProduce clear testing evidence, quality assessments and release recommendations.\n\nSystems Reliability and Investigation\nInvestigate issues across applications, devices, operating systems, networks and third-party integrations.\n\nReproduce intermittent, environment-specific and difficult-to-diagnose failures.\n\nAnalyse logs, system behaviour, device configurations and operational workflows.\n\nPerform structured root-cause analysis and recommend corrective and preventive actions.\n\nVerify solutions under realistic operating conditions and monitor recurring issues.\n\nWork with product and engineering teams to improve long-term product stability.\n\nTest Lab and On-Site Operations\nHelp establish and operate a local quality and systems reliability lab in Melbourne.\n\nMaintain test devices, operating environments, system configurations and equipment records.\n\nBuild repeatable test environments that reflect real customer configurations.\n\nDesign long-running, recovery and failure-simulation tests.\n\nVisit customer venues to observe workflows, investigate issues and collect technical evidence.\n\nTranslate field findings into test scenarios, product improvements and operating procedures.\n\nCreate practical testing, troubleshooting and device-management documentation.\n\nRequired Skills and Experience\nAt least five years of experience in software testing, quality engineering, test automation, systems integration or a similar technical role.\n\nStrong hands-on experience testing web or mobile applications.\n\nExperience designing and maintaining automated tests using modern testing frameworks.\n\nAbility to read, write and troubleshoot automation code using JavaScript, TypeScript, Python, Java or a similar language.\n\nPractical experience using AI coding tools, AI agents or AI-assisted testing tools as part of an engineering workflow.\n\nStrong analytical and troubleshooting skills across software, connected devices, IoT environments and networks.\n\nAbility to investigate complex issues, analyse evidence and communicate root causes clearly.\n\nStrong written and spoken English and Mandarin.\n\nAbility to work independently, take ownership and follow issues through to resolution.\n\nFull Australian working rights.\n\nAbility to travel to customer sites within Melbourne when required.\n\nHighly Desirable\nExperience building or operating AI-native testing workflows.\n\nExperience using AI agents for test generation, execution, analysis or automation maintenance.\n\nExperience testing large-scale POS, retail, hospitality, ticketing, venue-management or payment-related systems.\n\nExperience with complex systems involving web applications, mobile applications, POS terminals, IoT-enabled devices and connected peripherals.\n\nExperience establishing a test lab or managing multiple test devices and environments.\n\nExperience investigating production incidents or customer-site reliability issues.\n\nCandidate Profile\nThe ideal candidate is hands-on, analytical and highly accountable.\n\nYou are comfortable using AI as a practical engineering tool rather than treating it as an optional add-on. You can move between automated testing, application behaviour, physical devices, customer workflows and on-site environments.\n\nYou do not stop at recording a defect. You want to understand why it happened, how to reproduce it, how to fix it and how to prevent it from happening again.\n\nYou should be:\n\nProactive and self-directed\n\nCurious and technically hands-on\n\nStructured in problem investigation\n\nComfortable with ambiguity\n\nPatient with intermittent issues\n\nFocused on outcomes and long-term stability\n\nWhat Success Looks Like\nWithin the first six months, the successful candidate will be expected to:\n\nEstablish a functional local quality and systems reliability lab.\n\nIntroduce an AI-native testing workflow for key products and business processes.\n\nBuild reliable automated coverage for critical user journeys.\n\nImprove the reproduction and resolution rate of production and field issues.\n\nReduce recurring software, integration and device-related incidents.\n\nCreate clear testing, troubleshooting and operating documentation.\n\nDeliver measurable improvements in product quality and system stability.\n\nHow to Apply\nPlease submit your CV and a short cover letter via SEEK. In your cover letter, please include:\n\nYour software test automation experience\n\nHow you have used AI in testing or engineering\n\nYour experience with complex POS or integrated systems\n\nAn example of a difficult stability issue you investigated and resolved\n\nYour English and Mandarin language proficiency",
+    "title": "AI Quality & Systems Reliability Engineer",
+    "company": "Pisell",
+    "source_url": "https://au.seek.com/job/93354844?ref=recom-homepage&pos=22&origin=showNewTab#sol=e53f28c0c727aa26168dc8aaac28158d88828412"
+  },
+  "job_analysis": {
+    "posting": {
+      "raw_text": "AI Quality & Systems Reliability Engineer\nPisell\nView all jobs\nGlen Waverley, Melbourne VIC\nTesting & Quality Assurance (Information & Communication Technology)\nFull time\n$80,000 – $120,000 per year\nProfile salary match\n\nPosted 6d ago\n•\nMedium application volume\n\nHow you match\n2 skills and credentials match your profile\n Python Programming\n Java Programming\nShow all⁠\nAbout the Role\nWe are seeking an AI Quality & Systems Reliability Engineer to help build our AI-native testing capability and improve the reliability of our software, systems and connected devices in Melbourne.\n\nThis is an AI-native quality engineering role combining:\n\nAI-assisted and AI-driven software testing\n\nTest automation\n\nSystems reliability investigation\n\nSoftware, device and IoT integration testing\n\nOn-site operational research\n\nLocal test lab development\n\nYou will work across our SaaS platform, web applications, iOS and Android applications, POS systems, connected devices and IoT-enabled environments.\n\nThis role goes beyond executing test cases and reporting defects. You will be expected to use AI as a core part of the testing workflow, investigate complex issues, reproduce failures, identify root causes and follow problems through to verified resolution.\n\nYou will work closely with product, engineering, operations and customer-facing teams to improve product quality and system stability in real operating environments.\n\nKey Responsibilities\nAI-Native Quality Engineering\nBuild and improve an AI-native quality engineering approach across web, mobile, POS and integrated systems.\n\nUse AI throughout the testing lifecycle, including test design, exploratory testing, test-data generation, defect analysis, automation development and maintenance.\n\nEvaluate and introduce AI testing tools, coding agents and automated workflows that improve test coverage, speed and consistency.\n\nConvert product requirements, production issues and customer feedback into effective test scenarios.\n\nIdentify quality risks early and recommend practical prevention and improvement measures.\n\nTest Automation and Quality Validation\nDesign, build and maintain automated tests for web, iOS and Android applications.\n\nDevelop automated regression, smoke, integration and end-to-end test coverage for critical business workflows.\n\nImprove the reliability, maintainability and efficiency of automated testing.\n\nPerform exploratory, functional, compatibility and stability testing where automation alone is insufficient.\n\nProduce clear testing evidence, quality assessments and release recommendations.\n\nSystems Reliability and Investigation\nInvestigate issues across applications, devices, operating systems, networks and third-party integrations.\n\nReproduce intermittent, environment-specific and difficult-to-diagnose failures.\n\nAnalyse logs, system behaviour, device configurations and operational workflows.\n\nPerform structured root-cause analysis and recommend corrective and preventive actions.\n\nVerify solutions under realistic operating conditions and monitor recurring issues.\n\nWork with product and engineering teams to improve long-term product stability.\n\nTest Lab and On-Site Operations\nHelp establish and operate a local quality and systems reliability lab in Melbourne.\n\nMaintain test devices, operating environments, system configurations and equipment records.\n\nBuild repeatable test environments that reflect real customer configurations.\n\nDesign long-running, recovery and failure-simulation tests.\n\nVisit customer venues to observe workflows, investigate issues and collect technical evidence.\n\nTranslate field findings into test scenarios, product improvements and operating procedures.\n\nCreate practical testing, troubleshooting and device-management documentation.\n\nRequired Skills and Experience\nAt least five years of experience in software testing, quality engineering, test automation, systems integration or a similar technical role.\n\nStrong hands-on experience testing web or mobile applications.\n\nExperience designing and maintaining automated tests using modern testing frameworks.\n\nAbility to read, write and troubleshoot automation code using JavaScript, TypeScript, Python, Java or a similar language.\n\nPractical experience using AI coding tools, AI agents or AI-assisted testing tools as part of an engineering workflow.\n\nStrong analytical and troubleshooting skills across software, connected devices, IoT environments and networks.\n\nAbility to investigate complex issues, analyse evidence and communicate root causes clearly.\n\nStrong written and spoken English and Mandarin.\n\nAbility to work independently, take ownership and follow issues through to resolution.\n\nFull Australian working rights.\n\nAbility to travel to customer sites within Melbourne when required.\n\nHighly Desirable\nExperience building or operating AI-native testing workflows.\n\nExperience using AI agents for test generation, execution, analysis or automation maintenance.\n\nExperience testing large-scale POS, retail, hospitality, ticketing, venue-management or payment-related systems.\n\nExperience with complex systems involving web applications, mobile applications, POS terminals, IoT-enabled devices and connected peripherals.\n\nExperience establishing a test lab or managing multiple test devices and environments.\n\nExperience investigating production incidents or customer-site reliability issues.\n\nCandidate Profile\nThe ideal candidate is hands-on, analytical and highly accountable.\n\nYou are comfortable using AI as a practical engineering tool rather than treating it as an optional add-on. You can move between automated testing, application behaviour, physical devices, customer workflows and on-site environments.\n\nYou do not stop at recording a defect. You want to understand why it happened, how to reproduce it, how to fix it and how to prevent it from happening again.\n\nYou should be:\n\nProactive and self-directed\n\nCurious and technically hands-on\n\nStructured in problem investigation\n\nComfortable with ambiguity\n\nPatient with intermittent issues\n\nFocused on outcomes and long-term stability\n\nWhat Success Looks Like\nWithin the first six months, the successful candidate will be expected to:\n\nEstablish a functional local quality and systems reliability lab.\n\nIntroduce an AI-native testing workflow for key products and business processes.\n\nBuild reliable automated coverage for critical user journeys.\n\nImprove the reproduction and resolution rate of production and field issues.\n\nReduce recurring software, integration and device-related incidents.\n\nCreate clear testing, troubleshooting and operating documentation.\n\nDeliver measurable improvements in product quality and system stability.\n\nHow to Apply\nPlease submit your CV and a short cover letter via SEEK. In your cover letter, please include:\n\nYour software test automation experience\n\nHow you have used AI in testing or engineering\n\nYour experience with complex POS or integrated systems\n\nAn example of a difficult stability issue you investigated and resolved\n\nYour English and Mandarin language proficiency",
+      "title": "AI Quality & Systems Reliability Engineer",
+      "company": "Pisell",
+      "source_url": "https://au.seek.com/job/93354844?ref=recom-homepage&pos=22&origin=showNewTab#sol=e53f28c0c727aa26168dc8aaac28158d88828412"
+    },
+    "role_family": {
+      "family": "ai_adjacent",
+      "evidence": [
+        {
+          "excerpt": "This is an AI-native quality engineering role combining: AI-assisted and AI-driven software testing",
+          "section": "JobDescription"
+        }
+      ]
+    },
+    "seniority": {
+      "level": "unknown",
+      "ambiguous": false,
+      "candidate_levels": [],
+      "evidence": []
+    },
+    "technologies": [
+      {
+        "name": "Python",
+        "level": "required",
+        "evidence": [
+          {
+            "excerpt": "Ability to read, write and troubleshoot automation code using JavaScript, TypeScript, Python, Java or a similar language.",
+            "section": "Required Skills and Experience"
+          }
+        ]
+      },
+      {
+        "name": "Java",
+        "level": "required",
+        "evidence": [
+          {
+            "excerpt": "Ability to read, write and troubleshoot automation code using JavaScript, TypeScript, Python, Java or a similar language.",
+            "section": "Required Skills and Experience"
+          }
+        ]
+      },
+      {
+        "name": "JavaScript",
+        "level": "required",
+        "evidence": [
+          {
+            "excerpt": "Ability to read, write and troubleshoot automation code using JavaScript, TypeScript, Python, Java or a similar language.",
+            "section": "Required Skills and Experience"
+          }
+        ]
+      },
+      {
+        "name": "TypeScript",
+        "level": "required",
+        "evidence": [
+          {
+            "excerpt": "Ability to read, write and troubleshoot automation code using JavaScript, TypeScript, Python, Java or a similar language.",
+            "section": "Required Skills and Experience"
+          }
+        ]
+      },
+      {
+        "name": "AI coding tools",
+        "level": "required",
+        "evidence": [
+          {
+            "excerpt": "Practical experience using AI coding tools, AI agents or AI-assisted testing tools as part of an engineering workflow.",
+            "section": "Required Skills and Experience"
+          }
+        ]
+      }
+    ],
+    "responsibilities": [
+      {
+        "description": "Build and improve an AI-native quality engineering approach across web, mobile, POS and integrated systems.",
+        "evidence": [
+          {
+            "excerpt": "Build and improve an AI-native quality engineering approach across web, mobile, POS and integrated systems.",
+            "section": "Key Responsibilities"
+          }
+        ]
+      },
+      {
+        "description": "Use AI throughout the testing lifecycle, including test design, exploratory testing, test-data generation, defect analysis, automation development and maintenance.",
+        "evidence": [
+          {
+            "excerpt": "Use AI throughout the testing lifecycle, including test design, exploratory testing, test-data generation, defect analysis, automation development and maintenance.",
+            "section": "Key Responsibilities"
+          }
+        ]
+      },
+      {
+        "description": "Investigate issues across applications, devices, operating systems, networks and third-party integrations.",
+        "evidence": [
+          {
+            "excerpt": "Investigate issues across applications, devices, operating systems, networks and third-party integrations.",
+            "section": "Key Responsibilities"
+          }
+        ]
+      },
+      {
+        "description": "Establish and operate a local quality and systems reliability lab in Melbourne.",
+        "evidence": [
+          {
+            "excerpt": "Help establish and operate a local quality and systems reliability lab in Melbourne.",
+            "section": "Key Responsibilities"
+          }
+        ]
+      }
+    ],
+    "compensation": {
+      "clarity": "stated",
+      "minimum": 80000.0,
+      "maximum": 120000.0,
+      "currency": "AUD",
+      "period": "year",
+      "raw_text": "$80,000 – $120,000 per year",
+      "evidence": [
+        {
+          "excerpt": "$80,000 – $120,000 per year",
+          "section": "JobDescription"
+        }
+      ]
+    },
+    "location": {
+      "clarity": "stated",
+      "summary": "Glen Waverley, Melbourne VIC",
+      "evidence": [
+        {
+          "excerpt": "Glen Waverley, Melbourne VIC",
+          "section": "JobDescription"
+        }
+      ]
+    },
+    "work_arrangement": {
+      "arrangement": "onsite",
+      "details": null,
+      "evidence": [
+        {
+          "excerpt": "Visit customer venues to observe workflows, investigate issues and collect technical evidence.",
+          "section": "Key Responsibilities"
+        }
+      ]
+    },
+    "employment": {
+      "working_hours": "full_time",
+      "engagement_type": "unspecified",
+      "evidence": [
+        {
+          "excerpt": "Full time",
+          "section": "JobDescription"
+        }
+      ]
+    },
+    "experience_requirements": [
+      {
+        "description": "At least five years of experience in software testing, quality engineering, test automation, systems integration or a similar technical role.",
+        "level": "required",
+        "minimum_years": 5.0,
+        "maximum_years": null,
+        "evidence": [
+          {
+            "excerpt": "At least five years of experience in software testing, quality engineering, test automation, systems integration or a similar technical role.",
+            "section": "Required Skills and Experience"
+          }
+        ]
+      }
+    ]
+  },
+  "opportunity_assessment": {
+    "job_analysis": {
+      "posting": {
+        "raw_text": "AI Quality & Systems Reliability Engineer\nPisell\nView all jobs\nGlen Waverley, Melbourne VIC\nTesting & Quality Assurance (Information & Communication Technology)\nFull time\n$80,000 – $120,000 per year\nProfile salary match\n\nPosted 6d ago\n•\nMedium application volume\n\nHow you match\n2 skills and credentials match your profile\n Python Programming\n Java Programming\nShow all⁠\nAbout the Role\nWe are seeking an AI Quality & Systems Reliability Engineer to help build our AI-native testing capability and improve the reliability of our software, systems and connected devices in Melbourne.\n\nThis is an AI-native quality engineering role combining:\n\nAI-assisted and AI-driven software testing\n\nTest automation\n\nSystems reliability investigation\n\nSoftware, device and IoT integration testing\n\nOn-site operational research\n\nLocal test lab development\n\nYou will work across our SaaS platform, web applications, iOS and Android applications, POS systems, connected devices and IoT-enabled environments.\n\nThis role goes beyond executing test cases and reporting defects. You will be expected to use AI as a core part of the testing workflow, investigate complex issues, reproduce failures, identify root causes and follow problems through to verified resolution.\n\nYou will work closely with product, engineering, operations and customer-facing teams to improve product quality and system stability in real operating environments.\n\nKey Responsibilities\nAI-Native Quality Engineering\nBuild and improve an AI-native quality engineering approach across web, mobile, POS and integrated systems.\n\nUse AI throughout the testing lifecycle, including test design, exploratory testing, test-data generation, defect analysis, automation development and maintenance.\n\nEvaluate and introduce AI testing tools, coding agents and automated workflows that improve test coverage, speed and consistency.\n\nConvert product requirements, production issues and customer feedback into effective test scenarios.\n\nIdentify quality risks early and recommend practical prevention and improvement measures.\n\nTest Automation and Quality Validation\nDesign, build and maintain automated tests for web, iOS and Android applications.\n\nDevelop automated regression, smoke, integration and end-to-end test coverage for critical business workflows.\n\nImprove the reliability, maintainability and efficiency of automated testing.\n\nPerform exploratory, functional, compatibility and stability testing where automation alone is insufficient.\n\nProduce clear testing evidence, quality assessments and release recommendations.\n\nSystems Reliability and Investigation\nInvestigate issues across applications, devices, operating systems, networks and third-party integrations.\n\nReproduce intermittent, environment-specific and difficult-to-diagnose failures.\n\nAnalyse logs, system behaviour, device configurations and operational workflows.\n\nPerform structured root-cause analysis and recommend corrective and preventive actions.\n\nVerify solutions under realistic operating conditions and monitor recurring issues.\n\nWork with product and engineering teams to improve long-term product stability.\n\nTest Lab and On-Site Operations\nHelp establish and operate a local quality and systems reliability lab in Melbourne.\n\nMaintain test devices, operating environments, system configurations and equipment records.\n\nBuild repeatable test environments that reflect real customer configurations.\n\nDesign long-running, recovery and failure-simulation tests.\n\nVisit customer venues to observe workflows, investigate issues and collect technical evidence.\n\nTranslate field findings into test scenarios, product improvements and operating procedures.\n\nCreate practical testing, troubleshooting and device-management documentation.\n\nRequired Skills and Experience\nAt least five years of experience in software testing, quality engineering, test automation, systems integration or a similar technical role.\n\nStrong hands-on experience testing web or mobile applications.\n\nExperience designing and maintaining automated tests using modern testing frameworks.\n\nAbility to read, write and troubleshoot automation code using JavaScript, TypeScript, Python, Java or a similar language.\n\nPractical experience using AI coding tools, AI agents or AI-assisted testing tools as part of an engineering workflow.\n\nStrong analytical and troubleshooting skills across software, connected devices, IoT environments and networks.\n\nAbility to investigate complex issues, analyse evidence and communicate root causes clearly.\n\nStrong written and spoken English and Mandarin.\n\nAbility to work independently, take ownership and follow issues through to resolution.\n\nFull Australian working rights.\n\nAbility to travel to customer sites within Melbourne when required.\n\nHighly Desirable\nExperience building or operating AI-native testing workflows.\n\nExperience using AI agents for test generation, execution, analysis or automation maintenance.\n\nExperience testing large-scale POS, retail, hospitality, ticketing, venue-management or payment-related systems.\n\nExperience with complex systems involving web applications, mobile applications, POS terminals, IoT-enabled devices and connected peripherals.\n\nExperience establishing a test lab or managing multiple test devices and environments.\n\nExperience investigating production incidents or customer-site reliability issues.\n\nCandidate Profile\nThe ideal candidate is hands-on, analytical and highly accountable.\n\nYou are comfortable using AI as a practical engineering tool rather than treating it as an optional add-on. You can move between automated testing, application behaviour, physical devices, customer workflows and on-site environments.\n\nYou do not stop at recording a defect. You want to understand why it happened, how to reproduce it, how to fix it and how to prevent it from happening again.\n\nYou should be:\n\nProactive and self-directed\n\nCurious and technically hands-on\n\nStructured in problem investigation\n\nComfortable with ambiguity\n\nPatient with intermittent issues\n\nFocused on outcomes and long-term stability\n\nWhat Success Looks Like\nWithin the first six months, the successful candidate will be expected to:\n\nEstablish a functional local quality and systems reliability lab.\n\nIntroduce an AI-native testing workflow for key products and business processes.\n\nBuild reliable automated coverage for critical user journeys.\n\nImprove the reproduction and resolution rate of production and field issues.\n\nReduce recurring software, integration and device-related incidents.\n\nCreate clear testing, troubleshooting and operating documentation.\n\nDeliver measurable improvements in product quality and system stability.\n\nHow to Apply\nPlease submit your CV and a short cover letter via SEEK. In your cover letter, please include:\n\nYour software test automation experience\n\nHow you have used AI in testing or engineering\n\nYour experience with complex POS or integrated systems\n\nAn example of a difficult stability issue you investigated and resolved\n\nYour English and Mandarin language proficiency",
+        "title": "AI Quality & Systems Reliability Engineer",
+        "company": "Pisell",
+        "source_url": "https://au.seek.com/job/93354844?ref=recom-homepage&pos=22&origin=showNewTab#sol=e53f28c0c727aa26168dc8aaac28158d88828412"
+      },
+      "role_family": {
+        "family": "ai_adjacent",
+        "evidence": [
+          {
+            "excerpt": "This is an AI-native quality engineering role combining: AI-assisted and AI-driven software testing",
+            "section": "JobDescription"
+          }
+        ]
+      },
+      "seniority": {
+        "level": "unknown",
+        "ambiguous": false,
+        "candidate_levels": [],
+        "evidence": []
+      },
+      "technologies": [
+        {
+          "name": "Python",
+          "level": "required",
+          "evidence": [
+            {
+              "excerpt": "Ability to read, write and troubleshoot automation code using JavaScript, TypeScript, Python, Java or a similar language.",
+              "section": "Required Skills and Experience"
+            }
+          ]
+        },
+        {
+          "name": "Java",
+          "level": "required",
+          "evidence": [
+            {
+              "excerpt": "Ability to read, write and troubleshoot automation code using JavaScript, TypeScript, Python, Java or a similar language.",
+              "section": "Required Skills and Experience"
+            }
+          ]
+        },
+        {
+          "name": "JavaScript",
+          "level": "required",
+          "evidence": [
+            {
+              "excerpt": "Ability to read, write and troubleshoot automation code using JavaScript, TypeScript, Python, Java or a similar language.",
+              "section": "Required Skills and Experience"
+            }
+          ]
+        },
+        {
+          "name": "TypeScript",
+          "level": "required",
+          "evidence": [
+            {
+              "excerpt": "Ability to read, write and troubleshoot automation code using JavaScript, TypeScript, Python, Java or a similar language.",
+              "section": "Required Skills and Experience"
+            }
+          ]
+        },
+        {
+          "name": "AI coding tools",
+          "level": "required",
+          "evidence": [
+            {
+              "excerpt": "Practical experience using AI coding tools, AI agents or AI-assisted testing tools as part of an engineering workflow.",
+              "section": "Required Skills and Experience"
+            }
+          ]
+        }
+      ],
+      "responsibilities": [
+        {
+          "description": "Build and improve an AI-native quality engineering approach across web, mobile, POS and integrated systems.",
+          "evidence": [
+            {
+              "excerpt": "Build and improve an AI-native quality engineering approach across web, mobile, POS and integrated systems.",
+              "section": "Key Responsibilities"
+            }
+          ]
+        },
+        {
+          "description": "Use AI throughout the testing lifecycle, including test design, exploratory testing, test-data generation, defect analysis, automation development and maintenance.",
+          "evidence": [
+            {
+              "excerpt": "Use AI throughout the testing lifecycle, including test design, exploratory testing, test-data generation, defect analysis, automation development and maintenance.",
+              "section": "Key Responsibilities"
+            }
+          ]
+        },
+        {
+          "description": "Investigate issues across applications, devices, operating systems, networks and third-party integrations.",
+          "evidence": [
+            {
+              "excerpt": "Investigate issues across applications, devices, operating systems, networks and third-party integrations.",
+              "section": "Key Responsibilities"
+            }
+          ]
+        },
+        {
+          "description": "Establish and operate a local quality and systems reliability lab in Melbourne.",
+          "evidence": [
+            {
+              "excerpt": "Help establish and operate a local quality and systems reliability lab in Melbourne.",
+              "section": "Key Responsibilities"
+            }
+          ]
+        }
+      ],
+      "compensation": {
+        "clarity": "stated",
+        "minimum": 80000.0,
+        "maximum": 120000.0,
+        "currency": "AUD",
+        "period": "year",
+        "raw_text": "$80,000 – $120,000 per year",
+        "evidence": [
+          {
+            "excerpt": "$80,000 – $120,000 per year",
+            "section": "JobDescription"
+          }
+        ]
+      },
+      "location": {
+        "clarity": "stated",
+        "summary": "Glen Waverley, Melbourne VIC",
+        "evidence": [
+          {
+            "excerpt": "Glen Waverley, Melbourne VIC",
+            "section": "JobDescription"
+          }
+        ]
+      },
+      "work_arrangement": {
+        "arrangement": "onsite",
+        "details": null,
+        "evidence": [
+          {
+            "excerpt": "Visit customer venues to observe workflows, investigate issues and collect technical evidence.",
+            "section": "Key Responsibilities"
+          }
+        ]
+      },
+      "employment": {
+        "working_hours": "full_time",
+        "engagement_type": "unspecified",
+        "evidence": [
+          {
+            "excerpt": "Full time",
+            "section": "JobDescription"
+          }
+        ]
+      },
+      "experience_requirements": [
+        {
+          "description": "At least five years of experience in software testing, quality engineering, test automation, systems integration or a similar technical role.",
+          "level": "required",
+          "minimum_years": 5.0,
+          "maximum_years": null,
+          "evidence": [
+            {
+              "excerpt": "At least five years of experience in software testing, quality engineering, test automation, systems integration or a similar technical role.",
+              "section": "Required Skills and Experience"
+            }
+          ]
+        }
+      ]
+    },
+    "technical_fit": {
+      "dimension": "technical",
+      "judgment": "mixed",
+      "summary": "The candidate demonstrates strong capabilities in AI Engineering and quality assurance but lacks the required five years of direct experience in software testing and quality engineering roles, leading to a mixed evaluation.",
+      "findings": [
+        {
+          "kind": "gap",
+          "summary": "The role requires at least five years of specific experience in software testing and quality engineering, which is not fully evidenced in the profile.",
+          "detail": "While the candidate has varied experience in related roles, the total years do not meet the requirement explicitly stated for software testing and quality engineering.",
+          "importance": "material",
+          "job_evidence": [
+            {
+              "source": "experience_requirement",
+              "item_index": 0,
+              "name": "Experience Requirement",
+              "excerpt": "At least five years of experience in software testing, quality engineering, test automation, systems integration or a similar technical role."
+            }
+          ],
+          "profile_evidence": [],
+          "assumption": null
+        }
+      ]
+    },
+    "commercial_fit": {
+      "dimension": "commercial",
+      "judgment": "mixed",
+      "summary": "The candidate shows alignment with location and full-time work arrangement preferences but lacks clarity regarding compensation expectations.",
+      "findings": [
+        {
+          "kind": "gap",
+          "summary": "The role requires a salary range that has not been discussed in candidate expectations.",
+          "detail": "The candidate has not indicated a minimum salary expectation which might align with the stated range of $80,000 – $120,000, creating uncertainty around compensation acceptance.",
+          "importance": "minor",
+          "job_evidence": [
+            {
+              "source": "compensation",
+              "item_index": 0,
+              "name": "Compensation",
+              "excerpt": "$80,000 – $120,000 per year"
+            }
+          ],
+          "profile_evidence": [],
+          "assumption": null
+        }
+      ]
+    },
+    "portfolio_fit": {
+      "dimension": "portfolio",
+      "judgment": "mixed",
+      "summary": "The candidate's portfolio includes relevant independent projects, but the alignment with specific job responsibilities is limited.",
+      "findings": [
+        {
+          "kind": "partial_alignment",
+          "summary": "The portfolio demonstrates relevant independent engineering work but does not fully align with the job's commercial production testing focus.",
+          "detail": "The projects indicate capability in AI-related tasks but do not demonstrate sufficient commercial application in quality assurance practices as required by the role.",
+          "importance": "material",
+          "job_evidence": [
+            {
+              "source": "responsibility",
+              "item_index": 1,
+              "name": "Key Responsibility",
+              "excerpt": "Use AI throughout the testing lifecycle, including test design, exploratory testing, test-data generation, defect analysis, automation development and maintenance."
+            }
+          ],
+          "profile_evidence": [
+            {
+              "source": "project",
+              "ref": "project:operational-intelligence-copilot",
+              "excerpt": "Domain-agnostic operational intelligence platform combining deterministic analytics with Large Language Model reasoning to analyse structured business data and generate explainable, evidence-backed executive insights."
+            },
+            {
+              "source": "project",
+              "ref": "project:governance-document-rag",
+              "excerpt": "Enterprise retrieval-augmented generation platform supporting trustworthy AI responses over organisational knowledge."
+            }
+          ],
+          "assumption": null
+        }
+      ]
+    },
+    "summary": {
+      "summary": "The candidate has demonstrated a strong technical background in AI engineering, software quality assurance, and relevant project experience, but certain gaps in direct software testing and quality engineering experience, as well as compensation clarity, limit both technical and commercial fit evaluations.",
+      "key_alignments": [
+        "Location: Glen Waverley, Melbourne VIC",
+        "Compensation: Willing to discuss within provided range",
+        "Skills in Python and AI-focused automation tools"
+      ],
+      "key_gaps": [
+        "Five years of required experience in software testing and quality engineering not fully met",
+        "Clarity on compensation expectations not detailed"
+      ]
+    }
+  },
+  "portfolio_match": {
+    "job_analysis": {
+      "posting": {
+        "raw_text": "AI Quality & Systems Reliability Engineer\nPisell\nView all jobs\nGlen Waverley, Melbourne VIC\nTesting & Quality Assurance (Information & Communication Technology)\nFull time\n$80,000 – $120,000 per year\nProfile salary match\n\nPosted 6d ago\n•\nMedium application volume\n\nHow you match\n2 skills and credentials match your profile\n Python Programming\n Java Programming\nShow all⁠\nAbout the Role\nWe are seeking an AI Quality & Systems Reliability Engineer to help build our AI-native testing capability and improve the reliability of our software, systems and connected devices in Melbourne.\n\nThis is an AI-native quality engineering role combining:\n\nAI-assisted and AI-driven software testing\n\nTest automation\n\nSystems reliability investigation\n\nSoftware, device and IoT integration testing\n\nOn-site operational research\n\nLocal test lab development\n\nYou will work across our SaaS platform, web applications, iOS and Android applications, POS systems, connected devices and IoT-enabled environments.\n\nThis role goes beyond executing test cases and reporting defects. You will be expected to use AI as a core part of the testing workflow, investigate complex issues, reproduce failures, identify root causes and follow problems through to verified resolution.\n\nYou will work closely with product, engineering, operations and customer-facing teams to improve product quality and system stability in real operating environments.\n\nKey Responsibilities\nAI-Native Quality Engineering\nBuild and improve an AI-native quality engineering approach across web, mobile, POS and integrated systems.\n\nUse AI throughout the testing lifecycle, including test design, exploratory testing, test-data generation, defect analysis, automation development and maintenance.\n\nEvaluate and introduce AI testing tools, coding agents and automated workflows that improve test coverage, speed and consistency.\n\nConvert product requirements, production issues and customer feedback into effective test scenarios.\n\nIdentify quality risks early and recommend practical prevention and improvement measures.\n\nTest Automation and Quality Validation\nDesign, build and maintain automated tests for web, iOS and Android applications.\n\nDevelop automated regression, smoke, integration and end-to-end test coverage for critical business workflows.\n\nImprove the reliability, maintainability and efficiency of automated testing.\n\nPerform exploratory, functional, compatibility and stability testing where automation alone is insufficient.\n\nProduce clear testing evidence, quality assessments and release recommendations.\n\nSystems Reliability and Investigation\nInvestigate issues across applications, devices, operating systems, networks and third-party integrations.\n\nReproduce intermittent, environment-specific and difficult-to-diagnose failures.\n\nAnalyse logs, system behaviour, device configurations and operational workflows.\n\nPerform structured root-cause analysis and recommend corrective and preventive actions.\n\nVerify solutions under realistic operating conditions and monitor recurring issues.\n\nWork with product and engineering teams to improve long-term product stability.\n\nTest Lab and On-Site Operations\nHelp establish and operate a local quality and systems reliability lab in Melbourne.\n\nMaintain test devices, operating environments, system configurations and equipment records.\n\nBuild repeatable test environments that reflect real customer configurations.\n\nDesign long-running, recovery and failure-simulation tests.\n\nVisit customer venues to observe workflows, investigate issues and collect technical evidence.\n\nTranslate field findings into test scenarios, product improvements and operating procedures.\n\nCreate practical testing, troubleshooting and device-management documentation.\n\nRequired Skills and Experience\nAt least five years of experience in software testing, quality engineering, test automation, systems integration or a similar technical role.\n\nStrong hands-on experience testing web or mobile applications.\n\nExperience designing and maintaining automated tests using modern testing frameworks.\n\nAbility to read, write and troubleshoot automation code using JavaScript, TypeScript, Python, Java or a similar language.\n\nPractical experience using AI coding tools, AI agents or AI-assisted testing tools as part of an engineering workflow.\n\nStrong analytical and troubleshooting skills across software, connected devices, IoT environments and networks.\n\nAbility to investigate complex issues, analyse evidence and communicate root causes clearly.\n\nStrong written and spoken English and Mandarin.\n\nAbility to work independently, take ownership and follow issues through to resolution.\n\nFull Australian working rights.\n\nAbility to travel to customer sites within Melbourne when required.\n\nHighly Desirable\nExperience building or operating AI-native testing workflows.\n\nExperience using AI agents for test generation, execution, analysis or automation maintenance.\n\nExperience testing large-scale POS, retail, hospitality, ticketing, venue-management or payment-related systems.\n\nExperience with complex systems involving web applications, mobile applications, POS terminals, IoT-enabled devices and connected peripherals.\n\nExperience establishing a test lab or managing multiple test devices and environments.\n\nExperience investigating production incidents or customer-site reliability issues.\n\nCandidate Profile\nThe ideal candidate is hands-on, analytical and highly accountable.\n\nYou are comfortable using AI as a practical engineering tool rather than treating it as an optional add-on. You can move between automated testing, application behaviour, physical devices, customer workflows and on-site environments.\n\nYou do not stop at recording a defect. You want to understand why it happened, how to reproduce it, how to fix it and how to prevent it from happening again.\n\nYou should be:\n\nProactive and self-directed\n\nCurious and technically hands-on\n\nStructured in problem investigation\n\nComfortable with ambiguity\n\nPatient with intermittent issues\n\nFocused on outcomes and long-term stability\n\nWhat Success Looks Like\nWithin the first six months, the successful candidate will be expected to:\n\nEstablish a functional local quality and systems reliability lab.\n\nIntroduce an AI-native testing workflow for key products and business processes.\n\nBuild reliable automated coverage for critical user journeys.\n\nImprove the reproduction and resolution rate of production and field issues.\n\nReduce recurring software, integration and device-related incidents.\n\nCreate clear testing, troubleshooting and operating documentation.\n\nDeliver measurable improvements in product quality and system stability.\n\nHow to Apply\nPlease submit your CV and a short cover letter via SEEK. In your cover letter, please include:\n\nYour software test automation experience\n\nHow you have used AI in testing or engineering\n\nYour experience with complex POS or integrated systems\n\nAn example of a difficult stability issue you investigated and resolved\n\nYour English and Mandarin language proficiency",
+        "title": "AI Quality & Systems Reliability Engineer",
+        "company": "Pisell",
+        "source_url": "https://au.seek.com/job/93354844?ref=recom-homepage&pos=22&origin=showNewTab#sol=e53f28c0c727aa26168dc8aaac28158d88828412"
+      },
+      "role_family": {
+        "family": "ai_adjacent",
+        "evidence": [
+          {
+            "excerpt": "This is an AI-native quality engineering role combining: AI-assisted and AI-driven software testing",
+            "section": "JobDescription"
+          }
+        ]
+      },
+      "seniority": {
+        "level": "unknown",
+        "ambiguous": false,
+        "candidate_levels": [],
+        "evidence": []
+      },
+      "technologies": [
+        {
+          "name": "Python",
+          "level": "required",
+          "evidence": [
+            {
+              "excerpt": "Ability to read, write and troubleshoot automation code using JavaScript, TypeScript, Python, Java or a similar language.",
+              "section": "Required Skills and Experience"
+            }
+          ]
+        },
+        {
+          "name": "Java",
+          "level": "required",
+          "evidence": [
+            {
+              "excerpt": "Ability to read, write and troubleshoot automation code using JavaScript, TypeScript, Python, Java or a similar language.",
+              "section": "Required Skills and Experience"
+            }
+          ]
+        },
+        {
+          "name": "JavaScript",
+          "level": "required",
+          "evidence": [
+            {
+              "excerpt": "Ability to read, write and troubleshoot automation code using JavaScript, TypeScript, Python, Java or a similar language.",
+              "section": "Required Skills and Experience"
+            }
+          ]
+        },
+        {
+          "name": "TypeScript",
+          "level": "required",
+          "evidence": [
+            {
+              "excerpt": "Ability to read, write and troubleshoot automation code using JavaScript, TypeScript, Python, Java or a similar language.",
+              "section": "Required Skills and Experience"
+            }
+          ]
+        },
+        {
+          "name": "AI coding tools",
+          "level": "required",
+          "evidence": [
+            {
+              "excerpt": "Practical experience using AI coding tools, AI agents or AI-assisted testing tools as part of an engineering workflow.",
+              "section": "Required Skills and Experience"
+            }
+          ]
+        }
+      ],
+      "responsibilities": [
+        {
+          "description": "Build and improve an AI-native quality engineering approach across web, mobile, POS and integrated systems.",
+          "evidence": [
+            {
+              "excerpt": "Build and improve an AI-native quality engineering approach across web, mobile, POS and integrated systems.",
+              "section": "Key Responsibilities"
+            }
+          ]
+        },
+        {
+          "description": "Use AI throughout the testing lifecycle, including test design, exploratory testing, test-data generation, defect analysis, automation development and maintenance.",
+          "evidence": [
+            {
+              "excerpt": "Use AI throughout the testing lifecycle, including test design, exploratory testing, test-data generation, defect analysis, automation development and maintenance.",
+              "section": "Key Responsibilities"
+            }
+          ]
+        },
+        {
+          "description": "Investigate issues across applications, devices, operating systems, networks and third-party integrations.",
+          "evidence": [
+            {
+              "excerpt": "Investigate issues across applications, devices, operating systems, networks and third-party integrations.",
+              "section": "Key Responsibilities"
+            }
+          ]
+        },
+        {
+          "description": "Establish and operate a local quality and systems reliability lab in Melbourne.",
+          "evidence": [
+            {
+              "excerpt": "Help establish and operate a local quality and systems reliability lab in Melbourne.",
+              "section": "Key Responsibilities"
+            }
+          ]
+        }
+      ],
+      "compensation": {
+        "clarity": "stated",
+        "minimum": 80000.0,
+        "maximum": 120000.0,
+        "currency": "AUD",
+        "period": "year",
+        "raw_text": "$80,000 – $120,000 per year",
+        "evidence": [
+          {
+            "excerpt": "$80,000 – $120,000 per year",
+            "section": "JobDescription"
+          }
+        ]
+      },
+      "location": {
+        "clarity": "stated",
+        "summary": "Glen Waverley, Melbourne VIC",
+        "evidence": [
+          {
+            "excerpt": "Glen Waverley, Melbourne VIC",
+            "section": "JobDescription"
+          }
+        ]
+      },
+      "work_arrangement": {
+        "arrangement": "onsite",
+        "details": null,
+        "evidence": [
+          {
+            "excerpt": "Visit customer venues to observe workflows, investigate issues and collect technical evidence.",
+            "section": "Key Responsibilities"
+          }
+        ]
+      },
+      "employment": {
+        "working_hours": "full_time",
+        "engagement_type": "unspecified",
+        "evidence": [
+          {
+            "excerpt": "Full time",
+            "section": "JobDescription"
+          }
+        ]
+      },
+      "experience_requirements": [
+        {
+          "description": "At least five years of experience in software testing, quality engineering, test automation, systems integration or a similar technical role.",
+          "level": "required",
+          "minimum_years": 5.0,
+          "maximum_years": null,
+          "evidence": [
+            {
+              "excerpt": "At least five years of experience in software testing, quality engineering, test automation, systems integration or a similar technical role.",
+              "section": "Required Skills and Experience"
+            }
+          ]
+        }
+      ]
+    },
+    "ranked_projects": [
+      {
+        "rank": 1,
+        "project_id": "operational-intelligence-copilot",
+        "rationale": "Project 'operational-intelligence-copilot' ranked on 1 required technology hit(s), 2 demonstrates overlap(s), 1 responsibility overlap(s).",
+        "factors": [
+          {
+            "kind": "required_technology",
+            "summary": "Project evidence supports required technology 'Python'.",
+            "job_evidence": [
+              {
+                "source": "technology",
+                "item_index": 0,
+                "name": "Python",
+                "excerpt": "Ability to read, write and troubleshoot automation code using JavaScript, TypeScript, Python, Java or a similar language."
+              }
+            ],
+            "profile_evidence": [
+              {
+                "source": "project",
+                "ref": "project:operational-intelligence-copilot",
+                "excerpt": "Python"
+              }
+            ]
+          },
+          {
+            "kind": "demonstrates_overlap",
+            "summary": "Project demonstrates capabilities overlapping responsibility 'Build and improve an AI-native quality engineering approach across web, mobile, POS and integrated systems.'.",
+            "job_evidence": [
+              {
+                "source": "responsibility",
+                "item_index": 0,
+                "name": null,
+                "excerpt": "Build and improve an AI-native quality engineering approach across web, mobile, POS and integrated systems."
+              }
+            ],
+            "profile_evidence": [
+              {
+                "source": "project",
+                "ref": "project:operational-intelligence-copilot",
+                "excerpt": "Explainable AI recommendations"
+              }
+            ]
+          },
+          {
+            "kind": "demonstrates_overlap",
+            "summary": "Project demonstrates capabilities overlapping responsibility 'Use AI throughout the testing lifecycle, including test design, exploratory testing, test-data generation, defect analysis, automation development and maintena…'.",
+            "job_evidence": [
+              {
+                "source": "responsibility",
+                "item_index": 1,
+                "name": null,
+                "excerpt": "Use AI throughout the testing lifecycle, including test design, exploratory testing, test-data generation, defect analysis, automation development and maintena…"
+              }
+            ],
+            "profile_evidence": [
+              {
+                "source": "project",
+                "ref": "project:operational-intelligence-copilot",
+                "excerpt": "Explainable AI recommendations"
+              }
+            ]
+          },
+          {
+            "kind": "responsibility_overlap",
+            "summary": "Project summary, outcomes, or technologies overlap responsibility 'Use AI throughout the testing lifecycle, including test design, exploratory testing, test-data generation, defect analysis, automation development and maintena…'.",
+            "job_evidence": [
+              {
+                "source": "responsibility",
+                "item_index": 1,
+                "name": null,
+                "excerpt": "Use AI throughout the testing lifecycle, including test design, exploratory testing, test-data generation, defect analysis, automation development and maintena…"
+              }
+            ],
+            "profile_evidence": [
+              {
+                "source": "project",
+                "ref": "project:operational-intelligence-copilot",
+                "excerpt": "Domain-agnostic operational intelligence platform combining deterministic analytics with Large Language Model reasoning to analyse structured business data and…"
+              }
+            ]
+          }
+        ],
+        "tie_group": null,
+        "tie_break_reason": null
+      },
+      {
+        "rank": 2,
+        "project_id": "governance-document-rag",
+        "rationale": "Project 'governance-document-rag' ranked on 1 required technology hit(s), 1 demonstrates overlap(s), 2 responsibility overlap(s).",
+        "factors": [
+          {
+            "kind": "required_technology",
+            "summary": "Project evidence supports required technology 'Python'.",
+            "job_evidence": [
+              {
+                "source": "technology",
+                "item_index": 0,
+                "name": "Python",
+                "excerpt": "Ability to read, write and troubleshoot automation code using JavaScript, TypeScript, Python, Java or a similar language."
+              }
+            ],
+            "profile_evidence": [
+              {
+                "source": "project",
+                "ref": "project:governance-document-rag",
+                "excerpt": "Python"
+              }
+            ]
+          },
+          {
+            "kind": "responsibility_overlap",
+            "summary": "Project summary, outcomes, or technologies overlap responsibility 'Build and improve an AI-native quality engineering approach across web, mobile, POS and integrated systems.'.",
+            "job_evidence": [
+              {
+                "source": "responsibility",
+                "item_index": 0,
+                "name": null,
+                "excerpt": "Build and improve an AI-native quality engineering approach across web, mobile, POS and integrated systems."
+              }
+            ],
+            "profile_evidence": [
+              {
+                "source": "project",
+                "ref": "project:governance-document-rag",
+                "excerpt": "Enterprise retrieval-augmented generation platform supporting trustworthy AI responses over organisational knowledge."
+              }
+            ]
+          },
+          {
+            "kind": "demonstrates_overlap",
+            "summary": "Project demonstrates capabilities overlapping responsibility 'Use AI throughout the testing lifecycle, including test design, exploratory testing, test-data generation, defect analysis, automation development and maintena…'.",
+            "job_evidence": [
+              {
+                "source": "responsibility",
+                "item_index": 1,
+                "name": null,
+                "excerpt": "Use AI throughout the testing lifecycle, including test design, exploratory testing, test-data generation, defect analysis, automation development and maintena…"
+              }
+            ],
+            "profile_evidence": [
+              {
+                "source": "project",
+                "ref": "project:governance-document-rag",
+                "excerpt": "Embedding generation"
+              }
+            ]
+          },
+          {
+            "kind": "responsibility_overlap",
+            "summary": "Project summary, outcomes, or technologies overlap responsibility 'Use AI throughout the testing lifecycle, including test design, exploratory testing, test-data generation, defect analysis, automation development and maintena…'.",
+            "job_evidence": [
+              {
+                "source": "responsibility",
+                "item_index": 1,
+                "name": null,
+                "excerpt": "Use AI throughout the testing lifecycle, including test design, exploratory testing, test-data generation, defect analysis, automation development and maintena…"
+              }
+            ],
+            "profile_evidence": [
+              {
+                "source": "project",
+                "ref": "project:governance-document-rag",
+                "excerpt": "Enterprise retrieval-augmented generation platform supporting trustworthy AI responses over organisational knowledge."
+              }
+            ]
+          }
+        ],
+        "tie_group": null,
+        "tie_break_reason": null
+      },
+      {
+        "rank": 3,
+        "project_id": "payroll-diagnostics-engine",
+        "rationale": "Project 'payroll-diagnostics-engine' ranked on 1 required technology hit(s).",
+        "factors": [
+          {
+            "kind": "required_technology",
+            "summary": "Project evidence supports required technology 'Python'.",
+            "job_evidence": [
+              {
+                "source": "technology",
+                "item_index": 0,
+                "name": "Python",
+                "excerpt": "Ability to read, write and troubleshoot automation code using JavaScript, TypeScript, Python, Java or a similar language."
+              }
+            ],
+            "profile_evidence": [
+              {
+                "source": "project",
+                "ref": "project:payroll-diagnostics-engine",
+                "excerpt": "Python"
+              }
+            ]
+          }
+        ],
+        "tie_group": 1,
+        "tie_break_reason": "Equal primary ranking signals; ordered by stable project_id ascending"
+      },
+      {
+        "rank": 4,
+        "project_id": "public-holiday-entitlements",
+        "rationale": "Project 'public-holiday-entitlements' ranked on 1 required technology hit(s).",
+        "factors": [
+          {
+            "kind": "required_technology",
+            "summary": "Project evidence supports required technology 'Python'.",
+            "job_evidence": [
+              {
+                "source": "technology",
+                "item_index": 0,
+                "name": "Python",
+                "excerpt": "Ability to read, write and troubleshoot automation code using JavaScript, TypeScript, Python, Java or a similar language."
+              }
+            ],
+            "profile_evidence": [
+              {
+                "source": "project",
+                "ref": "project:public-holiday-entitlements",
+                "excerpt": "Python"
+              }
+            ]
+          }
+        ],
+        "tie_group": 1,
+        "tie_break_reason": "Equal primary ranking signals; ordered by stable project_id ascending"
+      }
+    ],
+    "unranked_project_ids": [],
+    "summary": "Ranked 4 project(s); lead with 'operational-intelligence-copilot'. 0 project(s) had no matching factors.",
+    "insufficient_evidence": false
+  },
+  "application_strategy": {
+    "job_analysis": {
+      "posting": {
+        "raw_text": "AI Quality & Systems Reliability Engineer\nPisell\nView all jobs\nGlen Waverley, Melbourne VIC\nTesting & Quality Assurance (Information & Communication Technology)\nFull time\n$80,000 – $120,000 per year\nProfile salary match\n\nPosted 6d ago\n•\nMedium application volume\n\nHow you match\n2 skills and credentials match your profile\n Python Programming\n Java Programming\nShow all⁠\nAbout the Role\nWe are seeking an AI Quality & Systems Reliability Engineer to help build our AI-native testing capability and improve the reliability of our software, systems and connected devices in Melbourne.\n\nThis is an AI-native quality engineering role combining:\n\nAI-assisted and AI-driven software testing\n\nTest automation\n\nSystems reliability investigation\n\nSoftware, device and IoT integration testing\n\nOn-site operational research\n\nLocal test lab development\n\nYou will work across our SaaS platform, web applications, iOS and Android applications, POS systems, connected devices and IoT-enabled environments.\n\nThis role goes beyond executing test cases and reporting defects. You will be expected to use AI as a core part of the testing workflow, investigate complex issues, reproduce failures, identify root causes and follow problems through to verified resolution.\n\nYou will work closely with product, engineering, operations and customer-facing teams to improve product quality and system stability in real operating environments.\n\nKey Responsibilities\nAI-Native Quality Engineering\nBuild and improve an AI-native quality engineering approach across web, mobile, POS and integrated systems.\n\nUse AI throughout the testing lifecycle, including test design, exploratory testing, test-data generation, defect analysis, automation development and maintenance.\n\nEvaluate and introduce AI testing tools, coding agents and automated workflows that improve test coverage, speed and consistency.\n\nConvert product requirements, production issues and customer feedback into effective test scenarios.\n\nIdentify quality risks early and recommend practical prevention and improvement measures.\n\nTest Automation and Quality Validation\nDesign, build and maintain automated tests for web, iOS and Android applications.\n\nDevelop automated regression, smoke, integration and end-to-end test coverage for critical business workflows.\n\nImprove the reliability, maintainability and efficiency of automated testing.\n\nPerform exploratory, functional, compatibility and stability testing where automation alone is insufficient.\n\nProduce clear testing evidence, quality assessments and release recommendations.\n\nSystems Reliability and Investigation\nInvestigate issues across applications, devices, operating systems, networks and third-party integrations.\n\nReproduce intermittent, environment-specific and difficult-to-diagnose failures.\n\nAnalyse logs, system behaviour, device configurations and operational workflows.\n\nPerform structured root-cause analysis and recommend corrective and preventive actions.\n\nVerify solutions under realistic operating conditions and monitor recurring issues.\n\nWork with product and engineering teams to improve long-term product stability.\n\nTest Lab and On-Site Operations\nHelp establish and operate a local quality and systems reliability lab in Melbourne.\n\nMaintain test devices, operating environments, system configurations and equipment records.\n\nBuild repeatable test environments that reflect real customer configurations.\n\nDesign long-running, recovery and failure-simulation tests.\n\nVisit customer venues to observe workflows, investigate issues and collect technical evidence.\n\nTranslate field findings into test scenarios, product improvements and operating procedures.\n\nCreate practical testing, troubleshooting and device-management documentation.\n\nRequired Skills and Experience\nAt least five years of experience in software testing, quality engineering, test automation, systems integration or a similar technical role.\n\nStrong hands-on experience testing web or mobile applications.\n\nExperience designing and maintaining automated tests using modern testing frameworks.\n\nAbility to read, write and troubleshoot automation code using JavaScript, TypeScript, Python, Java or a similar language.\n\nPractical experience using AI coding tools, AI agents or AI-assisted testing tools as part of an engineering workflow.\n\nStrong analytical and troubleshooting skills across software, connected devices, IoT environments and networks.\n\nAbility to investigate complex issues, analyse evidence and communicate root causes clearly.\n\nStrong written and spoken English and Mandarin.\n\nAbility to work independently, take ownership and follow issues through to resolution.\n\nFull Australian working rights.\n\nAbility to travel to customer sites within Melbourne when required.\n\nHighly Desirable\nExperience building or operating AI-native testing workflows.\n\nExperience using AI agents for test generation, execution, analysis or automation maintenance.\n\nExperience testing large-scale POS, retail, hospitality, ticketing, venue-management or payment-related systems.\n\nExperience with complex systems involving web applications, mobile applications, POS terminals, IoT-enabled devices and connected peripherals.\n\nExperience establishing a test lab or managing multiple test devices and environments.\n\nExperience investigating production incidents or customer-site reliability issues.\n\nCandidate Profile\nThe ideal candidate is hands-on, analytical and highly accountable.\n\nYou are comfortable using AI as a practical engineering tool rather than treating it as an optional add-on. You can move between automated testing, application behaviour, physical devices, customer workflows and on-site environments.\n\nYou do not stop at recording a defect. You want to understand why it happened, how to reproduce it, how to fix it and how to prevent it from happening again.\n\nYou should be:\n\nProactive and self-directed\n\nCurious and technically hands-on\n\nStructured in problem investigation\n\nComfortable with ambiguity\n\nPatient with intermittent issues\n\nFocused on outcomes and long-term stability\n\nWhat Success Looks Like\nWithin the first six months, the successful candidate will be expected to:\n\nEstablish a functional local quality and systems reliability lab.\n\nIntroduce an AI-native testing workflow for key products and business processes.\n\nBuild reliable automated coverage for critical user journeys.\n\nImprove the reproduction and resolution rate of production and field issues.\n\nReduce recurring software, integration and device-related incidents.\n\nCreate clear testing, troubleshooting and operating documentation.\n\nDeliver measurable improvements in product quality and system stability.\n\nHow to Apply\nPlease submit your CV and a short cover letter via SEEK. In your cover letter, please include:\n\nYour software test automation experience\n\nHow you have used AI in testing or engineering\n\nYour experience with complex POS or integrated systems\n\nAn example of a difficult stability issue you investigated and resolved\n\nYour English and Mandarin language proficiency",
+        "title": "AI Quality & Systems Reliability Engineer",
+        "company": "Pisell",
+        "source_url": "https://au.seek.com/job/93354844?ref=recom-homepage&pos=22&origin=showNewTab#sol=e53f28c0c727aa26168dc8aaac28158d88828412"
+      },
+      "role_family": {
+        "family": "ai_adjacent",
+        "evidence": [
+          {
+            "excerpt": "This is an AI-native quality engineering role combining: AI-assisted and AI-driven software testing",
+            "section": "JobDescription"
+          }
+        ]
+      },
+      "seniority": {
+        "level": "unknown",
+        "ambiguous": false,
+        "candidate_levels": [],
+        "evidence": []
+      },
+      "technologies": [
+        {
+          "name": "Python",
+          "level": "required",
+          "evidence": [
+            {
+              "excerpt": "Ability to read, write and troubleshoot automation code using JavaScript, TypeScript, Python, Java or a similar language.",
+              "section": "Required Skills and Experience"
+            }
+          ]
+        },
+        {
+          "name": "Java",
+          "level": "required",
+          "evidence": [
+            {
+              "excerpt": "Ability to read, write and troubleshoot automation code using JavaScript, TypeScript, Python, Java or a similar language.",
+              "section": "Required Skills and Experience"
+            }
+          ]
+        },
+        {
+          "name": "JavaScript",
+          "level": "required",
+          "evidence": [
+            {
+              "excerpt": "Ability to read, write and troubleshoot automation code using JavaScript, TypeScript, Python, Java or a similar language.",
+              "section": "Required Skills and Experience"
+            }
+          ]
+        },
+        {
+          "name": "TypeScript",
+          "level": "required",
+          "evidence": [
+            {
+              "excerpt": "Ability to read, write and troubleshoot automation code using JavaScript, TypeScript, Python, Java or a similar language.",
+              "section": "Required Skills and Experience"
+            }
+          ]
+        },
+        {
+          "name": "AI coding tools",
+          "level": "required",
+          "evidence": [
+            {
+              "excerpt": "Practical experience using AI coding tools, AI agents or AI-assisted testing tools as part of an engineering workflow.",
+              "section": "Required Skills and Experience"
+            }
+          ]
+        }
+      ],
+      "responsibilities": [
+        {
+          "description": "Build and improve an AI-native quality engineering approach across web, mobile, POS and integrated systems.",
+          "evidence": [
+            {
+              "excerpt": "Build and improve an AI-native quality engineering approach across web, mobile, POS and integrated systems.",
+              "section": "Key Responsibilities"
+            }
+          ]
+        },
+        {
+          "description": "Use AI throughout the testing lifecycle, including test design, exploratory testing, test-data generation, defect analysis, automation development and maintenance.",
+          "evidence": [
+            {
+              "excerpt": "Use AI throughout the testing lifecycle, including test design, exploratory testing, test-data generation, defect analysis, automation development and maintenance.",
+              "section": "Key Responsibilities"
+            }
+          ]
+        },
+        {
+          "description": "Investigate issues across applications, devices, operating systems, networks and third-party integrations.",
+          "evidence": [
+            {
+              "excerpt": "Investigate issues across applications, devices, operating systems, networks and third-party integrations.",
+              "section": "Key Responsibilities"
+            }
+          ]
+        },
+        {
+          "description": "Establish and operate a local quality and systems reliability lab in Melbourne.",
+          "evidence": [
+            {
+              "excerpt": "Help establish and operate a local quality and systems reliability lab in Melbourne.",
+              "section": "Key Responsibilities"
+            }
+          ]
+        }
+      ],
+      "compensation": {
+        "clarity": "stated",
+        "minimum": 80000.0,
+        "maximum": 120000.0,
+        "currency": "AUD",
+        "period": "year",
+        "raw_text": "$80,000 – $120,000 per year",
+        "evidence": [
+          {
+            "excerpt": "$80,000 – $120,000 per year",
+            "section": "JobDescription"
+          }
+        ]
+      },
+      "location": {
+        "clarity": "stated",
+        "summary": "Glen Waverley, Melbourne VIC",
+        "evidence": [
+          {
+            "excerpt": "Glen Waverley, Melbourne VIC",
+            "section": "JobDescription"
+          }
+        ]
+      },
+      "work_arrangement": {
+        "arrangement": "onsite",
+        "details": null,
+        "evidence": [
+          {
+            "excerpt": "Visit customer venues to observe workflows, investigate issues and collect technical evidence.",
+            "section": "Key Responsibilities"
+          }
+        ]
+      },
+      "employment": {
+        "working_hours": "full_time",
+        "engagement_type": "unspecified",
+        "evidence": [
+          {
+            "excerpt": "Full time",
+            "section": "JobDescription"
+          }
+        ]
+      },
+      "experience_requirements": [
+        {
+          "description": "At least five years of experience in software testing, quality engineering, test automation, systems integration or a similar technical role.",
+          "level": "required",
+          "minimum_years": 5.0,
+          "maximum_years": null,
+          "evidence": [
+            {
+              "excerpt": "At least five years of experience in software testing, quality engineering, test automation, systems integration or a similar technical role.",
+              "section": "Required Skills and Experience"
+            }
+          ]
+        }
+      ]
+    },
+    "application_tier": "silver",
+    "pursuit_posture": "consider",
+    "practical_value": "acceptable_opportunity",
+    "effort_level": "minimal",
+    "summary": "Recommend posture 'consider' with effort tier 'silver' (minimal). Technical fit 'mixed', commercial fit 'mixed', portfolio fit 'mixed'. Owner review is required before any application action.",
+    "reasons": [
+      {
+        "kind": "alignment",
+        "summary": "Technical fit is 'mixed' and portfolio fit is 'mixed' for this opportunity.",
+        "importance": "material",
+        "evidence": [
+          {
+            "origin": "opportunity_assessment",
+            "job_evidence": null,
+            "profile_evidence": null,
+            "assessment_dimension": "technical",
+            "assessment_judgment": "mixed",
+            "portfolio_project_id": null,
+            "excerpt": null
+          },
+          {
+            "origin": "opportunity_assessment",
+            "job_evidence": null,
+            "profile_evidence": null,
+            "assessment_dimension": "portfolio",
+            "assessment_judgment": "mixed",
+            "portfolio_project_id": null,
+            "excerpt": null
+          }
+        ]
+      },
+      {
+        "kind": "priority",
+        "summary": "Pursuit posture 'consider' with effort tier 'silver' reflects commercial fit 'mixed' and AI-adjacent role family.",
+        "importance": "material",
+        "evidence": [
+          {
+            "origin": "opportunity_assessment",
+            "job_evidence": null,
+            "profile_evidence": null,
+            "assessment_dimension": "commercial",
+            "assessment_judgment": "mixed",
+            "portfolio_project_id": null,
+            "excerpt": null
+          },
+          {
+            "origin": "job_analysis",
+            "job_evidence": {
+              "source": "role_family",
+              "item_index": null,
+              "name": null,
+              "excerpt": null
+            },
+            "profile_evidence": null,
+            "assessment_dimension": null,
+            "assessment_judgment": null,
+            "portfolio_project_id": null,
+            "excerpt": null
+          }
+        ]
+      }
+    ],
+    "risks_or_gaps": [
+      {
+        "summary": "Commercial fit is 'mixed', which may reduce the value of investing significant effort.",
+        "importance": "minor",
+        "evidence": [
+          {
+            "origin": "opportunity_assessment",
+            "job_evidence": null,
+            "profile_evidence": null,
+            "assessment_dimension": "commercial",
+            "assessment_judgment": "mixed",
+            "portfolio_project_id": null,
+            "excerpt": null
+          }
+        ]
+      },
+      {
+        "summary": "The role requires at least five years of specific experience in software testing and quality engineering, which is not fully evidenced in the profile.",
+        "importance": "material",
+        "evidence": [
+          {
+            "origin": "opportunity_assessment",
+            "job_evidence": null,
+            "profile_evidence": null,
+            "assessment_dimension": "technical",
+            "assessment_judgment": "mixed",
+            "portfolio_project_id": null,
+            "excerpt": null
+          }
+        ]
+      }
+    ],
+    "manual_checks": [
+      {
+        "summary": "Verify working-rights wording against your own eligibility.",
+        "why_it_matters": "The posting states a working-rights requirement; the system does not infer owner eligibility.",
+        "could_change_recommendation": true,
+        "evidence": [
+          {
+            "origin": "opportunity_assessment",
+            "job_evidence": null,
+            "profile_evidence": null,
+            "assessment_dimension": "commercial",
+            "assessment_judgment": "mixed",
+            "portfolio_project_id": null,
+            "excerpt": null
+          }
+        ]
+      }
+    ],
+    "next_actions": [
+      {
+        "kind": "consider_verifying_working_rights",
+        "summary": "Consider verifying working-rights wording against your eligibility.",
+        "related_project_id": null,
+        "evidence": [
+          {
+            "origin": "opportunity_assessment",
+            "job_evidence": null,
+            "profile_evidence": null,
+            "assessment_dimension": "commercial",
+            "assessment_judgment": "mixed",
+            "portfolio_project_id": null,
+            "excerpt": null
+          }
+        ]
+      },
+      {
+        "kind": "consider_emphasising_portfolio_projects",
+        "summary": "Consider emphasising the strongest matched portfolio project(s) in any application materials you prepare.",
+        "related_project_id": "operational-intelligence-copilot",
+        "evidence": [
+          {
+            "origin": "portfolio_match",
+            "job_evidence": null,
+            "profile_evidence": null,
+            "assessment_dimension": null,
+            "assessment_judgment": null,
+            "portfolio_project_id": "operational-intelligence-copilot",
+            "excerpt": null
+          }
+        ]
+      },
+      {
+        "kind": "consider_owner_review",
+        "summary": "Consider reviewing this full strategy before taking any external action.",
+        "related_project_id": null,
+        "evidence": [
+          {
+            "origin": "opportunity_assessment",
+            "job_evidence": null,
+            "profile_evidence": null,
+            "assessment_dimension": "technical",
+            "assessment_judgment": "mixed",
+            "portfolio_project_id": null,
+            "excerpt": null
+          }
+        ]
+      }
+    ],
+    "portfolio_emphasis": [
+      {
+        "project_id": "operational-intelligence-copilot",
+        "source_rank": 1,
+        "summary": "Consider emphasising 'operational-intelligence-copilot' (PortfolioMatch rank 1).",
+        "evidence": [
+          {
+            "origin": "portfolio_match",
+            "job_evidence": null,
+            "profile_evidence": null,
+            "assessment_dimension": null,
+            "assessment_judgment": null,
+            "portfolio_project_id": "operational-intelligence-copilot",
+            "excerpt": null
+          }
+        ]
+      },
+      {
+        "project_id": "governance-document-rag",
+        "source_rank": 2,
+        "summary": "Consider emphasising 'governance-document-rag' (PortfolioMatch rank 2).",
+        "evidence": [
+          {
+            "origin": "portfolio_match",
+            "job_evidence": null,
+            "profile_evidence": null,
+            "assessment_dimension": null,
+            "assessment_judgment": null,
+            "portfolio_project_id": "governance-document-rag",
+            "excerpt": null
+          }
+        ]
+      },
+      {
+        "project_id": "payroll-diagnostics-engine",
+        "source_rank": 3,
+        "summary": "Consider emphasising 'payroll-diagnostics-engine' (PortfolioMatch rank 3).",
+        "evidence": [
+          {
+            "origin": "portfolio_match",
+            "job_evidence": null,
+            "profile_evidence": null,
+            "assessment_dimension": null,
+            "assessment_judgment": null,
+            "portfolio_project_id": "payroll-diagnostics-engine",
+            "excerpt": null
+          }
+        ]
+      }
+    ],
+    "assumptions": [
+      "No candidate salary minimum is configured, so compensation was not treated as a hard threshold conflict.",
+      "Owner working-rights eligibility is unknown to the system and was not inferred."
+    ],
+    "decision_blockers": [],
+    "owner_review_required": true,
+    "insufficient_information": false
+  }
+}

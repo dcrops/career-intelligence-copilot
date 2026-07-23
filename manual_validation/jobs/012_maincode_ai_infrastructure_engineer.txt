@@ -1,0 +1,53 @@
+Company logo for, Maincode.
+Maincode
+
+
+AI Infrastructure Engineer
+
+Melbourne, Victoria, Australia · Reposted 6 days ago · Over 100 people clicked apply
+
+Promoted by hirer · Responses managed off LinkedIn
+
+On-site
+Full-time
+Apply
+
+Save
+Your profile and resume are missing some required qualifications
+
+
+
+Show match details
+
+BETA • Is this information helpful?
+
+
+About the job
+About Maincode
+
+Maincode is an AI research and engineering company and home to Matilda, Australia’s first and only large language model trained from scratch. We operate our own advanced AI infrastructure in local data-centres; designing, building, and running everything from the racks up through model training and serving systems.
+
+We’re building an AI Model Factory, a new kind of compute infrastructure that powers frontier AI research and production systems that work at scale.
+
+About The Role
+
+This role sits at the intersection of physical systems, large-scale compute, and AI research. You’ll help design and operate the infrastructure that trains large-scale models: racks of GPUs, high-performance networks, and the orchestration systems that keep them running.
+
+People with strong research instincts and systems thinking thrive here. You don’t need prior datacenter experience; curiosity, first-principles reasoning, and the ability to learn fast matter more. Someone from mechatronics, robotics, or aerospace who has strong computational skills could excel in this role. We’ll give you the time, mentorship, and resources to master how these systems work, and you’ll develop expertise in one of the most essential technical domains of the coming decade.
+
+What You’ll Do
+
+Learn to design, deploy, and operate the backbone of AI infrastructure.
+Work with GPU clusters, high-speed networking, and large-scale Linux systems.
+Contribute to the architecture of Australia’s first production-scale AI datacentre systems.
+Collaborate with AI researchers and engineers to shape the next generation of model training environments.
+Develop new operational and architectural approaches from first principles.
+
+You Might Be a Fit If
+
+You have hands-on experience working close to the metal with computational systems. This might include systems programming, Linux environments, GPU or accelerator programming, distributed or HPC environments (e.g. MPI), automation, or large-scale numerical computation.
+You may also come from adjacent technical or scientific fields such as mechatronics, robotics, aerospace, physics, or similar disciplines where you have developed strong computational and modelling skills.
+You enjoy understanding complex systems from first principles.
+You learn new technologies quickly and apply them independently.
+You think in terms of system architecture, how components interact and scale.
+You’re curious about how AI systems actually run in practice, from hardware and cooling through to model training and large-scale compute.

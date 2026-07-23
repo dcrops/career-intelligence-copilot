@@ -23,9 +23,10 @@ The repository is simultaneously a career tool, a portfolio project, and a Curso
 
 Phase 2 implementation has started. FR-001 Career Profile, FR-002 Job Analysis,
 FR-003 Opportunity Assessment, FR-004 Portfolio Matching, and FR-005 Application Strategy
-are implemented; later decision-loop stages (pipeline tracking, FR-013 outcome logging,
-ranked comparison) remain to be built. Architecture decisions are recorded under
-`docs/adr/`.
+are implemented; FR-005 is formally closed after owner manual validation. Next planned
+FR: FR-006 CV Generation. Remaining Phase 2 exit criteria (pipeline tracking, FR-013
+outcome logging, ranked comparison) stay outstanding. Architecture decisions are
+recorded under `docs/adr/`.
 
 ---
 
@@ -112,13 +113,15 @@ The operational layer is the domain the future system must serve. Phase 2 pipeli
 **Approved:** Phase 2 Job Intelligence MVP scope
 
 **Implemented:** FR-001 Career Profile → FR-002 Job Analysis → FR-003 Opportunity Assessment
-(**Complete**; FR-003 live eval **PARTIAL PASS**, assessment prompt v6), FR-004 Portfolio
-Matching (**Complete**; deterministic ranking + offline golden journeys), and FR-005
-Application Strategy (**Complete**; deterministic posture/tier policy + offline golden
-journeys)
+(**Complete**; assessment prompt **v11** after calibration and evidence-contract hardening),
+FR-004 Portfolio Matching (**Complete**; deterministic ranking + offline golden journeys),
+and FR-005 Application Strategy (**Complete**; formally closed after owner manual
+validation — [manual_validation/jobs/manual_validation_notes.md](../manual_validation/jobs/manual_validation_notes.md))
 
-**In progress:** Remaining Phase 2 decision loop — pipeline tracking, FR-013 Outcome
-Logging, and ranked comparison of open assessed opportunities
+**Next planned FR:** FR-006 CV Generation
+
+**Remaining Phase 2 exit criteria:** pipeline tracking, FR-013 Outcome Logging, and
+ranked comparison of open assessed opportunities
 
 See [10_roadmap.md](10_roadmap.md) for phase detail and Phase 2 exit criteria.
 

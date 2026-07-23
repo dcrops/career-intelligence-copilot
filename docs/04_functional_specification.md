@@ -313,7 +313,9 @@ Acceptance Criteria
 
 **Phase:** 2
 
-**Status:** Implemented.
+**Status:** Implemented. Formally closed after owner manual validation of the
+FR-001→FR-005 pipeline (see
+[manual_validation/jobs/manual_validation_notes.md](../manual_validation/jobs/manual_validation_notes.md)).
 
 The system shall produce an evidence-backed **Application Strategy** for an opportunity by
 consuming trusted upstream artifacts — Career Profile, Opportunity Assessment, and

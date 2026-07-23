@@ -107,7 +107,7 @@ def _assessor_with(
 
 
 def test_prompt_version_and_instructions_are_defined() -> None:
-    assert ASSESSMENT_PROMPT_VERSION == "v8"
+    assert ASSESSMENT_PROMPT_VERSION == "v11"
     assert "Technical Fit" in ASSESSMENT_INSTRUCTIONS_V1 or "technical" in ASSESSMENT_INSTRUCTIONS_V1.lower()
     assert "commercial" in ASSESSMENT_INSTRUCTIONS_V1.lower()
     assert "portfolio" in ASSESSMENT_INSTRUCTIONS_V1.lower()
@@ -389,18 +389,11 @@ def test_bare_profile_ref_without_namespace_fails_through_service() -> None:
     ]
     technical["findings"] = findings
     payload["technical_fit"] = technical
-    assessor = OpenAIAssessor(
-        client=_FakeOpenAI(
-            result=_FakeParseResult(
-                OpportunityAssessmentExtraction.model_validate(payload)
-            )
-        )
-    )
 
-    with pytest.raises(OpportunityAssessmentValidationError) as raised:
-        OpportunityAssessmentService(assessor).assess(_job_analysis(), _profile())
+    with pytest.raises(ValidationError, match="namespace:id") as raised:
+        OpportunityAssessmentExtraction.model_validate(payload)
 
-    assert any("namespace:id" in error.msg for error in raised.value.errors)
+    assert "namespace:id" in str(raised.value)
 
 
 def test_portfolio_alignment_without_job_evidence_fails_through_service() -> None:

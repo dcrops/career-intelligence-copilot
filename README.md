@@ -82,9 +82,12 @@ Current focus:
 
 - FR-004 Portfolio Matching — complete
 
-- FR-005 Application Strategy — complete
+- FR-005 Application Strategy — complete (formally closed after owner manual validation)
 
-- Next: pipeline tracking, FR-013 Outcome Logging, ranked comparison of open opportunities
+- Next planned FR: FR-006 CV Generation
+
+- Remaining Phase 2 exit criteria: pipeline tracking, FR-013 Outcome Logging, ranked
+  comparison of open opportunities
 
 
 Completed decision-loop slice:

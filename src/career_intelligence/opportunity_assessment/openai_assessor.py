@@ -275,6 +275,10 @@ def _build_finding_field_guide() -> str:
             "",
             "Invalid: kind=gap|partial_alignment|... with assumption=\"...\".",
             "Put commentary in summary/detail; set assumption=null.",
+            "",
+            "Invalid: portfolio_fit (or any dimension) alignment with job_evidence=[].",
+            "alignment/partial_alignment/transferable_alignment always need BOTH",
+            "non-empty job_evidence and non-empty profile_evidence.",
         ]
     )
 
@@ -286,6 +290,8 @@ def _build_profile_evidence_cite_guide(catalogue: list[str]) -> str:
         "alignment, partial_alignment, transferable_alignment, and conflict REQUIRE "
         "non-empty profile_evidence. Never emit profile_evidence=[] for those kinds.",
         'Shape: {"source":"<namespace>","ref":"<namespace:id>"} using only catalogue refs.',
+        "ref must match a <ValidProfileReferences> token EXACTLY — no invented IDs, "
+        "no trailing '.' ',' ';' or other punctuation on the token.",
     ]
     for token in catalogue:
         namespace, _, _identifier = token.partition(":")

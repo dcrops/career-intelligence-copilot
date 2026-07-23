@@ -295,7 +295,7 @@ def test_senior_production_ai_above_evidence_reduces_posture() -> None:
         analysis,
         technical=_dimension(
             "technical",
-            "strong",
+            "mixed",
             "Strong core skills but production tenure gap.",
             [
                 _finding(summary="Python aligns."),

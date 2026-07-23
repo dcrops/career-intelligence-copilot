@@ -1,0 +1,118 @@
+
+
+Strong applicant
+Senior AI Automation Engineer – Digital
+
+Forever New Clothing 
+3.3
+120 reviews
+·
+View all jobs
+Melbourne VIC (Hybrid)
+Engineering - Software (Information & Communication Technology)
+Full time
+Generous Salary + Super + 40% discount
+Posted 2d ago
+
+How you match
+4 skills and credentials match your profile
+ Retrieval Augmented Generation
+ Databricks
+ Python Programming
+ SQL Query Language
+Show all⁠
+FOREVER US
+
+Step into the world of Forever New, where fashion meets innovation. As one of Australia’s leading global fashion brands, we’ve grown from our Melbourne roots to over 450 stores worldwide with a thriving online presence. Our success is driven by our passionate community of creative thinkers, retail experts, and forward-looking innovators who bring our vision to life - to make it her moment.
+
+At Forever New, we’re not just designing beautiful fashion; we’re building smart, data-driven solutions that power exceptional customer experiences and informed decision-making. Join us as we continue to evolve our BI, Data & Integrations team and shape the future of retail through insight, innovation, and technology.
+
+THE PERKS WE OFFER YOU
+
+As a valued member of the Forever New family, you’ll enjoy a range of benefits designed to support your success and wellbeing:
+
+Enjoy a generous 40% employee discount, with additional discounts for family and friends
+Subsidised daily coffee and lunch at our on-site cafe
+Celebrate special moments with loyalty and birthday leave
+Receive referral incentives for introducing talented people to our team
+Access to wellbeing and sustainability initiatives that support your overall health and purpose
+Thrive through continuous learning and development programs
+Be recognised through our reward and service awards programs
+Benefit from subsidised parking at our vibrant Richmond Head Office
+Gain global exposure across five continents
+YOUR DREAM OPPORTUNITY
+
+The Senior AI Engineer (Agents & Automation) designs, builds, evaluates and operates the AI agents, tools and pipelines that put AI to work across Forever New with e-commerce and digital as the primary focus, and the whole business as the canvas. 
+
+This is a hands-on engineering role at the heart of our AI Centre of Excellence. You will ship production-grade AI agents and, just as importantly, build the enterprise-grade rollout machinery around them: a scalable, evaluated, versioned and governed way of releasing agents, prompts, tools, MCP connectors, RAG and data pipelines. You care as much about how reliably and repeatably we ship and operate AI as about the agents themselves. 
+
+You will operate in an agent-led delivery model where AI agents are trusted to do meaningful work under human supervision with the emphasis on outcomes, quality controls and repeatability rather than approving every step. You'll reengineer the process before you automate it, document what you build, and feed reusable patterns and guardrails back into Forever New's enterprise AI standards. 
+
+In this newly created role you will help move Forever New from promising pilots to a governed, compounding portfolio of agents that genuinely add value no fluff, no hype, no rework. 
+
+GET EXCITED TO 
+
+Build agents that matter 
+
+Design and ship production AI agents across the taxonomy conversational/customer-facing, knowledge & Q&A, workflow/process automation, decision-support and monitoring  
+
+Reengineer and optimise the underlying business process first (mapping it in BPMN), then automate it because automating a broken process just makes waste faster
+
+Integrate tools and MCP connectors with least-privilege, allow-listed access and clean separation between agents that read and agents that act
+
+Build retrieval-augmented generation (RAG), vector and data pipelines grounded in governed data, so agents answer from a single source of truth
+
+Contribute to creating agents that generate dashboards, answer business questions and release insights from enterprise data and the governed semantic layer on Databricks, with evaluation, cost monitoring and release controls built into the delivery process
+
+Data science and machine learning experience is a strong plus, particularly where it supports forecasting, segmentation, recommendation, decision-support or customer/retail intelligence use cases
+
+Make the rollout enterprise-grade 
+
+Build the evaluation harness: quality, groundedness, safety, bias and prompt-injection testing, combining LLM-as-judge with human review, so agents earn their release
+
+Establish versioning and CI/CD for everything agents, prompts, tools, MCPs and pipelines with environments, release gates, rollback and kill-switches 
+
+Stand up observability and AgentOps: telemetry, monitoring, cost tracking, drift detection and continuous improvement loops in production
+
+Define repeatable, supervised delivery patterns and progressively embed them into day-to-day engineering and operational practice
+
+Engineer for trust, cost and scale 
+
+Build with security, privacy and governance by design human-in-the-loop by default for anything touching customers, money or systems of record; full logging and traceability
+
+Manage performance, reliability and cost in production; reduce recurring issues through standard patterns
+
+Document thoroughly runbooks, agent cards, decision records so what you build is supportable and reusable
+
+Raise the whole organisation's game 
+
+Partner with and coach business AI champions; where a high-value area is stuck, embed temporarily to deliver the first agent and hand it back. 
+
+Contribute SME insight, reusable patterns and delivery learnings into Forever New's enterprise AI standards and guardrails through established architecture and governance forums
+
+THE SKILLS & EXPERIENCE YOU OFFER US
+
+3+ years’ experience in the retail or related industry 
+Proven experience designing, building and shipping LLM/agent applications to production (not just prototypes)
+Strong software engineering fundamentals in Python and/or TypeScript (or similar), with solid API and version-control practice
+Hands-on with agent frameworks and orchestration, tool/function calling, and the Model Context Protocol (MCP)
+RAG, embeddings and vector databases, plus strong SQL and data pipeline skills; comfortable working with structured and unstructured data. 
+Evaluation and LLMOps / AgentOps: building eval harnesses, versioning prompts and agents, CI/CD, observability and guardrails for AI systems at scale
+Prompt and context engineering, with an eval-driven, iterative approach
+Strong analytical and problem-solving skills
+Results-driven with excellent organisation and prioritisation abilities
+Calm, adaptable, and effective in fast-paced environments
+Proactive mindset with strong initiative and accountability
+Commercially astute with sound business judgement
+Collaborative communicator, able to engage technical and non-technical stakeholders
+OUR VALUES
+
+Whether we’re innovating behind the scenes, collaborating across global teams, or styling our customers in store, these values guide everything we do:
+
+Think Customer
+Respect for All
+Keep it Simple
+Take Responsibility
+Act with Pace
+Join Forever New and play a key role in shaping a modern, data-driven retail business.
+Be part of a brand where fashion meets innovation and help us make it her moment.

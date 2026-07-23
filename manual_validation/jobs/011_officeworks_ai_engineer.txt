@@ -1,0 +1,102 @@
+Company logo for, Officeworks.
+Officeworks
+
+
+AI Engineer 
+
+Chadstone, Victoria, Australia · Reposted 2 weeks ago · Over 100 people clicked apply
+
+Promoted by hirer · Responses managed off LinkedIn
+
+Full-time
+Apply
+
+Save
+Your profile and resume are missing some required qualifications
+
+
+
+Show match details
+
+BETA • Is this information helpful?
+
+
+People you can reach out to
+
+Leng Lim
+
+• 2nd
+
+Senior Experience Designer | Equal mix of creativity, positivity and empathy | Anthophile & Durian enthusiast 🌻🌷🌼
+
+People in your network
+
+
+Connect
+About the job
+About Us
+
+At Officeworks we make bigger things happen. Our customers, our team, and our community are our heart and soul. And if our brilliant people have taught us anything, it is that we can do all kinds of incredible things, each and every day.
+
+Fast paced. Innovative. Inspiring. With close to 10,000 team members and a national footprint of more than 173 retail stores Australia wide – we’re focused on delivering a wide range, low price and great service. We’re about inspiring new ideas and thinking outside the box. We’re about kicking goals, having a laugh and pushing each other. We are about being rewarded and supported. We’re about teaching a customer something new and supporting the community. We’re about making a difference.
+
+About The Role
+
+We are scaling our AI team and investing in building real-world AI capability. As part of this growth, we are seeking an experienced AI Integration Engineer to design and build the infrastructure and AI agents that enables AI-powered solutions to operate within real business environments.
+
+This is a hands-on role focused on integrating and development of AI agents into production systems, building scalable infrastructure, and delivering practical solutions that create measurable business value. You’ll work in a small, highly collaborative engineering team to turn strategic ideas into working products.
+
+Important: This role requires demonstrated professional (commercial) experience delivering systems in real business environments. MLOPS experience and working with Agents in commercial setting will be highly regarded. Candidates with only, self-taught, or side-project experience will not be considered, but we encourage people from startup in series B and C to apply.
+
+What You’ll Do
+
+ Build full-stack infrastructure for AI prototypes and MVPs (backend services, APIs, and front-end interfaces) 
+ Develop APIs and integration layers connecting AI agents with internal systems, databases, and third-party services 
+ Implement orchestration and communication across multiple AI agents 
+ Design and deliver scalable, secure systems from prototype through to production 
+ Collaborate closely with engineering and product stakeholders to deliver end-to-end AI solutions 
+ Build AI agents in collaboration with our Agent engineer 
+ Debug, optimise, and evolve prototypes into stable, production-ready systems 
+
+
+About You
+
+You are a hands-on engineer who enjoys solving real business problems and has a track record of delivering working systems in a professional environment.
+
+Essential Experience
+
+5+ years of professional (commercial) software engineering experience
+Proven track record of delivering production-grade systems in real business environments
+Strong full-stack development capability
+Strong Python experience, plus JavaScript or TypeScript
+Experience building APIs and integrating systems in production
+Experience with relational and/or non-relational databases (Snowflake highly regarded)
+Experience with modern front-end frameworks (React, Angular, or Vue)
+Experience working with cloud platforms such as AWS or Google Cloud
+
+
+Nice To Have
+
+Experience working with AI-enabled systems or data engineering pipelines
+MLOPS
+Experience in startup, scale-up, or innovation-driven environments
+Experience with complex system integrations or platform-level engineering
+
+
+Our culture
+
+Benefits
+
+If you’re searching for an organisation that’s truly committed to its people, where you can thrive in a culture of togetherness, then join Officeworks and let’s make bigger things happen – for all of us! We celebrate our teams’ uniqueness by offering genuine team member benefits to the Officeworks family:
+
+ We’re all about giving you the flexibility you need to keep things balanced to suit your individual needs. 
+ Enjoy generous discounts across Officeworks, Bunnings, Kmart, Target and the wider Wesfarmers brands. 
+ Access to our Officeworks benefits program for exclusive discounts and perks across entertainment, travel, lifestyle, and health. 
+ Our Growing Families Policy supports team members during the exciting and challenging times of expanding their family 
+ We prioritise safety, mental health and wellbeing, offering access to our Employee Assistance Program (EAP) as well as other ongoing programs 
+ OurFlexible Public Holidays Policy supports those who observe cultural or religious holidays different from the standard public holidays in Australia 
+ Take advantage of outstanding learning and development programs to support your career growth 
+ Explore fantastic career opportunities across the broader Wesfarmers Group. 
+
+
+At Officeworks, we operate best when our team represents the communities we serve. We proudly commit to providing a safe and supportive work environment for our team. We encourage applications from all candidates of all ages, cultures (including Aboriginal and Torres Strait Islander peoples), people with disabilities, and the LGBTQI+ community.

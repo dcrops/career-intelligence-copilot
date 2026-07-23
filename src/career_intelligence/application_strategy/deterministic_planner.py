@@ -595,10 +595,21 @@ def _job_text_blob(job: JobAnalysis) -> str:
     return " ".join(parts).casefold()
 
 
+def _token_matches(token: str, blob: str) -> bool:
+    """Return True when ``token`` appears as a whole token/phrase in ``blob``.
+
+    Prevents short tokens such as ``cto`` matching inside unrelated words
+    (e.g. ``Victoria``). Multi-word phrases still match with word boundaries
+    on each end.
+    """
+    pattern = rf"(?<![a-z0-9]){re.escape(token)}(?![a-z0-9])"
+    return re.search(pattern, blob) is not None
+
+
 def _job_expects_senior_commercial_leadership(job: JobAnalysis) -> bool:
     """True when the analysed job signals senior commercial / executive AI leadership."""
     blob = _job_text_blob(job)
-    return any(token in blob for token in _JOB_SENIOR_LEADERSHIP_TOKENS)
+    return any(_token_matches(token, blob) for token in _JOB_SENIOR_LEADERSHIP_TOKENS)
 
 
 def _seniority_stretch(

@@ -69,7 +69,7 @@ There is **no silent production default assessor** — callers must inject one.
 | Assessor | Role |
 |----------|------|
 | **`FixtureAssessor`** | Deterministic offline scaffolding. Matched by shared FR-002 fixture markers in `job_analysis.posting.raw_text`. Used in unit, functional, and golden journey tests. Never a public default. |
-| **`OpenAIAssessor`** | Package-private live path via OpenAI Responses API (`responses.parse`) into internal `OpportunityAssessmentExtraction`. Prompt version **v8**. Default model `gpt-4o-mini`. Client injectable for offline tests. Not exported from `career_intelligence.opportunity_assessment`. |
+| **`OpenAIAssessor`** | Package-private live path via OpenAI Responses API (`responses.parse`) into internal `OpportunityAssessmentExtraction`. Prompt version **v11**. Default model `gpt-4o-mini`. Client injectable for offline tests. Not exported from `career_intelligence.opportunity_assessment`. |
 
 ### Evidence model
 
@@ -130,7 +130,7 @@ Delivered:
 - `OpportunityAssessmentService` + assessor protocol
 - Deterministic assessment fixtures keyed by shared FR-002 markers
 - Functional acceptance suite (`tests/functional/test_fr003_acceptance.py`)
-- `OpenAIAssessor` with structured output and prompt versioning through **v8**
+- `OpenAIAssessor` with structured output and prompt versioning through **v11**
 - Live manual evaluation ([eval/fr003_openai_manual_eval.md](eval/fr003_openai_manual_eval.md))
 - Cross-stage golden journeys (`tests/golden/test_opportunity_assessment_user_journey.py`)
 - FR-001 → FR-002 → FR-003 offline integration
@@ -161,7 +161,7 @@ Validation catches structural failures (empty evidence, bad refs, assumption mis
 where possible. These limitations do not invalidate the offline architecture. Revisit
 through observed production evidence rather than speculative prompt churn.
 
-### Prompt evolution (v1 → v8)
+### Prompt evolution (v1 → v11)
 
 | Version | Justifying live failure |
 |---------|-------------------------|
@@ -173,8 +173,11 @@ through observed production evidence rather than speculative prompt churn.
 | v6 | Bare profile refs recurred (`Python`, project/experience ids, `salary_min`) because `<CareerProfile>` JSON exposed copyable bare identifiers; assessor input now catalogues complete refs only and rewrites profile pointers as `ref=` |
 | v7 | `partial_alignment` / `transferable_alignment` with `profile_evidence=[]` on hybrid AI Product Manager roles; per-kind evidence contract + `<ProfileEvidenceCiteGuide>` |
 | v8 | Non-assumption findings populated `assumption` text (Kogan Senior AI Engineer); `<FindingFieldGuide>` + explicit assume-only-when-kind rule |
+| v9 | Job 009 Forever New: `commercial_fit=strong` despite material production LLM/agent gap; mis-grounded retail alignment via nbn; judgment must reflect material gaps; industry evidence must match |
+| v10 | Job 010: catalogue experience ref emitted with trailing `.` (`chase-risk-compliance-ai-engineer.`); exact-token copy rule |
+| v11 | Job 012: `portfolio_fit` alignment with `job_evidence=[]`; dual-evidence portfolio example + hard rule restated |
 
-Current: `ASSESSMENT_PROMPT_VERSION = "v8"`.
+Current: `ASSESSMENT_PROMPT_VERSION = "v11"`.
 
 ### Fixture marker ownership
 
@@ -621,6 +624,43 @@ Answered via existing fields: `reasons`, `risks_or_gaps`, `next_actions`, eviden
    suffixes, and common Australian state aliases (`VIC`/`Victoria`). False conflicts
    between `Melbourne, VIC` and `Melbourne VIC (Hybrid)` were fixed after manual
    validation Job 001; genuine city mismatches still warn.
+
+### Manual validation closeout (engineering reasoning)
+
+Owner live validation of FR-001→FR-005 is **complete**. Notes:
+[manual_validation/jobs/manual_validation_notes.md](../manual_validation/jobs/manual_validation_notes.md).
+
+**Why Job 009 was an FR-003 issue, not an FR-005 issue.** Forever New produced
+prioritise / platinum because Opportunity Assessment emitted `commercial_fit=strong`
+(and related over-strong alignments) despite recording a material production LLM/agent
+delivery gap and mis-grounding retail industry evidence on nbn employment. Application
+Strategy mapped those judgments correctly under existing rules. Changing FR-005 thresholds
+would have papered over bad upstream fit labels; fixing FR-003 calibration restored
+consider / silver without redesigning strategy policy.
+
+**Why FR-005 thresholds were intentionally not modified for Job 009.** Strategy policy
+already encodes seniority stretch, AI-target families, and volume mode. The defect was
+mis-calibrated commercial judgment and evidence grounding. Threshold churn would couple
+strategy to every upstream wording variance and obscure the real contract: trust only
+validated assessments.
+
+**Why fail-closed validation is preferred over silent repair.** Malformed model output
+(empty required evidence, trailing punctuation on catalogue refs, assumption field misuse,
+mis-grounded industry/production alignments) must fail visibly. Silent insertion, stripping,
+or downgrade of findings would hide generator regressions and teach the pipeline to accept
+untrustworthy evidence. Prompt and cite-guide hardening reduce recurrence; validators stay
+strict.
+
+**Why independent engineering supports capability but not commercial employment.** Profile
+`independent_engineering` / portfolio projects legitimately strengthen technical and
+portfolio fit. They do not establish commercial production employment or senior commercial
+AI ownership. Treating them as employment evidence produced Job 009’s over-strong commercial
+judgment and would defeat the seniority-stretch employment bar in FR-005.
+
+**Why validation now has a defined endpoint.** Jobs 001–013 covered strong AI matches,
+senior stretch, hybrid/adjacent roles, and post-calibration regression (Pisell, Officeworks,
+Maincode evidence-contract fix, pay.com.au). Remaining defects belong in normal regression
+tests and prompt-version discipline — not an open-ended reopening of this validation phase.
 
 ### Owner manual validation runner
 

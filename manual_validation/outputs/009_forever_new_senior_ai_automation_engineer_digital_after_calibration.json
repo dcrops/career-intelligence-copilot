@@ -1,0 +1,1602 @@
+{
+  "components": [
+    {
+      "name": "CareerProfile",
+      "implementation": "CareerProfileService / YAML",
+      "mode": "deterministic_production"
+    },
+    {
+      "name": "JobAnalysis",
+      "implementation": "OpenAIJobExtractor",
+      "mode": "openai_production"
+    },
+    {
+      "name": "OpportunityAssessment",
+      "implementation": "OpenAIAssessor",
+      "mode": "openai_production"
+    },
+    {
+      "name": "PortfolioMatch",
+      "implementation": "DeterministicMatcher",
+      "mode": "deterministic_production"
+    },
+    {
+      "name": "ApplicationStrategy",
+      "implementation": "DeterministicStrategyPlanner",
+      "mode": "deterministic_production"
+    }
+  ],
+  "volume_applications_enabled": false,
+  "profile_identity": {
+    "full_name": "David Cropper",
+    "target_role": "AI Engineer"
+  },
+  "posting": {
+    "raw_text": "Strong applicant\nSenior AI Automation Engineer – Digital\n\nForever New Clothing \n3.3\n120 reviews\n·\nView all jobs\nMelbourne VIC (Hybrid)\nEngineering - Software (Information & Communication Technology)\nFull time\nGenerous Salary + Super + 40% discount\nPosted 2d ago\n\nHow you match\n4 skills and credentials match your profile\n Retrieval Augmented Generation\n Databricks\n Python Programming\n SQL Query Language\nShow all⁠\nFOREVER US\n\nStep into the world of Forever New, where fashion meets innovation. As one of Australia’s leading global fashion brands, we’ve grown from our Melbourne roots to over 450 stores worldwide with a thriving online presence. Our success is driven by our passionate community of creative thinkers, retail experts, and forward-looking innovators who bring our vision to life - to make it her moment.\n\nAt Forever New, we’re not just designing beautiful fashion; we’re building smart, data-driven solutions that power exceptional customer experiences and informed decision-making. Join us as we continue to evolve our BI, Data & Integrations team and shape the future of retail through insight, innovation, and technology.\n\nTHE PERKS WE OFFER YOU\n\nAs a valued member of the Forever New family, you’ll enjoy a range of benefits designed to support your success and wellbeing:\n\nEnjoy a generous 40% employee discount, with additional discounts for family and friends\nSubsidised daily coffee and lunch at our on-site cafe\nCelebrate special moments with loyalty and birthday leave\nReceive referral incentives for introducing talented people to our team\nAccess to wellbeing and sustainability initiatives that support your overall health and purpose\nThrive through continuous learning and development programs\nBe recognised through our reward and service awards programs\nBenefit from subsidised parking at our vibrant Richmond Head Office\nGain global exposure across five continents\nYOUR DREAM OPPORTUNITY\n\nThe Senior AI Engineer (Agents & Automation) designs, builds, evaluates and operates the AI agents, tools and pipelines that put AI to work across Forever New with e-commerce and digital as the primary focus, and the whole business as the canvas. \n\nThis is a hands-on engineering role at the heart of our AI Centre of Excellence. You will ship production-grade AI agents and, just as importantly, build the enterprise-grade rollout machinery around them: a scalable, evaluated, versioned and governed way of releasing agents, prompts, tools, MCP connectors, RAG and data pipelines. You care as much about how reliably and repeatably we ship and operate AI as about the agents themselves. \n\nYou will operate in an agent-led delivery model where AI agents are trusted to do meaningful work under human supervision with the emphasis on outcomes, quality controls and repeatability rather than approving every step. You'll reengineer the process before you automate it, document what you build, and feed reusable patterns and guardrails back into Forever New's enterprise AI standards. \n\nIn this newly created role you will help move Forever New from promising pilots to a governed, compounding portfolio of agents that genuinely add value no fluff, no hype, no rework. \n\nGET EXCITED TO \n\nBuild agents that matter \n\nDesign and ship production AI agents across the taxonomy conversational/customer-facing, knowledge & Q&A, workflow/process automation, decision-support and monitoring  \n\nReengineer and optimise the underlying business process first (mapping it in BPMN), then automate it because automating a broken process just makes waste faster\n\nIntegrate tools and MCP connectors with least-privilege, allow-listed access and clean separation between agents that read and agents that act\n\nBuild retrieval-augmented generation (RAG), vector and data pipelines grounded in governed data, so agents answer from a single source of truth\n\nContribute to creating agents that generate dashboards, answer business questions and release insights from enterprise data and the governed semantic layer on Databricks, with evaluation, cost monitoring and release controls built into the delivery process\n\nData science and machine learning experience is a strong plus, particularly where it supports forecasting, segmentation, recommendation, decision-support or customer/retail intelligence use cases\n\nMake the rollout enterprise-grade \n\nBuild the evaluation harness: quality, groundedness, safety, bias and prompt-injection testing, combining LLM-as-judge with human review, so agents earn their release\n\nEstablish versioning and CI/CD for everything agents, prompts, tools, MCPs and pipelines with environments, release gates, rollback and kill-switches \n\nStand up observability and AgentOps: telemetry, monitoring, cost tracking, drift detection and continuous improvement loops in production\n\nDefine repeatable, supervised delivery patterns and progressively embed them into day-to-day engineering and operational practice\n\nEngineer for trust, cost and scale \n\nBuild with security, privacy and governance by design human-in-the-loop by default for anything touching customers, money or systems of record; full logging and traceability\n\nManage performance, reliability and cost in production; reduce recurring issues through standard patterns\n\nDocument thoroughly runbooks, agent cards, decision records so what you build is supportable and reusable\n\nRaise the whole organisation's game \n\nPartner with and coach business AI champions; where a high-value area is stuck, embed temporarily to deliver the first agent and hand it back. \n\nContribute SME insight, reusable patterns and delivery learnings into Forever New's enterprise AI standards and guardrails through established architecture and governance forums\n\nTHE SKILLS & EXPERIENCE YOU OFFER US\n\n3+ years’ experience in the retail or related industry \nProven experience designing, building and shipping LLM/agent applications to production (not just prototypes)\nStrong software engineering fundamentals in Python and/or TypeScript (or similar), with solid API and version-control practice\nHands-on with agent frameworks and orchestration, tool/function calling, and the Model Context Protocol (MCP)\nRAG, embeddings and vector databases, plus strong SQL and data pipeline skills; comfortable working with structured and unstructured data. \nEvaluation and LLMOps / AgentOps: building eval harnesses, versioning prompts and agents, CI/CD, observability and guardrails for AI systems at scale\nPrompt and context engineering, with an eval-driven, iterative approach\nStrong analytical and problem-solving skills\nResults-driven with excellent organisation and prioritisation abilities\nCalm, adaptable, and effective in fast-paced environments\nProactive mindset with strong initiative and accountability\nCommercially astute with sound business judgement\nCollaborative communicator, able to engage technical and non-technical stakeholders\nOUR VALUES\n\nWhether we’re innovating behind the scenes, collaborating across global teams, or styling our customers in store, these values guide everything we do:\n\nThink Customer\nRespect for All\nKeep it Simple\nTake Responsibility\nAct with Pace\nJoin Forever New and play a key role in shaping a modern, data-driven retail business.\nBe part of a brand where fashion meets innovation and help us make it her moment.",
+    "title": "Senior AI Automation Engineer – Digital",
+    "company": "Forever New Clothing",
+    "source_url": "https://au.seek.com/job/93428801?ref=recom-homepage&pos=16&origin=showNewTab#sol=b52a9838aeab2c05b920b8122233829f3f2ac28f"
+  },
+  "job_analysis": {
+    "posting": {
+      "raw_text": "Strong applicant\nSenior AI Automation Engineer – Digital\n\nForever New Clothing \n3.3\n120 reviews\n·\nView all jobs\nMelbourne VIC (Hybrid)\nEngineering - Software (Information & Communication Technology)\nFull time\nGenerous Salary + Super + 40% discount\nPosted 2d ago\n\nHow you match\n4 skills and credentials match your profile\n Retrieval Augmented Generation\n Databricks\n Python Programming\n SQL Query Language\nShow all⁠\nFOREVER US\n\nStep into the world of Forever New, where fashion meets innovation. As one of Australia’s leading global fashion brands, we’ve grown from our Melbourne roots to over 450 stores worldwide with a thriving online presence. Our success is driven by our passionate community of creative thinkers, retail experts, and forward-looking innovators who bring our vision to life - to make it her moment.\n\nAt Forever New, we’re not just designing beautiful fashion; we’re building smart, data-driven solutions that power exceptional customer experiences and informed decision-making. Join us as we continue to evolve our BI, Data & Integrations team and shape the future of retail through insight, innovation, and technology.\n\nTHE PERKS WE OFFER YOU\n\nAs a valued member of the Forever New family, you’ll enjoy a range of benefits designed to support your success and wellbeing:\n\nEnjoy a generous 40% employee discount, with additional discounts for family and friends\nSubsidised daily coffee and lunch at our on-site cafe\nCelebrate special moments with loyalty and birthday leave\nReceive referral incentives for introducing talented people to our team\nAccess to wellbeing and sustainability initiatives that support your overall health and purpose\nThrive through continuous learning and development programs\nBe recognised through our reward and service awards programs\nBenefit from subsidised parking at our vibrant Richmond Head Office\nGain global exposure across five continents\nYOUR DREAM OPPORTUNITY\n\nThe Senior AI Engineer (Agents & Automation) designs, builds, evaluates and operates the AI agents, tools and pipelines that put AI to work across Forever New with e-commerce and digital as the primary focus, and the whole business as the canvas. \n\nThis is a hands-on engineering role at the heart of our AI Centre of Excellence. You will ship production-grade AI agents and, just as importantly, build the enterprise-grade rollout machinery around them: a scalable, evaluated, versioned and governed way of releasing agents, prompts, tools, MCP connectors, RAG and data pipelines. You care as much about how reliably and repeatably we ship and operate AI as about the agents themselves. \n\nYou will operate in an agent-led delivery model where AI agents are trusted to do meaningful work under human supervision with the emphasis on outcomes, quality controls and repeatability rather than approving every step. You'll reengineer the process before you automate it, document what you build, and feed reusable patterns and guardrails back into Forever New's enterprise AI standards. \n\nIn this newly created role you will help move Forever New from promising pilots to a governed, compounding portfolio of agents that genuinely add value no fluff, no hype, no rework. \n\nGET EXCITED TO \n\nBuild agents that matter \n\nDesign and ship production AI agents across the taxonomy conversational/customer-facing, knowledge & Q&A, workflow/process automation, decision-support and monitoring  \n\nReengineer and optimise the underlying business process first (mapping it in BPMN), then automate it because automating a broken process just makes waste faster\n\nIntegrate tools and MCP connectors with least-privilege, allow-listed access and clean separation between agents that read and agents that act\n\nBuild retrieval-augmented generation (RAG), vector and data pipelines grounded in governed data, so agents answer from a single source of truth\n\nContribute to creating agents that generate dashboards, answer business questions and release insights from enterprise data and the governed semantic layer on Databricks, with evaluation, cost monitoring and release controls built into the delivery process\n\nData science and machine learning experience is a strong plus, particularly where it supports forecasting, segmentation, recommendation, decision-support or customer/retail intelligence use cases\n\nMake the rollout enterprise-grade \n\nBuild the evaluation harness: quality, groundedness, safety, bias and prompt-injection testing, combining LLM-as-judge with human review, so agents earn their release\n\nEstablish versioning and CI/CD for everything agents, prompts, tools, MCPs and pipelines with environments, release gates, rollback and kill-switches \n\nStand up observability and AgentOps: telemetry, monitoring, cost tracking, drift detection and continuous improvement loops in production\n\nDefine repeatable, supervised delivery patterns and progressively embed them into day-to-day engineering and operational practice\n\nEngineer for trust, cost and scale \n\nBuild with security, privacy and governance by design human-in-the-loop by default for anything touching customers, money or systems of record; full logging and traceability\n\nManage performance, reliability and cost in production; reduce recurring issues through standard patterns\n\nDocument thoroughly runbooks, agent cards, decision records so what you build is supportable and reusable\n\nRaise the whole organisation's game \n\nPartner with and coach business AI champions; where a high-value area is stuck, embed temporarily to deliver the first agent and hand it back. \n\nContribute SME insight, reusable patterns and delivery learnings into Forever New's enterprise AI standards and guardrails through established architecture and governance forums\n\nTHE SKILLS & EXPERIENCE YOU OFFER US\n\n3+ years’ experience in the retail or related industry \nProven experience designing, building and shipping LLM/agent applications to production (not just prototypes)\nStrong software engineering fundamentals in Python and/or TypeScript (or similar), with solid API and version-control practice\nHands-on with agent frameworks and orchestration, tool/function calling, and the Model Context Protocol (MCP)\nRAG, embeddings and vector databases, plus strong SQL and data pipeline skills; comfortable working with structured and unstructured data. \nEvaluation and LLMOps / AgentOps: building eval harnesses, versioning prompts and agents, CI/CD, observability and guardrails for AI systems at scale\nPrompt and context engineering, with an eval-driven, iterative approach\nStrong analytical and problem-solving skills\nResults-driven with excellent organisation and prioritisation abilities\nCalm, adaptable, and effective in fast-paced environments\nProactive mindset with strong initiative and accountability\nCommercially astute with sound business judgement\nCollaborative communicator, able to engage technical and non-technical stakeholders\nOUR VALUES\n\nWhether we’re innovating behind the scenes, collaborating across global teams, or styling our customers in store, these values guide everything we do:\n\nThink Customer\nRespect for All\nKeep it Simple\nTake Responsibility\nAct with Pace\nJoin Forever New and play a key role in shaping a modern, data-driven retail business.\nBe part of a brand where fashion meets innovation and help us make it her moment.",
+      "title": "Senior AI Automation Engineer – Digital",
+      "company": "Forever New Clothing",
+      "source_url": "https://au.seek.com/job/93428801?ref=recom-homepage&pos=16&origin=showNewTab#sol=b52a9838aeab2c05b920b8122233829f3f2ac28f"
+    },
+    "role_family": {
+      "family": "ai_engineering",
+      "evidence": [
+        {
+          "excerpt": "The Senior AI Engineer (Agents & Automation) designs, builds, evaluates and operates the AI agents, tools and pipelines that put AI to work across Forever New with e-commerce and digital as the primary focus, and the whole business as the canvas.",
+          "section": "JobDescription"
+        }
+      ]
+    },
+    "seniority": {
+      "level": "senior",
+      "ambiguous": false,
+      "candidate_levels": [],
+      "evidence": [
+        {
+          "excerpt": "Senior AI Automation Engineer – Digital",
+          "section": "Job title"
+        }
+      ]
+    },
+    "technologies": [
+      {
+        "name": "Python",
+        "level": "required",
+        "evidence": [
+          {
+            "excerpt": "Strong software engineering fundamentals in Python and/or TypeScript (or similar), with solid API and version-control practice",
+            "section": "JobDescription"
+          }
+        ]
+      },
+      {
+        "name": "Databricks",
+        "level": "required",
+        "evidence": [
+          {
+            "excerpt": "Contribute to creating agents that generate dashboards, answer business questions and release insights from enterprise data and the governed semantic layer on Databricks",
+            "section": "JobDescription"
+          }
+        ]
+      },
+      {
+        "name": "SQL",
+        "level": "required",
+        "evidence": [
+          {
+            "excerpt": "RAG, embeddings and vector databases, plus strong SQL and data pipeline skills; comfortable working with structured and unstructured data.",
+            "section": "JobDescription"
+          }
+        ]
+      },
+      {
+        "name": "Retrieval Augmented Generation (RAG)",
+        "level": "required",
+        "evidence": [
+          {
+            "excerpt": "Build retrieval-augmented generation (RAG), vector and data pipelines grounded in governed data, so agents answer from a single source of truth",
+            "section": "JobDescription"
+          }
+        ]
+      },
+      {
+        "name": "Version Control",
+        "level": "required",
+        "evidence": [
+          {
+            "excerpt": "Strong software engineering fundamentals in Python and/or TypeScript (or similar), with solid API and version-control practice",
+            "section": "JobDescription"
+          }
+        ]
+      },
+      {
+        "name": "Machine Learning Operations (LLMOps)",
+        "level": "preferred",
+        "evidence": [
+          {
+            "excerpt": "Evaluation and LLMOps / AgentOps: building eval harnesses, versioning prompts and agents, CI/CD, observability and guardrails for AI systems at scale",
+            "section": "JobDescription"
+          }
+        ]
+      }
+    ],
+    "responsibilities": [
+      {
+        "description": "Design and ship production AI agents across the taxonomy conversational/customer-facing, knowledge & Q&A, workflow/process automation, decision-support and monitoring",
+        "evidence": [
+          {
+            "excerpt": "Design and ship production AI agents across the taxonomy conversational/customer-facing, knowledge & Q&A, workflow/process automation, decision-support and monitoring",
+            "section": "JobDescription"
+          }
+        ]
+      },
+      {
+        "description": "Reengineer and optimise the underlying business process first, then automate it as automating a broken process just makes waste faster",
+        "evidence": [
+          {
+            "excerpt": "Reengineer and optimise the underlying business process first (mapping it in BPMN), then automate it because automating a broken process just makes waste faster",
+            "section": "JobDescription"
+          }
+        ]
+      },
+      {
+        "description": "Build the evaluation harness combining LLM-as-judge with human review, so agents earn their release",
+        "evidence": [
+          {
+            "excerpt": "Build the evaluation harness: quality, groundedness, safety, bias and prompt-injection testing, combining LLM-as-judge with human review, so agents earn their release",
+            "section": "JobDescription"
+          }
+        ]
+      },
+      {
+        "description": "Establish versioning and CI/CD for everything agents, prompts, tools, MCPs and pipelines with environments, release gates, rollback and kill-switches",
+        "evidence": [
+          {
+            "excerpt": "Establish versioning and CI/CD for everything agents, prompts, tools, MCPs and pipelines with environments, release gates, rollback and kill-switches",
+            "section": "JobDescription"
+          }
+        ]
+      },
+      {
+        "description": "Partner with and coach business AI champions to deliver the first agent to high-value areas",
+        "evidence": [
+          {
+            "excerpt": "Partner with and coach business AI champions; where a high-value area is stuck, embed temporarily to deliver the first agent and hand it back.",
+            "section": "JobDescription"
+          }
+        ]
+      }
+    ],
+    "compensation": {
+      "clarity": "stated",
+      "minimum": null,
+      "maximum": null,
+      "currency": "AUD",
+      "period": "year",
+      "raw_text": "Generous Salary + Super + 40% discount",
+      "evidence": [
+        {
+          "excerpt": "Generous Salary + Super + 40% discount",
+          "section": "JobDescription"
+        }
+      ]
+    },
+    "location": {
+      "clarity": "stated",
+      "summary": "Melbourne VIC (Hybrid)",
+      "evidence": [
+        {
+          "excerpt": "Melbourne VIC (Hybrid)",
+          "section": "JobDescription"
+        }
+      ]
+    },
+    "work_arrangement": {
+      "arrangement": "hybrid",
+      "details": null,
+      "evidence": [
+        {
+          "excerpt": "Melbourne VIC (Hybrid)",
+          "section": "JobDescription"
+        }
+      ]
+    },
+    "employment": {
+      "working_hours": "full_time",
+      "engagement_type": "unspecified",
+      "evidence": [
+        {
+          "excerpt": "Full time",
+          "section": "JobDescription"
+        }
+      ]
+    },
+    "experience_requirements": [
+      {
+        "description": "3+ years’ experience in the retail or related industry",
+        "level": "required",
+        "minimum_years": 3.0,
+        "maximum_years": null,
+        "evidence": [
+          {
+            "excerpt": "3+ years’ experience in the retail or related industry",
+            "section": "JobDescription"
+          }
+        ]
+      }
+    ]
+  },
+  "opportunity_assessment": {
+    "job_analysis": {
+      "posting": {
+        "raw_text": "Strong applicant\nSenior AI Automation Engineer – Digital\n\nForever New Clothing \n3.3\n120 reviews\n·\nView all jobs\nMelbourne VIC (Hybrid)\nEngineering - Software (Information & Communication Technology)\nFull time\nGenerous Salary + Super + 40% discount\nPosted 2d ago\n\nHow you match\n4 skills and credentials match your profile\n Retrieval Augmented Generation\n Databricks\n Python Programming\n SQL Query Language\nShow all⁠\nFOREVER US\n\nStep into the world of Forever New, where fashion meets innovation. As one of Australia’s leading global fashion brands, we’ve grown from our Melbourne roots to over 450 stores worldwide with a thriving online presence. Our success is driven by our passionate community of creative thinkers, retail experts, and forward-looking innovators who bring our vision to life - to make it her moment.\n\nAt Forever New, we’re not just designing beautiful fashion; we’re building smart, data-driven solutions that power exceptional customer experiences and informed decision-making. Join us as we continue to evolve our BI, Data & Integrations team and shape the future of retail through insight, innovation, and technology.\n\nTHE PERKS WE OFFER YOU\n\nAs a valued member of the Forever New family, you’ll enjoy a range of benefits designed to support your success and wellbeing:\n\nEnjoy a generous 40% employee discount, with additional discounts for family and friends\nSubsidised daily coffee and lunch at our on-site cafe\nCelebrate special moments with loyalty and birthday leave\nReceive referral incentives for introducing talented people to our team\nAccess to wellbeing and sustainability initiatives that support your overall health and purpose\nThrive through continuous learning and development programs\nBe recognised through our reward and service awards programs\nBenefit from subsidised parking at our vibrant Richmond Head Office\nGain global exposure across five continents\nYOUR DREAM OPPORTUNITY\n\nThe Senior AI Engineer (Agents & Automation) designs, builds, evaluates and operates the AI agents, tools and pipelines that put AI to work across Forever New with e-commerce and digital as the primary focus, and the whole business as the canvas. \n\nThis is a hands-on engineering role at the heart of our AI Centre of Excellence. You will ship production-grade AI agents and, just as importantly, build the enterprise-grade rollout machinery around them: a scalable, evaluated, versioned and governed way of releasing agents, prompts, tools, MCP connectors, RAG and data pipelines. You care as much about how reliably and repeatably we ship and operate AI as about the agents themselves. \n\nYou will operate in an agent-led delivery model where AI agents are trusted to do meaningful work under human supervision with the emphasis on outcomes, quality controls and repeatability rather than approving every step. You'll reengineer the process before you automate it, document what you build, and feed reusable patterns and guardrails back into Forever New's enterprise AI standards. \n\nIn this newly created role you will help move Forever New from promising pilots to a governed, compounding portfolio of agents that genuinely add value no fluff, no hype, no rework. \n\nGET EXCITED TO \n\nBuild agents that matter \n\nDesign and ship production AI agents across the taxonomy conversational/customer-facing, knowledge & Q&A, workflow/process automation, decision-support and monitoring  \n\nReengineer and optimise the underlying business process first (mapping it in BPMN), then automate it because automating a broken process just makes waste faster\n\nIntegrate tools and MCP connectors with least-privilege, allow-listed access and clean separation between agents that read and agents that act\n\nBuild retrieval-augmented generation (RAG), vector and data pipelines grounded in governed data, so agents answer from a single source of truth\n\nContribute to creating agents that generate dashboards, answer business questions and release insights from enterprise data and the governed semantic layer on Databricks, with evaluation, cost monitoring and release controls built into the delivery process\n\nData science and machine learning experience is a strong plus, particularly where it supports forecasting, segmentation, recommendation, decision-support or customer/retail intelligence use cases\n\nMake the rollout enterprise-grade \n\nBuild the evaluation harness: quality, groundedness, safety, bias and prompt-injection testing, combining LLM-as-judge with human review, so agents earn their release\n\nEstablish versioning and CI/CD for everything agents, prompts, tools, MCPs and pipelines with environments, release gates, rollback and kill-switches \n\nStand up observability and AgentOps: telemetry, monitoring, cost tracking, drift detection and continuous improvement loops in production\n\nDefine repeatable, supervised delivery patterns and progressively embed them into day-to-day engineering and operational practice\n\nEngineer for trust, cost and scale \n\nBuild with security, privacy and governance by design human-in-the-loop by default for anything touching customers, money or systems of record; full logging and traceability\n\nManage performance, reliability and cost in production; reduce recurring issues through standard patterns\n\nDocument thoroughly runbooks, agent cards, decision records so what you build is supportable and reusable\n\nRaise the whole organisation's game \n\nPartner with and coach business AI champions; where a high-value area is stuck, embed temporarily to deliver the first agent and hand it back. \n\nContribute SME insight, reusable patterns and delivery learnings into Forever New's enterprise AI standards and guardrails through established architecture and governance forums\n\nTHE SKILLS & EXPERIENCE YOU OFFER US\n\n3+ years’ experience in the retail or related industry \nProven experience designing, building and shipping LLM/agent applications to production (not just prototypes)\nStrong software engineering fundamentals in Python and/or TypeScript (or similar), with solid API and version-control practice\nHands-on with agent frameworks and orchestration, tool/function calling, and the Model Context Protocol (MCP)\nRAG, embeddings and vector databases, plus strong SQL and data pipeline skills; comfortable working with structured and unstructured data. \nEvaluation and LLMOps / AgentOps: building eval harnesses, versioning prompts and agents, CI/CD, observability and guardrails for AI systems at scale\nPrompt and context engineering, with an eval-driven, iterative approach\nStrong analytical and problem-solving skills\nResults-driven with excellent organisation and prioritisation abilities\nCalm, adaptable, and effective in fast-paced environments\nProactive mindset with strong initiative and accountability\nCommercially astute with sound business judgement\nCollaborative communicator, able to engage technical and non-technical stakeholders\nOUR VALUES\n\nWhether we’re innovating behind the scenes, collaborating across global teams, or styling our customers in store, these values guide everything we do:\n\nThink Customer\nRespect for All\nKeep it Simple\nTake Responsibility\nAct with Pace\nJoin Forever New and play a key role in shaping a modern, data-driven retail business.\nBe part of a brand where fashion meets innovation and help us make it her moment.",
+        "title": "Senior AI Automation Engineer – Digital",
+        "company": "Forever New Clothing",
+        "source_url": "https://au.seek.com/job/93428801?ref=recom-homepage&pos=16&origin=showNewTab#sol=b52a9838aeab2c05b920b8122233829f3f2ac28f"
+      },
+      "role_family": {
+        "family": "ai_engineering",
+        "evidence": [
+          {
+            "excerpt": "The Senior AI Engineer (Agents & Automation) designs, builds, evaluates and operates the AI agents, tools and pipelines that put AI to work across Forever New with e-commerce and digital as the primary focus, and the whole business as the canvas.",
+            "section": "JobDescription"
+          }
+        ]
+      },
+      "seniority": {
+        "level": "senior",
+        "ambiguous": false,
+        "candidate_levels": [],
+        "evidence": [
+          {
+            "excerpt": "Senior AI Automation Engineer – Digital",
+            "section": "Job title"
+          }
+        ]
+      },
+      "technologies": [
+        {
+          "name": "Python",
+          "level": "required",
+          "evidence": [
+            {
+              "excerpt": "Strong software engineering fundamentals in Python and/or TypeScript (or similar), with solid API and version-control practice",
+              "section": "JobDescription"
+            }
+          ]
+        },
+        {
+          "name": "Databricks",
+          "level": "required",
+          "evidence": [
+            {
+              "excerpt": "Contribute to creating agents that generate dashboards, answer business questions and release insights from enterprise data and the governed semantic layer on Databricks",
+              "section": "JobDescription"
+            }
+          ]
+        },
+        {
+          "name": "SQL",
+          "level": "required",
+          "evidence": [
+            {
+              "excerpt": "RAG, embeddings and vector databases, plus strong SQL and data pipeline skills; comfortable working with structured and unstructured data.",
+              "section": "JobDescription"
+            }
+          ]
+        },
+        {
+          "name": "Retrieval Augmented Generation (RAG)",
+          "level": "required",
+          "evidence": [
+            {
+              "excerpt": "Build retrieval-augmented generation (RAG), vector and data pipelines grounded in governed data, so agents answer from a single source of truth",
+              "section": "JobDescription"
+            }
+          ]
+        },
+        {
+          "name": "Version Control",
+          "level": "required",
+          "evidence": [
+            {
+              "excerpt": "Strong software engineering fundamentals in Python and/or TypeScript (or similar), with solid API and version-control practice",
+              "section": "JobDescription"
+            }
+          ]
+        },
+        {
+          "name": "Machine Learning Operations (LLMOps)",
+          "level": "preferred",
+          "evidence": [
+            {
+              "excerpt": "Evaluation and LLMOps / AgentOps: building eval harnesses, versioning prompts and agents, CI/CD, observability and guardrails for AI systems at scale",
+              "section": "JobDescription"
+            }
+          ]
+        }
+      ],
+      "responsibilities": [
+        {
+          "description": "Design and ship production AI agents across the taxonomy conversational/customer-facing, knowledge & Q&A, workflow/process automation, decision-support and monitoring",
+          "evidence": [
+            {
+              "excerpt": "Design and ship production AI agents across the taxonomy conversational/customer-facing, knowledge & Q&A, workflow/process automation, decision-support and monitoring",
+              "section": "JobDescription"
+            }
+          ]
+        },
+        {
+          "description": "Reengineer and optimise the underlying business process first, then automate it as automating a broken process just makes waste faster",
+          "evidence": [
+            {
+              "excerpt": "Reengineer and optimise the underlying business process first (mapping it in BPMN), then automate it because automating a broken process just makes waste faster",
+              "section": "JobDescription"
+            }
+          ]
+        },
+        {
+          "description": "Build the evaluation harness combining LLM-as-judge with human review, so agents earn their release",
+          "evidence": [
+            {
+              "excerpt": "Build the evaluation harness: quality, groundedness, safety, bias and prompt-injection testing, combining LLM-as-judge with human review, so agents earn their release",
+              "section": "JobDescription"
+            }
+          ]
+        },
+        {
+          "description": "Establish versioning and CI/CD for everything agents, prompts, tools, MCPs and pipelines with environments, release gates, rollback and kill-switches",
+          "evidence": [
+            {
+              "excerpt": "Establish versioning and CI/CD for everything agents, prompts, tools, MCPs and pipelines with environments, release gates, rollback and kill-switches",
+              "section": "JobDescription"
+            }
+          ]
+        },
+        {
+          "description": "Partner with and coach business AI champions to deliver the first agent to high-value areas",
+          "evidence": [
+            {
+              "excerpt": "Partner with and coach business AI champions; where a high-value area is stuck, embed temporarily to deliver the first agent and hand it back.",
+              "section": "JobDescription"
+            }
+          ]
+        }
+      ],
+      "compensation": {
+        "clarity": "stated",
+        "minimum": null,
+        "maximum": null,
+        "currency": "AUD",
+        "period": "year",
+        "raw_text": "Generous Salary + Super + 40% discount",
+        "evidence": [
+          {
+            "excerpt": "Generous Salary + Super + 40% discount",
+            "section": "JobDescription"
+          }
+        ]
+      },
+      "location": {
+        "clarity": "stated",
+        "summary": "Melbourne VIC (Hybrid)",
+        "evidence": [
+          {
+            "excerpt": "Melbourne VIC (Hybrid)",
+            "section": "JobDescription"
+          }
+        ]
+      },
+      "work_arrangement": {
+        "arrangement": "hybrid",
+        "details": null,
+        "evidence": [
+          {
+            "excerpt": "Melbourne VIC (Hybrid)",
+            "section": "JobDescription"
+          }
+        ]
+      },
+      "employment": {
+        "working_hours": "full_time",
+        "engagement_type": "unspecified",
+        "evidence": [
+          {
+            "excerpt": "Full time",
+            "section": "JobDescription"
+          }
+        ]
+      },
+      "experience_requirements": [
+        {
+          "description": "3+ years’ experience in the retail or related industry",
+          "level": "required",
+          "minimum_years": 3.0,
+          "maximum_years": null,
+          "evidence": [
+            {
+              "excerpt": "3+ years’ experience in the retail or related industry",
+              "section": "JobDescription"
+            }
+          ]
+        }
+      ]
+    },
+    "technical_fit": {
+      "dimension": "technical",
+      "judgment": "mixed",
+      "summary": "Candidate has strong technical skills in relevant technologies but lacks direct experience in the retail industry, which is a significant requirement.",
+      "findings": [
+        {
+          "kind": "gap",
+          "summary": "The role requires 3+ years of experience in the retail industry, which the candidate does not possess.",
+          "detail": "While the candidate has strong AI engineering capabilities and relevant technical skills, there is a clear gap in the required industry experience.",
+          "importance": "material",
+          "job_evidence": [
+            {
+              "source": "experience_requirement",
+              "item_index": 0,
+              "name": "3+ years’ experience in the retail or related industry",
+              "excerpt": "3+ years’ experience in the retail or related industry"
+            }
+          ],
+          "profile_evidence": [],
+          "assumption": null
+        },
+        {
+          "kind": "partial_alignment",
+          "summary": "The candidate has strong skills in Python and SQL, necessary for the role, but lacks required experience in some technologies and frameworks, such as LLMOps.",
+          "detail": "Although the candidate demonstrates capabilities in Python and SQL, the absence of direct experience in all listed job technologies (specifically LLMOps) creates a developmental gap.",
+          "importance": "material",
+          "job_evidence": [
+            {
+              "source": "technology",
+              "item_index": 0,
+              "name": "Python",
+              "excerpt": "Strong software engineering fundamentals in Python and/or TypeScript (or similar), with solid API and version-control practice"
+            }
+          ],
+          "profile_evidence": [
+            {
+              "source": "skill",
+              "ref": "skill:Python",
+              "excerpt": "Strong Python skills demonstrated in independent projects."
+            },
+            {
+              "source": "skill",
+              "ref": "skill:SQL",
+              "excerpt": "Strong SQL skills evidenced in data engineering work."
+            }
+          ],
+          "assumption": null
+        }
+      ]
+    },
+    "commercial_fit": {
+      "dimension": "commercial",
+      "judgment": "mixed",
+      "summary": "The candidate's expected compensation and employment arrangement align with the role's conditions, but uncertainty exists regarding flexibility due to the absence of a stated minimum salary requirement.",
+      "findings": [
+        {
+          "kind": "gap",
+          "summary": "The role requires a stated compensation structure, but candidate's expected range is unspecified.",
+          "detail": "Candidate's salary expectations are not clearly defined, leading to uncertainty in alignment with the stated compensation package.",
+          "importance": "minor",
+          "job_evidence": [
+            {
+              "source": "compensation",
+              "item_index": null,
+              "name": "Generous Salary + Super + 40% discount",
+              "excerpt": "Generous Salary + Super + 40% discount"
+            }
+          ],
+          "profile_evidence": [],
+          "assumption": null
+        }
+      ]
+    },
+    "portfolio_fit": {
+      "dimension": "portfolio",
+      "judgment": "strong",
+      "summary": "Candidate demonstrates substantial portfolio work relevant to the role, showcasing applied AI engineering and independent engineering projects.",
+      "findings": [
+        {
+          "kind": "alignment",
+          "summary": "The candidate has a portfolio project demonstrating their ability in AI engineering relevant to the role's requirements.",
+          "detail": "Projects like the 'Operational Intelligence Copilot' showcase the necessary skills in designing and implementing AI solutions.",
+          "importance": "material",
+          "job_evidence": [
+            {
+              "source": "responsibility",
+              "item_index": 0,
+              "name": "Design and ship production AI agents across the taxonomy conversational/customer-facing, knowledge & Q&A, workflow/process automation, decision-support and monitoring",
+              "excerpt": "Design and ship production AI agents across the taxonomy conversational/customer-facing, knowledge & Q&A, workflow/process automation, decision-support and monitoring"
+            }
+          ],
+          "profile_evidence": [
+            {
+              "source": "project",
+              "ref": "project:operational-intelligence-copilot",
+              "excerpt": "Domain-agnostic operational intelligence platform combining deterministic analytics with Large Language Model reasoning."
+            }
+          ],
+          "assumption": null
+        }
+      ]
+    },
+    "summary": {
+      "summary": "David Cropper has strong technical capabilities particularly in Python and SQL relevant to AI engineering but is lacking required direct experience in the retail sector. There is good portfolio evidence of applied AI engineering, yet there are gaps in aligning fully with the commercial and technical requirements of the role.",
+      "key_alignments": [
+        "Strong skills in Python and SQL",
+        "Demonstrated portfolio projects relevant to the role"
+      ],
+      "key_gaps": [
+        "Lack of direct retail industry experience",
+        "Unspecified minimum salary expectations for alignment with role compensation"
+      ]
+    }
+  },
+  "portfolio_match": {
+    "job_analysis": {
+      "posting": {
+        "raw_text": "Strong applicant\nSenior AI Automation Engineer – Digital\n\nForever New Clothing \n3.3\n120 reviews\n·\nView all jobs\nMelbourne VIC (Hybrid)\nEngineering - Software (Information & Communication Technology)\nFull time\nGenerous Salary + Super + 40% discount\nPosted 2d ago\n\nHow you match\n4 skills and credentials match your profile\n Retrieval Augmented Generation\n Databricks\n Python Programming\n SQL Query Language\nShow all⁠\nFOREVER US\n\nStep into the world of Forever New, where fashion meets innovation. As one of Australia’s leading global fashion brands, we’ve grown from our Melbourne roots to over 450 stores worldwide with a thriving online presence. Our success is driven by our passionate community of creative thinkers, retail experts, and forward-looking innovators who bring our vision to life - to make it her moment.\n\nAt Forever New, we’re not just designing beautiful fashion; we’re building smart, data-driven solutions that power exceptional customer experiences and informed decision-making. Join us as we continue to evolve our BI, Data & Integrations team and shape the future of retail through insight, innovation, and technology.\n\nTHE PERKS WE OFFER YOU\n\nAs a valued member of the Forever New family, you’ll enjoy a range of benefits designed to support your success and wellbeing:\n\nEnjoy a generous 40% employee discount, with additional discounts for family and friends\nSubsidised daily coffee and lunch at our on-site cafe\nCelebrate special moments with loyalty and birthday leave\nReceive referral incentives for introducing talented people to our team\nAccess to wellbeing and sustainability initiatives that support your overall health and purpose\nThrive through continuous learning and development programs\nBe recognised through our reward and service awards programs\nBenefit from subsidised parking at our vibrant Richmond Head Office\nGain global exposure across five continents\nYOUR DREAM OPPORTUNITY\n\nThe Senior AI Engineer (Agents & Automation) designs, builds, evaluates and operates the AI agents, tools and pipelines that put AI to work across Forever New with e-commerce and digital as the primary focus, and the whole business as the canvas. \n\nThis is a hands-on engineering role at the heart of our AI Centre of Excellence. You will ship production-grade AI agents and, just as importantly, build the enterprise-grade rollout machinery around them: a scalable, evaluated, versioned and governed way of releasing agents, prompts, tools, MCP connectors, RAG and data pipelines. You care as much about how reliably and repeatably we ship and operate AI as about the agents themselves. \n\nYou will operate in an agent-led delivery model where AI agents are trusted to do meaningful work under human supervision with the emphasis on outcomes, quality controls and repeatability rather than approving every step. You'll reengineer the process before you automate it, document what you build, and feed reusable patterns and guardrails back into Forever New's enterprise AI standards. \n\nIn this newly created role you will help move Forever New from promising pilots to a governed, compounding portfolio of agents that genuinely add value no fluff, no hype, no rework. \n\nGET EXCITED TO \n\nBuild agents that matter \n\nDesign and ship production AI agents across the taxonomy conversational/customer-facing, knowledge & Q&A, workflow/process automation, decision-support and monitoring  \n\nReengineer and optimise the underlying business process first (mapping it in BPMN), then automate it because automating a broken process just makes waste faster\n\nIntegrate tools and MCP connectors with least-privilege, allow-listed access and clean separation between agents that read and agents that act\n\nBuild retrieval-augmented generation (RAG), vector and data pipelines grounded in governed data, so agents answer from a single source of truth\n\nContribute to creating agents that generate dashboards, answer business questions and release insights from enterprise data and the governed semantic layer on Databricks, with evaluation, cost monitoring and release controls built into the delivery process\n\nData science and machine learning experience is a strong plus, particularly where it supports forecasting, segmentation, recommendation, decision-support or customer/retail intelligence use cases\n\nMake the rollout enterprise-grade \n\nBuild the evaluation harness: quality, groundedness, safety, bias and prompt-injection testing, combining LLM-as-judge with human review, so agents earn their release\n\nEstablish versioning and CI/CD for everything agents, prompts, tools, MCPs and pipelines with environments, release gates, rollback and kill-switches \n\nStand up observability and AgentOps: telemetry, monitoring, cost tracking, drift detection and continuous improvement loops in production\n\nDefine repeatable, supervised delivery patterns and progressively embed them into day-to-day engineering and operational practice\n\nEngineer for trust, cost and scale \n\nBuild with security, privacy and governance by design human-in-the-loop by default for anything touching customers, money or systems of record; full logging and traceability\n\nManage performance, reliability and cost in production; reduce recurring issues through standard patterns\n\nDocument thoroughly runbooks, agent cards, decision records so what you build is supportable and reusable\n\nRaise the whole organisation's game \n\nPartner with and coach business AI champions; where a high-value area is stuck, embed temporarily to deliver the first agent and hand it back. \n\nContribute SME insight, reusable patterns and delivery learnings into Forever New's enterprise AI standards and guardrails through established architecture and governance forums\n\nTHE SKILLS & EXPERIENCE YOU OFFER US\n\n3+ years’ experience in the retail or related industry \nProven experience designing, building and shipping LLM/agent applications to production (not just prototypes)\nStrong software engineering fundamentals in Python and/or TypeScript (or similar), with solid API and version-control practice\nHands-on with agent frameworks and orchestration, tool/function calling, and the Model Context Protocol (MCP)\nRAG, embeddings and vector databases, plus strong SQL and data pipeline skills; comfortable working with structured and unstructured data. \nEvaluation and LLMOps / AgentOps: building eval harnesses, versioning prompts and agents, CI/CD, observability and guardrails for AI systems at scale\nPrompt and context engineering, with an eval-driven, iterative approach\nStrong analytical and problem-solving skills\nResults-driven with excellent organisation and prioritisation abilities\nCalm, adaptable, and effective in fast-paced environments\nProactive mindset with strong initiative and accountability\nCommercially astute with sound business judgement\nCollaborative communicator, able to engage technical and non-technical stakeholders\nOUR VALUES\n\nWhether we’re innovating behind the scenes, collaborating across global teams, or styling our customers in store, these values guide everything we do:\n\nThink Customer\nRespect for All\nKeep it Simple\nTake Responsibility\nAct with Pace\nJoin Forever New and play a key role in shaping a modern, data-driven retail business.\nBe part of a brand where fashion meets innovation and help us make it her moment.",
+        "title": "Senior AI Automation Engineer – Digital",
+        "company": "Forever New Clothing",
+        "source_url": "https://au.seek.com/job/93428801?ref=recom-homepage&pos=16&origin=showNewTab#sol=b52a9838aeab2c05b920b8122233829f3f2ac28f"
+      },
+      "role_family": {
+        "family": "ai_engineering",
+        "evidence": [
+          {
+            "excerpt": "The Senior AI Engineer (Agents & Automation) designs, builds, evaluates and operates the AI agents, tools and pipelines that put AI to work across Forever New with e-commerce and digital as the primary focus, and the whole business as the canvas.",
+            "section": "JobDescription"
+          }
+        ]
+      },
+      "seniority": {
+        "level": "senior",
+        "ambiguous": false,
+        "candidate_levels": [],
+        "evidence": [
+          {
+            "excerpt": "Senior AI Automation Engineer – Digital",
+            "section": "Job title"
+          }
+        ]
+      },
+      "technologies": [
+        {
+          "name": "Python",
+          "level": "required",
+          "evidence": [
+            {
+              "excerpt": "Strong software engineering fundamentals in Python and/or TypeScript (or similar), with solid API and version-control practice",
+              "section": "JobDescription"
+            }
+          ]
+        },
+        {
+          "name": "Databricks",
+          "level": "required",
+          "evidence": [
+            {
+              "excerpt": "Contribute to creating agents that generate dashboards, answer business questions and release insights from enterprise data and the governed semantic layer on Databricks",
+              "section": "JobDescription"
+            }
+          ]
+        },
+        {
+          "name": "SQL",
+          "level": "required",
+          "evidence": [
+            {
+              "excerpt": "RAG, embeddings and vector databases, plus strong SQL and data pipeline skills; comfortable working with structured and unstructured data.",
+              "section": "JobDescription"
+            }
+          ]
+        },
+        {
+          "name": "Retrieval Augmented Generation (RAG)",
+          "level": "required",
+          "evidence": [
+            {
+              "excerpt": "Build retrieval-augmented generation (RAG), vector and data pipelines grounded in governed data, so agents answer from a single source of truth",
+              "section": "JobDescription"
+            }
+          ]
+        },
+        {
+          "name": "Version Control",
+          "level": "required",
+          "evidence": [
+            {
+              "excerpt": "Strong software engineering fundamentals in Python and/or TypeScript (or similar), with solid API and version-control practice",
+              "section": "JobDescription"
+            }
+          ]
+        },
+        {
+          "name": "Machine Learning Operations (LLMOps)",
+          "level": "preferred",
+          "evidence": [
+            {
+              "excerpt": "Evaluation and LLMOps / AgentOps: building eval harnesses, versioning prompts and agents, CI/CD, observability and guardrails for AI systems at scale",
+              "section": "JobDescription"
+            }
+          ]
+        }
+      ],
+      "responsibilities": [
+        {
+          "description": "Design and ship production AI agents across the taxonomy conversational/customer-facing, knowledge & Q&A, workflow/process automation, decision-support and monitoring",
+          "evidence": [
+            {
+              "excerpt": "Design and ship production AI agents across the taxonomy conversational/customer-facing, knowledge & Q&A, workflow/process automation, decision-support and monitoring",
+              "section": "JobDescription"
+            }
+          ]
+        },
+        {
+          "description": "Reengineer and optimise the underlying business process first, then automate it as automating a broken process just makes waste faster",
+          "evidence": [
+            {
+              "excerpt": "Reengineer and optimise the underlying business process first (mapping it in BPMN), then automate it because automating a broken process just makes waste faster",
+              "section": "JobDescription"
+            }
+          ]
+        },
+        {
+          "description": "Build the evaluation harness combining LLM-as-judge with human review, so agents earn their release",
+          "evidence": [
+            {
+              "excerpt": "Build the evaluation harness: quality, groundedness, safety, bias and prompt-injection testing, combining LLM-as-judge with human review, so agents earn their release",
+              "section": "JobDescription"
+            }
+          ]
+        },
+        {
+          "description": "Establish versioning and CI/CD for everything agents, prompts, tools, MCPs and pipelines with environments, release gates, rollback and kill-switches",
+          "evidence": [
+            {
+              "excerpt": "Establish versioning and CI/CD for everything agents, prompts, tools, MCPs and pipelines with environments, release gates, rollback and kill-switches",
+              "section": "JobDescription"
+            }
+          ]
+        },
+        {
+          "description": "Partner with and coach business AI champions to deliver the first agent to high-value areas",
+          "evidence": [
+            {
+              "excerpt": "Partner with and coach business AI champions; where a high-value area is stuck, embed temporarily to deliver the first agent and hand it back.",
+              "section": "JobDescription"
+            }
+          ]
+        }
+      ],
+      "compensation": {
+        "clarity": "stated",
+        "minimum": null,
+        "maximum": null,
+        "currency": "AUD",
+        "period": "year",
+        "raw_text": "Generous Salary + Super + 40% discount",
+        "evidence": [
+          {
+            "excerpt": "Generous Salary + Super + 40% discount",
+            "section": "JobDescription"
+          }
+        ]
+      },
+      "location": {
+        "clarity": "stated",
+        "summary": "Melbourne VIC (Hybrid)",
+        "evidence": [
+          {
+            "excerpt": "Melbourne VIC (Hybrid)",
+            "section": "JobDescription"
+          }
+        ]
+      },
+      "work_arrangement": {
+        "arrangement": "hybrid",
+        "details": null,
+        "evidence": [
+          {
+            "excerpt": "Melbourne VIC (Hybrid)",
+            "section": "JobDescription"
+          }
+        ]
+      },
+      "employment": {
+        "working_hours": "full_time",
+        "engagement_type": "unspecified",
+        "evidence": [
+          {
+            "excerpt": "Full time",
+            "section": "JobDescription"
+          }
+        ]
+      },
+      "experience_requirements": [
+        {
+          "description": "3+ years’ experience in the retail or related industry",
+          "level": "required",
+          "minimum_years": 3.0,
+          "maximum_years": null,
+          "evidence": [
+            {
+              "excerpt": "3+ years’ experience in the retail or related industry",
+              "section": "JobDescription"
+            }
+          ]
+        }
+      ]
+    },
+    "ranked_projects": [
+      {
+        "rank": 1,
+        "project_id": "operational-intelligence-copilot",
+        "rationale": "Project 'operational-intelligence-copilot' ranked on 1 required technology hit(s), 2 demonstrates overlap(s), 4 responsibility overlap(s).",
+        "factors": [
+          {
+            "kind": "required_technology",
+            "summary": "Project evidence supports required technology 'Python'.",
+            "job_evidence": [
+              {
+                "source": "technology",
+                "item_index": 0,
+                "name": "Python",
+                "excerpt": "Strong software engineering fundamentals in Python and/or TypeScript (or similar), with solid API and version-control practice"
+              }
+            ],
+            "profile_evidence": [
+              {
+                "source": "project",
+                "ref": "project:operational-intelligence-copilot",
+                "excerpt": "Python"
+              }
+            ]
+          },
+          {
+            "kind": "demonstrates_overlap",
+            "summary": "Project demonstrates capabilities overlapping responsibility 'Design and ship production AI agents across the taxonomy conversational/customer-facing, knowledge & Q&A, workflow/process automation, decision-support and mon…'.",
+            "job_evidence": [
+              {
+                "source": "responsibility",
+                "item_index": 0,
+                "name": null,
+                "excerpt": "Design and ship production AI agents across the taxonomy conversational/customer-facing, knowledge & Q&A, workflow/process automation, decision-support and mon…"
+              }
+            ],
+            "profile_evidence": [
+              {
+                "source": "project",
+                "ref": "project:operational-intelligence-copilot",
+                "excerpt": "Explainable AI recommendations"
+              }
+            ]
+          },
+          {
+            "kind": "responsibility_overlap",
+            "summary": "Project summary, outcomes, or technologies overlap responsibility 'Design and ship production AI agents across the taxonomy conversational/customer-facing, knowledge & Q&A, workflow/process automation, decision-support and mon…'.",
+            "job_evidence": [
+              {
+                "source": "responsibility",
+                "item_index": 0,
+                "name": null,
+                "excerpt": "Design and ship production AI agents across the taxonomy conversational/customer-facing, knowledge & Q&A, workflow/process automation, decision-support and mon…"
+              }
+            ],
+            "profile_evidence": [
+              {
+                "source": "project",
+                "ref": "project:operational-intelligence-copilot",
+                "excerpt": "Maintains decision traceability through explainable recommendations."
+              }
+            ]
+          },
+          {
+            "kind": "responsibility_overlap",
+            "summary": "Project summary, outcomes, or technologies overlap responsibility 'Reengineer and optimise the underlying business process first, then automate it as automating a broken process just makes waste faster'.",
+            "job_evidence": [
+              {
+                "source": "responsibility",
+                "item_index": 1,
+                "name": null,
+                "excerpt": "Reengineer and optimise the underlying business process first (mapping it in BPMN), then automate it because automating a broken process just makes waste faster"
+              }
+            ],
+            "profile_evidence": [
+              {
+                "source": "project",
+                "ref": "project:operational-intelligence-copilot",
+                "excerpt": "Domain-agnostic operational intelligence platform combining deterministic analytics with Large Language Model reasoning to analyse structured business data and…"
+              }
+            ]
+          },
+          {
+            "kind": "responsibility_overlap",
+            "summary": "Project summary, outcomes, or technologies overlap responsibility 'Build the evaluation harness combining LLM-as-judge with human review, so agents earn their release'.",
+            "job_evidence": [
+              {
+                "source": "responsibility",
+                "item_index": 2,
+                "name": null,
+                "excerpt": "Build the evaluation harness: quality, groundedness, safety, bias and prompt-injection testing, combining LLM-as-judge with human review, so agents earn their…"
+              }
+            ],
+            "profile_evidence": [
+              {
+                "source": "project",
+                "ref": "project:operational-intelligence-copilot",
+                "excerpt": "Domain-agnostic operational intelligence platform combining deterministic analytics with Large Language Model reasoning to analyse structured business data and…"
+              }
+            ]
+          },
+          {
+            "kind": "demonstrates_overlap",
+            "summary": "Project demonstrates capabilities overlapping responsibility 'Partner with and coach business AI champions to deliver the first agent to high-value areas'.",
+            "job_evidence": [
+              {
+                "source": "responsibility",
+                "item_index": 4,
+                "name": null,
+                "excerpt": "Partner with and coach business AI champions; where a high-value area is stuck, embed temporarily to deliver the first agent and hand it back."
+              }
+            ],
+            "profile_evidence": [
+              {
+                "source": "project",
+                "ref": "project:operational-intelligence-copilot",
+                "excerpt": "Explainable AI recommendations"
+              }
+            ]
+          },
+          {
+            "kind": "responsibility_overlap",
+            "summary": "Project summary, outcomes, or technologies overlap responsibility 'Partner with and coach business AI champions to deliver the first agent to high-value areas'.",
+            "job_evidence": [
+              {
+                "source": "responsibility",
+                "item_index": 4,
+                "name": null,
+                "excerpt": "Partner with and coach business AI champions; where a high-value area is stuck, embed temporarily to deliver the first agent and hand it back."
+              }
+            ],
+            "profile_evidence": [
+              {
+                "source": "project",
+                "ref": "project:operational-intelligence-copilot",
+                "excerpt": "Domain-agnostic operational intelligence platform combining deterministic analytics with Large Language Model reasoning to analyse structured business data and…"
+              }
+            ]
+          }
+        ],
+        "tie_group": null,
+        "tie_break_reason": null
+      },
+      {
+        "rank": 2,
+        "project_id": "public-holiday-entitlements",
+        "rationale": "Project 'public-holiday-entitlements' ranked on 1 required technology hit(s), 2 demonstrates overlap(s), 3 responsibility overlap(s).",
+        "factors": [
+          {
+            "kind": "required_technology",
+            "summary": "Project evidence supports required technology 'Python'.",
+            "job_evidence": [
+              {
+                "source": "technology",
+                "item_index": 0,
+                "name": "Python",
+                "excerpt": "Strong software engineering fundamentals in Python and/or TypeScript (or similar), with solid API and version-control practice"
+              }
+            ],
+            "profile_evidence": [
+              {
+                "source": "project",
+                "ref": "project:public-holiday-entitlements",
+                "excerpt": "Python"
+              }
+            ]
+          },
+          {
+            "kind": "demonstrates_overlap",
+            "summary": "Project demonstrates capabilities overlapping responsibility 'Reengineer and optimise the underlying business process first, then automate it as automating a broken process just makes waste faster'.",
+            "job_evidence": [
+              {
+                "source": "responsibility",
+                "item_index": 1,
+                "name": null,
+                "excerpt": "Reengineer and optimise the underlying business process first (mapping it in BPMN), then automate it because automating a broken process just makes waste faster"
+              }
+            ],
+            "profile_evidence": [
+              {
+                "source": "project",
+                "ref": "project:public-holiday-entitlements",
+                "excerpt": "Business rules"
+              }
+            ]
+          },
+          {
+            "kind": "responsibility_overlap",
+            "summary": "Project summary, outcomes, or technologies overlap responsibility 'Reengineer and optimise the underlying business process first, then automate it as automating a broken process just makes waste faster'.",
+            "job_evidence": [
+              {
+                "source": "responsibility",
+                "item_index": 1,
+                "name": null,
+                "excerpt": "Reengineer and optimise the underlying business process first (mapping it in BPMN), then automate it because automating a broken process just makes waste faster"
+              }
+            ],
+            "profile_evidence": [
+              {
+                "source": "project",
+                "ref": "project:public-holiday-entitlements",
+                "excerpt": "Business-rules platform combining geospatial processing and external APIs to determine Australian public-holiday entitlements."
+              }
+            ]
+          },
+          {
+            "kind": "responsibility_overlap",
+            "summary": "Project summary, outcomes, or technologies overlap responsibility 'Build the evaluation harness combining LLM-as-judge with human review, so agents earn their release'.",
+            "job_evidence": [
+              {
+                "source": "responsibility",
+                "item_index": 2,
+                "name": null,
+                "excerpt": "Build the evaluation harness: quality, groundedness, safety, bias and prompt-injection testing, combining LLM-as-judge with human review, so agents earn their…"
+              }
+            ],
+            "profile_evidence": [
+              {
+                "source": "project",
+                "ref": "project:public-holiday-entitlements",
+                "excerpt": "Business-rules platform combining geospatial processing and external APIs to determine Australian public-holiday entitlements."
+              }
+            ]
+          },
+          {
+            "kind": "demonstrates_overlap",
+            "summary": "Project demonstrates capabilities overlapping responsibility 'Partner with and coach business AI champions to deliver the first agent to high-value areas'.",
+            "job_evidence": [
+              {
+                "source": "responsibility",
+                "item_index": 4,
+                "name": null,
+                "excerpt": "Partner with and coach business AI champions; where a high-value area is stuck, embed temporarily to deliver the first agent and hand it back."
+              }
+            ],
+            "profile_evidence": [
+              {
+                "source": "project",
+                "ref": "project:public-holiday-entitlements",
+                "excerpt": "Business rules"
+              }
+            ]
+          },
+          {
+            "kind": "responsibility_overlap",
+            "summary": "Project summary, outcomes, or technologies overlap responsibility 'Partner with and coach business AI champions to deliver the first agent to high-value areas'.",
+            "job_evidence": [
+              {
+                "source": "responsibility",
+                "item_index": 4,
+                "name": null,
+                "excerpt": "Partner with and coach business AI champions; where a high-value area is stuck, embed temporarily to deliver the first agent and hand it back."
+              }
+            ],
+            "profile_evidence": [
+              {
+                "source": "project",
+                "ref": "project:public-holiday-entitlements",
+                "excerpt": "Business-rules platform combining geospatial processing and external APIs to determine Australian public-holiday entitlements."
+              }
+            ]
+          }
+        ],
+        "tie_group": null,
+        "tie_break_reason": null
+      },
+      {
+        "rank": 3,
+        "project_id": "governance-document-rag",
+        "rationale": "Project 'governance-document-rag' ranked on 1 required technology hit(s), 1 demonstrates overlap(s), 3 responsibility overlap(s).",
+        "factors": [
+          {
+            "kind": "required_technology",
+            "summary": "Project evidence supports required technology 'Python'.",
+            "job_evidence": [
+              {
+                "source": "technology",
+                "item_index": 0,
+                "name": "Python",
+                "excerpt": "Strong software engineering fundamentals in Python and/or TypeScript (or similar), with solid API and version-control practice"
+              }
+            ],
+            "profile_evidence": [
+              {
+                "source": "project",
+                "ref": "project:governance-document-rag",
+                "excerpt": "Python"
+              }
+            ]
+          },
+          {
+            "kind": "responsibility_overlap",
+            "summary": "Project summary, outcomes, or technologies overlap responsibility 'Design and ship production AI agents across the taxonomy conversational/customer-facing, knowledge & Q&A, workflow/process automation, decision-support and mon…'.",
+            "job_evidence": [
+              {
+                "source": "responsibility",
+                "item_index": 0,
+                "name": null,
+                "excerpt": "Design and ship production AI agents across the taxonomy conversational/customer-facing, knowledge & Q&A, workflow/process automation, decision-support and mon…"
+              }
+            ],
+            "profile_evidence": [
+              {
+                "source": "project",
+                "ref": "project:governance-document-rag",
+                "excerpt": "Enterprise retrieval-augmented generation platform supporting trustworthy AI responses over organisational knowledge."
+              }
+            ]
+          },
+          {
+            "kind": "demonstrates_overlap",
+            "summary": "Project demonstrates capabilities overlapping responsibility 'Build the evaluation harness combining LLM-as-judge with human review, so agents earn their release'.",
+            "job_evidence": [
+              {
+                "source": "responsibility",
+                "item_index": 2,
+                "name": null,
+                "excerpt": "Build the evaluation harness: quality, groundedness, safety, bias and prompt-injection testing, combining LLM-as-judge with human review, so agents earn their…"
+              }
+            ],
+            "profile_evidence": [
+              {
+                "source": "project",
+                "ref": "project:governance-document-rag",
+                "excerpt": "Evaluation frameworks"
+              }
+            ]
+          },
+          {
+            "kind": "responsibility_overlap",
+            "summary": "Project summary, outcomes, or technologies overlap responsibility 'Build the evaluation harness combining LLM-as-judge with human review, so agents earn their release'.",
+            "job_evidence": [
+              {
+                "source": "responsibility",
+                "item_index": 2,
+                "name": null,
+                "excerpt": "Build the evaluation harness: quality, groundedness, safety, bias and prompt-injection testing, combining LLM-as-judge with human review, so agents earn their…"
+              }
+            ],
+            "profile_evidence": [
+              {
+                "source": "project",
+                "ref": "project:governance-document-rag",
+                "excerpt": "Provides evaluation, telemetry, and explainability controls."
+              }
+            ]
+          },
+          {
+            "kind": "responsibility_overlap",
+            "summary": "Project summary, outcomes, or technologies overlap responsibility 'Partner with and coach business AI champions to deliver the first agent to high-value areas'.",
+            "job_evidence": [
+              {
+                "source": "responsibility",
+                "item_index": 4,
+                "name": null,
+                "excerpt": "Partner with and coach business AI champions; where a high-value area is stuck, embed temporarily to deliver the first agent and hand it back."
+              }
+            ],
+            "profile_evidence": [
+              {
+                "source": "project",
+                "ref": "project:governance-document-rag",
+                "excerpt": "Enterprise retrieval-augmented generation platform supporting trustworthy AI responses over organisational knowledge."
+              }
+            ]
+          }
+        ],
+        "tie_group": null,
+        "tie_break_reason": null
+      },
+      {
+        "rank": 4,
+        "project_id": "payroll-diagnostics-engine",
+        "rationale": "Project 'payroll-diagnostics-engine' ranked on 1 required technology hit(s), 4 responsibility overlap(s).",
+        "factors": [
+          {
+            "kind": "required_technology",
+            "summary": "Project evidence supports required technology 'Python'.",
+            "job_evidence": [
+              {
+                "source": "technology",
+                "item_index": 0,
+                "name": "Python",
+                "excerpt": "Strong software engineering fundamentals in Python and/or TypeScript (or similar), with solid API and version-control practice"
+              }
+            ],
+            "profile_evidence": [
+              {
+                "source": "project",
+                "ref": "project:payroll-diagnostics-engine",
+                "excerpt": "Python"
+              }
+            ]
+          },
+          {
+            "kind": "responsibility_overlap",
+            "summary": "Project summary, outcomes, or technologies overlap responsibility 'Design and ship production AI agents across the taxonomy conversational/customer-facing, knowledge & Q&A, workflow/process automation, decision-support and mon…'.",
+            "job_evidence": [
+              {
+                "source": "responsibility",
+                "item_index": 0,
+                "name": null,
+                "excerpt": "Design and ship production AI agents across the taxonomy conversational/customer-facing, knowledge & Q&A, workflow/process automation, decision-support and mon…"
+              }
+            ],
+            "profile_evidence": [
+              {
+                "source": "project",
+                "ref": "project:payroll-diagnostics-engine",
+                "excerpt": "Rule-based operational decision-support platform that identifies payroll anomalies through deterministic business-rule evaluation."
+              }
+            ]
+          },
+          {
+            "kind": "responsibility_overlap",
+            "summary": "Project summary, outcomes, or technologies overlap responsibility 'Reengineer and optimise the underlying business process first, then automate it as automating a broken process just makes waste faster'.",
+            "job_evidence": [
+              {
+                "source": "responsibility",
+                "item_index": 1,
+                "name": null,
+                "excerpt": "Reengineer and optimise the underlying business process first (mapping it in BPMN), then automate it because automating a broken process just makes waste faster"
+              }
+            ],
+            "profile_evidence": [
+              {
+                "source": "project",
+                "ref": "project:payroll-diagnostics-engine",
+                "excerpt": "Rule-based operational decision-support platform that identifies payroll anomalies through deterministic business-rule evaluation."
+              }
+            ]
+          },
+          {
+            "kind": "responsibility_overlap",
+            "summary": "Project summary, outcomes, or technologies overlap responsibility 'Build the evaluation harness combining LLM-as-judge with human review, so agents earn their release'.",
+            "job_evidence": [
+              {
+                "source": "responsibility",
+                "item_index": 2,
+                "name": null,
+                "excerpt": "Build the evaluation harness: quality, groundedness, safety, bias and prompt-injection testing, combining LLM-as-judge with human review, so agents earn their…"
+              }
+            ],
+            "profile_evidence": [
+              {
+                "source": "project",
+                "ref": "project:payroll-diagnostics-engine",
+                "excerpt": "Rule-based operational decision-support platform that identifies payroll anomalies through deterministic business-rule evaluation."
+              }
+            ]
+          },
+          {
+            "kind": "responsibility_overlap",
+            "summary": "Project summary, outcomes, or technologies overlap responsibility 'Partner with and coach business AI champions to deliver the first agent to high-value areas'.",
+            "job_evidence": [
+              {
+                "source": "responsibility",
+                "item_index": 4,
+                "name": null,
+                "excerpt": "Partner with and coach business AI champions; where a high-value area is stuck, embed temporarily to deliver the first agent and hand it back."
+              }
+            ],
+            "profile_evidence": [
+              {
+                "source": "project",
+                "ref": "project:payroll-diagnostics-engine",
+                "excerpt": "Rule-based operational decision-support platform that identifies payroll anomalies through deterministic business-rule evaluation."
+              }
+            ]
+          }
+        ],
+        "tie_group": null,
+        "tie_break_reason": null
+      }
+    ],
+    "unranked_project_ids": [],
+    "summary": "Ranked 4 project(s); lead with 'operational-intelligence-copilot'. 0 project(s) had no matching factors.",
+    "insufficient_evidence": false
+  },
+  "application_strategy": {
+    "job_analysis": {
+      "posting": {
+        "raw_text": "Strong applicant\nSenior AI Automation Engineer – Digital\n\nForever New Clothing \n3.3\n120 reviews\n·\nView all jobs\nMelbourne VIC (Hybrid)\nEngineering - Software (Information & Communication Technology)\nFull time\nGenerous Salary + Super + 40% discount\nPosted 2d ago\n\nHow you match\n4 skills and credentials match your profile\n Retrieval Augmented Generation\n Databricks\n Python Programming\n SQL Query Language\nShow all⁠\nFOREVER US\n\nStep into the world of Forever New, where fashion meets innovation. As one of Australia’s leading global fashion brands, we’ve grown from our Melbourne roots to over 450 stores worldwide with a thriving online presence. Our success is driven by our passionate community of creative thinkers, retail experts, and forward-looking innovators who bring our vision to life - to make it her moment.\n\nAt Forever New, we’re not just designing beautiful fashion; we’re building smart, data-driven solutions that power exceptional customer experiences and informed decision-making. Join us as we continue to evolve our BI, Data & Integrations team and shape the future of retail through insight, innovation, and technology.\n\nTHE PERKS WE OFFER YOU\n\nAs a valued member of the Forever New family, you’ll enjoy a range of benefits designed to support your success and wellbeing:\n\nEnjoy a generous 40% employee discount, with additional discounts for family and friends\nSubsidised daily coffee and lunch at our on-site cafe\nCelebrate special moments with loyalty and birthday leave\nReceive referral incentives for introducing talented people to our team\nAccess to wellbeing and sustainability initiatives that support your overall health and purpose\nThrive through continuous learning and development programs\nBe recognised through our reward and service awards programs\nBenefit from subsidised parking at our vibrant Richmond Head Office\nGain global exposure across five continents\nYOUR DREAM OPPORTUNITY\n\nThe Senior AI Engineer (Agents & Automation) designs, builds, evaluates and operates the AI agents, tools and pipelines that put AI to work across Forever New with e-commerce and digital as the primary focus, and the whole business as the canvas. \n\nThis is a hands-on engineering role at the heart of our AI Centre of Excellence. You will ship production-grade AI agents and, just as importantly, build the enterprise-grade rollout machinery around them: a scalable, evaluated, versioned and governed way of releasing agents, prompts, tools, MCP connectors, RAG and data pipelines. You care as much about how reliably and repeatably we ship and operate AI as about the agents themselves. \n\nYou will operate in an agent-led delivery model where AI agents are trusted to do meaningful work under human supervision with the emphasis on outcomes, quality controls and repeatability rather than approving every step. You'll reengineer the process before you automate it, document what you build, and feed reusable patterns and guardrails back into Forever New's enterprise AI standards. \n\nIn this newly created role you will help move Forever New from promising pilots to a governed, compounding portfolio of agents that genuinely add value no fluff, no hype, no rework. \n\nGET EXCITED TO \n\nBuild agents that matter \n\nDesign and ship production AI agents across the taxonomy conversational/customer-facing, knowledge & Q&A, workflow/process automation, decision-support and monitoring  \n\nReengineer and optimise the underlying business process first (mapping it in BPMN), then automate it because automating a broken process just makes waste faster\n\nIntegrate tools and MCP connectors with least-privilege, allow-listed access and clean separation between agents that read and agents that act\n\nBuild retrieval-augmented generation (RAG), vector and data pipelines grounded in governed data, so agents answer from a single source of truth\n\nContribute to creating agents that generate dashboards, answer business questions and release insights from enterprise data and the governed semantic layer on Databricks, with evaluation, cost monitoring and release controls built into the delivery process\n\nData science and machine learning experience is a strong plus, particularly where it supports forecasting, segmentation, recommendation, decision-support or customer/retail intelligence use cases\n\nMake the rollout enterprise-grade \n\nBuild the evaluation harness: quality, groundedness, safety, bias and prompt-injection testing, combining LLM-as-judge with human review, so agents earn their release\n\nEstablish versioning and CI/CD for everything agents, prompts, tools, MCPs and pipelines with environments, release gates, rollback and kill-switches \n\nStand up observability and AgentOps: telemetry, monitoring, cost tracking, drift detection and continuous improvement loops in production\n\nDefine repeatable, supervised delivery patterns and progressively embed them into day-to-day engineering and operational practice\n\nEngineer for trust, cost and scale \n\nBuild with security, privacy and governance by design human-in-the-loop by default for anything touching customers, money or systems of record; full logging and traceability\n\nManage performance, reliability and cost in production; reduce recurring issues through standard patterns\n\nDocument thoroughly runbooks, agent cards, decision records so what you build is supportable and reusable\n\nRaise the whole organisation's game \n\nPartner with and coach business AI champions; where a high-value area is stuck, embed temporarily to deliver the first agent and hand it back. \n\nContribute SME insight, reusable patterns and delivery learnings into Forever New's enterprise AI standards and guardrails through established architecture and governance forums\n\nTHE SKILLS & EXPERIENCE YOU OFFER US\n\n3+ years’ experience in the retail or related industry \nProven experience designing, building and shipping LLM/agent applications to production (not just prototypes)\nStrong software engineering fundamentals in Python and/or TypeScript (or similar), with solid API and version-control practice\nHands-on with agent frameworks and orchestration, tool/function calling, and the Model Context Protocol (MCP)\nRAG, embeddings and vector databases, plus strong SQL and data pipeline skills; comfortable working with structured and unstructured data. \nEvaluation and LLMOps / AgentOps: building eval harnesses, versioning prompts and agents, CI/CD, observability and guardrails for AI systems at scale\nPrompt and context engineering, with an eval-driven, iterative approach\nStrong analytical and problem-solving skills\nResults-driven with excellent organisation and prioritisation abilities\nCalm, adaptable, and effective in fast-paced environments\nProactive mindset with strong initiative and accountability\nCommercially astute with sound business judgement\nCollaborative communicator, able to engage technical and non-technical stakeholders\nOUR VALUES\n\nWhether we’re innovating behind the scenes, collaborating across global teams, or styling our customers in store, these values guide everything we do:\n\nThink Customer\nRespect for All\nKeep it Simple\nTake Responsibility\nAct with Pace\nJoin Forever New and play a key role in shaping a modern, data-driven retail business.\nBe part of a brand where fashion meets innovation and help us make it her moment.",
+        "title": "Senior AI Automation Engineer – Digital",
+        "company": "Forever New Clothing",
+        "source_url": "https://au.seek.com/job/93428801?ref=recom-homepage&pos=16&origin=showNewTab#sol=b52a9838aeab2c05b920b8122233829f3f2ac28f"
+      },
+      "role_family": {
+        "family": "ai_engineering",
+        "evidence": [
+          {
+            "excerpt": "The Senior AI Engineer (Agents & Automation) designs, builds, evaluates and operates the AI agents, tools and pipelines that put AI to work across Forever New with e-commerce and digital as the primary focus, and the whole business as the canvas.",
+            "section": "JobDescription"
+          }
+        ]
+      },
+      "seniority": {
+        "level": "senior",
+        "ambiguous": false,
+        "candidate_levels": [],
+        "evidence": [
+          {
+            "excerpt": "Senior AI Automation Engineer – Digital",
+            "section": "Job title"
+          }
+        ]
+      },
+      "technologies": [
+        {
+          "name": "Python",
+          "level": "required",
+          "evidence": [
+            {
+              "excerpt": "Strong software engineering fundamentals in Python and/or TypeScript (or similar), with solid API and version-control practice",
+              "section": "JobDescription"
+            }
+          ]
+        },
+        {
+          "name": "Databricks",
+          "level": "required",
+          "evidence": [
+            {
+              "excerpt": "Contribute to creating agents that generate dashboards, answer business questions and release insights from enterprise data and the governed semantic layer on Databricks",
+              "section": "JobDescription"
+            }
+          ]
+        },
+        {
+          "name": "SQL",
+          "level": "required",
+          "evidence": [
+            {
+              "excerpt": "RAG, embeddings and vector databases, plus strong SQL and data pipeline skills; comfortable working with structured and unstructured data.",
+              "section": "JobDescription"
+            }
+          ]
+        },
+        {
+          "name": "Retrieval Augmented Generation (RAG)",
+          "level": "required",
+          "evidence": [
+            {
+              "excerpt": "Build retrieval-augmented generation (RAG), vector and data pipelines grounded in governed data, so agents answer from a single source of truth",
+              "section": "JobDescription"
+            }
+          ]
+        },
+        {
+          "name": "Version Control",
+          "level": "required",
+          "evidence": [
+            {
+              "excerpt": "Strong software engineering fundamentals in Python and/or TypeScript (or similar), with solid API and version-control practice",
+              "section": "JobDescription"
+            }
+          ]
+        },
+        {
+          "name": "Machine Learning Operations (LLMOps)",
+          "level": "preferred",
+          "evidence": [
+            {
+              "excerpt": "Evaluation and LLMOps / AgentOps: building eval harnesses, versioning prompts and agents, CI/CD, observability and guardrails for AI systems at scale",
+              "section": "JobDescription"
+            }
+          ]
+        }
+      ],
+      "responsibilities": [
+        {
+          "description": "Design and ship production AI agents across the taxonomy conversational/customer-facing, knowledge & Q&A, workflow/process automation, decision-support and monitoring",
+          "evidence": [
+            {
+              "excerpt": "Design and ship production AI agents across the taxonomy conversational/customer-facing, knowledge & Q&A, workflow/process automation, decision-support and monitoring",
+              "section": "JobDescription"
+            }
+          ]
+        },
+        {
+          "description": "Reengineer and optimise the underlying business process first, then automate it as automating a broken process just makes waste faster",
+          "evidence": [
+            {
+              "excerpt": "Reengineer and optimise the underlying business process first (mapping it in BPMN), then automate it because automating a broken process just makes waste faster",
+              "section": "JobDescription"
+            }
+          ]
+        },
+        {
+          "description": "Build the evaluation harness combining LLM-as-judge with human review, so agents earn their release",
+          "evidence": [
+            {
+              "excerpt": "Build the evaluation harness: quality, groundedness, safety, bias and prompt-injection testing, combining LLM-as-judge with human review, so agents earn their release",
+              "section": "JobDescription"
+            }
+          ]
+        },
+        {
+          "description": "Establish versioning and CI/CD for everything agents, prompts, tools, MCPs and pipelines with environments, release gates, rollback and kill-switches",
+          "evidence": [
+            {
+              "excerpt": "Establish versioning and CI/CD for everything agents, prompts, tools, MCPs and pipelines with environments, release gates, rollback and kill-switches",
+              "section": "JobDescription"
+            }
+          ]
+        },
+        {
+          "description": "Partner with and coach business AI champions to deliver the first agent to high-value areas",
+          "evidence": [
+            {
+              "excerpt": "Partner with and coach business AI champions; where a high-value area is stuck, embed temporarily to deliver the first agent and hand it back.",
+              "section": "JobDescription"
+            }
+          ]
+        }
+      ],
+      "compensation": {
+        "clarity": "stated",
+        "minimum": null,
+        "maximum": null,
+        "currency": "AUD",
+        "period": "year",
+        "raw_text": "Generous Salary + Super + 40% discount",
+        "evidence": [
+          {
+            "excerpt": "Generous Salary + Super + 40% discount",
+            "section": "JobDescription"
+          }
+        ]
+      },
+      "location": {
+        "clarity": "stated",
+        "summary": "Melbourne VIC (Hybrid)",
+        "evidence": [
+          {
+            "excerpt": "Melbourne VIC (Hybrid)",
+            "section": "JobDescription"
+          }
+        ]
+      },
+      "work_arrangement": {
+        "arrangement": "hybrid",
+        "details": null,
+        "evidence": [
+          {
+            "excerpt": "Melbourne VIC (Hybrid)",
+            "section": "JobDescription"
+          }
+        ]
+      },
+      "employment": {
+        "working_hours": "full_time",
+        "engagement_type": "unspecified",
+        "evidence": [
+          {
+            "excerpt": "Full time",
+            "section": "JobDescription"
+          }
+        ]
+      },
+      "experience_requirements": [
+        {
+          "description": "3+ years’ experience in the retail or related industry",
+          "level": "required",
+          "minimum_years": 3.0,
+          "maximum_years": null,
+          "evidence": [
+            {
+              "excerpt": "3+ years’ experience in the retail or related industry",
+              "section": "JobDescription"
+            }
+          ]
+        }
+      ]
+    },
+    "application_tier": "silver",
+    "pursuit_posture": "consider",
+    "practical_value": "acceptable_opportunity",
+    "effort_level": "minimal",
+    "summary": "Recommend posture 'consider' with effort tier 'silver' (minimal). Technical fit 'mixed', commercial fit 'mixed', portfolio fit 'strong'. Owner review is required before any application action.",
+    "reasons": [
+      {
+        "kind": "alignment",
+        "summary": "Technical fit is 'mixed' and portfolio fit is 'strong' for this opportunity.",
+        "importance": "material",
+        "evidence": [
+          {
+            "origin": "opportunity_assessment",
+            "job_evidence": null,
+            "profile_evidence": null,
+            "assessment_dimension": "technical",
+            "assessment_judgment": "mixed",
+            "portfolio_project_id": null,
+            "excerpt": null
+          },
+          {
+            "origin": "opportunity_assessment",
+            "job_evidence": null,
+            "profile_evidence": null,
+            "assessment_dimension": "portfolio",
+            "assessment_judgment": "strong",
+            "portfolio_project_id": null,
+            "excerpt": null
+          }
+        ]
+      },
+      {
+        "kind": "priority",
+        "summary": "Pursuit posture 'consider' with effort tier 'silver' reflects commercial fit 'mixed' and AI-aligned role family.",
+        "importance": "material",
+        "evidence": [
+          {
+            "origin": "opportunity_assessment",
+            "job_evidence": null,
+            "profile_evidence": null,
+            "assessment_dimension": "commercial",
+            "assessment_judgment": "mixed",
+            "portfolio_project_id": null,
+            "excerpt": null
+          },
+          {
+            "origin": "job_analysis",
+            "job_evidence": {
+              "source": "role_family",
+              "item_index": null,
+              "name": null,
+              "excerpt": null
+            },
+            "profile_evidence": null,
+            "assessment_dimension": null,
+            "assessment_judgment": null,
+            "portfolio_project_id": null,
+            "excerpt": null
+          }
+        ]
+      }
+    ],
+    "risks_or_gaps": [
+      {
+        "summary": "Commercial fit is 'mixed', which may reduce the value of investing significant effort.",
+        "importance": "minor",
+        "evidence": [
+          {
+            "origin": "opportunity_assessment",
+            "job_evidence": null,
+            "profile_evidence": null,
+            "assessment_dimension": "commercial",
+            "assessment_judgment": "mixed",
+            "portfolio_project_id": null,
+            "excerpt": null
+          }
+        ]
+      },
+      {
+        "summary": "The role requires 3+ years of experience in the retail industry, which the candidate does not possess.",
+        "importance": "material",
+        "evidence": [
+          {
+            "origin": "opportunity_assessment",
+            "job_evidence": null,
+            "profile_evidence": null,
+            "assessment_dimension": "technical",
+            "assessment_judgment": "mixed",
+            "portfolio_project_id": null,
+            "excerpt": null
+          }
+        ]
+      }
+    ],
+    "manual_checks": [],
+    "next_actions": [
+      {
+        "kind": "consider_emphasising_portfolio_projects",
+        "summary": "Consider emphasising the strongest matched portfolio project(s) in any application materials you prepare.",
+        "related_project_id": "operational-intelligence-copilot",
+        "evidence": [
+          {
+            "origin": "portfolio_match",
+            "job_evidence": null,
+            "profile_evidence": null,
+            "assessment_dimension": null,
+            "assessment_judgment": null,
+            "portfolio_project_id": "operational-intelligence-copilot",
+            "excerpt": null
+          }
+        ]
+      },
+      {
+        "kind": "consider_owner_review",
+        "summary": "Consider reviewing this full strategy before taking any external action.",
+        "related_project_id": null,
+        "evidence": [
+          {
+            "origin": "opportunity_assessment",
+            "job_evidence": null,
+            "profile_evidence": null,
+            "assessment_dimension": "technical",
+            "assessment_judgment": "mixed",
+            "portfolio_project_id": null,
+            "excerpt": null
+          }
+        ]
+      }
+    ],
+    "portfolio_emphasis": [
+      {
+        "project_id": "operational-intelligence-copilot",
+        "source_rank": 1,
+        "summary": "Consider emphasising 'operational-intelligence-copilot' (PortfolioMatch rank 1).",
+        "evidence": [
+          {
+            "origin": "portfolio_match",
+            "job_evidence": null,
+            "profile_evidence": null,
+            "assessment_dimension": null,
+            "assessment_judgment": null,
+            "portfolio_project_id": "operational-intelligence-copilot",
+            "excerpt": null
+          }
+        ]
+      },
+      {
+        "project_id": "public-holiday-entitlements",
+        "source_rank": 2,
+        "summary": "Consider emphasising 'public-holiday-entitlements' (PortfolioMatch rank 2).",
+        "evidence": [
+          {
+            "origin": "portfolio_match",
+            "job_evidence": null,
+            "profile_evidence": null,
+            "assessment_dimension": null,
+            "assessment_judgment": null,
+            "portfolio_project_id": "public-holiday-entitlements",
+            "excerpt": null
+          }
+        ]
+      },
+      {
+        "project_id": "governance-document-rag",
+        "source_rank": 3,
+        "summary": "Consider emphasising 'governance-document-rag' (PortfolioMatch rank 3).",
+        "evidence": [
+          {
+            "origin": "portfolio_match",
+            "job_evidence": null,
+            "profile_evidence": null,
+            "assessment_dimension": null,
+            "assessment_judgment": null,
+            "portfolio_project_id": "governance-document-rag",
+            "excerpt": null
+          }
+        ]
+      }
+    ],
+    "assumptions": [
+      "No candidate salary minimum is configured, so compensation was not treated as a hard threshold conflict."
+    ],
+    "decision_blockers": [],
+    "owner_review_required": true,
+    "insufficient_information": false
+  }
+}

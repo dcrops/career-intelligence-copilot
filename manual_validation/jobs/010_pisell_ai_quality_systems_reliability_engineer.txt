@@ -1,0 +1,178 @@
+AI Quality & Systems Reliability Engineer
+Pisell
+View all jobs
+Glen Waverley, Melbourne VIC
+Testing & Quality Assurance (Information & Communication Technology)
+Full time
+$80,000 – $120,000 per year
+Profile salary match
+
+Posted 6d ago
+•
+Medium application volume
+
+How you match
+2 skills and credentials match your profile
+ Python Programming
+ Java Programming
+Show all⁠
+About the Role
+We are seeking an AI Quality & Systems Reliability Engineer to help build our AI-native testing capability and improve the reliability of our software, systems and connected devices in Melbourne.
+
+This is an AI-native quality engineering role combining:
+
+AI-assisted and AI-driven software testing
+
+Test automation
+
+Systems reliability investigation
+
+Software, device and IoT integration testing
+
+On-site operational research
+
+Local test lab development
+
+You will work across our SaaS platform, web applications, iOS and Android applications, POS systems, connected devices and IoT-enabled environments.
+
+This role goes beyond executing test cases and reporting defects. You will be expected to use AI as a core part of the testing workflow, investigate complex issues, reproduce failures, identify root causes and follow problems through to verified resolution.
+
+You will work closely with product, engineering, operations and customer-facing teams to improve product quality and system stability in real operating environments.
+
+Key Responsibilities
+AI-Native Quality Engineering
+Build and improve an AI-native quality engineering approach across web, mobile, POS and integrated systems.
+
+Use AI throughout the testing lifecycle, including test design, exploratory testing, test-data generation, defect analysis, automation development and maintenance.
+
+Evaluate and introduce AI testing tools, coding agents and automated workflows that improve test coverage, speed and consistency.
+
+Convert product requirements, production issues and customer feedback into effective test scenarios.
+
+Identify quality risks early and recommend practical prevention and improvement measures.
+
+Test Automation and Quality Validation
+Design, build and maintain automated tests for web, iOS and Android applications.
+
+Develop automated regression, smoke, integration and end-to-end test coverage for critical business workflows.
+
+Improve the reliability, maintainability and efficiency of automated testing.
+
+Perform exploratory, functional, compatibility and stability testing where automation alone is insufficient.
+
+Produce clear testing evidence, quality assessments and release recommendations.
+
+Systems Reliability and Investigation
+Investigate issues across applications, devices, operating systems, networks and third-party integrations.
+
+Reproduce intermittent, environment-specific and difficult-to-diagnose failures.
+
+Analyse logs, system behaviour, device configurations and operational workflows.
+
+Perform structured root-cause analysis and recommend corrective and preventive actions.
+
+Verify solutions under realistic operating conditions and monitor recurring issues.
+
+Work with product and engineering teams to improve long-term product stability.
+
+Test Lab and On-Site Operations
+Help establish and operate a local quality and systems reliability lab in Melbourne.
+
+Maintain test devices, operating environments, system configurations and equipment records.
+
+Build repeatable test environments that reflect real customer configurations.
+
+Design long-running, recovery and failure-simulation tests.
+
+Visit customer venues to observe workflows, investigate issues and collect technical evidence.
+
+Translate field findings into test scenarios, product improvements and operating procedures.
+
+Create practical testing, troubleshooting and device-management documentation.
+
+Required Skills and Experience
+At least five years of experience in software testing, quality engineering, test automation, systems integration or a similar technical role.
+
+Strong hands-on experience testing web or mobile applications.
+
+Experience designing and maintaining automated tests using modern testing frameworks.
+
+Ability to read, write and troubleshoot automation code using JavaScript, TypeScript, Python, Java or a similar language.
+
+Practical experience using AI coding tools, AI agents or AI-assisted testing tools as part of an engineering workflow.
+
+Strong analytical and troubleshooting skills across software, connected devices, IoT environments and networks.
+
+Ability to investigate complex issues, analyse evidence and communicate root causes clearly.
+
+Strong written and spoken English and Mandarin.
+
+Ability to work independently, take ownership and follow issues through to resolution.
+
+Full Australian working rights.
+
+Ability to travel to customer sites within Melbourne when required.
+
+Highly Desirable
+Experience building or operating AI-native testing workflows.
+
+Experience using AI agents for test generation, execution, analysis or automation maintenance.
+
+Experience testing large-scale POS, retail, hospitality, ticketing, venue-management or payment-related systems.
+
+Experience with complex systems involving web applications, mobile applications, POS terminals, IoT-enabled devices and connected peripherals.
+
+Experience establishing a test lab or managing multiple test devices and environments.
+
+Experience investigating production incidents or customer-site reliability issues.
+
+Candidate Profile
+The ideal candidate is hands-on, analytical and highly accountable.
+
+You are comfortable using AI as a practical engineering tool rather than treating it as an optional add-on. You can move between automated testing, application behaviour, physical devices, customer workflows and on-site environments.
+
+You do not stop at recording a defect. You want to understand why it happened, how to reproduce it, how to fix it and how to prevent it from happening again.
+
+You should be:
+
+Proactive and self-directed
+
+Curious and technically hands-on
+
+Structured in problem investigation
+
+Comfortable with ambiguity
+
+Patient with intermittent issues
+
+Focused on outcomes and long-term stability
+
+What Success Looks Like
+Within the first six months, the successful candidate will be expected to:
+
+Establish a functional local quality and systems reliability lab.
+
+Introduce an AI-native testing workflow for key products and business processes.
+
+Build reliable automated coverage for critical user journeys.
+
+Improve the reproduction and resolution rate of production and field issues.
+
+Reduce recurring software, integration and device-related incidents.
+
+Create clear testing, troubleshooting and operating documentation.
+
+Deliver measurable improvements in product quality and system stability.
+
+How to Apply
+Please submit your CV and a short cover letter via SEEK. In your cover letter, please include:
+
+Your software test automation experience
+
+How you have used AI in testing or engineering
+
+Your experience with complex POS or integrated systems
+
+An example of a difficult stability issue you investigated and resolved
+
+Your English and Mandarin language proficiency

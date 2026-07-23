@@ -77,12 +77,19 @@ The first implementation decision is now recorded in
 
 **Status:** In progress. FR-001 Career Profile, FR-002 Job Analysis, FR-003
 Opportunity Assessment, FR-004 Portfolio Matching, and FR-005 Application Strategy are
-**complete**. FR-002 manual evaluation closed with extraction prompt v5. FR-003 closed with
-assessment prompt **v6**, offline golden journeys, and live manual evaluation at
-**PARTIAL PASS** — see [eval/fr002_openai_manual_eval.md](eval/fr002_openai_manual_eval.md)
-and [eval/fr003_openai_manual_eval.md](eval/fr003_openai_manual_eval.md). Next decision-loop
-stages: job opportunity pipeline tracking and outcome logging (FR-013), then ranked
-comparison of open assessed opportunities.
+**complete**. FR-005 is **formally closed** after owner manual validation of the
+FR-001→FR-005 pipeline (real SEEK/LinkedIn jobs 001–013) — see
+[manual_validation/jobs/manual_validation_notes.md](../manual_validation/jobs/manual_validation_notes.md).
+FR-003 live assessment prompt is currently **v11** (calibration and evidence-contract
+hardening after Jobs 009–012); earlier offline/live eval baselines remain in
+[eval/fr002_openai_manual_eval.md](eval/fr002_openai_manual_eval.md) and
+[eval/fr003_openai_manual_eval.md](eval/fr003_openai_manual_eval.md).
+
+**Next planned functional requirement:** FR-006 CV Generation.
+
+**Remaining Phase 2 work** (still required for Phase 2 exit; sequenced after FR-005
+closure per owner priority): job opportunity pipeline tracking, outcome logging (FR-013),
+and ranked comparison of open assessed opportunities.
 
 
 
@@ -107,11 +114,18 @@ comparison of open assessed opportunities.
 - Portfolio matching (FR-004) — **Complete**
 
 - Application tiering — Platinum, Gold, Silver, Bronze — with pursuit posture, effort
-  guidance, and advisory next actions (FR-005) — **Complete**
+  guidance, and advisory next actions (FR-005) — **Complete** (formally closed after
+  owner manual validation)
 
-- Job opportunity pipeline and outcome logging (FR-013)
+- Job opportunity pipeline and outcome logging (FR-013) — remaining for Phase 2 exit
 
-- Ranked comparison of open assessed opportunities
+- Ranked comparison of open assessed opportunities — remaining for Phase 2 exit
+
+
+
+**Next planned functional requirement:** FR-006 CV Generation (post–Phase 2 capability;
+owner sequencing after FR-005 closure). Remaining Phase 2 exit criteria above are not
+waived.
 
 
 

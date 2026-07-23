@@ -7,3 +7,5 @@ pytest-cache-files-*/
 .coverage
 htmlcov/
 .venv/
+tmp_*.json
+tmp_*.txt

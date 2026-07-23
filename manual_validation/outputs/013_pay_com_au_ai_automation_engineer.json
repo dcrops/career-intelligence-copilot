@@ -1,0 +1,1234 @@
+{
+  "components": [
+    {
+      "name": "CareerProfile",
+      "implementation": "CareerProfileService / YAML",
+      "mode": "deterministic_production"
+    },
+    {
+      "name": "JobAnalysis",
+      "implementation": "OpenAIJobExtractor",
+      "mode": "openai_production"
+    },
+    {
+      "name": "OpportunityAssessment",
+      "implementation": "OpenAIAssessor",
+      "mode": "openai_production"
+    },
+    {
+      "name": "PortfolioMatch",
+      "implementation": "DeterministicMatcher",
+      "mode": "deterministic_production"
+    },
+    {
+      "name": "ApplicationStrategy",
+      "implementation": "DeterministicStrategyPlanner",
+      "mode": "deterministic_production"
+    }
+  ],
+  "volume_applications_enabled": false,
+  "profile_identity": {
+    "full_name": "David Cropper",
+    "target_role": "AI Engineer"
+  },
+  "posting": {
+    "raw_text": "Company logo for, pay.com.au.\npay.com.au\n\n\nAI Automation Engineer \n\nMelbourne, Victoria, Australia · 3 days ago · Over 100 people clicked apply\n\nPromoted by hirer · Responses managed off LinkedIn\n\nHybrid\nFull-time\nApply\n\nSave\nYour profile and resume match the required qualifications well\n\n\n\nShow match details\n\nBETA • Is this information helpful?\n\n\nAbout the job\nAbout Us\n\npay.com.au is one of Australia’s fastest‑growing technology scale-ups, trusted by businesses. As we continue to scale in Australia and launch into the US under PayRewards.com, our mission is to simplify and supercharge the way they pay everyday expenses. Since 2019, we’ve been transforming business payments by enabling companies—from sole traders to large enterprises.\n\n\n\nOur unified platform lets users link their bank accounts and any major credit card, improving cash flow while unlocking powerful rewards on every transaction.\n\n\n\nRecognised as a rapidly scaling Australian success story—with coverage in outlets like the Australian Financial Review noting our growth with a $600+ million valuation, we’re reshaping how businesses think about payments, loyalty and financial efficiency.\n\n\n\nAt pay.com.au, you’ll join a fast-growing team shaping the future of B2B payments. Our Melbourne office is a hub of creativity, collaboration, and seriously great coffee—an environment where ideas move quickly and impact is felt every day. If you want to be part of a company with momentum, this is the place to be.\n\n\n\nWhy join us?\n\nBe part of an exciting Tech Scale-up, with teams across Australia and the USA.\nEnjoy flexible working arrangements and a great work-life balance. Awarded 2025 People’s Choice Award winner at the Finder Innovation Awards, Finalist for FinTech Organisation of the Year at the 2025 FinTech Australia Finnies, Number 1 on the Smart50 list 2024, Top 3 Deloitte Tech Fast 50 & Victoria State Champion!\nGrow your career in a culture that values creativity, innovation, and collaboration with access to learning budgets to accelerate your career.\nOur new Pay HQ in Windsor brings together great coffee, collaborative spaces, and the kind of energy that makes doing your best work easy. \n\n\nAI Automation Engineer\n\nAs pay.com.au has scaled, everyday processes that were once easy to manage have become work worth refining, optimising and automating — creating an organisation-wide opportunity to lift capability across every team. This is a build-first role: you’ll sit with teams across sales, marketing, operations, product and technology, dig into how they really work, and ship automations that hold up in production and actually get used. AI is one tool among several, deployed deliberately where it earns its place — not by default.\n\n\n\nResponsibilities\n\nRun discovery with non-technical stakeholders, elicit, question, push back, and reframe vague asks into well-scoped problems.\nDesign first, solution second, then build the automations and workflows — picking the right tool for the scale of the problem, whether that’s code, n8n, agent SDKs, a vendor product, or a well-configured off-the-shelf AI tool.\nShip with production discipline: human-in-the-loop where needed, secrets and PII handled properly, and failures that are observable and recoverable.\nPackage what you build into shareable workflows others can pick up and run, and support the team’s AI enablement efforts, including setting up connectors and MCPs.\nInstrument usage and iterate on what you’ve shipped until it sticks.\nSupport the product team on AI initiatives. \n\n\nAbout You\n\nYou’ve spent real time on automation projects across a range of contexts, and you can tell where AI genuinely helps and where conventional software is the better call.\nStrong coding fundamentals — comfortable writing and maintaining production code (e.g. Python or TypeScript), working with APIs, and orchestrating with tools like n8n, agent SDKs, database fundamentals, SQL, and migration hygiene.\nFluency with mainstream AI tools (Claude, Cowork, connectors, MCPs) and the judgment to know when they’re enough and when they’re not plus secure, thorough engineering habits around test harnesses, telemetry, logging and sensitive data.\nGenuine curiosity about a fast-moving AI ecosystem and a habit of experimenting with new tools and models on your own initiative.\nThe confidence to question existing workflows even when the ask comes from someone senior — and the comfort to work independently in a lean environment, owning and maintaining what you ship. \n\n\nWe know not everyone will meet every requirement, and that’s okay. If you’re excited about the role and believe you can make an impact, we’re keen to hear from you.\n\nA few more things...\n\nSuccessful candidates joining the team will need to complete a National Police Record Check.\n\nCandidates who require adjustments at any stage of the recruitment process are encouraged to let us know. We’re happy to support you.\n\nWe’re committed to an inclusive and diverse recruitment process where everyone feels respected and supported. We welcome applicants from all backgrounds, identities and abilities and ensure fair, equitable consideration at every stage.",
+    "title": "AI Automation Engineer",
+    "company": "Pay.com.au",
+    "source_url": "https://www.linkedin.com/jobs/search-results/?currentJobId=4442019029&eBP=CwEAAAGfjO1IwARtfm_zJhO3trJJgH3aCWmW2UbGaLzZSwCbzcYI9yBWS2LVk8jsRQZ1MQ5-LxdfKrHAaB4axspQjohxE1bUh3I7izctZytle4c0X-P47dThLct0YtPo6-g87DzltW8ZxXgSZhgbMXehza2dUjoaUpPPL1L_9wpcPcUpVbi1PFc9WDkSLVEldR8o5bY3on1UfCp5t0Uv-ilqNJG8ndx1mR6AtxMKDUpR-tnXOUEOrgm-nHRgvGRk_4QoXdei-c62NU4-ah69651zOECuge-WUXoVv0TdzP4s4C0UcdE-8K8MLkXe5ckDHmMnMmX9YtG3z-_CtfyqtYHXgbBqSbEhU6FeuEgTQ3G2S_NT8Qp0bsscjaXJFfHhKDyquskc0CI0Wiz9wQVs2tSqDo0al11lOFddi-evdu00etm44xWNGG_awwt5cTif2eZ-DesedTKMyzYewqpOP_0ZYozr_tsuzQ&refId=kI7YYcveuaax8z8A2GDROA%3D%3D&trackingId=Vq5PGpnYvtGJaO9slfB8Xw%3D%3D&keywords=ai%20engineer&origin=JOBS_HOME_SEARCH_BUTTON"
+  },
+  "job_analysis": {
+    "posting": {
+      "raw_text": "Company logo for, pay.com.au.\npay.com.au\n\n\nAI Automation Engineer \n\nMelbourne, Victoria, Australia · 3 days ago · Over 100 people clicked apply\n\nPromoted by hirer · Responses managed off LinkedIn\n\nHybrid\nFull-time\nApply\n\nSave\nYour profile and resume match the required qualifications well\n\n\n\nShow match details\n\nBETA • Is this information helpful?\n\n\nAbout the job\nAbout Us\n\npay.com.au is one of Australia’s fastest‑growing technology scale-ups, trusted by businesses. As we continue to scale in Australia and launch into the US under PayRewards.com, our mission is to simplify and supercharge the way they pay everyday expenses. Since 2019, we’ve been transforming business payments by enabling companies—from sole traders to large enterprises.\n\n\n\nOur unified platform lets users link their bank accounts and any major credit card, improving cash flow while unlocking powerful rewards on every transaction.\n\n\n\nRecognised as a rapidly scaling Australian success story—with coverage in outlets like the Australian Financial Review noting our growth with a $600+ million valuation, we’re reshaping how businesses think about payments, loyalty and financial efficiency.\n\n\n\nAt pay.com.au, you’ll join a fast-growing team shaping the future of B2B payments. Our Melbourne office is a hub of creativity, collaboration, and seriously great coffee—an environment where ideas move quickly and impact is felt every day. If you want to be part of a company with momentum, this is the place to be.\n\n\n\nWhy join us?\n\nBe part of an exciting Tech Scale-up, with teams across Australia and the USA.\nEnjoy flexible working arrangements and a great work-life balance. Awarded 2025 People’s Choice Award winner at the Finder Innovation Awards, Finalist for FinTech Organisation of the Year at the 2025 FinTech Australia Finnies, Number 1 on the Smart50 list 2024, Top 3 Deloitte Tech Fast 50 & Victoria State Champion!\nGrow your career in a culture that values creativity, innovation, and collaboration with access to learning budgets to accelerate your career.\nOur new Pay HQ in Windsor brings together great coffee, collaborative spaces, and the kind of energy that makes doing your best work easy. \n\n\nAI Automation Engineer\n\nAs pay.com.au has scaled, everyday processes that were once easy to manage have become work worth refining, optimising and automating — creating an organisation-wide opportunity to lift capability across every team. This is a build-first role: you’ll sit with teams across sales, marketing, operations, product and technology, dig into how they really work, and ship automations that hold up in production and actually get used. AI is one tool among several, deployed deliberately where it earns its place — not by default.\n\n\n\nResponsibilities\n\nRun discovery with non-technical stakeholders, elicit, question, push back, and reframe vague asks into well-scoped problems.\nDesign first, solution second, then build the automations and workflows — picking the right tool for the scale of the problem, whether that’s code, n8n, agent SDKs, a vendor product, or a well-configured off-the-shelf AI tool.\nShip with production discipline: human-in-the-loop where needed, secrets and PII handled properly, and failures that are observable and recoverable.\nPackage what you build into shareable workflows others can pick up and run, and support the team’s AI enablement efforts, including setting up connectors and MCPs.\nInstrument usage and iterate on what you’ve shipped until it sticks.\nSupport the product team on AI initiatives. \n\n\nAbout You\n\nYou’ve spent real time on automation projects across a range of contexts, and you can tell where AI genuinely helps and where conventional software is the better call.\nStrong coding fundamentals — comfortable writing and maintaining production code (e.g. Python or TypeScript), working with APIs, and orchestrating with tools like n8n, agent SDKs, database fundamentals, SQL, and migration hygiene.\nFluency with mainstream AI tools (Claude, Cowork, connectors, MCPs) and the judgment to know when they’re enough and when they’re not plus secure, thorough engineering habits around test harnesses, telemetry, logging and sensitive data.\nGenuine curiosity about a fast-moving AI ecosystem and a habit of experimenting with new tools and models on your own initiative.\nThe confidence to question existing workflows even when the ask comes from someone senior — and the comfort to work independently in a lean environment, owning and maintaining what you ship. \n\n\nWe know not everyone will meet every requirement, and that’s okay. If you’re excited about the role and believe you can make an impact, we’re keen to hear from you.\n\nA few more things...\n\nSuccessful candidates joining the team will need to complete a National Police Record Check.\n\nCandidates who require adjustments at any stage of the recruitment process are encouraged to let us know. We’re happy to support you.\n\nWe’re committed to an inclusive and diverse recruitment process where everyone feels respected and supported. We welcome applicants from all backgrounds, identities and abilities and ensure fair, equitable consideration at every stage.",
+      "title": "AI Automation Engineer",
+      "company": "Pay.com.au",
+      "source_url": "https://www.linkedin.com/jobs/search-results/?currentJobId=4442019029&eBP=CwEAAAGfjO1IwARtfm_zJhO3trJJgH3aCWmW2UbGaLzZSwCbzcYI9yBWS2LVk8jsRQZ1MQ5-LxdfKrHAaB4axspQjohxE1bUh3I7izctZytle4c0X-P47dThLct0YtPo6-g87DzltW8ZxXgSZhgbMXehza2dUjoaUpPPL1L_9wpcPcUpVbi1PFc9WDkSLVEldR8o5bY3on1UfCp5t0Uv-ilqNJG8ndx1mR6AtxMKDUpR-tnXOUEOrgm-nHRgvGRk_4QoXdei-c62NU4-ah69651zOECuge-WUXoVv0TdzP4s4C0UcdE-8K8MLkXe5ckDHmMnMmX9YtG3z-_CtfyqtYHXgbBqSbEhU6FeuEgTQ3G2S_NT8Qp0bsscjaXJFfHhKDyquskc0CI0Wiz9wQVs2tSqDo0al11lOFddi-evdu00etm44xWNGG_awwt5cTif2eZ-DesedTKMyzYewqpOP_0ZYozr_tsuzQ&refId=kI7YYcveuaax8z8A2GDROA%3D%3D&trackingId=Vq5PGpnYvtGJaO9slfB8Xw%3D%3D&keywords=ai%20engineer&origin=JOBS_HOME_SEARCH_BUTTON"
+    },
+    "role_family": {
+      "family": "ai_engineering",
+      "evidence": [
+        {
+          "excerpt": "AI is one tool among several, deployed deliberately where it earns its place",
+          "section": "JobDescription"
+        }
+      ]
+    },
+    "seniority": {
+      "level": "unknown",
+      "ambiguous": false,
+      "candidate_levels": [],
+      "evidence": []
+    },
+    "technologies": [
+      {
+        "name": "Python",
+        "level": "required",
+        "evidence": [
+          {
+            "excerpt": "comfortable writing and maintaining production code (e.g. Python or TypeScript)",
+            "section": "JobDescription"
+          }
+        ]
+      },
+      {
+        "name": "TypeScript",
+        "level": "required",
+        "evidence": [
+          {
+            "excerpt": "comfortable writing and maintaining production code (e.g. Python or TypeScript)",
+            "section": "JobDescription"
+          }
+        ]
+      },
+      {
+        "name": "SQL",
+        "level": "required",
+        "evidence": [
+          {
+            "excerpt": "working with APIs, and orchestrating with tools like n8n, agent SDKs, database fundamentals, SQL",
+            "section": "JobDescription"
+          }
+        ]
+      }
+    ],
+    "responsibilities": [
+      {
+        "description": "Run discovery with non-technical stakeholders, elicit, question, push back, and reframe vague asks into well-scoped problems.",
+        "evidence": [
+          {
+            "excerpt": "Run discovery with non-technical stakeholders, elicit, question, push back, and reframe vague asks into well-scoped problems.",
+            "section": "JobDescription"
+          }
+        ]
+      },
+      {
+        "description": "Design first, solution second, then build the automations and workflows.",
+        "evidence": [
+          {
+            "excerpt": "Design first, solution second, then build the automations and workflows — picking the right tool for the scale of the problem",
+            "section": "JobDescription"
+          }
+        ]
+      },
+      {
+        "description": "Ship with production discipline: human-in-the-loop where needed, secrets and PII handled properly.",
+        "evidence": [
+          {
+            "excerpt": "Ship with production discipline: human-in-the-loop where needed, secrets and PII handled properly",
+            "section": "JobDescription"
+          }
+        ]
+      },
+      {
+        "description": "Package what you build into shareable workflows others can pick up and run.",
+        "evidence": [
+          {
+            "excerpt": "Package what you build into shareable workflows others can pick up and run",
+            "section": "JobDescription"
+          }
+        ]
+      },
+      {
+        "description": "Instrument usage and iterate on what you’ve shipped until it sticks.",
+        "evidence": [
+          {
+            "excerpt": "Instrument usage and iterate on what you’ve shipped until it sticks.",
+            "section": "JobDescription"
+          }
+        ]
+      },
+      {
+        "description": "Support the product team on AI initiatives.",
+        "evidence": [
+          {
+            "excerpt": "Support the product team on AI initiatives.",
+            "section": "JobDescription"
+          }
+        ]
+      }
+    ],
+    "compensation": {
+      "clarity": "unstated",
+      "minimum": null,
+      "maximum": null,
+      "currency": null,
+      "period": null,
+      "raw_text": null,
+      "evidence": []
+    },
+    "location": {
+      "clarity": "stated",
+      "summary": "Melbourne, Victoria, Australia",
+      "evidence": [
+        {
+          "excerpt": "Melbourne, Victoria, Australia · 3 days ago",
+          "section": "JobDescription"
+        }
+      ]
+    },
+    "work_arrangement": {
+      "arrangement": "hybrid",
+      "details": null,
+      "evidence": [
+        {
+          "excerpt": "Hybrid",
+          "section": "JobDescription"
+        }
+      ]
+    },
+    "employment": {
+      "working_hours": "full_time",
+      "engagement_type": "unspecified",
+      "evidence": [
+        {
+          "excerpt": "Full-time",
+          "section": "JobDescription"
+        }
+      ]
+    },
+    "experience_requirements": []
+  },
+  "opportunity_assessment": {
+    "job_analysis": {
+      "posting": {
+        "raw_text": "Company logo for, pay.com.au.\npay.com.au\n\n\nAI Automation Engineer \n\nMelbourne, Victoria, Australia · 3 days ago · Over 100 people clicked apply\n\nPromoted by hirer · Responses managed off LinkedIn\n\nHybrid\nFull-time\nApply\n\nSave\nYour profile and resume match the required qualifications well\n\n\n\nShow match details\n\nBETA • Is this information helpful?\n\n\nAbout the job\nAbout Us\n\npay.com.au is one of Australia’s fastest‑growing technology scale-ups, trusted by businesses. As we continue to scale in Australia and launch into the US under PayRewards.com, our mission is to simplify and supercharge the way they pay everyday expenses. Since 2019, we’ve been transforming business payments by enabling companies—from sole traders to large enterprises.\n\n\n\nOur unified platform lets users link their bank accounts and any major credit card, improving cash flow while unlocking powerful rewards on every transaction.\n\n\n\nRecognised as a rapidly scaling Australian success story—with coverage in outlets like the Australian Financial Review noting our growth with a $600+ million valuation, we’re reshaping how businesses think about payments, loyalty and financial efficiency.\n\n\n\nAt pay.com.au, you’ll join a fast-growing team shaping the future of B2B payments. Our Melbourne office is a hub of creativity, collaboration, and seriously great coffee—an environment where ideas move quickly and impact is felt every day. If you want to be part of a company with momentum, this is the place to be.\n\n\n\nWhy join us?\n\nBe part of an exciting Tech Scale-up, with teams across Australia and the USA.\nEnjoy flexible working arrangements and a great work-life balance. Awarded 2025 People’s Choice Award winner at the Finder Innovation Awards, Finalist for FinTech Organisation of the Year at the 2025 FinTech Australia Finnies, Number 1 on the Smart50 list 2024, Top 3 Deloitte Tech Fast 50 & Victoria State Champion!\nGrow your career in a culture that values creativity, innovation, and collaboration with access to learning budgets to accelerate your career.\nOur new Pay HQ in Windsor brings together great coffee, collaborative spaces, and the kind of energy that makes doing your best work easy. \n\n\nAI Automation Engineer\n\nAs pay.com.au has scaled, everyday processes that were once easy to manage have become work worth refining, optimising and automating — creating an organisation-wide opportunity to lift capability across every team. This is a build-first role: you’ll sit with teams across sales, marketing, operations, product and technology, dig into how they really work, and ship automations that hold up in production and actually get used. AI is one tool among several, deployed deliberately where it earns its place — not by default.\n\n\n\nResponsibilities\n\nRun discovery with non-technical stakeholders, elicit, question, push back, and reframe vague asks into well-scoped problems.\nDesign first, solution second, then build the automations and workflows — picking the right tool for the scale of the problem, whether that’s code, n8n, agent SDKs, a vendor product, or a well-configured off-the-shelf AI tool.\nShip with production discipline: human-in-the-loop where needed, secrets and PII handled properly, and failures that are observable and recoverable.\nPackage what you build into shareable workflows others can pick up and run, and support the team’s AI enablement efforts, including setting up connectors and MCPs.\nInstrument usage and iterate on what you’ve shipped until it sticks.\nSupport the product team on AI initiatives. \n\n\nAbout You\n\nYou’ve spent real time on automation projects across a range of contexts, and you can tell where AI genuinely helps and where conventional software is the better call.\nStrong coding fundamentals — comfortable writing and maintaining production code (e.g. Python or TypeScript), working with APIs, and orchestrating with tools like n8n, agent SDKs, database fundamentals, SQL, and migration hygiene.\nFluency with mainstream AI tools (Claude, Cowork, connectors, MCPs) and the judgment to know when they’re enough and when they’re not plus secure, thorough engineering habits around test harnesses, telemetry, logging and sensitive data.\nGenuine curiosity about a fast-moving AI ecosystem and a habit of experimenting with new tools and models on your own initiative.\nThe confidence to question existing workflows even when the ask comes from someone senior — and the comfort to work independently in a lean environment, owning and maintaining what you ship. \n\n\nWe know not everyone will meet every requirement, and that’s okay. If you’re excited about the role and believe you can make an impact, we’re keen to hear from you.\n\nA few more things...\n\nSuccessful candidates joining the team will need to complete a National Police Record Check.\n\nCandidates who require adjustments at any stage of the recruitment process are encouraged to let us know. We’re happy to support you.\n\nWe’re committed to an inclusive and diverse recruitment process where everyone feels respected and supported. We welcome applicants from all backgrounds, identities and abilities and ensure fair, equitable consideration at every stage.",
+        "title": "AI Automation Engineer",
+        "company": "Pay.com.au",
+        "source_url": "https://www.linkedin.com/jobs/search-results/?currentJobId=4442019029&eBP=CwEAAAGfjO1IwARtfm_zJhO3trJJgH3aCWmW2UbGaLzZSwCbzcYI9yBWS2LVk8jsRQZ1MQ5-LxdfKrHAaB4axspQjohxE1bUh3I7izctZytle4c0X-P47dThLct0YtPo6-g87DzltW8ZxXgSZhgbMXehza2dUjoaUpPPL1L_9wpcPcUpVbi1PFc9WDkSLVEldR8o5bY3on1UfCp5t0Uv-ilqNJG8ndx1mR6AtxMKDUpR-tnXOUEOrgm-nHRgvGRk_4QoXdei-c62NU4-ah69651zOECuge-WUXoVv0TdzP4s4C0UcdE-8K8MLkXe5ckDHmMnMmX9YtG3z-_CtfyqtYHXgbBqSbEhU6FeuEgTQ3G2S_NT8Qp0bsscjaXJFfHhKDyquskc0CI0Wiz9wQVs2tSqDo0al11lOFddi-evdu00etm44xWNGG_awwt5cTif2eZ-DesedTKMyzYewqpOP_0ZYozr_tsuzQ&refId=kI7YYcveuaax8z8A2GDROA%3D%3D&trackingId=Vq5PGpnYvtGJaO9slfB8Xw%3D%3D&keywords=ai%20engineer&origin=JOBS_HOME_SEARCH_BUTTON"
+      },
+      "role_family": {
+        "family": "ai_engineering",
+        "evidence": [
+          {
+            "excerpt": "AI is one tool among several, deployed deliberately where it earns its place",
+            "section": "JobDescription"
+          }
+        ]
+      },
+      "seniority": {
+        "level": "unknown",
+        "ambiguous": false,
+        "candidate_levels": [],
+        "evidence": []
+      },
+      "technologies": [
+        {
+          "name": "Python",
+          "level": "required",
+          "evidence": [
+            {
+              "excerpt": "comfortable writing and maintaining production code (e.g. Python or TypeScript)",
+              "section": "JobDescription"
+            }
+          ]
+        },
+        {
+          "name": "TypeScript",
+          "level": "required",
+          "evidence": [
+            {
+              "excerpt": "comfortable writing and maintaining production code (e.g. Python or TypeScript)",
+              "section": "JobDescription"
+            }
+          ]
+        },
+        {
+          "name": "SQL",
+          "level": "required",
+          "evidence": [
+            {
+              "excerpt": "working with APIs, and orchestrating with tools like n8n, agent SDKs, database fundamentals, SQL",
+              "section": "JobDescription"
+            }
+          ]
+        }
+      ],
+      "responsibilities": [
+        {
+          "description": "Run discovery with non-technical stakeholders, elicit, question, push back, and reframe vague asks into well-scoped problems.",
+          "evidence": [
+            {
+              "excerpt": "Run discovery with non-technical stakeholders, elicit, question, push back, and reframe vague asks into well-scoped problems.",
+              "section": "JobDescription"
+            }
+          ]
+        },
+        {
+          "description": "Design first, solution second, then build the automations and workflows.",
+          "evidence": [
+            {
+              "excerpt": "Design first, solution second, then build the automations and workflows — picking the right tool for the scale of the problem",
+              "section": "JobDescription"
+            }
+          ]
+        },
+        {
+          "description": "Ship with production discipline: human-in-the-loop where needed, secrets and PII handled properly.",
+          "evidence": [
+            {
+              "excerpt": "Ship with production discipline: human-in-the-loop where needed, secrets and PII handled properly",
+              "section": "JobDescription"
+            }
+          ]
+        },
+        {
+          "description": "Package what you build into shareable workflows others can pick up and run.",
+          "evidence": [
+            {
+              "excerpt": "Package what you build into shareable workflows others can pick up and run",
+              "section": "JobDescription"
+            }
+          ]
+        },
+        {
+          "description": "Instrument usage and iterate on what you’ve shipped until it sticks.",
+          "evidence": [
+            {
+              "excerpt": "Instrument usage and iterate on what you’ve shipped until it sticks.",
+              "section": "JobDescription"
+            }
+          ]
+        },
+        {
+          "description": "Support the product team on AI initiatives.",
+          "evidence": [
+            {
+              "excerpt": "Support the product team on AI initiatives.",
+              "section": "JobDescription"
+            }
+          ]
+        }
+      ],
+      "compensation": {
+        "clarity": "unstated",
+        "minimum": null,
+        "maximum": null,
+        "currency": null,
+        "period": null,
+        "raw_text": null,
+        "evidence": []
+      },
+      "location": {
+        "clarity": "stated",
+        "summary": "Melbourne, Victoria, Australia",
+        "evidence": [
+          {
+            "excerpt": "Melbourne, Victoria, Australia · 3 days ago",
+            "section": "JobDescription"
+          }
+        ]
+      },
+      "work_arrangement": {
+        "arrangement": "hybrid",
+        "details": null,
+        "evidence": [
+          {
+            "excerpt": "Hybrid",
+            "section": "JobDescription"
+          }
+        ]
+      },
+      "employment": {
+        "working_hours": "full_time",
+        "engagement_type": "unspecified",
+        "evidence": [
+          {
+            "excerpt": "Full-time",
+            "section": "JobDescription"
+          }
+        ]
+      },
+      "experience_requirements": []
+    },
+    "technical_fit": {
+      "dimension": "technical",
+      "judgment": "mixed",
+      "summary": "The profile demonstrates relevant automation and programming experience, but lacks sufficient production-oriented AI experience as required by the role.",
+      "findings": [
+        {
+          "kind": "gap",
+          "summary": "The role requires strong production discipline and AI experience which is partially evidenced by independent and professional development but lacks direct commercial AI delivery.",
+          "detail": null,
+          "importance": "material",
+          "job_evidence": [
+            {
+              "source": "responsibility",
+              "item_index": 2,
+              "name": "Production discipline",
+              "excerpt": "Ship with production discipline: human-in-the-loop where needed, secrets and PII handled properly"
+            }
+          ],
+          "profile_evidence": [
+            {
+              "source": "experience",
+              "ref": "experience:chase-risk-compliance-ai-engineer",
+              "excerpt": "Independently develops progressively more complex production-minded AI Engineering projects under a dedicated portfolio brand."
+            },
+            {
+              "source": "experience",
+              "ref": "experience:ai-engineering-development-2025",
+              "excerpt": "Undertook structured AI Engineering study."
+            }
+          ],
+          "assumption": null
+        },
+        {
+          "kind": "partial_alignment",
+          "summary": "Profile highlights coding skills in Python and SQL, while it aligns with the role's requirement for automation and AI tools, a gap remains in specific commercial production experience.",
+          "detail": null,
+          "importance": "material",
+          "job_evidence": [
+            {
+              "source": "technology",
+              "item_index": 0,
+              "name": "Python",
+              "excerpt": "comfortable writing and maintaining production code (e.g. Python or TypeScript)"
+            },
+            {
+              "source": "technology",
+              "item_index": 2,
+              "name": "SQL",
+              "excerpt": "working with APIs, and orchestrating with tools like n8n, agent SDKs, database fundamentals, SQL"
+            }
+          ],
+          "profile_evidence": [
+            {
+              "source": "skill",
+              "ref": "skill:Python",
+              "excerpt": "Python"
+            },
+            {
+              "source": "skill",
+              "ref": "skill:SQL",
+              "excerpt": "SQL"
+            }
+          ],
+          "assumption": null
+        }
+      ]
+    },
+    "commercial_fit": {
+      "dimension": "commercial",
+      "judgment": "mixed",
+      "summary": "While the role's hybrid work arrangement is met, uncertainties exist regarding the compensation and explicit commercial experience with AI systems.",
+      "findings": [
+        {
+          "kind": "gap",
+          "summary": "The job posting does not provide compensation details, making it unclear if the applicant's expectations align with the organization's compensation framework.",
+          "detail": null,
+          "importance": "material",
+          "job_evidence": [
+            {
+              "source": "compensation",
+              "item_index": null,
+              "name": "Compensation",
+              "excerpt": "unstated"
+            }
+          ],
+          "profile_evidence": [],
+          "assumption": null
+        },
+        {
+          "kind": "uncertainty",
+          "summary": "The role specification does not clarify employment type explicitly as full-time, leaving ambiguity in fit given the candidate's preference for full-time work.",
+          "detail": null,
+          "importance": "minor",
+          "job_evidence": [
+            {
+              "source": "employment",
+              "item_index": 0,
+              "name": "Full-time",
+              "excerpt": "Full-time"
+            }
+          ],
+          "profile_evidence": [],
+          "assumption": null
+        }
+      ]
+    },
+    "portfolio_fit": {
+      "dimension": "portfolio",
+      "judgment": "mixed",
+      "summary": "While the profile includes relevant projects showcasing strong technical skills, there is insufficient alignment with the specific role requirements for direct deployment in commercial settings.",
+      "findings": [
+        {
+          "kind": "gap",
+          "summary": "Independent engineering projects demonstrate capability but do not equate to required commercial production experience in AI deployment.",
+          "detail": null,
+          "importance": "material",
+          "job_evidence": [
+            {
+              "source": "responsibility",
+              "item_index": 5,
+              "name": "Support the product team on AI initiatives",
+              "excerpt": "Support the product team on AI initiatives."
+            }
+          ],
+          "profile_evidence": [
+            {
+              "source": "project",
+              "ref": "project:operational-intelligence-copilot",
+              "excerpt": "Domain-agnostic operational intelligence platform combining deterministic analytics with Large Language Model reasoning."
+            }
+          ],
+          "assumption": null
+        }
+      ]
+    },
+    "summary": {
+      "summary": "The assessment indicates mixed fit across technical and commercial expectations due to the applicant's experience in independent engineering rather than commercial deployment, alongside uncertainties regarding the unclarified compensation and explicit role requirements.",
+      "key_alignments": [],
+      "key_gaps": [
+        "Lack of sufficient commercial AI production experience for the role",
+        "Unstated compensation and unclear employment type guidance."
+      ]
+    }
+  },
+  "portfolio_match": {
+    "job_analysis": {
+      "posting": {
+        "raw_text": "Company logo for, pay.com.au.\npay.com.au\n\n\nAI Automation Engineer \n\nMelbourne, Victoria, Australia · 3 days ago · Over 100 people clicked apply\n\nPromoted by hirer · Responses managed off LinkedIn\n\nHybrid\nFull-time\nApply\n\nSave\nYour profile and resume match the required qualifications well\n\n\n\nShow match details\n\nBETA • Is this information helpful?\n\n\nAbout the job\nAbout Us\n\npay.com.au is one of Australia’s fastest‑growing technology scale-ups, trusted by businesses. As we continue to scale in Australia and launch into the US under PayRewards.com, our mission is to simplify and supercharge the way they pay everyday expenses. Since 2019, we’ve been transforming business payments by enabling companies—from sole traders to large enterprises.\n\n\n\nOur unified platform lets users link their bank accounts and any major credit card, improving cash flow while unlocking powerful rewards on every transaction.\n\n\n\nRecognised as a rapidly scaling Australian success story—with coverage in outlets like the Australian Financial Review noting our growth with a $600+ million valuation, we’re reshaping how businesses think about payments, loyalty and financial efficiency.\n\n\n\nAt pay.com.au, you’ll join a fast-growing team shaping the future of B2B payments. Our Melbourne office is a hub of creativity, collaboration, and seriously great coffee—an environment where ideas move quickly and impact is felt every day. If you want to be part of a company with momentum, this is the place to be.\n\n\n\nWhy join us?\n\nBe part of an exciting Tech Scale-up, with teams across Australia and the USA.\nEnjoy flexible working arrangements and a great work-life balance. Awarded 2025 People’s Choice Award winner at the Finder Innovation Awards, Finalist for FinTech Organisation of the Year at the 2025 FinTech Australia Finnies, Number 1 on the Smart50 list 2024, Top 3 Deloitte Tech Fast 50 & Victoria State Champion!\nGrow your career in a culture that values creativity, innovation, and collaboration with access to learning budgets to accelerate your career.\nOur new Pay HQ in Windsor brings together great coffee, collaborative spaces, and the kind of energy that makes doing your best work easy. \n\n\nAI Automation Engineer\n\nAs pay.com.au has scaled, everyday processes that were once easy to manage have become work worth refining, optimising and automating — creating an organisation-wide opportunity to lift capability across every team. This is a build-first role: you’ll sit with teams across sales, marketing, operations, product and technology, dig into how they really work, and ship automations that hold up in production and actually get used. AI is one tool among several, deployed deliberately where it earns its place — not by default.\n\n\n\nResponsibilities\n\nRun discovery with non-technical stakeholders, elicit, question, push back, and reframe vague asks into well-scoped problems.\nDesign first, solution second, then build the automations and workflows — picking the right tool for the scale of the problem, whether that’s code, n8n, agent SDKs, a vendor product, or a well-configured off-the-shelf AI tool.\nShip with production discipline: human-in-the-loop where needed, secrets and PII handled properly, and failures that are observable and recoverable.\nPackage what you build into shareable workflows others can pick up and run, and support the team’s AI enablement efforts, including setting up connectors and MCPs.\nInstrument usage and iterate on what you’ve shipped until it sticks.\nSupport the product team on AI initiatives. \n\n\nAbout You\n\nYou’ve spent real time on automation projects across a range of contexts, and you can tell where AI genuinely helps and where conventional software is the better call.\nStrong coding fundamentals — comfortable writing and maintaining production code (e.g. Python or TypeScript), working with APIs, and orchestrating with tools like n8n, agent SDKs, database fundamentals, SQL, and migration hygiene.\nFluency with mainstream AI tools (Claude, Cowork, connectors, MCPs) and the judgment to know when they’re enough and when they’re not plus secure, thorough engineering habits around test harnesses, telemetry, logging and sensitive data.\nGenuine curiosity about a fast-moving AI ecosystem and a habit of experimenting with new tools and models on your own initiative.\nThe confidence to question existing workflows even when the ask comes from someone senior — and the comfort to work independently in a lean environment, owning and maintaining what you ship. \n\n\nWe know not everyone will meet every requirement, and that’s okay. If you’re excited about the role and believe you can make an impact, we’re keen to hear from you.\n\nA few more things...\n\nSuccessful candidates joining the team will need to complete a National Police Record Check.\n\nCandidates who require adjustments at any stage of the recruitment process are encouraged to let us know. We’re happy to support you.\n\nWe’re committed to an inclusive and diverse recruitment process where everyone feels respected and supported. We welcome applicants from all backgrounds, identities and abilities and ensure fair, equitable consideration at every stage.",
+        "title": "AI Automation Engineer",
+        "company": "Pay.com.au",
+        "source_url": "https://www.linkedin.com/jobs/search-results/?currentJobId=4442019029&eBP=CwEAAAGfjO1IwARtfm_zJhO3trJJgH3aCWmW2UbGaLzZSwCbzcYI9yBWS2LVk8jsRQZ1MQ5-LxdfKrHAaB4axspQjohxE1bUh3I7izctZytle4c0X-P47dThLct0YtPo6-g87DzltW8ZxXgSZhgbMXehza2dUjoaUpPPL1L_9wpcPcUpVbi1PFc9WDkSLVEldR8o5bY3on1UfCp5t0Uv-ilqNJG8ndx1mR6AtxMKDUpR-tnXOUEOrgm-nHRgvGRk_4QoXdei-c62NU4-ah69651zOECuge-WUXoVv0TdzP4s4C0UcdE-8K8MLkXe5ckDHmMnMmX9YtG3z-_CtfyqtYHXgbBqSbEhU6FeuEgTQ3G2S_NT8Qp0bsscjaXJFfHhKDyquskc0CI0Wiz9wQVs2tSqDo0al11lOFddi-evdu00etm44xWNGG_awwt5cTif2eZ-DesedTKMyzYewqpOP_0ZYozr_tsuzQ&refId=kI7YYcveuaax8z8A2GDROA%3D%3D&trackingId=Vq5PGpnYvtGJaO9slfB8Xw%3D%3D&keywords=ai%20engineer&origin=JOBS_HOME_SEARCH_BUTTON"
+      },
+      "role_family": {
+        "family": "ai_engineering",
+        "evidence": [
+          {
+            "excerpt": "AI is one tool among several, deployed deliberately where it earns its place",
+            "section": "JobDescription"
+          }
+        ]
+      },
+      "seniority": {
+        "level": "unknown",
+        "ambiguous": false,
+        "candidate_levels": [],
+        "evidence": []
+      },
+      "technologies": [
+        {
+          "name": "Python",
+          "level": "required",
+          "evidence": [
+            {
+              "excerpt": "comfortable writing and maintaining production code (e.g. Python or TypeScript)",
+              "section": "JobDescription"
+            }
+          ]
+        },
+        {
+          "name": "TypeScript",
+          "level": "required",
+          "evidence": [
+            {
+              "excerpt": "comfortable writing and maintaining production code (e.g. Python or TypeScript)",
+              "section": "JobDescription"
+            }
+          ]
+        },
+        {
+          "name": "SQL",
+          "level": "required",
+          "evidence": [
+            {
+              "excerpt": "working with APIs, and orchestrating with tools like n8n, agent SDKs, database fundamentals, SQL",
+              "section": "JobDescription"
+            }
+          ]
+        }
+      ],
+      "responsibilities": [
+        {
+          "description": "Run discovery with non-technical stakeholders, elicit, question, push back, and reframe vague asks into well-scoped problems.",
+          "evidence": [
+            {
+              "excerpt": "Run discovery with non-technical stakeholders, elicit, question, push back, and reframe vague asks into well-scoped problems.",
+              "section": "JobDescription"
+            }
+          ]
+        },
+        {
+          "description": "Design first, solution second, then build the automations and workflows.",
+          "evidence": [
+            {
+              "excerpt": "Design first, solution second, then build the automations and workflows — picking the right tool for the scale of the problem",
+              "section": "JobDescription"
+            }
+          ]
+        },
+        {
+          "description": "Ship with production discipline: human-in-the-loop where needed, secrets and PII handled properly.",
+          "evidence": [
+            {
+              "excerpt": "Ship with production discipline: human-in-the-loop where needed, secrets and PII handled properly",
+              "section": "JobDescription"
+            }
+          ]
+        },
+        {
+          "description": "Package what you build into shareable workflows others can pick up and run.",
+          "evidence": [
+            {
+              "excerpt": "Package what you build into shareable workflows others can pick up and run",
+              "section": "JobDescription"
+            }
+          ]
+        },
+        {
+          "description": "Instrument usage and iterate on what you’ve shipped until it sticks.",
+          "evidence": [
+            {
+              "excerpt": "Instrument usage and iterate on what you’ve shipped until it sticks.",
+              "section": "JobDescription"
+            }
+          ]
+        },
+        {
+          "description": "Support the product team on AI initiatives.",
+          "evidence": [
+            {
+              "excerpt": "Support the product team on AI initiatives.",
+              "section": "JobDescription"
+            }
+          ]
+        }
+      ],
+      "compensation": {
+        "clarity": "unstated",
+        "minimum": null,
+        "maximum": null,
+        "currency": null,
+        "period": null,
+        "raw_text": null,
+        "evidence": []
+      },
+      "location": {
+        "clarity": "stated",
+        "summary": "Melbourne, Victoria, Australia",
+        "evidence": [
+          {
+            "excerpt": "Melbourne, Victoria, Australia · 3 days ago",
+            "section": "JobDescription"
+          }
+        ]
+      },
+      "work_arrangement": {
+        "arrangement": "hybrid",
+        "details": null,
+        "evidence": [
+          {
+            "excerpt": "Hybrid",
+            "section": "JobDescription"
+          }
+        ]
+      },
+      "employment": {
+        "working_hours": "full_time",
+        "engagement_type": "unspecified",
+        "evidence": [
+          {
+            "excerpt": "Full-time",
+            "section": "JobDescription"
+          }
+        ]
+      },
+      "experience_requirements": []
+    },
+    "ranked_projects": [
+      {
+        "rank": 1,
+        "project_id": "operational-intelligence-copilot",
+        "rationale": "Project 'operational-intelligence-copilot' ranked on 1 required technology hit(s), 3 demonstrates overlap(s).",
+        "factors": [
+          {
+            "kind": "required_technology",
+            "summary": "Project evidence supports required technology 'Python'.",
+            "job_evidence": [
+              {
+                "source": "technology",
+                "item_index": 0,
+                "name": "Python",
+                "excerpt": "comfortable writing and maintaining production code (e.g. Python or TypeScript)"
+              }
+            ],
+            "profile_evidence": [
+              {
+                "source": "project",
+                "ref": "project:operational-intelligence-copilot",
+                "excerpt": "Python"
+              }
+            ]
+          },
+          {
+            "kind": "demonstrates_overlap",
+            "summary": "Project demonstrates capabilities overlapping responsibility 'Design first, solution second, then build the automations and workflows.'.",
+            "job_evidence": [
+              {
+                "source": "responsibility",
+                "item_index": 1,
+                "name": null,
+                "excerpt": "Design first, solution second, then build the automations and workflows — picking the right tool for the scale of the problem"
+              }
+            ],
+            "profile_evidence": [
+              {
+                "source": "project",
+                "ref": "project:operational-intelligence-copilot",
+                "excerpt": "Regression-tested analytics workflows"
+              }
+            ]
+          },
+          {
+            "kind": "demonstrates_overlap",
+            "summary": "Project demonstrates capabilities overlapping responsibility 'Package what you build into shareable workflows others can pick up and run.'.",
+            "job_evidence": [
+              {
+                "source": "responsibility",
+                "item_index": 3,
+                "name": null,
+                "excerpt": "Package what you build into shareable workflows others can pick up and run"
+              }
+            ],
+            "profile_evidence": [
+              {
+                "source": "project",
+                "ref": "project:operational-intelligence-copilot",
+                "excerpt": "Regression-tested analytics workflows"
+              }
+            ]
+          },
+          {
+            "kind": "demonstrates_overlap",
+            "summary": "Project demonstrates capabilities overlapping responsibility 'Support the product team on AI initiatives.'.",
+            "job_evidence": [
+              {
+                "source": "responsibility",
+                "item_index": 5,
+                "name": null,
+                "excerpt": "Support the product team on AI initiatives."
+              }
+            ],
+            "profile_evidence": [
+              {
+                "source": "project",
+                "ref": "project:operational-intelligence-copilot",
+                "excerpt": "Explainable AI recommendations"
+              }
+            ]
+          }
+        ],
+        "tie_group": null,
+        "tie_break_reason": null
+      },
+      {
+        "rank": 2,
+        "project_id": "governance-document-rag",
+        "rationale": "Project 'governance-document-rag' ranked on 1 required technology hit(s), 1 responsibility overlap(s).",
+        "factors": [
+          {
+            "kind": "required_technology",
+            "summary": "Project evidence supports required technology 'Python'.",
+            "job_evidence": [
+              {
+                "source": "technology",
+                "item_index": 0,
+                "name": "Python",
+                "excerpt": "comfortable writing and maintaining production code (e.g. Python or TypeScript)"
+              }
+            ],
+            "profile_evidence": [
+              {
+                "source": "project",
+                "ref": "project:governance-document-rag",
+                "excerpt": "Python"
+              }
+            ]
+          },
+          {
+            "kind": "responsibility_overlap",
+            "summary": "Project summary, outcomes, or technologies overlap responsibility 'Support the product team on AI initiatives.'.",
+            "job_evidence": [
+              {
+                "source": "responsibility",
+                "item_index": 5,
+                "name": null,
+                "excerpt": "Support the product team on AI initiatives."
+              }
+            ],
+            "profile_evidence": [
+              {
+                "source": "project",
+                "ref": "project:governance-document-rag",
+                "excerpt": "Enterprise retrieval-augmented generation platform supporting trustworthy AI responses over organisational knowledge."
+              }
+            ]
+          }
+        ],
+        "tie_group": 1,
+        "tie_break_reason": "Equal primary ranking signals; ordered by stable project_id ascending"
+      },
+      {
+        "rank": 3,
+        "project_id": "payroll-diagnostics-engine",
+        "rationale": "Project 'payroll-diagnostics-engine' ranked on 1 required technology hit(s), 1 responsibility overlap(s).",
+        "factors": [
+          {
+            "kind": "required_technology",
+            "summary": "Project evidence supports required technology 'Python'.",
+            "job_evidence": [
+              {
+                "source": "technology",
+                "item_index": 0,
+                "name": "Python",
+                "excerpt": "comfortable writing and maintaining production code (e.g. Python or TypeScript)"
+              }
+            ],
+            "profile_evidence": [
+              {
+                "source": "project",
+                "ref": "project:payroll-diagnostics-engine",
+                "excerpt": "Python"
+              }
+            ]
+          },
+          {
+            "kind": "responsibility_overlap",
+            "summary": "Project summary, outcomes, or technologies overlap responsibility 'Support the product team on AI initiatives.'.",
+            "job_evidence": [
+              {
+                "source": "responsibility",
+                "item_index": 5,
+                "name": null,
+                "excerpt": "Support the product team on AI initiatives."
+              }
+            ],
+            "profile_evidence": [
+              {
+                "source": "project",
+                "ref": "project:payroll-diagnostics-engine",
+                "excerpt": "Rule-based operational decision-support platform that identifies payroll anomalies through deterministic business-rule evaluation."
+              }
+            ]
+          }
+        ],
+        "tie_group": 1,
+        "tie_break_reason": "Equal primary ranking signals; ordered by stable project_id ascending"
+      },
+      {
+        "rank": 4,
+        "project_id": "public-holiday-entitlements",
+        "rationale": "Project 'public-holiday-entitlements' ranked on 1 required technology hit(s).",
+        "factors": [
+          {
+            "kind": "required_technology",
+            "summary": "Project evidence supports required technology 'Python'.",
+            "job_evidence": [
+              {
+                "source": "technology",
+                "item_index": 0,
+                "name": "Python",
+                "excerpt": "comfortable writing and maintaining production code (e.g. Python or TypeScript)"
+              }
+            ],
+            "profile_evidence": [
+              {
+                "source": "project",
+                "ref": "project:public-holiday-entitlements",
+                "excerpt": "Python"
+              }
+            ]
+          }
+        ],
+        "tie_group": null,
+        "tie_break_reason": null
+      }
+    ],
+    "unranked_project_ids": [],
+    "summary": "Ranked 4 project(s); lead with 'operational-intelligence-copilot'. 0 project(s) had no matching factors.",
+    "insufficient_evidence": false
+  },
+  "application_strategy": {
+    "job_analysis": {
+      "posting": {
+        "raw_text": "Company logo for, pay.com.au.\npay.com.au\n\n\nAI Automation Engineer \n\nMelbourne, Victoria, Australia · 3 days ago · Over 100 people clicked apply\n\nPromoted by hirer · Responses managed off LinkedIn\n\nHybrid\nFull-time\nApply\n\nSave\nYour profile and resume match the required qualifications well\n\n\n\nShow match details\n\nBETA • Is this information helpful?\n\n\nAbout the job\nAbout Us\n\npay.com.au is one of Australia’s fastest‑growing technology scale-ups, trusted by businesses. As we continue to scale in Australia and launch into the US under PayRewards.com, our mission is to simplify and supercharge the way they pay everyday expenses. Since 2019, we’ve been transforming business payments by enabling companies—from sole traders to large enterprises.\n\n\n\nOur unified platform lets users link their bank accounts and any major credit card, improving cash flow while unlocking powerful rewards on every transaction.\n\n\n\nRecognised as a rapidly scaling Australian success story—with coverage in outlets like the Australian Financial Review noting our growth with a $600+ million valuation, we’re reshaping how businesses think about payments, loyalty and financial efficiency.\n\n\n\nAt pay.com.au, you’ll join a fast-growing team shaping the future of B2B payments. Our Melbourne office is a hub of creativity, collaboration, and seriously great coffee—an environment where ideas move quickly and impact is felt every day. If you want to be part of a company with momentum, this is the place to be.\n\n\n\nWhy join us?\n\nBe part of an exciting Tech Scale-up, with teams across Australia and the USA.\nEnjoy flexible working arrangements and a great work-life balance. Awarded 2025 People’s Choice Award winner at the Finder Innovation Awards, Finalist for FinTech Organisation of the Year at the 2025 FinTech Australia Finnies, Number 1 on the Smart50 list 2024, Top 3 Deloitte Tech Fast 50 & Victoria State Champion!\nGrow your career in a culture that values creativity, innovation, and collaboration with access to learning budgets to accelerate your career.\nOur new Pay HQ in Windsor brings together great coffee, collaborative spaces, and the kind of energy that makes doing your best work easy. \n\n\nAI Automation Engineer\n\nAs pay.com.au has scaled, everyday processes that were once easy to manage have become work worth refining, optimising and automating — creating an organisation-wide opportunity to lift capability across every team. This is a build-first role: you’ll sit with teams across sales, marketing, operations, product and technology, dig into how they really work, and ship automations that hold up in production and actually get used. AI is one tool among several, deployed deliberately where it earns its place — not by default.\n\n\n\nResponsibilities\n\nRun discovery with non-technical stakeholders, elicit, question, push back, and reframe vague asks into well-scoped problems.\nDesign first, solution second, then build the automations and workflows — picking the right tool for the scale of the problem, whether that’s code, n8n, agent SDKs, a vendor product, or a well-configured off-the-shelf AI tool.\nShip with production discipline: human-in-the-loop where needed, secrets and PII handled properly, and failures that are observable and recoverable.\nPackage what you build into shareable workflows others can pick up and run, and support the team’s AI enablement efforts, including setting up connectors and MCPs.\nInstrument usage and iterate on what you’ve shipped until it sticks.\nSupport the product team on AI initiatives. \n\n\nAbout You\n\nYou’ve spent real time on automation projects across a range of contexts, and you can tell where AI genuinely helps and where conventional software is the better call.\nStrong coding fundamentals — comfortable writing and maintaining production code (e.g. Python or TypeScript), working with APIs, and orchestrating with tools like n8n, agent SDKs, database fundamentals, SQL, and migration hygiene.\nFluency with mainstream AI tools (Claude, Cowork, connectors, MCPs) and the judgment to know when they’re enough and when they’re not plus secure, thorough engineering habits around test harnesses, telemetry, logging and sensitive data.\nGenuine curiosity about a fast-moving AI ecosystem and a habit of experimenting with new tools and models on your own initiative.\nThe confidence to question existing workflows even when the ask comes from someone senior — and the comfort to work independently in a lean environment, owning and maintaining what you ship. \n\n\nWe know not everyone will meet every requirement, and that’s okay. If you’re excited about the role and believe you can make an impact, we’re keen to hear from you.\n\nA few more things...\n\nSuccessful candidates joining the team will need to complete a National Police Record Check.\n\nCandidates who require adjustments at any stage of the recruitment process are encouraged to let us know. We’re happy to support you.\n\nWe’re committed to an inclusive and diverse recruitment process where everyone feels respected and supported. We welcome applicants from all backgrounds, identities and abilities and ensure fair, equitable consideration at every stage.",
+        "title": "AI Automation Engineer",
+        "company": "Pay.com.au",
+        "source_url": "https://www.linkedin.com/jobs/search-results/?currentJobId=4442019029&eBP=CwEAAAGfjO1IwARtfm_zJhO3trJJgH3aCWmW2UbGaLzZSwCbzcYI9yBWS2LVk8jsRQZ1MQ5-LxdfKrHAaB4axspQjohxE1bUh3I7izctZytle4c0X-P47dThLct0YtPo6-g87DzltW8ZxXgSZhgbMXehza2dUjoaUpPPL1L_9wpcPcUpVbi1PFc9WDkSLVEldR8o5bY3on1UfCp5t0Uv-ilqNJG8ndx1mR6AtxMKDUpR-tnXOUEOrgm-nHRgvGRk_4QoXdei-c62NU4-ah69651zOECuge-WUXoVv0TdzP4s4C0UcdE-8K8MLkXe5ckDHmMnMmX9YtG3z-_CtfyqtYHXgbBqSbEhU6FeuEgTQ3G2S_NT8Qp0bsscjaXJFfHhKDyquskc0CI0Wiz9wQVs2tSqDo0al11lOFddi-evdu00etm44xWNGG_awwt5cTif2eZ-DesedTKMyzYewqpOP_0ZYozr_tsuzQ&refId=kI7YYcveuaax8z8A2GDROA%3D%3D&trackingId=Vq5PGpnYvtGJaO9slfB8Xw%3D%3D&keywords=ai%20engineer&origin=JOBS_HOME_SEARCH_BUTTON"
+      },
+      "role_family": {
+        "family": "ai_engineering",
+        "evidence": [
+          {
+            "excerpt": "AI is one tool among several, deployed deliberately where it earns its place",
+            "section": "JobDescription"
+          }
+        ]
+      },
+      "seniority": {
+        "level": "unknown",
+        "ambiguous": false,
+        "candidate_levels": [],
+        "evidence": []
+      },
+      "technologies": [
+        {
+          "name": "Python",
+          "level": "required",
+          "evidence": [
+            {
+              "excerpt": "comfortable writing and maintaining production code (e.g. Python or TypeScript)",
+              "section": "JobDescription"
+            }
+          ]
+        },
+        {
+          "name": "TypeScript",
+          "level": "required",
+          "evidence": [
+            {
+              "excerpt": "comfortable writing and maintaining production code (e.g. Python or TypeScript)",
+              "section": "JobDescription"
+            }
+          ]
+        },
+        {
+          "name": "SQL",
+          "level": "required",
+          "evidence": [
+            {
+              "excerpt": "working with APIs, and orchestrating with tools like n8n, agent SDKs, database fundamentals, SQL",
+              "section": "JobDescription"
+            }
+          ]
+        }
+      ],
+      "responsibilities": [
+        {
+          "description": "Run discovery with non-technical stakeholders, elicit, question, push back, and reframe vague asks into well-scoped problems.",
+          "evidence": [
+            {
+              "excerpt": "Run discovery with non-technical stakeholders, elicit, question, push back, and reframe vague asks into well-scoped problems.",
+              "section": "JobDescription"
+            }
+          ]
+        },
+        {
+          "description": "Design first, solution second, then build the automations and workflows.",
+          "evidence": [
+            {
+              "excerpt": "Design first, solution second, then build the automations and workflows — picking the right tool for the scale of the problem",
+              "section": "JobDescription"
+            }
+          ]
+        },
+        {
+          "description": "Ship with production discipline: human-in-the-loop where needed, secrets and PII handled properly.",
+          "evidence": [
+            {
+              "excerpt": "Ship with production discipline: human-in-the-loop where needed, secrets and PII handled properly",
+              "section": "JobDescription"
+            }
+          ]
+        },
+        {
+          "description": "Package what you build into shareable workflows others can pick up and run.",
+          "evidence": [
+            {
+              "excerpt": "Package what you build into shareable workflows others can pick up and run",
+              "section": "JobDescription"
+            }
+          ]
+        },
+        {
+          "description": "Instrument usage and iterate on what you’ve shipped until it sticks.",
+          "evidence": [
+            {
+              "excerpt": "Instrument usage and iterate on what you’ve shipped until it sticks.",
+              "section": "JobDescription"
+            }
+          ]
+        },
+        {
+          "description": "Support the product team on AI initiatives.",
+          "evidence": [
+            {
+              "excerpt": "Support the product team on AI initiatives.",
+              "section": "JobDescription"
+            }
+          ]
+        }
+      ],
+      "compensation": {
+        "clarity": "unstated",
+        "minimum": null,
+        "maximum": null,
+        "currency": null,
+        "period": null,
+        "raw_text": null,
+        "evidence": []
+      },
+      "location": {
+        "clarity": "stated",
+        "summary": "Melbourne, Victoria, Australia",
+        "evidence": [
+          {
+            "excerpt": "Melbourne, Victoria, Australia · 3 days ago",
+            "section": "JobDescription"
+          }
+        ]
+      },
+      "work_arrangement": {
+        "arrangement": "hybrid",
+        "details": null,
+        "evidence": [
+          {
+            "excerpt": "Hybrid",
+            "section": "JobDescription"
+          }
+        ]
+      },
+      "employment": {
+        "working_hours": "full_time",
+        "engagement_type": "unspecified",
+        "evidence": [
+          {
+            "excerpt": "Full-time",
+            "section": "JobDescription"
+          }
+        ]
+      },
+      "experience_requirements": []
+    },
+    "application_tier": "silver",
+    "pursuit_posture": "consider",
+    "practical_value": "acceptable_opportunity",
+    "effort_level": "minimal",
+    "summary": "Recommend posture 'consider' with effort tier 'silver' (minimal). Technical fit 'mixed', commercial fit 'mixed', portfolio fit 'mixed'. Owner review is required before any application action.",
+    "reasons": [
+      {
+        "kind": "alignment",
+        "summary": "Technical fit is 'mixed' and portfolio fit is 'mixed' for this opportunity.",
+        "importance": "material",
+        "evidence": [
+          {
+            "origin": "opportunity_assessment",
+            "job_evidence": null,
+            "profile_evidence": null,
+            "assessment_dimension": "technical",
+            "assessment_judgment": "mixed",
+            "portfolio_project_id": null,
+            "excerpt": null
+          },
+          {
+            "origin": "opportunity_assessment",
+            "job_evidence": null,
+            "profile_evidence": null,
+            "assessment_dimension": "portfolio",
+            "assessment_judgment": "mixed",
+            "portfolio_project_id": null,
+            "excerpt": null
+          }
+        ]
+      },
+      {
+        "kind": "priority",
+        "summary": "Pursuit posture 'consider' with effort tier 'silver' reflects commercial fit 'mixed' and AI-aligned role family.",
+        "importance": "material",
+        "evidence": [
+          {
+            "origin": "opportunity_assessment",
+            "job_evidence": null,
+            "profile_evidence": null,
+            "assessment_dimension": "commercial",
+            "assessment_judgment": "mixed",
+            "portfolio_project_id": null,
+            "excerpt": null
+          },
+          {
+            "origin": "job_analysis",
+            "job_evidence": {
+              "source": "role_family",
+              "item_index": null,
+              "name": null,
+              "excerpt": null
+            },
+            "profile_evidence": null,
+            "assessment_dimension": null,
+            "assessment_judgment": null,
+            "portfolio_project_id": null,
+            "excerpt": null
+          }
+        ]
+      }
+    ],
+    "risks_or_gaps": [
+      {
+        "summary": "Commercial fit is 'mixed', which may reduce the value of investing significant effort.",
+        "importance": "minor",
+        "evidence": [
+          {
+            "origin": "opportunity_assessment",
+            "job_evidence": null,
+            "profile_evidence": null,
+            "assessment_dimension": "commercial",
+            "assessment_judgment": "mixed",
+            "portfolio_project_id": null,
+            "excerpt": null
+          }
+        ]
+      },
+      {
+        "summary": "The role requires strong production discipline and AI experience which is partially evidenced by independent and professional development but lacks direct commercial AI delivery.",
+        "importance": "material",
+        "evidence": [
+          {
+            "origin": "opportunity_assessment",
+            "job_evidence": null,
+            "profile_evidence": null,
+            "assessment_dimension": "technical",
+            "assessment_judgment": "mixed",
+            "portfolio_project_id": null,
+            "excerpt": null
+          }
+        ]
+      }
+    ],
+    "manual_checks": [
+      {
+        "summary": "Review compensation once salary or rate information is available.",
+        "why_it_matters": "Compensation clarity can change commercial priority; no salary conflict was invented from missing data.",
+        "could_change_recommendation": true,
+        "evidence": [
+          {
+            "origin": "job_analysis",
+            "job_evidence": {
+              "source": "compensation",
+              "item_index": null,
+              "name": null,
+              "excerpt": null
+            },
+            "profile_evidence": null,
+            "assessment_dimension": null,
+            "assessment_judgment": null,
+            "portfolio_project_id": null,
+            "excerpt": null
+          }
+        ]
+      }
+    ],
+    "next_actions": [
+      {
+        "kind": "consider_reviewing_compensation",
+        "summary": "Consider reviewing compensation before investing significant effort.",
+        "related_project_id": null,
+        "evidence": [
+          {
+            "origin": "job_analysis",
+            "job_evidence": {
+              "source": "compensation",
+              "item_index": null,
+              "name": null,
+              "excerpt": null
+            },
+            "profile_evidence": null,
+            "assessment_dimension": null,
+            "assessment_judgment": null,
+            "portfolio_project_id": null,
+            "excerpt": null
+          }
+        ]
+      },
+      {
+        "kind": "consider_emphasising_portfolio_projects",
+        "summary": "Consider emphasising the strongest matched portfolio project(s) in any application materials you prepare.",
+        "related_project_id": "operational-intelligence-copilot",
+        "evidence": [
+          {
+            "origin": "portfolio_match",
+            "job_evidence": null,
+            "profile_evidence": null,
+            "assessment_dimension": null,
+            "assessment_judgment": null,
+            "portfolio_project_id": "operational-intelligence-copilot",
+            "excerpt": null
+          }
+        ]
+      },
+      {
+        "kind": "consider_owner_review",
+        "summary": "Consider reviewing this full strategy before taking any external action.",
+        "related_project_id": null,
+        "evidence": [
+          {
+            "origin": "opportunity_assessment",
+            "job_evidence": null,
+            "profile_evidence": null,
+            "assessment_dimension": "technical",
+            "assessment_judgment": "mixed",
+            "portfolio_project_id": null,
+            "excerpt": null
+          }
+        ]
+      }
+    ],
+    "portfolio_emphasis": [
+      {
+        "project_id": "operational-intelligence-copilot",
+        "source_rank": 1,
+        "summary": "Consider emphasising 'operational-intelligence-copilot' (PortfolioMatch rank 1).",
+        "evidence": [
+          {
+            "origin": "portfolio_match",
+            "job_evidence": null,
+            "profile_evidence": null,
+            "assessment_dimension": null,
+            "assessment_judgment": null,
+            "portfolio_project_id": "operational-intelligence-copilot",
+            "excerpt": null
+          }
+        ]
+      },
+      {
+        "project_id": "governance-document-rag",
+        "source_rank": 2,
+        "summary": "Consider emphasising 'governance-document-rag' (PortfolioMatch rank 2).",
+        "evidence": [
+          {
+            "origin": "portfolio_match",
+            "job_evidence": null,
+            "profile_evidence": null,
+            "assessment_dimension": null,
+            "assessment_judgment": null,
+            "portfolio_project_id": "governance-document-rag",
+            "excerpt": null
+          }
+        ]
+      },
+      {
+        "project_id": "payroll-diagnostics-engine",
+        "source_rank": 3,
+        "summary": "Consider emphasising 'payroll-diagnostics-engine' (PortfolioMatch rank 3).",
+        "evidence": [
+          {
+            "origin": "portfolio_match",
+            "job_evidence": null,
+            "profile_evidence": null,
+            "assessment_dimension": null,
+            "assessment_judgment": null,
+            "portfolio_project_id": "payroll-diagnostics-engine",
+            "excerpt": null
+          }
+        ]
+      }
+    ],
+    "assumptions": [
+      "Compensation fit is not scored because salary/rate evidence is missing or ambiguous.",
+      "No candidate salary minimum is configured, so compensation was not treated as a hard threshold conflict."
+    ],
+    "decision_blockers": [],
+    "owner_review_required": true,
+    "insufficient_information": false
+  }
+}

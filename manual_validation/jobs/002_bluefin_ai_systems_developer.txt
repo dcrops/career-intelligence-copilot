@@ -1,0 +1,88 @@
+AI Systems Developer
+
+Bluefin Resources Pty Limited 
+View all jobs
+
+Melbourne VIC (Hybrid)
+Engineering - Software (Information & Communication Technology)
+Full time
+Posted 20h ago
+•
+Medium application volume
+
+How you match
+1 skill or credential matches your profile
+ Systems Design
+Show all⁠
+AI Systems DeveloperMelbourne CBD | Hybrid (4 days office / 1 day WFH)
+Salary: Competitive package
+Build and operate the AI systems shaping the future of fintech.
+
+We’re partnering with an innovative Melbourne-based fintech that is transforming how businesses manage invoice payments and cash flow.
+
+As they continue building an AI-native platform, they are looking for an AI Systems Developer to help take their AI capabilities from early development through to reliable, production-ready systems.
+This is a unique opportunity for an engineer who enjoys the intersection of software engineering, artificial intelligence and platform reliability — someone who doesn’t just want to experiment with AI, but wants to build, deploy and own systems that create real business impact.
+
+The Role: As an AI Systems Developer, you will be responsible for building and operating the production AI stack.
+
+You’ll work across:
+LLM-powered applications
+AI agents and automation workflows
+Data pipelines and retrieval systems
+Model serving and AI infrastructure
+Monitoring, observability and performance optimisation
+Once AI capabilities are live, you’ll own their reliability — ensuring systems remain scalable, secure, cost-effective and performant.
+
+This role sits within the Data, AI & Systems function and will work closely with engineering and product teams to safely embed AI into critical business processes.
+
+What You’ll Be Doing:
+
+Build AI capabilities into production
+Design, develop and deploy AI-powered features and services
+Build data pipelines, retrieval systems and AI agents
+Work with LLM applications and model-serving infrastructure
+Improve engineering practices to safely integrate AI into the core platform
+Own reliability and performance
+Monitor AI systems across uptime, latency, cost and accuracy
+Build observability across metrics, logs, tracing and evaluations
+Identify performance issues, model degradation and system failures
+Optimise AI systems for scale and efficiency
+Support production operations
+Participate in incident response and troubleshooting
+Develop runbooks, processes and safeguards
+Implement safe deployment, rollback and change-management practices
+Improve systems to prevent recurring issues
+About You
+
+You’re a strong software engineer who enjoys owning systems beyond just writing code.
+You’ll ideally have:
+5+ years of software engineering experience
+Experience operating production systems at scale
+Hands-on experience with AI/LLM applications, agents or ML systems
+Strong AWS experience
+Infrastructure-as-Code experience (Terraform preferred)
+Experience building data pipelines and working with databases (PostgreSQL preferred)
+Experience with monitoring, observability and incident response
+Strong understanding of reliability, scalability and system design
+Experience with the following would be advantageous:
+Ruby on Rails
+Domain Driven Design
+Financial services or other high-reliability industries
+Kubernetes / cloud-native architectures
+Why Join? This is an opportunity to be part of one of Australia’s most exciting AI-driven fintech journeys.
+You’ll have the chance to:
+Build AI systems from the ground up
+Own technology that directly impacts customers and business outcomes
+Work with modern AI tooling and infrastructure
+Shape how AI is implemented safely in a financial platform
+Join a collaborative, high-performing engineering team
+Additional benefits include:
+Competitive salary and benefits package
+Hybrid working model (Monday–Thursday in the Melbourne CBD office, Friday WFH)
+Modern office environment
+Regular team events and interstate off-sites
+Clear opportunities for growth and progression
+Employer questions
+Your application will include the following questions:
+Which of the following statements best describes your right to work in Australia?
+How many years' experience do you have as a Systems Developer?

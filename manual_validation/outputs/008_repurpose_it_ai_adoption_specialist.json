@@ -1,0 +1,1201 @@
+{
+  "components": [
+    {
+      "name": "CareerProfile",
+      "implementation": "CareerProfileService / YAML",
+      "mode": "deterministic_production"
+    },
+    {
+      "name": "JobAnalysis",
+      "implementation": "OpenAIJobExtractor",
+      "mode": "openai_production"
+    },
+    {
+      "name": "OpportunityAssessment",
+      "implementation": "OpenAIAssessor",
+      "mode": "openai_production"
+    },
+    {
+      "name": "PortfolioMatch",
+      "implementation": "DeterministicMatcher",
+      "mode": "deterministic_production"
+    },
+    {
+      "name": "ApplicationStrategy",
+      "implementation": "DeterministicStrategyPlanner",
+      "mode": "deterministic_production"
+    }
+  ],
+  "volume_applications_enabled": false,
+  "profile_identity": {
+    "full_name": "David Cropper",
+    "target_role": "AI Engineer"
+  },
+  "posting": {
+    "raw_text": "Strong applicant\nAI Adoption Specialist\n\nREPURPOSE IT P/L \nView all jobs\nEssendon Fields, Melbourne VIC\nOther (Information & Communication Technology)\nFull time\nProfile salary match\n\nPosted 8d ago\n•\nMedium application volume\n\nAbout Repurpose It\n\nRepurpose It is a recognised leader in the circular economy, giving new life to materials that would otherwise go to waste. We recover resources from construction and demolition, excavation, infrastructure projects, and local council organics, transforming them into valuable products that support sustainable growth.\n\nBy investing in advanced technology, we partner with both public and private sectors to reduce greenhouse gases, protect the environment, and create a more sustainable future.\n\nOur values Integrity, Future Focused, Sustainability, and Care & Protect guide everything we do. As part of our team, you’ll join a workplace that is passionate about innovation, the environment, and supporting its people.\n\n\nAbout the role\n\nWe’re looking for an AI Adoption Specialist to help make AI practical, valuable, and embedded into everyday work across our corporate teams.\n\nWorking closely with different business units within Repurpose It such as Finance and P&C, you’ll identify, configure, and implement AI tools that drive real outcomes, improving productivity, reducing errors, and streamlining workflows.\n\nThis is a hands-on role where you’ll move teams from curiosity to confident, repeatable use of approved AI solutions.\n\n\nKey responsibilities:\n\nEmbed AI tools into real business workflows\nConfigure and optimise platforms such as Copilot and Claude\nDeliver practical training and build internal AI capability\nIdentify opportunities to improve efficiency, quality, and risk management\nStay across emerging AI tools and drive continuous improvement\n\nAbout you:\n\nDegree in Information Systems, Business Analytics, Commerce/Tech, or similar\nExperience or a strong recent graduate with hands-on AI tool usage\nComfortable working across teams and translating technical concepts\nCurious, practical, and focused on delivering real business impact\n\nHow to Apply:\n\nPlease include an up-to-date resume as part of your application.\n\nYour details will be stored in our candidate management system, and we may keep your details on file for other roles and opportunities in the future.\n\nIf successful in the process, we conduct a pre-employment check which consist of a national police check. As this role includes a fully maintained company vehicle, we also require a full drivers history check.\n\nRepurpose It is committed to providing an inclusive workplace and welcomes all individuals from different backgrounds, gender and ethnicity to apply.\n\nPlease let us know if you require any adjustments through this process.\n\nEmployer questions\nYour application will include the following questions:\nPlease elaborate your exposure to AI?\nDo you have a degree in Information Systems, Business Analytics, Commerce/Tech, or similar? Please comment below.\nThis is a full-time, on-site position, with occasional travel to operational site. Are you comfortable committing to this arrangement?\nWhat is your salary expectation?\nDo you have a valid Australian Drivers Licence?\nDo you have full work rights in Australia?\nIf successful in making it to the final stages of the recruitment process, would you be comfortable to complete a police check and psychometric test in line with our process?",
+    "title": "AI Adoption Specialist",
+    "company": "Repurpose IT P/L",
+    "source_url": "https://www.seek.com.au/"
+  },
+  "job_analysis": {
+    "posting": {
+      "raw_text": "Strong applicant\nAI Adoption Specialist\n\nREPURPOSE IT P/L \nView all jobs\nEssendon Fields, Melbourne VIC\nOther (Information & Communication Technology)\nFull time\nProfile salary match\n\nPosted 8d ago\n•\nMedium application volume\n\nAbout Repurpose It\n\nRepurpose It is a recognised leader in the circular economy, giving new life to materials that would otherwise go to waste. We recover resources from construction and demolition, excavation, infrastructure projects, and local council organics, transforming them into valuable products that support sustainable growth.\n\nBy investing in advanced technology, we partner with both public and private sectors to reduce greenhouse gases, protect the environment, and create a more sustainable future.\n\nOur values Integrity, Future Focused, Sustainability, and Care & Protect guide everything we do. As part of our team, you’ll join a workplace that is passionate about innovation, the environment, and supporting its people.\n\n\nAbout the role\n\nWe’re looking for an AI Adoption Specialist to help make AI practical, valuable, and embedded into everyday work across our corporate teams.\n\nWorking closely with different business units within Repurpose It such as Finance and P&C, you’ll identify, configure, and implement AI tools that drive real outcomes, improving productivity, reducing errors, and streamlining workflows.\n\nThis is a hands-on role where you’ll move teams from curiosity to confident, repeatable use of approved AI solutions.\n\n\nKey responsibilities:\n\nEmbed AI tools into real business workflows\nConfigure and optimise platforms such as Copilot and Claude\nDeliver practical training and build internal AI capability\nIdentify opportunities to improve efficiency, quality, and risk management\nStay across emerging AI tools and drive continuous improvement\n\nAbout you:\n\nDegree in Information Systems, Business Analytics, Commerce/Tech, or similar\nExperience or a strong recent graduate with hands-on AI tool usage\nComfortable working across teams and translating technical concepts\nCurious, practical, and focused on delivering real business impact\n\nHow to Apply:\n\nPlease include an up-to-date resume as part of your application.\n\nYour details will be stored in our candidate management system, and we may keep your details on file for other roles and opportunities in the future.\n\nIf successful in the process, we conduct a pre-employment check which consist of a national police check. As this role includes a fully maintained company vehicle, we also require a full drivers history check.\n\nRepurpose It is committed to providing an inclusive workplace and welcomes all individuals from different backgrounds, gender and ethnicity to apply.\n\nPlease let us know if you require any adjustments through this process.\n\nEmployer questions\nYour application will include the following questions:\nPlease elaborate your exposure to AI?\nDo you have a degree in Information Systems, Business Analytics, Commerce/Tech, or similar? Please comment below.\nThis is a full-time, on-site position, with occasional travel to operational site. Are you comfortable committing to this arrangement?\nWhat is your salary expectation?\nDo you have a valid Australian Drivers Licence?\nDo you have full work rights in Australia?\nIf successful in making it to the final stages of the recruitment process, would you be comfortable to complete a police check and psychometric test in line with our process?",
+      "title": "AI Adoption Specialist",
+      "company": "Repurpose IT P/L",
+      "source_url": "https://www.seek.com.au/"
+    },
+    "role_family": {
+      "family": "ai_adjacent",
+      "evidence": [
+        {
+          "excerpt": "We’re looking for an AI Adoption Specialist to help make AI practical, valuable, and embedded into everyday work across our corporate teams.",
+          "section": "Job description"
+        }
+      ]
+    },
+    "seniority": {
+      "level": "unknown",
+      "ambiguous": false,
+      "candidate_levels": [],
+      "evidence": []
+    },
+    "technologies": [
+      {
+        "name": "Copilot",
+        "level": "required",
+        "evidence": [
+          {
+            "excerpt": "Configure and optimise platforms such as Copilot and Claude",
+            "section": "Key responsibilities"
+          }
+        ]
+      },
+      {
+        "name": "Claude",
+        "level": "required",
+        "evidence": [
+          {
+            "excerpt": "Configure and optimise platforms such as Copilot and Claude",
+            "section": "Key responsibilities"
+          }
+        ]
+      }
+    ],
+    "responsibilities": [
+      {
+        "description": "Embed AI tools into real business workflows",
+        "evidence": [
+          {
+            "excerpt": "Embed AI tools into real business workflows",
+            "section": "Key responsibilities"
+          }
+        ]
+      },
+      {
+        "description": "Configure and optimise platforms such as Copilot and Claude",
+        "evidence": [
+          {
+            "excerpt": "Configure and optimise platforms such as Copilot and Claude",
+            "section": "Key responsibilities"
+          }
+        ]
+      },
+      {
+        "description": "Deliver practical training and build internal AI capability",
+        "evidence": [
+          {
+            "excerpt": "Deliver practical training and build internal AI capability",
+            "section": "Key responsibilities"
+          }
+        ]
+      },
+      {
+        "description": "Identify opportunities to improve efficiency, quality, and risk management",
+        "evidence": [
+          {
+            "excerpt": "Identify opportunities to improve efficiency, quality, and risk management",
+            "section": "Key responsibilities"
+          }
+        ]
+      },
+      {
+        "description": "Stay across emerging AI tools and drive continuous improvement",
+        "evidence": [
+          {
+            "excerpt": "Stay across emerging AI tools and drive continuous improvement",
+            "section": "Key responsibilities"
+          }
+        ]
+      }
+    ],
+    "compensation": {
+      "clarity": "unstated",
+      "minimum": null,
+      "maximum": null,
+      "currency": null,
+      "period": null,
+      "raw_text": null,
+      "evidence": []
+    },
+    "location": {
+      "clarity": "stated",
+      "summary": "Essendon Fields, Melbourne VIC",
+      "evidence": [
+        {
+          "excerpt": "Essendon Fields, Melbourne VIC",
+          "section": "Job description"
+        }
+      ]
+    },
+    "work_arrangement": {
+      "arrangement": "onsite",
+      "details": "This is a full-time, on-site position, with occasional travel to operational site.",
+      "evidence": [
+        {
+          "excerpt": "This is a full-time, on-site position, with occasional travel to operational site.",
+          "section": "Employer questions"
+        }
+      ]
+    },
+    "employment": {
+      "working_hours": "full_time",
+      "engagement_type": "unspecified",
+      "evidence": [
+        {
+          "excerpt": "Full time",
+          "section": "Job description"
+        }
+      ]
+    },
+    "experience_requirements": [
+      {
+        "description": "Experience or a strong recent graduate with hands-on AI tool usage",
+        "level": "required",
+        "minimum_years": null,
+        "maximum_years": null,
+        "evidence": [
+          {
+            "excerpt": "Experience or a strong recent graduate with hands-on AI tool usage",
+            "section": "About you"
+          }
+        ]
+      }
+    ]
+  },
+  "opportunity_assessment": {
+    "job_analysis": {
+      "posting": {
+        "raw_text": "Strong applicant\nAI Adoption Specialist\n\nREPURPOSE IT P/L \nView all jobs\nEssendon Fields, Melbourne VIC\nOther (Information & Communication Technology)\nFull time\nProfile salary match\n\nPosted 8d ago\n•\nMedium application volume\n\nAbout Repurpose It\n\nRepurpose It is a recognised leader in the circular economy, giving new life to materials that would otherwise go to waste. We recover resources from construction and demolition, excavation, infrastructure projects, and local council organics, transforming them into valuable products that support sustainable growth.\n\nBy investing in advanced technology, we partner with both public and private sectors to reduce greenhouse gases, protect the environment, and create a more sustainable future.\n\nOur values Integrity, Future Focused, Sustainability, and Care & Protect guide everything we do. As part of our team, you’ll join a workplace that is passionate about innovation, the environment, and supporting its people.\n\n\nAbout the role\n\nWe’re looking for an AI Adoption Specialist to help make AI practical, valuable, and embedded into everyday work across our corporate teams.\n\nWorking closely with different business units within Repurpose It such as Finance and P&C, you’ll identify, configure, and implement AI tools that drive real outcomes, improving productivity, reducing errors, and streamlining workflows.\n\nThis is a hands-on role where you’ll move teams from curiosity to confident, repeatable use of approved AI solutions.\n\n\nKey responsibilities:\n\nEmbed AI tools into real business workflows\nConfigure and optimise platforms such as Copilot and Claude\nDeliver practical training and build internal AI capability\nIdentify opportunities to improve efficiency, quality, and risk management\nStay across emerging AI tools and drive continuous improvement\n\nAbout you:\n\nDegree in Information Systems, Business Analytics, Commerce/Tech, or similar\nExperience or a strong recent graduate with hands-on AI tool usage\nComfortable working across teams and translating technical concepts\nCurious, practical, and focused on delivering real business impact\n\nHow to Apply:\n\nPlease include an up-to-date resume as part of your application.\n\nYour details will be stored in our candidate management system, and we may keep your details on file for other roles and opportunities in the future.\n\nIf successful in the process, we conduct a pre-employment check which consist of a national police check. As this role includes a fully maintained company vehicle, we also require a full drivers history check.\n\nRepurpose It is committed to providing an inclusive workplace and welcomes all individuals from different backgrounds, gender and ethnicity to apply.\n\nPlease let us know if you require any adjustments through this process.\n\nEmployer questions\nYour application will include the following questions:\nPlease elaborate your exposure to AI?\nDo you have a degree in Information Systems, Business Analytics, Commerce/Tech, or similar? Please comment below.\nThis is a full-time, on-site position, with occasional travel to operational site. Are you comfortable committing to this arrangement?\nWhat is your salary expectation?\nDo you have a valid Australian Drivers Licence?\nDo you have full work rights in Australia?\nIf successful in making it to the final stages of the recruitment process, would you be comfortable to complete a police check and psychometric test in line with our process?",
+        "title": "AI Adoption Specialist",
+        "company": "Repurpose IT P/L",
+        "source_url": "https://www.seek.com.au/"
+      },
+      "role_family": {
+        "family": "ai_adjacent",
+        "evidence": [
+          {
+            "excerpt": "We’re looking for an AI Adoption Specialist to help make AI practical, valuable, and embedded into everyday work across our corporate teams.",
+            "section": "Job description"
+          }
+        ]
+      },
+      "seniority": {
+        "level": "unknown",
+        "ambiguous": false,
+        "candidate_levels": [],
+        "evidence": []
+      },
+      "technologies": [
+        {
+          "name": "Copilot",
+          "level": "required",
+          "evidence": [
+            {
+              "excerpt": "Configure and optimise platforms such as Copilot and Claude",
+              "section": "Key responsibilities"
+            }
+          ]
+        },
+        {
+          "name": "Claude",
+          "level": "required",
+          "evidence": [
+            {
+              "excerpt": "Configure and optimise platforms such as Copilot and Claude",
+              "section": "Key responsibilities"
+            }
+          ]
+        }
+      ],
+      "responsibilities": [
+        {
+          "description": "Embed AI tools into real business workflows",
+          "evidence": [
+            {
+              "excerpt": "Embed AI tools into real business workflows",
+              "section": "Key responsibilities"
+            }
+          ]
+        },
+        {
+          "description": "Configure and optimise platforms such as Copilot and Claude",
+          "evidence": [
+            {
+              "excerpt": "Configure and optimise platforms such as Copilot and Claude",
+              "section": "Key responsibilities"
+            }
+          ]
+        },
+        {
+          "description": "Deliver practical training and build internal AI capability",
+          "evidence": [
+            {
+              "excerpt": "Deliver practical training and build internal AI capability",
+              "section": "Key responsibilities"
+            }
+          ]
+        },
+        {
+          "description": "Identify opportunities to improve efficiency, quality, and risk management",
+          "evidence": [
+            {
+              "excerpt": "Identify opportunities to improve efficiency, quality, and risk management",
+              "section": "Key responsibilities"
+            }
+          ]
+        },
+        {
+          "description": "Stay across emerging AI tools and drive continuous improvement",
+          "evidence": [
+            {
+              "excerpt": "Stay across emerging AI tools and drive continuous improvement",
+              "section": "Key responsibilities"
+            }
+          ]
+        }
+      ],
+      "compensation": {
+        "clarity": "unstated",
+        "minimum": null,
+        "maximum": null,
+        "currency": null,
+        "period": null,
+        "raw_text": null,
+        "evidence": []
+      },
+      "location": {
+        "clarity": "stated",
+        "summary": "Essendon Fields, Melbourne VIC",
+        "evidence": [
+          {
+            "excerpt": "Essendon Fields, Melbourne VIC",
+            "section": "Job description"
+          }
+        ]
+      },
+      "work_arrangement": {
+        "arrangement": "onsite",
+        "details": "This is a full-time, on-site position, with occasional travel to operational site.",
+        "evidence": [
+          {
+            "excerpt": "This is a full-time, on-site position, with occasional travel to operational site.",
+            "section": "Employer questions"
+          }
+        ]
+      },
+      "employment": {
+        "working_hours": "full_time",
+        "engagement_type": "unspecified",
+        "evidence": [
+          {
+            "excerpt": "Full time",
+            "section": "Job description"
+          }
+        ]
+      },
+      "experience_requirements": [
+        {
+          "description": "Experience or a strong recent graduate with hands-on AI tool usage",
+          "level": "required",
+          "minimum_years": null,
+          "maximum_years": null,
+          "evidence": [
+            {
+              "excerpt": "Experience or a strong recent graduate with hands-on AI tool usage",
+              "section": "About you"
+            }
+          ]
+        }
+      ]
+    },
+    "technical_fit": {
+      "dimension": "technical",
+      "judgment": "moderate",
+      "summary": "The candidate has relevant skills and experience for the AI Adoption Specialist role, but some specific experience with commercial AI application integration is lacking.",
+      "findings": [
+        {
+          "kind": "partial_alignment",
+          "summary": "The candidate has strong AI tool experience but lacks direct commercial application of these tools.",
+          "detail": "The role requires embedding AI tools into business workflows, while the candidate's experience primarily revolves around independent projects and AI engineering development, lacking commercial exposure.",
+          "importance": "material",
+          "job_evidence": [
+            {
+              "source": "experience_requirement",
+              "item_index": 0,
+              "name": "Experience or a strong recent graduate with hands-on AI tool usage",
+              "excerpt": "Experience or a strong recent graduate with hands-on AI tool usage"
+            }
+          ],
+          "profile_evidence": [
+            {
+              "source": "experience",
+              "ref": "experience:chase-risk-compliance-ai-engineer",
+              "excerpt": "Independently develops progressively more complex production-minded AI Engineering projects under a dedicated portfolio brand."
+            },
+            {
+              "source": "experience",
+              "ref": "experience:ai-engineering-development-2025",
+              "excerpt": "Made a deliberate pivot from Data Engineering to AI Engineering as the primary career focus."
+            }
+          ],
+          "assumption": null
+        }
+      ]
+    },
+    "commercial_fit": {
+      "dimension": "commercial",
+      "judgment": "weak",
+      "summary": "The profile lacks clear evidence of experience with commercial responsibilities and salary expectations.",
+      "findings": [
+        {
+          "kind": "gap",
+          "summary": "The role requires clear evidence of commercial responsibilities or salary expectations, which are not stated in the profile.",
+          "detail": "The compensation structure for the role is unspecified, and the profile does not clearly outline relevant past roles with commercial outcomes.",
+          "importance": "material",
+          "job_evidence": [
+            {
+              "source": "compensation",
+              "item_index": 0,
+              "name": "unstated",
+              "excerpt": "unstated"
+            }
+          ],
+          "profile_evidence": [],
+          "assumption": null
+        }
+      ]
+    },
+    "portfolio_fit": {
+      "dimension": "portfolio",
+      "judgment": "strong",
+      "summary": "The candidate's independent projects align well with the role's requirements.",
+      "findings": [
+        {
+          "kind": "alignment",
+          "summary": "The projects developed demonstrate applicable skills for the AI Adoption Specialist role, particularly in operational intelligence.",
+          "detail": "The projects listed show hands-on experience with tools relevant to the role's requirements.",
+          "importance": "material",
+          "job_evidence": [
+            {
+              "source": "responsibility",
+              "item_index": 0,
+              "name": "Embed AI tools into real business workflows",
+              "excerpt": "Embed AI tools into real business workflows"
+            }
+          ],
+          "profile_evidence": [
+            {
+              "source": "project",
+              "ref": "project:operational-intelligence-copilot",
+              "excerpt": "Domain-agnostic operational intelligence platform combining deterministic analytics with Large Language Model reasoning"
+            }
+          ],
+          "assumption": null
+        }
+      ]
+    },
+    "summary": {
+      "summary": "Overall, the candidate shows potential but needs to develop commercial experience to fully match the role requirements.",
+      "key_alignments": [
+        "Profile skills in AI engineering reflect the role's technical demands.",
+        "Independent projects demonstrate capability with AI tools."
+      ],
+      "key_gaps": [
+        "Lack of direct experience in a commercial environment using AI tools.",
+        "Unclear expectations around compensation and commercial impact."
+      ]
+    }
+  },
+  "portfolio_match": {
+    "job_analysis": {
+      "posting": {
+        "raw_text": "Strong applicant\nAI Adoption Specialist\n\nREPURPOSE IT P/L \nView all jobs\nEssendon Fields, Melbourne VIC\nOther (Information & Communication Technology)\nFull time\nProfile salary match\n\nPosted 8d ago\n•\nMedium application volume\n\nAbout Repurpose It\n\nRepurpose It is a recognised leader in the circular economy, giving new life to materials that would otherwise go to waste. We recover resources from construction and demolition, excavation, infrastructure projects, and local council organics, transforming them into valuable products that support sustainable growth.\n\nBy investing in advanced technology, we partner with both public and private sectors to reduce greenhouse gases, protect the environment, and create a more sustainable future.\n\nOur values Integrity, Future Focused, Sustainability, and Care & Protect guide everything we do. As part of our team, you’ll join a workplace that is passionate about innovation, the environment, and supporting its people.\n\n\nAbout the role\n\nWe’re looking for an AI Adoption Specialist to help make AI practical, valuable, and embedded into everyday work across our corporate teams.\n\nWorking closely with different business units within Repurpose It such as Finance and P&C, you’ll identify, configure, and implement AI tools that drive real outcomes, improving productivity, reducing errors, and streamlining workflows.\n\nThis is a hands-on role where you’ll move teams from curiosity to confident, repeatable use of approved AI solutions.\n\n\nKey responsibilities:\n\nEmbed AI tools into real business workflows\nConfigure and optimise platforms such as Copilot and Claude\nDeliver practical training and build internal AI capability\nIdentify opportunities to improve efficiency, quality, and risk management\nStay across emerging AI tools and drive continuous improvement\n\nAbout you:\n\nDegree in Information Systems, Business Analytics, Commerce/Tech, or similar\nExperience or a strong recent graduate with hands-on AI tool usage\nComfortable working across teams and translating technical concepts\nCurious, practical, and focused on delivering real business impact\n\nHow to Apply:\n\nPlease include an up-to-date resume as part of your application.\n\nYour details will be stored in our candidate management system, and we may keep your details on file for other roles and opportunities in the future.\n\nIf successful in the process, we conduct a pre-employment check which consist of a national police check. As this role includes a fully maintained company vehicle, we also require a full drivers history check.\n\nRepurpose It is committed to providing an inclusive workplace and welcomes all individuals from different backgrounds, gender and ethnicity to apply.\n\nPlease let us know if you require any adjustments through this process.\n\nEmployer questions\nYour application will include the following questions:\nPlease elaborate your exposure to AI?\nDo you have a degree in Information Systems, Business Analytics, Commerce/Tech, or similar? Please comment below.\nThis is a full-time, on-site position, with occasional travel to operational site. Are you comfortable committing to this arrangement?\nWhat is your salary expectation?\nDo you have a valid Australian Drivers Licence?\nDo you have full work rights in Australia?\nIf successful in making it to the final stages of the recruitment process, would you be comfortable to complete a police check and psychometric test in line with our process?",
+        "title": "AI Adoption Specialist",
+        "company": "Repurpose IT P/L",
+        "source_url": "https://www.seek.com.au/"
+      },
+      "role_family": {
+        "family": "ai_adjacent",
+        "evidence": [
+          {
+            "excerpt": "We’re looking for an AI Adoption Specialist to help make AI practical, valuable, and embedded into everyday work across our corporate teams.",
+            "section": "Job description"
+          }
+        ]
+      },
+      "seniority": {
+        "level": "unknown",
+        "ambiguous": false,
+        "candidate_levels": [],
+        "evidence": []
+      },
+      "technologies": [
+        {
+          "name": "Copilot",
+          "level": "required",
+          "evidence": [
+            {
+              "excerpt": "Configure and optimise platforms such as Copilot and Claude",
+              "section": "Key responsibilities"
+            }
+          ]
+        },
+        {
+          "name": "Claude",
+          "level": "required",
+          "evidence": [
+            {
+              "excerpt": "Configure and optimise platforms such as Copilot and Claude",
+              "section": "Key responsibilities"
+            }
+          ]
+        }
+      ],
+      "responsibilities": [
+        {
+          "description": "Embed AI tools into real business workflows",
+          "evidence": [
+            {
+              "excerpt": "Embed AI tools into real business workflows",
+              "section": "Key responsibilities"
+            }
+          ]
+        },
+        {
+          "description": "Configure and optimise platforms such as Copilot and Claude",
+          "evidence": [
+            {
+              "excerpt": "Configure and optimise platforms such as Copilot and Claude",
+              "section": "Key responsibilities"
+            }
+          ]
+        },
+        {
+          "description": "Deliver practical training and build internal AI capability",
+          "evidence": [
+            {
+              "excerpt": "Deliver practical training and build internal AI capability",
+              "section": "Key responsibilities"
+            }
+          ]
+        },
+        {
+          "description": "Identify opportunities to improve efficiency, quality, and risk management",
+          "evidence": [
+            {
+              "excerpt": "Identify opportunities to improve efficiency, quality, and risk management",
+              "section": "Key responsibilities"
+            }
+          ]
+        },
+        {
+          "description": "Stay across emerging AI tools and drive continuous improvement",
+          "evidence": [
+            {
+              "excerpt": "Stay across emerging AI tools and drive continuous improvement",
+              "section": "Key responsibilities"
+            }
+          ]
+        }
+      ],
+      "compensation": {
+        "clarity": "unstated",
+        "minimum": null,
+        "maximum": null,
+        "currency": null,
+        "period": null,
+        "raw_text": null,
+        "evidence": []
+      },
+      "location": {
+        "clarity": "stated",
+        "summary": "Essendon Fields, Melbourne VIC",
+        "evidence": [
+          {
+            "excerpt": "Essendon Fields, Melbourne VIC",
+            "section": "Job description"
+          }
+        ]
+      },
+      "work_arrangement": {
+        "arrangement": "onsite",
+        "details": "This is a full-time, on-site position, with occasional travel to operational site.",
+        "evidence": [
+          {
+            "excerpt": "This is a full-time, on-site position, with occasional travel to operational site.",
+            "section": "Employer questions"
+          }
+        ]
+      },
+      "employment": {
+        "working_hours": "full_time",
+        "engagement_type": "unspecified",
+        "evidence": [
+          {
+            "excerpt": "Full time",
+            "section": "Job description"
+          }
+        ]
+      },
+      "experience_requirements": [
+        {
+          "description": "Experience or a strong recent graduate with hands-on AI tool usage",
+          "level": "required",
+          "minimum_years": null,
+          "maximum_years": null,
+          "evidence": [
+            {
+              "excerpt": "Experience or a strong recent graduate with hands-on AI tool usage",
+              "section": "About you"
+            }
+          ]
+        }
+      ]
+    },
+    "ranked_projects": [
+      {
+        "rank": 1,
+        "project_id": "operational-intelligence-copilot",
+        "rationale": "Project 'operational-intelligence-copilot' ranked on 3 demonstrates overlap(s), 1 responsibility overlap(s).",
+        "factors": [
+          {
+            "kind": "demonstrates_overlap",
+            "summary": "Project demonstrates capabilities overlapping responsibility 'Embed AI tools into real business workflows'.",
+            "job_evidence": [
+              {
+                "source": "responsibility",
+                "item_index": 0,
+                "name": null,
+                "excerpt": "Embed AI tools into real business workflows"
+              }
+            ],
+            "profile_evidence": [
+              {
+                "source": "project",
+                "ref": "project:operational-intelligence-copilot",
+                "excerpt": "Regression-tested analytics workflows"
+              }
+            ]
+          },
+          {
+            "kind": "responsibility_overlap",
+            "summary": "Project summary, outcomes, or technologies overlap responsibility 'Embed AI tools into real business workflows'.",
+            "job_evidence": [
+              {
+                "source": "responsibility",
+                "item_index": 0,
+                "name": null,
+                "excerpt": "Embed AI tools into real business workflows"
+              }
+            ],
+            "profile_evidence": [
+              {
+                "source": "project",
+                "ref": "project:operational-intelligence-copilot",
+                "excerpt": "Domain-agnostic operational intelligence platform combining deterministic analytics with Large Language Model reasoning to analyse structured business data and…"
+              }
+            ]
+          },
+          {
+            "kind": "demonstrates_overlap",
+            "summary": "Project demonstrates capabilities overlapping responsibility 'Deliver practical training and build internal AI capability'.",
+            "job_evidence": [
+              {
+                "source": "responsibility",
+                "item_index": 2,
+                "name": null,
+                "excerpt": "Deliver practical training and build internal AI capability"
+              }
+            ],
+            "profile_evidence": [
+              {
+                "source": "project",
+                "ref": "project:operational-intelligence-copilot",
+                "excerpt": "Explainable AI recommendations"
+              }
+            ]
+          },
+          {
+            "kind": "demonstrates_overlap",
+            "summary": "Project demonstrates capabilities overlapping responsibility 'Stay across emerging AI tools and drive continuous improvement'.",
+            "job_evidence": [
+              {
+                "source": "responsibility",
+                "item_index": 4,
+                "name": null,
+                "excerpt": "Stay across emerging AI tools and drive continuous improvement"
+              }
+            ],
+            "profile_evidence": [
+              {
+                "source": "project",
+                "ref": "project:operational-intelligence-copilot",
+                "excerpt": "Explainable AI recommendations"
+              }
+            ]
+          }
+        ],
+        "tie_group": null,
+        "tie_break_reason": null
+      },
+      {
+        "rank": 2,
+        "project_id": "public-holiday-entitlements",
+        "rationale": "Project 'public-holiday-entitlements' ranked on 1 demonstrates overlap(s), 1 responsibility overlap(s).",
+        "factors": [
+          {
+            "kind": "demonstrates_overlap",
+            "summary": "Project demonstrates capabilities overlapping responsibility 'Embed AI tools into real business workflows'.",
+            "job_evidence": [
+              {
+                "source": "responsibility",
+                "item_index": 0,
+                "name": null,
+                "excerpt": "Embed AI tools into real business workflows"
+              }
+            ],
+            "profile_evidence": [
+              {
+                "source": "project",
+                "ref": "project:public-holiday-entitlements",
+                "excerpt": "Business rules"
+              }
+            ]
+          },
+          {
+            "kind": "responsibility_overlap",
+            "summary": "Project summary, outcomes, or technologies overlap responsibility 'Embed AI tools into real business workflows'.",
+            "job_evidence": [
+              {
+                "source": "responsibility",
+                "item_index": 0,
+                "name": null,
+                "excerpt": "Embed AI tools into real business workflows"
+              }
+            ],
+            "profile_evidence": [
+              {
+                "source": "project",
+                "ref": "project:public-holiday-entitlements",
+                "excerpt": "Business-rules platform combining geospatial processing and external APIs to determine Australian public-holiday entitlements."
+              }
+            ]
+          }
+        ],
+        "tie_group": null,
+        "tie_break_reason": null
+      },
+      {
+        "rank": 3,
+        "project_id": "governance-document-rag",
+        "rationale": "Project 'governance-document-rag' ranked on 3 responsibility overlap(s).",
+        "factors": [
+          {
+            "kind": "responsibility_overlap",
+            "summary": "Project summary, outcomes, or technologies overlap responsibility 'Embed AI tools into real business workflows'.",
+            "job_evidence": [
+              {
+                "source": "responsibility",
+                "item_index": 0,
+                "name": null,
+                "excerpt": "Embed AI tools into real business workflows"
+              }
+            ],
+            "profile_evidence": [
+              {
+                "source": "project",
+                "ref": "project:governance-document-rag",
+                "excerpt": "Enterprise retrieval-augmented generation platform supporting trustworthy AI responses over organisational knowledge."
+              }
+            ]
+          },
+          {
+            "kind": "responsibility_overlap",
+            "summary": "Project summary, outcomes, or technologies overlap responsibility 'Deliver practical training and build internal AI capability'.",
+            "job_evidence": [
+              {
+                "source": "responsibility",
+                "item_index": 2,
+                "name": null,
+                "excerpt": "Deliver practical training and build internal AI capability"
+              }
+            ],
+            "profile_evidence": [
+              {
+                "source": "project",
+                "ref": "project:governance-document-rag",
+                "excerpt": "Enterprise retrieval-augmented generation platform supporting trustworthy AI responses over organisational knowledge."
+              }
+            ]
+          },
+          {
+            "kind": "responsibility_overlap",
+            "summary": "Project summary, outcomes, or technologies overlap responsibility 'Stay across emerging AI tools and drive continuous improvement'.",
+            "job_evidence": [
+              {
+                "source": "responsibility",
+                "item_index": 4,
+                "name": null,
+                "excerpt": "Stay across emerging AI tools and drive continuous improvement"
+              }
+            ],
+            "profile_evidence": [
+              {
+                "source": "project",
+                "ref": "project:governance-document-rag",
+                "excerpt": "Enterprise retrieval-augmented generation platform supporting trustworthy AI responses over organisational knowledge."
+              }
+            ]
+          }
+        ],
+        "tie_group": null,
+        "tie_break_reason": null
+      },
+      {
+        "rank": 4,
+        "project_id": "payroll-diagnostics-engine",
+        "rationale": "Project 'payroll-diagnostics-engine' ranked on 1 responsibility overlap(s).",
+        "factors": [
+          {
+            "kind": "responsibility_overlap",
+            "summary": "Project summary, outcomes, or technologies overlap responsibility 'Embed AI tools into real business workflows'.",
+            "job_evidence": [
+              {
+                "source": "responsibility",
+                "item_index": 0,
+                "name": null,
+                "excerpt": "Embed AI tools into real business workflows"
+              }
+            ],
+            "profile_evidence": [
+              {
+                "source": "project",
+                "ref": "project:payroll-diagnostics-engine",
+                "excerpt": "Rule-based operational decision-support platform that identifies payroll anomalies through deterministic business-rule evaluation."
+              }
+            ]
+          }
+        ],
+        "tie_group": null,
+        "tie_break_reason": null
+      }
+    ],
+    "unranked_project_ids": [],
+    "summary": "Ranked 4 project(s); lead with 'operational-intelligence-copilot'. 0 project(s) had no matching factors.",
+    "insufficient_evidence": false
+  },
+  "application_strategy": {
+    "job_analysis": {
+      "posting": {
+        "raw_text": "Strong applicant\nAI Adoption Specialist\n\nREPURPOSE IT P/L \nView all jobs\nEssendon Fields, Melbourne VIC\nOther (Information & Communication Technology)\nFull time\nProfile salary match\n\nPosted 8d ago\n•\nMedium application volume\n\nAbout Repurpose It\n\nRepurpose It is a recognised leader in the circular economy, giving new life to materials that would otherwise go to waste. We recover resources from construction and demolition, excavation, infrastructure projects, and local council organics, transforming them into valuable products that support sustainable growth.\n\nBy investing in advanced technology, we partner with both public and private sectors to reduce greenhouse gases, protect the environment, and create a more sustainable future.\n\nOur values Integrity, Future Focused, Sustainability, and Care & Protect guide everything we do. As part of our team, you’ll join a workplace that is passionate about innovation, the environment, and supporting its people.\n\n\nAbout the role\n\nWe’re looking for an AI Adoption Specialist to help make AI practical, valuable, and embedded into everyday work across our corporate teams.\n\nWorking closely with different business units within Repurpose It such as Finance and P&C, you’ll identify, configure, and implement AI tools that drive real outcomes, improving productivity, reducing errors, and streamlining workflows.\n\nThis is a hands-on role where you’ll move teams from curiosity to confident, repeatable use of approved AI solutions.\n\n\nKey responsibilities:\n\nEmbed AI tools into real business workflows\nConfigure and optimise platforms such as Copilot and Claude\nDeliver practical training and build internal AI capability\nIdentify opportunities to improve efficiency, quality, and risk management\nStay across emerging AI tools and drive continuous improvement\n\nAbout you:\n\nDegree in Information Systems, Business Analytics, Commerce/Tech, or similar\nExperience or a strong recent graduate with hands-on AI tool usage\nComfortable working across teams and translating technical concepts\nCurious, practical, and focused on delivering real business impact\n\nHow to Apply:\n\nPlease include an up-to-date resume as part of your application.\n\nYour details will be stored in our candidate management system, and we may keep your details on file for other roles and opportunities in the future.\n\nIf successful in the process, we conduct a pre-employment check which consist of a national police check. As this role includes a fully maintained company vehicle, we also require a full drivers history check.\n\nRepurpose It is committed to providing an inclusive workplace and welcomes all individuals from different backgrounds, gender and ethnicity to apply.\n\nPlease let us know if you require any adjustments through this process.\n\nEmployer questions\nYour application will include the following questions:\nPlease elaborate your exposure to AI?\nDo you have a degree in Information Systems, Business Analytics, Commerce/Tech, or similar? Please comment below.\nThis is a full-time, on-site position, with occasional travel to operational site. Are you comfortable committing to this arrangement?\nWhat is your salary expectation?\nDo you have a valid Australian Drivers Licence?\nDo you have full work rights in Australia?\nIf successful in making it to the final stages of the recruitment process, would you be comfortable to complete a police check and psychometric test in line with our process?",
+        "title": "AI Adoption Specialist",
+        "company": "Repurpose IT P/L",
+        "source_url": "https://www.seek.com.au/"
+      },
+      "role_family": {
+        "family": "ai_adjacent",
+        "evidence": [
+          {
+            "excerpt": "We’re looking for an AI Adoption Specialist to help make AI practical, valuable, and embedded into everyday work across our corporate teams.",
+            "section": "Job description"
+          }
+        ]
+      },
+      "seniority": {
+        "level": "unknown",
+        "ambiguous": false,
+        "candidate_levels": [],
+        "evidence": []
+      },
+      "technologies": [
+        {
+          "name": "Copilot",
+          "level": "required",
+          "evidence": [
+            {
+              "excerpt": "Configure and optimise platforms such as Copilot and Claude",
+              "section": "Key responsibilities"
+            }
+          ]
+        },
+        {
+          "name": "Claude",
+          "level": "required",
+          "evidence": [
+            {
+              "excerpt": "Configure and optimise platforms such as Copilot and Claude",
+              "section": "Key responsibilities"
+            }
+          ]
+        }
+      ],
+      "responsibilities": [
+        {
+          "description": "Embed AI tools into real business workflows",
+          "evidence": [
+            {
+              "excerpt": "Embed AI tools into real business workflows",
+              "section": "Key responsibilities"
+            }
+          ]
+        },
+        {
+          "description": "Configure and optimise platforms such as Copilot and Claude",
+          "evidence": [
+            {
+              "excerpt": "Configure and optimise platforms such as Copilot and Claude",
+              "section": "Key responsibilities"
+            }
+          ]
+        },
+        {
+          "description": "Deliver practical training and build internal AI capability",
+          "evidence": [
+            {
+              "excerpt": "Deliver practical training and build internal AI capability",
+              "section": "Key responsibilities"
+            }
+          ]
+        },
+        {
+          "description": "Identify opportunities to improve efficiency, quality, and risk management",
+          "evidence": [
+            {
+              "excerpt": "Identify opportunities to improve efficiency, quality, and risk management",
+              "section": "Key responsibilities"
+            }
+          ]
+        },
+        {
+          "description": "Stay across emerging AI tools and drive continuous improvement",
+          "evidence": [
+            {
+              "excerpt": "Stay across emerging AI tools and drive continuous improvement",
+              "section": "Key responsibilities"
+            }
+          ]
+        }
+      ],
+      "compensation": {
+        "clarity": "unstated",
+        "minimum": null,
+        "maximum": null,
+        "currency": null,
+        "period": null,
+        "raw_text": null,
+        "evidence": []
+      },
+      "location": {
+        "clarity": "stated",
+        "summary": "Essendon Fields, Melbourne VIC",
+        "evidence": [
+          {
+            "excerpt": "Essendon Fields, Melbourne VIC",
+            "section": "Job description"
+          }
+        ]
+      },
+      "work_arrangement": {
+        "arrangement": "onsite",
+        "details": "This is a full-time, on-site position, with occasional travel to operational site.",
+        "evidence": [
+          {
+            "excerpt": "This is a full-time, on-site position, with occasional travel to operational site.",
+            "section": "Employer questions"
+          }
+        ]
+      },
+      "employment": {
+        "working_hours": "full_time",
+        "engagement_type": "unspecified",
+        "evidence": [
+          {
+            "excerpt": "Full time",
+            "section": "Job description"
+          }
+        ]
+      },
+      "experience_requirements": [
+        {
+          "description": "Experience or a strong recent graduate with hands-on AI tool usage",
+          "level": "required",
+          "minimum_years": null,
+          "maximum_years": null,
+          "evidence": [
+            {
+              "excerpt": "Experience or a strong recent graduate with hands-on AI tool usage",
+              "section": "About you"
+            }
+          ]
+        }
+      ]
+    },
+    "application_tier": "silver",
+    "pursuit_posture": "consider",
+    "practical_value": "acceptable_opportunity",
+    "effort_level": "minimal",
+    "summary": "Recommend posture 'consider' with effort tier 'silver' (minimal). Technical fit 'moderate', commercial fit 'weak', portfolio fit 'strong'. Owner review is required before any application action.",
+    "reasons": [
+      {
+        "kind": "alignment",
+        "summary": "Technical fit is 'moderate' and portfolio fit is 'strong' for this opportunity.",
+        "importance": "material",
+        "evidence": [
+          {
+            "origin": "opportunity_assessment",
+            "job_evidence": null,
+            "profile_evidence": null,
+            "assessment_dimension": "technical",
+            "assessment_judgment": "moderate",
+            "portfolio_project_id": null,
+            "excerpt": null
+          },
+          {
+            "origin": "opportunity_assessment",
+            "job_evidence": null,
+            "profile_evidence": null,
+            "assessment_dimension": "portfolio",
+            "assessment_judgment": "strong",
+            "portfolio_project_id": null,
+            "excerpt": null
+          }
+        ]
+      },
+      {
+        "kind": "priority",
+        "summary": "Pursuit posture 'consider' with effort tier 'silver' reflects commercial fit 'weak' and AI-adjacent role family.",
+        "importance": "material",
+        "evidence": [
+          {
+            "origin": "opportunity_assessment",
+            "job_evidence": null,
+            "profile_evidence": null,
+            "assessment_dimension": "commercial",
+            "assessment_judgment": "weak",
+            "portfolio_project_id": null,
+            "excerpt": null
+          },
+          {
+            "origin": "job_analysis",
+            "job_evidence": {
+              "source": "role_family",
+              "item_index": null,
+              "name": null,
+              "excerpt": null
+            },
+            "profile_evidence": null,
+            "assessment_dimension": null,
+            "assessment_judgment": null,
+            "portfolio_project_id": null,
+            "excerpt": null
+          }
+        ]
+      }
+    ],
+    "risks_or_gaps": [
+      {
+        "summary": "Commercial fit is 'weak', which may reduce the value of investing significant effort.",
+        "importance": "material",
+        "evidence": [
+          {
+            "origin": "opportunity_assessment",
+            "job_evidence": null,
+            "profile_evidence": null,
+            "assessment_dimension": "commercial",
+            "assessment_judgment": "weak",
+            "portfolio_project_id": null,
+            "excerpt": null
+          }
+        ]
+      }
+    ],
+    "manual_checks": [
+      {
+        "summary": "Review compensation once salary or rate information is available.",
+        "why_it_matters": "Compensation clarity can change commercial priority; no salary conflict was invented from missing data.",
+        "could_change_recommendation": true,
+        "evidence": [
+          {
+            "origin": "job_analysis",
+            "job_evidence": {
+              "source": "compensation",
+              "item_index": null,
+              "name": null,
+              "excerpt": null
+            },
+            "profile_evidence": null,
+            "assessment_dimension": null,
+            "assessment_judgment": null,
+            "portfolio_project_id": null,
+            "excerpt": null
+          }
+        ]
+      },
+      {
+        "summary": "Verify working-rights wording against your own eligibility.",
+        "why_it_matters": "The posting states a working-rights requirement; the system does not infer owner eligibility.",
+        "could_change_recommendation": true,
+        "evidence": [
+          {
+            "origin": "opportunity_assessment",
+            "job_evidence": null,
+            "profile_evidence": null,
+            "assessment_dimension": "commercial",
+            "assessment_judgment": "weak",
+            "portfolio_project_id": null,
+            "excerpt": null
+          }
+        ]
+      }
+    ],
+    "next_actions": [
+      {
+        "kind": "consider_verifying_working_rights",
+        "summary": "Consider verifying working-rights wording against your eligibility.",
+        "related_project_id": null,
+        "evidence": [
+          {
+            "origin": "opportunity_assessment",
+            "job_evidence": null,
+            "profile_evidence": null,
+            "assessment_dimension": "commercial",
+            "assessment_judgment": "weak",
+            "portfolio_project_id": null,
+            "excerpt": null
+          }
+        ]
+      },
+      {
+        "kind": "consider_reviewing_compensation",
+        "summary": "Consider reviewing compensation before investing significant effort.",
+        "related_project_id": null,
+        "evidence": [
+          {
+            "origin": "job_analysis",
+            "job_evidence": {
+              "source": "compensation",
+              "item_index": null,
+              "name": null,
+              "excerpt": null
+            },
+            "profile_evidence": null,
+            "assessment_dimension": null,
+            "assessment_judgment": null,
+            "portfolio_project_id": null,
+            "excerpt": null
+          }
+        ]
+      },
+      {
+        "kind": "consider_emphasising_portfolio_projects",
+        "summary": "Consider emphasising the strongest matched portfolio project(s) in any application materials you prepare.",
+        "related_project_id": "operational-intelligence-copilot",
+        "evidence": [
+          {
+            "origin": "portfolio_match",
+            "job_evidence": null,
+            "profile_evidence": null,
+            "assessment_dimension": null,
+            "assessment_judgment": null,
+            "portfolio_project_id": "operational-intelligence-copilot",
+            "excerpt": null
+          }
+        ]
+      },
+      {
+        "kind": "consider_owner_review",
+        "summary": "Consider reviewing this full strategy before taking any external action.",
+        "related_project_id": null,
+        "evidence": [
+          {
+            "origin": "opportunity_assessment",
+            "job_evidence": null,
+            "profile_evidence": null,
+            "assessment_dimension": "technical",
+            "assessment_judgment": "moderate",
+            "portfolio_project_id": null,
+            "excerpt": null
+          }
+        ]
+      }
+    ],
+    "portfolio_emphasis": [
+      {
+        "project_id": "operational-intelligence-copilot",
+        "source_rank": 1,
+        "summary": "Consider emphasising 'operational-intelligence-copilot' (PortfolioMatch rank 1).",
+        "evidence": [
+          {
+            "origin": "portfolio_match",
+            "job_evidence": null,
+            "profile_evidence": null,
+            "assessment_dimension": null,
+            "assessment_judgment": null,
+            "portfolio_project_id": "operational-intelligence-copilot",
+            "excerpt": null
+          }
+        ]
+      },
+      {
+        "project_id": "public-holiday-entitlements",
+        "source_rank": 2,
+        "summary": "Consider emphasising 'public-holiday-entitlements' (PortfolioMatch rank 2).",
+        "evidence": [
+          {
+            "origin": "portfolio_match",
+            "job_evidence": null,
+            "profile_evidence": null,
+            "assessment_dimension": null,
+            "assessment_judgment": null,
+            "portfolio_project_id": "public-holiday-entitlements",
+            "excerpt": null
+          }
+        ]
+      },
+      {
+        "project_id": "governance-document-rag",
+        "source_rank": 3,
+        "summary": "Consider emphasising 'governance-document-rag' (PortfolioMatch rank 3).",
+        "evidence": [
+          {
+            "origin": "portfolio_match",
+            "job_evidence": null,
+            "profile_evidence": null,
+            "assessment_dimension": null,
+            "assessment_judgment": null,
+            "portfolio_project_id": "governance-document-rag",
+            "excerpt": null
+          }
+        ]
+      }
+    ],
+    "assumptions": [
+      "Compensation fit is not scored because salary/rate evidence is missing or ambiguous.",
+      "No candidate salary minimum is configured, so compensation was not treated as a hard threshold conflict.",
+      "Owner working-rights eligibility is unknown to the system and was not inferred."
+    ],
+    "decision_blockers": [],
+    "owner_review_required": true,
+    "insufficient_information": false
+  }
+}

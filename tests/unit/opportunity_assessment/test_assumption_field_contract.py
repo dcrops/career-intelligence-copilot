@@ -97,7 +97,7 @@ def test_assumption_finding_missing_text_fails() -> None:
 
 
 def test_prompt_forbids_assumption_on_non_assumption_kinds() -> None:
-    assert ASSESSMENT_PROMPT_VERSION == "v8"
+    assert ASSESSMENT_PROMPT_VERSION == "v11"
     assert "Never populate the assumption field unless kind is exactly" in (
         ASSESSMENT_INSTRUCTIONS_V1
     )

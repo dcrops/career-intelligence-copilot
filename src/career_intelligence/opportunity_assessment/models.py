@@ -9,7 +9,14 @@ from __future__ import annotations
 
 from typing import Annotated, Literal
 
-from pydantic import BaseModel, ConfigDict, Field, StringConstraints, model_validator
+from pydantic import (
+    BaseModel,
+    ConfigDict,
+    Field,
+    StringConstraints,
+    field_validator,
+    model_validator,
+)
 
 from career_intelligence.job_analysis.models import JobAnalysis
 
@@ -101,6 +108,31 @@ class ProfileEvidenceRef(AssessmentModel):
     ref: NonEmptyString
     excerpt: NonEmptyString | None = None
 
+    @field_validator("ref")
+    @classmethod
+    def ref_is_exact_catalogue_token(cls, value: str) -> str:
+        """Reject trailing punctuation that LLMs often append to catalogue tokens.
+
+        Example failure: ``experience:chase-risk-compliance-ai-engineer.``
+        Validation remains fail-closed — no silent stripping/repair.
+        """
+        if value != value.strip():
+            raise ValueError(
+                "profile evidence ref must not include leading/trailing whitespace"
+            )
+        if value[-1] in ".,;:!?)]":
+            raise ValueError(
+                "profile evidence ref must be an exact catalogue token with no "
+                "trailing punctuation "
+                f"(got '{value}')"
+            )
+        if ":" not in value:
+            raise ValueError(
+                "profile evidence ref must use namespace:id form "
+                f"(got '{value}')"
+            )
+        return value
+
 
 class FitFinding(AssessmentModel):
     """One atomic, explainable fit claim within a dimension."""
@@ -138,6 +170,23 @@ class FitDimensionAssessment(AssessmentModel):
     judgment: FitJudgment
     summary: NonEmptyString
     findings: list[FitFinding] = Field(min_length=1)
+
+    @model_validator(mode="after")
+    def judgment_reflects_material_gaps(self) -> FitDimensionAssessment:
+        """Reject strong judgments that ignore material gap/conflict findings.
+
+        No silent repair: assessors must emit a calibrated judgment.
+        """
+        has_material_negative = any(
+            finding.importance == "material" and finding.kind in {"gap", "conflict"}
+            for finding in self.findings
+        )
+        if has_material_negative and self.judgment == "strong":
+            raise ValueError(
+                f"{self.dimension} judgment 'strong' is inconsistent with material "
+                "gap/conflict findings"
+            )
+        return self
 
 
 class AssessmentSummary(AssessmentModel):

@@ -1,0 +1,1408 @@
+{
+  "components": [
+    {
+      "name": "CareerProfile",
+      "implementation": "CareerProfileService / YAML",
+      "mode": "deterministic_production"
+    },
+    {
+      "name": "JobAnalysis",
+      "implementation": "OpenAIJobExtractor",
+      "mode": "openai_production"
+    },
+    {
+      "name": "OpportunityAssessment",
+      "implementation": "OpenAIAssessor",
+      "mode": "openai_production"
+    },
+    {
+      "name": "PortfolioMatch",
+      "implementation": "DeterministicMatcher",
+      "mode": "deterministic_production"
+    },
+    {
+      "name": "ApplicationStrategy",
+      "implementation": "DeterministicStrategyPlanner",
+      "mode": "deterministic_production"
+    }
+  ],
+  "volume_applications_enabled": false,
+  "profile_identity": {
+    "full_name": "David Cropper",
+    "target_role": "AI Engineer"
+  },
+  "posting": {
+    "raw_text": "Company logo for, Maincode.\nMaincode\n\n\nAI Infrastructure Engineer\n\nMelbourne, Victoria, Australia · Reposted 6 days ago · Over 100 people clicked apply\n\nPromoted by hirer · Responses managed off LinkedIn\n\nOn-site\nFull-time\nApply\n\nSave\nYour profile and resume are missing some required qualifications\n\n\n\nShow match details\n\nBETA • Is this information helpful?\n\n\nAbout the job\nAbout Maincode\n\nMaincode is an AI research and engineering company and home to Matilda, Australia’s first and only large language model trained from scratch. We operate our own advanced AI infrastructure in local data-centres; designing, building, and running everything from the racks up through model training and serving systems.\n\nWe’re building an AI Model Factory, a new kind of compute infrastructure that powers frontier AI research and production systems that work at scale.\n\nAbout The Role\n\nThis role sits at the intersection of physical systems, large-scale compute, and AI research. You’ll help design and operate the infrastructure that trains large-scale models: racks of GPUs, high-performance networks, and the orchestration systems that keep them running.\n\nPeople with strong research instincts and systems thinking thrive here. You don’t need prior datacenter experience; curiosity, first-principles reasoning, and the ability to learn fast matter more. Someone from mechatronics, robotics, or aerospace who has strong computational skills could excel in this role. We’ll give you the time, mentorship, and resources to master how these systems work, and you’ll develop expertise in one of the most essential technical domains of the coming decade.\n\nWhat You’ll Do\n\nLearn to design, deploy, and operate the backbone of AI infrastructure.\nWork with GPU clusters, high-speed networking, and large-scale Linux systems.\nContribute to the architecture of Australia’s first production-scale AI datacentre systems.\nCollaborate with AI researchers and engineers to shape the next generation of model training environments.\nDevelop new operational and architectural approaches from first principles.\n\nYou Might Be a Fit If\n\nYou have hands-on experience working close to the metal with computational systems. This might include systems programming, Linux environments, GPU or accelerator programming, distributed or HPC environments (e.g. MPI), automation, or large-scale numerical computation.\nYou may also come from adjacent technical or scientific fields such as mechatronics, robotics, aerospace, physics, or similar disciplines where you have developed strong computational and modelling skills.\nYou enjoy understanding complex systems from first principles.\nYou learn new technologies quickly and apply them independently.\nYou think in terms of system architecture, how components interact and scale.\nYou’re curious about how AI systems actually run in practice, from hardware and cooling through to model training and large-scale compute.",
+    "title": "AI Infrastructure Engineer",
+    "company": "Maincode",
+    "source_url": "https://www.linkedin.com/jobs/search-results/?currentJobId=4312188746&eBP=CwEAAAGfjO1IwJONY3jSQmZKuburZYQRIvy81hwW4t4O2wY1Cs1clSE2wfWCpxIyey4Pv4Y6nTgwlwfk-PUrj6MieLpaC7VV_M1c2a4pLaWA8FC3CT_iiliBmaRd96MABZ3JCjd5b4GGNPzLB7Od-DaVf6VHIceTq2sPuYd33ZU63o57rInzQo_UsewQgyqm30DdNm0PlDLxNizhe1MHsBYbRLkpVCtk17_PXw9v4T4QaqJRqNlCxbGPX_Dl7xa91EJ5yRS_oMiWUfrh6szkUDsGIrApIlIwlTrH0SYi2c3bJEo87tulI5Lr6dBBzJJINsXGM5N8nRKkA9uY3gHo9puqXp1jbPg9725MA5kH1s7vjZVyRlMsMaKcNGoCs9zo6UTLuH8MAXplvk-0JqwETZVTYspkZvYV2_2LNtxx4AgLpWlWrhDDmKPXQYpLODjocglrHzvn7mRiW4pC__W2Zzs&refId=kI7YYcveuaax8z8A2GDROA%3D%3D&trackingId=rfuYJAD4nvCYPvAQqO3ifw%3D%3D&keywords=ai%20engineer&origin=JOBS_HOME_SEARCH_BUTTON"
+  },
+  "job_analysis": {
+    "posting": {
+      "raw_text": "Company logo for, Maincode.\nMaincode\n\n\nAI Infrastructure Engineer\n\nMelbourne, Victoria, Australia · Reposted 6 days ago · Over 100 people clicked apply\n\nPromoted by hirer · Responses managed off LinkedIn\n\nOn-site\nFull-time\nApply\n\nSave\nYour profile and resume are missing some required qualifications\n\n\n\nShow match details\n\nBETA • Is this information helpful?\n\n\nAbout the job\nAbout Maincode\n\nMaincode is an AI research and engineering company and home to Matilda, Australia’s first and only large language model trained from scratch. We operate our own advanced AI infrastructure in local data-centres; designing, building, and running everything from the racks up through model training and serving systems.\n\nWe’re building an AI Model Factory, a new kind of compute infrastructure that powers frontier AI research and production systems that work at scale.\n\nAbout The Role\n\nThis role sits at the intersection of physical systems, large-scale compute, and AI research. You’ll help design and operate the infrastructure that trains large-scale models: racks of GPUs, high-performance networks, and the orchestration systems that keep them running.\n\nPeople with strong research instincts and systems thinking thrive here. You don’t need prior datacenter experience; curiosity, first-principles reasoning, and the ability to learn fast matter more. Someone from mechatronics, robotics, or aerospace who has strong computational skills could excel in this role. We’ll give you the time, mentorship, and resources to master how these systems work, and you’ll develop expertise in one of the most essential technical domains of the coming decade.\n\nWhat You’ll Do\n\nLearn to design, deploy, and operate the backbone of AI infrastructure.\nWork with GPU clusters, high-speed networking, and large-scale Linux systems.\nContribute to the architecture of Australia’s first production-scale AI datacentre systems.\nCollaborate with AI researchers and engineers to shape the next generation of model training environments.\nDevelop new operational and architectural approaches from first principles.\n\nYou Might Be a Fit If\n\nYou have hands-on experience working close to the metal with computational systems. This might include systems programming, Linux environments, GPU or accelerator programming, distributed or HPC environments (e.g. MPI), automation, or large-scale numerical computation.\nYou may also come from adjacent technical or scientific fields such as mechatronics, robotics, aerospace, physics, or similar disciplines where you have developed strong computational and modelling skills.\nYou enjoy understanding complex systems from first principles.\nYou learn new technologies quickly and apply them independently.\nYou think in terms of system architecture, how components interact and scale.\nYou’re curious about how AI systems actually run in practice, from hardware and cooling through to model training and large-scale compute.",
+      "title": "AI Infrastructure Engineer",
+      "company": "Maincode",
+      "source_url": "https://www.linkedin.com/jobs/search-results/?currentJobId=4312188746&eBP=CwEAAAGfjO1IwJONY3jSQmZKuburZYQRIvy81hwW4t4O2wY1Cs1clSE2wfWCpxIyey4Pv4Y6nTgwlwfk-PUrj6MieLpaC7VV_M1c2a4pLaWA8FC3CT_iiliBmaRd96MABZ3JCjd5b4GGNPzLB7Od-DaVf6VHIceTq2sPuYd33ZU63o57rInzQo_UsewQgyqm30DdNm0PlDLxNizhe1MHsBYbRLkpVCtk17_PXw9v4T4QaqJRqNlCxbGPX_Dl7xa91EJ5yRS_oMiWUfrh6szkUDsGIrApIlIwlTrH0SYi2c3bJEo87tulI5Lr6dBBzJJINsXGM5N8nRKkA9uY3gHo9puqXp1jbPg9725MA5kH1s7vjZVyRlMsMaKcNGoCs9zo6UTLuH8MAXplvk-0JqwETZVTYspkZvYV2_2LNtxx4AgLpWlWrhDDmKPXQYpLODjocglrHzvn7mRiW4pC__W2Zzs&refId=kI7YYcveuaax8z8A2GDROA%3D%3D&trackingId=rfuYJAD4nvCYPvAQqO3ifw%3D%3D&keywords=ai%20engineer&origin=JOBS_HOME_SEARCH_BUTTON"
+    },
+    "role_family": {
+      "family": "ai_engineering",
+      "evidence": [
+        {
+          "excerpt": "Maincode is an AI research and engineering company and home to Matilda, Australia’s first and only large language model trained from scratch.",
+          "section": "Job description"
+        },
+        {
+          "excerpt": "We’re building an AI Model Factory, a new kind of compute infrastructure that powers frontier AI research and production systems that work at scale.",
+          "section": "Job description"
+        }
+      ]
+    },
+    "seniority": {
+      "level": "unknown",
+      "ambiguous": false,
+      "candidate_levels": [],
+      "evidence": []
+    },
+    "technologies": [
+      {
+        "name": "GPU clusters",
+        "level": "required",
+        "evidence": [
+          {
+            "excerpt": "Work with GPU clusters, high-speed networking, and large-scale Linux systems.",
+            "section": "Job description"
+          }
+        ]
+      },
+      {
+        "name": "high-speed networking",
+        "level": "required",
+        "evidence": [
+          {
+            "excerpt": "Work with GPU clusters, high-speed networking, and large-scale Linux systems.",
+            "section": "Job description"
+          }
+        ]
+      },
+      {
+        "name": "large-scale Linux systems",
+        "level": "required",
+        "evidence": [
+          {
+            "excerpt": "Work with GPU clusters, high-speed networking, and large-scale Linux systems.",
+            "section": "Job description"
+          }
+        ]
+      },
+      {
+        "name": "systems programming",
+        "level": "preferred",
+        "evidence": [
+          {
+            "excerpt": "You have hands-on experience working close to the metal with computational systems. This might include systems programming, Linux environments, GPU or accelerator programming, distributed or HPC environments (e.g. MPI), automation, or large-scale numerical computation.",
+            "section": "Job description"
+          }
+        ]
+      },
+      {
+        "name": "distributed environments",
+        "level": "preferred",
+        "evidence": [
+          {
+            "excerpt": "You have hands-on experience working close to the metal with computational systems. This might include systems programming, Linux environments, GPU or accelerator programming, distributed or HPC environments (e.g. MPI), automation, or large-scale numerical computation.",
+            "section": "Job description"
+          }
+        ]
+      },
+      {
+        "name": "HPC (High-Performance Computing)",
+        "level": "preferred",
+        "evidence": [
+          {
+            "excerpt": "You have hands-on experience working close to the metal with computational systems. This might include systems programming, Linux environments, GPU or accelerator programming, distributed or HPC environments (e.g. MPI), automation, or large-scale numerical computation.",
+            "section": "Job description"
+          }
+        ]
+      },
+      {
+        "name": "automation",
+        "level": "preferred",
+        "evidence": [
+          {
+            "excerpt": "You have hands-on experience working close to the metal with computational systems. This might include systems programming, Linux environments, GPU or accelerator programming, distributed or HPC environments (e.g. MPI), automation, or large-scale numerical computation.",
+            "section": "Job description"
+          }
+        ]
+      },
+      {
+        "name": "large-scale numerical computation",
+        "level": "preferred",
+        "evidence": [
+          {
+            "excerpt": "You have hands-on experience working close to the metal with computational systems. This might include systems programming, Linux environments, GPU or accelerator programming, distributed or HPC environments (e.g. MPI), automation, or large-scale numerical computation.",
+            "section": "Job description"
+          }
+        ]
+      }
+    ],
+    "responsibilities": [
+      {
+        "description": "Learn to design, deploy, and operate the backbone of AI infrastructure.",
+        "evidence": [
+          {
+            "excerpt": "What You’ll Do",
+            "section": "Job description"
+          }
+        ]
+      },
+      {
+        "description": "Contribute to the architecture of Australia’s first production-scale AI datacentre systems.",
+        "evidence": [
+          {
+            "excerpt": "Contribute to the architecture of Australia’s first production-scale AI datacentre systems.",
+            "section": "Job description"
+          }
+        ]
+      },
+      {
+        "description": "Collaborate with AI researchers and engineers to shape the next generation of model training environments.",
+        "evidence": [
+          {
+            "excerpt": "Collaborate with AI researchers and engineers to shape the next generation of model training environments.",
+            "section": "Job description"
+          }
+        ]
+      },
+      {
+        "description": "Develop new operational and architectural approaches from first principles.",
+        "evidence": [
+          {
+            "excerpt": "Develop new operational and architectural approaches from first principles.",
+            "section": "Job description"
+          }
+        ]
+      }
+    ],
+    "compensation": {
+      "clarity": "unstated",
+      "minimum": null,
+      "maximum": null,
+      "currency": null,
+      "period": null,
+      "raw_text": null,
+      "evidence": []
+    },
+    "location": {
+      "clarity": "stated",
+      "summary": "Melbourne, Victoria, Australia",
+      "evidence": [
+        {
+          "excerpt": "Melbourne, Victoria, Australia",
+          "section": "Job description"
+        }
+      ]
+    },
+    "work_arrangement": {
+      "arrangement": "onsite",
+      "details": null,
+      "evidence": [
+        {
+          "excerpt": "On-site",
+          "section": "Job description"
+        }
+      ]
+    },
+    "employment": {
+      "working_hours": "full_time",
+      "engagement_type": "unspecified",
+      "evidence": [
+        {
+          "excerpt": "Full-time",
+          "section": "Job description"
+        }
+      ]
+    },
+    "experience_requirements": []
+  },
+  "opportunity_assessment": {
+    "job_analysis": {
+      "posting": {
+        "raw_text": "Company logo for, Maincode.\nMaincode\n\n\nAI Infrastructure Engineer\n\nMelbourne, Victoria, Australia · Reposted 6 days ago · Over 100 people clicked apply\n\nPromoted by hirer · Responses managed off LinkedIn\n\nOn-site\nFull-time\nApply\n\nSave\nYour profile and resume are missing some required qualifications\n\n\n\nShow match details\n\nBETA • Is this information helpful?\n\n\nAbout the job\nAbout Maincode\n\nMaincode is an AI research and engineering company and home to Matilda, Australia’s first and only large language model trained from scratch. We operate our own advanced AI infrastructure in local data-centres; designing, building, and running everything from the racks up through model training and serving systems.\n\nWe’re building an AI Model Factory, a new kind of compute infrastructure that powers frontier AI research and production systems that work at scale.\n\nAbout The Role\n\nThis role sits at the intersection of physical systems, large-scale compute, and AI research. You’ll help design and operate the infrastructure that trains large-scale models: racks of GPUs, high-performance networks, and the orchestration systems that keep them running.\n\nPeople with strong research instincts and systems thinking thrive here. You don’t need prior datacenter experience; curiosity, first-principles reasoning, and the ability to learn fast matter more. Someone from mechatronics, robotics, or aerospace who has strong computational skills could excel in this role. We’ll give you the time, mentorship, and resources to master how these systems work, and you’ll develop expertise in one of the most essential technical domains of the coming decade.\n\nWhat You’ll Do\n\nLearn to design, deploy, and operate the backbone of AI infrastructure.\nWork with GPU clusters, high-speed networking, and large-scale Linux systems.\nContribute to the architecture of Australia’s first production-scale AI datacentre systems.\nCollaborate with AI researchers and engineers to shape the next generation of model training environments.\nDevelop new operational and architectural approaches from first principles.\n\nYou Might Be a Fit If\n\nYou have hands-on experience working close to the metal with computational systems. This might include systems programming, Linux environments, GPU or accelerator programming, distributed or HPC environments (e.g. MPI), automation, or large-scale numerical computation.\nYou may also come from adjacent technical or scientific fields such as mechatronics, robotics, aerospace, physics, or similar disciplines where you have developed strong computational and modelling skills.\nYou enjoy understanding complex systems from first principles.\nYou learn new technologies quickly and apply them independently.\nYou think in terms of system architecture, how components interact and scale.\nYou’re curious about how AI systems actually run in practice, from hardware and cooling through to model training and large-scale compute.",
+        "title": "AI Infrastructure Engineer",
+        "company": "Maincode",
+        "source_url": "https://www.linkedin.com/jobs/search-results/?currentJobId=4312188746&eBP=CwEAAAGfjO1IwJONY3jSQmZKuburZYQRIvy81hwW4t4O2wY1Cs1clSE2wfWCpxIyey4Pv4Y6nTgwlwfk-PUrj6MieLpaC7VV_M1c2a4pLaWA8FC3CT_iiliBmaRd96MABZ3JCjd5b4GGNPzLB7Od-DaVf6VHIceTq2sPuYd33ZU63o57rInzQo_UsewQgyqm30DdNm0PlDLxNizhe1MHsBYbRLkpVCtk17_PXw9v4T4QaqJRqNlCxbGPX_Dl7xa91EJ5yRS_oMiWUfrh6szkUDsGIrApIlIwlTrH0SYi2c3bJEo87tulI5Lr6dBBzJJINsXGM5N8nRKkA9uY3gHo9puqXp1jbPg9725MA5kH1s7vjZVyRlMsMaKcNGoCs9zo6UTLuH8MAXplvk-0JqwETZVTYspkZvYV2_2LNtxx4AgLpWlWrhDDmKPXQYpLODjocglrHzvn7mRiW4pC__W2Zzs&refId=kI7YYcveuaax8z8A2GDROA%3D%3D&trackingId=rfuYJAD4nvCYPvAQqO3ifw%3D%3D&keywords=ai%20engineer&origin=JOBS_HOME_SEARCH_BUTTON"
+      },
+      "role_family": {
+        "family": "ai_engineering",
+        "evidence": [
+          {
+            "excerpt": "Maincode is an AI research and engineering company and home to Matilda, Australia’s first and only large language model trained from scratch.",
+            "section": "Job description"
+          },
+          {
+            "excerpt": "We’re building an AI Model Factory, a new kind of compute infrastructure that powers frontier AI research and production systems that work at scale.",
+            "section": "Job description"
+          }
+        ]
+      },
+      "seniority": {
+        "level": "unknown",
+        "ambiguous": false,
+        "candidate_levels": [],
+        "evidence": []
+      },
+      "technologies": [
+        {
+          "name": "GPU clusters",
+          "level": "required",
+          "evidence": [
+            {
+              "excerpt": "Work with GPU clusters, high-speed networking, and large-scale Linux systems.",
+              "section": "Job description"
+            }
+          ]
+        },
+        {
+          "name": "high-speed networking",
+          "level": "required",
+          "evidence": [
+            {
+              "excerpt": "Work with GPU clusters, high-speed networking, and large-scale Linux systems.",
+              "section": "Job description"
+            }
+          ]
+        },
+        {
+          "name": "large-scale Linux systems",
+          "level": "required",
+          "evidence": [
+            {
+              "excerpt": "Work with GPU clusters, high-speed networking, and large-scale Linux systems.",
+              "section": "Job description"
+            }
+          ]
+        },
+        {
+          "name": "systems programming",
+          "level": "preferred",
+          "evidence": [
+            {
+              "excerpt": "You have hands-on experience working close to the metal with computational systems. This might include systems programming, Linux environments, GPU or accelerator programming, distributed or HPC environments (e.g. MPI), automation, or large-scale numerical computation.",
+              "section": "Job description"
+            }
+          ]
+        },
+        {
+          "name": "distributed environments",
+          "level": "preferred",
+          "evidence": [
+            {
+              "excerpt": "You have hands-on experience working close to the metal with computational systems. This might include systems programming, Linux environments, GPU or accelerator programming, distributed or HPC environments (e.g. MPI), automation, or large-scale numerical computation.",
+              "section": "Job description"
+            }
+          ]
+        },
+        {
+          "name": "HPC (High-Performance Computing)",
+          "level": "preferred",
+          "evidence": [
+            {
+              "excerpt": "You have hands-on experience working close to the metal with computational systems. This might include systems programming, Linux environments, GPU or accelerator programming, distributed or HPC environments (e.g. MPI), automation, or large-scale numerical computation.",
+              "section": "Job description"
+            }
+          ]
+        },
+        {
+          "name": "automation",
+          "level": "preferred",
+          "evidence": [
+            {
+              "excerpt": "You have hands-on experience working close to the metal with computational systems. This might include systems programming, Linux environments, GPU or accelerator programming, distributed or HPC environments (e.g. MPI), automation, or large-scale numerical computation.",
+              "section": "Job description"
+            }
+          ]
+        },
+        {
+          "name": "large-scale numerical computation",
+          "level": "preferred",
+          "evidence": [
+            {
+              "excerpt": "You have hands-on experience working close to the metal with computational systems. This might include systems programming, Linux environments, GPU or accelerator programming, distributed or HPC environments (e.g. MPI), automation, or large-scale numerical computation.",
+              "section": "Job description"
+            }
+          ]
+        }
+      ],
+      "responsibilities": [
+        {
+          "description": "Learn to design, deploy, and operate the backbone of AI infrastructure.",
+          "evidence": [
+            {
+              "excerpt": "What You’ll Do",
+              "section": "Job description"
+            }
+          ]
+        },
+        {
+          "description": "Contribute to the architecture of Australia’s first production-scale AI datacentre systems.",
+          "evidence": [
+            {
+              "excerpt": "Contribute to the architecture of Australia’s first production-scale AI datacentre systems.",
+              "section": "Job description"
+            }
+          ]
+        },
+        {
+          "description": "Collaborate with AI researchers and engineers to shape the next generation of model training environments.",
+          "evidence": [
+            {
+              "excerpt": "Collaborate with AI researchers and engineers to shape the next generation of model training environments.",
+              "section": "Job description"
+            }
+          ]
+        },
+        {
+          "description": "Develop new operational and architectural approaches from first principles.",
+          "evidence": [
+            {
+              "excerpt": "Develop new operational and architectural approaches from first principles.",
+              "section": "Job description"
+            }
+          ]
+        }
+      ],
+      "compensation": {
+        "clarity": "unstated",
+        "minimum": null,
+        "maximum": null,
+        "currency": null,
+        "period": null,
+        "raw_text": null,
+        "evidence": []
+      },
+      "location": {
+        "clarity": "stated",
+        "summary": "Melbourne, Victoria, Australia",
+        "evidence": [
+          {
+            "excerpt": "Melbourne, Victoria, Australia",
+            "section": "Job description"
+          }
+        ]
+      },
+      "work_arrangement": {
+        "arrangement": "onsite",
+        "details": null,
+        "evidence": [
+          {
+            "excerpt": "On-site",
+            "section": "Job description"
+          }
+        ]
+      },
+      "employment": {
+        "working_hours": "full_time",
+        "engagement_type": "unspecified",
+        "evidence": [
+          {
+            "excerpt": "Full-time",
+            "section": "Job description"
+          }
+        ]
+      },
+      "experience_requirements": []
+    },
+    "technical_fit": {
+      "dimension": "technical",
+      "judgment": "mixed",
+      "summary": "The profile demonstrates technical skills in AI and data engineering but lacks direct experience with large-scale AI infrastructure design, specifically GPU clusters and HPC systems as required by the role.",
+      "findings": [
+        {
+          "kind": "partial_alignment",
+          "summary": "The candidate has demonstrated experience with Python and AI engineering projects but lacks explicit exposure to GPU clusters and large-scale systems in a commercial capacity.",
+          "detail": "The profile shows independent development work but not in the context of full-scale AI infrastructure deployment.",
+          "importance": "material",
+          "job_evidence": [
+            {
+              "source": "technology",
+              "item_index": 0,
+              "name": "GPU clusters",
+              "excerpt": "Work with GPU clusters, high-speed networking, and large-scale Linux systems."
+            },
+            {
+              "source": "technology",
+              "item_index": 1,
+              "name": "high-speed networking",
+              "excerpt": "Work with GPU clusters, high-speed networking, and large-scale Linux systems."
+            },
+            {
+              "source": "technology",
+              "item_index": 2,
+              "name": "large-scale Linux systems",
+              "excerpt": "Work with GPU clusters, high-speed networking, and large-scale Linux systems."
+            }
+          ],
+          "profile_evidence": [
+            {
+              "source": "experience",
+              "ref": "experience:chase-risk-compliance-ai-engineer",
+              "excerpt": null
+            },
+            {
+              "source": "experience",
+              "ref": "experience:ai-engineering-development-2025",
+              "excerpt": null
+            }
+          ],
+          "assumption": null
+        },
+        {
+          "kind": "gap",
+          "summary": "No evidence of working directly with HPC systems as required by the role.",
+          "detail": "The role specifically mentions HPC experience as a preferred requirement, which is absent from the profile.",
+          "importance": "material",
+          "job_evidence": [
+            {
+              "source": "technology",
+              "item_index": 5,
+              "name": "HPC (High-Performance Computing)",
+              "excerpt": "You have hands-on experience working close to the metal with computational systems."
+            }
+          ],
+          "profile_evidence": [],
+          "assumption": null
+        }
+      ]
+    },
+    "commercial_fit": {
+      "dimension": "commercial",
+      "judgment": "mixed",
+      "summary": "The candidate aligns with the company’s location and engagement type preferences but lacks clear, stated salary requirements.",
+      "findings": [
+        {
+          "kind": "gap",
+          "summary": "The position requires on-site engagement in Melbourne, matched by the candidate's location preference but lacks salary specifics.",
+          "detail": "The job posting is in Melbourne and full-time, aligning with the candidate’s location preference; however, lacking stated salary limits hampers a complete fit assessment.",
+          "importance": "minor",
+          "job_evidence": [
+            {
+              "source": "location",
+              "item_index": 0,
+              "name": "Melbourne, Victoria, Australia",
+              "excerpt": "Melbourne, Victoria, Australia"
+            },
+            {
+              "source": "employment",
+              "item_index": 0,
+              "name": "full_time",
+              "excerpt": "Full-time"
+            }
+          ],
+          "profile_evidence": [],
+          "assumption": null
+        },
+        {
+          "kind": "uncertainty",
+          "summary": "Salary is stated as unstated in the job analysis, leading to uncertainty regarding fit.",
+          "detail": "Without specific salary expectations disclosed, it is unclear if the candidate's needs align with potential offers.",
+          "importance": "minor",
+          "job_evidence": [
+            {
+              "source": "compensation",
+              "item_index": 0,
+              "name": "unstated",
+              "excerpt": "unstated"
+            }
+          ],
+          "profile_evidence": [],
+          "assumption": null
+        }
+      ]
+    },
+    "portfolio_fit": {
+      "dimension": "portfolio",
+      "judgment": "mixed",
+      "summary": "The candidate has strong portfolio projects relevant to AI but lacks explicit demonstrations of experience working on AI infrastructure in production settings.",
+      "findings": [
+        {
+          "kind": "gap",
+          "summary": "No demonstrated experience with production-scale AI infrastructure projects, which is a core aspect of the role responsibilities.",
+          "detail": "While several projects show work with AI technologies, they do not cover operational aspects of infrastructure relevant to the role.",
+          "importance": "material",
+          "job_evidence": [
+            {
+              "source": "responsibility",
+              "item_index": 1,
+              "name": "Contribute to the architecture of Australia’s first production-scale AI datacentre systems.",
+              "excerpt": "Contribute to the architecture of Australia’s first production-scale AI datacentre systems."
+            }
+          ],
+          "profile_evidence": [],
+          "assumption": null
+        }
+      ]
+    },
+    "summary": {
+      "summary": "The assessment highlights a mixed fit across all dimensions with a strong foundation in AI engineering skills and projects but lacks explicit experience in large-scale infrastructure responsibilities and production environments.",
+      "key_alignments": [
+        "Location: Melbourne, VIC",
+        "Engagement Type: Full-time"
+      ],
+      "key_gaps": [
+        "Direct # experience with GPU clusters and HPC",
+        "Production-scale AI infrastructure experience",
+        "Explicit salary requirements"
+      ]
+    }
+  },
+  "portfolio_match": {
+    "job_analysis": {
+      "posting": {
+        "raw_text": "Company logo for, Maincode.\nMaincode\n\n\nAI Infrastructure Engineer\n\nMelbourne, Victoria, Australia · Reposted 6 days ago · Over 100 people clicked apply\n\nPromoted by hirer · Responses managed off LinkedIn\n\nOn-site\nFull-time\nApply\n\nSave\nYour profile and resume are missing some required qualifications\n\n\n\nShow match details\n\nBETA • Is this information helpful?\n\n\nAbout the job\nAbout Maincode\n\nMaincode is an AI research and engineering company and home to Matilda, Australia’s first and only large language model trained from scratch. We operate our own advanced AI infrastructure in local data-centres; designing, building, and running everything from the racks up through model training and serving systems.\n\nWe’re building an AI Model Factory, a new kind of compute infrastructure that powers frontier AI research and production systems that work at scale.\n\nAbout The Role\n\nThis role sits at the intersection of physical systems, large-scale compute, and AI research. You’ll help design and operate the infrastructure that trains large-scale models: racks of GPUs, high-performance networks, and the orchestration systems that keep them running.\n\nPeople with strong research instincts and systems thinking thrive here. You don’t need prior datacenter experience; curiosity, first-principles reasoning, and the ability to learn fast matter more. Someone from mechatronics, robotics, or aerospace who has strong computational skills could excel in this role. We’ll give you the time, mentorship, and resources to master how these systems work, and you’ll develop expertise in one of the most essential technical domains of the coming decade.\n\nWhat You’ll Do\n\nLearn to design, deploy, and operate the backbone of AI infrastructure.\nWork with GPU clusters, high-speed networking, and large-scale Linux systems.\nContribute to the architecture of Australia’s first production-scale AI datacentre systems.\nCollaborate with AI researchers and engineers to shape the next generation of model training environments.\nDevelop new operational and architectural approaches from first principles.\n\nYou Might Be a Fit If\n\nYou have hands-on experience working close to the metal with computational systems. This might include systems programming, Linux environments, GPU or accelerator programming, distributed or HPC environments (e.g. MPI), automation, or large-scale numerical computation.\nYou may also come from adjacent technical or scientific fields such as mechatronics, robotics, aerospace, physics, or similar disciplines where you have developed strong computational and modelling skills.\nYou enjoy understanding complex systems from first principles.\nYou learn new technologies quickly and apply them independently.\nYou think in terms of system architecture, how components interact and scale.\nYou’re curious about how AI systems actually run in practice, from hardware and cooling through to model training and large-scale compute.",
+        "title": "AI Infrastructure Engineer",
+        "company": "Maincode",
+        "source_url": "https://www.linkedin.com/jobs/search-results/?currentJobId=4312188746&eBP=CwEAAAGfjO1IwJONY3jSQmZKuburZYQRIvy81hwW4t4O2wY1Cs1clSE2wfWCpxIyey4Pv4Y6nTgwlwfk-PUrj6MieLpaC7VV_M1c2a4pLaWA8FC3CT_iiliBmaRd96MABZ3JCjd5b4GGNPzLB7Od-DaVf6VHIceTq2sPuYd33ZU63o57rInzQo_UsewQgyqm30DdNm0PlDLxNizhe1MHsBYbRLkpVCtk17_PXw9v4T4QaqJRqNlCxbGPX_Dl7xa91EJ5yRS_oMiWUfrh6szkUDsGIrApIlIwlTrH0SYi2c3bJEo87tulI5Lr6dBBzJJINsXGM5N8nRKkA9uY3gHo9puqXp1jbPg9725MA5kH1s7vjZVyRlMsMaKcNGoCs9zo6UTLuH8MAXplvk-0JqwETZVTYspkZvYV2_2LNtxx4AgLpWlWrhDDmKPXQYpLODjocglrHzvn7mRiW4pC__W2Zzs&refId=kI7YYcveuaax8z8A2GDROA%3D%3D&trackingId=rfuYJAD4nvCYPvAQqO3ifw%3D%3D&keywords=ai%20engineer&origin=JOBS_HOME_SEARCH_BUTTON"
+      },
+      "role_family": {
+        "family": "ai_engineering",
+        "evidence": [
+          {
+            "excerpt": "Maincode is an AI research and engineering company and home to Matilda, Australia’s first and only large language model trained from scratch.",
+            "section": "Job description"
+          },
+          {
+            "excerpt": "We’re building an AI Model Factory, a new kind of compute infrastructure that powers frontier AI research and production systems that work at scale.",
+            "section": "Job description"
+          }
+        ]
+      },
+      "seniority": {
+        "level": "unknown",
+        "ambiguous": false,
+        "candidate_levels": [],
+        "evidence": []
+      },
+      "technologies": [
+        {
+          "name": "GPU clusters",
+          "level": "required",
+          "evidence": [
+            {
+              "excerpt": "Work with GPU clusters, high-speed networking, and large-scale Linux systems.",
+              "section": "Job description"
+            }
+          ]
+        },
+        {
+          "name": "high-speed networking",
+          "level": "required",
+          "evidence": [
+            {
+              "excerpt": "Work with GPU clusters, high-speed networking, and large-scale Linux systems.",
+              "section": "Job description"
+            }
+          ]
+        },
+        {
+          "name": "large-scale Linux systems",
+          "level": "required",
+          "evidence": [
+            {
+              "excerpt": "Work with GPU clusters, high-speed networking, and large-scale Linux systems.",
+              "section": "Job description"
+            }
+          ]
+        },
+        {
+          "name": "systems programming",
+          "level": "preferred",
+          "evidence": [
+            {
+              "excerpt": "You have hands-on experience working close to the metal with computational systems. This might include systems programming, Linux environments, GPU or accelerator programming, distributed or HPC environments (e.g. MPI), automation, or large-scale numerical computation.",
+              "section": "Job description"
+            }
+          ]
+        },
+        {
+          "name": "distributed environments",
+          "level": "preferred",
+          "evidence": [
+            {
+              "excerpt": "You have hands-on experience working close to the metal with computational systems. This might include systems programming, Linux environments, GPU or accelerator programming, distributed or HPC environments (e.g. MPI), automation, or large-scale numerical computation.",
+              "section": "Job description"
+            }
+          ]
+        },
+        {
+          "name": "HPC (High-Performance Computing)",
+          "level": "preferred",
+          "evidence": [
+            {
+              "excerpt": "You have hands-on experience working close to the metal with computational systems. This might include systems programming, Linux environments, GPU or accelerator programming, distributed or HPC environments (e.g. MPI), automation, or large-scale numerical computation.",
+              "section": "Job description"
+            }
+          ]
+        },
+        {
+          "name": "automation",
+          "level": "preferred",
+          "evidence": [
+            {
+              "excerpt": "You have hands-on experience working close to the metal with computational systems. This might include systems programming, Linux environments, GPU or accelerator programming, distributed or HPC environments (e.g. MPI), automation, or large-scale numerical computation.",
+              "section": "Job description"
+            }
+          ]
+        },
+        {
+          "name": "large-scale numerical computation",
+          "level": "preferred",
+          "evidence": [
+            {
+              "excerpt": "You have hands-on experience working close to the metal with computational systems. This might include systems programming, Linux environments, GPU or accelerator programming, distributed or HPC environments (e.g. MPI), automation, or large-scale numerical computation.",
+              "section": "Job description"
+            }
+          ]
+        }
+      ],
+      "responsibilities": [
+        {
+          "description": "Learn to design, deploy, and operate the backbone of AI infrastructure.",
+          "evidence": [
+            {
+              "excerpt": "What You’ll Do",
+              "section": "Job description"
+            }
+          ]
+        },
+        {
+          "description": "Contribute to the architecture of Australia’s first production-scale AI datacentre systems.",
+          "evidence": [
+            {
+              "excerpt": "Contribute to the architecture of Australia’s first production-scale AI datacentre systems.",
+              "section": "Job description"
+            }
+          ]
+        },
+        {
+          "description": "Collaborate with AI researchers and engineers to shape the next generation of model training environments.",
+          "evidence": [
+            {
+              "excerpt": "Collaborate with AI researchers and engineers to shape the next generation of model training environments.",
+              "section": "Job description"
+            }
+          ]
+        },
+        {
+          "description": "Develop new operational and architectural approaches from first principles.",
+          "evidence": [
+            {
+              "excerpt": "Develop new operational and architectural approaches from first principles.",
+              "section": "Job description"
+            }
+          ]
+        }
+      ],
+      "compensation": {
+        "clarity": "unstated",
+        "minimum": null,
+        "maximum": null,
+        "currency": null,
+        "period": null,
+        "raw_text": null,
+        "evidence": []
+      },
+      "location": {
+        "clarity": "stated",
+        "summary": "Melbourne, Victoria, Australia",
+        "evidence": [
+          {
+            "excerpt": "Melbourne, Victoria, Australia",
+            "section": "Job description"
+          }
+        ]
+      },
+      "work_arrangement": {
+        "arrangement": "onsite",
+        "details": null,
+        "evidence": [
+          {
+            "excerpt": "On-site",
+            "section": "Job description"
+          }
+        ]
+      },
+      "employment": {
+        "working_hours": "full_time",
+        "engagement_type": "unspecified",
+        "evidence": [
+          {
+            "excerpt": "Full-time",
+            "section": "Job description"
+          }
+        ]
+      },
+      "experience_requirements": []
+    },
+    "ranked_projects": [
+      {
+        "rank": 1,
+        "project_id": "operational-intelligence-copilot",
+        "rationale": "Project 'operational-intelligence-copilot' ranked on 3 demonstrates overlap(s), 2 responsibility overlap(s).",
+        "factors": [
+          {
+            "kind": "demonstrates_overlap",
+            "summary": "Project demonstrates capabilities overlapping responsibility 'Learn to design, deploy, and operate the backbone of AI infrastructure.'.",
+            "job_evidence": [
+              {
+                "source": "responsibility",
+                "item_index": 0,
+                "name": null,
+                "excerpt": "What You’ll Do"
+              }
+            ],
+            "profile_evidence": [
+              {
+                "source": "project",
+                "ref": "project:operational-intelligence-copilot",
+                "excerpt": "Explainable AI recommendations"
+              }
+            ]
+          },
+          {
+            "kind": "demonstrates_overlap",
+            "summary": "Project demonstrates capabilities overlapping responsibility 'Contribute to the architecture of Australia’s first production-scale AI datacentre systems.'.",
+            "job_evidence": [
+              {
+                "source": "responsibility",
+                "item_index": 1,
+                "name": null,
+                "excerpt": "Contribute to the architecture of Australia’s first production-scale AI datacentre systems."
+              }
+            ],
+            "profile_evidence": [
+              {
+                "source": "project",
+                "ref": "project:operational-intelligence-copilot",
+                "excerpt": "Explainable AI recommendations"
+              }
+            ]
+          },
+          {
+            "kind": "demonstrates_overlap",
+            "summary": "Project demonstrates capabilities overlapping responsibility 'Collaborate with AI researchers and engineers to shape the next generation of model training environments.'.",
+            "job_evidence": [
+              {
+                "source": "responsibility",
+                "item_index": 2,
+                "name": null,
+                "excerpt": "Collaborate with AI researchers and engineers to shape the next generation of model training environments."
+              }
+            ],
+            "profile_evidence": [
+              {
+                "source": "project",
+                "ref": "project:operational-intelligence-copilot",
+                "excerpt": "Explainable AI recommendations"
+              }
+            ]
+          },
+          {
+            "kind": "responsibility_overlap",
+            "summary": "Project summary, outcomes, or technologies overlap responsibility 'Collaborate with AI researchers and engineers to shape the next generation of model training environments.'.",
+            "job_evidence": [
+              {
+                "source": "responsibility",
+                "item_index": 2,
+                "name": null,
+                "excerpt": "Collaborate with AI researchers and engineers to shape the next generation of model training environments."
+              }
+            ],
+            "profile_evidence": [
+              {
+                "source": "project",
+                "ref": "project:operational-intelligence-copilot",
+                "excerpt": "Domain-agnostic operational intelligence platform combining deterministic analytics with Large Language Model reasoning to analyse structured business data and…"
+              }
+            ]
+          },
+          {
+            "kind": "responsibility_overlap",
+            "summary": "Project summary, outcomes, or technologies overlap responsibility 'Develop new operational and architectural approaches from first principles.'.",
+            "job_evidence": [
+              {
+                "source": "responsibility",
+                "item_index": 3,
+                "name": null,
+                "excerpt": "Develop new operational and architectural approaches from first principles."
+              }
+            ],
+            "profile_evidence": [
+              {
+                "source": "project",
+                "ref": "project:operational-intelligence-copilot",
+                "excerpt": "Domain-agnostic operational intelligence platform combining deterministic analytics with Large Language Model reasoning to analyse structured business data and…"
+              }
+            ]
+          }
+        ],
+        "tie_group": null,
+        "tie_break_reason": null
+      },
+      {
+        "rank": 2,
+        "project_id": "governance-document-rag",
+        "rationale": "Project 'governance-document-rag' ranked on 1 demonstrates overlap(s), 3 responsibility overlap(s).",
+        "factors": [
+          {
+            "kind": "responsibility_overlap",
+            "summary": "Project summary, outcomes, or technologies overlap responsibility 'Learn to design, deploy, and operate the backbone of AI infrastructure.'.",
+            "job_evidence": [
+              {
+                "source": "responsibility",
+                "item_index": 0,
+                "name": null,
+                "excerpt": "What You’ll Do"
+              }
+            ],
+            "profile_evidence": [
+              {
+                "source": "project",
+                "ref": "project:governance-document-rag",
+                "excerpt": "Enterprise retrieval-augmented generation platform supporting trustworthy AI responses over organisational knowledge."
+              }
+            ]
+          },
+          {
+            "kind": "responsibility_overlap",
+            "summary": "Project summary, outcomes, or technologies overlap responsibility 'Contribute to the architecture of Australia’s first production-scale AI datacentre systems.'.",
+            "job_evidence": [
+              {
+                "source": "responsibility",
+                "item_index": 1,
+                "name": null,
+                "excerpt": "Contribute to the architecture of Australia’s first production-scale AI datacentre systems."
+              }
+            ],
+            "profile_evidence": [
+              {
+                "source": "project",
+                "ref": "project:governance-document-rag",
+                "excerpt": "Enterprise retrieval-augmented generation platform supporting trustworthy AI responses over organisational knowledge."
+              }
+            ]
+          },
+          {
+            "kind": "demonstrates_overlap",
+            "summary": "Project demonstrates capabilities overlapping responsibility 'Collaborate with AI researchers and engineers to shape the next generation of model training environments.'.",
+            "job_evidence": [
+              {
+                "source": "responsibility",
+                "item_index": 2,
+                "name": null,
+                "excerpt": "Collaborate with AI researchers and engineers to shape the next generation of model training environments."
+              }
+            ],
+            "profile_evidence": [
+              {
+                "source": "project",
+                "ref": "project:governance-document-rag",
+                "excerpt": "Embedding generation"
+              }
+            ]
+          },
+          {
+            "kind": "responsibility_overlap",
+            "summary": "Project summary, outcomes, or technologies overlap responsibility 'Collaborate with AI researchers and engineers to shape the next generation of model training environments.'.",
+            "job_evidence": [
+              {
+                "source": "responsibility",
+                "item_index": 2,
+                "name": null,
+                "excerpt": "Collaborate with AI researchers and engineers to shape the next generation of model training environments."
+              }
+            ],
+            "profile_evidence": [
+              {
+                "source": "project",
+                "ref": "project:governance-document-rag",
+                "excerpt": "Enterprise retrieval-augmented generation platform supporting trustworthy AI responses over organisational knowledge."
+              }
+            ]
+          }
+        ],
+        "tie_group": null,
+        "tie_break_reason": null
+      },
+      {
+        "rank": 3,
+        "project_id": "payroll-diagnostics-engine",
+        "rationale": "Project 'payroll-diagnostics-engine' ranked on 1 demonstrates overlap(s), 1 responsibility overlap(s).",
+        "factors": [
+          {
+            "kind": "demonstrates_overlap",
+            "summary": "Project demonstrates capabilities overlapping responsibility 'Develop new operational and architectural approaches from first principles.'.",
+            "job_evidence": [
+              {
+                "source": "responsibility",
+                "item_index": 3,
+                "name": null,
+                "excerpt": "Develop new operational and architectural approaches from first principles."
+              }
+            ],
+            "profile_evidence": [
+              {
+                "source": "project",
+                "ref": "project:payroll-diagnostics-engine",
+                "excerpt": "Operational analytics"
+              }
+            ]
+          },
+          {
+            "kind": "responsibility_overlap",
+            "summary": "Project summary, outcomes, or technologies overlap responsibility 'Develop new operational and architectural approaches from first principles.'.",
+            "job_evidence": [
+              {
+                "source": "responsibility",
+                "item_index": 3,
+                "name": null,
+                "excerpt": "Develop new operational and architectural approaches from first principles."
+              }
+            ],
+            "profile_evidence": [
+              {
+                "source": "project",
+                "ref": "project:payroll-diagnostics-engine",
+                "excerpt": "Rule-based operational decision-support platform that identifies payroll anomalies through deterministic business-rule evaluation."
+              }
+            ]
+          }
+        ],
+        "tie_group": null,
+        "tie_break_reason": null
+      }
+    ],
+    "unranked_project_ids": [
+      "public-holiday-entitlements"
+    ],
+    "summary": "Ranked 3 project(s); lead with 'operational-intelligence-copilot'. 1 project(s) had no matching factors.",
+    "insufficient_evidence": false
+  },
+  "application_strategy": {
+    "job_analysis": {
+      "posting": {
+        "raw_text": "Company logo for, Maincode.\nMaincode\n\n\nAI Infrastructure Engineer\n\nMelbourne, Victoria, Australia · Reposted 6 days ago · Over 100 people clicked apply\n\nPromoted by hirer · Responses managed off LinkedIn\n\nOn-site\nFull-time\nApply\n\nSave\nYour profile and resume are missing some required qualifications\n\n\n\nShow match details\n\nBETA • Is this information helpful?\n\n\nAbout the job\nAbout Maincode\n\nMaincode is an AI research and engineering company and home to Matilda, Australia’s first and only large language model trained from scratch. We operate our own advanced AI infrastructure in local data-centres; designing, building, and running everything from the racks up through model training and serving systems.\n\nWe’re building an AI Model Factory, a new kind of compute infrastructure that powers frontier AI research and production systems that work at scale.\n\nAbout The Role\n\nThis role sits at the intersection of physical systems, large-scale compute, and AI research. You’ll help design and operate the infrastructure that trains large-scale models: racks of GPUs, high-performance networks, and the orchestration systems that keep them running.\n\nPeople with strong research instincts and systems thinking thrive here. You don’t need prior datacenter experience; curiosity, first-principles reasoning, and the ability to learn fast matter more. Someone from mechatronics, robotics, or aerospace who has strong computational skills could excel in this role. We’ll give you the time, mentorship, and resources to master how these systems work, and you’ll develop expertise in one of the most essential technical domains of the coming decade.\n\nWhat You’ll Do\n\nLearn to design, deploy, and operate the backbone of AI infrastructure.\nWork with GPU clusters, high-speed networking, and large-scale Linux systems.\nContribute to the architecture of Australia’s first production-scale AI datacentre systems.\nCollaborate with AI researchers and engineers to shape the next generation of model training environments.\nDevelop new operational and architectural approaches from first principles.\n\nYou Might Be a Fit If\n\nYou have hands-on experience working close to the metal with computational systems. This might include systems programming, Linux environments, GPU or accelerator programming, distributed or HPC environments (e.g. MPI), automation, or large-scale numerical computation.\nYou may also come from adjacent technical or scientific fields such as mechatronics, robotics, aerospace, physics, or similar disciplines where you have developed strong computational and modelling skills.\nYou enjoy understanding complex systems from first principles.\nYou learn new technologies quickly and apply them independently.\nYou think in terms of system architecture, how components interact and scale.\nYou’re curious about how AI systems actually run in practice, from hardware and cooling through to model training and large-scale compute.",
+        "title": "AI Infrastructure Engineer",
+        "company": "Maincode",
+        "source_url": "https://www.linkedin.com/jobs/search-results/?currentJobId=4312188746&eBP=CwEAAAGfjO1IwJONY3jSQmZKuburZYQRIvy81hwW4t4O2wY1Cs1clSE2wfWCpxIyey4Pv4Y6nTgwlwfk-PUrj6MieLpaC7VV_M1c2a4pLaWA8FC3CT_iiliBmaRd96MABZ3JCjd5b4GGNPzLB7Od-DaVf6VHIceTq2sPuYd33ZU63o57rInzQo_UsewQgyqm30DdNm0PlDLxNizhe1MHsBYbRLkpVCtk17_PXw9v4T4QaqJRqNlCxbGPX_Dl7xa91EJ5yRS_oMiWUfrh6szkUDsGIrApIlIwlTrH0SYi2c3bJEo87tulI5Lr6dBBzJJINsXGM5N8nRKkA9uY3gHo9puqXp1jbPg9725MA5kH1s7vjZVyRlMsMaKcNGoCs9zo6UTLuH8MAXplvk-0JqwETZVTYspkZvYV2_2LNtxx4AgLpWlWrhDDmKPXQYpLODjocglrHzvn7mRiW4pC__W2Zzs&refId=kI7YYcveuaax8z8A2GDROA%3D%3D&trackingId=rfuYJAD4nvCYPvAQqO3ifw%3D%3D&keywords=ai%20engineer&origin=JOBS_HOME_SEARCH_BUTTON"
+      },
+      "role_family": {
+        "family": "ai_engineering",
+        "evidence": [
+          {
+            "excerpt": "Maincode is an AI research and engineering company and home to Matilda, Australia’s first and only large language model trained from scratch.",
+            "section": "Job description"
+          },
+          {
+            "excerpt": "We’re building an AI Model Factory, a new kind of compute infrastructure that powers frontier AI research and production systems that work at scale.",
+            "section": "Job description"
+          }
+        ]
+      },
+      "seniority": {
+        "level": "unknown",
+        "ambiguous": false,
+        "candidate_levels": [],
+        "evidence": []
+      },
+      "technologies": [
+        {
+          "name": "GPU clusters",
+          "level": "required",
+          "evidence": [
+            {
+              "excerpt": "Work with GPU clusters, high-speed networking, and large-scale Linux systems.",
+              "section": "Job description"
+            }
+          ]
+        },
+        {
+          "name": "high-speed networking",
+          "level": "required",
+          "evidence": [
+            {
+              "excerpt": "Work with GPU clusters, high-speed networking, and large-scale Linux systems.",
+              "section": "Job description"
+            }
+          ]
+        },
+        {
+          "name": "large-scale Linux systems",
+          "level": "required",
+          "evidence": [
+            {
+              "excerpt": "Work with GPU clusters, high-speed networking, and large-scale Linux systems.",
+              "section": "Job description"
+            }
+          ]
+        },
+        {
+          "name": "systems programming",
+          "level": "preferred",
+          "evidence": [
+            {
+              "excerpt": "You have hands-on experience working close to the metal with computational systems. This might include systems programming, Linux environments, GPU or accelerator programming, distributed or HPC environments (e.g. MPI), automation, or large-scale numerical computation.",
+              "section": "Job description"
+            }
+          ]
+        },
+        {
+          "name": "distributed environments",
+          "level": "preferred",
+          "evidence": [
+            {
+              "excerpt": "You have hands-on experience working close to the metal with computational systems. This might include systems programming, Linux environments, GPU or accelerator programming, distributed or HPC environments (e.g. MPI), automation, or large-scale numerical computation.",
+              "section": "Job description"
+            }
+          ]
+        },
+        {
+          "name": "HPC (High-Performance Computing)",
+          "level": "preferred",
+          "evidence": [
+            {
+              "excerpt": "You have hands-on experience working close to the metal with computational systems. This might include systems programming, Linux environments, GPU or accelerator programming, distributed or HPC environments (e.g. MPI), automation, or large-scale numerical computation.",
+              "section": "Job description"
+            }
+          ]
+        },
+        {
+          "name": "automation",
+          "level": "preferred",
+          "evidence": [
+            {
+              "excerpt": "You have hands-on experience working close to the metal with computational systems. This might include systems programming, Linux environments, GPU or accelerator programming, distributed or HPC environments (e.g. MPI), automation, or large-scale numerical computation.",
+              "section": "Job description"
+            }
+          ]
+        },
+        {
+          "name": "large-scale numerical computation",
+          "level": "preferred",
+          "evidence": [
+            {
+              "excerpt": "You have hands-on experience working close to the metal with computational systems. This might include systems programming, Linux environments, GPU or accelerator programming, distributed or HPC environments (e.g. MPI), automation, or large-scale numerical computation.",
+              "section": "Job description"
+            }
+          ]
+        }
+      ],
+      "responsibilities": [
+        {
+          "description": "Learn to design, deploy, and operate the backbone of AI infrastructure.",
+          "evidence": [
+            {
+              "excerpt": "What You’ll Do",
+              "section": "Job description"
+            }
+          ]
+        },
+        {
+          "description": "Contribute to the architecture of Australia’s first production-scale AI datacentre systems.",
+          "evidence": [
+            {
+              "excerpt": "Contribute to the architecture of Australia’s first production-scale AI datacentre systems.",
+              "section": "Job description"
+            }
+          ]
+        },
+        {
+          "description": "Collaborate with AI researchers and engineers to shape the next generation of model training environments.",
+          "evidence": [
+            {
+              "excerpt": "Collaborate with AI researchers and engineers to shape the next generation of model training environments.",
+              "section": "Job description"
+            }
+          ]
+        },
+        {
+          "description": "Develop new operational and architectural approaches from first principles.",
+          "evidence": [
+            {
+              "excerpt": "Develop new operational and architectural approaches from first principles.",
+              "section": "Job description"
+            }
+          ]
+        }
+      ],
+      "compensation": {
+        "clarity": "unstated",
+        "minimum": null,
+        "maximum": null,
+        "currency": null,
+        "period": null,
+        "raw_text": null,
+        "evidence": []
+      },
+      "location": {
+        "clarity": "stated",
+        "summary": "Melbourne, Victoria, Australia",
+        "evidence": [
+          {
+            "excerpt": "Melbourne, Victoria, Australia",
+            "section": "Job description"
+          }
+        ]
+      },
+      "work_arrangement": {
+        "arrangement": "onsite",
+        "details": null,
+        "evidence": [
+          {
+            "excerpt": "On-site",
+            "section": "Job description"
+          }
+        ]
+      },
+      "employment": {
+        "working_hours": "full_time",
+        "engagement_type": "unspecified",
+        "evidence": [
+          {
+            "excerpt": "Full-time",
+            "section": "Job description"
+          }
+        ]
+      },
+      "experience_requirements": []
+    },
+    "application_tier": "silver",
+    "pursuit_posture": "consider",
+    "practical_value": "acceptable_opportunity",
+    "effort_level": "minimal",
+    "summary": "Recommend posture 'consider' with effort tier 'silver' (minimal). Technical fit 'mixed', commercial fit 'mixed', portfolio fit 'mixed'. Owner review is required before any application action.",
+    "reasons": [
+      {
+        "kind": "alignment",
+        "summary": "Technical fit is 'mixed' and portfolio fit is 'mixed' for this opportunity.",
+        "importance": "material",
+        "evidence": [
+          {
+            "origin": "opportunity_assessment",
+            "job_evidence": null,
+            "profile_evidence": null,
+            "assessment_dimension": "technical",
+            "assessment_judgment": "mixed",
+            "portfolio_project_id": null,
+            "excerpt": null
+          },
+          {
+            "origin": "opportunity_assessment",
+            "job_evidence": null,
+            "profile_evidence": null,
+            "assessment_dimension": "portfolio",
+            "assessment_judgment": "mixed",
+            "portfolio_project_id": null,
+            "excerpt": null
+          }
+        ]
+      },
+      {
+        "kind": "priority",
+        "summary": "Pursuit posture 'consider' with effort tier 'silver' reflects commercial fit 'mixed' and AI-aligned role family.",
+        "importance": "material",
+        "evidence": [
+          {
+            "origin": "opportunity_assessment",
+            "job_evidence": null,
+            "profile_evidence": null,
+            "assessment_dimension": "commercial",
+            "assessment_judgment": "mixed",
+            "portfolio_project_id": null,
+            "excerpt": null
+          },
+          {
+            "origin": "job_analysis",
+            "job_evidence": {
+              "source": "role_family",
+              "item_index": null,
+              "name": null,
+              "excerpt": null
+            },
+            "profile_evidence": null,
+            "assessment_dimension": null,
+            "assessment_judgment": null,
+            "portfolio_project_id": null,
+            "excerpt": null
+          }
+        ]
+      }
+    ],
+    "risks_or_gaps": [
+      {
+        "summary": "Commercial fit is 'mixed', which may reduce the value of investing significant effort.",
+        "importance": "minor",
+        "evidence": [
+          {
+            "origin": "opportunity_assessment",
+            "job_evidence": null,
+            "profile_evidence": null,
+            "assessment_dimension": "commercial",
+            "assessment_judgment": "mixed",
+            "portfolio_project_id": null,
+            "excerpt": null
+          }
+        ]
+      },
+      {
+        "summary": "No evidence of working directly with HPC systems as required by the role.",
+        "importance": "material",
+        "evidence": [
+          {
+            "origin": "opportunity_assessment",
+            "job_evidence": null,
+            "profile_evidence": null,
+            "assessment_dimension": "technical",
+            "assessment_judgment": "mixed",
+            "portfolio_project_id": null,
+            "excerpt": null
+          }
+        ]
+      }
+    ],
+    "manual_checks": [
+      {
+        "summary": "Review compensation once salary or rate information is available.",
+        "why_it_matters": "Compensation clarity can change commercial priority; no salary conflict was invented from missing data.",
+        "could_change_recommendation": true,
+        "evidence": [
+          {
+            "origin": "job_analysis",
+            "job_evidence": {
+              "source": "compensation",
+              "item_index": null,
+              "name": null,
+              "excerpt": null
+            },
+            "profile_evidence": null,
+            "assessment_dimension": null,
+            "assessment_judgment": null,
+            "portfolio_project_id": null,
+            "excerpt": null
+          }
+        ]
+      }
+    ],
+    "next_actions": [
+      {
+        "kind": "consider_reviewing_compensation",
+        "summary": "Consider reviewing compensation before investing significant effort.",
+        "related_project_id": null,
+        "evidence": [
+          {
+            "origin": "job_analysis",
+            "job_evidence": {
+              "source": "compensation",
+              "item_index": null,
+              "name": null,
+              "excerpt": null
+            },
+            "profile_evidence": null,
+            "assessment_dimension": null,
+            "assessment_judgment": null,
+            "portfolio_project_id": null,
+            "excerpt": null
+          }
+        ]
+      },
+      {
+        "kind": "consider_emphasising_portfolio_projects",
+        "summary": "Consider emphasising the strongest matched portfolio project(s) in any application materials you prepare.",
+        "related_project_id": "operational-intelligence-copilot",
+        "evidence": [
+          {
+            "origin": "portfolio_match",
+            "job_evidence": null,
+            "profile_evidence": null,
+            "assessment_dimension": null,
+            "assessment_judgment": null,
+            "portfolio_project_id": "operational-intelligence-copilot",
+            "excerpt": null
+          }
+        ]
+      },
+      {
+        "kind": "consider_owner_review",
+        "summary": "Consider reviewing this full strategy before taking any external action.",
+        "related_project_id": null,
+        "evidence": [
+          {
+            "origin": "opportunity_assessment",
+            "job_evidence": null,
+            "profile_evidence": null,
+            "assessment_dimension": "technical",
+            "assessment_judgment": "mixed",
+            "portfolio_project_id": null,
+            "excerpt": null
+          }
+        ]
+      }
+    ],
+    "portfolio_emphasis": [
+      {
+        "project_id": "operational-intelligence-copilot",
+        "source_rank": 1,
+        "summary": "Consider emphasising 'operational-intelligence-copilot' (PortfolioMatch rank 1).",
+        "evidence": [
+          {
+            "origin": "portfolio_match",
+            "job_evidence": null,
+            "profile_evidence": null,
+            "assessment_dimension": null,
+            "assessment_judgment": null,
+            "portfolio_project_id": "operational-intelligence-copilot",
+            "excerpt": null
+          }
+        ]
+      },
+      {
+        "project_id": "governance-document-rag",
+        "source_rank": 2,
+        "summary": "Consider emphasising 'governance-document-rag' (PortfolioMatch rank 2).",
+        "evidence": [
+          {
+            "origin": "portfolio_match",
+            "job_evidence": null,
+            "profile_evidence": null,
+            "assessment_dimension": null,
+            "assessment_judgment": null,
+            "portfolio_project_id": "governance-document-rag",
+            "excerpt": null
+          }
+        ]
+      },
+      {
+        "project_id": "payroll-diagnostics-engine",
+        "source_rank": 3,
+        "summary": "Consider emphasising 'payroll-diagnostics-engine' (PortfolioMatch rank 3).",
+        "evidence": [
+          {
+            "origin": "portfolio_match",
+            "job_evidence": null,
+            "profile_evidence": null,
+            "assessment_dimension": null,
+            "assessment_judgment": null,
+            "portfolio_project_id": "payroll-diagnostics-engine",
+            "excerpt": null
+          }
+        ]
+      }
+    ],
+    "assumptions": [
+      "Compensation fit is not scored because salary/rate evidence is missing or ambiguous.",
+      "No candidate salary minimum is configured, so compensation was not treated as a hard threshold conflict."
+    ],
+    "decision_blockers": [],
+    "owner_review_required": true,
+    "insufficient_information": false
+  }
+}

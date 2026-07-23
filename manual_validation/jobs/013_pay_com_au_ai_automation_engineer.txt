@@ -1,0 +1,85 @@
+Company logo for, pay.com.au.
+pay.com.au
+
+
+AI Automation Engineer 
+
+Melbourne, Victoria, Australia · 3 days ago · Over 100 people clicked apply
+
+Promoted by hirer · Responses managed off LinkedIn
+
+Hybrid
+Full-time
+Apply
+
+Save
+Your profile and resume match the required qualifications well
+
+
+
+Show match details
+
+BETA • Is this information helpful?
+
+
+About the job
+About Us
+
+pay.com.au is one of Australia’s fastest‑growing technology scale-ups, trusted by businesses. As we continue to scale in Australia and launch into the US under PayRewards.com, our mission is to simplify and supercharge the way they pay everyday expenses. Since 2019, we’ve been transforming business payments by enabling companies—from sole traders to large enterprises.
+
+
+
+Our unified platform lets users link their bank accounts and any major credit card, improving cash flow while unlocking powerful rewards on every transaction.
+
+
+
+Recognised as a rapidly scaling Australian success story—with coverage in outlets like the Australian Financial Review noting our growth with a $600+ million valuation, we’re reshaping how businesses think about payments, loyalty and financial efficiency.
+
+
+
+At pay.com.au, you’ll join a fast-growing team shaping the future of B2B payments. Our Melbourne office is a hub of creativity, collaboration, and seriously great coffee—an environment where ideas move quickly and impact is felt every day. If you want to be part of a company with momentum, this is the place to be.
+
+
+
+Why join us?
+
+Be part of an exciting Tech Scale-up, with teams across Australia and the USA.
+Enjoy flexible working arrangements and a great work-life balance. Awarded 2025 People’s Choice Award winner at the Finder Innovation Awards, Finalist for FinTech Organisation of the Year at the 2025 FinTech Australia Finnies, Number 1 on the Smart50 list 2024, Top 3 Deloitte Tech Fast 50 & Victoria State Champion!
+Grow your career in a culture that values creativity, innovation, and collaboration with access to learning budgets to accelerate your career.
+Our new Pay HQ in Windsor brings together great coffee, collaborative spaces, and the kind of energy that makes doing your best work easy. 
+
+
+AI Automation Engineer
+
+As pay.com.au has scaled, everyday processes that were once easy to manage have become work worth refining, optimising and automating — creating an organisation-wide opportunity to lift capability across every team. This is a build-first role: you’ll sit with teams across sales, marketing, operations, product and technology, dig into how they really work, and ship automations that hold up in production and actually get used. AI is one tool among several, deployed deliberately where it earns its place — not by default.
+
+
+
+Responsibilities
+
+Run discovery with non-technical stakeholders, elicit, question, push back, and reframe vague asks into well-scoped problems.
+Design first, solution second, then build the automations and workflows — picking the right tool for the scale of the problem, whether that’s code, n8n, agent SDKs, a vendor product, or a well-configured off-the-shelf AI tool.
+Ship with production discipline: human-in-the-loop where needed, secrets and PII handled properly, and failures that are observable and recoverable.
+Package what you build into shareable workflows others can pick up and run, and support the team’s AI enablement efforts, including setting up connectors and MCPs.
+Instrument usage and iterate on what you’ve shipped until it sticks.
+Support the product team on AI initiatives. 
+
+
+About You
+
+You’ve spent real time on automation projects across a range of contexts, and you can tell where AI genuinely helps and where conventional software is the better call.
+Strong coding fundamentals — comfortable writing and maintaining production code (e.g. Python or TypeScript), working with APIs, and orchestrating with tools like n8n, agent SDKs, database fundamentals, SQL, and migration hygiene.
+Fluency with mainstream AI tools (Claude, Cowork, connectors, MCPs) and the judgment to know when they’re enough and when they’re not plus secure, thorough engineering habits around test harnesses, telemetry, logging and sensitive data.
+Genuine curiosity about a fast-moving AI ecosystem and a habit of experimenting with new tools and models on your own initiative.
+The confidence to question existing workflows even when the ask comes from someone senior — and the comfort to work independently in a lean environment, owning and maintaining what you ship. 
+
+
+We know not everyone will meet every requirement, and that’s okay. If you’re excited about the role and believe you can make an impact, we’re keen to hear from you.
+
+A few more things...
+
+Successful candidates joining the team will need to complete a National Police Record Check.
+
+Candidates who require adjustments at any stage of the recruitment process are encouraged to let us know. We’re happy to support you.
+
+We’re committed to an inclusive and diverse recruitment process where everyone feels respected and supported. We welcome applicants from all backgrounds, identities and abilities and ensure fair, equitable consideration at every stage.

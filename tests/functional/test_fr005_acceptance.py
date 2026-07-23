@@ -460,7 +460,7 @@ def test_senior_production_ai_above_supported_experience(
         analysis,
         technical=_dimension(
             "technical",
-            "strong",
+            "mixed",
             "Strong core skills with production tenure gap.",
             [
                 _finding(summary="Python aligns."),

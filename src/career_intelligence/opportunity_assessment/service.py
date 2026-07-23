@@ -8,6 +8,7 @@ from career_intelligence.job_analysis.models import JobAnalysis
 from career_intelligence.profile.models import CareerProfile
 
 from .assessor import Assessor, OpportunityAssessmentPayload
+from .calibration import validate_calibration
 from .errors import ErrorDetail, OpportunityAssessmentValidationError
 from .models import OpportunityAssessment
 from .refs import validate_references
@@ -40,6 +41,7 @@ class OpportunityAssessmentService:
         payload["job_analysis"] = job_analysis
         assessment = self._validate(payload)
         validate_references(assessment, profile)
+        validate_calibration(assessment, profile)
         return assessment
 
     def _reject_embedded_inputs(self, payload: dict[str, object]) -> None:
