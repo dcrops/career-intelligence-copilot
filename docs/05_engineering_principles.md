@@ -17,13 +17,16 @@ Every engineering tradeoff in this repository is made under constraints that do 
 - **Horizon 1 urgency** — the owner is running an active job search with real deadlines
 - **Single builder** — the user, product owner, and engineer are the same person
 - **Three objectives** — career outcome, portfolio demonstration, and Cursor workflow learning compete for time; Horizon 1 wins on conflict
-- **Pre-implementation** — no code, stack, or architecture exists yet; choices must be earned by validated need
+- **Phase 2 baseline** — Job Intelligence MVP is complete and frozen; new work
+  (starting with FR-006b) should earn architectural change rather than casually
+  reopening settled Phase 2 decisions
 
 ---
 
 ## Invariants
 
-These are non-negotiable during Phase 2 unless the owner explicitly revises them and the changelog is updated.
+These are non-negotiable unless the owner explicitly revises them and the changelog is
+updated. Phase 2 established them in practice; they continue to bind Horizon 1 work.
 
 ### Intelligence before automation
 

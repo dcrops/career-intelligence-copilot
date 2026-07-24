@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+from pathlib import Path
 from typing import Protocol
 
 from career_intelligence.application_strategy.models import ApplicationStrategy
@@ -32,3 +33,12 @@ class OpportunityStore(Protocol):
         strategy: ApplicationStrategy,
     ) -> Opportunity:
         """Persist opportunity index row and immutable artifact snapshots."""
+
+    def save(self, opportunity: Opportunity) -> Opportunity:
+        """Update an existing index row without touching artifact snapshots."""
+
+    def create_index_only(self, opportunity: Opportunity) -> Opportunity:
+        """Persist an index row without artifact snapshots (legacy import)."""
+
+    def resolve_artifact_path(self, relative_path: str) -> Path:
+        """Resolve a store-relative artifact path to an absolute filesystem path."""

@@ -43,3 +43,7 @@ class OpportunityStorageError(OpportunityError):
 
 class OpportunityArtifactExistsError(OpportunityStorageError):
     """Raised when an immutable artifact path already exists."""
+
+
+class OpportunityTransitionError(OpportunityError):
+    """Raised when a pipeline status transition is not allowed."""

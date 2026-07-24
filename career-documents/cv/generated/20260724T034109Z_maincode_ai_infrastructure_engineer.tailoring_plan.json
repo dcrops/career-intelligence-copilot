@@ -1,0 +1,703 @@
+{
+  "job_analysis": {
+    "posting": {
+      "raw_text": "Company logo for, Maincode.\nMaincode\n\n\nAI Infrastructure Engineer\n\nMelbourne, Victoria, Australia · Reposted 6 days ago · Over 100 people clicked apply\n\nPromoted by hirer · Responses managed off LinkedIn\n\nOn-site\nFull-time\nApply\n\nSave\nYour profile and resume are missing some required qualifications\n\n\n\nShow match details\n\nBETA • Is this information helpful?\n\n\nAbout the job\nAbout Maincode\n\nMaincode is an AI research and engineering company and home to Matilda, Australia’s first and only large language model trained from scratch. We operate our own advanced AI infrastructure in local data-centres; designing, building, and running everything from the racks up through model training and serving systems.\n\nWe’re building an AI Model Factory, a new kind of compute infrastructure that powers frontier AI research and production systems that work at scale.\n\nAbout The Role\n\nThis role sits at the intersection of physical systems, large-scale compute, and AI research. You’ll help design and operate the infrastructure that trains large-scale models: racks of GPUs, high-performance networks, and the orchestration systems that keep them running.\n\nPeople with strong research instincts and systems thinking thrive here. You don’t need prior datacenter experience; curiosity, first-principles reasoning, and the ability to learn fast matter more. Someone from mechatronics, robotics, or aerospace who has strong computational skills could excel in this role. We’ll give you the time, mentorship, and resources to master how these systems work, and you’ll develop expertise in one of the most essential technical domains of the coming decade.\n\nWhat You’ll Do\n\nLearn to design, deploy, and operate the backbone of AI infrastructure.\nWork with GPU clusters, high-speed networking, and large-scale Linux systems.\nContribute to the architecture of Australia’s first production-scale AI datacentre systems.\nCollaborate with AI researchers and engineers to shape the next generation of model training environments.\nDevelop new operational and architectural approaches from first principles.\n\nYou Might Be a Fit If\n\nYou have hands-on experience working close to the metal with computational systems. This might include systems programming, Linux environments, GPU or accelerator programming, distributed or HPC environments (e.g. MPI), automation, or large-scale numerical computation.\nYou may also come from adjacent technical or scientific fields such as mechatronics, robotics, aerospace, physics, or similar disciplines where you have developed strong computational and modelling skills.\nYou enjoy understanding complex systems from first principles.\nYou learn new technologies quickly and apply them independently.\nYou think in terms of system architecture, how components interact and scale.\nYou’re curious about how AI systems actually run in practice, from hardware and cooling through to model training and large-scale compute.",
+      "title": "AI Infrastructure Engineer",
+      "company": "Maincode",
+      "source_url": null
+    },
+    "role_family": {
+      "family": "ml_engineering",
+      "evidence": [
+        {
+          "excerpt": "About Maincode\n\nMaincode is an AI research and engineering company and home to Matilda, Australia’s first and only large language model trained from scratch.",
+          "section": "About the job"
+        }
+      ]
+    },
+    "seniority": {
+      "level": "unknown",
+      "ambiguous": false,
+      "candidate_levels": [],
+      "evidence": []
+    },
+    "technologies": [
+      {
+        "name": "GPU clusters",
+        "level": "required",
+        "evidence": [
+          {
+            "excerpt": "You’ll help design and operate the infrastructure that trains large-scale models: racks of GPUs, high-performance networks, and the orchestration systems that keep them running.",
+            "section": "About The Role"
+          }
+        ]
+      },
+      {
+        "name": "Linux",
+        "level": "required",
+        "evidence": [
+          {
+            "excerpt": "Work with GPU clusters, high-speed networking, and large-scale Linux systems.",
+            "section": "What You’ll Do"
+          }
+        ]
+      },
+      {
+        "name": "high-speed networking",
+        "level": "required",
+        "evidence": [
+          {
+            "excerpt": "Work with GPU clusters, high-speed networking, and large-scale Linux systems.",
+            "section": "What You’ll Do"
+          }
+        ]
+      },
+      {
+        "name": "distributed systems",
+        "level": "preferred",
+        "evidence": [
+          {
+            "excerpt": "This might include systems programming, Linux environments, GPU or accelerator programming, distributed or HPC environments (e.g. MPI), automation, or large-scale numerical computation.",
+            "section": "You Might Be a Fit If"
+          }
+        ]
+      },
+      {
+        "name": "HPC environments (e.g. MPI)",
+        "level": "preferred",
+        "evidence": [
+          {
+            "excerpt": "This might include systems programming, Linux environments, GPU or accelerator programming, distributed or HPC environments (e.g. MPI), automation, or large-scale numerical computation.",
+            "section": "You Might Be a Fit If"
+          }
+        ]
+      },
+      {
+        "name": "automation",
+        "level": "preferred",
+        "evidence": [
+          {
+            "excerpt": "This might include systems programming, Linux environments, GPU or accelerator programming, distributed or HPC environments (e.g. MPI), automation, or large-scale numerical computation.",
+            "section": "You Might Be a Fit If"
+          }
+        ]
+      },
+      {
+        "name": "large-scale numerical computation",
+        "level": "preferred",
+        "evidence": [
+          {
+            "excerpt": "This might include systems programming, Linux environments, GPU or accelerator programming, distributed or HPC environments (e.g. MPI), automation, or large-scale numerical computation.",
+            "section": "You Might Be a Fit If"
+          }
+        ]
+      }
+    ],
+    "responsibilities": [
+      {
+        "description": "Learn to design, deploy, and operate the backbone of AI infrastructure.",
+        "evidence": [
+          {
+            "excerpt": "What You’ll Do: Learn to design, deploy, and operate the backbone of AI infrastructure.",
+            "section": "What You’ll Do"
+          }
+        ]
+      },
+      {
+        "description": "Work with GPU clusters, high-speed networking, and large-scale Linux systems.",
+        "evidence": [
+          {
+            "excerpt": "What You’ll Do: Work with GPU clusters, high-speed networking, and large-scale Linux systems.",
+            "section": "What You’ll Do"
+          }
+        ]
+      },
+      {
+        "description": "Contribute to the architecture of Australia’s first production-scale AI datacentre systems.",
+        "evidence": [
+          {
+            "excerpt": "What You’ll Do: Contribute to the architecture of Australia’s first production-scale AI datacentre systems.",
+            "section": "What You’ll Do"
+          }
+        ]
+      },
+      {
+        "description": "Collaborate with AI researchers and engineers to shape the next generation of model training environments.",
+        "evidence": [
+          {
+            "excerpt": "What You’ll Do: Collaborate with AI researchers and engineers to shape the next generation of model training environments.",
+            "section": "What You’ll Do"
+          }
+        ]
+      },
+      {
+        "description": "Develop new operational and architectural approaches from first principles.",
+        "evidence": [
+          {
+            "excerpt": "What You’ll Do: Develop new operational and architectural approaches from first principles.",
+            "section": "What You’ll Do"
+          }
+        ]
+      }
+    ],
+    "compensation": {
+      "clarity": "unstated",
+      "minimum": null,
+      "maximum": null,
+      "currency": null,
+      "period": null,
+      "raw_text": null,
+      "evidence": []
+    },
+    "location": {
+      "clarity": "stated",
+      "summary": "Melbourne, Victoria, Australia",
+      "evidence": [
+        {
+          "excerpt": "Melbourne, Victoria, Australia · Reposted 6 days ago · Over 100 people clicked apply",
+          "section": "Job Description"
+        }
+      ]
+    },
+    "work_arrangement": {
+      "arrangement": "onsite",
+      "details": null,
+      "evidence": [
+        {
+          "excerpt": "On-site\nFull-time",
+          "section": "Job Description"
+        }
+      ]
+    },
+    "employment": {
+      "working_hours": "full_time",
+      "engagement_type": "unspecified",
+      "evidence": [
+        {
+          "excerpt": "On-site\nFull-time",
+          "section": "Job Description"
+        }
+      ]
+    },
+    "experience_requirements": [
+      {
+        "description": "Hands-on experience working close to the metal with computational systems.",
+        "level": "required",
+        "minimum_years": null,
+        "maximum_years": null,
+        "evidence": [
+          {
+            "excerpt": "You have hands-on experience working close to the metal with computational systems.",
+            "section": "You Might Be a Fit If"
+          }
+        ]
+      }
+    ]
+  },
+  "application_tier": "silver",
+  "pursuit_posture": "consider",
+  "jd_priorities": [
+    {
+      "rank": 1,
+      "label": "GPU clusters",
+      "kind": "technology",
+      "rationale": "GPU clusters is listed as required in the job analysis (employer priority; candidate_support=unsupported).",
+      "evidence": [
+        {
+          "origin": "job_analysis",
+          "job_evidence": {
+            "source": "technology",
+            "item_index": 0,
+            "name": "GPU clusters",
+            "excerpt": "You’ll help design and operate the infrastructure that trains large-scale models: racks of GPUs, high-performance networks, and the orchestration systems that keep them running."
+          },
+          "profile_evidence": null,
+          "portfolio_project_id": null,
+          "excerpt": null
+        }
+      ],
+      "candidate_support": "unsupported",
+      "related_profile_capability": null
+    },
+    {
+      "rank": 2,
+      "label": "Linux",
+      "kind": "technology",
+      "rationale": "Linux is listed as required in the job analysis (employer priority; candidate_support=unsupported).",
+      "evidence": [
+        {
+          "origin": "job_analysis",
+          "job_evidence": {
+            "source": "technology",
+            "item_index": 1,
+            "name": "Linux",
+            "excerpt": "Work with GPU clusters, high-speed networking, and large-scale Linux systems."
+          },
+          "profile_evidence": null,
+          "portfolio_project_id": null,
+          "excerpt": null
+        }
+      ],
+      "candidate_support": "unsupported",
+      "related_profile_capability": null
+    },
+    {
+      "rank": 3,
+      "label": "high-speed networking",
+      "kind": "technology",
+      "rationale": "high-speed networking is listed as required in the job analysis (employer priority; candidate_support=unsupported).",
+      "evidence": [
+        {
+          "origin": "job_analysis",
+          "job_evidence": {
+            "source": "technology",
+            "item_index": 2,
+            "name": "high-speed networking",
+            "excerpt": "Work with GPU clusters, high-speed networking, and large-scale Linux systems."
+          },
+          "profile_evidence": null,
+          "portfolio_project_id": null,
+          "excerpt": null
+        }
+      ],
+      "candidate_support": "unsupported",
+      "related_profile_capability": null
+    },
+    {
+      "rank": 4,
+      "label": "distributed systems",
+      "kind": "technology",
+      "rationale": "distributed systems is listed as preferred in the job analysis (employer priority; candidate_support=unsupported).",
+      "evidence": [
+        {
+          "origin": "job_analysis",
+          "job_evidence": {
+            "source": "technology",
+            "item_index": 3,
+            "name": "distributed systems",
+            "excerpt": "This might include systems programming, Linux environments, GPU or accelerator programming, distributed or HPC environments (e.g. MPI), automation, or large-scale numerical computation."
+          },
+          "profile_evidence": null,
+          "portfolio_project_id": null,
+          "excerpt": null
+        }
+      ],
+      "candidate_support": "unsupported",
+      "related_profile_capability": null
+    },
+    {
+      "rank": 5,
+      "label": "HPC environments (e.g. MPI)",
+      "kind": "technology",
+      "rationale": "HPC environments (e.g. MPI) is listed as preferred in the job analysis (employer priority; candidate_support=unsupported).",
+      "evidence": [
+        {
+          "origin": "job_analysis",
+          "job_evidence": {
+            "source": "technology",
+            "item_index": 4,
+            "name": "HPC environments (e.g. MPI)",
+            "excerpt": "This might include systems programming, Linux environments, GPU or accelerator programming, distributed or HPC environments (e.g. MPI), automation, or large-scale numerical computation."
+          },
+          "profile_evidence": null,
+          "portfolio_project_id": null,
+          "excerpt": null
+        }
+      ],
+      "candidate_support": "unsupported",
+      "related_profile_capability": null
+    },
+    {
+      "rank": 6,
+      "label": "automation",
+      "kind": "technology",
+      "rationale": "automation is listed as preferred in the job analysis (employer priority; candidate_support=supported).",
+      "evidence": [
+        {
+          "origin": "job_analysis",
+          "job_evidence": {
+            "source": "technology",
+            "item_index": 5,
+            "name": "automation",
+            "excerpt": "This might include systems programming, Linux environments, GPU or accelerator programming, distributed or HPC environments (e.g. MPI), automation, or large-scale numerical computation."
+          },
+          "profile_evidence": null,
+          "portfolio_project_id": null,
+          "excerpt": null
+        }
+      ],
+      "candidate_support": "supported",
+      "related_profile_capability": "Test automation"
+    },
+    {
+      "rank": 7,
+      "label": "large-scale numerical computation",
+      "kind": "technology",
+      "rationale": "large-scale numerical computation is listed as preferred in the job analysis (employer priority; candidate_support=unsupported).",
+      "evidence": [
+        {
+          "origin": "job_analysis",
+          "job_evidence": {
+            "source": "technology",
+            "item_index": 6,
+            "name": "large-scale numerical computation",
+            "excerpt": "This might include systems programming, Linux environments, GPU or accelerator programming, distributed or HPC environments (e.g. MPI), automation, or large-scale numerical computation."
+          },
+          "profile_evidence": null,
+          "portfolio_project_id": null,
+          "excerpt": null
+        }
+      ],
+      "candidate_support": "unsupported",
+      "related_profile_capability": null
+    },
+    {
+      "rank": 8,
+      "label": "Ml Engineering",
+      "kind": "role_theme",
+      "rationale": "Role family 'ml_engineering' is an employer positioning signal (candidate_support=unsupported).",
+      "evidence": [
+        {
+          "origin": "job_analysis",
+          "job_evidence": {
+            "source": "role_family",
+            "item_index": null,
+            "name": "ml_engineering",
+            "excerpt": "About Maincode\n\nMaincode is an AI research and engineering company and home to Matilda, Australia’s first and only large language model trained from scratch."
+          },
+          "profile_evidence": null,
+          "portfolio_project_id": null,
+          "excerpt": null
+        }
+      ],
+      "candidate_support": "unsupported",
+      "related_profile_capability": null
+    }
+  ],
+  "projects_to_emphasise": [
+    {
+      "rank": 1,
+      "project_id": "operational-intelligence-copilot",
+      "rationale": "Consider emphasising 'operational-intelligence-copilot' (PortfolioMatch rank 1).",
+      "evidence": [
+        {
+          "origin": "application_strategy",
+          "job_evidence": null,
+          "profile_evidence": null,
+          "portfolio_project_id": "operational-intelligence-copilot",
+          "excerpt": "Consider emphasising 'operational-intelligence-copilot' (PortfolioMatch rank 1)."
+        }
+      ]
+    },
+    {
+      "rank": 2,
+      "project_id": "governance-document-rag",
+      "rationale": "Consider emphasising 'governance-document-rag' (PortfolioMatch rank 2).",
+      "evidence": [
+        {
+          "origin": "application_strategy",
+          "job_evidence": null,
+          "profile_evidence": null,
+          "portfolio_project_id": "governance-document-rag",
+          "excerpt": "Consider emphasising 'governance-document-rag' (PortfolioMatch rank 2)."
+        }
+      ]
+    },
+    {
+      "rank": 3,
+      "project_id": "payroll-diagnostics-engine",
+      "rationale": "Consider emphasising 'payroll-diagnostics-engine' (PortfolioMatch rank 3).",
+      "evidence": [
+        {
+          "origin": "application_strategy",
+          "job_evidence": null,
+          "profile_evidence": null,
+          "portfolio_project_id": "payroll-diagnostics-engine",
+          "excerpt": "Consider emphasising 'payroll-diagnostics-engine' (PortfolioMatch rank 3)."
+        }
+      ]
+    }
+  ],
+  "skills_to_promote": [
+    {
+      "rank": 1,
+      "skill_name": "Test automation",
+      "category": "domain",
+      "rationale": "Test automation promoted because it is both a key JD requirement (automation, preferred) and evidenced in the Career Profile via employment.",
+      "evidence": [
+        {
+          "origin": "job_analysis",
+          "job_evidence": {
+            "source": "technology",
+            "item_index": 5,
+            "name": "automation",
+            "excerpt": "This might include systems programming, Linux environments, GPU or accelerator programming, distributed or HPC environments (e.g. MPI), automation, or large-scale numerical computation."
+          },
+          "profile_evidence": null,
+          "portfolio_project_id": null,
+          "excerpt": null
+        },
+        {
+          "origin": "career_profile",
+          "job_evidence": null,
+          "profile_evidence": {
+            "source": "skill",
+            "ref": "skill:Test automation",
+            "excerpt": null
+          },
+          "portfolio_project_id": null,
+          "excerpt": null
+        }
+      ]
+    }
+  ],
+  "skills_not_emphasised": [
+    {
+      "skill_name": "Python",
+      "category": "technical",
+      "rationale": "Python remains on the CV but is not emphasised because it does not support a candidate-backed JD technology."
+    },
+    {
+      "skill_name": "FastAPI",
+      "category": "technical",
+      "rationale": "FastAPI remains on the CV but is not emphasised because it does not support a candidate-backed JD technology."
+    },
+    {
+      "skill_name": "Docker",
+      "category": "technical",
+      "rationale": "Docker remains on the CV but is not emphasised because it does not support a candidate-backed JD technology."
+    },
+    {
+      "skill_name": "OpenAI APIs",
+      "category": "technical",
+      "rationale": "OpenAI APIs remains on the CV but is not emphasised because it does not support a candidate-backed JD technology."
+    },
+    {
+      "skill_name": "PyTest",
+      "category": "technical",
+      "rationale": "PyTest remains on the CV but is not emphasised because it does not support a candidate-backed JD technology."
+    },
+    {
+      "skill_name": "Git",
+      "category": "technical",
+      "rationale": "Git remains on the CV but is not emphasised because it does not support a candidate-backed JD technology."
+    },
+    {
+      "skill_name": "SQL",
+      "category": "technical",
+      "rationale": "SQL remains on the CV but is not emphasised because it does not support a candidate-backed JD technology."
+    },
+    {
+      "skill_name": "AWS",
+      "category": "technical",
+      "rationale": "AWS remains on the CV but is not emphasised because it does not support a candidate-backed JD technology."
+    },
+    {
+      "skill_name": "S3",
+      "category": "technical",
+      "rationale": "S3 remains on the CV but is not emphasised because it does not support a candidate-backed JD technology."
+    },
+    {
+      "skill_name": "Athena",
+      "category": "technical",
+      "rationale": "Athena remains on the CV but is not emphasised because it does not support a candidate-backed JD technology."
+    },
+    {
+      "skill_name": "Glue",
+      "category": "technical",
+      "rationale": "Glue remains on the CV but is not emphasised because it does not support a candidate-backed JD technology."
+    },
+    {
+      "skill_name": "Cloudwatch",
+      "category": "technical",
+      "rationale": "Cloudwatch remains on the CV but is not emphasised because it does not support a candidate-backed JD technology."
+    },
+    {
+      "skill_name": "DynamoDB",
+      "category": "technical",
+      "rationale": "DynamoDB remains on the CV but is not emphasised because it does not support a candidate-backed JD technology."
+    },
+    {
+      "skill_name": "Apache NiFi",
+      "category": "technical",
+      "rationale": "Apache NiFi remains on the CV but is not emphasised because it does not support a candidate-backed JD technology."
+    },
+    {
+      "skill_name": "LangChain",
+      "category": "technical",
+      "rationale": "LangChain remains on the CV but is not emphasised because it does not support a candidate-backed JD technology."
+    },
+    {
+      "skill_name": "ChromaDB",
+      "category": "technical",
+      "rationale": "ChromaDB remains on the CV but is not emphasised because it does not support a candidate-backed JD technology."
+    },
+    {
+      "skill_name": "Pandas",
+      "category": "technical",
+      "rationale": "Pandas remains on the CV but is not emphasised because it does not support a candidate-backed JD technology."
+    },
+    {
+      "skill_name": "OpenPyXL",
+      "category": "technical",
+      "rationale": "OpenPyXL remains on the CV but is not emphasised because it does not support a candidate-backed JD technology."
+    },
+    {
+      "skill_name": "REST APIs",
+      "category": "technical",
+      "rationale": "REST APIs remains on the CV but is not emphasised because it does not support a candidate-backed JD technology."
+    },
+    {
+      "skill_name": "Microsoft Fabric",
+      "category": "technical",
+      "rationale": "Microsoft Fabric remains on the CV but is not emphasised because it does not support a candidate-backed JD technology."
+    },
+    {
+      "skill_name": "Databricks",
+      "category": "technical",
+      "rationale": "Databricks remains on the CV but is not emphasised because it does not support a candidate-backed JD technology."
+    },
+    {
+      "skill_name": "Snowflake",
+      "category": "technical",
+      "rationale": "Snowflake remains on the CV but is not emphasised because it does not support a candidate-backed JD technology."
+    },
+    {
+      "skill_name": "dbt",
+      "category": "technical",
+      "rationale": "dbt remains on the CV but is not emphasised because it does not support a candidate-backed JD technology."
+    },
+    {
+      "skill_name": "Azure Data Factory",
+      "category": "technical",
+      "rationale": "Azure Data Factory remains on the CV but is not emphasised because it does not support a candidate-backed JD technology."
+    },
+    {
+      "skill_name": "Selenium WebDriver",
+      "category": "technical",
+      "rationale": "Selenium WebDriver remains on the CV but is not emphasised because it does not support a candidate-backed JD technology."
+    },
+    {
+      "skill_name": "Jenkins",
+      "category": "technical",
+      "rationale": "Jenkins remains on the CV but is not emphasised because it does not support a candidate-backed JD technology."
+    },
+    {
+      "skill_name": "Maven",
+      "category": "technical",
+      "rationale": "Maven remains on the CV but is not emphasised because it does not support a candidate-backed JD technology."
+    },
+    {
+      "skill_name": "Cucumber",
+      "category": "technical",
+      "rationale": "Cucumber remains on the CV but is not emphasised because it does not support a candidate-backed JD technology."
+    },
+    {
+      "skill_name": "Retrieval-Augmented Generation",
+      "category": "domain",
+      "rationale": "Retrieval-Augmented Generation remains on the CV but is not emphasised because it does not support a candidate-backed JD technology."
+    },
+    {
+      "skill_name": "Operational intelligence",
+      "category": "domain",
+      "rationale": "Operational intelligence remains on the CV but is not emphasised because it does not support a candidate-backed JD technology."
+    },
+    {
+      "skill_name": "Explainable AI",
+      "category": "domain",
+      "rationale": "Explainable AI remains on the CV but is not emphasised because it does not support a candidate-backed JD technology."
+    },
+    {
+      "skill_name": "Enterprise decision support",
+      "category": "domain",
+      "rationale": "Enterprise decision support remains on the CV but is not emphasised because it does not support a candidate-backed JD technology."
+    },
+    {
+      "skill_name": "Data engineering",
+      "category": "domain",
+      "rationale": "Data engineering remains on the CV but is not emphasised because it does not support a candidate-backed JD technology."
+    },
+    {
+      "skill_name": "Geospatial processing",
+      "category": "domain",
+      "rationale": "Geospatial processing remains on the CV but is not emphasised because it does not support a candidate-backed JD technology."
+    },
+    {
+      "skill_name": "LLM application development",
+      "category": "domain",
+      "rationale": "LLM application development remains on the CV but is not emphasised because it does not support a candidate-backed JD technology."
+    },
+    {
+      "skill_name": "Software quality assurance",
+      "category": "domain",
+      "rationale": "Software quality assurance remains on the CV but is not emphasised because it does not support a candidate-backed JD technology."
+    },
+    {
+      "skill_name": "Architecture-first design",
+      "category": "soft",
+      "rationale": "Architecture-first design remains on the CV but is not emphasised because it does not support a candidate-backed JD technology."
+    },
+    {
+      "skill_name": "Agile collaboration",
+      "category": "soft",
+      "rationale": "Agile collaboration remains on the CV but is not emphasised because it does not support a candidate-backed JD technology."
+    }
+  ],
+  "summary_themes": [
+    {
+      "rank": 1,
+      "theme": "Test automation",
+      "rationale": "Summary theme 'Test automation' is both a JD priority (automation) and evidenced in the Career Profile.",
+      "evidence": [
+        {
+          "origin": "job_analysis",
+          "job_evidence": {
+            "source": "technology",
+            "item_index": 5,
+            "name": "automation",
+            "excerpt": "This might include systems programming, Linux environments, GPU or accelerator programming, distributed or HPC environments (e.g. MPI), automation, or large-scale numerical computation."
+          },
+          "profile_evidence": null,
+          "portfolio_project_id": null,
+          "excerpt": null
+        },
+        {
+          "origin": "career_profile",
+          "job_evidence": null,
+          "profile_evidence": {
+            "source": "skill",
+            "ref": "skill:Test automation",
+            "excerpt": null
+          },
+          "portfolio_project_id": null,
+          "excerpt": null
+        }
+      ]
+    }
+  ],
+  "experience_guidance": {
+    "kind": "master_cv_only",
+    "rationale": "Default Master-CV-aligned scope: extended pre-nbn history is excluded unless the caller opts in.",
+    "included_experience_ids": [
+      "chase-risk-compliance-ai-engineer",
+      "ai-engineering-development-2025",
+      "data-engineering-development-2023",
+      "nbn-data-engineer-2020"
+    ],
+    "excluded_experience_ids": [
+      "general-assembly-data-science-2019",
+      "bakers-delight-test-analyst-2019",
+      "accesshq-test-analyst-2018",
+      "bakers-delight-test-analyst-2015",
+      "console-test-analyst-2012",
+      "bakers-delight-test-analyst-2009"
+    ]
+  },
+  "assumptions": [
+    "Unsupported employer technology priorities (not used as summary themes or promoted skills): GPU clusters, Linux, high-speed networking, distributed systems, HPC environments (e.g. MPI), large-scale numerical computation.",
+    "Material-benefit gate was overridden by the caller; tailoring proceeds despite tier/next-action signals."
+  ],
+  "owner_review_recommended": true,
+  "insufficient_evidence": false,
+  "material_benefit_override": true
+}

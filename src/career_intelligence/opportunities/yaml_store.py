@@ -113,6 +113,47 @@ class YamlDirectoryOpportunityStore:
 
         return payload
 
+    def save(self, opportunity: Opportunity) -> Opportunity:
+        """Replace an existing index entry. Never reads or writes artifacts."""
+        items = self._load_index()
+        found = False
+        updated: list[Opportunity] = []
+        for item in items:
+            if item.opportunity_id == opportunity.opportunity_id:
+                updated.append(opportunity)
+                found = True
+            else:
+                updated.append(item)
+        if not found:
+            raise OpportunityNotFoundError(
+                f"Opportunity not found: {opportunity.opportunity_id}"
+            )
+        self._write_index(updated)
+        return opportunity
+
+    def create_index_only(self, opportunity: Opportunity) -> Opportunity:
+        """Append an index row with empty artifact_paths (no snapshot directory)."""
+        opportunity_id = opportunity.opportunity_id
+        existing = {item.opportunity_id for item in self._load_index()}
+        if opportunity_id in existing:
+            raise OpportunityStorageError(
+                f"Opportunity id already present in index: {opportunity_id}"
+            )
+        if (self.artifacts_root / opportunity_id).exists():
+            raise OpportunityArtifactExistsError(
+                f"Artifact directory already exists for {opportunity_id}"
+            )
+        payload = opportunity.model_copy(
+            update={"artifact_paths": {}},
+            deep=True,
+        )
+        self._append_index(payload)
+        return payload
+
+    def resolve_artifact_path(self, relative_path: str) -> Path:
+        """Resolve a store-relative artifact path under this store root."""
+        return (self.root / relative_path).resolve()
+
     def _write_immutable_json(self, path: Path, model: BaseModel) -> None:
         if path.exists():
             raise OpportunityArtifactExistsError(f"Artifact already exists: {path}")

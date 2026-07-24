@@ -23,8 +23,8 @@ from career_intelligence.job_analysis.openai_extractor import (
 from .test_openai_extractor import _FakeOpenAI, _FakeParseResult
 
 
-def test_prompt_version_is_v7() -> None:
-    assert EXTRACTION_PROMPT_VERSION == "v7"
+def test_prompt_version_is_v8() -> None:
+    assert EXTRACTION_PROMPT_VERSION == "v8"
 
 
 def test_prompt_deprioritises_seek_chrome() -> None:
@@ -115,4 +115,4 @@ def test_seek_chrome_only_posting_still_formats_for_extractor() -> None:
     rendered = _format_posting_input(posting)
     assert "How you match" in rendered
     assert "About the role" in rendered
-    assert EXTRACTION_PROMPT_VERSION == "v7"
+    assert EXTRACTION_PROMPT_VERSION == "v8"

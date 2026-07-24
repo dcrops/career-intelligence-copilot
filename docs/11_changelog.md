@@ -4,6 +4,110 @@ Records product strategy and engineering knowledge changes. Routine typo fixes a
 
 ---
 
+## Version 1.28
+
+### Phase 2 documentation freeze (pre–FR-006b)
+
+- Restructured [10_roadmap.md](10_roadmap.md) into Completed / Current Focus / Future.
+- Added [12_phase_history.md](12_phase_history.md) for Phase 1–2 outcomes and lessons
+  (does not replace this changelog).
+- README and repository guide clarified for new contributors; next work = FR-006b.
+- Deliberately did **not** add `docs/01_product_vision.md` — vision remains
+  [03_product_vision.md](03_product_vision.md).
+
+---
+
+## Version 1.27
+
+### M5 Phase 2 close-out validation — GO
+
+**Phase 2 Job Intelligence MVP is complete.**
+
+Close-out rollup (M1–M5):
+
+- **M1** Opportunity persistence (structured SoT, `opp_<ULID>`, immutable artefacts)
+- **M2** Decision and outcome logging (FR-013 Phase 2 subset)
+- **M3** CSV operational bridge (export + one-time import)
+- **M4** Ranked comparison of open opportunities
+- **M4a** Opportunity identity (grounded title/company)
+- **M5** Release validation with formal **GO**
+  ([eval/phase2_release_report.md](eval/phase2_release_report.md))
+
+Also delivered in Phase 2 / owner-sequenced alongside: FR-001–FR-006.
+
+- Live E2E on Maincode (012) and pay.com.au (013): analysis → assessment →
+  portfolio → strategy → CV → persist → decide → compare.
+- Full suite: 719 passed. No release-blocking defects.
+- Next milestone: **FR-006b CV Quality Improvement**.
+
+---
+
+## Version 1.26
+
+### M4a Opportunity identity metadata completion
+
+- Root cause: `JobPosting.title` / `company` were caller-provenance only
+  (`--title` / `--company`). `JobAnalysisExtraction` did not extract identity from
+  the job description, so runs without CLI flags persisted blank identity through
+  list/compare.
+- Fix: extraction prompt **v8** + `posting_identity` on `JobAnalysisExtraction`;
+  `JobAnalysisService` fills missing title/company only when grounded in raw text
+  (never overwrites caller-supplied values; drops ungrounded inventions).
+- Manual pipeline uses the analysis-bound posting for report and `--persist`.
+- `cic opportunity backfill-identity` copies title/company from trusted
+  `posting.json` when the index is blank but the artifact has values. Records whose
+  `posting.json` is also blank must be **re-persisted** (no silent OpenAI re-run).
+- Phase 2 remains **in progress**. M5 close-out not started.
+
+---
+
+## Version 1.25
+
+### M4 Ranked comparison of open opportunities
+
+- Added `OpportunityComparisonService` (`career_intelligence.opportunity_comparison`)
+  for deterministic ranking of open Opportunity records.
+- Sort key: pursuit posture → fit strength → application tier → `opportunity_id`.
+- Open filter excludes terminal statuses and `decision=skip`. Each item includes
+  explainable `reasons`. No OpenAI, re-analysis, or mutation of opportunities.
+- CLI: `cic opportunity compare` (optional `--yaml`).
+- Ranking lives outside `OpportunityService` (dedicated public comparison boundary).
+- Phase 2 remains **in progress**. M5 close-out validation is not implemented.
+  Cross-domain ranking (recruiters / networking / meetups) is explicitly out of scope.
+
+---
+
+## Version 1.24
+
+### M3 CSV operational bridge
+
+- Added `OpportunityCsvBridge` with deterministic UTF-8-SIG export
+  (`cic opportunity export-csv`) and one-time legacy tracker import
+  (`cic opportunity import-legacy-csv`, with `--dry-run`).
+- Structured store under `data/opportunities/` remains the sole system of record.
+  CSV is a derived view / migration utility — **no bidirectional sync**.
+- Legacy imports create incomplete opportunities (`strategy_summary=None`, empty
+  artifacts) with `LegacyImportProvenance` and fingerprint-based duplicate skip.
+- Phase 2 remains **in progress**. M4 ranked comparison and M5 close-out are not
+  implemented.
+
+---
+
+## Version 1.23
+
+### M2 Owner decision and outcome logging (FR-013 Phase 2 subset)
+
+- Extended `OpportunityService` with `record_decision` and `update_outcome`.
+- Separates owner **decision** (apply/skip/defer), pipeline **status**, and historical
+  **outcome** (pending/offer/accepted/rejected/withdrawn/unknown).
+- Simple status transition validation (e.g. no interviewing before submitted; terminal
+  states cannot reopen). Immutable M1 artifacts are never modified.
+- CLI: `cic opportunity decide` / `cic opportunity outcome`.
+- Phase 2 remains **in progress**. M3 CSV export and M4 ranked comparison are not
+  implemented. Full FR-013 “inform future assessments” is deferred.
+
+---
+
 ## Version 1.22
 
 ### M1 Opportunity persistence

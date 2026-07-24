@@ -71,7 +71,10 @@ The raw input for a single opportunity — typically a job description provided 
 
 **Implementation (Phase 2):** Callers supply a typed `JobPosting` (`raw_text` plus
 optional `title`, `company`, `source_url`). The OpenAI extractor formats these as
-tagged sections so analysis uses the complete posting, not only the body. Manual
+tagged sections so analysis uses the complete posting, not only the body. When
+caller provenance omits title/company, extraction may return grounded
+`posting_identity` values; `JobAnalysisService` binds them into the trusted
+`JobPosting` only when value and evidence appear in `raw_text` (M4a). Manual
 paste is the current ingestion path; automated acquisition is future work — see
 [10_roadmap.md](10_roadmap.md) § Automated Job Acquisition.
 
@@ -186,13 +189,15 @@ public default — callers inject a planner explicitly. OpenAI is not required.
 
 ### Opportunity (durable record)
 
-**Maps to:** Phase 2 pipeline tracking (M1 complete)
+**Maps to:** Phase 2 pipeline tracking (M1 complete) + decision/outcome logging (M2 complete)
 
 A persisted assessed opportunity with permanent id `opp_<ULID>`, lifecycle
-`PipelineStatus`, strategy summary, and immutable FR-002–FR-005 artifact snapshots.
+`PipelineStatus`, optional owner decision, optional outcome record, strategy summary,
+and immutable FR-002–FR-005 artifact snapshots.
 Produced by `OpportunityService.create_from_strategy` after Application Strategy.
 Structured storage under `data/opportunities/` is the system of record (ADR-002).
-CSV export is M3. Owner decisions and outcomes are M2. Ranking is M4.
+CSV export and one-time legacy import are M3 (derived / migration only). Ranking is M4
+(`OpportunityComparisonService`).
 
 **Implementation:** `src/career_intelligence/opportunities/`.
 
@@ -207,15 +212,43 @@ Historical domain name for the durable Opportunity aggregate above. Prefer
 
 ### Outcome Record
 
-**Maps to:** FR-013
+**Maps to:** FR-013 (Phase 2 subset delivered in M2)
 
-Captures what happened after assessment: user decision (apply / skip / defer), application status, interview stage, outcome where known. Enables future assessments to improve and eventually supports deferred predictive dimensions.
+Captures three distinct concepts on the durable Opportunity:
+
+- **Decision** (`OwnerDecisionRecord`): apply / skip / defer
+- **Status** (`PipelineStatus`): operational lifecycle stage
+- **Outcome** (`OutcomeRecord.outcome`): pending / offer / accepted / rejected /
+  withdrawn / unknown, plus interview stage, follow-up date, and notes
+
+M2 supports record and retrieve only. Feeding outcome history into future FR-003
+assessments is deferred beyond Phase 2 exit.
 
 ---
 
 ### Ranked Comparison
 
-A prioritised ordering of open assessed opportunities to support effort allocation among concurrent options. Phase 2 scope is job opportunities only — not cross-domain daily prioritisation (FR-012 deferred).
+A prioritised ordering of open assessed opportunities to support effort allocation
+among concurrent options. Phase 2 scope is job opportunities only — not cross-domain
+daily prioritisation (FR-012 deferred).
+
+**Implementation (M4):** `OpportunityComparisonService.compare_open` ranks open
+Opportunity aggregates with a deterministic sort key:
+
+1. Pursuit posture (FR-005 primary attention signal)
+2. Fit strength (sum of technical + commercial + portfolio judgments)
+3. Application tier (effort band)
+4. `opportunity_id` (stable ascending tie-break)
+
+Open filter: status ∈ {assessed, deferred, preparing, submitted, interviewing, offer}
+and decision ≠ skip. Each ranked item includes explainable `reasons`. Owner review
+required — ranking does not apply, skip, or mutate opportunities.
+
+**Future consideration (not implemented):** Strategy summary and fit judgments are
+job-application-centric. Generalising ranking to recruiters, networking, or meetups
+would need a shared “rankable signals” view (or adapter) over heterogeneous opportunity
+types; Phase 2 comparison remains deliberately job-scoped so that redesign is not
+forced now.
 
 ---
 
@@ -266,8 +299,8 @@ The operational layer is the manual precursor to the automated domain model.
 | Domain entity | Operational counterpart |
 |---------------|------------------------|
 | Career Profile | `career-documents/cv/`, owner knowledge |
-| Opportunity (durable) | `data/opportunities/` (SoT); CSV export to tracker is M3 |
-| Outcome Record | Status / notes on Opportunity (M2); tracker Outcome column is export projection |
+| Opportunity (durable) | `data/opportunities/` (SoT); CSV under `data/exports/` is derived (M3) |
+| Outcome Record | Status / notes on Opportunity (M2); tracker Outcome column is import/export projection |
 | Network contacts | `applications/network/network_tracker.csv` (Phase 3+ domain) |
 | Company context | `applications/company_notes/` |
 | Career milestones | `career-log.md` |
@@ -288,7 +321,9 @@ Phase 2 engineering must respect this mapping. The future system should absorb o
 | Portfolio Match | FR-004 |
 | Application Strategy | FR-005 |
 | Opportunity (durable persistence) | Phase 2 M1 (complete) |
-| Outcome Record | FR-013 (M2 remaining) |
+| Outcome Record | FR-013 Phase 2 subset (M2 complete); full “inform assessments” deferred |
+| CSV operational bridge | Phase 2 M3 (complete) |
 | Duplicate Application Detection | FR-014 (future) |
-| Ranked Comparison | FR-012 (partial — job opportunities only; M4 remaining) |
-| Pipeline tracking | Phase 2 M1 (complete) + M2–M4 |
+| Ranked Comparison | FR-012 (partial — job opportunities only; M4 complete) |
+| Pipeline tracking | Phase 2 M1–M5 complete |
+| Opportunity identity (title/company) | Phase 2 M4a complete |

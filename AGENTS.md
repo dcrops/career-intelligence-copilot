@@ -11,11 +11,11 @@ The repository — not conversation history — is the project's long-term memor
 ## Start Here
 
 1. [docs/00_repository_guide.md](docs/00_repository_guide.md) — documentation map and folder semantics
-2. [docs/04_functional_specification.md](docs/04_functional_specification.md) — requirements and Phase 2 scope
+2. [docs/04_functional_specification.md](docs/04_functional_specification.md) — requirements
 3. [docs/06_domain_model.md](docs/06_domain_model.md) — decision loop and entities
 4. [docs/05_engineering_principles.md](docs/05_engineering_principles.md) — engineering tradeoffs
 5. [docs/07_testing_strategy.md](docs/07_testing_strategy.md) — testing and regression conventions
-6. [docs/10_roadmap.md](docs/10_roadmap.md) — current phase and exit criteria
+6. [docs/10_roadmap.md](docs/10_roadmap.md) — completed vs current focus vs future
 
 ---
 
@@ -23,13 +23,13 @@ The repository — not conversation history — is the project's long-term memor
 
 Career Intelligence Copilot is a decision-support system for job search — not an application automation tool.
 
-**Current phase:** Phase 2 Job Intelligence implementation. FR-001–FR-005 are
-implemented and closed; **FR-006 CV Generation is complete** (deterministic
-tailoring + optional OpenAI summary rewrite; owner-validated). **M1 Opportunity
-persistence is complete** (`OpportunityService`, `opp_<ULID>`, immutable artifacts).
-Remaining Phase 2 exit work: M2 outcome logging (FR-013 subset), M3 CSV export,
-M4 ranked comparison, then M5 close-out. Next planned functional requirement after
-Phase 2 exit: **FR-007 Cover Letter**.
+**Current phase:** Phase 2 Job Intelligence MVP is **complete** and documentation is
+a **frozen baseline** (M5 GO —
+[docs/eval/phase2_release_report.md](docs/eval/phase2_release_report.md);
+[docs/12_phase_history.md](docs/12_phase_history.md)). FR-001–FR-006, M1–M4, and
+corrective M4a are closed. **Next milestone:** **FR-006b CV Quality Improvement**
+(Horizon 1). Do not reopen Phase 2 exit criteria or architecture without explicit
+owner request. FR-007 Cover Letter remains planned thereafter.
 
 **Implementation foundation:** Python 3.11+, Pydantic, YAML storage, and the public profile
 service boundary are recorded in
@@ -43,18 +43,15 @@ service boundary are recorded in
 
 ## Phase 2 Scope Boundaries
 
-**In scope:** Career profile, job analysis, opportunity assessment (Technical, Commercial, Portfolio Fit), portfolio matching, application strategy (pursuit posture + effort tiers), pipeline tracking, outcome logging, ranked comparison of open opportunities.
+**In scope (delivered):** Career profile, job analysis, opportunity assessment (Technical, Commercial, Portfolio Fit), portfolio matching, application strategy (pursuit posture + effort tiers), pipeline tracking, outcome logging, ranked comparison of open opportunities, grounded opportunity identity.
 
-**Out of scope for Phase 2 exit:** Cover letter generation, recruiter outreach, interview preparation, full dashboard, market intelligence, cross-domain daily prioritisation, automated job discovery, predictive scoring (Interview Probability, Recruiter Confidence).
+**Out of scope for Phase 2 (unchanged):** Cover letter generation, recruiter outreach, interview preparation, full dashboard, market intelligence, cross-domain daily prioritisation, automated job discovery, predictive scoring (Interview Probability, Recruiter Confidence).
 
-**Delivered outside Phase 2 exit criteria (owner-sequenced):** FR-006 CV Generation — complete; do not reopen as informal “Phase D” presentation work (see functional specification / changelog).
-
-**Phase 2 close-out progress:** M1 Opportunity persistence complete (structured store
-SoT under `data/opportunities/`; CSV export deferred to M3). M2–M5 not started.
+**Delivered outside original Phase 2 exit criteria (owner-sequenced):** FR-006 CV Generation — complete; do not reopen as informal “Phase D” presentation work. Quality iteration is **FR-006b**.
 
 Full detail: [docs/04_functional_specification.md](docs/04_functional_specification.md) and [docs/10_roadmap.md](docs/10_roadmap.md).
 
-Do not expand scope into Phase 3+ capabilities unless explicitly requested by the owner.
+Do not expand scope into Phase 3+ / Horizon 2 capabilities unless explicitly requested by the owner.
 
 ---
 
@@ -76,7 +73,7 @@ Apply [docs/05_engineering_principles.md](docs/05_engineering_principles.md) for
 ## Do Not
 
 - Propose architecture or choose technologies unless explicitly asked
-- Add Phase 3+ features while Phase 2 is incomplete
+- Add Phase 3+ / Horizon 2 features unless explicitly requested
 - Copy recruiter PII from `applications/network/` into rules, skills, or documentation
 - Treat executive summary or problem statement as requirements sources
 - Duplicate content that already exists in authoritative docs — cross-reference instead

@@ -18,8 +18,12 @@ repository storage as the system of record, with CSV as an operational export on
 - Persist immutable FR-002–FR-005 JSON snapshots under `data/opportunities/artifacts/{id}/`
   by default at create time.
 - Put YAML access behind `OpportunityStore`; do not export the adapter from the public API.
-- Default create status is `assessed`. Owner decisions, outcomes, CSV, and ranking are
-  deferred to M2–M4.
+- Default create status is `assessed`. Owner decisions and outcomes are M2
+  (`record_decision` / `update_outcome`). CSV export and one-time legacy import are M3
+  (`OpportunityCsvBridge`). Ranking is delivered in M4 via
+  `OpportunityComparisonService` (separate package; does not live in this service).
+- Legacy imports may omit `strategy_summary` and artifact snapshots; they carry
+  `LegacyImportProvenance` instead of fabricated FR-002–FR-005 graphs.
 
 ## Consequences
 

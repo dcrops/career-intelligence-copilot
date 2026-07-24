@@ -1,6 +1,6 @@
 """Compact extraction instructions for the OpenAI job-analysis extractor."""
 
-EXTRACTION_PROMPT_VERSION = "v7"
+EXTRACTION_PROMPT_VERSION = "v8"
 
 EXTRACTION_INSTRUCTIONS_V1 = """
 You extract a structured Job Analysis from one complete job posting.
@@ -12,6 +12,20 @@ Input sections (trusted caller metadata + description):
 - <JobDescription> — job description body (may include job-board page chrome)
 
 Analyse the entire posting. Do not ignore JobTitle, Company, or other tagged metadata.
+
+Posting identity (posting_identity — critical):
+- Extract job title and employer into posting_identity when they are clearly present
+  in the tagged input (prefer <JobTitle>/<Company> when supplied; otherwise extract
+  from employer-authored content in <JobDescription>).
+- posting_identity.title / posting_identity.company may be null when identity cannot
+  be established reliably. Never invent a title or company.
+- When title is non-null, include title_evidence with at least one exact excerpt
+  (section "Job title" when citing a title line).
+- When company is non-null, include company_evidence with at least one exact excerpt
+  (section "Company" when citing an employer name line).
+- Do not use filenames, URLs alone, or job-board chrome widgets as the sole identity
+  source. Prefer explicit employer/role headings near the top of the description.
+- Never emit a top-level posting object. posting_identity is the only identity channel.
 
 Employer content vs job-board chrome (critical):
 - Prioritise employer-authored role content: About the role/company, duties,
@@ -30,10 +44,10 @@ Evidence (global — applies to every section):
   exact supporting excerpt from the tagged posting, with the correct provenance section
   (use "Job title" for title evidence).
 - Never emit a known role family, technology, responsibility, experience requirement,
-  seniority, location, work arrangement, compensation, or employment value with
-  evidence=[].
+  seniority, location, work arrangement, compensation, employment, or posting_identity
+  value with evidence=[].
 - If you cannot quote supporting evidence, do not make the claim (use unknown /
-  unspecified / unstated instead).
+  unspecified / unstated / null identity instead).
 
 Supported role_family.family values (emit exactly one):
 ai_engineering | ai_solutions | data_engineering | software_engineering |
@@ -77,7 +91,8 @@ Rules:
 - Analyse only the supplied posting. Do not compare it to a candidate or career profile.
 - Do not recommend apply, skip, tier, or effort. Do not assess candidate fit.
 - Distinguish required vs preferred vs unspecified for technologies and experience.
-- Never invent compensation, seniority, role family, employment, or other missing facts.
+- Never invent compensation, seniority, role family, employment, title, company, or
+  other missing facts.
 - Emit exactly the JobAnalysisExtraction schema. Never emit a posting field.
 - Responsibilities and technologies come primarily from employer-authored
   <JobDescription> content (not job-board chrome).

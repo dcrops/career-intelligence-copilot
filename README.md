@@ -1,103 +1,62 @@
 # Career Intelligence Copilot
 
-
-
 ## Overview
 
+Career Intelligence Copilot is an AI-powered **decision-support** system for job
+search — helping AI Engineers secure suitable roles sooner while reducing repetitive
+analysis and tracking work.
 
+It is **not** an application-automation bot. Recommendations require human review;
+the system does not send outreach or apply on the owner's behalf.
 
-Career Intelligence Copilot is an AI-powered platform designed to help AI Engineers secure suitable roles sooner while reducing the manual effort of running an effective job search.
+**Horizon 1 (current priority):** Improve opportunity decisions and reduce job-search
+effort for the repository owner.
 
+**Horizon 2 (long term):** Evolve into a reusable Career Intelligence Platform for
+ongoing career progression after employment is secured.
 
-
-The **immediate priority** is to help the repository owner secure an appropriate AI Engineering role as quickly as reasonably possible — by improving opportunity decisions and reducing repetitive administrative work.
-
-
-
-The **long-term direction** is a reusable Career Intelligence Platform that may continue supporting career progression after employment is secured, including networking, learning, role changes, and future opportunity evaluation.
-
-
-
-The project also serves as a production-quality AI Engineering portfolio project and the practical project used to master modern AI engineering workflows with Cursor.
-
-
-
----
-
-
-
-## Primary Goals
-
-
-
-**Horizon 1 — Immediate (current priority):**
-
-
-
-- Secure a suitable AI Engineering role sooner.
-
-- Reduce manual effort, repetition, and administrative burden in the job search.
-
-- Improve the quality of opportunity decisions and prioritisation.
-
-
-
-**Horizon 2 — Long term:**
-
-
-
-- Build an outstanding AI portfolio project.
-
-- Learn professional AI Engineering workflows using Cursor.
-
-- Evolve the platform to support ongoing career progression.
-
-
-
-When Horizon 1 and Horizon 2 compete, Horizon 1 takes priority.
-
-
+The project is also a production-quality portfolio artefact and a practical lab for
+modern AI engineering workflows with Cursor. When those goals conflict with Horizon 1,
+**Horizon 1 wins**.
 
 ---
 
+## Where to start
 
+| Audience | Start here |
+|----------|------------|
+| New engineer / contributor | [docs/00_repository_guide.md](docs/00_repository_guide.md) |
+| Cursor agents | [AGENTS.md](AGENTS.md) |
+| What was delivered in Phase 2 | [docs/eval/phase2_release_report.md](docs/eval/phase2_release_report.md) · [docs/12_phase_history.md](docs/12_phase_history.md) |
+| What is next | [docs/10_roadmap.md](docs/10_roadmap.md) |
+
+---
 
 ## Current Status
 
+**Phase 2 Job Intelligence — Complete** (M5 GO —
+[docs/eval/phase2_release_report.md](docs/eval/phase2_release_report.md)).
 
+**Next milestone:** **FR-006b — CV Quality Improvement**
 
-Phase: Phase 2 Job Intelligence implementation
+**Thereafter (Horizon 1):** FR-007 Cover Letter → automated job acquisition
 
+### Phase 2 capabilities (baseline — frozen)
 
+- FR-001 Career Profile
+- FR-002 Job Analysis
+- FR-003 Opportunity Assessment (Technical / Commercial / Portfolio Fit)
+- FR-004 Portfolio Matching
+- FR-005 Application Strategy (pursuit posture + effort tiers)
+- FR-006 CV Generation (deterministic plan + optional OpenAI summary rewrite)
+- M1 Opportunity persistence (`OpportunityService`, `opp_<ULID>`, immutable artefacts)
+- M2 Owner decision & outcome logging (FR-013 Phase 2 subset)
+- M3 CSV operational bridge (export + one-time legacy import; structured store = SoT)
+- M4 Ranked comparison of open opportunities
+- M4a Grounded title/company identity
+- M5 Close-out validation
 
-Current focus:
-
-
-
-- FR-001 Career Profile — complete
-
-- FR-002 Job Analysis — complete
-
-- FR-003 Opportunity Assessment — complete
-
-- FR-004 Portfolio Matching — complete
-
-- FR-005 Application Strategy — complete (formally closed after owner manual validation)
-
-- FR-006 CV Generation — complete (deterministic plan + optional OpenAI summary rewrite)
-
-- M1 Opportunity persistence — complete (`OpportunityService`, `opp_<ULID>`, immutable artifacts)
-
-- Next planned FR after Phase 2 exit: FR-007 Cover Letter
-
-- Remaining Phase 2 exit work: M2 outcome logging (FR-013 subset), M3 CSV export,
-  M4 ranked comparison, M5 close-out
-
-
-
-Completed decision-loop slice (plus CV generation and M1 persistence):
-
-
+### Decision loop
 
 ```
 FR-001 Career Profile
@@ -111,169 +70,102 @@ FR-002 Job Analysis
                   ↓
         FR-006 CV Generation (optional)
                   ↓
-        M1 Opportunity persistence (--persist)
+        M1 Persist opportunity (--persist)
+                  ↓
+        M2 Owner decision / outcome
+                  ↓
+        M4 Ranked comparison (open opportunities)
 ```
 
-
-
-See [docs/00_repository_guide.md](docs/00_repository_guide.md) for full orientation and [docs/10_roadmap.md](docs/10_roadmap.md) for phase status.
-
-Owner manual validation:
-
-- FR-001→FR-005: `python scripts/run_application_strategy_manual.py --job-file path/to/real_job.txt`
-- Persist opportunity (M1): add `--persist` (optional `--opportunities-dir PATH`)
-- Inspect: `cic opportunity list` / `cic opportunity show <opp_id>`
-- FR-006: `python scripts/run_cv_generation_manual.py --job-file …` (optional `--rewrite-summary`)
-
-Details: [docs/08_implementation_notes.md](docs/08_implementation_notes.md); FR-006 procedure: [docs/eval/fr006_manual_validation.md](docs/eval/fr006_manual_validation.md).
-
-
-
 ---
 
-
-
-## Repository Structure
-
-
-
-| Path | Purpose |
-|------|---------|
-| `docs/` | Product and engineering documentation |
-| `docs/assets/` | Architecture and verification overview images |
-| `src/` | Python implementation |
-| `tests/` | Unit, functional, and golden journey tests |
-| `data/` | Structured operational data, including the career profile |
-| `applications/` | Live job search — applications, network contacts, company notes |
-| `career-documents/` | Career artifacts (e.g. Master CV) |
-| `templates/` | Message and document templates (placeholders) |
-| `metrics/` | Review and analytics placeholders |
-| `tools/` | Engineering evaluation harnesses (not product CLIs) |
-| `images/` | Reserved — not yet populated |
-| `career-log.md` | Dated career milestones and actions |
-| `AGENTS.md` | Cursor agent bootstrap instructions |
-
-
-
----
-
-
-
-## Documentation
-
-
-
-Start with [docs/00_repository_guide.md](docs/00_repository_guide.md).
-
-
-
-**Authoritative:**
-
-
-
-- [docs/04_functional_specification.md](docs/04_functional_specification.md) — requirements
-
-- [docs/10_roadmap.md](docs/10_roadmap.md) — delivery phasing
-
-- [docs/03_product_vision.md](docs/03_product_vision.md) — product direction
-
-- [docs/05_engineering_principles.md](docs/05_engineering_principles.md) — engineering tradeoffs
-
-- [docs/06_domain_model.md](docs/06_domain_model.md) — domain concepts
-
-- [docs/07_testing_strategy.md](docs/07_testing_strategy.md) — testing and regression strategy
-
-- [AGENTS.md](AGENTS.md) — agent behaviour
-
-
-
-**Supporting:**
-
-
-
-- [docs/01_executive_summary.md](docs/01_executive_summary.md)
-
-- [docs/02_problem_statement.md](docs/02_problem_statement.md)
-
-- [docs/08_implementation_notes.md](docs/08_implementation_notes.md) — FR-001–FR-005 implementation notes and owner manual-validation runner
-
-- [docs/eval/fr003_openai_manual_eval.md](docs/eval/fr003_openai_manual_eval.md) — FR-003 live eval (PARTIAL PASS)
-
-- [docs/11_changelog.md](docs/11_changelog.md)
-
-
-
----
-
-
-
-## Guiding Principles
-
-
-
-- Help users spend less time managing their careers and more time advancing them
-
-- Evidence-driven decisions
-
-- Intelligence-first, with staged automation for repetitive administrative work
-
-- Human review for important decisions and externally visible actions
-
-- Production-quality engineering
-
-- Modular architecture
-
-- Optimise career outcomes rather than application volume
-
-
-
-Near-term capabilities should improve the likelihood of securing relevant interviews or offers, or reduce the manual effort required to run an effective job search.
-
-
-
----
-
-
-
-## Career Profile
-
-
-
-FR-001 provides an evidence-based, typed career profile backed by
-`data/career_profile.yaml`. Install the package and development tools:
-
-
+## Quick start
 
 ```powershell
 python -m pip install -e ".[dev]"
 ```
 
-
-
-Use the thin CLI:
-
-
+Set `OPENAI_API_KEY` for live Job Analysis and Opportunity Assessment.
 
 ```powershell
+# Profile
 cic profile validate
 cic profile summary
-cic profile show projects
-cic profile init --path path/to/new_profile.yaml
-```
 
+# FR-001→FR-005 (+ optional --persist)
+python scripts/run_application_strategy_manual.py --job-file path/to/real_job.txt --persist
 
+# Decisions, ranking, CSV
+cic opportunity list
+cic opportunity decide <opp_id> apply|skip|defer
+cic opportunity compare
+cic opportunity export-csv
 
-Edit YAML directly for profile updates, then run `cic profile validate`. The CLI intentionally
-does not provide partial update commands in this slice.
+# FR-006 CV (see docs/eval/fr006_manual_validation.md)
+python scripts/run_cv_generation_manual.py --job-file path/to/real_job.txt
 
-
-
-Run the complete test suite:
-
-
-
-```powershell
+# Tests
 python -m pytest
 ```
 
+Details: [docs/08_implementation_notes.md](docs/08_implementation_notes.md).
 
+---
+
+## Repository Structure
+
+| Path | Purpose |
+|------|---------|
+| `docs/` | Product and engineering documentation |
+| `docs/assets/` | Architecture and verification overview images |
+| `docs/adr/` | Architecture decision records |
+| `docs/eval/` | Manual eval and release reports |
+| `src/` | Python implementation |
+| `tests/` | Unit, functional, and golden journey tests |
+| `scripts/` | Owner / developer manual validation runners |
+| `data/` | Career profile and opportunities store (SoT) |
+| `applications/` | Live job search — applications, network, company notes |
+| `career-documents/` | Career artefacts (e.g. Master CV, generated CVs) |
+| `templates/` | Message and document templates (placeholders) |
+| `metrics/` | Review and analytics placeholders |
+| `tools/` | Engineering evaluation harnesses (not product CLIs) |
+| `manual_validation/` | Real job texts, outputs, and owner notes |
+| `career-log.md` | Dated career milestones and actions |
+| `AGENTS.md` | Cursor agent bootstrap instructions |
+
+---
+
+## Documentation
+
+Start with [docs/00_repository_guide.md](docs/00_repository_guide.md).
+
+**Authoritative:**
+
+- [docs/04_functional_specification.md](docs/04_functional_specification.md) — requirements
+- [docs/10_roadmap.md](docs/10_roadmap.md) — delivery phasing
+- [docs/03_product_vision.md](docs/03_product_vision.md) — product direction
+- [docs/05_engineering_principles.md](docs/05_engineering_principles.md) — engineering tradeoffs
+- [docs/06_domain_model.md](docs/06_domain_model.md) — domain concepts
+- [docs/07_testing_strategy.md](docs/07_testing_strategy.md) — testing strategy
+- [AGENTS.md](AGENTS.md) — agent behaviour
+
+**Supporting:**
+
+- [docs/01_executive_summary.md](docs/01_executive_summary.md)
+- [docs/02_problem_statement.md](docs/02_problem_statement.md)
+- [docs/08_implementation_notes.md](docs/08_implementation_notes.md)
+- [docs/12_phase_history.md](docs/12_phase_history.md) — completed phase narratives
+- [docs/eval/phase2_release_report.md](docs/eval/phase2_release_report.md) — Phase 2 GO
+- [docs/11_changelog.md](docs/11_changelog.md)
+
+---
+
+## Guiding Principles
+
+- Intelligence before automation; human review for consequential outputs
+- Evidence-driven decisions; no invented precision
+- Dual-value: improve interview/offer odds **or** reduce search effort
+- Operational continuity with `applications/` (structured store + CSV bridge)
+- Production-quality engineering; modular public service boundaries
+
+Full invariants: [docs/05_engineering_principles.md](docs/05_engineering_principles.md).

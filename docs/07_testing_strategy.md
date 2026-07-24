@@ -4,7 +4,8 @@
 
 This document is the authoritative testing reference for implementation work in the Career
 Intelligence Copilot. It defines which behaviours each test layer protects and how the suite
-grows as Phase 2 progresses.
+grows as the product evolves (Phase 2 baseline is complete; further suites track
+Horizon 1 work such as FR-006b).
 
 Requirements remain authoritative in [04_functional_specification.md](04_functional_specification.md).
 Engineering tradeoffs remain authoritative in
@@ -35,7 +36,8 @@ round-trips. Unit tests may import internal modules. They may be revised during 
 when public behaviour is preserved.
 
 Unit tests live under `tests/unit/`, grouped by capability
-(including `tests/unit/opportunities/` for M1 persistence).
+(including `tests/unit/opportunities/` for M1–M3 persistence, decisions, and CSV
+bridge, and `tests/unit/opportunity_comparison/` for M4 ranking).
 
 ---
 
@@ -174,3 +176,37 @@ FR-006 is **complete**. Coverage includes:
 
 Phase C OpenAI calls are opt-in (`--rewrite-summary`) and fail-soft. Automated tests
 use `FixtureSummaryRewriter` and fake OpenAI clients — no network in CI.
+
+---
+
+## M4 Ranked comparison coverage
+
+M4 is **complete** for Phase 2 job opportunities (FR-012 partial). Coverage includes:
+
+- unit tests under `tests/unit/opportunity_comparison/` (sort key, open filter, reasons,
+  CLI `opportunity compare`, regression-stable ordering);
+- functional acceptance in `tests/functional/test_fr012_acceptance.py` (public
+  `OpportunityComparisonService` boundary); and
+- golden journey `tests/golden/test_opportunity_comparison_user_journey.py`
+  (persist trusted FR-002–FR-005 artifacts → list → compare; excludes terminal/skip).
+
+Ranking is offline and deterministic — no OpenAI in this capability.
+
+---
+
+## M4a Identity metadata coverage
+
+M4a is **complete**. Coverage includes:
+
+- extraction schema / service enrichment unit tests (`posting_identity`, grounded bind,
+  no overwrite of caller provenance, drop ungrounded inventions);
+- persistence / CLI / backfill tests under `tests/unit/opportunities/test_identity_backfill.py`;
+- prompt version **v8** assertions in FR-002 extractor tests.
+
+---
+
+## M5 Phase 2 close-out
+
+M5 is validation-only (no new product tests required). Evidence:
+[eval/phase2_release_report.md](eval/phase2_release_report.md). Full suite must
+remain green before declaring Phase 2 complete.

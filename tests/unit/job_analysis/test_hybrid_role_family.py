@@ -30,8 +30,8 @@ from pydantic import ValidationError
 from .test_openai_extractor import _FakeOpenAI, _FakeParseResult, _valid_extraction_payload
 
 
-def test_prompt_version_is_v7_with_hybrid_guidance() -> None:
-    assert EXTRACTION_PROMPT_VERSION == "v7"
+def test_prompt_version_is_v8_with_hybrid_guidance() -> None:
+    assert EXTRACTION_PROMPT_VERSION == "v8"
     text = EXTRACTION_INSTRUCTIONS_V1.casefold()
     assert "network_engineering" in text
     assert "hybrid" in text

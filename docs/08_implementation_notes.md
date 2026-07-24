@@ -266,6 +266,7 @@ Full evaluation narrative:
 | **v5** | Compact **global** evidence rule near the top (every known claim needs an excerpt); keep employment non-inference; drop “empty evidence” negative heading that generalised badly | Restored evidence discipline without weakening employment rules |
 | **v6** | De-prioritise SEEK/job-board chrome; split grouped technologies; extract multiple employer-authored responsibilities; retain required/preferred/unspecified | Addresses manual-validation under-extraction and chrome contamination |
 | **v7** | Hybrid role-family guidance; prefer dominant profession over supporting AI/automation tech; add `network_engineering`; reinforce evidence for known families including `other` | Fixes Capgemini Network Engineer Automation & AI empty-evidence `other` failure |
+| **v8** | `posting_identity` (title/company + evidence) extracted when present; service binds grounded values into missing `JobPosting` fields (M4a) | Blank title/company on persist/list/compare when CLI provenance omitted |
 
 **Why prompt engineering was required:** OpenAI strict structured output requires the
 `evidence` field but allows empty arrays. Validators catch empty evidence after the
@@ -820,7 +821,9 @@ with `summary_source` reflecting `profile_copy`, `openai_rewrite`, or
   so Windows SSL matches FR-002/003 live manuals.
 - Opportunity persistence (M1) is available via `--persist` on the strategy runner —
   see § M1 Opportunity Persistence below.
-- Does not record owner decisions, outcomes, or multi-job rankings (M2–M4).
+- Owner decisions / outcomes (M2) via `cic opportunity decide|outcome` —
+  see § M2 Decision and Outcome Logging below.
+- Does not export CSV or rank open opportunities (M3–M4).
 - Does not generate cover letters, outreach, or submit applications.
 
 ---
@@ -854,4 +857,173 @@ not polluted. Structured store is the system of record; CSV export is M3.
 
 **Not in M1:** owner decisions / outcomes (M2), CSV (M3), ranked comparison (M4),
 FR-014 duplicate detection, OpenAI.
+
+---
+
+## M2 Decision and Outcome Logging
+
+**Status:** Complete (2026-07-24). FR-013 Phase 2 subset only.
+
+**Concepts (kept separate):**
+
+| Concept | Field | Values |
+|---------|-------|--------|
+| Decision | `Opportunity.decision` | apply / skip / defer |
+| Status | `Opportunity.status` | PipelineStatus enum |
+| Outcome | `Opportunity.outcome.outcome` | pending / offer / accepted / rejected / withdrawn / unknown |
+
+**APIs:** `OpportunityService.record_decision`, `OpportunityService.update_outcome`.
+Index-only updates via `OpportunityStore.save` — artifact snapshots are never rewritten.
+
+**Status transitions:** simple allow-list (e.g. cannot go to `interviewing` before
+`submitted`; `accepted` / `rejected` / `withdrawn` are terminal). Not a workflow engine.
+
+**CLI:**
+
+```bash
+cic opportunity decide <opp_id> apply --notes "Go"
+cic opportunity outcome <opp_id> --status submitted --outcome pending
+cic opportunity outcome <opp_id> --status interviewing --interview-stage recruiter
+cic opportunity show <opp_id>
+```
+
+**Out of scope for M2:** feeding outcomes into FR-003, CSV export (M3), ranking (M4),
+automatic learning, OpenAI.
+
+---
+
+## M3 CSV Operational Bridge
+
+**Status:** Complete (2026-07-24).
+
+**Public boundary:** `OpportunityCsvBridge` (uses `OpportunityService`; does not
+bypass the store).
+
+**Export:** deterministic UTF-8-SIG CSV (`data/exports/opportunities.csv` by default).
+Does not mutate structured records. Empty cells for missing values.
+
+**Legacy import:** one-time migration from `applications/application_tracker.csv`
+shape (plain CSV or markdown pipe table). Supports `--dry-run`. Creates incomplete
+opportunities (`strategy_summary=None`, no artifacts) with `LegacyImportProvenance`.
+Duplicate safety via SHA-256 fingerprint of normalised
+`date_applied|company|role|source` (tracker has no job URL column).
+
+**Legacy Status mapping (explicit only):**
+
+| Legacy Status | decision | status | default outcome |
+|---------------|----------|--------|-----------------|
+| Applied | apply | submitted | pending |
+| Interview / Interviewing | apply | interviewing | pending |
+| Offer | apply | offer | offer |
+| Accepted | apply | accepted | accepted |
+| Rejected | apply | rejected | rejected |
+| Withdrawn | apply | withdrawn | withdrawn |
+| Deferred | defer | deferred | (Outcome column or unknown) |
+| Skip | skip | assessed | (Outcome column or unknown) |
+
+Unknown Status/Outcome values are rejected (not guessed). Row-atomic import with
+summary report (JSON via `--report`).
+
+**Not in M3:** two-way sync, ranked comparison (M4 — now complete), FR-014, fabricating assessment
+artifacts for imported rows.
+
+---
+
+## M4 — Ranked comparison of open opportunities
+
+**Package:** `career_intelligence.opportunity_comparison`
+
+**Public boundary:** `OpportunityComparisonService.compare_open(opportunities) -> OpportunityComparison`
+
+Consumes trusted `Opportunity` aggregates from `OpportunityService.list_opportunities()`.
+Does **not** live inside `OpportunityService`. Does not call OpenAI, re-analyse jobs,
+or mutate records.
+
+**Open filter:** status ∈ {assessed, deferred, preparing, submitted, interviewing, offer}
+AND decision ≠ skip (terminal statuses accepted/rejected/withdrawn excluded).
+
+**Sort key (ascending = higher priority):**
+
+1. Pursuit posture (`prioritise` … `insufficient_information`; missing summary last)
+2. Fit strength (negated sum of FitJudgment scores 0–5 across technical/commercial/portfolio)
+3. Application tier (platinum → bronze; missing last)
+4. `opportunity_id` ascending
+
+**Explainability:** each `RankedOpportunity.reasons` lists posture, fit strength, tier,
+relative position vs predecessor, and contextual owner/status/follow-up notes.
+
+**CLI:** `cic opportunity compare [--dir PATH] [--yaml]`
+
+**Incomplete/legacy records** (`strategy_summary is None`) remain eligible for the open
+set when status/decision allow, but rank after complete summaries with an explicit reason.
+
+**Future consideration:** job-centric `StrategySummary` would need a shared rankable-signals
+adapter before recruiters/networking/meetups could reuse the same comparison concepts
+without redesign. Not implemented in Phase 2.
+
+**Manual validation:**
+
+1. Persist ≥2 real opportunities (`--persist` on the strategy runner).
+2. Optionally `cic opportunity decide … skip` on one and confirm it is excluded.
+3. `cic opportunity compare` — verify posture-first ordering and reasons.
+4. Re-run compare — identical order (deterministic).
+
+**Not in M4:** Horizon 2 ranking types, deadlines in the sort key, mutating pipeline
+status from ranking, M5 Phase 2 close-out.
+
+---
+
+## M4a — Opportunity identity metadata completion
+
+**Problem:** Persisted opportunities ranked correctly but `cic opportunity list` /
+`compare` showed `—` for title/company. Manual pipeline reported
+`title: (unset)` / `company: (unset)` when `--title` / `--company` were omitted,
+even though the raw JD contained clear identity (e.g. Maincode /
+AI Infrastructure Engineer).
+
+**Root cause:** `JobPosting.title` / `company` were caller provenance only.
+`JobAnalysisExtraction` excluded identity fields; `JobAnalysisService` bound the
+caller posting unchanged. Blank identity flowed into Opportunity persistence.
+
+**Fix:**
+
+1. Extraction prompt **v8** + `posting_identity` on `JobAnalysisExtraction`
+   (title/company + required evidence; null when unreliable).
+2. `JobAnalysisService.enrich_posting_identity` fills **missing** posting fields
+   only when value and evidence excerpts appear in `raw_text` (anti-hallucination).
+   Caller-supplied title/company are never overwritten.
+3. Manual strategy runner uses `job_analysis.posting` for report and `--persist`.
+4. `cic opportunity backfill-identity` — deterministic fill from
+   `posting.json` when index identity is blank but the artifact has values.
+
+**Existing blank records:** If `posting.json` also lacks title/company (typical for
+pre-M4a persists without CLI flags), backfill cannot invent identity — **re-persist**
+the job through the fixed pipeline (new OpenAI extraction). Do not silent-reanalyse
+in place.
+
+**Manual validation:**
+
+```bash
+python scripts/run_application_strategy_manual.py \
+  --job-file manual_validation/jobs/012_maincode_ai_infrastructure_engineer.txt \
+  --persist
+# Expect Job identity title/company set (without --title/--company).
+
+cic opportunity backfill-identity   # for index blanks with good posting.json
+cic opportunity list
+cic opportunity compare
+```
+
+---
+
+## M5 — Phase 2 close-out validation
+
+**Status:** Complete — **GO**
+([eval/phase2_release_report.md](eval/phase2_release_report.md)).
+
+Validated the full Horizon 1 decision loop on two real jobs (012 Maincode,
+013 pay.com.au) including CV generation, persistence, owner decide, and ranked
+comparison. Regression suite passed (719). No temporary instrumentation remains.
+Phase 2 is the operational foundation for Horizon 1; documentation is frozen as
+baseline. Next milestone is FR-006b — see [12_phase_history.md](12_phase_history.md).
 

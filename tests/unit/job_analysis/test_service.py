@@ -80,6 +80,69 @@ def test_returned_analysis_contains_exact_original_posting() -> None:
     assert analysis.posting == posting
 
 
+def test_missing_identity_enriched_from_grounded_extraction() -> None:
+    raw = (
+        "Maincode\n\nAI Infrastructure Engineer\n\n"
+        "About Maincode\nMaincode is an AI research company."
+    )
+    posting = JobPosting(raw_text=raw)
+    payload = _minimal_valid_payload(
+        posting_identity={
+            "title": "AI Infrastructure Engineer",
+            "company": "Maincode",
+            "title_evidence": [
+                {"excerpt": "AI Infrastructure Engineer", "section": "Job title"}
+            ],
+            "company_evidence": [{"excerpt": "Maincode", "section": "Company"}],
+        }
+    )
+    analysis = JobAnalysisService(_StaticPayloadExtractor(payload)).analyse(posting)
+
+    assert analysis.posting is not posting
+    assert analysis.posting.title == "AI Infrastructure Engineer"
+    assert analysis.posting.company == "Maincode"
+    assert analysis.posting.raw_text == raw
+
+
+def test_caller_supplied_identity_not_overwritten() -> None:
+    posting = JobPosting(
+        raw_text="Maincode\n\nAI Infrastructure Engineer\n",
+        title="Caller Title",
+        company="Caller Co",
+    )
+    payload = _minimal_valid_payload(
+        posting_identity={
+            "title": "AI Infrastructure Engineer",
+            "company": "Maincode",
+            "title_evidence": [
+                {"excerpt": "AI Infrastructure Engineer", "section": "Job title"}
+            ],
+            "company_evidence": [{"excerpt": "Maincode", "section": "Company"}],
+        }
+    )
+    analysis = JobAnalysisService(_StaticPayloadExtractor(payload)).analyse(posting)
+
+    assert analysis.posting is posting
+    assert analysis.posting.title == "Caller Title"
+    assert analysis.posting.company == "Caller Co"
+
+
+def test_ungrounded_extracted_identity_is_dropped() -> None:
+    posting = JobPosting(raw_text="A posting with no explicit employer heading.")
+    payload = _minimal_valid_payload(
+        posting_identity={
+            "title": "Invented Role",
+            "company": "Invented Co",
+            "title_evidence": [{"excerpt": "Invented Role", "section": "Job title"}],
+            "company_evidence": [{"excerpt": "Invented Co", "section": "Company"}],
+        }
+    )
+    analysis = JobAnalysisService(_StaticPayloadExtractor(payload)).analyse(posting)
+
+    assert analysis.posting.title is None
+    assert analysis.posting.company is None
+
+
 def test_extractor_payload_cannot_replace_input_posting() -> None:
     caller_posting = posting_ai_engineer()
     other_posting = JobPosting(

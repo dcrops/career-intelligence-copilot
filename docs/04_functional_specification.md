@@ -48,11 +48,10 @@ This specification describes the full platform capability set. Delivery is phase
 was later **completed** as an owner-sequenced post–Phase 2 capability. It is not a Phase 2
 exit blocker. See FR-006 below.
 
-**Phase 2 close-out progress:** M1 Opportunity persistence is **complete** (structured
-store under `data/opportunities/`; permanent `opp_<ULID>` ids; immutable artifact
-snapshots). Outcome logging (FR-013), CSV export, and ranked comparison remain for
-M2–M4. See [10_roadmap.md](10_roadmap.md) and
-[adr/002_opportunity_persistence.md](adr/002_opportunity_persistence.md).
+**Phase 2 close-out:** **Complete** (M1–M4 + M4a + M5). Documentation is a frozen
+baseline before FR-006b. See [10_roadmap.md](10_roadmap.md),
+[12_phase_history.md](12_phase_history.md), and
+[eval/phase2_release_report.md](eval/phase2_release_report.md).
 
 ### Post–Phase 2
 
@@ -605,7 +604,18 @@ Interview opportunities.
 
 Expected ROI.
 
-Phase 2 supports ranked comparison of open assessed job opportunities only. Cross-domain daily prioritisation is deferred.
+Phase 2 supports ranked comparison of open assessed job opportunities only
+(`OpportunityComparisonService`; FR-012 partial / M4). Cross-domain daily
+prioritisation is deferred.
+
+Acceptance Criteria (Phase 2 subset)
+
+✓ Open opportunities (non-terminal status; decision ≠ skip) can be ranked
+  deterministically with explainable reasons.
+
+✓ Ranking consumes persisted Opportunity records only — no re-analysis or OpenAI.
+
+○ Cross-domain daily prioritisation (recruiters, networking, meetups) — deferred.
 
 ---
 
@@ -622,11 +632,17 @@ Capture:
 - interview stage
 - outcome (where known)
 
+**Implementation status:** Phase 2 **subset** delivered in M2 via
+`OpportunityService.record_decision` / `update_outcome`. Decision, pipeline status, and
+outcome kind are modelled as separate fields. Acceptance criterion “outcome history is
+available to inform future assessments” (automatic feedback into FR-003) remains
+**deferred** beyond Phase 2 exit.
+
 Acceptance Criteria
 
 ✓ Outcomes can be recorded against assessed opportunities.
 
-✓ Outcome history is available to inform future assessments.
+○ Outcome history is available to inform future assessments. *(deferred — not required for Phase 2 exit)*
 
 ---
 

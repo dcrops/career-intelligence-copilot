@@ -1,430 +1,160 @@
 # Career Intelligence Copilot Roadmap
 
-
-
 ## Prioritisation Context
 
+**Horizon 1 — Immediate:** Help the repository owner secure a suitable AI Engineering
+role sooner while reducing job-search effort.
 
-
-**Horizon 1 — Immediate:** Help the repository owner secure a suitable AI Engineering role sooner while reducing job-search effort.
-
-
-
-**Horizon 2 — Long term:** Evolve into a reusable Career Intelligence Platform for ongoing career progression.
-
-
+**Horizon 2 — Long term:** Evolve into a reusable Career Intelligence Platform for
+ongoing career progression (networking, learning, role changes, multi-domain
+intelligence).
 
 Horizon 1 takes priority whenever the two horizons compete.
 
-
-
 Near-term work should satisfy at least one of:
 
-
-
 - improve the likelihood of securing relevant interviews or job offers
-
 - reduce the manual effort required to run an effective job search
-
-
 
 ---
 
+## At a Glance
 
+| Stage | Status |
+|-------|--------|
+| **Phase 1** — Product Definition | **Complete** |
+| **Phase 2** — Job Intelligence MVP | **Complete** ([release report](eval/phase2_release_report.md)) |
+| **Current focus** — Horizon 1 operational follow-ons | **FR-006b** (next), then FR-007, then job acquisition |
+| **Future** — Horizon 2 capability phases | Not started |
 
-## Current Phase
+Narrative history of completed phases: [12_phase_history.md](12_phase_history.md).
 
+---
 
+## Completed
 
 ### Phase 1 — Product Definition
 
+**Status:** Complete.
 
-
-Current focus:
-
-
-
-- Product vision and documentation alignment
-
-- Phase 2 MVP scope definition
-
-- Repository setup
-
-- Initial architecture decision deferred until implementation
-
-- Engineering knowledge capture
-
-
-
-Status: Complete (Phase 2 MVP scope approved)
-
-
-
-The first implementation decision is now recorded in
-[ADR-001](adr/001_python_yaml_profile_foundation.md).
-
-
+Delivered product vision, Phase 2 MVP scope, repository structure, and the first
+implementation ADR ([ADR-001](adr/001_python_yaml_profile_foundation.md)).
 
 ---
-
-
-
-## Active and Planned Development
-
-
 
 ### Phase 2 — Job Intelligence (MVP)
 
-**Status:** In progress. FR-001 Career Profile, FR-002 Job Analysis, FR-003
-Opportunity Assessment, FR-004 Portfolio Matching, and FR-005 Application Strategy are
-**complete**. FR-005 is **formally closed** after owner manual validation of the
-FR-001→FR-005 pipeline (real SEEK/LinkedIn jobs 001–013) — see
-[manual_validation/jobs/manual_validation_notes.md](../manual_validation/jobs/manual_validation_notes.md).
-**FR-006 CV Generation is complete** (owner-sequenced post–Phase 2; deterministic
-tailoring + optional OpenAI summary rewrite — see
-[eval/fr006_manual_validation.md](eval/fr006_manual_validation.md)).
-**M1 Opportunity persistence is complete** (`OpportunityService`, structured store
-under `data/opportunities/`, immutable FR-002–FR-005 artifacts, `opp_<ULID>` identity —
-see [adr/002_opportunity_persistence.md](adr/002_opportunity_persistence.md)).
-FR-003 live assessment prompt is currently **v11** (calibration and evidence-contract
-hardening after Jobs 009–012); earlier offline/live eval baselines remain in
-[eval/fr002_openai_manual_eval.md](eval/fr002_openai_manual_eval.md) and
-[eval/fr003_openai_manual_eval.md](eval/fr003_openai_manual_eval.md).
-
-**Next planned functional requirement after Phase 2 exit:** FR-007 Cover Letter.
-
-**Remaining Phase 2 work** (still required for Phase 2 exit): M2 outcome logging
-(FR-013 subset), M3 CSV export (structured store remains SoT), M4 ranked comparison
-of open assessed opportunities, M5 Phase 2 close-out validation.
-
-
+**Status:** **Complete** (M5 GO — 2026-07-24 —
+[eval/phase2_release_report.md](eval/phase2_release_report.md)).
 
 **Purpose:** Improve opportunity selection and reduce repetitive job-analysis work.
 
-
-
-**Primary outcome:** Help the user prioritise which roles deserve effort — and how much — while reducing manual job-description analysis and tracking.
-
-
-
-**In scope:**
-
-
-
-- Career profile (FR-001) — **Complete**
-
-- Job description analysis (FR-002) — **Complete**
-
-- Opportunity assessment — Technical, Commercial, and Portfolio Fit (FR-003) — **Complete**
-
-- Portfolio matching (FR-004) — **Complete**
-
-- Application tiering — Platinum, Gold, Silver, Bronze — with pursuit posture, effort
-  guidance, and advisory next actions (FR-005) — **Complete** (formally closed after
-  owner manual validation)
-
-- CV Generation (FR-006) — **Complete** (post–Phase 2; not a Phase 2 exit blocker)
-
-- Opportunity persistence (M1) — **Complete** (structured SoT; CSV export is M3)
-
-- Outcome logging (FR-013 subset, M2) — remaining for Phase 2 exit
-
-- Ranked comparison of open assessed opportunities (M4) — remaining for Phase 2 exit
-
-
-
-**Next planned functional requirement:** FR-007 Cover Letter. Remaining Phase 2 exit
-criteria above are not waived.
-
-
-
-**Explicitly out of scope for Phase 2:**
-
-
-
-- Cover letter generation (FR-007+)
-
-- Recruiter outreach generation
-
-- Interview preparation
-
-- Full career dashboard
-
-- Market intelligence
-
-- Cross-domain daily prioritisation
-
-- Automated job discovery or external integrations
-
-- Interview Probability and Recruiter Confidence scoring
-
-
-
-Phase 2 is the first vertical slice. It must not expand into the entire job-search platform.
-
-
-
-### Phase 2 Exit Criteria
-
-
-
-Phase 2 is complete when the decision loop described in [06_domain_model.md](06_domain_model.md) is usable on real job postings during the owner's active search — not when individual FR acceptance criteria are checked in isolation.
-
-
-
-**Engineering exit criteria:**
-
-
-
-- Career profile available to every decision (FR-001)
-
-- Job descriptions can be analysed with reduced manual extraction effort (FR-002)
-
-- Assessments produce evidence-backed fit analysis across all three Phase 2 dimensions (FR-003)
-
-- Portfolio projects can be ranked per opportunity with explanation (FR-004)
-
-- Tier recommendations include pursuit posture, effort guidance, advisory next actions,
-  and cited rationale (FR-005)
-
-- Outcomes can be recorded and retrieved against assessed opportunities (FR-013)
-
-- Open assessed opportunities can be ranked for effort prioritisation
-
-
-
-**Adoption criteria:**
-
-
-
-- The owner uses the loop on real postings rather than bypassing it for manual analysis
-
-- Outcome logging replaces ad-hoc tracking for assessed opportunities
-
-- The system connects to the existing workflow in `applications/` — not a parallel unused tool
-
-
-
-**Explicit non-criteria (Phase 2 completion does not require):**
-
-
-
-- CV or cover letter generation
-
-- Recruiter, interview, dashboard, or market intelligence capabilities
-
-- Automated job discovery or external integrations
-
-- Predictive scoring dimensions
-
-- Production deployment or multi-user support
-
-
-
-Phase 3 consideration begins only after Phase 2 exit criteria are met.
-
-
+**Primary outcome:** Prioritise which roles deserve effort — and how much — while
+reducing manual job-description analysis and tracking.
+
+**Delivered:**
+
+| Capability | ID | Notes |
+|------------|-----|--------|
+| Career Profile | FR-001 | Evidence-based YAML profile |
+| Job Analysis | FR-002 | OpenAI extraction; prompt v8 |
+| Opportunity Assessment | FR-003 | Technical / Commercial / Portfolio Fit; prompt v11 |
+| Portfolio Matching | FR-004 | Deterministic ranking |
+| Application Strategy | FR-005 | Posture + tier + next actions |
+| CV Generation | FR-006 | Owner-sequenced; plan + optional summary rewrite |
+| Opportunity persistence | M1 | Structured SoT; `opp_<ULID>` |
+| Decision & outcome logging | M2 | FR-013 Phase 2 subset |
+| CSV operational bridge | M3 | Export + one-time import; no two-way sync |
+| Ranked comparison | M4 | Open opportunities; explainable |
+| Opportunity identity | M4a | Grounded title/company |
+| Close-out validation | M5 | Formal GO |
+
+**Explicitly out of scope for Phase 2 (unchanged):** Cover letter (FR-007+), recruiter
+outreach, interview prep, full dashboard, market intelligence, cross-domain daily
+prioritisation, automated job discovery, predictive scoring.
+
+**Exit criteria (met):** See historical checklist below and the
+[release report](eval/phase2_release_report.md). Detail:
+[12_phase_history.md](12_phase_history.md) § Phase 2.
+
+#### Phase 2 Exit Criteria (historical record)
+
+Phase 2 is complete when the decision loop in [06_domain_model.md](06_domain_model.md)
+is usable on real job postings during the owner's active search.
+
+**Engineering exit criteria:** ✓ Career profile (FR-001); ✓ Job analysis (FR-002);
+✓ Three-dimension assessment (FR-003); ✓ Portfolio ranking (FR-004); ✓ Strategy with
+posture/tier/actions (FR-005); ✓ Outcomes recordable (FR-013 subset); ✓ Open
+opportunities ranked.
+
+**Adoption criteria:** ✓ Owner uses the loop on real postings; ✓ Structured store +
+CSV bridge connect to `applications/`; outcome logging available for assessed
+opportunities.
+
+**Explicit non-criteria:** CV/cover-letter quality polish, recruiter/interview/
+dashboard/market modules, automated discovery, predictive scores, multi-user
+production.
 
 ---
 
+## Current Focus — Horizon 1 Operational MVP
 
+Work that improves interview/offer odds or reduces search effort **on top of** the
+frozen Phase 2 baseline. Do not reopen Phase 2 architecture or exit criteria.
 
-### Phase 3
+| Priority | Item | Intent |
+|----------|------|--------|
+| **Next** | **FR-006b — CV Quality Improvement** | Better tailored CVs from the existing FR-006 pipeline |
+| Then | **FR-007 — Cover Letter Generation** | Company-specific letters under human review |
+| Then | **Automated Job Discovery / Acquisition** | Reduce copy/paste; keep analysis separate from acquisition (see below) |
 
-
-
-Recruiter Intelligence
-
-
-
----
-
-
-
-### Phase 4
-
-
-
-Portfolio Intelligence
-
-
+Phase 2 documentation is a **stable baseline**. Prefer additive changes; update
+authoritative docs when behaviour or scope changes.
 
 ---
 
+## Future — Horizon 2 and Beyond
 
+Capability phases below are **not** current work. They organise Horizon 2 domains
+after Horizon 1 priorities are met.
 
-### Phase 5
+| Phase | Domain |
+|-------|--------|
+| Phase 3 | Recruiter Intelligence |
+| Phase 4 | Portfolio Intelligence |
+| Phase 5 | Networking Intelligence |
+| Phase 6 | Learning Intelligence |
+| Phase 7 | Interview Intelligence |
+| Phase 8 | Career Dashboard |
 
+### Future ideas (Horizon 2)
 
+Deferred unless they directly support Horizon 1 during the active search:
 
-Networking Intelligence
+- Gmail / Calendar / LinkedIn / Meetup / GitHub integrations
+- Salary benchmarking, recruiter scoring, interview analytics
+- Commercial SaaS / multi-user (often framed as a later horizon beyond H2 platform
+  reuse — not a numbered delivery phase today)
 
+### Automated Job Acquisition (design note)
 
-
----
-
-
-
-### Phase 6
-
-
-
-Learning Intelligence
-
-
-
----
-
-
-
-### Phase 7
-
-
-
-Interview Intelligence
-
-
-
----
-
-
-
-### Phase 8
-
-
-
-Career Dashboard
-
-
-
----
-
-
-
-## Future Ideas
-
-
-
-Potential future enhancements (Horizon 2):
-
-
-
-- Gmail integration
-
-
-
-- Calendar integration
-
-
-
-- LinkedIn integration
-
-
-
-- Meetup integration
-
-
-
-- GitHub integration
-
-
-
-- Salary benchmarking
-
-
-
-- Recruiter scoring
-
-
-
-- Interview analytics
-
-
-
-- Commercial SaaS version
-
-
-
-Future ideas are deferred unless they directly support Horizon 1 during the active job search.
-
-
-
----
-
-
-
-## Automated Job Acquisition
-
-
-
-**Status:** Future work (not Phase 2 exit criteria). Manual copy/paste of job text into
-`JobPosting` is an **MVP evaluation technique only** — sufficient to harden FR-002
-extraction, not the intended long-term owner workflow.
-
-
-
-**Intended production workflow:**
-
-
+**Status:** Planned after FR-006b / FR-007 under Horizon 1 operational work — **not**
+a Phase 2 reopen. Manual paste into `JobPosting` remains valid for evaluation.
 
 ```
-Job Discovery
-      ↓
-Job Acquisition
-      ↓
-Metadata Normalisation
-      ↓
-Duplicate Detection
-      ↓
-Job Extraction (FR-002)
-      ↓
-Candidate Fit Analysis (FR-003+)
+Job Discovery → Acquisition → Metadata Normalisation → Duplicate Detection (FR-014)
+      → Job Extraction (FR-002) → Candidate Fit (FR-003+)
 ```
-
-
-
-**Potential acquisition mechanisms** (choose later by dual-value test):
-
-
-
-- browser automation
-- browser extension
-- recruiter emails
-- supported platform APIs
-- platform alerts
-
-
-
-**Architectural separation (non-negotiable):**
-
-
 
 | Concern | Responsibility |
 |---------|----------------|
-| **Job Acquisition** | Obtain raw listing content and platform metadata (IDs, URLs, application status, UI noise stripped or segregated) |
-| **Job Analysis** | Extract structured `JobAnalysis` from a trusted `JobPosting` — no discovery, scraping, or duplicate logic |
+| **Job Acquisition** | Raw listing + platform metadata |
+| **Job Analysis** | Structured `JobAnalysis` from trusted `JobPosting` only |
 
-
-
-Acquisition must not be embedded inside extractors. Analysis must not scrape job boards.
-Duplicate detection is specified as FR-014 in
-[04_functional_specification.md](04_functional_specification.md). Related domain note:
+Acquisition must not live inside extractors. See
+[04_functional_specification.md](04_functional_specification.md) FR-014 and
 [06_domain_model.md](06_domain_model.md) § Job Posting — Future Evolution.
 
+### Parking Lot
 
-
----
-
-
-
-## Parking Lot
-
-
-
-Ideas that may be valuable but are intentionally deferred until later development.
-
-
-
-Capabilities in the parking lot should be evaluated against the dual-value test before promotion to an active phase.
-
-
+Ideas that may be valuable but are deferred. Promote only via the dual-value test.

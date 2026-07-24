@@ -1,18 +1,36 @@
-"""Public API for durable Opportunity persistence (M1)."""
+"""Public API for durable Opportunity persistence (M1–M3)."""
 
+from .bridge import OpportunityCsvBridge
+from .csv_export import DEFAULT_EXPORT_PATH, EXPORT_COLUMNS, OpportunityCsvExporter
 from .errors import (
     ErrorDetail,
     OpportunityArtifactExistsError,
     OpportunityError,
     OpportunityNotFoundError,
     OpportunityStorageError,
+    OpportunityTransitionError,
     OpportunityValidationError,
+)
+from .legacy_import import (
+    LEGACY_OUTCOME_MAP,
+    LEGACY_STATUS_MAP,
+    LegacyImportReport,
+    LegacyOpportunityCsvImporter,
+    LegacyRowResult,
 )
 from .models import (
     ARTIFACT_FILENAMES,
+    INTERVIEW_STAGES,
+    OUTCOME_KINDS,
+    OWNER_DECISION_KINDS,
+    PIPELINE_STATUSES,
+    TERMINAL_STATUSES,
+    LegacyImportProvenance,
     Opportunity,
     OpportunityIdentity,
+    OutcomeKind,
     OutcomeRecord,
+    OwnerDecisionKind,
     OwnerDecisionRecord,
     PipelineStatus,
     SourceKind,
@@ -22,16 +40,34 @@ from .service import OpportunityService
 
 __all__ = [
     "ARTIFACT_FILENAMES",
+    "DEFAULT_EXPORT_PATH",
+    "EXPORT_COLUMNS",
     "ErrorDetail",
+    "INTERVIEW_STAGES",
+    "LEGACY_OUTCOME_MAP",
+    "LEGACY_STATUS_MAP",
+    "LegacyImportProvenance",
+    "LegacyImportReport",
+    "LegacyOpportunityCsvImporter",
+    "LegacyRowResult",
+    "OUTCOME_KINDS",
+    "OWNER_DECISION_KINDS",
+    "PIPELINE_STATUSES",
+    "TERMINAL_STATUSES",
     "Opportunity",
     "OpportunityArtifactExistsError",
+    "OpportunityCsvBridge",
+    "OpportunityCsvExporter",
     "OpportunityError",
     "OpportunityIdentity",
     "OpportunityNotFoundError",
     "OpportunityService",
     "OpportunityStorageError",
+    "OpportunityTransitionError",
     "OpportunityValidationError",
+    "OutcomeKind",
     "OutcomeRecord",
+    "OwnerDecisionKind",
     "OwnerDecisionRecord",
     "PipelineStatus",
     "SourceKind",

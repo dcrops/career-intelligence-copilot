@@ -284,7 +284,8 @@ def run_pipeline(
 
     return PipelineResult(
         profile=profile,
-        posting=posting,
+        # Prefer analysis-bound posting (may include grounded title/company enrichment).
+        posting=job_analysis.posting,
         job_analysis=job_analysis,
         assessment=assessment,
         portfolio_match=portfolio_match,

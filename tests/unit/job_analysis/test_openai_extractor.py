@@ -95,7 +95,7 @@ def _extractor_with(
 
 
 def test_prompt_version_and_instructions_are_defined() -> None:
-    assert EXTRACTION_PROMPT_VERSION == "v7"
+    assert EXTRACTION_PROMPT_VERSION == "v8"
     assert "Evidence (global" in EXTRACTION_INSTRUCTIONS_V1
     assert "Never emit a known role family" in EXTRACTION_INSTRUCTIONS_V1
     assert "never invent compensation" in EXTRACTION_INSTRUCTIONS_V1.lower()
@@ -111,6 +111,7 @@ def test_prompt_version_and_instructions_are_defined() -> None:
         EXTRACTION_INSTRUCTIONS_V1
     )
     assert "posting" in EXTRACTION_INSTRUCTIONS_V1.lower()
+    assert "posting_identity" in EXTRACTION_INSTRUCTIONS_V1
 
 
 def test_format_posting_input_tags_trusted_metadata_sections() -> None:

@@ -1,0 +1,596 @@
+{
+  "job_analysis": {
+    "posting": {
+      "raw_text": "Company logo for, Maincode.\nMaincode\n\n\nAI Infrastructure Engineer\n\nMelbourne, Victoria, Australia · Reposted 6 days ago · Over 100 people clicked apply\n\nPromoted by hirer · Responses managed off LinkedIn\n\nOn-site\nFull-time\nApply\n\nSave\nYour profile and resume are missing some required qualifications\n\n\n\nShow match details\n\nBETA • Is this information helpful?\n\n\nAbout the job\nAbout Maincode\n\nMaincode is an AI research and engineering company and home to Matilda, Australia’s first and only large language model trained from scratch. We operate our own advanced AI infrastructure in local data-centres; designing, building, and running everything from the racks up through model training and serving systems.\n\nWe’re building an AI Model Factory, a new kind of compute infrastructure that powers frontier AI research and production systems that work at scale.\n\nAbout The Role\n\nThis role sits at the intersection of physical systems, large-scale compute, and AI research. You’ll help design and operate the infrastructure that trains large-scale models: racks of GPUs, high-performance networks, and the orchestration systems that keep them running.\n\nPeople with strong research instincts and systems thinking thrive here. You don’t need prior datacenter experience; curiosity, first-principles reasoning, and the ability to learn fast matter more. Someone from mechatronics, robotics, or aerospace who has strong computational skills could excel in this role. We’ll give you the time, mentorship, and resources to master how these systems work, and you’ll develop expertise in one of the most essential technical domains of the coming decade.\n\nWhat You’ll Do\n\nLearn to design, deploy, and operate the backbone of AI infrastructure.\nWork with GPU clusters, high-speed networking, and large-scale Linux systems.\nContribute to the architecture of Australia’s first production-scale AI datacentre systems.\nCollaborate with AI researchers and engineers to shape the next generation of model training environments.\nDevelop new operational and architectural approaches from first principles.\n\nYou Might Be a Fit If\n\nYou have hands-on experience working close to the metal with computational systems. This might include systems programming, Linux environments, GPU or accelerator programming, distributed or HPC environments (e.g. MPI), automation, or large-scale numerical computation.\nYou may also come from adjacent technical or scientific fields such as mechatronics, robotics, aerospace, physics, or similar disciplines where you have developed strong computational and modelling skills.\nYou enjoy understanding complex systems from first principles.\nYou learn new technologies quickly and apply them independently.\nYou think in terms of system architecture, how components interact and scale.\nYou’re curious about how AI systems actually run in practice, from hardware and cooling through to model training and large-scale compute.",
+      "title": "AI Infrastructure Engineer",
+      "company": "Maincode",
+      "source_url": null
+    },
+    "role_family": {
+      "family": "ml_engineering",
+      "evidence": [
+        {
+          "excerpt": "About Maincode\n\nMaincode is an AI research and engineering company and home to Matilda, Australia’s first and only large language model trained from scratch.",
+          "section": "About the job"
+        }
+      ]
+    },
+    "seniority": {
+      "level": "unknown",
+      "ambiguous": false,
+      "candidate_levels": [],
+      "evidence": []
+    },
+    "technologies": [
+      {
+        "name": "GPU clusters",
+        "level": "required",
+        "evidence": [
+          {
+            "excerpt": "You’ll help design and operate the infrastructure that trains large-scale models: racks of GPUs, high-performance networks, and the orchestration systems that keep them running.",
+            "section": "About The Role"
+          }
+        ]
+      },
+      {
+        "name": "Linux",
+        "level": "required",
+        "evidence": [
+          {
+            "excerpt": "Work with GPU clusters, high-speed networking, and large-scale Linux systems.",
+            "section": "What You’ll Do"
+          }
+        ]
+      },
+      {
+        "name": "high-speed networking",
+        "level": "required",
+        "evidence": [
+          {
+            "excerpt": "Work with GPU clusters, high-speed networking, and large-scale Linux systems.",
+            "section": "What You’ll Do"
+          }
+        ]
+      },
+      {
+        "name": "distributed systems",
+        "level": "preferred",
+        "evidence": [
+          {
+            "excerpt": "This might include systems programming, Linux environments, GPU or accelerator programming, distributed or HPC environments (e.g. MPI), automation, or large-scale numerical computation.",
+            "section": "You Might Be a Fit If"
+          }
+        ]
+      },
+      {
+        "name": "HPC environments (e.g. MPI)",
+        "level": "preferred",
+        "evidence": [
+          {
+            "excerpt": "This might include systems programming, Linux environments, GPU or accelerator programming, distributed or HPC environments (e.g. MPI), automation, or large-scale numerical computation.",
+            "section": "You Might Be a Fit If"
+          }
+        ]
+      },
+      {
+        "name": "automation",
+        "level": "preferred",
+        "evidence": [
+          {
+            "excerpt": "This might include systems programming, Linux environments, GPU or accelerator programming, distributed or HPC environments (e.g. MPI), automation, or large-scale numerical computation.",
+            "section": "You Might Be a Fit If"
+          }
+        ]
+      },
+      {
+        "name": "large-scale numerical computation",
+        "level": "preferred",
+        "evidence": [
+          {
+            "excerpt": "This might include systems programming, Linux environments, GPU or accelerator programming, distributed or HPC environments (e.g. MPI), automation, or large-scale numerical computation.",
+            "section": "You Might Be a Fit If"
+          }
+        ]
+      }
+    ],
+    "responsibilities": [
+      {
+        "description": "Learn to design, deploy, and operate the backbone of AI infrastructure.",
+        "evidence": [
+          {
+            "excerpt": "What You’ll Do: Learn to design, deploy, and operate the backbone of AI infrastructure.",
+            "section": "What You’ll Do"
+          }
+        ]
+      },
+      {
+        "description": "Work with GPU clusters, high-speed networking, and large-scale Linux systems.",
+        "evidence": [
+          {
+            "excerpt": "What You’ll Do: Work with GPU clusters, high-speed networking, and large-scale Linux systems.",
+            "section": "What You’ll Do"
+          }
+        ]
+      },
+      {
+        "description": "Contribute to the architecture of Australia’s first production-scale AI datacentre systems.",
+        "evidence": [
+          {
+            "excerpt": "What You’ll Do: Contribute to the architecture of Australia’s first production-scale AI datacentre systems.",
+            "section": "What You’ll Do"
+          }
+        ]
+      },
+      {
+        "description": "Collaborate with AI researchers and engineers to shape the next generation of model training environments.",
+        "evidence": [
+          {
+            "excerpt": "What You’ll Do: Collaborate with AI researchers and engineers to shape the next generation of model training environments.",
+            "section": "What You’ll Do"
+          }
+        ]
+      },
+      {
+        "description": "Develop new operational and architectural approaches from first principles.",
+        "evidence": [
+          {
+            "excerpt": "What You’ll Do: Develop new operational and architectural approaches from first principles.",
+            "section": "What You’ll Do"
+          }
+        ]
+      }
+    ],
+    "compensation": {
+      "clarity": "unstated",
+      "minimum": null,
+      "maximum": null,
+      "currency": null,
+      "period": null,
+      "raw_text": null,
+      "evidence": []
+    },
+    "location": {
+      "clarity": "stated",
+      "summary": "Melbourne, Victoria, Australia",
+      "evidence": [
+        {
+          "excerpt": "Melbourne, Victoria, Australia · Reposted 6 days ago · Over 100 people clicked apply",
+          "section": "Job Description"
+        }
+      ]
+    },
+    "work_arrangement": {
+      "arrangement": "onsite",
+      "details": null,
+      "evidence": [
+        {
+          "excerpt": "On-site\nFull-time",
+          "section": "Job Description"
+        }
+      ]
+    },
+    "employment": {
+      "working_hours": "full_time",
+      "engagement_type": "unspecified",
+      "evidence": [
+        {
+          "excerpt": "On-site\nFull-time",
+          "section": "Job Description"
+        }
+      ]
+    },
+    "experience_requirements": [
+      {
+        "description": "Hands-on experience working close to the metal with computational systems.",
+        "level": "required",
+        "minimum_years": null,
+        "maximum_years": null,
+        "evidence": [
+          {
+            "excerpt": "You have hands-on experience working close to the metal with computational systems.",
+            "section": "You Might Be a Fit If"
+          }
+        ]
+      }
+    ]
+  },
+  "full_name": "David Cropper",
+  "target_role": "AI Engineer",
+  "summary": "AI Engineer with commercial technology experience since 2009 spanning software quality assurance, test automation, and Data Engineering, including 3.5 years of commercial enterprise Data Engineering experience, plus independent AI Engineering and portfolio development producing production-oriented AI systems spanning retrieval-augmented generation, operational intelligence, explainable AI, and enterprise decision support.",
+  "summary_source": "profile_copy",
+  "summary_themes": [
+    "Test automation"
+  ],
+  "skills": [
+    {
+      "skill_name": "Test automation",
+      "category": "domain",
+      "emphasised": true
+    },
+    {
+      "skill_name": "Python",
+      "category": "technical",
+      "emphasised": false
+    },
+    {
+      "skill_name": "FastAPI",
+      "category": "technical",
+      "emphasised": false
+    },
+    {
+      "skill_name": "Docker",
+      "category": "technical",
+      "emphasised": false
+    },
+    {
+      "skill_name": "OpenAI APIs",
+      "category": "technical",
+      "emphasised": false
+    },
+    {
+      "skill_name": "PyTest",
+      "category": "technical",
+      "emphasised": false
+    },
+    {
+      "skill_name": "Git",
+      "category": "technical",
+      "emphasised": false
+    },
+    {
+      "skill_name": "SQL",
+      "category": "technical",
+      "emphasised": false
+    },
+    {
+      "skill_name": "AWS",
+      "category": "technical",
+      "emphasised": false
+    },
+    {
+      "skill_name": "S3",
+      "category": "technical",
+      "emphasised": false
+    },
+    {
+      "skill_name": "Athena",
+      "category": "technical",
+      "emphasised": false
+    },
+    {
+      "skill_name": "Glue",
+      "category": "technical",
+      "emphasised": false
+    },
+    {
+      "skill_name": "Cloudwatch",
+      "category": "technical",
+      "emphasised": false
+    },
+    {
+      "skill_name": "DynamoDB",
+      "category": "technical",
+      "emphasised": false
+    },
+    {
+      "skill_name": "Apache NiFi",
+      "category": "technical",
+      "emphasised": false
+    },
+    {
+      "skill_name": "LangChain",
+      "category": "technical",
+      "emphasised": false
+    },
+    {
+      "skill_name": "ChromaDB",
+      "category": "technical",
+      "emphasised": false
+    },
+    {
+      "skill_name": "Pandas",
+      "category": "technical",
+      "emphasised": false
+    },
+    {
+      "skill_name": "OpenPyXL",
+      "category": "technical",
+      "emphasised": false
+    },
+    {
+      "skill_name": "REST APIs",
+      "category": "technical",
+      "emphasised": false
+    },
+    {
+      "skill_name": "Microsoft Fabric",
+      "category": "technical",
+      "emphasised": false
+    },
+    {
+      "skill_name": "Databricks",
+      "category": "technical",
+      "emphasised": false
+    },
+    {
+      "skill_name": "Snowflake",
+      "category": "technical",
+      "emphasised": false
+    },
+    {
+      "skill_name": "dbt",
+      "category": "technical",
+      "emphasised": false
+    },
+    {
+      "skill_name": "Azure Data Factory",
+      "category": "technical",
+      "emphasised": false
+    },
+    {
+      "skill_name": "Selenium WebDriver",
+      "category": "technical",
+      "emphasised": false
+    },
+    {
+      "skill_name": "Jenkins",
+      "category": "technical",
+      "emphasised": false
+    },
+    {
+      "skill_name": "Maven",
+      "category": "technical",
+      "emphasised": false
+    },
+    {
+      "skill_name": "Cucumber",
+      "category": "technical",
+      "emphasised": false
+    },
+    {
+      "skill_name": "Retrieval-Augmented Generation",
+      "category": "domain",
+      "emphasised": false
+    },
+    {
+      "skill_name": "Operational intelligence",
+      "category": "domain",
+      "emphasised": false
+    },
+    {
+      "skill_name": "Explainable AI",
+      "category": "domain",
+      "emphasised": false
+    },
+    {
+      "skill_name": "Enterprise decision support",
+      "category": "domain",
+      "emphasised": false
+    },
+    {
+      "skill_name": "Data engineering",
+      "category": "domain",
+      "emphasised": false
+    },
+    {
+      "skill_name": "Geospatial processing",
+      "category": "domain",
+      "emphasised": false
+    },
+    {
+      "skill_name": "LLM application development",
+      "category": "domain",
+      "emphasised": false
+    },
+    {
+      "skill_name": "Software quality assurance",
+      "category": "domain",
+      "emphasised": false
+    },
+    {
+      "skill_name": "Architecture-first design",
+      "category": "soft",
+      "emphasised": false
+    },
+    {
+      "skill_name": "Agile collaboration",
+      "category": "soft",
+      "emphasised": false
+    }
+  ],
+  "projects": [
+    {
+      "project_id": "operational-intelligence-copilot",
+      "name": "Operational Intelligence Copilot",
+      "summary": "Domain-agnostic operational intelligence platform combining deterministic analytics with Large Language Model reasoning to analyse structured business data and generate explainable, evidence-backed executive insights.",
+      "technologies": [
+        "Python",
+        "FastAPI",
+        "OpenAI APIs",
+        "PyTest",
+        "Git"
+      ],
+      "outcomes": [
+        "Produces evidence-backed executive reporting.",
+        "Maintains decision traceability through explainable recommendations."
+      ],
+      "demonstrates": [
+        "Intelligent intent routing",
+        "Dataset profiling",
+        "Anomaly detection",
+        "Regression-tested analytics workflows",
+        "Explainable AI recommendations"
+      ]
+    },
+    {
+      "project_id": "governance-document-rag",
+      "name": "Governance-Aware Document Intelligence RAG",
+      "summary": "Enterprise retrieval-augmented generation platform supporting trustworthy AI responses over organisational knowledge.",
+      "technologies": [
+        "Python",
+        "FastAPI",
+        "Docker",
+        "LangChain",
+        "ChromaDB",
+        "OpenAI",
+        "PyTest",
+        "Git"
+      ],
+      "outcomes": [
+        "Supports grounded responses over multi-format organisational documents.",
+        "Provides evaluation, telemetry, and explainability controls."
+      ],
+      "demonstrates": [
+        "Multi-format document ingestion",
+        "Embedding generation",
+        "Retrieval orchestration",
+        "Evaluation frameworks",
+        "Grounding validation"
+      ]
+    },
+    {
+      "project_id": "payroll-diagnostics-engine",
+      "name": "Payroll Diagnostics Engine",
+      "summary": "Rule-based operational decision-support platform that identifies payroll anomalies through deterministic business-rule evaluation.",
+      "technologies": [
+        "Python",
+        "Pandas",
+        "OpenPyXL",
+        "PyTest",
+        "Git"
+      ],
+      "outcomes": [
+        "Produces explainable operational findings.",
+        "Generates executive-ready reporting."
+      ],
+      "demonstrates": [
+        "Rule engines",
+        "Explainable diagnostics",
+        "Operational analytics",
+        "Automated validation"
+      ]
+    }
+  ],
+  "experience": [
+    {
+      "experience_id": "chase-risk-compliance-ai-engineer",
+      "kind": "independent_engineering",
+      "organisation": "Chase Risk & Compliance",
+      "title": "AI Engineer - Independent Research & Development",
+      "start_date": "2025-12",
+      "end_date": null,
+      "location": "Melbourne, VIC",
+      "highlights": [
+        "Independently develops progressively more complex production-oriented AI Engineering projects under a dedicated portfolio brand.",
+        "Builds engineering capability across retrieval-augmented generation, operational intelligence, explainable AI, and enterprise decision-support project areas.",
+        "Applies architecture-first engineering practices using Cursor, Git, and PyTest across the complete development lifecycle."
+      ],
+      "technologies": [
+        "Python",
+        "FastAPI",
+        "Docker",
+        "OpenAI APIs",
+        "Cursor",
+        "Git",
+        "PyTest"
+      ]
+    },
+    {
+      "experience_id": "ai-engineering-development-2025",
+      "kind": "professional_development",
+      "organisation": "Independent study",
+      "title": "AI Engineering Professional Development and Portfolio Development",
+      "start_date": "2025-07",
+      "end_date": "2025-11",
+      "location": "Melbourne, VIC",
+      "highlights": [
+        "Made a deliberate pivot from Data Engineering to AI Engineering as the primary career focus.",
+        "Undertook structured AI Engineering study.",
+        "Developed progressively more sophisticated portfolio projects.",
+        "Adopted increasingly production-oriented engineering practices, including testing, documentation, and milestone-driven development."
+      ],
+      "technologies": [
+        "Python",
+        "OpenAI APIs",
+        "LangChain",
+        "Git",
+        "PyTest"
+      ]
+    },
+    {
+      "experience_id": "data-engineering-development-2023",
+      "kind": "professional_development",
+      "organisation": "Independent study",
+      "title": "Data Engineering Professional Development and Career Transition",
+      "start_date": "2023-10",
+      "end_date": "2025-06",
+      "location": "Melbourne, VIC",
+      "highlights": [
+        "Began with a personal break following the nbn Australia role.",
+        "Undertook structured upskilling in modern Data Engineering.",
+        "Developed skills across contemporary data platforms and tools, including Microsoft Fabric, Databricks, Snowflake, dbt, and Azure Data Factory.",
+        "Prepared for a return to Data Engineering work."
+      ],
+      "technologies": [
+        "Microsoft Fabric",
+        "Databricks",
+        "Snowflake",
+        "dbt",
+        "Azure Data Factory"
+      ]
+    },
+    {
+      "experience_id": "nbn-data-engineer-2020",
+      "kind": "employment",
+      "organisation": "nbn Australia",
+      "title": "Data Engineer",
+      "start_date": "2020-03",
+      "end_date": "2023-10",
+      "location": null,
+      "highlights": [
+        "Developed and maintained enterprise data pipelines using AWS services, Python, SQL and Apache NiFi.",
+        "Performed SQL transformations and data validation.",
+        "Worked in Agile teams supporting production systems."
+      ],
+      "technologies": [
+        "Python",
+        "SQL",
+        "AWS",
+        "S3",
+        "Athena",
+        "Glue",
+        "Cloudwatch",
+        "DynamoDB",
+        "Apache NiFi",
+        "Git",
+        "PyTest"
+      ]
+    }
+  ],
+  "certifications": [
+    {
+      "certification_id": "aws-certified-developer-associate",
+      "name": "AWS Certified Developer - Associate",
+      "issuer": "Amazon Web Services",
+      "status": "active"
+    },
+    {
+      "certification_id": "databricks-certified-data-engineer-professional",
+      "name": "Databricks Certified Data Engineer Professional",
+      "issuer": "Databricks",
+      "status": "active"
+    }
+  ],
+  "certifications_source": "profile_active_baseline",
+  "contact": null,
+  "rendered_markdown": "# David Cropper\n\n**Target role:** AI Engineer\n\n> Owner review required before any external use.\n\n## Summary\n\nAI Engineer with commercial technology experience since 2009 spanning software quality assurance, test automation, and Data Engineering, including 3.5 years of commercial enterprise Data Engineering experience, plus independent AI Engineering and portfolio development producing production-oriented AI systems spanning retrieval-augmented generation, operational intelligence, explainable AI, and enterprise decision support.\n\n## Summary themes (from Tailoring Plan)\n\n- Test automation\n\n_Summary prose is copied from the career profile (rewrite_summary disabled or skipped); theme-guided rewriting is available via Phase C when enabled._\n\n## Skills\n\n### Emphasised\n\n- Test automation (domain)\n\n### Additional\n\n- Python (technical)\n- FastAPI (technical)\n- Docker (technical)\n- OpenAI APIs (technical)\n- PyTest (technical)\n- Git (technical)\n- SQL (technical)\n- AWS (technical)\n- S3 (technical)\n- Athena (technical)\n- Glue (technical)\n- Cloudwatch (technical)\n- DynamoDB (technical)\n- Apache NiFi (technical)\n- LangChain (technical)\n- ChromaDB (technical)\n- Pandas (technical)\n- OpenPyXL (technical)\n- REST APIs (technical)\n- Microsoft Fabric (technical)\n- Databricks (technical)\n- Snowflake (technical)\n- dbt (technical)\n- Azure Data Factory (technical)\n- Selenium WebDriver (technical)\n- Jenkins (technical)\n- Maven (technical)\n- Cucumber (technical)\n- Retrieval-Augmented Generation (domain)\n- Operational intelligence (domain)\n- Explainable AI (domain)\n- Enterprise decision support (domain)\n- Data engineering (domain)\n- Geospatial processing (domain)\n- LLM application development (domain)\n- Software quality assurance (domain)\n- Architecture-first design (soft)\n- Agile collaboration (soft)\n\n## Projects\n\n### Operational Intelligence Copilot\n\nDomain-agnostic operational intelligence platform combining deterministic analytics with Large Language Model reasoning to analyse structured business data and generate explainable, evidence-backed executive insights.\n\n**Technologies:** Python, FastAPI, OpenAI APIs, PyTest, Git\n\n**Outcomes:**\n\n- Produces evidence-backed executive reporting.\n- Maintains decision traceability through explainable recommendations.\n\n**Demonstrates:**\n\n- Intelligent intent routing\n- Dataset profiling\n- Anomaly detection\n- Regression-tested analytics workflows\n- Explainable AI recommendations\n\n### Governance-Aware Document Intelligence RAG\n\nEnterprise retrieval-augmented generation platform supporting trustworthy AI responses over organisational knowledge.\n\n**Technologies:** Python, FastAPI, Docker, LangChain, ChromaDB, OpenAI, PyTest, Git\n\n**Outcomes:**\n\n- Supports grounded responses over multi-format organisational documents.\n- Provides evaluation, telemetry, and explainability controls.\n\n**Demonstrates:**\n\n- Multi-format document ingestion\n- Embedding generation\n- Retrieval orchestration\n- Evaluation frameworks\n- Grounding validation\n\n### Payroll Diagnostics Engine\n\nRule-based operational decision-support platform that identifies payroll anomalies through deterministic business-rule evaluation.\n\n**Technologies:** Python, Pandas, OpenPyXL, PyTest, Git\n\n**Outcomes:**\n\n- Produces explainable operational findings.\n- Generates executive-ready reporting.\n\n**Demonstrates:**\n\n- Rule engines\n- Explainable diagnostics\n- Operational analytics\n- Automated validation\n\n## Experience\n\n### AI Engineer - Independent Research & Development — Chase Risk & Compliance\n\n*2025-12 – Present* · `independent_engineering`\n\nMelbourne, VIC\n\n- Independently develops progressively more complex production-oriented AI Engineering projects under a dedicated portfolio brand.\n- Builds engineering capability across retrieval-augmented generation, operational intelligence, explainable AI, and enterprise decision-support project areas.\n- Applies architecture-first engineering practices using Cursor, Git, and PyTest across the complete development lifecycle.\n\n**Technologies:** Python, FastAPI, Docker, OpenAI APIs, Cursor, Git, PyTest\n\n### AI Engineering Professional Development and Portfolio Development — Independent study\n\n*2025-07 – 2025-11* · `professional_development`\n\nMelbourne, VIC\n\n- Made a deliberate pivot from Data Engineering to AI Engineering as the primary career focus.\n- Undertook structured AI Engineering study.\n- Developed progressively more sophisticated portfolio projects.\n- Adopted increasingly production-oriented engineering practices, including testing, documentation, and milestone-driven development.\n\n**Technologies:** Python, OpenAI APIs, LangChain, Git, PyTest\n\n### Data Engineering Professional Development and Career Transition — Independent study\n\n*2023-10 – 2025-06* · `professional_development`\n\nMelbourne, VIC\n\n- Began with a personal break following the nbn Australia role.\n- Undertook structured upskilling in modern Data Engineering.\n- Developed skills across contemporary data platforms and tools, including Microsoft Fabric, Databricks, Snowflake, dbt, and Azure Data Factory.\n- Prepared for a return to Data Engineering work.\n\n**Technologies:** Microsoft Fabric, Databricks, Snowflake, dbt, Azure Data Factory\n\n### Data Engineer — nbn Australia\n\n*2020-03 – 2023-10* · `employment`\n\n- Developed and maintained enterprise data pipelines using AWS services, Python, SQL and Apache NiFi.\n- Performed SQL transformations and data validation.\n- Worked in Agile teams supporting production systems.\n\n**Technologies:** Python, SQL, AWS, S3, Athena, Glue, Cloudwatch, DynamoDB, Apache NiFi, Git, PyTest\n\n## Certifications (profile baseline — not tailored)\n\n- AWS Certified Developer - Associate (Amazon Web Services) — active\n- Databricks Certified Data Engineer Professional (Databricks) — active\n\n---\n\n_Experience guidance: `master_cv_only`. This draft must not be submitted without owner review._\n",
+  "owner_review_required": true,
+  "tailoring_plan_approved": true,
+  "experience_guidance_kind": "master_cv_only",
+  "assumptions": [
+    "Unsupported employer technology priorities (not used as summary themes or promoted skills): GPU clusters, Linux, high-speed networking, distributed systems, HPC environments (e.g. MPI), large-scale numerical computation.",
+    "Material-benefit gate was overridden by the caller; tailoring proceeds despite tier/next-action signals.",
+    "Summary copied from the career profile (rewrite_summary=False).",
+    "Certifications are rendered as a fixed profile baseline (active credentials only, profile order). They are not TailoringPlan-tailored content."
+  ]
+}
