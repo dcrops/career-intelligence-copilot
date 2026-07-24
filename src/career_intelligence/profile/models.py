@@ -139,6 +139,20 @@ class Preferences(ProfileModel):
     deal_breakers: list[NonEmptyString] = Field(default_factory=list)
 
 
+class MethodologyCategory(ProfileModel):
+    """One transferable AI Engineering methodology category for CV rendering."""
+
+    name: NonEmptyString
+    practices: list[NonEmptyString] = Field(min_length=1)
+
+
+class EngineeringMethodology(ProfileModel):
+    """Owner AI Engineering methodology (profile baseline; not invented per job)."""
+
+    philosophy: NonEmptyString
+    categories: list[MethodologyCategory] = Field(min_length=1)
+
+
 class CareerProfile(ProfileModel):
     schema_version: Literal["1"]
     identity: Identity
@@ -146,6 +160,9 @@ class CareerProfile(ProfileModel):
     skills: Skills
     projects: list[Project] = Field(min_length=1)
     certifications: list[Certification] = Field(default_factory=list)
+    # Optional Master-CV-aligned scan aids (default empty for older fixtures).
+    selected_engineering_highlights: list[NonEmptyString] = Field(default_factory=list)
+    engineering_methodology: EngineeringMethodology | None = None
     goals: Goals
     preferences: Preferences
 

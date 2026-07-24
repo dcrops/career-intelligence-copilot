@@ -24,7 +24,7 @@ Near-term work should satisfy at least one of:
 |-------|--------|
 | **Phase 1** — Product Definition | **Complete** |
 | **Phase 2** — Job Intelligence MVP | **Complete** ([release report](eval/phase2_release_report.md)) |
-| **Current focus** — Horizon 1 operational follow-ons | **FR-006b** (next), then FR-007, then job acquisition |
+| **Current focus** — Horizon 1 operational follow-ons | **FR-006b** (in progress), then FR-007, then job acquisition |
 | **Future** — Horizon 2 capability phases | Not started |
 
 Narrative history of completed phases: [12_phase_history.md](12_phase_history.md).
@@ -104,9 +104,14 @@ frozen Phase 2 baseline. Do not reopen Phase 2 architecture or exit criteria.
 
 | Priority | Item | Intent |
 |----------|------|--------|
-| **Next** | **FR-006b — CV Quality Improvement** | Better tailored CVs from the existing FR-006 pipeline |
+| **Current** | **FR-006b — CV Quality Improvement** | **READY FOR DAILY USE** (Markdown); Master v4 PDF export optional follow-up |
 | Then | **FR-007 — Cover Letter Generation** | Company-specific letters under human review |
 | Then | **Automated Job Discovery / Acquisition** | Reduce copy/paste; keep analysis separate from acquisition (see below) |
+
+**FR-006b:** Integrated Master CV ↔ Profile ↔ Planner ↔ Renderer uplift complete for
+daily Markdown submission. See
+[eval/fr006b_cv_quality_validation.md](eval/fr006b_cv_quality_validation.md).
+Remaining non-blockers: Master v4 PDF export; optional Phase C prose polish.
 
 Phase 2 documentation is a **stable baseline**. Prefer additive changes; update
 authoritative docs when behaviour or scope changes.

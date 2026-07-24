@@ -37,7 +37,8 @@ modern AI engineering workflows with Cursor. When those goals conflict with Hori
 **Phase 2 Job Intelligence — Complete** (M5 GO —
 [docs/eval/phase2_release_report.md](docs/eval/phase2_release_report.md)).
 
-**Next milestone:** **FR-006b — CV Quality Improvement**
+**Current milestone:** **FR-006b — CV Quality Improvement** —
+[READY FOR DAILY USE](docs/eval/fr006b_cv_quality_validation.md)
 
 **Thereafter (Horizon 1):** FR-007 Cover Letter → automated job acquisition
 

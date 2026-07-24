@@ -60,18 +60,25 @@ def validate_plan_references(
                 )
             )
         if project.project_id not in emphasis_ids:
-            errors.append(
-                ErrorDetail(
-                    loc=("projects_to_emphasise", index, "project_id"),
-                    msg=(
-                        f"project_id '{project.project_id}' is not present in "
-                        "ApplicationStrategy.portfolio_emphasis; the Tailoring "
-                        "Plan must not invent project ranking"
-                    ),
-                    type="value_error",
-                )
+            # Profile-backed appends (e.g. Career Intelligence Copilot) are
+            # allowed when evidenced from the Career Profile and placed after
+            # ApplicationStrategy emphasis projects.
+            has_profile_evidence = any(
+                evidence.origin == "career_profile" for evidence in project.evidence
             )
-        # Order must follow strategy portfolio_emphasis order among included ids.
+            if not has_profile_evidence:
+                errors.append(
+                    ErrorDetail(
+                        loc=("projects_to_emphasise", index, "project_id"),
+                        msg=(
+                            f"project_id '{project.project_id}' is not present in "
+                            "ApplicationStrategy.portfolio_emphasis and lacks "
+                            "career_profile evidence; the Tailoring Plan must not "
+                            "invent project ranking"
+                        ),
+                        type="value_error",
+                    )
+                )
         for evidence_index, evidence in enumerate(project.evidence):
             _validate_evidence(
                 evidence,
@@ -175,28 +182,41 @@ def _validate_project_order(
     errors: list[ErrorDetail],
 ) -> None:
     planned_ids = [project.project_id for project in plan.projects_to_emphasise]
-    expected = [project_id for project_id in emphasis_ids if project_id in planned_ids]
-    # Planned ids must be a subsequence of strategy emphasis order.
-    emphasis_index = 0
-    for planned_id in planned_ids:
-        try:
-            emphasis_index = emphasis_ids.index(planned_id, emphasis_index) + 1
-        except ValueError:
-            errors.append(
-                ErrorDetail(
-                    loc=("projects_to_emphasise",),
-                    msg=(
-                        "projects_to_emphasise order must follow "
-                        "ApplicationStrategy.portfolio_emphasis order; "
-                        f"got {planned_ids}, emphasis {emphasis_ids}"
-                    ),
-                    type="value_error",
-                )
+    strategy_ids = [project_id for project_id in planned_ids if project_id in emphasis_ids]
+    extra_ids = [project_id for project_id in planned_ids if project_id not in emphasis_ids]
+
+    # Strategy-backed projects may be relevance-reordered, but extras (profile
+    # appends) must follow them and must not interleave.
+    if planned_ids != strategy_ids + extra_ids:
+        errors.append(
+            ErrorDetail(
+                loc=("projects_to_emphasise",),
+                msg=(
+                    "projects_to_emphasise must list ApplicationStrategy "
+                    "portfolio projects first (any relevance order), then any "
+                    f"profile-backed appends; got {planned_ids}, emphasis "
+                    f"{emphasis_ids}"
+                ),
+                type="value_error",
             )
-            return
-    if planned_ids != expected and planned_ids:
-        # If we skipped unknown ids, expected filters to planned only in emphasis order
-        pass
+        )
+        return
+
+    expected_strategy = {
+        project_id for project_id in emphasis_ids if project_id in planned_ids
+    }
+    if set(strategy_ids) != expected_strategy:
+        errors.append(
+            ErrorDetail(
+                loc=("projects_to_emphasise",),
+                msg=(
+                    "projects_to_emphasise must include the ApplicationStrategy "
+                    "portfolio projects present in the plan without dropping "
+                    f"ids; got {strategy_ids}, expected set {sorted(expected_strategy)}"
+                ),
+                type="value_error",
+            )
+        )
 
 
 def _validate_evidence(

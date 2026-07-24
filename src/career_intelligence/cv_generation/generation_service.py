@@ -16,6 +16,7 @@ from .baseline import (
     CERTIFICATIONS_BASELINE_ASSUMPTION,
     active_certifications_baseline,
 )
+from .content_selection import select_by_relevance
 from .errors import (
     CvGenerationError,
     CvGenerationGateError,
@@ -32,6 +33,12 @@ from .summary_input import build_summary_rewrite_input, known_entity_catalogues
 from .summary_prompt import SUMMARY_PROMPT_VERSION
 from .summary_rewriter import SummaryRewriter, SummarySource
 from .summary_validation import validate_rewritten_summary
+from .theme_aware_summary import compose_theme_aware_summary
+
+_MAX_EXPERIENCE_HIGHLIGHTS = 4
+_MAX_PROJECT_OUTCOMES = 2
+_MAX_PROJECT_DEMONSTRATES = 5
+_MAX_SELECTED_HIGHLIGHTS = 5
 
 
 class CvGenerationService:
@@ -73,6 +80,14 @@ class CvGenerationService:
         skills = self._render_skills(plan)
         experience = self._render_experience(profile, plan)
         certifications = active_certifications_baseline(profile)
+        relevance_terms = _relevance_terms(plan)
+        selected_highlights = select_by_relevance(
+            profile.selected_engineering_highlights,
+            relevance_terms,
+            max_items=_MAX_SELECTED_HIGHLIGHTS,
+            min_items=min(3, len(profile.selected_engineering_highlights)),
+        )
+        methodology = _methodology_payload(profile)
 
         summary, summary_source, rewrite_assumptions = self._resolve_summary(
             profile, plan, resolved
@@ -82,16 +97,28 @@ class CvGenerationService:
         assumptions = list(plan.assumptions) + rewrite_assumptions + [
             CERTIFICATIONS_BASELINE_ASSUMPTION,
         ]
+        if selected_highlights != list(profile.selected_engineering_highlights):
+            assumptions.append(
+                "Selected engineering highlights ordered by TailoringPlan "
+                "relevance; only Career Profile highlight text was used."
+            )
+        assumptions.append(
+            "Experience highlights and project demonstrates/outcomes were "
+            "selected from Career Profile text by TailoringPlan relevance."
+        )
+        target_role = _resolve_target_role(strategy, profile)
         draft = {
             "job_analysis": strategy.job_analysis,
             "full_name": profile.identity.full_name,
-            "target_role": profile.identity.target_role,
+            "target_role": target_role,
             "summary": summary,
             "summary_source": summary_source,
             "summary_themes": [theme.theme for theme in plan.summary_themes],
+            "selected_engineering_highlights": selected_highlights,
             "skills": skills,
             "projects": projects,
             "experience": experience,
+            "engineering_methodology": methodology,
             "certifications": certifications,
             "certifications_source": "profile_active_baseline",
             "contact": contact,
@@ -103,7 +130,7 @@ class CvGenerationService:
         }
 
         cv = self._validate(draft)
-        markdown = render_markdown(cv)
+        markdown = render_markdown(cv, presentation=resolved.presentation)
         cv = self._validate({**draft, "rendered_markdown": markdown})
         validate_fidelity(cv, plan)
         return cv
@@ -116,12 +143,30 @@ class CvGenerationService:
     ) -> tuple[str | None, SummarySource, list[str]]:
         profile_summary = profile.identity.summary
         if not options.rewrite_summary:
+            themes = [theme.theme for theme in plan.summary_themes]
+            promoted = [skill.skill_name for skill in plan.skills_to_promote]
+            if themes or promoted:
+                composed = compose_theme_aware_summary(
+                    source_summary=profile_summary,
+                    target_role=profile.identity.target_role,
+                    themes=themes,
+                    promoted_skills=promoted,
+                )
+                return (
+                    composed,
+                    "theme_aware_composition",
+                    [
+                        "Summary lead composed deterministically from "
+                        "TailoringPlan themes/promoted skills; body retained "
+                        "from the career profile (rewrite_summary=False)."
+                    ],
+                )
             return (
                 profile_summary,
                 "profile_copy",
                 [
                     "Summary copied from the career profile "
-                    "(rewrite_summary=False)."
+                    "(rewrite_summary=False; no themes or promoted skills)."
                 ],
             )
 
@@ -215,6 +260,7 @@ class CvGenerationService:
         plan: TailoringPlan,
     ) -> list[dict[str, object]]:
         by_id = {project.id: project for project in profile.projects}
+        relevance_terms = _relevance_terms(plan)
         rendered: list[dict[str, object]] = []
         for item in plan.projects_to_emphasise:
             project = by_id.get(item.project_id)
@@ -231,7 +277,7 @@ class CvGenerationService:
                         )
                     ]
                 )
-            rendered.append(_project_payload(project))
+            rendered.append(_project_payload(project, relevance_terms))
         return rendered
 
     def _render_skills(self, plan: TailoringPlan) -> list[dict[str, object]]:
@@ -260,6 +306,7 @@ class CvGenerationService:
         plan: TailoringPlan,
     ) -> list[dict[str, object]]:
         by_id = {entry.id: entry for entry in profile.experience}
+        relevance_terms = _relevance_terms(plan)
         rendered: list[dict[str, object]] = []
         for experience_id in plan.experience_guidance.included_experience_ids:
             entry = by_id.get(experience_id)
@@ -276,7 +323,7 @@ class CvGenerationService:
                         )
                     ]
                 )
-            rendered.append(_experience_payload(entry))
+            rendered.append(_experience_payload(entry, relevance_terms))
         return rendered
 
     def _validate(self, payload: dict[str, object]) -> TailoredCv:
@@ -288,6 +335,31 @@ class CvGenerationService:
             ) from error
 
 
+def _relevance_terms(plan: TailoringPlan) -> list[str]:
+    terms: list[str] = []
+    for theme in plan.summary_themes:
+        terms.append(theme.theme)
+    for skill in plan.skills_to_promote:
+        terms.append(skill.skill_name)
+    for priority in plan.jd_priorities:
+        if priority.candidate_support != "unsupported":
+            terms.append(priority.label)
+    return terms
+
+
+def _methodology_payload(profile: CareerProfile) -> dict[str, object] | None:
+    methodology = profile.engineering_methodology
+    if methodology is None:
+        return None
+    return {
+        "philosophy": methodology.philosophy,
+        "categories": [
+            {"name": category.name, "practices": list(category.practices)}
+            for category in methodology.categories
+        ],
+    }
+
+
 def _rewrite_source_for(rewriter: SummaryRewriter) -> SummarySource:
     if isinstance(rewriter, OpenAISummaryRewriter):
         return "openai_rewrite"
@@ -297,18 +369,34 @@ def _rewrite_source_for(rewriter: SummaryRewriter) -> SummarySource:
     return "fixture_rewrite"
 
 
-def _project_payload(project: Project) -> dict[str, object]:
+def _project_payload(
+    project: Project,
+    relevance_terms: list[str],
+) -> dict[str, object]:
     return {
         "project_id": project.id,
         "name": project.name,
         "summary": project.summary,
         "technologies": list(project.technologies),
-        "outcomes": list(project.outcomes),
-        "demonstrates": list(project.demonstrates),
+        "outcomes": select_by_relevance(
+            project.outcomes,
+            relevance_terms,
+            max_items=_MAX_PROJECT_OUTCOMES,
+            min_items=min(1, len(project.outcomes)),
+        ),
+        "demonstrates": select_by_relevance(
+            project.demonstrates,
+            relevance_terms,
+            max_items=_MAX_PROJECT_DEMONSTRATES,
+            min_items=min(3, len(project.demonstrates)),
+        ),
     }
 
 
-def _experience_payload(entry: ExperienceEntry) -> dict[str, object]:
+def _experience_payload(
+    entry: ExperienceEntry,
+    relevance_terms: list[str],
+) -> dict[str, object]:
     start = entry.start_date.isoformat()[:7]
     end = entry.end_date.isoformat()[:7] if entry.end_date is not None else None
     return {
@@ -319,9 +407,24 @@ def _experience_payload(entry: ExperienceEntry) -> dict[str, object]:
         "start_date": start,
         "end_date": end,
         "location": entry.location,
-        "highlights": list(entry.highlights),
+        "highlights": select_by_relevance(
+            entry.highlights,
+            relevance_terms,
+            max_items=_MAX_EXPERIENCE_HIGHLIGHTS,
+            min_items=min(2, len(entry.highlights)),
+        ),
         "technologies": list(entry.technologies),
     }
+
+
+def _resolve_target_role(
+    strategy: ApplicationStrategy,
+    profile: CareerProfile,
+) -> str:
+    posting_title = (strategy.job_analysis.posting.title or "").strip()
+    if posting_title:
+        return posting_title
+    return profile.identity.target_role
 
 
 def _same_posting(left: JobPosting, right: JobPosting) -> bool:

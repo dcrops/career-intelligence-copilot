@@ -43,6 +43,7 @@ from typing import Any, TextIO
 
 from career_intelligence.application_strategy import ApplicationStrategy
 from career_intelligence.cv_generation import (
+    ContactDetails,
     CvGenerationOptions,
     CvGenerationService,
     DeterministicTailoringPlanner,
@@ -526,6 +527,14 @@ def run_fr006_stages(
         options=CvGenerationOptions(
             tailoring_plan_approved=True,
             rewrite_summary=rewrite_summary,
+            contact=ContactDetails(
+                email="djcropster@gmail.com",
+                phone="0400 811 545",
+                location="Melbourne, VIC",
+                linkedin_url="https://www.linkedin.com/in/david-cropper/",
+                portfolio_url="https://journey.chaseriskandcompliance.com.au/",
+                github_url="https://github.com/dcrops",
+            ),
         ),
     )
     drafts = write_tailored_cv_drafts(cv, plan, output_dir=output_dir)

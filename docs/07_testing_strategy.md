@@ -179,6 +179,22 @@ use `FixtureSummaryRewriter` and fake OpenAI clients — no network in CI.
 
 ---
 
+## FR-006b CV Quality — Golden Validation Suite
+
+FR-006b improves **submit preference** against the Master CV. Automated tests still
+guard contracts and fidelity; qualitative regressions use a fixed job set:
+
+- Suite definition: [eval/fr006b_cv_quality_golden_suite.md](eval/fr006b_cv_quality_golden_suite.md)
+- Quality findings (pre-implementation): [eval/fr006b_cv_quality_findings.md](eval/fr006b_cv_quality_findings.md)
+- P0 validation report: [eval/fr006b_cv_quality_validation.md](eval/fr006b_cv_quality_validation.md)
+
+Do **not** freeze full CV prose as exact snapshots. Re-run G1–G5 via
+`scripts/run_fr006b_golden_suite.py` and score human preference when changing
+planner emphasis, summary rewrite, Markdown render, or Career Profile
+methodology/highlights content.
+
+---
+
 ## M4 Ranked comparison coverage
 
 M4 is **complete** for Phase 2 job opportunities (FR-012 partial). Coverage includes:

@@ -5,7 +5,7 @@ Phase B produces a trusted TailoredCv — a pure rendering of an approved plan.
 Phase C may optionally rewrite Professional Summary prose via an injected rewriter.
 
 Neither artifact invents employment, skills, projects, dates, or certifications.
-When rewrite is disabled, Phase B copies the profile summary.
+When rewrite is disabled, Phase B composes a theme-aware summary from the profile.
 """
 
 from __future__ import annotations
@@ -50,6 +50,14 @@ ProfileEvidenceSource = Literal[
 ]
 
 PlanEvidenceOrigin = Literal["job_analysis", "career_profile", "application_strategy"]
+
+SummarySourceKind = Literal[
+    "profile_copy",
+    "theme_aware_composition",
+    "openai_rewrite",
+    "fixture_rewrite",
+    "fallback_profile_copy",
+]
 
 _LIST_JOB_SOURCES = frozenset(
     {
@@ -272,32 +280,39 @@ class RenderedCertification(CvModel):
     status: Literal["active", "expired"]
 
 
+class RenderedMethodologyCategory(CvModel):
+    name: NonEmptyString
+    practices: list[NonEmptyString] = Field(min_length=1)
+
+
+class RenderedEngineeringMethodology(CvModel):
+    philosophy: NonEmptyString
+    categories: list[RenderedMethodologyCategory] = Field(min_length=1)
+
+
 class TailoredCv(CvModel):
     """Trusted CV draft rendered from an approved TailoringPlan.
 
     Plan-owned sections (skills, projects, experience scope, summary themes)
-    must match the TailoringPlan. Certifications are a fixed profile baseline
-    (``certifications_source=profile_active_baseline``) — not tailored content.
+    must match the TailoringPlan. Certifications and engineering methodology are
+    profile baselines — not invented per opportunity.
 
-    Phase B copies the profile summary when rewrite is disabled. Phase C may
-    rewrite summary prose from the Tailoring Plan via an injected rewriter.
-    Final external use always requires owner review.
+    Phase B composes a theme-aware summary from the profile when rewrite is
+    disabled. Phase C may rewrite summary prose from the Tailoring Plan via an
+    injected rewriter. Final external use always requires owner review.
     """
 
     job_analysis: JobAnalysis
     full_name: NonEmptyString
     target_role: NonEmptyString
     summary: NonEmptyString | None = None
-    summary_source: Literal[
-        "profile_copy",
-        "openai_rewrite",
-        "fixture_rewrite",
-        "fallback_profile_copy",
-    ] = "profile_copy"
+    summary_source: SummarySourceKind = "profile_copy"
     summary_themes: list[NonEmptyString] = Field(default_factory=list)
+    selected_engineering_highlights: list[NonEmptyString] = Field(default_factory=list)
     skills: list[RenderedSkill] = Field(default_factory=list)
     projects: list[RenderedProject] = Field(default_factory=list)
     experience: list[RenderedExperience] = Field(default_factory=list)
+    engineering_methodology: RenderedEngineeringMethodology | None = None
     certifications: list[RenderedCertification] = Field(default_factory=list)
     certifications_source: Literal["profile_active_baseline"] = "profile_active_baseline"
     contact: dict[str, NonEmptyString] | None = None

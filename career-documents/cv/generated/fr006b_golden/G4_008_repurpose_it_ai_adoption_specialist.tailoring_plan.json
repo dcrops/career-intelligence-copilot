@@ -1,0 +1,829 @@
+{
+  "job_analysis": {
+    "posting": {
+      "raw_text": "Strong applicant\nAI Adoption Specialist\n\nREPURPOSE IT P/L \nView all jobs\nEssendon Fields, Melbourne VIC\nOther (Information & Communication Technology)\nFull time\nProfile salary match\n\nPosted 8d ago\n•\nMedium application volume\n\nAbout Repurpose It\n\nRepurpose It is a recognised leader in the circular economy, giving new life to materials that would otherwise go to waste. We recover resources from construction and demolition, excavation, infrastructure projects, and local council organics, transforming them into valuable products that support sustainable growth.\n\nBy investing in advanced technology, we partner with both public and private sectors to reduce greenhouse gases, protect the environment, and create a more sustainable future.\n\nOur values Integrity, Future Focused, Sustainability, and Care & Protect guide everything we do. As part of our team, you’ll join a workplace that is passionate about innovation, the environment, and supporting its people.\n\n\nAbout the role\n\nWe’re looking for an AI Adoption Specialist to help make AI practical, valuable, and embedded into everyday work across our corporate teams.\n\nWorking closely with different business units within Repurpose It such as Finance and P&C, you’ll identify, configure, and implement AI tools that drive real outcomes, improving productivity, reducing errors, and streamlining workflows.\n\nThis is a hands-on role where you’ll move teams from curiosity to confident, repeatable use of approved AI solutions.\n\n\nKey responsibilities:\n\nEmbed AI tools into real business workflows\nConfigure and optimise platforms such as Copilot and Claude\nDeliver practical training and build internal AI capability\nIdentify opportunities to improve efficiency, quality, and risk management\nStay across emerging AI tools and drive continuous improvement\n\nAbout you:\n\nDegree in Information Systems, Business Analytics, Commerce/Tech, or similar\nExperience or a strong recent graduate with hands-on AI tool usage\nComfortable working across teams and translating technical concepts\nCurious, practical, and focused on delivering real business impact\n\nHow to Apply:\n\nPlease include an up-to-date resume as part of your application.\n\nYour details will be stored in our candidate management system, and we may keep your details on file for other roles and opportunities in the future.\n\nIf successful in the process, we conduct a pre-employment check which consist of a national police check. As this role includes a fully maintained company vehicle, we also require a full drivers history check.\n\nRepurpose It is committed to providing an inclusive workplace and welcomes all individuals from different backgrounds, gender and ethnicity to apply.\n\nPlease let us know if you require any adjustments through this process.\n\nEmployer questions\nYour application will include the following questions:\nPlease elaborate your exposure to AI?\nDo you have a degree in Information Systems, Business Analytics, Commerce/Tech, or similar? Please comment below.\nThis is a full-time, on-site position, with occasional travel to operational site. Are you comfortable committing to this arrangement?\nWhat is your salary expectation?\nDo you have a valid Australian Drivers Licence?\nDo you have full work rights in Australia?\nIf successful in making it to the final stages of the recruitment process, would you be comfortable to complete a police check and psychometric test in line with our process?",
+      "title": "AI Adoption Specialist",
+      "company": "Repurpose IT P/L",
+      "source_url": "https://www.seek.com.au/"
+    },
+    "role_family": {
+      "family": "ai_adjacent",
+      "evidence": [
+        {
+          "excerpt": "We’re looking for an AI Adoption Specialist to help make AI practical, valuable, and embedded into everyday work across our corporate teams.",
+          "section": "Job description"
+        }
+      ]
+    },
+    "seniority": {
+      "level": "unknown",
+      "ambiguous": false,
+      "candidate_levels": [],
+      "evidence": []
+    },
+    "technologies": [
+      {
+        "name": "Copilot",
+        "level": "required",
+        "evidence": [
+          {
+            "excerpt": "Configure and optimise platforms such as Copilot and Claude",
+            "section": "Key responsibilities"
+          }
+        ]
+      },
+      {
+        "name": "Claude",
+        "level": "required",
+        "evidence": [
+          {
+            "excerpt": "Configure and optimise platforms such as Copilot and Claude",
+            "section": "Key responsibilities"
+          }
+        ]
+      }
+    ],
+    "responsibilities": [
+      {
+        "description": "Embed AI tools into real business workflows",
+        "evidence": [
+          {
+            "excerpt": "Embed AI tools into real business workflows",
+            "section": "Key responsibilities"
+          }
+        ]
+      },
+      {
+        "description": "Configure and optimise platforms such as Copilot and Claude",
+        "evidence": [
+          {
+            "excerpt": "Configure and optimise platforms such as Copilot and Claude",
+            "section": "Key responsibilities"
+          }
+        ]
+      },
+      {
+        "description": "Deliver practical training and build internal AI capability",
+        "evidence": [
+          {
+            "excerpt": "Deliver practical training and build internal AI capability",
+            "section": "Key responsibilities"
+          }
+        ]
+      },
+      {
+        "description": "Identify opportunities to improve efficiency, quality, and risk management",
+        "evidence": [
+          {
+            "excerpt": "Identify opportunities to improve efficiency, quality, and risk management",
+            "section": "Key responsibilities"
+          }
+        ]
+      },
+      {
+        "description": "Stay across emerging AI tools and drive continuous improvement",
+        "evidence": [
+          {
+            "excerpt": "Stay across emerging AI tools and drive continuous improvement",
+            "section": "Key responsibilities"
+          }
+        ]
+      }
+    ],
+    "compensation": {
+      "clarity": "unstated",
+      "minimum": null,
+      "maximum": null,
+      "currency": null,
+      "period": null,
+      "raw_text": null,
+      "evidence": []
+    },
+    "location": {
+      "clarity": "stated",
+      "summary": "Essendon Fields, Melbourne VIC",
+      "evidence": [
+        {
+          "excerpt": "Essendon Fields, Melbourne VIC",
+          "section": "Job description"
+        }
+      ]
+    },
+    "work_arrangement": {
+      "arrangement": "onsite",
+      "details": "This is a full-time, on-site position, with occasional travel to operational site.",
+      "evidence": [
+        {
+          "excerpt": "This is a full-time, on-site position, with occasional travel to operational site.",
+          "section": "Employer questions"
+        }
+      ]
+    },
+    "employment": {
+      "working_hours": "full_time",
+      "engagement_type": "unspecified",
+      "evidence": [
+        {
+          "excerpt": "Full time",
+          "section": "Job description"
+        }
+      ]
+    },
+    "experience_requirements": [
+      {
+        "description": "Experience or a strong recent graduate with hands-on AI tool usage",
+        "level": "required",
+        "minimum_years": null,
+        "maximum_years": null,
+        "evidence": [
+          {
+            "excerpt": "Experience or a strong recent graduate with hands-on AI tool usage",
+            "section": "About you"
+          }
+        ]
+      }
+    ]
+  },
+  "application_tier": "silver",
+  "pursuit_posture": "consider",
+  "jd_priorities": [
+    {
+      "rank": 1,
+      "label": "Copilot",
+      "kind": "technology",
+      "rationale": "Copilot is listed as required in the job analysis (employer priority; candidate_support=unsupported).",
+      "evidence": [
+        {
+          "origin": "job_analysis",
+          "job_evidence": {
+            "source": "technology",
+            "item_index": 0,
+            "name": "Copilot",
+            "excerpt": "Configure and optimise platforms such as Copilot and Claude"
+          },
+          "profile_evidence": null,
+          "portfolio_project_id": null,
+          "excerpt": null
+        }
+      ],
+      "candidate_support": "unsupported",
+      "related_profile_capability": null
+    },
+    {
+      "rank": 2,
+      "label": "Claude",
+      "kind": "technology",
+      "rationale": "Claude is listed as required in the job analysis (employer priority; candidate_support=unsupported).",
+      "evidence": [
+        {
+          "origin": "job_analysis",
+          "job_evidence": {
+            "source": "technology",
+            "item_index": 1,
+            "name": "Claude",
+            "excerpt": "Configure and optimise platforms such as Copilot and Claude"
+          },
+          "profile_evidence": null,
+          "portfolio_project_id": null,
+          "excerpt": null
+        }
+      ],
+      "candidate_support": "unsupported",
+      "related_profile_capability": null
+    },
+    {
+      "rank": 3,
+      "label": "Ai Adjacent",
+      "kind": "role_theme",
+      "rationale": "Role family 'ai_adjacent' is an employer positioning signal (candidate_support=unsupported).",
+      "evidence": [
+        {
+          "origin": "job_analysis",
+          "job_evidence": {
+            "source": "role_family",
+            "item_index": null,
+            "name": "ai_adjacent",
+            "excerpt": "We’re looking for an AI Adoption Specialist to help make AI practical, valuable, and embedded into everyday work across our corporate teams."
+          },
+          "profile_evidence": null,
+          "portfolio_project_id": null,
+          "excerpt": null
+        }
+      ],
+      "candidate_support": "unsupported",
+      "related_profile_capability": null
+    },
+    {
+      "rank": 4,
+      "label": "Embed Tools Into Real Business Workflows",
+      "kind": "responsibility",
+      "rationale": "Responsibility appears in the job analysis as an employer priority (candidate_support=unsupported).",
+      "evidence": [
+        {
+          "origin": "job_analysis",
+          "job_evidence": {
+            "source": "responsibility",
+            "item_index": 0,
+            "name": null,
+            "excerpt": "Embed AI tools into real business workflows"
+          },
+          "profile_evidence": null,
+          "portfolio_project_id": null,
+          "excerpt": null
+        }
+      ],
+      "candidate_support": "unsupported",
+      "related_profile_capability": null
+    },
+    {
+      "rank": 5,
+      "label": "Configure And Optimise Platforms Such Copilot",
+      "kind": "responsibility",
+      "rationale": "Responsibility appears in the job analysis as an employer priority (candidate_support=unsupported).",
+      "evidence": [
+        {
+          "origin": "job_analysis",
+          "job_evidence": {
+            "source": "responsibility",
+            "item_index": 1,
+            "name": null,
+            "excerpt": "Configure and optimise platforms such as Copilot and Claude"
+          },
+          "profile_evidence": null,
+          "portfolio_project_id": null,
+          "excerpt": null
+        }
+      ],
+      "candidate_support": "unsupported",
+      "related_profile_capability": null
+    },
+    {
+      "rank": 6,
+      "label": "Deliver Practical Training And Build Internal",
+      "kind": "responsibility",
+      "rationale": "Responsibility appears in the job analysis as an employer priority (candidate_support=unsupported).",
+      "evidence": [
+        {
+          "origin": "job_analysis",
+          "job_evidence": {
+            "source": "responsibility",
+            "item_index": 2,
+            "name": null,
+            "excerpt": "Deliver practical training and build internal AI capability"
+          },
+          "profile_evidence": null,
+          "portfolio_project_id": null,
+          "excerpt": null
+        }
+      ],
+      "candidate_support": "unsupported",
+      "related_profile_capability": null
+    },
+    {
+      "rank": 7,
+      "label": "Identify Opportunities Improve Efficiency Quality And",
+      "kind": "responsibility",
+      "rationale": "Responsibility appears in the job analysis as an employer priority (candidate_support=unsupported).",
+      "evidence": [
+        {
+          "origin": "job_analysis",
+          "job_evidence": {
+            "source": "responsibility",
+            "item_index": 3,
+            "name": null,
+            "excerpt": "Identify opportunities to improve efficiency, quality, and risk management"
+          },
+          "profile_evidence": null,
+          "portfolio_project_id": null,
+          "excerpt": null
+        }
+      ],
+      "candidate_support": "unsupported",
+      "related_profile_capability": null
+    },
+    {
+      "rank": 8,
+      "label": "Stay Across Emerging Tools And Drive",
+      "kind": "responsibility",
+      "rationale": "Responsibility appears in the job analysis as an employer priority (candidate_support=unsupported).",
+      "evidence": [
+        {
+          "origin": "job_analysis",
+          "job_evidence": {
+            "source": "responsibility",
+            "item_index": 4,
+            "name": null,
+            "excerpt": "Stay across emerging AI tools and drive continuous improvement"
+          },
+          "profile_evidence": null,
+          "portfolio_project_id": null,
+          "excerpt": null
+        }
+      ],
+      "candidate_support": "unsupported",
+      "related_profile_capability": null
+    }
+  ],
+  "projects_to_emphasise": [
+    {
+      "rank": 1,
+      "project_id": "operational-intelligence-copilot",
+      "rationale": "Consider emphasising 'operational-intelligence-copilot' (PortfolioMatch rank 1).",
+      "evidence": [
+        {
+          "origin": "application_strategy",
+          "job_evidence": null,
+          "profile_evidence": null,
+          "portfolio_project_id": "operational-intelligence-copilot",
+          "excerpt": "Consider emphasising 'operational-intelligence-copilot' (PortfolioMatch rank 1)."
+        }
+      ]
+    },
+    {
+      "rank": 2,
+      "project_id": "governance-document-rag",
+      "rationale": "Consider emphasising 'governance-document-rag' (PortfolioMatch rank 3).",
+      "evidence": [
+        {
+          "origin": "application_strategy",
+          "job_evidence": null,
+          "profile_evidence": null,
+          "portfolio_project_id": "governance-document-rag",
+          "excerpt": "Consider emphasising 'governance-document-rag' (PortfolioMatch rank 3)."
+        }
+      ]
+    },
+    {
+      "rank": 3,
+      "project_id": "public-holiday-entitlements",
+      "rationale": "Consider emphasising 'public-holiday-entitlements' (PortfolioMatch rank 2).",
+      "evidence": [
+        {
+          "origin": "application_strategy",
+          "job_evidence": null,
+          "profile_evidence": null,
+          "portfolio_project_id": "public-holiday-entitlements",
+          "excerpt": "Consider emphasising 'public-holiday-entitlements' (PortfolioMatch rank 2)."
+        }
+      ]
+    },
+    {
+      "rank": 4,
+      "project_id": "career-intelligence-copilot",
+      "rationale": "Career Intelligence Copilot added as Career Profile portfolio evidence of AI Engineering methodology and decision-support systems for role family 'ai_adjacent'.",
+      "evidence": [
+        {
+          "origin": "career_profile",
+          "job_evidence": null,
+          "profile_evidence": {
+            "source": "project",
+            "ref": "project:career-intelligence-copilot",
+            "excerpt": null
+          },
+          "portfolio_project_id": null,
+          "excerpt": null
+        }
+      ]
+    }
+  ],
+  "skills_to_promote": [
+    {
+      "rank": 1,
+      "skill_name": "LLM application development",
+      "category": "domain",
+      "rationale": "LLM application development promoted as a Career Profile capability aligned to role family 'ai_adjacent' when JD technology overlap was sparse.",
+      "evidence": [
+        {
+          "origin": "job_analysis",
+          "job_evidence": {
+            "source": "role_family",
+            "item_index": null,
+            "name": "ai_adjacent",
+            "excerpt": null
+          },
+          "profile_evidence": null,
+          "portfolio_project_id": null,
+          "excerpt": null
+        },
+        {
+          "origin": "career_profile",
+          "job_evidence": null,
+          "profile_evidence": {
+            "source": "skill",
+            "ref": "skill:LLM application development",
+            "excerpt": null
+          },
+          "portfolio_project_id": null,
+          "excerpt": null
+        }
+      ]
+    },
+    {
+      "rank": 2,
+      "skill_name": "Operational intelligence",
+      "category": "domain",
+      "rationale": "Operational intelligence promoted as a Career Profile capability aligned to role family 'ai_adjacent' when JD technology overlap was sparse.",
+      "evidence": [
+        {
+          "origin": "job_analysis",
+          "job_evidence": {
+            "source": "role_family",
+            "item_index": null,
+            "name": "ai_adjacent",
+            "excerpt": null
+          },
+          "profile_evidence": null,
+          "portfolio_project_id": null,
+          "excerpt": null
+        },
+        {
+          "origin": "career_profile",
+          "job_evidence": null,
+          "profile_evidence": {
+            "source": "skill",
+            "ref": "skill:Operational intelligence",
+            "excerpt": null
+          },
+          "portfolio_project_id": null,
+          "excerpt": null
+        }
+      ]
+    },
+    {
+      "rank": 3,
+      "skill_name": "Explainable AI",
+      "category": "domain",
+      "rationale": "Explainable AI promoted as a Career Profile capability aligned to role family 'ai_adjacent' when JD technology overlap was sparse.",
+      "evidence": [
+        {
+          "origin": "job_analysis",
+          "job_evidence": {
+            "source": "role_family",
+            "item_index": null,
+            "name": "ai_adjacent",
+            "excerpt": null
+          },
+          "profile_evidence": null,
+          "portfolio_project_id": null,
+          "excerpt": null
+        },
+        {
+          "origin": "career_profile",
+          "job_evidence": null,
+          "profile_evidence": {
+            "source": "skill",
+            "ref": "skill:Explainable AI",
+            "excerpt": null
+          },
+          "portfolio_project_id": null,
+          "excerpt": null
+        }
+      ]
+    },
+    {
+      "rank": 4,
+      "skill_name": "Enterprise decision support",
+      "category": "domain",
+      "rationale": "Enterprise decision support promoted as a Career Profile capability aligned to role family 'ai_adjacent' when JD technology overlap was sparse.",
+      "evidence": [
+        {
+          "origin": "job_analysis",
+          "job_evidence": {
+            "source": "role_family",
+            "item_index": null,
+            "name": "ai_adjacent",
+            "excerpt": null
+          },
+          "profile_evidence": null,
+          "portfolio_project_id": null,
+          "excerpt": null
+        },
+        {
+          "origin": "career_profile",
+          "job_evidence": null,
+          "profile_evidence": {
+            "source": "skill",
+            "ref": "skill:Enterprise decision support",
+            "excerpt": null
+          },
+          "portfolio_project_id": null,
+          "excerpt": null
+        }
+      ]
+    }
+  ],
+  "skills_not_emphasised": [
+    {
+      "skill_name": "Python",
+      "category": "technical",
+      "rationale": "Python remains on the CV but is not emphasised because it does not support a candidate-backed JD technology."
+    },
+    {
+      "skill_name": "FastAPI",
+      "category": "technical",
+      "rationale": "FastAPI remains on the CV but is not emphasised because it does not support a candidate-backed JD technology."
+    },
+    {
+      "skill_name": "Docker",
+      "category": "technical",
+      "rationale": "Docker remains on the CV but is not emphasised because it does not support a candidate-backed JD technology."
+    },
+    {
+      "skill_name": "OpenAI APIs",
+      "category": "technical",
+      "rationale": "OpenAI APIs remains on the CV but is not emphasised because it does not support a candidate-backed JD technology."
+    },
+    {
+      "skill_name": "PyTest",
+      "category": "technical",
+      "rationale": "PyTest remains on the CV but is not emphasised because it does not support a candidate-backed JD technology."
+    },
+    {
+      "skill_name": "Git",
+      "category": "technical",
+      "rationale": "Git remains on the CV but is not emphasised because it does not support a candidate-backed JD technology."
+    },
+    {
+      "skill_name": "SQL",
+      "category": "technical",
+      "rationale": "SQL remains on the CV but is not emphasised because it does not support a candidate-backed JD technology."
+    },
+    {
+      "skill_name": "AWS",
+      "category": "technical",
+      "rationale": "AWS remains on the CV but is not emphasised because it does not support a candidate-backed JD technology."
+    },
+    {
+      "skill_name": "S3",
+      "category": "technical",
+      "rationale": "S3 remains on the CV but is not emphasised because it does not support a candidate-backed JD technology."
+    },
+    {
+      "skill_name": "Athena",
+      "category": "technical",
+      "rationale": "Athena remains on the CV but is not emphasised because it does not support a candidate-backed JD technology."
+    },
+    {
+      "skill_name": "Glue",
+      "category": "technical",
+      "rationale": "Glue remains on the CV but is not emphasised because it does not support a candidate-backed JD technology."
+    },
+    {
+      "skill_name": "Cloudwatch",
+      "category": "technical",
+      "rationale": "Cloudwatch remains on the CV but is not emphasised because it does not support a candidate-backed JD technology."
+    },
+    {
+      "skill_name": "DynamoDB",
+      "category": "technical",
+      "rationale": "DynamoDB remains on the CV but is not emphasised because it does not support a candidate-backed JD technology."
+    },
+    {
+      "skill_name": "Apache NiFi",
+      "category": "technical",
+      "rationale": "Apache NiFi remains on the CV but is not emphasised because it does not support a candidate-backed JD technology."
+    },
+    {
+      "skill_name": "LangChain",
+      "category": "technical",
+      "rationale": "LangChain remains on the CV but is not emphasised because it does not support a candidate-backed JD technology."
+    },
+    {
+      "skill_name": "ChromaDB",
+      "category": "technical",
+      "rationale": "ChromaDB remains on the CV but is not emphasised because it does not support a candidate-backed JD technology."
+    },
+    {
+      "skill_name": "Pandas",
+      "category": "technical",
+      "rationale": "Pandas remains on the CV but is not emphasised because it does not support a candidate-backed JD technology."
+    },
+    {
+      "skill_name": "OpenPyXL",
+      "category": "technical",
+      "rationale": "OpenPyXL remains on the CV but is not emphasised because it does not support a candidate-backed JD technology."
+    },
+    {
+      "skill_name": "REST APIs",
+      "category": "technical",
+      "rationale": "REST APIs remains on the CV but is not emphasised because it does not support a candidate-backed JD technology."
+    },
+    {
+      "skill_name": "Microsoft Fabric",
+      "category": "technical",
+      "rationale": "Microsoft Fabric remains on the CV but is not emphasised because it does not support a candidate-backed JD technology."
+    },
+    {
+      "skill_name": "Databricks",
+      "category": "technical",
+      "rationale": "Databricks remains on the CV but is not emphasised because it does not support a candidate-backed JD technology."
+    },
+    {
+      "skill_name": "Snowflake",
+      "category": "technical",
+      "rationale": "Snowflake remains on the CV but is not emphasised because it does not support a candidate-backed JD technology."
+    },
+    {
+      "skill_name": "dbt",
+      "category": "technical",
+      "rationale": "dbt remains on the CV but is not emphasised because it does not support a candidate-backed JD technology."
+    },
+    {
+      "skill_name": "Azure Data Factory",
+      "category": "technical",
+      "rationale": "Azure Data Factory remains on the CV but is not emphasised because it does not support a candidate-backed JD technology."
+    },
+    {
+      "skill_name": "Selenium WebDriver",
+      "category": "technical",
+      "rationale": "Selenium WebDriver remains on the CV but is not emphasised because it does not support a candidate-backed JD technology."
+    },
+    {
+      "skill_name": "Jenkins",
+      "category": "technical",
+      "rationale": "Jenkins remains on the CV but is not emphasised because it does not support a candidate-backed JD technology."
+    },
+    {
+      "skill_name": "Maven",
+      "category": "technical",
+      "rationale": "Maven remains on the CV but is not emphasised because it does not support a candidate-backed JD technology."
+    },
+    {
+      "skill_name": "Cucumber",
+      "category": "technical",
+      "rationale": "Cucumber remains on the CV but is not emphasised because it does not support a candidate-backed JD technology."
+    },
+    {
+      "skill_name": "Retrieval-Augmented Generation",
+      "category": "domain",
+      "rationale": "Retrieval-Augmented Generation remains on the CV but is not emphasised because it does not support a candidate-backed JD technology."
+    },
+    {
+      "skill_name": "Data engineering",
+      "category": "domain",
+      "rationale": "Data engineering remains on the CV but is not emphasised because it does not support a candidate-backed JD technology."
+    },
+    {
+      "skill_name": "Geospatial processing",
+      "category": "domain",
+      "rationale": "Geospatial processing remains on the CV but is not emphasised because it does not support a candidate-backed JD technology."
+    },
+    {
+      "skill_name": "Software quality assurance",
+      "category": "domain",
+      "rationale": "Software quality assurance remains on the CV but is not emphasised because it does not support a candidate-backed JD technology."
+    },
+    {
+      "skill_name": "Test automation",
+      "category": "domain",
+      "rationale": "Test automation remains on the CV but is not emphasised because it does not support a candidate-backed JD technology."
+    },
+    {
+      "skill_name": "Architecture-first design",
+      "category": "soft",
+      "rationale": "Architecture-first design remains on the CV but is not emphasised because it does not support a candidate-backed JD technology."
+    },
+    {
+      "skill_name": "Roadmap-driven delivery",
+      "category": "soft",
+      "rationale": "Roadmap-driven delivery remains on the CV but is not emphasised because it does not support a candidate-backed JD technology."
+    },
+    {
+      "skill_name": "Human-in-the-loop validation",
+      "category": "soft",
+      "rationale": "Human-in-the-loop validation remains on the CV but is not emphasised because it does not support a candidate-backed JD technology."
+    },
+    {
+      "skill_name": "Living documentation",
+      "category": "soft",
+      "rationale": "Living documentation remains on the CV but is not emphasised because it does not support a candidate-backed JD technology."
+    },
+    {
+      "skill_name": "Agile collaboration",
+      "category": "soft",
+      "rationale": "Agile collaboration remains on the CV but is not emphasised because it does not support a candidate-backed JD technology."
+    }
+  ],
+  "summary_themes": [
+    {
+      "rank": 1,
+      "theme": "LLM application development",
+      "rationale": "Summary theme 'LLM application development' is evidenced in the Career Profile and reinforces role family 'ai_adjacent'.",
+      "evidence": [
+        {
+          "origin": "job_analysis",
+          "job_evidence": {
+            "source": "role_family",
+            "item_index": null,
+            "name": "ai_adjacent",
+            "excerpt": null
+          },
+          "profile_evidence": null,
+          "portfolio_project_id": null,
+          "excerpt": null
+        },
+        {
+          "origin": "career_profile",
+          "job_evidence": null,
+          "profile_evidence": {
+            "source": "skill",
+            "ref": "skill:LLM application development",
+            "excerpt": null
+          },
+          "portfolio_project_id": null,
+          "excerpt": null
+        }
+      ]
+    },
+    {
+      "rank": 2,
+      "theme": "Operational intelligence",
+      "rationale": "Summary theme 'Operational intelligence' is evidenced in the Career Profile and reinforces role family 'ai_adjacent'.",
+      "evidence": [
+        {
+          "origin": "job_analysis",
+          "job_evidence": {
+            "source": "role_family",
+            "item_index": null,
+            "name": "ai_adjacent",
+            "excerpt": null
+          },
+          "profile_evidence": null,
+          "portfolio_project_id": null,
+          "excerpt": null
+        },
+        {
+          "origin": "career_profile",
+          "job_evidence": null,
+          "profile_evidence": {
+            "source": "skill",
+            "ref": "skill:Operational intelligence",
+            "excerpt": null
+          },
+          "portfolio_project_id": null,
+          "excerpt": null
+        }
+      ]
+    },
+    {
+      "rank": 3,
+      "theme": "Explainable AI",
+      "rationale": "Summary theme 'Explainable AI' is evidenced in the Career Profile and reinforces role family 'ai_adjacent'.",
+      "evidence": [
+        {
+          "origin": "job_analysis",
+          "job_evidence": {
+            "source": "role_family",
+            "item_index": null,
+            "name": "ai_adjacent",
+            "excerpt": null
+          },
+          "profile_evidence": null,
+          "portfolio_project_id": null,
+          "excerpt": null
+        },
+        {
+          "origin": "career_profile",
+          "job_evidence": null,
+          "profile_evidence": {
+            "source": "skill",
+            "ref": "skill:Explainable AI",
+            "excerpt": null
+          },
+          "portfolio_project_id": null,
+          "excerpt": null
+        }
+      ]
+    }
+  ],
+  "experience_guidance": {
+    "kind": "master_cv_only",
+    "rationale": "Default Master-CV-aligned scope: extended pre-nbn history is excluded unless the caller opts in.",
+    "included_experience_ids": [
+      "chase-risk-compliance-ai-engineer",
+      "ai-engineering-development-2025",
+      "data-engineering-development-2023",
+      "nbn-data-engineer-2020"
+    ],
+    "excluded_experience_ids": [
+      "general-assembly-data-science-2019",
+      "bakers-delight-test-analyst-2019",
+      "accesshq-test-analyst-2018",
+      "bakers-delight-test-analyst-2015",
+      "console-test-analyst-2012",
+      "bakers-delight-test-analyst-2009"
+    ]
+  },
+  "assumptions": [
+    "No Career Profile skills were both JD-relevant and evidence-backed; no skills were promoted.",
+    "Role-family profile anchors added to promoted skills because JD technology overlap was sparse: LLM application development, Operational intelligence, Explainable AI, Enterprise decision support.",
+    "No candidate-supported summary themes could be derived; Phase C must not invent unsupported technology themes.",
+    "Role-family summary themes reinforced with profile anchors: LLM application development, Operational intelligence, Explainable AI.",
+    "Included Career Intelligence Copilot from the Career Profile because ApplicationStrategy portfolio emphasis omitted it for an AI-family role.",
+    "Unsupported employer technology priorities (not used as summary themes or promoted skills): Copilot, Claude.",
+    "Material-benefit gate was overridden by the caller; tailoring proceeds despite tier/next-action signals."
+  ],
+  "owner_review_recommended": true,
+  "insufficient_evidence": false,
+  "material_benefit_override": true
+}

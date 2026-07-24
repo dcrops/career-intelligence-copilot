@@ -379,7 +379,8 @@ CV-generation requirements.
 global Skills. Java, Ruby on Rails, and Gherkin remain historical experience technologies
 only. Project and certification `url` fields stay null until the owner confirms per-project
 canonical links (certification URLs explicitly deferred). Personal links for CV generation
-belong on FR-006 `ContactDetails` (owner-confirmed values for callers: GitHub
+belong on FR-006 `ContactDetails` (owner-confirmed values for callers: email
+`djcropster@gmail.com`, phone `0400 811 545`, GitHub
 `https://github.com/dcrops`, portfolio
 `https://journey.chaseriskandcompliance.com.au/`, LinkedIn
 `https://www.linkedin.com/in/david-cropper/`). See
@@ -780,8 +781,17 @@ Career Profile → Job Analysis → Opportunity Assessment → Portfolio Match
 | `OpenAISummaryRewriter` | Live path; instructions from `prompts/cv_summary_v2.md` |
 | `FixtureSummaryRewriter` | Offline deterministic stub for tests |
 | `summary_validation` | Allowlist / prohibition checks; fail-soft on failure |
-| `CvGenerationOptions.rewrite_summary` | Default `False` (opt-in) |
-| `TailoredCv.summary_source` | `profile_copy` \| `openai_rewrite` \| `fixture_rewrite` \| `fallback_profile_copy` |
+| `CvGenerationOptions.rewrite_summary` | Default `False` (opt-in Phase C) |
+| `CvGenerationOptions.presentation` | Default `submit` (employer-facing); `review` keeps plan meta |
+| `TailoredCv.summary_source` | `theme_aware_composition` (default Phase B) \| `profile_copy` \| `openai_rewrite` \| `fixture_rewrite` \| `fallback_profile_copy` |
+
+**FR-006b (quality):** Submit-ready Markdown is owned by `render_markdown` (hierarchy,
+skills curation, bolding, dates, Master-aligned section labels, methodology block).
+Deterministic theme-aware summary composition runs when Phase C is off. Planner
+role-family anchors, relevance project ranking, and highlight selection improve
+tailoring. Profile may include `selected_engineering_highlights` and
+`engineering_methodology`. Golden suite: `scripts/run_fr006b_golden_suite.py` —
+see [eval/fr006b_cv_quality_validation.md](eval/fr006b_cv_quality_validation.md).
 
 **Prompt versions:** `cv_summary_v1.md` (historical), `cv_summary_v2.md` (current —
 employer-relevant lead, capabilities before chronology). Bump
@@ -789,7 +799,8 @@ employer-relevant lead, capabilities before chronology). Bump
 files for diffs.
 
 The LLM never receives raw job-description text and never changes the Tailoring Plan.
-FR-006 does **not** include presentation-layout “Phase D”; that would be a future FR if needed.
+FR-006b improves presentation inside the Markdown render layer; PDF/DOCX export remains
+out of scope (Master PDF is still the print visual SoT once v4 is exported).
 
 Example (deterministic corpus validation):
 

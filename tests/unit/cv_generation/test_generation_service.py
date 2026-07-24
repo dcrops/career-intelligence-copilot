@@ -78,12 +78,36 @@ def test_markdown_emphasises_promoted_skills_and_lead_project() -> None:
     strategy = strategy_from_payload(job_analysis=rich_job_analysis())
     cv = make_cv(profile=profile, strategy=strategy)
     markdown = cv.rendered_markdown
-    assert "### Emphasised" in markdown
-    assert "Python" in markdown
+    assert "## Core Skills" in markdown
+    assert "**Python**" in markdown
     assert "FastAPI" in markdown
-    assert "Docker" in markdown
     assert "Example Project" in markdown
-    assert "Owner review required" in markdown
+    assert "Owner review required" not in markdown
+    assert "Summary themes" not in markdown
+    assert "## Professional Experience" in markdown
+    assert "## Featured AI Projects" in markdown
+    assert markdown.index("## Professional Experience") < markdown.index(
+        "## Featured AI Projects"
+    )
+
+
+def test_review_presentation_retains_owner_meta() -> None:
+    from career_intelligence.cv_generation import CvGenerationOptions, CvGenerationService
+
+    strategy = strategy_from_payload()
+    profile = minimal_profile()
+    plan = make_plan(profile=profile, strategy=strategy)
+    cv = CvGenerationService().generate(
+        strategy,
+        profile,
+        plan,
+        options=CvGenerationOptions(
+            tailoring_plan_approved=True,
+            presentation="review",
+        ),
+    )
+    assert "Owner review required" in cv.rendered_markdown
+    assert "Summary themes" in cv.rendered_markdown or not plan.summary_themes
 
 
 def test_fidelity_rejects_reordered_projects() -> None:
@@ -158,16 +182,18 @@ def test_experience_kinds_remain_truthful() -> None:
     profile = profile.model_copy(update={"experience": [independent]})
     cv = make_cv(profile=profile)
     assert cv.experience[0].kind == "independent_engineering"
-    assert "`independent_engineering`" in cv.rendered_markdown
+    assert "Independent engineering" in cv.rendered_markdown
+    assert "`independent_engineering`" not in cv.rendered_markdown
     assert cv.experience[0].kind != "employment"
 
 
-def test_phase_b_copies_profile_summary_without_rewriting() -> None:
+def test_phase_b_composes_theme_aware_summary_by_default() -> None:
     profile = minimal_profile()
     cv = make_cv(profile=profile)
-    assert cv.summary == profile.identity.summary
-    assert any("rewrite_summary=False" in item for item in cv.assumptions)
-    assert cv.summary_source == "profile_copy"
+    assert cv.summary is not None
+    assert profile.identity.summary in cv.summary
+    assert cv.summary_source == "theme_aware_composition"
+    assert any("theme" in item.casefold() for item in cv.assumptions)
 
 
 def test_contact_overlay_is_caller_supplied_only() -> None:

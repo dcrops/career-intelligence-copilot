@@ -11,12 +11,14 @@ identity:
   full_name: David Cropper
   target_role: AI Engineer
   summary: >-
-    AI Engineer with commercial technology experience since 2009 spanning
-    software quality assurance, test automation, and Data Engineering,
-    including 3.5 years of commercial enterprise Data Engineering experience,
-    plus independent AI Engineering and portfolio development producing
-    production-oriented AI systems spanning retrieval-augmented generation,
-    operational intelligence, explainable AI, and enterprise decision support.
+    AI Engineer applying software engineering discipline to build end-to-end AI
+    applications with Python, FastAPI, Docker, and OpenAI APIs. 3.5 years of
+    commercial enterprise Data Engineering experience, plus independent AI
+    Engineering portfolio work across retrieval systems, operational
+    intelligence, explainable AI, and enterprise decision support. Applies a
+    disciplined AI Engineering methodology — architecture-first design,
+    evidence-based validation, and human-in-the-loop review — to build AI
+    systems with traceable, reviewable outputs for operational decision-making.
 experience:
   - id: chase-risk-compliance-ai-engineer
     kind: independent_engineering
@@ -30,21 +32,23 @@ experience:
     location: Melbourne, VIC
     highlights:
       - >-
-        Independently develops progressively more complex production-oriented AI
-        Engineering projects under a dedicated portfolio brand.
+        Delivered a portfolio of AI applications spanning retrieval-augmented
+        generation, operational intelligence, explainable diagnostics, and
+        enterprise decision support.
       - >-
-        Builds engineering capability across retrieval-augmented generation,
-        operational intelligence, explainable AI, and enterprise
-        decision-support project areas.
+        Applied FastAPI, Docker, OpenAI APIs, Git, and PyTest where each
+        portfolio system required them.
       - >-
-        Applies architecture-first engineering practices using Cursor, Git,
-        and PyTest across the complete development lifecycle.
+        Designed architectures that separate deterministic business logic from
+        AI reasoning components.
+      - >-
+        Published engineering documentation and public demonstrations of
+        working systems.
     technologies:
       - Python
       - FastAPI
       - Docker
       - OpenAI APIs
-      - Cursor
       - Git
       - PyTest
   - id: ai-engineering-development-2025
@@ -56,13 +60,13 @@ experience:
     location: Melbourne, VIC
     highlights:
       - >-
-        Made a deliberate pivot from Data Engineering to AI Engineering as the
-        primary career focus.
+        Advanced from Data Engineering foundations into AI Engineering through
+        structured study and increasingly sophisticated engineering projects.
       - Undertook structured AI Engineering study.
       - Developed progressively more sophisticated portfolio projects.
       - >-
-        Adopted increasingly production-oriented engineering practices,
-        including testing, documentation, and milestone-driven development.
+        Strengthened delivery discipline through testing, documentation, and
+        milestone-driven project execution.
     technologies:
       - Python
       - OpenAI APIs
@@ -77,13 +81,16 @@ experience:
     end_date: 2025-06
     location: Melbourne, VIC
     highlights:
-      - Began with a personal break following the nbn Australia role.
-      - Undertook structured upskilling in modern Data Engineering.
+      - >-
+        Full-time professional development focused initially on modern Data
+        Engineering platforms after the nbn Australia role.
       - >-
         Developed skills across contemporary data platforms and tools,
         including Microsoft Fabric, Databricks, Snowflake, dbt, and Azure Data
         Factory.
-      - Prepared for a return to Data Engineering work.
+      - >-
+        Built the foundation for subsequent AI Engineering portfolio
+        development.
     technologies:
       - Microsoft Fabric
       - Databricks
@@ -98,9 +105,15 @@ experience:
     end_date: 2023-10
     location: null
     highlights:
-      - Developed and maintained enterprise data pipelines using AWS services, Python, SQL and Apache NiFi.
-      - Performed SQL transformations and data validation.
-      - Worked in Agile teams supporting production systems.
+      - >-
+        Developed and maintained enterprise data pipelines and operational
+        reporting solutions using AWS services, Python, SQL, and Apache NiFi.
+      - >-
+        Performed SQL transformations, data validation, and production support
+        for geospatial and business-operational datasets.
+      - >-
+        Worked in Agile delivery teams supporting reliable production data
+        systems with Git and automated testing practices.
     technologies:
       - Python
       - SQL
@@ -302,15 +315,95 @@ skills:
   soft:
     - name: Architecture-first design
       evidence: experience:chase-risk-compliance-ai-engineer
+    - name: Roadmap-driven delivery
+      evidence: project:career-intelligence-copilot
+    - name: Human-in-the-loop validation
+      evidence: project:career-intelligence-copilot
+    - name: Living documentation
+      evidence: project:career-intelligence-copilot
     - name: Agile collaboration
       evidence: experience:nbn-data-engineer-2020
+selected_engineering_highlights:
+  - >-
+    Designed and delivered a portfolio of AI applications combining
+    deterministic logic with AI reasoning across RAG, operational intelligence,
+    diagnostics, entitlements, and career decision support.
+  - >-
+    Built modular service architectures with FastAPI, containerised services
+    with Docker, and unit/regression suites in PyTest.
+  - >-
+    Designed explainable, evidence-backed recommendation flows with traceable
+    outputs rather than opaque model responses.
+  - >-
+    Published architecture notes, testing approach, and working demonstrations
+    through a public portfolio and GitHub repositories.
+engineering_methodology:
+  philosophy: >-
+    Applies AI to improve engineering quality and delivery discipline, not to
+    replace engineering judgement.
+  categories:
+    - name: Planning
+      practices:
+        - Product vision
+        - Architecture-first design
+        - Roadmaps and milestones
+        - Acceptance criteria
+    - name: Implementation
+      practices:
+        - Controlled AI-assisted coding
+        - Architecture-aligned standards
+        - Iterative delivery
+    - name: Quality
+      practices:
+        - PyTest regression and behavioural testing
+        - Evidence-based debugging
+        - Golden validation suites
+    - name: Review
+      practices:
+        - Architecture and maintainability reviews
+        - Human-in-the-loop validation
+    - name: Delivery
+      practices:
+        - Git
+        - Living documentation
+        - Documentation freeze
+        - GO / NO-GO release decisions
 projects:
+  - id: career-intelligence-copilot
+    name: Career Intelligence Copilot
+    summary: >-
+      Enables an AI Engineering job seeker to decide which roles deserve effort.
+      Reviews job ads against a structured career profile, ranks fit,
+      recommends application strategy, and drafts tailored CVs for human review
+      — reducing repetitive search work while keeping decisions explainable.
+    technologies:
+      - Python
+      - Pydantic
+      - OpenAI APIs
+      - PyTest
+      - Git
+    outcomes:
+      - >-
+        Delivers an explainable job-intelligence loop from profile through
+        strategy and tailored CV drafts under owner review.
+      - >-
+        Uses golden validation suites and formal GO / NO-GO close-out for
+        release-quality engineering decisions.
+    url: null
+    demonstrates:
+      - Structured career profile model
+      - Evidence-cited opportunity assessment
+      - Deterministic application-strategy recommendation
+      - Evidence-grounded CV generation pipeline
+      - Golden validation suites with GO / NO-GO release gates
+      - Human-in-the-loop review of generated outputs
   - id: operational-intelligence-copilot
     name: Operational Intelligence Copilot
     summary: >-
-      Domain-agnostic operational intelligence platform combining deterministic
-      analytics with Large Language Model reasoning to analyse structured
-      business data and generate explainable, evidence-backed executive insights.
+      Demonstrates operational intelligence capability for understanding
+      business data. Combines reliable analytics with AI reasoning to surface
+      anomalies and produce clear, evidence-backed executive insights that can
+      be checked and trusted.
     technologies:
       - Python
       - FastAPI
@@ -330,8 +423,10 @@ projects:
   - id: governance-document-rag
     name: Governance-Aware Document Intelligence RAG
     summary: >-
-      Enterprise retrieval-augmented generation platform supporting trustworthy
-      AI responses over organisational knowledge.
+      Allows organisations to answer questions from their own documents with
+      responses that stay grounded in source material. Built for teams that need
+      trustworthy AI answers over policies, procedures, and knowledge bases —
+      with evaluation and explainability controls.
     technologies:
       - Python
       - FastAPI
@@ -346,16 +441,17 @@ projects:
       - Provides evaluation, telemetry, and explainability controls.
     url: null
     demonstrates:
-      - Multi-format document ingestion
+      - AI evaluation frameworks
+      - Grounding validation
       - Embedding generation
       - Retrieval orchestration
-      - Evaluation frameworks
-      - Grounding validation
+      - Multi-format document ingestion
   - id: payroll-diagnostics-engine
     name: Payroll Diagnostics Engine
     summary: >-
-      Rule-based operational decision-support platform that identifies payroll
-      anomalies through deterministic business-rule evaluation.
+      Reviews payroll data against deterministic business rules to identify
+      anomalies. Produces explainable findings and executive-ready reports so
+      issues can be investigated with confidence.
     technologies:
       - Python
       - Pandas
@@ -374,8 +470,9 @@ projects:
   - id: public-holiday-entitlements
     name: Public Holiday Entitlements Application
     summary: >-
-      Business-rules platform combining geospatial processing and external APIs
-      to determine Australian public-holiday entitlements.
+      Determines Australian public-holiday entitlements from location and rules
+      for HR and payroll teams. Combines geospatial logic with external APIs to
+      produce compliance-oriented results.
     technologies:
       - Python
       - REST APIs

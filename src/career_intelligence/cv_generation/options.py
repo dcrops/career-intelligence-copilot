@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from typing import Annotated
+from typing import Annotated, Literal
 
 from pydantic import BaseModel, ConfigDict, StringConstraints
 
@@ -45,10 +45,15 @@ class CvGenerationOptions(OptionsModel):
     mandatory final review of the generated CV (``owner_review_required``).
 
     ``rewrite_summary`` opts into Phase C summary rewriting when a
-    ``SummaryRewriter`` is injected into ``CvGenerationService``. Default False
-    preserves Phase B profile-summary copy until manual validation completes.
+    ``SummaryRewriter`` is injected into ``CvGenerationService``. When False,
+    Phase B still applies deterministic theme-aware summary composition
+    (FR-006b) rather than a raw profile dump.
+
+    ``presentation`` selects submit-ready Markdown (default) or the owner-review
+    debug surface.
     """
 
     tailoring_plan_approved: bool = False
     rewrite_summary: bool = False
+    presentation: Literal["submit", "review"] = "submit"
     contact: ContactDetails | None = None

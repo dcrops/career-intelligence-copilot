@@ -145,7 +145,7 @@ def test_validation_rejects_commercial_claim_not_in_source() -> None:
     assert any("commercial claim" in error for error in result.errors)
 
 
-def test_service_default_remains_profile_copy() -> None:
+def test_service_default_uses_theme_aware_composition() -> None:
     profile = minimal_profile()
     strategy = strategy_from_payload(job_analysis=rich_job_analysis())
     plan = make_plan(profile=profile, strategy=strategy)
@@ -155,8 +155,8 @@ def test_service_default_remains_profile_copy() -> None:
         plan,
         options=CvGenerationOptions(tailoring_plan_approved=True),
     )
-    assert cv.summary == profile.identity.summary
-    assert cv.summary_source == "profile_copy"
+    assert profile.identity.summary in (cv.summary or "")
+    assert cv.summary_source == "theme_aware_composition"
 
 
 def test_rewrite_summary_without_rewriter_raises() -> None:
@@ -204,8 +204,22 @@ def test_fixture_rewrite_path_updates_summary_source() -> None:
     assert cv.summary_source == "fixture_rewrite"
     assert cv.summary != profile.identity.summary
     assert "Python" in (cv.summary or "")
-    assert "Summary themes (from Tailoring Plan)" in cv.rendered_markdown
-    assert "Phase C" in cv.rendered_markdown
+    assert "Owner review required" not in cv.rendered_markdown
+    assert "Summary themes" not in cv.rendered_markdown
+    assert cv.summary_themes
+
+    review_cv = CvGenerationService(FixtureSummaryRewriter()).generate(
+        strategy,
+        profile,
+        plan,
+        options=CvGenerationOptions(
+            tailoring_plan_approved=True,
+            rewrite_summary=True,
+            presentation="review",
+        ),
+    )
+    assert "Summary themes (from Tailoring Plan)" in review_cv.rendered_markdown
+    assert "Phase C" in review_cv.rendered_markdown
 
 
 def test_openai_fake_client_happy_path() -> None:

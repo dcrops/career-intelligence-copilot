@@ -69,6 +69,9 @@ Architecture decisions: `docs/adr/`. Release evidence:
 | [12_phase_history.md](12_phase_history.md) | Supporting | Phase 1–2 outcomes and lessons |
 | [eval/phase2_release_report.md](eval/phase2_release_report.md) | Supporting | Phase 2 M5 GO evidence |
 | [eval/fr006_manual_validation.md](eval/fr006_manual_validation.md) | Supporting | FR-006 validation procedure |
+| [eval/fr006b_cv_quality_golden_suite.md](eval/fr006b_cv_quality_golden_suite.md) | Supporting | FR-006b permanent CV quality benchmarks |
+| [eval/fr006b_cv_quality_findings.md](eval/fr006b_cv_quality_findings.md) | Supporting | FR-006b quality review (pre-implementation) |
+| [eval/fr006b_cv_quality_validation.md](eval/fr006b_cv_quality_validation.md) | Supporting | FR-006b P0 implementation + G1–G5 results |
 | [eval/fr002_openai_manual_eval.md](eval/fr002_openai_manual_eval.md) | Supporting | FR-002 live eval record |
 | [eval/fr003_openai_manual_eval.md](eval/fr003_openai_manual_eval.md) | Supporting | FR-003 live eval record |
 | [01_executive_summary.md](01_executive_summary.md) | Supporting | Quick narrative overview |

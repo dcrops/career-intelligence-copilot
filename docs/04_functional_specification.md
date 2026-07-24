@@ -426,9 +426,31 @@ Acceptance Criteria
 ## FR-006 CV Generation
 
 **Phase:** Post–Phase 2  
-**Status:** Completed
+**Status:** Completed (FR-006); quality uplift ongoing under **FR-006b**
 
 The system shall generate tailored CVs when tailoring is materially beneficial and approved by the user.
+
+### FR-006b — CV Quality Improvement (current)
+
+**Status:** Ready for daily Markdown use (owner preference vs Master CV v3).
+
+FR-006b improves the integrated loop: Master CV content accuracy → Career Profile
+source fidelity → Tailoring Plan emphasis → submit-ready Markdown render.
+
+Additional FR-006b behaviours (additive to FR-006):
+
+- Deterministic theme-aware Professional Summary when Phase C is off
+- Submit-ready Markdown presentation (default); optional `presentation=review`
+- Relevance-based selection of experience highlights and project demonstrates/outcomes
+  from Career Profile text only (no invention)
+- Portfolio project relevance reordering within ApplicationStrategy emphasis; optional
+  Career Profile project append for AI-family roles when evidenced
+- Profile baselines: `selected_engineering_highlights`, `engineering_methodology`
+- Success metric: owner would prefer submitting the generated CV over manually
+  editing the Master CV for the target role
+
+Golden validation: [eval/fr006b_cv_quality_golden_suite.md](eval/fr006b_cv_quality_golden_suite.md),
+[eval/fr006b_cv_quality_validation.md](eval/fr006b_cv_quality_validation.md).
 
 ### Architecture
 

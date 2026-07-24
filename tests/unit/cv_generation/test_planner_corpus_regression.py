@@ -144,6 +144,37 @@ def test_bluefin_keeps_openai_langchain_emphasis_where_relevant() -> None:
     assert "terraform" not in combined
 
 
+def test_maincode_does_not_lead_with_test_automation_only() -> None:
+    """AI Infrastructure sparse JD overlap must not promote Test automation alone."""
+    plan = _plan_for(
+        "012_maincode_ai_infrastructure_engineer.json",
+        override=True,
+    )
+    themes = [item.theme for item in plan.summary_themes]
+    promoted = [item.skill_name for item in plan.skills_to_promote]
+    assert "Test automation" not in themes
+    assert "Test automation" not in promoted
+    assert "Python" in promoted
+    assert any(
+        name in {t.casefold() for t in themes}
+        for name in {
+            "python",
+            "openai apis",
+            "llm application development",
+            "operational intelligence",
+            "retrieval-augmented generation",
+        }
+    )
+
+
+def test_automation_jd_token_does_not_match_test_automation_skill() -> None:
+    from career_intelligence.cv_generation.deterministic_planner import _direct_match
+
+    assert _direct_match("automation", "Test automation") is False
+    assert _direct_match("Python", "Python Programming") is True
+    assert _direct_match("openai", "OpenAI APIs") is True
+
+
 def test_fixture_rewrite_excludes_unsupported_technologies() -> None:
     """Phase C fixture path must not introduce unsupported JD technologies."""
     from career_intelligence.cv_generation import (

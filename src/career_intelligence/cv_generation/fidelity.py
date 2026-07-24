@@ -122,34 +122,36 @@ def validate_fidelity(cv: TailoredCv, plan: TailoringPlan) -> None:
 
     if cv.projects:
         lead_name = cv.projects[0].name
-        if lead_name.casefold() not in markdown_folded:
+        heading_needle = f"### {lead_name}".casefold()
+        if heading_needle not in markdown_folded:
             errors.append(
                 ErrorDetail(
                     loc=("rendered_markdown",),
                     msg=(
                         "rendered Markdown must lead with the first emphasised "
-                        f"project name '{lead_name}'"
+                        f"project heading '### {lead_name}'"
                     ),
                     type="value_error",
                 )
             )
         # First project heading occurrence should be the lead project.
-        positions = [
-            (markdown_folded.find(project.name.casefold()), project.name)
+        heading_positions = [
+            (markdown_folded.find(f"### {project.name}".casefold()), project.name)
             for project in cv.projects
-            if project.name.casefold() in markdown_folded
         ]
-        positions = [(pos, name) for pos, name in positions if pos >= 0]
-        if positions:
-            positions.sort(key=lambda item: item[0])
-            if positions[0][1] != lead_name:
+        heading_positions = [
+            (pos, name) for pos, name in heading_positions if pos >= 0
+        ]
+        if heading_positions:
+            heading_positions.sort(key=lambda item: item[0])
+            if heading_positions[0][1] != lead_name:
                 errors.append(
                     ErrorDetail(
                         loc=("rendered_markdown",),
                         msg=(
-                            "first emphasised project in Markdown must be the "
-                            f"plan's rank-1 project '{lead_name}', found "
-                            f"'{positions[0][1]}' first"
+                            "first emphasised project heading in Markdown must "
+                            f"be the plan's rank-1 project '{lead_name}', found "
+                            f"'{heading_positions[0][1]}' first"
                         ),
                         type="value_error",
                     )

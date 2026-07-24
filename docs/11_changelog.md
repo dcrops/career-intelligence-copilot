@@ -4,6 +4,90 @@ Records product strategy and engineering knowledge changes. Routine typo fixes a
 
 ---
 
+## Version 1.34
+
+### Canonical Master CV v4 released
+
+- Frozen Master CV v4 as the baseline for future tailoring:
+  `career-documents/cv/master_ai_engineer_cv.{md,html,pdf}`.
+- Canonical contact email set to `djcropster@gmail.com` (Yahoo removed from
+  active CV, scripts, and implementation notes).
+- Technical Skills regrouped by recruiter relevance (AI / Software / Data
+  Engineering); summary opening reframed to end-to-end AI applications.
+- Previous Master artefacts archived under `career-documents/cv/archive/`.
+
+---
+
+## Version 1.33
+
+### Master CV v4 final owner-review refinement
+
+- Visible clickable LinkedIn/Portfolio/GitHub URLs; methodology pointers removed.
+- Stronger Chase delivery bullets and Selected Highlights; varied project overviews.
+- Compressed Earlier Experience; GA moved under Professional Development;
+  Certifications separated.
+- PDF rendered at **3 pages** with verified hyperlinks
+  (`career-documents/cv/archive/master_ai_engineer_cv_v4_proposed.pdf`).
+
+---
+
+## Version 1.32
+
+### Master CV v4 owner-review revision
+
+- Refined proposed Master CV v4 (Markdown + HTML with clickable contact links).
+- Career Profile summary, highlights, Chase bullets, PD narrative, and project
+  overviews aligned to the revised Master CV.
+- No FR-006b reopen; quality milestone remains READY FOR DAILY USE.
+
+---
+
+## Version 1.31
+
+### FR-006b integrated quality uplift — ready for daily Markdown use
+
+- Master CV review: reframed “AI-Assisted Engineering Practices” as transferable
+  AI Engineering Methodology; proposed Master v4 Markdown.
+- Career Profile: methodology block, selected highlights, CIC project, stronger
+  Chase/nbn prose (no invented employment).
+- Planner/render: relevance highlight/project selection, CIC append for AI-family
+  roles, Master-aligned submit sections.
+- Validation report updated; recommendation **READY FOR DAILY USE**
+  ([eval/fr006b_cv_quality_validation.md](eval/fr006b_cv_quality_validation.md)).
+
+---
+
+## Version 1.30
+
+### FR-006b P0 — CV content and presentation quality
+
+- Submit-ready Markdown render (default): contact, job title, curated skills,
+  experience-before-projects, strategic bolding, no review chrome.
+- Deterministic theme-aware summary composition when Phase C is off.
+- Planner: safer capability matching; role-family anchors for sparse JD overlap
+  (`ai_engineering`, `ai_adjacent`).
+- Golden suite runner + validation report
+  ([eval/fr006b_cv_quality_validation.md](eval/fr006b_cv_quality_validation.md)).
+- Recommendation remains **further quality improvements required** pending owner
+  preference vs Master CV and deeper experience/project tailoring.
+
+---
+
+## Version 1.29
+
+### FR-006b — Golden Validation Suite and quality findings
+
+- Established permanent CV Quality Golden Validation Suite
+  ([eval/fr006b_cv_quality_golden_suite.md](eval/fr006b_cv_quality_golden_suite.md)):
+  five diverse real jobs (strong AI Eng, automation, infrastructure, adoption, stretch).
+- Recorded pre-implementation Findings Report
+  ([eval/fr006b_cv_quality_findings.md](eval/fr006b_cv_quality_findings.md)):
+  strengths, weaknesses, root causes, impact-ordered opportunities.
+- Linked suite from testing strategy and roadmap Current Focus.
+- **No generation-code changes** in this step — diagnose before implement.
+
+---
+
 ## Version 1.28
 
 ### Phase 2 documentation freeze (pre–FR-006b)

@@ -62,8 +62,9 @@ def test_certifications_are_profile_baseline_not_plan_content() -> None:
     assert [c.certification_id for c in cv.certifications] == [
         "aws-certified-developer-associate"
     ]
-    assert "profile baseline" in cv.rendered_markdown.casefold()
+    assert "aws certified developer" in cv.rendered_markdown.casefold()
     assert CERTIFICATIONS_BASELINE_ASSUMPTION in cv.assumptions
+    assert "profile baseline" not in cv.rendered_markdown.casefold()
 
 
 def test_extended_history_rule_is_isolated_in_experience_scope() -> None:
