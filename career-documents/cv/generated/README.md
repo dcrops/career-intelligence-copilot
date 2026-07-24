@@ -12,5 +12,6 @@ Each run typically produces:
 - `{stem}.tailoring_plan.json`
 - `{stem}.json` (TailoredCv)
 - `{stem}.md` (Markdown)
+- `{stem}.html` (standalone styled HTML; no Pandoc)
 
 Do not submit or email drafts without owner review. No PDF/DOCX in this folder.

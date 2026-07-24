@@ -799,8 +799,16 @@ employer-relevant lead, capabilities before chronology). Bump
 files for diffs.
 
 The LLM never receives raw job-description text and never changes the Tailoring Plan.
-FR-006b improves presentation inside the Markdown render layer; PDF/DOCX export remains
-out of scope (Master PDF is still the print visual SoT once v4 is exported).
+FR-006b improves presentation inside the Markdown render layer; generated drafts also
+emit standalone HTML via `html_renderer` (shared print CSS; no Pandoc). PDF/DOCX export
+remains out of scope for the runner (canonical Master PDF is the print visual SoT).
+
+**Shared presentation system:** `src/career_intelligence/cv_generation/assets/cv_print.css`
+is the single CSS source for Master HTML and tailored HTML. Master embeds the CSS between
+`CV_PRINT_CSS_BEGIN/END` markers; keep them aligned with
+`python scripts/sync_master_cv_css.py` (use `--check` in CI-style verification). Layout
+benchmark is archived Master CV v3 readability; current Master content stays canonical.
+Readability is prioritised over minimum page count (≈4–5 pages OK).
 
 Example (deterministic corpus validation):
 
@@ -819,9 +827,15 @@ python scripts/run_cv_generation_manual.py \
 
 **Expected console / artifacts**
 
-Readable Tailoring Plan + Tailored CV Markdown under `career-documents/cv/generated/`,
-with `summary_source` reflecting `profile_copy`, `openai_rewrite`, or
-`fallback_profile_copy`. Owner review remains mandatory before external use.
+Under `career-documents/cv/generated/` (same stem):
+
+- `{stem}.tailoring_plan.json`
+- `{stem}.json` (TailoredCv)
+- `{stem}.md` (Markdown)
+- `{stem}.html` (standalone styled HTML; no Pandoc)
+
+`summary_source` reflects `theme_aware_composition`, `profile_copy`, `openai_rewrite`,
+or `fallback_profile_copy`. Owner review remains mandatory before external use.
 
 **Known runner / runtime notes**
 

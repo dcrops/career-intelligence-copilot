@@ -4,6 +4,36 @@ Records product strategy and engineering knowledge changes. Routine typo fixes a
 
 ---
 
+## Version 1.36
+
+### CV presentation system aligned to Master v3 readability
+
+- Shared print CSS (`assets/cv_print.css`) is the single presentation source for
+  Master and tailored HTML; Master embeds it via `scripts/sync_master_cv_css.py`.
+- Layout benchmark: archived Master CV v3 (spacing / hierarchy). Current Master
+  content remains canonical. Readability prioritised over minimum page count
+  (≈4–5 pages for full Master / Maincode tailored samples).
+- Page-break rules allow long experience/project blocks to split; headings keep
+  the following line where practical.
+- Final spacing refinement: +8px H2 chapter gaps, +8px experience/project
+  separation, more space above Technology Stack and after lists/closing blocks.
+- Typesetting freeze polish: +5px H2 / entry / stack rhythm; bold contact
+  labels (LinkedIn / Portfolio / GitHub) only.
+
+---
+
+## Version 1.35
+
+### Automatic HTML output for tailored CVs
+
+- Manual FR-006 runner / `write_tailored_cv_drafts` now emit standalone HTML beside
+  Markdown and JSON (same stem; no Pandoc).
+- Shared print CSS: `src/career_intelligence/cv_generation/assets/cv_print.css`
+  (aligned with canonical Master CV presentation).
+- HTML render failures raise `CvHtmlRenderError` before draft files are written.
+
+---
+
 ## Version 1.34
 
 ### Canonical Master CV v4 released

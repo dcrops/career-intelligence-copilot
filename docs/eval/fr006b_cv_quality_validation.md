@@ -24,6 +24,11 @@ Reviewed Master CV v3 PDF (4 pages; vector layout, no text layer — reviewed vi
 **Decision:** Do not treat Master v3 as perfect. Proposed Master content is in
 `master_ai_engineer_cv.md` (canonical Master CV v4; PDF at `master_ai_engineer_cv.pdf`).
 
+**Presentation note (2026-07-24):** Master and tailored HTML now share
+`assets/cv_print.css`, with spacing/hierarchy benchmarked to Master v3
+readability (content remains v4). Prefer `python scripts/sync_master_cv_css.py --check`
+after CSS edits.
+
 ---
 
 ## 2. Career Profile review

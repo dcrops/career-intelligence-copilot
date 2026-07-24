@@ -53,3 +53,11 @@ class CvGenerationGateError(CvGenerationError):
     def __init__(self, message: str) -> None:
         self.message = message
         super().__init__(message)
+
+
+class CvHtmlRenderError(CvGenerationError):
+    """Raised when TailoredCv HTML rendering or HTML draft write fails."""
+
+    def __init__(self, message: str) -> None:
+        self.message = message
+        super().__init__(message)

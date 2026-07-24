@@ -139,8 +139,13 @@ For a full run:
 | `{stem}.tailoring_plan.json` | Trusted Tailoring Plan |
 | `{stem}.json` | Trusted TailoredCv (typed JSON) |
 | `{stem}.md` | Human-reviewable Markdown draft |
+| `{stem}.html` | Standalone styled HTML (same stem; no Pandoc) |
 
-No PDF. No DOCX. Drafts must not be submitted or emailed without owner review.
+No PDF. No DOCX. HTML generation uses the in-package renderer and shared print CSS
+(`assets/cv_print.css`). Master and tailored HTML share that presentation system;
+sync Master embeds with `python scripts/sync_master_cv_css.py`. Layout follows the
+archived Master v3 readability benchmark; ≈4–5 print pages is acceptable.
+Drafts must not be submitted or emailed without owner review.
 
 ---
 

@@ -109,10 +109,17 @@ def test_write_tailored_cv_drafts_writes_markdown_json_and_plan(
     assert result.markdown_path == tmp_path / "test_stem.md"
     assert result.json_path == tmp_path / "test_stem.json"
     assert result.plan_json_path == tmp_path / "test_stem.tailoring_plan.json"
+    assert result.html_path == tmp_path / "test_stem.html"
+    assert result.html_path is not None
+    assert result.html_path.is_file()
 
     markdown = result.markdown_path.read_text(encoding="utf-8")
     assert markdown == cv.rendered_markdown
     assert "# " in markdown
+
+    html = result.html_path.read_text(encoding="utf-8")
+    assert html.startswith("<!DOCTYPE html>")
+    assert cv.full_name in html
 
     cv_payload = json.loads(result.json_path.read_text(encoding="utf-8"))
     assert cv_payload["owner_review_required"] is True

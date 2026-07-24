@@ -11,8 +11,9 @@ Upstream (FR-001→FR-005) resolution order:
    contain a recognised ``[CIC-FIXTURE:…]`` marker. Not for real SEEK/LinkedIn ads.
 4. Live OpenAI upstream — requires ``OPENAI_API_KEY``.
 
-FR-006 Tailoring Plan and CV render are deterministic. Phase C summary rewrite is
-opt-in via ``--rewrite-summary`` (OpenAI) and remains off by default.
+FR-006 Tailoring Plan and CV render are deterministic (Markdown + standalone HTML).
+Phase C summary rewrite is opt-in via ``--rewrite-summary`` (OpenAI) and remains off
+by default.
 
 Examples:
   # Preferred: reuse FR-005 manual validation artefacts (deterministic)
@@ -502,6 +503,7 @@ def run_fr006_stages(
             markdown_path=output_dir / f"{stem}.md",
             json_path=output_dir / f"{stem}.json",
             plan_json_path=plan_path,
+            html_path=None,
         )
         gate = None
         if not tailoring_plan_approved:
@@ -781,7 +783,8 @@ def format_report(result: CvPipelineResult) -> str:
         lines.append(f"  stem: {result.drafts.stem}")
         lines.append(f"  plan_json: {result.drafts.plan_json_path}")
         if result.cv is not None:
-            lines.append(f"  markdown: {result.drafts.markdown_path}")
+            lines.append(f"  cv_markdown: {result.drafts.markdown_path}")
+            lines.append(f"  cv_html: {result.drafts.html_path}")
             lines.append(f"  cv_json: {result.drafts.json_path}")
         lines.append("")
 

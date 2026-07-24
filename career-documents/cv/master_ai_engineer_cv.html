@@ -3,98 +3,200 @@
 <head>
   <meta charset="utf-8" />
   <title>David Cropper — AI Engineer CV</title>
-  <style>
-    :root {
-      --ink: #1a1a1a;
-      --heading: #1e3a5f;
-      --muted: #444;
-      --rule: #5b7ea6;
-    }
-    @page { margin: 11mm 13mm; size: A4; }
-    body {
-      font-family: "Georgia", "Times New Roman", serif;
-      color: var(--ink);
-      line-height: 1.28;
-      max-width: 780px;
-      margin: 0 auto;
-      padding: 12px 10px 18px;
-      font-size: 9.6pt;
-    }
-    h1 {
-      font-family: "Segoe UI", "Helvetica Neue", Arial, sans-serif;
-      color: var(--heading);
-      text-align: center;
-      font-size: 21pt;
-      margin: 0 0 4px;
-      letter-spacing: 0.02em;
-    }
-    .contact {
-      text-align: center;
-      font-size: 8.5pt;
-      color: var(--muted);
-      margin: 0 0 1px;
-    }
-    .contact a { color: var(--heading); text-decoration: underline; }
-    .role {
-      text-align: center;
-      font-family: "Segoe UI", "Helvetica Neue", Arial, sans-serif;
-      font-weight: 700;
-      color: var(--heading);
-      margin: 5px 0 7px;
-      font-size: 10.5pt;
-    }
-    hr {
-      border: 0;
-      border-top: 1.5px solid var(--rule);
-      margin: 4px 0 8px;
-    }
-    h2 {
-      font-family: "Segoe UI", "Helvetica Neue", Arial, sans-serif;
-      color: var(--heading);
-      font-size: 10.5pt;
-      margin: 10px 0 4px;
-      border-bottom: 1px solid #d7e0ea;
-      padding-bottom: 2px;
-      page-break-after: avoid;
-    }
-    h3 {
-      font-family: "Segoe UI", "Helvetica Neue", Arial, sans-serif;
-      color: var(--heading);
-      font-size: 9.8pt;
-      margin: 8px 0 2px;
-      page-break-after: avoid;
-    }
-    .meta { font-style: italic; color: var(--muted); margin: 0 0 3px; font-size: 8.8pt; }
-    p { margin: 0 0 4px; }
-    ul { margin: 2px 0 5px 16px; padding: 0; }
-    li { margin: 0 0 2px; }
-    .stack { margin: 2px 0 6px; }
-    .skills p { margin: 0 0 3px; }
-    .project, .experience, .methodology {
-      page-break-inside: avoid;
-    }
-    .closing {
-      page-break-inside: avoid;
-    }
-    @media print {
-      body { padding: 0; max-width: none; }
-      a { color: var(--heading); }
-    }
-  </style>
+  <!-- CV_PRINT_CSS_BEGIN -->
+<style id="cv-print-css">
+/* Canonical CV print presentation.
+   Source of truth for Master CV HTML and tailored CV HTML.
+   Layout benchmark: archived Master CV v3 (readability / spacing).
+   Content: current Master CV remains authoritative.
+   Readability is prioritised over minimum page count (≈4–5 pages OK).
+*/
+
+:root {
+  --ink: #1a1a1a;
+  --heading: #1e3a5f;
+  --heading-entry: #2a5a8a;
+  --muted: #444;
+  --rule: #5b7ea6;
+}
+
+@page {
+  size: A4;
+  margin: 18mm 20mm;
+}
+
+body {
+  font-family: "Georgia", "Times New Roman", serif;
+  color: var(--ink);
+  font-size: 11pt;
+  line-height: 1.45;
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 18px 16px 28px;
+}
+
+h1 {
+  font-family: "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+  color: var(--heading);
+  text-align: center;
+  font-size: 24pt;
+  font-weight: 700;
+  margin: 0 0 8px;
+  letter-spacing: 0.02em;
+  page-break-after: avoid;
+  break-after: avoid-page;
+}
+
+.header-rule {
+  border: 0;
+  border-top: 1.5px solid var(--rule);
+  margin: 6px 0 14px;
+}
+
+.contact {
+  text-align: center;
+  font-size: 10pt;
+  color: var(--muted);
+  margin: 0 0 5px;
+  line-height: 1.4;
+}
+
+.contact a {
+  color: var(--heading);
+  text-decoration: underline;
+}
+
+.role {
+  text-align: center;
+  font-family: "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+  font-weight: 700;
+  color: var(--heading);
+  margin: 12px 0 18px;
+  font-size: 12pt;
+}
+
+hr {
+  border: 0;
+  border-top: 1px solid #d7e0ea;
+  margin: 14px 0 16px;
+}
+
+h2 {
+  font-family: "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+  color: var(--heading);
+  font-size: 13pt;
+  font-weight: 700;
+  margin: 33px 0 10px;
+  border-bottom: 1px solid #d7e0ea;
+  padding-bottom: 4px;
+  page-break-after: avoid;
+  break-after: avoid-page;
+}
+
+h3 {
+  font-family: "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+  color: var(--heading-entry);
+  font-size: 11.5pt;
+  font-weight: 700;
+  margin: 14px 0 4px;
+  page-break-after: avoid;
+  break-after: avoid-page;
+}
+
+.meta {
+  font-style: italic;
+  color: var(--muted);
+  margin: 0 0 8px;
+  font-size: 10pt;
+  page-break-before: avoid;
+  break-before: avoid-page;
+}
+
+p {
+  margin: 0 0 9px;
+  orphans: 3;
+  widows: 3;
+}
+
+ul {
+  margin: 4px 0 14px 1.35em;
+  padding: 0;
+}
+
+li {
+  margin: 0 0 6px;
+  orphans: 2;
+  widows: 2;
+}
+
+.stack {
+  margin: 17px 0 6px;
+}
+
+.skills {
+  margin: 0 0 12px;
+}
+
+.skills p {
+  margin: 0 0 7px;
+}
+
+/* Long entries may split across pages; keep heading with the next line. */
+.experience,
+.project {
+  margin: 0 0 30px;
+  page-break-inside: auto;
+  break-inside: auto;
+}
+
+.experience > h3 + .meta,
+.project > h3 + p {
+  page-break-before: avoid;
+  break-before: avoid-page;
+}
+
+.methodology {
+  margin: 0 0 16px;
+  page-break-inside: auto;
+  break-inside: auto;
+}
+
+.methodology > h2 + p {
+  page-break-before: avoid;
+  break-before: avoid-page;
+}
+
+.closing {
+  margin-top: 10px;
+  page-break-inside: avoid;
+  break-inside: avoid-page;
+}
+
+@media print {
+  body {
+    padding: 0;
+    max-width: none;
+  }
+  a {
+    color: var(--heading);
+  }
+}
+</style>
+<!-- CV_PRINT_CSS_END -->
 </head>
 <body>
   <h1>David Cropper</h1>
+  <hr class="header-rule" />
   <p class="contact">Melbourne, VIC · Australian Citizen</p>
   <p class="contact">
     <a href="mailto:djcropster@gmail.com">djcropster@gmail.com</a>
     ·
     <a href="tel:+61400811545">0400 811 545</a>
   </p>
-  <p class="contact">LinkedIn: <a href="https://www.linkedin.com/in/david-cropper/">linkedin.com/in/david-cropper</a>
-    · Portfolio: <a href="https://journey.chaseriskandcompliance.com.au/">journey.chaseriskandcompliance.com.au</a>
-    · GitHub: <a href="https://github.com/dcrops">github.com/dcrops</a></p>
+  <p class="contact"><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/david-cropper/">linkedin.com/in/david-cropper</a></p>
+  <p class="contact"><strong>Portfolio:</strong> <a href="https://journey.chaseriskandcompliance.com.au/">journey.chaseriskandcompliance.com.au</a></p>
+  <p class="contact"><strong>GitHub:</strong> <a href="https://github.com/dcrops">github.com/dcrops</a></p>
   <p class="role">AI Engineer</p>
-  <hr />
 
   <h2>Professional Summary</h2>
   <p>AI Engineer applying software engineering discipline to build end-to-end AI applications with <strong>Python, FastAPI, Docker, and OpenAI APIs</strong>.</p>
