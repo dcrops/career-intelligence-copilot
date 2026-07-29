@@ -13,3 +13,6 @@ data/opportunities/index.yaml
 data/opportunities/artifacts/
 data/opportunities_m5_validation/
 data/exports/
+
+career-documents/cv/generated/*
+!career-documents/cv/generated/README.md

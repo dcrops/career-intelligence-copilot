@@ -4,6 +4,55 @@ Records product strategy and engineering knowledge changes. Routine typo fixes a
 
 ---
 
+## Version 1.39
+
+### FR-006c Summary Intelligence — Final Polish
+
+- Opening paragraph is credibility-first and stable across roles (commercial DE
+  years + independent portfolio + end-to-end systems); job tailoring moves to
+  later paragraphs.
+- Primary job theme is promoted once; portfolio domains are not restated in the
+  closing.
+- Bolding limited to years, role-relevant tech, and key AI engineering concepts
+  (first occurrence only).
+- Engineering Highlights keep the curated impact lead bullet first; remaining
+  bullets are relevance-ordered.
+- Eval: [eval/fr006c_summary_intelligence.md](eval/fr006c_summary_intelligence.md).
+
+---
+
+## Version 1.38
+
+### FR-006c Summary Intelligence — Iteration 2 (quality)
+
+- Professional Summary composition now produces a 3–4 paragraph who / what / how
+  / optional forward story instead of a compressed single flow.
+- Soft word ceiling raised to 200; length targets Master / Shield readability,
+  not minimal word count.
+- Grounded `**bold**` scan emphasis restored in composed summary text (Markdown
+  and HTML preserve paragraph breaks and inline emphasis).
+- Engineering Highlights selection prefers the full curated profile set
+  (typically four bullets), reordered by plan relevance.
+- Regression coverage for paragraph structure, bold emphasis, and role-specific
+  openings. Eval notes: [eval/fr006c_summary_intelligence.md](eval/fr006c_summary_intelligence.md).
+
+---
+
+## Version 1.37
+
+### FR-006c Summary Intelligence
+
+- Deterministic Professional Summary composition now uses an evidence-backed
+  Summary Intelligence pipeline (`summary_intelligence.py`) instead of the
+  formulaic “strengths in… Background:…” bridge.
+- Summaries answer who / what / how / role emphasis using Career Profile facts
+  and Tailoring Plan themes only; no invented claims.
+- `summary_source` remains `theme_aware_composition` for the Phase B path.
+- Unit coverage added for AI Engineer, Applied AI, Consultant, Platform, and
+  Data Engineer-with-AI emphasis shapes.
+
+---
+
 ## Version 1.36
 
 ### CV presentation system aligned to Master v3 readability

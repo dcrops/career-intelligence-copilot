@@ -426,11 +426,11 @@ Acceptance Criteria
 ## FR-006 CV Generation
 
 **Phase:** Post–Phase 2  
-**Status:** Completed (FR-006); quality uplift ongoing under **FR-006b**
+**Status:** Completed (FR-006); FR-006b ready for daily use; **FR-006c Summary Intelligence** improves Phase B summary composition
 
 The system shall generate tailored CVs when tailoring is materially beneficial and approved by the user.
 
-### FR-006b — CV Quality Improvement (current)
+### FR-006b — CV Quality Improvement
 
 **Status:** Ready for daily Markdown use (owner preference vs Master CV v3).
 
@@ -451,6 +451,23 @@ Additional FR-006b behaviours (additive to FR-006):
 
 Golden validation: [eval/fr006b_cv_quality_golden_suite.md](eval/fr006b_cv_quality_golden_suite.md),
 [eval/fr006b_cv_quality_validation.md](eval/fr006b_cv_quality_validation.md).
+
+### FR-006c — Summary Intelligence
+
+**Status:** Implemented (Phase B default path); final polish complete — owner close pending.
+
+Improves Professional Summary *composition* quality while preserving evidence gates:
+
+- Credibility-first opening (stable personal brand across roles)
+- Later paragraphs carry job-specific tech and a single promoted theme
+- Multi-paragraph story (who / what / how / value); Master-length readability
+- Natural engineering verbs; no “Background:” / “strengths in…” bridges
+- Grounded visual emphasis for recruiter skimming (no over-bolding)
+- Engineering Highlights keep curated impact lead; remaining bullets relevance-ordered
+- No invented experience, technologies, employers, or years
+- Optional Phase C OpenAI rewrite remains unchanged and opt-in
+
+Eval: [eval/fr006c_summary_intelligence.md](eval/fr006c_summary_intelligence.md).
 
 ### Architecture
 

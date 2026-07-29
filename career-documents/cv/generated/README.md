@@ -3,8 +3,8 @@
 Owner-review drafts written by `scripts/run_cv_generation_manual.py` and
 `career_intelligence.cv_generation.write_tailored_cv_drafts`.
 
-**FR-006 status:** Complete. Drafts may use profile-summary copy
-(`summary_source=profile_copy`) or optional OpenAI rewrite
+**FR-006 status:** Complete. Drafts may use Summary Intelligence composition
+(`summary_source=theme_aware_composition`) or optional OpenAI rewrite
 (`--rewrite-summary` → `openai_rewrite` / `fallback_profile_copy`).
 
 Each run typically produces:

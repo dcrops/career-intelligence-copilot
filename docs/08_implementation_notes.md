@@ -787,11 +787,37 @@ Career Profile → Job Analysis → Opportunity Assessment → Portfolio Match
 
 **FR-006b (quality):** Submit-ready Markdown is owned by `render_markdown` (hierarchy,
 skills curation, bolding, dates, Master-aligned section labels, methodology block).
-Deterministic theme-aware summary composition runs when Phase C is off. Planner
-role-family anchors, relevance project ranking, and highlight selection improve
+Planner role-family anchors, relevance project ranking, and highlight selection improve
 tailoring. Profile may include `selected_engineering_highlights` and
 `engineering_methodology`. Golden suite: `scripts/run_fr006b_golden_suite.py` —
 see [eval/fr006b_cv_quality_validation.md](eval/fr006b_cv_quality_validation.md).
+
+**FR-006c (Summary Intelligence):** When Phase C is off, Phase B composes the
+Professional Summary via `summary_intelligence.compose_summary_intelligence`
+(exposed through `compose_theme_aware_summary`). Pipeline: gather profile/plan
+evidence → dominant themes → selling proposition → job-specific emphasis →
+credibility-first stable brand paragraph → role-tailored what/how/value
+paragraphs → grounded bold scan emphasis (first occurrence) → grounding checks.
+Soft ceiling 200 words. Primary job theme promoted once. Still evidence-only;
+`summary_source` stays `theme_aware_composition`. Engineering Highlights use
+`select_engineering_highlights` (impact lead first, then relevance).
+See [eval/fr006c_summary_intelligence.md](eval/fr006c_summary_intelligence.md).
+
+Before (legacy theme-aware bridge):
+
+> AI Engineer with strengths in Python, FastAPI, and OpenAI APIs. Background:
+> Applying software engineering discipline to build end-to-end AI applications
+> with Python, FastAPI, Docker, and OpenAI APIs. …
+
+After (Summary Intelligence):
+
+> AI Engineer designing and building end-to-end AI applications with Python and
+> FastAPI. Combines 3.5 years of commercial enterprise Data Engineering
+> experience with independent AI Engineering portfolio work across retrieval
+> systems, operational intelligence, explainable AI, and enterprise decision
+> support. Applies software engineering discipline — architecture-first design,
+> evidence-based validation, and human-in-the-loop review — to deliver AI
+> systems with traceable, reviewable outputs.
 
 **Prompt versions:** `cv_summary_v1.md` (historical), `cv_summary_v2.md` (current —
 employer-relevant lead, capabilities before chronology). Bump

@@ -189,7 +189,11 @@ class DeprioritisedSkill(CvModel):
 
 
 class SummaryTheme(CvModel):
-    """Theme the (future) rewritten summary should cover. Phase B does not rewrite."""
+    """Theme the Professional Summary should emphasise (plan emphasis, not prose).
+
+    Phase B Summary Intelligence composes prose from these labels plus Career
+    Profile evidence. Phase C may optionally rewrite against the same themes.
+    """
 
     rank: int = Field(ge=1)
     theme: NonEmptyString

@@ -79,10 +79,11 @@ def _render_submit(cv: TailoredCv) -> str:
     if cv.summary:
         lines.append("## Professional Summary")
         lines.append("")
-        # Do not bold inside the summary paragraph — phrase-level bolding can
-        # split portfolio project names that Phase C may mention in prose.
-        lines.append(cv.summary)
-        lines.append("")
+        # Summary Intelligence embeds grounded **bold** markers; preserve
+        # paragraph breaks for recruiter-readable story structure.
+        for paragraph in _summary_paragraphs(cv.summary):
+            lines.append(paragraph)
+            lines.append("")
 
     if cv.selected_engineering_highlights:
         lines.append("## Selected Engineering Highlights")
@@ -159,8 +160,9 @@ def _render_review(cv: TailoredCv) -> str:
     if cv.summary:
         lines.append("## Summary")
         lines.append("")
-        lines.append(cv.summary)
-        lines.append("")
+        for paragraph in _summary_paragraphs(cv.summary):
+            lines.append(paragraph)
+            lines.append("")
 
     if cv.summary_themes:
         lines.append("## Summary themes (from Tailoring Plan)")
@@ -246,8 +248,8 @@ def _summary_source_note(cv: TailoredCv) -> str:
         )
     if cv.summary_source == "theme_aware_composition":
         return (
-            "_Summary lead was composed deterministically from Tailoring Plan "
-            "themes; body retained from the career profile._"
+            "_Summary prose was composed via FR-006c Summary Intelligence from "
+            "Tailoring Plan themes and Career Profile evidence._"
         )
     return (
         "_Summary prose is copied from the career profile "
@@ -406,6 +408,11 @@ def _format_contact_lines(contact: dict[str, str] | None) -> list[str]:
         lines.append(" · ".join(primary))
     lines.extend(links)
     return lines
+
+
+def _summary_paragraphs(summary: str) -> list[str]:
+    """Split a composed summary into non-empty paragraphs."""
+    return [part.strip() for part in summary.split("\n\n") if part.strip()]
 
 
 def _format_contact_line(contact: dict[str, str] | None) -> str | None:

@@ -16,7 +16,7 @@ from .baseline import (
     CERTIFICATIONS_BASELINE_ASSUMPTION,
     active_certifications_baseline,
 )
-from .content_selection import select_by_relevance
+from .content_selection import select_by_relevance, select_engineering_highlights
 from .errors import (
     CvGenerationError,
     CvGenerationGateError,
@@ -81,11 +81,12 @@ class CvGenerationService:
         experience = self._render_experience(profile, plan)
         certifications = active_certifications_baseline(profile)
         relevance_terms = _relevance_terms(plan)
-        selected_highlights = select_by_relevance(
+        # Impact-first ordering: curated lead bullet stays first; remaining
+        # profile highlights are relevance-ranked without inventing text.
+        selected_highlights = select_engineering_highlights(
             profile.selected_engineering_highlights,
             relevance_terms,
             max_items=_MAX_SELECTED_HIGHLIGHTS,
-            min_items=min(3, len(profile.selected_engineering_highlights)),
         )
         methodology = _methodology_payload(profile)
 
@@ -146,19 +147,25 @@ class CvGenerationService:
             themes = [theme.theme for theme in plan.summary_themes]
             promoted = [skill.skill_name for skill in plan.skills_to_promote]
             if themes or promoted:
+                methodology_philosophy = None
+                if profile.engineering_methodology is not None:
+                    methodology_philosophy = (
+                        profile.engineering_methodology.philosophy
+                    )
                 composed = compose_theme_aware_summary(
                     source_summary=profile_summary,
                     target_role=profile.identity.target_role,
                     themes=themes,
                     promoted_skills=promoted,
+                    methodology_philosophy=methodology_philosophy,
                 )
                 return (
                     composed,
                     "theme_aware_composition",
                     [
-                        "Summary lead composed deterministically from "
-                        "TailoringPlan themes/promoted skills; body retained "
-                        "from the career profile (rewrite_summary=False)."
+                        "Summary composed via FR-006c Summary Intelligence "
+                        "from TailoringPlan themes/promoted skills and Career "
+                        "Profile evidence (rewrite_summary=False)."
                     ],
                 )
             return (

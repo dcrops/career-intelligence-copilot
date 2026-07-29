@@ -109,7 +109,9 @@ def test_fr006_phase_b_renders_cv_faithfully_from_plan() -> None:
     for skill_name in emphasised:
         assert skill_name in cv.rendered_markdown
     assert cv.projects[0].name in cv.rendered_markdown
-    assert profile.identity.summary in (cv.summary or "")
+    assert cv.summary is not None
+    assert "background:" not in cv.summary.casefold()
+    assert "evidence-backed" in cv.summary.casefold() or "python" in cv.summary.casefold()
     assert cv.summary_source == "theme_aware_composition"
     assert "Owner review required" not in cv.rendered_markdown
     for field in _FORBIDDEN_CV_FIELDS:

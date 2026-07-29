@@ -155,8 +155,9 @@ def test_service_default_uses_theme_aware_composition() -> None:
         plan,
         options=CvGenerationOptions(tailoring_plan_approved=True),
     )
-    assert profile.identity.summary in (cv.summary or "")
     assert cv.summary_source == "theme_aware_composition"
+    assert cv.summary is not None
+    assert "background:" not in cv.summary.casefold()
 
 
 def test_rewrite_summary_without_rewriter_raises() -> None:

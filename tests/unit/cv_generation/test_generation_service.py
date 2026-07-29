@@ -191,9 +191,12 @@ def test_phase_b_composes_theme_aware_summary_by_default() -> None:
     profile = minimal_profile()
     cv = make_cv(profile=profile)
     assert cv.summary is not None
-    assert profile.identity.summary in cv.summary
     assert cv.summary_source == "theme_aware_composition"
-    assert any("theme" in item.casefold() for item in cv.assumptions)
+    assert "background:" not in cv.summary.casefold()
+    assert any(
+        "summary intelligence" in item.casefold() or "theme" in item.casefold()
+        for item in cv.assumptions
+    )
 
 
 def test_contact_overlay_is_caller_supplied_only() -> None:

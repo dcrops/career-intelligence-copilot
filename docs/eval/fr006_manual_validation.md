@@ -174,6 +174,9 @@ For each job:
 5. Confirm experience ids match plan inclusion list / kinds remain truthful.
 6. Confirm certifications are baseline (active profile credentials) — not re-ordered by the plan.
 7. Confirm Markdown and JSON agree with the structured TailoredCv.
+8. Confirm Professional Summary (`summary_source=theme_aware_composition`) reads
+   naturally: no “Background:” / “strengths in…” bridges; facts remain profile/plan
+   grounded (FR-006c Summary Intelligence).
 
 **If Q2 fails:** treat as a rendering/fidelity defect — the plan may still be correct.
 

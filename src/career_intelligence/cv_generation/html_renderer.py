@@ -95,7 +95,10 @@ def _render_body(cv: TailoredCv) -> str:
 
     if cv.summary:
         parts.append("<h2>Professional Summary</h2>\n")
-        parts.append(f"<p>{_inline_to_html(cv.summary)}</p>\n")
+        for paragraph in [
+            part.strip() for part in cv.summary.split("\n\n") if part.strip()
+        ]:
+            parts.append(f"<p>{_inline_to_html(paragraph)}</p>\n")
 
     if cv.selected_engineering_highlights:
         parts.append("<h2>Selected Engineering Highlights</h2>\n")

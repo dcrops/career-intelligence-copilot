@@ -57,6 +57,33 @@ def select_by_relevance(
     return selected[:limit]
 
 
+def select_engineering_highlights(
+    items: Sequence[str],
+    terms: Sequence[str],
+    *,
+    max_items: int,
+) -> list[str]:
+    """Select engineering highlights with a stable impact-first lead bullet.
+
+    The curated Career Profile lead (first item) communicates portfolio-scale
+    delivery and stays first when retained. Remaining bullets are relevance-
+    ordered without inventing text.
+    """
+    if not items:
+        return []
+    limit = max(1, min(max_items, len(items)))
+    if limit == 1:
+        return [items[0]]
+    lead = items[0]
+    rest = select_by_relevance(
+        list(items[1:]),
+        terms,
+        max_items=limit - 1,
+        min_items=min(limit - 1, len(items) - 1),
+    )
+    return [lead, *rest]
+
+
 def score_text(text: str, terms: Sequence[str]) -> int:
     """Simple overlap score for ranking projects or experience entries."""
     if not text.strip() or not terms:
