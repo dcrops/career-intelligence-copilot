@@ -14,5 +14,5 @@ data/opportunities/artifacts/
 data/opportunities_m5_validation/
 data/exports/
 
-career-documents/cv/generated/*
-!career-documents/cv/generated/README.md
+# Generated documents
+career-documents/**/generated/
