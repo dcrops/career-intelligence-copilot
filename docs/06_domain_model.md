@@ -10,36 +10,39 @@ It is implementation-agnostic: no schema, storage, or technology choices. For re
 
 ## Decision Loop
 
-Phase 2 implements a single vertical slice through this loop:
+Phase 2 delivered a vertical slice through analysis → strategy → document generation.
+Horizon 1A extends that into an end-to-end application workflow:
 
 ```
-Career Profile
+Job Acquisition (FR-008; adapters — not “scraping” by default)
       ↓
-Job Posting (input)
+Validate → Normalise → Deduplicate (FR-009)
       ↓
-Job Analysis
+Career Profile + Job Posting
       ↓
-      ├─→ Opportunity Assessment   (whether the role fits — FR-003)
-      └─→ Portfolio Matching       (which projects to lead with — FR-004)
+Job Analysis (FR-002)
       ↓
-Application Strategy (FR-005: posture + effort tier + advisory next actions)
+      ├─→ Opportunity Assessment   (FR-003)
+      └─→ Portfolio Matching       (FR-004)
       ↓
-      ├─→ Tailored CV (FR-006, when material benefit + owner approval)
-      └─→ Cover Letter (FR-007, when material benefit + owner approval)
+Application Strategy (FR-005)
       ↓
-User Decision
+Rank / Review Queue (Phase 2 M4 + FR-009)
       ↓
-Outcome Logging
+Application Package (FR-010: Tailoring Plan + CV FR-006 + Cover Letter FR-007)
       ↓
-Ranked Comparison (among open opportunities)
+Owner Review / Approval Interrupt (FR-008)
+      ↓
+      ├─→ Reject (owner)
+      └─→ Submit assistance (FR-011 — never silent)
+      ↓
+Pipeline Tracking + Outcomes (FR-012; builds on Phase 2 M2)
 ```
 
-Opportunity Assessment and Portfolio Matching are sibling consumers of Career Profile +
-Job Analysis. Neither feeds or modifies the other. Application Strategy is the downstream
-consumer of **both** sibling artifacts (plus Career Profile). CV and cover letter generation
-are optional Horizon 1 follow-ons that consume Application Strategy + Career Profile under
-human review. Each stage produces a durable artifact that downstream stages and future
-assessments can reference. The loop repeats for every new opportunity.
+Opportunity Assessment and Portfolio Matching remain sibling consumers of Career Profile +
+Job Analysis. Application Strategy consumes both. Document generation and submission are
+separate stages under mandatory owner review. Workflow orchestration (FR-008) coordinates
+these nodes; bounded agents (FR-013+) appear only after the deterministic path works.
 
 ---
 
@@ -69,27 +72,42 @@ current.
 
 ---
 
+### Job Acquisition Record
+
+**Maps to:** FR-008 (planned); provenance feeds FR-009 duplicate detection
+
+Canonical record of how a job entered the system via a **source adapter**. Indicative
+fields: source type; source identifier; source URL; acquisition timestamp; raw and
+normalised content; employer; title; location; work arrangement; employment type;
+salary; posting/closing dates; provenance; acquisition status; extraction warnings.
+
+Preferred adapters (reliability / compliance order): APIs/feeds → job-alert email →
+saved-search notifications → owner URLs → pasted descriptions → exports →
+Playwright-assisted browser workflows as a **controlled fallback**. Do not assume
+browser automation for every job. See [04_functional_specification.md](04_functional_specification.md)
+§ FR-008 and [10_roadmap.md](10_roadmap.md) § Horizon 1A.
+
+---
+
 ### Job Posting
 
-The raw input for a single opportunity — typically a job description provided by the user. Phase 2 does not include automated job discovery.
+Trusted employer-facing job description used by Job Analysis — typically derived from
+an acquisition record’s normalised content, or still supplied by manual paste (Phase 2 path).
 
-**Implementation (Phase 2):** Callers supply a typed `JobPosting` (`raw_text` plus
-optional `title`, `company`, `source_url`). The OpenAI extractor formats these as
+**Implementation (Phase 2 / current):** Callers supply a typed `JobPosting` (`raw_text`
+plus optional `title`, `company`, `source_url`). The OpenAI extractor formats these as
 tagged sections so analysis uses the complete posting, not only the body. When
 caller provenance omits title/company, extraction may return grounded
 `posting_identity` values; `JobAnalysisService` binds them into the trusted
-`JobPosting` only when value and evidence appear in `raw_text` (M4a). Manual
-paste is the current ingestion path; automated acquisition is future work — see
-[10_roadmap.md](10_roadmap.md) § Automated Job Acquisition.
+`JobPosting` only when value and evidence appear in `raw_text` (M4a).
 
-#### Future Evolution
+#### Horizon 1A evolution
 
-Do not redesign the Phase 2 model here. Future ingestion may attach **structured
-metadata already known at acquisition time** — for example location, employment,
-salary, category, and platform metadata (job IDs, canonical URLs, application
-status) — so Job Analysis need not rediscover facts that the platform already
-stated. Platform UI noise and personalised match content remain acquisition concerns,
-not employer job-description content. Duplicate recognition is FR-014.
+Attach **structured metadata known at acquisition time** (location, employment,
+salary, platform IDs, canonical URLs, platform application status) so Job Analysis
+need not rediscover platform facts. Platform UI noise and personalised match content
+remain acquisition concerns — not employer job-description content. Duplicate
+recognition is FR-009.
 
 ---
 
@@ -121,27 +139,14 @@ path; first manual evaluation and prompt hardening (through v5) are recorded in
 
 **Maps to:** FR-003
 
-**Status:** Implemented.
+Evidence-backed fit analysis comparing Career Profile with Job Analysis across
+Technical, Commercial, and Portfolio Fit. Produces explainable findings with
+evidence refs. Does **not** assign application tiers, apply/skip decisions, or
+effort guidance — those belong to Application Strategy (FR-005).
 
-Evidence-backed fit analysis across three Phase 2 dimensions: Technical Fit, Commercial Fit,
-and Portfolio Fit. Produced by `OpportunityAssessmentService`, which binds a caller-owned
-`JobAnalysis`, validates schema and evidence-reference integrity, and returns a trusted
-`OpportunityAssessment`. Assessors (`FixtureAssessor`, package-private `OpenAIAssessor`)
-return untrusted payloads only.
-
-Judgments are qualitative (`strong`, `moderate`, `mixed`, `weak`, `misaligned`, `unknown`) —
-not percentage scores. Findings cite `JobEvidenceRef` and `ProfileEvidenceRef` entries.
-Independent engineering and portfolio projects demonstrate capability but are not treated as
-commercial AI employment. Working rights are never inferred for the candidate.
-
-FR-003 does **not** emit Apply/Skip/Defer, application tiers, effort guidance, or JobSeeker
-quota fields — those belong to FR-005. Architecture and verification overview:
-[08_implementation_notes.md](08_implementation_notes.md) § FR-003. Manual evaluation:
-[eval/fr003_openai_manual_eval.md](eval/fr003_openai_manual_eval.md) (PARTIAL PASS;
-assessment prompt v6).
-
-Post–Phase 2 dimensions (Recruiter Confidence, Interview Probability, Strategic Value) remain
-deferred.
+**Implementation:** `OpportunityAssessmentService` in
+`src/career_intelligence/opportunity_assessment/` is the trust boundary.
+`OpenAIAssessor` (prompt v11) is the live path; `FixtureAssessor` is offline scaffolding.
 
 ---
 
@@ -149,22 +154,12 @@ deferred.
 
 **Maps to:** FR-004
 
-**Status:** Implemented.
+Ranked list of portfolio projects to lead with for a role, with evidence-backed
+factors. Sibling of Opportunity Assessment — both consume Career Profile + Job
+Analysis; neither feeds the other.
 
-A ranked list of the candidate's portfolio projects aligned to the opportunity, with
-explained ordering and evidence-backed ranking factors. Produced by
-`PortfolioMatchingService` from a trusted `CareerProfile` and `JobAnalysis`. Projects
-with no matching factors remain unranked; jobs without usable technologies or
-responsibilities report insufficient evidence.
-
-Portfolio Match is independent of Opportunity Assessment. It does **not** feed or modify
-Portfolio Fit. Portfolio Fit (FR-003) answers whether the portfolio supports the role;
-Portfolio Match answers which projects should lead, in what order, and why.
-
-**Implementation:** Typed domain models and `PortfolioMatchingService` live in
-`src/career_intelligence/portfolio_matching/`. `DeterministicMatcher` is the production
-ranking path; `FixtureMatcher` is offline scaffolding keyed to shared FR-002 fixture
-markers. Neither is exported as a public default — callers inject a matcher explicitly.
+**Implementation:** `PortfolioMatchingService` with deterministic matching as the
+production path.
 
 ---
 
@@ -172,36 +167,32 @@ markers. Neither is exported as a public default — callers inject a matcher ex
 
 **Maps to:** FR-005
 
-**Status:** Implemented.
+Pursuit posture (primary recommendation), application tier (effort band), practical
+value, evidence-backed reasons/risks, and advisory `next_actions`. Consumes
+Opportunity Assessment + Portfolio Match (+ Job Analysis for provenance).
 
-Evidence-backed application strategy for one opportunity. Produced by
-`ApplicationStrategyService` from a trusted `CareerProfile`, `OpportunityAssessment`, and
-`PortfolioMatch` (optional `SearchOperatingContext`). The service binds `JobAnalysis` from
-the assessment after verifying posting identity against the portfolio match.
+Owner apply / skip / defer is recorded separately (Phase 2 M2; Horizon 1A FR-012).
 
-**PursuitPosture** is the primary recommendation. **ApplicationTier** (Platinum / Gold /
-Silver / Bronze) is effort investment only — Bronze does not mean never apply. Advisory
-`next_actions` use a closed `consider_*` taxonomy. Final apply / skip / defer is an owner
-decision (FR-013).
-
-**Implementation:** Typed domain models and `ApplicationStrategyService` live in
-`src/career_intelligence/application_strategy/`. `DeterministicStrategyPlanner` is the
-production path; `FixtureStrategyPlanner` is offline scaffolding. Neither is exported as a
-public default — callers inject a planner explicitly. OpenAI is not required.
+**Implementation:** `ApplicationStrategyService` with `DeterministicStrategyPlanner`.
 
 ---
 
-### Opportunity (durable record)
+### Tailored CV / Cover Letter
 
-**Maps to:** Phase 2 pipeline tracking (M1 complete) + decision/outcome logging (M2 complete)
+**Maps to:** FR-006 / FR-007 (complete)
 
-A persisted assessed opportunity with permanent id `opp_<ULID>`, lifecycle
-`PipelineStatus`, optional owner decision, optional outcome record, strategy summary,
-and immutable FR-002–FR-005 artifact snapshots.
-Produced by `OpportunityService.create_from_strategy` after Application Strategy.
-Structured storage under `data/opportunities/` is the system of record (ADR-002).
-CSV export and one-time legacy import are M3 (derived / migration only). Ranking is M4
-(`OpportunityComparisonService`).
+Optional Horizon 1 document artefacts under mandatory owner review. Consumed by
+Horizon 1A package preparation (FR-010).
+
+---
+
+### Opportunity (durable)
+
+Durable aggregate for an assessed opportunity. Produced by `OpportunityService` after
+Application Strategy. Structured storage under `data/opportunities/` is the system of
+record (ADR-002). CSV export and one-time legacy import are M3. Ranking is M4
+(`OpportunityComparisonService`). Owner decision and outcome logging are M2
+(historically “FR-013 subset”; extended by Horizon 1A **FR-012**).
 
 **Implementation:** `src/career_intelligence/opportunities/`.
 
@@ -216,7 +207,7 @@ Historical domain name for the durable Opportunity aggregate above. Prefer
 
 ### Outcome Record
 
-**Maps to:** FR-013 (Phase 2 subset delivered in M2)
+**Maps to:** Phase 2 M2 (historically “FR-013 subset”); extended by FR-012
 
 Captures three distinct concepts on the durable Opportunity:
 
@@ -226,15 +217,15 @@ Captures three distinct concepts on the durable Opportunity:
   withdrawn / unknown, plus interview stage, follow-up date, and notes
 
 M2 supports record and retrieve only. Feeding outcome history into future FR-003
-assessments is deferred beyond Phase 2 exit.
+assessments remains deferred.
 
 ---
 
 ### Ranked Comparison
 
-A prioritised ordering of open assessed opportunities to support effort allocation
-among concurrent options. Phase 2 scope is job opportunities only — not cross-domain
-daily prioritisation (FR-012 deferred).
+A prioritised ordering of open assessed opportunities. Phase 2 M4 delivered job-scoped
+ranking (historically “FR-012 partial”). Horizon 1A **FR-009** extends the review queue
+into the acquisition workflow (duplicates, freshness, owner-review queue).
 
 **Implementation (M4):** `OpportunityComparisonService.compare_open` ranks open
 Opportunity aggregates with a deterministic sort key:
@@ -248,11 +239,33 @@ Open filter: status ∈ {assessed, deferred, preparing, submitted, interviewing,
 and decision ≠ skip. Each ranked item includes explainable `reasons`. Owner review
 required — ranking does not apply, skip, or mutate opportunities.
 
-**Future consideration (not implemented):** Strategy summary and fit judgments are
-job-application-centric. Generalising ranking to recruiters, networking, or meetups
-would need a shared “rankable signals” view (or adapter) over heterogeneous opportunity
-types; Phase 2 comparison remains deliberately job-scoped so that redesign is not
-forced now.
+Cross-domain daily prioritisation is Horizon 2 **FR-025**.
+
+---
+
+### Application Workflow State (planned)
+
+**Maps to:** FR-008
+
+Shared typed state coordinating acquisition through tracking. Nodes wrap existing
+services; conditional edges follow strategy and owner decisions; checkpoints support
+owner-review interrupts and resumability. Production orchestration technology is
+**undecided** until ADR-003 — LangGraph is a spike candidate only.
+
+### Application Package (planned)
+
+**Maps to:** FR-010 (uses FR-006, FR-007)
+
+Grouped artefacts (tailoring plan, CV, cover letter, HTML) under one application
+identity, traceable to job evidence and acquisition provenance.
+
+### Submission Attempt (planned)
+
+**Maps to:** FR-011
+
+Separate from document generation. Progressive assistance (manual → Playwright-assisted
+form fill → owner-approved submit). Never silent submission; fail closed on unknown
+answers.
 
 ---
 
@@ -271,9 +284,9 @@ forced now.
 | Portfolio Match | Application Strategy | Ranked projects inform portfolio emphasis (no rerank) |
 | Application Strategy | Opportunity | Trusted artifacts may be persisted (M1) |
 | Application Strategy | User Decision | User accepts, overrides, or defers the recommendation |
-| User Decision | Outcome Record | Decision and subsequent events logged (M2) |
+| User Decision | Outcome Record | Decision and subsequent events logged (M2 / FR-012) |
 | Outcome Record | Opportunity | Outcomes attach to durable opportunities |
-| Opportunity | OpportunityComparison | Open opportunities compared for prioritisation (M4) |
+| Opportunity | OpportunityComparison | Open opportunities compared for prioritisation (M4 / FR-009) |
 
 Portfolio Match and Opportunity Assessment are siblings. Both feed Application Strategy.
 There is no Portfolio Match → Opportunity Assessment dependency.
@@ -284,15 +297,17 @@ There is no Portfolio Match → Opportunity Assessment dependency.
 
 | User provides | System produces |
 |---------------|-----------------|
-| Job description | Job Analysis |
+| Job description / URL / alert / export | Job Acquisition Record + Job Posting |
 | Profile updates | Updated Career Profile |
-| Pursuit decisions | Outcome Records |
+| Pursuit / package / submission approvals | Outcome Records; workflow resume |
 | — | Opportunity Assessment with evidence |
 | — | Portfolio Match ranking |
 | — | Application Strategy (posture + effort tier + next actions) |
-| — | Ranked Comparison of open opportunities |
+| — | Ranked Comparison / review queue |
+| — | Application package (CV + cover letter) under review |
+| — | Submission assistance (never silent) |
 
-The system advises. The user commits. Important decisions remain reviewable.
+The system advises. The user commits. Important decisions — especially submission — remain reviewable.
 
 ---
 
@@ -305,13 +320,14 @@ The operational layer is the manual precursor to the automated domain model.
 | Career Profile | `career-documents/cv/`, owner knowledge |
 | Opportunity (durable) | `data/opportunities/` (SoT); CSV under `data/exports/` is derived (M3) |
 | Outcome Record | Status / notes on Opportunity (M2); tracker Outcome column is import/export projection |
-| Network contacts | `applications/network/network_tracker.csv` (Phase 3+ domain) |
+| Network contacts | `applications/network/network_tracker.csv` (Horizon 1B / FR-016+) |
 | Company context | `applications/company_notes/` |
 | Career milestones | `career-log.md` |
 | Future templates | `templates/` (placeholders) |
 | Future analytics | `metrics/` (placeholders) |
 
-Phase 2 engineering must respect this mapping. The future system should absorb or replace manual tracking — not ignore it.
+Phase 2 engineering must respect this mapping. Horizon 1A tracking (FR-012) should
+continue to connect to this layer rather than invent a parallel tracker.
 
 ---
 
@@ -319,15 +335,33 @@ Phase 2 engineering must respect this mapping. The future system should absorb o
 
 | Entity / capability | FR ID |
 |---------------------|-------|
-| Career Profile | FR-001 |
-| Job Analysis | FR-002 |
-| Opportunity Assessment | FR-003 |
-| Portfolio Match | FR-004 |
-| Application Strategy | FR-005 |
+| Career Profile | FR-001 (complete) |
+| Job Analysis | FR-002 (complete) |
+| Opportunity Assessment | FR-003 (complete) |
+| Portfolio Match | FR-004 (complete) |
+| Application Strategy | FR-005 (complete) |
+| Tailored CV / Tailoring Plan | FR-006 (complete) |
+| Cover Letter | FR-007 (complete) |
 | Opportunity (durable persistence) | Phase 2 M1 (complete) |
-| Outcome Record | FR-013 Phase 2 subset (M2 complete); full “inform assessments” deferred |
+| Outcome Record | Phase 2 M2 (complete; hist. FR-013 subset); extended by **FR-012** |
 | CSV operational bridge | Phase 2 M3 (complete) |
-| Duplicate Application Detection | FR-014 (future) |
-| Ranked Comparison | FR-012 (partial — job opportunities only; M4 complete) |
-| Pipeline tracking | Phase 2 M1–M5 complete |
-| Opportunity identity (title/company) | Phase 2 M4a complete |
+| Ranked Comparison | Phase 2 M4 (complete; hist. FR-012 partial); extended by **FR-009** |
+| Opportunity identity (title/company) | Phase 2 M4a (complete) |
+| Job Acquisition & Workflow Orchestration | **FR-008** (Horizon 1A; first orchestration) |
+| Opportunity Review Queue & Ranking | **FR-009** (Horizon 1A; includes duplicates) |
+| Application Package Preparation | **FR-010** (Horizon 1A) |
+| Submission Assistance | **FR-011** (Horizon 1A) |
+| Application Pipeline Tracking | **FR-012** (Horizon 1A) |
+| Bounded Agentic Workflow | **FR-013** (Horizon 1A; first bounded agents) |
+| Multi-Agent Orchestration | **FR-014** (Horizon 1A) |
+| Agent Evaluation & Observability | **FR-015** (Horizon 1A) |
+| Recruiter Intelligence | **FR-016** (Horizon 1B) |
+| Recruiter Outreach | **FR-017** (Horizon 1B) |
+| Existing Connection Outreach | **FR-018** (Horizon 1B) |
+| LinkedIn Network Intelligence | **FR-019** (Horizon 1B) |
+| Meetup Intelligence | **FR-020** (Horizon 1B) |
+| LinkedIn Content Planning | **FR-021** (Horizon 1B) |
+| Market Intelligence | **FR-022** (Horizon 1B) |
+| Interview Preparation | **FR-023** (Horizon 2) |
+| Career Dashboard | **FR-024** (Horizon 2) |
+| Daily Prioritisation (cross-domain) | **FR-025** (Horizon 2) |

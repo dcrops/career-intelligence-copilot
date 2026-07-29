@@ -1,4 +1,5 @@
-"""Functional acceptance for FR-012 Phase 2 subset — ranked open opportunities (M4).
+"""Functional acceptance for Phase 2 M4 ranked open opportunities
+(historically labelled “FR-012 partial”; foundation for Horizon 1A FR-009).
 
 Exercises only the public OpportunityComparisonService boundary with trusted
 Opportunity aggregates. No OpenAI, re-analysis, or OpportunityService mutation.

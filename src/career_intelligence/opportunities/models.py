@@ -105,7 +105,7 @@ class OpportunityModel(BaseModel):
 
 
 class OpportunityIdentity(OpportunityModel):
-    """Canonical durable identity plus facets for future FR-014 (not matching)."""
+    """Canonical durable identity plus facets for future FR-009 matching (not matching yet)."""
 
     opportunity_id: OpportunityId
     created_at: datetime

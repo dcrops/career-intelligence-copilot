@@ -6,11 +6,17 @@ Career Intelligence Copilot is an AI-powered **decision-support** system for job
 search — helping AI Engineers secure suitable roles sooner while reducing repetitive
 analysis and tracking work.
 
-It is **not** an application-automation bot. Recommendations require human review;
-the system does not send outreach or apply on the owner's behalf.
+It is **not** an unsupervised application-automation bot. Recommendations require
+human review; the system must never silently submit applications or send outreach.
 
-**Horizon 1 (current priority):** Improve opportunity decisions and reduce job-search
-effort for the repository owner.
+**Horizon 1 (current priority):** Help the owner identify and submit strong,
+reviewed applications as quickly and reliably as possible.
+
+- **Horizon 1A (now):** Job application workflow — acquire → assess → prepare →
+  review → submit → track
+- **Horizon 1B (later):** Recruiter and market engagement — only after 1A works
+
+**Principle:** Job acquisition first. Recruiter outreach second.
 
 **Horizon 2 (long term):** Evolve into a reusable Career Intelligence Platform for
 ongoing career progression after employment is secured.
@@ -37,12 +43,16 @@ modern AI engineering workflows with Cursor. When those goals conflict with Hori
 **Phase 2 Job Intelligence — Complete** (M5 GO —
 [docs/eval/phase2_release_report.md](docs/eval/phase2_release_report.md)).
 
-**Current milestone:** **FR-006b — CV Quality Improvement** —
-[READY FOR DAILY USE](docs/eval/fr006b_cv_quality_validation.md)
+**Complete (owner-sequenced):** FR-006 CV Generation (incl. FR-006b/c);
+FR-007 Cover Letter ([eval](docs/eval/fr007_cover_letter.md)).
 
-**Thereafter (Horizon 1):** FR-007 Cover Letter → automated job acquisition
+**Current focus — Horizon 1A:** Job application workflow (FR-008–FR-015). Near-term
+entry: FR-008 orchestration learning spike on a saved/manual job + ADR-003.
+Details: [docs/10_roadmap.md](docs/10_roadmap.md).
 
-### Phase 2 capabilities (baseline — frozen)
+**Thereafter — Horizon 1B:** Recruiter / meetup / LinkedIn engagement (FR-016–FR-022).
+
+### Phase 2 + document generation (baseline — frozen)
 
 - FR-001 Career Profile
 - FR-002 Job Analysis
@@ -50,8 +60,9 @@ modern AI engineering workflows with Cursor. When those goals conflict with Hori
 - FR-004 Portfolio Matching
 - FR-005 Application Strategy (pursuit posture + effort tiers)
 - FR-006 CV Generation (deterministic plan + optional OpenAI summary rewrite)
+- FR-007 Cover Letter Generation
 - M1 Opportunity persistence (`OpportunityService`, `opp_<ULID>`, immutable artefacts)
-- M2 Owner decision & outcome logging (FR-013 Phase 2 subset)
+- M2 Owner decision & outcome logging (Phase 2; historically FR-013 subset; foundation for FR-012)
 - M3 CSV operational bridge (export + one-time legacy import; structured store = SoT)
 - M4 Ranked comparison of open opportunities
 - M4a Grounded title/company identity

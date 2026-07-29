@@ -608,7 +608,7 @@ ranking. Portfolio emphasis copies Portfolio Match order (cap 3); it does not re
 - **PursuitPosture** — primary recommendation
 - **ApplicationTier** — Platinum / Gold / Silver / **Bronze** (effort only; Bronze ≠ never apply)
 - **next_actions** — closed `consider_*` taxonomy; recommendations only
-- Final apply / skip / defer — owner decision (FR-013)
+- Final apply / skip / defer — owner decision (Phase 2 M2 / FR-012)
 
 ### Seniority stretch policy
 
@@ -962,13 +962,14 @@ Use an isolated `--opportunities-dir` for validation so live `data/opportunities
 not polluted. Structured store is the system of record; CSV export is M3.
 
 **Not in M1:** owner decisions / outcomes (M2), CSV (M3), ranked comparison (M4),
-FR-014 duplicate detection, OpenAI.
+FR-009 duplicate detection, OpenAI.
 
 ---
 
 ## M2 Decision and Outcome Logging
 
-**Status:** Complete (2026-07-24). FR-013 Phase 2 subset only.
+**Status:** Complete (2026-07-24). Phase 2 M2 outcome logging only (historically
+labelled “FR-013 subset”; Horizon 1A **FR-012** extends this).
 
 **Concepts (kept separate):**
 
@@ -1030,7 +1031,8 @@ Duplicate safety via SHA-256 fingerprint of normalised
 Unknown Status/Outcome values are rejected (not guessed). Row-atomic import with
 summary report (JSON via `--report`).
 
-**Not in M3:** two-way sync, ranked comparison (M4 — now complete), FR-014, fabricating assessment
+**Not in M3:** two-way sync, ranked comparison (M4 — now complete), FR-009 duplicate
+detection, fabricating assessment
 artifacts for imported rows.
 
 ---
@@ -1131,5 +1133,39 @@ Validated the full Horizon 1 decision loop on two real jobs (012 Maincode,
 013 pay.com.au) including CV generation, persistence, owner decide, and ranked
 comparison. Regression suite passed (719). No temporary instrumentation remains.
 Phase 2 is the operational foundation for Horizon 1; documentation is frozen as
-baseline. Next milestone is FR-006b — see [12_phase_history.md](12_phase_history.md).
+baseline. FR-006b and FR-007 are complete. Current focus is Horizon 1A — see
+[10_roadmap.md](10_roadmap.md) and [12_phase_history.md](12_phase_history.md).
+
+---
+
+## Horizon 1A — Planning Notes (documentation only)
+
+**Status:** Planned — no runtime implementation in the planning/renumbering passes that
+defined FR-008–FR-015.
+
+### Sequencing
+
+1. **FR-008 Agent Orchestration Learning Spike** — wrap existing saved-job pipeline;
+   typed state; owner-review interrupt; one recoverable failure; execution trace;
+   label deterministic vs LLM-backed vs agentic nodes.
+2. **ADR-003** — required before committing production orchestration (LangGraph is a
+   spike candidate only; evaluate vs existing service orchestration).
+3. **FR-008 live source adapters** — after spike (not “web scraping”).
+4. **FR-009 → FR-012** — review queue (incl. duplicates), packages, submission, tracking.
+5. **FR-013 → FR-015** — bounded agents → multi-agent → evaluation (only after
+   deterministic workflow works).
+6. **Horizon 1B (FR-016–FR-022)** — recruiter / meetup / LinkedIn / market — only after 1A.
+
+### Spike constraints
+
+- One manually supplied or existing validation job
+- No live board scraping; no real application submission
+- Do not replace validated FR-002–FR-007 services
+- Teach orchestration concepts explicitly (see functional specification § Horizon 1A)
+
+### Playwright
+
+Controlled browser-automation **adapter** for owner URLs/sessions, visible description
+extraction, form assistance, and journey evidence. Isolate behind adapters; treat as
+fallback, not the sole acquisition strategy.
 

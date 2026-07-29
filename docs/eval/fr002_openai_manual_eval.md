@@ -138,9 +138,9 @@ known claims; empty technology evidence still fails validation).
    (global evidence) unless a compact global rule stays prominent.
 4. **Manual copy/paste is MVP evaluation only** — production ingestion should become
    automated **Job Acquisition**, kept separate from **Job Analysis**. See
-   [10_roadmap.md](../10_roadmap.md) § Automated Job Acquisition.
+   [10_roadmap.md](../10_roadmap.md) § Horizon 1A / FR-008 Job Acquisition.
 5. **Platform noise is acquisition metadata** — UI chrome, personalised match text, and
-   “Applied” status belong outside the employer job description (see FR-014 in
+   “Applied” status belong outside the employer job description (see FR-009 in
    [04_functional_specification.md](../04_functional_specification.md)).
 
 ---

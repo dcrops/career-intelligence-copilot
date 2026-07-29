@@ -21,16 +21,20 @@ The repository — not conversation history — is the project's long-term memor
 
 ## Project Context
 
-Career Intelligence Copilot is a decision-support system for job search — not an application automation tool.
+Career Intelligence Copilot is a decision-support system for job search — not an
+unsupervised application-automation bot. Assisted submission (when built) still
+requires explicit owner approval.
 
 **Current phase:** Phase 2 Job Intelligence MVP is **complete** and documentation is
 a **frozen baseline** (M5 GO —
 [docs/eval/phase2_release_report.md](docs/eval/phase2_release_report.md);
 [docs/12_phase_history.md](docs/12_phase_history.md)). FR-001–FR-007 (including
-FR-006b/c) are closed. **Next Horizon 1 focus:** automated job acquisition /
-discovery. Remaining Phase 2 operational items (pipeline tracking, FR-013 depth,
-ranked comparison use) follow owner sequencing. Do not reopen Phase 2 exit
-criteria or architecture without explicit owner request.
+FR-006b/c) are closed. **Current focus — Horizon 1A:** job application workflow
+(FR-008–FR-015: acquisition + orchestration → review → submit → track).
+**Principle:** Job acquisition first. Recruiter outreach second (Horizon 1B /
+FR-016–FR-022 — do not start while 1A is incomplete). Near-term entry: FR-008 learning
+spike on a saved/manual job + ADR-003 before committing an orchestrator. Do not
+reopen Phase 2 exit criteria without explicit owner request.
 
 **Implementation foundation:** Python 3.11+, Pydantic, YAML storage, and the public profile
 service boundary are recorded in
@@ -50,9 +54,14 @@ service boundary are recorded in
 
 **Delivered outside original Phase 2 exit criteria (owner-sequenced):** FR-006 CV Generation (complete, including FR-006b/c); **FR-007 Cover Letter** (complete — plan + deterministic narrative render; manual validation passed).
 
+**Horizon 1A (current):** FR-008–FR-015 planned — source-adapter acquisition (not
+“web scraping”), deterministic workflow orchestration first (FR-008), then bounded
+agents (FR-013). See [docs/10_roadmap.md](docs/10_roadmap.md).
+
 Full detail: [docs/04_functional_specification.md](docs/04_functional_specification.md) and [docs/10_roadmap.md](docs/10_roadmap.md).
 
-Do not expand scope into Phase 3+ / Horizon 2 capabilities unless explicitly requested by the owner.
+Do not expand scope into Horizon 1B (FR-016+), Phase 3+, or Horizon 2 capabilities unless
+explicitly requested by the owner.
 
 ---
 
@@ -60,14 +69,16 @@ Do not expand scope into Phase 3+ / Horizon 2 capabilities unless explicitly req
 
 Apply [docs/05_engineering_principles.md](docs/05_engineering_principles.md) for all tradeoffs. Non-negotiables:
 
-- **Intelligence before automation** — explain before acting
-- **Human review** — tier recommendations and effort allocation require user judgment; no automated external communications
+- **Job acquisition first** — complete Horizon 1A before Horizon 1B recruiter work
+- **Intelligence before automation** — explain before acting; deterministic workflow before agents
+- **Human review** — tiers, packages, and submission require owner judgment; never silent submit
 - **Dual-value test** — every capability must improve interview/offer odds or reduce repetitive search effort
 - **Explainability** — assessments must cite evidence from job description and profile
-- **Outcome logging** — decisions and results must be recordable (FR-013)
+- **Outcome logging** — decisions and results must be recordable (Phase 2 M2 / FR-012)
 - **Operational continuity** — the built system must connect to existing tracking in `applications/`, not run parallel to it
 - **Public profile boundary** — downstream capabilities obtain the career profile through
   `career_intelligence.profile`, never through its YAML storage adapter
+- **Acquisition via adapters** — prefer APIs/feeds/alerts/URLs/paste/exports; Playwright is a controlled fallback, not crawlers
 
 ---
 

@@ -4,6 +4,63 @@ Records product strategy and engineering knowledge changes. Routine typo fixes a
 
 ---
 
+## Version 1.47
+
+### Renumber future FRs to match implementation sequence
+
+FR-001–FR-007 remain unchanged (complete). All remaining requirements were renumbered
+so identifiers follow Horizon 1A → 1B → Horizon 2 delivery order.
+
+| Old ID (pre-1.47) | New ID | Capability |
+|-------------------|--------|------------|
+| FR-015 + FR-016 | **FR-008** | Job Acquisition & Workflow Orchestration |
+| FR-014 + FR-017 | **FR-009** | Opportunity Review Queue & Ranking (incl. duplicates) |
+| FR-018 | **FR-010** | Application Package Preparation |
+| FR-019 | **FR-011** | Submission Assistance |
+| FR-020 | **FR-012** | Application Pipeline Tracking |
+| FR-021 | **FR-013** | Bounded Agentic Workflow |
+| FR-022 | **FR-014** | Multi-Agent Orchestration |
+| FR-023 | **FR-015** | Agent Evaluation & Observability |
+| FR-008 | **FR-016** | Recruiter Intelligence (Horizon 1B) |
+| (split / new) | **FR-017** | Recruiter Outreach |
+| (split / new) | **FR-018** | Existing Connection Outreach |
+| (new) | **FR-019** | LinkedIn Network Intelligence |
+| (new) | **FR-020** | Meetup Intelligence |
+| (new) | **FR-021** | LinkedIn Content Planning |
+| FR-011 | **FR-022** | Market Intelligence |
+| FR-009 | **FR-023** | Interview Preparation (Horizon 2) |
+| FR-010 | **FR-024** | Career Dashboard (Horizon 2) |
+| FR-012 (cross-domain future) | **FR-025** | Daily Prioritisation cross-domain (Horizon 2) |
+
+**Historical Phase 2 labels (capabilities unchanged):**
+
+| Historical label | Phase 2 delivery | Now feeds |
+|------------------|------------------|-----------|
+| “FR-012 partial” | M4 ranked comparison | FR-009 |
+| “FR-013 subset” | M2 outcome logging | FR-012 |
+
+**Rationale:** Numbering previously implied Recruiter Intelligence was next after
+cover letters. The product priority is the end-to-end application workflow first;
+recruiter/market work is Horizon 1B after FR-015.
+
+Documentation-only; no runtime changes. ADR-003 still required before orchestration
+production commit (during FR-008 spike).
+
+---
+
+## Version 1.46
+
+### Horizon 1A / 1B roadmap and FR planning (pre-renumber)
+
+- Split Horizon 1 into **1A Job application workflow** and **1B Recruiter and market
+  engagement**. Principle: **Job acquisition first. Recruiter outreach second.**
+- Introduced acquisition/orchestration stages (then numbered FR-014–FR-023; see 1.47
+  for current IDs).
+- Playwright positioned as controlled fallback adapter — not “web scraping”.
+- Documentation/planning only — no runtime.
+
+---
+
 ## Version 1.45
 
 ### FR-007 Cover Letter Generation — Complete

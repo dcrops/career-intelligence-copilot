@@ -17,9 +17,10 @@ Every engineering tradeoff in this repository is made under constraints that do 
 - **Horizon 1 urgency** — the owner is running an active job search with real deadlines
 - **Single builder** — the user, product owner, and engineer are the same person
 - **Three objectives** — career outcome, portfolio demonstration, and Cursor workflow learning compete for time; Horizon 1 wins on conflict
-- **Phase 2 baseline** — Job Intelligence MVP is complete and frozen; new work
-  (starting with FR-006b) should earn architectural change rather than casually
-  reopening settled Phase 2 decisions
+- **Phase 2 baseline** — Job Intelligence MVP is complete and frozen; Horizon 1A
+  work should earn architectural change rather than casually reopening settled
+  Phase 2 decisions
+- **Horizon 1A before 1B** — job application workflow before recruiter outreach
 
 ---
 
@@ -28,13 +29,41 @@ Every engineering tradeoff in this repository is made under constraints that do 
 These are non-negotiable unless the owner explicitly revises them and the changelog is
 updated. Phase 2 established them in practice; they continue to bind Horizon 1 work.
 
+### Job acquisition first; recruiter outreach second
+
+Complete the discover → assess → prepare → review → submit → track loop before
+investing in recruiter discovery, outreach messaging, meetup intelligence, or LinkedIn
+network automation. Recruiter work is an additional acquisition channel once the
+application loop is reliable — not a parallel distraction.
+
+### Validate first, change second
+
+Reproduce and understand current behaviour before changing planners, prompts,
+adapters, or workflow graphs. Spikes use saved/manual jobs before live acquisition.
+
+### Deterministic first; agents only when justified
+
+Prefer deterministic workflow nodes and typed services where decisions are already
+understood. Introduce bounded agents (FR-013) only after the deterministic path
+(FR-008) works; multi-agent patterns (FR-014) only after bounded agents are reliable.
+Do not blur workflow orchestration with agent reasoning.
+
 ### Intelligence before automation
 
 Decision quality is the product. Automation serves intelligence — it does not replace it. Automate structured extraction and comparison; do not automate tier commitment or externally visible actions.
 
 ### Human review on consequential outputs
 
-Tier recommendations, ranked comparisons that drive daily effort, and any future externally visible content require user review and override capability. Application tiers are effort guidance only — they are not autonomous apply/skip decisions.
+Tier recommendations, ranked comparisons that drive daily effort, application packages,
+and any submission or externally visible content require user review and override
+capability. Application tiers are effort guidance only — they are not autonomous
+apply/skip decisions. **Never silently submit an application.**
+
+### Fail closed on uncertain external actions
+
+Where a required application answer is unknown or materially uncertain — or CAPTCHA,
+auth, or unsupported forms block a safe path — fail closed and escalate to the owner.
+Do not fabricate answers.
 
 ### Dual-value gate
 
@@ -46,11 +75,34 @@ Assessments must be explainable with cited evidence. Do not ship confident-sound
 
 ### Outcome logging
 
-FR-013 is infrastructure, not a backlog item. A system that assesses but does not remember is a calculator, not a copilot.
+Pipeline and outcome recording (Phase 2 M2; Horizon 1A FR-012) is infrastructure,
+not a backlog item. A system that assesses but does not remember is a calculator,
+not a copilot.
 
 ### Operational continuity
 
 The built system must connect to the owner's existing workflow in `applications/` and related operational folders. A parallel tool that the owner must maintain alongside manual trackers has failed regardless of technical quality.
+
+### Explicit provenance and adapter isolation
+
+Acquisition, intelligence, preparation, submission, and tracking are separate concerns.
+Unstable external systems (email, boards, browsers) sit behind adapters with typed
+outputs, extraction warnings, and tests. Playwright is a controlled fallback — not the
+default acquisition architecture and not an excuse for crawlers or access-control bypass.
+
+### Orchestration learning transparency
+
+Horizon 1A teaches agent orchestration progressively. Each orchestration feature must
+document engineering reason, pattern, alternatives, deterministic-vs-agentic choice,
+owner learning concept, manual validation, and mastery evidence. Opaque “install a
+framework and wire agents” guidance is unacceptable. Production commitment to LangGraph
+(or any orchestrator) requires **ADR-003** after the learning spike.
+
+### Auditable, idempotent state transitions
+
+Workflow and pipeline transitions should be observable, preferably idempotent, and
+resumable across owner-approval interrupts. Prefer checkpoints over silent retries that
+duplicate submissions.
 
 ---
 
@@ -58,13 +110,13 @@ The built system must connect to the owner's existing workflow in `applications/
 
 ### Scope control
 
-Phase 2 is one vertical slice through the decision loop. Resist adjacent features —
-cover letters, recruiter modules, dashboards, and unofficial “Phase D” CV presentation
-extensions — that feel like job-search help but expand past the approved FR boundary.
-FR-006 (CV content decisions) is complete; do not reopen it for presentation polish.
+Horizon 1A owns the application workflow (FR-008–FR-015). Resist Horizon 1B recruiter
+modules, dashboards, and unofficial presentation polish that displace acquisition and
+submission. FR-006/FR-007 document generation is complete; do not reopen for polish
+while the application loop is incomplete.
 
 **Violate when:** An addition passes the dual-value test, has an approved FR (or explicit
-owner request), and can ship without delaying remaining Phase 2 exit criteria.
+owner request), and accelerates Horizon 1A without delaying the application loop.
 
 ### Simplicity over flexibility
 
@@ -116,13 +168,18 @@ Build extensible seams between decision stages; keep implementations inside each
 
 Avoid these patterns — they are the most likely causes of project failure in this repository:
 
-1. **Building the next FR (or informal Phase D) while Phase 2 exit is incomplete** —
-   cover letters, recruiter outreach, dashboards, and CV *presentation* polish feel
-   urgent but must not displace remaining Phase 2 exit criteria or reopen FR-006
-2. **Confident assessments without evidence** — erodes trust during a live search after one bad recommendation
-3. **A system parallel to existing trackers** — the owner maintains two workflows; the manual one wins
-4. **Optimising portfolio or learning objectives over Horizon 1** — impressive engineering that does not shorten the job search
-5. **Skipping outcome logging** — no compounding value, no hypothesis validation, repetitive re-analysis forever
+1. **Starting recruiter outreach (Horizon 1B) before the application loop works** —
+   messaging and networking feel urgent but displace job acquisition, ranking, and
+   reviewed submissions
+2. **Treating acquisition as “web scraping”** — crawlers, brittle selectors, and
+   access-control bypass create fragile, non-compliant systems
+3. **Agents before deterministic workflow** — multi-agent theatre without typed state,
+   approvals, and recoverable nodes
+4. **Silent or fabricated submission answers** — destroys trust and creates legal/ethical risk
+5. **Confident assessments without evidence** — erodes trust after one bad recommendation
+6. **A system parallel to existing trackers** — the owner maintains two workflows; the manual one wins
+7. **Optimising portfolio or learning over Horizon 1A** — impressive engineering that does not shorten time-to-submitted applications
+8. **Skipping outcome / pipeline logging** — no compounding value, repetitive re-work
 
 ---
 
@@ -144,4 +201,7 @@ When this document conflicts with the functional specification on requirements, 
 
 Record engineering invariant changes here and in [11_changelog.md](11_changelog.md). Do not leave durable tradeoff decisions only in agent conversations.
 
-Architecture Decision Records will be introduced when the first irreversible implementation decision requires them. Until then, note undecided status in [10_roadmap.md](10_roadmap.md).
+Architecture Decision Records live in `docs/adr/`. **ADR-003 (orchestration
+architecture)** is required before committing production to LangGraph or any
+workflow framework — see [10_roadmap.md](10_roadmap.md) § Agent Orchestration Learning Spike.
+Write ADR-003 during/after the FR-008 learning spike.

@@ -20,9 +20,13 @@ The platform treats career management as an ongoing decision-making process rath
 
 The current priority is to help the repository owner secure an appropriate AI Engineering role as quickly as reasonably possible.
 
-This is the primary near-term outcome against which early features should be judged. The product should help improve the likelihood of securing relevant interviews or offers and reduce the repetitive administrative work involved in evaluating and pursuing opportunities.
+Near-term work focuses on the **full job-application workflow** (Horizon 1A): discover,
+assess, prepare, review, submit and track suitable applications — before recruiter
+outreach or networking automation (Horizon 1B).
 
-The product does not guarantee employment, interviews, or recruiter engagement.
+**Job acquisition first. Recruiter outreach second.**
+
+The product should improve the likelihood of securing relevant interviews or offers and reduce repetitive administrative work. It does not guarantee employment, interviews, or recruiter engagement.
 
 ---
 
@@ -63,7 +67,9 @@ The platform will provide:
 - Market intelligence
 - Daily prioritisation
 
-Near-term delivery is sequenced by roadmap phase. Phase 2 focuses on Job Intelligence only.
+Near-term delivery: Phase 2 Job Intelligence and document generation (FR-006/007) are
+complete. Current focus is Horizon 1A application workflow; Horizon 1B recruiter
+engagement follows. See [10_roadmap.md](10_roadmap.md).
 
 ---
 
@@ -86,9 +92,12 @@ Career Intelligence Copilot aims to help professionals:
 
 **Horizon 1 — Immediate:** Help the user secure a suitable AI Engineering role while reducing job-search effort.
 
+- **1A (current):** Job application workflow end to end (FR-008–FR-015)
+- **1B (later):** Recruiter and market engagement (FR-016–FR-022)
+
 **Horizon 2 — Long term:** Evolve into a reusable Career Intelligence Platform supporting career progression, networking, learning, promotion, role changes, and future opportunity evaluation.
 
-Horizon 1 takes priority whenever the two horizons compete.
+Horizon 1 takes priority whenever the two horizons compete. Within Horizon 1, 1A completes before 1B.
 
 ---
 

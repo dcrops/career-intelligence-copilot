@@ -62,6 +62,15 @@ Horizon 1 is the primary lens for prioritising near-term features and judging ea
 
 
 
+**Within Horizon 1:**
+
+- **Horizon 1A — Job application workflow (first):** discover, assess, prepare, review, submit and track suitable applications via source-adapter acquisition and orchestrated workflow.
+- **Horizon 1B — Recruiter and market engagement (second):** recruiter discovery/messaging, connection outreach, meetup intelligence, LinkedIn planning — only after 1A is usable end to end.
+
+**Principle:** Job acquisition first. Recruiter outreach second.
+
+
+
 ### Horizon 2 — Long term
 
 
@@ -250,7 +259,10 @@ The platform will evolve around several intelligence domains:
 
 
 
-Near-term delivery begins with Job Intelligence (Phase 2). Other domains follow in roadmap sequence.
+Near-term delivery: Job Intelligence (Phase 2) and application document generation are
+complete. Current work is Horizon 1A (application workflow). Recruiter Intelligence
+and related engagement domains are Horizon 1B / later roadmap phases — not concurrent
+with incomplete 1A.
 
 
 

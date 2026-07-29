@@ -103,4 +103,4 @@ Unit tests: `tests/unit/cover_letter/`.
 
 FR-007 is **complete**. Manual validation passed. Do not reopen as informal
 presentation polish unless the owner requests a scoped change. Next Horizon 1
-focus: automated job acquisition / discovery (see roadmap).
+focus: Horizon 1A job application workflow (see roadmap).

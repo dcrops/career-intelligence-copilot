@@ -73,7 +73,7 @@ def test_source_url_preserved_and_fingerprint_stable() -> None:
 
 
 def test_no_deduplication_same_platform_id_allowed() -> None:
-    """FR-014 is out of scope — identical facets still yield distinct opportunity ids."""
+    """FR-009 duplicate matching is out of scope here — identical facets still yield distinct opportunity ids."""
     posting = JobPosting.model_validate(
         {
             "raw_text": "Role body",

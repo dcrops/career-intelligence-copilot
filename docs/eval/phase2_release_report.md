@@ -87,7 +87,7 @@ extraction/persistence, list/compare, and backfill behaviour verified.
 |----------|------------|-----------|
 | README | Accurate workflow; status was “M5 remaining” | Updated to Phase 2 Complete; next = FR-006b |
 | Roadmap | Exit criteria clear; status in progress | Marked Phase 2 Complete |
-| Functional specification | Requirements match implementation; FR-013 feedback deferred (○) as designed | Progress note updated |
+| Functional specification | Requirements match implementation; outcome→assessment feedback deferred (○; hist. FR-013) as designed | Progress note updated |
 | Engineering principles | Still authoritative; no conflict | No change required |
 | Implementation notes | M1–M4a documented | M5 close-out note added |
 | Testing strategy | Layers match suite | M5 note added |
@@ -131,8 +131,8 @@ part of M5 updates.
    operational hygiene).
 2. **FR-006b** — CV quality improvement (owner-sequenced next milestone).
 3. FR-007 Cover Letter (planned; not blocking Phase 2).
-4. FR-013 “inform future assessments” feedback loop (explicitly deferred).
-5. FR-014 duplicate detection (post–Phase 2).
+4. Outcome history → future FR-003 feedback loop (explicitly deferred; hist. “FR-013”).
+5. FR-009 duplicate detection (Horizon 1A; historically planned as FR-014).
 6. Optional ranking refinements (deadlines, etc.) — out of Phase 2 scope.
 7. Horizon 2 domains (recruiters, networking, meetups) — deferred.
 

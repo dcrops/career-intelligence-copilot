@@ -73,6 +73,10 @@ SoT shape, ranking sort key, or Horizon 2 domains (recruiters, networking, meetu
 
 ## Next
 
-**Current focus:** FR-006b — CV Quality Improvement  
-**Then:** FR-007 Cover Letter; automated job acquisition under Horizon 1  
+**Current focus:** Horizon 1A — Job application workflow (FR-008–FR-015)  
+**Near-term entry:** FR-008 Agent Orchestration Learning Spike + ADR-003  
+**Then:** FR-008 live adapters; FR-009–FR-012 queue/packages/submit/track  
+**Later in 1A:** FR-013–FR-015 bounded agents → multi-agent → evaluation  
+**After 1A:** Horizon 1B recruiter / market engagement (FR-016–FR-022)  
+**Principle:** Job acquisition first. Recruiter outreach second. 
 **Later:** Horizon 2 capability phases (see roadmap)

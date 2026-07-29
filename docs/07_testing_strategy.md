@@ -5,7 +5,7 @@
 This document is the authoritative testing reference for implementation work in the Career
 Intelligence Copilot. It defines which behaviours each test layer protects and how the suite
 grows as the product evolves (Phase 2 baseline is complete; further suites track
-Horizon 1 work such as FR-006b).
+Horizon 1A workflow, acquisition adapters, and orchestration learning).
 
 Requirements remain authoritative in [04_functional_specification.md](04_functional_specification.md).
 Engineering tradeoffs remain authoritative in
@@ -212,7 +212,8 @@ Default path is fully deterministic (no OpenAI). Owner review remains mandatory.
 
 ## M4 Ranked comparison coverage
 
-M4 is **complete** for Phase 2 job opportunities (FR-012 partial). Coverage includes:
+M4 is **complete** for Phase 2 job opportunities (historically labelled “FR-012
+partial”; foundation for Horizon 1A **FR-009**). Coverage includes:
 
 - unit tests under `tests/unit/opportunity_comparison/` (sort key, open filter, reasons,
   CLI `opportunity compare`, regression-stable ordering);
@@ -241,3 +242,24 @@ M4a is **complete**. Coverage includes:
 M5 is validation-only (no new product tests required). Evidence:
 [eval/phase2_release_report.md](eval/phase2_release_report.md). Full suite must
 remain green before declaring Phase 2 complete.
+
+---
+
+## Horizon 1A — Planned test coverage (not yet implemented)
+
+When FR-008–FR-015 are built, prefer behaviour over implementation detail:
+
+| Area | Expected coverage |
+|------|-------------------|
+| FR-008 acquisition adapters | Unit tests per adapter; provenance fields; extraction warnings; no assumption that every job is browser-sourced |
+| FR-008 workflow | Golden workflow on a saved/manual job; conditional routing from real strategy outputs; checkpoint + resume after owner approval; recoverable node failure; node execution traces |
+| FR-009 queue / duplicates | Deterministic ranking inputs; explainable reasons; no mutate-on-rank; platform ID / URL / fingerprint matching |
+| FR-010 packages | Artefacts grouped by application identity; trace to job evidence |
+| FR-011 submission | Never silent submit; fail-closed on unknown answers; unsupported-form / CAPTCHA / auth paths escalate; duplicate-submission guards |
+| FR-012 tracking | Status transitions with timestamps and audit history |
+| FR-013 agents | Max iterations, stop conditions, restricted tools, validation before state update |
+| FR-014 / FR-015 | Loop prevention; fault injection; token/cost/latency where LLM-backed; browser journey evidence when Playwright is used |
+
+**Spike rule:** First FR-008 tests use fixture/saved jobs only — not live acquisition
+or real submission. Deterministic replay where possible; owner manual validation for
+approval interrupts.

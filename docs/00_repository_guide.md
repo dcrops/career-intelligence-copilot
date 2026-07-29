@@ -36,7 +36,7 @@ Objectives.
 |----------|--------|
 | What is this project? | Decision-support for job search (Horizon 1), evolving toward a Career Intelligence Platform (Horizon 2). |
 | What has been completed? | **Phase 1** and **Phase 2** — see [12_phase_history.md](12_phase_history.md) and [eval/phase2_release_report.md](eval/phase2_release_report.md). |
-| What is next? | **Automated job acquisition / discovery** (FR-007 Cover Letter complete) — [10_roadmap.md](10_roadmap.md). |
+| What is next? | **Horizon 1A** job application workflow (**FR-008–FR-015**; acquisition via source adapters, not “scraping”). Recruiter outreach is Horizon 1B (**FR-016+**) — [10_roadmap.md](10_roadmap.md). |
 | Where should I start reading? | This guide → [AGENTS.md](../AGENTS.md) → [04_functional_specification.md](04_functional_specification.md) → [10_roadmap.md](10_roadmap.md). |
 
 ---
@@ -45,11 +45,13 @@ Objectives.
 
 **Phase 2 Job Intelligence — Complete** (documentation frozen as baseline).
 
-**Next milestone:** Automated job acquisition / discovery (FR-007 Cover Letter complete)
+**Next milestone:** Horizon 1A — **FR-008** Agent Orchestration Learning Spike (then
+live acquisition adapters), per [10_roadmap.md](10_roadmap.md).
 
-**Thereafter:** Remaining Horizon 1 operational work as sequenced in the roadmap
+**Thereafter:** Complete Horizon 1A (through FR-015), then Horizon 1B (FR-016–FR-022).
 
-Architecture decisions: `docs/adr/`. Release evidence:
+Architecture decisions: `docs/adr/` (ADR-001, ADR-002; **ADR-003 orchestration
+pending** before LangGraph/production commit — written during FR-008 spike). Release evidence:
 [eval/phase2_release_report.md](eval/phase2_release_report.md).
 
 ---
@@ -68,6 +70,7 @@ Architecture decisions: `docs/adr/`. Release evidence:
 | [08_implementation_notes.md](08_implementation_notes.md) | Supporting | Implementation notes and manual runners |
 | [12_phase_history.md](12_phase_history.md) | Supporting | Phase 1–2 outcomes and lessons |
 | [eval/phase2_release_report.md](eval/phase2_release_report.md) | Supporting | Phase 2 M5 GO evidence |
+| [adr/README.md](adr/README.md) | Supporting | ADR index; ADR-003 orchestration pending |
 | [eval/fr006_manual_validation.md](eval/fr006_manual_validation.md) | Supporting | FR-006 validation procedure |
 | [eval/fr006b_cv_quality_golden_suite.md](eval/fr006b_cv_quality_golden_suite.md) | Supporting | FR-006b permanent CV quality benchmarks |
 | [eval/fr006b_cv_quality_findings.md](eval/fr006b_cv_quality_findings.md) | Supporting | FR-006b quality review (pre-implementation) |
@@ -124,7 +127,7 @@ Supporting documents (01, 02) are optional for onboarding.
 | `images/` | Reserved | Listed historically; not yet populated |
 
 The operational layer is the domain the system must serve. Phase 2 pipeline and
-outcome logging (FR-013 subset) are the automated counterparts to manual tracking in
+outcome logging (Phase 2 M2; historically FR-013 subset) are the automated counterparts to manual tracking in
 `applications/`.
 
 ---

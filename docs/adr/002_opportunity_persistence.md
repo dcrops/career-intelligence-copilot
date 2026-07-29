@@ -5,7 +5,8 @@
 
 ## Context
 
-Phase 2 exit requires durable opportunity tracking, outcome logging (FR-013 subset), and
+Phase 2 exit requires durable opportunity tracking, outcome logging (M2; historically
+FR-013 subset), and
 ranked comparison of open opportunities. FR-001–FR-006 are complete, but assessments were
 ephemeral (manual JSON dumps only). The owner approved Option C storage: structured
 repository storage as the system of record, with CSV as an operational export only (M3).
@@ -29,7 +30,7 @@ repository storage as the system of record, with CSV as an operational export on
 
 Downstream milestones can key decisions, outcomes, and rankings on `opportunity_id`.
 Re-assessment creates a new opportunity (artifacts are immutable). Duplicate detection
-(FR-014) is not implemented; identity facets are stored for future use only.
+(FR-009) is not implemented; identity facets are stored for future use only.
 
 ## Guardrail
 

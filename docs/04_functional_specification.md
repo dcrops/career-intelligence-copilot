@@ -33,16 +33,12 @@ This specification describes the full platform capability set. Delivery is phase
 - Outcome logging for assessed opportunities
 - Ranked comparison of open assessed opportunities
 
-### Phase 2 — Out of Scope
+### Phase 2 — Out of Scope (historical)
 
-- Cover letter generation (FR-007) and later job-search platform capabilities below
-- FR-008 Recruiter Intelligence
-- FR-009 Interview Preparation
-- FR-010 Career Dashboard (full)
-- FR-011 Market Intelligence
-- FR-012 Daily Prioritisation (cross-domain)
-- Automated job discovery or external platform integration
-- Interview Probability and Recruiter Confidence scoring (insufficient data at launch)
+At Phase 2 exit these were out of scope (several are now renumbered under Horizon
+1A/1B): cover letters (later completed as FR-007), recruiter intelligence, interview
+prep, full dashboard, market intelligence, cross-domain daily prioritisation,
+automated job discovery, predictive scoring.
 
 **Note:** FR-006 CV Generation and FR-007 Cover Letter were originally deferred from
 Phase 2 exit criteria and were later **completed** as owner-sequenced post–Phase 2
@@ -53,9 +49,27 @@ baseline before FR-006b. See [10_roadmap.md](10_roadmap.md),
 [12_phase_history.md](12_phase_history.md), and
 [eval/phase2_release_report.md](eval/phase2_release_report.md).
 
-### Post–Phase 2
+**Historical Phase 2 FR labels (superseded numbering):** M4 ranked comparison was
+tracked as “FR-012 partial”; M2 outcome logging as “FR-013 subset”. Those
+*capabilities* remain complete. Identifiers FR-012 and FR-013 now mean Horizon 1A
+pipeline tracking and bounded agents — see remapping in
+[11_changelog.md](11_changelog.md) § 1.47.
 
-Remaining functional requirements are scheduled per roadmap phases 3–8.
+### Post–Phase 2 / Horizon 1
+
+- **Complete:** FR-001–FR-007 (through Cover Letter)
+- **Current — Horizon 1A (Job application workflow):** FR-008–FR-015
+- **Then — Horizon 1B (Recruiter and market engagement):** FR-016–FR-022
+- **Later — Horizon 2:** FR-023+ (interview, dashboard, cross-domain prioritisation)
+
+**Principle:** Job acquisition first. Recruiter outreach second.
+
+**Product progression:** Understand the candidate → Understand the opportunity →
+Generate the application → Acquire jobs → Orchestrate applications → Introduce
+bounded agents → Scale to multi-agent systems → Expand into recruiter and market
+intelligence.
+
+See [10_roadmap.md](10_roadmap.md).
 
 ---
 
@@ -86,7 +100,7 @@ Where evidence is unavailable (e.g. salary not listed), the assessment must stat
 ### Application Tier Semantics
 
 Tiers translate fit analysis into **effort investment** guidance. They are not apply/skip
-decisions. The system recommends; the user decides (FR-013).
+decisions. The system recommends; the user decides (owner decision / pipeline tracking — Phase 2 M2; Horizon 1A FR-012).
 
 | Tier | Effort investment |
 |------|-------------------|
@@ -349,7 +363,7 @@ Application Strategy answers:
   `deferred_pending_information`
 
 There is no system-owned binary Apply/Skip field. Owner apply / skip / defer belongs to
-FR-013.
+Phase 2 M2 outcome logging (historically FR-013 subset) and Horizon 1A FR-012.
 
 ### SearchOperatingContext
 
@@ -662,151 +676,185 @@ Eval / closure: [eval/fr007_cover_letter.md](eval/fr007_cover_letter.md)
 
 ---
 
-## FR-008 Recruiter Intelligence
+## Horizon 1A — Job Application Workflow (FR-008–FR-015)
 
-**Phase:** 3
+**Product rule:** Complete the discover → assess → prepare → review → submit → track
+loop before Horizon 1B recruiter / meetup / LinkedIn engagement work.
 
-Generate recruiter outreach.
+**Agent orchestration learning:** Horizon 1A is a deliberate hands-on programme for
+the owner — a production system *and* an AI Engineering learning platform. Do not
+ship opaque “install a framework and wire agents” instructions. Each orchestration
+feature must state: engineering reason; pattern chosen; alternatives considered;
+why deterministic vs agentic; what concept is taught; how the owner validates it;
+what constitutes mastery.
 
-Track recruiter history.
+**Workflow fundamentals to teach:** workflow orchestration; state management; typed
+state; nodes; edges; routing; conditional execution; checkpointing; retries;
+resumability; observability; failure recovery; approval interrupts.
 
-Recommend follow-ups.
+**Agent engineering to teach:** when to introduce agents; when deterministic services
+are preferable; bounded reasoning; tool permissions; context boundaries; supervisor /
+handoff / agents-as-tools architectures; evaluation; tracing; loop prevention; cost
+optimisation; prompt-injection defence; testing agentic systems.
 
-All externally visible outreach must require user review before sending.
+**Cursor modes (deliberate use):** Ask for conceptual explanation and codebase
+orientation; Plan for architecture and dependency sequencing; Agent for bounded
+implementation; Debug for runtime failures, state-flow issues, and browser automation
+problems.
 
----
+### Progressive stages
 
-## FR-009 Interview Preparation
+| Stage | Focus | FR |
+|-------|--------|-----|
+| 1–2 | Job acquisition + deterministic workflow orchestration | FR-008 |
+| 3 | Opportunity review queue & ranking (incl. duplicates) | FR-009 |
+| 4 | Application package preparation | FR-010 |
+| 5 | Submission assistance | FR-011 |
+| 6 | Application pipeline tracking | FR-012 |
+| 7 | Bounded agentic workflow | FR-013 |
+| 8 | Multi-agent orchestration | FR-014 |
+| 9 | Agent evaluation & observability | FR-015 |
 
-**Phase:** 7
+Near-term entry: **Agent Orchestration Learning Spike** under FR-008 (saved/manual
+job only — no live acquisition, no real submission). Live source adapters follow
+once the deterministic workflow path is proven.
 
-Generate:
-
-Recruiter interview.
-
-Technical interview.
-
-Behavioural interview.
-
-Project walkthrough.
-
-Questions to ask.
-
----
-
-## FR-010 Career Dashboard
-
-**Phase:** 8
-
-Provide a live dashboard showing:
-
-Applications.
-
-Recruiters.
-
-Visibility.
-
-Portfolio.
-
-Market trends.
-
-Priority actions.
-
-Phase 2 may provide a simple job opportunity list only; the full dashboard is out of scope for Phase 2.
+**Phase 2 foundations reused (historical labels):** Ranked comparison (M4; was
+“FR-012 partial”) feeds FR-009. Outcome logging (M2; was “FR-013 subset”) feeds FR-012.
 
 ---
 
-## FR-011 Market Intelligence
+## FR-008 Job Acquisition & Workflow Orchestration
 
-**Phase:** 6
+**Phase:** Horizon 1A Stages 1–2  
+**Status:** Planned — **immediate implementation target; introduces workflow orchestration**
 
-Track recurring technologies.
+Acquire job opportunities through **source adapters** and coordinate existing
+capabilities as an explicit deterministic workflow with shared typed state.
 
-Recommend learning priorities.
+### Preferred acquisition methods (reliability / compliance order)
 
-Monitor salary trends.
+1. Supported APIs or structured feeds where available
+2. Job-alert email ingestion
+3. Saved-search notifications
+4. User-supplied job URLs
+5. User-supplied pasted job descriptions (current Phase 2 path remains valid)
+6. Exported or downloaded job data
+7. Playwright-assisted browser workflows where necessary and appropriate
 
----
+### Explicitly avoid as default design
 
-## FR-012 Daily Prioritisation
+- Uncontrolled crawlers or mass page collection
+- Brittle HTML parsers / selector-heavy extraction tied to one layout
+- Workflows intended to bypass authentication, rate limits, or access controls
+- Traditional large-scale scraping as the primary acquisition strategy
+- Describing this phase as “web scraping”
 
-**Phase:** 8 (full); partial in Phase 2
+### Playwright positioning
 
-Recommend the highest-value activities for the day based on:
+Playwright is a **browser-automation adapter** — isolated behind interfaces, tested
+independently, used where appropriate, **not** the architectural centre of the system.
+Typical uses: opening owner-provided URLs; navigating authenticated pages with the
+owner’s session; extracting a visible job description; validating page state;
+assisting form completion (FR-011); capturing submission evidence; testing browser
+journeys.
 
-Career goals.
+### Canonical acquisition model (indicative fields)
 
-Outstanding tasks.
+source type; source identifier; source URL; acquisition timestamp; raw content;
+normalised content; employer; title; location; work arrangement; employment type;
+salary data; posting date; closing date; provenance; acquisition status;
+extraction warnings.
 
-Interview opportunities.
+The domain model must **not** assume every job comes from browser automation.
 
-Expected ROI.
+### Conceptual workflow
 
-Phase 2 supports ranked comparison of open assessed job opportunities only
-(`OpportunityComparisonService`; FR-012 partial / M4). Cross-domain daily
-prioritisation is deferred.
+```
+Acquire → Validate → Normalise → Deduplicate (FR-009)
+  → Analyse (FR-002) → Assess (FR-003) → Portfolio Match (FR-004)
+  → Application Strategy (FR-005) → Rank (FR-009)
+  → Prepare Documents (FR-010) → Owner Review
+  → Submit or Reject (FR-011) → Track (FR-012)
+```
 
-Acceptance Criteria (Phase 2 subset)
+Prefer **deterministic workflow nodes** where decisions are already understood.
+Include: typed workflow state; node boundaries; conditional edges; checkpointing;
+resumability; idempotency; observability; failure recovery; mandatory owner-approval
+interrupts.
 
-✓ Open opportunities (non-terminal status; decision ≠ skip) can be ranked
-  deterministically with explainable reasons.
+### Near-term: Agent Orchestration Learning Spike
 
-✓ Ranking consumes persisted Opportunity records only — no re-analysis or OpenAI.
+**The first orchestration implementation uses manually supplied or previously
+validated jobs before introducing live acquisition.**
 
-○ Cross-domain daily prioritisation (recruiters, networking, meetups) — deferred.
+Before live acquisition:
 
----
+- Wrap the existing saved-job / manual validation pipeline
+- Use one manually supplied or existing validation job
+- Typed workflow state; existing services as explicit nodes
+- Route on real ApplicationStrategy outputs
+- Mandatory owner-review interrupt; checkpoint before review; resume after approval
+- At least one recoverable node failure; execution trace
+- Label nodes as deterministic, LLM-backed, or genuinely agentic
+- Produce **ADR-003** explaining the selected orchestration architecture — including
+  whether LangGraph (or similar) provides enough value over the project’s existing
+  approach
 
-## FR-013 Outcome Logging
+**Spike must not:** scrape live boards; submit real applications; introduce several
+autonomous agents; replace validated FR-002–FR-007 services; blur workflow
+orchestration with agent reasoning.
 
-**Phase:** 2
-
-The system shall allow the user to record outcomes for assessed and pursued opportunities.
-
-Capture:
-
-- user decision (apply / skip / defer)
-- application status
-- interview stage
-- outcome (where known)
-
-**Implementation status:** Phase 2 **subset** delivered in M2 via
-`OpportunityService.record_decision` / `update_outcome`. Decision, pipeline status, and
-outcome kind are modelled as separate fields. Acceptance criterion “outcome history is
-available to inform future assessments” (automatic feedback into FR-003) remains
-**deferred** beyond Phase 2 exit.
+Do not commit production architecture to LangGraph without ADR-003.
 
 Acceptance Criteria
 
-✓ Outcomes can be recorded against assessed opportunities.
+✓ Jobs can be acquired from at least paste/URL paths with explicit provenance.
 
-○ Outcome history is available to inform future assessments. *(deferred — not required for Phase 2 exit)*
+✓ Acquisition metadata is separate from Job Analysis employer-description content.
+
+✓ Adapter boundary exists for future API / email / Playwright sources.
+
+✓ No production dependency on uncontrolled crawling.
+
+✓ End-to-end deterministic workflow runs on a saved/manual job with owner interrupt.
+
+✓ Checkpoint / resume after approval is demonstrated.
+
+✓ Trace of node execution is recorded.
+
+✓ ADR-003 documents architecture choice and deterministic-vs-agent boundaries.
 
 ---
 
-## FR-014 Duplicate Application Detection
+## FR-009 Opportunity Review Queue & Ranking
 
-**Phase:** Post–Phase 2 (future)
+**Phase:** Horizon 1A Stage 3  
+**Status:** Planned
 
-The system shall recognise opportunities the user has already considered or applied to,
-so effort is not wasted on repeats and pipeline history stays coherent.
+Compare multiple acquired opportunities for owner attention — not only process each
+job in isolation. Include duplicate detection, opportunity identity, ranking,
+prioritisation, explanation, and an owner review queue.
 
-Career Copilot should:
+Builds on Phase 2 **M4 ranked comparison** (`OpportunityComparisonService`;
+historically labelled “FR-012 partial”). Extends into the acquisition workflow with
+explainable ranking inputs such as:
 
-- recognise previously applied or assessed jobs
-- store platform job IDs when available
-- compare canonical URLs
-- compare company / title / location
-- optionally compare description fingerprints (stable digests of employer description
-  text, not UI chrome)
+- suitability / fit signals from FR-003–FR-005
+- application tier and effort
+- commercial and portfolio fit
+- evidence strength and material gaps
+- freshness, location fit
+- duplicate or repost handling (platform ID, canonical URL, company/title/location,
+  optional description fingerprints)
+- opportunity identity continuity (builds on Phase 2 M4a)
 
-When a platform exposes application status (for example “Applied”), that status should
-be captured as **acquisition metadata** — not analysed as part of the employer’s job
-description. Duplicate detection belongs with acquisition and pipeline continuity; it
-must not be embedded in Job Analysis extractors.
+When a platform exposes application status (for example “Applied”), store it as
+**acquisition metadata** — not as Job Analysis content. Duplicate detection belongs
+with acquisition and pipeline continuity.
 
-See [10_roadmap.md](10_roadmap.md) § Automated Job Acquisition and
-[06_domain_model.md](06_domain_model.md) § Job Posting — Future Evolution.
+Produce an owner-review queue with clear explanations. Optimise for the human
+reader’s concerns, not ATS keyword frequency alone.
 
 Acceptance Criteria
 
@@ -816,7 +864,306 @@ Acceptance Criteria
 
 ✓ Optional description fingerprinting reduces false novelty on near-identical ads.
 
-✓ Platform application status is stored as acquisition metadata, separate from Job Analysis.
+✓ Multiple opportunities can be ranked with explainable reasons.
+
+✓ Queue surfaces items awaiting owner review with provenance links.
+
+✓ Duplicate/repost handling is visible to the owner.
+
+---
+
+## FR-010 Application Package Preparation
+
+**Phase:** Horizon 1A Stage 4  
+**Status:** Planned
+
+Connect approved opportunities to existing document generation:
+
+- Tailoring Plan + Tailored CV (FR-006)
+- Cover Letter (FR-007)
+- HTML outputs where applicable
+- Owner approval gates
+
+Group artefacts by **application package identity** and trace them back to original
+job evidence and acquisition provenance.
+
+Acceptance Criteria
+
+✓ Approved opportunities can produce a packaged CV + cover letter set.
+
+✓ Artefacts are grouped and traceable to job evidence.
+
+✓ Owner approval remains mandatory before external use.
+
+---
+
+## FR-011 Submission Assistance
+
+**Phase:** Horizon 1A Stage 5  
+**Status:** Planned
+
+Submission is a **separate capability** from document generation.
+
+### Progressive automation levels
+
+1. Manual submission with generated materials
+2. Playwright-assisted form completion
+3. Owner-reviewed pre-submission state
+4. Explicit owner approval
+5. Final submission only where technically safe, permitted, and reliable
+
+**The system must never silently submit an application.** Owner review and explicit
+approval remain mandatory.
+
+Handle unsupported forms, custom / salary / work-rights questions, file uploads,
+authentication, CAPTCHA or anti-bot controls, failed submission evidence, duplicate
+submissions, and confirmation capture.
+
+**Fail closed** where any required answer is unknown or materially uncertain.
+Do not fabricate answers.
+
+Acceptance Criteria
+
+✓ No submission without explicit owner approval.
+
+✓ Fail-closed behaviour for unknown required answers.
+
+✓ Submission evidence / failure artefacts can be retained for audit.
+
+---
+
+## FR-012 Application Pipeline Tracking
+
+**Phase:** Horizon 1A Stage 6  
+**Status:** Planned
+
+Track application lifecycle with timestamps, evidence, and full audit history.
+Builds on Phase 2 **M2 outcome logging** (`OpportunityService.record_decision` /
+`update_outcome`; historically labelled “FR-013 subset”).
+
+Indicative states: discovery; assessment; review; preparation; submission;
+employer response; recruiter screen; interview; rejection; offer — plus supporting
+states such as awaiting owner review, approved, rejected by owner, submission
+failed, withdrawn.
+
+Decision, pipeline status, and outcome kind remain distinct concepts. Automatic
+feedback of outcome history into FR-003 assessments remains deferred unless later
+scoped under Horizon 2.
+
+Acceptance Criteria
+
+✓ State transitions are auditable with timestamps.
+
+✓ Owner can see current pipeline status per application identity.
+
+✓ Failed submission and recovery attempts are recordable.
+
+✓ Outcomes can be recorded against assessed opportunities (Phase 2 M2 retained).
+
+---
+
+## FR-013 Bounded Agentic Workflow
+
+**Phase:** Horizon 1A Stage 7  
+**Status:** Planned — **first introduction of bounded agentic reasoning**
+
+Only after the deterministic workflow (FR-008) is functioning may selected nodes
+become agentic.
+
+Potential bounded agents (examples): search-query refinement; company-context
+research; application-question drafting; submission recovery; quality review;
+incomplete-job investigation.
+
+Each agent must have: bounded scope; explicit tools; typed inputs; typed outputs;
+maximum iterations; stop conditions; traceable reasoning; owner escalation where
+necessary; validation before state updates.
+
+Document why each selected capability benefits from agentic reasoning rather than
+deterministic logic.
+
+Acceptance Criteria
+
+✓ No agent ships without typed I/O, tool allowlist, and iteration caps.
+
+✓ Agent decisions are traceable; unsafe tool calls are blocked.
+
+✓ Deterministic alternatives were considered and documented for each agent.
+
+---
+
+## FR-014 Multi-Agent Orchestration
+
+**Phase:** Horizon 1A Stage 8  
+**Status:** Planned — **introduces multi-agent orchestration**
+
+Only after bounded agents (FR-013) are reliable.
+
+Evaluate: supervisor pattern; agents as tools; handoffs; context isolation; shared
+state; orchestration trade-offs; centralised vs distributed control.
+
+Avoid role-playing agents. Each specialist must represent a genuine engineering
+boundary (acquisition, job intelligence, evidence matching, preparation, submission,
+compliance/approval).
+
+Acceptance Criteria
+
+✓ Pattern choice is justified in an ADR or engineering note.
+
+✓ Specialists have distinct tools/context boundaries.
+
+✓ Loop detection and stop conditions remain enforced across agents.
+
+---
+
+## FR-015 Agent Evaluation & Observability
+
+**Phase:** Horizon 1A Stage 9  
+**Status:** Planned
+
+Explicit evaluation for the orchestration layer:
+
+traces; checkpoints; retries; replay; latency; token usage; cost; approval
+interrupts; deterministic replay where possible; fault injection; orchestration
+testing; browser journey evidence; golden workflow tests; loop prevention;
+unsupported-claim checks.
+
+Acceptance Criteria
+
+✓ Workflow runs produce inspectable traces.
+
+✓ Golden workflow tests cover happy path and at least one failure/recovery path.
+
+✓ Token/latency/cost are measurable for LLM/agent nodes.
+
+---
+
+## Horizon 1B — Recruiter and Market Engagement (FR-016–FR-022)
+
+**Status:** Planned — **only after FR-015** (Horizon 1A complete and usable).
+
+Recruiter outreach is an *additional acquisition channel* after the owner can
+discover, assess, prepare, review, submit and track applications end to end.
+Do not displace Horizon 1A work.
+
+All externally visible outreach must require user review before sending.
+
+---
+
+## FR-016 Recruiter Intelligence
+
+**Phase:** Horizon 1B  
+**Status:** Planned
+
+Discover and prioritise suitable recruiters. Track recruiter history. Recommend
+follow-ups. Surface relationship context for outreach decisions.
+
+---
+
+## FR-017 Recruiter Outreach
+
+**Phase:** Horizon 1B  
+**Status:** Planned
+
+Generate tailored recruiter outreach messages under mandatory owner review. No
+autonomous sending.
+
+---
+
+## FR-018 Existing Connection Outreach
+
+**Phase:** Horizon 1B  
+**Status:** Planned
+
+Support outreach to existing LinkedIn connections (and similar) with review gates,
+prioritisation, and follow-up tracking.
+
+---
+
+## FR-019 LinkedIn Network Intelligence
+
+**Phase:** Horizon 1B  
+**Status:** Planned
+
+Analyse and develop the owner’s professional network strategically — without
+displacing job-application throughput.
+
+---
+
+## FR-020 Meetup Intelligence
+
+**Phase:** Horizon 1B  
+**Status:** Planned
+
+Discover and recommend relevant Melbourne AI (and related) meetups as a networking
+and learning channel.
+
+---
+
+## FR-021 LinkedIn Content Planning
+
+**Phase:** Horizon 1B  
+**Status:** Planned
+
+Plan LinkedIn articles and related content to improve visibility — owner-approved
+publishing only.
+
+---
+
+## FR-022 Market Intelligence
+
+**Phase:** Horizon 1B / Horizon 2 boundary  
+**Status:** Planned
+
+Track recurring technologies, salary trends, and learning priorities that inform
+search strategy. May begin late in 1B if it directly improves application targeting.
+
+---
+
+## Horizon 2 — Platform Capabilities (FR-023+)
+
+Deferred unless they directly accelerate Horizon 1 during the active search.
+
+---
+
+## FR-023 Interview Preparation
+
+**Phase:** Horizon 2  
+**Status:** Planned
+
+Generate recruiter, technical, and behavioural interview prep; project walkthroughs;
+and questions to ask.
+
+---
+
+## FR-024 Career Dashboard
+
+**Phase:** Horizon 2  
+**Status:** Planned
+
+Provide a live dashboard showing applications, recruiters, visibility, portfolio,
+market trends, and priority actions. Phase 2 already provides a simple opportunity
+list / CLI comparison — the full dashboard remains out of early scope.
+
+---
+
+## FR-025 Daily Prioritisation (cross-domain)
+
+**Phase:** Horizon 2  
+**Status:** Planned
+
+Recommend the highest-value activities for the day across jobs, recruiters,
+networking, and learning. Phase 2 M4 ranked comparison of *open job opportunities*
+remains complete and is the job-scoped foundation (now extended by FR-009).
+
+Acceptance Criteria (future)
+
+○ Cross-domain daily prioritisation (recruiters, networking, meetups) — deferred.
+
+---
+
+ path.
+
+✓ Token/latency/cost are measurable for LLM/agent nodes.
 
 ---
 
