@@ -121,10 +121,9 @@ See [04_functional_specification.md](04_functional_specification.md) § Horizon 
 ### Dependency order
 
 ```
-FR-008 Job Acquisition & Workflow Orchestration
-        │  (learning spike on saved/manual job first; then live adapters)
+FR-008 Job Acquisition & Workflow Orchestration  ✅ Complete (2026-07-29)
         ▼
-FR-009 Opportunity Review Queue & Ranking  (duplicates + identity + rank)
+FR-009 Opportunity Review Queue & Ranking  (duplicates + identity + rank)  ← Now (M0 complete)
         ▼
 FR-010 Application Package Preparation  (FR-006 / FR-007)
         ▼
@@ -143,35 +142,57 @@ FR-015 Agent Evaluation & Observability
 
 | Priority | Item | Intent |
 |----------|------|--------|
-| **Now** | **FR-008 learning spike** | Deterministic workflow on a *saved/manual* job; owner interrupt; ADR-003 |
-| Then | **FR-008 live adapters** | Source adapters (not “scraping”) after spike |
-| Then | **FR-009 → FR-012** | Queue, packages, submission, tracking |
+| **Completed** | **FR-008** (2026-07-29) | Job acquisition + deterministic workflow orchestration — paste/export adapters; thin runner; owner review; checkpoint/resume; Opportunity persist on apply; bounded LLM retries; [ADR-003](adr/003_application_workflow_orchestration.md); [acceptance](eval/fr008_workflow_orchestration.md) |
+| **Now** | **FR-009** | Opportunity review queue, deduplication, ranking — **M0 complete** (domain contracts; [ADR-004](adr/004_opportunity_review_boundary.md); [acceptance](eval/fr009_m0_domain_contracts.md)); M1–M4 planned |
+| Then | **FR-010 → FR-012** | Packages, submission assistance, tracking |
 | Later in 1A | **FR-013 → FR-015** | Bounded agents → multi-agent → evaluation |
 | **After 1A** | **Horizon 1B (FR-016–FR-022)** | Recruiters, outreach, meetups, LinkedIn, market |
 
+### FR-008 completion summary
+
+Delivered a source-adapter acquisition boundary and a thin deterministic runner that
+coordinates FR-002–FR-005, pauses for owner approval, resumes from JSON checkpoints,
+and on `apply` persists an Opportunity and records the decision idempotently. Skip and
+defer complete without persistence. Playwright, URL/API adapters, ranking, and
+submission remain out of scope.
+
+### FR-009 status and milestone plan
+
+**M0 complete (2026-07-29) — contracts only.** FR-009 is **not** complete. M0 resolved
+the source-of-truth question: the Opportunity is the durable record of a successfully
+analysed job candidate (persisted before owner review from M1), the review queue is a
+**derived projection** over it, and workflow checkpoints remain recovery infrastructure.
+Phase 2 M4 ranking stays the frozen fit baseline.
+
+| Milestone | Scope | Status |
+|-----------|-------|--------|
+| M0 | Domain contracts, persistence boundary, ADR-004 | **Complete** |
+| M1 | Derived review projection + workflow persistence-boundary move | Planned |
+| M2 | Owner queue actions (mark reviewed, pin, defer until, archive, reopen) | Planned |
+| M3 | Duplicate candidate detection + owner confirmation (non-destructive) | Planned |
+| M4 | Manual validation and ranking calibration | Planned |
+| Close-out | Acceptance and documentation freeze | Planned |
+
+Not in FR-009: application pipeline status (FR-012), document packages (FR-010),
+submission (FR-011), UI, LLM ranking.
+
 ### Job acquisition (not “web scraping”)
 
-Acquire via **source adapters**. Preferred order: APIs/feeds → job-alert email →
-saved-search notifications → owner URLs → pasted descriptions → exports →
-Playwright-assisted browser workflows where necessary.
+Acquire via **source adapters**. Supported today: **paste** and **local export
+file**. Preferred later order: APIs/feeds → job-alert email → saved-search
+notifications → owner URLs → Playwright-assisted browser workflows where necessary.
 
-Playwright is a **controlled fallback adapter** — isolated, tested, not the sole
-strategy. Avoid uncontrolled crawlers, mass collection, and bypass of access controls.
+Playwright is a **controlled fallback adapter** — intentionally deferred; isolated
+when built; not the sole strategy. Avoid uncontrolled crawlers, mass collection,
+and bypass of access controls.
 
-### Agent Orchestration Learning Spike (near-term)
+### Agent Orchestration Learning Spike (complete under FR-008)
 
-Under **FR-008**, before live acquisition:
+Completed before FR-008 closure: typed state; service nodes; owner interrupt;
+checkpoint/resume; recoverable failure drill; ADR-003 (thin in-repo runner).
 
-1. One manually supplied or existing validation job
-2. Typed shared state; existing services as nodes
-3. Route on real ApplicationStrategy outputs
-4. Mandatory owner-review interrupt; checkpoint; resume
-5. One recoverable failure; execution trace
-6. Label deterministic vs LLM-backed vs agentic nodes
-7. **ADR-003** — orchestration architecture (evaluate LangGraph vs existing approach)
-
-**Must not:** live scrape; real submission; many autonomous agents; replace validated
-services.
+**Still must not without explicit request:** live scrape; real submission; many
+autonomous agents; replace validated FR-002–FR-007 services.
 
 Phase 2 documentation remains a **stable baseline**. Prefer additive changes.
 

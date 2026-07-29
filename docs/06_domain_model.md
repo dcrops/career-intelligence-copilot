@@ -16,7 +16,7 @@ Horizon 1A extends that into an end-to-end application workflow:
 ```
 Job Acquisition (FR-008; adapters — not “scraping” by default)
       ↓
-Validate → Normalise → Deduplicate (FR-009)
+Validate → Normalise → Duplicate candidates (FR-009 — surfaced, never auto-merged)
       ↓
 Career Profile + Job Posting
       ↓
@@ -27,7 +27,9 @@ Job Analysis (FR-002)
       ↓
 Application Strategy (FR-005)
       ↓
-Rank / Review Queue (Phase 2 M4 + FR-009)
+Persist Opportunity (FR-009 M1 boundary — today FR-008 persists on apply only)
+      ↓
+Rank / Review Queue (Phase 2 M4 baseline + FR-009 derived projection)
       ↓
 Application Package (FR-010: Tailoring Plan + CV FR-006 + Cover Letter FR-007)
       ↓
@@ -188,11 +190,19 @@ Horizon 1A package preparation (FR-010).
 
 ### Opportunity (durable)
 
-Durable aggregate for an assessed opportunity. Produced by `OpportunityService` after
-Application Strategy. Structured storage under `data/opportunities/` is the system of
-record (ADR-002). CSV export and one-time legacy import are M3. Ranking is M4
+Durable record of a **successfully analysed job candidate that may require an owner
+decision** — not only a job the owner decided to apply for
+([ADR-004](adr/004_opportunity_review_boundary.md)). Produced by `OpportunityService`
+after Application Strategy. Structured storage under `data/opportunities/` is the
+system of record (ADR-002). CSV export and one-time legacy import are M3. Ranking is M4
 (`OpportunityComparisonService`). Owner decision and outcome logging are M2
 (historically “FR-013 subset”; extended by Horizon 1A **FR-012**).
+
+The record carries five separate concerns that must not be collapsed: identity and
+acquisition provenance; denormalised FR-003–FR-005 signals (`strategy_summary`); the
+owner decision (apply / skip / defer); owner review metadata (FR-009); and pipeline
+status plus outcome (M2 / FR-012). FR-008 currently creates the record only on `apply`;
+FR-009 M1 moves persistence to before owner review so skip and defer remain auditable.
 
 **Implementation:** `src/career_intelligence/opportunities/`.
 
@@ -221,11 +231,45 @@ assessments remains deferred.
 
 ---
 
+### Owner Review Metadata
+
+**Maps to:** FR-009 (M0 contracts complete; behaviour planned)
+
+Owner-authored annotations on a durable Opportunity that control **review visibility and
+attention**, held as independent fields rather than one lifecycle enum: `reviewed_at`,
+`pinned`, `defer_until`, `archived_at`.
+
+Distinct from the owner decision (apply / skip / defer records *what the owner chose*),
+from `PipelineStatus` (application progress — FR-012), and from workflow status (a run's
+runtime state — FR-008). Archiving hides a record from active review; it never means
+employer rejection or a closed recruitment process.
+
+Queue eligibility, rank position, age, and staleness are **derived** from these fields —
+not stored. See [ADR-004](adr/004_opportunity_review_boundary.md).
+
+---
+
+### Duplicate Relation
+
+**Maps to:** FR-009 (M0 contract; detection planned in M3)
+
+An owner-confirmed link from a duplicate Opportunity to its canonical record
+(`duplicate_of`), with confirmation timestamp and the evidence kinds that justified it
+(platform job ID, canonical URL, identity facets, content fingerprint, owner judgment).
+
+Non-destructive by contract: both records keep their own identity, provenance, and
+artefacts, and remain auditable. Detection proposes candidates; only the owner confirms.
+A shared content fingerprint alone is not proof — the live store already contains
+fingerprint collision groups.
+
+---
+
 ### Ranked Comparison
 
 A prioritised ordering of open assessed opportunities. Phase 2 M4 delivered job-scoped
 ranking (historically “FR-012 partial”). Horizon 1A **FR-009** extends the review queue
-into the acquisition workflow (duplicates, freshness, owner-review queue).
+into the acquisition workflow (duplicates, freshness, owner-review queue) as a **derived
+projection** over persisted Opportunities, keeping the M4 sort key as its fit baseline.
 
 **Implementation (M4):** `OpportunityComparisonService.compare_open` ranks open
 Opportunity aggregates with a deterministic sort key:
@@ -249,8 +293,9 @@ Cross-domain daily prioritisation is Horizon 2 **FR-025**.
 
 Shared typed state coordinating acquisition through tracking. Nodes wrap existing
 services; conditional edges follow strategy and owner decisions; checkpoints support
-owner-review interrupts and resumability. Production orchestration technology is
-**undecided** until ADR-003 — LangGraph is a spike candidate only.
+owner-review interrupts and resumability. Production orchestration for the current
+FR-008 spike is the thin in-repository runner (**ADR-003 accepted**). LangGraph remains
+out unless ADR-003 reconsideration conditions are met.
 
 ### Application Package (planned)
 
@@ -348,7 +393,9 @@ continue to connect to this layer rather than invent a parallel tracker.
 | Ranked Comparison | Phase 2 M4 (complete; hist. FR-012 partial); extended by **FR-009** |
 | Opportunity identity (title/company) | Phase 2 M4a (complete) |
 | Job Acquisition & Workflow Orchestration | **FR-008** (Horizon 1A; first orchestration) |
-| Opportunity Review Queue & Ranking | **FR-009** (Horizon 1A; includes duplicates) |
+| Opportunity Review Queue & Ranking | **FR-009** (Horizon 1A, in progress — M0 contracts complete) |
+| Owner Review Metadata | **FR-009** M0 contract ([ADR-004](adr/004_opportunity_review_boundary.md)) |
+| Duplicate Relation | **FR-009** M0 contract; detection in M3 |
 | Application Package Preparation | **FR-010** (Horizon 1A) |
 | Submission Assistance | **FR-011** (Horizon 1A) |
 | Application Pipeline Tracking | **FR-012** (Horizon 1A) |

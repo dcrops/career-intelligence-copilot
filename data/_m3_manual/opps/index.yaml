@@ -1,0 +1,34 @@
+schema_version: '1'
+opportunities:
+- identity:
+    opportunity_id: opp_01KYP648T53D8T379PJS67M2SW
+    created_at: '2026-07-29T05:39:00.561342Z'
+    source_kind: manual
+    platform_job_id: null
+    canonical_url: null
+    source_url: null
+    company: null
+    title: null
+    location_text: Melbourne
+    content_fingerprint: bb0a0844c72e801cbdeb62bfeccc2e2a95d80d1a172b2746e9cdae87c0f0243c
+  status: assessed
+  decision:
+    decision: apply
+    decided_at: '2026-07-29T05:39:00.592226Z'
+    notes: workflow_run_id=wfr_01KYP63ZJETH7RY3AD7RXGXYMC
+  outcome: null
+  strategy_summary:
+    pursuit_posture: consider
+    application_tier: silver
+    practical_value: acceptable_opportunity
+    technical_fit: mixed
+    commercial_fit: moderate
+    portfolio_fit: moderate
+  artifact_paths:
+    posting.json: artifacts/opp_01KYP648T53D8T379PJS67M2SW/posting.json
+    job_analysis.json: artifacts/opp_01KYP648T53D8T379PJS67M2SW/job_analysis.json
+    assessment.json: artifacts/opp_01KYP648T53D8T379PJS67M2SW/assessment.json
+    portfolio_match.json: artifacts/opp_01KYP648T53D8T379PJS67M2SW/portfolio_match.json
+    strategy.json: artifacts/opp_01KYP648T53D8T379PJS67M2SW/strategy.json
+  legacy_import: null
+  updated_at: '2026-07-29T05:39:00.592226Z'

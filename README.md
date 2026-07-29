@@ -46,9 +46,16 @@ modern AI engineering workflows with Cursor. When those goals conflict with Hori
 **Complete (owner-sequenced):** FR-006 CV Generation (incl. FR-006b/c);
 FR-007 Cover Letter ([eval](docs/eval/fr007_cover_letter.md)).
 
-**Current focus — Horizon 1A:** Job application workflow (FR-008–FR-015). Near-term
-entry: FR-008 orchestration learning spike on a saved/manual job + ADR-003.
+**Current focus — Horizon 1A:** **FR-009** Opportunity Review Queue & Ranking —
+**M0 complete** (domain contracts;
+[eval](docs/eval/fr009_m0_domain_contracts.md); [ADR-004](docs/adr/004_opportunity_review_boundary.md)).
+Queue, ranking extensions, owner actions, and duplicate detection are not implemented.
+**FR-008 complete** and frozen
+([eval](docs/eval/fr008_workflow_orchestration.md); [ADR-003](docs/adr/003_application_workflow_orchestration.md)).
 Details: [docs/10_roadmap.md](docs/10_roadmap.md).
+
+Acquisition today: paste or local export file via
+`scripts/run_fr008_workflow_manual.py` (`--source paste|export`). Playwright deferred.
 
 **Thereafter — Horizon 1B:** Recruiter / meetup / LinkedIn engagement (FR-016–FR-022).
 

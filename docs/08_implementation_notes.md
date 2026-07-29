@@ -1138,27 +1138,310 @@ baseline. FR-006b and FR-007 are complete. Current focus is Horizon 1A — see
 
 ---
 
-## Horizon 1A — Planning Notes (documentation only)
+## Horizon 1A — FR-008 Orchestration
 
-**Status:** Planned — no runtime implementation in the planning/renumbering passes that
-defined FR-008–FR-015.
+**Status:** **Complete** (2026-07-29) — documentation frozen.  
+**Acceptance:** [docs/eval/fr008_workflow_orchestration.md](eval/fr008_workflow_orchestration.md)  
+**ADR:** [ADR-003](adr/003_application_workflow_orchestration.md)
 
-### Sequencing
+### Architecture that emerged (close-out summary)
 
-1. **FR-008 Agent Orchestration Learning Spike** — wrap existing saved-job pipeline;
-   typed state; owner-review interrupt; one recoverable failure; execution trace;
-   label deterministic vs LLM-backed vs agentic nodes.
-2. **ADR-003** — required before committing production orchestration (LangGraph is a
-   spike candidate only; evaluate vs existing service orchestration).
-3. **FR-008 live source adapters** — after spike (not “web scraping”).
-4. **FR-009 → FR-012** — review queue (incl. duplicates), packages, submission, tracking.
-5. **FR-013 → FR-015** — bounded agents → multi-agent → evaluation (only after
-   deterministic workflow works).
-6. **Horizon 1B (FR-016–FR-022)** — recruiter / meetup / LinkedIn / market — only after 1A.
+#### Workflow runner
 
-### Spike constraints
+`ApplicationWorkflowRunner` is a thin deterministic loop over typed nodes and
+`next_spike_node` routing. It was sufficient for a linear pre-approval graph, one
+owner interrupt, apply side effects, and bounded LLM retries — without a workflow
+framework ([ADR-003](adr/003_application_workflow_orchestration.md)).
 
-- One manually supplied or existing validation job
+#### Checkpoint model
+
+`CheckpointStore` + `JsonDirectoryCheckpointStore` persist full `WorkflowState` as
+`{run_id}.json`. Appropriate for single-user interactive runs: inspectable, process-
+resumable, and separate from the Opportunity SoT (ADR-002).
+`checkpoint_written` is only recorded after a successful save.
+
+#### Owner review
+
+Workflows intentionally stop at `owner_review` (`awaiting_owner`). Human approval is
+part of the graph, not an exception path. `owner_review` is marked complete when the
+interrupt is *requested*; the decision arrives later via `resume`. Never defaults to
+apply; never silent-submits.
+
+#### Persistence
+
+Opportunity create and decision recording are dedicated post-approval nodes
+(`persist`, `record_decision`), invoked only after `apply`. Analysis nodes never write
+the Opportunity SoT. Skip/defer complete without persistence.
+
+#### Idempotency
+
+On apply: pre-allocate `opportunity_id`, checkpoint it, then
+`create_from_strategy(opportunity_id=…)`. Existing ids are reclaimed — repeated resume
+and crash windows do not create duplicates. Decision recording is idempotent for the
+same decision.
+
+#### Acquisition
+
+`AcquisitionAdapter` → `AcquisitionResult` → `AcquireNode`. Runner is source-agnostic.
+Supported: paste, local export. Playwright/URL/API deferred.
+
+### FR-008 M0 — Contracts (complete)
+
+**Status:** Complete (2026-07-29) — contracts only; no workflow execution.
+
+**Public boundary:** `career_intelligence.orchestration`
+
+**Delivered:**
+
+| Contract | Module / symbol |
+|----------|-----------------|
+| Workflow state | `WorkflowState` (+ control, acquisition, artefacts, approval, execution) |
+| Run ids | `wfr_<ULID>` via `new_workflow_run_id` |
+| Node contract | `NodeSpec`, `NodeOutcome`, `WorkflowNode` protocol |
+| Events | `WorkflowEvent` (minimal audit types) |
+| Checkpoint protocol | `CheckpointStore`; test double `InMemoryCheckpointStore` |
+| Errors | `WorkflowValidationError`, `WorkflowAwaitingOwnerError`, `WorkflowCheckpointError`, `WorkflowNotFoundError`, `WorkflowResumeError`, `WorkflowNodeError` |
+
+**Explicitly not in M0:** runner, routing, resume, acquisition adapters, FR-002–FR-007
+service wrappers, Playwright, LangGraph, agents, durable YAML checkpoint store.
+
+**Tests:** `tests/unit/orchestration/` (unit only; no functional suite until M1).
+
+### FR-008 M1 — Thin runner spike (complete)
+
+**Status:** Complete (2026-07-29) — spike graph through owner-review interrupt + resume.
+No Opportunity persistence (M2). No live adapters. ADR-003 later accepted after M3.
+
+**Public additions:**
+
+| Symbol | Role |
+|--------|------|
+| `ApplicationWorkflowRunner` | start / resume / cancel |
+| `WorkflowDependencies` | Injected profile + FR-002–005 services + store |
+| `PasteJobInput` | Paste/manual job input |
+| `JsonDirectoryCheckpointStore` | Durable `{run_id}.json` under a directory |
+| `SPIKE_NODE_SEQUENCE` / `next_spike_node` | Inspectable deterministic routing |
+
+**Graph:**
+
+```
+acquire → validate_normalise → analyse → assess → match → strategy → owner_review
+                                                                    ↓ interrupt
+                                              resume(apply|skip|defer) → completed
+```
+
+Terminal outcome is `status=completed` with `approval.owner_decision` set
+(`apply` / `skip` / `defer`). Compatible with a future M2 persist edge on `apply`.
+
+**Manual validation:**
+
+```bash
+python scripts/run_fr008_workflow_manual.py start --job-file path/to/job.txt --offline-fixtures
+python scripts/run_fr008_workflow_manual.py resume --run-id wfr_... --decision apply --offline-fixtures
+```
+
+Live FR-002/003 requires `OPENAI_API_KEY` (omit `--offline-fixtures`).
+
+**Tests:** unit runner/routing/json-store + functional `test_fr008_*.py`.
+
+### FR-008 M2 — Opportunity persist on apply (complete)
+
+**Status:** Complete (2026-07-29) — apply side effect only. LLM-node retries are
+M3. ADR-003 accepted after M3.
+
+**Graph after resume:**
+
+```
+apply  → allocate opportunity_id → checkpoint
+       → persist → record_decision → completed
+skip   → completed (no Opportunity)
+defer  → completed (no Opportunity)
+```
+
+**Public / API additions:**
+
+| Symbol | Role |
+|--------|------|
+| `PersistOpportunityNode` / `RecordDecisionNode` | Thin OpportunityService wrappers |
+| `to_opportunity_decision` | Explicit orchestration→opportunity decision translation |
+| `WorkflowDependencies.opportunities` | Injected `OpportunityService` |
+| `OpportunityService.create_from_strategy(..., opportunity_id=)` | Planned-id create + idempotent reclaim |
+| `new_opportunity_id` | Exported for pre-allocation |
+
+#### Side-effect and checkpoint ordering (apply)
+
+1. `approval_received` + `run_resumed` (events)
+2. Clear pending approval; set `owner_decision`; `status=running`; checkpoint
+3. Pre-allocate `artefacts.opportunity_id`; checkpoint (planned side effect)
+4. `persist` node → `create_from_strategy(opportunity_id=planned)`
+5. Checkpoint after `node_succeeded` (persist)
+6. `record_decision` node → Opportunity decision `apply` + notes `workflow_run_id=…`
+7. Checkpoint after `node_succeeded` (record_decision)
+8. `run_completed` + terminal checkpoint
+
+`checkpoint_written` is appended into the payload that is successfully saved — a
+failed save never leaves a durable checkpoint claim.
+
+#### Idempotency strategy
+
+Pre-allocate a permanent `opp_<ULID>`, checkpoint it, then create with that id.
+`create_from_strategy(opportunity_id=…)` returns the existing record if present.
+
+| Failure window | Handling |
+|----------------|----------|
+| A — create fails | Planned id remains; resume retries create with same id; no duplicate |
+| B — create ok, crash before workflow marks persist complete | Planned id already checkpointed; resume `get`/reclaim; no second create |
+| C — id stored, decision recording fails | Stay `running` + `last_error`; resume skips persist (completed), retries record; identical decision is no-op |
+| D — decision recorded, crash before terminal | Resume completes without re-create; terminal resume with same decision is idempotent return |
+
+#### Decision-type boundary
+
+Orchestration `OwnerDecisionKind` and opportunities `OwnerDecisionKind` remain
+**separate bounded-context literals**. Translation only via
+`to_opportunity_decision`. Do not merge types until a defect forces a shared public
+type.
+
+#### Owner-review completion semantics (confirmed)
+
+`owner_review` is marked **completed when the interrupt is requested**
+(`awaiting_owner`), not when the decision arrives. Post-approval nodes are separate.
+
+#### Manual validation
+
+```bash
+python scripts/run_fr008_workflow_manual.py start --job-file path/to/job.txt --offline-fixtures
+python scripts/run_fr008_workflow_manual.py resume --run-id wfr_... --decision apply --offline-fixtures
+python scripts/run_fr008_workflow_manual.py reload --run-id wfr_... --decision apply --offline-fixtures
+python scripts/run_fr008_workflow_manual.py show --run-id wfr_...
+```
+
+### FR-008 M3 — Bounded failure recovery (complete)
+
+**Status:** Complete (2026-07-29). **ADR-003 accepted** from M1–M3 evidence.
+
+#### Failure classification
+
+| Class | Examples | Runner behaviour |
+|-------|----------|------------------|
+| recoverable | provider timeout, rate limit, connection, injected transient | Retry if node eligible and budget remains |
+| unrecoverable | validation, missing artefact, invalid state, unsupported decision, trust-boundary reject, unknown exceptions | No retry; terminal `failed` (pre-approval) |
+
+Unknown exceptions **fail closed** (`recoverable=False`) unless transient markers
+match `looks_transient` / `classify_exception`.
+
+#### Retry policy (injectable `RetryPolicy`)
+
+- Default eligible nodes: `analyse`, `assess` only
+- Default `max_attempts=3` (total executions including the first)
+- `delay_ms` is metadata only (no scheduler framework)
+- No automatic policy retry for `validate_normalise`, `owner_review`, or
+  post-approval `persist` / `record_decision` (M2 resumable pause remains)
+- Why bounded: avoid infinite provider loops; preserve explainability and cost
+- Why validation is not retried: deterministic defects do not heal by repetition
+
+#### Retry state + checkpoints
+
+`WorkflowState.retry` (`RetryState`) records node id, attempts used, max,
+classification, safe message, exhausted flag, next action. Survives process exit.
+Cleared when the node later succeeds; retry **events** remain in the append-only
+trace.
+
+#### Execution behaviour
+
+```
+node_started → recoverable failure → node_failed → retry_scheduled → checkpoint
+  → same node retried → node_succeeded → continue
+```
+
+Exhaustion: `retry_exhausted` → terminal `failed`. Cross-process: checkpoint with
+remaining budget → `continue_run` (attempt count must not reset).
+
+#### Manual validation (injected failures — no live outages)
+
+```bash
+# A — recovery then apply
+python scripts/run_fr008_workflow_manual.py start --job-file job.txt --offline-fixtures \
+  --fail-node analyse --fail-count 1 --failure-kind recoverable
+python scripts/run_fr008_workflow_manual.py resume --run-id wfr_... --decision apply --offline-fixtures
+
+# Cross-process
+python scripts/run_fr008_workflow_manual.py start ... --fail-node analyse --fail-count 1 --yield-after-retry
+python scripts/run_fr008_workflow_manual.py continue --run-id wfr_... --offline-fixtures
+
+# B — exhaustion
+python scripts/run_fr008_workflow_manual.py start ... --fail-node assess --fail-count 3 --failure-kind recoverable
+
+# C — unrecoverable
+python scripts/run_fr008_workflow_manual.py start --job-file empty.txt --offline-fixtures
+```
+
+Evidence (2026-07-29): Scenario A completed with stable Opportunity id after analyse
+retry; Scenario B exhausted assess at 3/3 with no Opportunity; Scenario C empty paste
+failed closed with no `retry_scheduled`; cross-process continue preserved run id and
+attempt budget.
+
+#### Cancellation
+
+Existing `cancel` works while `awaiting_owner` or running (including retry pause).
+Does not default to apply; does not persist Opportunities. Terminal exhausted runs
+cannot be cancelled (already failed).
+
+### Engineering spike conclusions (final — FR-008 closed)
+
+**Successful**
+
+1. Deterministic thin runner sufficient — explicit loop + routing + node registry
+2. JSON checkpoints enable reliable process-level resume; Opportunity SoT stays separate
+3. Orchestration separated from FR-001–FR-007 domain logic
+4. Human approval is a first-class interrupt, not an exception
+5. Persistence isolated in dedicated post-approval nodes; create is idempotent
+6. Acquisition adapter boundary keeps the runner source-agnostic
+7. LangGraph not required ([ADR-003](adr/003_application_workflow_orchestration.md))
+8. Bounded analyse/assess retries with fail-closed unknowns are enough for this phase
+
+**Deferred until justified**
+
+- LangGraph / external workflow engines
+- Distributed or queue-based orchestration
+- Playwright, URL, API, email acquisition adapters
+- Automated application submission (FR-011)
+- Broader retry/scheduling frameworks beyond M3 bounded policy
+
+### Sequencing (remaining)
+
+1. **FR-009 → FR-012** — review queue, packages, submission, tracking.
+2. **Additional acquisition adapters** (URL/API/email) — only when explicitly requested.
+3. **FR-013 → FR-015** — bounded agents → multi-agent → evaluation.
+4. **Horizon 1B (FR-016–FR-022)** — only after 1A.
+
+### FR-008 acquisition foundation (complete — closes FR-008)
+
+**Status:** Complete (2026-07-29). Acceptance:
+[docs/eval/fr008_workflow_orchestration.md](eval/fr008_workflow_orchestration.md).
+
+| Symbol | Role |
+|--------|------|
+| `AcquisitionAdapter` / `AcquisitionResult` | Minimal public acquisition interface |
+| `PasteAcquisitionAdapter` | Paste / manual text (`source_kind=paste`) |
+| `LocalFileAcquisitionAdapter` | Local UTF-8 export file (`source_kind=export`) |
+| `AcquireNode` | Source-agnostic workflow node applying adapter results |
+| `ApplicationWorkflowRunner.start` | Accepts `AcquisitionAdapter \| PasteJobInput` |
+
+Runner does not branch on `source_kind`. Playwright, URL fetch, and job-board
+integrations remain deferred.
+
+**Manual:**
+
+```bash
+python scripts/run_fr008_workflow_manual.py start --source paste --job-file job.txt --offline-fixtures
+python scripts/run_fr008_workflow_manual.py start --source export --job-file job.txt --offline-fixtures
+```
+
+(Deprecated shim: `scripts/run_fr008_workflow_manual.py`.)
+
+### Spike constraints (historical)
+
+- One manually supplied or existing validation job (satisfied; export path added)
 - No live board scraping; no real application submission
 - Do not replace validated FR-002–FR-007 services
 - Teach orchestration concepts explicitly (see functional specification § Horizon 1A)
@@ -1167,5 +1450,93 @@ defined FR-008–FR-015.
 
 Controlled browser-automation **adapter** for owner URLs/sessions, visible description
 extraction, form assistance, and journey evidence. Isolate behind adapters; treat as
-fallback, not the sole acquisition strategy.
+fallback, not the sole acquisition strategy. **Intentionally deferred** past FR-008
+closure.
 
+---
+
+## FR-009 Opportunity Review Queue & Ranking (in progress)
+
+**Status:** M0 complete (2026-07-29) — contracts only. Queue, ranking extensions, owner
+actions, and duplicate detection are **not implemented**.  
+**Acceptance:** [eval/fr009_m0_domain_contracts.md](eval/fr009_m0_domain_contracts.md)  
+**Architecture:** [ADR-004](adr/004_opportunity_review_boundary.md)
+
+### M0 — persistence boundary and domain contracts
+
+FR-008 persists an Opportunity only after the owner chooses `apply`, so skipped and
+deferred jobs leave no durable trace. The review queue cannot be built on that boundary
+without either reading workflow checkpoints (recovery state — forbidden by ADR-003) or
+adding a second "seen jobs" store. M0 resolved the boundary in contracts, without moving
+the workflow node.
+
+**Domain meaning.** An Opportunity is the durable record of a *successfully analysed job
+candidate that may require an owner decision*. Evidence that this is a restoration
+rather than a redesign: ADR-002 already describes the aggregate as produced after
+Application Strategy, `create_from_strategy` already creates `decision=None`, M4 ranking
+already explains records with no decision, and **13 of 16 live records have no owner
+decision**.
+
+**Contracts added** (`opportunities/models.py`, additive):
+
+| Symbol | Role |
+|--------|------|
+| `OpportunityReview` | Owner review metadata: `reviewed_at`, `pinned`, `defer_until` (date), `archived_at` |
+| `DuplicateRelation` | `duplicate_of` canonical id + `confirmed_at` + `evidence` |
+| `DuplicateEvidenceKind` / `DUPLICATE_EVIDENCE_KINDS` | `platform_job_id`, `canonical_url`, `identity_facets`, `content_fingerprint`, `owner_judgment` |
+| `Opportunity.review` | Always present with deterministic defaults |
+| `Opportunity.duplicate` | Optional; rejects self-reference |
+
+**Why orthogonal fields, not a lifecycle enum.** A single `review_state` enum would have
+to enumerate combinations that are genuinely independent (reviewed *and* pinned *and*
+deferred), and its `deferred` / `closed` values would collide with `PipelineStatus`.
+Independent fields keep each concern answerable on its own, need no transition table, and
+require no migration for existing records. Only two combinations are invalid and are
+enforced: pinned-while-archived, and a duplicate pointing at itself.
+
+**Defer has one owner in FR-009.** `deferred` exists as a `PipelineStatus` value, as an
+`OwnerDecisionKind`, and now as `review.defer_until`. FR-009 uses the owner decision
+(`defer`) for audit and `review.defer_until` for when the record returns to active
+review. FR-009 does **not** write `PipelineStatus` — application progress stays with
+M2 / FR-012.
+
+**Derived, never persisted:** queue eligibility (not archived ∧ not confirmed duplicate ∧
+decision ≠ skip ∧ not currently deferred), rank position, priority band, age, staleness,
+ranking explanations, and duplicate confidence.
+
+**Backward compatibility.** No migration and no schema version bump: the new fields are
+optional with deterministic defaults, and a missing key reads as "never reviewed, not a
+duplicate". Live records were read for evidence only. Because `save()` rewrites the whole
+index, default review keys will appear on existing rows the next time any decision or
+outcome is recorded — a serialisation change, not a semantic one.
+
+**Provenance status.** 0/16 live records carry `platform_job_id`, `canonical_url`, or
+`source_url`; 16/16 carry `content_fingerprint`; three fingerprint collision groups
+already exist. Duplicate detection (M3) must therefore prefer exact platform/URL evidence
+when available and treat a fingerprint match as corroborating evidence only. The
+orchestration `source_kind` vocabulary (`paste`, `export`) stays separate from the
+opportunities vocabulary (`seek`, `linkedin`, `manual`, …) and is mapped at the boundary,
+following the `decision_boundary.to_opportunity_decision` precedent.
+
+### M1 integration contract (not implemented)
+
+```
+strategy succeeds
+  → allocate opportunity_id → checkpoint
+  → persist Opportunity (decision=None) → checkpoint
+  → owner_review interrupt
+  → resume with apply | skip | defer
+  → record_decision on the same opportunity_id → complete
+```
+
+M1 must prove: persist runs on all three decision paths; resume and replay create exactly
+one Opportunity across crash windows A–E (ADR-004); `record_decision` stays idempotent for
+a repeated decision and fails closed on a conflicting one; routing remains inspectable
+(`persist` leaves `APPLY_SIDE_EFFECT_SEQUENCE`). FR-008 functional assertions of the form
+"skip/defer create no Opportunity" become "skip/defer create a record carrying that
+decision" — a deliberate, documented change, not a regression.
+
+### Remaining milestones
+
+M2 owner queue actions → M3 duplicate candidate detection → M4 manual validation and
+calibration → close-out. Not started.

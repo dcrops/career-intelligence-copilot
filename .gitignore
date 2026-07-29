@@ -12,7 +12,11 @@ tmp_*.txt
 data/opportunities/index.yaml
 data/opportunities/artifacts/
 data/opportunities_m5_validation/
+data/opportunities_m2_smoke/
 data/exports/
+data/workflow_runs/
+data/workflow_runs_m1_smoke/
+data/workflow_runs_m2_smoke/
 
 # Generated documents
 career-documents/**/generated/

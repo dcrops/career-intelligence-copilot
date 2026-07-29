@@ -38,6 +38,33 @@ def test_create_from_strategy_preserves_summary(tmp_path: Path) -> None:
     assert len(opportunity.artifact_paths) == 5
 
 
+def test_create_from_strategy_idempotent_with_explicit_id(tmp_path: Path) -> None:
+    from career_intelligence.opportunities import new_opportunity_id
+
+    posting, analysis, assessment, match, strategy = trusted_pipeline()
+    service = OpportunityService.from_path(tmp_path)
+    planned = new_opportunity_id()
+    first = service.create_from_strategy(
+        posting=posting,
+        job_analysis=analysis,
+        assessment=assessment,
+        portfolio_match=match,
+        strategy=strategy,
+        opportunity_id=planned,
+    )
+    second = service.create_from_strategy(
+        posting=posting,
+        job_analysis=analysis,
+        assessment=assessment,
+        portfolio_match=match,
+        strategy=strategy,
+        opportunity_id=planned,
+    )
+    assert first.opportunity_id == planned
+    assert second.opportunity_id == planned
+    assert len(service.list_opportunities()) == 1
+
+
 def test_get_and_list_through_public_service(tmp_path: Path) -> None:
     service, first, _ = create_opportunity(tmp_path, company="First Co")
     _, second, _ = create_opportunity(tmp_path, company="Second Co")

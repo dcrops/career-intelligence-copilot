@@ -1,0 +1,21 @@
+[CIC-FIXTURE:ai-engineer]
+Senior AI Engineer — Northside Analytics (Melbourne)
+
+About the role
+We are hiring a Senior AI Engineer to design and ship production LLM applications for
+Australian enterprise clients. You will own retrieval pipelines, evaluation harnesses,
+and safe deployment patterns.
+
+Responsibilities
+• Build and maintain LLM applications using Python and LangChain
+• Partner with data engineers on feature pipelines and model observability
+• Mentor engineers on prompt evaluation and production readiness
+
+Requirements
+• 5+ years software engineering experience required
+• Strong Python required; LangChain experience preferred
+• Production LLM or RAG experience required
+
+Location & employment
+Hybrid Melbourne — 3 days in the CBD office. Full-time permanent.
+Salary $150,000–$180,000 AUD + super.

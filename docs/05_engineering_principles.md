@@ -96,7 +96,8 @@ Horizon 1A teaches agent orchestration progressively. Each orchestration feature
 document engineering reason, pattern, alternatives, deterministic-vs-agentic choice,
 owner learning concept, manual validation, and mastery evidence. Opaque “install a
 framework and wire agents” guidance is unacceptable. Production commitment to LangGraph
-(or any orchestrator) requires **ADR-003** after the learning spike.
+(or any orchestrator) requires an ADR. **ADR-003 is accepted** for the current scope:
+thin in-repository runner; revisit only under conditions in that ADR.
 
 ### Auditable, idempotent state transitions
 
@@ -202,6 +203,7 @@ When this document conflicts with the functional specification on requirements, 
 Record engineering invariant changes here and in [11_changelog.md](11_changelog.md). Do not leave durable tradeoff decisions only in agent conversations.
 
 Architecture Decision Records live in `docs/adr/`. **ADR-003 (orchestration
-architecture)** is required before committing production to LangGraph or any
-workflow framework — see [10_roadmap.md](10_roadmap.md) § Agent Orchestration Learning Spike.
-Write ADR-003 during/after the FR-008 learning spike.
+architecture)** is **accepted**: thin in-repository runner; LangGraph not required
+for the current FR-008 scope. See
+[003_application_workflow_orchestration.md](adr/003_application_workflow_orchestration.md).
+Reconsider only under the conditions recorded in that ADR.

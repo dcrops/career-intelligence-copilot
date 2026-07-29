@@ -1,0 +1,375 @@
+{
+  "job_analysis": {
+    "posting": {
+      "raw_text": "[CIC-FIXTURE:ai-engineer]\nSenior AI Engineer — Northside Analytics (Melbourne)\n\nAbout the role\nWe are hiring a Senior AI Engineer to design and ship production LLM applications for\nAustralian enterprise clients. You will own retrieval pipelines, evaluation harnesses,\nand safe deployment patterns.\n\nResponsibilities\n• Build and maintain LLM applications using Python and LangChain\n• Partner with data engineers on feature pipelines and model observability\n• Mentor engineers on prompt evaluation and production readiness\n\nRequirements\n• 5+ years software engineering experience required\n• Strong Python required; LangChain experience preferred\n• Production LLM or RAG experience required\n\nLocation & employment\nHybrid Melbourne — 3 days in the CBD office. Full-time permanent.\nSalary $150,000–$180,000 AUD + super.",
+      "title": null,
+      "company": null,
+      "source_url": null
+    },
+    "role_family": {
+      "family": "ai_engineering",
+      "evidence": [
+        {
+          "excerpt": "Senior AI Engineer",
+          "section": "title"
+        }
+      ]
+    },
+    "seniority": {
+      "level": "senior",
+      "ambiguous": false,
+      "candidate_levels": [],
+      "evidence": [
+        {
+          "excerpt": "Senior AI Engineer",
+          "section": "title"
+        }
+      ]
+    },
+    "technologies": [
+      {
+        "name": "Python",
+        "level": "required",
+        "evidence": [
+          {
+            "excerpt": "Strong Python required",
+            "section": "requirements"
+          }
+        ]
+      },
+      {
+        "name": "LangChain",
+        "level": "preferred",
+        "evidence": [
+          {
+            "excerpt": "LangChain experience preferred",
+            "section": "requirements"
+          }
+        ]
+      }
+    ],
+    "responsibilities": [
+      {
+        "description": "Build and maintain LLM applications using Python and LangChain",
+        "evidence": [
+          {
+            "excerpt": "Build and maintain LLM applications using Python and LangChain",
+            "section": "responsibilities"
+          }
+        ]
+      }
+    ],
+    "compensation": {
+      "clarity": "stated",
+      "minimum": 150000.0,
+      "maximum": 180000.0,
+      "currency": "AUD",
+      "period": "year",
+      "raw_text": "Salary $150,000–$180,000 AUD + super",
+      "evidence": [
+        {
+          "excerpt": "Salary $150,000–$180,000 AUD + super",
+          "section": "compensation"
+        }
+      ]
+    },
+    "location": {
+      "clarity": "stated",
+      "summary": "Melbourne",
+      "evidence": [
+        {
+          "excerpt": "Hybrid Melbourne",
+          "section": "location"
+        }
+      ]
+    },
+    "work_arrangement": {
+      "arrangement": "hybrid",
+      "details": "3 days in the CBD office",
+      "evidence": [
+        {
+          "excerpt": "Hybrid Melbourne — 3 days in the CBD office",
+          "section": "location"
+        }
+      ]
+    },
+    "employment": {
+      "working_hours": "full_time",
+      "engagement_type": "permanent",
+      "evidence": [
+        {
+          "excerpt": "Full-time permanent",
+          "section": "employment"
+        }
+      ]
+    },
+    "experience_requirements": [
+      {
+        "description": "5+ years software engineering experience",
+        "level": "required",
+        "minimum_years": 5.0,
+        "maximum_years": null,
+        "evidence": [
+          {
+            "excerpt": "5+ years software engineering experience required",
+            "section": "requirements"
+          }
+        ]
+      },
+      {
+        "description": "Production LLM or RAG experience",
+        "level": "required",
+        "minimum_years": null,
+        "maximum_years": null,
+        "evidence": [
+          {
+            "excerpt": "Production LLM or RAG experience required",
+            "section": "requirements"
+          }
+        ]
+      }
+    ]
+  },
+  "application_tier": "silver",
+  "pursuit_posture": "consider",
+  "practical_value": "acceptable_opportunity",
+  "effort_level": "minimal",
+  "summary": "Recommend posture 'consider' with effort tier 'silver' (minimal). Technical fit 'mixed' and portfolio fit 'moderate' support a credible stretch, but explicit seniority with commercial fit 'moderate' lacks matching senior commercial AI employment evidence. Owner review is required before any application action.",
+  "reasons": [
+    {
+      "kind": "alignment",
+      "summary": "Technical fit is 'mixed' and portfolio fit is 'moderate' for this opportunity.",
+      "importance": "material",
+      "evidence": [
+        {
+          "origin": "opportunity_assessment",
+          "job_evidence": null,
+          "profile_evidence": null,
+          "assessment_dimension": "technical",
+          "assessment_judgment": "mixed",
+          "portfolio_project_id": null,
+          "excerpt": null
+        },
+        {
+          "origin": "opportunity_assessment",
+          "job_evidence": null,
+          "profile_evidence": null,
+          "assessment_dimension": "portfolio",
+          "assessment_judgment": "moderate",
+          "portfolio_project_id": null,
+          "excerpt": null
+        }
+      ]
+    },
+    {
+      "kind": "constraint",
+      "summary": "Strong technical and portfolio alignment make this a credible stretch role, but the position is explicitly senior and the profile does not yet demonstrate matching senior commercial AI ownership. Recommend consider / silver with minimal effort.",
+      "importance": "material",
+      "evidence": [
+        {
+          "origin": "job_analysis",
+          "job_evidence": {
+            "source": "seniority",
+            "item_index": null,
+            "name": null,
+            "excerpt": null
+          },
+          "profile_evidence": null,
+          "assessment_dimension": null,
+          "assessment_judgment": null,
+          "portfolio_project_id": null,
+          "excerpt": null
+        },
+        {
+          "origin": "opportunity_assessment",
+          "job_evidence": null,
+          "profile_evidence": null,
+          "assessment_dimension": "commercial",
+          "assessment_judgment": "moderate",
+          "portfolio_project_id": null,
+          "excerpt": null
+        }
+      ]
+    }
+  ],
+  "risks_or_gaps": [
+    {
+      "summary": "Explicit seniority and commercial AI leadership requirements are not fully evidenced in the profile. Technical capability and portfolio evidence remain distinct from senior commercial AI employment ownership.",
+      "importance": "material",
+      "evidence": [
+        {
+          "origin": "job_analysis",
+          "job_evidence": {
+            "source": "seniority",
+            "item_index": null,
+            "name": null,
+            "excerpt": null
+          },
+          "profile_evidence": null,
+          "assessment_dimension": null,
+          "assessment_judgment": null,
+          "portfolio_project_id": null,
+          "excerpt": null
+        },
+        {
+          "origin": "opportunity_assessment",
+          "job_evidence": null,
+          "profile_evidence": null,
+          "assessment_dimension": "commercial",
+          "assessment_judgment": "moderate",
+          "portfolio_project_id": null,
+          "excerpt": null
+        }
+      ]
+    },
+    {
+      "summary": "No commercial employment entry establishes paid production AI Engineering delivery; independent engineering is real capability evidence but not equivalent to commercial production AI employment.",
+      "importance": "material",
+      "evidence": [
+        {
+          "origin": "opportunity_assessment",
+          "job_evidence": null,
+          "profile_evidence": null,
+          "assessment_dimension": "technical",
+          "assessment_judgment": "mixed",
+          "portfolio_project_id": null,
+          "excerpt": null
+        }
+      ]
+    }
+  ],
+  "manual_checks": [
+    {
+      "summary": "Review seniority expectations against demonstrated experience.",
+      "why_it_matters": "A seniority stretch can change whether significant effort is justified.",
+      "could_change_recommendation": true,
+      "evidence": [
+        {
+          "origin": "job_analysis",
+          "job_evidence": {
+            "source": "seniority",
+            "item_index": null,
+            "name": null,
+            "excerpt": null
+          },
+          "profile_evidence": null,
+          "assessment_dimension": null,
+          "assessment_judgment": null,
+          "portfolio_project_id": null,
+          "excerpt": null
+        }
+      ]
+    }
+  ],
+  "next_actions": [
+    {
+      "kind": "consider_reviewing_seniority_expectations",
+      "summary": "Consider reviewing seniority expectations against demonstrated experience.",
+      "related_project_id": null,
+      "evidence": [
+        {
+          "origin": "job_analysis",
+          "job_evidence": {
+            "source": "seniority",
+            "item_index": null,
+            "name": null,
+            "excerpt": null
+          },
+          "profile_evidence": null,
+          "assessment_dimension": null,
+          "assessment_judgment": null,
+          "portfolio_project_id": null,
+          "excerpt": null
+        }
+      ]
+    },
+    {
+      "kind": "consider_emphasising_portfolio_projects",
+      "summary": "Consider emphasising the strongest matched portfolio project(s) in any application materials you prepare.",
+      "related_project_id": "governance-document-rag",
+      "evidence": [
+        {
+          "origin": "portfolio_match",
+          "job_evidence": null,
+          "profile_evidence": null,
+          "assessment_dimension": null,
+          "assessment_judgment": null,
+          "portfolio_project_id": "governance-document-rag",
+          "excerpt": null
+        }
+      ]
+    },
+    {
+      "kind": "consider_owner_review",
+      "summary": "Consider reviewing this full strategy before taking any external action.",
+      "related_project_id": null,
+      "evidence": [
+        {
+          "origin": "opportunity_assessment",
+          "job_evidence": null,
+          "profile_evidence": null,
+          "assessment_dimension": "technical",
+          "assessment_judgment": "mixed",
+          "portfolio_project_id": null,
+          "excerpt": null
+        }
+      ]
+    }
+  ],
+  "portfolio_emphasis": [
+    {
+      "project_id": "governance-document-rag",
+      "source_rank": 1,
+      "summary": "Consider emphasising 'governance-document-rag' (PortfolioMatch rank 1).",
+      "evidence": [
+        {
+          "origin": "portfolio_match",
+          "job_evidence": null,
+          "profile_evidence": null,
+          "assessment_dimension": null,
+          "assessment_judgment": null,
+          "portfolio_project_id": "governance-document-rag",
+          "excerpt": null
+        }
+      ]
+    },
+    {
+      "project_id": "career-intelligence-copilot",
+      "source_rank": 2,
+      "summary": "Consider emphasising 'career-intelligence-copilot' (PortfolioMatch rank 2).",
+      "evidence": [
+        {
+          "origin": "portfolio_match",
+          "job_evidence": null,
+          "profile_evidence": null,
+          "assessment_dimension": null,
+          "assessment_judgment": null,
+          "portfolio_project_id": "career-intelligence-copilot",
+          "excerpt": null
+        }
+      ]
+    },
+    {
+      "project_id": "operational-intelligence-copilot",
+      "source_rank": 3,
+      "summary": "Consider emphasising 'operational-intelligence-copilot' (PortfolioMatch rank 3).",
+      "evidence": [
+        {
+          "origin": "portfolio_match",
+          "job_evidence": null,
+          "profile_evidence": null,
+          "assessment_dimension": null,
+          "assessment_judgment": null,
+          "portfolio_project_id": "operational-intelligence-copilot",
+          "excerpt": null
+        }
+      ]
+    }
+  ],
+  "assumptions": [
+    "No candidate salary minimum is configured, so compensation was not treated as a hard threshold conflict."
+  ],
+  "decision_blockers": [],
+  "owner_review_required": true,
+  "insufficient_information": false
+}

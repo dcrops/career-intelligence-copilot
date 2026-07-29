@@ -4,6 +4,179 @@ Records product strategy and engineering knowledge changes. Routine typo fixes a
 
 ---
 
+## Version 1.54
+
+### FR-009 M0 — Opportunity persistence boundary & domain contracts
+
+Started FR-009 with a contracts-only milestone that resolves the apply-only versus
+awaiting-review source-of-truth tension. **FR-009 is in progress, not complete.**
+
+**Decision ([ADR-004](adr/004_opportunity_review_boundary.md), accepted; amends
+ADR-002):** an Opportunity is the durable record of a *successfully analysed job
+candidate that may require an owner decision*. Persistence belongs after FR-005
+Application Strategy and before owner review, so skip and defer stay auditable. The
+review queue is a **derived projection** over `data/opportunities/` — not a second
+persisted aggregate. Workflow checkpoints remain recovery infrastructure. Phase 2 M4
+ranking (`pursuit_posture → fit strength → application_tier → opportunity_id`) remains
+the frozen fit baseline; no composite score and no LLM ranking.
+
+**Contracts added** (additive, `career_intelligence.opportunities`): `OpportunityReview`
+(`reviewed_at`, `pinned`, `defer_until`, `archived_at`), `DuplicateRelation`
+(`duplicate_of`, `confirmed_at`, `evidence`), `DuplicateEvidenceKind`, and the
+`Opportunity.review` / `Opportunity.duplicate` fields. Orthogonal fields were chosen over
+a lifecycle enum; owner decision, review metadata, pipeline status, workflow status, and
+duplicate state remain separate. Archive means review visibility only — employer
+rejection and process completion stay with FR-012.
+
+**Evidence:** 13 of 16 live Opportunity records already have no owner decision, and
+`create_from_strategy` already creates `decision=None` — apply-only was FR-008 routing,
+never the persistence contract. 0/16 records carry a platform job ID or URL while 16/16
+carry a content fingerprint with three collision groups, so a fingerprint alone cannot
+prove duplication.
+
+**Compatibility:** no migration, no schema version bump, no live-record mutation; old
+apply-only records load unchanged.
+
+**Not implemented:** review queue, queue filtering/ordering extensions, pin / defer /
+archive behaviour, duplicate detection, UI, and the workflow persistence-boundary move
+(FR-009 M1). Acceptance:
+[docs/eval/fr009_m0_domain_contracts.md](eval/fr009_m0_domain_contracts.md).
+
+---
+
+## Version 1.53
+
+### FR-008 documentation freeze & engineering close-out
+
+FR-008 Job Acquisition & Workflow Orchestration is **complete** and frozen for
+release-quality documentation (2026-07-29).
+
+**Capability delivered:** source-adapter acquisition (paste + local export);
+deterministic `ApplicationWorkflowRunner`; FR-002–FR-005 nodes; JSON checkpoint /
+resume; mandatory owner review; apply → idempotent Opportunity persist + decision
+record; skip/defer without persist; bounded recoverable retries on analyse/assess;
+execution event trace; [ADR-003](adr/003_application_workflow_orchestration.md).
+
+**Engineering outcomes (summary):** thin in-repo runner sufficient; orchestration
+separated from domain services; persistence isolated in dedicated nodes; human
+approval is a first-class interrupt; Opportunity SoT remains ADR-002.
+
+**Validation:** unit + functional suites under `tests/**/orchestration*` /
+`test_fr008_*`; manual runner `scripts/run_fr008_workflow_manual.py`; acceptance
+[docs/eval/fr008_workflow_orchestration.md](eval/fr008_workflow_orchestration.md)
+(GO — engineering).
+
+**Active work:** FR-009. No LangGraph, Playwright, submission, ranking, or
+deduplication in this close-out.
+
+Milestone detail remains in versions 1.48–1.52 (not rewritten).
+
+---
+
+## Version 1.52
+
+### FR-008 closed — acquisition foundation
+
+Formally closed FR-008 Job Acquisition & Workflow Orchestration:
+
+- Public `AcquisitionAdapter` / `AcquisitionResult` (runner is source-agnostic)
+- Migrated paste to `PasteAcquisitionAdapter`; added `LocalFileAcquisitionAdapter`
+  (`source_kind=export`)
+- Manual runner renamed to `scripts/run_fr008_workflow_manual.py` (`--source paste|export`)
+- Acceptance report: [docs/eval/fr008_workflow_orchestration.md](eval/fr008_workflow_orchestration.md)
+- ADR-003 remains accepted; Playwright and URL/API adapters deferred
+- Next: FR-009 (deduplication / review queue) — not started
+
+---
+
+## Version 1.51
+
+### FR-008 M3 — bounded failure recovery + ADR-003
+
+Added recoverable vs unrecoverable failure handling for the thin workflow runner:
+
+- Injectable `RetryPolicy` (default: `analyse` / `assess`, max 3 attempts)
+- Checkpointed `RetryState` (attempts survive process restart)
+- Events: `retry_scheduled`, `retry_exhausted` (plus attempt metadata on node events)
+- Same-process automatic retry; cross-process via `continue_run` + optional
+  `--yield-after-retry`
+- Unknown / validation / trust-boundary failures fail closed (no blind retry)
+- Exhaustion → terminal `failed`; no Opportunity created
+- M2 apply idempotency preserved (regression covered)
+- Manual injection: `--fail-node`, `--fail-count`, `--failure-kind`
+- **ADR-003 accepted:** thin in-repo runner; LangGraph not required now
+
+FR-008 remains open for live source adapters. No FR-009 / agents / submission.
+
+---
+
+## Version 1.50
+
+### FR-008 M2 — Opportunity persistence on apply
+
+Wired the first controlled workflow side effect after owner `apply`:
+
+- `persist` → `OpportunityService.create_from_strategy` (optional planned
+  `opportunity_id` for idempotent reclaim)
+- `record_decision` → `OpportunityService.record_decision` via explicit
+  `to_opportunity_decision` boundary translation
+- `skip` / `defer` complete without creating an Opportunity
+- Idempotency: pre-allocate `opportunity_id`, checkpoint, then create; repeated
+  resume and partial failure after create do not duplicate Opportunities
+- Post-approval node failures remain resumable (`status=running` + `last_error`)
+- Manual runner extended: `show` / `reload`; `--opportunities-dir`
+
+FR-008 remains open. ADR-003 still deferred pending M3 failure-recovery evidence.
+
+---
+
+## Version 1.49
+
+### FR-008 M1 — thin workflow runner spike
+
+Implemented `ApplicationWorkflowRunner` over M0 contracts for the fixed spike
+graph:
+
+`acquire → validate_normalise → analyse → assess → match → strategy → owner_review`
+
+- Paste/manual acquisition with provenance (URL is provenance only; no fetch)
+- Thin FR-002–FR-005 service node wrappers (fixture/production DI unchanged)
+- Deterministic routing; mandatory owner-review interrupt + checkpoint
+- Process-level resume via `JsonDirectoryCheckpointStore` (JSON under
+  `data/workflow_runs/`); no Opportunity persistence (deferred to M2)
+- Manual runner: `scripts/run_workflow_m1_manual.py`
+- Functional suites: `tests/functional/test_fr008_*.py`
+
+FR-008 remains open. ADR-003 still deferred; spike evidence recorded in
+implementation notes (in-repo runner sufficient for interrupt/resume; embedding
+full domain artefacts in JSON checkpoints is practical for single-user runs;
+orchestration `OwnerDecisionKind` remains a parallel literal set for now).
+
+---
+
+## Version 1.48
+
+### FR-008 M0 — orchestration contracts
+
+Introduced package `career_intelligence.orchestration` with typed workflow
+contracts only (no runner, routing, adapters, or service wrappers):
+
+- `WorkflowState` control plane (control, acquisition envelope, domain artefact
+  slots, approval state, execution metadata / events)
+- `NodeSpec` / `WorkflowNode` protocol / `NodeOutcome` failure reporting
+- Minimal `WorkflowEvent` audit types
+- `CheckpointStore` protocol + `InMemoryCheckpointStore` for tests
+- Explicit orchestration errors (`WorkflowValidationError`,
+  `WorkflowAwaitingOwnerError`, `WorkflowCheckpointError`,
+  `WorkflowNotFoundError`, `WorkflowResumeError`, `WorkflowNodeError`)
+
+Unit tests under `tests/unit/orchestration/`. FR-008 remains open; ADR-003 still
+deferred until the M1+ spike demonstrates checkpoint/resume. Observations for
+ADR-003: in-repo Pydantic contracts are sufficient for M0; no framework import
+required to define state/node/event boundaries.
+
+---
+
 ## Version 1.47
 
 ### Renumber future FRs to match implementation sequence

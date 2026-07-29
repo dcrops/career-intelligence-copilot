@@ -29,12 +29,18 @@ requires explicit owner approval.
 a **frozen baseline** (M5 GO —
 [docs/eval/phase2_release_report.md](docs/eval/phase2_release_report.md);
 [docs/12_phase_history.md](docs/12_phase_history.md)). FR-001–FR-007 (including
-FR-006b/c) are closed. **Current focus — Horizon 1A:** job application workflow
-(FR-008–FR-015: acquisition + orchestration → review → submit → track).
+FR-006b/c) are closed. **FR-008** is **complete and frozen** —
+[docs/eval/fr008_workflow_orchestration.md](docs/eval/fr008_workflow_orchestration.md);
+[ADR-003](docs/adr/003_application_workflow_orchestration.md). **Current focus —
+Horizon 1A:** **FR-009** (review queue / ranking) is **in progress — M0 complete**
+(domain contracts only —
+[docs/eval/fr009_m0_domain_contracts.md](docs/eval/fr009_m0_domain_contracts.md);
+[ADR-004](docs/adr/004_opportunity_review_boundary.md)). The queue, ranking extensions,
+owner actions, and duplicate detection are not implemented; M1 (persistence-boundary
+move) needs explicit owner approval before starting. Then FR-010–FR-015.
 **Principle:** Job acquisition first. Recruiter outreach second (Horizon 1B /
-FR-016–FR-022 — do not start while 1A is incomplete). Near-term entry: FR-008 learning
-spike on a saved/manual job + ADR-003 before committing an orchestrator. Do not
-reopen Phase 2 exit criteria without explicit owner request.
+FR-016–FR-022 — do not start while 1A is incomplete). Do not
+reopen Phase 2 or FR-008 exit criteria without explicit owner request.
 
 **Implementation foundation:** Python 3.11+, Pydantic, YAML storage, and the public profile
 service boundary are recorded in
@@ -54,9 +60,10 @@ service boundary are recorded in
 
 **Delivered outside original Phase 2 exit criteria (owner-sequenced):** FR-006 CV Generation (complete, including FR-006b/c); **FR-007 Cover Letter** (complete — plan + deterministic narrative render; manual validation passed).
 
-**Horizon 1A (current):** FR-008–FR-015 planned — source-adapter acquisition (not
-“web scraping”), deterministic workflow orchestration first (FR-008), then bounded
-agents (FR-013). See [docs/10_roadmap.md](docs/10_roadmap.md).
+**Horizon 1A (current):** FR-008 **complete** (acquisition adapters + orchestration;
+ADR-003). **FR-009 in progress — M0 (domain contracts) complete; ADR-004 accepted.**
+FR-010–FR-015 planned — deterministic workflow orchestration first, then bounded agents
+(FR-013). See [docs/10_roadmap.md](docs/10_roadmap.md).
 
 Full detail: [docs/04_functional_specification.md](docs/04_functional_specification.md) and [docs/10_roadmap.md](docs/10_roadmap.md).
 
@@ -77,7 +84,10 @@ Apply [docs/05_engineering_principles.md](docs/05_engineering_principles.md) for
 - **Outcome logging** — decisions and results must be recordable (Phase 2 M2 / FR-012)
 - **Operational continuity** — the built system must connect to existing tracking in `applications/`, not run parallel to it
 - **Public profile boundary** — downstream capabilities obtain the career profile through
-  `career_intelligence.profile`, never through its YAML storage adapter
+ `career_intelligence.profile`, never through its YAML storage adapter
+- **One system of record for opportunities** — `data/opportunities/` is the durable
+ business record; the FR-009 review queue is a derived projection, and workflow
+ checkpoints stay recovery data ([ADR-004](docs/adr/004_opportunity_review_boundary.md))
 - **Acquisition via adapters** — prefer APIs/feeds/alerts/URLs/paste/exports; Playwright is a controlled fallback, not crawlers
 
 ---

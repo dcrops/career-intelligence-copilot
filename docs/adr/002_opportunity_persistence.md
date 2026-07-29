@@ -1,6 +1,7 @@
 # ADR-002: Opportunity Persistence Foundation (M1)
 
-**Status:** Accepted  
+**Status:** Accepted — amended by [ADR-004](004_opportunity_review_boundary.md)
+(persistence boundary, review metadata, duplicate relationship)  
 **Date:** 2026-07-23
 
 ## Context

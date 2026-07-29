@@ -1,0 +1,131 @@
+{
+  "posting": {
+    "raw_text": "[CIC-FIXTURE:ai-engineer]\nSenior AI Engineer — Northside Analytics (Melbourne)\n\nAbout the role\nWe are hiring a Senior AI Engineer to design and ship production LLM applications for\nAustralian enterprise clients. You will own retrieval pipelines, evaluation harnesses,\nand safe deployment patterns.\n\nResponsibilities\n• Build and maintain LLM applications using Python and LangChain\n• Partner with data engineers on feature pipelines and model observability\n• Mentor engineers on prompt evaluation and production readiness\n\nRequirements\n• 5+ years software engineering experience required\n• Strong Python required; LangChain experience preferred\n• Production LLM or RAG experience required\n\nLocation & employment\nHybrid Melbourne — 3 days in the CBD office. Full-time permanent.\nSalary $150,000–$180,000 AUD + super.",
+    "title": null,
+    "company": null,
+    "source_url": null
+  },
+  "role_family": {
+    "family": "ai_engineering",
+    "evidence": [
+      {
+        "excerpt": "Senior AI Engineer",
+        "section": "title"
+      }
+    ]
+  },
+  "seniority": {
+    "level": "senior",
+    "ambiguous": false,
+    "candidate_levels": [],
+    "evidence": [
+      {
+        "excerpt": "Senior AI Engineer",
+        "section": "title"
+      }
+    ]
+  },
+  "technologies": [
+    {
+      "name": "Python",
+      "level": "required",
+      "evidence": [
+        {
+          "excerpt": "Strong Python required",
+          "section": "requirements"
+        }
+      ]
+    },
+    {
+      "name": "LangChain",
+      "level": "preferred",
+      "evidence": [
+        {
+          "excerpt": "LangChain experience preferred",
+          "section": "requirements"
+        }
+      ]
+    }
+  ],
+  "responsibilities": [
+    {
+      "description": "Build and maintain LLM applications using Python and LangChain",
+      "evidence": [
+        {
+          "excerpt": "Build and maintain LLM applications using Python and LangChain",
+          "section": "responsibilities"
+        }
+      ]
+    }
+  ],
+  "compensation": {
+    "clarity": "stated",
+    "minimum": 150000.0,
+    "maximum": 180000.0,
+    "currency": "AUD",
+    "period": "year",
+    "raw_text": "Salary $150,000–$180,000 AUD + super",
+    "evidence": [
+      {
+        "excerpt": "Salary $150,000–$180,000 AUD + super",
+        "section": "compensation"
+      }
+    ]
+  },
+  "location": {
+    "clarity": "stated",
+    "summary": "Melbourne",
+    "evidence": [
+      {
+        "excerpt": "Hybrid Melbourne",
+        "section": "location"
+      }
+    ]
+  },
+  "work_arrangement": {
+    "arrangement": "hybrid",
+    "details": "3 days in the CBD office",
+    "evidence": [
+      {
+        "excerpt": "Hybrid Melbourne — 3 days in the CBD office",
+        "section": "location"
+      }
+    ]
+  },
+  "employment": {
+    "working_hours": "full_time",
+    "engagement_type": "permanent",
+    "evidence": [
+      {
+        "excerpt": "Full-time permanent",
+        "section": "employment"
+      }
+    ]
+  },
+  "experience_requirements": [
+    {
+      "description": "5+ years software engineering experience",
+      "level": "required",
+      "minimum_years": 5.0,
+      "maximum_years": null,
+      "evidence": [
+        {
+          "excerpt": "5+ years software engineering experience required",
+          "section": "requirements"
+        }
+      ]
+    },
+    {
+      "description": "Production LLM or RAG experience",
+      "level": "required",
+      "minimum_years": null,
+      "maximum_years": null,
+      "evidence": [
+        {
+          "excerpt": "Production LLM or RAG experience required",
+          "section": "requirements"
+        }
+      ]
+    }
+  ]
+}

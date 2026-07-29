@@ -1,10 +1,17 @@
-"""Typed domain models for durable Opportunity persistence (M1–M4).
+"""Typed domain models for durable Opportunity persistence (M1–M4, FR-009 M0).
 
 Index records stay lightweight. Full FR-002–FR-005 graphs live as immutable
 artifact snapshots under the opportunity id. M2 adds owner decision and outcome
 logging. M3 allows incomplete legacy imports without fabricating assessments.
 M4 ranking consumes StrategySummary and lifecycle fields via a separate
 comparison package.
+
+FR-009 M0 adds owner review metadata and an optional duplicate relationship as
+additive contracts (ADR-004). An Opportunity is the durable record of a
+successfully analysed job candidate that may require an owner decision — it does
+not imply the owner chose to apply. Review metadata, owner decision, pipeline
+status, and duplicate state stay separate fields because they answer different
+questions and change at different times.
 """
 
 from __future__ import annotations
@@ -19,6 +26,7 @@ from pydantic import (
     Field,
     StringConstraints,
     field_validator,
+    model_validator,
 )
 
 from career_intelligence.application_strategy.models import (
@@ -80,10 +88,21 @@ InterviewStage = Literal[
     "unknown",
 ]
 
+DuplicateEvidenceKind = Literal[
+    "platform_job_id",
+    "canonical_url",
+    "identity_facets",
+    "content_fingerprint",
+    "owner_judgment",
+]
+
 PIPELINE_STATUSES: tuple[PipelineStatus, ...] = get_args(PipelineStatus)
 OWNER_DECISION_KINDS: tuple[OwnerDecisionKind, ...] = get_args(OwnerDecisionKind)
 OUTCOME_KINDS: tuple[OutcomeKind, ...] = get_args(OutcomeKind)
 INTERVIEW_STAGES: tuple[InterviewStage, ...] = get_args(InterviewStage)
+DUPLICATE_EVIDENCE_KINDS: tuple[DuplicateEvidenceKind, ...] = get_args(
+    DuplicateEvidenceKind
+)
 
 TERMINAL_STATUSES: frozenset[PipelineStatus] = frozenset(
     {"accepted", "rejected", "withdrawn"}
@@ -148,6 +167,48 @@ class OutcomeRecord(OpportunityModel):
     updated_at: datetime
 
 
+class OpportunityReview(OpportunityModel):
+    """Owner-authored review metadata for the FR-009 queue (ADR-004).
+
+    Orthogonal flags rather than one lifecycle enum: an Opportunity can be
+    reviewed and pinned, or unreviewed and deferred, without enumerating every
+    combination. Defaults describe a never-reviewed record, so records written
+    before FR-009 read back unchanged in meaning.
+
+    ``defer_until`` is a date (matching ``OutcomeRecord.follow_up_date``) so
+    "currently deferred" is decidable without timezone arithmetic. None of these
+    fields is a pipeline status: application progress stays on
+    ``Opportunity.status`` and belongs to FR-012.
+    """
+
+    reviewed_at: datetime | None = None
+    pinned: bool = False
+    defer_until: date | None = None
+    archived_at: datetime | None = None
+
+    @model_validator(mode="after")
+    def archived_records_are_not_pinned(self) -> OpportunityReview:
+        if self.archived_at is not None and self.pinned:
+            raise ValueError(
+                "pinned=True contradicts archived_at: archiving hides a record "
+                "from active review, so the pin must be cleared"
+            )
+        return self
+
+
+class DuplicateRelation(OpportunityModel):
+    """Owner-confirmed link from a duplicate record to its canonical record.
+
+    Non-destructive by contract: the duplicate keeps its own identity,
+    provenance, and artifacts, and remains auditable. ``evidence`` records why
+    the link was accepted. Detection is not implemented in FR-009 M0.
+    """
+
+    duplicate_of: OpportunityId
+    confirmed_at: datetime
+    evidence: tuple[DuplicateEvidenceKind, ...] = ()
+
+
 class LegacyImportProvenance(OpportunityModel):
     """Migration provenance for one-time legacy tracker CSV imports (M3)."""
 
@@ -171,6 +232,8 @@ class Opportunity(OpportunityModel):
     strategy_summary: StrategySummary | None = None
     artifact_paths: dict[str, NonEmptyString] = Field(default_factory=dict)
     legacy_import: LegacyImportProvenance | None = None
+    review: OpportunityReview = Field(default_factory=OpportunityReview)
+    duplicate: DuplicateRelation | None = None
     updated_at: datetime
 
     @field_validator("artifact_paths")
@@ -181,6 +244,17 @@ class Opportunity(OpportunityModel):
         if unknown:
             raise ValueError(f"unknown artifact keys: {', '.join(unknown)}")
         return value
+
+    @model_validator(mode="after")
+    def duplicate_does_not_point_at_itself(self) -> Opportunity:
+        if (
+            self.duplicate is not None
+            and self.duplicate.duplicate_of == self.identity.opportunity_id
+        ):
+            raise ValueError(
+                "duplicate.duplicate_of must reference a different opportunity_id"
+            )
+        return self
 
     @property
     def opportunity_id(self) -> str:

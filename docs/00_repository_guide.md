@@ -45,13 +45,18 @@ Objectives.
 
 **Phase 2 Job Intelligence — Complete** (documentation frozen as baseline).
 
-**Next milestone:** Horizon 1A — **FR-008** Agent Orchestration Learning Spike (then
-live acquisition adapters), per [10_roadmap.md](10_roadmap.md).
+**Active milestone:** Horizon 1A — **FR-009** Opportunity Review Queue & Ranking,
+**M0 complete** (domain contracts;
+[eval/fr009_m0_domain_contracts.md](eval/fr009_m0_domain_contracts.md)). The queue,
+ranking extensions, owner actions, and duplicate detection are not implemented. FR-008
+closed: [eval/fr008_workflow_orchestration.md](eval/fr008_workflow_orchestration.md).
 
 **Thereafter:** Complete Horizon 1A (through FR-015), then Horizon 1B (FR-016–FR-022).
 
-Architecture decisions: `docs/adr/` (ADR-001, ADR-002; **ADR-003 orchestration
-pending** before LangGraph/production commit — written during FR-008 spike). Release evidence:
+Architecture decisions: `docs/adr/` (ADR-001, ADR-002, **ADR-003** thin in-repo
+workflow runner accepted — LangGraph not required for current FR-008 scope; **ADR-004**
+Opportunity as pre-decision system of record with the review queue as a derived
+projection). Release evidence:
 [eval/phase2_release_report.md](eval/phase2_release_report.md).
 
 ---
@@ -70,7 +75,7 @@ pending** before LangGraph/production commit — written during FR-008 spike). R
 | [08_implementation_notes.md](08_implementation_notes.md) | Supporting | Implementation notes and manual runners |
 | [12_phase_history.md](12_phase_history.md) | Supporting | Phase 1–2 outcomes and lessons |
 | [eval/phase2_release_report.md](eval/phase2_release_report.md) | Supporting | Phase 2 M5 GO evidence |
-| [adr/README.md](adr/README.md) | Supporting | ADR index; ADR-003 orchestration pending |
+| [adr/README.md](adr/README.md) | Supporting | ADR index (001–003) |
 | [eval/fr006_manual_validation.md](eval/fr006_manual_validation.md) | Supporting | FR-006 validation procedure |
 | [eval/fr006b_cv_quality_golden_suite.md](eval/fr006b_cv_quality_golden_suite.md) | Supporting | FR-006b permanent CV quality benchmarks |
 | [eval/fr006b_cv_quality_findings.md](eval/fr006b_cv_quality_findings.md) | Supporting | FR-006b quality review (pre-implementation) |

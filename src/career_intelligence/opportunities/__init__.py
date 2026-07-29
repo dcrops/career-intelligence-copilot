@@ -11,6 +11,7 @@ from .errors import (
     OpportunityTransitionError,
     OpportunityValidationError,
 )
+from .identity import new_opportunity_id
 from .legacy_import import (
     LEGACY_OUTCOME_MAP,
     LEGACY_STATUS_MAP,
@@ -20,14 +21,18 @@ from .legacy_import import (
 )
 from .models import (
     ARTIFACT_FILENAMES,
+    DUPLICATE_EVIDENCE_KINDS,
     INTERVIEW_STAGES,
     OUTCOME_KINDS,
     OWNER_DECISION_KINDS,
     PIPELINE_STATUSES,
     TERMINAL_STATUSES,
+    DuplicateEvidenceKind,
+    DuplicateRelation,
     LegacyImportProvenance,
     Opportunity,
     OpportunityIdentity,
+    OpportunityReview,
     OutcomeKind,
     OutcomeRecord,
     OwnerDecisionKind,
@@ -41,7 +46,10 @@ from .service import OpportunityService
 __all__ = [
     "ARTIFACT_FILENAMES",
     "DEFAULT_EXPORT_PATH",
+    "DUPLICATE_EVIDENCE_KINDS",
     "EXPORT_COLUMNS",
+    "DuplicateEvidenceKind",
+    "DuplicateRelation",
     "ErrorDetail",
     "INTERVIEW_STAGES",
     "LEGACY_OUTCOME_MAP",
@@ -61,6 +69,7 @@ __all__ = [
     "OpportunityError",
     "OpportunityIdentity",
     "OpportunityNotFoundError",
+    "OpportunityReview",
     "OpportunityService",
     "OpportunityStorageError",
     "OpportunityTransitionError",
@@ -72,4 +81,5 @@ __all__ = [
     "PipelineStatus",
     "SourceKind",
     "StrategySummary",
+    "new_opportunity_id",
 ]

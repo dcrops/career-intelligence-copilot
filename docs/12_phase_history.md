@@ -73,10 +73,10 @@ SoT shape, ranking sort key, or Horizon 2 domains (recruiters, networking, meetu
 
 ## Next
 
-**Current focus:** Horizon 1A — Job application workflow (FR-008–FR-015)  
-**Near-term entry:** FR-008 Agent Orchestration Learning Spike + ADR-003  
-**Then:** FR-008 live adapters; FR-009–FR-012 queue/packages/submit/track  
+**Current focus:** Horizon 1A — **FR-009** Opportunity Review Queue & Ranking  
+**Completed:** FR-008 Job Acquisition & Workflow Orchestration (2026-07-29)  
+**Then:** FR-010–FR-012 packages / submission / tracking  
 **Later in 1A:** FR-013–FR-015 bounded agents → multi-agent → evaluation  
 **After 1A:** Horizon 1B recruiter / market engagement (FR-016–FR-022)  
-**Principle:** Job acquisition first. Recruiter outreach second. 
+**Principle:** Job acquisition first. Recruiter outreach second.  
 **Later:** Horizon 2 capability phases (see roadmap)

@@ -727,20 +727,72 @@ once the deterministic workflow path is proven.
 ## FR-008 Job Acquisition & Workflow Orchestration
 
 **Phase:** Horizon 1A Stages 1–2  
-**Status:** Planned — **immediate implementation target; introduces workflow orchestration**
+**Status:** **Complete** (2026-07-29)  
+**Acceptance:** [docs/eval/fr008_workflow_orchestration.md](eval/fr008_workflow_orchestration.md)  
+**Architecture:** [ADR-003](adr/003_application_workflow_orchestration.md) (Accepted)
 
 Acquire job opportunities through **source adapters** and coordinate existing
-capabilities as an explicit deterministic workflow with shared typed state.
+capabilities as an explicit deterministic workflow with shared typed state,
+mandatory owner review, and controlled Opportunity persistence on apply.
+
+### Delivered capabilities
+
+- Source-adapter acquisition (paste; local export file) with explicit provenance
+- Deterministic workflow orchestration (`ApplicationWorkflowRunner`)
+- FR-002–FR-005 as typed workflow nodes
+- JSON checkpoint / process-level resume
+- Owner-review interrupt (`apply` / `skip` / `defer`)
+- Apply → persist Opportunity + record decision (idempotent)
+- Bounded recoverable retries for LLM-backed analyse/assess (fail-closed otherwise)
+- Append-only execution event trace
+
+**Supported acquisition today:** paste; local export file.  
+**Deferred:** URL/API/email adapters; Playwright fallback; job-board integrations;
+FR-009+ ranking/dedupe; submission; agents.
+
+### Final delivered workflow
+
+```
+Acquire
+  ↓
+Validate / Normalise
+  ↓
+Analyse (FR-002)
+  ↓
+Assess (FR-003)
+  ↓
+Portfolio Match (FR-004)
+  ↓
+Application Strategy (FR-005)
+  ↓
+Owner Review  ← checkpoint / interrupt
+  │
+  ├─ Apply
+  │    ↓
+  │  Allocate opportunity_id → checkpoint
+  │    ↓
+  │  Persist Opportunity
+  │    ↓
+  │  Record Decision
+  │    ↓
+  │  Complete
+  │
+  ├─ Skip → Complete (no Opportunity)
+  └─ Defer → Complete (no Opportunity)
+```
+
+The runner does not branch on acquisition source. Deduplicate / rank (FR-009),
+document packages (FR-010), and submit (FR-011) are **out of scope** for FR-008.
 
 ### Preferred acquisition methods (reliability / compliance order)
 
-1. Supported APIs or structured feeds where available
-2. Job-alert email ingestion
-3. Saved-search notifications
-4. User-supplied job URLs
-5. User-supplied pasted job descriptions (current Phase 2 path remains valid)
-6. Exported or downloaded job data
-7. Playwright-assisted browser workflows where necessary and appropriate
+1. Supported APIs or structured feeds where available *(future)*
+2. Job-alert email ingestion *(future)*
+3. Saved-search notifications *(future)*
+4. User-supplied job URLs *(future)*
+5. User-supplied pasted job descriptions ✅
+6. Exported or downloaded job data ✅
+7. Playwright-assisted browser workflows where necessary *(deferred)*
 
 ### Explicitly avoid as default design
 
@@ -748,89 +800,50 @@ capabilities as an explicit deterministic workflow with shared typed state.
 - Brittle HTML parsers / selector-heavy extraction tied to one layout
 - Workflows intended to bypass authentication, rate limits, or access controls
 - Traditional large-scale scraping as the primary acquisition strategy
-- Describing this phase as “web scraping”
+- Describing this capability as “web scraping”
 
 ### Playwright positioning
 
-Playwright is a **browser-automation adapter** — isolated behind interfaces, tested
-independently, used where appropriate, **not** the architectural centre of the system.
-Typical uses: opening owner-provided URLs; navigating authenticated pages with the
-owner’s session; extracting a visible job description; validating page state;
-assisting form completion (FR-011); capturing submission evidence; testing browser
-journeys.
+Playwright remains a **deferred browser-automation adapter** — isolated behind
+interfaces when built, **not** the architectural centre. Typical future uses:
+owner-provided URLs; authenticated sessions; visible description extraction;
+form assistance (FR-011); submission evidence.
 
-### Canonical acquisition model (indicative fields)
+### Canonical acquisition model (delivered fields)
 
-source type; source identifier; source URL; acquisition timestamp; raw content;
-normalised content; employer; title; location; work arrangement; employment type;
-salary data; posting date; closing date; provenance; acquisition status;
-extraction warnings.
+`source_kind`; `source_identifier`; `source_url`; `acquired_at`; `raw_content`;
+`normalised_content`; title/company provenance; `warnings`; linked `JobPosting`.
 
-The domain model must **not** assume every job comes from browser automation.
+The domain model does **not** assume every job comes from browser automation.
 
-### Conceptual workflow
+### Definition of Done (FR-008) — met
 
-```
-Acquire → Validate → Normalise → Deduplicate (FR-009)
-  → Analyse (FR-002) → Assess (FR-003) → Portfolio Match (FR-004)
-  → Application Strategy (FR-005) → Rank (FR-009)
-  → Prepare Documents (FR-010) → Owner Review
-  → Submit or Reject (FR-011) → Track (FR-012)
-```
+✓ Jobs acquired from paste and local-export paths with explicit provenance  
+✓ Acquisition metadata separate from Job Analysis content  
+✓ Adapter boundary for future API / email / Playwright sources  
+✓ No production dependency on uncontrolled crawling  
+✓ End-to-end deterministic workflow with owner interrupt  
+✓ Checkpoint / resume after approval demonstrated  
+✓ Opportunity persist + decision record on apply (idempotent)  
+✓ Skip / defer complete without Opportunity  
+✓ Node execution trace recorded  
+✓ Bounded failure recovery for eligible LLM nodes  
+✓ ADR-003 documents architecture choice  
+✓ Acceptance report and documentation freeze  
 
-Prefer **deterministic workflow nodes** where decisions are already understood.
-Include: typed workflow state; node boundaries; conditional edges; checkpointing;
-resumability; idempotency; observability; failure recovery; mandatory owner-approval
-interrupts.
+### Historical note — learning spike
 
-### Near-term: Agent Orchestration Learning Spike
-
-**The first orchestration implementation uses manually supplied or previously
-validated jobs before introducing live acquisition.**
-
-Before live acquisition:
-
-- Wrap the existing saved-job / manual validation pipeline
-- Use one manually supplied or existing validation job
-- Typed workflow state; existing services as explicit nodes
-- Route on real ApplicationStrategy outputs
-- Mandatory owner-review interrupt; checkpoint before review; resume after approval
-- At least one recoverable node failure; execution trace
-- Label nodes as deterministic, LLM-backed, or genuinely agentic
-- Produce **ADR-003** explaining the selected orchestration architecture — including
-  whether LangGraph (or similar) provides enough value over the project’s existing
-  approach
-
-**Spike must not:** scrape live boards; submit real applications; introduce several
-autonomous agents; replace validated FR-002–FR-007 services; blur workflow
-orchestration with agent reasoning.
-
-Do not commit production architecture to LangGraph without ADR-003.
-
-Acceptance Criteria
-
-✓ Jobs can be acquired from at least paste/URL paths with explicit provenance.
-
-✓ Acquisition metadata is separate from Job Analysis employer-description content.
-
-✓ Adapter boundary exists for future API / email / Playwright sources.
-
-✓ No production dependency on uncontrolled crawling.
-
-✓ End-to-end deterministic workflow runs on a saved/manual job with owner interrupt.
-
-✓ Checkpoint / resume after approval is demonstrated.
-
-✓ Trace of node execution is recorded.
-
-✓ ADR-003 documents architecture choice and deterministic-vs-agent boundaries.
-
----
+The first orchestration implementation used manually supplied / fixture jobs and
+produced ADR-003 before broader adapters. That spike is **complete**; FR-008 is
+closed. Do not reopen spike criteria without explicit owner request.
 
 ## FR-009 Opportunity Review Queue & Ranking
 
 **Phase:** Horizon 1A Stage 3  
-**Status:** Planned
+**Status:** **In progress — M0 complete** (domain contracts; 2026-07-29). The queue,
+ranking extensions, owner actions, and duplicate detection are **not implemented**.  
+**M0 acceptance:** [docs/eval/fr009_m0_domain_contracts.md](eval/fr009_m0_domain_contracts.md)  
+**Architecture:** [ADR-004](adr/004_opportunity_review_boundary.md) (Accepted)
 
 Compare multiple acquired opportunities for owner attention — not only process each
 job in isolation. Include duplicate detection, opportunity identity, ranking,
@@ -855,6 +868,42 @@ with acquisition and pipeline continuity.
 
 Produce an owner-review queue with clear explanations. Optimise for the human
 reader’s concerns, not ATS keyword frequency alone.
+
+### Domain boundary (M0 — ADR-004)
+
+An **Opportunity** is the durable record of a *successfully analysed job candidate that
+may require an owner decision* — no longer only a job the owner decided to apply for.
+Persistence belongs after FR-005 Application Strategy and **before** owner review, so
+skip and defer stay auditable instead of disappearing. FR-008 currently persists on
+`apply` only; **FR-009 M1** moves that node.
+
+- `data/opportunities/` remains the single business system of record.
+- The review queue is a **derived projection / query** over persisted Opportunities —
+  not a second persisted aggregate. Rank position is computed, never stored.
+- Workflow checkpoints (`data/workflow_runs/`) remain recovery infrastructure; no
+  listing or catalogue features are added to them.
+- Owner review metadata is persisted as orthogonal fields (`reviewed_at`, `pinned`,
+  `defer_until`, `archived_at`) rather than one lifecycle enum, and stays distinct from
+  owner decision, `PipelineStatus`, workflow status, and duplicate state.
+- Confirmed duplicates are recorded as `duplicate_of` a canonical record with evidence,
+  and are never merged or deleted. A shared content fingerprint alone is not proof.
+- **Archive means review visibility only** — hide from active review. Employer
+  rejection, withdrawal, and process completion are FR-012 pipeline concepts.
+- Phase 2 M4 ranking (`pursuit_posture → fit strength → application_tier →
+  opportunity_id`) is the frozen fit baseline. FR-009 adds eligibility and explicit
+  owner overrides around it — no composite score, no LLM ranking.
+- FR-009 does not write `PipelineStatus` and does not mutate FR-002–FR-005 artefacts.
+
+### Milestones
+
+| Milestone | Scope | Status |
+|-----------|-------|--------|
+| M0 | Domain contracts, persistence-boundary specification, ADR-004 | **Complete** |
+| M1 | Deterministic review projection + workflow persistence-boundary move | Planned |
+| M2 | Owner queue actions (mark reviewed, pin, defer until, archive, reopen) | Planned |
+| M3 | Duplicate candidate detection + owner confirmation | Planned |
+| M4 | Manual validation and ranking calibration | Planned |
+| Close-out | Acceptance and documentation freeze | Planned |
 
 Acceptance Criteria
 

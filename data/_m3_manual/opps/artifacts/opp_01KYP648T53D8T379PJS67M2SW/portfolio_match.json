@@ -1,0 +1,392 @@
+{
+  "job_analysis": {
+    "posting": {
+      "raw_text": "[CIC-FIXTURE:ai-engineer]\nSenior AI Engineer — Northside Analytics (Melbourne)\n\nAbout the role\nWe are hiring a Senior AI Engineer to design and ship production LLM applications for\nAustralian enterprise clients. You will own retrieval pipelines, evaluation harnesses,\nand safe deployment patterns.\n\nResponsibilities\n• Build and maintain LLM applications using Python and LangChain\n• Partner with data engineers on feature pipelines and model observability\n• Mentor engineers on prompt evaluation and production readiness\n\nRequirements\n• 5+ years software engineering experience required\n• Strong Python required; LangChain experience preferred\n• Production LLM or RAG experience required\n\nLocation & employment\nHybrid Melbourne — 3 days in the CBD office. Full-time permanent.\nSalary $150,000–$180,000 AUD + super.",
+      "title": null,
+      "company": null,
+      "source_url": null
+    },
+    "role_family": {
+      "family": "ai_engineering",
+      "evidence": [
+        {
+          "excerpt": "Senior AI Engineer",
+          "section": "title"
+        }
+      ]
+    },
+    "seniority": {
+      "level": "senior",
+      "ambiguous": false,
+      "candidate_levels": [],
+      "evidence": [
+        {
+          "excerpt": "Senior AI Engineer",
+          "section": "title"
+        }
+      ]
+    },
+    "technologies": [
+      {
+        "name": "Python",
+        "level": "required",
+        "evidence": [
+          {
+            "excerpt": "Strong Python required",
+            "section": "requirements"
+          }
+        ]
+      },
+      {
+        "name": "LangChain",
+        "level": "preferred",
+        "evidence": [
+          {
+            "excerpt": "LangChain experience preferred",
+            "section": "requirements"
+          }
+        ]
+      }
+    ],
+    "responsibilities": [
+      {
+        "description": "Build and maintain LLM applications using Python and LangChain",
+        "evidence": [
+          {
+            "excerpt": "Build and maintain LLM applications using Python and LangChain",
+            "section": "responsibilities"
+          }
+        ]
+      }
+    ],
+    "compensation": {
+      "clarity": "stated",
+      "minimum": 150000.0,
+      "maximum": 180000.0,
+      "currency": "AUD",
+      "period": "year",
+      "raw_text": "Salary $150,000–$180,000 AUD + super",
+      "evidence": [
+        {
+          "excerpt": "Salary $150,000–$180,000 AUD + super",
+          "section": "compensation"
+        }
+      ]
+    },
+    "location": {
+      "clarity": "stated",
+      "summary": "Melbourne",
+      "evidence": [
+        {
+          "excerpt": "Hybrid Melbourne",
+          "section": "location"
+        }
+      ]
+    },
+    "work_arrangement": {
+      "arrangement": "hybrid",
+      "details": "3 days in the CBD office",
+      "evidence": [
+        {
+          "excerpt": "Hybrid Melbourne — 3 days in the CBD office",
+          "section": "location"
+        }
+      ]
+    },
+    "employment": {
+      "working_hours": "full_time",
+      "engagement_type": "permanent",
+      "evidence": [
+        {
+          "excerpt": "Full-time permanent",
+          "section": "employment"
+        }
+      ]
+    },
+    "experience_requirements": [
+      {
+        "description": "5+ years software engineering experience",
+        "level": "required",
+        "minimum_years": 5.0,
+        "maximum_years": null,
+        "evidence": [
+          {
+            "excerpt": "5+ years software engineering experience required",
+            "section": "requirements"
+          }
+        ]
+      },
+      {
+        "description": "Production LLM or RAG experience",
+        "level": "required",
+        "minimum_years": null,
+        "maximum_years": null,
+        "evidence": [
+          {
+            "excerpt": "Production LLM or RAG experience required",
+            "section": "requirements"
+          }
+        ]
+      }
+    ]
+  },
+  "ranked_projects": [
+    {
+      "rank": 1,
+      "project_id": "governance-document-rag",
+      "rationale": "Project 'governance-document-rag' ranked on 1 required technology hit(s), 1 preferred technology hit(s), 1 responsibility overlap(s).",
+      "factors": [
+        {
+          "kind": "required_technology",
+          "summary": "Project evidence supports required technology 'Python'.",
+          "job_evidence": [
+            {
+              "source": "technology",
+              "item_index": 0,
+              "name": "Python",
+              "excerpt": "Strong Python required"
+            }
+          ],
+          "profile_evidence": [
+            {
+              "source": "project",
+              "ref": "project:governance-document-rag",
+              "excerpt": "Python"
+            }
+          ]
+        },
+        {
+          "kind": "preferred_technology",
+          "summary": "Project evidence supports preferred technology 'LangChain'.",
+          "job_evidence": [
+            {
+              "source": "technology",
+              "item_index": 1,
+              "name": "LangChain",
+              "excerpt": "LangChain experience preferred"
+            }
+          ],
+          "profile_evidence": [
+            {
+              "source": "project",
+              "ref": "project:governance-document-rag",
+              "excerpt": "LangChain"
+            }
+          ]
+        },
+        {
+          "kind": "responsibility_overlap",
+          "summary": "Project summary, outcomes, or technologies overlap responsibility 'Build and maintain LLM applications using Python and LangChain'.",
+          "job_evidence": [
+            {
+              "source": "responsibility",
+              "item_index": 0,
+              "name": null,
+              "excerpt": "Build and maintain LLM applications using Python and LangChain"
+            }
+          ],
+          "profile_evidence": [
+            {
+              "source": "project",
+              "ref": "project:governance-document-rag",
+              "excerpt": "Python"
+            }
+          ]
+        }
+      ],
+      "tie_group": null,
+      "tie_break_reason": null
+    },
+    {
+      "rank": 2,
+      "project_id": "career-intelligence-copilot",
+      "rationale": "Project 'career-intelligence-copilot' ranked on 1 required technology hit(s), 1 responsibility overlap(s).",
+      "factors": [
+        {
+          "kind": "required_technology",
+          "summary": "Project evidence supports required technology 'Python'.",
+          "job_evidence": [
+            {
+              "source": "technology",
+              "item_index": 0,
+              "name": "Python",
+              "excerpt": "Strong Python required"
+            }
+          ],
+          "profile_evidence": [
+            {
+              "source": "project",
+              "ref": "project:career-intelligence-copilot",
+              "excerpt": "Python"
+            }
+          ]
+        },
+        {
+          "kind": "responsibility_overlap",
+          "summary": "Project summary, outcomes, or technologies overlap responsibility 'Build and maintain LLM applications using Python and LangChain'.",
+          "job_evidence": [
+            {
+              "source": "responsibility",
+              "item_index": 0,
+              "name": null,
+              "excerpt": "Build and maintain LLM applications using Python and LangChain"
+            }
+          ],
+          "profile_evidence": [
+            {
+              "source": "project",
+              "ref": "project:career-intelligence-copilot",
+              "excerpt": "Python"
+            }
+          ]
+        }
+      ],
+      "tie_group": 1,
+      "tie_break_reason": "Equal primary ranking signals; ordered by stable project_id ascending"
+    },
+    {
+      "rank": 3,
+      "project_id": "operational-intelligence-copilot",
+      "rationale": "Project 'operational-intelligence-copilot' ranked on 1 required technology hit(s), 1 responsibility overlap(s).",
+      "factors": [
+        {
+          "kind": "required_technology",
+          "summary": "Project evidence supports required technology 'Python'.",
+          "job_evidence": [
+            {
+              "source": "technology",
+              "item_index": 0,
+              "name": "Python",
+              "excerpt": "Strong Python required"
+            }
+          ],
+          "profile_evidence": [
+            {
+              "source": "project",
+              "ref": "project:operational-intelligence-copilot",
+              "excerpt": "Python"
+            }
+          ]
+        },
+        {
+          "kind": "responsibility_overlap",
+          "summary": "Project summary, outcomes, or technologies overlap responsibility 'Build and maintain LLM applications using Python and LangChain'.",
+          "job_evidence": [
+            {
+              "source": "responsibility",
+              "item_index": 0,
+              "name": null,
+              "excerpt": "Build and maintain LLM applications using Python and LangChain"
+            }
+          ],
+          "profile_evidence": [
+            {
+              "source": "project",
+              "ref": "project:operational-intelligence-copilot",
+              "excerpt": "Python"
+            }
+          ]
+        }
+      ],
+      "tie_group": 1,
+      "tie_break_reason": "Equal primary ranking signals; ordered by stable project_id ascending"
+    },
+    {
+      "rank": 4,
+      "project_id": "payroll-diagnostics-engine",
+      "rationale": "Project 'payroll-diagnostics-engine' ranked on 1 required technology hit(s), 1 responsibility overlap(s).",
+      "factors": [
+        {
+          "kind": "required_technology",
+          "summary": "Project evidence supports required technology 'Python'.",
+          "job_evidence": [
+            {
+              "source": "technology",
+              "item_index": 0,
+              "name": "Python",
+              "excerpt": "Strong Python required"
+            }
+          ],
+          "profile_evidence": [
+            {
+              "source": "project",
+              "ref": "project:payroll-diagnostics-engine",
+              "excerpt": "Python"
+            }
+          ]
+        },
+        {
+          "kind": "responsibility_overlap",
+          "summary": "Project summary, outcomes, or technologies overlap responsibility 'Build and maintain LLM applications using Python and LangChain'.",
+          "job_evidence": [
+            {
+              "source": "responsibility",
+              "item_index": 0,
+              "name": null,
+              "excerpt": "Build and maintain LLM applications using Python and LangChain"
+            }
+          ],
+          "profile_evidence": [
+            {
+              "source": "project",
+              "ref": "project:payroll-diagnostics-engine",
+              "excerpt": "Python"
+            }
+          ]
+        }
+      ],
+      "tie_group": 1,
+      "tie_break_reason": "Equal primary ranking signals; ordered by stable project_id ascending"
+    },
+    {
+      "rank": 5,
+      "project_id": "public-holiday-entitlements",
+      "rationale": "Project 'public-holiday-entitlements' ranked on 1 required technology hit(s), 1 responsibility overlap(s).",
+      "factors": [
+        {
+          "kind": "required_technology",
+          "summary": "Project evidence supports required technology 'Python'.",
+          "job_evidence": [
+            {
+              "source": "technology",
+              "item_index": 0,
+              "name": "Python",
+              "excerpt": "Strong Python required"
+            }
+          ],
+          "profile_evidence": [
+            {
+              "source": "project",
+              "ref": "project:public-holiday-entitlements",
+              "excerpt": "Python"
+            }
+          ]
+        },
+        {
+          "kind": "responsibility_overlap",
+          "summary": "Project summary, outcomes, or technologies overlap responsibility 'Build and maintain LLM applications using Python and LangChain'.",
+          "job_evidence": [
+            {
+              "source": "responsibility",
+              "item_index": 0,
+              "name": null,
+              "excerpt": "Build and maintain LLM applications using Python and LangChain"
+            }
+          ],
+          "profile_evidence": [
+            {
+              "source": "project",
+              "ref": "project:public-holiday-entitlements",
+              "excerpt": "Python"
+            }
+          ]
+        }
+      ],
+      "tie_group": 1,
+      "tie_break_reason": "Equal primary ranking signals; ordered by stable project_id ascending"
+    }
+  ],
+  "unranked_project_ids": [],
+  "summary": "Ranked 5 project(s); lead with 'governance-document-rag'. 0 project(s) had no matching factors.",
+  "insufficient_evidence": false
+}

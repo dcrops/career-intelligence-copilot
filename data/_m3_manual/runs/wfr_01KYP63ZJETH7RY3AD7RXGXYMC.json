@@ -1,0 +1,2645 @@
+{
+  "control": {
+    "run_id": "wfr_01KYP63ZJETH7RY3AD7RXGXYMC",
+    "status": "completed",
+    "current_node": null,
+    "last_error": null,
+    "created_at": "2026-07-29T05:38:51.086902Z",
+    "updated_at": "2026-07-29T05:39:00.609203Z",
+    "completed_at": "2026-07-29T05:39:00.605997Z"
+  },
+  "acquisition": {
+    "source_kind": "paste",
+    "source_identifier": null,
+    "source_url": null,
+    "acquired_at": "2026-07-29T05:38:51.091391Z",
+    "raw_content": "[CIC-FIXTURE:ai-engineer]\nSenior AI Engineer — Northside Analytics (Melbourne)\n\nAbout the role\nWe are hiring a Senior AI Engineer to design and ship production LLM applications for\nAustralian enterprise clients. You will own retrieval pipelines, evaluation harnesses,\nand safe deployment patterns.\n\nResponsibilities\n• Build and maintain LLM applications using Python and LangChain\n• Partner with data engineers on feature pipelines and model observability\n• Mentor engineers on prompt evaluation and production readiness\n\nRequirements\n• 5+ years software engineering experience required\n• Strong Python required; LangChain experience preferred\n• Production LLM or RAG experience required\n\nLocation & employment\nHybrid Melbourne — 3 days in the CBD office. Full-time permanent.\nSalary $150,000–$180,000 AUD + super.",
+    "normalised_content": "[CIC-FIXTURE:ai-engineer]\nSenior AI Engineer — Northside Analytics (Melbourne)\n\nAbout the role\nWe are hiring a Senior AI Engineer to design and ship production LLM applications for\nAustralian enterprise clients. You will own retrieval pipelines, evaluation harnesses,\nand safe deployment patterns.\n\nResponsibilities\n• Build and maintain LLM applications using Python and LangChain\n• Partner with data engineers on feature pipelines and model observability\n• Mentor engineers on prompt evaluation and production readiness\n\nRequirements\n• 5+ years software engineering experience required\n• Strong Python required; LangChain experience preferred\n• Production LLM or RAG experience required\n\nLocation & employment\nHybrid Melbourne — 3 days in the CBD office. Full-time permanent.\nSalary $150,000–$180,000 AUD + super.",
+    "warnings": [],
+    "title": null,
+    "company": null
+  },
+  "artefacts": {
+    "profile": {
+      "schema_version": "1",
+      "identity": {
+        "full_name": "David Cropper",
+        "target_role": "AI Engineer",
+        "summary": "AI Engineer applying software engineering discipline to build end-to-end AI applications with Python, FastAPI, Docker, and OpenAI APIs. 3.5 years of commercial enterprise Data Engineering experience, plus independent AI Engineering portfolio work across retrieval systems, operational intelligence, explainable AI, and enterprise decision support. Applies a disciplined AI Engineering methodology — architecture-first design, evidence-based validation, and human-in-the-loop review — to build AI systems with traceable, reviewable outputs for operational decision-making."
+      },
+      "experience": [
+        {
+          "id": "chase-risk-compliance-ai-engineer",
+          "kind": "independent_engineering",
+          "organisation": "Chase Risk & Compliance",
+          "title": "AI Engineer - Independent Research & Development",
+          "start_date": "2025-12-01",
+          "end_date": null,
+          "location": "Melbourne, VIC",
+          "highlights": [
+            "Delivered a portfolio of AI applications spanning retrieval-augmented generation, operational intelligence, explainable diagnostics, and enterprise decision support.",
+            "Applied FastAPI, Docker, OpenAI APIs, Git, and PyTest where each portfolio system required them.",
+            "Designed architectures that separate deterministic business logic from AI reasoning components.",
+            "Published engineering documentation and public demonstrations of working systems."
+          ],
+          "technologies": [
+            "Python",
+            "FastAPI",
+            "Docker",
+            "OpenAI APIs",
+            "Git",
+            "PyTest"
+          ]
+        },
+        {
+          "id": "ai-engineering-development-2025",
+          "kind": "professional_development",
+          "organisation": "Independent study",
+          "title": "AI Engineering Professional Development and Portfolio Development",
+          "start_date": "2025-07-01",
+          "end_date": "2025-11-01",
+          "location": "Melbourne, VIC",
+          "highlights": [
+            "Advanced from Data Engineering foundations into AI Engineering through structured study and increasingly sophisticated engineering projects.",
+            "Undertook structured AI Engineering study.",
+            "Developed progressively more sophisticated portfolio projects.",
+            "Strengthened delivery discipline through testing, documentation, and milestone-driven project execution."
+          ],
+          "technologies": [
+            "Python",
+            "OpenAI APIs",
+            "LangChain",
+            "Git",
+            "PyTest"
+          ]
+        },
+        {
+          "id": "data-engineering-development-2023",
+          "kind": "professional_development",
+          "organisation": "Independent study",
+          "title": "Data Engineering Professional Development and Career Transition",
+          "start_date": "2023-10-01",
+          "end_date": "2025-06-01",
+          "location": "Melbourne, VIC",
+          "highlights": [
+            "Full-time professional development focused initially on modern Data Engineering platforms after the nbn Australia role.",
+            "Developed skills across contemporary data platforms and tools, including Microsoft Fabric, Databricks, Snowflake, dbt, and Azure Data Factory.",
+            "Built the foundation for subsequent AI Engineering portfolio development."
+          ],
+          "technologies": [
+            "Microsoft Fabric",
+            "Databricks",
+            "Snowflake",
+            "dbt",
+            "Azure Data Factory"
+          ]
+        },
+        {
+          "id": "nbn-data-engineer-2020",
+          "kind": "employment",
+          "organisation": "nbn Australia",
+          "title": "Data Engineer",
+          "start_date": "2020-03-01",
+          "end_date": "2023-10-01",
+          "location": null,
+          "highlights": [
+            "Developed and maintained enterprise data pipelines and operational reporting solutions using AWS services, Python, SQL, and Apache NiFi.",
+            "Performed SQL transformations, data validation, and production support for geospatial and business-operational datasets.",
+            "Worked in Agile delivery teams supporting reliable production data systems with Git and automated testing practices."
+          ],
+          "technologies": [
+            "Python",
+            "SQL",
+            "AWS",
+            "S3",
+            "Athena",
+            "Glue",
+            "Cloudwatch",
+            "DynamoDB",
+            "Apache NiFi",
+            "Git",
+            "PyTest"
+          ]
+        },
+        {
+          "id": "general-assembly-data-science-2019",
+          "kind": "professional_development",
+          "organisation": "General Assembly",
+          "title": "Data Science Immersive",
+          "start_date": "2019-09-01",
+          "end_date": "2019-12-01",
+          "location": "Melbourne, VIC",
+          "highlights": [
+            "Completed the General Assembly Data Science Immersive course.",
+            "Gathered data via web scraping of job listings for data-scientist and data-analyst roles in Sydney and Melbourne, evaluating top skills required through predictive modelling and NLP text classification and predicting likely salary offerings.",
+            "Cleaned, explored, and analysed a large real-estate dataset for a property sales price and renovation project."
+          ],
+          "technologies": [
+            "Python",
+            "NLP",
+            "Web Scraping"
+          ]
+        },
+        {
+          "id": "bakers-delight-test-analyst-2019",
+          "kind": "employment",
+          "organisation": "Bakers Delight",
+          "title": "Test Analyst",
+          "start_date": "2019-08-01",
+          "end_date": "2019-09-01",
+          "location": "Melbourne, VIC",
+          "highlights": [
+            "Returned for a short engagement prior to Data Science study."
+          ],
+          "technologies": []
+        },
+        {
+          "id": "accesshq-test-analyst-2018",
+          "kind": "employment",
+          "organisation": "AccessHQ",
+          "title": "Test Analyst",
+          "start_date": "2018-10-01",
+          "end_date": "2019-06-01",
+          "location": "Melbourne, VIC",
+          "highlights": [
+            "Built Selenium test cases and API test suites for Myki / Public Transport Victoria (PTV) systems as a consultant to PTV.",
+            "Conducted mobile and functional testing with Jira."
+          ],
+          "technologies": [
+            "Selenium",
+            "Jira"
+          ]
+        },
+        {
+          "id": "bakers-delight-test-analyst-2015",
+          "kind": "employment",
+          "organisation": "Bakers Delight",
+          "title": "Test Analyst",
+          "start_date": "2015-01-01",
+          "end_date": "2018-10-01",
+          "location": "Melbourne, VIC",
+          "highlights": [
+            "Contributed to the main project replacing the outdated POS system for 750 bakeries in 4 countries with a new tablet-based platform.",
+            "Designed and implemented an automation framework.",
+            "Developed web automation test cases for identified automation scenarios using Selenium WebDriver with Java.",
+            "Used the Maven build-management tool and the Jenkins continuous integration tool.",
+            "Created and maintained test environments."
+          ],
+          "technologies": [
+            "Selenium WebDriver",
+            "Java",
+            "Maven",
+            "Jenkins"
+          ]
+        },
+        {
+          "id": "console-test-analyst-2012",
+          "kind": "employment",
+          "organisation": "Console",
+          "title": "Test Analyst",
+          "start_date": "2012-06-01",
+          "end_date": "2014-12-01",
+          "location": "Melbourne, VIC",
+          "highlights": [
+            "Developed and maintained automation scripts with Ruby on Rails.",
+            "Participated in Agile sprints, backlog grooming, and retrospectives.",
+            "Created user story tests with Gherkin and Cucumber."
+          ],
+          "technologies": [
+            "Ruby on Rails",
+            "Gherkin",
+            "Cucumber"
+          ]
+        },
+        {
+          "id": "bakers-delight-test-analyst-2009",
+          "kind": "employment",
+          "organisation": "Bakers Delight",
+          "title": "Test Analyst",
+          "start_date": "2009-03-01",
+          "end_date": "2012-06-01",
+          "location": "Melbourne, VIC",
+          "highlights": [],
+          "technologies": []
+        }
+      ],
+      "skills": {
+        "technical": [
+          {
+            "name": "Python",
+            "evidence": "experience:chase-risk-compliance-ai-engineer; experience:nbn-data-engineer-2020",
+            "evidence_refs": []
+          },
+          {
+            "name": "FastAPI",
+            "evidence": "project:operational-intelligence-copilot; project:governance-document-rag",
+            "evidence_refs": []
+          },
+          {
+            "name": "Docker",
+            "evidence": "project:governance-document-rag",
+            "evidence_refs": []
+          },
+          {
+            "name": "OpenAI APIs",
+            "evidence": "project:operational-intelligence-copilot; project:governance-document-rag",
+            "evidence_refs": []
+          },
+          {
+            "name": "PyTest",
+            "evidence": "experience:chase-risk-compliance-ai-engineer; experience:nbn-data-engineer-2020",
+            "evidence_refs": []
+          },
+          {
+            "name": "Git",
+            "evidence": "experience:chase-risk-compliance-ai-engineer; experience:nbn-data-engineer-2020",
+            "evidence_refs": []
+          },
+          {
+            "name": "SQL",
+            "evidence": "experience:nbn-data-engineer-2020",
+            "evidence_refs": []
+          },
+          {
+            "name": "AWS",
+            "evidence": "experience:nbn-data-engineer-2020",
+            "evidence_refs": []
+          },
+          {
+            "name": "S3",
+            "evidence": "experience:nbn-data-engineer-2020",
+            "evidence_refs": []
+          },
+          {
+            "name": "Athena",
+            "evidence": "experience:nbn-data-engineer-2020",
+            "evidence_refs": []
+          },
+          {
+            "name": "Glue",
+            "evidence": "experience:nbn-data-engineer-2020",
+            "evidence_refs": []
+          },
+          {
+            "name": "Cloudwatch",
+            "evidence": "experience:nbn-data-engineer-2020",
+            "evidence_refs": []
+          },
+          {
+            "name": "DynamoDB",
+            "evidence": "experience:nbn-data-engineer-2020",
+            "evidence_refs": []
+          },
+          {
+            "name": "Apache NiFi",
+            "evidence": "experience:nbn-data-engineer-2020",
+            "evidence_refs": []
+          },
+          {
+            "name": "LangChain",
+            "evidence": "project:governance-document-rag",
+            "evidence_refs": []
+          },
+          {
+            "name": "ChromaDB",
+            "evidence": "project:governance-document-rag",
+            "evidence_refs": []
+          },
+          {
+            "name": "Pandas",
+            "evidence": "project:payroll-diagnostics-engine",
+            "evidence_refs": []
+          },
+          {
+            "name": "OpenPyXL",
+            "evidence": "project:payroll-diagnostics-engine",
+            "evidence_refs": []
+          },
+          {
+            "name": "REST APIs",
+            "evidence": "project:public-holiday-entitlements",
+            "evidence_refs": []
+          },
+          {
+            "name": "Microsoft Fabric",
+            "evidence": "experience:data-engineering-development-2023",
+            "evidence_refs": []
+          },
+          {
+            "name": "Databricks",
+            "evidence": "experience:data-engineering-development-2023; certification:databricks-certified-data-engineer-associate; certification:databricks-certified-data-engineer-professional",
+            "evidence_refs": []
+          },
+          {
+            "name": "Snowflake",
+            "evidence": "experience:data-engineering-development-2023",
+            "evidence_refs": []
+          },
+          {
+            "name": "dbt",
+            "evidence": "experience:data-engineering-development-2023",
+            "evidence_refs": []
+          },
+          {
+            "name": "Azure Data Factory",
+            "evidence": "experience:data-engineering-development-2023",
+            "evidence_refs": []
+          },
+          {
+            "name": "Selenium WebDriver",
+            "evidence": "experience:bakers-delight-test-analyst-2015; experience:accesshq-test-analyst-2018",
+            "evidence_refs": []
+          },
+          {
+            "name": "Jenkins",
+            "evidence": "experience:bakers-delight-test-analyst-2015",
+            "evidence_refs": []
+          },
+          {
+            "name": "Maven",
+            "evidence": "experience:bakers-delight-test-analyst-2015",
+            "evidence_refs": []
+          },
+          {
+            "name": "Cucumber",
+            "evidence": "experience:console-test-analyst-2012",
+            "evidence_refs": []
+          }
+        ],
+        "domain": [
+          {
+            "name": "Retrieval-Augmented Generation",
+            "evidence": "project:governance-document-rag",
+            "evidence_refs": []
+          },
+          {
+            "name": "Operational intelligence",
+            "evidence": "project:operational-intelligence-copilot",
+            "evidence_refs": []
+          },
+          {
+            "name": "Explainable AI",
+            "evidence": "project:operational-intelligence-copilot; project:governance-document-rag",
+            "evidence_refs": []
+          },
+          {
+            "name": "Enterprise decision support",
+            "evidence": "project:payroll-diagnostics-engine",
+            "evidence_refs": []
+          },
+          {
+            "name": "Data engineering",
+            "evidence": "experience:nbn-data-engineer-2020",
+            "evidence_refs": []
+          },
+          {
+            "name": "Geospatial processing",
+            "evidence": "project:public-holiday-entitlements",
+            "evidence_refs": []
+          },
+          {
+            "name": "LLM application development",
+            "evidence": "experience:ai-engineering-development-2025",
+            "evidence_refs": []
+          },
+          {
+            "name": "Software quality assurance",
+            "evidence": "experience:console-test-analyst-2012; experience:bakers-delight-test-analyst-2015; experience:accesshq-test-analyst-2018",
+            "evidence_refs": []
+          },
+          {
+            "name": "Test automation",
+            "evidence": "experience:console-test-analyst-2012; experience:bakers-delight-test-analyst-2015",
+            "evidence_refs": []
+          }
+        ],
+        "soft": [
+          {
+            "name": "Architecture-first design",
+            "evidence": "experience:chase-risk-compliance-ai-engineer",
+            "evidence_refs": []
+          },
+          {
+            "name": "Roadmap-driven delivery",
+            "evidence": "project:career-intelligence-copilot",
+            "evidence_refs": []
+          },
+          {
+            "name": "Human-in-the-loop validation",
+            "evidence": "project:career-intelligence-copilot",
+            "evidence_refs": []
+          },
+          {
+            "name": "Living documentation",
+            "evidence": "project:career-intelligence-copilot",
+            "evidence_refs": []
+          },
+          {
+            "name": "Agile collaboration",
+            "evidence": "experience:nbn-data-engineer-2020",
+            "evidence_refs": []
+          }
+        ]
+      },
+      "projects": [
+        {
+          "id": "career-intelligence-copilot",
+          "name": "Career Intelligence Copilot",
+          "summary": "Enables an AI Engineering job seeker to decide which roles deserve effort. Reviews job ads against a structured career profile, ranks fit, recommends application strategy, and drafts tailored CVs for human review — reducing repetitive search work while keeping decisions explainable.",
+          "technologies": [
+            "Python",
+            "Pydantic",
+            "OpenAI APIs",
+            "PyTest",
+            "Git"
+          ],
+          "outcomes": [
+            "Delivers an explainable job-intelligence loop from profile through strategy and tailored CV drafts under owner review.",
+            "Uses golden validation suites and formal GO / NO-GO close-out for release-quality engineering decisions."
+          ],
+          "url": null,
+          "demonstrates": [
+            "Structured career profile model",
+            "Evidence-cited opportunity assessment",
+            "Deterministic application-strategy recommendation",
+            "Evidence-grounded CV generation pipeline",
+            "Golden validation suites with GO / NO-GO release gates",
+            "Human-in-the-loop review of generated outputs"
+          ]
+        },
+        {
+          "id": "operational-intelligence-copilot",
+          "name": "Operational Intelligence Copilot",
+          "summary": "Demonstrates operational intelligence capability for understanding business data. Combines reliable analytics with AI reasoning to surface anomalies and produce clear, evidence-backed executive insights that can be checked and trusted.",
+          "technologies": [
+            "Python",
+            "FastAPI",
+            "OpenAI APIs",
+            "PyTest",
+            "Git"
+          ],
+          "outcomes": [
+            "Produces evidence-backed executive reporting.",
+            "Maintains decision traceability through explainable recommendations."
+          ],
+          "url": null,
+          "demonstrates": [
+            "Intelligent intent routing",
+            "Dataset profiling",
+            "Anomaly detection",
+            "Regression-tested analytics workflows",
+            "Explainable AI recommendations"
+          ]
+        },
+        {
+          "id": "governance-document-rag",
+          "name": "Governance-Aware Document Intelligence RAG",
+          "summary": "Allows organisations to answer questions from their own documents with responses that stay grounded in source material. Built for teams that need trustworthy AI answers over policies, procedures, and knowledge bases — with evaluation and explainability controls.",
+          "technologies": [
+            "Python",
+            "FastAPI",
+            "Docker",
+            "LangChain",
+            "ChromaDB",
+            "OpenAI",
+            "PyTest",
+            "Git"
+          ],
+          "outcomes": [
+            "Supports grounded responses over multi-format organisational documents.",
+            "Provides evaluation, telemetry, and explainability controls."
+          ],
+          "url": null,
+          "demonstrates": [
+            "AI evaluation frameworks",
+            "Grounding validation",
+            "Embedding generation",
+            "Retrieval orchestration",
+            "Multi-format document ingestion"
+          ]
+        },
+        {
+          "id": "payroll-diagnostics-engine",
+          "name": "Payroll Diagnostics Engine",
+          "summary": "Reviews payroll data against deterministic business rules to identify anomalies. Produces explainable findings and executive-ready reports so issues can be investigated with confidence.",
+          "technologies": [
+            "Python",
+            "Pandas",
+            "OpenPyXL",
+            "PyTest",
+            "Git"
+          ],
+          "outcomes": [
+            "Produces explainable operational findings.",
+            "Generates executive-ready reporting."
+          ],
+          "url": null,
+          "demonstrates": [
+            "Rule engines",
+            "Explainable diagnostics",
+            "Operational analytics",
+            "Automated validation"
+          ]
+        },
+        {
+          "id": "public-holiday-entitlements",
+          "name": "Public Holiday Entitlements Application",
+          "summary": "Determines Australian public-holiday entitlements from location and rules for HR and payroll teams. Combines geospatial logic with external APIs to produce compliance-oriented results.",
+          "technologies": [
+            "Python",
+            "REST APIs",
+            "Geospatial Processing",
+            "Git"
+          ],
+          "outcomes": [
+            "Determines Australian public-holiday entitlements from location and rules.",
+            "Produces compliance-oriented reporting."
+          ],
+          "url": null,
+          "demonstrates": [
+            "Geospatial logic",
+            "Business rules",
+            "API integration",
+            "Compliance reporting"
+          ]
+        }
+      ],
+      "certifications": [
+        {
+          "id": "aws-certified-developer-associate",
+          "name": "AWS Certified Developer - Associate",
+          "issuer": "Amazon Web Services",
+          "status": "active",
+          "date_obtained": null,
+          "expiry_date": "2026-09-01",
+          "url": null
+        },
+        {
+          "id": "databricks-certified-data-engineer-associate",
+          "name": "Databricks Certified Data Engineer Associate",
+          "issuer": "Databricks",
+          "status": "expired",
+          "date_obtained": null,
+          "expiry_date": "2026-07-01",
+          "url": null
+        },
+        {
+          "id": "databricks-certified-data-engineer-professional",
+          "name": "Databricks Certified Data Engineer Professional",
+          "issuer": "Databricks",
+          "status": "active",
+          "date_obtained": null,
+          "expiry_date": "2026-08-01",
+          "url": null
+        }
+      ],
+      "selected_engineering_highlights": [
+        "Designed and delivered a portfolio of AI applications combining deterministic logic with AI reasoning across RAG, operational intelligence, diagnostics, entitlements, and career decision support.",
+        "Built modular service architectures with FastAPI, containerised services with Docker, and unit/regression suites in PyTest.",
+        "Designed explainable, evidence-backed recommendation flows with traceable outputs rather than opaque model responses.",
+        "Published architecture notes, testing approach, and working demonstrations through a public portfolio and GitHub repositories."
+      ],
+      "engineering_methodology": {
+        "philosophy": "Applies AI to improve engineering quality and delivery discipline, not to replace engineering judgement.",
+        "categories": [
+          {
+            "name": "Planning",
+            "practices": [
+              "Product vision",
+              "Architecture-first design",
+              "Roadmaps and milestones",
+              "Acceptance criteria"
+            ]
+          },
+          {
+            "name": "Implementation",
+            "practices": [
+              "Controlled AI-assisted coding",
+              "Architecture-aligned standards",
+              "Iterative delivery"
+            ]
+          },
+          {
+            "name": "Quality",
+            "practices": [
+              "PyTest regression and behavioural testing",
+              "Evidence-based debugging",
+              "Golden validation suites"
+            ]
+          },
+          {
+            "name": "Review",
+            "practices": [
+              "Architecture and maintainability reviews",
+              "Human-in-the-loop validation"
+            ]
+          },
+          {
+            "name": "Delivery",
+            "practices": [
+              "Git",
+              "Living documentation",
+              "Documentation freeze",
+              "GO / NO-GO release decisions"
+            ]
+          }
+        ]
+      },
+      "goals": {
+        "primary": "Secure a suitable AI Engineering role sooner.",
+        "secondary": [
+          "Reduce repetitive job-search effort.",
+          "Demonstrate production-quality AI Engineering capability."
+        ],
+        "horizon_notes": "Horizon 1 takes priority when objectives compete."
+      },
+      "preferences": {
+        "locations": [
+          "Melbourne, VIC",
+          "Remote Australia"
+        ],
+        "employment_types": [
+          "full_time"
+        ],
+        "salary_min": null,
+        "salary_currency": "AUD",
+        "remote": "flexible",
+        "company_stages": [],
+        "must_haves": [
+          "Role scope involving applied AI Engineering."
+        ],
+        "deal_breakers": []
+      }
+    },
+    "posting": {
+      "raw_text": "[CIC-FIXTURE:ai-engineer]\nSenior AI Engineer — Northside Analytics (Melbourne)\n\nAbout the role\nWe are hiring a Senior AI Engineer to design and ship production LLM applications for\nAustralian enterprise clients. You will own retrieval pipelines, evaluation harnesses,\nand safe deployment patterns.\n\nResponsibilities\n• Build and maintain LLM applications using Python and LangChain\n• Partner with data engineers on feature pipelines and model observability\n• Mentor engineers on prompt evaluation and production readiness\n\nRequirements\n• 5+ years software engineering experience required\n• Strong Python required; LangChain experience preferred\n• Production LLM or RAG experience required\n\nLocation & employment\nHybrid Melbourne — 3 days in the CBD office. Full-time permanent.\nSalary $150,000–$180,000 AUD + super.",
+      "title": null,
+      "company": null,
+      "source_url": null
+    },
+    "job_analysis": {
+      "posting": {
+        "raw_text": "[CIC-FIXTURE:ai-engineer]\nSenior AI Engineer — Northside Analytics (Melbourne)\n\nAbout the role\nWe are hiring a Senior AI Engineer to design and ship production LLM applications for\nAustralian enterprise clients. You will own retrieval pipelines, evaluation harnesses,\nand safe deployment patterns.\n\nResponsibilities\n• Build and maintain LLM applications using Python and LangChain\n• Partner with data engineers on feature pipelines and model observability\n• Mentor engineers on prompt evaluation and production readiness\n\nRequirements\n• 5+ years software engineering experience required\n• Strong Python required; LangChain experience preferred\n• Production LLM or RAG experience required\n\nLocation & employment\nHybrid Melbourne — 3 days in the CBD office. Full-time permanent.\nSalary $150,000–$180,000 AUD + super.",
+        "title": null,
+        "company": null,
+        "source_url": null
+      },
+      "role_family": {
+        "family": "ai_engineering",
+        "evidence": [
+          {
+            "excerpt": "Senior AI Engineer",
+            "section": "title"
+          }
+        ]
+      },
+      "seniority": {
+        "level": "senior",
+        "ambiguous": false,
+        "candidate_levels": [],
+        "evidence": [
+          {
+            "excerpt": "Senior AI Engineer",
+            "section": "title"
+          }
+        ]
+      },
+      "technologies": [
+        {
+          "name": "Python",
+          "level": "required",
+          "evidence": [
+            {
+              "excerpt": "Strong Python required",
+              "section": "requirements"
+            }
+          ]
+        },
+        {
+          "name": "LangChain",
+          "level": "preferred",
+          "evidence": [
+            {
+              "excerpt": "LangChain experience preferred",
+              "section": "requirements"
+            }
+          ]
+        }
+      ],
+      "responsibilities": [
+        {
+          "description": "Build and maintain LLM applications using Python and LangChain",
+          "evidence": [
+            {
+              "excerpt": "Build and maintain LLM applications using Python and LangChain",
+              "section": "responsibilities"
+            }
+          ]
+        }
+      ],
+      "compensation": {
+        "clarity": "stated",
+        "minimum": 150000.0,
+        "maximum": 180000.0,
+        "currency": "AUD",
+        "period": "year",
+        "raw_text": "Salary $150,000–$180,000 AUD + super",
+        "evidence": [
+          {
+            "excerpt": "Salary $150,000–$180,000 AUD + super",
+            "section": "compensation"
+          }
+        ]
+      },
+      "location": {
+        "clarity": "stated",
+        "summary": "Melbourne",
+        "evidence": [
+          {
+            "excerpt": "Hybrid Melbourne",
+            "section": "location"
+          }
+        ]
+      },
+      "work_arrangement": {
+        "arrangement": "hybrid",
+        "details": "3 days in the CBD office",
+        "evidence": [
+          {
+            "excerpt": "Hybrid Melbourne — 3 days in the CBD office",
+            "section": "location"
+          }
+        ]
+      },
+      "employment": {
+        "working_hours": "full_time",
+        "engagement_type": "permanent",
+        "evidence": [
+          {
+            "excerpt": "Full-time permanent",
+            "section": "employment"
+          }
+        ]
+      },
+      "experience_requirements": [
+        {
+          "description": "5+ years software engineering experience",
+          "level": "required",
+          "minimum_years": 5.0,
+          "maximum_years": null,
+          "evidence": [
+            {
+              "excerpt": "5+ years software engineering experience required",
+              "section": "requirements"
+            }
+          ]
+        },
+        {
+          "description": "Production LLM or RAG experience",
+          "level": "required",
+          "minimum_years": null,
+          "maximum_years": null,
+          "evidence": [
+            {
+              "excerpt": "Production LLM or RAG experience required",
+              "section": "requirements"
+            }
+          ]
+        }
+      ]
+    },
+    "assessment": {
+      "job_analysis": {
+        "posting": {
+          "raw_text": "[CIC-FIXTURE:ai-engineer]\nSenior AI Engineer — Northside Analytics (Melbourne)\n\nAbout the role\nWe are hiring a Senior AI Engineer to design and ship production LLM applications for\nAustralian enterprise clients. You will own retrieval pipelines, evaluation harnesses,\nand safe deployment patterns.\n\nResponsibilities\n• Build and maintain LLM applications using Python and LangChain\n• Partner with data engineers on feature pipelines and model observability\n• Mentor engineers on prompt evaluation and production readiness\n\nRequirements\n• 5+ years software engineering experience required\n• Strong Python required; LangChain experience preferred\n• Production LLM or RAG experience required\n\nLocation & employment\nHybrid Melbourne — 3 days in the CBD office. Full-time permanent.\nSalary $150,000–$180,000 AUD + super.",
+          "title": null,
+          "company": null,
+          "source_url": null
+        },
+        "role_family": {
+          "family": "ai_engineering",
+          "evidence": [
+            {
+              "excerpt": "Senior AI Engineer",
+              "section": "title"
+            }
+          ]
+        },
+        "seniority": {
+          "level": "senior",
+          "ambiguous": false,
+          "candidate_levels": [],
+          "evidence": [
+            {
+              "excerpt": "Senior AI Engineer",
+              "section": "title"
+            }
+          ]
+        },
+        "technologies": [
+          {
+            "name": "Python",
+            "level": "required",
+            "evidence": [
+              {
+                "excerpt": "Strong Python required",
+                "section": "requirements"
+              }
+            ]
+          },
+          {
+            "name": "LangChain",
+            "level": "preferred",
+            "evidence": [
+              {
+                "excerpt": "LangChain experience preferred",
+                "section": "requirements"
+              }
+            ]
+          }
+        ],
+        "responsibilities": [
+          {
+            "description": "Build and maintain LLM applications using Python and LangChain",
+            "evidence": [
+              {
+                "excerpt": "Build and maintain LLM applications using Python and LangChain",
+                "section": "responsibilities"
+              }
+            ]
+          }
+        ],
+        "compensation": {
+          "clarity": "stated",
+          "minimum": 150000.0,
+          "maximum": 180000.0,
+          "currency": "AUD",
+          "period": "year",
+          "raw_text": "Salary $150,000–$180,000 AUD + super",
+          "evidence": [
+            {
+              "excerpt": "Salary $150,000–$180,000 AUD + super",
+              "section": "compensation"
+            }
+          ]
+        },
+        "location": {
+          "clarity": "stated",
+          "summary": "Melbourne",
+          "evidence": [
+            {
+              "excerpt": "Hybrid Melbourne",
+              "section": "location"
+            }
+          ]
+        },
+        "work_arrangement": {
+          "arrangement": "hybrid",
+          "details": "3 days in the CBD office",
+          "evidence": [
+            {
+              "excerpt": "Hybrid Melbourne — 3 days in the CBD office",
+              "section": "location"
+            }
+          ]
+        },
+        "employment": {
+          "working_hours": "full_time",
+          "engagement_type": "permanent",
+          "evidence": [
+            {
+              "excerpt": "Full-time permanent",
+              "section": "employment"
+            }
+          ]
+        },
+        "experience_requirements": [
+          {
+            "description": "5+ years software engineering experience",
+            "level": "required",
+            "minimum_years": 5.0,
+            "maximum_years": null,
+            "evidence": [
+              {
+                "excerpt": "5+ years software engineering experience required",
+                "section": "requirements"
+              }
+            ]
+          },
+          {
+            "description": "Production LLM or RAG experience",
+            "level": "required",
+            "minimum_years": null,
+            "maximum_years": null,
+            "evidence": [
+              {
+                "excerpt": "Production LLM or RAG experience required",
+                "section": "requirements"
+              }
+            ]
+          }
+        ]
+      },
+      "technical_fit": {
+        "dimension": "technical",
+        "judgment": "mixed",
+        "summary": "Core technologies align, but required production LLM experience is not established in commercial employment.",
+        "findings": [
+          {
+            "kind": "alignment",
+            "summary": "Required Python is demonstrated across data engineering employment and AI portfolio work.",
+            "detail": null,
+            "importance": "material",
+            "job_evidence": [
+              {
+                "source": "technology",
+                "item_index": 0,
+                "name": "Python",
+                "excerpt": "Strong Python required"
+              }
+            ],
+            "profile_evidence": [
+              {
+                "source": "skill",
+                "ref": "skill:Python",
+                "excerpt": null
+              },
+              {
+                "source": "experience",
+                "ref": "experience:nbn-data-engineer-2020",
+                "excerpt": null
+              }
+            ],
+            "assumption": null
+          },
+          {
+            "kind": "partial_alignment",
+            "summary": "Required production LLM or RAG experience is supported by independent engineering and portfolio projects, not commercial AI employment.",
+            "detail": null,
+            "importance": "material",
+            "job_evidence": [
+              {
+                "source": "experience_requirement",
+                "item_index": 1,
+                "name": null,
+                "excerpt": "Production LLM or RAG experience required"
+              }
+            ],
+            "profile_evidence": [
+              {
+                "source": "experience",
+                "ref": "experience:chase-risk-compliance-ai-engineer",
+                "excerpt": null
+              },
+              {
+                "source": "project",
+                "ref": "project:governance-document-rag",
+                "excerpt": null
+              }
+            ],
+            "assumption": null
+          },
+          {
+            "kind": "gap",
+            "summary": "No commercial employment entry establishes paid production AI Engineering delivery; independent engineering is real capability evidence but not equivalent to commercial production AI employment.",
+            "detail": null,
+            "importance": "material",
+            "job_evidence": [
+              {
+                "source": "experience_requirement",
+                "item_index": 1,
+                "name": null,
+                "excerpt": "Production LLM or RAG experience required"
+              }
+            ],
+            "profile_evidence": [],
+            "assumption": null
+          }
+        ]
+      },
+      "commercial_fit": {
+        "dimension": "commercial",
+        "judgment": "moderate",
+        "summary": "Stated compensation and hybrid Melbourne arrangement are broadly compatible with preferences.",
+        "findings": [
+          {
+            "kind": "alignment",
+            "summary": "Hybrid Melbourne location aligns with stated location preferences.",
+            "detail": null,
+            "importance": "material",
+            "job_evidence": [
+              {
+                "source": "location",
+                "item_index": null,
+                "name": null,
+                "excerpt": "Hybrid Melbourne"
+              }
+            ],
+            "profile_evidence": [
+              {
+                "source": "preference",
+                "ref": "preference:locations",
+                "excerpt": null
+              }
+            ],
+            "assumption": null
+          },
+          {
+            "kind": "assumption",
+            "summary": "Salary range is stated, but the profile records no salary minimum for comparison.",
+            "detail": null,
+            "importance": "minor",
+            "job_evidence": [
+              {
+                "source": "compensation",
+                "item_index": null,
+                "name": null,
+                "excerpt": "Salary $150,000–$180,000 AUD + super"
+              }
+            ],
+            "profile_evidence": [
+              {
+                "source": "preference",
+                "ref": "preference:salary_min",
+                "excerpt": null
+              }
+            ],
+            "assumption": "Compensation cannot be scored against a minimum threshold because salary_min is unset."
+          }
+        ]
+      },
+      "portfolio_fit": {
+        "dimension": "portfolio",
+        "judgment": "moderate",
+        "summary": "Portfolio projects support an AI engineering narrative but do not substitute for commercial tenure claims.",
+        "findings": [
+          {
+            "kind": "partial_alignment",
+            "summary": "Portfolio RAG and copilot projects demonstrate relevant LLM application engineering patterns.",
+            "detail": null,
+            "importance": "material",
+            "job_evidence": [
+              {
+                "source": "role_family",
+                "item_index": null,
+                "name": null,
+                "excerpt": "Senior AI Engineer"
+              }
+            ],
+            "profile_evidence": [
+              {
+                "source": "project",
+                "ref": "project:governance-document-rag",
+                "excerpt": null
+              },
+              {
+                "source": "project",
+                "ref": "project:operational-intelligence-copilot",
+                "excerpt": null
+              }
+            ],
+            "assumption": null
+          }
+        ]
+      },
+      "summary": {
+        "summary": "Mixed fit: strong Python and portfolio evidence, but commercial production AI employment is not established.",
+        "key_alignments": [
+          "Python and RAG-oriented portfolio projects are relevant."
+        ],
+        "key_gaps": [
+          "Commercial production AI employment is not evidenced."
+        ]
+      }
+    },
+    "portfolio_match": {
+      "job_analysis": {
+        "posting": {
+          "raw_text": "[CIC-FIXTURE:ai-engineer]\nSenior AI Engineer — Northside Analytics (Melbourne)\n\nAbout the role\nWe are hiring a Senior AI Engineer to design and ship production LLM applications for\nAustralian enterprise clients. You will own retrieval pipelines, evaluation harnesses,\nand safe deployment patterns.\n\nResponsibilities\n• Build and maintain LLM applications using Python and LangChain\n• Partner with data engineers on feature pipelines and model observability\n• Mentor engineers on prompt evaluation and production readiness\n\nRequirements\n• 5+ years software engineering experience required\n• Strong Python required; LangChain experience preferred\n• Production LLM or RAG experience required\n\nLocation & employment\nHybrid Melbourne — 3 days in the CBD office. Full-time permanent.\nSalary $150,000–$180,000 AUD + super.",
+          "title": null,
+          "company": null,
+          "source_url": null
+        },
+        "role_family": {
+          "family": "ai_engineering",
+          "evidence": [
+            {
+              "excerpt": "Senior AI Engineer",
+              "section": "title"
+            }
+          ]
+        },
+        "seniority": {
+          "level": "senior",
+          "ambiguous": false,
+          "candidate_levels": [],
+          "evidence": [
+            {
+              "excerpt": "Senior AI Engineer",
+              "section": "title"
+            }
+          ]
+        },
+        "technologies": [
+          {
+            "name": "Python",
+            "level": "required",
+            "evidence": [
+              {
+                "excerpt": "Strong Python required",
+                "section": "requirements"
+              }
+            ]
+          },
+          {
+            "name": "LangChain",
+            "level": "preferred",
+            "evidence": [
+              {
+                "excerpt": "LangChain experience preferred",
+                "section": "requirements"
+              }
+            ]
+          }
+        ],
+        "responsibilities": [
+          {
+            "description": "Build and maintain LLM applications using Python and LangChain",
+            "evidence": [
+              {
+                "excerpt": "Build and maintain LLM applications using Python and LangChain",
+                "section": "responsibilities"
+              }
+            ]
+          }
+        ],
+        "compensation": {
+          "clarity": "stated",
+          "minimum": 150000.0,
+          "maximum": 180000.0,
+          "currency": "AUD",
+          "period": "year",
+          "raw_text": "Salary $150,000–$180,000 AUD + super",
+          "evidence": [
+            {
+              "excerpt": "Salary $150,000–$180,000 AUD + super",
+              "section": "compensation"
+            }
+          ]
+        },
+        "location": {
+          "clarity": "stated",
+          "summary": "Melbourne",
+          "evidence": [
+            {
+              "excerpt": "Hybrid Melbourne",
+              "section": "location"
+            }
+          ]
+        },
+        "work_arrangement": {
+          "arrangement": "hybrid",
+          "details": "3 days in the CBD office",
+          "evidence": [
+            {
+              "excerpt": "Hybrid Melbourne — 3 days in the CBD office",
+              "section": "location"
+            }
+          ]
+        },
+        "employment": {
+          "working_hours": "full_time",
+          "engagement_type": "permanent",
+          "evidence": [
+            {
+              "excerpt": "Full-time permanent",
+              "section": "employment"
+            }
+          ]
+        },
+        "experience_requirements": [
+          {
+            "description": "5+ years software engineering experience",
+            "level": "required",
+            "minimum_years": 5.0,
+            "maximum_years": null,
+            "evidence": [
+              {
+                "excerpt": "5+ years software engineering experience required",
+                "section": "requirements"
+              }
+            ]
+          },
+          {
+            "description": "Production LLM or RAG experience",
+            "level": "required",
+            "minimum_years": null,
+            "maximum_years": null,
+            "evidence": [
+              {
+                "excerpt": "Production LLM or RAG experience required",
+                "section": "requirements"
+              }
+            ]
+          }
+        ]
+      },
+      "ranked_projects": [
+        {
+          "rank": 1,
+          "project_id": "governance-document-rag",
+          "rationale": "Project 'governance-document-rag' ranked on 1 required technology hit(s), 1 preferred technology hit(s), 1 responsibility overlap(s).",
+          "factors": [
+            {
+              "kind": "required_technology",
+              "summary": "Project evidence supports required technology 'Python'.",
+              "job_evidence": [
+                {
+                  "source": "technology",
+                  "item_index": 0,
+                  "name": "Python",
+                  "excerpt": "Strong Python required"
+                }
+              ],
+              "profile_evidence": [
+                {
+                  "source": "project",
+                  "ref": "project:governance-document-rag",
+                  "excerpt": "Python"
+                }
+              ]
+            },
+            {
+              "kind": "preferred_technology",
+              "summary": "Project evidence supports preferred technology 'LangChain'.",
+              "job_evidence": [
+                {
+                  "source": "technology",
+                  "item_index": 1,
+                  "name": "LangChain",
+                  "excerpt": "LangChain experience preferred"
+                }
+              ],
+              "profile_evidence": [
+                {
+                  "source": "project",
+                  "ref": "project:governance-document-rag",
+                  "excerpt": "LangChain"
+                }
+              ]
+            },
+            {
+              "kind": "responsibility_overlap",
+              "summary": "Project summary, outcomes, or technologies overlap responsibility 'Build and maintain LLM applications using Python and LangChain'.",
+              "job_evidence": [
+                {
+                  "source": "responsibility",
+                  "item_index": 0,
+                  "name": null,
+                  "excerpt": "Build and maintain LLM applications using Python and LangChain"
+                }
+              ],
+              "profile_evidence": [
+                {
+                  "source": "project",
+                  "ref": "project:governance-document-rag",
+                  "excerpt": "Python"
+                }
+              ]
+            }
+          ],
+          "tie_group": null,
+          "tie_break_reason": null
+        },
+        {
+          "rank": 2,
+          "project_id": "career-intelligence-copilot",
+          "rationale": "Project 'career-intelligence-copilot' ranked on 1 required technology hit(s), 1 responsibility overlap(s).",
+          "factors": [
+            {
+              "kind": "required_technology",
+              "summary": "Project evidence supports required technology 'Python'.",
+              "job_evidence": [
+                {
+                  "source": "technology",
+                  "item_index": 0,
+                  "name": "Python",
+                  "excerpt": "Strong Python required"
+                }
+              ],
+              "profile_evidence": [
+                {
+                  "source": "project",
+                  "ref": "project:career-intelligence-copilot",
+                  "excerpt": "Python"
+                }
+              ]
+            },
+            {
+              "kind": "responsibility_overlap",
+              "summary": "Project summary, outcomes, or technologies overlap responsibility 'Build and maintain LLM applications using Python and LangChain'.",
+              "job_evidence": [
+                {
+                  "source": "responsibility",
+                  "item_index": 0,
+                  "name": null,
+                  "excerpt": "Build and maintain LLM applications using Python and LangChain"
+                }
+              ],
+              "profile_evidence": [
+                {
+                  "source": "project",
+                  "ref": "project:career-intelligence-copilot",
+                  "excerpt": "Python"
+                }
+              ]
+            }
+          ],
+          "tie_group": 1,
+          "tie_break_reason": "Equal primary ranking signals; ordered by stable project_id ascending"
+        },
+        {
+          "rank": 3,
+          "project_id": "operational-intelligence-copilot",
+          "rationale": "Project 'operational-intelligence-copilot' ranked on 1 required technology hit(s), 1 responsibility overlap(s).",
+          "factors": [
+            {
+              "kind": "required_technology",
+              "summary": "Project evidence supports required technology 'Python'.",
+              "job_evidence": [
+                {
+                  "source": "technology",
+                  "item_index": 0,
+                  "name": "Python",
+                  "excerpt": "Strong Python required"
+                }
+              ],
+              "profile_evidence": [
+                {
+                  "source": "project",
+                  "ref": "project:operational-intelligence-copilot",
+                  "excerpt": "Python"
+                }
+              ]
+            },
+            {
+              "kind": "responsibility_overlap",
+              "summary": "Project summary, outcomes, or technologies overlap responsibility 'Build and maintain LLM applications using Python and LangChain'.",
+              "job_evidence": [
+                {
+                  "source": "responsibility",
+                  "item_index": 0,
+                  "name": null,
+                  "excerpt": "Build and maintain LLM applications using Python and LangChain"
+                }
+              ],
+              "profile_evidence": [
+                {
+                  "source": "project",
+                  "ref": "project:operational-intelligence-copilot",
+                  "excerpt": "Python"
+                }
+              ]
+            }
+          ],
+          "tie_group": 1,
+          "tie_break_reason": "Equal primary ranking signals; ordered by stable project_id ascending"
+        },
+        {
+          "rank": 4,
+          "project_id": "payroll-diagnostics-engine",
+          "rationale": "Project 'payroll-diagnostics-engine' ranked on 1 required technology hit(s), 1 responsibility overlap(s).",
+          "factors": [
+            {
+              "kind": "required_technology",
+              "summary": "Project evidence supports required technology 'Python'.",
+              "job_evidence": [
+                {
+                  "source": "technology",
+                  "item_index": 0,
+                  "name": "Python",
+                  "excerpt": "Strong Python required"
+                }
+              ],
+              "profile_evidence": [
+                {
+                  "source": "project",
+                  "ref": "project:payroll-diagnostics-engine",
+                  "excerpt": "Python"
+                }
+              ]
+            },
+            {
+              "kind": "responsibility_overlap",
+              "summary": "Project summary, outcomes, or technologies overlap responsibility 'Build and maintain LLM applications using Python and LangChain'.",
+              "job_evidence": [
+                {
+                  "source": "responsibility",
+                  "item_index": 0,
+                  "name": null,
+                  "excerpt": "Build and maintain LLM applications using Python and LangChain"
+                }
+              ],
+              "profile_evidence": [
+                {
+                  "source": "project",
+                  "ref": "project:payroll-diagnostics-engine",
+                  "excerpt": "Python"
+                }
+              ]
+            }
+          ],
+          "tie_group": 1,
+          "tie_break_reason": "Equal primary ranking signals; ordered by stable project_id ascending"
+        },
+        {
+          "rank": 5,
+          "project_id": "public-holiday-entitlements",
+          "rationale": "Project 'public-holiday-entitlements' ranked on 1 required technology hit(s), 1 responsibility overlap(s).",
+          "factors": [
+            {
+              "kind": "required_technology",
+              "summary": "Project evidence supports required technology 'Python'.",
+              "job_evidence": [
+                {
+                  "source": "technology",
+                  "item_index": 0,
+                  "name": "Python",
+                  "excerpt": "Strong Python required"
+                }
+              ],
+              "profile_evidence": [
+                {
+                  "source": "project",
+                  "ref": "project:public-holiday-entitlements",
+                  "excerpt": "Python"
+                }
+              ]
+            },
+            {
+              "kind": "responsibility_overlap",
+              "summary": "Project summary, outcomes, or technologies overlap responsibility 'Build and maintain LLM applications using Python and LangChain'.",
+              "job_evidence": [
+                {
+                  "source": "responsibility",
+                  "item_index": 0,
+                  "name": null,
+                  "excerpt": "Build and maintain LLM applications using Python and LangChain"
+                }
+              ],
+              "profile_evidence": [
+                {
+                  "source": "project",
+                  "ref": "project:public-holiday-entitlements",
+                  "excerpt": "Python"
+                }
+              ]
+            }
+          ],
+          "tie_group": 1,
+          "tie_break_reason": "Equal primary ranking signals; ordered by stable project_id ascending"
+        }
+      ],
+      "unranked_project_ids": [],
+      "summary": "Ranked 5 project(s); lead with 'governance-document-rag'. 0 project(s) had no matching factors.",
+      "insufficient_evidence": false
+    },
+    "strategy": {
+      "job_analysis": {
+        "posting": {
+          "raw_text": "[CIC-FIXTURE:ai-engineer]\nSenior AI Engineer — Northside Analytics (Melbourne)\n\nAbout the role\nWe are hiring a Senior AI Engineer to design and ship production LLM applications for\nAustralian enterprise clients. You will own retrieval pipelines, evaluation harnesses,\nand safe deployment patterns.\n\nResponsibilities\n• Build and maintain LLM applications using Python and LangChain\n• Partner with data engineers on feature pipelines and model observability\n• Mentor engineers on prompt evaluation and production readiness\n\nRequirements\n• 5+ years software engineering experience required\n• Strong Python required; LangChain experience preferred\n• Production LLM or RAG experience required\n\nLocation & employment\nHybrid Melbourne — 3 days in the CBD office. Full-time permanent.\nSalary $150,000–$180,000 AUD + super.",
+          "title": null,
+          "company": null,
+          "source_url": null
+        },
+        "role_family": {
+          "family": "ai_engineering",
+          "evidence": [
+            {
+              "excerpt": "Senior AI Engineer",
+              "section": "title"
+            }
+          ]
+        },
+        "seniority": {
+          "level": "senior",
+          "ambiguous": false,
+          "candidate_levels": [],
+          "evidence": [
+            {
+              "excerpt": "Senior AI Engineer",
+              "section": "title"
+            }
+          ]
+        },
+        "technologies": [
+          {
+            "name": "Python",
+            "level": "required",
+            "evidence": [
+              {
+                "excerpt": "Strong Python required",
+                "section": "requirements"
+              }
+            ]
+          },
+          {
+            "name": "LangChain",
+            "level": "preferred",
+            "evidence": [
+              {
+                "excerpt": "LangChain experience preferred",
+                "section": "requirements"
+              }
+            ]
+          }
+        ],
+        "responsibilities": [
+          {
+            "description": "Build and maintain LLM applications using Python and LangChain",
+            "evidence": [
+              {
+                "excerpt": "Build and maintain LLM applications using Python and LangChain",
+                "section": "responsibilities"
+              }
+            ]
+          }
+        ],
+        "compensation": {
+          "clarity": "stated",
+          "minimum": 150000.0,
+          "maximum": 180000.0,
+          "currency": "AUD",
+          "period": "year",
+          "raw_text": "Salary $150,000–$180,000 AUD + super",
+          "evidence": [
+            {
+              "excerpt": "Salary $150,000–$180,000 AUD + super",
+              "section": "compensation"
+            }
+          ]
+        },
+        "location": {
+          "clarity": "stated",
+          "summary": "Melbourne",
+          "evidence": [
+            {
+              "excerpt": "Hybrid Melbourne",
+              "section": "location"
+            }
+          ]
+        },
+        "work_arrangement": {
+          "arrangement": "hybrid",
+          "details": "3 days in the CBD office",
+          "evidence": [
+            {
+              "excerpt": "Hybrid Melbourne — 3 days in the CBD office",
+              "section": "location"
+            }
+          ]
+        },
+        "employment": {
+          "working_hours": "full_time",
+          "engagement_type": "permanent",
+          "evidence": [
+            {
+              "excerpt": "Full-time permanent",
+              "section": "employment"
+            }
+          ]
+        },
+        "experience_requirements": [
+          {
+            "description": "5+ years software engineering experience",
+            "level": "required",
+            "minimum_years": 5.0,
+            "maximum_years": null,
+            "evidence": [
+              {
+                "excerpt": "5+ years software engineering experience required",
+                "section": "requirements"
+              }
+            ]
+          },
+          {
+            "description": "Production LLM or RAG experience",
+            "level": "required",
+            "minimum_years": null,
+            "maximum_years": null,
+            "evidence": [
+              {
+                "excerpt": "Production LLM or RAG experience required",
+                "section": "requirements"
+              }
+            ]
+          }
+        ]
+      },
+      "application_tier": "silver",
+      "pursuit_posture": "consider",
+      "practical_value": "acceptable_opportunity",
+      "effort_level": "minimal",
+      "summary": "Recommend posture 'consider' with effort tier 'silver' (minimal). Technical fit 'mixed' and portfolio fit 'moderate' support a credible stretch, but explicit seniority with commercial fit 'moderate' lacks matching senior commercial AI employment evidence. Owner review is required before any application action.",
+      "reasons": [
+        {
+          "kind": "alignment",
+          "summary": "Technical fit is 'mixed' and portfolio fit is 'moderate' for this opportunity.",
+          "importance": "material",
+          "evidence": [
+            {
+              "origin": "opportunity_assessment",
+              "job_evidence": null,
+              "profile_evidence": null,
+              "assessment_dimension": "technical",
+              "assessment_judgment": "mixed",
+              "portfolio_project_id": null,
+              "excerpt": null
+            },
+            {
+              "origin": "opportunity_assessment",
+              "job_evidence": null,
+              "profile_evidence": null,
+              "assessment_dimension": "portfolio",
+              "assessment_judgment": "moderate",
+              "portfolio_project_id": null,
+              "excerpt": null
+            }
+          ]
+        },
+        {
+          "kind": "constraint",
+          "summary": "Strong technical and portfolio alignment make this a credible stretch role, but the position is explicitly senior and the profile does not yet demonstrate matching senior commercial AI ownership. Recommend consider / silver with minimal effort.",
+          "importance": "material",
+          "evidence": [
+            {
+              "origin": "job_analysis",
+              "job_evidence": {
+                "source": "seniority",
+                "item_index": null,
+                "name": null,
+                "excerpt": null
+              },
+              "profile_evidence": null,
+              "assessment_dimension": null,
+              "assessment_judgment": null,
+              "portfolio_project_id": null,
+              "excerpt": null
+            },
+            {
+              "origin": "opportunity_assessment",
+              "job_evidence": null,
+              "profile_evidence": null,
+              "assessment_dimension": "commercial",
+              "assessment_judgment": "moderate",
+              "portfolio_project_id": null,
+              "excerpt": null
+            }
+          ]
+        }
+      ],
+      "risks_or_gaps": [
+        {
+          "summary": "Explicit seniority and commercial AI leadership requirements are not fully evidenced in the profile. Technical capability and portfolio evidence remain distinct from senior commercial AI employment ownership.",
+          "importance": "material",
+          "evidence": [
+            {
+              "origin": "job_analysis",
+              "job_evidence": {
+                "source": "seniority",
+                "item_index": null,
+                "name": null,
+                "excerpt": null
+              },
+              "profile_evidence": null,
+              "assessment_dimension": null,
+              "assessment_judgment": null,
+              "portfolio_project_id": null,
+              "excerpt": null
+            },
+            {
+              "origin": "opportunity_assessment",
+              "job_evidence": null,
+              "profile_evidence": null,
+              "assessment_dimension": "commercial",
+              "assessment_judgment": "moderate",
+              "portfolio_project_id": null,
+              "excerpt": null
+            }
+          ]
+        },
+        {
+          "summary": "No commercial employment entry establishes paid production AI Engineering delivery; independent engineering is real capability evidence but not equivalent to commercial production AI employment.",
+          "importance": "material",
+          "evidence": [
+            {
+              "origin": "opportunity_assessment",
+              "job_evidence": null,
+              "profile_evidence": null,
+              "assessment_dimension": "technical",
+              "assessment_judgment": "mixed",
+              "portfolio_project_id": null,
+              "excerpt": null
+            }
+          ]
+        }
+      ],
+      "manual_checks": [
+        {
+          "summary": "Review seniority expectations against demonstrated experience.",
+          "why_it_matters": "A seniority stretch can change whether significant effort is justified.",
+          "could_change_recommendation": true,
+          "evidence": [
+            {
+              "origin": "job_analysis",
+              "job_evidence": {
+                "source": "seniority",
+                "item_index": null,
+                "name": null,
+                "excerpt": null
+              },
+              "profile_evidence": null,
+              "assessment_dimension": null,
+              "assessment_judgment": null,
+              "portfolio_project_id": null,
+              "excerpt": null
+            }
+          ]
+        }
+      ],
+      "next_actions": [
+        {
+          "kind": "consider_reviewing_seniority_expectations",
+          "summary": "Consider reviewing seniority expectations against demonstrated experience.",
+          "related_project_id": null,
+          "evidence": [
+            {
+              "origin": "job_analysis",
+              "job_evidence": {
+                "source": "seniority",
+                "item_index": null,
+                "name": null,
+                "excerpt": null
+              },
+              "profile_evidence": null,
+              "assessment_dimension": null,
+              "assessment_judgment": null,
+              "portfolio_project_id": null,
+              "excerpt": null
+            }
+          ]
+        },
+        {
+          "kind": "consider_emphasising_portfolio_projects",
+          "summary": "Consider emphasising the strongest matched portfolio project(s) in any application materials you prepare.",
+          "related_project_id": "governance-document-rag",
+          "evidence": [
+            {
+              "origin": "portfolio_match",
+              "job_evidence": null,
+              "profile_evidence": null,
+              "assessment_dimension": null,
+              "assessment_judgment": null,
+              "portfolio_project_id": "governance-document-rag",
+              "excerpt": null
+            }
+          ]
+        },
+        {
+          "kind": "consider_owner_review",
+          "summary": "Consider reviewing this full strategy before taking any external action.",
+          "related_project_id": null,
+          "evidence": [
+            {
+              "origin": "opportunity_assessment",
+              "job_evidence": null,
+              "profile_evidence": null,
+              "assessment_dimension": "technical",
+              "assessment_judgment": "mixed",
+              "portfolio_project_id": null,
+              "excerpt": null
+            }
+          ]
+        }
+      ],
+      "portfolio_emphasis": [
+        {
+          "project_id": "governance-document-rag",
+          "source_rank": 1,
+          "summary": "Consider emphasising 'governance-document-rag' (PortfolioMatch rank 1).",
+          "evidence": [
+            {
+              "origin": "portfolio_match",
+              "job_evidence": null,
+              "profile_evidence": null,
+              "assessment_dimension": null,
+              "assessment_judgment": null,
+              "portfolio_project_id": "governance-document-rag",
+              "excerpt": null
+            }
+          ]
+        },
+        {
+          "project_id": "career-intelligence-copilot",
+          "source_rank": 2,
+          "summary": "Consider emphasising 'career-intelligence-copilot' (PortfolioMatch rank 2).",
+          "evidence": [
+            {
+              "origin": "portfolio_match",
+              "job_evidence": null,
+              "profile_evidence": null,
+              "assessment_dimension": null,
+              "assessment_judgment": null,
+              "portfolio_project_id": "career-intelligence-copilot",
+              "excerpt": null
+            }
+          ]
+        },
+        {
+          "project_id": "operational-intelligence-copilot",
+          "source_rank": 3,
+          "summary": "Consider emphasising 'operational-intelligence-copilot' (PortfolioMatch rank 3).",
+          "evidence": [
+            {
+              "origin": "portfolio_match",
+              "job_evidence": null,
+              "profile_evidence": null,
+              "assessment_dimension": null,
+              "assessment_judgment": null,
+              "portfolio_project_id": "operational-intelligence-copilot",
+              "excerpt": null
+            }
+          ]
+        }
+      ],
+      "assumptions": [
+        "No candidate salary minimum is configured, so compensation was not treated as a hard threshold conflict."
+      ],
+      "decision_blockers": [],
+      "owner_review_required": true,
+      "insufficient_information": false
+    },
+    "opportunity_id": "opp_01KYP648T53D8T379PJS67M2SW"
+  },
+  "execution": {
+    "events": [
+      {
+        "event_type": "run_started",
+        "timestamp": "2026-07-29T05:38:51.086902Z",
+        "run_id": "wfr_01KYP63ZJETH7RY3AD7RXGXYMC",
+        "node_id": null,
+        "node_kind": null,
+        "duration_ms": null,
+        "message": null,
+        "recoverable": null,
+        "checkpoint_reason": null,
+        "approval_kind": null,
+        "decision": null,
+        "attempt": null
+      },
+      {
+        "event_type": "checkpoint_written",
+        "timestamp": "2026-07-29T05:38:51.087412Z",
+        "run_id": "wfr_01KYP63ZJETH7RY3AD7RXGXYMC",
+        "node_id": null,
+        "node_kind": null,
+        "duration_ms": null,
+        "message": null,
+        "recoverable": null,
+        "checkpoint_reason": "milestone",
+        "approval_kind": null,
+        "decision": null,
+        "attempt": null
+      },
+      {
+        "event_type": "node_started",
+        "timestamp": "2026-07-29T05:38:51.089054Z",
+        "run_id": "wfr_01KYP63ZJETH7RY3AD7RXGXYMC",
+        "node_id": "acquire",
+        "node_kind": "deterministic",
+        "duration_ms": null,
+        "message": null,
+        "recoverable": null,
+        "checkpoint_reason": null,
+        "approval_kind": null,
+        "decision": null,
+        "attempt": 1
+      },
+      {
+        "event_type": "checkpoint_written",
+        "timestamp": "2026-07-29T05:38:51.089520Z",
+        "run_id": "wfr_01KYP63ZJETH7RY3AD7RXGXYMC",
+        "node_id": null,
+        "node_kind": null,
+        "duration_ms": null,
+        "message": null,
+        "recoverable": null,
+        "checkpoint_reason": "milestone",
+        "approval_kind": null,
+        "decision": null,
+        "attempt": null
+      },
+      {
+        "event_type": "node_succeeded",
+        "timestamp": "2026-07-29T05:38:51.092309Z",
+        "run_id": "wfr_01KYP63ZJETH7RY3AD7RXGXYMC",
+        "node_id": "acquire",
+        "node_kind": "deterministic",
+        "duration_ms": 0,
+        "message": null,
+        "recoverable": null,
+        "checkpoint_reason": null,
+        "approval_kind": null,
+        "decision": null,
+        "attempt": 1
+      },
+      {
+        "event_type": "checkpoint_written",
+        "timestamp": "2026-07-29T05:38:51.092524Z",
+        "run_id": "wfr_01KYP63ZJETH7RY3AD7RXGXYMC",
+        "node_id": null,
+        "node_kind": null,
+        "duration_ms": null,
+        "message": null,
+        "recoverable": null,
+        "checkpoint_reason": "milestone",
+        "approval_kind": null,
+        "decision": null,
+        "attempt": null
+      },
+      {
+        "event_type": "node_started",
+        "timestamp": "2026-07-29T05:38:51.094142Z",
+        "run_id": "wfr_01KYP63ZJETH7RY3AD7RXGXYMC",
+        "node_id": "validate_normalise",
+        "node_kind": "deterministic",
+        "duration_ms": null,
+        "message": null,
+        "recoverable": null,
+        "checkpoint_reason": null,
+        "approval_kind": null,
+        "decision": null,
+        "attempt": 1
+      },
+      {
+        "event_type": "checkpoint_written",
+        "timestamp": "2026-07-29T05:38:51.094633Z",
+        "run_id": "wfr_01KYP63ZJETH7RY3AD7RXGXYMC",
+        "node_id": null,
+        "node_kind": null,
+        "duration_ms": null,
+        "message": null,
+        "recoverable": null,
+        "checkpoint_reason": "milestone",
+        "approval_kind": null,
+        "decision": null,
+        "attempt": null
+      },
+      {
+        "event_type": "node_succeeded",
+        "timestamp": "2026-07-29T05:38:51.097404Z",
+        "run_id": "wfr_01KYP63ZJETH7RY3AD7RXGXYMC",
+        "node_id": "validate_normalise",
+        "node_kind": "deterministic",
+        "duration_ms": 1,
+        "message": null,
+        "recoverable": null,
+        "checkpoint_reason": null,
+        "approval_kind": null,
+        "decision": null,
+        "attempt": 1
+      },
+      {
+        "event_type": "checkpoint_written",
+        "timestamp": "2026-07-29T05:38:51.097698Z",
+        "run_id": "wfr_01KYP63ZJETH7RY3AD7RXGXYMC",
+        "node_id": null,
+        "node_kind": null,
+        "duration_ms": null,
+        "message": null,
+        "recoverable": null,
+        "checkpoint_reason": "milestone",
+        "approval_kind": null,
+        "decision": null,
+        "attempt": null
+      },
+      {
+        "event_type": "node_started",
+        "timestamp": "2026-07-29T05:38:51.099168Z",
+        "run_id": "wfr_01KYP63ZJETH7RY3AD7RXGXYMC",
+        "node_id": "analyse",
+        "node_kind": "llm_backed",
+        "duration_ms": null,
+        "message": null,
+        "recoverable": null,
+        "checkpoint_reason": null,
+        "approval_kind": null,
+        "decision": null,
+        "attempt": 1
+      },
+      {
+        "event_type": "checkpoint_written",
+        "timestamp": "2026-07-29T05:38:51.099675Z",
+        "run_id": "wfr_01KYP63ZJETH7RY3AD7RXGXYMC",
+        "node_id": null,
+        "node_kind": null,
+        "duration_ms": null,
+        "message": null,
+        "recoverable": null,
+        "checkpoint_reason": "milestone",
+        "approval_kind": null,
+        "decision": null,
+        "attempt": null
+      },
+      {
+        "event_type": "node_failed",
+        "timestamp": "2026-07-29T05:38:51.101098Z",
+        "run_id": "wfr_01KYP63ZJETH7RY3AD7RXGXYMC",
+        "node_id": "analyse",
+        "node_kind": "llm_backed",
+        "duration_ms": 0,
+        "message": "Injected recoverable failure for 'analyse' (1/1)",
+        "recoverable": true,
+        "checkpoint_reason": null,
+        "approval_kind": null,
+        "decision": null,
+        "attempt": 1
+      },
+      {
+        "event_type": "retry_scheduled",
+        "timestamp": "2026-07-29T05:38:51.102187Z",
+        "run_id": "wfr_01KYP63ZJETH7RY3AD7RXGXYMC",
+        "node_id": "analyse",
+        "node_kind": "llm_backed",
+        "duration_ms": null,
+        "message": "Retry scheduled for attempt 2/3 (delay_ms=0)",
+        "recoverable": true,
+        "checkpoint_reason": null,
+        "approval_kind": null,
+        "decision": null,
+        "attempt": 2
+      },
+      {
+        "event_type": "checkpoint_written",
+        "timestamp": "2026-07-29T05:38:51.102695Z",
+        "run_id": "wfr_01KYP63ZJETH7RY3AD7RXGXYMC",
+        "node_id": null,
+        "node_kind": null,
+        "duration_ms": null,
+        "message": null,
+        "recoverable": null,
+        "checkpoint_reason": "failure",
+        "approval_kind": null,
+        "decision": null,
+        "attempt": null
+      },
+      {
+        "event_type": "node_started",
+        "timestamp": "2026-07-29T05:38:51.104555Z",
+        "run_id": "wfr_01KYP63ZJETH7RY3AD7RXGXYMC",
+        "node_id": "analyse",
+        "node_kind": "llm_backed",
+        "duration_ms": null,
+        "message": null,
+        "recoverable": null,
+        "checkpoint_reason": null,
+        "approval_kind": null,
+        "decision": null,
+        "attempt": 2
+      },
+      {
+        "event_type": "checkpoint_written",
+        "timestamp": "2026-07-29T05:38:51.105062Z",
+        "run_id": "wfr_01KYP63ZJETH7RY3AD7RXGXYMC",
+        "node_id": null,
+        "node_kind": null,
+        "duration_ms": null,
+        "message": null,
+        "recoverable": null,
+        "checkpoint_reason": "milestone",
+        "approval_kind": null,
+        "decision": null,
+        "attempt": null
+      },
+      {
+        "event_type": "node_succeeded",
+        "timestamp": "2026-07-29T05:38:51.107875Z",
+        "run_id": "wfr_01KYP63ZJETH7RY3AD7RXGXYMC",
+        "node_id": "analyse",
+        "node_kind": "llm_backed",
+        "duration_ms": 1,
+        "message": null,
+        "recoverable": null,
+        "checkpoint_reason": null,
+        "approval_kind": null,
+        "decision": null,
+        "attempt": 2
+      },
+      {
+        "event_type": "checkpoint_written",
+        "timestamp": "2026-07-29T05:38:51.108790Z",
+        "run_id": "wfr_01KYP63ZJETH7RY3AD7RXGXYMC",
+        "node_id": null,
+        "node_kind": null,
+        "duration_ms": null,
+        "message": null,
+        "recoverable": null,
+        "checkpoint_reason": "milestone",
+        "approval_kind": null,
+        "decision": null,
+        "attempt": null
+      },
+      {
+        "event_type": "node_started",
+        "timestamp": "2026-07-29T05:38:51.111055Z",
+        "run_id": "wfr_01KYP63ZJETH7RY3AD7RXGXYMC",
+        "node_id": "assess",
+        "node_kind": "llm_backed",
+        "duration_ms": null,
+        "message": null,
+        "recoverable": null,
+        "checkpoint_reason": null,
+        "approval_kind": null,
+        "decision": null,
+        "attempt": 1
+      },
+      {
+        "event_type": "checkpoint_written",
+        "timestamp": "2026-07-29T05:38:51.111902Z",
+        "run_id": "wfr_01KYP63ZJETH7RY3AD7RXGXYMC",
+        "node_id": null,
+        "node_kind": null,
+        "duration_ms": null,
+        "message": null,
+        "recoverable": null,
+        "checkpoint_reason": "milestone",
+        "approval_kind": null,
+        "decision": null,
+        "attempt": null
+      },
+      {
+        "event_type": "node_succeeded",
+        "timestamp": "2026-07-29T05:38:51.115851Z",
+        "run_id": "wfr_01KYP63ZJETH7RY3AD7RXGXYMC",
+        "node_id": "assess",
+        "node_kind": "llm_backed",
+        "duration_ms": 1,
+        "message": null,
+        "recoverable": null,
+        "checkpoint_reason": null,
+        "approval_kind": null,
+        "decision": null,
+        "attempt": 1
+      },
+      {
+        "event_type": "checkpoint_written",
+        "timestamp": "2026-07-29T05:38:51.116260Z",
+        "run_id": "wfr_01KYP63ZJETH7RY3AD7RXGXYMC",
+        "node_id": null,
+        "node_kind": null,
+        "duration_ms": null,
+        "message": null,
+        "recoverable": null,
+        "checkpoint_reason": "milestone",
+        "approval_kind": null,
+        "decision": null,
+        "attempt": null
+      },
+      {
+        "event_type": "node_started",
+        "timestamp": "2026-07-29T05:38:51.119051Z",
+        "run_id": "wfr_01KYP63ZJETH7RY3AD7RXGXYMC",
+        "node_id": "match",
+        "node_kind": "deterministic",
+        "duration_ms": null,
+        "message": null,
+        "recoverable": null,
+        "checkpoint_reason": null,
+        "approval_kind": null,
+        "decision": null,
+        "attempt": 1
+      },
+      {
+        "event_type": "checkpoint_written",
+        "timestamp": "2026-07-29T05:38:51.120229Z",
+        "run_id": "wfr_01KYP63ZJETH7RY3AD7RXGXYMC",
+        "node_id": null,
+        "node_kind": null,
+        "duration_ms": null,
+        "message": null,
+        "recoverable": null,
+        "checkpoint_reason": "milestone",
+        "approval_kind": null,
+        "decision": null,
+        "attempt": null
+      },
+      {
+        "event_type": "node_succeeded",
+        "timestamp": "2026-07-29T05:38:51.125056Z",
+        "run_id": "wfr_01KYP63ZJETH7RY3AD7RXGXYMC",
+        "node_id": "match",
+        "node_kind": "deterministic",
+        "duration_ms": 2,
+        "message": null,
+        "recoverable": null,
+        "checkpoint_reason": null,
+        "approval_kind": null,
+        "decision": null,
+        "attempt": 1
+      },
+      {
+        "event_type": "checkpoint_written",
+        "timestamp": "2026-07-29T05:38:51.125626Z",
+        "run_id": "wfr_01KYP63ZJETH7RY3AD7RXGXYMC",
+        "node_id": null,
+        "node_kind": null,
+        "duration_ms": null,
+        "message": null,
+        "recoverable": null,
+        "checkpoint_reason": "milestone",
+        "approval_kind": null,
+        "decision": null,
+        "attempt": null
+      },
+      {
+        "event_type": "node_started",
+        "timestamp": "2026-07-29T05:38:51.128079Z",
+        "run_id": "wfr_01KYP63ZJETH7RY3AD7RXGXYMC",
+        "node_id": "strategy",
+        "node_kind": "deterministic",
+        "duration_ms": null,
+        "message": null,
+        "recoverable": null,
+        "checkpoint_reason": null,
+        "approval_kind": null,
+        "decision": null,
+        "attempt": 1
+      },
+      {
+        "event_type": "checkpoint_written",
+        "timestamp": "2026-07-29T05:38:51.129257Z",
+        "run_id": "wfr_01KYP63ZJETH7RY3AD7RXGXYMC",
+        "node_id": null,
+        "node_kind": null,
+        "duration_ms": null,
+        "message": null,
+        "recoverable": null,
+        "checkpoint_reason": "milestone",
+        "approval_kind": null,
+        "decision": null,
+        "attempt": null
+      },
+      {
+        "event_type": "node_succeeded",
+        "timestamp": "2026-07-29T05:38:51.134588Z",
+        "run_id": "wfr_01KYP63ZJETH7RY3AD7RXGXYMC",
+        "node_id": "strategy",
+        "node_kind": "deterministic",
+        "duration_ms": 2,
+        "message": null,
+        "recoverable": null,
+        "checkpoint_reason": null,
+        "approval_kind": null,
+        "decision": null,
+        "attempt": 1
+      },
+      {
+        "event_type": "checkpoint_written",
+        "timestamp": "2026-07-29T05:38:51.135475Z",
+        "run_id": "wfr_01KYP63ZJETH7RY3AD7RXGXYMC",
+        "node_id": null,
+        "node_kind": null,
+        "duration_ms": null,
+        "message": null,
+        "recoverable": null,
+        "checkpoint_reason": "milestone",
+        "approval_kind": null,
+        "decision": null,
+        "attempt": null
+      },
+      {
+        "event_type": "node_started",
+        "timestamp": "2026-07-29T05:38:51.138693Z",
+        "run_id": "wfr_01KYP63ZJETH7RY3AD7RXGXYMC",
+        "node_id": "owner_review",
+        "node_kind": "deterministic",
+        "duration_ms": null,
+        "message": null,
+        "recoverable": null,
+        "checkpoint_reason": null,
+        "approval_kind": null,
+        "decision": null,
+        "attempt": 1
+      },
+      {
+        "event_type": "checkpoint_written",
+        "timestamp": "2026-07-29T05:38:51.140106Z",
+        "run_id": "wfr_01KYP63ZJETH7RY3AD7RXGXYMC",
+        "node_id": null,
+        "node_kind": null,
+        "duration_ms": null,
+        "message": null,
+        "recoverable": null,
+        "checkpoint_reason": "milestone",
+        "approval_kind": null,
+        "decision": null,
+        "attempt": null
+      },
+      {
+        "event_type": "node_succeeded",
+        "timestamp": "2026-07-29T05:38:51.145191Z",
+        "run_id": "wfr_01KYP63ZJETH7RY3AD7RXGXYMC",
+        "node_id": "owner_review",
+        "node_kind": "deterministic",
+        "duration_ms": 1,
+        "message": null,
+        "recoverable": null,
+        "checkpoint_reason": null,
+        "approval_kind": null,
+        "decision": null,
+        "attempt": 1
+      },
+      {
+        "event_type": "approval_requested",
+        "timestamp": "2026-07-29T05:38:51.145191Z",
+        "run_id": "wfr_01KYP63ZJETH7RY3AD7RXGXYMC",
+        "node_id": null,
+        "node_kind": null,
+        "duration_ms": null,
+        "message": "Review application strategy before continuing. On apply, M2 persists an Opportunity and records the decision. Skip/defer complete without persistence.",
+        "recoverable": null,
+        "checkpoint_reason": null,
+        "approval_kind": "owner_review",
+        "decision": null,
+        "attempt": null
+      },
+      {
+        "event_type": "checkpoint_written",
+        "timestamp": "2026-07-29T05:38:51.146999Z",
+        "run_id": "wfr_01KYP63ZJETH7RY3AD7RXGXYMC",
+        "node_id": null,
+        "node_kind": null,
+        "duration_ms": null,
+        "message": null,
+        "recoverable": null,
+        "checkpoint_reason": "approval",
+        "approval_kind": null,
+        "decision": null,
+        "attempt": null
+      },
+      {
+        "event_type": "approval_received",
+        "timestamp": "2026-07-29T05:39:00.543109Z",
+        "run_id": "wfr_01KYP63ZJETH7RY3AD7RXGXYMC",
+        "node_id": null,
+        "node_kind": null,
+        "duration_ms": null,
+        "message": null,
+        "recoverable": null,
+        "checkpoint_reason": null,
+        "approval_kind": "owner_review",
+        "decision": "apply",
+        "attempt": null
+      },
+      {
+        "event_type": "run_resumed",
+        "timestamp": "2026-07-29T05:39:00.543109Z",
+        "run_id": "wfr_01KYP63ZJETH7RY3AD7RXGXYMC",
+        "node_id": null,
+        "node_kind": null,
+        "duration_ms": null,
+        "message": null,
+        "recoverable": null,
+        "checkpoint_reason": null,
+        "approval_kind": null,
+        "decision": null,
+        "attempt": null
+      },
+      {
+        "event_type": "checkpoint_written",
+        "timestamp": "2026-07-29T05:39:00.545724Z",
+        "run_id": "wfr_01KYP63ZJETH7RY3AD7RXGXYMC",
+        "node_id": null,
+        "node_kind": null,
+        "duration_ms": null,
+        "message": null,
+        "recoverable": null,
+        "checkpoint_reason": "milestone",
+        "approval_kind": null,
+        "decision": null,
+        "attempt": null
+      },
+      {
+        "event_type": "checkpoint_written",
+        "timestamp": "2026-07-29T05:39:00.550427Z",
+        "run_id": "wfr_01KYP63ZJETH7RY3AD7RXGXYMC",
+        "node_id": null,
+        "node_kind": null,
+        "duration_ms": null,
+        "message": null,
+        "recoverable": null,
+        "checkpoint_reason": "milestone",
+        "approval_kind": null,
+        "decision": null,
+        "attempt": null
+      },
+      {
+        "event_type": "node_started",
+        "timestamp": "2026-07-29T05:39:00.555428Z",
+        "run_id": "wfr_01KYP63ZJETH7RY3AD7RXGXYMC",
+        "node_id": "persist",
+        "node_kind": "deterministic",
+        "duration_ms": null,
+        "message": null,
+        "recoverable": null,
+        "checkpoint_reason": null,
+        "approval_kind": null,
+        "decision": null,
+        "attempt": 1
+      },
+      {
+        "event_type": "checkpoint_written",
+        "timestamp": "2026-07-29T05:39:00.557519Z",
+        "run_id": "wfr_01KYP63ZJETH7RY3AD7RXGXYMC",
+        "node_id": null,
+        "node_kind": null,
+        "duration_ms": null,
+        "message": null,
+        "recoverable": null,
+        "checkpoint_reason": "milestone",
+        "approval_kind": null,
+        "decision": null,
+        "attempt": null
+      },
+      {
+        "event_type": "node_succeeded",
+        "timestamp": "2026-07-29T05:39:00.576114Z",
+        "run_id": "wfr_01KYP63ZJETH7RY3AD7RXGXYMC",
+        "node_id": "persist",
+        "node_kind": "deterministic",
+        "duration_ms": 14,
+        "message": null,
+        "recoverable": null,
+        "checkpoint_reason": null,
+        "approval_kind": null,
+        "decision": null,
+        "attempt": 1
+      },
+      {
+        "event_type": "checkpoint_written",
+        "timestamp": "2026-07-29T05:39:00.576923Z",
+        "run_id": "wfr_01KYP63ZJETH7RY3AD7RXGXYMC",
+        "node_id": null,
+        "node_kind": null,
+        "duration_ms": null,
+        "message": null,
+        "recoverable": null,
+        "checkpoint_reason": "milestone",
+        "approval_kind": null,
+        "decision": null,
+        "attempt": null
+      },
+      {
+        "event_type": "node_started",
+        "timestamp": "2026-07-29T05:39:00.581400Z",
+        "run_id": "wfr_01KYP63ZJETH7RY3AD7RXGXYMC",
+        "node_id": "record_decision",
+        "node_kind": "deterministic",
+        "duration_ms": null,
+        "message": null,
+        "recoverable": null,
+        "checkpoint_reason": null,
+        "approval_kind": null,
+        "decision": null,
+        "attempt": 1
+      },
+      {
+        "event_type": "checkpoint_written",
+        "timestamp": "2026-07-29T05:39:00.583689Z",
+        "run_id": "wfr_01KYP63ZJETH7RY3AD7RXGXYMC",
+        "node_id": null,
+        "node_kind": null,
+        "duration_ms": null,
+        "message": null,
+        "recoverable": null,
+        "checkpoint_reason": "milestone",
+        "approval_kind": null,
+        "decision": null,
+        "attempt": null
+      },
+      {
+        "event_type": "node_succeeded",
+        "timestamp": "2026-07-29T05:39:00.600947Z",
+        "run_id": "wfr_01KYP63ZJETH7RY3AD7RXGXYMC",
+        "node_id": "record_decision",
+        "node_kind": "deterministic",
+        "duration_ms": 12,
+        "message": null,
+        "recoverable": null,
+        "checkpoint_reason": null,
+        "approval_kind": null,
+        "decision": null,
+        "attempt": 1
+      },
+      {
+        "event_type": "checkpoint_written",
+        "timestamp": "2026-07-29T05:39:00.602191Z",
+        "run_id": "wfr_01KYP63ZJETH7RY3AD7RXGXYMC",
+        "node_id": null,
+        "node_kind": null,
+        "duration_ms": null,
+        "message": null,
+        "recoverable": null,
+        "checkpoint_reason": "milestone",
+        "approval_kind": null,
+        "decision": null,
+        "attempt": null
+      },
+      {
+        "event_type": "run_completed",
+        "timestamp": "2026-07-29T05:39:00.605997Z",
+        "run_id": "wfr_01KYP63ZJETH7RY3AD7RXGXYMC",
+        "node_id": null,
+        "node_kind": null,
+        "duration_ms": null,
+        "message": "completed_with_decision:apply",
+        "recoverable": null,
+        "checkpoint_reason": null,
+        "approval_kind": null,
+        "decision": null,
+        "attempt": null
+      },
+      {
+        "event_type": "checkpoint_written",
+        "timestamp": "2026-07-29T05:39:00.609203Z",
+        "run_id": "wfr_01KYP63ZJETH7RY3AD7RXGXYMC",
+        "node_id": null,
+        "node_kind": null,
+        "duration_ms": null,
+        "message": null,
+        "recoverable": null,
+        "checkpoint_reason": "terminal",
+        "approval_kind": null,
+        "decision": null,
+        "attempt": null
+      }
+    ],
+    "completed_nodes": [
+      {
+        "node_id": "acquire",
+        "kind": "deterministic",
+        "completed_at": "2026-07-29T05:38:51.091391Z"
+      },
+      {
+        "node_id": "validate_normalise",
+        "kind": "deterministic",
+        "completed_at": "2026-07-29T05:38:51.096161Z"
+      },
+      {
+        "node_id": "analyse",
+        "kind": "llm_backed",
+        "completed_at": "2026-07-29T05:38:51.106561Z"
+      },
+      {
+        "node_id": "assess",
+        "kind": "llm_backed",
+        "completed_at": "2026-07-29T05:38:51.114424Z"
+      },
+      {
+        "node_id": "match",
+        "kind": "deterministic",
+        "completed_at": "2026-07-29T05:38:51.122799Z"
+      },
+      {
+        "node_id": "strategy",
+        "kind": "deterministic",
+        "completed_at": "2026-07-29T05:38:51.132317Z"
+      },
+      {
+        "node_id": "owner_review",
+        "kind": "deterministic",
+        "completed_at": "2026-07-29T05:38:51.143547Z"
+      },
+      {
+        "node_id": "persist",
+        "kind": "deterministic",
+        "completed_at": "2026-07-29T05:39:00.571475Z"
+      },
+      {
+        "node_id": "record_decision",
+        "kind": "deterministic",
+        "completed_at": "2026-07-29T05:39:00.597334Z"
+      }
+    ],
+    "schema_version": "1"
+  },
+  "approval": {
+    "pending_kind": null,
+    "pending_options": [],
+    "pending_message": null,
+    "pending_requested_at": null,
+    "owner_decision": "apply",
+    "decided_at": "2026-07-29T05:39:00.543109Z"
+  },
+  "retry": null
+}

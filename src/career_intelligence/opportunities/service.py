@@ -13,8 +13,13 @@ from career_intelligence.job_analysis.models import JobAnalysis, JobPosting
 from career_intelligence.opportunity_assessment.models import OpportunityAssessment
 from career_intelligence.portfolio_matching.models import PortfolioMatch
 
-from .errors import ErrorDetail, OpportunityTransitionError, OpportunityValidationError
-from .identity import build_identity
+from .errors import (
+    ErrorDetail,
+    OpportunityNotFoundError,
+    OpportunityTransitionError,
+    OpportunityValidationError,
+)
+from .identity import build_identity, new_opportunity_id
 from .models import (
     OUTCOME_KINDS,
     OWNER_DECISION_KINDS,
@@ -122,14 +127,35 @@ class OpportunityService:
         assessment: OpportunityAssessment,
         portfolio_match: PortfolioMatch,
         strategy: ApplicationStrategy,
+        opportunity_id: str | None = None,
     ) -> Opportunity:
         """Persist a new opportunity from trusted FR-002–FR-005 artifacts.
 
+        Creation is independent of the owner decision: the record is created with
+        ``decision=None`` and default review metadata, so a job may be persisted
+        after Application Strategy and before owner review (ADR-004). Apply,
+        skip, and defer later update the same record via ``record_decision``.
+
         Does not call OpenAI, re-assess, change strategy fields, record owner
-        decisions, or enforce duplicate detection.
+        decisions, or enforce duplicate detection across postings.
+
+        When ``opportunity_id`` is supplied and already present, returns the
+        existing record (idempotent reclaim for workflow side-effect recovery).
+        When supplied and absent, creates using that permanent id.
         """
+        if opportunity_id is not None:
+            try:
+                return self._store.get(opportunity_id)
+            except OpportunityNotFoundError:
+                pass
+
         now = datetime.now(UTC)
-        identity = build_identity(posting, job_analysis=job_analysis, created_at=now)
+        identity = build_identity(
+            posting,
+            job_analysis=job_analysis,
+            created_at=now,
+            opportunity_id=opportunity_id,
+        )
         summary = StrategySummary(
             pursuit_posture=strategy.pursuit_posture,
             application_tier=strategy.application_tier,
