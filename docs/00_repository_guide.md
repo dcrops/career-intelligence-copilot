@@ -36,7 +36,7 @@ Objectives.
 |----------|--------|
 | What is this project? | Decision-support for job search (Horizon 1), evolving toward a Career Intelligence Platform (Horizon 2). |
 | What has been completed? | **Phase 1** and **Phase 2** — see [12_phase_history.md](12_phase_history.md) and [eval/phase2_release_report.md](eval/phase2_release_report.md). |
-| What is next? | **FR-006b CV Quality Improvement**, then FR-007 and job acquisition — [10_roadmap.md](10_roadmap.md). |
+| What is next? | **FR-007 Cover Letter** (implemented — validate for daily use), then job acquisition — [10_roadmap.md](10_roadmap.md). |
 | Where should I start reading? | This guide → [AGENTS.md](../AGENTS.md) → [04_functional_specification.md](04_functional_specification.md) → [10_roadmap.md](10_roadmap.md). |
 
 ---
@@ -45,9 +45,9 @@ Objectives.
 
 **Phase 2 Job Intelligence — Complete** (documentation frozen as baseline).
 
-**Next milestone:** FR-006b CV Quality Improvement
+**Next milestone:** FR-007 Cover Letter (implemented) → automated job acquisition
 
-**Thereafter:** FR-007 Cover Letter → automated job acquisition (Horizon 1)
+**Thereafter:** Remaining Horizon 1 operational work as sequenced in the roadmap
 
 Architecture decisions: `docs/adr/`. Release evidence:
 [eval/phase2_release_report.md](eval/phase2_release_report.md).

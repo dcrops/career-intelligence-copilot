@@ -195,6 +195,20 @@ methodology/highlights content.
 
 ---
 
+## FR-007 Cover Letter coverage
+
+FR-007 is **implemented**. Coverage includes:
+
+- unit tests under `tests/unit/cover_letter/` (gates, plan shape, composition,
+  boilerplate refusal, draft writer, determinism);
+- fidelity checks that company, role, and planned portfolio projects appear; and
+- owner manual validation via `scripts/run_cover_letter_manual.py`
+  ([eval/fr007_cover_letter.md](eval/fr007_cover_letter.md)).
+
+Default path is fully deterministic (no OpenAI). Owner review remains mandatory.
+
+---
+
 ## M4 Ranked comparison coverage
 
 M4 is **complete** for Phase 2 job opportunities (FR-012 partial). Coverage includes:

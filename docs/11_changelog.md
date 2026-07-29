@@ -4,6 +4,88 @@ Records product strategy and engineering knowledge changes. Routine typo fixes a
 
 ---
 
+## Version 1.44
+
+### FR-007 Hiring-Manager Lens + Natural Project Voice
+
+- Project selection now weights employer concern clusters (trust, production,
+  LLM/agents, documents, deterministic rules, ops insights) and production
+  maturity, not keyword frequency alone.
+- Project narratives are engineering-first (orchestration, evaluation,
+  grounding, deterministic rules) with domain as secondary context.
+- Project paragraphs use varied product-style phrasing (what / why / relevance)
+  and no longer repeat “This demonstrates…”, “The business value is…”, or
+  “maps directly…”.
+- Closing invites portfolio curiosity (working software, trade-offs, demos).
+- Eval: [eval/fr007_cover_letter.md](eval/fr007_cover_letter.md).
+
+---
+
+## Version 1.43
+
+### FR-007 Evidence-Based Project Selection + Letter Voice
+
+- Project selection ranks portfolio work against JD technologies and
+  responsibilities (plus a moderated strategy emphasis boost), not popularity.
+- Each planned project now carries `selection_reason`, `business_outcome`, and
+  `fit_focus` for explainable composition.
+- Project paragraphs use ELI10 explanations, business outcomes, and an explicit
+  link back to the role.
+- Stakeholder/adoption language is added when the JD signals it.
+- Em/en dashes and common AI-template markers are stripped from letter prose.
+- Eval: [eval/fr007_cover_letter.md](eval/fr007_cover_letter.md).
+
+---
+
+## Version 1.42
+
+### FR-007 Cover Letter — Manual Validation Polish
+
+- Openings prefer concrete engineering challenges; marketing fluff such as
+  “shaping the future” is rejected.
+- Motivation paragraph adds portfolio breadth, architecture-first philosophy,
+  and a natural collaboration sentence.
+- Portfolio URL is referenced in the letter body (not only the signature).
+- Projects use plain-English (ELI10) explanations — problem, user, value —
+  instead of abstract capability statements.
+- Closing invites working software, architecture trade-offs, and live demos.
+- Eval: [eval/fr007_cover_letter.md](eval/fr007_cover_letter.md).
+
+---
+
+## Version 1.41
+
+### FR-007 Narrative Rendering + HTML
+
+- Cover letter **renderer** rewritten for human narrative voice; planner
+  terminology no longer appears in finished letters.
+- Openings express genuine attraction (“What drew me to…”); projects woven as
+  examples; stronger professional close; signature block aligned with CV contact
+  suite (LinkedIn / Portfolio / GitHub).
+- Draft writer now emits **Markdown + HTML** (shared CV print CSS) plus JSON and
+  plan JSON for visual regression against tailored CVs.
+- Manual validation refreshed for Bluefin, Maincode, Allura, and Forever New.
+- Eval: [eval/fr007_cover_letter.md](eval/fr007_cover_letter.md).
+
+---
+
+## Version 1.40
+
+### FR-007 Cover Letter Generation
+
+- Implemented evidence-first cover letter generation mirroring FR-006:
+  `CoverLetterPlan` (Phase A) → deterministic `CoverLetter` (Phase B).
+- Plan captures company alignment, role motivation, relevant evidence, strongest
+  projects, and closing strategy before prose is composed.
+- Gates: owner approval, material benefit (platinum/gold or
+  `consider_cover_letter`), plan approval, mandatory owner review.
+- Avoids generic application boilerplate; grounded in ApplicationStrategy +
+  Career Profile only.
+- Manual runner: `scripts/run_cover_letter_manual.py`. Eval:
+  [eval/fr007_cover_letter.md](eval/fr007_cover_letter.md).
+
+---
+
 ## Version 1.39
 
 ### FR-006c Summary Intelligence — Final Polish

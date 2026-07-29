@@ -875,7 +875,37 @@ or `fallback_profile_copy`. Owner review remains mandatory before external use.
 - Owner decisions / outcomes (M2) via `cic opportunity decide|outcome` —
   see § M2 Decision and Outcome Logging below.
 - Does not export CSV or rank open opportunities (M3–M4).
-- Does not generate cover letters, outreach, or submit applications.
+- Does not generate outreach or submit applications.
+- Cover letters are FR-007 (`scripts/run_cover_letter_manual.py`) — separate from CV drafts.
+
+---
+
+## FR-007 Cover Letter Generation
+
+**Status:** Implemented (2026-07-29); narrative + HTML pass (1.41).
+
+**Public boundary:** `career_intelligence.cover_letter`
+
+**Flow:** ApplicationStrategy + CareerProfile → `CoverLetterPlanService` /
+`DeterministicCoverLetterPlanner` → `CoverLetterGenerationService` (narrative
+composer) → `write_cover_letter_drafts` (Markdown + HTML + JSON) under
+`career-documents/cover-letters/generated/`.
+
+**Presentation:** HTML reuses CV print CSS so cover letters and CVs read as one
+document suite. Signature contact matches FR-006 `ContactDetails`.
+
+**Gates:** `owner_approved_to_plan`; material benefit (platinum/gold or
+`consider_cover_letter`); `cover_letter_plan_approved`; always
+`owner_review_required=True`.
+
+**Manual runner:**
+
+```bash
+python scripts/run_cover_letter_manual.py \
+  --job-file manual_validation/jobs/002_bluefin_ai_systems_developer.txt
+```
+
+Eval: [eval/fr007_cover_letter.md](eval/fr007_cover_letter.md).
 
 ---
 

@@ -547,9 +547,50 @@ Design: [eval/fr006_phase_c_design.md](eval/fr006_phase_c_design.md).
 
 ## FR-007 Cover Letter
 
-**Phase:** Post–Phase 2
+**Phase:** Post–Phase 2  
+**Status:** Implemented (deterministic plan + render; owner review mandatory)
 
-Generate company-specific cover letters.
+Generate company-specific cover letters using the same evidence-first architecture
+as FR-006: a structured intermediate plan, then deterministic prose composition.
+
+### Architecture
+
+```
+Career Profile (FR-001)
+        ↓
+Job Analysis → Assessment → Portfolio → Application Strategy (FR-002–005)
+        ↓
+CoverLetterPlan (FR-007 Phase A) — company alignment, role motivation,
+relevant evidence, strongest projects, closing strategy
+        ↓
+CoverLetter (FR-007 Phase B) — deterministic Markdown + HTML narrative
+        ↓
+Owner Review (mandatory before external use)
+```
+
+**Invariants**
+
+- `CoverLetterPlan` is authoritative for composition decisions.
+- Prose is composed only from plan fields and Career Profile text already selected
+  by the plan — no invented employers, technologies, metrics, or achievements.
+- Renderer must not expose planner vocabulary (“relevant evidence”, “brief
+  emphasises”, “application strategy”, etc.).
+- Avoid generic application boilerplate (“I am writing to apply…”, “Dear Sir/Madam”).
+- Material-benefit gate: platinum/gold **or** `consider_cover_letter` next action
+  (otherwise explicit `override_material_benefit`).
+- Two-stage owner approval: `owner_approved_to_plan` → `cover_letter_plan_approved`
+  → final `owner_review_required=True`.
+
+### Delivery slices
+
+1. **Phase A** — Deterministic `CoverLetterPlan` via `CoverLetterPlanService` +
+   `DeterministicCoverLetterPlanner`.
+2. **Phase B** — Narrative `CoverLetter` via `CoverLetterGenerationService`
+   (Markdown + HTML drafts under `career-documents/cover-letters/generated/`,
+   shared CV print styling).
+
+Manual runner: `scripts/run_cover_letter_manual.py`.  
+Eval: [eval/fr007_cover_letter.md](eval/fr007_cover_letter.md).
 
 Acceptance Criteria
 
@@ -560,6 +601,10 @@ Acceptance Criteria
 ✓ References portfolio.
 
 ✓ Output requires user review before use.
+
+✓ Grounded in ApplicationStrategy + Career Profile (no hallucinated claims).
+
+✓ Reads as a letter (not an assessment dump); Markdown and HTML both generated.
 
 ---
 

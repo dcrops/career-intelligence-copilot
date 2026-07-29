@@ -24,6 +24,9 @@ Job Analysis
       ↓
 Application Strategy (FR-005: posture + effort tier + advisory next actions)
       ↓
+      ├─→ Tailored CV (FR-006, when material benefit + owner approval)
+      └─→ Cover Letter (FR-007, when material benefit + owner approval)
+      ↓
 User Decision
       ↓
 Outcome Logging
@@ -33,9 +36,10 @@ Ranked Comparison (among open opportunities)
 
 Opportunity Assessment and Portfolio Matching are sibling consumers of Career Profile +
 Job Analysis. Neither feeds or modifies the other. Application Strategy is the downstream
-consumer of **both** sibling artifacts (plus Career Profile). Each stage produces a durable
-artifact that downstream stages and future assessments can reference. The loop repeats for
-every new opportunity.
+consumer of **both** sibling artifacts (plus Career Profile). CV and cover letter generation
+are optional Horizon 1 follow-ons that consume Application Strategy + Career Profile under
+human review. Each stage produces a durable artifact that downstream stages and future
+assessments can reference. The loop repeats for every new opportunity.
 
 ---
 

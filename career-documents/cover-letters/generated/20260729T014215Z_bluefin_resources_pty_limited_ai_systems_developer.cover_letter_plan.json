@@ -1,0 +1,455 @@
+{
+  "job_analysis": {
+    "posting": {
+      "raw_text": "AI Systems Developer\n\nBluefin Resources Pty Limited \nView all jobs\n\nMelbourne VIC (Hybrid)\nEngineering - Software (Information & Communication Technology)\nFull time\nPosted 20h ago\n•\nMedium application volume\n\nHow you match\n1 skill or credential matches your profile\n Systems Design\nShow all⁠\nAI Systems DeveloperMelbourne CBD | Hybrid (4 days office / 1 day WFH)\nSalary: Competitive package\nBuild and operate the AI systems shaping the future of fintech.\n\nWe’re partnering with an innovative Melbourne-based fintech that is transforming how businesses manage invoice payments and cash flow.\n\nAs they continue building an AI-native platform, they are looking for an AI Systems Developer to help take their AI capabilities from early development through to reliable, production-ready systems.\nThis is a unique opportunity for an engineer who enjoys the intersection of software engineering, artificial intelligence and platform reliability — someone who doesn’t just want to experiment with AI, but wants to build, deploy and own systems that create real business impact.\n\nThe Role: As an AI Systems Developer, you will be responsible for building and operating the production AI stack.\n\nYou’ll work across:\nLLM-powered applications\nAI agents and automation workflows\nData pipelines and retrieval systems\nModel serving and AI infrastructure\nMonitoring, observability and performance optimisation\nOnce AI capabilities are live, you’ll own their reliability — ensuring systems remain scalable, secure, cost-effective and performant.\n\nThis role sits within the Data, AI & Systems function and will work closely with engineering and product teams to safely embed AI into critical business processes.\n\nWhat You’ll Be Doing:\n\nBuild AI capabilities into production\nDesign, develop and deploy AI-powered features and services\nBuild data pipelines, retrieval systems and AI agents\nWork with LLM applications and model-serving infrastructure\nImprove engineering practices to safely integrate AI into the core platform\nOwn reliability and performance\nMonitor AI systems across uptime, latency, cost and accuracy\nBuild observability across metrics, logs, tracing and evaluations\nIdentify performance issues, model degradation and system failures\nOptimise AI systems for scale and efficiency\nSupport production operations\nParticipate in incident response and troubleshooting\nDevelop runbooks, processes and safeguards\nImplement safe deployment, rollback and change-management practices\nImprove systems to prevent recurring issues\nAbout You\n\nYou’re a strong software engineer who enjoys owning systems beyond just writing code.\nYou’ll ideally have:\n5+ years of software engineering experience\nExperience operating production systems at scale\nHands-on experience with AI/LLM applications, agents or ML systems\nStrong AWS experience\nInfrastructure-as-Code experience (Terraform preferred)\nExperience building data pipelines and working with databases (PostgreSQL preferred)\nExperience with monitoring, observability and incident response\nStrong understanding of reliability, scalability and system design\nExperience with the following would be advantageous:\nRuby on Rails\nDomain Driven Design\nFinancial services or other high-reliability industries\nKubernetes / cloud-native architectures\nWhy Join? This is an opportunity to be part of one of Australia’s most exciting AI-driven fintech journeys.\nYou’ll have the chance to:\nBuild AI systems from the ground up\nOwn technology that directly impacts customers and business outcomes\nWork with modern AI tooling and infrastructure\nShape how AI is implemented safely in a financial platform\nJoin a collaborative, high-performing engineering team\nAdditional benefits include:\nCompetitive salary and benefits package\nHybrid working model (Monday–Thursday in the Melbourne CBD office, Friday WFH)\nModern office environment\nRegular team events and interstate off-sites\nClear opportunities for growth and progression\nEmployer questions\nYour application will include the following questions:\nWhich of the following statements best describes your right to work in Australia?\nHow many years' experience do you have as a Systems Developer?",
+      "title": "AI Systems Developer",
+      "company": "Bluefin Resources Pty Limited",
+      "source_url": "https://au.seek.com/job/93487188?ref=recom-homepage&pos=1&origin=showNewTab#sol=082fc4e9ff6b3ed7c17c0602869ec5e7b80c81a8"
+    },
+    "role_family": {
+      "family": "ai_engineering",
+      "evidence": [
+        {
+          "excerpt": "Build and operate the AI systems shaping the future of fintech.",
+          "section": "Job description"
+        }
+      ]
+    },
+    "seniority": {
+      "level": "unknown",
+      "ambiguous": false,
+      "candidate_levels": [],
+      "evidence": []
+    },
+    "technologies": [
+      {
+        "name": "LLM",
+        "level": "required",
+        "evidence": [
+          {
+            "excerpt": "LLM-powered applications",
+            "section": "Job description"
+          }
+        ]
+      },
+      {
+        "name": "AWS",
+        "level": "required",
+        "evidence": [
+          {
+            "excerpt": "Strong AWS experience",
+            "section": "Job description"
+          }
+        ]
+      },
+      {
+        "name": "Terraform",
+        "level": "preferred",
+        "evidence": [
+          {
+            "excerpt": "Infrastructure-as-Code experience (Terraform preferred)",
+            "section": "Job description"
+          }
+        ]
+      },
+      {
+        "name": "PostgreSQL",
+        "level": "preferred",
+        "evidence": [
+          {
+            "excerpt": "Experience building data pipelines and working with databases (PostgreSQL preferred)",
+            "section": "Job description"
+          }
+        ]
+      },
+      {
+        "name": "Ruby on Rails",
+        "level": "preferred",
+        "evidence": [
+          {
+            "excerpt": "Experience with the following would be advantageous: Ruby on Rails",
+            "section": "Job description"
+          }
+        ]
+      },
+      {
+        "name": "Kubernetes",
+        "level": "preferred",
+        "evidence": [
+          {
+            "excerpt": "Kubernetes / cloud-native architectures",
+            "section": "Job description"
+          }
+        ]
+      }
+    ],
+    "responsibilities": [
+      {
+        "description": "Build AI capabilities into production",
+        "evidence": [
+          {
+            "excerpt": "Build AI capabilities into production",
+            "section": "Job description"
+          }
+        ]
+      },
+      {
+        "description": "Design, develop and deploy AI-powered features and services",
+        "evidence": [
+          {
+            "excerpt": "Design, develop and deploy AI-powered features and services",
+            "section": "Job description"
+          }
+        ]
+      },
+      {
+        "description": "Build data pipelines, retrieval systems and AI agents",
+        "evidence": [
+          {
+            "excerpt": "Build data pipelines, retrieval systems and AI agents",
+            "section": "Job description"
+          }
+        ]
+      },
+      {
+        "description": "Work with LLM applications and model-serving infrastructure",
+        "evidence": [
+          {
+            "excerpt": "Work with LLM applications and model-serving infrastructure",
+            "section": "Job description"
+          }
+        ]
+      },
+      {
+        "description": "Improve engineering practices to safely integrate AI into the core platform",
+        "evidence": [
+          {
+            "excerpt": "Improve engineering practices to safely integrate AI into the core platform",
+            "section": "Job description"
+          }
+        ]
+      },
+      {
+        "description": "Own reliability and performance",
+        "evidence": [
+          {
+            "excerpt": "Own reliability and performance",
+            "section": "Job description"
+          }
+        ]
+      },
+      {
+        "description": "Monitor AI systems across uptime, latency, cost and accuracy",
+        "evidence": [
+          {
+            "excerpt": "Monitor AI systems across uptime, latency, cost and accuracy",
+            "section": "Job description"
+          }
+        ]
+      },
+      {
+        "description": "Build observability across metrics, logs, tracing and evaluations",
+        "evidence": [
+          {
+            "excerpt": "Build observability across metrics, logs, tracing and evaluations",
+            "section": "Job description"
+          }
+        ]
+      },
+      {
+        "description": "Identify performance issues, model degradation and system failures",
+        "evidence": [
+          {
+            "excerpt": "Identify performance issues, model degradation and system failures",
+            "section": "Job description"
+          }
+        ]
+      },
+      {
+        "description": "Optimise AI systems for scale and efficiency",
+        "evidence": [
+          {
+            "excerpt": "Optimise AI systems for scale and efficiency",
+            "section": "Job description"
+          }
+        ]
+      },
+      {
+        "description": "Support production operations",
+        "evidence": [
+          {
+            "excerpt": "Support production operations",
+            "section": "Job description"
+          }
+        ]
+      },
+      {
+        "description": "Participate in incident response and troubleshooting",
+        "evidence": [
+          {
+            "excerpt": "Participate in incident response and troubleshooting",
+            "section": "Job description"
+          }
+        ]
+      },
+      {
+        "description": "Develop runbooks, processes and safeguards",
+        "evidence": [
+          {
+            "excerpt": "Develop runbooks, processes and safeguards",
+            "section": "Job description"
+          }
+        ]
+      },
+      {
+        "description": "Implement safe deployment, rollback and change-management practices",
+        "evidence": [
+          {
+            "excerpt": "Implement safe deployment, rollback and change-management practices",
+            "section": "Job description"
+          }
+        ]
+      },
+      {
+        "description": "Improve systems to prevent recurring issues",
+        "evidence": [
+          {
+            "excerpt": "Improve systems to prevent recurring issues",
+            "section": "Job description"
+          }
+        ]
+      }
+    ],
+    "compensation": {
+      "clarity": "ambiguous",
+      "minimum": null,
+      "maximum": null,
+      "currency": null,
+      "period": null,
+      "raw_text": "Competitive package",
+      "evidence": [
+        {
+          "excerpt": "Salary: Competitive package",
+          "section": "Job description"
+        }
+      ]
+    },
+    "location": {
+      "clarity": "stated",
+      "summary": "Melbourne VIC (Hybrid)",
+      "evidence": [
+        {
+          "excerpt": "Melbourne CBD | Hybrid (4 days office / 1 day WFH)",
+          "section": "Job description"
+        }
+      ]
+    },
+    "work_arrangement": {
+      "arrangement": "hybrid",
+      "details": "Monday–Thursday in the Melbourne CBD office, Friday WFH",
+      "evidence": [
+        {
+          "excerpt": "Hybrid working model (Monday–Thursday in the Melbourne CBD office, Friday WFH)",
+          "section": "Job description"
+        }
+      ]
+    },
+    "employment": {
+      "working_hours": "full_time",
+      "engagement_type": "unspecified",
+      "evidence": [
+        {
+          "excerpt": "Full time",
+          "section": "Job description"
+        }
+      ]
+    },
+    "experience_requirements": [
+      {
+        "description": "5+ years of software engineering experience",
+        "level": "required",
+        "minimum_years": 5.0,
+        "maximum_years": null,
+        "evidence": [
+          {
+            "excerpt": "You’ll ideally have: 5+ years of software engineering experience",
+            "section": "Job description"
+          }
+        ]
+      }
+    ]
+  },
+  "application_tier": "platinum",
+  "pursuit_posture": "prioritise",
+  "company_alignment": {
+    "company": "Bluefin Resources Pty Limited",
+    "alignment_hook": "Build and operate the AI systems shaping the future of fintech",
+    "evidence": [
+      {
+        "origin": "job_analysis",
+        "job_source": "role_family",
+        "job_index": null,
+        "profile_source": null,
+        "profile_id": null,
+        "portfolio_project_id": null,
+        "excerpt": "Build and operate the AI systems shaping the future of fintech."
+      }
+    ]
+  },
+  "role_motivation": {
+    "role_title": "AI Systems Developer",
+    "motivation": "Build AI capabilities into production and Design, develop and deploy AI-powered features and services",
+    "evidence": [
+      {
+        "origin": "job_analysis",
+        "job_source": "responsibility",
+        "job_index": 0,
+        "profile_source": null,
+        "profile_id": null,
+        "portfolio_project_id": null,
+        "excerpt": "Build AI capabilities into production"
+      },
+      {
+        "origin": "job_analysis",
+        "job_source": "responsibility",
+        "job_index": 1,
+        "profile_source": null,
+        "profile_id": null,
+        "portfolio_project_id": null,
+        "excerpt": "Design, develop and deploy AI-powered features and services"
+      },
+      {
+        "origin": "job_analysis",
+        "job_source": "responsibility",
+        "job_index": 2,
+        "profile_source": null,
+        "profile_id": null,
+        "portfolio_project_id": null,
+        "excerpt": "Build data pipelines, retrieval systems and AI agents"
+      }
+    ]
+  },
+  "relevant_evidence": [
+    {
+      "kind": "commercial_experience",
+      "claim": "AI Engineer with 3.5 years of commercial enterprise Data Engineering experience and an independent AI Engineering portfolio.",
+      "project_id": null,
+      "evidence": [
+        {
+          "origin": "career_profile",
+          "job_source": null,
+          "job_index": null,
+          "profile_source": "identity",
+          "profile_id": null,
+          "portfolio_project_id": null,
+          "excerpt": "AI Engineer with 3.5 years of commercial enterprise Data Engineering experience and an independent AI Engineering portfolio."
+        }
+      ]
+    },
+    {
+      "kind": "engineering_practice",
+      "claim": "Designed and delivered a portfolio of AI applications combining deterministic logic with AI reasoning across RAG, operational intelligence, diagnostics, entitlements, and career decision support.",
+      "project_id": null,
+      "evidence": [
+        {
+          "origin": "career_profile",
+          "job_source": null,
+          "job_index": null,
+          "profile_source": "identity",
+          "profile_id": null,
+          "portfolio_project_id": null,
+          "excerpt": "Designed and delivered a portfolio of AI applications combining deterministic logic with AI reasoning across RAG, operational intelligence, diagnostics, entitlements, and career de"
+        }
+      ]
+    },
+    {
+      "kind": "engineering_practice",
+      "claim": "Built modular service architectures with FastAPI, containerised services with Docker, and unit/regression suites in PyTest.",
+      "project_id": null,
+      "evidence": [
+        {
+          "origin": "career_profile",
+          "job_source": null,
+          "job_index": null,
+          "profile_source": "identity",
+          "profile_id": null,
+          "portfolio_project_id": null,
+          "excerpt": "Built modular service architectures with FastAPI, containerised services with Docker, and unit/regression suites in PyTest."
+        }
+      ]
+    }
+  ],
+  "strongest_projects": [
+    {
+      "rank": 1,
+      "project_id": "operational-intelligence-copilot",
+      "project_name": "Operational Intelligence Copilot",
+      "emphasis": "Demonstrates operational intelligence capability for understanding business data. Combines reliable analytics with AI reasoning to surface anomalies and produce clear, evidence-backed executive insights that can be checked and trusted.",
+      "evidence": [
+        {
+          "origin": "portfolio_match",
+          "job_source": null,
+          "job_index": null,
+          "profile_source": null,
+          "profile_id": null,
+          "portfolio_project_id": "operational-intelligence-copilot",
+          "excerpt": "Demonstrates operational intelligence capability for understanding business data. Combines reliable analytics with AI reasoning to surface anomalies and produce clear, evidence-bac"
+        },
+        {
+          "origin": "application_strategy",
+          "job_source": null,
+          "job_index": null,
+          "profile_source": null,
+          "profile_id": null,
+          "portfolio_project_id": null,
+          "excerpt": "Consider emphasising 'operational-intelligence-copilot' (PortfolioMatch rank 1)."
+        }
+      ]
+    },
+    {
+      "rank": 2,
+      "project_id": "governance-document-rag",
+      "project_name": "Governance-Aware Document Intelligence RAG",
+      "emphasis": "Allows organisations to answer questions from their own documents with responses that stay grounded in source material. Built for teams that need trustworthy AI answers over policies, procedures, and knowledge bases — with evaluation and explainability controls.",
+      "evidence": [
+        {
+          "origin": "portfolio_match",
+          "job_source": null,
+          "job_index": null,
+          "profile_source": null,
+          "profile_id": null,
+          "portfolio_project_id": "governance-document-rag",
+          "excerpt": "Allows organisations to answer questions from their own documents with responses that stay grounded in source material. Built for teams that need trustworthy AI answers over polici"
+        },
+        {
+          "origin": "application_strategy",
+          "job_source": null,
+          "job_index": null,
+          "profile_source": null,
+          "profile_id": null,
+          "portfolio_project_id": null,
+          "excerpt": "Consider emphasising 'governance-document-rag' (PortfolioMatch rank 2)."
+        }
+      ]
+    }
+  ],
+  "closing_strategy": {
+    "approach": "contribution_focus",
+    "intent": "Close by offering a concrete discussion of how AI Engineering delivery can support Bluefin Resources Pty Limited's AI Systems Developer priorities.",
+    "evidence": [
+      {
+        "origin": "application_strategy",
+        "job_source": null,
+        "job_index": null,
+        "profile_source": null,
+        "profile_id": null,
+        "portfolio_project_id": null,
+        "excerpt": "prioritise"
+      }
+    ]
+  },
+  "assumptions": [],
+  "owner_review_recommended": true,
+  "insufficient_evidence": false,
+  "material_benefit_override": false
+}

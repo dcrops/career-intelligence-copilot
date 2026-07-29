@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>David Cropper - AI Systems Developer</title>
+  <style>
+/* Canonical CV print presentation.
+   Source of truth for Master CV HTML and tailored CV HTML.
+   Layout benchmark: archived Master CV v3 (readability / spacing).
+   Content: current Master CV remains authoritative.
+   Readability is prioritised over minimum page count (≈4–5 pages OK).
+*/
+
+:root {
+  --ink: #1a1a1a;
+  --heading: #1e3a5f;
+  --heading-entry: #2a5a8a;
+  --muted: #444;
+  --rule: #5b7ea6;
+}
+
+@page {
+  size: A4;
+  margin: 18mm 20mm;
+}
+
+body {
+  font-family: "Georgia", "Times New Roman", serif;
+  color: var(--ink);
+  font-size: 11pt;
+  line-height: 1.45;
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 18px 16px 28px;
+}
+
+h1 {
+  font-family: "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+  color: var(--heading);
+  text-align: center;
+  font-size: 24pt;
+  font-weight: 700;
+  margin: 0 0 8px;
+  letter-spacing: 0.02em;
+  page-break-after: avoid;
+  break-after: avoid-page;
+}
+
+.header-rule {
+  border: 0;
+  border-top: 1.5px solid var(--rule);
+  margin: 6px 0 14px;
+}
+
+.contact {
+  text-align: center;
+  font-size: 10pt;
+  color: var(--muted);
+  margin: 0 0 5px;
+  line-height: 1.4;
+}
+
+.contact a {
+  color: var(--heading);
+  text-decoration: underline;
+}
+
+.role {
+  text-align: center;
+  font-family: "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+  font-weight: 700;
+  color: var(--heading);
+  margin: 12px 0 18px;
+  font-size: 12pt;
+}
+
+hr {
+  border: 0;
+  border-top: 1px solid #d7e0ea;
+  margin: 14px 0 16px;
+}
+
+h2 {
+  font-family: "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+  color: var(--heading);
+  font-size: 13pt;
+  font-weight: 700;
+  margin: 33px 0 10px;
+  border-bottom: 1px solid #d7e0ea;
+  padding-bottom: 4px;
+  page-break-after: avoid;
+  break-after: avoid-page;
+}
+
+h3 {
+  font-family: "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+  color: var(--heading-entry);
+  font-size: 11.5pt;
+  font-weight: 700;
+  margin: 14px 0 4px;
+  page-break-after: avoid;
+  break-after: avoid-page;
+}
+
+.meta {
+  font-style: italic;
+  color: var(--muted);
+  margin: 0 0 8px;
+  font-size: 10pt;
+  page-break-before: avoid;
+  break-before: avoid-page;
+}
+
+p {
+  margin: 0 0 9px;
+  orphans: 3;
+  widows: 3;
+}
+
+ul {
+  margin: 4px 0 14px 1.35em;
+  padding: 0;
+}
+
+li {
+  margin: 0 0 6px;
+  orphans: 2;
+  widows: 2;
+}
+
+.stack {
+  margin: 17px 0 6px;
+}
+
+.skills {
+  margin: 0 0 12px;
+}
+
+.skills p {
+  margin: 0 0 7px;
+}
+
+/* Long entries may split across pages; keep heading with the next line. */
+.experience,
+.project {
+  margin: 0 0 30px;
+  page-break-inside: auto;
+  break-inside: auto;
+}
+
+.experience > h3 + .meta,
+.project > h3 + p {
+  page-break-before: avoid;
+  break-before: avoid-page;
+}
+
+.methodology {
+  margin: 0 0 16px;
+  page-break-inside: auto;
+  break-inside: auto;
+}
+
+.methodology > h2 + p {
+  page-break-before: avoid;
+  break-before: avoid-page;
+}
+
+.closing {
+  margin-top: 10px;
+  page-break-inside: avoid;
+  break-inside: avoid-page;
+}
+
+@media print {
+  body {
+    padding: 0;
+    max-width: none;
+  }
+  a {
+    color: var(--heading);
+  }
+}
+  body.cover-letter .letter-meta { margin: 0 0 1.25rem; }
+  body.cover-letter .signature { margin-top: 1.75rem; }
+  body.cover-letter .signature p { margin: 0.15rem 0; }
+  </style>
+</head>
+<body class="cover-letter">
+<h1>David Cropper</h1>
+<hr class="header-rule" />
+<p class="role letter-meta">AI Systems Developer - Bluefin Resources Pty Limited</p>
+<p>Hello,</p>
+<p>What drew me to Bluefin Resources Pty Limited's AI Systems Developer role is the chance to build and operate the AI systems for fintech. I am particularly interested in building AI capabilities into production, where careful design and reviewable results matter.</p>
+<p>I am an AI Engineer with 3.5 years of commercial enterprise Data Engineering experience and an independent AI Engineering practice. Over the past two years I have built a portfolio of production-style AI engineering projects spanning intelligent document search, operational analytics, AI governance and career intelligence systems. I build with an architecture-first mindset. I keep logic deterministic where that is the right tool, validate with evidence, and keep a human in the loop where the stakes require it. I favour explainable, production-quality systems over opaque model responses. I enjoy collaborating with engineers, learning from experienced teammates and sharing knowledge as we build AI solutions together. I am also comfortable translating business requirements into practical AI systems and supporting adoption with clear communication. That is the approach I would bring to Bluefin Resources Pty Limited's technical challenges.</p>
+<p>Two projects from my portfolio (journey.chaseriskandcompliance.com.au) are especially useful evidence for this role. Operational Intelligence Copilot turns operational data into plain-English questions and explainable insights for decision makers. The engineering centre of it is intent routing, analytics workflows, anomaly detection and evidence-backed LLM reasoning with clear decision trails. In practice, managers can spot trends, risks and opportunities faster with insights they can check.</p>
+<p>Another strong example is Governance-Aware Document Intelligence RAG, which lets teams ask questions across large document collections and returns answers tied back to the original source material. What I would highlight in an interview is retrieval orchestration, grounding checks, evaluation harnesses and explainability controls around LLM responses. In practice, organisations get trusted document answers they can verify, which improves governance and reduces blind trust in AI output.</p>
+<p>I would welcome a conversation about Bluefin Resources Pty Limited's AI Systems Developer work. Happy to open the portfolio, walk through architecture decisions and engineering trade-offs, and show live demonstrations of the systems above.</p>
+<div class="signature">
+<p>Kind regards,</p>
+<p><strong>David Cropper</strong></p>
+<p class="contact"><a href="mailto:djcropster@gmail.com">djcropster@gmail.com</a></p>
+<p class="contact"><a href="tel:0400811545">0400 811 545</a></p>
+<p class="contact">Melbourne, VIC</p>
+<p class="contact"><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/david-cropper/">www.linkedin.com/in/david-cropper</a></p>
+<p class="contact"><strong>Portfolio:</strong> <a href="https://journey.chaseriskandcompliance.com.au/">journey.chaseriskandcompliance.com.au</a></p>
+<p class="contact"><strong>GitHub:</strong> <a href="https://github.com/dcrops">github.com/dcrops</a></p>
+</div>
+<p class="meta"><em>Owner review required before any external use.</em></p>
+</body>
+</html>
