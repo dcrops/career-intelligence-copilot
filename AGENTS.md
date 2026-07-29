@@ -26,11 +26,10 @@ Career Intelligence Copilot is a decision-support system for job search — not 
 **Current phase:** Phase 2 Job Intelligence MVP is **complete** and documentation is
 a **frozen baseline** (M5 GO —
 [docs/eval/phase2_release_report.md](docs/eval/phase2_release_report.md);
-[docs/12_phase_history.md](docs/12_phase_history.md)). FR-001–FR-006 (including
-FR-006b/c) are closed. **FR-007 Cover Letter** is implemented (deterministic plan +
-render; owner review mandatory). **Next Horizon 1 focus:** automated job
-acquisition / discovery, plus remaining Phase 2 exit items (pipeline tracking,
-FR-013, ranked comparison) as sequenced by the owner. Do not reopen Phase 2 exit
+[docs/12_phase_history.md](docs/12_phase_history.md)). FR-001–FR-007 (including
+FR-006b/c) are closed. **Next Horizon 1 focus:** automated job acquisition /
+discovery. Remaining Phase 2 operational items (pipeline tracking, FR-013 depth,
+ranked comparison use) follow owner sequencing. Do not reopen Phase 2 exit
 criteria or architecture without explicit owner request.
 
 **Implementation foundation:** Python 3.11+, Pydantic, YAML storage, and the public profile
@@ -49,7 +48,7 @@ service boundary are recorded in
 
 **Out of scope for Phase 2 exit (unchanged historically):** Recruiter outreach, interview preparation, full dashboard, market intelligence, cross-domain daily prioritisation, automated job discovery, predictive scoring (Interview Probability, Recruiter Confidence).
 
-**Delivered outside original Phase 2 exit criteria (owner-sequenced):** FR-006 CV Generation (complete, including FR-006b/c); **FR-007 Cover Letter** (implemented — plan + deterministic render under human review).
+**Delivered outside original Phase 2 exit criteria (owner-sequenced):** FR-006 CV Generation (complete, including FR-006b/c); **FR-007 Cover Letter** (complete — plan + deterministic narrative render; manual validation passed).
 
 Full detail: [docs/04_functional_specification.md](docs/04_functional_specification.md) and [docs/10_roadmap.md](docs/10_roadmap.md).
 

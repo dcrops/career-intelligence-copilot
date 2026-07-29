@@ -1,74 +1,77 @@
 # FR-007 — Cover Letter Generation
 
-**Status:** Implemented (narrative rendering + HTML)  
-**Date:** 2026-07-29
+**Status:** Complete (passed manual validation)  
+**Date closed:** 2026-07-29  
+**Package:** `career_intelligence.cover_letter`
 
 ## Purpose
 
-Produce company-specific, recruiter-ready cover letters that feel authentic to an
-experienced AI Engineer — using the same evidence-first plan → render pattern as
-FR-006.
+Produce company-specific, approximately one-page cover letters that feel authentic
+to an experienced AI Engineer. Evidence-first plan → deterministic narrative render
+(same pattern as FR-006). Owner review is mandatory before external use.
 
 **Planner thinks like an engineer. Renderer writes like a human.**
 
-## Architecture
+## Inputs / outputs
 
-| Phase | Artifact | Owner |
-|-------|----------|-------|
-| A | `CoverLetterPlan` | `CoverLetterPlanService` + `DeterministicCoverLetterPlanner` |
-| B | `CoverLetter` | `CoverLetterGenerationService` + narrative `composer` |
+| Stage | Artefact |
+|-------|----------|
+| In | `ApplicationStrategy` + `CareerProfile` + gates / optional `ContactDetails` |
+| Phase A | `CoverLetterPlan` |
+| Phase B | `CoverLetter` (Markdown); HTML via `write_cover_letter_drafts` |
+| Out dir | `career-documents/cover-letters/generated/` (gitignored drafts) |
 
-Package: `src/career_intelligence/cover_letter/`
+## Pipeline
+
+```
+ApplicationStrategy + CareerProfile
+        ↓
+CoverLetterPlanService + DeterministicCoverLetterPlanner
+        ↓
+CoverLetterGenerationService + composer (+ project_selection / project narratives)
+        ↓
+Markdown + HTML + JSON + plan JSON
+        ↓
+Owner review
+```
 
 ## CoverLetterPlan fields
 
-- `company_alignment` — company + grounded attraction hook (JD excerpt / responsibility)
+- `company_alignment` — company + grounded attraction hook
 - `role_motivation` — role title + compact engineering theme
-- `relevant_evidence` — Career Profile claims (summary / highlights)
-- `strongest_projects` — portfolio emphasis projects (profile-backed)
+- `relevant_evidence` — profile-backed credibility claims
+- `strongest_projects` — evidence-ranked projects with `selection_reason`,
+  `business_outcome`, `fit_focus`
 - `closing_strategy` — conversation vs contribution close from pursuit posture
 
-Plan vocabulary is **never** copied into the finished letter.
+Plan vocabulary is never copied into the finished letter.
 
-## Narrative composition rules
+## Project selection strategy
 
-- Open with why this role’s engineering challenge attracted the candidate —
-  not marketing slogans (“shaping the future”) or JD paraphrase
-- Motivation: credibility + independent portfolio breadth + architecture-first /
-  deterministic / evidence / human-in-the-loop philosophy + collaboration
-- Stakeholder/adoption sentence when the JD mentions stakeholders, UAT,
-  requirements translation, or similar
-- Portfolio URL referenced in the body (encourages recruiters to visit)
-- **Evidence-based project selection:** rank profile projects by employer
-  concerns (trust, production, LLM/agents, documents, rules, ops) plus JD/tech
-  fit and moderated strategy emphasis
-- Projects explained as products in plain English: what it does, engineering
-  capability, and why it matters, with **varied** paragraph structures (no
-  repeated “This demonstrates…” / “The business value is…” templates)
-- Domain context is secondary to engineering principles demonstrated
-- Closing invites working software, architecture decisions, trade-offs, and
-  live demos (curiosity, not a full catalogue)
-- No em/en dashes or AI-template markers (“I am excited…”, “Furthermore…”)
-- Signature block still includes LinkedIn / Portfolio / GitHub
-- Deterministic; no LLM rewrite in the default path
-- `owner_review_required` always true
-- Target length: approximately one page
+Rank profile projects for **interview value**, not popularity:
 
-## Outputs
+- employer concern clusters (trust/explainability, production, LLM/agents,
+  documents, deterministic rules, ops insights)
+- JD technology and responsibility overlap
+- production maturity
+- moderated ApplicationStrategy portfolio-emphasis boost (no circular injection
+  of emphasis project IDs into JD tokens)
 
-Each draft stem under `career-documents/cover-letters/generated/`:
+Different roles should surface different projects.
 
-| File | Purpose |
-|------|---------|
-| `{stem}.md` | Submit-ready Markdown |
-| `{stem}.html` | Print-friendly HTML (shared CV print CSS) |
-| `{stem}.json` | Typed `CoverLetter` |
-| `{stem}.cover_letter_plan.json` | Typed `CoverLetterPlan` |
+## Writing principles
 
-**Visual regression:** review Markdown and HTML together against the tailored CV
-for the same role — typography, spacing, and signature should feel like one suite.
+- Concrete opening (engineering challenge), not marketing slogans or JD dumps
+- Credibility, portfolio breadth, engineering philosophy, collaboration;
+  stakeholder language when the JD asks for it
+- Portfolio URL in the body
+- Projects as products: what it does → engineering capability → practical outcome;
+  domain secondary; varied paragraph shapes
+- Closing invites working software, trade-offs, and demos
+- No AI-template markers, em/en dashes, or planner jargon
+- Deterministic; no LLM rewrite on the default path
 
-## Manual validation set (2026-07-29 narrative pass)
+## Validation
 
 ```bash
 python scripts/run_cover_letter_manual.py \
@@ -86,17 +89,18 @@ python scripts/run_cover_letter_manual.py \
   --job-file manual_validation/jobs/009_forever_new_senior_ai_automation_engineer_digital.txt
 ```
 
-| Role | Distinctive opening signal | Projects emphasised |
-|------|---------------------------|---------------------|
-| Bluefin — AI Systems Developer | Fintech AI systems build/operate | Operational Intelligence + Governance RAG |
-| Maincode — AI Infrastructure Engineer | Learn/design AI infrastructure backbone | Operational Intelligence + Governance RAG |
-| Allura — AI Engineer | Design/build/deploy LLM + agentic workflows | Public Holiday Entitlements + Operational Intelligence |
-| Forever New — Senior AI Automation | Agents/tools/pipelines across the business | Operational Intelligence + Public Holiday Entitlements |
+Review Markdown and HTML together against the tailored CV for the same role.
 
-Governance-focused portfolio evidence surfaces most clearly on Bluefin/Maincode
-(Governance-Aware Document Intelligence RAG). Forever New exercises agent/automation
-emphasis as the fourth genuinely different commercial role.
+Unit tests: `tests/unit/cover_letter/`.
 
-## Unit tests
+## Known limitations
 
-`tests/unit/cover_letter/` — gates, narrative bans, signature, Markdown+HTML drafts.
+- Catalogued project narratives are curated; unknown projects use summary fallbacks.
+- Quality tracks JobAnalysis and Career Profile richness.
+- System never submits or emails letters.
+
+## Closure
+
+FR-007 is **complete**. Manual validation passed. Do not reopen as informal
+presentation polish unless the owner requests a scoped change. Next Horizon 1
+focus: automated job acquisition / discovery (see roadmap).

@@ -4,6 +4,26 @@ Records product strategy and engineering knowledge changes. Routine typo fixes a
 
 ---
 
+## Version 1.45
+
+### FR-007 Cover Letter Generation — Complete
+
+- Formally closed FR-007 after multi-round owner manual validation.
+- Production behaviour documented: evidence-driven / role-specific project
+  selection, engineering-first product narratives, natural human prose
+  (Markdown + HTML), portfolio and collaboration in the letter body, curiosity
+  close inviting demos and trade-offs.
+- Roadmap / functional specification / eval / implementation notes updated;
+  generated drafts remain gitignored operational artefacts.
+- Eval: [eval/fr007_cover_letter.md](eval/fr007_cover_letter.md).
+
+Major validation-driven improvements retained from 1.40–1.44: plan→render
+architecture; narrative rendering without planner jargon; HTML suite alignment
+with CVs; ELI10 then engineering-first project explanations; concern-cluster
+selection over keyword popularity; removal of AI-template punctuation/phrasing.
+
+---
+
 ## Version 1.44
 
 ### FR-007 Hiring-Manager Lens + Natural Project Voice

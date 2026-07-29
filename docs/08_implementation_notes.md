@@ -882,17 +882,18 @@ or `fallback_profile_copy`. Owner review remains mandatory before external use.
 
 ## FR-007 Cover Letter Generation
 
-**Status:** Implemented (2026-07-29); narrative + HTML pass (1.41).
+**Status:** Complete (2026-07-29) — passed owner manual validation.
 
 **Public boundary:** `career_intelligence.cover_letter`
 
 **Flow:** ApplicationStrategy + CareerProfile → `CoverLetterPlanService` /
-`DeterministicCoverLetterPlanner` → `CoverLetterGenerationService` (narrative
-composer) → `write_cover_letter_drafts` (Markdown + HTML + JSON) under
-`career-documents/cover-letters/generated/`.
+`DeterministicCoverLetterPlanner` (incl. `project_selection`) →
+`CoverLetterGenerationService` (narrative `composer` + product narratives) →
+`write_cover_letter_drafts` (Markdown + HTML + JSON) under
+`career-documents/cover-letters/generated/` (gitignored).
 
 **Presentation:** HTML reuses CV print CSS so cover letters and CVs read as one
-document suite. Signature contact matches FR-006 `ContactDetails`.
+document suite. Signature / body portfolio contact matches FR-006 `ContactDetails`.
 
 **Gates:** `owner_approved_to_plan`; material benefit (platinum/gold or
 `consider_cover_letter`); `cover_letter_plan_approved`; always
@@ -905,7 +906,31 @@ python scripts/run_cover_letter_manual.py \
   --job-file manual_validation/jobs/002_bluefin_ai_systems_developer.txt
 ```
 
-Eval: [eval/fr007_cover_letter.md](eval/fr007_cover_letter.md).
+Eval / closure: [eval/fr007_cover_letter.md](eval/fr007_cover_letter.md).
+
+### Engineering observations (from manual validation)
+
+These are durable lessons for this capability — not prompt instructions:
+
+1. **Selecting evidence beats selecting technologies.** Hiring managers respond to
+   projects that answer their concerns (trust, production discipline, document AI,
+   deterministic rules), not to a generic “most impressive” portfolio list.
+2. **Explain the product before the stack.** Plain-English “what it does” and
+   “why it matters” outperform capability slogans and AI jargon.
+3. **Engineering judgement over skill lists.** Letters should show how the
+   candidate builds (architecture-first, deterministic where appropriate,
+   evidence, human review), not catalogue keywords for ATS alone.
+4. **Domain is secondary to transferable engineering.** e.g. Career Intelligence
+   Copilot is evidence of LLM orchestration, evaluation, and human approval
+   workflows — not primarily “a job-search app.”
+5. **Natural writing improves authenticity.** Short sentences, varied paragraph
+   shapes, and removal of em dashes / template openers (“I am excited…”,
+   “Furthermore…”, repeated “This demonstrates…”) matter as much as content.
+6. **Demonstrable software creates curiosity.** Closing with working demos and
+   trade-offs outperforms unsupported claims (passionate, world-class, expert).
+7. **Validate on genuinely different roles.** Closures required multi-role
+   manual review (openings, projects, and closings must diverge for different
+   employers).
 
 ---
 

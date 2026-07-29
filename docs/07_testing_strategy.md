@@ -197,10 +197,11 @@ methodology/highlights content.
 
 ## FR-007 Cover Letter coverage
 
-FR-007 is **implemented**. Coverage includes:
+FR-007 is **complete** (owner manual validation passed). Coverage includes:
 
-- unit tests under `tests/unit/cover_letter/` (gates, plan shape, composition,
-  boilerplate refusal, draft writer, determinism);
+- unit tests under `tests/unit/cover_letter/` (gates, evidence-based selection,
+  composition / AI-boilerplate refusal, signature, draft writer Markdown+HTML,
+  determinism);
 - fidelity checks that company, role, and planned portfolio projects appear; and
 - owner manual validation via `scripts/run_cover_letter_manual.py`
   ([eval/fr007_cover_letter.md](eval/fr007_cover_letter.md)).

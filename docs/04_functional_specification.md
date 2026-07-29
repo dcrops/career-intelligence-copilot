@@ -44,9 +44,9 @@ This specification describes the full platform capability set. Delivery is phase
 - Automated job discovery or external platform integration
 - Interview Probability and Recruiter Confidence scoring (insufficient data at launch)
 
-**Note:** FR-006 CV Generation was originally deferred from Phase 2 exit criteria and
-was later **completed** as an owner-sequenced post–Phase 2 capability. It is not a Phase 2
-exit blocker. See FR-006 below.
+**Note:** FR-006 CV Generation and FR-007 Cover Letter were originally deferred from
+Phase 2 exit criteria and were later **completed** as owner-sequenced post–Phase 2
+capabilities. They are not Phase 2 exit blockers. See FR-006 and FR-007 below.
 
 **Phase 2 close-out:** **Complete** (M1–M4 + M4a + M5). Documentation is a frozen
 baseline before FR-006b. See [10_roadmap.md](10_roadmap.md),
@@ -547,11 +547,33 @@ Design: [eval/fr006_phase_c_design.md](eval/fr006_phase_c_design.md).
 
 ## FR-007 Cover Letter
 
-**Phase:** Post–Phase 2  
-**Status:** Implemented (deterministic plan + render; owner review mandatory)
+**Phase:** Post–Phase 2 (Horizon 1 operational)  
+**Status:** **Complete** — passed owner manual validation (2026-07-29)
 
-Generate company-specific cover letters using the same evidence-first architecture
-as FR-006: a structured intermediate plan, then deterministic prose composition.
+Generate company-specific, approximately one-page cover letters that read as if
+written by an experienced AI Engineer. Same evidence-first architecture as FR-006:
+a structured intermediate plan, then deterministic narrative composition
+(Markdown + HTML). Owner review is mandatory before any external use.
+
+### Objective
+
+Maximise interview likelihood by selecting the strongest portfolio evidence for
+the employer’s priorities and writing in a genuine human voice — not by listing
+technologies or polishing AI-sounding prose.
+
+### Inputs
+
+- Trusted `ApplicationStrategy` (FR-005), including bound `JobAnalysis`
+- Trusted `CareerProfile` (FR-001) via the public profile boundary
+- Caller options: `owner_approved_to_plan`, optional `override_material_benefit`,
+  `cover_letter_plan_approved`, optional `ContactDetails` (signature / body portfolio URL)
+
+### Outputs
+
+- `CoverLetterPlan` (Phase A) — composition decisions only
+- `CoverLetter` (Phase B) — paragraphs + rendered Markdown; HTML via draft writer
+- Draft artefacts under `career-documents/cover-letters/generated/` (gitignored):
+  `.md`, `.html`, `.json`, `.cover_letter_plan.json`
 
 ### Architecture
 
@@ -560,51 +582,83 @@ Career Profile (FR-001)
         ↓
 Job Analysis → Assessment → Portfolio → Application Strategy (FR-002–005)
         ↓
-CoverLetterPlan (FR-007 Phase A) — company alignment, role motivation,
-relevant evidence, strongest projects, closing strategy
+CoverLetterPlan (FR-007 Phase A)
+  company alignment, role motivation, relevant evidence,
+  evidence-ranked strongest projects, closing strategy
         ↓
-CoverLetter (FR-007 Phase B) — deterministic Markdown + HTML narrative
+CoverLetter (FR-007 Phase B) — narrative Markdown + HTML
         ↓
 Owner Review (mandatory before external use)
 ```
 
-**Invariants**
+Package: `career_intelligence.cover_letter`  
+Manual runner: `scripts/run_cover_letter_manual.py`  
+Eval / closure: [eval/fr007_cover_letter.md](eval/fr007_cover_letter.md)
+
+### Decision making (Phase A)
+
+- **Material-benefit gate:** platinum/gold **or** `consider_cover_letter` next
+  action (else explicit `override_material_benefit`).
+- **Attraction hook:** grounded JD excerpt / responsibility; marketing slogans
+  (e.g. “shaping the future”) scrubbed or rejected.
+- **Project selection:** ranks Career Profile projects for interview value using
+  employer concern clusters (trust/explainability, production, LLM/agents,
+  documents, deterministic rules, ops insights), JD/tech overlap, production
+  maturity, and a *moderated* ApplicationStrategy portfolio-emphasis boost.
+  Selection is role-specific; popularity or recency alone is not sufficient.
+- Each selected project carries `selection_reason`, `business_outcome`, and
+  `fit_focus` for explainable planning (not copied as planner jargon into prose).
+
+### Writing principles (Phase B)
+
+- Planner thinks like an engineer; renderer writes like a human.
+- Open on why this role’s engineering challenge attracted the candidate.
+- Credibility + portfolio breadth + architecture-first / deterministic /
+  evidence / human-in-the-loop philosophy + collaboration; stakeholder/adoption
+  sentence when the JD signals it.
+- Portfolio URL introduced in the body (not only the signature).
+- Projects explained as products in plain English: what it does, engineering
+  capability demonstrated (domain secondary), practical outcome — with **varied**
+  paragraph structures (no repeated “This demonstrates…” templates).
+- Closing invites curiosity: working software, architecture trade-offs, live demos.
+- No planner vocabulary in the letter; no generic apply boilerplate; no em/en
+  dashes or common AI-template markers.
+- Deterministic composition (no LLM rewrite on the default path).
+
+### Invariants
 
 - `CoverLetterPlan` is authoritative for composition decisions.
-- Prose is composed only from plan fields and Career Profile text already selected
-  by the plan — no invented employers, technologies, metrics, or achievements.
-- Renderer must not expose planner vocabulary (“relevant evidence”, “brief
-  emphasises”, “application strategy”, etc.).
-- Avoid generic application boilerplate (“I am writing to apply…”, “Dear Sir/Madam”).
-- Material-benefit gate: platinum/gold **or** `consider_cover_letter` next action
-  (otherwise explicit `override_material_benefit`).
+- Prose uses only plan fields and Career Profile text already selected — no
+  invented employers, technologies, metrics, or achievements.
 - Two-stage owner approval: `owner_approved_to_plan` → `cover_letter_plan_approved`
   → final `owner_review_required=True`.
 
-### Delivery slices
+### Validation
 
-1. **Phase A** — Deterministic `CoverLetterPlan` via `CoverLetterPlanService` +
-   `DeterministicCoverLetterPlanner`.
-2. **Phase B** — Narrative `CoverLetter` via `CoverLetterGenerationService`
-   (Markdown + HTML drafts under `career-documents/cover-letters/generated/`,
-   shared CV print styling).
+- Unit tests: `tests/unit/cover_letter/` (gates, selection, narrative bans,
+  signature, Markdown+HTML drafts).
+- Owner manual validation across genuinely different roles (e.g. Bluefin,
+  Maincode, Allura, Forever New) with MD+HTML visual review alongside CVs.
 
-Manual runner: `scripts/run_cover_letter_manual.py`.  
-Eval: [eval/fr007_cover_letter.md](eval/fr007_cover_letter.md).
+### Known limitations
 
-Acceptance Criteria
+- Narratives for catalogued projects are curated; unknown profile projects fall
+  back to summary-derived clauses.
+- Selection quality depends on JobAnalysis completeness and Career Profile
+  project metadata.
+- Default path does not LLM-rewrite prose; authenticity comes from deterministic
+  narrative rules, not generative variation.
+- Generated drafts are operational artefacts (gitignored under
+  `career-documents/**/generated/`); they are not submitted or emailed by the system.
 
-✓ References company.
+### Acceptance Criteria
 
-✓ References role.
-
-✓ References portfolio.
-
-✓ Output requires user review before use.
-
-✓ Grounded in ApplicationStrategy + Career Profile (no hallucinated claims).
-
-✓ Reads as a letter (not an assessment dump); Markdown and HTML both generated.
+✓ References company, role, and portfolio.  
+✓ Output requires user review before use.  
+✓ Grounded in ApplicationStrategy + Career Profile (no hallucinated claims).  
+✓ Reads as a letter (not an assessment dump); Markdown and HTML both generated.  
+✓ Project selection differs across roles based on employer priorities.  
+✓ Owner manual validation passed for closure.
 
 ---
 
