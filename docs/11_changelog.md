@@ -4,6 +4,53 @@ Records product strategy and engineering knowledge changes. Routine typo fixes a
 
 ---
 
+## Version 1.57
+
+### FR-009 M3 — Duplicate detection, owner confirmation, and canonical selection
+
+Implemented owner-confirmed duplicate handling. **FR-009 remains in progress.**
+
+**Philosophy: link, never merge.** A false merge would permanently hide a real vacancy,
+while a visible duplicate costs one glance — so nothing is auto-merged, auto-collapsed, or
+deleted. Every discovered advertisement stays readable with its own provenance and
+FR-002–FR-005 artefacts.
+
+**Detection (derived).** New `career_intelligence.duplicates` package with
+`DuplicateDetectionService`: read-only candidate, group, and canonical-recommendation
+projections. Confidence is deterministic and multi-evidence — `definite` (same canonical
+or source URL, or same platform plus platform job id), `probable` (company + title plus a
+corroborating facet), `possible` (single corroborating cluster). Facets missing on either
+side are `unknown`, never a match, and an identical content fingerprint alone never
+exceeds `possible`.
+
+**Owner actions (writes).** New `DuplicateReviewService`: `confirm_duplicate`,
+`reject_duplicate`, `confirm_canonical`. Each appends a `ReviewActionRecord`. Harmless
+repeats are idempotent; contradictory operations (self-link, chains, confirming a rejected
+pair, rejecting a confirmed pair) raise typed errors.
+
+**Groups.** Star-shaped and derived from `duplicate_of` links — canonical holds no
+relation, members point at it, chains rejected. No persisted group aggregate.
+
+**Rejections.** Additive `Opportunity.duplicate_rejections`, written symmetrically on both
+records, so a declined suggestion never reappears from either direction.
+
+**Canonical selection.** Recommended deterministically (artefacts → not a recruiter repost
+→ platform rank → metadata completeness → earliest discovery → id) and applied only on
+explicit owner confirmation. `confirm_canonical` is convergent, so an interrupted re-point
+is repaired by replaying it.
+
+**Separation preserved.** Duplicate state stays independent of owner decision, review
+metadata, and `PipelineStatus`. Confirmed members leave the queue as
+`confirmed_duplicate`; the canonical stays. M4 fit ordering unchanged.
+
+**Compatibility.** No migration; pre-M3 rows read unchanged with an empty rejection
+history.
+
+**Not implemented:** ranking calibration (M4), UI/CLI, pipeline tracking. Acceptance:
+[docs/eval/fr009_m3_duplicate_detection.md](eval/fr009_m3_duplicate_detection.md).
+
+---
+
 ## Version 1.56
 
 ### FR-009 M2 — Owner review actions, reversibility, and audit

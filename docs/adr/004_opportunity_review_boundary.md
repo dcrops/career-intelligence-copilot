@@ -98,7 +98,7 @@ constraint.
   on existing rows the next time a decision or outcome is saved. This changes
   serialisation only, never meaning.
 
-## Implementation status (FR-009 M1 + M2)
+## Implementation status (FR-009 M1 + M2 + M3)
 
 Decisions 1–9 are implemented for the workflow, the default projection, and owner review
 actions. `persist` moved into `PRE_APPROVAL_SEQUENCE`; all three decisions run
@@ -112,23 +112,37 @@ FR-008 M2 treatment of side-effect nodes so a transient store outage cannot disc
 completed FR-002–FR-005 analysis. The invariant the window protects is unchanged — no
 Opportunity, no approval request.
 
-Duplicate detection (M3) and ranking calibration (M4) remain deferred.
+**M3 implements decision 7 (duplicates are non-destructive).** Detection is derived and
+advisory in `career_intelligence.duplicates`; owner-confirmed outcomes are written by
+`opportunities.DuplicateReviewService`. Confirmed groups are star-shaped — the canonical
+record holds no relation and members carry `DuplicateRelation(duplicate_of, …)` — so a
+group is derived by one scan with no persisted group aggregate, and chains are rejected.
+Rejections are persisted symmetrically in the additive `duplicate_rejections` field, which
+is what stops a declined suggestion returning. Canonical selection is recommended
+deterministically and applied only on explicit owner confirmation; `confirm_canonical` is
+convergent, so an interrupted re-point is repaired by replaying the same action.
+
+Ranking calibration (M4) remains deferred.
 
 ## Compatibility implications
 
 - No schema version bump: `Opportunity` gains optional fields only, and the index
   loader ignores `schema_version`. A version bump would imply a migration that does
   not exist.
-- No live data mutation in M0.
+- No live data mutation in M0. M3 added no migration either: `duplicate_rejections`
+  defaults to empty, so pre-M3 rows read unchanged.
 - Public API is additive (`OpportunityReview`, `DuplicateRelation`,
-  `DuplicateEvidenceKind`, `DUPLICATE_EVIDENCE_KINDS`). No renames, no removals.
+  `DuplicateEvidenceKind`, `DUPLICATE_EVIDENCE_KINDS`, and in M3 `DuplicateRejection`,
+  `DuplicateReviewService`, plus the `career_intelligence.duplicates` package). No
+  renames, no removals.
 - CSV export (M3) is unaffected: `EXPORT_COLUMNS` is explicit, so new fields do not
   leak into the operational bridge until deliberately added.
 
 ## Deferred work
 
-- FR-009 M3 — duplicate candidate detection and owner confirmation.
 - FR-009 M4 — manual validation and ranking calibration.
+- Employer-careers `SourceKind` value, so canonical selection can prefer an official
+  employer advertisement directly instead of approximating it as "not a recruiter repost".
 - FR-012 — application pipeline status and outcome semantics; `PipelineStatus`
   remains outside FR-009's write surface.
 

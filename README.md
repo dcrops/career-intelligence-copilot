@@ -47,12 +47,14 @@ modern AI engineering workflows with Cursor. When those goals conflict with Hori
 FR-007 Cover Letter ([eval](docs/eval/fr007_cover_letter.md)).
 
 **Current focus — Horizon 1A:** **FR-009** Opportunity Review Queue & Ranking —
-**M2 complete** (owner review actions + audit —
+**M3 complete** (owner-confirmed duplicate groups —
 [M0](docs/eval/fr009_m0_domain_contracts.md),
 [M1](docs/eval/fr009_m1_persistence_boundary.md),
-[M2](docs/eval/fr009_m2_owner_review_actions.md);
+[M2](docs/eval/fr009_m2_owner_review_actions.md),
+[M3](docs/eval/fr009_m3_duplicate_detection.md);
 [ADR-004](docs/adr/004_opportunity_review_boundary.md)).
-Duplicate detection and ranking calibration are not implemented.
+Duplicates are **linked, never merged**: the system detects and explains, the owner
+confirms, and no advertisement is ever deleted. Ranking calibration is not implemented.
 **FR-008 complete** and frozen
 ([eval](docs/eval/fr008_workflow_orchestration.md); [ADR-003](docs/adr/003_application_workflow_orchestration.md)).
 Details: [docs/10_roadmap.md](docs/10_roadmap.md).

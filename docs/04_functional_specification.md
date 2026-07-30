@@ -845,12 +845,12 @@ closed. Do not reopen spike criteria without explicit owner request.
 ## FR-009 Opportunity Review Queue & Ranking
 
 **Phase:** Horizon 1A Stage 3  
-**Status:** **In progress — M2 complete** (owner review actions, reversibility, and
-audit; 2026-07-30). Duplicate detection and ranking calibration are **not
-implemented**.  
+**Status:** **In progress — M3 complete** (duplicate detection, owner confirmation, and
+canonical selection; 2026-07-30). Ranking calibration is **not implemented**.  
 **M0 acceptance:** [docs/eval/fr009_m0_domain_contracts.md](eval/fr009_m0_domain_contracts.md)  
 **M1 acceptance:** [docs/eval/fr009_m1_persistence_boundary.md](eval/fr009_m1_persistence_boundary.md)  
 **M2 acceptance:** [docs/eval/fr009_m2_owner_review_actions.md](eval/fr009_m2_owner_review_actions.md)  
+**M3 acceptance:** [docs/eval/fr009_m3_duplicate_detection.md](eval/fr009_m3_duplicate_detection.md)  
 **Architecture:** [ADR-004](adr/004_opportunity_review_boundary.md) (Accepted)
 
 Compare multiple acquired opportunities for owner attention — not only process each
@@ -895,6 +895,7 @@ below).
   owner decision, `PipelineStatus`, workflow status, and duplicate state.
 - Confirmed duplicates are recorded as `duplicate_of` a canonical record with evidence,
   and are never merged or deleted. A shared content fingerprint alone is not proof.
+  **M3 implemented this** (see below): detection is derived, confirmation is the owner's.
 - **Archive means review visibility only** — hide from active review. Employer
   rejection, withdrawal, and process completion are FR-012 pipeline concepts.
 - Phase 2 M4 ranking (`pursuit_posture → fit strength → application_tier →
@@ -963,6 +964,47 @@ Each successful mutating action appends one `ReviewActionRecord` to
 repeats are idempotent and do not append again. FR-009 still does not write
 `PipelineStatus`.
 
+### Duplicate review (M3)
+
+**Philosophy: link, never merge.** A false merge hides a real vacancy permanently, while
+a duplicate suggestion costs the owner one glance. So the system detects and explains;
+the owner decides. No Opportunity is ever deleted, collapsed, or overwritten — every
+discovered advertisement stays readable for provenance, audit, and recovery.
+
+`career_intelligence.duplicates.DuplicateDetectionService` is read-only and derives
+candidates on every call. Confidence is deterministic and multi-evidence:
+
+| Confidence | Requires |
+|------------|----------|
+| `definite` | same canonical URL, same source URL, or same platform **and** platform job id |
+| `probable` | same company and title plus a corroborating facet (location or identical description text), or same company plus identical description text |
+| `possible` | same company and title only, or identical description text only |
+
+A facet missing on either side is `unknown`, never a match. A shared
+`content_fingerprint` alone never rises above `possible` — the live store already
+contains fingerprint collision groups. Nothing is auto-confirmed at any confidence.
+
+Owner actions live on `DuplicateReviewService` (writes) and mirror the M2 split:
+
+| Action | Effect |
+|--------|--------|
+| `confirm_duplicate(duplicate_id, canonical_id)` | record `DuplicateRelation` on the duplicate record; both records survive |
+| `reject_duplicate(a, b)` | persist a `DuplicateRejection` on **both** records so the pair never reappears |
+| `confirm_canonical(canonical_id)` | re-point every group member at the chosen record; nothing is deleted |
+
+**Duplicate groups are derived, star-shaped, and one hop deep.** The canonical record
+carries no relation; every confirmed member points at it, so a group is
+`canonical + members` reconstructed by one scan. Chains are rejected. Group membership
+is not a workflow state: `reviewed_at`, `pinned`, `defer_until`, and `archived_at` stay
+independent, and confirming a duplicate never changes an owner decision.
+
+Canonical selection is **recommended, never applied automatically**:
+artefact snapshots present → not a recruiter repost → platform rank → identity metadata
+completeness → earliest discovery → `opportunity_id`. The owner confirms.
+
+Unresolved candidates keep both records in the review queue. A confirmed member is
+excluded with reason `confirmed_duplicate`; the canonical stays.
+
 ### Milestones
 
 | Milestone | Scope | Status |
@@ -970,7 +1012,7 @@ repeats are idempotent and do not append again. FR-009 still does not write
 | M0 | Domain contracts, persistence-boundary specification, ADR-004 | **Complete** |
 | M1 | Workflow persistence-boundary move + minimal derived review projection | **Complete** |
 | M2 | Owner review actions, reversibility, and audit history | **Complete** |
-| M3 | Duplicate candidate detection + owner confirmation | Planned |
+| M3 | Duplicate candidate detection, owner confirmation, canonical selection | **Complete** |
 | M4 | Manual validation and ranking calibration | Planned |
 | Close-out | Acceptance and documentation freeze | Planned |
 

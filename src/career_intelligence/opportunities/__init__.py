@@ -2,6 +2,7 @@
 
 from .bridge import OpportunityCsvBridge
 from .csv_export import DEFAULT_EXPORT_PATH, EXPORT_COLUMNS, OpportunityCsvExporter
+from .duplicate_service import DuplicateReviewService
 from .errors import (
     ErrorDetail,
     OpportunityArtifactExistsError,
@@ -29,6 +30,7 @@ from .models import (
     REVIEW_ACTION_KINDS,
     TERMINAL_STATUSES,
     DuplicateEvidenceKind,
+    DuplicateRejection,
     DuplicateRelation,
     LegacyImportProvenance,
     Opportunity,
@@ -53,7 +55,9 @@ __all__ = [
     "DUPLICATE_EVIDENCE_KINDS",
     "EXPORT_COLUMNS",
     "DuplicateEvidenceKind",
+    "DuplicateRejection",
     "DuplicateRelation",
+    "DuplicateReviewService",
     "ErrorDetail",
     "INTERVIEW_STAGES",
     "LEGACY_OUTCOME_MAP",

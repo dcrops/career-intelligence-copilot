@@ -1461,11 +1461,12 @@ closure.
 
 ## FR-009 Opportunity Review Queue & Ranking (in progress)
 
-**Status:** M2 complete (2026-07-30) — owner review actions, reversibility, and audit.
-Duplicate detection and ranking calibration are **not implemented**.  
+**Status:** M3 complete (2026-07-30) — duplicate detection, owner confirmation, and
+canonical selection. Ranking calibration (M4) is **not implemented**.  
 **Acceptance:** [eval/fr009_m0_domain_contracts.md](eval/fr009_m0_domain_contracts.md),
 [eval/fr009_m1_persistence_boundary.md](eval/fr009_m1_persistence_boundary.md),
-[eval/fr009_m2_owner_review_actions.md](eval/fr009_m2_owner_review_actions.md)  
+[eval/fr009_m2_owner_review_actions.md](eval/fr009_m2_owner_review_actions.md),
+[eval/fr009_m3_duplicate_detection.md](eval/fr009_m3_duplicate_detection.md)  
 **Architecture:** [ADR-004](adr/004_opportunity_review_boundary.md)
 
 ### M0 — persistence boundary and domain contracts
@@ -1640,7 +1641,69 @@ python scripts/run_fr009_owner_review_manual.py demo \
     --workspace data/_fr009_m2_manual --offline-fixtures
 ```
 
+### M3 — duplicate detection, owner confirmation, canonical selection (complete)
+
+**Acceptance:** [eval/fr009_m3_duplicate_detection.md](eval/fr009_m3_duplicate_detection.md)
+
+**Same split as M1/M2.** `career_intelligence.duplicates.DuplicateDetectionService`
+derives candidates, groups, and canonical recommendations (read-only).
+`opportunities.DuplicateReviewService` owns the owner-confirmed writes and persists
+through `OpportunityService.replace`.
+
+**Detection is multi-evidence and deterministic.** Facets are compared as
+matching / differing / **unknown**; a facet missing on either side never counts as
+agreement. `definite` needs the same canonical URL, same source URL, or same platform
+plus platform job id. `probable` needs company + title plus a corroborating facet.
+`possible` covers company + title alone or identical description text alone. Nothing is
+auto-confirmed. Normalisation removes formatting noise only (legal-entity suffixes,
+bracketed title asides, work-arrangement tokens, URL query/fragment); there is no fuzzy
+or probabilistic matching.
+
+**Why fingerprint alone is capped at `possible`:** the live store's five candidate pairs
+are all fingerprint-only collisions produced by re-running the same posting, and 0/16
+live records carry `platform_job_id` or `canonical_url`. Treating a fingerprint as proof
+would merge on the weakest available evidence.
+
+| Action | State change | Idempotency |
+|--------|--------------|-------------|
+| `confirm_duplicate(duplicate, canonical)` | set `DuplicateRelation` on the duplicate record | same link is a no-op; `confirmed_at` preserved |
+| `reject_duplicate(a, b)` | append `DuplicateRejection` on **both** records | already-rejected pair is a no-op |
+| `confirm_canonical(id)` | re-point every member; clear the chosen record's relation | no-op when already canonical |
+
+**Group model.** Star-shaped and one hop deep: canonical carries no relation, members
+point at it, so `build_groups` reconstructs every group in one scan and there is no
+persisted group aggregate. Chains are rejected with `OpportunityTransitionError`, which
+is what keeps the projection unambiguous. Detection skips pairs already in the same
+group, so confirmation permanently retires a question.
+
+**Rejections are symmetric** (`duplicate_rejections` written on both records) so a
+suggestion cannot return from the other direction. A rejected pair cannot later be
+confirmed without clearing the rejection, and a confirmed pair cannot be rejected —
+both raise typed errors rather than silently contradicting the owner.
+
+**Canonical recommendation** (advisory): artefact snapshots present → not a recruiter
+repost → platform rank → identity metadata completeness → earliest discovery →
+`opportunity_id`. `SourceKind` has no employer-careers value today, so
+"official employer source" is approximated by "not a recruiter repost"; see the M3
+acceptance report for the follow-up.
+
+**Replay and crash safety.** `confirm_canonical` re-points members in sorted id order
+and is convergent: an interrupted run leaves a partial star, and re-running the same
+action produces the same final state. Detection has no side effects, so repeated scans
+can never create inconsistent groups.
+
+**Backward compatibility.** `duplicate_rejections` is additive with an empty default;
+records written before M3 read unchanged and need no migration.
+
+**Manual:**
+
+```bash
+python scripts/run_fr009_duplicate_review_manual.py demo \
+    --workspace data/_fr009_m3_manual --offline-fixtures
+python scripts/run_fr009_duplicate_review_manual.py candidates \
+    --opportunities data/opportunities
+```
+
 ### Remaining milestones
 
-M3 duplicate candidate detection and confirmation → M4 manual validation and ranking
-calibration → close-out. Not started.
+M4 manual validation and ranking calibration → close-out. Not started.

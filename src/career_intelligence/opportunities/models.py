@@ -105,6 +105,9 @@ ReviewActionKind = Literal[
     "clear_defer",
     "archive",
     "reopen",
+    "confirm_duplicate",
+    "reject_duplicate",
+    "confirm_canonical",
 ]
 
 PIPELINE_STATUSES: tuple[PipelineStatus, ...] = get_args(PipelineStatus)
@@ -234,6 +237,18 @@ class DuplicateRelation(OpportunityModel):
     evidence: tuple[DuplicateEvidenceKind, ...] = ()
 
 
+class DuplicateRejection(OpportunityModel):
+    """Owner-rejected duplicate suggestion for one specific pair (FR-009 M3).
+
+    Persisted so a rejected suggestion never reappears as a candidate. Written
+    symmetrically on both records, so either side answers "already rejected".
+    """
+
+    other_opportunity_id: OpportunityId
+    rejected_at: datetime
+    note: NonEmptyString | None = None
+
+
 class LegacyImportProvenance(OpportunityModel):
     """Migration provenance for one-time legacy tracker CSV imports (M3)."""
 
@@ -260,6 +275,7 @@ class Opportunity(OpportunityModel):
     review: OpportunityReview = Field(default_factory=OpportunityReview)
     review_actions: tuple[ReviewActionRecord, ...] = ()
     duplicate: DuplicateRelation | None = None
+    duplicate_rejections: tuple[DuplicateRejection, ...] = ()
     updated_at: datetime
 
     @field_validator("artifact_paths")
@@ -279,6 +295,28 @@ class Opportunity(OpportunityModel):
         ):
             raise ValueError(
                 "duplicate.duplicate_of must reference a different opportunity_id"
+            )
+        return self
+
+    @model_validator(mode="after")
+    def duplicate_rejections_are_coherent(self) -> Opportunity:
+        own_id = self.identity.opportunity_id
+        seen: set[str] = set()
+        for rejection in self.duplicate_rejections:
+            if rejection.other_opportunity_id == own_id:
+                raise ValueError(
+                    "duplicate_rejections must reference a different opportunity_id"
+                )
+            if rejection.other_opportunity_id in seen:
+                raise ValueError(
+                    "duplicate_rejections must not repeat the same opportunity_id: "
+                    f"{rejection.other_opportunity_id}"
+                )
+            seen.add(rejection.other_opportunity_id)
+        if self.duplicate is not None and self.duplicate.duplicate_of in seen:
+            raise ValueError(
+                "a confirmed duplicate cannot also be a rejected suggestion: "
+                f"{self.duplicate.duplicate_of}"
             )
         return self
 

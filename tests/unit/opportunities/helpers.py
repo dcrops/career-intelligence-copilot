@@ -34,11 +34,15 @@ class _StaticPayloadPlanner:
         return self._payload
 
 
+BASE_RAW_TEXT = "Senior AI Engineer. Python required. Hybrid Melbourne."
+
+
 def trusted_pipeline(
     *,
     source_url: str | None = "https://au.seek.com/job/93487188",
     title: str = "Senior AI Engineer",
     company: str = "Example AI Co",
+    raw_text: str = BASE_RAW_TEXT,
 ) -> tuple[
     JobPosting,
     JobAnalysis,
@@ -48,7 +52,9 @@ def trusted_pipeline(
 ]:
     analysis = job_analysis(
         posting={
-            "raw_text": "Senior AI Engineer. Python required. Hybrid Melbourne.",
+            # Distinct raw_text yields a distinct content_fingerprint, which FR-009 M3
+            # duplicate detection treats as evidence.
+            "raw_text": raw_text,
             "title": title,
             "company": company,
             **({"source_url": source_url} if source_url else {}),

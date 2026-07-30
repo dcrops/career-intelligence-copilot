@@ -1,0 +1,304 @@
+{
+  "job_analysis": {
+    "posting": {
+      "raw_text": "[CIC-FIXTURE:ai-engineer]\nSenior AI Engineer — Northside Analytics (Melbourne)\n\nAbout the role\nWe are hiring a Senior AI Engineer to design and ship production LLM applications for\nAustralian enterprise clients. You will own retrieval pipelines, evaluation harnesses,\nand safe deployment patterns.\n\nResponsibilities\n• Build and maintain LLM applications using Python and LangChain\n• Partner with data engineers on feature pipelines and model observability\n• Mentor engineers on prompt evaluation and production readiness\n\nRequirements\n• 5+ years software engineering experience required\n• Strong Python required; LangChain experience preferred\n• Production LLM or RAG experience required\n\nLocation & employment\nHybrid Melbourne — 3 days in the CBD office. Full-time permanent.\nSalary $150,000–$180,000 AUD + super.",
+      "title": "Senior AI Engineer",
+      "company": "Northside Analytics",
+      "source_url": null
+    },
+    "role_family": {
+      "family": "ai_engineering",
+      "evidence": [
+        {
+          "excerpt": "Senior AI Engineer",
+          "section": "title"
+        }
+      ]
+    },
+    "seniority": {
+      "level": "senior",
+      "ambiguous": false,
+      "candidate_levels": [],
+      "evidence": [
+        {
+          "excerpt": "Senior AI Engineer",
+          "section": "title"
+        }
+      ]
+    },
+    "technologies": [
+      {
+        "name": "Python",
+        "level": "required",
+        "evidence": [
+          {
+            "excerpt": "Strong Python required",
+            "section": "requirements"
+          }
+        ]
+      },
+      {
+        "name": "LangChain",
+        "level": "preferred",
+        "evidence": [
+          {
+            "excerpt": "LangChain experience preferred",
+            "section": "requirements"
+          }
+        ]
+      }
+    ],
+    "responsibilities": [
+      {
+        "description": "Build and maintain LLM applications using Python and LangChain",
+        "evidence": [
+          {
+            "excerpt": "Build and maintain LLM applications using Python and LangChain",
+            "section": "responsibilities"
+          }
+        ]
+      }
+    ],
+    "compensation": {
+      "clarity": "stated",
+      "minimum": 150000.0,
+      "maximum": 180000.0,
+      "currency": "AUD",
+      "period": "year",
+      "raw_text": "Salary $150,000–$180,000 AUD + super",
+      "evidence": [
+        {
+          "excerpt": "Salary $150,000–$180,000 AUD + super",
+          "section": "compensation"
+        }
+      ]
+    },
+    "location": {
+      "clarity": "stated",
+      "summary": "Melbourne",
+      "evidence": [
+        {
+          "excerpt": "Hybrid Melbourne",
+          "section": "location"
+        }
+      ]
+    },
+    "work_arrangement": {
+      "arrangement": "hybrid",
+      "details": "3 days in the CBD office",
+      "evidence": [
+        {
+          "excerpt": "Hybrid Melbourne — 3 days in the CBD office",
+          "section": "location"
+        }
+      ]
+    },
+    "employment": {
+      "working_hours": "full_time",
+      "engagement_type": "permanent",
+      "evidence": [
+        {
+          "excerpt": "Full-time permanent",
+          "section": "employment"
+        }
+      ]
+    },
+    "experience_requirements": [
+      {
+        "description": "5+ years software engineering experience",
+        "level": "required",
+        "minimum_years": 5.0,
+        "maximum_years": null,
+        "evidence": [
+          {
+            "excerpt": "5+ years software engineering experience required",
+            "section": "requirements"
+          }
+        ]
+      },
+      {
+        "description": "Production LLM or RAG experience",
+        "level": "required",
+        "minimum_years": null,
+        "maximum_years": null,
+        "evidence": [
+          {
+            "excerpt": "Production LLM or RAG experience required",
+            "section": "requirements"
+          }
+        ]
+      }
+    ]
+  },
+  "technical_fit": {
+    "dimension": "technical",
+    "judgment": "mixed",
+    "summary": "Core technologies align, but required production LLM experience is not established in commercial employment.",
+    "findings": [
+      {
+        "kind": "alignment",
+        "summary": "Required Python is demonstrated across data engineering employment and AI portfolio work.",
+        "detail": null,
+        "importance": "material",
+        "job_evidence": [
+          {
+            "source": "technology",
+            "item_index": 0,
+            "name": "Python",
+            "excerpt": "Strong Python required"
+          }
+        ],
+        "profile_evidence": [
+          {
+            "source": "skill",
+            "ref": "skill:Python",
+            "excerpt": null
+          },
+          {
+            "source": "experience",
+            "ref": "experience:nbn-data-engineer-2020",
+            "excerpt": null
+          }
+        ],
+        "assumption": null
+      },
+      {
+        "kind": "partial_alignment",
+        "summary": "Required production LLM or RAG experience is supported by independent engineering and portfolio projects, not commercial AI employment.",
+        "detail": null,
+        "importance": "material",
+        "job_evidence": [
+          {
+            "source": "experience_requirement",
+            "item_index": 1,
+            "name": null,
+            "excerpt": "Production LLM or RAG experience required"
+          }
+        ],
+        "profile_evidence": [
+          {
+            "source": "experience",
+            "ref": "experience:chase-risk-compliance-ai-engineer",
+            "excerpt": null
+          },
+          {
+            "source": "project",
+            "ref": "project:governance-document-rag",
+            "excerpt": null
+          }
+        ],
+        "assumption": null
+      },
+      {
+        "kind": "gap",
+        "summary": "No commercial employment entry establishes paid production AI Engineering delivery; independent engineering is real capability evidence but not equivalent to commercial production AI employment.",
+        "detail": null,
+        "importance": "material",
+        "job_evidence": [
+          {
+            "source": "experience_requirement",
+            "item_index": 1,
+            "name": null,
+            "excerpt": "Production LLM or RAG experience required"
+          }
+        ],
+        "profile_evidence": [],
+        "assumption": null
+      }
+    ]
+  },
+  "commercial_fit": {
+    "dimension": "commercial",
+    "judgment": "moderate",
+    "summary": "Stated compensation and hybrid Melbourne arrangement are broadly compatible with preferences.",
+    "findings": [
+      {
+        "kind": "alignment",
+        "summary": "Hybrid Melbourne location aligns with stated location preferences.",
+        "detail": null,
+        "importance": "material",
+        "job_evidence": [
+          {
+            "source": "location",
+            "item_index": null,
+            "name": null,
+            "excerpt": "Hybrid Melbourne"
+          }
+        ],
+        "profile_evidence": [
+          {
+            "source": "preference",
+            "ref": "preference:locations",
+            "excerpt": null
+          }
+        ],
+        "assumption": null
+      },
+      {
+        "kind": "assumption",
+        "summary": "Salary range is stated, but the profile records no salary minimum for comparison.",
+        "detail": null,
+        "importance": "minor",
+        "job_evidence": [
+          {
+            "source": "compensation",
+            "item_index": null,
+            "name": null,
+            "excerpt": "Salary $150,000–$180,000 AUD + super"
+          }
+        ],
+        "profile_evidence": [
+          {
+            "source": "preference",
+            "ref": "preference:salary_min",
+            "excerpt": null
+          }
+        ],
+        "assumption": "Compensation cannot be scored against a minimum threshold because salary_min is unset."
+      }
+    ]
+  },
+  "portfolio_fit": {
+    "dimension": "portfolio",
+    "judgment": "moderate",
+    "summary": "Portfolio projects support an AI engineering narrative but do not substitute for commercial tenure claims.",
+    "findings": [
+      {
+        "kind": "partial_alignment",
+        "summary": "Portfolio RAG and copilot projects demonstrate relevant LLM application engineering patterns.",
+        "detail": null,
+        "importance": "material",
+        "job_evidence": [
+          {
+            "source": "role_family",
+            "item_index": null,
+            "name": null,
+            "excerpt": "Senior AI Engineer"
+          }
+        ],
+        "profile_evidence": [
+          {
+            "source": "project",
+            "ref": "project:governance-document-rag",
+            "excerpt": null
+          },
+          {
+            "source": "project",
+            "ref": "project:operational-intelligence-copilot",
+            "excerpt": null
+          }
+        ],
+        "assumption": null
+      }
+    ]
+  },
+  "summary": {
+    "summary": "Mixed fit: strong Python and portfolio evidence, but commercial production AI employment is not established.",
+    "key_alignments": [
+      "Python and RAG-oriented portfolio projects are relevant."
+    ],
+    "key_gaps": [
+      "Commercial production AI employment is not evidenced."
+    ]
+  }
+}

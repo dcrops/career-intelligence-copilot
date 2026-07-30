@@ -46,11 +46,12 @@ Objectives.
 **Phase 2 Job Intelligence — Complete** (documentation frozen as baseline).
 
 **Active milestone:** Horizon 1A — **FR-009** Opportunity Review Queue & Ranking,
-**M2 complete** (owner review actions, reversibility, and audit;
+**M3 complete** (owner-confirmed duplicate groups;
 [eval/fr009_m0_domain_contracts.md](eval/fr009_m0_domain_contracts.md),
 [eval/fr009_m1_persistence_boundary.md](eval/fr009_m1_persistence_boundary.md),
-[eval/fr009_m2_owner_review_actions.md](eval/fr009_m2_owner_review_actions.md)).
-Duplicate detection and ranking calibration are not implemented. FR-008
+[eval/fr009_m2_owner_review_actions.md](eval/fr009_m2_owner_review_actions.md),
+[eval/fr009_m3_duplicate_detection.md](eval/fr009_m3_duplicate_detection.md)).
+Ranking calibration is not implemented. FR-008
 closed: [eval/fr008_workflow_orchestration.md](eval/fr008_workflow_orchestration.md).
 
 **Thereafter:** Complete Horizon 1A (through FR-015), then Horizon 1B (FR-016–FR-022).

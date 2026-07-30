@@ -236,7 +236,7 @@ assessments remains deferred.
 
 ### Owner Review Metadata
 
-**Maps to:** FR-009 (M0 contracts; M2 owner actions complete)
+**Maps to:** FR-009 (M0 contracts; M2 owner actions and M3 duplicate review complete)
 
 Owner-authored annotations on a durable Opportunity that control **review visibility and
 attention**, held as independent fields rather than one lifecycle enum: `reviewed_at`,
@@ -276,7 +276,7 @@ unchanged M4 sort key.
 
 ### Duplicate Relation
 
-**Maps to:** FR-009 (M0 contract; detection planned in M3)
+**Maps to:** FR-009 (M0 contract; M3 detection and confirmation complete)
 
 An owner-confirmed link from a duplicate Opportunity to its canonical record
 (`duplicate_of`), with confirmation timestamp and the evidence kinds that justified it
@@ -286,6 +286,35 @@ Non-destructive by contract: both records keep their own identity, provenance, a
 artefacts, and remain auditable. Detection proposes candidates; only the owner confirms.
 A shared content fingerprint alone is not proof — the live store already contains
 fingerprint collision groups.
+
+A **rejected** suggestion is equally durable: `duplicate_rejections` records the pair on
+both records so the same question is never asked twice.
+
+**Implementation:** `opportunities.DuplicateReviewService` (`confirm_duplicate`,
+`reject_duplicate`, `confirm_canonical`).
+
+---
+
+### Duplicate Group (derived)
+
+**Maps to:** FR-009 M3 (complete)
+
+The set of advertisements the owner has confirmed describe **one real-world vacancy**.
+Not a stored aggregate: it is derived by scanning `duplicate_of` links, the same way the
+review queue is derived. Star-shaped and one hop deep — the canonical record carries no
+relation, every member points at it, and chains are rejected.
+
+Grouping never merges or deletes: each advertisement keeps its own identity, provenance,
+and FR-002–FR-005 artefacts, because a false merge would permanently hide a real
+vacancy while a visible duplicate only costs a glance. Group membership is not a workflow
+state; `reviewed_at`, `pinned`, `defer_until`, `archived_at`, and the owner decision stay
+independent of it.
+
+Canonical selection is **recommended deterministically and confirmed by the owner**:
+artefact evidence present → not a recruiter repost → platform rank → metadata
+completeness → earliest discovery → `opportunity_id`.
+
+**Implementation:** `src/career_intelligence/duplicates/` (`DuplicateDetectionService`).
 
 ---
 
@@ -418,10 +447,11 @@ continue to connect to this layer rather than invent a parallel tracker.
 | Ranked Comparison | Phase 2 M4 (complete; hist. FR-012 partial); extended by **FR-009** |
 | Opportunity identity (title/company) | Phase 2 M4a (complete) |
 | Job Acquisition & Workflow Orchestration | **FR-008** (Horizon 1A; first orchestration) |
-| Opportunity Review Queue & Ranking | **FR-009** (Horizon 1A, in progress — M2 complete) |
+| Opportunity Review Queue & Ranking | **FR-009** (Horizon 1A, in progress — M3 complete) |
 | Owner Review Metadata | **FR-009** M0–M2 ([ADR-004](adr/004_opportunity_review_boundary.md)) |
 | Review Queue (derived projection) | **FR-009** M1 (complete; pin ordering in M2) |
-| Duplicate Relation | **FR-009** M0 contract; detection in M3 |
+| Duplicate Relation | **FR-009** M0 contract; M3 detection and confirmation complete |
+| Duplicate Group (derived) | **FR-009** M3 (complete) |
 | Application Package Preparation | **FR-010** (Horizon 1A) |
 | Submission Assistance | **FR-011** (Horizon 1A) |
 | Application Pipeline Tracking | **FR-012** (Horizon 1A) |

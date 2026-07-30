@@ -32,14 +32,14 @@ a **frozen baseline** (M5 GO —
 FR-006b/c) are closed. **FR-008** is **complete and frozen** —
 [docs/eval/fr008_workflow_orchestration.md](docs/eval/fr008_workflow_orchestration.md);
 [ADR-003](docs/adr/003_application_workflow_orchestration.md). **Current focus —
-Horizon 1A:** **FR-009** (review queue / ranking) is **in progress — M2 complete**
-(owner review actions, reversibility, and audit —
+Horizon 1A:** **FR-009** (review queue / ranking) is **in progress — M3 complete**
+(owner-confirmed duplicate groups —
 [M0](docs/eval/fr009_m0_domain_contracts.md),
 [M1](docs/eval/fr009_m1_persistence_boundary.md),
-[M2](docs/eval/fr009_m2_owner_review_actions.md);
-[ADR-004](docs/adr/004_opportunity_review_boundary.md)). Duplicate detection (M3) and
-ranking calibration (M4) are not implemented and need explicit owner approval before
-starting. Then FR-010–FR-015.
+[M2](docs/eval/fr009_m2_owner_review_actions.md),
+[M3](docs/eval/fr009_m3_duplicate_detection.md);
+[ADR-004](docs/adr/004_opportunity_review_boundary.md)). Ranking calibration (M4) is not
+implemented and needs explicit owner approval before starting. Then FR-010–FR-015.
 **Principle:** Job acquisition first. Recruiter outreach second (Horizon 1B /
 FR-016–FR-022 — do not start while 1A is incomplete). Do not
 reopen Phase 2 or FR-008 exit criteria without explicit owner request.
@@ -63,8 +63,9 @@ service boundary are recorded in
 **Delivered outside original Phase 2 exit criteria (owner-sequenced):** FR-006 CV Generation (complete, including FR-006b/c); **FR-007 Cover Letter** (complete — plan + deterministic narrative render; manual validation passed).
 
 **Horizon 1A (current):** FR-008 **complete** (acquisition adapters + orchestration;
-ADR-003; persistence boundary since amended by FR-009 M1). **FR-009 in progress — M2
-(owner review actions + audit) complete; ADR-004 implemented.**
+ADR-003; persistence boundary since amended by FR-009 M1). **FR-009 in progress — M3
+(duplicate detection, owner confirmation, canonical selection) complete; ADR-004
+implemented.**
 FR-010–FR-015 planned — deterministic workflow orchestration first, then bounded agents
 (FR-013). See [docs/10_roadmap.md](docs/10_roadmap.md).
 
@@ -89,8 +90,11 @@ Apply [docs/05_engineering_principles.md](docs/05_engineering_principles.md) for
 - **Public profile boundary** — downstream capabilities obtain the career profile through
  `career_intelligence.profile`, never through its YAML storage adapter
 - **One system of record for opportunities** — `data/opportunities/` is the durable
- business record; the FR-009 review queue is a derived projection, and workflow
- checkpoints stay recovery data ([ADR-004](docs/adr/004_opportunity_review_boundary.md))
+ business record; the FR-009 review queue and duplicate groups are derived projections,
+ and workflow checkpoints stay recovery data
+ ([ADR-004](docs/adr/004_opportunity_review_boundary.md))
+- **Duplicates are linked, never merged** — detection recommends, the owner confirms, and
+ no discovered advertisement is deleted or collapsed
 - **Acquisition via adapters** — prefer APIs/feeds/alerts/URLs/paste/exports; Playwright is a controlled fallback, not crawlers
 
 ---

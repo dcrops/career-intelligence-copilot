@@ -1,0 +1,138 @@
+schema_version: '1'
+opportunities:
+- identity:
+    opportunity_id: opp_01KYRFP0DNZJ4906MMEP5JP2H6
+    created_at: '2026-07-30T03:04:27.838254Z'
+    source_kind: manual
+    platform_job_id: null
+    canonical_url: null
+    source_url: null
+    company: Northside Analytics
+    title: Senior AI Engineer
+    location_text: Melbourne
+    content_fingerprint: bb0a0844c72e801cbdeb62bfeccc2e2a95d80d1a172b2746e9cdae87c0f0243c
+  status: assessed
+  decision: null
+  outcome: null
+  strategy_summary:
+    pursuit_posture: consider
+    application_tier: silver
+    practical_value: acceptable_opportunity
+    technical_fit: mixed
+    commercial_fit: moderate
+    portfolio_fit: moderate
+  artifact_paths:
+    posting.json: artifacts/opp_01KYRFP0DNZJ4906MMEP5JP2H6/posting.json
+    job_analysis.json: artifacts/opp_01KYRFP0DNZJ4906MMEP5JP2H6/job_analysis.json
+    assessment.json: artifacts/opp_01KYRFP0DNZJ4906MMEP5JP2H6/assessment.json
+    portfolio_match.json: artifacts/opp_01KYRFP0DNZJ4906MMEP5JP2H6/portfolio_match.json
+    strategy.json: artifacts/opp_01KYRFP0DNZJ4906MMEP5JP2H6/strategy.json
+  legacy_import: null
+  review:
+    reviewed_at: null
+    pinned: false
+    defer_until: null
+    archived_at: null
+  review_actions:
+  - action: confirm_canonical
+    occurred_at: '2026-07-30T12:00:00Z'
+    detail: duplicate_of=opp_01KYRFP0G7JW0R9SWD8580WHQF
+  duplicate:
+    duplicate_of: opp_01KYRFP0G7JW0R9SWD8580WHQF
+    confirmed_at: '2026-07-30T12:00:00Z'
+    evidence:
+    - owner_judgment
+  duplicate_rejections: []
+  updated_at: '2026-07-30T12:00:00Z'
+- identity:
+    opportunity_id: opp_01KYRFP0G7JW0R9SWD8580WHQF
+    created_at: '2026-07-30T03:04:27.921606Z'
+    source_kind: manual
+    platform_job_id: null
+    canonical_url: null
+    source_url: null
+    company: Northside Analytics
+    title: Senior AI Engineer
+    location_text: Melbourne
+    content_fingerprint: bb0a0844c72e801cbdeb62bfeccc2e2a95d80d1a172b2746e9cdae87c0f0243c
+  status: assessed
+  decision: null
+  outcome: null
+  strategy_summary:
+    pursuit_posture: consider
+    application_tier: silver
+    practical_value: acceptable_opportunity
+    technical_fit: mixed
+    commercial_fit: moderate
+    portfolio_fit: moderate
+  artifact_paths:
+    posting.json: artifacts/opp_01KYRFP0G7JW0R9SWD8580WHQF/posting.json
+    job_analysis.json: artifacts/opp_01KYRFP0G7JW0R9SWD8580WHQF/job_analysis.json
+    assessment.json: artifacts/opp_01KYRFP0G7JW0R9SWD8580WHQF/assessment.json
+    portfolio_match.json: artifacts/opp_01KYRFP0G7JW0R9SWD8580WHQF/portfolio_match.json
+    strategy.json: artifacts/opp_01KYRFP0G7JW0R9SWD8580WHQF/strategy.json
+  legacy_import: null
+  review:
+    reviewed_at: null
+    pinned: false
+    defer_until: null
+    archived_at: null
+  review_actions:
+  - action: confirm_duplicate
+    occurred_at: '2026-07-30T12:00:00Z'
+    detail: duplicate_of=opp_01KYRFP0DNZJ4906MMEP5JP2H6
+  - action: confirm_canonical
+    occurred_at: '2026-07-30T12:00:00Z'
+    detail: canonical=opp_01KYRFP0G7JW0R9SWD8580WHQF
+  - action: reject_duplicate
+    occurred_at: '2026-07-30T12:00:00Z'
+    detail: not_duplicate_of=opp_01KYRFP0JYMM43KVKH4AXZTQWG
+  duplicate: null
+  duplicate_rejections:
+  - other_opportunity_id: opp_01KYRFP0JYMM43KVKH4AXZTQWG
+    rejected_at: '2026-07-30T12:00:00Z'
+    note: different role family
+  updated_at: '2026-07-30T12:00:00Z'
+- identity:
+    opportunity_id: opp_01KYRFP0JYMM43KVKH4AXZTQWG
+    created_at: '2026-07-30T03:04:28.012428Z'
+    source_kind: manual
+    platform_job_id: null
+    canonical_url: null
+    source_url: null
+    company: Southern Grid Energy
+    title: Data Engineer
+    location_text: Melbourne
+    content_fingerprint: c19bdef2bcb781337fec7dd7674f2366dee94ada30a1b7ab6293f16d87ca41fa
+  status: assessed
+  decision: null
+  outcome: null
+  strategy_summary:
+    pursuit_posture: do_not_prioritise
+    application_tier: bronze
+    practical_value: acceptable_opportunity
+    technical_fit: mixed
+    commercial_fit: moderate
+    portfolio_fit: weak
+  artifact_paths:
+    posting.json: artifacts/opp_01KYRFP0JYMM43KVKH4AXZTQWG/posting.json
+    job_analysis.json: artifacts/opp_01KYRFP0JYMM43KVKH4AXZTQWG/job_analysis.json
+    assessment.json: artifacts/opp_01KYRFP0JYMM43KVKH4AXZTQWG/assessment.json
+    portfolio_match.json: artifacts/opp_01KYRFP0JYMM43KVKH4AXZTQWG/portfolio_match.json
+    strategy.json: artifacts/opp_01KYRFP0JYMM43KVKH4AXZTQWG/strategy.json
+  legacy_import: null
+  review:
+    reviewed_at: null
+    pinned: false
+    defer_until: null
+    archived_at: null
+  review_actions:
+  - action: reject_duplicate
+    occurred_at: '2026-07-30T12:00:00Z'
+    detail: not_duplicate_of=opp_01KYRFP0G7JW0R9SWD8580WHQF
+  duplicate: null
+  duplicate_rejections:
+  - other_opportunity_id: opp_01KYRFP0G7JW0R9SWD8580WHQF
+    rejected_at: '2026-07-30T12:00:00Z'
+    note: different role family
+  updated_at: '2026-07-30T12:00:00Z'

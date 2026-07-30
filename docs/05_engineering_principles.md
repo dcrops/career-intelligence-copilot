@@ -131,6 +131,18 @@ status. Prefer idempotent repeats over errors for harmless double-clicks. When a
 action clears prior state (for example clearing a defer), keep lightweight audit evidence
 so the history is not lost — without turning the aggregate into an event-sourced system.
 
+### Link records; never merge them
+
+When two records may describe the same real-world thing, weigh the failure modes rather
+than the match score. A wrong merge silently removes a real item from the owner's view and
+is hard to notice or undo; a duplicate left visible costs a glance. So detect
+deterministically, show matching *and* differing evidence, let the owner confirm, and
+represent the outcome as a relationship between preserved records. Treat data absent on
+either side as unknown, never as agreement, and never let a single weak signal (a shared
+content hash) stand in for identity. Record rejected suggestions too, so the same question
+is not asked twice. Established by FR-009 M3
+([ADR-004](adr/004_opportunity_review_boundary.md)).
+
 ---
 
 ## Tradeoff Principles

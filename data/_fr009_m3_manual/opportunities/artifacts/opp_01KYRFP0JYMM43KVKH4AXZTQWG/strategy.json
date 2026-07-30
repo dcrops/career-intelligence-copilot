@@ -1,0 +1,303 @@
+{
+  "job_analysis": {
+    "posting": {
+      "raw_text": "[CIC-FIXTURE:data-engineer]\nData Engineer — Southern Grid Energy (Melbourne)\n\nWe need a Data Engineer to build reliable analytics platforms on modern lakehouse tooling.\n\nResponsibilities\n• Design and operate batch and streaming pipelines\n• Model curated datasets for analytics and AI consumers\n• Improve data quality and observability\n\nRequirements\n• 4+ years data engineering experience required\n• Python and SQL required; Spark and dbt preferred\n• Cloud warehouse experience (Snowflake or Databricks) required\n\nLocation & employment\nHybrid Melbourne. Full-time permanent.\nSalary $130,000–$155,000 AUD + super.",
+      "title": "Data Engineer",
+      "company": "Southern Grid Energy",
+      "source_url": null
+    },
+    "role_family": {
+      "family": "data_engineering",
+      "evidence": [
+        {
+          "excerpt": "Data Engineer",
+          "section": "title"
+        }
+      ]
+    },
+    "seniority": {
+      "level": "unknown",
+      "ambiguous": false,
+      "candidate_levels": [],
+      "evidence": []
+    },
+    "technologies": [
+      {
+        "name": "Python",
+        "level": "required",
+        "evidence": [
+          {
+            "excerpt": "Python and SQL required",
+            "section": "requirements"
+          }
+        ]
+      },
+      {
+        "name": "SQL",
+        "level": "required",
+        "evidence": [
+          {
+            "excerpt": "Python and SQL required",
+            "section": "requirements"
+          }
+        ]
+      },
+      {
+        "name": "Spark",
+        "level": "preferred",
+        "evidence": [
+          {
+            "excerpt": "Spark and dbt preferred",
+            "section": "requirements"
+          }
+        ]
+      },
+      {
+        "name": "dbt",
+        "level": "preferred",
+        "evidence": [
+          {
+            "excerpt": "Spark and dbt preferred",
+            "section": "requirements"
+          }
+        ]
+      }
+    ],
+    "responsibilities": [
+      {
+        "description": "Design and operate batch and streaming pipelines",
+        "evidence": [
+          {
+            "excerpt": "Design and operate batch and streaming pipelines",
+            "section": "responsibilities"
+          }
+        ]
+      }
+    ],
+    "compensation": {
+      "clarity": "stated",
+      "minimum": 130000.0,
+      "maximum": 155000.0,
+      "currency": "AUD",
+      "period": "year",
+      "raw_text": "Salary $130,000–$155,000 AUD + super",
+      "evidence": [
+        {
+          "excerpt": "Salary $130,000–$155,000 AUD + super",
+          "section": "compensation"
+        }
+      ]
+    },
+    "location": {
+      "clarity": "stated",
+      "summary": "Melbourne",
+      "evidence": [
+        {
+          "excerpt": "Hybrid Melbourne",
+          "section": "location"
+        }
+      ]
+    },
+    "work_arrangement": {
+      "arrangement": "hybrid",
+      "details": null,
+      "evidence": [
+        {
+          "excerpt": "Hybrid Melbourne",
+          "section": "location"
+        }
+      ]
+    },
+    "employment": {
+      "working_hours": "full_time",
+      "engagement_type": "permanent",
+      "evidence": [
+        {
+          "excerpt": "Full-time permanent",
+          "section": "employment"
+        }
+      ]
+    },
+    "experience_requirements": [
+      {
+        "description": "4+ years data engineering experience",
+        "level": "required",
+        "minimum_years": 4.0,
+        "maximum_years": null,
+        "evidence": [
+          {
+            "excerpt": "4+ years data engineering experience required",
+            "section": "requirements"
+          }
+        ]
+      }
+    ]
+  },
+  "application_tier": "bronze",
+  "pursuit_posture": "do_not_prioritise",
+  "practical_value": "acceptable_opportunity",
+  "effort_level": "none",
+  "summary": "Do not prioritise significant effort for this opportunity (tier bronze, effort none). Bronze means low effort investment guidance, not an automatic never-apply decision.",
+  "reasons": [
+    {
+      "kind": "priority",
+      "summary": "Role family 'data_engineering' is outside the owner's current AI Engineering target set and is not recommended for significant effort.",
+      "importance": "material",
+      "evidence": [
+        {
+          "origin": "job_analysis",
+          "job_evidence": {
+            "source": "role_family",
+            "item_index": null,
+            "name": null,
+            "excerpt": null
+          },
+          "profile_evidence": null,
+          "assessment_dimension": null,
+          "assessment_judgment": null,
+          "portfolio_project_id": null,
+          "excerpt": null
+        }
+      ]
+    }
+  ],
+  "risks_or_gaps": [
+    {
+      "summary": "Portfolio fit is limited relative to the role; emphasise only honest project evidence.",
+      "importance": "material",
+      "evidence": [
+        {
+          "origin": "opportunity_assessment",
+          "job_evidence": null,
+          "profile_evidence": null,
+          "assessment_dimension": "portfolio",
+          "assessment_judgment": "weak",
+          "portfolio_project_id": null,
+          "excerpt": null
+        }
+      ]
+    },
+    {
+      "summary": "Role family is data engineering rather than applied AI Engineering, which is the candidate's primary target direction.",
+      "importance": "material",
+      "evidence": [
+        {
+          "origin": "opportunity_assessment",
+          "job_evidence": null,
+          "profile_evidence": null,
+          "assessment_dimension": "technical",
+          "assessment_judgment": "mixed",
+          "portfolio_project_id": null,
+          "excerpt": null
+        }
+      ]
+    }
+  ],
+  "manual_checks": [],
+  "next_actions": [
+    {
+      "kind": "consider_emphasising_portfolio_projects",
+      "summary": "Consider emphasising the strongest matched portfolio project(s) in any application materials you prepare.",
+      "related_project_id": "career-intelligence-copilot",
+      "evidence": [
+        {
+          "origin": "portfolio_match",
+          "job_evidence": null,
+          "profile_evidence": null,
+          "assessment_dimension": null,
+          "assessment_judgment": null,
+          "portfolio_project_id": "career-intelligence-copilot",
+          "excerpt": null
+        }
+      ]
+    },
+    {
+      "kind": "consider_logging_and_deprioritising",
+      "summary": "Consider logging the rationale and not investing significant effort.",
+      "related_project_id": null,
+      "evidence": [
+        {
+          "origin": "opportunity_assessment",
+          "job_evidence": null,
+          "profile_evidence": null,
+          "assessment_dimension": "technical",
+          "assessment_judgment": "mixed",
+          "portfolio_project_id": null,
+          "excerpt": null
+        }
+      ]
+    },
+    {
+      "kind": "consider_owner_review",
+      "summary": "Consider reviewing this full strategy before taking any external action.",
+      "related_project_id": null,
+      "evidence": [
+        {
+          "origin": "opportunity_assessment",
+          "job_evidence": null,
+          "profile_evidence": null,
+          "assessment_dimension": "technical",
+          "assessment_judgment": "mixed",
+          "portfolio_project_id": null,
+          "excerpt": null
+        }
+      ]
+    }
+  ],
+  "portfolio_emphasis": [
+    {
+      "project_id": "career-intelligence-copilot",
+      "source_rank": 1,
+      "summary": "Consider emphasising 'career-intelligence-copilot' (PortfolioMatch rank 1).",
+      "evidence": [
+        {
+          "origin": "portfolio_match",
+          "job_evidence": null,
+          "profile_evidence": null,
+          "assessment_dimension": null,
+          "assessment_judgment": null,
+          "portfolio_project_id": "career-intelligence-copilot",
+          "excerpt": null
+        }
+      ]
+    },
+    {
+      "project_id": "governance-document-rag",
+      "source_rank": 2,
+      "summary": "Consider emphasising 'governance-document-rag' (PortfolioMatch rank 2).",
+      "evidence": [
+        {
+          "origin": "portfolio_match",
+          "job_evidence": null,
+          "profile_evidence": null,
+          "assessment_dimension": null,
+          "assessment_judgment": null,
+          "portfolio_project_id": "governance-document-rag",
+          "excerpt": null
+        }
+      ]
+    },
+    {
+      "project_id": "operational-intelligence-copilot",
+      "source_rank": 3,
+      "summary": "Consider emphasising 'operational-intelligence-copilot' (PortfolioMatch rank 3).",
+      "evidence": [
+        {
+          "origin": "portfolio_match",
+          "job_evidence": null,
+          "profile_evidence": null,
+          "assessment_dimension": null,
+          "assessment_judgment": null,
+          "portfolio_project_id": "operational-intelligence-copilot",
+          "excerpt": null
+        }
+      ]
+    }
+  ],
+  "assumptions": [
+    "No candidate salary minimum is configured, so compensation was not treated as a hard threshold conflict."
+  ],
+  "decision_blockers": [],
+  "owner_review_required": true,
+  "insufficient_information": false
+}

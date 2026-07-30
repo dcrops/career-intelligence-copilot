@@ -214,7 +214,7 @@ Default path is fully deterministic (no OpenAI). Owner review remains mandatory.
 
 FR-008 is **complete**. Acceptance:
 [docs/eval/fr008_workflow_orchestration.md](eval/fr008_workflow_orchestration.md).
-ADR-003 accepted. Current coverage focus: **FR-009** (M2 complete). FR-008 suites were
+ADR-003 accepted. Current coverage focus: **FR-009** (M3 complete). FR-008 suites were
 updated where FR-009 M1 deliberately changed behaviour — skip and defer now retain a
 durable Opportunity, and `persist` completes before owner review.
 
@@ -262,15 +262,17 @@ Playwright / URL / API adapters remain deferred.
 
 ---
 
-## FR-009 coverage (in progress — M2 complete)
+## FR-009 coverage (in progress — M3 complete)
 
 FR-009 is **in progress**. M0 delivered domain contracts; **M1** delivered pre-review
 Opportunity persistence and a minimal derived review projection; **M2** delivered
-reversible owner review actions with lightweight audit history. Duplicate detection and
-ranking calibration are not implemented. Acceptance:
+reversible owner review actions with lightweight audit history; **M3** delivered
+deterministic duplicate detection with owner confirmation and canonical selection.
+Ranking calibration is not implemented. Acceptance:
 [eval/fr009_m0_domain_contracts.md](eval/fr009_m0_domain_contracts.md),
 [eval/fr009_m1_persistence_boundary.md](eval/fr009_m1_persistence_boundary.md),
-[eval/fr009_m2_owner_review_actions.md](eval/fr009_m2_owner_review_actions.md);
+[eval/fr009_m2_owner_review_actions.md](eval/fr009_m2_owner_review_actions.md),
+[eval/fr009_m3_duplicate_detection.md](eval/fr009_m3_duplicate_detection.md);
 architecture [ADR-004](adr/004_opportunity_review_boundary.md).
 
 ### M0 contract tests (`tests/unit/opportunities/test_m0_review_contracts.py`)
@@ -366,8 +368,59 @@ These run against the real YAML/JSON stores in `tmp_path`, not mocks.
 | Archive hides; reopen restores | ✓ |
 | Idempotent repeats; no second Opportunity; status unchanged | ✓ |
 
-Deliberately **not** covered yet (later milestones): duplicate detection and
-confirmation (M3), manual ranking calibration (M4).
+### M3 duplicate detection tests (`tests/unit/duplicates/`)
+
+| Area | Coverage |
+|------|----------|
+| Confidence tiers | Platform + job id and canonical/source URL → `definite`; company + title + corroboration → `probable`; single cluster → `possible` |
+| Fingerprint safety | Identical description text alone never exceeds `possible` |
+| Unknown vs match | Facets absent on either side are `unknown`; `manual` / `import` source kinds are not platform evidence |
+| Normalisation | Legal-entity suffixes and bracketed title asides collapse; genuinely different names do not |
+| Determinism | Scan order does not change candidates, pair order, or confidence order |
+| Resolved pairs | Confirmed links, same-group members, and rejected pairs are never re-suggested |
+| Canonical policy | Artefacts → non-recruiter → platform rank → completeness → earliest discovery → id |
+| Group projection | Groups derive from `duplicate_of` only; a lone record forms no group |
+| Read-only | Candidate and group queries leave `index.yaml` byte-identical |
+| Backward compatibility | Rows written before `duplicate_rejections` existed still project |
+
+### M3 owner-action tests (`tests/unit/opportunities/test_m3_duplicate_actions.py`)
+
+| Area | Coverage |
+|------|----------|
+| Confirm | Links without deleting either record; canonical untouched; idempotent with original `confirmed_at` |
+| Invalid links | Self-reference, chains, and re-pointing an existing canonical raise typed errors |
+| Reject | Symmetric on both records; idempotent; cannot contradict a confirmed link, and vice versa |
+| Canonical change | Whole group re-points; chosen record's relation cleared; all records survive |
+| Aggregate integrity | Decision, status, outcome, artefacts, identity, and review metadata preserved |
+| Audit | One `ReviewActionRecord` per real change; no entry on a no-op |
+| Projection | Confirmed member excluded as `confirmed_duplicate`; canonical stays in the queue |
+
+### M3 functional journeys (`tests/functional/test_fr009_duplicate_review.py`)
+
+| Journey | Coverage |
+|---------|----------|
+| Cross-platform duplicate | Suggested with evidence, confirmed, group formed, both artefact sets intact on disk |
+| Rejection | Repeated scans never re-suggest; both records stay independently reviewable |
+| Unresolved | Stable across scans; neither record leaves the decision queue |
+| Canonical change | Owner picks a different canonical; nothing deleted; recommendation then matches |
+| Interrupted re-point | A partial star converges to one consistent group when the action is replayed |
+| Idempotency | Repeating every action leaves state, timestamps, and audit trail unchanged |
+| Reload | Duplicate state and artefacts survive a fresh service instance |
+
+#### Manual validation (`scripts/run_fr009_duplicate_review_manual.py`)
+
+| Check | Result |
+|-------|--------|
+| Same vacancy acquired twice is suggested as `probable` with matching/differing evidence | ✓ |
+| Unrelated vacancy is not suggested | ✓ |
+| Unresolved candidates repeat identically and hide nothing | ✓ |
+| Confirmation links records; 3 of 3 records preserved with artefacts | ✓ |
+| Canonical recommendation is advisory; owner confirms a different canonical | ✓ |
+| Rejected pair never returns | ✓ |
+| Repeated actions change nothing; audit trail readable | ✓ |
+| Live `data/opportunities/` scan is read-only and surfaces only `possible` fingerprint collisions | ✓ |
+
+Deliberately **not** covered yet: manual ranking calibration (M4).
 
 ---
 
