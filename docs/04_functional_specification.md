@@ -845,11 +845,12 @@ closed. Do not reopen spike criteria without explicit owner request.
 ## FR-009 Opportunity Review Queue & Ranking
 
 **Phase:** Horizon 1A Stage 3  
-**Status:** **In progress — M1 complete** (pre-review persistence + minimal derived
-review projection; 2026-07-30). Owner queue actions, duplicate detection, and ranking
-calibration are **not implemented**.  
+**Status:** **In progress — M2 complete** (owner review actions, reversibility, and
+audit; 2026-07-30). Duplicate detection and ranking calibration are **not
+implemented**.  
 **M0 acceptance:** [docs/eval/fr009_m0_domain_contracts.md](eval/fr009_m0_domain_contracts.md)  
 **M1 acceptance:** [docs/eval/fr009_m1_persistence_boundary.md](eval/fr009_m1_persistence_boundary.md)  
+**M2 acceptance:** [docs/eval/fr009_m2_owner_review_actions.md](eval/fr009_m2_owner_review_actions.md)  
 **Architecture:** [ADR-004](adr/004_opportunity_review_boundary.md) (Accepted)
 
 Compare multiple acquired opportunities for owner attention — not only process each
@@ -937,9 +938,30 @@ Exclusion reasons are explicit and deterministic: `archived`, `confirmed_duplica
 `skipped`, `deferred`, `closed` (terminal `PipelineStatus`), and — for the awaiting
 scope only — `decided`. A record is deferred while `review.defer_until` is later than the
 explicit reference date; where no date is set, a `defer` decision holds until the owner
-reopens the record (FR-008's interrupt has no scheduling interface). Ordering inside the queue is the unmodified M4 comparison, and each
-item carries the M4 explanation reasons. Eligibility and rank position are never
-persisted.
+clears it. Ordering is **pinned first**, then the unmodified M4 comparison, then stable
+`opportunity_id`. Pinned items prepend the reason `"Pinned by owner"` so presentation
+override is distinct from fit. Eligibility and rank position are never persisted.
+`reviewed_at` does not remove a record from awaiting review — that scope means “no owner
+decision yet”.
+
+### Owner review actions (M2)
+
+`OpportunityReviewService` writes owner review metadata against the existing Opportunity.
+`ReviewQueueService` stays read-only. Supported actions:
+
+| Action | Effect |
+|--------|--------|
+| `mark_reviewed` | set `reviewed_at` (preserve original on repeat); no owner decision |
+| `pin` / `unpin` | toggle presentation prominence; pin rejected while archived |
+| `defer_until(date)` | set `decision=defer` + `defer_until`; reject past dates vs reference date |
+| `clear_defer` | clear `defer_until` and the defer decision → undecided |
+| `archive` | set `archived_at` (preserve original); auto-clears pin |
+| `reopen` | clear `archived_at` only — does not reset decision/defer/duplicate |
+
+Each successful mutating action appends one `ReviewActionRecord` to
+`Opportunity.review_actions` (audit evidence; never used for eligibility). Harmless
+repeats are idempotent and do not append again. FR-009 still does not write
+`PipelineStatus`.
 
 ### Milestones
 
@@ -947,7 +969,7 @@ persisted.
 |-----------|-------|--------|
 | M0 | Domain contracts, persistence-boundary specification, ADR-004 | **Complete** |
 | M1 | Workflow persistence-boundary move + minimal derived review projection | **Complete** |
-| M2 | Owner queue actions (mark reviewed, pin, defer until, archive, reopen) | Planned |
+| M2 | Owner review actions, reversibility, and audit history | **Complete** |
 | M3 | Duplicate candidate detection + owner confirmation | Planned |
 | M4 | Manual validation and ranking calibration | Planned |
 | Close-out | Acceptance and documentation freeze | Planned |

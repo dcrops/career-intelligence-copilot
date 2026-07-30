@@ -59,6 +59,15 @@ class OpportunityService:
     def list_opportunities(self) -> list[Opportunity]:
         return self._store.list_opportunities()
 
+    def replace(self, opportunity: Opportunity) -> Opportunity:
+        """Persist a full Opportunity replacement. Artifact files are never touched.
+
+        Used by owner-review updates (FR-009 M2). Callers must reload immediately
+        before mutating so unrelated fields are not overwritten from a stale copy.
+        """
+        self._store.get(opportunity.opportunity_id)
+        return self._store.save(opportunity)
+
     def legacy_import_fingerprints(self) -> set[str]:
         """Return import fingerprints already present (M3 duplicate safety)."""
         return {

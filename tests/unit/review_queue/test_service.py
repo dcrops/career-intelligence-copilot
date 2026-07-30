@@ -115,6 +115,40 @@ def test_ordering_matches_the_frozen_m4_baseline(tmp_path: Path) -> None:
     assert all(item.reasons for item in queue.items)
 
 
+def test_pinned_records_sort_before_m4_order_with_explicit_reason(
+    tmp_path: Path,
+) -> None:
+    from career_intelligence.review_queue import PINNED_REASON
+
+    records = [
+        queue_opportunity(ID_A, pursuit_posture="consider", application_tier="silver"),
+        queue_opportunity(ID_B, pursuit_posture="prioritise"),
+        queue_opportunity(
+            ID_C,
+            pursuit_posture="pursue",
+            application_tier="gold",
+            review=OpportunityReview(pinned=True),
+        ),
+    ]
+    service = _queue_service(_store(tmp_path, records))
+    queue = service.list_awaiting_review(reference_date=REFERENCE_DATE)
+
+    assert queue.opportunity_ids == [ID_C, ID_B, ID_A]
+    assert queue.items[0].reasons[0] == PINNED_REASON
+    # Relative M4 order among unpinned records is preserved.
+    assert queue.opportunity_ids[1:] == [ID_B, ID_A]
+
+
+def test_reviewed_undecided_record_stays_in_awaiting_review(tmp_path: Path) -> None:
+    records = [
+        queue_opportunity(ID_A, review=OpportunityReview(reviewed_at=STAMP)),
+    ]
+    service = _queue_service(_store(tmp_path, records))
+    assert service.list_awaiting_review(reference_date=REFERENCE_DATE).opportunity_ids == [
+        ID_A
+    ]
+
+
 def test_equal_signals_fall_back_to_stable_id_order(tmp_path: Path) -> None:
     records = [queue_opportunity(ID_C), queue_opportunity(ID_A), queue_opportunity(ID_B)]
     service = _queue_service(_store(tmp_path, records))

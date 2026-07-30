@@ -58,11 +58,13 @@ def _is_deferred(
     decision: str | None,
     reference_date: date,
 ) -> bool:
-    """A defer holds until ``defer_until``; without a date it holds until reopened.
+    """Whether a defer currently excludes the record from the queue.
 
-    FR-008 accepts a defer decision without a date (the owner-review interrupt
-    has no scheduling interface yet), so an undated defer is treated as manually
-    deferred rather than silently active.
+    Policy (FR-009 M1/M2):
+
+    - ``defer_until`` set and ``> reference_date`` → currently deferred
+    - ``defer_until`` set and ``<= reference_date`` → expired; eligible to return
+    - ``defer_until`` is None and ``decision == "defer"`` → indefinitely deferred
     """
     defer_until = opportunity.review.defer_until
     if defer_until is not None:

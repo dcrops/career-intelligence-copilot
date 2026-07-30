@@ -1,4 +1,4 @@
-"""Typed domain models for durable Opportunity persistence (M1–M4, FR-009 M0).
+"""Typed domain models for durable Opportunity persistence (M1–M4, FR-009).
 
 Index records stay lightweight. Full FR-002–FR-005 graphs live as immutable
 artifact snapshots under the opportunity id. M2 adds owner decision and outcome
@@ -7,11 +7,12 @@ M4 ranking consumes StrategySummary and lifecycle fields via a separate
 comparison package.
 
 FR-009 M0 adds owner review metadata and an optional duplicate relationship as
-additive contracts (ADR-004). An Opportunity is the durable record of a
-successfully analysed job candidate that may require an owner decision — it does
-not imply the owner chose to apply. Review metadata, owner decision, pipeline
-status, and duplicate state stay separate fields because they answer different
-questions and change at different times.
+additive contracts (ADR-004). FR-009 M2 adds append-only ``review_actions`` audit
+evidence alongside the current-state ``review`` fields. An Opportunity is the
+durable record of a successfully analysed job candidate that may require an
+owner decision — it does not imply the owner chose to apply. Review metadata,
+owner decision, pipeline status, and duplicate state stay separate fields
+because they answer different questions and change at different times.
 """
 
 from __future__ import annotations
@@ -96,6 +97,16 @@ DuplicateEvidenceKind = Literal[
     "owner_judgment",
 ]
 
+ReviewActionKind = Literal[
+    "mark_reviewed",
+    "pin",
+    "unpin",
+    "defer_until",
+    "clear_defer",
+    "archive",
+    "reopen",
+]
+
 PIPELINE_STATUSES: tuple[PipelineStatus, ...] = get_args(PipelineStatus)
 OWNER_DECISION_KINDS: tuple[OwnerDecisionKind, ...] = get_args(OwnerDecisionKind)
 OUTCOME_KINDS: tuple[OutcomeKind, ...] = get_args(OutcomeKind)
@@ -103,6 +114,7 @@ INTERVIEW_STAGES: tuple[InterviewStage, ...] = get_args(InterviewStage)
 DUPLICATE_EVIDENCE_KINDS: tuple[DuplicateEvidenceKind, ...] = get_args(
     DuplicateEvidenceKind
 )
+REVIEW_ACTION_KINDS: tuple[ReviewActionKind, ...] = get_args(ReviewActionKind)
 
 TERMINAL_STATUSES: frozenset[PipelineStatus] = frozenset(
     {"accepted", "rejected", "withdrawn"}
@@ -196,6 +208,19 @@ class OpportunityReview(OpportunityModel):
         return self
 
 
+class ReviewActionRecord(OpportunityModel):
+    """One append-only owner review action (FR-009 M2 audit evidence).
+
+    Current review state lives on ``Opportunity.review`` / ``decision``. This
+    history is never used for queue eligibility or ordering — it only preserves
+    reversible-action evidence when later writes clear prior values.
+    """
+
+    action: ReviewActionKind
+    occurred_at: datetime
+    detail: NonEmptyString | None = None
+
+
 class DuplicateRelation(OpportunityModel):
     """Owner-confirmed link from a duplicate record to its canonical record.
 
@@ -233,6 +258,7 @@ class Opportunity(OpportunityModel):
     artifact_paths: dict[str, NonEmptyString] = Field(default_factory=dict)
     legacy_import: LegacyImportProvenance | None = None
     review: OpportunityReview = Field(default_factory=OpportunityReview)
+    review_actions: tuple[ReviewActionRecord, ...] = ()
     duplicate: DuplicateRelation | None = None
     updated_at: datetime
 

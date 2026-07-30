@@ -1461,11 +1461,11 @@ closure.
 
 ## FR-009 Opportunity Review Queue & Ranking (in progress)
 
-**Status:** M1 complete (2026-07-30) — pre-review persistence plus a minimal derived
-review projection. Owner queue actions, duplicate detection, and ranking calibration are
-**not implemented**.  
+**Status:** M2 complete (2026-07-30) — owner review actions, reversibility, and audit.
+Duplicate detection and ranking calibration are **not implemented**.  
 **Acceptance:** [eval/fr009_m0_domain_contracts.md](eval/fr009_m0_domain_contracts.md),
-[eval/fr009_m1_persistence_boundary.md](eval/fr009_m1_persistence_boundary.md)  
+[eval/fr009_m1_persistence_boundary.md](eval/fr009_m1_persistence_boundary.md),
+[eval/fr009_m2_owner_review_actions.md](eval/fr009_m2_owner_review_actions.md)  
 **Architecture:** [ADR-004](adr/004_opportunity_review_boundary.md)
 
 ### M0 — persistence boundary and domain contracts
@@ -1604,8 +1604,43 @@ python scripts/run_fr009_review_queue_manual.py queue \
     --opportunities-dir data/opportunities
 ```
 
+### M2 — owner review actions, reversibility, and audit (complete)
+
+**Acceptance:** [eval/fr009_m2_owner_review_actions.md](eval/fr009_m2_owner_review_actions.md)
+
+**Write / read separation.** `OpportunityReviewService` owns owner-authored review
+writes; `ReviewQueueService` remains query-only. Persists through
+`OpportunityService.replace` (index only; artefacts untouched).
+
+| Action | State change | Idempotency |
+|--------|--------------|-------------|
+| `mark_reviewed` | set `reviewed_at` if unset | preserve original timestamp |
+| `pin` / `unpin` | toggle `pinned` | no-op when already in target state |
+| `defer_until(date)` | `decision=defer` + `defer_until` | same date is no-op; past dates rejected |
+| `clear_defer` | clear date **and** defer decision → undecided | no-op when not deferred |
+| `archive` | set `archived_at`; **auto-clear pin** | preserve original `archived_at` |
+| `reopen` | clear `archived_at` only | no-op when not archived |
+
+**Audit.** Additive `review_actions: tuple[ReviewActionRecord, …]` on Opportunity —
+append-only evidence (`action`, `occurred_at`, optional `detail`). Not used for
+eligibility. Empty default for pre-M2 records.
+
+**Projection.** Ordering becomes pinned-first then M4. Awaiting review still means no
+owner decision (`reviewed_at` alone does not remove). Expired `defer_until`
+(`<= reference_date`) returns to the active projection while the historical defer
+decision may remain until `clear_defer`.
+
+**Concurrency.** Whole-index YAML rewrite; last writer wins. Each action reloads
+immediately before mutate. No optimistic locking in M2.
+
+**Manual:**
+
+```bash
+python scripts/run_fr009_owner_review_manual.py demo \
+    --workspace data/_fr009_m2_manual --offline-fixtures
+```
+
 ### Remaining milestones
 
-M2 owner queue actions (mark reviewed, pin, defer until, archive, reopen) → M3 duplicate
-candidate detection and confirmation → M4 manual validation and ranking calibration →
-close-out. Not started.
+M3 duplicate candidate detection and confirmation → M4 manual validation and ranking
+calibration → close-out. Not started.

@@ -1,4 +1,4 @@
-"""Public API for durable Opportunity persistence (M1–M3)."""
+"""Public API for durable Opportunity persistence (M1–M3, FR-009)."""
 
 from .bridge import OpportunityCsvBridge
 from .csv_export import DEFAULT_EXPORT_PATH, EXPORT_COLUMNS, OpportunityCsvExporter
@@ -26,6 +26,7 @@ from .models import (
     OUTCOME_KINDS,
     OWNER_DECISION_KINDS,
     PIPELINE_STATUSES,
+    REVIEW_ACTION_KINDS,
     TERMINAL_STATUSES,
     DuplicateEvidenceKind,
     DuplicateRelation,
@@ -38,9 +39,12 @@ from .models import (
     OwnerDecisionKind,
     OwnerDecisionRecord,
     PipelineStatus,
+    ReviewActionKind,
+    ReviewActionRecord,
     SourceKind,
     StrategySummary,
 )
+from .review_service import OpportunityReviewService
 from .service import OpportunityService
 
 __all__ = [
@@ -61,6 +65,7 @@ __all__ = [
     "OUTCOME_KINDS",
     "OWNER_DECISION_KINDS",
     "PIPELINE_STATUSES",
+    "REVIEW_ACTION_KINDS",
     "TERMINAL_STATUSES",
     "Opportunity",
     "OpportunityArtifactExistsError",
@@ -70,6 +75,7 @@ __all__ = [
     "OpportunityIdentity",
     "OpportunityNotFoundError",
     "OpportunityReview",
+    "OpportunityReviewService",
     "OpportunityService",
     "OpportunityStorageError",
     "OpportunityTransitionError",
@@ -79,6 +85,8 @@ __all__ = [
     "OwnerDecisionKind",
     "OwnerDecisionRecord",
     "PipelineStatus",
+    "ReviewActionKind",
+    "ReviewActionRecord",
     "SourceKind",
     "StrategySummary",
     "new_opportunity_id",

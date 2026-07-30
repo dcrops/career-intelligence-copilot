@@ -4,6 +4,38 @@ Records product strategy and engineering knowledge changes. Routine typo fixes a
 
 ---
 
+## Version 1.56
+
+### FR-009 M2 — Owner review actions, reversibility, and audit
+
+Implemented reversible owner controls over persisted Opportunities. **FR-009 remains in
+progress.**
+
+**Service.** New `OpportunityReviewService` writes review metadata through
+`OpportunityService.replace`. `ReviewQueueService` stays read-only. Actions:
+`mark_reviewed`, `pin`, `unpin`, `defer_until`, `clear_defer`, `archive`, `reopen`.
+
+**Separation.** Owner decision (apply/skip/defer), review metadata, `PipelineStatus`, and
+ranking inputs remain distinct. Mark reviewed never creates a decision. Archive means
+review visibility only and auto-clears pin. Reopen clears `archived_at` only.
+`clear_defer` restores undecided (`decision=None`, `defer_until=None`).
+
+**Ordering.** Eligible → pinned first → unchanged M4 fit order → stable id. Pinned items
+prepend `"Pinned by owner"`.
+
+**Audit.** Additive `Opportunity.review_actions` — append-only `ReviewActionRecord`
+entries. Current state on `review`/`decision` remains authoritative for eligibility.
+Idempotent repeats do not append again. Old records default to an empty history.
+
+**Compatibility.** No live migration. Past defer dates rejected against an explicit
+reference date; same-day means expired.
+
+**Not implemented:** duplicate detection (M3), ranking calibration (M4), UI/CLI, pipeline
+tracking. Acceptance:
+[docs/eval/fr009_m2_owner_review_actions.md](eval/fr009_m2_owner_review_actions.md).
+
+---
+
 ## Version 1.55
 
 ### FR-009 M1 — Pre-review Opportunity persistence & derived review projection

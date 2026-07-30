@@ -98,21 +98,21 @@ constraint.
   on existing rows the next time a decision or outcome is saved. This changes
   serialisation only, never meaning.
 
-## Implementation status (FR-009 M1)
+## Implementation status (FR-009 M1 + M2)
 
-Decisions 1–9 are implemented for the workflow and the default projection. `persist`
-moved into `PRE_APPROVAL_SEQUENCE`; all three decisions run `POST_DECISION_SEQUENCE`;
-`career_intelligence.review_queue.ReviewQueueService` provides the derived projection.
-Crash windows A–E behave as required, with one refinement to window A: a persistence
-failure leaves the run **resumable** (status `running`, error recorded, planned id kept)
-rather than terminally failed, matching the FR-008 M2 treatment of side-effect nodes so a
-transient store outage cannot discard completed FR-002–FR-005 analysis. The invariant the
-window protects is unchanged — no Opportunity, no approval request.
+Decisions 1–9 are implemented for the workflow, the default projection, and owner review
+actions. `persist` moved into `PRE_APPROVAL_SEQUENCE`; all three decisions run
+`POST_DECISION_SEQUENCE`; `career_intelligence.review_queue.ReviewQueueService` provides
+the derived projection with pinned-first presentation override.
+`OpportunityReviewService` writes orthogonal review metadata and append-only
+`review_actions` audit evidence. Crash windows A–E behave as required, with one
+refinement to window A: a persistence failure leaves the run **resumable** (status
+`running`, error recorded, planned id kept) rather than terminally failed, matching the
+FR-008 M2 treatment of side-effect nodes so a transient store outage cannot discard
+completed FR-002–FR-005 analysis. The invariant the window protects is unchanged — no
+Opportunity, no approval request.
 
-Owner queue actions (M2), duplicate detection (M3), and ranking calibration (M4) remain
-deferred. `OpportunityReview` and `DuplicateRelation` are read by the eligibility policy
-but no service method writes them yet, so today they only ever hold their defaults on
-records the workflow creates.
+Duplicate detection (M3) and ranking calibration (M4) remain deferred.
 
 ## Compatibility implications
 
@@ -127,8 +127,6 @@ records the workflow creates.
 
 ## Deferred work
 
-- FR-009 M2 — owner queue actions (mark reviewed, pin, defer until, archive, reopen)
-  and their service methods.
 - FR-009 M3 — duplicate candidate detection and owner confirmation.
 - FR-009 M4 — manual validation and ranking calibration.
 - FR-012 — application pipeline status and outcome semantics; `PipelineStatus`

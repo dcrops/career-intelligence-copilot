@@ -123,6 +123,14 @@ reconciled on every change to the underlying record, which is how two sources of
 begin. Date-sensitive policy takes an explicit reference date rather than reading the
 clock, so behaviour is testable and explanations are reproducible.
 
+### Reversible owner overrides stay orthogonal to decisions
+
+Owner presentation controls (pin, archive, reviewed, defer-until) must be reversible and
+must not silently rewrite owner decisions, fit ranking inputs, or application-pipeline
+status. Prefer idempotent repeats over errors for harmless double-clicks. When a reverse
+action clears prior state (for example clearing a defer), keep lightweight audit evidence
+so the history is not lost — without turning the aggregate into an event-sourced system.
+
 ---
 
 ## Tradeoff Principles

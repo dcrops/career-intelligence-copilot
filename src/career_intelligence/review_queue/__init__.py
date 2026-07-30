@@ -13,10 +13,11 @@ from .models import (
     QueueScope,
     ReviewQueue,
 )
-from .service import ReviewQueueService
+from .service import PINNED_REASON, ReviewQueueService
 
 __all__ = [
     "EXCLUSION_REASONS",
+    "PINNED_REASON",
     "QUEUE_SCOPES",
     "ExclusionReason",
     "QueueEligibility",

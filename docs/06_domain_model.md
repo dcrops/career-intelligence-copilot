@@ -236,7 +236,7 @@ assessments remains deferred.
 
 ### Owner Review Metadata
 
-**Maps to:** FR-009 (M0 contracts complete; owner-facing actions planned for M2)
+**Maps to:** FR-009 (M0 contracts; M2 owner actions complete)
 
 Owner-authored annotations on a durable Opportunity that control **review visibility and
 attention**, held as independent fields rather than one lifecycle enum: `reviewed_at`,
@@ -250,19 +250,25 @@ employer rejection or a closed recruitment process.
 Queue eligibility, rank position, age, and staleness are **derived** from these fields —
 not stored. See [ADR-004](adr/004_opportunity_review_boundary.md).
 
+**Service:** `OpportunityReviewService` (`mark_reviewed`, `pin`, `unpin`, `defer_until`,
+`clear_defer`, `archive`, `reopen`). Append-only audit evidence lives on
+`Opportunity.review_actions` and is never used for eligibility.
+
 ---
 
 ### Review Queue (derived)
 
-**Maps to:** FR-009 M1 (complete)
+**Maps to:** FR-009 M1 (complete; pin ordering extended in M2)
 
 Not an entity with its own storage: a **projection** computed on demand from persisted
 Opportunities plus an explicit reference date. Two scopes exist — *awaiting review*
-(no owner decision yet) and *active* (still live, including applied-for records).
+(no owner decision yet; `reviewed_at` alone does not remove a record) and *active*
+(still live, including applied-for records).
 
 A record is excluded when it is archived, a confirmed duplicate, skipped, currently
 deferred, or closed by a terminal `PipelineStatus`; every omission carries a reason so
-ordering is explainable. Eligible records are ordered by the unchanged M4 sort key.
+ordering is explainable. Eligible records are ordered **pinned first**, then by the
+unchanged M4 sort key.
 
 **Implementation:** `src/career_intelligence/review_queue/` (`ReviewQueueService`).
 
@@ -412,9 +418,9 @@ continue to connect to this layer rather than invent a parallel tracker.
 | Ranked Comparison | Phase 2 M4 (complete; hist. FR-012 partial); extended by **FR-009** |
 | Opportunity identity (title/company) | Phase 2 M4a (complete) |
 | Job Acquisition & Workflow Orchestration | **FR-008** (Horizon 1A; first orchestration) |
-| Opportunity Review Queue & Ranking | **FR-009** (Horizon 1A, in progress — M1 complete) |
-| Owner Review Metadata | **FR-009** M0 contract ([ADR-004](adr/004_opportunity_review_boundary.md)); actions in M2 |
-| Review Queue (derived projection) | **FR-009** M1 (complete) |
+| Opportunity Review Queue & Ranking | **FR-009** (Horizon 1A, in progress — M2 complete) |
+| Owner Review Metadata | **FR-009** M0–M2 ([ADR-004](adr/004_opportunity_review_boundary.md)) |
+| Review Queue (derived projection) | **FR-009** M1 (complete; pin ordering in M2) |
 | Duplicate Relation | **FR-009** M0 contract; detection in M3 |
 | Application Package Preparation | **FR-010** (Horizon 1A) |
 | Submission Assistance | **FR-011** (Horizon 1A) |

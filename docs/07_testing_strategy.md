@@ -214,7 +214,7 @@ Default path is fully deterministic (no OpenAI). Owner review remains mandatory.
 
 FR-008 is **complete**. Acceptance:
 [docs/eval/fr008_workflow_orchestration.md](eval/fr008_workflow_orchestration.md).
-ADR-003 accepted. Current coverage focus: **FR-009** (M1 complete). FR-008 suites were
+ADR-003 accepted. Current coverage focus: **FR-009** (M2 complete). FR-008 suites were
 updated where FR-009 M1 deliberately changed behaviour — skip and defer now retain a
 durable Opportunity, and `persist` completes before owner review.
 
@@ -262,13 +262,15 @@ Playwright / URL / API adapters remain deferred.
 
 ---
 
-## FR-009 coverage (in progress — M1 complete)
+## FR-009 coverage (in progress — M2 complete)
 
 FR-009 is **in progress**. M0 delivered domain contracts; **M1** delivered pre-review
-Opportunity persistence and a minimal derived review projection. Owner queue actions,
-duplicate detection, and ranking calibration are not implemented. Acceptance:
+Opportunity persistence and a minimal derived review projection; **M2** delivered
+reversible owner review actions with lightweight audit history. Duplicate detection and
+ranking calibration are not implemented. Acceptance:
 [eval/fr009_m0_domain_contracts.md](eval/fr009_m0_domain_contracts.md),
-[eval/fr009_m1_persistence_boundary.md](eval/fr009_m1_persistence_boundary.md);
+[eval/fr009_m1_persistence_boundary.md](eval/fr009_m1_persistence_boundary.md),
+[eval/fr009_m2_owner_review_actions.md](eval/fr009_m2_owner_review_actions.md);
 architecture [ADR-004](adr/004_opportunity_review_boundary.md).
 
 ### M0 contract tests (`tests/unit/opportunities/test_m0_review_contracts.py`)
@@ -332,9 +334,40 @@ These run against the real YAML/JSON stores in `tmp_path`, not mocks.
 | Replaying a completed run creates no duplicate | ✓ |
 | Live `data/opportunities/` projects read-only, unmigrated | ✓ |
 
-Deliberately **not** covered yet (later milestones): pin / mark-reviewed / defer-until /
-archive owner actions (M2), duplicate detection and confirmation (M3), manual ranking
-calibration (M4).
+### M2 owner-action tests (`tests/unit/opportunities/test_m2_review_actions.py`)
+
+| Area | Coverage |
+|------|----------|
+| Mark reviewed | Sets `reviewed_at` without creating a decision; repeat preserves original |
+| Pin / unpin | Reversible; pin rejected while archived; archive auto-clears pin |
+| Timed defer | Past dates rejected; same-day expires; clear_defer → undecided |
+| Archive / reopen | Reversible; reopen leaves skip/decision/reviewed intact |
+| Aggregate integrity | Actions preserve decision, status, outcome, artefacts, ranking inputs |
+| Audit history | Appends on mutate; empty default for legacy rows; YAML round-trip |
+| Pin projection | Weak pinned record sorts first with `"Pinned by owner"`; unpin restores M4 |
+
+### M2 functional journeys (`tests/functional/test_fr009_owner_review_actions.py`)
+
+| Journey | Coverage |
+|---------|----------|
+| Mark reviewed | Stays awaiting; artefacts unchanged on disk |
+| Pin / unpin | Presentation order override then M4 restore |
+| Defer / clear / expiry | Hide, return on date to active, clear → awaiting |
+| Archive / reopen | Visibility only; skip still excludes after reopen |
+| Mixed state | Reviewed undecided + pinned coexist in awaiting |
+
+#### Manual validation (`scripts/run_fr009_owner_review_manual.py`)
+
+| Check | Result |
+|-------|--------|
+| Reviewed undecided stays awaiting | ✓ |
+| Pin raises then unpin restores M4 order | ✓ |
+| Timed defer hides; expiry returns to active; clear_defer restores awaiting | ✓ |
+| Archive hides; reopen restores | ✓ |
+| Idempotent repeats; no second Opportunity; status unchanged | ✓ |
+
+Deliberately **not** covered yet (later milestones): duplicate detection and
+confirmation (M3), manual ranking calibration (M4).
 
 ---
 
