@@ -105,6 +105,24 @@ Workflow and pipeline transitions should be observable, preferably idempotent, a
 resumable across owner-approval interrupts. Prefer checkpoints over silent retries that
 duplicate submissions.
 
+### Persist analysed work before asking the human
+
+Where a human interrupt sits in the middle of a workflow, write the durable record
+*before* the interrupt and update it with the decision afterwards — create then update,
+not decide then create. Completed analysis is expensive and the pause is unbounded, so a
+"no" must leave evidence rather than nothing. Idempotency comes from pre-allocating the
+record's identity and checkpointing it before the write, so a replay reclaims the record
+instead of creating a second one. Established by FR-009 M1
+([ADR-004](adr/004_opportunity_review_boundary.md)).
+
+### Derive views; persist facts
+
+Owner-visible orderings, bands, and labels should be computed from persisted facts, not
+stored alongside them. A stored rank or eligibility flag must then be invalidated and
+reconciled on every change to the underlying record, which is how two sources of truth
+begin. Date-sensitive policy takes an explicit reference date rather than reading the
+clock, so behaviour is testable and explanations are reproducible.
+
 ---
 
 ## Tradeoff Principles

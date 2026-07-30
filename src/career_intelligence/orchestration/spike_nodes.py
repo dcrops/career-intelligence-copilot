@@ -379,7 +379,7 @@ class OwnerReviewNode:
             node_id="owner_review",
             display_name="Owner review interrupt",
             kind="deterministic",
-            description="Mandatory owner approval before M2 persist / later actions",
+            description="Mandatory owner decision on the persisted Opportunity",
         )
 
     @property
@@ -393,6 +393,11 @@ class OwnerReviewNode:
             return _failure(str(error))
         if state.artefacts.strategy is None:
             return _failure("owner_review requires ApplicationStrategy")
+        if state.artefacts.opportunity_id is None:
+            return _failure(
+                "owner_review requires a persisted Opportunity (FR-009 M1): "
+                "the interrupt must not be reached before the durable record exists"
+            )
 
         stamp = utc_now()
         try:
@@ -405,9 +410,9 @@ class OwnerReviewNode:
                                 "pending_options": ["apply", "skip", "defer"],
                                 "pending_message": (
                                     "Review application strategy before continuing. "
-                                    "On apply, the workflow persists an Opportunity and "
-                                    "records the decision. Skip/defer complete without "
-                                    "persistence."
+                                    "The Opportunity is already persisted; apply, skip, "
+                                    "and defer each record the decision against that "
+                                    "same durable record."
                                 ),
                                 "pending_requested_at": stamp,
                                 "owner_decision": None,

@@ -82,16 +82,20 @@ def test_process_level_skip_path(tmp_path: Path) -> None:
     ).resume(paused.run_id, "skip")
     assert done.status == "completed"
     assert done.approval.owner_decision == "skip"
-    assert done.artefacts.opportunity_id is None
-    assert (
-        ApplicationWorkflowRunner(
-            offline_dependencies(
-                store=JsonDirectoryCheckpointStore(tmp_path / "workflow_runs"),
-                opportunities_dir=tmp_path / "opportunities",
-            )
-        ).opportunities.list_opportunities()
-        == []
+    assert done.artefacts.opportunity_id == paused.artefacts.opportunity_id
+
+    # FR-009 M1: a skipped Opportunity is preserved and auditable across processes.
+    reader = ApplicationWorkflowRunner(
+        offline_dependencies(
+            store=JsonDirectoryCheckpointStore(tmp_path / "workflow_runs"),
+            opportunities_dir=tmp_path / "opportunities",
+        )
     )
+    records = reader.opportunities.list_opportunities()
+    assert len(records) == 1
+    skipped = reader.opportunities.get(done.artefacts.opportunity_id)
+    assert skipped.decision is not None
+    assert skipped.decision.decision == "skip"
 
 
 def test_invalid_resume_does_not_advance(tmp_path: Path) -> None:

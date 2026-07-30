@@ -4,6 +4,47 @@ Records product strategy and engineering knowledge changes. Routine typo fixes a
 
 ---
 
+## Version 1.55
+
+### FR-009 M1 — Pre-review Opportunity persistence & derived review projection
+
+Implemented the ADR-004 boundary that M0 specified. **FR-009 remains in progress.**
+
+**Persistence boundary moved.** `persist` now runs in the pre-approval sequence,
+immediately after `strategy`, so a successfully analysed job becomes a durable
+Opportunity with `decision=None` *before* the owner-review interrupt. Apply, skip, and
+defer then update that same record through `record_decision`; nothing is deleted and
+`PipelineStatus` is not written. The former `APPLY_SIDE_EFFECT_SEQUENCE` is now
+`POST_DECISION_SEQUENCE` (`record_decision` only) because all three decisions share it.
+
+**Idempotency, earlier.** The mechanism is unchanged: the runner pre-allocates
+`artefacts.opportunity_id` and checkpoints it before `persist` runs, and
+`create_from_strategy(opportunity_id=…)` returns the existing record for a known id.
+Combined with `completed_spike_nodes`, replaying a node or re-running a checkpointed run
+yields exactly one Opportunity. A failure in either side-effect node now pauses the run
+as resumable rather than failing terminally, so a store outage cannot discard completed
+FR-002–FR-005 analysis, and the interrupt is unreachable without a durable record.
+
+**Derived review projection** (`career_intelligence.review_queue`): `ReviewQueueService`
+is a read-only query exposing `list_awaiting_review` and `list_active_opportunities`.
+Exclusions are explicit and ordered — `archived`, `confirmed_duplicate`, `skipped`,
+`deferred`, `closed`, plus `decided` for the awaiting scope — and date sensitivity is an
+explicit `reference_date` parameter rather than a clock read inside policy. Ordering
+delegates to the unchanged M4 comparison; eligibility and rank position are never stored.
+
+**Documented behavioural change:** FR-008 assertions of the form "skip/defer create no
+Opportunity" are now "skip/defer create a record carrying that decision".
+
+**Compatibility:** no migration and no live-data mutation; the 16 existing records
+project unchanged (13 awaiting review, 15 active, one skipped excluded).
+
+**Not implemented:** owner queue actions (mark reviewed, pin, defer until, archive,
+reopen), duplicate candidate detection and confirmation, ranking calibration, UI/CLI, and
+pipeline tracking. Acceptance:
+[docs/eval/fr009_m1_persistence_boundary.md](eval/fr009_m1_persistence_boundary.md).
+
+---
+
 ## Version 1.54
 
 ### FR-009 M0 — Opportunity persistence boundary & domain contracts

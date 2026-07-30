@@ -7,7 +7,6 @@ from pathlib import Path
 from career_intelligence.orchestration import WorkflowState, to_opportunity_decision
 from career_intelligence.orchestration.side_effect_nodes import PersistOpportunityNode
 from tests.unit.orchestration.m1_helpers import fixture_job_input, offline_runner
-from tests.unit.orchestration.helpers import now
 
 
 def test_to_opportunity_decision_maps_literals() -> None:
@@ -37,18 +36,35 @@ def test_create_from_strategy_idempotent_with_planned_id(tmp_path: Path) -> None
 def test_persist_node_requires_planned_id(tmp_path: Path) -> None:
     runner = offline_runner(opportunities_dir=tmp_path / "opps")
     paused = runner.start(fixture_job_input())
-    stamp = now()
-    state = WorkflowState.model_validate(
+    outcome = PersistOpportunityNode(runner.opportunities).execute(
+        _state_ready_for_persist(paused)
+    )
+    assert outcome.failure is not None
+    assert "pre-allocated" in outcome.failure.message
+
+
+def _state_ready_for_persist(paused: WorkflowState) -> WorkflowState:
+    """Rewind an awaiting-owner state to the point just before ``persist`` ran."""
+    pre_persist = [
+        record
+        for record in paused.execution.completed_nodes
+        if record.node_id not in {"persist", "owner_review"}
+    ]
+    return WorkflowState.model_validate(
         paused.model_copy(
             update={
+                "artefacts": paused.artefacts.model_copy(
+                    update={"opportunity_id": None}
+                ),
+                "execution": paused.execution.model_copy(
+                    update={"completed_nodes": pre_persist}
+                ),
                 "approval": paused.approval.model_copy(
                     update={
                         "pending_kind": None,
                         "pending_options": [],
                         "pending_message": None,
                         "pending_requested_at": None,
-                        "owner_decision": "apply",
-                        "decided_at": stamp,
                     }
                 ),
                 "control": paused.control.model_copy(
@@ -57,9 +73,6 @@ def test_persist_node_requires_planned_id(tmp_path: Path) -> None:
             }
         ).model_dump(mode="python")
     )
-    outcome = PersistOpportunityNode(runner.opportunities).execute(state)
-    assert outcome.failure is not None
-    assert "pre-allocated" in outcome.failure.message
 
 
 def test_partial_failure_after_create_recovers_without_duplicate(tmp_path: Path) -> None:

@@ -1,0 +1,116 @@
+schema_version: '1'
+opportunities:
+- identity:
+    opportunity_id: opp_01KYRAAH5NTFRE6J820ZFFRVH0
+    created_at: '2026-07-30T01:30:48.893420Z'
+    source_kind: manual
+    platform_job_id: null
+    canonical_url: null
+    source_url: null
+    company: Southern Grid Energy
+    title: Data Engineer
+    location_text: Melbourne
+    content_fingerprint: c19bdef2bcb781337fec7dd7674f2366dee94ada30a1b7ab6293f16d87ca41fa
+  status: assessed
+  decision:
+    decision: defer
+    decided_at: '2026-07-30T01:30:49.343158Z'
+    notes: workflow_run_id=wfr_01KYRAAH472J2T6C2SM7W2E1J7
+  outcome: null
+  strategy_summary:
+    pursuit_posture: do_not_prioritise
+    application_tier: bronze
+    practical_value: acceptable_opportunity
+    technical_fit: mixed
+    commercial_fit: moderate
+    portfolio_fit: weak
+  artifact_paths:
+    posting.json: artifacts/opp_01KYRAAH5NTFRE6J820ZFFRVH0/posting.json
+    job_analysis.json: artifacts/opp_01KYRAAH5NTFRE6J820ZFFRVH0/job_analysis.json
+    assessment.json: artifacts/opp_01KYRAAH5NTFRE6J820ZFFRVH0/assessment.json
+    portfolio_match.json: artifacts/opp_01KYRAAH5NTFRE6J820ZFFRVH0/portfolio_match.json
+    strategy.json: artifacts/opp_01KYRAAH5NTFRE6J820ZFFRVH0/strategy.json
+  legacy_import: null
+  review:
+    reviewed_at: null
+    pinned: false
+    defer_until: null
+    archived_at: null
+  duplicate: null
+  updated_at: '2026-07-30T01:30:49.343158Z'
+- identity:
+    opportunity_id: opp_01KYRAAH8MTJYHB3NJAR3W2200
+    created_at: '2026-07-30T01:30:48.991242Z'
+    source_kind: manual
+    platform_job_id: null
+    canonical_url: null
+    source_url: null
+    company: Northside Analytics
+    title: Senior AI Engineer
+    location_text: Melbourne
+    content_fingerprint: bb0a0844c72e801cbdeb62bfeccc2e2a95d80d1a172b2746e9cdae87c0f0243c
+  status: assessed
+  decision:
+    decision: skip
+    decided_at: '2026-07-30T01:30:49.274760Z'
+    notes: workflow_run_id=wfr_01KYRAAH79FCXPHS90KYPCMSDM
+  outcome: null
+  strategy_summary:
+    pursuit_posture: consider
+    application_tier: silver
+    practical_value: acceptable_opportunity
+    technical_fit: mixed
+    commercial_fit: moderate
+    portfolio_fit: moderate
+  artifact_paths:
+    posting.json: artifacts/opp_01KYRAAH8MTJYHB3NJAR3W2200/posting.json
+    job_analysis.json: artifacts/opp_01KYRAAH8MTJYHB3NJAR3W2200/job_analysis.json
+    assessment.json: artifacts/opp_01KYRAAH8MTJYHB3NJAR3W2200/assessment.json
+    portfolio_match.json: artifacts/opp_01KYRAAH8MTJYHB3NJAR3W2200/portfolio_match.json
+    strategy.json: artifacts/opp_01KYRAAH8MTJYHB3NJAR3W2200/strategy.json
+  legacy_import: null
+  review:
+    reviewed_at: null
+    pinned: false
+    defer_until: null
+    archived_at: null
+  duplicate: null
+  updated_at: '2026-07-30T01:30:49.274760Z'
+- identity:
+    opportunity_id: opp_01KYRAAHC0Q2D6BNC8WT9AXDRY
+    created_at: '2026-07-30T01:30:49.101601Z'
+    source_kind: manual
+    platform_job_id: null
+    canonical_url: null
+    source_url: null
+    company: Harbour Labs
+    title: Applied AI Engineer
+    location_text: Sydney
+    content_fingerprint: 0fedeba5ccf82b0084542d6b7b61d21dce09c6f9a1790645da20e8d62f28a250
+  status: assessed
+  decision:
+    decision: apply
+    decided_at: '2026-07-30T01:30:49.203772Z'
+    notes: workflow_run_id=wfr_01KYRAAHAMYHXMVVFVPZ1JSN1B
+  outcome: null
+  strategy_summary:
+    pursuit_posture: pursue
+    application_tier: gold
+    practical_value: career_priority
+    technical_fit: strong
+    commercial_fit: moderate
+    portfolio_fit: strong
+  artifact_paths:
+    posting.json: artifacts/opp_01KYRAAHC0Q2D6BNC8WT9AXDRY/posting.json
+    job_analysis.json: artifacts/opp_01KYRAAHC0Q2D6BNC8WT9AXDRY/job_analysis.json
+    assessment.json: artifacts/opp_01KYRAAHC0Q2D6BNC8WT9AXDRY/assessment.json
+    portfolio_match.json: artifacts/opp_01KYRAAHC0Q2D6BNC8WT9AXDRY/portfolio_match.json
+    strategy.json: artifacts/opp_01KYRAAHC0Q2D6BNC8WT9AXDRY/strategy.json
+  legacy_import: null
+  review:
+    reviewed_at: null
+    pinned: false
+    defer_until: null
+    archived_at: null
+  duplicate: null
+  updated_at: '2026-07-30T01:30:49.203772Z'

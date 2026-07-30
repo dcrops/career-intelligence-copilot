@@ -7,6 +7,8 @@ from .state_helpers import completed_node_ids
 from .types import TERMINAL_WORKFLOW_STATUSES
 
 # Pre-approval linear graph. ``acquire`` uses any AcquisitionAdapter.
+# ``persist`` runs before ``owner_review`` (FR-009 M1 / ADR-004): a successfully
+# strategised job is durable before the owner decides anything.
 PRE_APPROVAL_SEQUENCE: tuple[str, ...] = (
     "acquire",
     "validate_normalise",
@@ -14,17 +16,20 @@ PRE_APPROVAL_SEQUENCE: tuple[str, ...] = (
     "assess",
     "match",
     "strategy",
+    "persist",
     "owner_review",
 )
 
-# Post-approval apply side effects (M2). Skip/defer complete without these nodes.
-APPLY_SIDE_EFFECT_SEQUENCE: tuple[str, ...] = (
-    "persist",
-    "record_decision",
-)
+# Post-decision side effects. Runs for apply, skip, and defer — all three update
+# the same durable Opportunity created before owner review.
+POST_DECISION_SEQUENCE: tuple[str, ...] = ("record_decision",)
+
+# Nodes with durable side effects. Their failures pause the run as resumable
+# rather than discarding completed analysis work.
+SIDE_EFFECT_NODE_IDS: frozenset[str] = frozenset({"persist", "record_decision"})
 
 # Back-compat alias used by tests/docs.
-SPIKE_NODE_SEQUENCE: tuple[str, ...] = PRE_APPROVAL_SEQUENCE + APPLY_SIDE_EFFECT_SEQUENCE
+SPIKE_NODE_SEQUENCE: tuple[str, ...] = PRE_APPROVAL_SEQUENCE + POST_DECISION_SEQUENCE
 
 
 def next_spike_node(state: WorkflowState) -> str | None:
@@ -43,18 +48,14 @@ def next_spike_node(state: WorkflowState) -> str | None:
         if node_id not in completed:
             return node_id
 
-    # Owner review complete; post-approval routing depends on recorded decision.
+    # Owner review complete; post-decision routing needs a recorded decision.
     decision = state.approval.owner_decision
     if decision is None:
         return None
-    if decision in {"skip", "defer"}:
-        return None
-    if decision == "apply":
-        for node_id in APPLY_SIDE_EFFECT_SEQUENCE:
-            if node_id not in completed:
-                return node_id
-        return None
 
+    for node_id in POST_DECISION_SEQUENCE:
+        if node_id not in completed:
+            return node_id
     return None
 
 
@@ -68,12 +69,9 @@ def assert_node_is_next(state: WorkflowState, node_id: str) -> None:
         )
 
 
-def apply_side_effects_complete(state: WorkflowState) -> bool:
-    """True when apply path has finished persist + record_decision (or N/A)."""
-    decision = state.approval.owner_decision
-    if decision in {"skip", "defer"}:
-        return True
-    if decision != "apply":
+def post_decision_complete(state: WorkflowState) -> bool:
+    """True when the recorded decision has been written to the Opportunity."""
+    if state.approval.owner_decision is None:
         return False
     completed = completed_node_ids(state)
-    return all(node_id in completed for node_id in APPLY_SIDE_EFFECT_SEQUENCE)
+    return all(node_id in completed for node_id in POST_DECISION_SEQUENCE)

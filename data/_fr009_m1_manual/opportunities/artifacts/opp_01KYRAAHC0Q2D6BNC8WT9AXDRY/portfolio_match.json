@@ -1,0 +1,416 @@
+{
+  "job_analysis": {
+    "posting": {
+      "raw_text": "[CIC-FIXTURE:applied-ai-engineer]\nApplied AI Engineer — Harbour Labs (Sydney)\n\nJoin our applied AI team to prototype and productise customer-facing assistants.\nYou will work closely with solution architects and customer success.\n\nResponsibilities\n• Deliver applied AI prototypes into production services\n• Fine-tune and evaluate models for customer use cases\n• Document patterns for reuse across engagements\n\nRequirements\n• 3+ years building ML or AI-powered products required\n• Python and FastAPI required; Azure OpenAI preferred\n• Stakeholder-facing delivery experience preferred\n\nLocation & employment\nHybrid Sydney (Barangaroo), 2 days in office. Full-time permanent.\nSalary $140,000–$165,000 AUD.",
+      "title": "Applied AI Engineer",
+      "company": "Harbour Labs",
+      "source_url": null
+    },
+    "role_family": {
+      "family": "ai_engineering",
+      "evidence": [
+        {
+          "excerpt": "Applied AI Engineer",
+          "section": "title"
+        }
+      ]
+    },
+    "seniority": {
+      "level": "unknown",
+      "ambiguous": false,
+      "candidate_levels": [],
+      "evidence": []
+    },
+    "technologies": [
+      {
+        "name": "Python",
+        "level": "required",
+        "evidence": [
+          {
+            "excerpt": "Python and FastAPI required",
+            "section": "requirements"
+          }
+        ]
+      },
+      {
+        "name": "FastAPI",
+        "level": "required",
+        "evidence": [
+          {
+            "excerpt": "Python and FastAPI required",
+            "section": "requirements"
+          }
+        ]
+      },
+      {
+        "name": "Azure OpenAI",
+        "level": "preferred",
+        "evidence": [
+          {
+            "excerpt": "Azure OpenAI preferred",
+            "section": "requirements"
+          }
+        ]
+      }
+    ],
+    "responsibilities": [
+      {
+        "description": "Deliver applied AI prototypes into production services",
+        "evidence": [
+          {
+            "excerpt": "Deliver applied AI prototypes into production services",
+            "section": "responsibilities"
+          }
+        ]
+      }
+    ],
+    "compensation": {
+      "clarity": "stated",
+      "minimum": 140000.0,
+      "maximum": 165000.0,
+      "currency": "AUD",
+      "period": "year",
+      "raw_text": "Salary $140,000–$165,000 AUD",
+      "evidence": [
+        {
+          "excerpt": "Salary $140,000–$165,000 AUD",
+          "section": "compensation"
+        }
+      ]
+    },
+    "location": {
+      "clarity": "stated",
+      "summary": "Sydney",
+      "evidence": [
+        {
+          "excerpt": "Hybrid Sydney (Barangaroo)",
+          "section": "location"
+        }
+      ]
+    },
+    "work_arrangement": {
+      "arrangement": "hybrid",
+      "details": "2 days in office",
+      "evidence": [
+        {
+          "excerpt": "Hybrid Sydney (Barangaroo), 2 days in office",
+          "section": "location"
+        }
+      ]
+    },
+    "employment": {
+      "working_hours": "full_time",
+      "engagement_type": "permanent",
+      "evidence": [
+        {
+          "excerpt": "Full-time permanent",
+          "section": "employment"
+        }
+      ]
+    },
+    "experience_requirements": [
+      {
+        "description": "3+ years building ML or AI-powered products",
+        "level": "required",
+        "minimum_years": 3.0,
+        "maximum_years": null,
+        "evidence": [
+          {
+            "excerpt": "3+ years building ML or AI-powered products required",
+            "section": "requirements"
+          }
+        ]
+      },
+      {
+        "description": "Stakeholder-facing delivery experience",
+        "level": "preferred",
+        "minimum_years": null,
+        "maximum_years": null,
+        "evidence": [
+          {
+            "excerpt": "Stakeholder-facing delivery experience preferred",
+            "section": "requirements"
+          }
+        ]
+      }
+    ]
+  },
+  "ranked_projects": [
+    {
+      "rank": 1,
+      "project_id": "governance-document-rag",
+      "rationale": "Project 'governance-document-rag' ranked on 2 required technology hit(s), 1 demonstrates overlap(s), 1 responsibility overlap(s).",
+      "factors": [
+        {
+          "kind": "required_technology",
+          "summary": "Project evidence supports required technology 'Python'.",
+          "job_evidence": [
+            {
+              "source": "technology",
+              "item_index": 0,
+              "name": "Python",
+              "excerpt": "Python and FastAPI required"
+            }
+          ],
+          "profile_evidence": [
+            {
+              "source": "project",
+              "ref": "project:governance-document-rag",
+              "excerpt": "Python"
+            }
+          ]
+        },
+        {
+          "kind": "required_technology",
+          "summary": "Project evidence supports required technology 'FastAPI'.",
+          "job_evidence": [
+            {
+              "source": "technology",
+              "item_index": 1,
+              "name": "FastAPI",
+              "excerpt": "Python and FastAPI required"
+            }
+          ],
+          "profile_evidence": [
+            {
+              "source": "project",
+              "ref": "project:governance-document-rag",
+              "excerpt": "FastAPI"
+            }
+          ]
+        },
+        {
+          "kind": "demonstrates_overlap",
+          "summary": "Project demonstrates capabilities overlapping responsibility 'Deliver applied AI prototypes into production services'.",
+          "job_evidence": [
+            {
+              "source": "responsibility",
+              "item_index": 0,
+              "name": null,
+              "excerpt": "Deliver applied AI prototypes into production services"
+            }
+          ],
+          "profile_evidence": [
+            {
+              "source": "project",
+              "ref": "project:governance-document-rag",
+              "excerpt": "AI evaluation frameworks"
+            }
+          ]
+        },
+        {
+          "kind": "responsibility_overlap",
+          "summary": "Project summary, outcomes, or technologies overlap responsibility 'Deliver applied AI prototypes into production services'.",
+          "job_evidence": [
+            {
+              "source": "responsibility",
+              "item_index": 0,
+              "name": null,
+              "excerpt": "Deliver applied AI prototypes into production services"
+            }
+          ],
+          "profile_evidence": [
+            {
+              "source": "project",
+              "ref": "project:governance-document-rag",
+              "excerpt": "Allows organisations to answer questions from their own documents with responses that stay grounded in source material. Built for teams that need trustworthy A…"
+            }
+          ]
+        }
+      ],
+      "tie_group": 1,
+      "tie_break_reason": "Equal primary ranking signals; ordered by stable project_id ascending"
+    },
+    {
+      "rank": 2,
+      "project_id": "operational-intelligence-copilot",
+      "rationale": "Project 'operational-intelligence-copilot' ranked on 2 required technology hit(s), 1 demonstrates overlap(s), 1 responsibility overlap(s).",
+      "factors": [
+        {
+          "kind": "required_technology",
+          "summary": "Project evidence supports required technology 'Python'.",
+          "job_evidence": [
+            {
+              "source": "technology",
+              "item_index": 0,
+              "name": "Python",
+              "excerpt": "Python and FastAPI required"
+            }
+          ],
+          "profile_evidence": [
+            {
+              "source": "project",
+              "ref": "project:operational-intelligence-copilot",
+              "excerpt": "Python"
+            }
+          ]
+        },
+        {
+          "kind": "required_technology",
+          "summary": "Project evidence supports required technology 'FastAPI'.",
+          "job_evidence": [
+            {
+              "source": "technology",
+              "item_index": 1,
+              "name": "FastAPI",
+              "excerpt": "Python and FastAPI required"
+            }
+          ],
+          "profile_evidence": [
+            {
+              "source": "project",
+              "ref": "project:operational-intelligence-copilot",
+              "excerpt": "FastAPI"
+            }
+          ]
+        },
+        {
+          "kind": "demonstrates_overlap",
+          "summary": "Project demonstrates capabilities overlapping responsibility 'Deliver applied AI prototypes into production services'.",
+          "job_evidence": [
+            {
+              "source": "responsibility",
+              "item_index": 0,
+              "name": null,
+              "excerpt": "Deliver applied AI prototypes into production services"
+            }
+          ],
+          "profile_evidence": [
+            {
+              "source": "project",
+              "ref": "project:operational-intelligence-copilot",
+              "excerpt": "Explainable AI recommendations"
+            }
+          ]
+        },
+        {
+          "kind": "responsibility_overlap",
+          "summary": "Project summary, outcomes, or technologies overlap responsibility 'Deliver applied AI prototypes into production services'.",
+          "job_evidence": [
+            {
+              "source": "responsibility",
+              "item_index": 0,
+              "name": null,
+              "excerpt": "Deliver applied AI prototypes into production services"
+            }
+          ],
+          "profile_evidence": [
+            {
+              "source": "project",
+              "ref": "project:operational-intelligence-copilot",
+              "excerpt": "Demonstrates operational intelligence capability for understanding business data. Combines reliable analytics with AI reasoning to surface anomalies and produc…"
+            }
+          ]
+        }
+      ],
+      "tie_group": 1,
+      "tie_break_reason": "Equal primary ranking signals; ordered by stable project_id ascending"
+    },
+    {
+      "rank": 3,
+      "project_id": "career-intelligence-copilot",
+      "rationale": "Project 'career-intelligence-copilot' ranked on 1 required technology hit(s), 1 responsibility overlap(s).",
+      "factors": [
+        {
+          "kind": "required_technology",
+          "summary": "Project evidence supports required technology 'Python'.",
+          "job_evidence": [
+            {
+              "source": "technology",
+              "item_index": 0,
+              "name": "Python",
+              "excerpt": "Python and FastAPI required"
+            }
+          ],
+          "profile_evidence": [
+            {
+              "source": "project",
+              "ref": "project:career-intelligence-copilot",
+              "excerpt": "Python"
+            }
+          ]
+        },
+        {
+          "kind": "responsibility_overlap",
+          "summary": "Project summary, outcomes, or technologies overlap responsibility 'Deliver applied AI prototypes into production services'.",
+          "job_evidence": [
+            {
+              "source": "responsibility",
+              "item_index": 0,
+              "name": null,
+              "excerpt": "Deliver applied AI prototypes into production services"
+            }
+          ],
+          "profile_evidence": [
+            {
+              "source": "project",
+              "ref": "project:career-intelligence-copilot",
+              "excerpt": "Enables an AI Engineering job seeker to decide which roles deserve effort. Reviews job ads against a structured career profile, ranks fit, recommends applicati…"
+            }
+          ]
+        }
+      ],
+      "tie_group": null,
+      "tie_break_reason": null
+    },
+    {
+      "rank": 4,
+      "project_id": "payroll-diagnostics-engine",
+      "rationale": "Project 'payroll-diagnostics-engine' ranked on 1 required technology hit(s).",
+      "factors": [
+        {
+          "kind": "required_technology",
+          "summary": "Project evidence supports required technology 'Python'.",
+          "job_evidence": [
+            {
+              "source": "technology",
+              "item_index": 0,
+              "name": "Python",
+              "excerpt": "Python and FastAPI required"
+            }
+          ],
+          "profile_evidence": [
+            {
+              "source": "project",
+              "ref": "project:payroll-diagnostics-engine",
+              "excerpt": "Python"
+            }
+          ]
+        }
+      ],
+      "tie_group": 2,
+      "tie_break_reason": "Equal primary ranking signals; ordered by stable project_id ascending"
+    },
+    {
+      "rank": 5,
+      "project_id": "public-holiday-entitlements",
+      "rationale": "Project 'public-holiday-entitlements' ranked on 1 required technology hit(s).",
+      "factors": [
+        {
+          "kind": "required_technology",
+          "summary": "Project evidence supports required technology 'Python'.",
+          "job_evidence": [
+            {
+              "source": "technology",
+              "item_index": 0,
+              "name": "Python",
+              "excerpt": "Python and FastAPI required"
+            }
+          ],
+          "profile_evidence": [
+            {
+              "source": "project",
+              "ref": "project:public-holiday-entitlements",
+              "excerpt": "Python"
+            }
+          ]
+        }
+      ],
+      "tie_group": 2,
+      "tie_break_reason": "Equal primary ranking signals; ordered by stable project_id ascending"
+    }
+  ],
+  "unranked_project_ids": [],
+  "summary": "Ranked 5 project(s); lead with 'governance-document-rag'. 0 project(s) had no matching factors.",
+  "insufficient_evidence": false
+}

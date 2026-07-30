@@ -27,13 +27,15 @@ Job Analysis (FR-002)
       ↓
 Application Strategy (FR-005)
       ↓
-Persist Opportunity (FR-009 M1 boundary — today FR-008 persists on apply only)
+Persist Opportunity (FR-009 M1 — before any owner decision, decision = None)
+      ↓
+Owner Review / Approval Interrupt (FR-008) → apply | skip | defer recorded on that record
       ↓
 Rank / Review Queue (Phase 2 M4 baseline + FR-009 derived projection)
       ↓
 Application Package (FR-010: Tailoring Plan + CV FR-006 + Cover Letter FR-007)
       ↓
-Owner Review / Approval Interrupt (FR-008)
+Owner Review / Approval Interrupt (FR-011 package approval)
       ↓
       ├─→ Reject (owner)
       └─→ Submit assistance (FR-011 — never silent)
@@ -201,8 +203,9 @@ system of record (ADR-002). CSV export and one-time legacy import are M3. Rankin
 The record carries five separate concerns that must not be collapsed: identity and
 acquisition provenance; denormalised FR-003–FR-005 signals (`strategy_summary`); the
 owner decision (apply / skip / defer); owner review metadata (FR-009); and pipeline
-status plus outcome (M2 / FR-012). FR-008 currently creates the record only on `apply`;
-FR-009 M1 moves persistence to before owner review so skip and defer remain auditable.
+status plus outcome (M2 / FR-012). Since **FR-009 M1** the workflow creates the record
+after Application Strategy and before owner review, with `decision=None`; apply, skip,
+and defer then update that same record, so skipped and deferred jobs remain auditable.
 
 **Implementation:** `src/career_intelligence/opportunities/`.
 
@@ -233,7 +236,7 @@ assessments remains deferred.
 
 ### Owner Review Metadata
 
-**Maps to:** FR-009 (M0 contracts complete; behaviour planned)
+**Maps to:** FR-009 (M0 contracts complete; owner-facing actions planned for M2)
 
 Owner-authored annotations on a durable Opportunity that control **review visibility and
 attention**, held as independent fields rather than one lifecycle enum: `reviewed_at`,
@@ -246,6 +249,22 @@ employer rejection or a closed recruitment process.
 
 Queue eligibility, rank position, age, and staleness are **derived** from these fields —
 not stored. See [ADR-004](adr/004_opportunity_review_boundary.md).
+
+---
+
+### Review Queue (derived)
+
+**Maps to:** FR-009 M1 (complete)
+
+Not an entity with its own storage: a **projection** computed on demand from persisted
+Opportunities plus an explicit reference date. Two scopes exist — *awaiting review*
+(no owner decision yet) and *active* (still live, including applied-for records).
+
+A record is excluded when it is archived, a confirmed duplicate, skipped, currently
+deferred, or closed by a terminal `PipelineStatus`; every omission carries a reason so
+ordering is explainable. Eligible records are ordered by the unchanged M4 sort key.
+
+**Implementation:** `src/career_intelligence/review_queue/` (`ReviewQueueService`).
 
 ---
 
@@ -393,8 +412,9 @@ continue to connect to this layer rather than invent a parallel tracker.
 | Ranked Comparison | Phase 2 M4 (complete; hist. FR-012 partial); extended by **FR-009** |
 | Opportunity identity (title/company) | Phase 2 M4a (complete) |
 | Job Acquisition & Workflow Orchestration | **FR-008** (Horizon 1A; first orchestration) |
-| Opportunity Review Queue & Ranking | **FR-009** (Horizon 1A, in progress — M0 contracts complete) |
-| Owner Review Metadata | **FR-009** M0 contract ([ADR-004](adr/004_opportunity_review_boundary.md)) |
+| Opportunity Review Queue & Ranking | **FR-009** (Horizon 1A, in progress — M1 complete) |
+| Owner Review Metadata | **FR-009** M0 contract ([ADR-004](adr/004_opportunity_review_boundary.md)); actions in M2 |
+| Review Queue (derived projection) | **FR-009** M1 (complete) |
 | Duplicate Relation | **FR-009** M0 contract; detection in M3 |
 | Application Package Preparation | **FR-010** (Horizon 1A) |
 | Submission Assistance | **FR-011** (Horizon 1A) |

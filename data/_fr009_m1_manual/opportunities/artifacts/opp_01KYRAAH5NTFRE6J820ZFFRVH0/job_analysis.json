@@ -1,0 +1,134 @@
+{
+  "posting": {
+    "raw_text": "[CIC-FIXTURE:data-engineer]\nData Engineer — Southern Grid Energy (Melbourne)\n\nWe need a Data Engineer to build reliable analytics platforms on modern lakehouse tooling.\n\nResponsibilities\n• Design and operate batch and streaming pipelines\n• Model curated datasets for analytics and AI consumers\n• Improve data quality and observability\n\nRequirements\n• 4+ years data engineering experience required\n• Python and SQL required; Spark and dbt preferred\n• Cloud warehouse experience (Snowflake or Databricks) required\n\nLocation & employment\nHybrid Melbourne. Full-time permanent.\nSalary $130,000–$155,000 AUD + super.",
+    "title": "Data Engineer",
+    "company": "Southern Grid Energy",
+    "source_url": null
+  },
+  "role_family": {
+    "family": "data_engineering",
+    "evidence": [
+      {
+        "excerpt": "Data Engineer",
+        "section": "title"
+      }
+    ]
+  },
+  "seniority": {
+    "level": "unknown",
+    "ambiguous": false,
+    "candidate_levels": [],
+    "evidence": []
+  },
+  "technologies": [
+    {
+      "name": "Python",
+      "level": "required",
+      "evidence": [
+        {
+          "excerpt": "Python and SQL required",
+          "section": "requirements"
+        }
+      ]
+    },
+    {
+      "name": "SQL",
+      "level": "required",
+      "evidence": [
+        {
+          "excerpt": "Python and SQL required",
+          "section": "requirements"
+        }
+      ]
+    },
+    {
+      "name": "Spark",
+      "level": "preferred",
+      "evidence": [
+        {
+          "excerpt": "Spark and dbt preferred",
+          "section": "requirements"
+        }
+      ]
+    },
+    {
+      "name": "dbt",
+      "level": "preferred",
+      "evidence": [
+        {
+          "excerpt": "Spark and dbt preferred",
+          "section": "requirements"
+        }
+      ]
+    }
+  ],
+  "responsibilities": [
+    {
+      "description": "Design and operate batch and streaming pipelines",
+      "evidence": [
+        {
+          "excerpt": "Design and operate batch and streaming pipelines",
+          "section": "responsibilities"
+        }
+      ]
+    }
+  ],
+  "compensation": {
+    "clarity": "stated",
+    "minimum": 130000.0,
+    "maximum": 155000.0,
+    "currency": "AUD",
+    "period": "year",
+    "raw_text": "Salary $130,000–$155,000 AUD + super",
+    "evidence": [
+      {
+        "excerpt": "Salary $130,000–$155,000 AUD + super",
+        "section": "compensation"
+      }
+    ]
+  },
+  "location": {
+    "clarity": "stated",
+    "summary": "Melbourne",
+    "evidence": [
+      {
+        "excerpt": "Hybrid Melbourne",
+        "section": "location"
+      }
+    ]
+  },
+  "work_arrangement": {
+    "arrangement": "hybrid",
+    "details": null,
+    "evidence": [
+      {
+        "excerpt": "Hybrid Melbourne",
+        "section": "location"
+      }
+    ]
+  },
+  "employment": {
+    "working_hours": "full_time",
+    "engagement_type": "permanent",
+    "evidence": [
+      {
+        "excerpt": "Full-time permanent",
+        "section": "employment"
+      }
+    ]
+  },
+  "experience_requirements": [
+    {
+      "description": "4+ years data engineering experience",
+      "level": "required",
+      "minimum_years": 4.0,
+      "maximum_years": null,
+      "evidence": [
+        {
+          "excerpt": "4+ years data engineering experience required",
+          "section": "requirements"
+        }
+      ]
+    }
+  ]
+}

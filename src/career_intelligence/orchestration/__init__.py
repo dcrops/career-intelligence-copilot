@@ -52,16 +52,18 @@ from .retry import (
     looks_transient,
 )
 from .routing import (
-    APPLY_SIDE_EFFECT_SEQUENCE,
+    POST_DECISION_SEQUENCE,
     PRE_APPROVAL_SEQUENCE,
+    SIDE_EFFECT_NODE_IDS,
     SPIKE_NODE_SEQUENCE,
     next_spike_node,
+    post_decision_complete,
 )
 from .runner import (
     ApplicationWorkflowRunner,
     WorkflowDependencies,
     completed_spike_nodes,
-    describe_apply_side_effect_graph,
+    describe_post_decision_graph,
     describe_pre_approval_graph,
     describe_spike_graph,
 )
@@ -95,14 +97,15 @@ from .types import (
 
 __all__ = [
     "ACQUISITION_SOURCE_KINDS",
-    "APPLY_SIDE_EFFECT_SEQUENCE",
     "DEFAULT_MAX_ATTEMPTS",
     "DEFAULT_RETRY_ELIGIBLE_NODES",
     "FAILURE_CLASSIFICATIONS",
     "KNOWN_NODE_IDS",
     "NODE_KINDS",
     "OWNER_DECISION_KINDS",
+    "POST_DECISION_SEQUENCE",
     "PRE_APPROVAL_SEQUENCE",
+    "SIDE_EFFECT_NODE_IDS",
     "SPIKE_NODE_SEQUENCE",
     "TERMINAL_WORKFLOW_STATUSES",
     "WORKFLOW_EVENT_TYPES",
@@ -160,12 +163,13 @@ __all__ = [
     "classification_from_flag",
     "coerce_acquisition_adapter",
     "completed_spike_nodes",
-    "describe_apply_side_effect_graph",
+    "describe_post_decision_graph",
     "describe_pre_approval_graph",
     "describe_spike_graph",
     "generate_ulid",
     "looks_transient",
     "new_workflow_run_id",
     "next_spike_node",
+    "post_decision_complete",
     "to_opportunity_decision",
 ]

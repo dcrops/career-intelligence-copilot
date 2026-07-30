@@ -31,7 +31,11 @@ def _failure(message: str, *, recoverable: bool = False, detail: str | None = No
 
 
 class PersistOpportunityNode:
-    """Thin wrapper around ``OpportunityService.create_from_strategy``."""
+    """Thin wrapper around ``OpportunityService.create_from_strategy``.
+
+    Runs before the owner-review interrupt (FR-009 M1 / ADR-004), so it must not
+    require an owner decision. The record is created with ``decision=None``.
+    """
 
     def __init__(self, service: OpportunityService) -> None:
         self._service = service
@@ -51,9 +55,6 @@ class PersistOpportunityNode:
             assert_node_is_next(state, self.spec.node_id)
         except ValueError as error:
             return _failure(str(error))
-
-        if state.approval.owner_decision != "apply":
-            return _failure("persist requires owner_decision='apply'")
 
         artefacts = state.artefacts
         if (

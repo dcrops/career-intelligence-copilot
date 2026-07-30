@@ -21,7 +21,9 @@ def test_golden_workflow_stops_at_owner_review_without_terminal_continuation(
     assert state.artefacts.assessment is not None
     assert state.artefacts.portfolio_match is not None
     assert state.artefacts.strategy is not None
-    assert state.artefacts.opportunity_id is None
+    # FR-009 M1: durable before the interrupt, still undecided.
+    assert state.artefacts.opportunity_id is not None
+    assert runner.opportunities.get(state.artefacts.opportunity_id).decision is None
 
     event_types = [event.event_type for event in state.execution.events]
     assert event_types.count("run_started") == 1

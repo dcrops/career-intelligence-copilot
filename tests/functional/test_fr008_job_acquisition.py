@@ -67,6 +67,7 @@ def test_local_file_acquisition_preserves_export_provenance(tmp_path) -> None:
         "assess",
         "match",
         "strategy",
+        "persist",
         "owner_review",
     ]
 
@@ -80,5 +81,6 @@ def test_node_order_is_deterministic(tmp_path) -> None:
         "assess",
         "match",
         "strategy",
+        "persist",
         "owner_review",
     ]

@@ -1,6 +1,7 @@
 # ADR-004: Opportunity as Pre-Decision System of Record; Review Queue as Derived Projection
 
-**Status:** Accepted (FR-009 M0) — workflow persistence node movement scheduled for FR-009 M1  
+**Status:** Accepted (FR-009 M0) — **implemented in FR-009 M1** (2026-07-30;
+[acceptance](../eval/fr009_m1_persistence_boundary.md))  
 **Date:** 2026-07-29  
 **Amends:** [ADR-002](002_opportunity_persistence.md) (persistence boundary and record meaning)  
 **Reaffirms:** [ADR-003](003_application_workflow_orchestration.md) (checkpoints are recovery data)
@@ -97,6 +98,22 @@ constraint.
   on existing rows the next time a decision or outcome is saved. This changes
   serialisation only, never meaning.
 
+## Implementation status (FR-009 M1)
+
+Decisions 1–9 are implemented for the workflow and the default projection. `persist`
+moved into `PRE_APPROVAL_SEQUENCE`; all three decisions run `POST_DECISION_SEQUENCE`;
+`career_intelligence.review_queue.ReviewQueueService` provides the derived projection.
+Crash windows A–E behave as required, with one refinement to window A: a persistence
+failure leaves the run **resumable** (status `running`, error recorded, planned id kept)
+rather than terminally failed, matching the FR-008 M2 treatment of side-effect nodes so a
+transient store outage cannot discard completed FR-002–FR-005 analysis. The invariant the
+window protects is unchanged — no Opportunity, no approval request.
+
+Owner queue actions (M2), duplicate detection (M3), and ranking calibration (M4) remain
+deferred. `OpportunityReview` and `DuplicateRelation` are read by the eligibility policy
+but no service method writes them yet, so today they only ever hold their defaults on
+records the workflow creates.
+
 ## Compatibility implications
 
 - No schema version bump: `Opportunity` gains optional fields only, and the index
@@ -110,8 +127,6 @@ constraint.
 
 ## Deferred work
 
-- FR-009 M1 — move workflow persistence before `owner_review`; prove resume/replay
-  idempotency; derived queue projection and eligibility policy.
 - FR-009 M2 — owner queue actions (mark reviewed, pin, defer until, archive, reopen)
   and their service methods.
 - FR-009 M3 — duplicate candidate detection and owner confirmation.

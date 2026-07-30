@@ -31,10 +31,14 @@ def test_start_stops_at_owner_review(tmp_path: Path) -> None:
         "assess",
         "match",
         "strategy",
+        "persist",
         "owner_review",
     ]
     assert state.artefacts.strategy is not None
-    assert state.artefacts.opportunity_id is None
+    # FR-009 M1: the Opportunity is durable before the interrupt.
+    assert state.artefacts.opportunity_id is not None
+    awaiting = runner.opportunities.get(state.artefacts.opportunity_id)
+    assert awaiting.decision is None
     assert state.acquisition is not None
     assert state.acquisition.source_kind == "paste"
 
@@ -58,7 +62,7 @@ def test_resume_apply_persists_one_opportunity(tmp_path: Path) -> None:
     done = runner.resume(paused.run_id, "apply")
     assert done.status == "completed"
     assert done.approval.owner_decision == "apply"
-    assert done.artefacts.opportunity_id is not None
+    assert done.artefacts.opportunity_id == paused.artefacts.opportunity_id
     opportunity = runner.opportunities.get(done.artefacts.opportunity_id)
     assert opportunity.decision is not None
     assert opportunity.decision.decision == "apply"
@@ -80,16 +84,21 @@ def test_resume_apply_idempotent_repeat(tmp_path: Path) -> None:
     assert len(runner.opportunities.list_opportunities()) == 1
 
 
-def test_resume_skip_and_defer_create_no_opportunity(tmp_path: Path) -> None:
+def test_resume_skip_and_defer_preserve_the_same_opportunity(tmp_path: Path) -> None:
     for decision in ("skip", "defer"):
         runner = offline_runner(opportunities_dir=tmp_path / decision)
         paused = runner.start(fixture_job_input())
+        pre_review_id = paused.artefacts.opportunity_id
         done = runner.resume(paused.run_id, decision)  # type: ignore[arg-type]
         assert done.status == "completed"
         assert done.approval.owner_decision == decision
-        assert done.artefacts.opportunity_id is None
-        assert runner.opportunities.list_opportunities() == []
-        assert "persist" not in completed_spike_nodes(done)
+        assert done.artefacts.opportunity_id == pre_review_id
+        assert len(runner.opportunities.list_opportunities()) == 1
+        assert "persist" in completed_spike_nodes(done)
+        assert "record_decision" in completed_spike_nodes(done)
+        opportunity = runner.opportunities.get(pre_review_id)  # type: ignore[arg-type]
+        assert opportunity.decision is not None
+        assert opportunity.decision.decision == decision
 
 
 def test_invalid_resume_fails_closed(tmp_path: Path) -> None:

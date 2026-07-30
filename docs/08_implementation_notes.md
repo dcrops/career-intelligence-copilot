@@ -1169,16 +1169,19 @@ apply; never silent-submits.
 
 #### Persistence
 
-Opportunity create and decision recording are dedicated post-approval nodes
-(`persist`, `record_decision`), invoked only after `apply`. Analysis nodes never write
-the Opportunity SoT. Skip/defer complete without persistence.
+Opportunity create and decision recording are dedicated side-effect nodes (`persist`,
+`record_decision`), never mixed into analysis nodes, which never write the Opportunity
+SoT. **Changed by FR-009 M1:** `persist` runs before the owner-review interrupt and
+`record_decision` runs for all three decisions, so skip and defer also leave a durable
+record.
 
 #### Idempotency
 
-On apply: pre-allocate `opportunity_id`, checkpoint it, then
+Pre-allocate `opportunity_id`, checkpoint it, then
 `create_from_strategy(opportunity_id=…)`. Existing ids are reclaimed — repeated resume
 and crash windows do not create duplicates. Decision recording is idempotent for the
-same decision.
+same decision. FR-009 M1 moved this sequence earlier (before the interrupt) without
+changing the mechanism.
 
 #### Acquisition
 
@@ -1244,12 +1247,13 @@ Live FR-002/003 requires `OPENAI_API_KEY` (omit `--offline-fixtures`).
 
 **Tests:** unit runner/routing/json-store + functional `test_fr008_*.py`.
 
-### FR-008 M2 — Opportunity persist on apply (complete)
+### FR-008 M2 — Opportunity persist on apply (complete; boundary later moved)
 
 **Status:** Complete (2026-07-29) — apply side effect only. LLM-node retries are
-M3. ADR-003 accepted after M3.
+M3. ADR-003 accepted after M3. **The graph below is historical:** FR-009 M1 moved
+`persist` before owner review and extended `record_decision` to skip and defer.
 
-**Graph after resume:**
+**Graph after resume (as delivered in FR-008 M2):**
 
 ```
 apply  → allocate opportunity_id → checkpoint
@@ -1457,15 +1461,17 @@ closure.
 
 ## FR-009 Opportunity Review Queue & Ranking (in progress)
 
-**Status:** M0 complete (2026-07-29) — contracts only. Queue, ranking extensions, owner
-actions, and duplicate detection are **not implemented**.  
-**Acceptance:** [eval/fr009_m0_domain_contracts.md](eval/fr009_m0_domain_contracts.md)  
+**Status:** M1 complete (2026-07-30) — pre-review persistence plus a minimal derived
+review projection. Owner queue actions, duplicate detection, and ranking calibration are
+**not implemented**.  
+**Acceptance:** [eval/fr009_m0_domain_contracts.md](eval/fr009_m0_domain_contracts.md),
+[eval/fr009_m1_persistence_boundary.md](eval/fr009_m1_persistence_boundary.md)  
 **Architecture:** [ADR-004](adr/004_opportunity_review_boundary.md)
 
 ### M0 — persistence boundary and domain contracts
 
-FR-008 persists an Opportunity only after the owner chooses `apply`, so skipped and
-deferred jobs leave no durable trace. The review queue cannot be built on that boundary
+FR-008 persisted an Opportunity only after the owner chose `apply`, so skipped and
+deferred jobs left no durable trace. The review queue cannot be built on that boundary
 without either reading workflow checkpoints (recovery state — forbidden by ADR-003) or
 adding a second "seen jobs" store. M0 resolved the boundary in contracts, without moving
 the workflow node.
@@ -1518,25 +1524,88 @@ orchestration `source_kind` vocabulary (`paste`, `export`) stays separate from t
 opportunities vocabulary (`seek`, `linkedin`, `manual`, …) and is mapped at the boundary,
 following the `decision_boundary.to_opportunity_decision` precedent.
 
-### M1 integration contract (not implemented)
+### M1 — pre-review persistence and derived projection (complete)
+
+**Acceptance:** [eval/fr009_m1_persistence_boundary.md](eval/fr009_m1_persistence_boundary.md)
+
+**Routing change.** `persist` moved from the post-decision sequence into
+`PRE_APPROVAL_SEQUENCE`, immediately after `strategy`:
 
 ```
-strategy succeeds
-  → allocate opportunity_id → checkpoint
-  → persist Opportunity (decision=None) → checkpoint
-  → owner_review interrupt
-  → resume with apply | skip | defer
-  → record_decision on the same opportunity_id → complete
+acquire → validate → analyse → assess → portfolio_match → strategy → persist → owner_review
+resume(apply | skip | defer) → record_decision → complete
 ```
 
-M1 must prove: persist runs on all three decision paths; resume and replay create exactly
-one Opportunity across crash windows A–E (ADR-004); `record_decision` stays idempotent for
-a repeated decision and fails closed on a conflicting one; routing remains inspectable
-(`persist` leaves `APPLY_SIDE_EFFECT_SEQUENCE`). FR-008 functional assertions of the form
-"skip/defer create no Opportunity" become "skip/defer create a record carrying that
-decision" — a deliberate, documented change, not a regression.
+`APPLY_SIDE_EFFECT_SEQUENCE` became `POST_DECISION_SEQUENCE` (`record_decision` only) and
+`apply_side_effects_complete` became `post_decision_complete`, because all three decisions
+now run that sequence. `SIDE_EFFECT_NODE_IDS` (`persist`, `record_decision`) is the single
+place the runner recognises externally visible writes. Renames are internal to the
+orchestration package plus its exports; no opportunities or profile API changed.
+
+| Symbol | Change |
+|--------|--------|
+| `PRE_APPROVAL_SEQUENCE` | Gains `persist` before `owner_review` |
+| `POST_DECISION_SEQUENCE` | Was `APPLY_SIDE_EFFECT_SEQUENCE`; now `record_decision` only |
+| `SIDE_EFFECT_NODE_IDS` | New — nodes whose failure must pause, never fail terminally |
+| `post_decision_complete` | Was `apply_side_effects_complete` |
+| `describe_post_decision_graph` | Was `describe_apply_side_effect_graph` |
+| `PersistOpportunityNode` | No longer gated on `owner_decision == "apply"` |
+| `OwnerReviewNode` | Asserts `artefacts.opportunity_id` is set before pausing |
+
+**Idempotency.** Unchanged mechanism, earlier position. The runner allocates
+`artefacts.opportunity_id` (a ULID) and checkpoints it *before* invoking `persist`, and
+`OpportunityService.create_from_strategy(opportunity_id=…)` returns the existing record
+when that id is already stored. Two guards therefore cover every crash window: the
+pre-allocated id makes a replayed `persist` a no-op write to the same key, and
+`completed_spike_nodes` makes a replayed *run* skip the node entirely. No new identity
+system was introduced.
+
+**Failure handling.** A failure in either side-effect node now pauses the run as
+`awaiting_owner`-resumable instead of failing terminally, so a store outage never discards
+completed FR-002–FR-005 analysis. Consequences: the owner-review interrupt is unreachable
+without a durable record, and a failed `record_decision` cannot report completion.
+Validation failures remain non-retryable.
+
+**Workflow state.** No new fields. `artefacts.opportunity_id` already existed and carries
+the identity across the interrupt; the checkpoint stores that id and artefact references
+only, never an Opportunity object.
+
+**Decision integration.** `apply`, `skip`, and `defer` all route through
+`record_decision`, which updates the same record via
+`OpportunityService.record_decision`. Skip and defer keep `PipelineStatus.assessed` —
+FR-009 does not write pipeline status. Repeating an identical decision is idempotent;
+`defer_until` stays unset because FR-008 has no scheduling interface.
+
+**Projection** (`src/career_intelligence/review_queue/`):
+
+| Symbol | Role |
+|--------|------|
+| `ReviewQueueService` | Read-only query over `OpportunityService`; no writes |
+| `evaluate_eligibility` | Pure policy returning eligibility + ordered exclusion reasons |
+| `QueueScope` | `awaiting_review` \| `active` |
+| `ReviewQueue` / `QueueEligibility` | Result models with included, excluded, and reasons |
+
+Exclusion reasons are evaluated in a fixed order (`archived`, `confirmed_duplicate`,
+`skipped`, `deferred`, `closed`, then `decided` for the awaiting scope) so explanations
+are stable. Date sensitivity is an explicit `reference_date` parameter rather than a clock
+read inside policy. Ordering delegates to `OpportunityComparisonService.compare_open`
+unchanged, so M4 calibration cannot drift through queue work.
+
+**Documented behavioural change.** FR-008 functional assertions of the form "skip/defer
+create no Opportunity" are now "skip/defer create a record carrying that decision" —
+deliberate, per ADR-004.
+
+**Manual:**
+
+```bash
+python scripts/run_fr009_review_queue_manual.py demo \
+    --workspace data/_fr009_m1_manual --offline-fixtures
+python scripts/run_fr009_review_queue_manual.py queue \
+    --opportunities-dir data/opportunities
+```
 
 ### Remaining milestones
 
-M2 owner queue actions → M3 duplicate candidate detection → M4 manual validation and
-calibration → close-out. Not started.
+M2 owner queue actions (mark reviewed, pin, defer until, archive, reopen) → M3 duplicate
+candidate detection and confirmation → M4 manual validation and ranking calibration →
+close-out. Not started.

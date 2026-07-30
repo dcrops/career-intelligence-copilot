@@ -123,7 +123,7 @@ See [04_functional_specification.md](04_functional_specification.md) § Horizon 
 ```
 FR-008 Job Acquisition & Workflow Orchestration  ✅ Complete (2026-07-29)
         ▼
-FR-009 Opportunity Review Queue & Ranking  (duplicates + identity + rank)  ← Now (M0 complete)
+FR-009 Opportunity Review Queue & Ranking  (duplicates + identity + rank)  ← Now (M1 complete)
         ▼
 FR-010 Application Package Preparation  (FR-006 / FR-007)
         ▼
@@ -143,7 +143,7 @@ FR-015 Agent Evaluation & Observability
 | Priority | Item | Intent |
 |----------|------|--------|
 | **Completed** | **FR-008** (2026-07-29) | Job acquisition + deterministic workflow orchestration — paste/export adapters; thin runner; owner review; checkpoint/resume; Opportunity persist on apply; bounded LLM retries; [ADR-003](adr/003_application_workflow_orchestration.md); [acceptance](eval/fr008_workflow_orchestration.md) |
-| **Now** | **FR-009** | Opportunity review queue, deduplication, ranking — **M0 complete** (domain contracts; [ADR-004](adr/004_opportunity_review_boundary.md); [acceptance](eval/fr009_m0_domain_contracts.md)); M1–M4 planned |
+| **Now** | **FR-009** | Opportunity review queue, deduplication, ranking — **M1 complete** (pre-review persistence + derived projection; [ADR-004](adr/004_opportunity_review_boundary.md); acceptance [M0](eval/fr009_m0_domain_contracts.md), [M1](eval/fr009_m1_persistence_boundary.md)); M2–M4 planned |
 | Then | **FR-010 → FR-012** | Packages, submission assistance, tracking |
 | Later in 1A | **FR-013 → FR-015** | Bounded agents → multi-agent → evaluation |
 | **After 1A** | **Horizon 1B (FR-016–FR-022)** | Recruiters, outreach, meetups, LinkedIn, market |
@@ -152,22 +152,24 @@ FR-015 Agent Evaluation & Observability
 
 Delivered a source-adapter acquisition boundary and a thin deterministic runner that
 coordinates FR-002–FR-005, pauses for owner approval, resumes from JSON checkpoints,
-and on `apply` persists an Opportunity and records the decision idempotently. Skip and
-defer complete without persistence. Playwright, URL/API adapters, ranking, and
-submission remain out of scope.
+and on `apply` persisted an Opportunity and recorded the decision idempotently. Skip and
+defer completed without persistence — the boundary FR-009 M1 subsequently moved.
+Playwright, URL/API adapters, ranking, and submission remain out of scope.
 
 ### FR-009 status and milestone plan
 
-**M0 complete (2026-07-29) — contracts only.** FR-009 is **not** complete. M0 resolved
-the source-of-truth question: the Opportunity is the durable record of a successfully
-analysed job candidate (persisted before owner review from M1), the review queue is a
-**derived projection** over it, and workflow checkpoints remain recovery infrastructure.
-Phase 2 M4 ranking stays the frozen fit baseline.
+**M1 complete (2026-07-30).** FR-009 is **not** complete. M0 resolved the
+source-of-truth question: the Opportunity is the durable record of a successfully
+analysed job candidate, the review queue is a **derived projection** over it, and
+workflow checkpoints remain recovery infrastructure. M1 implemented that boundary — the
+workflow now persists the record after Application Strategy and before owner review, and
+apply, skip, and defer all update the same record — plus a minimal read-only review
+projection. Phase 2 M4 ranking stays the frozen fit baseline.
 
 | Milestone | Scope | Status |
 |-----------|-------|--------|
 | M0 | Domain contracts, persistence boundary, ADR-004 | **Complete** |
-| M1 | Derived review projection + workflow persistence-boundary move | Planned |
+| M1 | Workflow persistence-boundary move + derived review projection | **Complete** |
 | M2 | Owner queue actions (mark reviewed, pin, defer until, archive, reopen) | Planned |
 | M3 | Duplicate candidate detection + owner confirmation (non-destructive) | Planned |
 | M4 | Manual validation and ranking calibration | Planned |

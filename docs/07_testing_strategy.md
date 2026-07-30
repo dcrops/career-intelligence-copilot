@@ -214,7 +214,9 @@ Default path is fully deterministic (no OpenAI). Owner review remains mandatory.
 
 FR-008 is **complete**. Acceptance:
 [docs/eval/fr008_workflow_orchestration.md](eval/fr008_workflow_orchestration.md).
-ADR-003 accepted. Current coverage focus: **FR-009** (M0 contracts complete).
+ADR-003 accepted. Current coverage focus: **FR-009** (M1 complete). FR-008 suites were
+updated where FR-009 M1 deliberately changed behaviour — skip and defer now retain a
+durable Opportunity, and `persist` completes before owner review.
 
 ### What FR-008 validates
 
@@ -225,10 +227,10 @@ ADR-003 accepted. Current coverage focus: **FR-009** (M0 contracts complete).
 | Runner | start → owner review; cancel; invalid resume fail-closed |
 | Routing | deterministic node order; completed-node skip |
 | Checkpoint store | in-memory + JSON round-trip; corrupt/missing fail-closed |
-| Persistence | apply creates one Opportunity; planned-id reclaim |
-| Decision recording | apply decision via boundary translation |
-| Resume | terminal idempotent reload; mid-apply recovery |
-| Skip / defer | complete with no Opportunity |
+| Persistence | one Opportunity per run; planned-id reclaim |
+| Decision recording | owner decision via boundary translation |
+| Resume | terminal idempotent reload; mid-decision recovery |
+| Skip / defer | complete with the decision recorded on the existing record (FR-009 M1) |
 | Retries | classification; policy; exhaustion; cross-process budget |
 | Acquisition | paste + local-export adapters; source-agnostic node order |
 
@@ -238,7 +240,7 @@ ADR-003 accepted. Current coverage focus: **FR-009** (M0 contracts complete).
 |-------|-----------|
 | Job acquisition | Paste + export provenance; shared graph |
 | Workflow execution | End-to-end to owner review |
-| Checkpoint resume | Apply persist + decision; repeated resume; skip; invalid resume |
+| Checkpoint resume | Pre-review persist + decision; repeated resume; skip retained; invalid resume |
 | Failure recovery | Retry / exhaustion / unrecoverable / M2 regression |
 
 #### Manual validation (`scripts/run_fr008_workflow_manual.py`)
@@ -260,12 +262,13 @@ Playwright / URL / API adapters remain deferred.
 
 ---
 
-## FR-009 coverage (in progress — M0 contracts only)
+## FR-009 coverage (in progress — M1 complete)
 
-FR-009 is **in progress**. M0 delivered domain contracts only; the queue, ranking
-extensions, owner actions, and duplicate detection are not implemented, so there is no
-queue behaviour to test yet. M0 acceptance:
-[eval/fr009_m0_domain_contracts.md](eval/fr009_m0_domain_contracts.md);
+FR-009 is **in progress**. M0 delivered domain contracts; **M1** delivered pre-review
+Opportunity persistence and a minimal derived review projection. Owner queue actions,
+duplicate detection, and ranking calibration are not implemented. Acceptance:
+[eval/fr009_m0_domain_contracts.md](eval/fr009_m0_domain_contracts.md),
+[eval/fr009_m1_persistence_boundary.md](eval/fr009_m1_persistence_boundary.md);
 architecture [ADR-004](adr/004_opportunity_review_boundary.md).
 
 ### M0 contract tests (`tests/unit/opportunities/test_m0_review_contracts.py`)
@@ -281,9 +284,57 @@ architecture [ADR-004](adr/004_opportunity_review_boundary.md).
 | Frozen M4 baseline | Review metadata does not change M4 order, ranks, or reasons |
 | Duplicate safety | Identical content fingerprints remain independent records with no duplicate relation |
 
-Deliberately **not** covered yet (later milestones): queue eligibility and ordering (M1),
-pin / defer / archive behaviour (M2), duplicate detection and confirmation (M3), manual
-ranking calibration (M4).
+### M1 persistence-boundary tests (`tests/unit/orchestration/test_m1_pre_review_persistence.py`)
+
+| Area | Coverage |
+|------|----------|
+| Pre-review durability | A reloadable Opportunity with `decision=None` exists when the run pauses |
+| Checkpoint contract | State carries `opportunity_id`; no Opportunity object is serialised into the run file |
+| Persistence failure | A store failure pauses the run as resumable and never reaches the interrupt or creates a record |
+| Replay before interrupt | Re-executing `persist` reuses the same record and leaves artefacts unchanged |
+| Crash after checkpoint | A run resumed from the checkpoint re-enters owner review with the record already present |
+| Decision integration | `apply`, `skip`, and `defer` each update the same record (parametrised) |
+| Decision-update failure | A failing `record_decision` prevents completion and stays resumable |
+| Decision conflict | An accepted decision is never silently overwritten |
+| Decision idempotency | Repeating the same decision is safe and leaves one record |
+
+### M1 projection tests (`tests/unit/review_queue/`)
+
+| Area | Coverage |
+|------|----------|
+| Eligibility policy | Undecided → awaiting; applied → active only; skipped, archived, confirmed-duplicate, and terminal-status records excluded |
+| Reference date | Explicit `reference_date` decides whether a deferred record returns; undated defer holds |
+| Reason stability | Multiple exclusion reasons are reported in a fixed order |
+| Purity | Evaluating eligibility mutates nothing; querying the queue writes nothing |
+| Ordering | Matches the frozen M4 baseline; equal signals fall back to stable id order |
+| Backward compatibility | Records written before review metadata still project |
+
+### M1 functional journeys (`tests/functional/test_fr009_review_queue.py`)
+
+| Journey | Coverage |
+|---------|----------|
+| Apply | Record exists before review; resume updates it; exactly one record |
+| Skip | Record retained with the skip decision and excluded from the default queue |
+| Defer | Record retained with the defer decision and excluded from the default queue |
+| Lost checkpoint | Re-running after the run file is discarded creates no duplicate record |
+| Deterministic order | Several analysed jobs queue in a stable, explainable order |
+
+These run against the real YAML/JSON stores in `tmp_path`, not mocks.
+
+#### Manual validation (`scripts/run_fr009_review_queue_manual.py`)
+
+| Check | Result |
+|-------|--------|
+| Several analysed jobs persist before any decision | ✓ |
+| Deterministic review order with readable reasons | ✓ |
+| Apply / skip / defer update the existing record | ✓ |
+| Skip and defer leave the queue without deleting data | ✓ |
+| Replaying a completed run creates no duplicate | ✓ |
+| Live `data/opportunities/` projects read-only, unmigrated | ✓ |
+
+Deliberately **not** covered yet (later milestones): pin / mark-reviewed / defer-until /
+archive owner actions (M2), duplicate detection and confirmation (M3), manual ranking
+calibration (M4).
 
 ---
 
@@ -330,7 +381,7 @@ When FR-008–FR-015 are built, prefer behaviour over implementation detail:
 |------|-------------------|
 | FR-008 acquisition adapters | Unit tests per adapter; provenance fields; extraction warnings; no assumption that every job is browser-sourced |
 | FR-008 workflow | Golden workflow on a saved/manual job; conditional routing from real strategy outputs; checkpoint + resume after owner approval; recoverable node failure; node execution traces |
-| FR-009 queue / duplicates (M1–M4) | Deterministic ranking inputs; explainable reasons; no mutate-on-rank; derived queue position (never persisted); eligibility excludes archived / skipped / currently deferred / confirmed duplicates; pinning changes order without altering fit signals; persistence-boundary move creates exactly one Opportunity across resume and replay; platform ID / URL / fingerprint matching with owner confirmation |
+| FR-009 queue / duplicates (M2–M4 remaining) | Deterministic ranking inputs; explainable reasons; no mutate-on-rank; derived queue position (never persisted); eligibility excludes archived / skipped / currently deferred / confirmed duplicates; pinning changes order without altering fit signals; persistence-boundary move creates exactly one Opportunity across resume and replay; platform ID / URL / fingerprint matching with owner confirmation |
 | FR-010 packages | Artefacts grouped by application identity; trace to job evidence |
 | FR-011 submission | Never silent submit; fail-closed on unknown answers; unsupported-form / CAPTCHA / auth paths escalate; duplicate-submission guards |
 | FR-012 tracking | Status transitions with timestamps and audit history |

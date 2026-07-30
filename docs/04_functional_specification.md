@@ -781,6 +781,11 @@ Owner Review  ← checkpoint / interrupt
   └─ Defer → Complete (no Opportunity)
 ```
 
+**Superseded by FR-009 M1:** persistence now runs *before* owner review and all three
+decisions update that same record — see
+[FR-009 delivered workflow](#delivered-workflow-m1). FR-008's other guarantees
+(routing, checkpoints, retry, failure classification) are unchanged.
+
 The runner does not branch on acquisition source. Deduplicate / rank (FR-009),
 document packages (FR-010), and submit (FR-011) are **out of scope** for FR-008.
 
@@ -840,9 +845,11 @@ closed. Do not reopen spike criteria without explicit owner request.
 ## FR-009 Opportunity Review Queue & Ranking
 
 **Phase:** Horizon 1A Stage 3  
-**Status:** **In progress — M0 complete** (domain contracts; 2026-07-29). The queue,
-ranking extensions, owner actions, and duplicate detection are **not implemented**.  
+**Status:** **In progress — M1 complete** (pre-review persistence + minimal derived
+review projection; 2026-07-30). Owner queue actions, duplicate detection, and ranking
+calibration are **not implemented**.  
 **M0 acceptance:** [docs/eval/fr009_m0_domain_contracts.md](eval/fr009_m0_domain_contracts.md)  
+**M1 acceptance:** [docs/eval/fr009_m1_persistence_boundary.md](eval/fr009_m1_persistence_boundary.md)  
 **Architecture:** [ADR-004](adr/004_opportunity_review_boundary.md) (Accepted)
 
 Compare multiple acquired opportunities for owner attention — not only process each
@@ -874,8 +881,8 @@ reader’s concerns, not ATS keyword frequency alone.
 An **Opportunity** is the durable record of a *successfully analysed job candidate that
 may require an owner decision* — no longer only a job the owner decided to apply for.
 Persistence belongs after FR-005 Application Strategy and **before** owner review, so
-skip and defer stay auditable instead of disappearing. FR-008 currently persists on
-`apply` only; **FR-009 M1** moves that node.
+skip and defer stay auditable instead of disappearing. **M1 delivered that move** (see
+below).
 
 - `data/opportunities/` remains the single business system of record.
 - The review queue is a **derived projection / query** over persisted Opportunities —
@@ -894,12 +901,52 @@ skip and defer stay auditable instead of disappearing. FR-008 currently persists
   owner overrides around it — no composite score, no LLM ranking.
 - FR-009 does not write `PipelineStatus` and does not mutate FR-002–FR-005 artefacts.
 
+### Delivered workflow (M1)
+
+```
+Acquire → Validate → Analyse → Assess → Match → Strategy
+  ↓
+Allocate opportunity_id → checkpoint
+  ↓
+Persist Opportunity (decision = None)
+  ↓
+Owner Review  ← checkpoint / interrupt
+  ↓
+Apply | Skip | Defer
+  ↓
+Record Decision on that same Opportunity
+  ↓
+Complete
+```
+
+The interrupt is unreachable until the durable record exists: a persistence failure
+pauses the run as resumable and never advances to owner review. No decision deletes or
+duplicates a record, and `PipelineStatus` stays `assessed` for all three decisions.
+
+### Review projection (M1)
+
+`career_intelligence.review_queue.ReviewQueueService` is a read-only query over
+`OpportunityService` — the queue is computed on every call, never stored.
+
+| Query | Includes |
+|-------|----------|
+| `list_awaiting_review(reference_date=…)` | eligible records with no owner decision yet |
+| `list_active_opportunities(reference_date=…)` | eligible records, including applied-for ones |
+
+Exclusion reasons are explicit and deterministic: `archived`, `confirmed_duplicate`,
+`skipped`, `deferred`, `closed` (terminal `PipelineStatus`), and — for the awaiting
+scope only — `decided`. A record is deferred while `review.defer_until` is later than the
+explicit reference date; where no date is set, a `defer` decision holds until the owner
+reopens the record (FR-008's interrupt has no scheduling interface). Ordering inside the queue is the unmodified M4 comparison, and each
+item carries the M4 explanation reasons. Eligibility and rank position are never
+persisted.
+
 ### Milestones
 
 | Milestone | Scope | Status |
 |-----------|-------|--------|
 | M0 | Domain contracts, persistence-boundary specification, ADR-004 | **Complete** |
-| M1 | Deterministic review projection + workflow persistence-boundary move | Planned |
+| M1 | Workflow persistence-boundary move + minimal derived review projection | **Complete** |
 | M2 | Owner queue actions (mark reviewed, pin, defer until, archive, reopen) | Planned |
 | M3 | Duplicate candidate detection + owner confirmation | Planned |
 | M4 | Manual validation and ranking calibration | Planned |

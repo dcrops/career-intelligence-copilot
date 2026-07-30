@@ -11,6 +11,7 @@ from career_intelligence.application_strategy.deterministic_planner import (
 from career_intelligence.job_analysis import JobAnalysisService
 from career_intelligence.job_analysis.fixture_extractor import FixtureExtractor
 from career_intelligence.job_analysis.fixtures import MARKER_AI_ENGINEER, posting_ai_engineer
+from career_intelligence.job_analysis.models import JobPosting
 from career_intelligence.opportunity_assessment import OpportunityAssessmentService
 from career_intelligence.opportunity_assessment.fixture_assessor import FixtureAssessor
 from career_intelligence.opportunities import OpportunityService
@@ -22,6 +23,7 @@ from career_intelligence.orchestration import (
     PasteJobInput,
     RetryPolicy,
     WorkflowDependencies,
+    WorkflowState,
 )
 from career_intelligence.portfolio_matching import PortfolioMatchingService
 from career_intelligence.portfolio_matching.deterministic_matcher import DeterministicMatcher
@@ -49,6 +51,54 @@ def fixture_job_input(**overrides: object) -> PasteJobInput:
     }
     payload.update(overrides)
     return PasteJobInput(**payload)  # type: ignore[arg-type]
+
+
+def fixture_job_input_for(posting: JobPosting) -> PasteJobInput:
+    """Paste input for any offline fixture posting (FixtureExtractor markers)."""
+    return PasteJobInput(
+        raw_text=posting.raw_text,
+        title=posting.title,
+        company=posting.company,
+        source_url="https://example.com/jobs/fixture",
+    )
+
+
+def rewind_before(state: WorkflowState, *, nodes: set[str]) -> WorkflowState:
+    """Drop node completion records to simulate a crash before they were durable.
+
+    Artefacts and the planned opportunity id are retained, which is exactly the
+    state a process that died between a side effect and its checkpoint leaves.
+    """
+    remaining = [
+        record
+        for record in state.execution.completed_nodes
+        if record.node_id not in nodes
+    ]
+    return WorkflowState.model_validate(
+        state.model_copy(
+            update={
+                "execution": state.execution.model_copy(
+                    update={"completed_nodes": remaining}
+                ),
+                "approval": state.approval.model_copy(
+                    update={
+                        "pending_kind": None,
+                        "pending_options": [],
+                        "pending_message": None,
+                        "pending_requested_at": None,
+                    }
+                ),
+                "control": state.control.model_copy(
+                    update={
+                        "status": "running",
+                        "current_node": None,
+                        "last_error": None,
+                        "completed_at": None,
+                    }
+                ),
+            }
+        ).model_dump(mode="python")
+    )
 
 
 def offline_dependencies(

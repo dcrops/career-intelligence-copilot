@@ -27,11 +27,12 @@ from .retry import (
     is_recoverable_failure,
 )
 from .routing import (
-    APPLY_SIDE_EFFECT_SEQUENCE,
+    POST_DECISION_SEQUENCE,
     PRE_APPROVAL_SEQUENCE,
+    SIDE_EFFECT_NODE_IDS,
     SPIKE_NODE_SEQUENCE,
-    apply_side_effects_complete,
     next_spike_node,
+    post_decision_complete,
 )
 from .side_effect_nodes import (
     PersistOpportunityNode,
@@ -80,11 +81,14 @@ class WorkflowDependencies:
 
 
 class ApplicationWorkflowRunner:
-    """Execute the application workflow with owner-review, persist, and retry.
+    """Execute the application workflow with persist, owner-review, and retry.
 
-    Owner-review completion semantics (unchanged from M1): ``owner_review`` is
-    marked completed when the interrupt is *requested* (status→awaiting_owner),
+    Owner-review completion semantics (unchanged from FR-008 M1): ``owner_review``
+    is marked completed when the interrupt is *requested* (status→awaiting_owner),
     not when the decision is later received.
+
+    Since FR-009 M1 the Opportunity is persisted *before* the interrupt, and the
+    owner decision (apply, skip, or defer) is recorded against that same record.
     """
 
     def __init__(
@@ -199,7 +203,7 @@ class ApplicationWorkflowRunner:
         )
         state = self._checkpoint(state, reason="milestone")
 
-        if state.approval.owner_decision == "apply":
+        if state.approval.owner_decision is not None:
             return self._continue_after_decision(state)
 
         return self._run_loop(state, self._service_nodes, post_approval=False)
@@ -338,21 +342,13 @@ class ApplicationWorkflowRunner:
         if decision is None:
             raise WorkflowResumeError("Cannot continue without owner_decision")
 
-        if decision in {"skip", "defer"}:
-            return self._complete(state, message=f"completed_with_decision:{decision}")
-
-        if decision != "apply":
+        if decision not in OWNER_DECISION_KINDS:
             raise WorkflowResumeError(f"Unsupported post-approval decision: {decision}")
 
-        # Pre-allocate opportunity id and checkpoint before create (idempotency).
-        if state.artefacts.opportunity_id is None:
-            planned = allocate_opportunity_id()
-            state = replace_artefacts(state, opportunity_id=planned)
-            state = self._checkpoint(state, reason="milestone")
-
+        # All three decisions are recorded against the pre-review Opportunity.
         state = self._run_loop(state, self._service_nodes, post_approval=True)
-        if state.status == "running" and apply_side_effects_complete(state):
-            return self._complete(state, message="completed_with_decision:apply")
+        if state.status == "running" and post_decision_complete(state):
+            return self._complete(state, message=f"completed_with_decision:{decision}")
         return state
 
     def _complete(self, state: WorkflowState, *, message: str) -> WorkflowState:
@@ -402,8 +398,15 @@ class ApplicationWorkflowRunner:
                     state,
                     message=f"No node implementation registered for '{node_id}'",
                     node_id=node_id,
-                    post_approval=post_approval,
                 )
+
+            # Pre-allocate the opportunity id and checkpoint it before ``persist``
+            # creates the record, so a crash cannot orphan an unknown Opportunity.
+            if node_id == "persist" and state.artefacts.opportunity_id is None:
+                state = replace_artefacts(
+                    state, opportunity_id=allocate_opportunity_id()
+                )
+                state = self._checkpoint(state, reason="milestone")
 
             # Exhausted retry left on checkpoint — fail closed without re-executing.
             if (
@@ -416,7 +419,6 @@ class ApplicationWorkflowRunner:
                     message=state.retry.last_message,
                     node_id=node_id,
                     recoverable=False,
-                    post_approval=post_approval,
                 )
 
             node = nodes[node_id]
@@ -546,7 +548,6 @@ class ApplicationWorkflowRunner:
                 prior,
                 message="Node returned a different run_id",
                 node_id=node_id,
-                post_approval=post_approval,
             )
 
         finished = utc_now()
@@ -598,8 +599,9 @@ class ApplicationWorkflowRunner:
         classification = classification_from_flag(recoverable)
         policy = self._retry_policy
 
-        # Post-approval side effects: keep M2 resumable pause (no auto-retry policy).
-        if post_approval:
+        # Side-effect nodes keep the FR-008 M2 resumable pause (no auto-retry
+        # policy) so a storage failure never discards completed analysis work.
+        if post_approval or node_id in SIDE_EFFECT_NODE_IDS:
             return self._fail(
                 state,
                 message=failure.message,
@@ -608,7 +610,6 @@ class ApplicationWorkflowRunner:
                 detail=failure.detail,
                 recoverable=recoverable,
                 already_failed_event=True,
-                post_approval=True,
             )
 
         eligible = policy.is_eligible(node_id) and recoverable
@@ -695,7 +696,6 @@ class ApplicationWorkflowRunner:
                 detail=failure.detail,
                 recoverable=False,
                 already_failed_event=True,
-                post_approval=False,
             )
 
         # Unrecoverable or ineligible node — fail closed, no retry.
@@ -707,7 +707,6 @@ class ApplicationWorkflowRunner:
             detail=failure.detail,
             recoverable=False,
             already_failed_event=True,
-            post_approval=False,
         )
 
     def _fail(
@@ -721,7 +720,6 @@ class ApplicationWorkflowRunner:
         detail: str | None = None,
         recoverable: bool = False,
         already_failed_event: bool = False,
-        post_approval: bool = False,
     ) -> WorkflowState:
         stamp = utc_now()
         if not already_failed_event and node_id is not None and duration_ms is not None:
@@ -746,8 +744,8 @@ class ApplicationWorkflowRunner:
             detail=detail,
         )
 
-        # Post-approval side-effect failures stay resumable (keep decision + planned id).
-        if post_approval and state.approval.owner_decision == "apply":
+        # Side-effect failures stay resumable (keep any decision + planned id).
+        if node_id in SIDE_EFFECT_NODE_IDS:
             state = replace_control(
                 state,
                 status="running",
@@ -806,7 +804,7 @@ class ApplicationWorkflowRunner:
 
 
 def describe_spike_graph() -> tuple[str, ...]:
-    """Public inspectable full workflow sequence including apply side-effect nodes."""
+    """Public inspectable full workflow sequence including post-decision nodes."""
     return SPIKE_NODE_SEQUENCE
 
 
@@ -814,8 +812,8 @@ def describe_pre_approval_graph() -> tuple[str, ...]:
     return PRE_APPROVAL_SEQUENCE
 
 
-def describe_apply_side_effect_graph() -> tuple[str, ...]:
-    return APPLY_SIDE_EFFECT_SEQUENCE
+def describe_post_decision_graph() -> tuple[str, ...]:
+    return POST_DECISION_SEQUENCE
 
 
 def completed_spike_nodes(state: WorkflowState) -> list[str]:

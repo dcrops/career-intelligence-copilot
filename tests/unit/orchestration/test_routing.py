@@ -4,7 +4,7 @@ from __future__ import annotations
 
 from career_intelligence.orchestration import (
     SPIKE_NODE_SEQUENCE,
-    describe_apply_side_effect_graph,
+    describe_post_decision_graph,
     describe_pre_approval_graph,
     describe_spike_graph,
     next_spike_node,
@@ -22,10 +22,11 @@ def test_spike_graph_sequence() -> None:
         "assess",
         "match",
         "strategy",
+        "persist",
         "owner_review",
     )
-    assert describe_apply_side_effect_graph() == ("persist", "record_decision")
-    assert describe_spike_graph() == describe_pre_approval_graph() + describe_apply_side_effect_graph()
+    assert describe_post_decision_graph() == ("record_decision",)
+    assert describe_spike_graph() == describe_pre_approval_graph() + describe_post_decision_graph()
     assert SPIKE_NODE_SEQUENCE[0] == "acquire"
 
 
