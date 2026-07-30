@@ -1,19 +1,34 @@
-"""Deterministic ranking of open Opportunity records (M4).
+"""Deterministic ranking of open Opportunity records (FR-009 M4 calibration).
 
-Sort key (ascending = higher priority):
+Sort key (ascending = higher priority) — quality and owner value, not effort:
+
 1. Pursuit posture (FR-005 primary attention signal)
 2. Fit strength sum from strategy summary (FR-003 judgments)
-3. Application tier (effort band)
+3. Practical value (career value of the opportunity)
 4. opportunity_id (stable tie-break)
+
+``application_tier`` remains on the ranked item and in explanations as effort
+context, but it does not decide order: generation and submission are expected to
+be largely automated, so effort band must not outrank opportunity quality.
+
+``unknown`` fit judgments contribute 0 to fit strength — missing evidence must
+not increase confidence.
 
 Does not call OpenAI, re-assess, or mutate Opportunity records.
 """
 
 from __future__ import annotations
 
-from career_intelligence.application_strategy.models import ApplicationTier, PursuitPosture
+from career_intelligence.application_strategy.models import (
+    PracticalValue,
+    PursuitPosture,
+)
+from career_intelligence.opportunities.models import (
+    TERMINAL_STATUSES,
+    Opportunity,
+    PipelineStatus,
+)
 from career_intelligence.opportunity_assessment.models import FitJudgment
-from career_intelligence.opportunities.models import Opportunity, PipelineStatus, TERMINAL_STATUSES
 
 from .models import RankedOpportunity
 
@@ -38,11 +53,11 @@ _POSTURE_RANK: dict[PursuitPosture | None, int] = {
     None: 6,
 }
 
-_TIER_RANK: dict[ApplicationTier | None, int] = {
-    "platinum": 0,
-    "gold": 1,
-    "silver": 2,
-    "bronze": 3,
+_VALUE_RANK: dict[PracticalValue | None, int] = {
+    "career_priority": 0,
+    "acceptable_opportunity": 1,
+    "volume_obligation": 2,
+    "deferred_pending_information": 3,
     None: 4,
 }
 
@@ -50,9 +65,10 @@ _FIT_SCORE: dict[FitJudgment, int] = {
     "strong": 5,
     "moderate": 4,
     "mixed": 3,
-    "unknown": 2,
     "weak": 1,
     "misaligned": 0,
+    # Unknown evidence must not inflate confidence.
+    "unknown": 0,
 }
 
 
@@ -62,13 +78,16 @@ def is_open_opportunity(opportunity: Opportunity) -> bool:
         return False
     if opportunity.status not in OPEN_STATUSES:
         return False
-    if opportunity.decision is not None and opportunity.decision.decision == "skip":
-        return False
-    return True
+    return not (
+        opportunity.decision is not None and opportunity.decision.decision == "skip"
+    )
 
 
 def fit_strength(opportunity: Opportunity) -> int:
-    """Sum of technical + commercial + portfolio fit scores (0–15)."""
+    """Sum of technical + commercial + portfolio fit scores (0–15).
+
+    ``unknown`` contributes 0 so missing judgments cannot raise priority.
+    """
     summary = opportunity.strategy_summary
     if summary is None:
         return 0
@@ -83,11 +102,11 @@ def sort_key(opportunity: Opportunity) -> tuple[int, int, int, str]:
     """Lower tuple sorts earlier (higher priority)."""
     summary = opportunity.strategy_summary
     posture = summary.pursuit_posture if summary else None
-    tier = summary.application_tier if summary else None
+    value = summary.practical_value if summary else None
     return (
         _POSTURE_RANK[posture],
         -fit_strength(opportunity),  # higher fit first within same posture
-        _TIER_RANK[tier],
+        _VALUE_RANK[value],
         opportunity.opportunity_id,
     )
 
@@ -98,7 +117,13 @@ def rank_open_opportunities(opportunities: list[Opportunity]) -> list[RankedOppo
     ordered = sorted(open_items, key=sort_key)
     ranked: list[RankedOpportunity] = []
     for index, opportunity in enumerate(ordered, start=1):
-        ranked.append(_to_ranked(index, opportunity, predecessor=ordered[index - 2] if index > 1 else None))
+        ranked.append(
+            _to_ranked(
+                index,
+                opportunity,
+                predecessor=ordered[index - 2] if index > 1 else None,
+            )
+        )
     return ranked
 
 
@@ -149,34 +174,43 @@ def _build_reasons(
             f"commercial={summary.commercial_fit}, "
             f"portfolio={summary.portfolio_fit})"
         )
-        reasons.append(f"Application tier (effort): {summary.application_tier}")
+        reasons.append(f"Practical value: {summary.practical_value}")
+        # Effort band is context for the owner, not a ranking factor.
+        reasons.append(f"Application tier (effort context): {summary.application_tier}")
         if predecessor is not None:
             reasons.append(_relative_reason(opportunity, predecessor))
 
-    if opportunity.decision is None:
+    decision = opportunity.decision.decision if opportunity.decision else None
+    if decision is None:
         reasons.append("Owner has not yet recorded apply/skip/defer")
-    elif opportunity.decision.decision == "defer":
+    elif decision == "defer":
         reasons.append("Owner deferred this opportunity")
-    elif opportunity.decision.decision == "apply":
+    elif decision == "apply":
         reasons.append("Owner decided to apply")
 
     if opportunity.status == "deferred":
         reasons.append("Pipeline status is deferred")
     elif opportunity.status == "assessed":
-        reasons.append("Recently assessed; awaiting owner action")
+        # Decision-aware: FR-009 keeps status=assessed after apply/skip/defer.
+        if decision is None:
+            reasons.append("Assessed; awaiting owner decision")
+        elif decision == "apply":
+            reasons.append("Assessed; owner chose apply — ready for package preparation")
+        elif decision == "defer":
+            reasons.append("Assessed; owner deferred review")
+        # skip is excluded by is_open_opportunity
     elif opportunity.status in {"preparing", "submitted"}:
         reasons.append(f"Application in progress ({opportunity.status})")
     elif opportunity.status == "interviewing":
-        reasons.append("Interview stage — prioritise preparation effort")
+        reasons.append("Interview stage — prioritise preparation")
     elif opportunity.status == "offer":
-        reasons.append("Offer received — prioritise decision effort")
+        reasons.append("Offer received — prioritise the offer decision")
 
     if opportunity.outcome is not None and opportunity.outcome.follow_up_date is not None:
         reasons.append(
             f"Follow-up dated {opportunity.outcome.follow_up_date.isoformat()}"
         )
 
-    # Deduplicate while preserving order
     seen: set[str] = set()
     unique: list[str] = []
     for reason in reasons:
@@ -187,7 +221,7 @@ def _build_reasons(
 
 
 def _relative_reason(current: Opportunity, previous: Opportunity) -> str:
-    """Explain why current sorts after previous (same or weaker primary key)."""
+    """Explain why current sorts after previous."""
     cur = sort_key(current)
     prev = sort_key(previous)
     if cur[0] > prev[0]:
@@ -195,5 +229,5 @@ def _relative_reason(current: Opportunity, previous: Opportunity) -> str:
     if cur[1] > prev[1]:  # negated fit: larger means weaker
         return "Weaker combined fit than the opportunity ranked above"
     if cur[2] > prev[2]:
-        return "Lower application tier (effort) than the opportunity ranked above"
+        return "Lower practical value than the opportunity ranked above"
     return "Equal ranking signals; ordered by stable opportunity_id"

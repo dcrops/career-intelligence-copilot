@@ -46,18 +46,23 @@ modern AI engineering workflows with Cursor. When those goals conflict with Hori
 **Complete (owner-sequenced):** FR-006 CV Generation (incl. FR-006b/c);
 FR-007 Cover Letter ([eval](docs/eval/fr007_cover_letter.md)).
 
-**Current focus — Horizon 1A:** **FR-009** Opportunity Review Queue & Ranking —
-**M3 complete** (owner-confirmed duplicate groups —
+**Horizon 1A progress:** **FR-008 complete** and frozen
+([eval](docs/eval/fr008_workflow_orchestration.md);
+[ADR-003](docs/adr/003_application_workflow_orchestration.md)).
+**FR-009 Opportunity Review Queue & Ranking — complete** and frozen
+([acceptance](docs/eval/fr009_opportunity_review_queue.md);
+[ADR-004](docs/adr/004_opportunity_review_boundary.md); milestones
 [M0](docs/eval/fr009_m0_domain_contracts.md),
 [M1](docs/eval/fr009_m1_persistence_boundary.md),
 [M2](docs/eval/fr009_m2_owner_review_actions.md),
-[M3](docs/eval/fr009_m3_duplicate_detection.md);
-[ADR-004](docs/adr/004_opportunity_review_boundary.md)).
-Duplicates are **linked, never merged**: the system detects and explains, the owner
-confirms, and no advertisement is ever deleted. Ranking calibration is not implemented.
-**FR-008 complete** and frozen
-([eval](docs/eval/fr008_workflow_orchestration.md); [ADR-003](docs/adr/003_application_workflow_orchestration.md)).
-Details: [docs/10_roadmap.md](docs/10_roadmap.md).
+[M3](docs/eval/fr009_m3_duplicate_detection.md),
+[M4](docs/eval/fr009_m4_recommendations.md)).
+Every analysed job persists before owner review, duplicates are **linked, never merged**,
+and recommendations are **derived, deterministic, and advisory** — the owner always
+decides.
+
+**Current focus:** **FR-010** Application Package Preparation (next active FR, not
+started). Details: [docs/10_roadmap.md](docs/10_roadmap.md).
 
 Acquisition today: paste or local export file via
 `scripts/run_fr008_workflow_manual.py` (`--source paste|export`). Playwright deferred.
@@ -127,6 +132,11 @@ cic opportunity export-csv
 
 # FR-006 CV (see docs/eval/fr006_manual_validation.md)
 python scripts/run_cv_generation_manual.py --job-file path/to/real_job.txt
+
+# FR-009 review queue, duplicates, recommendations (read-only against the live store)
+python scripts/run_fr009_review_queue_manual.py queue
+python scripts/run_fr009_duplicate_review_manual.py candidates --opportunities data/opportunities
+python scripts/run_fr009_recommendations_manual.py recommend --opportunities data/opportunities
 
 # Tests
 python -m pytest

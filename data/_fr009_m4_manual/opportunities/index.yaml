@@ -1,0 +1,122 @@
+schema_version: '1'
+opportunities:
+- identity:
+    opportunity_id: opp_01KYRJHYCAEB2PJRCVE3WM9G8G
+    created_at: '2026-07-30T03:54:40.401371Z'
+    source_kind: manual
+    platform_job_id: null
+    canonical_url: null
+    source_url: null
+    company: Southern Grid Energy
+    title: Data Engineer
+    location_text: Melbourne
+    content_fingerprint: c19bdef2bcb781337fec7dd7674f2366dee94ada30a1b7ab6293f16d87ca41fa
+  status: assessed
+  decision: null
+  outcome: null
+  strategy_summary:
+    pursuit_posture: do_not_prioritise
+    application_tier: bronze
+    practical_value: acceptable_opportunity
+    technical_fit: mixed
+    commercial_fit: moderate
+    portfolio_fit: weak
+  artifact_paths:
+    posting.json: artifacts/opp_01KYRJHYCAEB2PJRCVE3WM9G8G/posting.json
+    job_analysis.json: artifacts/opp_01KYRJHYCAEB2PJRCVE3WM9G8G/job_analysis.json
+    assessment.json: artifacts/opp_01KYRJHYCAEB2PJRCVE3WM9G8G/assessment.json
+    portfolio_match.json: artifacts/opp_01KYRJHYCAEB2PJRCVE3WM9G8G/portfolio_match.json
+    strategy.json: artifacts/opp_01KYRJHYCAEB2PJRCVE3WM9G8G/strategy.json
+  legacy_import: null
+  review:
+    reviewed_at: null
+    pinned: false
+    defer_until: null
+    archived_at: null
+  review_actions:
+  - action: pin
+    occurred_at: '2026-07-30T12:00:00Z'
+    detail: null
+  - action: unpin
+    occurred_at: '2026-07-30T12:00:00Z'
+    detail: null
+  duplicate: null
+  duplicate_rejections: []
+  updated_at: '2026-07-30T12:00:00Z'
+- identity:
+    opportunity_id: opp_01KYRJHYEM4YWGYDVKZSNR7M8F
+    created_at: '2026-07-30T03:54:40.479043Z'
+    source_kind: manual
+    platform_job_id: null
+    canonical_url: null
+    source_url: null
+    company: Northside Analytics
+    title: Senior AI Engineer
+    location_text: Melbourne
+    content_fingerprint: bb0a0844c72e801cbdeb62bfeccc2e2a95d80d1a172b2746e9cdae87c0f0243c
+  status: assessed
+  decision: null
+  outcome: null
+  strategy_summary:
+    pursuit_posture: consider
+    application_tier: silver
+    practical_value: acceptable_opportunity
+    technical_fit: mixed
+    commercial_fit: moderate
+    portfolio_fit: moderate
+  artifact_paths:
+    posting.json: artifacts/opp_01KYRJHYEM4YWGYDVKZSNR7M8F/posting.json
+    job_analysis.json: artifacts/opp_01KYRJHYEM4YWGYDVKZSNR7M8F/job_analysis.json
+    assessment.json: artifacts/opp_01KYRJHYEM4YWGYDVKZSNR7M8F/assessment.json
+    portfolio_match.json: artifacts/opp_01KYRJHYEM4YWGYDVKZSNR7M8F/portfolio_match.json
+    strategy.json: artifacts/opp_01KYRJHYEM4YWGYDVKZSNR7M8F/strategy.json
+  legacy_import: null
+  review:
+    reviewed_at: null
+    pinned: false
+    defer_until: null
+    archived_at: null
+  review_actions: []
+  duplicate: null
+  duplicate_rejections: []
+  updated_at: '2026-07-30T03:54:40.479043Z'
+- identity:
+    opportunity_id: opp_01KYRJHYH70V22FTR7CM010589
+    created_at: '2026-07-30T03:54:40.563931Z'
+    source_kind: manual
+    platform_job_id: null
+    canonical_url: null
+    source_url: null
+    company: Harbour Labs
+    title: Applied AI Engineer
+    location_text: Sydney
+    content_fingerprint: 0fedeba5ccf82b0084542d6b7b61d21dce09c6f9a1790645da20e8d62f28a250
+  status: assessed
+  decision:
+    decision: apply
+    decided_at: '2026-07-30T03:54:40.688046Z'
+    notes: null
+  outcome: null
+  strategy_summary:
+    pursuit_posture: pursue
+    application_tier: gold
+    practical_value: career_priority
+    technical_fit: strong
+    commercial_fit: moderate
+    portfolio_fit: strong
+  artifact_paths:
+    posting.json: artifacts/opp_01KYRJHYH70V22FTR7CM010589/posting.json
+    job_analysis.json: artifacts/opp_01KYRJHYH70V22FTR7CM010589/job_analysis.json
+    assessment.json: artifacts/opp_01KYRJHYH70V22FTR7CM010589/assessment.json
+    portfolio_match.json: artifacts/opp_01KYRJHYH70V22FTR7CM010589/portfolio_match.json
+    strategy.json: artifacts/opp_01KYRJHYH70V22FTR7CM010589/strategy.json
+  legacy_import: null
+  review:
+    reviewed_at: null
+    pinned: false
+    defer_until: null
+    archived_at: null
+  review_actions: []
+  duplicate: null
+  duplicate_rejections: []
+  updated_at: '2026-07-30T03:54:40.688046Z'

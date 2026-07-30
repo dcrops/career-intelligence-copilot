@@ -1,7 +1,9 @@
 # ADR-004: Opportunity as Pre-Decision System of Record; Review Queue as Derived Projection
 
-**Status:** Accepted (FR-009 M0) — **implemented in FR-009 M1** (2026-07-30;
-[acceptance](../eval/fr009_m1_persistence_boundary.md))  
+**Status:** Accepted (FR-009 M0) — **implemented and closed across FR-009 M1–M4**
+(2026-07-30; [FR-009 acceptance](../eval/fr009_opportunity_review_queue.md), boundary
+detail in [M1](../eval/fr009_m1_persistence_boundary.md)). Decision 8 amended by the M4
+calibration.  
 **Date:** 2026-07-29  
 **Amends:** [ADR-002](002_opportunity_persistence.md) (persistence boundary and record meaning)  
 **Reaffirms:** [ADR-003](003_application_workflow_orchestration.md) (checkpoints are recovery data)
@@ -54,9 +56,14 @@ constraint.
    Nothing is merged or deleted; both records stay auditable. A shared
    `content_fingerprint` alone is not proof — the live store already contains three
    fingerprint collision groups.
-8. **M4 ranking is the frozen fit baseline.** FR-009 may add eligibility filtering and
-   explicit owner overrides *around* the `pursuit_posture → fit strength →
-   application_tier → opportunity_id` sort key. No composite score, no LLM ranking.
+8. **Ranking is deterministic and quality-first.** The original Phase 2 baseline used
+   `application_tier` as a tertiary key. **FR-009 M4** (owner-authorised calibration)
+   replaced that with `practical_value`: `pursuit_posture → fit strength →
+   practical_value → opportunity_id`. Effort tier remains explanation context only.
+   Missing evidence cannot improve ranking (`unknown` fit contributes 0), and data the
+   record does not hold — closing dates, salary — is never invented.
+   FR-009 may add eligibility filtering and explicit owner overrides around this key.
+   No composite score, no LLM ranking. Further key changes need explicit owner approval.
 9. **Archive is review visibility only.** Archiving hides a record from active review.
    Employer rejection, withdrawal, and process completion remain FR-012 pipeline
    concepts.
@@ -98,10 +105,11 @@ constraint.
   on existing rows the next time a decision or outcome is saved. This changes
   serialisation only, never meaning.
 
-## Implementation status (FR-009 M1 + M2 + M3)
+## Implementation status (FR-009 M1–M4 — closed)
 
-Decisions 1–9 are implemented for the workflow, the default projection, and owner review
-actions. `persist` moved into `PRE_APPROVAL_SEQUENCE`; all three decisions run
+Decisions 1–9 are implemented for the workflow, the default projection, owner review
+actions, duplicate confirmation, and calibrated recommendations.
+`persist` moved into `PRE_APPROVAL_SEQUENCE`; all three decisions run
 `POST_DECISION_SEQUENCE`; `career_intelligence.review_queue.ReviewQueueService` provides
 the derived projection with pinned-first presentation override.
 `OpportunityReviewService` writes orthogonal review metadata and append-only
@@ -122,7 +130,18 @@ is what stops a declined suggestion returning. Canonical selection is recommende
 deterministically and applied only on explicit owner confirmation; `confirm_canonical` is
 convergent, so an interrupted re-point is repaired by replaying the same action.
 
-Ranking calibration (M4) remains deferred.
+**M4 calibrates ranking for quality, not effort** (owner-authorised). The comparison sort
+key is now `pursuit_posture → fit strength → practical_value → opportunity_id`.
+`application_tier` remains explanation context only. `unknown` fit judgments contribute 0.
+`career_intelligence.recommendations.OpportunityRecommendationService` derives
+prioritised recommendations with structured explanations on top of the review queue.
+Decision-aware wording replaces the false "Recently assessed; awaiting owner action" text
+for applied records that remain `status=assessed`.
+
+**FR-009 is closed** (2026-07-30) — documentation frozen; acceptance
+[eval/fr009_opportunity_review_queue.md](../eval/fr009_opportunity_review_queue.md).
+Decision 8 was amended in place for the M4 calibration rather than opening a second ADR,
+because this record already owns the review boundary and its ranking guardrail.
 
 ## Compatibility implications
 
@@ -140,16 +159,22 @@ Ranking calibration (M4) remains deferred.
 
 ## Deferred work
 
-- FR-009 M4 — manual validation and ranking calibration.
 - Employer-careers `SourceKind` value, so canonical selection can prefer an official
   employer advertisement directly instead of approximating it as "not a recruiter repost".
+- Optional Career Profile preference matching against JobAnalysis location / compensation /
+  work arrangement (not on the Opportunity index today).
 - FR-012 — application pipeline status and outcome semantics; `PipelineStatus`
   remains outside FR-009's write surface.
 
 ## Guardrails
 
 - FR-009 must not write `PipelineStatus`, mutate FR-002–FR-005 artefact snapshots, or
-  change the M4 sort key.
+  replace the calibrated comparison key with an opaque / LLM score.
+- The calibrated sort key (`pursuit_posture → fit_strength → practical_value →
+  opportunity_id`) may change only with explicit owner approval after validation
+  evidence. `application_tier` stays effort context, never a ranking factor.
 - Do not add query or listing features to the workflow checkpoint store.
 - Do not merge or delete records during duplicate handling.
-- Do not persist derived queue values (rank, band, age, staleness).
+- Do not persist derived queue or recommendation values (rank, band, age, staleness).
+- Do not invent ranking signals that are not present on the Opportunity aggregate
+  (closing dates, salary on identity, etc.).

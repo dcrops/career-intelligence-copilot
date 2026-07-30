@@ -36,7 +36,7 @@ Objectives.
 |----------|--------|
 | What is this project? | Decision-support for job search (Horizon 1), evolving toward a Career Intelligence Platform (Horizon 2). |
 | What has been completed? | **Phase 1** and **Phase 2** — see [12_phase_history.md](12_phase_history.md) and [eval/phase2_release_report.md](eval/phase2_release_report.md). |
-| What is next? | **Horizon 1A** job application workflow (**FR-008–FR-015**; acquisition via source adapters, not “scraping”). Recruiter outreach is Horizon 1B (**FR-016+**) — [10_roadmap.md](10_roadmap.md). |
+| What is next? | **FR-010** Application Package Preparation, inside **Horizon 1A** (FR-008 and FR-009 complete; acquisition via source adapters, not “scraping”). Recruiter outreach is Horizon 1B (**FR-016+**) — [10_roadmap.md](10_roadmap.md). |
 | Where should I start reading? | This guide → [AGENTS.md](../AGENTS.md) → [04_functional_specification.md](04_functional_specification.md) → [10_roadmap.md](10_roadmap.md). |
 
 ---
@@ -45,14 +45,18 @@ Objectives.
 
 **Phase 2 Job Intelligence — Complete** (documentation frozen as baseline).
 
-**Active milestone:** Horizon 1A — **FR-009** Opportunity Review Queue & Ranking,
-**M3 complete** (owner-confirmed duplicate groups;
-[eval/fr009_m0_domain_contracts.md](eval/fr009_m0_domain_contracts.md),
-[eval/fr009_m1_persistence_boundary.md](eval/fr009_m1_persistence_boundary.md),
-[eval/fr009_m2_owner_review_actions.md](eval/fr009_m2_owner_review_actions.md),
-[eval/fr009_m3_duplicate_detection.md](eval/fr009_m3_duplicate_detection.md)).
-Ranking calibration is not implemented. FR-008
-closed: [eval/fr008_workflow_orchestration.md](eval/fr008_workflow_orchestration.md).
+**Closed in Horizon 1A:** **FR-008** Job Acquisition & Workflow Orchestration
+([eval/fr008_workflow_orchestration.md](eval/fr008_workflow_orchestration.md)) and
+**FR-009** Opportunity Review Queue & Ranking
+([eval/fr009_opportunity_review_queue.md](eval/fr009_opportunity_review_queue.md);
+milestones [M0](eval/fr009_m0_domain_contracts.md),
+[M1](eval/fr009_m1_persistence_boundary.md),
+[M2](eval/fr009_m2_owner_review_actions.md),
+[M3](eval/fr009_m3_duplicate_detection.md),
+[M4](eval/fr009_m4_recommendations.md)).
+
+**Active FR:** **FR-010** Application Package Preparation — next in Horizon 1A, not
+started.
 
 **Thereafter:** Complete Horizon 1A (through FR-015), then Horizon 1B (FR-016–FR-022).
 
@@ -78,7 +82,9 @@ projection). Release evidence:
 | [08_implementation_notes.md](08_implementation_notes.md) | Supporting | Implementation notes and manual runners |
 | [12_phase_history.md](12_phase_history.md) | Supporting | Phase 1–2 outcomes and lessons |
 | [eval/phase2_release_report.md](eval/phase2_release_report.md) | Supporting | Phase 2 M5 GO evidence |
-| [adr/README.md](adr/README.md) | Supporting | ADR index (001–003) |
+| [adr/README.md](adr/README.md) | Supporting | ADR index (001–004) |
+| [eval/fr008_workflow_orchestration.md](eval/fr008_workflow_orchestration.md) | Supporting | FR-008 acceptance and close-out |
+| [eval/fr009_opportunity_review_queue.md](eval/fr009_opportunity_review_queue.md) | Supporting | FR-009 acceptance and close-out (milestone records: `eval/fr009_m0`–`m4`) |
 | [eval/fr006_manual_validation.md](eval/fr006_manual_validation.md) | Supporting | FR-006 validation procedure |
 | [eval/fr006b_cv_quality_golden_suite.md](eval/fr006b_cv_quality_golden_suite.md) | Supporting | FR-006b permanent CV quality benchmarks |
 | [eval/fr006b_cv_quality_findings.md](eval/fr006b_cv_quality_findings.md) | Supporting | FR-006b quality review (pre-implementation) |

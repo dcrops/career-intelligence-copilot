@@ -143,6 +143,16 @@ content hash) stand in for identity. Record rejected suggestions too, so the sam
 is not asked twice. Established by FR-009 M3
 ([ADR-004](adr/004_opportunity_review_boundary.md)).
 
+### Rank on evidence you actually hold
+
+Prioritisation should be an ordered key of named signals, not a composite score: the owner
+must be able to see why A outranks B and challenge the policy. Rank on what the capability
+is for — opportunity quality and owner value — and keep cost signals (effort tier) as
+context rather than ranking factors. Absent evidence must never improve a position: score
+`unknown` as zero and report the gap. Never manufacture a signal the record does not hold
+(closing dates, salary) in order to produce urgency. Established by FR-009 M4
+([ADR-004](adr/004_opportunity_review_boundary.md) Decision 8).
+
 ---
 
 ## Tradeoff Principles

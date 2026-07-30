@@ -1,7 +1,9 @@
 # FR-009 M3 — Duplicate Detection, Owner Confirmation and Canonical Selection
 
 **Date:** 2026-07-30
-**Status:** Complete. FR-009 remains **in progress** (M4 ranking calibration deferred).
+**Status:** Complete. Superseded status note: M4 ranking calibration was delivered after
+this report, and FR-009 was closed on 2026-07-30 —
+[FR-009 acceptance](fr009_opportunity_review_queue.md).
 **Architecture:** [ADR-004](../adr/004_opportunity_review_boundary.md)
 **Preceding milestones:** [M0](fr009_m0_domain_contracts.md),
 [M1](fr009_m1_persistence_boundary.md), [M2](fr009_m2_owner_review_actions.md)

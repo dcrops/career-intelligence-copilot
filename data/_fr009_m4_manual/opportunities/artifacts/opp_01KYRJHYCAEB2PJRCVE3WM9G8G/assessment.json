@@ -1,0 +1,291 @@
+{
+  "job_analysis": {
+    "posting": {
+      "raw_text": "[CIC-FIXTURE:data-engineer]\nData Engineer — Southern Grid Energy (Melbourne)\n\nWe need a Data Engineer to build reliable analytics platforms on modern lakehouse tooling.\n\nResponsibilities\n• Design and operate batch and streaming pipelines\n• Model curated datasets for analytics and AI consumers\n• Improve data quality and observability\n\nRequirements\n• 4+ years data engineering experience required\n• Python and SQL required; Spark and dbt preferred\n• Cloud warehouse experience (Snowflake or Databricks) required\n\nLocation & employment\nHybrid Melbourne. Full-time permanent.\nSalary $130,000–$155,000 AUD + super.",
+      "title": "Data Engineer",
+      "company": "Southern Grid Energy",
+      "source_url": null
+    },
+    "role_family": {
+      "family": "data_engineering",
+      "evidence": [
+        {
+          "excerpt": "Data Engineer",
+          "section": "title"
+        }
+      ]
+    },
+    "seniority": {
+      "level": "unknown",
+      "ambiguous": false,
+      "candidate_levels": [],
+      "evidence": []
+    },
+    "technologies": [
+      {
+        "name": "Python",
+        "level": "required",
+        "evidence": [
+          {
+            "excerpt": "Python and SQL required",
+            "section": "requirements"
+          }
+        ]
+      },
+      {
+        "name": "SQL",
+        "level": "required",
+        "evidence": [
+          {
+            "excerpt": "Python and SQL required",
+            "section": "requirements"
+          }
+        ]
+      },
+      {
+        "name": "Spark",
+        "level": "preferred",
+        "evidence": [
+          {
+            "excerpt": "Spark and dbt preferred",
+            "section": "requirements"
+          }
+        ]
+      },
+      {
+        "name": "dbt",
+        "level": "preferred",
+        "evidence": [
+          {
+            "excerpt": "Spark and dbt preferred",
+            "section": "requirements"
+          }
+        ]
+      }
+    ],
+    "responsibilities": [
+      {
+        "description": "Design and operate batch and streaming pipelines",
+        "evidence": [
+          {
+            "excerpt": "Design and operate batch and streaming pipelines",
+            "section": "responsibilities"
+          }
+        ]
+      }
+    ],
+    "compensation": {
+      "clarity": "stated",
+      "minimum": 130000.0,
+      "maximum": 155000.0,
+      "currency": "AUD",
+      "period": "year",
+      "raw_text": "Salary $130,000–$155,000 AUD + super",
+      "evidence": [
+        {
+          "excerpt": "Salary $130,000–$155,000 AUD + super",
+          "section": "compensation"
+        }
+      ]
+    },
+    "location": {
+      "clarity": "stated",
+      "summary": "Melbourne",
+      "evidence": [
+        {
+          "excerpt": "Hybrid Melbourne",
+          "section": "location"
+        }
+      ]
+    },
+    "work_arrangement": {
+      "arrangement": "hybrid",
+      "details": null,
+      "evidence": [
+        {
+          "excerpt": "Hybrid Melbourne",
+          "section": "location"
+        }
+      ]
+    },
+    "employment": {
+      "working_hours": "full_time",
+      "engagement_type": "permanent",
+      "evidence": [
+        {
+          "excerpt": "Full-time permanent",
+          "section": "employment"
+        }
+      ]
+    },
+    "experience_requirements": [
+      {
+        "description": "4+ years data engineering experience",
+        "level": "required",
+        "minimum_years": 4.0,
+        "maximum_years": null,
+        "evidence": [
+          {
+            "excerpt": "4+ years data engineering experience required",
+            "section": "requirements"
+          }
+        ]
+      }
+    ]
+  },
+  "technical_fit": {
+    "dimension": "technical",
+    "judgment": "mixed",
+    "summary": "Data engineering skills transfer strongly; AI-specific emphasis is limited for a data-engineering role family.",
+    "findings": [
+      {
+        "kind": "transferable_alignment",
+        "summary": "Required Python and SQL align with commercial data engineering employment.",
+        "detail": null,
+        "importance": "material",
+        "job_evidence": [
+          {
+            "source": "technology",
+            "item_index": 0,
+            "name": "Python",
+            "excerpt": "Python and SQL required"
+          }
+        ],
+        "profile_evidence": [
+          {
+            "source": "experience",
+            "ref": "experience:nbn-data-engineer-2020",
+            "excerpt": null
+          }
+        ],
+        "assumption": null
+      },
+      {
+        "kind": "transferable_alignment",
+        "summary": "Preferred Spark and dbt align with professional development and data engineering skills.",
+        "detail": null,
+        "importance": "material",
+        "job_evidence": [
+          {
+            "source": "technology",
+            "item_index": 2,
+            "name": "Spark",
+            "excerpt": "Spark and dbt preferred"
+          }
+        ],
+        "profile_evidence": [
+          {
+            "source": "skill",
+            "ref": "skill:dbt",
+            "excerpt": null
+          },
+          {
+            "source": "experience",
+            "ref": "experience:data-engineering-development-2023",
+            "excerpt": null
+          }
+        ],
+        "assumption": null
+      },
+      {
+        "kind": "gap",
+        "summary": "Role family is data engineering rather than applied AI Engineering, which is the candidate's primary target direction.",
+        "detail": null,
+        "importance": "material",
+        "job_evidence": [
+          {
+            "source": "role_family",
+            "item_index": null,
+            "name": null,
+            "excerpt": "Data Engineer"
+          }
+        ],
+        "profile_evidence": [
+          {
+            "source": "identity",
+            "ref": "identity:target_role",
+            "excerpt": null
+          },
+          {
+            "source": "goal",
+            "ref": "goal:primary",
+            "excerpt": null
+          }
+        ],
+        "assumption": null
+      }
+    ]
+  },
+  "commercial_fit": {
+    "dimension": "commercial",
+    "judgment": "moderate",
+    "summary": "Melbourne hybrid permanent role aligns with location and employment preferences.",
+    "findings": [
+      {
+        "kind": "alignment",
+        "summary": "Hybrid Melbourne permanent arrangement aligns with stated preferences.",
+        "detail": null,
+        "importance": "material",
+        "job_evidence": [
+          {
+            "source": "work_arrangement",
+            "item_index": null,
+            "name": null,
+            "excerpt": "Hybrid Melbourne"
+          }
+        ],
+        "profile_evidence": [
+          {
+            "source": "preference",
+            "ref": "preference:locations",
+            "excerpt": null
+          },
+          {
+            "source": "preference",
+            "ref": "preference:employment_types",
+            "excerpt": null
+          }
+        ],
+        "assumption": null
+      }
+    ]
+  },
+  "portfolio_fit": {
+    "dimension": "portfolio",
+    "judgment": "weak",
+    "summary": "Portfolio emphasises AI engineering projects more than lakehouse data-platform delivery.",
+    "findings": [
+      {
+        "kind": "partial_alignment",
+        "summary": "Data engineering employment history supports pipeline responsibilities more than AI portfolio projects do.",
+        "detail": null,
+        "importance": "material",
+        "job_evidence": [
+          {
+            "source": "responsibility",
+            "item_index": 0,
+            "name": null,
+            "excerpt": "Design and operate batch and streaming pipelines"
+          }
+        ],
+        "profile_evidence": [
+          {
+            "source": "experience",
+            "ref": "experience:nbn-data-engineer-2020",
+            "excerpt": null
+          }
+        ],
+        "assumption": null
+      }
+    ]
+  },
+  "summary": {
+    "summary": "Mixed fit: strong transferable data engineering alignment, but the role is not the primary AI Engineering target.",
+    "key_alignments": [
+      "Commercial data engineering experience is highly relevant."
+    ],
+    "key_gaps": [
+      "Role family diverges from the AI Engineering target direction."
+    ]
+  }
+}

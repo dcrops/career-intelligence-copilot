@@ -40,7 +40,7 @@ intelligence.
 |-------|--------|
 | **Phase 1** — Product Definition | **Complete** |
 | **Phase 2** — Job Intelligence MVP | **Complete** ([release report](eval/phase2_release_report.md)) |
-| **Horizon 1A** — Job application workflow | **Current** (FR-008–FR-015 planned; FR-001–007 complete) |
+| **Horizon 1A** — Job application workflow | **Current** (FR-008 and FR-009 complete; **FR-010 next**; FR-011–FR-015 planned) |
 | **Horizon 1B** — Recruiter / market engagement | Not started (FR-016–FR-022; after 1A) |
 | **Horizon 2** — Platform capabilities | Not started (FR-023+) |
 
@@ -123,9 +123,9 @@ See [04_functional_specification.md](04_functional_specification.md) § Horizon 
 ```
 FR-008 Job Acquisition & Workflow Orchestration  ✅ Complete (2026-07-29)
         ▼
-FR-009 Opportunity Review Queue & Ranking  (duplicates + identity + rank)  ← Now (M3 complete)
+FR-009 Opportunity Review Queue & Ranking  (duplicates + identity + rank)  ✅ Complete (2026-07-30)
         ▼
-FR-010 Application Package Preparation  (FR-006 / FR-007)
+FR-010 Application Package Preparation  (FR-006 / FR-007)  ← Now (not started)
         ▼
 FR-011 Submission Assistance
         ▼
@@ -143,8 +143,9 @@ FR-015 Agent Evaluation & Observability
 | Priority | Item | Intent |
 |----------|------|--------|
 | **Completed** | **FR-008** (2026-07-29) | Job acquisition + deterministic workflow orchestration — paste/export adapters; thin runner; owner review; checkpoint/resume; Opportunity persist on apply; bounded LLM retries; [ADR-003](adr/003_application_workflow_orchestration.md); [acceptance](eval/fr008_workflow_orchestration.md) |
-| **Now** | **FR-009** | Opportunity review queue, deduplication, ranking — **M3 complete** (owner-confirmed duplicate groups; [ADR-004](adr/004_opportunity_review_boundary.md); acceptance [M0](eval/fr009_m0_domain_contracts.md), [M1](eval/fr009_m1_persistence_boundary.md), [M2](eval/fr009_m2_owner_review_actions.md), [M3](eval/fr009_m3_duplicate_detection.md)); M4 planned |
-| Then | **FR-010 → FR-012** | Packages, submission assistance, tracking |
+| **Completed** | **FR-009** (2026-07-30) | Opportunity review queue, duplicate handling, quality-first ranking and explainable recommendations — [ADR-004](adr/004_opportunity_review_boundary.md); [acceptance](eval/fr009_opportunity_review_queue.md); milestones [M0](eval/fr009_m0_domain_contracts.md), [M1](eval/fr009_m1_persistence_boundary.md), [M2](eval/fr009_m2_owner_review_actions.md), [M3](eval/fr009_m3_duplicate_detection.md), [M4](eval/fr009_m4_recommendations.md) |
+| **Now** | **FR-010** | Application Package Preparation — connect approved opportunities to FR-006 / FR-007 outputs. Not started |
+| Then | **FR-011 → FR-012** | Submission assistance, pipeline tracking |
 | Later in 1A | **FR-013 → FR-015** | Bounded agents → multi-agent → evaluation |
 | **After 1A** | **Horizon 1B (FR-016–FR-022)** | Recruiters, outreach, meetups, LinkedIn, market |
 
@@ -156,9 +157,10 @@ and on `apply` persisted an Opportunity and recorded the decision idempotently. 
 defer completed without persistence — the boundary FR-009 M1 subsequently moved.
 Playwright, URL/API adapters, ranking, and submission remain out of scope.
 
-### FR-009 status and milestone plan
+### FR-009 completion summary
 
-**M3 complete (2026-07-30).** FR-009 is **not** complete. M0 resolved the
+**Complete — documentation frozen (2026-07-30).** Owner reviewed and approved;
+[acceptance](eval/fr009_opportunity_review_queue.md). M0 resolved the
 source-of-truth question: the Opportunity is the durable record of a successfully
 analysed job candidate, the review queue is a **derived projection** over it, and
 workflow checkpoints remain recovery infrastructure. M1 implemented that boundary — the
@@ -168,7 +170,12 @@ projection. M2 adds reversible owner review actions (mark reviewed, pin, defer u
 archive, reopen) with lightweight audit history. M3 adds deterministic multi-evidence
 duplicate detection with owner confirmation, rejection, and canonical selection —
 duplicates are **linked, never merged**, so every discovered advertisement survives.
-Phase 2 M4 ranking stays the frozen fit baseline; pin is a presentation override only.
+M4 calibrates ranking for **quality over effort**
+(`pursuit_posture → fit_strength → practical_value → opportunity_id`, with
+`application_tier` as effort context only) and adds derived explainable recommendations —
+priority band, urgency, next action, and structured positives / negatives / missing /
+trade-offs. Missing evidence cannot improve ranking, and unavailable data is never
+invented. Pin remains a presentation override only.
 
 | Milestone | Scope | Status |
 |-----------|-------|--------|
@@ -176,11 +183,14 @@ Phase 2 M4 ranking stays the frozen fit baseline; pin is a presentation override
 | M1 | Workflow persistence-boundary move + derived review projection | **Complete** |
 | M2 | Owner review actions, reversibility, and audit | **Complete** |
 | M3 | Duplicate detection, owner confirmation, canonical selection (non-destructive) | **Complete** |
-| M4 | Manual validation and ranking calibration | Planned |
-| Close-out | Acceptance and documentation freeze | Planned |
+| M4 | Prioritisation and explainable recommendations | **Complete** |
+| Close-out | Acceptance and documentation freeze | **Complete** |
 
 Not in FR-009: application pipeline status (FR-012), document packages (FR-010),
 submission (FR-011), UI, LLM ranking.
+
+**Do not reopen without explicit owner request:** the persistence boundary, the derived
+queue projection, link-never-merge duplicate policy, or the calibrated sort key.
 
 ### Job acquisition (not “web scraping”)
 

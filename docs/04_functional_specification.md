@@ -845,12 +845,14 @@ closed. Do not reopen spike criteria without explicit owner request.
 ## FR-009 Opportunity Review Queue & Ranking
 
 **Phase:** Horizon 1A Stage 3  
-**Status:** **In progress — M3 complete** (duplicate detection, owner confirmation, and
-canonical selection; 2026-07-30). Ranking calibration is **not implemented**.  
+**Status:** **Complete** — documentation frozen (2026-07-30). Owner reviewed and
+approved; M0–M4 delivered and closed out.  
+**Acceptance:** [docs/eval/fr009_opportunity_review_queue.md](eval/fr009_opportunity_review_queue.md)  
 **M0 acceptance:** [docs/eval/fr009_m0_domain_contracts.md](eval/fr009_m0_domain_contracts.md)  
 **M1 acceptance:** [docs/eval/fr009_m1_persistence_boundary.md](eval/fr009_m1_persistence_boundary.md)  
 **M2 acceptance:** [docs/eval/fr009_m2_owner_review_actions.md](eval/fr009_m2_owner_review_actions.md)  
 **M3 acceptance:** [docs/eval/fr009_m3_duplicate_detection.md](eval/fr009_m3_duplicate_detection.md)  
+**M4 acceptance:** [docs/eval/fr009_m4_recommendations.md](eval/fr009_m4_recommendations.md)  
 **Architecture:** [ADR-004](adr/004_opportunity_review_boundary.md) (Accepted)
 
 Compare multiple acquired opportunities for owner attention — not only process each
@@ -898,9 +900,10 @@ below).
   **M3 implemented this** (see below): detection is derived, confirmation is the owner's.
 - **Archive means review visibility only** — hide from active review. Employer
   rejection, withdrawal, and process completion are FR-012 pipeline concepts.
-- Phase 2 M4 ranking (`pursuit_posture → fit strength → application_tier →
-  opportunity_id`) is the frozen fit baseline. FR-009 adds eligibility and explicit
-  owner overrides around it — no composite score, no LLM ranking.
+- Phase 2 M4 ranking is the **calibrated** fit baseline (FR-009 M4):
+  `pursuit_posture → fit strength → practical_value → opportunity_id`.
+  `application_tier` is effort context only — not a ranking factor. No composite score,
+  no LLM ranking.
 - FR-009 does not write `PipelineStatus` and does not mutate FR-002–FR-005 artefacts.
 
 ### Delivered workflow (M1)
@@ -1005,6 +1008,34 @@ completeness → earliest discovery → `opportunity_id`. The owner confirms.
 Unresolved candidates keep both records in the review queue. A confirmed member is
 excluded with reason `confirmed_duplicate`; the canonical stays.
 
+### Prioritisation and recommendations (M4)
+
+**Philosophy: recommend attention; never decide.** Recommendations answer “what should I
+work on next?” with a deterministic, explainable ordering. The owner still records
+apply / skip / defer, confirms duplicates, and chooses a canonical.
+
+`OpportunityComparisonService` uses the calibrated sort key:
+
+`pursuit_posture → fit strength → practical_value → opportunity_id`
+
+`application_tier` is shown as effort context only. Fit judgment `unknown` contributes 0
+so missing evidence cannot raise priority. Closing dates and salary are **not** ranking
+inputs — they are not fields on the Opportunity aggregate today and must not be invented.
+
+`career_intelligence.recommendations.OpportunityRecommendationService` is read-only. It
+reuses review-queue eligibility and pin ordering, then adds:
+
+| Field | Meaning |
+|-------|---------|
+| `priority_band` | Coarse label: immediate / high / standard / low |
+| `urgency` | From follow-up dates or interview/offer status only |
+| `recommended_next_action` | Deterministic next step from decision/review/status |
+| `positives` / `negatives` / `missing` / `trade_offs` | Structured explanation |
+| `duplicate_group_size` | Presentation annotation when the canonical represents a group |
+
+Recommendations are never persisted. Pin, archive, defer, and duplicate confirmation
+continue to behave exactly as in M2/M3.
+
 ### Milestones
 
 | Milestone | Scope | Status |
@@ -1013,8 +1044,8 @@ excluded with reason `confirmed_duplicate`; the canonical stays.
 | M1 | Workflow persistence-boundary move + minimal derived review projection | **Complete** |
 | M2 | Owner review actions, reversibility, and audit history | **Complete** |
 | M3 | Duplicate candidate detection, owner confirmation, canonical selection | **Complete** |
-| M4 | Manual validation and ranking calibration | Planned |
-| Close-out | Acceptance and documentation freeze | Planned |
+| M4 | Prioritisation and explainable recommendations (quality over effort) | **Complete** |
+| Close-out | Acceptance and documentation freeze | **Complete** |
 
 Acceptance Criteria
 
@@ -1030,12 +1061,28 @@ Acceptance Criteria
 
 ✓ Duplicate/repost handling is visible to the owner.
 
+### Definition of Done (FR-009) — met
+
+✓ Every successfully strategised job persists as a durable Opportunity before owner review  
+✓ Review queue, duplicate groups, and recommendations are derived, never persisted  
+✓ Owner review actions are reversible, idempotent on harmless repeats, and audited  
+✓ Duplicates are linked and owner-confirmed — never merged, collapsed, or deleted  
+✓ Recommendations are deterministic and explainable, with priority band, urgency, and
+next action  
+✓ Ranking is calibrated for quality (`pursuit_posture → fit_strength → practical_value →
+opportunity_id`); `application_tier` is effort context only  
+✓ Missing evidence cannot improve ranking; unavailable data is never invented  
+✓ Unit, functional, and manual validation complete (1019 tests passing at freeze)  
+✓ No `PipelineStatus` writes, no artefact mutation, no migration  
+✓ Owner review complete; acceptance recorded in
+[docs/eval/fr009_opportunity_review_queue.md](eval/fr009_opportunity_review_queue.md)
+
 ---
 
 ## FR-010 Application Package Preparation
 
 **Phase:** Horizon 1A Stage 4  
-**Status:** Planned
+**Status:** **Next active FR** — planned, not started (FR-009 closed 2026-07-30)
 
 Connect approved opportunities to existing document generation:
 

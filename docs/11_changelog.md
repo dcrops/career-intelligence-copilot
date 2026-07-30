@@ -4,6 +4,74 @@ Records product strategy and engineering knowledge changes. Routine typo fixes a
 
 ---
 
+## Version 1.59
+
+### FR-009 complete — Opportunity Review Queue & Ranking closed out
+
+**FR-009 is complete and its documentation is frozen** (owner reviewed and approved
+2026-07-30). Acceptance:
+[docs/eval/fr009_opportunity_review_queue.md](eval/fr009_opportunity_review_queue.md).
+This entry is documentation and governance only — no production behaviour changed.
+
+**Delivered capability.** Pre-review Opportunity persistence; derived read-only review
+queue; reversible audited owner review actions; deterministic multi-evidence duplicate
+detection with owner confirmation and advisory canonical selection; deterministic
+recommendation generation with priority bands, urgency, next actions, and structured
+explanations; duplicate exclusion with canonical retention; pin as a presentation
+override; a read-only recommendation flow. Rank position, priority band, urgency, and
+duplicate groups are **derived, never persisted**.
+
+**Calibrated ranking policy.** `pursuit_posture → fit_strength → practical_value →
+opportunity_id`. `application_tier` provides effort context only, missing evidence cannot
+improve ranking (`unknown` fit contributes 0), and unavailable data — closing dates,
+salary, location — is never invented. No composite score, no LLM ranking.
+
+**Architecture recorded.** `OpportunityRecommendationService` composes
+`ReviewQueueService` so eligibility and pin override stay single-sourced; urgency derives
+only from genuine workflow state; ADR-004 Decision 8 was amended rather than adding a new
+ADR.
+
+**Validation at freeze.** `python -m pytest -q` → 1019 passed. Unit, functional, and
+manual validation complete across M0–M4; determinism, reload idempotency, duplicate
+handling, pin ordering, and recommendation explanations verified.
+
+**Next active FR:** **FR-010** Application Package Preparation (not started). Do not
+reopen the FR-009 persistence boundary, queue projection, duplicate policy, or calibrated
+sort key without explicit owner request.
+
+---
+
+## Version 1.58
+
+### FR-009 M4 — Opportunity prioritisation and recommendations
+
+Calibrated ranking for owner attention. **FR-009 milestones M0–M4 are complete;
+close-out remains.**
+
+**Philosophy.** Recommend what deserves attention next; never replace owner decisions.
+Optimise for opportunity quality and owner value — not application effort — because
+generation and submission are expected to automate.
+
+**Calibrated sort key.** `pursuit_posture → fit strength → practical_value →
+opportunity_id`. `application_tier` is effort context in explanations only. Fit judgment
+`unknown` scores 0. Closing dates and salary are not invented.
+
+**Recommendations (derived).** New `career_intelligence.recommendations` package with
+`OpportunityRecommendationService`: priority band, urgency (follow-up / process only),
+recommended next action, structured +/-/missing/trade-offs, optional duplicate group
+size. Composes the existing review queue (eligibility + pin). Never persists ranks.
+
+**Wording fix.** Applied records that remain `status=assessed` no longer claim
+"awaiting owner action".
+
+**Compatibility.** No migration. Review actions, duplicates, and queue behaviour
+preserved.
+
+**Not closed:** FR-009 documentation freeze (close-out). Acceptance:
+[docs/eval/fr009_m4_recommendations.md](eval/fr009_m4_recommendations.md).
+
+---
+
 ## Version 1.57
 
 ### FR-009 M3 — Duplicate detection, owner confirmation, and canonical selection

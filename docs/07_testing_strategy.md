@@ -214,7 +214,8 @@ Default path is fully deterministic (no OpenAI). Owner review remains mandatory.
 
 FR-008 is **complete**. Acceptance:
 [docs/eval/fr008_workflow_orchestration.md](eval/fr008_workflow_orchestration.md).
-ADR-003 accepted. Current coverage focus: **FR-009** (M3 complete). FR-008 suites were
+ADR-003 accepted. FR-009 coverage is likewise complete and frozen; the next coverage
+focus is **FR-010**. FR-008 suites were
 updated where FR-009 M1 deliberately changed behaviour — skip and defer now retain a
 durable Opportunity, and `persist` completes before owner review.
 
@@ -262,17 +263,19 @@ Playwright / URL / API adapters remain deferred.
 
 ---
 
-## FR-009 coverage (in progress — M3 complete)
+## FR-009 coverage (complete — frozen)
 
-FR-009 is **in progress**. M0 delivered domain contracts; **M1** delivered pre-review
-Opportunity persistence and a minimal derived review projection; **M2** delivered
-reversible owner review actions with lightweight audit history; **M3** delivered
-deterministic duplicate detection with owner confirmation and canonical selection.
-Ranking calibration is not implemented. Acceptance:
+FR-009 is **complete** and its documentation is frozen. M0–M4 are delivered: contracts,
+pre-review persistence with a derived projection, owner review actions, duplicate
+detection and confirmation, and quality-first ranking calibration with explainable
+recommendations. Full suite at freeze: **1019 passed**. Acceptance:
+[eval/fr009_opportunity_review_queue.md](eval/fr009_opportunity_review_queue.md);
+milestone records
 [eval/fr009_m0_domain_contracts.md](eval/fr009_m0_domain_contracts.md),
 [eval/fr009_m1_persistence_boundary.md](eval/fr009_m1_persistence_boundary.md),
 [eval/fr009_m2_owner_review_actions.md](eval/fr009_m2_owner_review_actions.md),
-[eval/fr009_m3_duplicate_detection.md](eval/fr009_m3_duplicate_detection.md);
+[eval/fr009_m3_duplicate_detection.md](eval/fr009_m3_duplicate_detection.md),
+[eval/fr009_m4_recommendations.md](eval/fr009_m4_recommendations.md);
 architecture [ADR-004](adr/004_opportunity_review_boundary.md).
 
 ### M0 contract tests (`tests/unit/opportunities/test_m0_review_contracts.py`)
@@ -420,7 +423,35 @@ These run against the real YAML/JSON stores in `tmp_path`, not mocks.
 | Repeated actions change nothing; audit trail readable | ✓ |
 | Live `data/opportunities/` scan is read-only and surfaces only `possible` fingerprint collisions | ✓ |
 
-Deliberately **not** covered yet: manual ranking calibration (M4).
+### M4 recommendation tests (`tests/unit/recommendations/`, comparison calibration)
+
+| Area | Coverage |
+|------|----------|
+| Calibrated order | Posture → fit → practical value → id; effort tier cannot outrank value |
+| Unknown fit | Contributes 0; does not inflate strength |
+| Wording | Applied + assessed does not claim awaiting owner action |
+| Recommendations | Quality order, replay, pin, duplicates, next actions, urgency from follow-up |
+| Read-only | Index unchanged; review state unchanged |
+| Missing data | Absent identity fields reported; no invented salary/deadline urgency |
+
+### M4 functional journeys (`tests/functional/test_fr009_recommendations.py`)
+
+| Journey | Coverage |
+|---------|----------|
+| Deterministic explained order on real artefacts | ✓ |
+| Pin + duplicate interaction with recommendations | ✓ |
+| Apply updates next action without mutating ranking inputs | ✓ |
+| Reload idempotency | ✓ |
+
+#### Manual validation (`scripts/run_fr009_recommendations_manual.py`)
+
+| Check | Result |
+|-------|--------|
+| Quality order with structured explanations | ✓ |
+| Stable replay | ✓ |
+| Pin raises without changing fit | ✓ |
+| Apply wording + next action | ✓ |
+| Live store recommend is read-only | ✓ |
 
 ---
 
@@ -467,7 +498,7 @@ When FR-008–FR-015 are built, prefer behaviour over implementation detail:
 |------|-------------------|
 | FR-008 acquisition adapters | Unit tests per adapter; provenance fields; extraction warnings; no assumption that every job is browser-sourced |
 | FR-008 workflow | Golden workflow on a saved/manual job; conditional routing from real strategy outputs; checkpoint + resume after owner approval; recoverable node failure; node execution traces |
-| FR-009 queue / duplicates (M2–M4 remaining) | Deterministic ranking inputs; explainable reasons; no mutate-on-rank; derived queue position (never persisted); eligibility excludes archived / skipped / currently deferred / confirmed duplicates; pinning changes order without altering fit signals; persistence-boundary move creates exactly one Opportunity across resume and replay; platform ID / URL / fingerprint matching with owner confirmation |
+| FR-009 queue / duplicates (**delivered** — see FR-009 coverage above) | Deterministic ranking inputs; explainable reasons; no mutate-on-rank; derived queue position (never persisted); eligibility excludes archived / skipped / currently deferred / confirmed duplicates; pinning changes order without altering fit signals; persistence-boundary move creates exactly one Opportunity across resume and replay; platform ID / URL / fingerprint matching with owner confirmation |
 | FR-010 packages | Artefacts grouped by application identity; trace to job evidence |
 | FR-011 submission | Never silent submit; fail-closed on unknown answers; unsupported-form / CAPTCHA / auth paths escalate; duplicate-submission guards |
 | FR-012 tracking | Status transitions with timestamps and audit history |

@@ -31,18 +31,19 @@ a **frozen baseline** (M5 GO —
 [docs/12_phase_history.md](docs/12_phase_history.md)). FR-001–FR-007 (including
 FR-006b/c) are closed. **FR-008** is **complete and frozen** —
 [docs/eval/fr008_workflow_orchestration.md](docs/eval/fr008_workflow_orchestration.md);
-[ADR-003](docs/adr/003_application_workflow_orchestration.md). **Current focus —
-Horizon 1A:** **FR-009** (review queue / ranking) is **in progress — M3 complete**
-(owner-confirmed duplicate groups —
+[ADR-003](docs/adr/003_application_workflow_orchestration.md). **FR-009** (review queue /
+duplicates / ranking) is **complete and frozen** —
+[docs/eval/fr009_opportunity_review_queue.md](docs/eval/fr009_opportunity_review_queue.md);
+[ADR-004](docs/adr/004_opportunity_review_boundary.md); milestones
 [M0](docs/eval/fr009_m0_domain_contracts.md),
 [M1](docs/eval/fr009_m1_persistence_boundary.md),
 [M2](docs/eval/fr009_m2_owner_review_actions.md),
-[M3](docs/eval/fr009_m3_duplicate_detection.md);
-[ADR-004](docs/adr/004_opportunity_review_boundary.md)). Ranking calibration (M4) is not
-implemented and needs explicit owner approval before starting. Then FR-010–FR-015.
+[M3](docs/eval/fr009_m3_duplicate_detection.md),
+[M4](docs/eval/fr009_m4_recommendations.md). **Current focus — Horizon 1A:** **FR-010**
+Application Package Preparation (next active FR, not started), then FR-011–FR-015.
+Do not reopen Phase 2, FR-008, or FR-009 exit criteria without explicit owner request.
 **Principle:** Job acquisition first. Recruiter outreach second (Horizon 1B /
-FR-016–FR-022 — do not start while 1A is incomplete). Do not
-reopen Phase 2 or FR-008 exit criteria without explicit owner request.
+FR-016–FR-022 — do not start while 1A is incomplete).
 
 **Implementation foundation:** Python 3.11+, Pydantic, YAML storage, and the public profile
 service boundary are recorded in
@@ -63,11 +64,12 @@ service boundary are recorded in
 **Delivered outside original Phase 2 exit criteria (owner-sequenced):** FR-006 CV Generation (complete, including FR-006b/c); **FR-007 Cover Letter** (complete — plan + deterministic narrative render; manual validation passed).
 
 **Horizon 1A (current):** FR-008 **complete** (acquisition adapters + orchestration;
-ADR-003; persistence boundary since amended by FR-009 M1). **FR-009 in progress — M3
-(duplicate detection, owner confirmation, canonical selection) complete; ADR-004
-implemented.**
-FR-010–FR-015 planned — deterministic workflow orchestration first, then bounded agents
-(FR-013). See [docs/10_roadmap.md](docs/10_roadmap.md).
+ADR-003; persistence boundary since amended by FR-009 M1). **FR-009 complete and frozen**
+(pre-review persistence, derived review queue, owner review actions, owner-confirmed
+duplicates, calibrated quality-first ranking and derived recommendations; ADR-004
+implemented with Decision 8 amended by the M4 calibration). **FR-010 is the next active
+FR** — FR-010–FR-015 planned; deterministic workflow orchestration first, then bounded
+agents (FR-013). See [docs/10_roadmap.md](docs/10_roadmap.md).
 
 Full detail: [docs/04_functional_specification.md](docs/04_functional_specification.md) and [docs/10_roadmap.md](docs/10_roadmap.md).
 
@@ -95,6 +97,10 @@ Apply [docs/05_engineering_principles.md](docs/05_engineering_principles.md) for
  ([ADR-004](docs/adr/004_opportunity_review_boundary.md))
 - **Duplicates are linked, never merged** — detection recommends, the owner confirms, and
  no discovered advertisement is deleted or collapsed
+- **Ranking is deterministic and quality-first** — `pursuit_posture → fit_strength →
+ practical_value → opportunity_id`; `application_tier` is effort context only; missing
+ evidence cannot improve ranking and unavailable data is never invented. No composite
+ score, no LLM ranking. Change the key only with explicit owner approval
 - **Acquisition via adapters** — prefer APIs/feeds/alerts/URLs/paste/exports; Playwright is a controlled fallback, not crawlers
 
 ---

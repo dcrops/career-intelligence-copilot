@@ -18,7 +18,7 @@ class ReviewQueueService:
     """Project persisted Opportunities into a ranked owner-review queue.
 
     Owns no storage of its own: it reads through ``OpportunityService`` (the
-    system of record) and orders eligible records with the frozen FR-012 M4
+    system of record) and orders eligible records with the calibrated FR-009 M4
     comparison logic, then applies an owner presentation override (pinned
     first). Queries never mutate stored Opportunities.
     """

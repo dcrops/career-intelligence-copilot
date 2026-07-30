@@ -73,10 +73,12 @@ SoT shape, ranking sort key, or Horizon 2 domains (recruiters, networking, meetu
 
 ## Next
 
-**Current focus:** Horizon 1A — **FR-009** Opportunity Review Queue & Ranking
-(M0–M3 complete; M4 remaining)  
-**Completed:** FR-008 Job Acquisition & Workflow Orchestration (2026-07-29)  
-**Then:** FR-010–FR-012 packages / submission / tracking  
+**Current focus:** Horizon 1A — **FR-010** Application Package Preparation (next active
+FR; not started)  
+**Completed:** FR-008 Job Acquisition & Workflow Orchestration (2026-07-29);
+**FR-009** Opportunity Review Queue & Ranking (2026-07-30 —
+[acceptance](eval/fr009_opportunity_review_queue.md))  
+**Then:** FR-011–FR-012 submission / tracking  
 **Later in 1A:** FR-013–FR-015 bounded agents → multi-agent → evaluation  
 **After 1A:** Horizon 1B recruiter / market engagement (FR-016–FR-022)  
 **Principle:** Job acquisition first. Recruiter outreach second.  

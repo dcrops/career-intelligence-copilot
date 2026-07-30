@@ -1459,14 +1459,16 @@ closure.
 
 ---
 
-## FR-009 Opportunity Review Queue & Ranking (in progress)
+## FR-009 Opportunity Review Queue & Ranking (complete — frozen)
 
-**Status:** M3 complete (2026-07-30) — duplicate detection, owner confirmation, and
-canonical selection. Ranking calibration (M4) is **not implemented**.  
-**Acceptance:** [eval/fr009_m0_domain_contracts.md](eval/fr009_m0_domain_contracts.md),
+**Status:** **Complete** — documentation frozen (2026-07-30). M0–M4 delivered, owner
+reviewed, and closed out.  
+**Acceptance:** [eval/fr009_opportunity_review_queue.md](eval/fr009_opportunity_review_queue.md)  
+**Milestone records:** [eval/fr009_m0_domain_contracts.md](eval/fr009_m0_domain_contracts.md),
 [eval/fr009_m1_persistence_boundary.md](eval/fr009_m1_persistence_boundary.md),
 [eval/fr009_m2_owner_review_actions.md](eval/fr009_m2_owner_review_actions.md),
-[eval/fr009_m3_duplicate_detection.md](eval/fr009_m3_duplicate_detection.md)  
+[eval/fr009_m3_duplicate_detection.md](eval/fr009_m3_duplicate_detection.md),
+[eval/fr009_m4_recommendations.md](eval/fr009_m4_recommendations.md)  
 **Architecture:** [ADR-004](adr/004_opportunity_review_boundary.md)
 
 ### M0 — persistence boundary and domain contracts
@@ -1704,6 +1706,67 @@ python scripts/run_fr009_duplicate_review_manual.py candidates \
     --opportunities data/opportunities
 ```
 
-### Remaining milestones
+### M4 — prioritisation and recommendations (complete)
 
-M4 manual validation and ranking calibration → close-out. Not started.
+**Acceptance:** [eval/fr009_m4_recommendations.md](eval/fr009_m4_recommendations.md)
+
+**Calibrated sort key** (`opportunity_comparison/ranking.py`):
+
+`pursuit_posture → fit strength → practical_value → opportunity_id`
+
+`application_tier` is explanation context only (effort). Fit `unknown` contributes 0.
+Decision-aware status wording: applied + `assessed` no longer claims awaiting owner action.
+
+**Recommendations** (`career_intelligence.recommendations`): read-only service composing
+`ReviewQueueService`. Adds priority band, urgency (follow-up / process only), next action,
+structured explanation, optional `duplicate_group_size`. Never persists ranks. Never
+invents closing dates or salary.
+
+**Manual:**
+
+```bash
+python scripts/run_fr009_recommendations_manual.py demo \
+    --workspace data/_fr009_m4_manual --offline-fixtures
+python scripts/run_fr009_recommendations_manual.py recommend \
+    --opportunities data/opportunities
+```
+
+### Service relationships (FR-009 final shape)
+
+```
+OpportunityService (writes + reads; data/opportunities SoT)
+  ├─ OpportunityReviewService ......... writes review metadata + review_actions audit
+  ├─ DuplicateReviewService ........... writes duplicate links / rejections / canonical
+  ├─ DuplicateDetectionService ........ read-only derived candidates + groups
+  └─ ReviewQueueService ............... read-only derived projection
+           (eligibility, exclusion reasons, pinned-first, calibrated order)
+                └─ OpportunityRecommendationService ... read-only; adds band, urgency,
+                                                       next action, explanation
+                        └─ OpportunityComparisonService (calibrated sort key)
+```
+
+`OpportunityRecommendationService` **composes** `ReviewQueueService` rather than
+re-deriving eligibility: exclusion policy, pin override, and duplicate exclusion stay
+single-sourced, so a change to queue policy cannot silently disagree with
+recommendations. Read services never write; write services never rank.
+
+### Close-out — decisions worth remembering
+
+**Acceptance:** [eval/fr009_opportunity_review_queue.md](eval/fr009_opportunity_review_queue.md)
+
+| Decision | Why |
+|----------|-----|
+| Recommendation state is **derived, never persisted** | A stored rank, band, or urgency would go stale on the next review action or strategy change, and would become a second source of truth (ADR-004) |
+| Explanations are **deterministic** | The same inputs must produce the same ordering *and* the same reasons, so the owner can audit why A outranks B |
+| Urgency comes only from **genuine workflow state** | `outcome.follow_up_date`, or interviewing / offer status. Nothing else is real today |
+| **No synthetic closing-date urgency** | Closing dates do not exist anywhere in the product; inventing them would fabricate pressure |
+| **No composite score** and no LLM ranking | An opaque number cannot be explained or calibrated deliberately |
+| `application_tier` is **effort context only** | M4 was authorised to optimise for opportunity quality and owner value, not application cost |
+| Missing evidence cannot improve ranking | `unknown` fit contributes 0; absent identity fields are reported as `missing` |
+| **ADR-004 Decision 8 amended**, no new ADR | The calibration changed a guardrail inside an existing accepted decision; a second ADR would split ownership of the same boundary |
+
+**Frozen.** Do not change the persistence boundary, the derived queue projection, the
+link-never-merge duplicate policy, or the calibrated sort key without explicit owner
+request and validation evidence.
+
+**Next FR:** FR-010 Application Package Preparation (not started).

@@ -21,6 +21,7 @@ def make_opportunity(
     status: str = "assessed",
     pursuit_posture: str | None = "prioritise",
     application_tier: str | None = "platinum",
+    practical_value: str = "career_priority",
     technical_fit: str = "strong",
     commercial_fit: str = "moderate",
     portfolio_fit: str = "strong",
@@ -43,7 +44,7 @@ def make_opportunity(
         summary = StrategySummary(
             pursuit_posture=pursuit_posture,  # type: ignore[arg-type]
             application_tier=application_tier,  # type: ignore[arg-type]
-            practical_value="career_priority",
+            practical_value=practical_value,  # type: ignore[arg-type]
             technical_fit=technical_fit,  # type: ignore[arg-type]
             commercial_fit=commercial_fit,  # type: ignore[arg-type]
             portfolio_fit=portfolio_fit,  # type: ignore[arg-type]

@@ -1,7 +1,8 @@
 # FR-009 M1 Acceptance Report — Pre-Review Opportunity Persistence & Derived Review Projection
 
 **Milestone:** FR-009 M1 (of M0–M4 + close-out)  
-**Status:** Complete — **FR-009 is not complete**  
+**Status:** Complete — historical milestone record. FR-009 was closed on 2026-07-30
+([FR-009 acceptance](fr009_opportunity_review_queue.md)).  
 **Date:** 2026-07-30  
 **Architecture:** [ADR-004](../adr/004_opportunity_review_boundary.md) (Accepted; implemented here)  
 **Predecessor:** [FR-009 M0 acceptance](fr009_m0_domain_contracts.md)  
@@ -114,7 +115,7 @@ protects — no record, no approval request — is unchanged. Recorded in ADR-00
 | Exclusion: `deferred` | `review.defer_until` later than the reference date; when no date is set, `decision == "defer"` |
 | Exclusion: `closed` | Terminal `PipelineStatus` (`TERMINAL_STATUSES`, owned by FR-012) |
 | Exclusion: `decided` | Awaiting scope only — a decision already exists |
-| Ordering | `OpportunityComparisonService.compare_open`, unchanged: pursuit posture → fit strength → application tier → `opportunity_id` |
+| Ordering | `OpportunityComparisonService.compare_open`, unchanged at M1: pursuit posture → fit strength → application tier → `opportunity_id`. **Superseded by M4:** the tertiary key became `practical_value` |
 | Explanation | Each item carries the M4 `reasons`; each exclusion carries its ordered reasons |
 | Reference date | Explicit `reference_date` parameter; defaults to today (UTC) at the service edge, never read inside policy |
 | Persistence | Nothing — eligibility, rank, and reasons are recomputed per query |

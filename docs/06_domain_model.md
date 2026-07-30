@@ -78,7 +78,7 @@ current.
 
 ### Job Acquisition Record
 
-**Maps to:** FR-008 (planned); provenance feeds FR-009 duplicate detection
+**Maps to:** FR-008 (complete); provenance feeds FR-009 duplicate detection
 
 Canonical record of how a job entered the system via a **source adapter**. Indicative
 fields: source type; source identifier; source URL; acquisition timestamp; raw and
@@ -318,12 +318,32 @@ completeness → earliest discovery → `opportunity_id`.
 
 ---
 
+### Opportunity Recommendation (derived)
+
+**Maps to:** FR-009 M4 (complete)
+
+A prioritised, explainable suggestion for owner attention — not an autonomous decision.
+Derived from the review-queue eligibility projection plus the calibrated comparison sort
+key (`pursuit_posture → fit_strength → practical_value → opportunity_id`). Effort tier is
+context only. Each recommendation carries a priority band, urgency, a recommended next
+action, and structured positives / negatives / missing / trade-offs. Urgency comes only
+from genuine workflow state (follow-up date, interview or offer status) — closing dates
+and salary do not exist on the record and are never invented. Recommendations never
+persist rank, band, or urgency.
+
+**Implementation:** `src/career_intelligence/recommendations/`
+(`OpportunityRecommendationService`).
+
+---
+
 ### Ranked Comparison
 
 A prioritised ordering of open assessed opportunities. Phase 2 M4 delivered job-scoped
-ranking (historically “FR-012 partial”). Horizon 1A **FR-009** extends the review queue
-into the acquisition workflow (duplicates, freshness, owner-review queue) as a **derived
-projection** over persisted Opportunities, keeping the M4 sort key as its fit baseline.
+ranking (historically “FR-012 partial”). Horizon 1A **FR-009** extended it into the
+acquisition workflow (duplicates, owner-review queue, recommendations) as a **derived
+projection** over persisted Opportunities, and calibrated the sort key for quality:
+`pursuit_posture → fit_strength → practical_value → opportunity_id`, with
+`application_tier` retained as effort context only.
 
 **Implementation (M4):** `OpportunityComparisonService.compare_open` ranks open
 Opportunity aggregates with a deterministic sort key:
@@ -446,13 +466,14 @@ continue to connect to this layer rather than invent a parallel tracker.
 | CSV operational bridge | Phase 2 M3 (complete) |
 | Ranked Comparison | Phase 2 M4 (complete; hist. FR-012 partial); extended by **FR-009** |
 | Opportunity identity (title/company) | Phase 2 M4a (complete) |
-| Job Acquisition & Workflow Orchestration | **FR-008** (Horizon 1A; first orchestration) |
-| Opportunity Review Queue & Ranking | **FR-009** (Horizon 1A, in progress — M3 complete) |
+| Job Acquisition & Workflow Orchestration | **FR-008** (Horizon 1A; complete) |
+| Opportunity Review Queue & Ranking | **FR-009** (Horizon 1A; complete — [acceptance](eval/fr009_opportunity_review_queue.md)) |
 | Owner Review Metadata | **FR-009** M0–M2 ([ADR-004](adr/004_opportunity_review_boundary.md)) |
 | Review Queue (derived projection) | **FR-009** M1 (complete; pin ordering in M2) |
 | Duplicate Relation | **FR-009** M0 contract; M3 detection and confirmation complete |
 | Duplicate Group (derived) | **FR-009** M3 (complete) |
-| Application Package Preparation | **FR-010** (Horizon 1A) |
+| Opportunity Recommendations (derived) | **FR-009** M4 (complete) |
+| Application Package Preparation | **FR-010** (Horizon 1A; **next active FR**) |
 | Submission Assistance | **FR-011** (Horizon 1A) |
 | Application Pipeline Tracking | **FR-012** (Horizon 1A) |
 | Bounded Agentic Workflow | **FR-013** (Horizon 1A; first bounded agents) |

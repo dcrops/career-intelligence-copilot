@@ -1,7 +1,8 @@
 # FR-009 M2 Acceptance Report — Owner Review Actions, Reversibility and Audit
 
 **Milestone:** FR-009 M2 (of M0–M4 + close-out)  
-**Status:** Complete — **FR-009 is not complete**  
+**Status:** Complete — historical milestone record. FR-009 was closed on 2026-07-30
+([FR-009 acceptance](fr009_opportunity_review_queue.md)).  
 **Date:** 2026-07-30  
 **Architecture:** [ADR-004](../adr/004_opportunity_review_boundary.md) (Accepted)  
 **Predecessors:** [M0](fr009_m0_domain_contracts.md), [M1](fr009_m1_persistence_boundary.md)  

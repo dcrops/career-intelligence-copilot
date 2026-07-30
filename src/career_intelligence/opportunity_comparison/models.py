@@ -35,7 +35,7 @@ class RankedOpportunity(ComparisonModel):
 
 
 class OpportunityComparison(ComparisonModel):
-    """Deterministic ranking of open opportunities for owner effort prioritisation."""
+    """Deterministic ranking of open opportunities for owner attention."""
 
     generated_at: datetime
     open_only: bool = True

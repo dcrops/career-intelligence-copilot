@@ -1,7 +1,8 @@
 # FR-009 M0 Acceptance Report — Opportunity Persistence Boundary & Domain Contracts
 
 **Milestone:** FR-009 M0 (of M0–M4 + close-out)  
-**Status:** Complete — **FR-009 is not complete**  
+**Status:** Complete — historical milestone record. FR-009 was closed on 2026-07-30
+([FR-009 acceptance](fr009_opportunity_review_queue.md)).  
 **Date:** 2026-07-29  
 **Architecture:** [ADR-004](../adr/004_opportunity_review_boundary.md) (Accepted)  
 **Scope:** domain contracts, policy specification, backward compatibility, M1 integration

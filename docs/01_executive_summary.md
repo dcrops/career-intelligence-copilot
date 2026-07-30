@@ -68,7 +68,9 @@ The platform will provide:
 - Daily prioritisation
 
 Near-term delivery: Phase 2 Job Intelligence and document generation (FR-006/007) are
-complete. Current focus is Horizon 1A application workflow; Horizon 1B recruiter
+complete. Within Horizon 1A, job acquisition and workflow orchestration (FR-008) and the
+opportunity review queue, duplicate handling, and ranked recommendations (FR-009) are also
+complete; **FR-010 application package preparation is next**. Horizon 1B recruiter
 engagement follows. See [10_roadmap.md](10_roadmap.md).
 
 ---
