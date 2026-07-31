@@ -1,0 +1,183 @@
+{
+  "job_analysis": {
+    "posting": {
+      "raw_text": "Other Role. SQL only. Skip Co body for manual check.",
+      "title": "Other Role",
+      "company": "Skip Co",
+      "source_url": "https://au.seek.com/job/30101011"
+    },
+    "role_family": {
+      "family": "ai_engineering",
+      "evidence": [
+        {
+          "excerpt": "Senior AI Engineer",
+          "section": "title"
+        }
+      ]
+    },
+    "seniority": {
+      "level": "senior",
+      "ambiguous": false,
+      "candidate_levels": [],
+      "evidence": [
+        {
+          "excerpt": "Senior AI Engineer",
+          "section": "title"
+        }
+      ]
+    },
+    "technologies": [
+      {
+        "name": "Python",
+        "level": "required",
+        "evidence": [
+          {
+            "excerpt": "Python required",
+            "section": "requirements"
+          }
+        ]
+      }
+    ],
+    "responsibilities": [
+      {
+        "description": "Build LLM applications",
+        "evidence": [
+          {
+            "excerpt": "Build LLM applications",
+            "section": "responsibilities"
+          }
+        ]
+      }
+    ],
+    "compensation": {
+      "clarity": "unstated",
+      "minimum": null,
+      "maximum": null,
+      "currency": null,
+      "period": null,
+      "raw_text": null,
+      "evidence": []
+    },
+    "location": {
+      "clarity": "stated",
+      "summary": "Melbourne",
+      "evidence": [
+        {
+          "excerpt": "Hybrid Melbourne",
+          "section": "location"
+        }
+      ]
+    },
+    "work_arrangement": {
+      "arrangement": "hybrid",
+      "details": null,
+      "evidence": [
+        {
+          "excerpt": "Hybrid Melbourne",
+          "section": "location"
+        }
+      ]
+    },
+    "employment": {
+      "working_hours": "unspecified",
+      "engagement_type": "unspecified",
+      "evidence": []
+    },
+    "experience_requirements": []
+  },
+  "technical_fit": {
+    "dimension": "technical",
+    "judgment": "strong",
+    "summary": "Strong technical alignment on Python.",
+    "findings": [
+      {
+        "kind": "alignment",
+        "summary": "Required Python aligns with profile skills.",
+        "detail": null,
+        "importance": "material",
+        "job_evidence": [
+          {
+            "source": "technology",
+            "item_index": 0,
+            "name": "Python",
+            "excerpt": null
+          }
+        ],
+        "profile_evidence": [
+          {
+            "source": "skill",
+            "ref": "skill:Python",
+            "excerpt": null
+          }
+        ],
+        "assumption": null
+      }
+    ]
+  },
+  "commercial_fit": {
+    "dimension": "commercial",
+    "judgment": "moderate",
+    "summary": "Commercial fit is broadly compatible.",
+    "findings": [
+      {
+        "kind": "alignment",
+        "summary": "Melbourne hybrid aligns with location preferences.",
+        "detail": null,
+        "importance": "material",
+        "job_evidence": [
+          {
+            "source": "location",
+            "item_index": null,
+            "name": null,
+            "excerpt": null
+          }
+        ],
+        "profile_evidence": [
+          {
+            "source": "preference",
+            "ref": "preference:locations",
+            "excerpt": null
+          }
+        ],
+        "assumption": null
+      }
+    ]
+  },
+  "portfolio_fit": {
+    "dimension": "portfolio",
+    "judgment": "moderate",
+    "summary": "Portfolio supports an AI engineering narrative.",
+    "findings": [
+      {
+        "kind": "alignment",
+        "summary": "Example project demonstrates relevant capability.",
+        "detail": null,
+        "importance": "material",
+        "job_evidence": [
+          {
+            "source": "technology",
+            "item_index": 0,
+            "name": "Python",
+            "excerpt": null
+          }
+        ],
+        "profile_evidence": [
+          {
+            "source": "project",
+            "ref": "project:example-project",
+            "excerpt": null
+          }
+        ],
+        "assumption": null
+      }
+    ]
+  },
+  "summary": {
+    "summary": "Strong AI Engineer alignment with moderate commercial fit.",
+    "key_alignments": [
+      "Python",
+      "AI engineering direction"
+    ],
+    "key_gaps": []
+  }
+}

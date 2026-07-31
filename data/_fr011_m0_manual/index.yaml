@@ -1,0 +1,42 @@
+schema_version: '1'
+opportunities:
+- identity:
+    opportunity_id: opp_01KYV9Q5RJQT5R6BK13AH1E8CX
+    created_at: '2026-07-31T05:17:57.906890Z'
+    source_kind: seek
+    platform_job_id: '30101010'
+    canonical_url: https://au.seek.com/job/30101010
+    source_url: https://au.seek.com/job/30101010
+    company: Manual Prep Co
+    title: AI Engineer
+    location_text: Melbourne
+    content_fingerprint: 24fac5855b95306d7bea5a138eb5c9e2bd6511971e949e8baf08c8698327b1a3
+  status: assessed
+  decision:
+    decision: apply
+    decided_at: '2026-07-31T05:17:57.921632Z'
+    notes: null
+  outcome: null
+  strategy_summary:
+    pursuit_posture: prioritise
+    application_tier: platinum
+    practical_value: career_priority
+    technical_fit: strong
+    commercial_fit: moderate
+    portfolio_fit: moderate
+  artifact_paths:
+    posting.json: artifacts/opp_01KYV9Q5RJQT5R6BK13AH1E8CX/posting.json
+    job_analysis.json: artifacts/opp_01KYV9Q5RJQT5R6BK13AH1E8CX/job_analysis.json
+    assessment.json: artifacts/opp_01KYV9Q5RJQT5R6BK13AH1E8CX/assessment.json
+    portfolio_match.json: artifacts/opp_01KYV9Q5RJQT5R6BK13AH1E8CX/portfolio_match.json
+    strategy.json: artifacts/opp_01KYV9Q5RJQT5R6BK13AH1E8CX/strategy.json
+  legacy_import: null
+  review:
+    reviewed_at: null
+    pinned: false
+    defer_until: null
+    archived_at: null
+  review_actions: []
+  duplicate: null
+  duplicate_rejections: []
+  updated_at: '2026-07-31T05:17:57.921632Z'

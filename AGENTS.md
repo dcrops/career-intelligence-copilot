@@ -39,11 +39,21 @@ duplicates / ranking) is **complete and frozen** —
 [M1](docs/eval/fr009_m1_persistence_boundary.md),
 [M2](docs/eval/fr009_m2_owner_review_actions.md),
 [M3](docs/eval/fr009_m3_duplicate_detection.md),
-[M4](docs/eval/fr009_m4_recommendations.md). **Current focus — Horizon 1A:** **FR-010**
-Application Package Preparation (next active FR, not started), then FR-011–FR-015.
-Do not reopen Phase 2, FR-008, or FR-009 exit criteria without explicit owner request.
+[M4](docs/eval/fr009_m4_recommendations.md). **FR-010** Application Package Preparation
+is **complete and frozen** —
+[docs/eval/fr010_application_package.md](docs/eval/fr010_application_package.md);
+milestones [M0](docs/eval/fr010_m0_application_package.md),
+[M1](docs/eval/fr010_m1_package_durability.md),
+[M2](docs/eval/fr010_m2_owner_cli.md). **FR-011** Application Preparation Orchestration
+is **complete and frozen** —
+[docs/eval/fr011_application_preparation.md](docs/eval/fr011_application_preparation.md);
+milestones [M0](docs/eval/fr011_m0_application_preparation.md),
+[M1](docs/eval/fr011_m1_executable_preparation.md). **Current focus — Horizon 1A:**
+**FR-012** Submission Assistance (next active FR, not started), then FR-013–FR-016.
+Do not reopen Phase 2, FR-008, FR-009, FR-010, or FR-011 exit criteria without
+explicit owner request.
 **Principle:** Job acquisition first. Recruiter outreach second (Horizon 1B /
-FR-016–FR-022 — do not start while 1A is incomplete).
+FR-017–FR-023 — do not start while 1A is incomplete).
 
 **Implementation foundation:** Python 3.11+, Pydantic, YAML storage, and the public profile
 service boundary are recorded in
@@ -67,13 +77,17 @@ service boundary are recorded in
 ADR-003; persistence boundary since amended by FR-009 M1). **FR-009 complete and frozen**
 (pre-review persistence, derived review queue, owner review actions, owner-confirmed
 duplicates, calibrated quality-first ranking and derived recommendations; ADR-004
-implemented with Decision 8 amended by the M4 calibration). **FR-010 is the next active
-FR** — FR-010–FR-015 planned; deterministic workflow orchestration first, then bounded
-agents (FR-013). See [docs/10_roadmap.md](docs/10_roadmap.md).
+implemented with Decision 8 amended by the M4 calibration). **FR-010 complete and
+frozen** (standalone package composition, durability/regeneration, owner CLI;
+[acceptance](docs/eval/fr010_application_package.md)). **FR-011 complete and frozen**
+(dedicated preparation orchestrator + owner CLI;
+[acceptance](docs/eval/fr011_application_preparation.md)). **FR-012 is the next
+active FR** — FR-012–FR-016 planned; deterministic workflow first, then bounded
+agents (FR-014). See [docs/10_roadmap.md](docs/10_roadmap.md).
 
 Full detail: [docs/04_functional_specification.md](docs/04_functional_specification.md) and [docs/10_roadmap.md](docs/10_roadmap.md).
 
-Do not expand scope into Horizon 1B (FR-016+), Phase 3+, or Horizon 2 capabilities unless
+Do not expand scope into Horizon 1B (FR-017+), Phase 3+, or Horizon 2 capabilities unless
 explicitly requested by the owner.
 
 ---
@@ -87,7 +101,7 @@ Apply [docs/05_engineering_principles.md](docs/05_engineering_principles.md) for
 - **Human review** — tiers, packages, and submission require owner judgment; never silent submit
 - **Dual-value test** — every capability must improve interview/offer odds or reduce repetitive search effort
 - **Explainability** — assessments must cite evidence from job description and profile
-- **Outcome logging** — decisions and results must be recordable (Phase 2 M2 / FR-012)
+- **Outcome logging** — decisions and results must be recordable (Phase 2 M2 / FR-013)
 - **Operational continuity** — the built system must connect to existing tracking in `applications/`, not run parallel to it
 - **Public profile boundary** — downstream capabilities obtain the career profile through
  `career_intelligence.profile`, never through its YAML storage adapter

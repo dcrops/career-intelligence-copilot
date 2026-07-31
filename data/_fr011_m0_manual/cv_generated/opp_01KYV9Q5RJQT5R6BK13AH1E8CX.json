@@ -1,0 +1,150 @@
+{
+  "job_analysis": {
+    "posting": {
+      "raw_text": "AI Engineer. Python and LLMs. Hybrid Sydney. Manual Prep Co offline validation posting.",
+      "title": "AI Engineer",
+      "company": "Manual Prep Co",
+      "source_url": "https://au.seek.com/job/30101010"
+    },
+    "role_family": {
+      "family": "ai_engineering",
+      "evidence": [
+        {
+          "excerpt": "Senior AI Engineer",
+          "section": "title"
+        }
+      ]
+    },
+    "seniority": {
+      "level": "senior",
+      "ambiguous": false,
+      "candidate_levels": [],
+      "evidence": [
+        {
+          "excerpt": "Senior AI Engineer",
+          "section": "title"
+        }
+      ]
+    },
+    "technologies": [
+      {
+        "name": "Python",
+        "level": "required",
+        "evidence": [
+          {
+            "excerpt": "Python required",
+            "section": "requirements"
+          }
+        ]
+      }
+    ],
+    "responsibilities": [
+      {
+        "description": "Build LLM applications",
+        "evidence": [
+          {
+            "excerpt": "Build LLM applications",
+            "section": "responsibilities"
+          }
+        ]
+      }
+    ],
+    "compensation": {
+      "clarity": "unstated",
+      "minimum": null,
+      "maximum": null,
+      "currency": null,
+      "period": null,
+      "raw_text": null,
+      "evidence": []
+    },
+    "location": {
+      "clarity": "stated",
+      "summary": "Melbourne",
+      "evidence": [
+        {
+          "excerpt": "Hybrid Melbourne",
+          "section": "location"
+        }
+      ]
+    },
+    "work_arrangement": {
+      "arrangement": "hybrid",
+      "details": null,
+      "evidence": [
+        {
+          "excerpt": "Hybrid Melbourne",
+          "section": "location"
+        }
+      ]
+    },
+    "employment": {
+      "working_hours": "unspecified",
+      "engagement_type": "unspecified",
+      "evidence": []
+    },
+    "experience_requirements": []
+  },
+  "full_name": "Test Candidate",
+  "target_role": "AI Engineer",
+  "summary": "AI Engineer designing and building evidence-backed systems.\n\nDesigns and builds AI applications with **Python**, applying modern AI engineering practices.",
+  "summary_source": "theme_aware_composition",
+  "summary_themes": [
+    "Python",
+    "AI Engineer"
+  ],
+  "selected_engineering_highlights": [],
+  "skills": [
+    {
+      "skill_name": "Python",
+      "category": "technical",
+      "emphasised": true
+    }
+  ],
+  "projects": [
+    {
+      "project_id": "example-project",
+      "name": "Example Project",
+      "summary": "A production-minded example.",
+      "technologies": [
+        "Python"
+      ],
+      "outcomes": [
+        "Produced a traceable result."
+      ],
+      "demonstrates": [
+        "Evidence-backed decision support"
+      ]
+    }
+  ],
+  "experience": [
+    {
+      "experience_id": "example-role",
+      "kind": "employment",
+      "organisation": "Example Company",
+      "title": "Data Engineer",
+      "start_date": "2022-01",
+      "end_date": "2023-01",
+      "location": "Melbourne",
+      "highlights": [
+        "Built validated data pipelines."
+      ],
+      "technologies": [
+        "Python"
+      ]
+    }
+  ],
+  "engineering_methodology": null,
+  "certifications": [],
+  "certifications_source": "profile_active_baseline",
+  "contact": null,
+  "rendered_markdown": "# Test Candidate\n\n**AI Engineer**\n\n---\n\n## Professional Summary\n\nAI Engineer designing and building evidence-backed systems.\n\nDesigns and builds AI applications with **Python**, applying modern AI engineering practices.\n\n## Core Skills\n\n**Python**\n\n## Professional Experience\n\n### Data Engineer — Example Company\n\n*Jan 2022 – Jan 2023 · Melbourne*\n\n- Built validated data pipelines.\n\n**Technologies:** **Python**\n\n## Featured AI Projects\n\n### Example Project\n\n**Overview:** A production-minded example.\n\n**Engineering Highlights:**\n\n- Evidence-backed decision support\n\n**Outcomes:**\n\n- Produced a traceable result.\n\n**Technology Stack:** **Python**\n",
+  "owner_review_required": true,
+  "tailoring_plan_approved": true,
+  "experience_guidance_kind": "master_cv_only",
+  "assumptions": [
+    "Summary composed via FR-006c Summary Intelligence from TailoringPlan themes/promoted skills and Career Profile evidence (rewrite_summary=False).",
+    "Certifications are rendered as a fixed profile baseline (active credentials only, profile order). They are not TailoringPlan-tailored content.",
+    "Experience highlights and project demonstrates/outcomes were selected from Career Profile text by TailoringPlan relevance."
+  ]
+}

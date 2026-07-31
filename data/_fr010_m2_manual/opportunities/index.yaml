@@ -1,0 +1,42 @@
+schema_version: '1'
+opportunities:
+- identity:
+    opportunity_id: opp_01KYTXVBPK6T2KE9Y675WKTQAS
+    created_at: '2026-07-31T01:50:32.147799Z'
+    source_kind: manual
+    platform_job_id: null
+    canonical_url: null
+    source_url: null
+    company: Northside Analytics
+    title: Senior AI Engineer
+    location_text: Melbourne
+    content_fingerprint: bb0a0844c72e801cbdeb62bfeccc2e2a95d80d1a172b2746e9cdae87c0f0243c
+  status: assessed
+  decision:
+    decision: apply
+    decided_at: '2026-07-31T01:50:32.159911Z'
+    notes: null
+  outcome: null
+  strategy_summary:
+    pursuit_posture: consider
+    application_tier: silver
+    practical_value: acceptable_opportunity
+    technical_fit: mixed
+    commercial_fit: moderate
+    portfolio_fit: moderate
+  artifact_paths:
+    posting.json: artifacts/opp_01KYTXVBPK6T2KE9Y675WKTQAS/posting.json
+    job_analysis.json: artifacts/opp_01KYTXVBPK6T2KE9Y675WKTQAS/job_analysis.json
+    assessment.json: artifacts/opp_01KYTXVBPK6T2KE9Y675WKTQAS/assessment.json
+    portfolio_match.json: artifacts/opp_01KYTXVBPK6T2KE9Y675WKTQAS/portfolio_match.json
+    strategy.json: artifacts/opp_01KYTXVBPK6T2KE9Y675WKTQAS/strategy.json
+  legacy_import: null
+  review:
+    reviewed_at: null
+    pinned: false
+    defer_until: null
+    archived_at: null
+  review_actions: []
+  duplicate: null
+  duplicate_rejections: []
+  updated_at: '2026-07-31T01:50:32.159911Z'

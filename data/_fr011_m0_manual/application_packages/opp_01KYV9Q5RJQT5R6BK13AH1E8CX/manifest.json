@@ -1,0 +1,49 @@
+{
+  "opportunity_id": "opp_01KYV9Q5RJQT5R6BK13AH1E8CX",
+  "prepared_at": "2026-07-30T15:00:00Z",
+  "evidence": {
+    "opportunity_id": "opp_01KYV9Q5RJQT5R6BK13AH1E8CX",
+    "artifact_paths": {
+      "posting.json": "artifacts/opp_01KYV9Q5RJQT5R6BK13AH1E8CX/posting.json",
+      "job_analysis.json": "artifacts/opp_01KYV9Q5RJQT5R6BK13AH1E8CX/job_analysis.json",
+      "assessment.json": "artifacts/opp_01KYV9Q5RJQT5R6BK13AH1E8CX/assessment.json",
+      "portfolio_match.json": "artifacts/opp_01KYV9Q5RJQT5R6BK13AH1E8CX/portfolio_match.json",
+      "strategy.json": "artifacts/opp_01KYV9Q5RJQT5R6BK13AH1E8CX/strategy.json"
+    },
+    "acquisition": {
+      "source_kind": "seek",
+      "platform_job_id": "30101010",
+      "canonical_url": "https://au.seek.com/job/30101010",
+      "source_url": "https://au.seek.com/job/30101010",
+      "company": "Manual Prep Co",
+      "title": "AI Engineer",
+      "location_text": "Melbourne",
+      "content_fingerprint": "24fac5855b95306d7bea5a138eb5c9e2bd6511971e949e8baf08c8698327b1a3"
+    },
+    "strategy_summary": {
+      "pursuit_posture": "prioritise",
+      "application_tier": "platinum",
+      "practical_value": "career_priority",
+      "technical_fit": "strong",
+      "commercial_fit": "moderate",
+      "portfolio_fit": "moderate"
+    }
+  },
+  "cv": {
+    "stem": "opp_01KYV9Q5RJQT5R6BK13AH1E8CX",
+    "output_dir": ".",
+    "markdown_path": "opp_01KYV9Q5RJQT5R6BK13AH1E8CX.md",
+    "json_path": "opp_01KYV9Q5RJQT5R6BK13AH1E8CX.json",
+    "plan_json_path": "opp_01KYV9Q5RJQT5R6BK13AH1E8CX.tailoring_plan.json",
+    "html_path": "opp_01KYV9Q5RJQT5R6BK13AH1E8CX.html"
+  },
+  "cover_letter": {
+    "stem": "opp_01KYV9Q5RJQT5R6BK13AH1E8CX",
+    "output_dir": ".",
+    "markdown_path": "opp_01KYV9Q5RJQT5R6BK13AH1E8CX.md",
+    "json_path": "opp_01KYV9Q5RJQT5R6BK13AH1E8CX.json",
+    "plan_json_path": "opp_01KYV9Q5RJQT5R6BK13AH1E8CX.cover_letter_plan.json",
+    "html_path": "opp_01KYV9Q5RJQT5R6BK13AH1E8CX.html"
+  },
+  "owner_review_required": true
+}

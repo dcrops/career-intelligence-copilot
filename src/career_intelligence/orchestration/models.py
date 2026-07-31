@@ -100,8 +100,9 @@ class AcquisitionEnvelope(OrchestrationModel):
 class DomainArtefacts(OrchestrationModel):
     """Trusted FR-001–FR-005 slots (append-once; None until produced).
 
-    Package/submission slots are reserved for FR-010/FR-011 and remain unset
-    in the FR-008 vertical slice.
+    Package/submission slots remain reserved for possible orchestration
+    integration; FR-010 package preparation is a standalone service outside
+    this runner, and FR-012 submission is not started.
     """
 
     profile: CareerProfile | None = None

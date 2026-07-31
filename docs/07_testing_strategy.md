@@ -214,8 +214,8 @@ Default path is fully deterministic (no OpenAI). Owner review remains mandatory.
 
 FR-008 is **complete**. Acceptance:
 [docs/eval/fr008_workflow_orchestration.md](eval/fr008_workflow_orchestration.md).
-ADR-003 accepted. FR-009 coverage is likewise complete and frozen; the next coverage
-focus is **FR-010**. FR-008 suites were
+ADR-003 accepted. FR-009 coverage is likewise complete and frozen. **FR-010**
+package preparation coverage is complete and frozen — see below. FR-008 suites were
 updated where FR-009 M1 deliberately changed behaviour — skip and defer now retain a
 durable Opportunity, and `persist` completes before owner review.
 
@@ -490,20 +490,113 @@ remain green before declaring Phase 2 complete.
 
 ---
 
-## Horizon 1A — Planned test coverage (not yet implemented)
+## FR-010 Application Package coverage (complete — frozen)
 
-When FR-008–FR-015 are built, prefer behaviour over implementation detail:
+FR-010 is **complete**. Acceptance:
+[docs/eval/fr010_application_package.md](eval/fr010_application_package.md).
+It delivers a standalone composition service that prepares one current
+Application Package for an Opportunity with owner decision ``apply``.
+
+- M0: [docs/eval/fr010_m0_application_package.md](eval/fr010_m0_application_package.md)
+- M1: [docs/eval/fr010_m1_package_durability.md](eval/fr010_m1_package_durability.md)
+- M2: [docs/eval/fr010_m2_owner_cli.md](eval/fr010_m2_owner_cli.md)
+
+### What M0 validates
+
+| Area | Coverage |
+|------|----------|
+| Eligibility | ``apply`` succeeds; skip / defer / undecided fail closed |
+| Manifest | CV + cover-letter draft refs; evidence artefact paths; acquisition provenance |
+| Traceability | Package → Opportunity id → immutable FR-002–FR-005 snapshots |
+| Regeneration | Replace-on-regenerate; same draft stems; upstream bytes unchanged |
+| Gates | Existing FR-006 / FR-007 owner-approval gates still enforced |
+| Public loader | ``OpportunityService.load_artifacts`` rehydrates strategy without YAML imports |
+
+### What M1 validates
+
+| Area | Coverage |
+|------|----------|
+| Reload / exists | Current package loads; missing package fails closed |
+| Relative persistence | Manifest stores filenames; service resolves absolute paths |
+| Idempotency | Same inputs + same ``prepared_at`` → identical manifest and draft bytes |
+| Repeated regeneration | ``prepared_at`` updates; paths and evidence stable |
+| Failure safety | Failed draft write leaves prior manifest current |
+| Integrity | ``get(verify=True)`` refuses missing draft files; M0 absolute paths still load |
+
+### What M2 validates
+
+| Area | Coverage |
+|------|----------|
+| CLI prepare | Requires ``--approve``; prepare/show/verify against temp stores |
+| CLI show / verify | Human summary, YAML, integrity fail-closed |
+| Invalid inputs | Non-apply refused; missing package; missing draft on verify |
+| Thin adapter | No duplicated FR-006/007 business logic in the CLI |
+
+**Unit:** `tests/unit/application_package/` (incl. `test_cli.py`)  
+**Functional:** `tests/functional/test_fr010_application_package.py`  
+**Manual:** `scripts/run_fr010_application_package_manual.py` (`demo`, `cli`)
+
+Does **not** cover: orchestration nodes, PipelineStatus writes, submission, versioning,
+PDF/DOCX.
+
+---
+
+## FR-011 Application Preparation Orchestration coverage (complete — frozen)
+
+FR-011 is **complete**. Acceptance:
+[docs/eval/fr011_application_preparation.md](eval/fr011_application_preparation.md).
+
+**Status:** M0–M1 delivered —
+[M0](eval/fr011_m0_application_preparation.md),
+[M1](eval/fr011_m1_executable_preparation.md).
+
+FR-011 coordinates package preparation via a dedicated orchestrator. Tests assert
+precondition fail-closed behaviour and that package rules remain in FR-010.
+
+### What M0 validates
+
+| Area | Coverage |
+|------|----------|
+| Happy path | ``validate_preconditions`` → ``prepare_package``; completed run + verifiable package |
+| Non-apply | Fails closed at ``validate_preconditions`` |
+| Missing artefacts / opportunity | Fails closed at validate |
+| Gate failure | FR-006/007 refusal fails at ``prepare_package`` without inventing success |
+| Run persistence | JSON reload of ``PreparationRunState`` |
+| Boundaries | FR-008 runner and FR-010 package business rules unchanged |
+
+### What M1 validates
+
+| Area | Coverage |
+|------|----------|
+| CLI run | Requires ``--approve``; invoke orchestrator only |
+| CLI show | Reload run by id; YAML optional |
+| Failed run | Non-apply surfaces failed status; non-zero exit |
+| Package integrity | Orchestrated package still verifiable via FR-010 |
+
+**Unit:** `tests/unit/application_preparation/` (incl. `test_cli.py`)  
+**Functional:** `tests/functional/test_fr011_application_preparation.py`  
+**Manual:** `scripts/run_fr011_preparation_manual.py` (`demo`, `cli`)
+
+Does **not** cover: submission, PipelineStatus writes, FR-008 ``prepare_package`` node
+wiring, resume/branching ``routing.py``, package versioning, PDF/DOCX.
+
+---
+
+## Horizon 1A — Planned test coverage (remaining)
+
+When FR-012–FR-016 are built, prefer behaviour over implementation detail:
 
 | Area | Expected coverage |
 |------|-------------------|
-| FR-008 acquisition adapters | Unit tests per adapter; provenance fields; extraction warnings; no assumption that every job is browser-sourced |
-| FR-008 workflow | Golden workflow on a saved/manual job; conditional routing from real strategy outputs; checkpoint + resume after owner approval; recoverable node failure; node execution traces |
+| FR-008 acquisition adapters (**delivered**) | Unit tests per adapter; provenance fields; extraction warnings; no assumption that every job is browser-sourced |
+| FR-008 workflow (**delivered**) | Golden workflow on a saved/manual job; conditional routing from real strategy outputs; checkpoint + resume after owner approval; recoverable node failure; node execution traces |
 | FR-009 queue / duplicates (**delivered** — see FR-009 coverage above) | Deterministic ranking inputs; explainable reasons; no mutate-on-rank; derived queue position (never persisted); eligibility excludes archived / skipped / currently deferred / confirmed duplicates; pinning changes order without altering fit signals; persistence-boundary move creates exactly one Opportunity across resume and replay; platform ID / URL / fingerprint matching with owner confirmation |
-| FR-010 packages | Artefacts grouped by application identity; trace to job evidence |
-| FR-011 submission | Never silent submit; fail-closed on unknown answers; unsupported-form / CAPTCHA / auth paths escalate; duplicate-submission guards |
-| FR-012 tracking | Status transitions with timestamps and audit history |
-| FR-013 agents | Max iterations, stop conditions, restricted tools, validation before state update |
-| FR-014 / FR-015 | Loop prevention; fault injection; token/cost/latency where LLM-backed; browser journey evidence when Playwright is used |
+| FR-010 packages (**delivered** — see FR-010 coverage above) | Composition, durability, owner CLI |
+| FR-011 preparation (**delivered** — see FR-011 coverage above) | Preconditions; package coordination; fail-closed; run audit; owner CLI |
+| FR-012 submission | Never silent submit; fail-closed on unknown answers; unsupported-form / CAPTCHA / auth paths escalate; duplicate-submission guards |
+| FR-013 tracking | Status transitions with timestamps and audit history |
+| FR-014 agents | Max iterations, stop conditions, restricted tools, validation before state update |
+| FR-015 / FR-016 | Loop prevention; fault injection; token/cost/latency where LLM-backed; browser journey evidence when Playwright is used |
 
 **Spike rule:** First FR-008 tests use fixture/saved jobs only — not live acquisition
 or real submission. Deterministic replay where possible; owner manual validation for

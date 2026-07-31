@@ -199,6 +199,8 @@ is run.
 
 **GO** — FR-009 is complete and frozen.
 
-Next active functional requirement: **FR-010 Application Package Preparation**. Do not
-reopen FR-009 scope (persistence boundary, queue projection, duplicate policy, or the
-calibrated sort key) without explicit owner request.
+Next active functional requirement at FR-009 freeze: **FR-010 Application Package
+Preparation** (subsequently completed —
+[fr010_application_package.md](fr010_application_package.md); current focus is
+**FR-011**). Do not reopen FR-009 scope (persistence boundary, queue projection,
+duplicate policy, or the calibrated sort key) without explicit owner request.

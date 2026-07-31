@@ -4,6 +4,213 @@ Records product strategy and engineering knowledge changes. Routine typo fixes a
 
 ---
 
+## Version 1.68
+
+### FR-011 complete — Application Preparation Orchestration closed out
+
+**FR-011 is complete and its documentation is frozen** (2026-07-31). Acceptance:
+[docs/eval/fr011_application_preparation.md](eval/fr011_application_preparation.md).
+
+**Capability (M0–M1 as one delivery).** Dedicated `ApplicationPreparationOrchestrator`
+coordinates package preparation for `apply` Opportunities
+(`validate_preconditions` → `ApplicationPackageService.prepare`). Owner operations
+use thin `cic preparation run|show`. Preparation runs are audit/recovery only.
+FR-008 runner and FR-010 package rules unchanged. No new ADR.
+
+**Next active FR:** **FR-012** Submission Assistance. Do not reopen FR-011 (or
+FR-008–FR-010) without explicit owner request.
+
+---
+
+## Version 1.67
+
+### FR-011 M1 — Executable preparation workflow
+
+**FR-011 M1 is complete** (2026-07-31). Acceptance:
+[docs/eval/fr011_m1_executable_preparation.md](eval/fr011_m1_executable_preparation.md).
+
+**Capability.** Thin `cic preparation` CLI (`run`, `show`) over
+`ApplicationPreparationOrchestrator`. Owner must pass `--approve` for FR-006/007
+gates. Failed runs exit non-zero with deterministic run state. `cic package`
+remains a supported direct pathway. No FR-008, PipelineStatus, resume, or package
+rule changes.
+
+**Validation.** Unit CLI suite; offline
+`scripts/run_fr011_preparation_manual.py cli --workspace data/_fr011_m1_manual`.
+Full suite: `python -m pytest -q` → 1059 passed.
+
+**Next:** FR-011 Close-out — completed in v1.68.
+
+---
+
+## Version 1.66
+
+### FR-011 milestone sequence defined (M1 + Close-out)
+
+**Documentation-only** (before M1 implementation). Formalises the remainder of
+FR-011 after M0:
+
+| Milestone | Intent |
+|-----------|--------|
+| M0 | Contracts + orchestrator (**complete**) |
+| M1 | Owner-executable preparation workflow (`cic preparation` thin CLI) |
+| Close-out | Freeze FR-011; begin FR-012 |
+
+No M2–M4. Resume, FR-008 node wiring, submission, and PipelineStatus stay out of
+FR-011. Spec and roadmap updated accordingly.
+
+---
+
+## Version 1.65
+
+### FR-011 M0 — Application Preparation Orchestration + FR remapping
+
+**FR-011 M0 is complete** (2026-07-31). Acceptance:
+[docs/eval/fr011_m0_application_preparation.md](eval/fr011_m0_application_preparation.md).
+
+**Capability.** Dedicated `ApplicationPreparationOrchestrator` coordinates package
+preparation for Opportunities with owner decision ``apply``: verify preconditions
+(existing FR-002–FR-005 artefacts) then call existing `ApplicationPackageService.prepare`.
+Run state persists under `data/preparation_runs/` (audit/recovery only). Sequencing is
+inline (no separate routing module). FR-008 `ApplicationWorkflowRunner` is not extended.
+No package business rules moved.
+
+**FR remapping (insert preparation orchestration):**
+
+| Previous id | New id | Title |
+|-------------|--------|-------|
+| — | **FR-011** | Application Preparation Orchestration |
+| FR-011 | **FR-012** | Submission Assistance |
+| FR-012 | **FR-013** | Application Pipeline Tracking |
+| FR-013 | **FR-014** | Bounded Agentic Workflow |
+| FR-014 | **FR-015** | Multi-Agent Orchestration |
+| FR-015 | **FR-016** | Agent Evaluation & Observability |
+| FR-016–FR-022 | **FR-017–FR-023** | Horizon 1B |
+| FR-023–FR-025 | **FR-024–FR-026** | Horizon 2 (Interview / Dashboard / Daily) |
+
+**Validation.** Unit + functional suites; offline
+`scripts/run_fr011_preparation_manual.py`. Full suite:
+`python -m pytest -q` → 1054 passed.
+
+**Status (historical at M0).** FR-011 was the active FR with M0 delivered. Superseded
+by v1.68 close-out. Submission remains FR-012.
+
+---
+
+## Version 1.64
+
+### Architecture health check — post FR-010
+
+**Documentation-only validation** (2026-07-31). Report:
+[docs/eval/architecture_health_check_post_fr010.md](eval/architecture_health_check_post_fr010.md).
+
+Reviewed FR-008 / FR-009 / FR-010 implementation against ADR-002 / ADR-003 / ADR-004
+and Horizon 1A docs. **Verdict: ARCHITECTURE HEALTHY** — no material drift; proceed
+to FR-011. Minor wording fixes only (roadmap FR-008 persist narrative; FR-010
+acceptance “Next” line). No functional or architectural changes.
+
+---
+
+## Version 1.63
+
+### FR-010 complete — Application Package Preparation closed out
+
+**FR-010 is complete and its documentation is frozen** (2026-07-31). Acceptance:
+[docs/eval/fr010_application_package.md](eval/fr010_application_package.md).
+
+**Capability (M0–M2 as one delivery).** A standalone `ApplicationPackageService`
+composes existing FR-006 Tailoring Plan / Tailored CV and FR-007 Cover Letter
+generation for Opportunities whose owner decision is **`apply`**. One Opportunity
+maps to one current package; regeneration replaces. The durable record is a package
+**manifest** of deterministic artefact references — drafts stay under existing
+writers; Opportunity evidence stays immutable. Relative draft paths, manifest
+commit-point durability, idempotent prepare, and fail-closed integrity checks are
+in place. Owner operations use a thin `cic package` CLI (`prepare` / `show` /
+`verify`) with explicit `--approve` so FR-006/007 gates are never silently
+defaulted.
+
+**Architecture unchanged.** No orchestration expansion, PipelineStatus writes,
+package versioning, submission, ranking, or duplicate-policy changes. No new ADR.
+
+**Milestones.** [M0](eval/fr010_m0_application_package.md) composition;
+[M1](eval/fr010_m1_package_durability.md) durability;
+[M2](eval/fr010_m2_owner_cli.md) owner CLI.
+
+**Next active FR (historical at v1.63):** was Submission Assistance; remapped at v1.65
+to Application Preparation Orchestration as FR-011 (Submission → FR-012). Do not
+reopen FR-010 (or FR-008 / FR-009) frozen boundaries without explicit owner request.
+
+---
+
+## Version 1.62
+
+### FR-010 M2 — Owner operations and CLI
+
+**FR-010 M2 is complete** (2026-07-31). Acceptance:
+[docs/eval/fr010_m2_owner_cli.md](eval/fr010_m2_owner_cli.md).
+
+**Capability.** Thin `cic package` CLI adapter: `prepare`, `show`, and `verify`. Owner
+must pass `--approve` to set FR-006/FR-007 gates explicitly. Optional
+`--override-material-benefit`. No new business rules, persistence shape, orchestration,
+or document-generation logic.
+
+**Validation.** Unit CLI suite; offline manual
+`scripts/run_fr010_application_package_manual.py cli --workspace data/_fr010_m2_manual`.
+Full suite: `python -m pytest -q` → 1047 passed.
+
+---
+
+## Version 1.61
+
+### FR-010 M1 — Application Package durability and regeneration
+
+**FR-010 M1 is complete** (2026-07-31). Acceptance:
+[docs/eval/fr010_m1_package_durability.md](eval/fr010_m1_package_durability.md).
+
+**Capability.** Packages reload reliably; regeneration replaces the current package with
+clear commit semantics; draft paths persist as relative filenames and resolve through
+the service; same inputs with the same ``prepared_at`` are byte-idempotent; failed
+regeneration leaves the prior manifest current; ``get(verify=True)`` fails closed on
+missing drafts. M0 absolute-path manifests remain loadable.
+
+**Architecture unchanged.** Still a standalone composition service. No orchestration,
+versioning, PipelineStatus, ranking, or submission changes.
+
+**Validation.** Unit + functional durability suites; offline manual validation via
+`scripts/run_fr010_application_package_manual.py demo --workspace data/_fr010_m1_manual`.
+Full suite: `python -m pytest -q` → 1040 passed.
+
+---
+
+## Version 1.60
+
+### FR-010 M0 — Application Package Preparation vertical slice
+
+**FR-010 M0 is complete** (2026-07-30). Acceptance:
+[docs/eval/fr010_m0_application_package.md](eval/fr010_m0_application_package.md).
+
+**Capability.** A standalone `ApplicationPackageService` composes existing FR-006
+Tailoring Plan / Tailored CV and FR-007 Cover Letter generation for Opportunities whose
+owner decision is **`apply`**. One Opportunity maps to one current package; regeneration
+replaces the previous package. The durable record is a package **manifest** of
+deterministic artefact references — generated document content is not copied into
+Opportunity persistence. Full evidence traceability covers Opportunity id, immutable
+FR-002–FR-005 snapshots, and acquisition provenance.
+
+**Public boundary.** `OpportunityService.load_artifacts` rehydrates trusted snapshots
+through the opportunities package (ADR-002). FR-006 / FR-007 owner-approval gates remain
+enforced and are not reinvented. Orchestration, review-queue behaviour, ranking,
+duplicates, PipelineStatus, submission, and PDF/DOCX remain untouched.
+
+**Validation.** Unit + functional suites; offline manual validation via
+`scripts/run_fr010_application_package_manual.py`. Full suite:
+`python -m pytest -q` → 1031 passed.
+
+**Status (historical at M0).** FR-010 was the active FR with M0 delivered; later
+milestones and FR-011 remained open. Superseded by v1.63 close-out.
+
+---
+
 ## Version 1.59
 
 ### FR-009 complete — Opportunity Review Queue & Ranking closed out
@@ -35,9 +242,9 @@ ADR.
 manual validation complete across M0–M4; determinism, reload idempotency, duplicate
 handling, pin ordering, and recommendation explanations verified.
 
-**Next active FR:** **FR-010** Application Package Preparation (not started). Do not
-reopen the FR-009 persistence boundary, queue projection, duplicate policy, or calibrated
-sort key without explicit owner request.
+**Next active FR:** **FR-010** Application Package Preparation (not started at FR-009
+freeze; M0 delivered in 1.60). Do not reopen the FR-009 persistence boundary, queue
+projection, duplicate policy, or calibrated sort key without explicit owner request.
 
 ---
 

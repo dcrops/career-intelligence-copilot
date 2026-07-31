@@ -24,8 +24,8 @@ Near-term work should satisfy at least one of:
 
 | Sub-horizon | Scope | FRs | When |
 |-------------|--------|-----|------|
-| **Horizon 1A** | End-to-end job application workflow | FR-008–FR-015 | **Current — complete first** |
-| **Horizon 1B** | Recruiter and market engagement | FR-016–FR-022 | After FR-015 |
+| **Horizon 1A** | End-to-end job application workflow | FR-008–FR-016 | **Current — complete first** |
+| **Horizon 1B** | Recruiter and market engagement | FR-017–FR-023 | After FR-016 |
 
 **Product progression:** Understand the candidate → Understand the opportunity →
 Generate the application → Acquire jobs → Orchestrate applications → Introduce
@@ -40,9 +40,9 @@ intelligence.
 |-------|--------|
 | **Phase 1** — Product Definition | **Complete** |
 | **Phase 2** — Job Intelligence MVP | **Complete** ([release report](eval/phase2_release_report.md)) |
-| **Horizon 1A** — Job application workflow | **Current** (FR-008 and FR-009 complete; **FR-010 next**; FR-011–FR-015 planned) |
-| **Horizon 1B** — Recruiter / market engagement | Not started (FR-016–FR-022; after 1A) |
-| **Horizon 2** — Platform capabilities | Not started (FR-023+) |
+| **Horizon 1A** — Job application workflow | **Current** (FR-008–FR-011 complete; FR-012–FR-016 planned) |
+| **Horizon 1B** — Recruiter / market engagement | Not started (FR-017–FR-023; after 1A) |
+| **Horizon 2** — Platform capabilities | Not started (FR-024+) |
 
 Narrative history of completed phases: [12_phase_history.md](12_phase_history.md).
 
@@ -80,7 +80,7 @@ implementation ADR ([ADR-001](adr/001_python_yaml_profile_foundation.md)).
 | Application Strategy | FR-005 | Posture + tier + next actions |
 | CV Generation | FR-006 | Owner-sequenced; plan + optional summary rewrite |
 | Opportunity persistence | M1 | Structured SoT; `opp_<ULID>` |
-| Decision & outcome logging | M2 | Historically “FR-013 subset”; foundation for **FR-012** |
+| Decision & outcome logging | M2 | Historically “FR-013 subset”; foundation for **FR-013** |
 | CSV operational bridge | M3 | Export + one-time import; no two-way sync |
 | Ranked comparison | M4 | Historically “FR-012 partial”; foundation for **FR-009** |
 | Opportunity identity | M4a | Grounded title/company |
@@ -109,7 +109,7 @@ CSV bridge connect to `applications/`.
 
 ---
 
-## Current Focus — Horizon 1A Job Application Workflow (FR-008–FR-015)
+## Current Focus — Horizon 1A Job Application Workflow (FR-008–FR-016)
 
 **Objective:** Discover, assess, prepare, review, submit and track suitable
 applications — before recruiter outreach or networking automation.
@@ -125,36 +125,42 @@ FR-008 Job Acquisition & Workflow Orchestration  ✅ Complete (2026-07-29)
         ▼
 FR-009 Opportunity Review Queue & Ranking  (duplicates + identity + rank)  ✅ Complete (2026-07-30)
         ▼
-FR-010 Application Package Preparation  (FR-006 / FR-007)  ← Now (not started)
+FR-010 Application Package Preparation  (FR-006 / FR-007)  ✅ Complete (2026-07-31)
         ▼
-FR-011 Submission Assistance
+FR-011 Application Preparation Orchestration  ✅ Complete (2026-07-31)
         ▼
-FR-012 Application Pipeline Tracking  (extends Phase 2 M2)
+FR-012 Submission Assistance  ← Now
         ▼
-FR-013 Bounded Agentic Workflow
+FR-013 Application Pipeline Tracking  (extends Phase 2 M2)
         ▼
-FR-014 Multi-Agent Orchestration
+FR-014 Bounded Agentic Workflow
         ▼
-FR-015 Agent Evaluation & Observability
+FR-015 Multi-Agent Orchestration
         ▼
-   Horizon 1B (FR-016+)
+FR-016 Agent Evaluation & Observability
+        ▼
+   Horizon 1B (FR-017+)
 ```
 
 | Priority | Item | Intent |
 |----------|------|--------|
 | **Completed** | **FR-008** (2026-07-29) | Job acquisition + deterministic workflow orchestration — paste/export adapters; thin runner; owner review; checkpoint/resume; Opportunity persist on apply; bounded LLM retries; [ADR-003](adr/003_application_workflow_orchestration.md); [acceptance](eval/fr008_workflow_orchestration.md) |
 | **Completed** | **FR-009** (2026-07-30) | Opportunity review queue, duplicate handling, quality-first ranking and explainable recommendations — [ADR-004](adr/004_opportunity_review_boundary.md); [acceptance](eval/fr009_opportunity_review_queue.md); milestones [M0](eval/fr009_m0_domain_contracts.md), [M1](eval/fr009_m1_persistence_boundary.md), [M2](eval/fr009_m2_owner_review_actions.md), [M3](eval/fr009_m3_duplicate_detection.md), [M4](eval/fr009_m4_recommendations.md) |
-| **Now** | **FR-010** | Application Package Preparation — connect approved opportunities to FR-006 / FR-007 outputs. Not started |
-| Then | **FR-011 → FR-012** | Submission assistance, pipeline tracking |
-| Later in 1A | **FR-013 → FR-015** | Bounded agents → multi-agent → evaluation |
-| **After 1A** | **Horizon 1B (FR-016–FR-022)** | Recruiters, outreach, meetups, LinkedIn, market |
+| **Completed** | **FR-010** (2026-07-31) | Application Package Preparation — standalone composition over FR-006/007, durability/regeneration, owner CLI — [acceptance](eval/fr010_application_package.md); milestones [M0](eval/fr010_m0_application_package.md), [M1](eval/fr010_m1_package_durability.md), [M2](eval/fr010_m2_owner_cli.md) |
+| **Completed** | **FR-011** (2026-07-31) | Application Preparation Orchestration — dedicated orchestrator + owner CLI; [acceptance](eval/fr011_application_preparation.md); milestones [M0](eval/fr011_m0_application_preparation.md), [M1](eval/fr011_m1_executable_preparation.md) |
+| **Now** | **FR-012** | Submission Assistance (not started) |
+| Then | **FR-013** | Application pipeline tracking |
+| Later in 1A | **FR-014 → FR-016** | Bounded agents → multi-agent → evaluation |
+| **After 1A** | **Horizon 1B (FR-017–FR-023)** | Recruiters, outreach, meetups, LinkedIn, market |
 
 ### FR-008 completion summary
 
 Delivered a source-adapter acquisition boundary and a thin deterministic runner that
 coordinates FR-002–FR-005, pauses for owner approval, resumes from JSON checkpoints,
-and on `apply` persisted an Opportunity and recorded the decision idempotently. Skip and
-defer completed without persistence — the boundary FR-009 M1 subsequently moved.
+and records the owner decision idempotently. **Historical FR-008 behaviour:** only
+`apply` persisted an Opportunity; skip/defer completed without a durable record.
+**Current behaviour (FR-009 M1):** the workflow persists after Application Strategy
+and before owner review; apply, skip, and defer all update the same Opportunity.
 Playwright, URL/API adapters, ranking, and submission remain out of scope.
 
 ### FR-009 completion summary
@@ -188,9 +194,59 @@ invented. Pin remains a presentation override only.
 
 Not in FR-009: application pipeline status (FR-012), document packages (FR-010),
 submission (FR-011), UI, LLM ranking.
+*(Remap after FR-011 M0: preparation orchestration is FR-011; submission is FR-012;
+pipeline tracking is FR-013.)*
 
 **Do not reopen without explicit owner request:** the persistence boundary, the derived
 queue projection, link-never-merge duplicate policy, or the calibrated sort key.
+
+### FR-010 completion summary
+
+**Complete — documentation frozen (2026-07-31).** Owner close-out;
+[acceptance](eval/fr010_application_package.md). M0 delivers a standalone
+`ApplicationPackageService` that composes FR-006 Tailoring Plan / Tailored CV and
+FR-007 Cover Letter for Opportunities with owner decision `apply`. One Opportunity
+maps to one current package; regeneration replaces; the durable record is a
+**manifest of references** only. M1 hardens durability: relative draft paths,
+manifest commit-point semantics, idempotent prepare, and fail-closed integrity
+checks. M2 adds a thin `cic package` CLI (`prepare` / `show` / `verify`) with
+explicit `--approve` so FR-006/007 gates are never silently defaulted.
+
+| Milestone | Scope | Status |
+|-----------|-------|--------|
+| M0 | Vertical slice — composition, eligibility, manifest, evidence | **Complete** |
+| M1 | Durability, regeneration, relative paths, integrity | **Complete** |
+| M2 | Owner CLI adapter | **Complete** |
+| Close-out | Acceptance and documentation freeze | **Complete** |
+
+Not in FR-010: submission (FR-011), PipelineStatus (FR-012), orchestration package
+node, package versioning, PDF/DOCX, ranking or duplicate changes.
+*(Remap after FR-011 M0: preparation orchestration is FR-011; submission is FR-012;
+pipeline tracking is FR-013.)*
+
+**Do not reopen without explicit owner request:** standalone composition (not
+orchestration), manifest-only persistence, replace-on-regenerate cardinality, or
+FR-006/007 gate preservation.
+
+### FR-011 completion summary
+
+**Complete — documentation frozen (2026-07-31).**
+[acceptance](eval/fr011_application_preparation.md).
+
+| Milestone | Intent | Status |
+|-----------|--------|--------|
+| M0 | Contracts + dedicated orchestrator | **Complete** |
+| M1 | Owner-executable preparation workflow (`cic preparation`) | **Complete** |
+| Close-out | Freeze FR-011; begin FR-012 | **Complete** |
+
+Canonical flow: Owner → `cic preparation` → `ApplicationPreparationOrchestrator` →
+`ApplicationPackageService`. CLI is thin; package rules stay in FR-010; FR-008
+runner untouched. No M2–M4. Deferred: resume/retry, FR-008 node wiring, submission
+(FR-012), PipelineStatus (FR-013).
+
+**Do not reopen without explicit owner request:** dedicated orchestrator (not FR-008
+extension), precondition-only upstream artefacts, thin CLI, or FR-006/007 gate
+pass-through.
 
 ### Job acquisition (not “web scraping”)
 
@@ -214,42 +270,42 @@ Phase 2 documentation remains a **stable baseline**. Prefer additive changes.
 
 ---
 
-## Horizon 1B — Recruiter and Market Engagement (FR-016–FR-022)
+## Horizon 1B — Recruiter and Market Engagement (FR-017–FR-023)
 
-**Status:** Not started. Blocked until Horizon 1A (through FR-015) is usable end to end.
+**Status:** Not started. Blocked until Horizon 1A (through FR-016) is usable end to end.
 
 | FR | Capability |
 |----|------------|
-| FR-016 | Recruiter Intelligence |
-| FR-017 | Recruiter Outreach |
-| FR-018 | Existing Connection Outreach |
-| FR-019 | LinkedIn Network Intelligence |
-| FR-020 | Meetup Intelligence |
-| FR-021 | LinkedIn Content Planning |
-| FR-022 | Market Intelligence |
+| FR-017 | Recruiter Intelligence |
+| FR-018 | Recruiter Outreach |
+| FR-019 | Existing Connection Outreach |
+| FR-020 | LinkedIn Network Intelligence |
+| FR-021 | Meetup Intelligence |
+| FR-022 | LinkedIn Content Planning |
+| FR-023 | Market Intelligence |
 
 Do not implement Horizon 1B in the current phase.
 
 ---
 
-## Future — Horizon 2 (FR-023+)
+## Future — Horizon 2 (FR-024+)
 
 | FR | Capability |
 |----|------------|
-| FR-023 | Interview Preparation |
-| FR-024 | Career Dashboard |
-| FR-025 | Daily Prioritisation (cross-domain) |
+| FR-024 | Interview Preparation |
+| FR-025 | Career Dashboard |
+| FR-026 | Daily Prioritisation (cross-domain) |
 
 Capability phases below organise Horizon 2 domains after Horizon 1 priorities are met.
 
 | Phase | Domain |
 |-------|--------|
-| Phase 3+ | Recruiter / network (also Horizon 1B FR-016–FR-021) |
+| Phase 3+ | Recruiter / network (also Horizon 1B FR-017–FR-022) |
 | Phase 4 | Portfolio Intelligence |
 | Phase 5 | Networking Intelligence |
 | Phase 6 | Learning Intelligence |
-| Phase 7 | Interview Intelligence (FR-023) |
-| Phase 8 | Career Dashboard (FR-024) |
+| Phase 7 | Interview Intelligence (FR-024) |
+| Phase 8 | Career Dashboard (FR-025) |
 
 ### Parking Lot
 

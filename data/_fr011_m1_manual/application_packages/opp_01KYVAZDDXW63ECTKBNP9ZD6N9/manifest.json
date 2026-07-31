@@ -1,0 +1,49 @@
+{
+  "opportunity_id": "opp_01KYVAZDDXW63ECTKBNP9ZD6N9",
+  "prepared_at": "2026-07-31T05:39:56.535408Z",
+  "evidence": {
+    "opportunity_id": "opp_01KYVAZDDXW63ECTKBNP9ZD6N9",
+    "artifact_paths": {
+      "posting.json": "artifacts/opp_01KYVAZDDXW63ECTKBNP9ZD6N9/posting.json",
+      "job_analysis.json": "artifacts/opp_01KYVAZDDXW63ECTKBNP9ZD6N9/job_analysis.json",
+      "assessment.json": "artifacts/opp_01KYVAZDDXW63ECTKBNP9ZD6N9/assessment.json",
+      "portfolio_match.json": "artifacts/opp_01KYVAZDDXW63ECTKBNP9ZD6N9/portfolio_match.json",
+      "strategy.json": "artifacts/opp_01KYVAZDDXW63ECTKBNP9ZD6N9/strategy.json"
+    },
+    "acquisition": {
+      "source_kind": "seek",
+      "platform_job_id": "40101010",
+      "canonical_url": "https://au.seek.com/job/40101010",
+      "source_url": "https://au.seek.com/job/40101010",
+      "company": "CLI Prep Co",
+      "title": "AI Engineer",
+      "location_text": "Melbourne",
+      "content_fingerprint": "142c3528f229f5edfe3558241e1a8799dcf22328689f801693548857dd2cc1f2"
+    },
+    "strategy_summary": {
+      "pursuit_posture": "prioritise",
+      "application_tier": "platinum",
+      "practical_value": "career_priority",
+      "technical_fit": "strong",
+      "commercial_fit": "moderate",
+      "portfolio_fit": "moderate"
+    }
+  },
+  "cv": {
+    "stem": "opp_01KYVAZDDXW63ECTKBNP9ZD6N9",
+    "output_dir": ".",
+    "markdown_path": "opp_01KYVAZDDXW63ECTKBNP9ZD6N9.md",
+    "json_path": "opp_01KYVAZDDXW63ECTKBNP9ZD6N9.json",
+    "plan_json_path": "opp_01KYVAZDDXW63ECTKBNP9ZD6N9.tailoring_plan.json",
+    "html_path": "opp_01KYVAZDDXW63ECTKBNP9ZD6N9.html"
+  },
+  "cover_letter": {
+    "stem": "opp_01KYVAZDDXW63ECTKBNP9ZD6N9",
+    "output_dir": ".",
+    "markdown_path": "opp_01KYVAZDDXW63ECTKBNP9ZD6N9.md",
+    "json_path": "opp_01KYVAZDDXW63ECTKBNP9ZD6N9.json",
+    "plan_json_path": "opp_01KYVAZDDXW63ECTKBNP9ZD6N9.cover_letter_plan.json",
+    "html_path": "opp_01KYVAZDDXW63ECTKBNP9ZD6N9.html"
+  },
+  "owner_review_required": true
+}

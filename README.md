@@ -60,14 +60,24 @@ FR-007 Cover Letter ([eval](docs/eval/fr007_cover_letter.md)).
 Every analysed job persists before owner review, duplicates are **linked, never merged**,
 and recommendations are **derived, deterministic, and advisory** — the owner always
 decides.
+**FR-010 Application Package Preparation — complete** and frozen
+([acceptance](docs/eval/fr010_application_package.md); milestones
+[M0](docs/eval/fr010_m0_application_package.md),
+[M1](docs/eval/fr010_m1_package_durability.md),
+[M2](docs/eval/fr010_m2_owner_cli.md)).
 
-**Current focus:** **FR-010** Application Package Preparation (next active FR, not
-started). Details: [docs/10_roadmap.md](docs/10_roadmap.md).
+**FR-011 Application Preparation Orchestration — complete** and frozen
+([acceptance](docs/eval/fr011_application_preparation.md); milestones
+[M0](docs/eval/fr011_m0_application_preparation.md),
+[M1](docs/eval/fr011_m1_executable_preparation.md)).
+
+**Current focus:** **FR-012** Submission Assistance (next active FR, not started).
+Details: [docs/10_roadmap.md](docs/10_roadmap.md).
 
 Acquisition today: paste or local export file via
 `scripts/run_fr008_workflow_manual.py` (`--source paste|export`). Playwright deferred.
 
-**Thereafter — Horizon 1B:** Recruiter / meetup / LinkedIn engagement (FR-016–FR-022).
+**Thereafter — Horizon 1B:** Recruiter / meetup / LinkedIn engagement (FR-017–FR-023).
 
 ### Phase 2 + document generation (baseline — frozen)
 
@@ -79,7 +89,7 @@ Acquisition today: paste or local export file via
 - FR-006 CV Generation (deterministic plan + optional OpenAI summary rewrite)
 - FR-007 Cover Letter Generation
 - M1 Opportunity persistence (`OpportunityService`, `opp_<ULID>`, immutable artefacts)
-- M2 Owner decision & outcome logging (Phase 2; historically FR-013 subset; foundation for FR-012)
+- M2 Owner decision & outcome logging (Phase 2; historically FR-013 subset; foundation for FR-013)
 - M3 CSV operational bridge (export + one-time legacy import; structured store = SoT)
 - M4 Ranked comparison of open opportunities
 - M4a Grounded title/company identity
@@ -130,6 +140,15 @@ cic opportunity decide <opp_id> apply|skip|defer
 cic opportunity compare
 cic opportunity export-csv
 
+# FR-010 application packages (after apply)
+cic package prepare <opp_id> --approve [--override-material-benefit]
+cic package show <opp_id>
+cic package verify <opp_id>
+
+# FR-011 preparation orchestration (after apply)
+cic preparation run <opp_id> --approve [--override-material-benefit]
+cic preparation show <run_id>
+
 # FR-006 CV (see docs/eval/fr006_manual_validation.md)
 python scripts/run_cv_generation_manual.py --job-file path/to/real_job.txt
 
@@ -137,6 +156,12 @@ python scripts/run_cv_generation_manual.py --job-file path/to/real_job.txt
 python scripts/run_fr009_review_queue_manual.py queue
 python scripts/run_fr009_duplicate_review_manual.py candidates --opportunities data/opportunities
 python scripts/run_fr009_recommendations_manual.py recommend --opportunities data/opportunities
+
+# FR-010 manual validation
+python scripts/run_fr010_application_package_manual.py cli --workspace data/_fr010_m2_manual
+
+# FR-011 preparation orchestration manual validation
+python scripts/run_fr011_preparation_manual.py cli --workspace data/_fr011_m1_manual
 
 # Tests
 python -m pytest

@@ -1,0 +1,49 @@
+{
+  "opportunity_id": "opp_01KYTVQ0FX9B3DDSRRXKCP3PH5",
+  "prepared_at": "2026-07-30T18:00:00Z",
+  "evidence": {
+    "opportunity_id": "opp_01KYTVQ0FX9B3DDSRRXKCP3PH5",
+    "artifact_paths": {
+      "posting.json": "artifacts/opp_01KYTVQ0FX9B3DDSRRXKCP3PH5/posting.json",
+      "job_analysis.json": "artifacts/opp_01KYTVQ0FX9B3DDSRRXKCP3PH5/job_analysis.json",
+      "assessment.json": "artifacts/opp_01KYTVQ0FX9B3DDSRRXKCP3PH5/assessment.json",
+      "portfolio_match.json": "artifacts/opp_01KYTVQ0FX9B3DDSRRXKCP3PH5/portfolio_match.json",
+      "strategy.json": "artifacts/opp_01KYTVQ0FX9B3DDSRRXKCP3PH5/strategy.json"
+    },
+    "acquisition": {
+      "source_kind": "manual",
+      "platform_job_id": null,
+      "canonical_url": null,
+      "source_url": null,
+      "company": "Northside Analytics",
+      "title": "Senior AI Engineer",
+      "location_text": "Melbourne",
+      "content_fingerprint": "bb0a0844c72e801cbdeb62bfeccc2e2a95d80d1a172b2746e9cdae87c0f0243c"
+    },
+    "strategy_summary": {
+      "pursuit_posture": "consider",
+      "application_tier": "silver",
+      "practical_value": "acceptable_opportunity",
+      "technical_fit": "mixed",
+      "commercial_fit": "moderate",
+      "portfolio_fit": "moderate"
+    }
+  },
+  "cv": {
+    "stem": "opp_01KYTVQ0FX9B3DDSRRXKCP3PH5",
+    "output_dir": ".",
+    "markdown_path": "opp_01KYTVQ0FX9B3DDSRRXKCP3PH5.md",
+    "json_path": "opp_01KYTVQ0FX9B3DDSRRXKCP3PH5.json",
+    "plan_json_path": "opp_01KYTVQ0FX9B3DDSRRXKCP3PH5.tailoring_plan.json",
+    "html_path": "opp_01KYTVQ0FX9B3DDSRRXKCP3PH5.html"
+  },
+  "cover_letter": {
+    "stem": "opp_01KYTVQ0FX9B3DDSRRXKCP3PH5",
+    "output_dir": ".",
+    "markdown_path": "opp_01KYTVQ0FX9B3DDSRRXKCP3PH5.md",
+    "json_path": "opp_01KYTVQ0FX9B3DDSRRXKCP3PH5.json",
+    "plan_json_path": "opp_01KYTVQ0FX9B3DDSRRXKCP3PH5.cover_letter_plan.json",
+    "html_path": "opp_01KYTVQ0FX9B3DDSRRXKCP3PH5.html"
+  },
+  "owner_review_required": true
+}

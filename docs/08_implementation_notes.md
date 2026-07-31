@@ -608,7 +608,7 @@ ranking. Portfolio emphasis copies Portfolio Match order (cap 3); it does not re
 - **PursuitPosture** — primary recommendation
 - **ApplicationTier** — Platinum / Gold / Silver / **Bronze** (effort only; Bronze ≠ never apply)
 - **next_actions** — closed `consider_*` taxonomy; recommendations only
-- Final apply / skip / defer — owner decision (Phase 2 M2 / FR-012)
+- Final apply / skip / defer — owner decision (Phase 2 M2 / FR-013)
 
 ### Seniority stretch policy
 
@@ -969,7 +969,7 @@ FR-009 duplicate detection, OpenAI.
 ## M2 Decision and Outcome Logging
 
 **Status:** Complete (2026-07-24). Phase 2 M2 outcome logging only (historically
-labelled “FR-013 subset”; Horizon 1A **FR-012** extends this).
+labelled “FR-013 subset”; Horizon 1A **FR-013** extends this).
 
 **Concepts (kept separate):**
 
@@ -1408,15 +1408,15 @@ cannot be cancelled (already failed).
 - LangGraph / external workflow engines
 - Distributed or queue-based orchestration
 - Playwright, URL, API, email acquisition adapters
-- Automated application submission (FR-011)
+- Automated application submission (FR-012)
 - Broader retry/scheduling frameworks beyond M3 bounded policy
 
 ### Sequencing (remaining)
 
-1. **FR-009 → FR-012** — review queue, packages, submission, tracking.
+1. **FR-009 → FR-013** — review queue, packages, preparation orchestration, submission, tracking.
 2. **Additional acquisition adapters** (URL/API/email) — only when explicitly requested.
-3. **FR-013 → FR-015** — bounded agents → multi-agent → evaluation.
-4. **Horizon 1B (FR-016–FR-022)** — only after 1A.
+3. **FR-014 → FR-016** — bounded agents → multi-agent → evaluation.
+4. **Horizon 1B (FR-017–FR-023)** — only after 1A.
 
 ### FR-008 acquisition foundation (complete — closes FR-008)
 
@@ -1507,7 +1507,7 @@ enforced: pinned-while-archived, and a duplicate pointing at itself.
 `OwnerDecisionKind`, and now as `review.defer_until`. FR-009 uses the owner decision
 (`defer`) for audit and `review.defer_until` for when the record returns to active
 review. FR-009 does **not** write `PipelineStatus` — application progress stays with
-M2 / FR-012.
+M2 / FR-013.
 
 **Derived, never persisted:** queue eligibility (not archived ∧ not confirmed duplicate ∧
 decision ≠ skip ∧ not currently deferred), rank position, priority band, age, staleness,
@@ -1769,4 +1769,215 @@ recommendations. Read services never write; write services never rank.
 link-never-merge duplicate policy, or the calibrated sort key without explicit owner
 request and validation evidence.
 
-**Next FR:** FR-010 Application Package Preparation (not started).
+---
+
+## FR-010 M0 — Application Package Preparation (vertical slice)
+
+**Status:** M0 complete (2026-07-30). Acceptance:
+[eval/fr010_m0_application_package.md](eval/fr010_m0_application_package.md).
+
+### Architecture
+
+`career_intelligence.application_package.ApplicationPackageService` is a **standalone
+composition service**. It does not extend the FR-008 runner, does not write
+`PipelineStatus`, and does not mutate Opportunity index rows or immutable
+FR-002–FR-005 artefact snapshots.
+
+```
+Opportunity (decision=apply)
+  └─ OpportunityService.load_artifacts  → trusted ApplicationStrategy
+           └─ TailoringPlanService / CvGenerationService (FR-006)
+           └─ CoverLetterPlanService / CoverLetterGenerationService (FR-007)
+           └─ existing draft writers → career-documents/**/generated/
+           └─ ApplicationPackageManifest persisted under
+              data/application_packages/{opportunity_id}/manifest.json
+```
+
+### Package responsibilities
+
+| Concern | Behaviour |
+|---------|-----------|
+| Eligibility | Owner decision must be ``apply``; skip / defer / undecided fail closed |
+| Identity | ``opportunity_id`` is the package identity; one current package per Opportunity |
+| Regeneration | Replaces the previous manifest and overwrites the same draft stems |
+| Gates | Caller supplies existing FR-006 / FR-007 approval options; service does not invent gates |
+| Persistence | Manifest of references only — no duplicated CV/cover-letter content in Opportunity storage |
+| Traceability | Manifest copies ``artifact_paths``, acquisition provenance, and strategy summary |
+
+### Public API additions
+
+- ``ApplicationPackageService.prepare`` / ``get``
+- ``OpportunityService.load_artifacts`` → ``OpportunityArtifacts`` (public rehydration
+  of immutable snapshots without importing ``yaml_store``)
+
+### Decisions worth remembering
+
+| Decision | Why |
+|----------|-----|
+| Standalone service, not orchestration | M0 proves package composition before any durable interrupt redesign (ADR-003) |
+| Manifest-only persistence | Generated drafts already have writers; Opportunity artefacts stay immutable (ADR-002) |
+| Replace, no versioning | Owner-approved M0 cardinality — keep the model small until regeneration evidence demands otherwise |
+| No ``PipelineStatus`` write | Lifecycle remains FR-013; recommendations already know ``preparing`` but FR-010 must not claim it |
+
+**Historical next (at M0):** M1 durability — delivered. FR-010 freeze:
+[eval/fr010_application_package.md](eval/fr010_application_package.md).
+
+---
+
+## FR-010 M1 — Application Package durability and regeneration
+
+**Status:** M1 complete (2026-07-31). Acceptance:
+[eval/fr010_m1_package_durability.md](eval/fr010_m1_package_durability.md).
+
+### Regeneration model
+
+| Rule | Behaviour |
+|------|-----------|
+| Identity | Still one Opportunity → one current package; no versioning |
+| Stem | Draft files keep stem ``opportunity_id`` and overwrite in place |
+| Commit point | Manifest save is the durability commit — prior package remains current until then |
+| Persist format | Draft paths stored as relative filenames (``output_dir="."``); ``get`` resolves absolute paths |
+| Idempotency | Same gates/profile/strategy + same ``prepared_at`` → identical manifest + draft bytes |
+| Integrity | ``get(verify=True)`` requires every referenced draft file to exist |
+
+### Failure behaviour
+
+1. Generation / gate failure before any write → no disk change; prior package unchanged.
+2. Draft write failure after some files overwritten → prior **manifest** remains current
+   (draft bytes may be partially updated; re-run ``prepare`` to converge).
+3. Missing drafts on load → ``ApplicationPackageIntegrityError`` (``verify=False`` bypasses).
+
+### Public API additions (M1)
+
+- ``ApplicationPackageService.exists``
+- ``ApplicationPackageService.verify_artefacts``
+- ``get(..., verify=True)`` integrity check
+- ``ApplicationPackageIntegrityError``
+
+**Historical next (at M1):** M2 owner CLI — delivered. FR-010 freeze:
+[eval/fr010_application_package.md](eval/fr010_application_package.md).
+
+---
+
+## FR-010 M2 — Owner operations and CLI
+
+**Status:** M2 complete (2026-07-31). Acceptance:
+[eval/fr010_m2_owner_cli.md](eval/fr010_m2_owner_cli.md).
+
+### CLI design
+
+`cic package` is a **thin Typer adapter**. All eligibility, gates, regeneration, and
+integrity checks remain in `ApplicationPackageService`.
+
+| Command | Service call | Notes |
+|---------|--------------|-------|
+| `prepare` | `prepare(...)` | Requires ``--approve`` to set FR-006/007 gates; optional ``--override-material-benefit`` |
+| `show` | `get(..., verify=not --no-verify)` | Compact summary or ``--yaml`` |
+| `verify` | `get(..., verify=True)` | Fail-closed integrity check |
+
+Shared path options: ``--dir``, ``--packages-dir``, ``--profile``, ``--cv-dir``,
+``--cover-letter-dir``.
+
+### Owner workflow (offline)
+
+```
+cic opportunity decide <opp_id> apply
+cic package prepare <opp_id> --approve [--override-material-benefit]
+cic package show <opp_id>
+cic package verify <opp_id>
+```
+
+Manual harness: `scripts/run_fr010_application_package_manual.py cli --workspace …`
+
+**Freeze:** FR-010 is complete —
+[eval/fr010_application_package.md](eval/fr010_application_package.md).
+No further FR-010 milestones. Horizon 1A continues at **FR-011** Application
+Preparation Orchestration (M0 complete; submission is **FR-012**).
+
+### FR-010 freeze invariants
+
+| Invariant | Status |
+|-----------|--------|
+| `ApplicationPackageService` is the single business implementation | Held |
+| CLI is a thin adapter only | Held |
+| Opportunity evidence (FR-002–FR-005) remains immutable | Held |
+| Manifest-only persistence; replace-on-regenerate; no versioning | Held |
+| No orchestration / PipelineStatus / submission changes | Held |
+
+---
+
+## FR-011 Application Preparation Orchestration (M0)
+
+**Status:** M0 complete (2026-07-31) —
+[eval/fr011_m0_application_preparation.md](eval/fr011_m0_application_preparation.md).
+
+Dedicated `ApplicationPreparationOrchestrator` in
+`career_intelligence.application_preparation`. Coordinates existing services for
+package preparation. Does **not** extend the FR-008 `ApplicationWorkflowRunner`,
+does not introduce a `routing.py` module, and does not move package business rules
+out of `ApplicationPackageService`.
+
+### M0 sequence
+
+```
+validate_preconditions → prepare_package (ApplicationPackageService.prepare)
+```
+
+Preconditions: Opportunity exists, owner decision is `apply`, and FR-002–FR-005
+artefacts are present (verified, not re-produced). FR-006/007 gates pass through
+unchanged. Preparation runs (`apr_<ULID>`) under `data/preparation_runs/` are
+recovery/audit only — not Opportunity SoT. No `PipelineStatus` write.
+
+### Owner / developer validation (offline)
+
+```
+python scripts/run_fr011_preparation_manual.py --workspace data/_fr011_m0_manual
+```
+
+Public surface: `career_intelligence.application_preparation`. **Freeze:** FR-011 is
+complete — [eval/fr011_application_preparation.md](eval/fr011_application_preparation.md).
+Horizon 1A continues at **FR-012** Submission Assistance.
+
+### FR-011 M0 boundaries held
+
+| Boundary | Status |
+|----------|--------|
+| Dedicated orchestrator (not FR-008 graph extension) | Held |
+| Package rules remain in FR-010 | Held |
+| No `routing.py` / resume branching | Held (deliberate) |
+| No submission / PipelineStatus | Held |
+
+---
+
+## FR-011 M1 — Executable preparation workflow
+
+**Status:** M1 complete (2026-07-31) —
+[eval/fr011_m1_executable_preparation.md](eval/fr011_m1_executable_preparation.md).
+
+### CLI design
+
+`cic preparation` is a **thin Typer adapter**. Sequencing stays in
+`ApplicationPreparationOrchestrator`; package rules stay in FR-010.
+
+| Command | Service call | Notes |
+|---------|--------------|-------|
+| `run` | `orchestrator.run(...)` | Requires `--approve`; optional `--override-material-benefit` |
+| `show` | `orchestrator.get(run_id)` | Compact summary or `--yaml` |
+
+Failed runs print deterministic state and exit non-zero. `cic package` remains
+supported as a direct pathway.
+
+Manual harness: `scripts/run_fr011_preparation_manual.py cli --workspace …`
+
+### FR-011 freeze invariants
+
+| Invariant | Status |
+|-----------|--------|
+| Orchestrator owns sequencing and run state only | Held |
+| Package rules remain in `ApplicationPackageService` | Held |
+| CLI is a thin adapter (no business logic) | Held |
+| FR-008 runner untouched | Held |
+| No PipelineStatus / submission | Held |
+
+**Freeze:** [eval/fr011_application_preparation.md](eval/fr011_application_preparation.md).
+Next: **FR-012** Submission Assistance.

@@ -47,7 +47,7 @@ from .models import (
     StrategySummary,
 )
 from .review_service import OpportunityReviewService
-from .service import OpportunityService
+from .service import OpportunityArtifacts, OpportunityService
 
 __all__ = [
     "ARTIFACT_FILENAMES",
@@ -73,6 +73,7 @@ __all__ = [
     "TERMINAL_STATUSES",
     "Opportunity",
     "OpportunityArtifactExistsError",
+    "OpportunityArtifacts",
     "OpportunityCsvBridge",
     "OpportunityCsvExporter",
     "OpportunityError",

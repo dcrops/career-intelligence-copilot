@@ -2,7 +2,9 @@
 
 from __future__ import annotations
 
+import json
 import os
+from dataclasses import dataclass
 from datetime import UTC, date, datetime
 from pathlib import Path
 
@@ -16,11 +18,13 @@ from career_intelligence.portfolio_matching.models import PortfolioMatch
 from .errors import (
     ErrorDetail,
     OpportunityNotFoundError,
+    OpportunityStorageError,
     OpportunityTransitionError,
     OpportunityValidationError,
 )
-from .identity import build_identity, new_opportunity_id
+from .identity import build_identity
 from .models import (
+    ARTIFACT_FILENAMES,
     OUTCOME_KINDS,
     OWNER_DECISION_KINDS,
     PIPELINE_STATUSES,
@@ -42,6 +46,17 @@ DEFAULT_OPPORTUNITIES_ROOT = (
 )
 
 
+@dataclass(frozen=True)
+class OpportunityArtifacts:
+    """Trusted FR-002–FR-005 snapshots loaded through the public opportunity boundary."""
+
+    posting: JobPosting
+    job_analysis: JobAnalysis
+    assessment: OpportunityAssessment
+    portfolio_match: PortfolioMatch
+    strategy: ApplicationStrategy
+
+
 class OpportunityService:
     """Stable interface for creating, deciding, and updating opportunities."""
 
@@ -58,6 +73,71 @@ class OpportunityService:
 
     def list_opportunities(self) -> list[Opportunity]:
         return self._store.list_opportunities()
+
+    def load_artifacts(self, opportunity_id: str) -> OpportunityArtifacts:
+        """Load immutable FR-002–FR-005 snapshots for a persisted Opportunity.
+
+        Downstream capabilities (including FR-010 package preparation) must use this
+        public boundary rather than reading YAML paths or importing ``yaml_store``.
+        Artifact files are never modified.
+        """
+        opportunity = self._store.get(opportunity_id)
+        if not opportunity.artifact_paths:
+            raise OpportunityStorageError(
+                f"Opportunity {opportunity_id} has no artifact snapshots"
+            )
+
+        missing = [
+            name for name in ARTIFACT_FILENAMES if name not in opportunity.artifact_paths
+        ]
+        if missing:
+            raise OpportunityStorageError(
+                f"Opportunity {opportunity_id} is missing artifact keys: "
+                + ", ".join(missing)
+            )
+
+        posting = self._load_artifact_model(
+            opportunity, "posting.json", JobPosting
+        )
+        job_analysis = self._load_artifact_model(
+            opportunity, "job_analysis.json", JobAnalysis
+        )
+        assessment = self._load_artifact_model(
+            opportunity, "assessment.json", OpportunityAssessment
+        )
+        portfolio_match = self._load_artifact_model(
+            opportunity, "portfolio_match.json", PortfolioMatch
+        )
+        strategy = self._load_artifact_model(
+            opportunity, "strategy.json", ApplicationStrategy
+        )
+        return OpportunityArtifacts(
+            posting=posting,
+            job_analysis=job_analysis,
+            assessment=assessment,
+            portfolio_match=portfolio_match,
+            strategy=strategy,
+        )
+
+    def _load_artifact_model(
+        self,
+        opportunity: Opportunity,
+        filename: str,
+        model_type: type,
+    ):
+        relative = opportunity.artifact_paths[filename]
+        path = self._store.resolve_artifact_path(relative)
+        if not path.is_file():
+            raise OpportunityStorageError(
+                f"Missing artifact file for {opportunity.opportunity_id}: {relative}"
+            )
+        try:
+            raw = json.loads(path.read_text(encoding="utf-8"))
+            return model_type.model_validate(raw)
+        except (OSError, ValueError, ValidationError) as error:
+            raise OpportunityStorageError(
+                f"Could not load {filename} for {opportunity.opportunity_id}: {error}"
+            ) from error
 
     def replace(self, opportunity: Opportunity) -> Opportunity:
         """Persist a full Opportunity replacement. Artifact files are never touched.
@@ -354,8 +434,6 @@ class OpportunityService:
         a posting artifact or without grounded title/company in that artifact.
         Never overwrites identity fields that are already set.
         """
-        import json
-
         results: list[dict[str, object]] = []
         for opportunity in self._store.list_opportunities():
             identity = opportunity.identity

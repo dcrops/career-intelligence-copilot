@@ -11,6 +11,8 @@ tmp_*.json
 tmp_*.txt
 data/opportunities/index.yaml
 data/opportunities/artifacts/
+data/application_packages/**
+!data/application_packages/README.md
 data/opportunities_m5_validation/
 data/opportunities_m2_smoke/
 data/exports/

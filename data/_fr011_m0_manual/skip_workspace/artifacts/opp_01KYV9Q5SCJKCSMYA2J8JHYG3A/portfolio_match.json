@@ -1,0 +1,121 @@
+{
+  "job_analysis": {
+    "posting": {
+      "raw_text": "Other Role. SQL only. Skip Co body for manual check.",
+      "title": "Other Role",
+      "company": "Skip Co",
+      "source_url": "https://au.seek.com/job/30101011"
+    },
+    "role_family": {
+      "family": "ai_engineering",
+      "evidence": [
+        {
+          "excerpt": "Senior AI Engineer",
+          "section": "title"
+        }
+      ]
+    },
+    "seniority": {
+      "level": "senior",
+      "ambiguous": false,
+      "candidate_levels": [],
+      "evidence": [
+        {
+          "excerpt": "Senior AI Engineer",
+          "section": "title"
+        }
+      ]
+    },
+    "technologies": [
+      {
+        "name": "Python",
+        "level": "required",
+        "evidence": [
+          {
+            "excerpt": "Python required",
+            "section": "requirements"
+          }
+        ]
+      }
+    ],
+    "responsibilities": [
+      {
+        "description": "Build LLM applications",
+        "evidence": [
+          {
+            "excerpt": "Build LLM applications",
+            "section": "responsibilities"
+          }
+        ]
+      }
+    ],
+    "compensation": {
+      "clarity": "unstated",
+      "minimum": null,
+      "maximum": null,
+      "currency": null,
+      "period": null,
+      "raw_text": null,
+      "evidence": []
+    },
+    "location": {
+      "clarity": "stated",
+      "summary": "Melbourne",
+      "evidence": [
+        {
+          "excerpt": "Hybrid Melbourne",
+          "section": "location"
+        }
+      ]
+    },
+    "work_arrangement": {
+      "arrangement": "hybrid",
+      "details": null,
+      "evidence": [
+        {
+          "excerpt": "Hybrid Melbourne",
+          "section": "location"
+        }
+      ]
+    },
+    "employment": {
+      "working_hours": "unspecified",
+      "engagement_type": "unspecified",
+      "evidence": []
+    },
+    "experience_requirements": []
+  },
+  "ranked_projects": [
+    {
+      "rank": 1,
+      "project_id": "example-project",
+      "rationale": "Lead with example-project for required Python.",
+      "factors": [
+        {
+          "kind": "required_technology",
+          "summary": "example-project uses required Python.",
+          "job_evidence": [
+            {
+              "source": "technology",
+              "item_index": 0,
+              "name": "Python",
+              "excerpt": null
+            }
+          ],
+          "profile_evidence": [
+            {
+              "source": "project",
+              "ref": "project:example-project",
+              "excerpt": null
+            }
+          ]
+        }
+      ],
+      "tie_group": null,
+      "tie_break_reason": null
+    }
+  ],
+  "unranked_project_ids": [],
+  "summary": "Lead with example-project.",
+  "insufficient_evidence": false
+}

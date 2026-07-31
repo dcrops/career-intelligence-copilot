@@ -36,7 +36,7 @@ Objectives.
 |----------|--------|
 | What is this project? | Decision-support for job search (Horizon 1), evolving toward a Career Intelligence Platform (Horizon 2). |
 | What has been completed? | **Phase 1** and **Phase 2** — see [12_phase_history.md](12_phase_history.md) and [eval/phase2_release_report.md](eval/phase2_release_report.md). |
-| What is next? | **FR-010** Application Package Preparation, inside **Horizon 1A** (FR-008 and FR-009 complete; acquisition via source adapters, not “scraping”). Recruiter outreach is Horizon 1B (**FR-016+**) — [10_roadmap.md](10_roadmap.md). |
+| What is next? | **FR-012** Submission Assistance, inside **Horizon 1A** (FR-008–FR-011 complete; acquisition via source adapters, not “scraping”). Recruiter outreach is Horizon 1B (**FR-017+**) — [10_roadmap.md](10_roadmap.md). |
 | Where should I start reading? | This guide → [AGENTS.md](../AGENTS.md) → [04_functional_specification.md](04_functional_specification.md) → [10_roadmap.md](10_roadmap.md). |
 
 ---
@@ -46,19 +46,25 @@ Objectives.
 **Phase 2 Job Intelligence — Complete** (documentation frozen as baseline).
 
 **Closed in Horizon 1A:** **FR-008** Job Acquisition & Workflow Orchestration
-([eval/fr008_workflow_orchestration.md](eval/fr008_workflow_orchestration.md)) and
+([eval/fr008_workflow_orchestration.md](eval/fr008_workflow_orchestration.md)),
 **FR-009** Opportunity Review Queue & Ranking
 ([eval/fr009_opportunity_review_queue.md](eval/fr009_opportunity_review_queue.md);
 milestones [M0](eval/fr009_m0_domain_contracts.md),
 [M1](eval/fr009_m1_persistence_boundary.md),
 [M2](eval/fr009_m2_owner_review_actions.md),
 [M3](eval/fr009_m3_duplicate_detection.md),
-[M4](eval/fr009_m4_recommendations.md)).
+[M4](eval/fr009_m4_recommendations.md)), and **FR-010** Application Package Preparation
+([eval/fr010_application_package.md](eval/fr010_application_package.md);
+milestones [M0](eval/fr010_m0_application_package.md),
+[M1](eval/fr010_m1_package_durability.md),
+[M2](eval/fr010_m2_owner_cli.md)), and **FR-011** Application Preparation Orchestration
+([eval/fr011_application_preparation.md](eval/fr011_application_preparation.md);
+milestones [M0](eval/fr011_m0_application_preparation.md),
+[M1](eval/fr011_m1_executable_preparation.md)).
 
-**Active FR:** **FR-010** Application Package Preparation — next in Horizon 1A, not
-started.
+**Active FR:** **FR-012** Submission Assistance — next in Horizon 1A, not started.
 
-**Thereafter:** Complete Horizon 1A (through FR-015), then Horizon 1B (FR-016–FR-022).
+**Thereafter:** Complete Horizon 1A (through FR-016), then Horizon 1B (FR-017–FR-023).
 
 Architecture decisions: `docs/adr/` (ADR-001, ADR-002, **ADR-003** thin in-repo
 workflow runner accepted — LangGraph not required for current FR-008 scope; **ADR-004**

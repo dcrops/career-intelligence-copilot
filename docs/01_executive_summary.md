@@ -68,10 +68,11 @@ The platform will provide:
 - Daily prioritisation
 
 Near-term delivery: Phase 2 Job Intelligence and document generation (FR-006/007) are
-complete. Within Horizon 1A, job acquisition and workflow orchestration (FR-008) and the
-opportunity review queue, duplicate handling, and ranked recommendations (FR-009) are also
-complete; **FR-010 application package preparation is next**. Horizon 1B recruiter
-engagement follows. See [10_roadmap.md](10_roadmap.md).
+complete. Within Horizon 1A, job acquisition and workflow orchestration (FR-008), the
+opportunity review queue, duplicate handling, and ranked recommendations (FR-009),
+application package preparation (FR-010), and application preparation orchestration
+(FR-011) are also complete; **FR-012 submission assistance is next**. Horizon 1B
+recruiter engagement follows. See [10_roadmap.md](10_roadmap.md).
 
 ---
 
@@ -94,8 +95,8 @@ Career Intelligence Copilot aims to help professionals:
 
 **Horizon 1 — Immediate:** Help the user secure a suitable AI Engineering role while reducing job-search effort.
 
-- **1A (current):** Job application workflow end to end (FR-008–FR-015)
-- **1B (later):** Recruiter and market engagement (FR-016–FR-022)
+- **1A (current):** Job application workflow end to end (FR-008–FR-016)
+- **1B (later):** Recruiter and market engagement (FR-017–FR-023)
 
 **Horizon 2 — Long term:** Evolve into a reusable Career Intelligence Platform supporting career progression, networking, learning, promotion, role changes, and future opportunity evaluation.
 

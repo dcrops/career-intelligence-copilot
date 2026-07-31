@@ -1,0 +1,323 @@
+{
+  "job_analysis": {
+    "posting": {
+      "raw_text": "[CIC-FIXTURE:ai-engineer]\nSenior AI Engineer — Northside Analytics (Melbourne)\n\nAbout the role\nWe are hiring a Senior AI Engineer to design and ship production LLM applications for\nAustralian enterprise clients. You will own retrieval pipelines, evaluation harnesses,\nand safe deployment patterns.\n\nResponsibilities\n• Build and maintain LLM applications using Python and LangChain\n• Partner with data engineers on feature pipelines and model observability\n• Mentor engineers on prompt evaluation and production readiness\n\nRequirements\n• 5+ years software engineering experience required\n• Strong Python required; LangChain experience preferred\n• Production LLM or RAG experience required\n\nLocation & employment\nHybrid Melbourne — 3 days in the CBD office. Full-time permanent.\nSalary $150,000–$180,000 AUD + super.",
+      "title": "Senior AI Engineer",
+      "company": "Northside Analytics",
+      "source_url": null
+    },
+    "role_family": {
+      "family": "ai_engineering",
+      "evidence": [
+        {
+          "excerpt": "Senior AI Engineer",
+          "section": "title"
+        }
+      ]
+    },
+    "seniority": {
+      "level": "senior",
+      "ambiguous": false,
+      "candidate_levels": [],
+      "evidence": [
+        {
+          "excerpt": "Senior AI Engineer",
+          "section": "title"
+        }
+      ]
+    },
+    "technologies": [
+      {
+        "name": "Python",
+        "level": "required",
+        "evidence": [
+          {
+            "excerpt": "Strong Python required",
+            "section": "requirements"
+          }
+        ]
+      },
+      {
+        "name": "LangChain",
+        "level": "preferred",
+        "evidence": [
+          {
+            "excerpt": "LangChain experience preferred",
+            "section": "requirements"
+          }
+        ]
+      }
+    ],
+    "responsibilities": [
+      {
+        "description": "Build and maintain LLM applications using Python and LangChain",
+        "evidence": [
+          {
+            "excerpt": "Build and maintain LLM applications using Python and LangChain",
+            "section": "responsibilities"
+          }
+        ]
+      }
+    ],
+    "compensation": {
+      "clarity": "stated",
+      "minimum": 150000.0,
+      "maximum": 180000.0,
+      "currency": "AUD",
+      "period": "year",
+      "raw_text": "Salary $150,000–$180,000 AUD + super",
+      "evidence": [
+        {
+          "excerpt": "Salary $150,000–$180,000 AUD + super",
+          "section": "compensation"
+        }
+      ]
+    },
+    "location": {
+      "clarity": "stated",
+      "summary": "Melbourne",
+      "evidence": [
+        {
+          "excerpt": "Hybrid Melbourne",
+          "section": "location"
+        }
+      ]
+    },
+    "work_arrangement": {
+      "arrangement": "hybrid",
+      "details": "3 days in the CBD office",
+      "evidence": [
+        {
+          "excerpt": "Hybrid Melbourne — 3 days in the CBD office",
+          "section": "location"
+        }
+      ]
+    },
+    "employment": {
+      "working_hours": "full_time",
+      "engagement_type": "permanent",
+      "evidence": [
+        {
+          "excerpt": "Full-time permanent",
+          "section": "employment"
+        }
+      ]
+    },
+    "experience_requirements": [
+      {
+        "description": "5+ years software engineering experience",
+        "level": "required",
+        "minimum_years": 5.0,
+        "maximum_years": null,
+        "evidence": [
+          {
+            "excerpt": "5+ years software engineering experience required",
+            "section": "requirements"
+          }
+        ]
+      },
+      {
+        "description": "Production LLM or RAG experience",
+        "level": "required",
+        "minimum_years": null,
+        "maximum_years": null,
+        "evidence": [
+          {
+            "excerpt": "Production LLM or RAG experience required",
+            "section": "requirements"
+          }
+        ]
+      }
+    ]
+  },
+  "application_tier": "silver",
+  "pursuit_posture": "consider",
+  "company_alignment": {
+    "company": "Northside Analytics",
+    "alignment_hook": "Build and maintain LLM applications using Python and LangChain",
+    "evidence": [
+      {
+        "origin": "job_analysis",
+        "job_source": "responsibility",
+        "job_index": 0,
+        "profile_source": null,
+        "profile_id": null,
+        "portfolio_project_id": null,
+        "excerpt": "Build and maintain LLM applications using Python and LangChain"
+      }
+    ]
+  },
+  "role_motivation": {
+    "role_title": "Senior AI Engineer",
+    "motivation": "Build and maintain LLM applications using Python and LangChain",
+    "evidence": [
+      {
+        "origin": "job_analysis",
+        "job_source": "responsibility",
+        "job_index": 0,
+        "profile_source": null,
+        "profile_id": null,
+        "portfolio_project_id": null,
+        "excerpt": "Build and maintain LLM applications using Python and LangChain"
+      },
+      {
+        "origin": "job_analysis",
+        "job_source": "technology",
+        "job_index": 0,
+        "profile_source": null,
+        "profile_id": null,
+        "portfolio_project_id": null,
+        "excerpt": "Python, LangChain"
+      }
+    ]
+  },
+  "relevant_evidence": [
+    {
+      "kind": "commercial_experience",
+      "claim": "AI Engineer with 3.5 years of commercial enterprise Data Engineering experience and an independent AI Engineering portfolio.",
+      "project_id": null,
+      "evidence": [
+        {
+          "origin": "career_profile",
+          "job_source": null,
+          "job_index": null,
+          "profile_source": "identity",
+          "profile_id": null,
+          "portfolio_project_id": null,
+          "excerpt": "AI Engineer with 3.5 years of commercial enterprise Data Engineering experience and an independent AI Engineering portfolio."
+        }
+      ]
+    },
+    {
+      "kind": "engineering_practice",
+      "claim": "Designed and delivered a portfolio of AI applications combining deterministic logic with AI reasoning across RAG, operational intelligence, diagnostics, entitlements, and career decision support.",
+      "project_id": null,
+      "evidence": [
+        {
+          "origin": "career_profile",
+          "job_source": null,
+          "job_index": null,
+          "profile_source": "identity",
+          "profile_id": null,
+          "portfolio_project_id": null,
+          "excerpt": "Designed and delivered a portfolio of AI applications combining deterministic logic with AI reasoning across RAG, operational intelligence, diagnostics, entitlements, and career de"
+        }
+      ]
+    },
+    {
+      "kind": "engineering_practice",
+      "claim": "Built modular service architectures with FastAPI, containerised services with Docker, and unit/regression suites in PyTest.",
+      "project_id": null,
+      "evidence": [
+        {
+          "origin": "career_profile",
+          "job_source": null,
+          "job_index": null,
+          "profile_source": "identity",
+          "profile_id": null,
+          "portfolio_project_id": null,
+          "excerpt": "Built modular service architectures with FastAPI, containerised services with Docker, and unit/regression suites in PyTest."
+        }
+      ]
+    }
+  ],
+  "strongest_projects": [
+    {
+      "rank": 1,
+      "project_id": "governance-document-rag",
+      "project_name": "Governance-Aware Document Intelligence RAG",
+      "emphasis": "Allows organisations to answer questions from their own documents with responses that stay grounded in source material. Built for teams that need trustworthy AI answers over policies, procedures, and knowledge bases — with evaluation and explainability controls.",
+      "selection_reason": "Selected because it answers employer priorities around documents, llm_agents, trust_explainability.",
+      "business_outcome": "document answers remain verifiable, which improves governance trust",
+      "fit_focus": "retrieval orchestration, grounding validation and evaluation controls around LLM responses",
+      "evidence": [
+        {
+          "origin": "career_profile",
+          "job_source": null,
+          "job_index": null,
+          "profile_source": "project",
+          "profile_id": "governance-document-rag",
+          "portfolio_project_id": null,
+          "excerpt": "Allows organisations to answer questions from their own documents with responses that stay grounded in source material. Built for teams that need trustworthy AI answers over polici"
+        },
+        {
+          "origin": "application_strategy",
+          "job_source": null,
+          "job_index": null,
+          "profile_source": null,
+          "profile_id": null,
+          "portfolio_project_id": null,
+          "excerpt": "Selected because it answers employer priorities around documents, llm_agents, trust_explainability."
+        },
+        {
+          "origin": "application_strategy",
+          "job_source": null,
+          "job_index": null,
+          "profile_source": null,
+          "profile_id": null,
+          "portfolio_project_id": null,
+          "excerpt": "Consider emphasising 'governance-document-rag' (PortfolioMatch rank 1)."
+        }
+      ]
+    },
+    {
+      "rank": 2,
+      "project_id": "career-intelligence-copilot",
+      "project_name": "Career Intelligence Copilot",
+      "emphasis": "Enables an AI Engineering job seeker to decide which roles deserve effort. Reviews job ads against a structured career profile, ranks fit, recommends application strategy, and drafts tailored CVs for human review — reducing repetitive search work while keeping decisions explainable.",
+      "selection_reason": "Selected because it answers employer priorities around llm_agents, production, trust_explainability.",
+      "business_outcome": "high-stakes recommendations stay evidence-backed and reviewable",
+      "fit_focus": "LLM orchestration with deterministic decision support, structured evaluation and human approval workflows",
+      "evidence": [
+        {
+          "origin": "career_profile",
+          "job_source": null,
+          "job_index": null,
+          "profile_source": "project",
+          "profile_id": "career-intelligence-copilot",
+          "portfolio_project_id": null,
+          "excerpt": "Enables an AI Engineering job seeker to decide which roles deserve effort. Reviews job ads against a structured career profile, ranks fit, recommends application strategy, and draf"
+        },
+        {
+          "origin": "application_strategy",
+          "job_source": null,
+          "job_index": null,
+          "profile_source": null,
+          "profile_id": null,
+          "portfolio_project_id": null,
+          "excerpt": "Selected because it answers employer priorities around llm_agents, production, trust_explainability."
+        },
+        {
+          "origin": "application_strategy",
+          "job_source": null,
+          "job_index": null,
+          "profile_source": null,
+          "profile_id": null,
+          "portfolio_project_id": null,
+          "excerpt": "Consider emphasising 'career-intelligence-copilot' (PortfolioMatch rank 2)."
+        }
+      ]
+    }
+  ],
+  "closing_strategy": {
+    "approach": "conversation_request",
+    "intent": "Close by inviting a conversation about the Senior AI Engineer role at Northside Analytics.",
+    "evidence": [
+      {
+        "origin": "application_strategy",
+        "job_source": null,
+        "job_index": null,
+        "profile_source": null,
+        "profile_id": null,
+        "portfolio_project_id": null,
+        "excerpt": "consider"
+      }
+    ]
+  },
+  "assumptions": [
+    "Material-benefit gate was overridden by the caller; cover letter planning proceeds despite tier/next-action signals."
+  ],
+  "owner_review_recommended": true,
+  "insufficient_evidence": false,
+  "material_benefit_override": true
+}

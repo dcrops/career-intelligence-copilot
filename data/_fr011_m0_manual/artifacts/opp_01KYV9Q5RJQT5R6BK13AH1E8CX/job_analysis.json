@@ -1,0 +1,86 @@
+{
+  "posting": {
+    "raw_text": "AI Engineer. Python and LLMs. Hybrid Sydney. Manual Prep Co offline validation posting.",
+    "title": "AI Engineer",
+    "company": "Manual Prep Co",
+    "source_url": "https://au.seek.com/job/30101010"
+  },
+  "role_family": {
+    "family": "ai_engineering",
+    "evidence": [
+      {
+        "excerpt": "Senior AI Engineer",
+        "section": "title"
+      }
+    ]
+  },
+  "seniority": {
+    "level": "senior",
+    "ambiguous": false,
+    "candidate_levels": [],
+    "evidence": [
+      {
+        "excerpt": "Senior AI Engineer",
+        "section": "title"
+      }
+    ]
+  },
+  "technologies": [
+    {
+      "name": "Python",
+      "level": "required",
+      "evidence": [
+        {
+          "excerpt": "Python required",
+          "section": "requirements"
+        }
+      ]
+    }
+  ],
+  "responsibilities": [
+    {
+      "description": "Build LLM applications",
+      "evidence": [
+        {
+          "excerpt": "Build LLM applications",
+          "section": "responsibilities"
+        }
+      ]
+    }
+  ],
+  "compensation": {
+    "clarity": "unstated",
+    "minimum": null,
+    "maximum": null,
+    "currency": null,
+    "period": null,
+    "raw_text": null,
+    "evidence": []
+  },
+  "location": {
+    "clarity": "stated",
+    "summary": "Melbourne",
+    "evidence": [
+      {
+        "excerpt": "Hybrid Melbourne",
+        "section": "location"
+      }
+    ]
+  },
+  "work_arrangement": {
+    "arrangement": "hybrid",
+    "details": null,
+    "evidence": [
+      {
+        "excerpt": "Hybrid Melbourne",
+        "section": "location"
+      }
+    ]
+  },
+  "employment": {
+    "working_hours": "unspecified",
+    "engagement_type": "unspecified",
+    "evidence": []
+  },
+  "experience_requirements": []
+}

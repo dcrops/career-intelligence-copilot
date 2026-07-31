@@ -7,6 +7,36 @@ import typer
 import yaml
 from pydantic import BaseModel
 
+from career_intelligence.application_package import (
+    DEFAULT_PACKAGES_ROOT,
+    ApplicationPackageEligibilityError,
+    ApplicationPackageError,
+    ApplicationPackageIntegrityError,
+    ApplicationPackageNotFoundError,
+    ApplicationPackageService,
+    ApplicationPackageStorageError,
+    ApplicationPackageValidationError,
+)
+from career_intelligence.application_preparation import (
+    DEFAULT_PREPARATION_RUNS_ROOT,
+    ApplicationPreparationError,
+    ApplicationPreparationOrchestrator,
+    ApplicationPreparationStorageError,
+    ApplicationPreparationValidationError,
+    PreparationRunNotFoundError,
+    PreparationRunState,
+)
+from career_intelligence.cover_letter import (
+    CoverLetterGenerationOptions,
+    CoverLetterPlanGateError,
+    CoverLetterPlanOptions,
+)
+from career_intelligence.cv_generation import (
+    CvGenerationGateError,
+    CvGenerationOptions,
+    TailoringOptions,
+    TailoringPlanGateError,
+)
 from career_intelligence.opportunities import (
     DEFAULT_EXPORT_PATH,
     INTERVIEW_STAGES,
@@ -40,8 +70,16 @@ profile_app = typer.Typer(help="Manage and inspect the career profile.")
 opportunity_app = typer.Typer(
     help="Inspect and update persisted opportunities (M1–M4)."
 )
+package_app = typer.Typer(
+    help="Prepare and inspect application packages (FR-010)."
+)
+preparation_app = typer.Typer(
+    help="Run application preparation orchestration (FR-011)."
+)
 app.add_typer(profile_app, name="profile")
 app.add_typer(opportunity_app, name="opportunity")
+app.add_typer(package_app, name="package")
+app.add_typer(preparation_app, name="preparation")
 
 PathOption = Annotated[
     Path | None,
@@ -56,6 +94,36 @@ OpportunitiesDirOption = Annotated[
     ),
 ]
 
+PackagesDirOption = Annotated[
+    Path | None,
+    typer.Option(
+        "--packages-dir",
+        help=(
+            "Override the application-packages store directory "
+            f"(default: {DEFAULT_PACKAGES_ROOT})."
+        ),
+    ),
+]
+
+PreparationRunsDirOption = Annotated[
+    Path | None,
+    typer.Option(
+        "--runs-dir",
+        help=(
+            "Override the preparation-runs store directory "
+            f"(default: {DEFAULT_PREPARATION_RUNS_ROOT})."
+        ),
+    ),
+]
+
+ProfilePathOption = Annotated[
+    Path | None,
+    typer.Option(
+        "--profile",
+        help="Override the career profile path used for package preparation.",
+    ),
+]
+
 
 def _profile_service(path: Path | None) -> CareerProfileService:
     return CareerProfileService.from_path(path) if path else CareerProfileService()
@@ -63,6 +131,53 @@ def _profile_service(path: Path | None) -> CareerProfileService:
 
 def _opportunity_service(root: Path | None) -> OpportunityService:
     return OpportunityService.from_path(root) if root else OpportunityService()
+
+
+def _package_service(
+    *,
+    opportunities_dir: Path | None,
+    packages_dir: Path | None,
+    profile_path: Path | None,
+    cv_output_dir: Path | None = None,
+    cover_letter_output_dir: Path | None = None,
+) -> ApplicationPackageService:
+    opportunities = _opportunity_service(opportunities_dir)
+    profile = (
+        CareerProfileService.from_path(profile_path)
+        if profile_path is not None
+        else CareerProfileService()
+    )
+    return ApplicationPackageService(
+        opportunities,
+        profile=profile,
+        packages_root=packages_dir,
+        cv_output_dir=cv_output_dir,
+        cover_letter_output_dir=cover_letter_output_dir,
+    )
+
+
+def _preparation_orchestrator(
+    *,
+    opportunities_dir: Path | None,
+    packages_dir: Path | None,
+    profile_path: Path | None,
+    runs_dir: Path | None,
+    cv_output_dir: Path | None = None,
+    cover_letter_output_dir: Path | None = None,
+) -> ApplicationPreparationOrchestrator:
+    opportunities = _opportunity_service(opportunities_dir)
+    packages = _package_service(
+        opportunities_dir=opportunities_dir,
+        packages_dir=packages_dir,
+        profile_path=profile_path,
+        cv_output_dir=cv_output_dir,
+        cover_letter_output_dir=cover_letter_output_dir,
+    )
+    return ApplicationPreparationOrchestrator(
+        opportunities,
+        packages,
+        runs_root=runs_dir,
+    )
 
 
 def _csv_bridge(root: Path | None) -> OpportunityCsvBridge:
@@ -120,6 +235,84 @@ def _exit_for_comparison(error: OpportunityComparisonError) -> Never:
         raise typer.Exit(code=1)
     typer.echo(str(error), err=True)
     raise typer.Exit(code=2)
+
+
+def _exit_for_package(error: ApplicationPackageError) -> Never:
+    if isinstance(error, ApplicationPackageValidationError):
+        typer.echo("Application package validation failed:", err=True)
+        for detail in error.errors:
+            typer.echo(f"- {_format_location(detail.loc)}: {detail.msg}", err=True)
+        raise typer.Exit(code=1)
+
+    typer.echo(str(error), err=True)
+    if isinstance(
+        error,
+        (
+            ApplicationPackageNotFoundError,
+            ApplicationPackageEligibilityError,
+            ApplicationPackageIntegrityError,
+        ),
+    ):
+        raise typer.Exit(code=1)
+    if isinstance(error, ApplicationPackageStorageError):
+        raise typer.Exit(code=2)
+    raise typer.Exit(code=2)
+
+
+def _exit_for_preparation(error: ApplicationPreparationError) -> Never:
+    if isinstance(error, ApplicationPreparationValidationError):
+        typer.echo("Application preparation validation failed:", err=True)
+        for detail in error.errors:
+            typer.echo(f"- {_format_location(detail.loc)}: {detail.msg}", err=True)
+        raise typer.Exit(code=1)
+
+    typer.echo(str(error), err=True)
+    if isinstance(error, PreparationRunNotFoundError):
+        raise typer.Exit(code=1)
+    if isinstance(error, ApplicationPreparationStorageError):
+        raise typer.Exit(code=2)
+    raise typer.Exit(code=2)
+
+
+def _print_preparation_summary(state: PreparationRunState) -> None:
+    typer.echo(f"run_id: {state.run_id}")
+    typer.echo(f"opportunity_id: {state.opportunity_id}")
+    typer.echo(f"status: {state.status}")
+    steps = ", ".join(step.step_id for step in state.completed_steps) or "(none)"
+    typer.echo(f"completed_steps: {steps}")
+    if state.package is not None:
+        typer.echo(
+            f"package: {state.package.opportunity_id} "
+            f"(prepared_at={state.package.prepared_at.isoformat()})"
+        )
+    if state.error is not None:
+        typer.echo(
+            f"error: step={state.error.step_id} "
+            f"type={state.error.error_type} "
+            f"message={state.error.message}"
+        )
+
+
+def _print_package_summary(manifest) -> None:
+    acq = manifest.evidence.acquisition
+    typer.echo(f"opportunity_id: {manifest.opportunity_id}")
+    typer.echo(f"prepared_at: {manifest.prepared_at.isoformat()}")
+    typer.echo(f"owner_review_required: {manifest.owner_review_required}")
+    typer.echo(
+        f"company/title: {acq.company or '—'} / {acq.title or '—'}"
+    )
+    typer.echo(f"source_kind: {acq.source_kind}")
+    typer.echo("evidence artefacts:")
+    for name, relative in sorted(manifest.evidence.artifact_paths.items()):
+        typer.echo(f"  - {name}: {relative}")
+    typer.echo("cv:")
+    typer.echo(f"  markdown: {manifest.cv.markdown_path}")
+    typer.echo(f"  html: {manifest.cv.html_path}")
+    typer.echo(f"  plan: {manifest.cv.plan_json_path}")
+    typer.echo("cover_letter:")
+    typer.echo(f"  markdown: {manifest.cover_letter.markdown_path}")
+    typer.echo(f"  html: {manifest.cover_letter.html_path}")
+    typer.echo(f"  plan: {manifest.cover_letter.plan_json_path}")
 
 
 @profile_app.command("validate")
@@ -471,6 +664,349 @@ def compare_open_opportunities(
         )
         for reason in item.reasons:
             typer.echo(f"   - {reason}")
+
+
+@package_app.command("prepare")
+def prepare_package(
+    opportunity_id: Annotated[str, typer.Argument(help="Opportunity id (opp_<ULID>).")],
+    dir: OpportunitiesDirOption = None,
+    packages_dir: PackagesDirOption = None,
+    profile: ProfilePathOption = None,
+    cv_dir: Annotated[
+        Path | None,
+        typer.Option("--cv-dir", help="Override CV draft output directory."),
+    ] = None,
+    cover_letter_dir: Annotated[
+        Path | None,
+        typer.Option(
+            "--cover-letter-dir",
+            help="Override cover-letter draft output directory.",
+        ),
+    ] = None,
+    approve: Annotated[
+        bool,
+        typer.Option(
+            "--approve",
+            help=(
+                "Explicitly set FR-006/FR-007 owner-approval gates "
+                "(required to prepare)."
+            ),
+        ),
+    ] = False,
+    override_material_benefit: Annotated[
+        bool,
+        typer.Option(
+            "--override-material-benefit",
+            help=(
+                "Record an explicit FR-006/FR-007 material-benefit override "
+                "when the strategy tier does not already justify documents."
+            ),
+        ),
+    ] = False,
+    yaml_output: Annotated[
+        bool,
+        typer.Option("--yaml", help="Emit the full package manifest as YAML."),
+    ] = False,
+) -> None:
+    """Prepare or regenerate the current Application Package for an apply Opportunity.
+
+    Thin adapter over ApplicationPackageService. Existing FR-006 / FR-007 approval
+    gates remain enforced — pass ``--approve`` to set them explicitly.
+    """
+    if not approve:
+        typer.echo(
+            "Refusing prepare: pass --approve to set FR-006/FR-007 owner-approval "
+            "gates explicitly. Owner review remains mandatory before external use.",
+            err=True,
+        )
+        raise typer.Exit(code=1)
+
+    try:
+        service = _package_service(
+            opportunities_dir=dir,
+            packages_dir=packages_dir,
+            profile_path=profile,
+            cv_output_dir=cv_dir,
+            cover_letter_output_dir=cover_letter_dir,
+        )
+        manifest = service.prepare(
+            opportunity_id,
+            tailoring_options=TailoringOptions(
+                owner_approved_to_tailor=True,
+                override_material_benefit=override_material_benefit,
+            ),
+            cv_options=CvGenerationOptions(tailoring_plan_approved=True),
+            cover_letter_plan_options=CoverLetterPlanOptions(
+                owner_approved_to_plan=True,
+                override_material_benefit=override_material_benefit,
+            ),
+            cover_letter_options=CoverLetterGenerationOptions(
+                cover_letter_plan_approved=True
+            ),
+        )
+    except OpportunityError as error:
+        _exit_for_opportunity(error)
+    except ApplicationPackageError as error:
+        _exit_for_package(error)
+    except (
+        TailoringPlanGateError,
+        CvGenerationGateError,
+        CoverLetterPlanGateError,
+    ) as error:
+        typer.echo(str(error), err=True)
+        raise typer.Exit(code=1) from error
+    except ProfileError as error:
+        _exit_for_profile(error)
+
+    if yaml_output:
+        typer.echo(_render(manifest))
+        return
+
+    typer.echo(
+        f"Prepared application package for {manifest.opportunity_id} "
+        f"(owner_review_required={manifest.owner_review_required})."
+    )
+    _print_package_summary(manifest)
+
+
+@package_app.command("show")
+def show_package(
+    opportunity_id: Annotated[str, typer.Argument(help="Opportunity id (opp_<ULID>).")],
+    dir: OpportunitiesDirOption = None,
+    packages_dir: PackagesDirOption = None,
+    profile: ProfilePathOption = None,
+    cv_dir: Annotated[
+        Path | None,
+        typer.Option("--cv-dir", help="Override CV draft output directory."),
+    ] = None,
+    cover_letter_dir: Annotated[
+        Path | None,
+        typer.Option(
+            "--cover-letter-dir",
+            help="Override cover-letter draft output directory.",
+        ),
+    ] = None,
+    yaml_output: Annotated[
+        bool,
+        typer.Option("--yaml", help="Emit the full package manifest as YAML."),
+    ] = False,
+    no_verify: Annotated[
+        bool,
+        typer.Option(
+            "--no-verify",
+            help="Load the manifest without checking that draft files exist.",
+        ),
+    ] = False,
+) -> None:
+    """Show the current Application Package for an Opportunity."""
+    try:
+        service = _package_service(
+            opportunities_dir=dir,
+            packages_dir=packages_dir,
+            profile_path=profile,
+            cv_output_dir=cv_dir,
+            cover_letter_output_dir=cover_letter_dir,
+        )
+        manifest = service.get(opportunity_id, verify=not no_verify)
+    except OpportunityError as error:
+        _exit_for_opportunity(error)
+    except ApplicationPackageError as error:
+        _exit_for_package(error)
+    except ProfileError as error:
+        _exit_for_profile(error)
+
+    if yaml_output:
+        typer.echo(_render(manifest))
+        return
+    _print_package_summary(manifest)
+
+
+@package_app.command("verify")
+def verify_package(
+    opportunity_id: Annotated[str, typer.Argument(help="Opportunity id (opp_<ULID>).")],
+    dir: OpportunitiesDirOption = None,
+    packages_dir: PackagesDirOption = None,
+    profile: ProfilePathOption = None,
+    cv_dir: Annotated[
+        Path | None,
+        typer.Option("--cv-dir", help="Override CV draft output directory."),
+    ] = None,
+    cover_letter_dir: Annotated[
+        Path | None,
+        typer.Option(
+            "--cover-letter-dir",
+            help="Override cover-letter draft output directory.",
+        ),
+    ] = None,
+) -> None:
+    """Verify that the current package manifest and referenced drafts are intact."""
+    try:
+        service = _package_service(
+            opportunities_dir=dir,
+            packages_dir=packages_dir,
+            profile_path=profile,
+            cv_output_dir=cv_dir,
+            cover_letter_output_dir=cover_letter_dir,
+        )
+        manifest = service.get(opportunity_id, verify=True)
+    except OpportunityError as error:
+        _exit_for_opportunity(error)
+    except ApplicationPackageError as error:
+        _exit_for_package(error)
+    except ProfileError as error:
+        _exit_for_profile(error)
+
+    typer.echo(
+        f"Application package for {manifest.opportunity_id} is intact "
+        f"(owner_review_required={manifest.owner_review_required})."
+    )
+
+
+@preparation_app.command("run")
+def run_preparation(
+    opportunity_id: Annotated[str, typer.Argument(help="Opportunity id (opp_<ULID>).")],
+    dir: OpportunitiesDirOption = None,
+    packages_dir: PackagesDirOption = None,
+    runs_dir: PreparationRunsDirOption = None,
+    profile: ProfilePathOption = None,
+    cv_dir: Annotated[
+        Path | None,
+        typer.Option("--cv-dir", help="Override CV draft output directory."),
+    ] = None,
+    cover_letter_dir: Annotated[
+        Path | None,
+        typer.Option(
+            "--cover-letter-dir",
+            help="Override cover-letter draft output directory.",
+        ),
+    ] = None,
+    approve: Annotated[
+        bool,
+        typer.Option(
+            "--approve",
+            help=(
+                "Explicitly set FR-006/FR-007 owner-approval gates "
+                "(required to run preparation)."
+            ),
+        ),
+    ] = False,
+    override_material_benefit: Annotated[
+        bool,
+        typer.Option(
+            "--override-material-benefit",
+            help=(
+                "Record an explicit FR-006/FR-007 material-benefit override "
+                "when the strategy tier does not already justify documents."
+            ),
+        ),
+    ] = False,
+    yaml_output: Annotated[
+        bool,
+        typer.Option("--yaml", help="Emit the full PreparationRunState as YAML."),
+    ] = False,
+) -> None:
+    """Run preparation orchestration for an apply Opportunity (FR-011).
+
+    Thin adapter over ApplicationPreparationOrchestrator. Does not call
+    ApplicationPackageService directly. Pass ``--approve`` to set FR-006/FR-007
+    gates explicitly.
+    """
+    if not approve:
+        typer.echo(
+            "Refusing preparation run: pass --approve to set FR-006/FR-007 "
+            "owner-approval gates explicitly. Owner review remains mandatory "
+            "before external use.",
+            err=True,
+        )
+        raise typer.Exit(code=1)
+
+    try:
+        orchestrator = _preparation_orchestrator(
+            opportunities_dir=dir,
+            packages_dir=packages_dir,
+            profile_path=profile,
+            runs_dir=runs_dir,
+            cv_output_dir=cv_dir,
+            cover_letter_output_dir=cover_letter_dir,
+        )
+        state = orchestrator.run(
+            opportunity_id,
+            tailoring_options=TailoringOptions(
+                owner_approved_to_tailor=True,
+                override_material_benefit=override_material_benefit,
+            ),
+            cv_options=CvGenerationOptions(tailoring_plan_approved=True),
+            cover_letter_plan_options=CoverLetterPlanOptions(
+                owner_approved_to_plan=True,
+                override_material_benefit=override_material_benefit,
+            ),
+            cover_letter_options=CoverLetterGenerationOptions(
+                cover_letter_plan_approved=True
+            ),
+        )
+    except OpportunityError as error:
+        _exit_for_opportunity(error)
+    except ApplicationPreparationError as error:
+        _exit_for_preparation(error)
+    except ProfileError as error:
+        _exit_for_profile(error)
+
+    if yaml_output:
+        typer.echo(_render(state))
+    else:
+        if state.status == "completed":
+            typer.echo("Preparation orchestration completed.")
+        else:
+            typer.echo("Preparation orchestration failed.", err=True)
+        _print_preparation_summary(state)
+
+    if state.status != "completed":
+        raise typer.Exit(code=1)
+
+
+@preparation_app.command("show")
+def show_preparation(
+    run_id: Annotated[str, typer.Argument(help="Preparation run id (apr_<ULID>).")],
+    dir: OpportunitiesDirOption = None,
+    packages_dir: PackagesDirOption = None,
+    runs_dir: PreparationRunsDirOption = None,
+    profile: ProfilePathOption = None,
+    cv_dir: Annotated[
+        Path | None,
+        typer.Option("--cv-dir", help="Override CV draft output directory."),
+    ] = None,
+    cover_letter_dir: Annotated[
+        Path | None,
+        typer.Option(
+            "--cover-letter-dir",
+            help="Override cover-letter draft output directory.",
+        ),
+    ] = None,
+    yaml_output: Annotated[
+        bool,
+        typer.Option("--yaml", help="Emit the full PreparationRunState as YAML."),
+    ] = False,
+) -> None:
+    """Show a preparation orchestration run by id."""
+    try:
+        orchestrator = _preparation_orchestrator(
+            opportunities_dir=dir,
+            packages_dir=packages_dir,
+            profile_path=profile,
+            runs_dir=runs_dir,
+            cv_output_dir=cv_dir,
+            cover_letter_output_dir=cover_letter_dir,
+        )
+        state = orchestrator.get(run_id)
+    except ApplicationPreparationError as error:
+        _exit_for_preparation(error)
+    except ProfileError as error:
+        _exit_for_profile(error)
+
+    if yaml_output:
+        typer.echo(_render(state))
+        return
+    _print_preparation_summary(state)
 
 
 if __name__ == "__main__":

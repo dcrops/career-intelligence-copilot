@@ -1,0 +1,14 @@
+{
+  "run_id": "apr_01KYV9Q5T01ZS17V9747NFHJ2Y",
+  "opportunity_id": "opp_01KYV9Q5SCJKCSMYA2J8JHYG3A",
+  "status": "failed",
+  "created_at": "2026-07-31T05:17:57.952829Z",
+  "updated_at": "2026-07-31T05:17:57.956555Z",
+  "completed_steps": [],
+  "package": null,
+  "error": {
+    "step_id": "validate_preconditions",
+    "message": "Opportunity opp_01KYV9Q5SCJKCSMYA2J8JHYG3A is not eligible for preparation (decision='skip'; require 'apply')",
+    "error_type": "ValueError"
+  }
+}

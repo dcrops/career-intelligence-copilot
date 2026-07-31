@@ -33,20 +33,22 @@ Owner Review / Approval Interrupt (FR-008) → apply | skip | defer recorded on 
       ↓
 Rank / Review Queue (Phase 2 M4 baseline + FR-009 derived projection)
       ↓
-Application Package (FR-010: Tailoring Plan + CV FR-006 + Cover Letter FR-007)
+Application Package (FR-010: Tailoring Plan + CV FR-006 + Cover Letter FR-007;
+owner gates composed from FR-006/007 — review required before external use)
       ↓
-Owner Review / Approval Interrupt (FR-011 package approval)
+Preparation Orchestration (FR-011 — coordinates package prep; does not extend FR-008)
       ↓
-      ├─→ Reject (owner)
-      └─→ Submit assistance (FR-011 — never silent)
+      ├─→ Reject / revise package (owner)
+      └─→ Submit assistance (FR-012 — never silent; separate submission approval)
       ↓
-Pipeline Tracking + Outcomes (FR-012; builds on Phase 2 M2)
+Pipeline Tracking + Outcomes (FR-013; builds on Phase 2 M2)
 ```
 
 Opportunity Assessment and Portfolio Matching remain sibling consumers of Career Profile +
 Job Analysis. Application Strategy consumes both. Document generation and submission are
 separate stages under mandatory owner review. Workflow orchestration (FR-008) coordinates
-these nodes; bounded agents (FR-013+) appear only after the deterministic path works.
+these nodes; preparation orchestration (FR-011) is a separate coordinator for package
+prep; bounded agents (FR-014+) appear only after the deterministic path works.
 
 ---
 
@@ -175,7 +177,7 @@ Pursuit posture (primary recommendation), application tier (effort band), practi
 value, evidence-backed reasons/risks, and advisory `next_actions`. Consumes
 Opportunity Assessment + Portfolio Match (+ Job Analysis for provenance).
 
-Owner apply / skip / defer is recorded separately (Phase 2 M2; Horizon 1A FR-012).
+Owner apply / skip / defer is recorded separately (Phase 2 M2; Horizon 1A FR-013).
 
 **Implementation:** `ApplicationStrategyService` with `DeterministicStrategyPlanner`.
 
@@ -198,12 +200,12 @@ decision** — not only a job the owner decided to apply for
 after Application Strategy. Structured storage under `data/opportunities/` is the
 system of record (ADR-002). CSV export and one-time legacy import are M3. Ranking is M4
 (`OpportunityComparisonService`). Owner decision and outcome logging are M2
-(historically “FR-013 subset”; extended by Horizon 1A **FR-012**).
+(historically “FR-013 subset”; extended by Horizon 1A **FR-013**).
 
 The record carries five separate concerns that must not be collapsed: identity and
 acquisition provenance; denormalised FR-003–FR-005 signals (`strategy_summary`); the
 owner decision (apply / skip / defer); owner review metadata (FR-009); and pipeline
-status plus outcome (M2 / FR-012). Since **FR-009 M1** the workflow creates the record
+status plus outcome (M2 / FR-013). Since **FR-009 M1** the workflow creates the record
 after Application Strategy and before owner review, with `decision=None`; apply, skip,
 and defer then update that same record, so skipped and deferred jobs remain auditable.
 
@@ -220,7 +222,7 @@ Historical domain name for the durable Opportunity aggregate above. Prefer
 
 ### Outcome Record
 
-**Maps to:** Phase 2 M2 (historically “FR-013 subset”); extended by FR-012
+**Maps to:** Phase 2 M2 (historically “FR-013 subset”); extended by FR-013
 
 Captures three distinct concepts on the durable Opportunity:
 
@@ -243,7 +245,7 @@ attention**, held as independent fields rather than one lifecycle enum: `reviewe
 `pinned`, `defer_until`, `archived_at`.
 
 Distinct from the owner decision (apply / skip / defer records *what the owner chose*),
-from `PipelineStatus` (application progress — FR-012), and from workflow status (a run's
+from `PipelineStatus` (application progress — FR-013), and from workflow status (a run's
 runtime state — FR-008). Archiving hides a record from active review; it never means
 employer rejection or a closed recruitment process.
 
@@ -357,7 +359,7 @@ Open filter: status ∈ {assessed, deferred, preparing, submitted, interviewing,
 and decision ≠ skip. Each ranked item includes explainable `reasons`. Owner review
 required — ranking does not apply, skip, or mutate opportunities.
 
-Cross-domain daily prioritisation is Horizon 2 **FR-025**.
+Cross-domain daily prioritisation is Horizon 2 **FR-026**.
 
 ---
 
@@ -371,20 +373,42 @@ owner-review interrupts and resumability. Production orchestration for the curre
 FR-008 spike is the thin in-repository runner (**ADR-003 accepted**). LangGraph remains
 out unless ADR-003 reconsideration conditions are met.
 
-### Application Package (planned)
+### Application Package
 
-**Maps to:** FR-010 (uses FR-006, FR-007)
+**Maps to:** FR-010 (uses FR-006, FR-007) — complete and frozen
+([acceptance](eval/fr010_application_package.md))
 
 Grouped artefacts (tailoring plan, CV, cover letter, HTML) under one application
-identity, traceable to job evidence and acquisition provenance.
+identity equal to the Opportunity id. The durable record is an
+``ApplicationPackageManifest`` of deterministic references to generated drafts and
+immutable Opportunity evidence (job analysis, assessment, portfolio match,
+strategy, acquisition provenance). Regeneration replaces the previous package;
+draft paths persist as relative filenames and resolve through the service.
+Failed regeneration leaves the prior package current until a full prepare
+succeeds. Only owner decision ``apply`` is eligible. Owner review remains
+mandatory before external use. Owner operations use the thin ``cic package``
+CLI adapter over ``ApplicationPackageService``. Coordinated preparation of this
+package is **FR-011** (standalone orchestrator — does not amend FR-010 rules).
+
+### Preparation Orchestration
+
+**Maps to:** FR-011 — complete and frozen
+([acceptance](eval/fr011_application_preparation.md))
+
+Dedicated coordinator (`ApplicationPreparationOrchestrator`) that verifies
+Opportunity preconditions (FR-002–FR-005 artefacts + owner decision ``apply``) then
+invokes ``ApplicationPackageService.prepare``. Owner operations use thin
+``cic preparation``. Does **not** extend the FR-008 runner, does not re-run
+analysis/assessment/strategy, and does not own package business rules. Preparation
+runs under ``data/preparation_runs/`` are recovery/audit only — not Opportunity SoT.
 
 ### Submission Attempt (planned)
 
-**Maps to:** FR-011
+**Maps to:** FR-012
 
-Separate from document generation. Progressive assistance (manual → Playwright-assisted
-form fill → owner-approved submit). Never silent submission; fail closed on unknown
-answers.
+Separate from document generation and from preparation orchestration. Progressive
+assistance (manual → Playwright-assisted form fill → owner-approved submit). Never
+silent submission; fail closed on unknown answers.
 
 ---
 
@@ -402,8 +426,10 @@ answers.
 | Opportunity Assessment | Application Strategy | Fit judgments and findings drive posture/tier |
 | Portfolio Match | Application Strategy | Ranked projects inform portfolio emphasis (no rerank) |
 | Application Strategy | Opportunity | Trusted artifacts may be persisted (M1) |
+| Opportunity | Application Package | Apply decision enables FR-010 package preparation (M0) |
+| Opportunity | Preparation Orchestration | FR-011 coordinates package prep for apply Opportunities |
 | Application Strategy | User Decision | User accepts, overrides, or defers the recommendation |
-| User Decision | Outcome Record | Decision and subsequent events logged (M2 / FR-012) |
+| User Decision | Outcome Record | Decision and subsequent events logged (M2 / FR-013) |
 | Outcome Record | Opportunity | Outcomes attach to durable opportunities |
 | Opportunity | OpportunityComparison | Open opportunities compared for prioritisation (M4 / FR-009) |
 
@@ -439,13 +465,13 @@ The operational layer is the manual precursor to the automated domain model.
 | Career Profile | `career-documents/cv/`, owner knowledge |
 | Opportunity (durable) | `data/opportunities/` (SoT); CSV under `data/exports/` is derived (M3) |
 | Outcome Record | Status / notes on Opportunity (M2); tracker Outcome column is import/export projection |
-| Network contacts | `applications/network/network_tracker.csv` (Horizon 1B / FR-016+) |
+| Network contacts | `applications/network/network_tracker.csv` (Horizon 1B / FR-017+) |
 | Company context | `applications/company_notes/` |
 | Career milestones | `career-log.md` |
 | Future templates | `templates/` (placeholders) |
 | Future analytics | `metrics/` (placeholders) |
 
-Phase 2 engineering must respect this mapping. Horizon 1A tracking (FR-012) should
+Phase 2 engineering must respect this mapping. Horizon 1A tracking (FR-013) should
 continue to connect to this layer rather than invent a parallel tracker.
 
 ---
@@ -462,7 +488,7 @@ continue to connect to this layer rather than invent a parallel tracker.
 | Tailored CV / Tailoring Plan | FR-006 (complete) |
 | Cover Letter | FR-007 (complete) |
 | Opportunity (durable persistence) | Phase 2 M1 (complete) |
-| Outcome Record | Phase 2 M2 (complete; hist. FR-013 subset); extended by **FR-012** |
+| Outcome Record | Phase 2 M2 (complete; hist. FR-013 subset); extended by **FR-013** |
 | CSV operational bridge | Phase 2 M3 (complete) |
 | Ranked Comparison | Phase 2 M4 (complete; hist. FR-012 partial); extended by **FR-009** |
 | Opportunity identity (title/company) | Phase 2 M4a (complete) |
@@ -473,19 +499,20 @@ continue to connect to this layer rather than invent a parallel tracker.
 | Duplicate Relation | **FR-009** M0 contract; M3 detection and confirmation complete |
 | Duplicate Group (derived) | **FR-009** M3 (complete) |
 | Opportunity Recommendations (derived) | **FR-009** M4 (complete) |
-| Application Package Preparation | **FR-010** (Horizon 1A; **next active FR**) |
-| Submission Assistance | **FR-011** (Horizon 1A) |
-| Application Pipeline Tracking | **FR-012** (Horizon 1A) |
-| Bounded Agentic Workflow | **FR-013** (Horizon 1A; first bounded agents) |
-| Multi-Agent Orchestration | **FR-014** (Horizon 1A) |
-| Agent Evaluation & Observability | **FR-015** (Horizon 1A) |
-| Recruiter Intelligence | **FR-016** (Horizon 1B) |
-| Recruiter Outreach | **FR-017** (Horizon 1B) |
-| Existing Connection Outreach | **FR-018** (Horizon 1B) |
-| LinkedIn Network Intelligence | **FR-019** (Horizon 1B) |
-| Meetup Intelligence | **FR-020** (Horizon 1B) |
-| LinkedIn Content Planning | **FR-021** (Horizon 1B) |
-| Market Intelligence | **FR-022** (Horizon 1B) |
-| Interview Preparation | **FR-023** (Horizon 2) |
-| Career Dashboard | **FR-024** (Horizon 2) |
-| Daily Prioritisation (cross-domain) | **FR-025** (Horizon 2) |
+| Application Package Preparation | **FR-010** (Horizon 1A; complete — [acceptance](eval/fr010_application_package.md)) |
+| Application Preparation Orchestration | **FR-011** (Horizon 1A; complete — [acceptance](eval/fr011_application_preparation.md)) |
+| Submission Assistance | **FR-012** (Horizon 1A) |
+| Application Pipeline Tracking | **FR-013** (Horizon 1A) |
+| Bounded Agentic Workflow | **FR-014** (Horizon 1A; first bounded agents) |
+| Multi-Agent Orchestration | **FR-015** (Horizon 1A) |
+| Agent Evaluation & Observability | **FR-016** (Horizon 1A) |
+| Recruiter Intelligence | **FR-017** (Horizon 1B) |
+| Recruiter Outreach | **FR-018** (Horizon 1B) |
+| Existing Connection Outreach | **FR-019** (Horizon 1B) |
+| LinkedIn Network Intelligence | **FR-020** (Horizon 1B) |
+| Meetup Intelligence | **FR-021** (Horizon 1B) |
+| LinkedIn Content Planning | **FR-022** (Horizon 1B) |
+| Market Intelligence | **FR-023** (Horizon 1B) |
+| Interview Preparation | **FR-024** (Horizon 2) |
+| Career Dashboard | **FR-025** (Horizon 2) |
+| Daily Prioritisation (cross-domain) | **FR-026** (Horizon 2) |
