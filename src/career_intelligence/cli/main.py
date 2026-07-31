@@ -64,6 +64,21 @@ from career_intelligence.profile import (
     ProfileValidationError,
     UnknownSectionError,
 )
+from career_intelligence.submission import (
+    DEFAULT_SUBMISSION_ATTEMPTS_ROOT,
+    FakeSubmissionAdapter,
+    ManualAssistedAdapter,
+    SubmissionAttempt,
+    SubmissionAttemptNotFoundError,
+    SubmissionChannelError,
+    SubmissionDuplicateError,
+    SubmissionError,
+    SubmissionGateError,
+    SubmissionOrchestrator,
+    SubmissionReadinessReport,
+    SubmissionStorageError,
+    SubmissionValidationError,
+)
 
 app = typer.Typer(help="Career Intelligence Copilot.")
 profile_app = typer.Typer(help="Manage and inspect the career profile.")
@@ -76,10 +91,14 @@ package_app = typer.Typer(
 preparation_app = typer.Typer(
     help="Run application preparation orchestration (FR-011)."
 )
+submission_app = typer.Typer(
+    help="Run assisted submission workflow (FR-012)."
+)
 app.add_typer(profile_app, name="profile")
 app.add_typer(opportunity_app, name="opportunity")
 app.add_typer(package_app, name="package")
 app.add_typer(preparation_app, name="preparation")
+app.add_typer(submission_app, name="submission")
 
 PathOption = Annotated[
     Path | None,
@@ -112,6 +131,17 @@ PreparationRunsDirOption = Annotated[
         help=(
             "Override the preparation-runs store directory "
             f"(default: {DEFAULT_PREPARATION_RUNS_ROOT})."
+        ),
+    ),
+]
+
+SubmissionAttemptsDirOption = Annotated[
+    Path | None,
+    typer.Option(
+        "--attempts-dir",
+        help=(
+            "Override the submission-attempts store directory "
+            f"(default: {DEFAULT_SUBMISSION_ATTEMPTS_ROOT})."
         ),
     ),
 ]
@@ -177,6 +207,38 @@ def _preparation_orchestrator(
         opportunities,
         packages,
         runs_root=runs_dir,
+    )
+
+
+def _submission_orchestrator(
+    *,
+    opportunities_dir: Path | None,
+    packages_dir: Path | None,
+    profile_path: Path | None,
+    attempts_dir: Path | None,
+    cv_output_dir: Path | None = None,
+    cover_letter_output_dir: Path | None = None,
+    fake_outcome: str | None = None,
+) -> SubmissionOrchestrator:
+    opportunities = _opportunity_service(opportunities_dir)
+    packages = _package_service(
+        opportunities_dir=opportunities_dir,
+        packages_dir=packages_dir,
+        profile_path=profile_path,
+        cv_output_dir=cv_output_dir,
+        cover_letter_output_dir=cover_letter_output_dir,
+    )
+    fake = FakeSubmissionAdapter()
+    if fake_outcome is not None:
+        fake.set_outcome(fake_outcome)  # type: ignore[arg-type]
+    return SubmissionOrchestrator(
+        opportunities,
+        packages,
+        attempts_root=attempts_dir,
+        adapters={
+            "fake": fake,
+            "manual_assisted": ManualAssistedAdapter(),
+        },
     )
 
 
@@ -1007,6 +1069,517 @@ def show_preparation(
         typer.echo(_render(state))
         return
     _print_preparation_summary(state)
+
+
+def _exit_for_submission(error: SubmissionError) -> Never:
+    if isinstance(error, SubmissionValidationError):
+        typer.echo("Submission validation failed:", err=True)
+        for detail in error.errors:
+            typer.echo(f"- {_format_location(detail.loc)}: {detail.msg}", err=True)
+        raise typer.Exit(code=1)
+
+    message = str(error)
+    if isinstance(error, SubmissionGateError):
+        if "owner_approved_submit" in message:
+            typer.echo("Owner Approval Required", err=True)
+        elif "package" in message.lower() or "draft" in message.lower():
+            typer.echo("Package Verification Failed", err=True)
+        else:
+            typer.echo("Submission gate failed.", err=True)
+        typer.echo(message, err=True)
+        raise typer.Exit(code=1)
+
+    if isinstance(error, SubmissionDuplicateError):
+        if "outcome_unknown" in message:
+            typer.echo("Outcome Unknown", err=True)
+        else:
+            typer.echo("Duplicate Submission Blocked", err=True)
+        typer.echo(message, err=True)
+        raise typer.Exit(code=1)
+
+    if isinstance(error, SubmissionChannelError):
+        typer.echo("Unknown channel.", err=True)
+        typer.echo(message, err=True)
+        raise typer.Exit(code=1)
+
+    if isinstance(error, SubmissionAttemptNotFoundError):
+        typer.echo(message, err=True)
+        raise typer.Exit(code=1)
+
+    if isinstance(error, SubmissionStorageError):
+        typer.echo(message, err=True)
+        raise typer.Exit(code=2)
+
+    typer.echo(message, err=True)
+    raise typer.Exit(code=2)
+
+
+def _headline_for_attempt(attempt: SubmissionAttempt) -> str:
+    mapping = {
+        "submitted": "Submission Completed",
+        "manual_completed": "Attempt Recorded",
+        "manual_action_required": "Manual Action Required",
+        "failed": "Submission Failed",
+        "outcome_unknown": "Outcome Unknown",
+        "cancelled": "Submission Cancelled",
+        "in_progress": "Submission In Progress",
+        "ready": "Submission Ready",
+    }
+    return mapping.get(attempt.status, f"Status: {attempt.status}")
+
+
+def _print_attempt_summary(attempt: SubmissionAttempt) -> None:
+    typer.echo(f"attempt_id: {attempt.attempt_id}")
+    typer.echo(f"opportunity_id: {attempt.opportunity_id}")
+    typer.echo(f"status: {attempt.status}")
+    typer.echo(f"channel: {attempt.channel}")
+    typer.echo(f"mode: {attempt.mode}")
+    if attempt.destination:
+        typer.echo(f"destination: {attempt.destination}")
+    typer.echo(f"created_at: {attempt.created_at.isoformat()}")
+    typer.echo(f"updated_at: {attempt.updated_at.isoformat()}")
+    if attempt.completed_at is not None:
+        typer.echo(f"completed_at: {attempt.completed_at.isoformat()}")
+    typer.echo(
+        f"owner_approved_submit: {attempt.evidence.owner_approved_submit}"
+    )
+    if attempt.evidence.result_code:
+        typer.echo(f"result_code: {attempt.evidence.result_code}")
+    if attempt.evidence.message:
+        typer.echo(f"message: {attempt.evidence.message}")
+    if attempt.evidence.failure_reason:
+        typer.echo(f"failure_reason: {attempt.evidence.failure_reason}")
+
+
+def _print_readiness(report: SubmissionReadinessReport) -> None:
+    if report.ready:
+        typer.echo("Submission Ready")
+    else:
+        typer.echo("Submission Not Ready", err=True)
+    typer.echo(f"opportunity_id: {report.opportunity_id}")
+    typer.echo(f"decision: {report.decision}")
+    typer.echo(f"package_verified: {report.package_verified}")
+    if report.package_prepared_at is not None:
+        typer.echo(f"package_prepared_at: {report.package_prepared_at.isoformat()}")
+    typer.echo(
+        "available_channels: " + (", ".join(report.available_channels) or "(none)")
+    )
+    for message in report.messages:
+        typer.echo(f"- {message}")
+
+
+def _exit_for_attempt_status(attempt: SubmissionAttempt) -> None:
+    if attempt.status in {"submitted", "manual_completed"}:
+        return
+    raise typer.Exit(code=1)
+
+
+@submission_app.command("check")
+def check_submission(
+    opportunity_id: Annotated[str, typer.Argument(help="Opportunity id (opp_<ULID>).")],
+    dir: OpportunitiesDirOption = None,
+    packages_dir: PackagesDirOption = None,
+    attempts_dir: SubmissionAttemptsDirOption = None,
+    profile: ProfilePathOption = None,
+    cv_dir: Annotated[
+        Path | None,
+        typer.Option("--cv-dir", help="Override CV draft output directory."),
+    ] = None,
+    cover_letter_dir: Annotated[
+        Path | None,
+        typer.Option(
+            "--cover-letter-dir",
+            help="Override cover-letter draft output directory.",
+        ),
+    ] = None,
+    channel: Annotated[
+        str | None,
+        typer.Option(
+            "--channel",
+            help="Optional channel to validate (fake|manual_assisted).",
+        ),
+    ] = None,
+    destination: Annotated[
+        str | None,
+        typer.Option("--destination", help="Optional destination URL or label."),
+    ] = None,
+    yaml_output: Annotated[
+        bool,
+        typer.Option("--yaml", help="Emit the readiness report as YAML."),
+    ] = False,
+) -> None:
+    """Validate submission readiness without creating an attempt."""
+    try:
+        orchestrator = _submission_orchestrator(
+            opportunities_dir=dir,
+            packages_dir=packages_dir,
+            profile_path=profile,
+            attempts_dir=attempts_dir,
+            cv_output_dir=cv_dir,
+            cover_letter_output_dir=cover_letter_dir,
+        )
+        report = orchestrator.check_readiness(
+            opportunity_id,
+            channel=channel,  # type: ignore[arg-type]
+            destination=destination,
+        )
+    except OpportunityError as error:
+        _exit_for_opportunity(error)
+    except SubmissionError as error:
+        _exit_for_submission(error)
+    except ProfileError as error:
+        _exit_for_profile(error)
+
+    if yaml_output:
+        typer.echo(_render(report))
+    else:
+        _print_readiness(report)
+
+    if not report.ready:
+        raise typer.Exit(code=1)
+
+
+@submission_app.command("run")
+def run_submission(
+    opportunity_id: Annotated[str, typer.Argument(help="Opportunity id (opp_<ULID>).")],
+    dir: OpportunitiesDirOption = None,
+    packages_dir: PackagesDirOption = None,
+    attempts_dir: SubmissionAttemptsDirOption = None,
+    profile: ProfilePathOption = None,
+    cv_dir: Annotated[
+        Path | None,
+        typer.Option("--cv-dir", help="Override CV draft output directory."),
+    ] = None,
+    cover_letter_dir: Annotated[
+        Path | None,
+        typer.Option(
+            "--cover-letter-dir",
+            help="Override cover-letter draft output directory.",
+        ),
+    ] = None,
+    channel: Annotated[
+        str,
+        typer.Option(
+            "--channel",
+            help="Submission channel (fake|manual_assisted).",
+        ),
+    ] = "manual_assisted",
+    approve_submit: Annotated[
+        bool,
+        typer.Option(
+            "--approve-submit",
+            help="Explicit owner approval to submit (required).",
+        ),
+    ] = False,
+    destination: Annotated[
+        str | None,
+        typer.Option("--destination", help="Destination URL or label."),
+    ] = None,
+    force_new_attempt: Annotated[
+        bool,
+        typer.Option(
+            "--force-new-attempt",
+            help="Allow a new attempt after a prior success (requires --reason).",
+        ),
+    ] = False,
+    reason: Annotated[
+        str | None,
+        typer.Option(
+            "--reason",
+            help="Auditable reason when using --force-new-attempt.",
+        ),
+    ] = None,
+    acknowledge_prior_unknown: Annotated[
+        bool,
+        typer.Option(
+            "--acknowledge-prior-unknown",
+            help="Acknowledge a prior outcome_unknown before a new attempt.",
+        ),
+    ] = False,
+    fake_outcome: Annotated[
+        str | None,
+        typer.Option(
+            "--fake-outcome",
+            help=(
+                "Offline test aid: configure FakeSubmissionAdapter outcome "
+                "(submitted|failed|manual_action_required|outcome_unknown)."
+            ),
+        ),
+    ] = None,
+    yaml_output: Annotated[
+        bool,
+        typer.Option("--yaml", help="Emit the full SubmissionAttempt as YAML."),
+    ] = False,
+) -> None:
+    """Run assisted submission for an apply Opportunity (FR-012).
+
+    Thin adapter over SubmissionOrchestrator. Pass ``--approve-submit``.
+    """
+    if not approve_submit:
+        typer.echo("Owner Approval Required", err=True)
+        typer.echo(
+            "Refusing submission run: pass --approve-submit. Submission approval "
+            "is distinct from apply / package / document gates.",
+            err=True,
+        )
+        raise typer.Exit(code=1)
+
+    try:
+        orchestrator = _submission_orchestrator(
+            opportunities_dir=dir,
+            packages_dir=packages_dir,
+            profile_path=profile,
+            attempts_dir=attempts_dir,
+            cv_output_dir=cv_dir,
+            cover_letter_output_dir=cover_letter_dir,
+            fake_outcome=fake_outcome,
+        )
+        attempt = orchestrator.submit(
+            opportunity_id,
+            channel=channel,  # type: ignore[arg-type]
+            owner_approved_submit=True,
+            destination=destination,
+            force_new_attempt=force_new_attempt,
+            force_reason=reason,
+            acknowledge_prior_outcome_unknown=acknowledge_prior_unknown,
+        )
+    except OpportunityError as error:
+        _exit_for_opportunity(error)
+    except SubmissionError as error:
+        _exit_for_submission(error)
+    except ProfileError as error:
+        _exit_for_profile(error)
+
+    if yaml_output:
+        typer.echo(_render(attempt))
+    else:
+        typer.echo(_headline_for_attempt(attempt))
+        _print_attempt_summary(attempt)
+
+    _exit_for_attempt_status(attempt)
+
+
+@submission_app.command("record-manual")
+def record_manual_submission(
+    opportunity_id: Annotated[str, typer.Argument(help="Opportunity id (opp_<ULID>).")],
+    dir: OpportunitiesDirOption = None,
+    packages_dir: PackagesDirOption = None,
+    attempts_dir: SubmissionAttemptsDirOption = None,
+    profile: ProfilePathOption = None,
+    cv_dir: Annotated[
+        Path | None,
+        typer.Option("--cv-dir", help="Override CV draft output directory."),
+    ] = None,
+    cover_letter_dir: Annotated[
+        Path | None,
+        typer.Option(
+            "--cover-letter-dir",
+            help="Override cover-letter draft output directory.",
+        ),
+    ] = None,
+    approve_submit: Annotated[
+        bool,
+        typer.Option(
+            "--approve-submit",
+            help="Explicit owner confirmation to record manual completion (required).",
+        ),
+    ] = False,
+    attestation: Annotated[
+        str | None,
+        typer.Option(
+            "--attestation",
+            help="Owner attestation that the application was submitted externally.",
+        ),
+    ] = None,
+    confirmation_reference: Annotated[
+        str | None,
+        typer.Option(
+            "--confirmation-reference",
+            help="Optional confirmation id or receipt reference.",
+        ),
+    ] = None,
+    channel: Annotated[
+        str,
+        typer.Option("--channel", help="Channel label for the audit record."),
+    ] = "manual_assisted",
+    destination: Annotated[
+        str | None,
+        typer.Option("--destination", help="Destination URL or platform label."),
+    ] = None,
+    force_new_attempt: Annotated[
+        bool,
+        typer.Option("--force-new-attempt", help="Allow after a prior success."),
+    ] = False,
+    reason: Annotated[
+        str | None,
+        typer.Option("--reason", help="Auditable reason for --force-new-attempt."),
+    ] = None,
+    acknowledge_prior_unknown: Annotated[
+        bool,
+        typer.Option(
+            "--acknowledge-prior-unknown",
+            help="Acknowledge a prior outcome_unknown before recording.",
+        ),
+    ] = False,
+    yaml_output: Annotated[
+        bool,
+        typer.Option("--yaml", help="Emit the full SubmissionAttempt as YAML."),
+    ] = False,
+) -> None:
+    """Record that the owner completed submission outside the system."""
+    if not approve_submit:
+        typer.echo("Owner Approval Required", err=True)
+        typer.echo(
+            "Refusing record-manual: pass --approve-submit.",
+            err=True,
+        )
+        raise typer.Exit(code=1)
+    if attestation is None or not attestation.strip():
+        typer.echo("Owner Approval Required", err=True)
+        typer.echo(
+            "Refusing record-manual: pass --attestation with a non-empty statement.",
+            err=True,
+        )
+        raise typer.Exit(code=1)
+
+    try:
+        orchestrator = _submission_orchestrator(
+            opportunities_dir=dir,
+            packages_dir=packages_dir,
+            profile_path=profile,
+            attempts_dir=attempts_dir,
+            cv_output_dir=cv_dir,
+            cover_letter_output_dir=cover_letter_dir,
+        )
+        attempt = orchestrator.record_manual_completion(
+            opportunity_id,
+            owner_approved_submit=True,
+            attestation=attestation,
+            channel=channel,  # type: ignore[arg-type]
+            destination=destination,
+            confirmation_reference=confirmation_reference,
+            force_new_attempt=force_new_attempt,
+            force_reason=reason,
+            acknowledge_prior_outcome_unknown=acknowledge_prior_unknown,
+        )
+    except OpportunityError as error:
+        _exit_for_opportunity(error)
+    except SubmissionError as error:
+        _exit_for_submission(error)
+    except ProfileError as error:
+        _exit_for_profile(error)
+
+    if yaml_output:
+        typer.echo(_render(attempt))
+    else:
+        typer.echo(_headline_for_attempt(attempt))
+        _print_attempt_summary(attempt)
+
+    _exit_for_attempt_status(attempt)
+
+
+@submission_app.command("show")
+def show_submission(
+    attempt_id: Annotated[str, typer.Argument(help="Attempt id (sub_<ULID>).")],
+    dir: OpportunitiesDirOption = None,
+    packages_dir: PackagesDirOption = None,
+    attempts_dir: SubmissionAttemptsDirOption = None,
+    profile: ProfilePathOption = None,
+    cv_dir: Annotated[
+        Path | None,
+        typer.Option("--cv-dir", help="Override CV draft output directory."),
+    ] = None,
+    cover_letter_dir: Annotated[
+        Path | None,
+        typer.Option(
+            "--cover-letter-dir",
+            help="Override cover-letter draft output directory.",
+        ),
+    ] = None,
+    yaml_output: Annotated[
+        bool,
+        typer.Option("--yaml", help="Emit the full SubmissionAttempt as YAML."),
+    ] = False,
+) -> None:
+    """Show a submission attempt by id (read-only)."""
+    try:
+        orchestrator = _submission_orchestrator(
+            opportunities_dir=dir,
+            packages_dir=packages_dir,
+            profile_path=profile,
+            attempts_dir=attempts_dir,
+            cv_output_dir=cv_dir,
+            cover_letter_output_dir=cover_letter_dir,
+        )
+        attempt = orchestrator.get_attempt(attempt_id)
+    except SubmissionError as error:
+        _exit_for_submission(error)
+    except ProfileError as error:
+        _exit_for_profile(error)
+
+    if yaml_output:
+        typer.echo(_render(attempt))
+        return
+    typer.echo(_headline_for_attempt(attempt))
+    _print_attempt_summary(attempt)
+
+
+@submission_app.command("list")
+def list_submissions(
+    dir: OpportunitiesDirOption = None,
+    packages_dir: PackagesDirOption = None,
+    attempts_dir: SubmissionAttemptsDirOption = None,
+    profile: ProfilePathOption = None,
+    cv_dir: Annotated[
+        Path | None,
+        typer.Option("--cv-dir", help="Override CV draft output directory."),
+    ] = None,
+    cover_letter_dir: Annotated[
+        Path | None,
+        typer.Option(
+            "--cover-letter-dir",
+            help="Override cover-letter draft output directory.",
+        ),
+    ] = None,
+    opportunity_id: Annotated[
+        str | None,
+        typer.Option(
+            "--opportunity-id",
+            help="Optional filter by opportunity id.",
+        ),
+    ] = None,
+    yaml_output: Annotated[
+        bool,
+        typer.Option("--yaml", help="Emit attempts as YAML."),
+    ] = False,
+) -> None:
+    """List submission attempts (read-only)."""
+    try:
+        orchestrator = _submission_orchestrator(
+            opportunities_dir=dir,
+            packages_dir=packages_dir,
+            profile_path=profile,
+            attempts_dir=attempts_dir,
+            cv_output_dir=cv_dir,
+            cover_letter_output_dir=cover_letter_dir,
+        )
+        attempts = orchestrator.list_attempts(opportunity_id=opportunity_id)
+    except SubmissionError as error:
+        _exit_for_submission(error)
+    except ProfileError as error:
+        _exit_for_profile(error)
+
+    if yaml_output:
+        typer.echo(_render(attempts))
+        return
+    if not attempts:
+        typer.echo("No submission attempts found.")
+        return
+    for attempt in attempts:
+        typer.echo(
+            f"{attempt.attempt_id}  {attempt.status}  "
+            f"{attempt.channel}  {attempt.opportunity_id}"
+        )
 
 
 if __name__ == "__main__":

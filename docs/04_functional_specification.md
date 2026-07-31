@@ -1267,36 +1267,96 @@ PDF/DOCX, additional approval logic — not FR-011 reopen criteria.
 ## FR-012 Submission Assistance
 
 **Phase:** Horizon 1A Stage 6  
-**Status:** Planned
+**Status:** **Complete** — documentation frozen (2026-07-31)  
+**Acceptance:** [docs/eval/fr012_submission_assistance.md](eval/fr012_submission_assistance.md)
 
 Submission is a **separate capability** from document generation and from preparation
-orchestration (FR-011).
+orchestration (FR-011). It assists the owner in submitting an already-prepared
+application package with explicit Owner Approval, fail-closed behaviour, and durable
+SubmissionAttempt / SubmissionEvidence. It does **not** extend the FR-008 acquisition
+workflow graph and does **not** advance `PipelineStatus` (that remains FR-013).
+
+**Meaning (Horizon 1A):** Submission Readiness + Assisted Submission (manual-assisted
+first) + Manual Completion + append-only audit. Live browser automation and
+board-specific adapters remain deferred until a real owner need appears.
+
+**Coordinating component name:** `SubmissionOrchestrator` (not `SubmissionService`).
+
+| Role | Component | Responsibility |
+|------|-----------|----------------|
+| Coordinate | `SubmissionOrchestrator` | Sequences gates → adapter → attempt store; does not own package rules |
+| Package integrity | `ApplicationPackageService` | Validates / prepares packages (FR-010); unchanged |
+| Channel behaviour | `SubmissionAdapter` | Execute a channel action; no business policy |
+| Persistence | `SubmissionAttemptStore` | Append-only attempt identity; validated status advances |
+| Interface | `cic submission` (CLI) | Thin owner interface only |
+
+**Why Orchestrator (consistent with FR-011):** In this repository, `*Service` owns
+business rules for a domain entity (`OpportunityService`,
+`ApplicationPackageService`). `ApplicationPreparationOrchestrator` sequences
+existing services without absorbing their rules. FR-012's coordinator has the
+same primary responsibility — sequence preconditions, adapter call, and evidence
+persistence while delegating package integrity to `ApplicationPackageService` and
+channel mechanics to adapters. Naming it `SubmissionService` would blur that
+boundary and diverge from FR-011. Avoiding the word "Orchestrator" is unnecessary:
+FR-011 already established that orchestration here means **capability
+coordination**, not FR-008 workflow-graph expansion.
+
+**The system must never silently submit an application.** Owner review and explicit
+approval remain mandatory. All uncertain outcomes fail closed
+(`failed` / `outcome_unknown` / `manual_action_required`) — never invent success.
 
 ### Progressive automation levels
 
-1. Manual submission with generated materials
-2. Playwright-assisted form completion
+1. Manual / Assisted Submission with generated materials (**delivered** — Horizon 1A)
+2. Playwright-assisted form completion (deferred — only if owner need justifies)
 3. Owner-reviewed pre-submission state
-4. Explicit owner approval
+4. Explicit Owner Approval
 5. Final submission only where technically safe, permitted, and reliable
-
-**The system must never silently submit an application.** Owner review and explicit
-approval remain mandatory.
 
 Handle unsupported forms, custom / salary / work-rights questions, file uploads,
 authentication, CAPTCHA or anti-bot controls, failed submission evidence, duplicate
-submissions, and confirmation capture.
-
-**Fail closed** where any required answer is unknown or materially uncertain.
-Do not fabricate answers.
+submissions, and confirmation capture as later need arises — not as FR-012 exit scope.
 
 Acceptance Criteria
 
-✓ No submission without explicit owner approval.
+✓ No submission without explicit Owner Approval.
 
-✓ Fail-closed behaviour for unknown required answers.
+✓ Fail-closed behaviour for unknown required answers / uncertain outcomes.
 
-✓ Submission evidence / failure artefacts can be retained for audit.
+✓ SubmissionEvidence / failure artefacts retained for audit (append-only attempts).
+
+✓ Package integrity remains in `ApplicationPackageService` (FR-010/FR-011).
+
+✓ No silent `PipelineStatus` advance from FR-012 (FR-013 owns pipeline reporting).
+
+✓ Owner-operable workflow via thin `cic submission` (check / run / record-manual /
+show / list).
+
+### Milestones
+
+| Milestone | Delivers | Exit |
+|-----------|----------|------|
+| **M0** | Submission domain contracts, attempt state machine, evidence model, append-only JSON attempt store. No adapters, no orchestrator behaviour, no CLI, no network. | **Complete** ([eval](eval/fr012_m0_submission_contracts.md)) |
+| **M1** | `SubmissionOrchestrator` + fake and manual-assisted adapters; gates; durable attempts for success / fail-closed / manual-action paths. No live boards, no Playwright, no PipelineStatus. | **Complete** ([eval](eval/fr012_m1_submission_orchestration.md)) |
+| **M2** | Owner-operable Assisted Submission workflow — CLI is the **interface only**. | **Complete** ([eval](eval/fr012_m2_owner_workflow.md)) |
+| **Close-out** | Freeze assisted-manual submission foundation; live automation remains deferred | **Complete** ([acceptance](eval/fr012_submission_assistance.md)) |
+
+**Do not reopen without explicit owner request:** `SubmissionOrchestrator` boundary,
+append-only attempt identity, distinct Owner Approval gate, offline-first adapters,
+or the FR-013 PipelineStatus separation.
+
+### Owner workflow
+
+```
+cic submission check <opp_id>
+cic submission run <opp_id> --channel fake|manual_assisted --approve-submit --destination …
+cic submission record-manual <opp_id> --approve-submit --attestation "…" [--destination …]
+cic submission show <attempt_id>
+cic submission list [--opportunity-id …]
+```
+
+All behaviour remains in `SubmissionOrchestrator`. The CLI parses flags, formats
+output, and maps outcomes to exit codes only.
 
 ---
 

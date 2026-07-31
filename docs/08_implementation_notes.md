@@ -1408,7 +1408,8 @@ cannot be cancelled (already failed).
 - LangGraph / external workflow engines
 - Distributed or queue-based orchestration
 - Playwright, URL, API, email acquisition adapters
-- Automated application submission (FR-012)
+- Assisted application submission (FR-012 — complete; live board automation deferred)
+
 - Broader retry/scheduling frameworks beyond M3 bounded policy
 
 ### Sequencing (remaining)
@@ -1981,3 +1982,116 @@ Manual harness: `scripts/run_fr011_preparation_manual.py cli --workspace …`
 
 **Freeze:** [eval/fr011_application_preparation.md](eval/fr011_application_preparation.md).
 Next: **FR-012** Submission Assistance.
+
+## FR-012 Submission Assistance (M0)
+
+**Date:** 2026-07-31  
+**Eval:** [eval/fr012_m0_submission_contracts.md](eval/fr012_m0_submission_contracts.md).
+
+M0 introduces package `career_intelligence.submission`: typed
+`SubmissionAttempt` / `SubmissionEvidence`, channel / mode / status contracts,
+deterministic transitions, and append-only JSON + in-memory attempt stores under
+`data/submission_attempts/` (`sub_<ULID>`).
+
+**Coordinating name (M1):** `SubmissionOrchestrator` — same pattern as FR-011
+(`ApplicationPreparationOrchestrator`). Package rules stay in
+`ApplicationPackageService`; adapters will own channel mechanics only.
+
+M0 does **not** implement orchestrator behaviour, adapters, CLI, network,
+PipelineStatus, or Opportunity mutation.
+
+### FR-012 M0 boundaries held
+
+| Boundary | Held |
+|----------|------|
+| No external submission | Yes |
+| No browser / Playwright / board adapters | Yes |
+| No PipelineStatus / Opportunity updates | Yes |
+| No FR-008 integration | Yes |
+| Append-only attempt identity (no delete) | Yes |
+| Illegal transitions fail closed | Yes |
+
+## FR-012 M1 — Deterministic submission assistance
+
+**Date:** 2026-07-31  
+**Eval:** [eval/fr012_m1_submission_orchestration.md](eval/fr012_m1_submission_orchestration.md).
+
+M1 adds `SubmissionOrchestrator` over frozen M0 contracts:
+
+| API | Role |
+|-----|------|
+| `submit(...)` | Gates → create attempt → adapter → persist outcome |
+| `record_manual_completion(...)` | Owner attestation path; no adapter claim of success |
+| `get_attempt` / `list_attempts` | Reload audit records |
+
+Adapters: `FakeSubmissionAdapter` (fixture outcomes), `ManualAssistedAdapter`
+(checklist → `manual_action_required`). Package integrity via
+`ApplicationPackageService.get(verify=True)`. Duplicate policy: block success
+re-attempts unless `force_new_attempt` + reason; reclaim open attempts; require
+`acknowledge_prior_outcome_unknown` after uncertain outcomes; failed allows retry.
+
+Manual harness: `scripts/run_fr012_submission_manual.py`
+
+### FR-012 M1 boundaries held
+
+| Boundary | Held |
+|----------|------|
+| No CLI | Yes (M2) |
+| No network / browser / live boards | Yes |
+| No PipelineStatus | Yes |
+| No FR-008 changes | Yes |
+| Distinct `owner_approved_submit` gate | Yes |
+| Adapters do not persist | Yes |
+
+## FR-012 M2 — Owner-operable assisted submission workflow
+
+**Date:** 2026-07-31  
+**Eval:** [eval/fr012_m2_owner_workflow.md](eval/fr012_m2_owner_workflow.md).
+
+Thin Typer adapter `cic submission`:
+
+| Command | Role |
+|---------|------|
+| `check` | `check_readiness` — never creates attempts |
+| `run` | `submit` — requires `--approve-submit` |
+| `record-manual` | `record_manual_completion` |
+| `show` / `list` | Read-only inspection |
+
+Exit 0 only for `submitted` / `manual_completed` (and successful check/show/list).
+Headlines map statuses to owner-readable labels. `--fake-outcome` is an offline
+test aid only.
+
+Manual harness: `scripts/run_fr012_submission_manual.py cli`
+
+### FR-012 M2 boundaries held
+
+| Boundary | Held |
+|----------|------|
+| CLI invents no gates / policy | Yes |
+| No network / browser / live boards | Yes |
+| No PipelineStatus | Yes |
+| No FR-008 changes | Yes |
+
+## FR-012 Close-out — freeze
+
+**Date:** 2026-07-31  
+**Acceptance:** [eval/fr012_submission_assistance.md](eval/fr012_submission_assistance.md).
+
+FR-012 is **ACCEPTED** and **FROZEN**. Suite at freeze: **1145 passed**. Manual CLI
+harness PASS. No behavioural changes at close-out.
+
+### FR-012 freeze invariants
+
+| Invariant | Status |
+|-----------|--------|
+| `SubmissionOrchestrator` owns sequencing / gates / policy | Held |
+| `ApplicationPackageService` owns package integrity | Held |
+| `SubmissionAdapter` owns channel execute only | Held |
+| `SubmissionAttemptStore` is append-only | Held |
+| `cic submission` is presentation only | Held |
+| Distinct Owner Approval (`owner_approved_submit`) | Held |
+| No PipelineStatus / FR-008 submit wiring / live boards | Held |
+
+**Freeze:** [eval/fr012_submission_assistance.md](eval/fr012_submission_assistance.md).
+Next: **FR-013** Application Pipeline Tracking.
+

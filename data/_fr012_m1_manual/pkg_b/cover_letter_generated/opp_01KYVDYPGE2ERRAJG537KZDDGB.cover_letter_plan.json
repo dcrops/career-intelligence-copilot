@@ -1,0 +1,206 @@
+{
+  "job_analysis": {
+    "posting": {
+      "raw_text": "Senior AI Engineer. Python required. Hybrid Melbourne.",
+      "title": "Senior AI Engineer",
+      "company": "Example AI Co",
+      "source_url": "https://au.seek.com/job/93487188"
+    },
+    "role_family": {
+      "family": "ai_engineering",
+      "evidence": [
+        {
+          "excerpt": "Senior AI Engineer",
+          "section": "title"
+        }
+      ]
+    },
+    "seniority": {
+      "level": "senior",
+      "ambiguous": false,
+      "candidate_levels": [],
+      "evidence": [
+        {
+          "excerpt": "Senior AI Engineer",
+          "section": "title"
+        }
+      ]
+    },
+    "technologies": [
+      {
+        "name": "Python",
+        "level": "required",
+        "evidence": [
+          {
+            "excerpt": "Python required",
+            "section": "requirements"
+          }
+        ]
+      }
+    ],
+    "responsibilities": [
+      {
+        "description": "Build LLM applications",
+        "evidence": [
+          {
+            "excerpt": "Build LLM applications",
+            "section": "responsibilities"
+          }
+        ]
+      }
+    ],
+    "compensation": {
+      "clarity": "unstated",
+      "minimum": null,
+      "maximum": null,
+      "currency": null,
+      "period": null,
+      "raw_text": null,
+      "evidence": []
+    },
+    "location": {
+      "clarity": "stated",
+      "summary": "Melbourne",
+      "evidence": [
+        {
+          "excerpt": "Hybrid Melbourne",
+          "section": "location"
+        }
+      ]
+    },
+    "work_arrangement": {
+      "arrangement": "hybrid",
+      "details": null,
+      "evidence": [
+        {
+          "excerpt": "Hybrid Melbourne",
+          "section": "location"
+        }
+      ]
+    },
+    "employment": {
+      "working_hours": "unspecified",
+      "engagement_type": "unspecified",
+      "evidence": []
+    },
+    "experience_requirements": []
+  },
+  "application_tier": "platinum",
+  "pursuit_posture": "prioritise",
+  "company_alignment": {
+    "company": "Example AI Co",
+    "alignment_hook": "Technical fit is strong for an AI Engineering role",
+    "evidence": [
+      {
+        "origin": "application_strategy",
+        "job_source": null,
+        "job_index": null,
+        "profile_source": null,
+        "profile_id": null,
+        "portfolio_project_id": null,
+        "excerpt": "Technical fit is strong for an AI Engineering role."
+      }
+    ]
+  },
+  "role_motivation": {
+    "role_title": "Senior AI Engineer",
+    "motivation": "Build LLM applications",
+    "evidence": [
+      {
+        "origin": "job_analysis",
+        "job_source": "responsibility",
+        "job_index": 0,
+        "profile_source": null,
+        "profile_id": null,
+        "portfolio_project_id": null,
+        "excerpt": "Build LLM applications"
+      },
+      {
+        "origin": "job_analysis",
+        "job_source": "technology",
+        "job_index": 0,
+        "profile_source": null,
+        "profile_id": null,
+        "portfolio_project_id": null,
+        "excerpt": "Python"
+      }
+    ]
+  },
+  "relevant_evidence": [
+    {
+      "kind": "commercial_experience",
+      "claim": "Builds evidence-backed systems",
+      "project_id": null,
+      "evidence": [
+        {
+          "origin": "career_profile",
+          "job_source": null,
+          "job_index": null,
+          "profile_source": "identity",
+          "profile_id": null,
+          "portfolio_project_id": null,
+          "excerpt": "Builds evidence-backed systems"
+        }
+      ]
+    }
+  ],
+  "strongest_projects": [
+    {
+      "rank": 1,
+      "project_id": "example-project",
+      "project_name": "Example Project",
+      "emphasis": "A production-minded example.",
+      "selection_reason": "Selected as available portfolio evidence for this role.",
+      "business_outcome": "Produced a traceable result.",
+      "fit_focus": "production-minded AI Engineering delivery",
+      "evidence": [
+        {
+          "origin": "career_profile",
+          "job_source": null,
+          "job_index": null,
+          "profile_source": "project",
+          "profile_id": "example-project",
+          "portfolio_project_id": null,
+          "excerpt": "A production-minded example."
+        },
+        {
+          "origin": "application_strategy",
+          "job_source": null,
+          "job_index": null,
+          "profile_source": null,
+          "profile_id": null,
+          "portfolio_project_id": null,
+          "excerpt": "Selected as available portfolio evidence for this role."
+        },
+        {
+          "origin": "application_strategy",
+          "job_source": null,
+          "job_index": null,
+          "profile_source": null,
+          "profile_id": null,
+          "portfolio_project_id": null,
+          "excerpt": "Lead with example-project for required Python overlap."
+        }
+      ]
+    }
+  ],
+  "closing_strategy": {
+    "approach": "contribution_focus",
+    "intent": "Close by offering a concrete discussion of how AI Engineering delivery can support Example AI Co's Senior AI Engineer priorities.",
+    "evidence": [
+      {
+        "origin": "application_strategy",
+        "job_source": null,
+        "job_index": null,
+        "profile_source": null,
+        "profile_id": null,
+        "portfolio_project_id": null,
+        "excerpt": "prioritise"
+      }
+    ]
+  },
+  "assumptions": [],
+  "owner_review_recommended": true,
+  "insufficient_evidence": false,
+  "material_benefit_override": false
+}

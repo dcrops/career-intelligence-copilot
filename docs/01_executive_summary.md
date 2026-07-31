@@ -70,9 +70,10 @@ The platform will provide:
 Near-term delivery: Phase 2 Job Intelligence and document generation (FR-006/007) are
 complete. Within Horizon 1A, job acquisition and workflow orchestration (FR-008), the
 opportunity review queue, duplicate handling, and ranked recommendations (FR-009),
-application package preparation (FR-010), and application preparation orchestration
-(FR-011) are also complete; **FR-012 submission assistance is next**. Horizon 1B
-recruiter engagement follows. See [10_roadmap.md](10_roadmap.md).
+application package preparation (FR-010), application preparation orchestration
+(FR-011), and submission assistance (FR-012) are also complete; **FR-013 application
+pipeline tracking is next**. Horizon 1B recruiter engagement follows. See
+[10_roadmap.md](10_roadmap.md).
 
 ---
 

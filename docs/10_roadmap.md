@@ -40,7 +40,7 @@ intelligence.
 |-------|--------|
 | **Phase 1** — Product Definition | **Complete** |
 | **Phase 2** — Job Intelligence MVP | **Complete** ([release report](eval/phase2_release_report.md)) |
-| **Horizon 1A** — Job application workflow | **Current** (FR-008–FR-011 complete; FR-012–FR-016 planned) |
+| **Horizon 1A** — Job application workflow | **Current** (FR-008–FR-012 complete; FR-013–FR-016 planned) |
 | **Horizon 1B** — Recruiter / market engagement | Not started (FR-017–FR-023; after 1A) |
 | **Horizon 2** — Platform capabilities | Not started (FR-024+) |
 
@@ -129,9 +129,9 @@ FR-010 Application Package Preparation  (FR-006 / FR-007)  ✅ Complete (2026-07
         ▼
 FR-011 Application Preparation Orchestration  ✅ Complete (2026-07-31)
         ▼
-FR-012 Submission Assistance  ← Now
+FR-012 Submission Assistance  ✅ Complete (2026-07-31)
         ▼
-FR-013 Application Pipeline Tracking  (extends Phase 2 M2)
+FR-013 Application Pipeline Tracking  ← Now
         ▼
 FR-014 Bounded Agentic Workflow
         ▼
@@ -148,8 +148,8 @@ FR-016 Agent Evaluation & Observability
 | **Completed** | **FR-009** (2026-07-30) | Opportunity review queue, duplicate handling, quality-first ranking and explainable recommendations — [ADR-004](adr/004_opportunity_review_boundary.md); [acceptance](eval/fr009_opportunity_review_queue.md); milestones [M0](eval/fr009_m0_domain_contracts.md), [M1](eval/fr009_m1_persistence_boundary.md), [M2](eval/fr009_m2_owner_review_actions.md), [M3](eval/fr009_m3_duplicate_detection.md), [M4](eval/fr009_m4_recommendations.md) |
 | **Completed** | **FR-010** (2026-07-31) | Application Package Preparation — standalone composition over FR-006/007, durability/regeneration, owner CLI — [acceptance](eval/fr010_application_package.md); milestones [M0](eval/fr010_m0_application_package.md), [M1](eval/fr010_m1_package_durability.md), [M2](eval/fr010_m2_owner_cli.md) |
 | **Completed** | **FR-011** (2026-07-31) | Application Preparation Orchestration — dedicated orchestrator + owner CLI; [acceptance](eval/fr011_application_preparation.md); milestones [M0](eval/fr011_m0_application_preparation.md), [M1](eval/fr011_m1_executable_preparation.md) |
-| **Now** | **FR-012** | Submission Assistance (not started) |
-| Then | **FR-013** | Application pipeline tracking |
+| **Completed** | **FR-012** (2026-07-31) | Submission Assistance — owner-assisted submit with append-only audit; [acceptance](eval/fr012_submission_assistance.md); milestones [M0](eval/fr012_m0_submission_contracts.md), [M1](eval/fr012_m1_submission_orchestration.md), [M2](eval/fr012_m2_owner_workflow.md) |
+| **Now** | **FR-013** | Application pipeline tracking |
 | Later in 1A | **FR-014 → FR-016** | Bounded agents → multi-agent → evaluation |
 | **After 1A** | **Horizon 1B (FR-017–FR-023)** | Recruiters, outreach, meetups, LinkedIn, market |
 
@@ -247,6 +247,30 @@ runner untouched. No M2–M4. Deferred: resume/retry, FR-008 node wiring, submis
 **Do not reopen without explicit owner request:** dedicated orchestrator (not FR-008
 extension), precondition-only upstream artefacts, thin CLI, or FR-006/007 gate
 pass-through.
+
+### FR-012 completion summary
+
+**Complete — documentation frozen (2026-07-31).**
+[acceptance](eval/fr012_submission_assistance.md).
+
+| Milestone | Intent | Status |
+|-----------|--------|--------|
+| M0 | Contracts, evidence, state machine, append-only attempt store | **Complete** |
+| M1 | `SubmissionOrchestrator` + fake / manual-assisted adapters | **Complete** |
+| M2 | Owner-operable Assisted Submission workflow (`cic submission`) | **Complete** |
+| Close-out | Freeze assisted-manual foundation; live automation deferred | **Complete** |
+
+Canonical flow: Owner → `cic submission` → `SubmissionOrchestrator` →
+`ApplicationPackageService` + `SubmissionAdapter` → `SubmissionAttemptStore`.
+CLI is thin; package rules stay in FR-010; FR-008 runner untouched; no
+PipelineStatus writes (FR-013).
+
+**Do not reopen without explicit owner request:** `SubmissionOrchestrator`
+boundary, append-only attempt identity, distinct Owner Approval,
+offline-first adapters, or FR-013 PipelineStatus separation.
+
+Not in FR-012: live board automation, Playwright, PipelineStatus lifecycle
+(FR-013), FR-008 `submit` node wiring, credentials, CAPTCHA, multi-agent submit.
 
 ### Job acquisition (not “web scraping”)
 

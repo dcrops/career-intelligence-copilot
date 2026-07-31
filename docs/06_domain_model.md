@@ -402,13 +402,30 @@ invokes ``ApplicationPackageService.prepare``. Owner operations use thin
 analysis/assessment/strategy, and does not own package business rules. Preparation
 runs under ``data/preparation_runs/`` are recovery/audit only — not Opportunity SoT.
 
-### Submission Attempt (planned)
+### Submission Attempt (FR-012 — complete and frozen)
 
-**Maps to:** FR-012
+**Maps to:** FR-012 — [acceptance](eval/fr012_submission_assistance.md);
+milestones [M0](eval/fr012_m0_submission_contracts.md),
+[M1](eval/fr012_m1_submission_orchestration.md),
+[M2](eval/fr012_m2_owner_workflow.md)
 
-Separate from document generation and from preparation orchestration. Progressive
-assistance (manual → Playwright-assisted form fill → owner-approved submit). Never
-silent submission; fail closed on unknown answers.
+One append-only attempt to submit (or record that the owner submitted) an already
+prepared Application Package. Opportunity remains the business system of record;
+attempts under ``data/submission_attempts/`` are audit only.
+
+| Field group | Role |
+|-------------|------|
+| Identity | ``sub_<ULID>``; references ``opportunity_id`` + package ``prepared_at`` |
+| Channel / mode | ``manual_assisted`` / ``fake``; ``assist_only`` / ``adapter_action`` |
+| Status | ``ready`` → ``in_progress`` → terminal or ``manual_action_required`` |
+| Evidence | Owner Approval flag, adapter result_code / message, failure_reason when needed |
+
+**Delivered:** ``SubmissionOrchestrator`` enforces gates and policy;
+``SubmissionAdapter`` implements channels offline-first; ``cic submission`` is a
+thin owner interface (`check` / `run` / `record-manual` / `show` / `list`).
+Submission Readiness never creates attempts. Assisted Submission and Manual
+Completion are distinct operations. Live browser / board automation is deferred.
+No ``PipelineStatus`` writes (FR-013).
 
 ---
 
@@ -428,6 +445,8 @@ silent submission; fail closed on unknown answers.
 | Application Strategy | Opportunity | Trusted artifacts may be persisted (M1) |
 | Opportunity | Application Package | Apply decision enables FR-010 package preparation (M0) |
 | Opportunity | Preparation Orchestration | FR-011 coordinates package prep for apply Opportunities |
+| Opportunity | Submission Attempt | FR-012 records append-only submit attempts (audit; not pipeline SoT) |
+| Application Package | Submission Attempt | Attempt references package prepared_at / optional hash |
 | Application Strategy | User Decision | User accepts, overrides, or defers the recommendation |
 | User Decision | Outcome Record | Decision and subsequent events logged (M2 / FR-013) |
 | Outcome Record | Opportunity | Outcomes attach to durable opportunities |
@@ -501,7 +520,7 @@ continue to connect to this layer rather than invent a parallel tracker.
 | Opportunity Recommendations (derived) | **FR-009** M4 (complete) |
 | Application Package Preparation | **FR-010** (Horizon 1A; complete — [acceptance](eval/fr010_application_package.md)) |
 | Application Preparation Orchestration | **FR-011** (Horizon 1A; complete — [acceptance](eval/fr011_application_preparation.md)) |
-| Submission Assistance | **FR-012** (Horizon 1A) |
+| Submission Assistance | **FR-012** (Horizon 1A; complete — [acceptance](eval/fr012_submission_assistance.md)) |
 | Application Pipeline Tracking | **FR-013** (Horizon 1A) |
 | Bounded Agentic Workflow | **FR-014** (Horizon 1A; first bounded agents) |
 | Multi-Agent Orchestration | **FR-015** (Horizon 1A) |

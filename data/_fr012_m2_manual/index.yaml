@@ -1,0 +1,42 @@
+schema_version: '1'
+opportunities:
+- identity:
+    opportunity_id: opp_01KYVEMGGBNPXFF7YZTPERS8FC
+    created_at: '2026-07-31T06:43:53.482924Z'
+    source_kind: seek
+    platform_job_id: '50101010'
+    canonical_url: https://au.seek.com/job/50101010
+    source_url: https://au.seek.com/job/50101010
+    company: CLI Submit Co
+    title: AI Engineer
+    location_text: Melbourne
+    content_fingerprint: 248f1b042da8bb55f3a8e0f904ed26c44e22d5fd6652ab3a6b5693013f910ac6
+  status: assessed
+  decision:
+    decision: apply
+    decided_at: '2026-07-31T06:43:53.494349Z'
+    notes: null
+  outcome: null
+  strategy_summary:
+    pursuit_posture: prioritise
+    application_tier: platinum
+    practical_value: career_priority
+    technical_fit: strong
+    commercial_fit: moderate
+    portfolio_fit: moderate
+  artifact_paths:
+    posting.json: artifacts/opp_01KYVEMGGBNPXFF7YZTPERS8FC/posting.json
+    job_analysis.json: artifacts/opp_01KYVEMGGBNPXFF7YZTPERS8FC/job_analysis.json
+    assessment.json: artifacts/opp_01KYVEMGGBNPXFF7YZTPERS8FC/assessment.json
+    portfolio_match.json: artifacts/opp_01KYVEMGGBNPXFF7YZTPERS8FC/portfolio_match.json
+    strategy.json: artifacts/opp_01KYVEMGGBNPXFF7YZTPERS8FC/strategy.json
+  legacy_import: null
+  review:
+    reviewed_at: null
+    pinned: false
+    defer_until: null
+    archived_at: null
+  review_actions: []
+  duplicate: null
+  duplicate_rejections: []
+  updated_at: '2026-07-31T06:43:53.494349Z'

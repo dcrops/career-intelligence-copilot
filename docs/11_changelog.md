@@ -4,6 +4,98 @@ Records product strategy and engineering knowledge changes. Routine typo fixes a
 
 ---
 
+## Version 1.72
+
+### FR-012 complete — Submission Assistance closed out
+
+**FR-012 is complete and its documentation is frozen** (2026-07-31). Acceptance:
+[docs/eval/fr012_submission_assistance.md](eval/fr012_submission_assistance.md).
+
+**Capability (M0–M2 as one delivery).** Owner-assisted application submission:
+Submission Readiness, Assisted Submission via `SubmissionOrchestrator` and
+`SubmissionAdapter` (fake / manual-assisted), Manual Completion attestation,
+append-only `SubmissionAttempt` / `SubmissionEvidence`, and thin `cic submission`
+CLI. Never silently submit. No PipelineStatus writes (FR-013). No FR-008 changes.
+No live board automation.
+
+**Freeze invariants.** Orchestrator vs package service vs adapter vs CLI
+separation; append-only attempt identity; distinct Owner Approval; offline-first
+adapters; FR-013 pipeline boundary.
+
+**Next active FR:** **FR-013** Application Pipeline Tracking. Do not reopen FR-012
+(or earlier FRs) without explicit owner request.
+
+---
+
+## Version 1.71
+
+### FR-012 M2 — Owner-operable assisted submission workflow
+
+**FR-012 M2 is complete** (2026-07-31). Acceptance:
+[docs/eval/fr012_m2_owner_workflow.md](eval/fr012_m2_owner_workflow.md).
+
+**Capability.** Thin `cic submission` CLI exposes existing M1 behaviour:
+`check` / `run` / `record-manual` / `show` / `list`. CLI owns parsing, formatting,
+and exit codes only — gates and policy remain in `SubmissionOrchestrator`.
+`check_readiness` never creates attempts.
+
+**Owner workflow.** Inspect readiness → approve-submit run or record-manual →
+inspect evidence via show/list.
+
+**Next:** FR-012 Close-out (freeze assisted-manual foundation).
+
+---
+
+## Version 1.70
+
+### FR-012 M1 — Deterministic SubmissionOrchestrator
+
+**FR-012 M1 is complete** (2026-07-31). Acceptance:
+[docs/eval/fr012_m1_submission_orchestration.md](eval/fr012_m1_submission_orchestration.md).
+
+**Capability.** `SubmissionOrchestrator` sequences gates → registered adapter →
+append-only attempt store. Public API: `submit`, `record_manual_completion`,
+`get_attempt`, `list_attempts`. Offline adapters: `FakeSubmissionAdapter`,
+`ManualAssistedAdapter`. Explicit `owner_approved_submit` is distinct from apply /
+package / document gates. Duplicate success blocked unless forced with reason;
+open attempts reclaimed without re-invoking adapters; `outcome_unknown` never
+auto-retried.
+
+**Not in M1:** CLI (M2), network, Playwright, PipelineStatus, FR-008 wiring.
+
+**Next:** FR-012 M2 — owner-operable assisted-manual submission workflow.
+
+---
+
+## Version 1.69
+
+### FR-012 M0 — Submission contracts and append-only attempt store
+
+**FR-012 M0 is complete** (2026-07-31). Acceptance:
+[docs/eval/fr012_m0_submission_contracts.md](eval/fr012_m0_submission_contracts.md).
+
+**Architectural decisions documented**
+
+1. **Coordinating component = `SubmissionOrchestrator`** (not `SubmissionService`).
+   In this repository, `*Service` owns entity business rules
+   (`OpportunityService`, `ApplicationPackageService`). FR-011 established
+   `ApplicationPreparationOrchestrator` for sequencing that delegates to those
+   services. FR-012's coordinator has the same primary responsibility — sequence
+   gates → adapter → attempt store — while package integrity stays in
+   `ApplicationPackageService`. Naming it Service would blur that boundary.
+2. **M2 = owner-operable assisted-manual submission workflow.** The CLI is the
+   interface only; the milestone delivers the business capability (approve →
+   attempt → evidence → inspectable outcome), not “a CLI milestone.”
+
+**Capability.** Package `career_intelligence.submission` provides
+`SubmissionAttempt`, `SubmissionEvidence`, channel / mode / status contracts,
+deterministic transitions, and append-only JSON persistence. No adapters,
+orchestrator behaviour, CLI, network, or PipelineStatus.
+
+**Next:** FR-012 M1 — `SubmissionOrchestrator` + fake / manual-assisted adapters.
+
+---
+
 ## Version 1.68
 
 ### FR-011 complete — Application Preparation Orchestration closed out

@@ -1,0 +1,22 @@
+{
+  "attempt_id": "sub_01KYVDYPJ0JWNA7GJF9RZ62WNE",
+  "opportunity_id": "opp_01KYVDYPGE2ERRAJG537KZDDGB",
+  "package": {
+    "opportunity_id": "opp_01KYVDYPGE2ERRAJG537KZDDGB",
+    "prepared_at": "2026-07-30T15:00:00Z",
+    "manifest_hash": null
+  },
+  "channel": "fake",
+  "mode": "adapter_action",
+  "destination": "https://example.com/jobs/manual-validation",
+  "status": "outcome_unknown",
+  "created_at": "2026-07-31T06:31:58.784147Z",
+  "updated_at": "2026-07-31T06:31:58.786987Z",
+  "completed_at": "2026-07-31T06:31:58.786987Z",
+  "evidence": {
+    "owner_approved_submit": true,
+    "result_code": "fake_outcome_unknown",
+    "message": "Fake adapter returned outcome_unknown",
+    "failure_reason": "fake_outcome_unknown_reason"
+  }
+}

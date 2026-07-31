@@ -1,0 +1,282 @@
+{
+  "job_analysis": {
+    "posting": {
+      "raw_text": "AI Engineer. Python and LLMs. Hybrid Sydney. CLI Submit Co offline validation posting.",
+      "title": "AI Engineer",
+      "company": "CLI Submit Co",
+      "source_url": "https://au.seek.com/job/50101010"
+    },
+    "role_family": {
+      "family": "ai_engineering",
+      "evidence": [
+        {
+          "excerpt": "Senior AI Engineer",
+          "section": "title"
+        }
+      ]
+    },
+    "seniority": {
+      "level": "senior",
+      "ambiguous": false,
+      "candidate_levels": [],
+      "evidence": [
+        {
+          "excerpt": "Senior AI Engineer",
+          "section": "title"
+        }
+      ]
+    },
+    "technologies": [
+      {
+        "name": "Python",
+        "level": "required",
+        "evidence": [
+          {
+            "excerpt": "Python required",
+            "section": "requirements"
+          }
+        ]
+      }
+    ],
+    "responsibilities": [
+      {
+        "description": "Build LLM applications",
+        "evidence": [
+          {
+            "excerpt": "Build LLM applications",
+            "section": "responsibilities"
+          }
+        ]
+      }
+    ],
+    "compensation": {
+      "clarity": "unstated",
+      "minimum": null,
+      "maximum": null,
+      "currency": null,
+      "period": null,
+      "raw_text": null,
+      "evidence": []
+    },
+    "location": {
+      "clarity": "stated",
+      "summary": "Melbourne",
+      "evidence": [
+        {
+          "excerpt": "Hybrid Melbourne",
+          "section": "location"
+        }
+      ]
+    },
+    "work_arrangement": {
+      "arrangement": "hybrid",
+      "details": null,
+      "evidence": [
+        {
+          "excerpt": "Hybrid Melbourne",
+          "section": "location"
+        }
+      ]
+    },
+    "employment": {
+      "working_hours": "unspecified",
+      "engagement_type": "unspecified",
+      "evidence": []
+    },
+    "experience_requirements": []
+  },
+  "application_tier": "platinum",
+  "pursuit_posture": "prioritise",
+  "jd_priorities": [
+    {
+      "rank": 1,
+      "label": "Python",
+      "kind": "technology",
+      "rationale": "Python is listed as required in the job analysis (employer priority; candidate_support=supported).",
+      "evidence": [
+        {
+          "origin": "job_analysis",
+          "job_evidence": {
+            "source": "technology",
+            "item_index": 0,
+            "name": "Python",
+            "excerpt": "Python required"
+          },
+          "profile_evidence": null,
+          "portfolio_project_id": null,
+          "excerpt": null
+        }
+      ],
+      "candidate_support": "supported",
+      "related_profile_capability": "Python"
+    },
+    {
+      "rank": 2,
+      "label": "Ai Engineering",
+      "kind": "role_theme",
+      "rationale": "Role family 'ai_engineering' is an employer positioning signal (candidate_support=related).",
+      "evidence": [
+        {
+          "origin": "job_analysis",
+          "job_evidence": {
+            "source": "role_family",
+            "item_index": null,
+            "name": "ai_engineering",
+            "excerpt": "Senior AI Engineer"
+          },
+          "profile_evidence": null,
+          "portfolio_project_id": null,
+          "excerpt": null
+        }
+      ],
+      "candidate_support": "related",
+      "related_profile_capability": "AI Engineer"
+    },
+    {
+      "rank": 3,
+      "label": "Build Llm Applications",
+      "kind": "responsibility",
+      "rationale": "Responsibility appears in the job analysis as an employer priority (candidate_support=unsupported).",
+      "evidence": [
+        {
+          "origin": "job_analysis",
+          "job_evidence": {
+            "source": "responsibility",
+            "item_index": 0,
+            "name": null,
+            "excerpt": "Build LLM applications"
+          },
+          "profile_evidence": null,
+          "portfolio_project_id": null,
+          "excerpt": null
+        }
+      ],
+      "candidate_support": "unsupported",
+      "related_profile_capability": null
+    }
+  ],
+  "projects_to_emphasise": [
+    {
+      "rank": 1,
+      "project_id": "example-project",
+      "rationale": "Lead with example-project for required Python overlap.",
+      "evidence": [
+        {
+          "origin": "application_strategy",
+          "job_evidence": null,
+          "profile_evidence": null,
+          "portfolio_project_id": "example-project",
+          "excerpt": "Lead with example-project for required Python overlap."
+        }
+      ]
+    }
+  ],
+  "skills_to_promote": [
+    {
+      "rank": 1,
+      "skill_name": "Python",
+      "category": "technical",
+      "rationale": "Python promoted because it is both a key JD requirement (Python, required) and evidenced in the Career Profile via employment.",
+      "evidence": [
+        {
+          "origin": "job_analysis",
+          "job_evidence": {
+            "source": "technology",
+            "item_index": 0,
+            "name": "Python",
+            "excerpt": "Python required"
+          },
+          "profile_evidence": null,
+          "portfolio_project_id": null,
+          "excerpt": null
+        },
+        {
+          "origin": "career_profile",
+          "job_evidence": null,
+          "profile_evidence": {
+            "source": "skill",
+            "ref": "skill:Python",
+            "excerpt": null
+          },
+          "portfolio_project_id": null,
+          "excerpt": null
+        }
+      ]
+    }
+  ],
+  "skills_not_emphasised": [],
+  "summary_themes": [
+    {
+      "rank": 1,
+      "theme": "Python",
+      "rationale": "Summary theme 'Python' is both a JD priority (Python) and evidenced in the Career Profile.",
+      "evidence": [
+        {
+          "origin": "job_analysis",
+          "job_evidence": {
+            "source": "technology",
+            "item_index": 0,
+            "name": "Python",
+            "excerpt": "Python required"
+          },
+          "profile_evidence": null,
+          "portfolio_project_id": null,
+          "excerpt": null
+        },
+        {
+          "origin": "career_profile",
+          "job_evidence": null,
+          "profile_evidence": {
+            "source": "skill",
+            "ref": "skill:Python",
+            "excerpt": null
+          },
+          "portfolio_project_id": null,
+          "excerpt": null
+        }
+      ]
+    },
+    {
+      "rank": 2,
+      "theme": "AI Engineer",
+      "rationale": "Summary theme 'AI Engineer' is evidenced in the Career Profile and supports employer priority 'Ai Engineering' (related capability; not an unsupported claim).",
+      "evidence": [
+        {
+          "origin": "job_analysis",
+          "job_evidence": {
+            "source": "role_family",
+            "item_index": null,
+            "name": "ai_engineering",
+            "excerpt": "Senior AI Engineer"
+          },
+          "profile_evidence": null,
+          "portfolio_project_id": null,
+          "excerpt": null
+        },
+        {
+          "origin": "career_profile",
+          "job_evidence": null,
+          "profile_evidence": {
+            "source": "identity",
+            "ref": "identity:target_role",
+            "excerpt": "AI Engineer"
+          },
+          "portfolio_project_id": null,
+          "excerpt": null
+        }
+      ]
+    }
+  ],
+  "experience_guidance": {
+    "kind": "master_cv_only",
+    "rationale": "Default Master-CV-aligned scope: extended pre-nbn history is excluded unless the caller opts in.",
+    "included_experience_ids": [
+      "example-role"
+    ],
+    "excluded_experience_ids": []
+  },
+  "assumptions": [],
+  "owner_review_recommended": true,
+  "insufficient_evidence": false,
+  "material_benefit_override": false
+}

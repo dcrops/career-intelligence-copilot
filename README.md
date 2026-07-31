@@ -71,7 +71,13 @@ decides.
 [M0](docs/eval/fr011_m0_application_preparation.md),
 [M1](docs/eval/fr011_m1_executable_preparation.md)).
 
-**Current focus:** **FR-012** Submission Assistance (next active FR, not started).
+**FR-012 Submission Assistance — complete** and frozen
+([acceptance](docs/eval/fr012_submission_assistance.md); milestones
+[M0](docs/eval/fr012_m0_submission_contracts.md),
+[M1](docs/eval/fr012_m1_submission_orchestration.md),
+[M2](docs/eval/fr012_m2_owner_workflow.md)).
+
+**Current focus:** **FR-013** Application Pipeline Tracking (next active FR, not started).
 Details: [docs/10_roadmap.md](docs/10_roadmap.md).
 
 Acquisition today: paste or local export file via
@@ -149,6 +155,14 @@ cic package verify <opp_id>
 cic preparation run <opp_id> --approve [--override-material-benefit]
 cic preparation show <run_id>
 
+# FR-012 assisted submission (after package ready)
+cic submission check <opp_id>
+cic submission run <opp_id> --channel manual_assisted --approve-submit --destination URL
+cic submission run <opp_id> --channel fake --approve-submit --destination URL
+cic submission record-manual <opp_id> --approve-submit --attestation "…" --destination URL
+cic submission show <attempt_id>
+cic submission list
+
 # FR-006 CV (see docs/eval/fr006_manual_validation.md)
 python scripts/run_cv_generation_manual.py --job-file path/to/real_job.txt
 
@@ -162,6 +176,9 @@ python scripts/run_fr010_application_package_manual.py cli --workspace data/_fr0
 
 # FR-011 preparation orchestration manual validation
 python scripts/run_fr011_preparation_manual.py cli --workspace data/_fr011_m1_manual
+
+# FR-012 submission manual validation
+python scripts/run_fr012_submission_manual.py cli --workspace data/_fr012_m2_manual
 
 # Tests
 python -m pytest

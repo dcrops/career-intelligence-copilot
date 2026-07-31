@@ -1,0 +1,22 @@
+{
+  "attempt_id": "sub_01KYVEYY6ZCMBXWJTYA8RCP9QA",
+  "opportunity_id": "opp_01KYVEYY4W6ZYG85WQYFA1MCQB",
+  "package": {
+    "opportunity_id": "opp_01KYVEYY4W6ZYG85WQYFA1MCQB",
+    "prepared_at": "2026-07-30T15:00:00Z",
+    "manifest_hash": null
+  },
+  "channel": "manual_assisted",
+  "mode": "assist_only",
+  "destination": "https://example.com/jobs/manual-validation",
+  "status": "manual_completed",
+  "created_at": "2026-07-31T06:49:35.199122Z",
+  "updated_at": "2026-07-31T06:49:35.214104Z",
+  "completed_at": "2026-07-31T06:49:35.214104Z",
+  "evidence": {
+    "owner_approved_submit": true,
+    "result_code": "manual_owner_completed",
+    "message": "manual_owner_attestation; attestation=Submitted on employer site; confirmation_reference=CLI-1",
+    "failure_reason": null
+  }
+}

@@ -1,0 +1,49 @@
+{
+  "opportunity_id": "opp_01KYVEMGGBNPXFF7YZTPERS8FC",
+  "prepared_at": "2026-07-30T15:00:00Z",
+  "evidence": {
+    "opportunity_id": "opp_01KYVEMGGBNPXFF7YZTPERS8FC",
+    "artifact_paths": {
+      "posting.json": "artifacts/opp_01KYVEMGGBNPXFF7YZTPERS8FC/posting.json",
+      "job_analysis.json": "artifacts/opp_01KYVEMGGBNPXFF7YZTPERS8FC/job_analysis.json",
+      "assessment.json": "artifacts/opp_01KYVEMGGBNPXFF7YZTPERS8FC/assessment.json",
+      "portfolio_match.json": "artifacts/opp_01KYVEMGGBNPXFF7YZTPERS8FC/portfolio_match.json",
+      "strategy.json": "artifacts/opp_01KYVEMGGBNPXFF7YZTPERS8FC/strategy.json"
+    },
+    "acquisition": {
+      "source_kind": "seek",
+      "platform_job_id": "50101010",
+      "canonical_url": "https://au.seek.com/job/50101010",
+      "source_url": "https://au.seek.com/job/50101010",
+      "company": "CLI Submit Co",
+      "title": "AI Engineer",
+      "location_text": "Melbourne",
+      "content_fingerprint": "248f1b042da8bb55f3a8e0f904ed26c44e22d5fd6652ab3a6b5693013f910ac6"
+    },
+    "strategy_summary": {
+      "pursuit_posture": "prioritise",
+      "application_tier": "platinum",
+      "practical_value": "career_priority",
+      "technical_fit": "strong",
+      "commercial_fit": "moderate",
+      "portfolio_fit": "moderate"
+    }
+  },
+  "cv": {
+    "stem": "opp_01KYVEMGGBNPXFF7YZTPERS8FC",
+    "output_dir": ".",
+    "markdown_path": "opp_01KYVEMGGBNPXFF7YZTPERS8FC.md",
+    "json_path": "opp_01KYVEMGGBNPXFF7YZTPERS8FC.json",
+    "plan_json_path": "opp_01KYVEMGGBNPXFF7YZTPERS8FC.tailoring_plan.json",
+    "html_path": "opp_01KYVEMGGBNPXFF7YZTPERS8FC.html"
+  },
+  "cover_letter": {
+    "stem": "opp_01KYVEMGGBNPXFF7YZTPERS8FC",
+    "output_dir": ".",
+    "markdown_path": "opp_01KYVEMGGBNPXFF7YZTPERS8FC.md",
+    "json_path": "opp_01KYVEMGGBNPXFF7YZTPERS8FC.json",
+    "plan_json_path": "opp_01KYVEMGGBNPXFF7YZTPERS8FC.cover_letter_plan.json",
+    "html_path": "opp_01KYVEMGGBNPXFF7YZTPERS8FC.html"
+  },
+  "owner_review_required": true
+}

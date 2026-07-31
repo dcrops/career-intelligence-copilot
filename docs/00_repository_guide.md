@@ -36,7 +36,7 @@ Objectives.
 |----------|--------|
 | What is this project? | Decision-support for job search (Horizon 1), evolving toward a Career Intelligence Platform (Horizon 2). |
 | What has been completed? | **Phase 1** and **Phase 2** — see [12_phase_history.md](12_phase_history.md) and [eval/phase2_release_report.md](eval/phase2_release_report.md). |
-| What is next? | **FR-012** Submission Assistance, inside **Horizon 1A** (FR-008–FR-011 complete; acquisition via source adapters, not “scraping”). Recruiter outreach is Horizon 1B (**FR-017+**) — [10_roadmap.md](10_roadmap.md). |
+| What is next? | **FR-013** Application Pipeline Tracking, inside **Horizon 1A** (FR-008–FR-012 complete). Recruiter outreach is Horizon 1B (**FR-017+**) — [10_roadmap.md](10_roadmap.md). |
 | Where should I start reading? | This guide → [AGENTS.md](../AGENTS.md) → [04_functional_specification.md](04_functional_specification.md) → [10_roadmap.md](10_roadmap.md). |
 
 ---
@@ -60,9 +60,13 @@ milestones [M0](eval/fr010_m0_application_package.md),
 [M2](eval/fr010_m2_owner_cli.md)), and **FR-011** Application Preparation Orchestration
 ([eval/fr011_application_preparation.md](eval/fr011_application_preparation.md);
 milestones [M0](eval/fr011_m0_application_preparation.md),
-[M1](eval/fr011_m1_executable_preparation.md)).
+[M1](eval/fr011_m1_executable_preparation.md)), and **FR-012** Submission Assistance
+([eval/fr012_submission_assistance.md](eval/fr012_submission_assistance.md);
+milestones [M0](eval/fr012_m0_submission_contracts.md),
+[M1](eval/fr012_m1_submission_orchestration.md),
+[M2](eval/fr012_m2_owner_workflow.md)).
 
-**Active FR:** **FR-012** Submission Assistance — next in Horizon 1A, not started.
+**Active FR:** **FR-013** Application Pipeline Tracking — next in Horizon 1A, not started.
 
 **Thereafter:** Complete Horizon 1A (through FR-016), then Horizon 1B (FR-017–FR-023).
 

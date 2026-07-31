@@ -577,14 +577,45 @@ precondition fail-closed behaviour and that package rules remain in FR-010.
 **Functional:** `tests/functional/test_fr011_application_preparation.py`  
 **Manual:** `scripts/run_fr011_preparation_manual.py` (`demo`, `cli`)
 
-Does **not** cover: submission, PipelineStatus writes, FR-008 ``prepare_package`` node
-wiring, resume/branching ``routing.py``, package versioning, PDF/DOCX.
+Does **not** cover: submission behaviour (FR-012 M1+), PipelineStatus writes, FR-008
+``prepare_package`` node wiring, resume/branching ``routing.py``, package versioning,
+PDF/DOCX.
+
+---
+
+## FR-012 Submission Assistance coverage (complete — frozen)
+
+FR-012 is **complete**. Acceptance:
+[docs/eval/fr012_submission_assistance.md](eval/fr012_submission_assistance.md).
+
+Milestone records:
+[M0](eval/fr012_m0_submission_contracts.md),
+[M1](eval/fr012_m1_submission_orchestration.md),
+[M2](eval/fr012_m2_owner_workflow.md).
+
+FR-012 delivers owner-assisted submission: contracts, deterministic orchestration,
+offline adapters, and a thin owner CLI. Tests assert:
+
+| Area | Coverage |
+|------|----------|
+| Models / transitions / store | Append-only identity; illegal transitions fail |
+| Orchestrator gates & policy | Owner Approval; package verify; duplicate / idempotency |
+| Adapters | Fake outcomes; ManualAssisted never claims submitted |
+| Manual Completion | Attestation path; no adapter success claim |
+| CLI | `check` / `run` / `record-manual` / `show` / `list`; exit codes |
+
+**Unit:** `tests/unit/submission/` (incl. `test_cli.py`)
+**Functional:** `tests/functional/test_fr012_submission.py`
+**Manual:** `scripts/run_fr012_submission_manual.py` (`demo`, `cli`)
+
+Does **not** cover: live boards, Playwright, PipelineStatus, FR-008 ``submit`` node,
+credentials, CAPTCHA, multi-agent submit.
 
 ---
 
 ## Horizon 1A — Planned test coverage (remaining)
 
-When FR-012–FR-016 are built, prefer behaviour over implementation detail:
+When FR-013–FR-016 are built, prefer behaviour over implementation detail:
 
 | Area | Expected coverage |
 |------|-------------------|
@@ -593,7 +624,7 @@ When FR-012–FR-016 are built, prefer behaviour over implementation detail:
 | FR-009 queue / duplicates (**delivered** — see FR-009 coverage above) | Deterministic ranking inputs; explainable reasons; no mutate-on-rank; derived queue position (never persisted); eligibility excludes archived / skipped / currently deferred / confirmed duplicates; pinning changes order without altering fit signals; persistence-boundary move creates exactly one Opportunity across resume and replay; platform ID / URL / fingerprint matching with owner confirmation |
 | FR-010 packages (**delivered** — see FR-010 coverage above) | Composition, durability, owner CLI |
 | FR-011 preparation (**delivered** — see FR-011 coverage above) | Preconditions; package coordination; fail-closed; run audit; owner CLI |
-| FR-012 submission | Never silent submit; fail-closed on unknown answers; unsupported-form / CAPTCHA / auth paths escalate; duplicate-submission guards |
+| FR-012 submission (**delivered** — see FR-012 coverage above) | Readiness; Assisted Submission; Manual Completion; append-only audit; owner CLI |
 | FR-013 tracking | Status transitions with timestamps and audit history |
 | FR-014 agents | Max iterations, stop conditions, restricted tools, validation before state update |
 | FR-015 / FR-016 | Loop prevention; fault injection; token/cost/latency where LLM-backed; browser journey evidence when Playwright is used |

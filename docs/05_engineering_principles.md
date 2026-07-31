@@ -48,12 +48,19 @@ understood. Introduce bounded agents (FR-014) only after the deterministic path
 (FR-008) works; multi-agent patterns (FR-015) only after bounded agents are reliable.
 Do not blur workflow orchestration with agent reasoning.
 
-**Orchestration coordinates; services execute; interfaces remain thin.** A dedicated
-coordinator (e.g. FR-011 preparation) sequences existing public services and keeps
-business rules inside those services. Owner-facing CLIs map commands to the
+**Orchestration coordinates; services execute; adapters channel; interfaces remain thin.**
+A dedicated coordinator (FR-011 preparation, FR-012 submission) sequences existing
+public services and keeps business rules inside those services. Channel adapters
+execute external/offline actions only. Owner-facing CLIs map commands to the
 coordinator — they do not duplicate eligibility, gates, or document generation.
-Established by FR-011 ([eval/fr011_application_preparation.md](eval/fr011_application_preparation.md)).
+Established by FR-011
+([eval/fr011_application_preparation.md](eval/fr011_application_preparation.md))
+and confirmed by FR-012
+([eval/fr012_submission_assistance.md](eval/fr012_submission_assistance.md)).
 
+**Append-only submission audit; never silent submit.** SubmissionAttempt identity is
+never deleted; uncertain outcomes fail closed; Owner Approval is distinct from apply /
+package / document gates.
 ### Intelligence before automation
 
 Decision quality is the product. Automation serves intelligence — it does not replace it. Automate structured extraction and comparison; do not automate tier commitment or externally visible actions.
@@ -81,9 +88,9 @@ Assessments must be explainable with cited evidence. Do not ship confident-sound
 
 ### Outcome logging
 
-Pipeline and outcome recording (Phase 2 M2; Horizon 1A FR-012) is infrastructure,
+Pipeline and outcome recording (Phase 2 M2; Horizon 1A **FR-013**) is infrastructure,
 not a backlog item. A system that assesses but does not remember is a calculator,
-not a copilot.
+not a copilot. Submission attempt audit (FR-012) is separate from pipeline lifecycle.
 
 ### Operational continuity
 

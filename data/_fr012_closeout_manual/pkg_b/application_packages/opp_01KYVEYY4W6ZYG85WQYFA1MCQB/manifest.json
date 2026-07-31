@@ -1,0 +1,49 @@
+{
+  "opportunity_id": "opp_01KYVEYY4W6ZYG85WQYFA1MCQB",
+  "prepared_at": "2026-07-30T15:00:00Z",
+  "evidence": {
+    "opportunity_id": "opp_01KYVEYY4W6ZYG85WQYFA1MCQB",
+    "artifact_paths": {
+      "posting.json": "artifacts/opp_01KYVEYY4W6ZYG85WQYFA1MCQB/posting.json",
+      "job_analysis.json": "artifacts/opp_01KYVEYY4W6ZYG85WQYFA1MCQB/job_analysis.json",
+      "assessment.json": "artifacts/opp_01KYVEYY4W6ZYG85WQYFA1MCQB/assessment.json",
+      "portfolio_match.json": "artifacts/opp_01KYVEYY4W6ZYG85WQYFA1MCQB/portfolio_match.json",
+      "strategy.json": "artifacts/opp_01KYVEYY4W6ZYG85WQYFA1MCQB/strategy.json"
+    },
+    "acquisition": {
+      "source_kind": "seek",
+      "platform_job_id": "93487188",
+      "canonical_url": "https://au.seek.com/job/93487188",
+      "source_url": "https://au.seek.com/job/93487188",
+      "company": "Example AI Co",
+      "title": "Senior AI Engineer",
+      "location_text": "Melbourne",
+      "content_fingerprint": "071ee10ac2991f0bf24613d78b0b9096ceefb909258fecf5227ada5247dcecaa"
+    },
+    "strategy_summary": {
+      "pursuit_posture": "prioritise",
+      "application_tier": "platinum",
+      "practical_value": "career_priority",
+      "technical_fit": "strong",
+      "commercial_fit": "moderate",
+      "portfolio_fit": "moderate"
+    }
+  },
+  "cv": {
+    "stem": "opp_01KYVEYY4W6ZYG85WQYFA1MCQB",
+    "output_dir": ".",
+    "markdown_path": "opp_01KYVEYY4W6ZYG85WQYFA1MCQB.md",
+    "json_path": "opp_01KYVEYY4W6ZYG85WQYFA1MCQB.json",
+    "plan_json_path": "opp_01KYVEYY4W6ZYG85WQYFA1MCQB.tailoring_plan.json",
+    "html_path": "opp_01KYVEYY4W6ZYG85WQYFA1MCQB.html"
+  },
+  "cover_letter": {
+    "stem": "opp_01KYVEYY4W6ZYG85WQYFA1MCQB",
+    "output_dir": ".",
+    "markdown_path": "opp_01KYVEYY4W6ZYG85WQYFA1MCQB.md",
+    "json_path": "opp_01KYVEYY4W6ZYG85WQYFA1MCQB.json",
+    "plan_json_path": "opp_01KYVEYY4W6ZYG85WQYFA1MCQB.cover_letter_plan.json",
+    "html_path": "opp_01KYVEYY4W6ZYG85WQYFA1MCQB.html"
+  },
+  "owner_review_required": true
+}

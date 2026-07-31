@@ -73,7 +73,7 @@ SoT shape, ranking sort key, or Horizon 2 domains (recruiters, networking, meetu
 
 ## Next
 
-**Current focus:** Horizon 1A — **FR-012** Submission Assistance (not started)  
+**Current focus:** Horizon 1A — **FR-013** Application Pipeline Tracking (not started)  
 **Completed:** FR-008 Job Acquisition & Workflow Orchestration (2026-07-29);
 **FR-009** Opportunity Review Queue & Ranking (2026-07-30 —
 [acceptance](eval/fr009_opportunity_review_queue.md)); **FR-010** Application Package
@@ -81,9 +81,13 @@ Preparation (2026-07-31 — [acceptance](eval/fr010_application_package.md));
 **FR-011** Application Preparation Orchestration (2026-07-31 —
 [acceptance](eval/fr011_application_preparation.md);
 milestones [M0](eval/fr011_m0_application_preparation.md),
-[M1](eval/fr011_m1_executable_preparation.md))  
-**Then:** FR-013 pipeline tracking  
-**Later in 1A:** FR-014–FR-016 bounded agents → multi-agent → evaluation  
+[M1](eval/fr011_m1_executable_preparation.md));
+**FR-012** Submission Assistance (2026-07-31 —
+[acceptance](eval/fr012_submission_assistance.md);
+milestones [M0](eval/fr012_m0_submission_contracts.md),
+[M1](eval/fr012_m1_submission_orchestration.md),
+[M2](eval/fr012_m2_owner_workflow.md))  
+**Then:** FR-014–FR-016 bounded agents → multi-agent → evaluation  
 **After 1A:** Horizon 1B recruiter / market engagement (FR-017–FR-023)  
 **Principle:** Job acquisition first. Recruiter outreach second.  
 **Later:** Horizon 2 capability phases (see roadmap)

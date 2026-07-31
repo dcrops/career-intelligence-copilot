@@ -48,9 +48,15 @@ milestones [M0](docs/eval/fr010_m0_application_package.md),
 is **complete and frozen** —
 [docs/eval/fr011_application_preparation.md](docs/eval/fr011_application_preparation.md);
 milestones [M0](docs/eval/fr011_m0_application_preparation.md),
-[M1](docs/eval/fr011_m1_executable_preparation.md). **Current focus — Horizon 1A:**
-**FR-012** Submission Assistance (next active FR, not started), then FR-013–FR-016.
-Do not reopen Phase 2, FR-008, FR-009, FR-010, or FR-011 exit criteria without
+[M1](docs/eval/fr011_m1_executable_preparation.md). **FR-012** Submission Assistance
+is **complete and frozen** —
+[docs/eval/fr012_submission_assistance.md](docs/eval/fr012_submission_assistance.md);
+milestones [M0](docs/eval/fr012_m0_submission_contracts.md),
+[M1](docs/eval/fr012_m1_submission_orchestration.md),
+[M2](docs/eval/fr012_m2_owner_workflow.md). **Current focus — Horizon 1A:**
+**FR-013** Application Pipeline Tracking (next active FR, not started), then
+FR-014–FR-016.
+Do not reopen Phase 2, FR-008, FR-009, FR-010, FR-011, or FR-012 exit criteria without
 explicit owner request.
 **Principle:** Job acquisition first. Recruiter outreach second (Horizon 1B /
 FR-017–FR-023 — do not start while 1A is incomplete).
@@ -81,9 +87,11 @@ implemented with Decision 8 amended by the M4 calibration). **FR-010 complete an
 frozen** (standalone package composition, durability/regeneration, owner CLI;
 [acceptance](docs/eval/fr010_application_package.md)). **FR-011 complete and frozen**
 (dedicated preparation orchestrator + owner CLI;
-[acceptance](docs/eval/fr011_application_preparation.md)). **FR-012 is the next
-active FR** — FR-012–FR-016 planned; deterministic workflow first, then bounded
-agents (FR-014). See [docs/10_roadmap.md](docs/10_roadmap.md).
+[acceptance](docs/eval/fr011_application_preparation.md)). **FR-012 complete and
+frozen** (owner-assisted submission; append-only attempts; thin `cic submission`;
+[acceptance](docs/eval/fr012_submission_assistance.md)). **FR-013 Application
+Pipeline Tracking is the next active FR** — then FR-014–FR-016. See
+[docs/10_roadmap.md](docs/10_roadmap.md).
 
 Full detail: [docs/04_functional_specification.md](docs/04_functional_specification.md) and [docs/10_roadmap.md](docs/10_roadmap.md).
 
