@@ -100,6 +100,30 @@ def test_valid_portfolio_alignment_with_job_and_profile_evidence_passes() -> Non
     assert len(finding.profile_evidence) == 1
 
 
+def test_extraction_rejects_alignment_missing_profile_evidence() -> None:
+    """Structured-output schema must reject alignment with empty profile_evidence."""
+    payload = dict(assessment_strong_ai_alignment())
+    payload["commercial_fit"] = {
+        "dimension": "commercial",
+        "judgment": "moderate",
+        "summary": "Commercial alignment claimed without profile grounding.",
+        "findings": [
+            {
+                "kind": "alignment",
+                "summary": "Hybrid Melbourne matches preference",
+                "importance": "minor",
+                "job_evidence": [{"source": "work_arrangement"}],
+                "profile_evidence": [],
+                "assumption": None,
+            }
+        ],
+    }
+    with pytest.raises(ValidationError):
+        OpportunityAssessmentExtraction.model_validate(
+            {k: v for k, v in payload.items() if k != "job_analysis"}
+        )
+
+
 def test_service_rejects_portfolio_alignment_missing_job_evidence() -> None:
     payload = dict(assessment_strong_ai_alignment())
     payload["portfolio_fit"] = {
@@ -123,7 +147,7 @@ def test_service_rejects_portfolio_alignment_missing_job_evidence() -> None:
         ],
     }
 
-    with pytest.raises(ValidationError, match="job evidence"):
+    with pytest.raises(ValidationError, match="at least 1"):
         OpportunityAssessmentExtraction.model_validate(payload)
 
     raw = dict(payload)

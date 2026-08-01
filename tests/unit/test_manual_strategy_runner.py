@@ -113,6 +113,68 @@ def test_offline_pipeline_and_report_serialisation(tmp_path: Path) -> None:
         assert "preference:preference:locations" not in report
 
 
+def test_resolve_pipeline_json_path_defaults_to_manual_outputs(tmp_path: Path) -> None:
+    runner = _load_runner()
+    job = tmp_path / "jobs" / "017_mars_recruitment_AI_Engineer.txt"
+    assert runner.resolve_pipeline_json_path(
+        job_file=job,
+        output_json=None,
+        repo_root=tmp_path,
+    ) == tmp_path / "manual_validation" / "outputs" / "017_mars_recruitment_AI_Engineer.json"
+
+
+def test_resolve_pipeline_json_path_explicit_override_wins(tmp_path: Path) -> None:
+    runner = _load_runner()
+    custom = tmp_path / "custom.json"
+    assert runner.resolve_pipeline_json_path(
+        job_file=tmp_path / "job.txt",
+        output_json=custom,
+        repo_root=tmp_path,
+    ) == custom
+
+
+def test_resolve_pipeline_json_path_stdin_only_writes_nothing(tmp_path: Path) -> None:
+    runner = _load_runner()
+    assert (
+        runner.resolve_pipeline_json_path(
+            job_file=None,
+            output_json=None,
+            repo_root=tmp_path,
+        )
+        is None
+    )
+
+
+def test_main_without_output_json_writes_manual_validation_outputs(
+    tmp_path: Path,
+) -> None:
+    runner = _load_runner()
+    job_file = tmp_path / "jobs" / "zz_owner_workflow_fixture.txt"
+    job_file.parent.mkdir(parents=True)
+    job_file.write_text(posting_applied_ai_engineer().raw_text, encoding="utf-8")
+    exit_code = runner.main(
+        [
+            "--job-file",
+            str(job_file),
+            "--offline-fixtures",
+            "--profile-path",
+            str(_REPO_ROOT / "tests" / "fixtures" / "golden" / "career_profile.yaml"),
+        ],
+        repo_root=tmp_path,
+    )
+    assert exit_code == 0
+    output = (
+        tmp_path
+        / "manual_validation"
+        / "outputs"
+        / "zz_owner_workflow_fixture.json"
+    )
+    assert output.is_file()
+    payload = json.loads(output.read_text(encoding="utf-8"))
+    assert "application_strategy" in payload
+    assert payload["application_strategy"]["owner_review_required"] is True
+
+
 def test_default_run_does_not_persist(tmp_path: Path) -> None:
     runner = _load_runner()
     posting = posting_applied_ai_engineer()

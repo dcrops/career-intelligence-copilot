@@ -1,0 +1,55 @@
+AI Automation Engineer
+
+Anton Murray Consulting 
+View all jobs
+Melbourne VIC
+Engineering - Software (Information & Communication Technology)
+Full time
+Salary undisclosed
+
+
+Our client is a leading global investment bank seeking an AI Automation Engineer to join their Global Markets Trading Automation team. Applications are welcomed from candidates based in either Melbourne or Sydney, with the broader team primarily located in Melbourne.
+
+About the Role:
+
+Our client is seeking a skilled AI Automation Engineer to join our Global Markets Trading Automation team. In this role, you will design, develop, and deploy intelligent automation solutions. You will bridge the gap between advanced artificial intelligence and practical banking operations. Your work will directly eliminate manual workflows, optimize algorithmic processes, and enhance data-driven decision-making across our trading and compliance systems.
+
+Key Responsibilities
+
+Design End-to-End Solutions: Architect and implement intelligent automation workflows using GenAI, LLMs, and RPA tools.
+
+Develop AI Models: Build, fine-tune, and deploy machine learning models tailored for financial data processing.
+
+Integrate Systems: Connect AI capabilities seamlessly with existing legacy banking platforms and modern cloud infrastructure.
+
+Optimize Processes: Analyze complex banking workflows to identify automation bottlenecks and deliver high-performance fixes.
+
+Ensure Compliance: Collaborate with risk and security teams to build explainable AI systems that meet strict financial regulations.
+
+Maintain Infrastructure: Monitor, test, and upscale production AI pipelines to ensure maximum uptime and data integrity.
+
+Skills and Experience Required
+
+Education: Bachelor’s or Master’s degree in Computer Science, Data Science, or a related quantitative field.
+
+Technical Expertise: Strong proficiency in Python, SQL, and cloud platforms like AWS, Azure, or GCP.
+
+AI Frameworks: Hands-on experience with frameworks such as PyTorch, TensorFlow, LangChain, or Hugging Face.
+
+Automation Tools: Proven track record with enterprise automation tools like UiPath or native cloud automation services.
+
+Financial Domain Knowledge: Understanding of investment banking operations, market data, or regulatory reporting is highly desirable.
+
+Communication: Ability to explain complex technical AI concepts to non-technical stakeholders across global offices.
+
+What Our Client has on Offer:
+
+Competitive Salary: Highly attractive base salary package plus a performance-based global bonus scheme.
+
+Flexible Working: Hybrid work model with a balance of home and premium Melbourne CBD office days.
+
+Career Growth: Access to global mobility programs and dedicated budgets for AI certifications and conferences.
+
+This is an exceptional AI Automation Engineer opportunity to work for a prominent US investment bank in their Melbourne office, in support of automation across the Global Markets trading, middle office and operations function.
+
+Please kindly apply via the position link, and call as a follow up to our Melbourne office to follow up on your application.

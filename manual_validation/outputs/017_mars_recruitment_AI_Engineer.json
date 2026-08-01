@@ -1,0 +1,2410 @@
+{
+  "components": [
+    {
+      "name": "CareerProfile",
+      "implementation": "CareerProfileService / YAML",
+      "mode": "deterministic_production"
+    },
+    {
+      "name": "JobAnalysis",
+      "implementation": "OpenAIJobExtractor",
+      "mode": "openai_production"
+    },
+    {
+      "name": "OpportunityAssessment",
+      "implementation": "OpenAIAssessor",
+      "mode": "openai_production"
+    },
+    {
+      "name": "PortfolioMatch",
+      "implementation": "DeterministicMatcher",
+      "mode": "deterministic_production"
+    },
+    {
+      "name": "ApplicationStrategy",
+      "implementation": "DeterministicStrategyPlanner",
+      "mode": "deterministic_production"
+    }
+  ],
+  "volume_applications_enabled": false,
+  "profile_identity": {
+    "full_name": "David Cropper",
+    "target_role": "AI Engineer"
+  },
+  "posting": {
+    "raw_text": "AI Engineer\n\nMars Recruitment \nView all jobs\nMelbourne VIC (Hybrid)\nEngineering - Software (Information & Communication Technology)\nFull time\nUp to $200000.00 p.a.\n\n\nAn exciting opportunity has become available for an experienced AI DEngineer to join a well-established Australian financial services organisation investing heavily in Generative AI, intelligent automation and modern software engineering.\n\nWorking within a newly established capability, you'll play a key role in designing and delivering Generative AI applications, intelligent automations and backend services that support critical business processes across the organisation. This is a hands-on engineering position where you'll take ownership from initial concept through to production deployment, partnering closely with business stakeholders to deliver practical, scalable solutions that create genuine business value.\n\nWhat you'll be doing\nDesigning and building production-ready AI applications and intelligent automation workflows\n\nDeveloping Generative AI solutions that become part of critical business processes, improving automation, operational efficiency and decision-making\n\nDeveloping backend services and APIs using Python and modern application frameworks\n\nBuilding integrations between AI services and enterprise platforms using REST APIs, event-driven patterns and data pipelines\n\nDeploying and supporting cloud-based AI workloads, ensuring reliability, observability and operational performance\n\nWorking closely with business stakeholders throughout solution design, UAT and production rollout\n\nContributing to reusable components, deployment standards and engineering best practices\n\nAbout you\nYou'll be a software engineer with strong backend development experience and proven exposure to building production-ready AI-enabled applications within commercial environments.\n\nYou'll bring experience across a combination of:\n\nStrong Python development using modern frameworks such as FastAPI or Flask\n\nHands-on experience designing, building or deploying Generative AI applications, including technologies such as LLMs, prompt engineering, retrieval-augmented generation (RAG), AI orchestration or agent-based workflows\n\nExperience integrating applications and enterprise platforms using REST APIs, event-driven architectures and data pipelines\n\nCloud platform experience, with Azure highly regarded\n\nCI/CD, Git, Docker and modern software engineering practices\n\nSQL and working with both structured and unstructured data\n\nExposure to automation technologies and workflow platforms will be viewed favourably\n\nMost importantly, you'll enjoy solving complex business problems, collaborating directly with stakeholders and delivering production-ready solutions that become part of critical business processes.\n\nWhat's on offer\nOpportunity to join a growing AI capability with significant executive backing\n\nGreenfield initiatives with genuine ownership and influence\n\nModern engineering environment focused on delivering production-ready AI solutions\n\nCollaborative, high-performing team with strong technical leadership\n\nCompetitive salary package with flexible hybrid working\n\nIf you're passionate about building practical Generative AI solutions that solve real business problems and want to help shape the next generation of enterprise applications, we'd love to hear from you.",
+    "title": "AI Engineer",
+    "company": "Mars Recruitment",
+    "source_url": null
+  },
+  "job_analysis": {
+    "posting": {
+      "raw_text": "AI Engineer\n\nMars Recruitment \nView all jobs\nMelbourne VIC (Hybrid)\nEngineering - Software (Information & Communication Technology)\nFull time\nUp to $200000.00 p.a.\n\n\nAn exciting opportunity has become available for an experienced AI DEngineer to join a well-established Australian financial services organisation investing heavily in Generative AI, intelligent automation and modern software engineering.\n\nWorking within a newly established capability, you'll play a key role in designing and delivering Generative AI applications, intelligent automations and backend services that support critical business processes across the organisation. This is a hands-on engineering position where you'll take ownership from initial concept through to production deployment, partnering closely with business stakeholders to deliver practical, scalable solutions that create genuine business value.\n\nWhat you'll be doing\nDesigning and building production-ready AI applications and intelligent automation workflows\n\nDeveloping Generative AI solutions that become part of critical business processes, improving automation, operational efficiency and decision-making\n\nDeveloping backend services and APIs using Python and modern application frameworks\n\nBuilding integrations between AI services and enterprise platforms using REST APIs, event-driven patterns and data pipelines\n\nDeploying and supporting cloud-based AI workloads, ensuring reliability, observability and operational performance\n\nWorking closely with business stakeholders throughout solution design, UAT and production rollout\n\nContributing to reusable components, deployment standards and engineering best practices\n\nAbout you\nYou'll be a software engineer with strong backend development experience and proven exposure to building production-ready AI-enabled applications within commercial environments.\n\nYou'll bring experience across a combination of:\n\nStrong Python development using modern frameworks such as FastAPI or Flask\n\nHands-on experience designing, building or deploying Generative AI applications, including technologies such as LLMs, prompt engineering, retrieval-augmented generation (RAG), AI orchestration or agent-based workflows\n\nExperience integrating applications and enterprise platforms using REST APIs, event-driven architectures and data pipelines\n\nCloud platform experience, with Azure highly regarded\n\nCI/CD, Git, Docker and modern software engineering practices\n\nSQL and working with both structured and unstructured data\n\nExposure to automation technologies and workflow platforms will be viewed favourably\n\nMost importantly, you'll enjoy solving complex business problems, collaborating directly with stakeholders and delivering production-ready solutions that become part of critical business processes.\n\nWhat's on offer\nOpportunity to join a growing AI capability with significant executive backing\n\nGreenfield initiatives with genuine ownership and influence\n\nModern engineering environment focused on delivering production-ready AI solutions\n\nCollaborative, high-performing team with strong technical leadership\n\nCompetitive salary package with flexible hybrid working\n\nIf you're passionate about building practical Generative AI solutions that solve real business problems and want to help shape the next generation of enterprise applications, we'd love to hear from you.",
+      "title": "AI Engineer",
+      "company": "Mars Recruitment",
+      "source_url": null
+    },
+    "role_family": {
+      "family": "ai_engineering",
+      "evidence": [
+        {
+          "excerpt": "an experienced AI Engineer to join a well-established Australian financial services organisation investing heavily in Generative AI",
+          "section": "Job Description"
+        }
+      ]
+    },
+    "seniority": {
+      "level": "unknown",
+      "ambiguous": false,
+      "candidate_levels": [],
+      "evidence": [
+        {
+          "excerpt": "AI Engineer",
+          "section": "Job title"
+        }
+      ]
+    },
+    "technologies": [
+      {
+        "name": "Python",
+        "level": "required",
+        "evidence": [
+          {
+            "excerpt": "Strong Python development using modern frameworks such as FastAPI or Flask",
+            "section": "About you"
+          }
+        ]
+      },
+      {
+        "name": "FastAPI",
+        "level": "required",
+        "evidence": [
+          {
+            "excerpt": "using modern frameworks such as FastAPI or Flask",
+            "section": "About you"
+          }
+        ]
+      },
+      {
+        "name": "Flask",
+        "level": "required",
+        "evidence": [
+          {
+            "excerpt": "using modern frameworks such as FastAPI or Flask",
+            "section": "About you"
+          }
+        ]
+      },
+      {
+        "name": "Generative AI",
+        "level": "required",
+        "evidence": [
+          {
+            "excerpt": "Designing and building production-ready AI applications and intelligent automation workflows",
+            "section": "What you'll be doing"
+          }
+        ]
+      },
+      {
+        "name": "LLMs",
+        "level": "required",
+        "evidence": [
+          {
+            "excerpt": "building production-ready AI-enabled applications within commercial environments",
+            "section": "About you"
+          }
+        ]
+      },
+      {
+        "name": "RAG",
+        "level": "required",
+        "evidence": [
+          {
+            "excerpt": "hands-on experience designing, building or deploying Generative AI applications, including technologies such as LLMs, prompt engineering, retrieval-augmented generation (RAG), AI orchestration or agent-based workflows",
+            "section": "About you"
+          }
+        ]
+      },
+      {
+        "name": "SQL",
+        "level": "required",
+        "evidence": [
+          {
+            "excerpt": "SQL and working with both structured and unstructured data",
+            "section": "About you"
+          }
+        ]
+      },
+      {
+        "name": "Azure",
+        "level": "preferred",
+        "evidence": [
+          {
+            "excerpt": "Cloud platform experience, with Azure highly regarded",
+            "section": "About you"
+          }
+        ]
+      },
+      {
+        "name": "CI/CD",
+        "level": "preferred",
+        "evidence": [
+          {
+            "excerpt": "CI/CD, Git, Docker and modern software engineering practices",
+            "section": "About you"
+          }
+        ]
+      },
+      {
+        "name": "Docker",
+        "level": "preferred",
+        "evidence": [
+          {
+            "excerpt": "CI/CD, Git, Docker and modern software engineering practices",
+            "section": "About you"
+          }
+        ]
+      },
+      {
+        "name": "REST APIs",
+        "level": "required",
+        "evidence": [
+          {
+            "excerpt": "Building integrations between AI services and enterprise platforms using REST APIs",
+            "section": "What you'll be doing"
+          }
+        ]
+      }
+    ],
+    "responsibilities": [
+      {
+        "description": "Designing and building production-ready AI applications and intelligent automation workflows",
+        "evidence": [
+          {
+            "excerpt": "Designing and building production-ready AI applications and intelligent automation workflows",
+            "section": "What you'll be doing"
+          }
+        ]
+      },
+      {
+        "description": "Developing Generative AI solutions that become part of critical business processes, improving automation, operational efficiency and decision-making",
+        "evidence": [
+          {
+            "excerpt": "Developing Generative AI solutions that become part of critical business processes, improving automation, operational efficiency and decision-making",
+            "section": "What you'll be doing"
+          }
+        ]
+      },
+      {
+        "description": "Developing backend services and APIs using Python and modern application frameworks",
+        "evidence": [
+          {
+            "excerpt": "Developing backend services and APIs using Python and modern application frameworks",
+            "section": "What you'll be doing"
+          }
+        ]
+      },
+      {
+        "description": "Building integrations between AI services and enterprise platforms using REST APIs, event-driven patterns and data pipelines",
+        "evidence": [
+          {
+            "excerpt": "Building integrations between AI services and enterprise platforms using REST APIs, event-driven patterns and data pipelines",
+            "section": "What you'll be doing"
+          }
+        ]
+      },
+      {
+        "description": "Deploying and supporting cloud-based AI workloads, ensuring reliability, observability and operational performance",
+        "evidence": [
+          {
+            "excerpt": "Deploying and supporting cloud-based AI workloads, ensuring reliability, observability and operational performance",
+            "section": "What you'll be doing"
+          }
+        ]
+      },
+      {
+        "description": "Working closely with business stakeholders throughout solution design, UAT and production rollout",
+        "evidence": [
+          {
+            "excerpt": "Working closely with business stakeholders throughout solution design, UAT and production rollout",
+            "section": "What you'll be doing"
+          }
+        ]
+      },
+      {
+        "description": "Contributing to reusable components, deployment standards and engineering best practices",
+        "evidence": [
+          {
+            "excerpt": "Contributing to reusable components, deployment standards and engineering best practices",
+            "section": "What you'll be doing"
+          }
+        ]
+      }
+    ],
+    "compensation": {
+      "clarity": "stated",
+      "minimum": 200000.0,
+      "maximum": 200000.0,
+      "currency": "AUD",
+      "period": "year",
+      "raw_text": "Up to $200000.00 p.a.",
+      "evidence": [
+        {
+          "excerpt": "Up to $200000.00 p.a.",
+          "section": "Job Description"
+        }
+      ]
+    },
+    "location": {
+      "clarity": "stated",
+      "summary": "Melbourne VIC (Hybrid)",
+      "evidence": [
+        {
+          "excerpt": "Melbourne VIC (Hybrid)",
+          "section": "Job Description"
+        }
+      ]
+    },
+    "work_arrangement": {
+      "arrangement": "hybrid",
+      "details": "flexible hybrid working",
+      "evidence": [
+        {
+          "excerpt": "flexible hybrid working",
+          "section": "What's on offer"
+        }
+      ]
+    },
+    "employment": {
+      "working_hours": "full_time",
+      "engagement_type": "unspecified",
+      "evidence": [
+        {
+          "excerpt": "Full time",
+          "section": "Job Description"
+        }
+      ]
+    },
+    "experience_requirements": [
+      {
+        "description": "Proven exposure to building production-ready AI-enabled applications within commercial environments",
+        "level": "required",
+        "minimum_years": null,
+        "maximum_years": null,
+        "evidence": [
+          {
+            "excerpt": "You'll be a software engineer with strong backend development experience and proven exposure to building production-ready AI-enabled applications within commercial environments.",
+            "section": "About you"
+          }
+        ]
+      }
+    ]
+  },
+  "opportunity_assessment": {
+    "job_analysis": {
+      "posting": {
+        "raw_text": "AI Engineer\n\nMars Recruitment \nView all jobs\nMelbourne VIC (Hybrid)\nEngineering - Software (Information & Communication Technology)\nFull time\nUp to $200000.00 p.a.\n\n\nAn exciting opportunity has become available for an experienced AI DEngineer to join a well-established Australian financial services organisation investing heavily in Generative AI, intelligent automation and modern software engineering.\n\nWorking within a newly established capability, you'll play a key role in designing and delivering Generative AI applications, intelligent automations and backend services that support critical business processes across the organisation. This is a hands-on engineering position where you'll take ownership from initial concept through to production deployment, partnering closely with business stakeholders to deliver practical, scalable solutions that create genuine business value.\n\nWhat you'll be doing\nDesigning and building production-ready AI applications and intelligent automation workflows\n\nDeveloping Generative AI solutions that become part of critical business processes, improving automation, operational efficiency and decision-making\n\nDeveloping backend services and APIs using Python and modern application frameworks\n\nBuilding integrations between AI services and enterprise platforms using REST APIs, event-driven patterns and data pipelines\n\nDeploying and supporting cloud-based AI workloads, ensuring reliability, observability and operational performance\n\nWorking closely with business stakeholders throughout solution design, UAT and production rollout\n\nContributing to reusable components, deployment standards and engineering best practices\n\nAbout you\nYou'll be a software engineer with strong backend development experience and proven exposure to building production-ready AI-enabled applications within commercial environments.\n\nYou'll bring experience across a combination of:\n\nStrong Python development using modern frameworks such as FastAPI or Flask\n\nHands-on experience designing, building or deploying Generative AI applications, including technologies such as LLMs, prompt engineering, retrieval-augmented generation (RAG), AI orchestration or agent-based workflows\n\nExperience integrating applications and enterprise platforms using REST APIs, event-driven architectures and data pipelines\n\nCloud platform experience, with Azure highly regarded\n\nCI/CD, Git, Docker and modern software engineering practices\n\nSQL and working with both structured and unstructured data\n\nExposure to automation technologies and workflow platforms will be viewed favourably\n\nMost importantly, you'll enjoy solving complex business problems, collaborating directly with stakeholders and delivering production-ready solutions that become part of critical business processes.\n\nWhat's on offer\nOpportunity to join a growing AI capability with significant executive backing\n\nGreenfield initiatives with genuine ownership and influence\n\nModern engineering environment focused on delivering production-ready AI solutions\n\nCollaborative, high-performing team with strong technical leadership\n\nCompetitive salary package with flexible hybrid working\n\nIf you're passionate about building practical Generative AI solutions that solve real business problems and want to help shape the next generation of enterprise applications, we'd love to hear from you.",
+        "title": "AI Engineer",
+        "company": "Mars Recruitment",
+        "source_url": null
+      },
+      "role_family": {
+        "family": "ai_engineering",
+        "evidence": [
+          {
+            "excerpt": "an experienced AI Engineer to join a well-established Australian financial services organisation investing heavily in Generative AI",
+            "section": "Job Description"
+          }
+        ]
+      },
+      "seniority": {
+        "level": "unknown",
+        "ambiguous": false,
+        "candidate_levels": [],
+        "evidence": [
+          {
+            "excerpt": "AI Engineer",
+            "section": "Job title"
+          }
+        ]
+      },
+      "technologies": [
+        {
+          "name": "Python",
+          "level": "required",
+          "evidence": [
+            {
+              "excerpt": "Strong Python development using modern frameworks such as FastAPI or Flask",
+              "section": "About you"
+            }
+          ]
+        },
+        {
+          "name": "FastAPI",
+          "level": "required",
+          "evidence": [
+            {
+              "excerpt": "using modern frameworks such as FastAPI or Flask",
+              "section": "About you"
+            }
+          ]
+        },
+        {
+          "name": "Flask",
+          "level": "required",
+          "evidence": [
+            {
+              "excerpt": "using modern frameworks such as FastAPI or Flask",
+              "section": "About you"
+            }
+          ]
+        },
+        {
+          "name": "Generative AI",
+          "level": "required",
+          "evidence": [
+            {
+              "excerpt": "Designing and building production-ready AI applications and intelligent automation workflows",
+              "section": "What you'll be doing"
+            }
+          ]
+        },
+        {
+          "name": "LLMs",
+          "level": "required",
+          "evidence": [
+            {
+              "excerpt": "building production-ready AI-enabled applications within commercial environments",
+              "section": "About you"
+            }
+          ]
+        },
+        {
+          "name": "RAG",
+          "level": "required",
+          "evidence": [
+            {
+              "excerpt": "hands-on experience designing, building or deploying Generative AI applications, including technologies such as LLMs, prompt engineering, retrieval-augmented generation (RAG), AI orchestration or agent-based workflows",
+              "section": "About you"
+            }
+          ]
+        },
+        {
+          "name": "SQL",
+          "level": "required",
+          "evidence": [
+            {
+              "excerpt": "SQL and working with both structured and unstructured data",
+              "section": "About you"
+            }
+          ]
+        },
+        {
+          "name": "Azure",
+          "level": "preferred",
+          "evidence": [
+            {
+              "excerpt": "Cloud platform experience, with Azure highly regarded",
+              "section": "About you"
+            }
+          ]
+        },
+        {
+          "name": "CI/CD",
+          "level": "preferred",
+          "evidence": [
+            {
+              "excerpt": "CI/CD, Git, Docker and modern software engineering practices",
+              "section": "About you"
+            }
+          ]
+        },
+        {
+          "name": "Docker",
+          "level": "preferred",
+          "evidence": [
+            {
+              "excerpt": "CI/CD, Git, Docker and modern software engineering practices",
+              "section": "About you"
+            }
+          ]
+        },
+        {
+          "name": "REST APIs",
+          "level": "required",
+          "evidence": [
+            {
+              "excerpt": "Building integrations between AI services and enterprise platforms using REST APIs",
+              "section": "What you'll be doing"
+            }
+          ]
+        }
+      ],
+      "responsibilities": [
+        {
+          "description": "Designing and building production-ready AI applications and intelligent automation workflows",
+          "evidence": [
+            {
+              "excerpt": "Designing and building production-ready AI applications and intelligent automation workflows",
+              "section": "What you'll be doing"
+            }
+          ]
+        },
+        {
+          "description": "Developing Generative AI solutions that become part of critical business processes, improving automation, operational efficiency and decision-making",
+          "evidence": [
+            {
+              "excerpt": "Developing Generative AI solutions that become part of critical business processes, improving automation, operational efficiency and decision-making",
+              "section": "What you'll be doing"
+            }
+          ]
+        },
+        {
+          "description": "Developing backend services and APIs using Python and modern application frameworks",
+          "evidence": [
+            {
+              "excerpt": "Developing backend services and APIs using Python and modern application frameworks",
+              "section": "What you'll be doing"
+            }
+          ]
+        },
+        {
+          "description": "Building integrations between AI services and enterprise platforms using REST APIs, event-driven patterns and data pipelines",
+          "evidence": [
+            {
+              "excerpt": "Building integrations between AI services and enterprise platforms using REST APIs, event-driven patterns and data pipelines",
+              "section": "What you'll be doing"
+            }
+          ]
+        },
+        {
+          "description": "Deploying and supporting cloud-based AI workloads, ensuring reliability, observability and operational performance",
+          "evidence": [
+            {
+              "excerpt": "Deploying and supporting cloud-based AI workloads, ensuring reliability, observability and operational performance",
+              "section": "What you'll be doing"
+            }
+          ]
+        },
+        {
+          "description": "Working closely with business stakeholders throughout solution design, UAT and production rollout",
+          "evidence": [
+            {
+              "excerpt": "Working closely with business stakeholders throughout solution design, UAT and production rollout",
+              "section": "What you'll be doing"
+            }
+          ]
+        },
+        {
+          "description": "Contributing to reusable components, deployment standards and engineering best practices",
+          "evidence": [
+            {
+              "excerpt": "Contributing to reusable components, deployment standards and engineering best practices",
+              "section": "What you'll be doing"
+            }
+          ]
+        }
+      ],
+      "compensation": {
+        "clarity": "stated",
+        "minimum": 200000.0,
+        "maximum": 200000.0,
+        "currency": "AUD",
+        "period": "year",
+        "raw_text": "Up to $200000.00 p.a.",
+        "evidence": [
+          {
+            "excerpt": "Up to $200000.00 p.a.",
+            "section": "Job Description"
+          }
+        ]
+      },
+      "location": {
+        "clarity": "stated",
+        "summary": "Melbourne VIC (Hybrid)",
+        "evidence": [
+          {
+            "excerpt": "Melbourne VIC (Hybrid)",
+            "section": "Job Description"
+          }
+        ]
+      },
+      "work_arrangement": {
+        "arrangement": "hybrid",
+        "details": "flexible hybrid working",
+        "evidence": [
+          {
+            "excerpt": "flexible hybrid working",
+            "section": "What's on offer"
+          }
+        ]
+      },
+      "employment": {
+        "working_hours": "full_time",
+        "engagement_type": "unspecified",
+        "evidence": [
+          {
+            "excerpt": "Full time",
+            "section": "Job Description"
+          }
+        ]
+      },
+      "experience_requirements": [
+        {
+          "description": "Proven exposure to building production-ready AI-enabled applications within commercial environments",
+          "level": "required",
+          "minimum_years": null,
+          "maximum_years": null,
+          "evidence": [
+            {
+              "excerpt": "You'll be a software engineer with strong backend development experience and proven exposure to building production-ready AI-enabled applications within commercial environments.",
+              "section": "About you"
+            }
+          ]
+        }
+      ]
+    },
+    "technical_fit": {
+      "dimension": "technical",
+      "judgment": "mixed",
+      "summary": "The candidate demonstrates strong technical skills, particularly in Python and AI-enabled application development. However, there is a lack of evidence for experience in commercial environments that utilize large-scale deployment of these applications.",
+      "findings": [
+        {
+          "kind": "gap",
+          "summary": "The role requires proven exposure to building production-ready AI applications within commercial environments, which is not sufficiently evidenced in the profile.",
+          "detail": null,
+          "importance": "material",
+          "job_evidence": [
+            {
+              "source": "experience_requirement",
+              "item_index": 0,
+              "name": "Proven exposure to building production-ready AI-enabled applications within commercial environments",
+              "excerpt": "You'll be a software engineer with strong backend development experience and proven exposure to building production-ready AI-enabled applications within commercial environments."
+            }
+          ],
+          "profile_evidence": [],
+          "assumption": null
+        },
+        {
+          "kind": "alignment",
+          "summary": "Strong Python development experience matches the role requirements, showcasing relevant technical skills directly applicable to the job responsibilities.",
+          "detail": "The profile shows that the candidate has used Python extensively in both roles and independent projects, which aligns with the job expectations.",
+          "importance": "material",
+          "job_evidence": [
+            {
+              "source": "technology",
+              "item_index": 0,
+              "name": "Python",
+              "excerpt": "Strong Python development using modern frameworks such as FastAPI or Flask"
+            }
+          ],
+          "profile_evidence": [
+            {
+              "source": "experience",
+              "ref": "experience:chase-risk-compliance-ai-engineer",
+              "excerpt": null
+            },
+            {
+              "source": "experience",
+              "ref": "experience:ai-engineering-development-2025",
+              "excerpt": null
+            }
+          ],
+          "assumption": null
+        },
+        {
+          "kind": "gap",
+          "summary": "The candidate's profile lacks evidence of experience deploying AI applications in commercial environments, particularly with user acceptance testing (UAT) and stakeholder collaboration, which are critical for the role.",
+          "detail": null,
+          "importance": "material",
+          "job_evidence": [
+            {
+              "source": "responsibility",
+              "item_index": 5,
+              "name": "Working closely with business stakeholders throughout solution design, UAT and production rollout",
+              "excerpt": "Working closely with business stakeholders throughout solution design, UAT and production rollout"
+            }
+          ],
+          "profile_evidence": [],
+          "assumption": null
+        }
+      ]
+    },
+    "commercial_fit": {
+      "dimension": "commercial",
+      "judgment": "mixed",
+      "summary": "While the candidate demonstrates a willingness to work in a hybrid role and has revealed strong technical capabilities, the ambiguity regarding salaries and employment history reduces confidence in meeting commercial expectations.",
+      "findings": [
+        {
+          "kind": "uncertainty",
+          "summary": "Salary expectations are clearly stated as up to $200,000 per annum, but it is unclear if this aligns fully with the candidate's expectations due to the unstated minimum salary preference.",
+          "detail": "The candidate has not specified a minimum salary preference, which complicates the potential fit with the stated salary range.",
+          "importance": "minor",
+          "job_evidence": [
+            {
+              "source": "compensation",
+              "item_index": 0,
+              "name": "Compensation clarity",
+              "excerpt": "Up to $200000.00 p.a."
+            }
+          ],
+          "profile_evidence": [],
+          "assumption": null
+        },
+        {
+          "kind": "gap",
+          "summary": "The job requires proven commercial experience delivering AI solutions within a business context, which the candidate lacks based on their independent projects without commercial backing.",
+          "detail": "The candidate has delivered advanced projects in an independent capacity but lacks formal employment experience relating to ongoing commercial operations or deployments.",
+          "importance": "material",
+          "job_evidence": [
+            {
+              "source": "experience_requirement",
+              "item_index": 0,
+              "name": "Proven exposure to building production-ready AI-enabled applications within commercial environments",
+              "excerpt": "You'll be a software engineer with strong backend development experience and proven exposure to building production-ready AI-enabled applications within commercial environments."
+            }
+          ],
+          "profile_evidence": [],
+          "assumption": null
+        }
+      ]
+    },
+    "portfolio_fit": {
+      "dimension": "portfolio",
+      "judgment": "mixed",
+      "summary": "The candidate has showcased relevant portfolio work, particularly in building AI applications and utilizing advanced technologies. However, the projects need to be more closely tied to responsibilities outlined in the job analysis for full alignment.",
+      "findings": [
+        {
+          "kind": "partial_alignment",
+          "summary": "Portfolio projects demonstrate capability in developing AI applications, but not enough focus on production-ready deployments as required by the job.",
+          "detail": "The candidate has several relevant projects in AI engineering, yet the job insists on proven success within a commercial environment which may not be fully evident in the profile.",
+          "importance": "material",
+          "job_evidence": [
+            {
+              "source": "responsibility",
+              "item_index": 0,
+              "name": "Designing and building production-ready AI applications and intelligent automation workflows",
+              "excerpt": "Designing and building production-ready AI applications and intelligent automation workflows"
+            }
+          ],
+          "profile_evidence": [
+            {
+              "source": "project",
+              "ref": "project:operational-intelligence-copilot",
+              "excerpt": null
+            },
+            {
+              "source": "project",
+              "ref": "project:career-intelligence-copilot",
+              "excerpt": null
+            }
+          ],
+          "assumption": null
+        }
+      ]
+    },
+    "summary": {
+      "summary": "Overall, the candidate has strong technical skills, which are demonstrated through both employment and independent projects. However, there are significant gaps regarding commercial experience, particularly in production-ready deployment which affects their fit for the role.",
+      "key_alignments": [
+        "Strong Python development skillset aligning with job needs.",
+        "Portfolio projects show relevant AI application development."
+      ],
+      "key_gaps": [
+        "Insufficient commercial experience evidenced for AI application deployment.",
+        "Uncertainty about salary expectations and minimum alignment."
+      ]
+    }
+  },
+  "portfolio_match": {
+    "job_analysis": {
+      "posting": {
+        "raw_text": "AI Engineer\n\nMars Recruitment \nView all jobs\nMelbourne VIC (Hybrid)\nEngineering - Software (Information & Communication Technology)\nFull time\nUp to $200000.00 p.a.\n\n\nAn exciting opportunity has become available for an experienced AI DEngineer to join a well-established Australian financial services organisation investing heavily in Generative AI, intelligent automation and modern software engineering.\n\nWorking within a newly established capability, you'll play a key role in designing and delivering Generative AI applications, intelligent automations and backend services that support critical business processes across the organisation. This is a hands-on engineering position where you'll take ownership from initial concept through to production deployment, partnering closely with business stakeholders to deliver practical, scalable solutions that create genuine business value.\n\nWhat you'll be doing\nDesigning and building production-ready AI applications and intelligent automation workflows\n\nDeveloping Generative AI solutions that become part of critical business processes, improving automation, operational efficiency and decision-making\n\nDeveloping backend services and APIs using Python and modern application frameworks\n\nBuilding integrations between AI services and enterprise platforms using REST APIs, event-driven patterns and data pipelines\n\nDeploying and supporting cloud-based AI workloads, ensuring reliability, observability and operational performance\n\nWorking closely with business stakeholders throughout solution design, UAT and production rollout\n\nContributing to reusable components, deployment standards and engineering best practices\n\nAbout you\nYou'll be a software engineer with strong backend development experience and proven exposure to building production-ready AI-enabled applications within commercial environments.\n\nYou'll bring experience across a combination of:\n\nStrong Python development using modern frameworks such as FastAPI or Flask\n\nHands-on experience designing, building or deploying Generative AI applications, including technologies such as LLMs, prompt engineering, retrieval-augmented generation (RAG), AI orchestration or agent-based workflows\n\nExperience integrating applications and enterprise platforms using REST APIs, event-driven architectures and data pipelines\n\nCloud platform experience, with Azure highly regarded\n\nCI/CD, Git, Docker and modern software engineering practices\n\nSQL and working with both structured and unstructured data\n\nExposure to automation technologies and workflow platforms will be viewed favourably\n\nMost importantly, you'll enjoy solving complex business problems, collaborating directly with stakeholders and delivering production-ready solutions that become part of critical business processes.\n\nWhat's on offer\nOpportunity to join a growing AI capability with significant executive backing\n\nGreenfield initiatives with genuine ownership and influence\n\nModern engineering environment focused on delivering production-ready AI solutions\n\nCollaborative, high-performing team with strong technical leadership\n\nCompetitive salary package with flexible hybrid working\n\nIf you're passionate about building practical Generative AI solutions that solve real business problems and want to help shape the next generation of enterprise applications, we'd love to hear from you.",
+        "title": "AI Engineer",
+        "company": "Mars Recruitment",
+        "source_url": null
+      },
+      "role_family": {
+        "family": "ai_engineering",
+        "evidence": [
+          {
+            "excerpt": "an experienced AI Engineer to join a well-established Australian financial services organisation investing heavily in Generative AI",
+            "section": "Job Description"
+          }
+        ]
+      },
+      "seniority": {
+        "level": "unknown",
+        "ambiguous": false,
+        "candidate_levels": [],
+        "evidence": [
+          {
+            "excerpt": "AI Engineer",
+            "section": "Job title"
+          }
+        ]
+      },
+      "technologies": [
+        {
+          "name": "Python",
+          "level": "required",
+          "evidence": [
+            {
+              "excerpt": "Strong Python development using modern frameworks such as FastAPI or Flask",
+              "section": "About you"
+            }
+          ]
+        },
+        {
+          "name": "FastAPI",
+          "level": "required",
+          "evidence": [
+            {
+              "excerpt": "using modern frameworks such as FastAPI or Flask",
+              "section": "About you"
+            }
+          ]
+        },
+        {
+          "name": "Flask",
+          "level": "required",
+          "evidence": [
+            {
+              "excerpt": "using modern frameworks such as FastAPI or Flask",
+              "section": "About you"
+            }
+          ]
+        },
+        {
+          "name": "Generative AI",
+          "level": "required",
+          "evidence": [
+            {
+              "excerpt": "Designing and building production-ready AI applications and intelligent automation workflows",
+              "section": "What you'll be doing"
+            }
+          ]
+        },
+        {
+          "name": "LLMs",
+          "level": "required",
+          "evidence": [
+            {
+              "excerpt": "building production-ready AI-enabled applications within commercial environments",
+              "section": "About you"
+            }
+          ]
+        },
+        {
+          "name": "RAG",
+          "level": "required",
+          "evidence": [
+            {
+              "excerpt": "hands-on experience designing, building or deploying Generative AI applications, including technologies such as LLMs, prompt engineering, retrieval-augmented generation (RAG), AI orchestration or agent-based workflows",
+              "section": "About you"
+            }
+          ]
+        },
+        {
+          "name": "SQL",
+          "level": "required",
+          "evidence": [
+            {
+              "excerpt": "SQL and working with both structured and unstructured data",
+              "section": "About you"
+            }
+          ]
+        },
+        {
+          "name": "Azure",
+          "level": "preferred",
+          "evidence": [
+            {
+              "excerpt": "Cloud platform experience, with Azure highly regarded",
+              "section": "About you"
+            }
+          ]
+        },
+        {
+          "name": "CI/CD",
+          "level": "preferred",
+          "evidence": [
+            {
+              "excerpt": "CI/CD, Git, Docker and modern software engineering practices",
+              "section": "About you"
+            }
+          ]
+        },
+        {
+          "name": "Docker",
+          "level": "preferred",
+          "evidence": [
+            {
+              "excerpt": "CI/CD, Git, Docker and modern software engineering practices",
+              "section": "About you"
+            }
+          ]
+        },
+        {
+          "name": "REST APIs",
+          "level": "required",
+          "evidence": [
+            {
+              "excerpt": "Building integrations between AI services and enterprise platforms using REST APIs",
+              "section": "What you'll be doing"
+            }
+          ]
+        }
+      ],
+      "responsibilities": [
+        {
+          "description": "Designing and building production-ready AI applications and intelligent automation workflows",
+          "evidence": [
+            {
+              "excerpt": "Designing and building production-ready AI applications and intelligent automation workflows",
+              "section": "What you'll be doing"
+            }
+          ]
+        },
+        {
+          "description": "Developing Generative AI solutions that become part of critical business processes, improving automation, operational efficiency and decision-making",
+          "evidence": [
+            {
+              "excerpt": "Developing Generative AI solutions that become part of critical business processes, improving automation, operational efficiency and decision-making",
+              "section": "What you'll be doing"
+            }
+          ]
+        },
+        {
+          "description": "Developing backend services and APIs using Python and modern application frameworks",
+          "evidence": [
+            {
+              "excerpt": "Developing backend services and APIs using Python and modern application frameworks",
+              "section": "What you'll be doing"
+            }
+          ]
+        },
+        {
+          "description": "Building integrations between AI services and enterprise platforms using REST APIs, event-driven patterns and data pipelines",
+          "evidence": [
+            {
+              "excerpt": "Building integrations between AI services and enterprise platforms using REST APIs, event-driven patterns and data pipelines",
+              "section": "What you'll be doing"
+            }
+          ]
+        },
+        {
+          "description": "Deploying and supporting cloud-based AI workloads, ensuring reliability, observability and operational performance",
+          "evidence": [
+            {
+              "excerpt": "Deploying and supporting cloud-based AI workloads, ensuring reliability, observability and operational performance",
+              "section": "What you'll be doing"
+            }
+          ]
+        },
+        {
+          "description": "Working closely with business stakeholders throughout solution design, UAT and production rollout",
+          "evidence": [
+            {
+              "excerpt": "Working closely with business stakeholders throughout solution design, UAT and production rollout",
+              "section": "What you'll be doing"
+            }
+          ]
+        },
+        {
+          "description": "Contributing to reusable components, deployment standards and engineering best practices",
+          "evidence": [
+            {
+              "excerpt": "Contributing to reusable components, deployment standards and engineering best practices",
+              "section": "What you'll be doing"
+            }
+          ]
+        }
+      ],
+      "compensation": {
+        "clarity": "stated",
+        "minimum": 200000.0,
+        "maximum": 200000.0,
+        "currency": "AUD",
+        "period": "year",
+        "raw_text": "Up to $200000.00 p.a.",
+        "evidence": [
+          {
+            "excerpt": "Up to $200000.00 p.a.",
+            "section": "Job Description"
+          }
+        ]
+      },
+      "location": {
+        "clarity": "stated",
+        "summary": "Melbourne VIC (Hybrid)",
+        "evidence": [
+          {
+            "excerpt": "Melbourne VIC (Hybrid)",
+            "section": "Job Description"
+          }
+        ]
+      },
+      "work_arrangement": {
+        "arrangement": "hybrid",
+        "details": "flexible hybrid working",
+        "evidence": [
+          {
+            "excerpt": "flexible hybrid working",
+            "section": "What's on offer"
+          }
+        ]
+      },
+      "employment": {
+        "working_hours": "full_time",
+        "engagement_type": "unspecified",
+        "evidence": [
+          {
+            "excerpt": "Full time",
+            "section": "Job Description"
+          }
+        ]
+      },
+      "experience_requirements": [
+        {
+          "description": "Proven exposure to building production-ready AI-enabled applications within commercial environments",
+          "level": "required",
+          "minimum_years": null,
+          "maximum_years": null,
+          "evidence": [
+            {
+              "excerpt": "You'll be a software engineer with strong backend development experience and proven exposure to building production-ready AI-enabled applications within commercial environments.",
+              "section": "About you"
+            }
+          ]
+        }
+      ]
+    },
+    "ranked_projects": [
+      {
+        "rank": 1,
+        "project_id": "governance-document-rag",
+        "rationale": "Project 'governance-document-rag' ranked on 2 required technology hit(s), 1 preferred technology hit(s), 5 demonstrates overlap(s), 5 responsibility overlap(s).",
+        "factors": [
+          {
+            "kind": "required_technology",
+            "summary": "Project evidence supports required technology 'Python'.",
+            "job_evidence": [
+              {
+                "source": "technology",
+                "item_index": 0,
+                "name": "Python",
+                "excerpt": "Strong Python development using modern frameworks such as FastAPI or Flask"
+              }
+            ],
+            "profile_evidence": [
+              {
+                "source": "project",
+                "ref": "project:governance-document-rag",
+                "excerpt": "Python"
+              }
+            ]
+          },
+          {
+            "kind": "required_technology",
+            "summary": "Project evidence supports required technology 'FastAPI'.",
+            "job_evidence": [
+              {
+                "source": "technology",
+                "item_index": 1,
+                "name": "FastAPI",
+                "excerpt": "using modern frameworks such as FastAPI or Flask"
+              }
+            ],
+            "profile_evidence": [
+              {
+                "source": "project",
+                "ref": "project:governance-document-rag",
+                "excerpt": "FastAPI"
+              }
+            ]
+          },
+          {
+            "kind": "preferred_technology",
+            "summary": "Project evidence supports preferred technology 'Docker'.",
+            "job_evidence": [
+              {
+                "source": "technology",
+                "item_index": 9,
+                "name": "Docker",
+                "excerpt": "CI/CD, Git, Docker and modern software engineering practices"
+              }
+            ],
+            "profile_evidence": [
+              {
+                "source": "project",
+                "ref": "project:governance-document-rag",
+                "excerpt": "Docker"
+              }
+            ]
+          },
+          {
+            "kind": "demonstrates_overlap",
+            "summary": "Project demonstrates capabilities overlapping responsibility 'Designing and building production-ready AI applications and intelligent automation workflows'.",
+            "job_evidence": [
+              {
+                "source": "responsibility",
+                "item_index": 0,
+                "name": null,
+                "excerpt": "Designing and building production-ready AI applications and intelligent automation workflows"
+              }
+            ],
+            "profile_evidence": [
+              {
+                "source": "project",
+                "ref": "project:governance-document-rag",
+                "excerpt": "AI evaluation frameworks"
+              }
+            ]
+          },
+          {
+            "kind": "responsibility_overlap",
+            "summary": "Project summary, outcomes, or technologies overlap responsibility 'Designing and building production-ready AI applications and intelligent automation workflows'.",
+            "job_evidence": [
+              {
+                "source": "responsibility",
+                "item_index": 0,
+                "name": null,
+                "excerpt": "Designing and building production-ready AI applications and intelligent automation workflows"
+              }
+            ],
+            "profile_evidence": [
+              {
+                "source": "project",
+                "ref": "project:governance-document-rag",
+                "excerpt": "Allows organisations to answer questions from their own documents with responses that stay grounded in source material. Built for teams that need trustworthy A…"
+              }
+            ]
+          },
+          {
+            "kind": "demonstrates_overlap",
+            "summary": "Project demonstrates capabilities overlapping responsibility 'Developing Generative AI solutions that become part of critical business processes, improving automation, operational efficiency and decision-making'.",
+            "job_evidence": [
+              {
+                "source": "responsibility",
+                "item_index": 1,
+                "name": null,
+                "excerpt": "Developing Generative AI solutions that become part of critical business processes, improving automation, operational efficiency and decision-making"
+              }
+            ],
+            "profile_evidence": [
+              {
+                "source": "project",
+                "ref": "project:governance-document-rag",
+                "excerpt": "AI evaluation frameworks"
+              }
+            ]
+          },
+          {
+            "kind": "responsibility_overlap",
+            "summary": "Project summary, outcomes, or technologies overlap responsibility 'Developing Generative AI solutions that become part of critical business processes, improving automation, operational efficiency and decision-making'.",
+            "job_evidence": [
+              {
+                "source": "responsibility",
+                "item_index": 1,
+                "name": null,
+                "excerpt": "Developing Generative AI solutions that become part of critical business processes, improving automation, operational efficiency and decision-making"
+              }
+            ],
+            "profile_evidence": [
+              {
+                "source": "project",
+                "ref": "project:governance-document-rag",
+                "excerpt": "Allows organisations to answer questions from their own documents with responses that stay grounded in source material. Built for teams that need trustworthy A…"
+              }
+            ]
+          },
+          {
+            "kind": "demonstrates_overlap",
+            "summary": "Project demonstrates capabilities overlapping responsibility 'Developing backend services and APIs using Python and modern application frameworks'.",
+            "job_evidence": [
+              {
+                "source": "responsibility",
+                "item_index": 2,
+                "name": null,
+                "excerpt": "Developing backend services and APIs using Python and modern application frameworks"
+              }
+            ],
+            "profile_evidence": [
+              {
+                "source": "project",
+                "ref": "project:governance-document-rag",
+                "excerpt": "AI evaluation frameworks"
+              }
+            ]
+          },
+          {
+            "kind": "responsibility_overlap",
+            "summary": "Project summary, outcomes, or technologies overlap responsibility 'Developing backend services and APIs using Python and modern application frameworks'.",
+            "job_evidence": [
+              {
+                "source": "responsibility",
+                "item_index": 2,
+                "name": null,
+                "excerpt": "Developing backend services and APIs using Python and modern application frameworks"
+              }
+            ],
+            "profile_evidence": [
+              {
+                "source": "project",
+                "ref": "project:governance-document-rag",
+                "excerpt": "Python"
+              }
+            ]
+          },
+          {
+            "kind": "demonstrates_overlap",
+            "summary": "Project demonstrates capabilities overlapping responsibility 'Building integrations between AI services and enterprise platforms using REST APIs, event-driven patterns and data pipelines'.",
+            "job_evidence": [
+              {
+                "source": "responsibility",
+                "item_index": 3,
+                "name": null,
+                "excerpt": "Building integrations between AI services and enterprise platforms using REST APIs, event-driven patterns and data pipelines"
+              }
+            ],
+            "profile_evidence": [
+              {
+                "source": "project",
+                "ref": "project:governance-document-rag",
+                "excerpt": "AI evaluation frameworks"
+              }
+            ]
+          },
+          {
+            "kind": "responsibility_overlap",
+            "summary": "Project summary, outcomes, or technologies overlap responsibility 'Building integrations between AI services and enterprise platforms using REST APIs, event-driven patterns and data pipelines'.",
+            "job_evidence": [
+              {
+                "source": "responsibility",
+                "item_index": 3,
+                "name": null,
+                "excerpt": "Building integrations between AI services and enterprise platforms using REST APIs, event-driven patterns and data pipelines"
+              }
+            ],
+            "profile_evidence": [
+              {
+                "source": "project",
+                "ref": "project:governance-document-rag",
+                "excerpt": "Allows organisations to answer questions from their own documents with responses that stay grounded in source material. Built for teams that need trustworthy A…"
+              }
+            ]
+          },
+          {
+            "kind": "demonstrates_overlap",
+            "summary": "Project demonstrates capabilities overlapping responsibility 'Deploying and supporting cloud-based AI workloads, ensuring reliability, observability and operational performance'.",
+            "job_evidence": [
+              {
+                "source": "responsibility",
+                "item_index": 4,
+                "name": null,
+                "excerpt": "Deploying and supporting cloud-based AI workloads, ensuring reliability, observability and operational performance"
+              }
+            ],
+            "profile_evidence": [
+              {
+                "source": "project",
+                "ref": "project:governance-document-rag",
+                "excerpt": "AI evaluation frameworks"
+              }
+            ]
+          },
+          {
+            "kind": "responsibility_overlap",
+            "summary": "Project summary, outcomes, or technologies overlap responsibility 'Deploying and supporting cloud-based AI workloads, ensuring reliability, observability and operational performance'.",
+            "job_evidence": [
+              {
+                "source": "responsibility",
+                "item_index": 4,
+                "name": null,
+                "excerpt": "Deploying and supporting cloud-based AI workloads, ensuring reliability, observability and operational performance"
+              }
+            ],
+            "profile_evidence": [
+              {
+                "source": "project",
+                "ref": "project:governance-document-rag",
+                "excerpt": "Allows organisations to answer questions from their own documents with responses that stay grounded in source material. Built for teams that need trustworthy A…"
+              }
+            ]
+          }
+        ],
+        "tie_group": null,
+        "tie_break_reason": null
+      },
+      {
+        "rank": 2,
+        "project_id": "operational-intelligence-copilot",
+        "rationale": "Project 'operational-intelligence-copilot' ranked on 2 required technology hit(s), 4 demonstrates overlap(s), 6 responsibility overlap(s).",
+        "factors": [
+          {
+            "kind": "required_technology",
+            "summary": "Project evidence supports required technology 'Python'.",
+            "job_evidence": [
+              {
+                "source": "technology",
+                "item_index": 0,
+                "name": "Python",
+                "excerpt": "Strong Python development using modern frameworks such as FastAPI or Flask"
+              }
+            ],
+            "profile_evidence": [
+              {
+                "source": "project",
+                "ref": "project:operational-intelligence-copilot",
+                "excerpt": "Python"
+              }
+            ]
+          },
+          {
+            "kind": "required_technology",
+            "summary": "Project evidence supports required technology 'FastAPI'.",
+            "job_evidence": [
+              {
+                "source": "technology",
+                "item_index": 1,
+                "name": "FastAPI",
+                "excerpt": "using modern frameworks such as FastAPI or Flask"
+              }
+            ],
+            "profile_evidence": [
+              {
+                "source": "project",
+                "ref": "project:operational-intelligence-copilot",
+                "excerpt": "FastAPI"
+              }
+            ]
+          },
+          {
+            "kind": "demonstrates_overlap",
+            "summary": "Project demonstrates capabilities overlapping responsibility 'Designing and building production-ready AI applications and intelligent automation workflows'.",
+            "job_evidence": [
+              {
+                "source": "responsibility",
+                "item_index": 0,
+                "name": null,
+                "excerpt": "Designing and building production-ready AI applications and intelligent automation workflows"
+              }
+            ],
+            "profile_evidence": [
+              {
+                "source": "project",
+                "ref": "project:operational-intelligence-copilot",
+                "excerpt": "Intelligent intent routing"
+              }
+            ]
+          },
+          {
+            "kind": "responsibility_overlap",
+            "summary": "Project summary, outcomes, or technologies overlap responsibility 'Designing and building production-ready AI applications and intelligent automation workflows'.",
+            "job_evidence": [
+              {
+                "source": "responsibility",
+                "item_index": 0,
+                "name": null,
+                "excerpt": "Designing and building production-ready AI applications and intelligent automation workflows"
+              }
+            ],
+            "profile_evidence": [
+              {
+                "source": "project",
+                "ref": "project:operational-intelligence-copilot",
+                "excerpt": "Demonstrates operational intelligence capability for understanding business data. Combines reliable analytics with AI reasoning to surface anomalies and produc…"
+              }
+            ]
+          },
+          {
+            "kind": "demonstrates_overlap",
+            "summary": "Project demonstrates capabilities overlapping responsibility 'Developing Generative AI solutions that become part of critical business processes, improving automation, operational efficiency and decision-making'.",
+            "job_evidence": [
+              {
+                "source": "responsibility",
+                "item_index": 1,
+                "name": null,
+                "excerpt": "Developing Generative AI solutions that become part of critical business processes, improving automation, operational efficiency and decision-making"
+              }
+            ],
+            "profile_evidence": [
+              {
+                "source": "project",
+                "ref": "project:operational-intelligence-copilot",
+                "excerpt": "Explainable AI recommendations"
+              }
+            ]
+          },
+          {
+            "kind": "responsibility_overlap",
+            "summary": "Project summary, outcomes, or technologies overlap responsibility 'Developing Generative AI solutions that become part of critical business processes, improving automation, operational efficiency and decision-making'.",
+            "job_evidence": [
+              {
+                "source": "responsibility",
+                "item_index": 1,
+                "name": null,
+                "excerpt": "Developing Generative AI solutions that become part of critical business processes, improving automation, operational efficiency and decision-making"
+              }
+            ],
+            "profile_evidence": [
+              {
+                "source": "project",
+                "ref": "project:operational-intelligence-copilot",
+                "excerpt": "Demonstrates operational intelligence capability for understanding business data. Combines reliable analytics with AI reasoning to surface anomalies and produc…"
+              }
+            ]
+          },
+          {
+            "kind": "responsibility_overlap",
+            "summary": "Project summary, outcomes, or technologies overlap responsibility 'Developing backend services and APIs using Python and modern application frameworks'.",
+            "job_evidence": [
+              {
+                "source": "responsibility",
+                "item_index": 2,
+                "name": null,
+                "excerpt": "Developing backend services and APIs using Python and modern application frameworks"
+              }
+            ],
+            "profile_evidence": [
+              {
+                "source": "project",
+                "ref": "project:operational-intelligence-copilot",
+                "excerpt": "Python"
+              }
+            ]
+          },
+          {
+            "kind": "demonstrates_overlap",
+            "summary": "Project demonstrates capabilities overlapping responsibility 'Building integrations between AI services and enterprise platforms using REST APIs, event-driven patterns and data pipelines'.",
+            "job_evidence": [
+              {
+                "source": "responsibility",
+                "item_index": 3,
+                "name": null,
+                "excerpt": "Building integrations between AI services and enterprise platforms using REST APIs, event-driven patterns and data pipelines"
+              }
+            ],
+            "profile_evidence": [
+              {
+                "source": "project",
+                "ref": "project:operational-intelligence-copilot",
+                "excerpt": "Explainable AI recommendations"
+              }
+            ]
+          },
+          {
+            "kind": "responsibility_overlap",
+            "summary": "Project summary, outcomes, or technologies overlap responsibility 'Building integrations between AI services and enterprise platforms using REST APIs, event-driven patterns and data pipelines'.",
+            "job_evidence": [
+              {
+                "source": "responsibility",
+                "item_index": 3,
+                "name": null,
+                "excerpt": "Building integrations between AI services and enterprise platforms using REST APIs, event-driven patterns and data pipelines"
+              }
+            ],
+            "profile_evidence": [
+              {
+                "source": "project",
+                "ref": "project:operational-intelligence-copilot",
+                "excerpt": "Demonstrates operational intelligence capability for understanding business data. Combines reliable analytics with AI reasoning to surface anomalies and produc…"
+              }
+            ]
+          },
+          {
+            "kind": "demonstrates_overlap",
+            "summary": "Project demonstrates capabilities overlapping responsibility 'Deploying and supporting cloud-based AI workloads, ensuring reliability, observability and operational performance'.",
+            "job_evidence": [
+              {
+                "source": "responsibility",
+                "item_index": 4,
+                "name": null,
+                "excerpt": "Deploying and supporting cloud-based AI workloads, ensuring reliability, observability and operational performance"
+              }
+            ],
+            "profile_evidence": [
+              {
+                "source": "project",
+                "ref": "project:operational-intelligence-copilot",
+                "excerpt": "Explainable AI recommendations"
+              }
+            ]
+          },
+          {
+            "kind": "responsibility_overlap",
+            "summary": "Project summary, outcomes, or technologies overlap responsibility 'Deploying and supporting cloud-based AI workloads, ensuring reliability, observability and operational performance'.",
+            "job_evidence": [
+              {
+                "source": "responsibility",
+                "item_index": 4,
+                "name": null,
+                "excerpt": "Deploying and supporting cloud-based AI workloads, ensuring reliability, observability and operational performance"
+              }
+            ],
+            "profile_evidence": [
+              {
+                "source": "project",
+                "ref": "project:operational-intelligence-copilot",
+                "excerpt": "Demonstrates operational intelligence capability for understanding business data. Combines reliable analytics with AI reasoning to surface anomalies and produc…"
+              }
+            ]
+          },
+          {
+            "kind": "responsibility_overlap",
+            "summary": "Project summary, outcomes, or technologies overlap responsibility 'Working closely with business stakeholders throughout solution design, UAT and production rollout'.",
+            "job_evidence": [
+              {
+                "source": "responsibility",
+                "item_index": 5,
+                "name": null,
+                "excerpt": "Working closely with business stakeholders throughout solution design, UAT and production rollout"
+              }
+            ],
+            "profile_evidence": [
+              {
+                "source": "project",
+                "ref": "project:operational-intelligence-copilot",
+                "excerpt": "Demonstrates operational intelligence capability for understanding business data. Combines reliable analytics with AI reasoning to surface anomalies and produc…"
+              }
+            ]
+          }
+        ],
+        "tie_group": null,
+        "tie_break_reason": null
+      },
+      {
+        "rank": 3,
+        "project_id": "public-holiday-entitlements",
+        "rationale": "Project 'public-holiday-entitlements' ranked on 2 required technology hit(s), 2 demonstrates overlap(s), 2 responsibility overlap(s).",
+        "factors": [
+          {
+            "kind": "required_technology",
+            "summary": "Project evidence supports required technology 'Python'.",
+            "job_evidence": [
+              {
+                "source": "technology",
+                "item_index": 0,
+                "name": "Python",
+                "excerpt": "Strong Python development using modern frameworks such as FastAPI or Flask"
+              }
+            ],
+            "profile_evidence": [
+              {
+                "source": "project",
+                "ref": "project:public-holiday-entitlements",
+                "excerpt": "Python"
+              }
+            ]
+          },
+          {
+            "kind": "required_technology",
+            "summary": "Project evidence supports required technology 'REST APIs'.",
+            "job_evidence": [
+              {
+                "source": "technology",
+                "item_index": 10,
+                "name": "REST APIs",
+                "excerpt": "Building integrations between AI services and enterprise platforms using REST APIs"
+              }
+            ],
+            "profile_evidence": [
+              {
+                "source": "project",
+                "ref": "project:public-holiday-entitlements",
+                "excerpt": "REST APIs"
+              }
+            ]
+          },
+          {
+            "kind": "demonstrates_overlap",
+            "summary": "Project demonstrates capabilities overlapping responsibility 'Developing Generative AI solutions that become part of critical business processes, improving automation, operational efficiency and decision-making'.",
+            "job_evidence": [
+              {
+                "source": "responsibility",
+                "item_index": 1,
+                "name": null,
+                "excerpt": "Developing Generative AI solutions that become part of critical business processes, improving automation, operational efficiency and decision-making"
+              }
+            ],
+            "profile_evidence": [
+              {
+                "source": "project",
+                "ref": "project:public-holiday-entitlements",
+                "excerpt": "Business rules"
+              }
+            ]
+          },
+          {
+            "kind": "responsibility_overlap",
+            "summary": "Project summary, outcomes, or technologies overlap responsibility 'Developing backend services and APIs using Python and modern application frameworks'.",
+            "job_evidence": [
+              {
+                "source": "responsibility",
+                "item_index": 2,
+                "name": null,
+                "excerpt": "Developing backend services and APIs using Python and modern application frameworks"
+              }
+            ],
+            "profile_evidence": [
+              {
+                "source": "project",
+                "ref": "project:public-holiday-entitlements",
+                "excerpt": "Determines Australian public-holiday entitlements from location and rules for HR and payroll teams. Combines geospatial logic with external APIs to produce com…"
+              }
+            ]
+          },
+          {
+            "kind": "responsibility_overlap",
+            "summary": "Project summary, outcomes, or technologies overlap responsibility 'Building integrations between AI services and enterprise platforms using REST APIs, event-driven patterns and data pipelines'.",
+            "job_evidence": [
+              {
+                "source": "responsibility",
+                "item_index": 3,
+                "name": null,
+                "excerpt": "Building integrations between AI services and enterprise platforms using REST APIs, event-driven patterns and data pipelines"
+              }
+            ],
+            "profile_evidence": [
+              {
+                "source": "project",
+                "ref": "project:public-holiday-entitlements",
+                "excerpt": "Determines Australian public-holiday entitlements from location and rules for HR and payroll teams. Combines geospatial logic with external APIs to produce com…"
+              }
+            ]
+          },
+          {
+            "kind": "demonstrates_overlap",
+            "summary": "Project demonstrates capabilities overlapping responsibility 'Working closely with business stakeholders throughout solution design, UAT and production rollout'.",
+            "job_evidence": [
+              {
+                "source": "responsibility",
+                "item_index": 5,
+                "name": null,
+                "excerpt": "Working closely with business stakeholders throughout solution design, UAT and production rollout"
+              }
+            ],
+            "profile_evidence": [
+              {
+                "source": "project",
+                "ref": "project:public-holiday-entitlements",
+                "excerpt": "Business rules"
+              }
+            ]
+          }
+        ],
+        "tie_group": null,
+        "tie_break_reason": null
+      },
+      {
+        "rank": 4,
+        "project_id": "payroll-diagnostics-engine",
+        "rationale": "Project 'payroll-diagnostics-engine' ranked on 1 required technology hit(s), 2 demonstrates overlap(s), 6 responsibility overlap(s).",
+        "factors": [
+          {
+            "kind": "required_technology",
+            "summary": "Project evidence supports required technology 'Python'.",
+            "job_evidence": [
+              {
+                "source": "technology",
+                "item_index": 0,
+                "name": "Python",
+                "excerpt": "Strong Python development using modern frameworks such as FastAPI or Flask"
+              }
+            ],
+            "profile_evidence": [
+              {
+                "source": "project",
+                "ref": "project:payroll-diagnostics-engine",
+                "excerpt": "Python"
+              }
+            ]
+          },
+          {
+            "kind": "responsibility_overlap",
+            "summary": "Project summary, outcomes, or technologies overlap responsibility 'Designing and building production-ready AI applications and intelligent automation workflows'.",
+            "job_evidence": [
+              {
+                "source": "responsibility",
+                "item_index": 0,
+                "name": null,
+                "excerpt": "Designing and building production-ready AI applications and intelligent automation workflows"
+              }
+            ],
+            "profile_evidence": [
+              {
+                "source": "project",
+                "ref": "project:payroll-diagnostics-engine",
+                "excerpt": "Reviews payroll data against deterministic business rules to identify anomalies. Produces explainable findings and executive-ready reports so issues can be inv…"
+              }
+            ]
+          },
+          {
+            "kind": "demonstrates_overlap",
+            "summary": "Project demonstrates capabilities overlapping responsibility 'Developing Generative AI solutions that become part of critical business processes, improving automation, operational efficiency and decision-making'.",
+            "job_evidence": [
+              {
+                "source": "responsibility",
+                "item_index": 1,
+                "name": null,
+                "excerpt": "Developing Generative AI solutions that become part of critical business processes, improving automation, operational efficiency and decision-making"
+              }
+            ],
+            "profile_evidence": [
+              {
+                "source": "project",
+                "ref": "project:payroll-diagnostics-engine",
+                "excerpt": "Operational analytics"
+              }
+            ]
+          },
+          {
+            "kind": "responsibility_overlap",
+            "summary": "Project summary, outcomes, or technologies overlap responsibility 'Developing Generative AI solutions that become part of critical business processes, improving automation, operational efficiency and decision-making'.",
+            "job_evidence": [
+              {
+                "source": "responsibility",
+                "item_index": 1,
+                "name": null,
+                "excerpt": "Developing Generative AI solutions that become part of critical business processes, improving automation, operational efficiency and decision-making"
+              }
+            ],
+            "profile_evidence": [
+              {
+                "source": "project",
+                "ref": "project:payroll-diagnostics-engine",
+                "excerpt": "Reviews payroll data against deterministic business rules to identify anomalies. Produces explainable findings and executive-ready reports so issues can be inv…"
+              }
+            ]
+          },
+          {
+            "kind": "responsibility_overlap",
+            "summary": "Project summary, outcomes, or technologies overlap responsibility 'Developing backend services and APIs using Python and modern application frameworks'.",
+            "job_evidence": [
+              {
+                "source": "responsibility",
+                "item_index": 2,
+                "name": null,
+                "excerpt": "Developing backend services and APIs using Python and modern application frameworks"
+              }
+            ],
+            "profile_evidence": [
+              {
+                "source": "project",
+                "ref": "project:payroll-diagnostics-engine",
+                "excerpt": "Python"
+              }
+            ]
+          },
+          {
+            "kind": "responsibility_overlap",
+            "summary": "Project summary, outcomes, or technologies overlap responsibility 'Building integrations between AI services and enterprise platforms using REST APIs, event-driven patterns and data pipelines'.",
+            "job_evidence": [
+              {
+                "source": "responsibility",
+                "item_index": 3,
+                "name": null,
+                "excerpt": "Building integrations between AI services and enterprise platforms using REST APIs, event-driven patterns and data pipelines"
+              }
+            ],
+            "profile_evidence": [
+              {
+                "source": "project",
+                "ref": "project:payroll-diagnostics-engine",
+                "excerpt": "Reviews payroll data against deterministic business rules to identify anomalies. Produces explainable findings and executive-ready reports so issues can be inv…"
+              }
+            ]
+          },
+          {
+            "kind": "demonstrates_overlap",
+            "summary": "Project demonstrates capabilities overlapping responsibility 'Deploying and supporting cloud-based AI workloads, ensuring reliability, observability and operational performance'.",
+            "job_evidence": [
+              {
+                "source": "responsibility",
+                "item_index": 4,
+                "name": null,
+                "excerpt": "Deploying and supporting cloud-based AI workloads, ensuring reliability, observability and operational performance"
+              }
+            ],
+            "profile_evidence": [
+              {
+                "source": "project",
+                "ref": "project:payroll-diagnostics-engine",
+                "excerpt": "Operational analytics"
+              }
+            ]
+          },
+          {
+            "kind": "responsibility_overlap",
+            "summary": "Project summary, outcomes, or technologies overlap responsibility 'Deploying and supporting cloud-based AI workloads, ensuring reliability, observability and operational performance'.",
+            "job_evidence": [
+              {
+                "source": "responsibility",
+                "item_index": 4,
+                "name": null,
+                "excerpt": "Deploying and supporting cloud-based AI workloads, ensuring reliability, observability and operational performance"
+              }
+            ],
+            "profile_evidence": [
+              {
+                "source": "project",
+                "ref": "project:payroll-diagnostics-engine",
+                "excerpt": "Produces explainable operational findings."
+              }
+            ]
+          },
+          {
+            "kind": "responsibility_overlap",
+            "summary": "Project summary, outcomes, or technologies overlap responsibility 'Working closely with business stakeholders throughout solution design, UAT and production rollout'.",
+            "job_evidence": [
+              {
+                "source": "responsibility",
+                "item_index": 5,
+                "name": null,
+                "excerpt": "Working closely with business stakeholders throughout solution design, UAT and production rollout"
+              }
+            ],
+            "profile_evidence": [
+              {
+                "source": "project",
+                "ref": "project:payroll-diagnostics-engine",
+                "excerpt": "Reviews payroll data against deterministic business rules to identify anomalies. Produces explainable findings and executive-ready reports so issues can be inv…"
+              }
+            ]
+          }
+        ],
+        "tie_group": null,
+        "tie_break_reason": null
+      },
+      {
+        "rank": 5,
+        "project_id": "career-intelligence-copilot",
+        "rationale": "Project 'career-intelligence-copilot' ranked on 1 required technology hit(s), 1 demonstrates overlap(s), 6 responsibility overlap(s).",
+        "factors": [
+          {
+            "kind": "required_technology",
+            "summary": "Project evidence supports required technology 'Python'.",
+            "job_evidence": [
+              {
+                "source": "technology",
+                "item_index": 0,
+                "name": "Python",
+                "excerpt": "Strong Python development using modern frameworks such as FastAPI or Flask"
+              }
+            ],
+            "profile_evidence": [
+              {
+                "source": "project",
+                "ref": "project:career-intelligence-copilot",
+                "excerpt": "Python"
+              }
+            ]
+          },
+          {
+            "kind": "responsibility_overlap",
+            "summary": "Project summary, outcomes, or technologies overlap responsibility 'Designing and building production-ready AI applications and intelligent automation workflows'.",
+            "job_evidence": [
+              {
+                "source": "responsibility",
+                "item_index": 0,
+                "name": null,
+                "excerpt": "Designing and building production-ready AI applications and intelligent automation workflows"
+              }
+            ],
+            "profile_evidence": [
+              {
+                "source": "project",
+                "ref": "project:career-intelligence-copilot",
+                "excerpt": "Enables an AI Engineering job seeker to decide which roles deserve effort. Reviews job ads against a structured career profile, ranks fit, recommends applicati…"
+              }
+            ]
+          },
+          {
+            "kind": "responsibility_overlap",
+            "summary": "Project summary, outcomes, or technologies overlap responsibility 'Developing Generative AI solutions that become part of critical business processes, improving automation, operational efficiency and decision-making'.",
+            "job_evidence": [
+              {
+                "source": "responsibility",
+                "item_index": 1,
+                "name": null,
+                "excerpt": "Developing Generative AI solutions that become part of critical business processes, improving automation, operational efficiency and decision-making"
+              }
+            ],
+            "profile_evidence": [
+              {
+                "source": "project",
+                "ref": "project:career-intelligence-copilot",
+                "excerpt": "Enables an AI Engineering job seeker to decide which roles deserve effort. Reviews job ads against a structured career profile, ranks fit, recommends applicati…"
+              }
+            ]
+          },
+          {
+            "kind": "demonstrates_overlap",
+            "summary": "Project demonstrates capabilities overlapping responsibility 'Developing backend services and APIs using Python and modern application frameworks'.",
+            "job_evidence": [
+              {
+                "source": "responsibility",
+                "item_index": 2,
+                "name": null,
+                "excerpt": "Developing backend services and APIs using Python and modern application frameworks"
+              }
+            ],
+            "profile_evidence": [
+              {
+                "source": "project",
+                "ref": "project:career-intelligence-copilot",
+                "excerpt": "Deterministic application-strategy recommendation"
+              }
+            ]
+          },
+          {
+            "kind": "responsibility_overlap",
+            "summary": "Project summary, outcomes, or technologies overlap responsibility 'Developing backend services and APIs using Python and modern application frameworks'.",
+            "job_evidence": [
+              {
+                "source": "responsibility",
+                "item_index": 2,
+                "name": null,
+                "excerpt": "Developing backend services and APIs using Python and modern application frameworks"
+              }
+            ],
+            "profile_evidence": [
+              {
+                "source": "project",
+                "ref": "project:career-intelligence-copilot",
+                "excerpt": "Enables an AI Engineering job seeker to decide which roles deserve effort. Reviews job ads against a structured career profile, ranks fit, recommends applicati…"
+              }
+            ]
+          },
+          {
+            "kind": "responsibility_overlap",
+            "summary": "Project summary, outcomes, or technologies overlap responsibility 'Building integrations between AI services and enterprise platforms using REST APIs, event-driven patterns and data pipelines'.",
+            "job_evidence": [
+              {
+                "source": "responsibility",
+                "item_index": 3,
+                "name": null,
+                "excerpt": "Building integrations between AI services and enterprise platforms using REST APIs, event-driven patterns and data pipelines"
+              }
+            ],
+            "profile_evidence": [
+              {
+                "source": "project",
+                "ref": "project:career-intelligence-copilot",
+                "excerpt": "Enables an AI Engineering job seeker to decide which roles deserve effort. Reviews job ads against a structured career profile, ranks fit, recommends applicati…"
+              }
+            ]
+          },
+          {
+            "kind": "responsibility_overlap",
+            "summary": "Project summary, outcomes, or technologies overlap responsibility 'Deploying and supporting cloud-based AI workloads, ensuring reliability, observability and operational performance'.",
+            "job_evidence": [
+              {
+                "source": "responsibility",
+                "item_index": 4,
+                "name": null,
+                "excerpt": "Deploying and supporting cloud-based AI workloads, ensuring reliability, observability and operational performance"
+              }
+            ],
+            "profile_evidence": [
+              {
+                "source": "project",
+                "ref": "project:career-intelligence-copilot",
+                "excerpt": "Enables an AI Engineering job seeker to decide which roles deserve effort. Reviews job ads against a structured career profile, ranks fit, recommends applicati…"
+              }
+            ]
+          },
+          {
+            "kind": "responsibility_overlap",
+            "summary": "Project summary, outcomes, or technologies overlap responsibility 'Contributing to reusable components, deployment standards and engineering best practices'.",
+            "job_evidence": [
+              {
+                "source": "responsibility",
+                "item_index": 6,
+                "name": null,
+                "excerpt": "Contributing to reusable components, deployment standards and engineering best practices"
+              }
+            ],
+            "profile_evidence": [
+              {
+                "source": "project",
+                "ref": "project:career-intelligence-copilot",
+                "excerpt": "Enables an AI Engineering job seeker to decide which roles deserve effort. Reviews job ads against a structured career profile, ranks fit, recommends applicati…"
+              }
+            ]
+          }
+        ],
+        "tie_group": null,
+        "tie_break_reason": null
+      }
+    ],
+    "unranked_project_ids": [],
+    "summary": "Ranked 5 project(s); lead with 'governance-document-rag'. 0 project(s) had no matching factors.",
+    "insufficient_evidence": false
+  },
+  "application_strategy": {
+    "job_analysis": {
+      "posting": {
+        "raw_text": "AI Engineer\n\nMars Recruitment \nView all jobs\nMelbourne VIC (Hybrid)\nEngineering - Software (Information & Communication Technology)\nFull time\nUp to $200000.00 p.a.\n\n\nAn exciting opportunity has become available for an experienced AI DEngineer to join a well-established Australian financial services organisation investing heavily in Generative AI, intelligent automation and modern software engineering.\n\nWorking within a newly established capability, you'll play a key role in designing and delivering Generative AI applications, intelligent automations and backend services that support critical business processes across the organisation. This is a hands-on engineering position where you'll take ownership from initial concept through to production deployment, partnering closely with business stakeholders to deliver practical, scalable solutions that create genuine business value.\n\nWhat you'll be doing\nDesigning and building production-ready AI applications and intelligent automation workflows\n\nDeveloping Generative AI solutions that become part of critical business processes, improving automation, operational efficiency and decision-making\n\nDeveloping backend services and APIs using Python and modern application frameworks\n\nBuilding integrations between AI services and enterprise platforms using REST APIs, event-driven patterns and data pipelines\n\nDeploying and supporting cloud-based AI workloads, ensuring reliability, observability and operational performance\n\nWorking closely with business stakeholders throughout solution design, UAT and production rollout\n\nContributing to reusable components, deployment standards and engineering best practices\n\nAbout you\nYou'll be a software engineer with strong backend development experience and proven exposure to building production-ready AI-enabled applications within commercial environments.\n\nYou'll bring experience across a combination of:\n\nStrong Python development using modern frameworks such as FastAPI or Flask\n\nHands-on experience designing, building or deploying Generative AI applications, including technologies such as LLMs, prompt engineering, retrieval-augmented generation (RAG), AI orchestration or agent-based workflows\n\nExperience integrating applications and enterprise platforms using REST APIs, event-driven architectures and data pipelines\n\nCloud platform experience, with Azure highly regarded\n\nCI/CD, Git, Docker and modern software engineering practices\n\nSQL and working with both structured and unstructured data\n\nExposure to automation technologies and workflow platforms will be viewed favourably\n\nMost importantly, you'll enjoy solving complex business problems, collaborating directly with stakeholders and delivering production-ready solutions that become part of critical business processes.\n\nWhat's on offer\nOpportunity to join a growing AI capability with significant executive backing\n\nGreenfield initiatives with genuine ownership and influence\n\nModern engineering environment focused on delivering production-ready AI solutions\n\nCollaborative, high-performing team with strong technical leadership\n\nCompetitive salary package with flexible hybrid working\n\nIf you're passionate about building practical Generative AI solutions that solve real business problems and want to help shape the next generation of enterprise applications, we'd love to hear from you.",
+        "title": "AI Engineer",
+        "company": "Mars Recruitment",
+        "source_url": null
+      },
+      "role_family": {
+        "family": "ai_engineering",
+        "evidence": [
+          {
+            "excerpt": "an experienced AI Engineer to join a well-established Australian financial services organisation investing heavily in Generative AI",
+            "section": "Job Description"
+          }
+        ]
+      },
+      "seniority": {
+        "level": "unknown",
+        "ambiguous": false,
+        "candidate_levels": [],
+        "evidence": [
+          {
+            "excerpt": "AI Engineer",
+            "section": "Job title"
+          }
+        ]
+      },
+      "technologies": [
+        {
+          "name": "Python",
+          "level": "required",
+          "evidence": [
+            {
+              "excerpt": "Strong Python development using modern frameworks such as FastAPI or Flask",
+              "section": "About you"
+            }
+          ]
+        },
+        {
+          "name": "FastAPI",
+          "level": "required",
+          "evidence": [
+            {
+              "excerpt": "using modern frameworks such as FastAPI or Flask",
+              "section": "About you"
+            }
+          ]
+        },
+        {
+          "name": "Flask",
+          "level": "required",
+          "evidence": [
+            {
+              "excerpt": "using modern frameworks such as FastAPI or Flask",
+              "section": "About you"
+            }
+          ]
+        },
+        {
+          "name": "Generative AI",
+          "level": "required",
+          "evidence": [
+            {
+              "excerpt": "Designing and building production-ready AI applications and intelligent automation workflows",
+              "section": "What you'll be doing"
+            }
+          ]
+        },
+        {
+          "name": "LLMs",
+          "level": "required",
+          "evidence": [
+            {
+              "excerpt": "building production-ready AI-enabled applications within commercial environments",
+              "section": "About you"
+            }
+          ]
+        },
+        {
+          "name": "RAG",
+          "level": "required",
+          "evidence": [
+            {
+              "excerpt": "hands-on experience designing, building or deploying Generative AI applications, including technologies such as LLMs, prompt engineering, retrieval-augmented generation (RAG), AI orchestration or agent-based workflows",
+              "section": "About you"
+            }
+          ]
+        },
+        {
+          "name": "SQL",
+          "level": "required",
+          "evidence": [
+            {
+              "excerpt": "SQL and working with both structured and unstructured data",
+              "section": "About you"
+            }
+          ]
+        },
+        {
+          "name": "Azure",
+          "level": "preferred",
+          "evidence": [
+            {
+              "excerpt": "Cloud platform experience, with Azure highly regarded",
+              "section": "About you"
+            }
+          ]
+        },
+        {
+          "name": "CI/CD",
+          "level": "preferred",
+          "evidence": [
+            {
+              "excerpt": "CI/CD, Git, Docker and modern software engineering practices",
+              "section": "About you"
+            }
+          ]
+        },
+        {
+          "name": "Docker",
+          "level": "preferred",
+          "evidence": [
+            {
+              "excerpt": "CI/CD, Git, Docker and modern software engineering practices",
+              "section": "About you"
+            }
+          ]
+        },
+        {
+          "name": "REST APIs",
+          "level": "required",
+          "evidence": [
+            {
+              "excerpt": "Building integrations between AI services and enterprise platforms using REST APIs",
+              "section": "What you'll be doing"
+            }
+          ]
+        }
+      ],
+      "responsibilities": [
+        {
+          "description": "Designing and building production-ready AI applications and intelligent automation workflows",
+          "evidence": [
+            {
+              "excerpt": "Designing and building production-ready AI applications and intelligent automation workflows",
+              "section": "What you'll be doing"
+            }
+          ]
+        },
+        {
+          "description": "Developing Generative AI solutions that become part of critical business processes, improving automation, operational efficiency and decision-making",
+          "evidence": [
+            {
+              "excerpt": "Developing Generative AI solutions that become part of critical business processes, improving automation, operational efficiency and decision-making",
+              "section": "What you'll be doing"
+            }
+          ]
+        },
+        {
+          "description": "Developing backend services and APIs using Python and modern application frameworks",
+          "evidence": [
+            {
+              "excerpt": "Developing backend services and APIs using Python and modern application frameworks",
+              "section": "What you'll be doing"
+            }
+          ]
+        },
+        {
+          "description": "Building integrations between AI services and enterprise platforms using REST APIs, event-driven patterns and data pipelines",
+          "evidence": [
+            {
+              "excerpt": "Building integrations between AI services and enterprise platforms using REST APIs, event-driven patterns and data pipelines",
+              "section": "What you'll be doing"
+            }
+          ]
+        },
+        {
+          "description": "Deploying and supporting cloud-based AI workloads, ensuring reliability, observability and operational performance",
+          "evidence": [
+            {
+              "excerpt": "Deploying and supporting cloud-based AI workloads, ensuring reliability, observability and operational performance",
+              "section": "What you'll be doing"
+            }
+          ]
+        },
+        {
+          "description": "Working closely with business stakeholders throughout solution design, UAT and production rollout",
+          "evidence": [
+            {
+              "excerpt": "Working closely with business stakeholders throughout solution design, UAT and production rollout",
+              "section": "What you'll be doing"
+            }
+          ]
+        },
+        {
+          "description": "Contributing to reusable components, deployment standards and engineering best practices",
+          "evidence": [
+            {
+              "excerpt": "Contributing to reusable components, deployment standards and engineering best practices",
+              "section": "What you'll be doing"
+            }
+          ]
+        }
+      ],
+      "compensation": {
+        "clarity": "stated",
+        "minimum": 200000.0,
+        "maximum": 200000.0,
+        "currency": "AUD",
+        "period": "year",
+        "raw_text": "Up to $200000.00 p.a.",
+        "evidence": [
+          {
+            "excerpt": "Up to $200000.00 p.a.",
+            "section": "Job Description"
+          }
+        ]
+      },
+      "location": {
+        "clarity": "stated",
+        "summary": "Melbourne VIC (Hybrid)",
+        "evidence": [
+          {
+            "excerpt": "Melbourne VIC (Hybrid)",
+            "section": "Job Description"
+          }
+        ]
+      },
+      "work_arrangement": {
+        "arrangement": "hybrid",
+        "details": "flexible hybrid working",
+        "evidence": [
+          {
+            "excerpt": "flexible hybrid working",
+            "section": "What's on offer"
+          }
+        ]
+      },
+      "employment": {
+        "working_hours": "full_time",
+        "engagement_type": "unspecified",
+        "evidence": [
+          {
+            "excerpt": "Full time",
+            "section": "Job Description"
+          }
+        ]
+      },
+      "experience_requirements": [
+        {
+          "description": "Proven exposure to building production-ready AI-enabled applications within commercial environments",
+          "level": "required",
+          "minimum_years": null,
+          "maximum_years": null,
+          "evidence": [
+            {
+              "excerpt": "You'll be a software engineer with strong backend development experience and proven exposure to building production-ready AI-enabled applications within commercial environments.",
+              "section": "About you"
+            }
+          ]
+        }
+      ]
+    },
+    "application_tier": "silver",
+    "pursuit_posture": "consider",
+    "practical_value": "acceptable_opportunity",
+    "effort_level": "minimal",
+    "summary": "Recommend posture 'consider' with effort tier 'silver' (minimal). Technical fit 'mixed', commercial fit 'mixed', portfolio fit 'mixed'. Owner review is required before any application action.",
+    "reasons": [
+      {
+        "kind": "alignment",
+        "summary": "Technical fit is 'mixed' and portfolio fit is 'mixed' for this opportunity.",
+        "importance": "material",
+        "evidence": [
+          {
+            "origin": "opportunity_assessment",
+            "job_evidence": null,
+            "profile_evidence": null,
+            "assessment_dimension": "technical",
+            "assessment_judgment": "mixed",
+            "portfolio_project_id": null,
+            "excerpt": null
+          },
+          {
+            "origin": "opportunity_assessment",
+            "job_evidence": null,
+            "profile_evidence": null,
+            "assessment_dimension": "portfolio",
+            "assessment_judgment": "mixed",
+            "portfolio_project_id": null,
+            "excerpt": null
+          }
+        ]
+      },
+      {
+        "kind": "priority",
+        "summary": "Pursuit posture 'consider' with effort tier 'silver' reflects commercial fit 'mixed' and AI-aligned role family.",
+        "importance": "material",
+        "evidence": [
+          {
+            "origin": "opportunity_assessment",
+            "job_evidence": null,
+            "profile_evidence": null,
+            "assessment_dimension": "commercial",
+            "assessment_judgment": "mixed",
+            "portfolio_project_id": null,
+            "excerpt": null
+          },
+          {
+            "origin": "job_analysis",
+            "job_evidence": {
+              "source": "role_family",
+              "item_index": null,
+              "name": null,
+              "excerpt": null
+            },
+            "profile_evidence": null,
+            "assessment_dimension": null,
+            "assessment_judgment": null,
+            "portfolio_project_id": null,
+            "excerpt": null
+          }
+        ]
+      }
+    ],
+    "risks_or_gaps": [
+      {
+        "summary": "Commercial fit is 'mixed', which may reduce the value of investing significant effort.",
+        "importance": "minor",
+        "evidence": [
+          {
+            "origin": "opportunity_assessment",
+            "job_evidence": null,
+            "profile_evidence": null,
+            "assessment_dimension": "commercial",
+            "assessment_judgment": "mixed",
+            "portfolio_project_id": null,
+            "excerpt": null
+          }
+        ]
+      },
+      {
+        "summary": "The role requires proven exposure to building production-ready AI applications within commercial environments, which is not sufficiently evidenced in the profile.",
+        "importance": "material",
+        "evidence": [
+          {
+            "origin": "opportunity_assessment",
+            "job_evidence": null,
+            "profile_evidence": null,
+            "assessment_dimension": "technical",
+            "assessment_judgment": "mixed",
+            "portfolio_project_id": null,
+            "excerpt": null
+          }
+        ]
+      },
+      {
+        "summary": "The candidate's profile lacks evidence of experience deploying AI applications in commercial environments, particularly with user acceptance testing (UAT) and stakeholder collaboration, which are critical for the role.",
+        "importance": "material",
+        "evidence": [
+          {
+            "origin": "opportunity_assessment",
+            "job_evidence": null,
+            "profile_evidence": null,
+            "assessment_dimension": "technical",
+            "assessment_judgment": "mixed",
+            "portfolio_project_id": null,
+            "excerpt": null
+          }
+        ]
+      }
+    ],
+    "manual_checks": [],
+    "next_actions": [
+      {
+        "kind": "consider_emphasising_portfolio_projects",
+        "summary": "Consider emphasising the strongest matched portfolio project(s) in any application materials you prepare.",
+        "related_project_id": "governance-document-rag",
+        "evidence": [
+          {
+            "origin": "portfolio_match",
+            "job_evidence": null,
+            "profile_evidence": null,
+            "assessment_dimension": null,
+            "assessment_judgment": null,
+            "portfolio_project_id": "governance-document-rag",
+            "excerpt": null
+          }
+        ]
+      },
+      {
+        "kind": "consider_owner_review",
+        "summary": "Consider reviewing this full strategy before taking any external action.",
+        "related_project_id": null,
+        "evidence": [
+          {
+            "origin": "opportunity_assessment",
+            "job_evidence": null,
+            "profile_evidence": null,
+            "assessment_dimension": "technical",
+            "assessment_judgment": "mixed",
+            "portfolio_project_id": null,
+            "excerpt": null
+          }
+        ]
+      }
+    ],
+    "portfolio_emphasis": [
+      {
+        "project_id": "governance-document-rag",
+        "source_rank": 1,
+        "summary": "Consider emphasising 'governance-document-rag' (PortfolioMatch rank 1).",
+        "evidence": [
+          {
+            "origin": "portfolio_match",
+            "job_evidence": null,
+            "profile_evidence": null,
+            "assessment_dimension": null,
+            "assessment_judgment": null,
+            "portfolio_project_id": "governance-document-rag",
+            "excerpt": null
+          }
+        ]
+      },
+      {
+        "project_id": "operational-intelligence-copilot",
+        "source_rank": 2,
+        "summary": "Consider emphasising 'operational-intelligence-copilot' (PortfolioMatch rank 2).",
+        "evidence": [
+          {
+            "origin": "portfolio_match",
+            "job_evidence": null,
+            "profile_evidence": null,
+            "assessment_dimension": null,
+            "assessment_judgment": null,
+            "portfolio_project_id": "operational-intelligence-copilot",
+            "excerpt": null
+          }
+        ]
+      },
+      {
+        "project_id": "public-holiday-entitlements",
+        "source_rank": 3,
+        "summary": "Consider emphasising 'public-holiday-entitlements' (PortfolioMatch rank 3).",
+        "evidence": [
+          {
+            "origin": "portfolio_match",
+            "job_evidence": null,
+            "profile_evidence": null,
+            "assessment_dimension": null,
+            "assessment_judgment": null,
+            "portfolio_project_id": "public-holiday-entitlements",
+            "excerpt": null
+          }
+        ]
+      }
+    ],
+    "assumptions": [
+      "No candidate salary minimum is configured, so compensation was not treated as a hard threshold conflict."
+    ],
+    "decision_blockers": [],
+    "owner_review_required": true,
+    "insufficient_information": false
+  }
+}

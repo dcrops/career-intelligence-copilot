@@ -1,0 +1,43 @@
+AI Engineer | Contact Centre
+
+Robert Half 
+View all jobs
+
+
+Melbourne VIC (Hybrid)
+Engineering - Software (Information & Communication Technology)
+Full time
+Salary undisclosed
+
+Our client is a leading global investment bank seeking an AI Automation Engineer to join their Global Markets Trading Automation team. Applications are welcomed from candidates based in either Melbourne or Sydney, with the broader team primarily located in Melbourne.
+
+The Company
+
+A well-established business that has supported the profession for decades, providing their service to all facets of the healthcare industry. With a strong heritage behind it, the organisation is now entering an exciting period of modernisation, rethinking how it operates and delivers value as it builds for the future. A rare opportunity to join a trusted institution at a genuine turning point of the AI boom.
+
+
+The Role
+
+Sitting at the intersection of business strategy, operational needs and technical delivery, you'll translate real business problems into practical AI solutions, rapidly building proof-of-concepts and guiding the best ideas through to production. You'll be the bridge between stakeholders and technology, turning opportunity into impact. This role will be sitting in the Contact Centre team and will be solely responsible for the AI solutions in contact centre / interaction management use cases for the business. Liaising with multiple stakeholders internally, you will be required to gather requirements, contextualise the ideas and tailor a high-quality AI solution for the business. You will be a part of a close-knit AI team that has been newly formed hence the successful professional will have an exciting role.
+
+
+Your Profile
+
+Technical
+
+Hands-on experience developing solutions with Generative AI and LLMs, including agentic workflows and AI-powered automation.
+Prior experience with Contact Centre or Interaction Management use cases would be highly desirable
+Strong grasp of prompt engineering, RAG, vector databases and AI orchestration frameworks.
+Experience integrating AI solutions with enterprise systems and data sources.
+Proficiency with Python, low-code AI platforms and cloud AI services.
+Sound understanding of AI governance, security and privacy
+Exceptional communication and facilitation skills, with the credibility to engage executives, operational teams, SMEs and technical specialists alike.
+Strong consulting, workshop facilitation and business analysis capabilities.
+A proven ability to influence stakeholders and drive outcomes in ambiguous environments.
+
+Apply Today
+
+Please send your resume by clicking on the apply button.
+
+Job Reference Number: 06810-0013364679NI
+

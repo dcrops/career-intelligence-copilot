@@ -1,0 +1,62 @@
+AI Engineer
+
+Mars Recruitment 
+View all jobs
+Melbourne VIC (Hybrid)
+Engineering - Software (Information & Communication Technology)
+Full time
+Up to $200000.00 p.a.
+
+
+An exciting opportunity has become available for an experienced AI DEngineer to join a well-established Australian financial services organisation investing heavily in Generative AI, intelligent automation and modern software engineering.
+
+Working within a newly established capability, you'll play a key role in designing and delivering Generative AI applications, intelligent automations and backend services that support critical business processes across the organisation. This is a hands-on engineering position where you'll take ownership from initial concept through to production deployment, partnering closely with business stakeholders to deliver practical, scalable solutions that create genuine business value.
+
+What you'll be doing
+Designing and building production-ready AI applications and intelligent automation workflows
+
+Developing Generative AI solutions that become part of critical business processes, improving automation, operational efficiency and decision-making
+
+Developing backend services and APIs using Python and modern application frameworks
+
+Building integrations between AI services and enterprise platforms using REST APIs, event-driven patterns and data pipelines
+
+Deploying and supporting cloud-based AI workloads, ensuring reliability, observability and operational performance
+
+Working closely with business stakeholders throughout solution design, UAT and production rollout
+
+Contributing to reusable components, deployment standards and engineering best practices
+
+About you
+You'll be a software engineer with strong backend development experience and proven exposure to building production-ready AI-enabled applications within commercial environments.
+
+You'll bring experience across a combination of:
+
+Strong Python development using modern frameworks such as FastAPI or Flask
+
+Hands-on experience designing, building or deploying Generative AI applications, including technologies such as LLMs, prompt engineering, retrieval-augmented generation (RAG), AI orchestration or agent-based workflows
+
+Experience integrating applications and enterprise platforms using REST APIs, event-driven architectures and data pipelines
+
+Cloud platform experience, with Azure highly regarded
+
+CI/CD, Git, Docker and modern software engineering practices
+
+SQL and working with both structured and unstructured data
+
+Exposure to automation technologies and workflow platforms will be viewed favourably
+
+Most importantly, you'll enjoy solving complex business problems, collaborating directly with stakeholders and delivering production-ready solutions that become part of critical business processes.
+
+What's on offer
+Opportunity to join a growing AI capability with significant executive backing
+
+Greenfield initiatives with genuine ownership and influence
+
+Modern engineering environment focused on delivering production-ready AI solutions
+
+Collaborative, high-performing team with strong technical leadership
+
+Competitive salary package with flexible hybrid working
+
+If you're passionate about building practical Generative AI solutions that solve real business problems and want to help shape the next generation of enterprise applications, we'd love to hear from you.

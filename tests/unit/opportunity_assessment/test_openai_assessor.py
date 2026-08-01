@@ -358,7 +358,38 @@ def test_alignment_with_empty_job_evidence_fails_through_service() -> None:
     with pytest.raises(OpportunityAssessmentValidationError) as raised:
         OpportunityAssessmentService(assessor).assess(_job_analysis(), _profile())
 
-    assert any("job evidence" in error.msg.lower() for error in raised.value.errors)
+    assert any(
+        "job_evidence" in ".".join(str(p) for p in error.loc)
+        or "job evidence" in error.msg.lower()
+        or "at least 1" in error.msg.lower()
+        for error in raised.value.errors
+    )
+
+
+def test_alignment_with_empty_profile_evidence_fails_through_assessor() -> None:
+    """Regression: alignment with job evidence but empty profile_evidence must fail at coerce."""
+    payload = dict(assessment_strong_ai_alignment())
+    commercial = dict(payload["commercial_fit"])
+    findings = [dict(commercial["findings"][0])]
+    findings[0]["kind"] = "alignment"
+    findings[0]["job_evidence"] = [{"source": "work_arrangement"}]
+    findings[0]["profile_evidence"] = []
+    findings[0]["assumption"] = None
+    commercial["findings"] = findings
+    payload["commercial_fit"] = commercial
+    assessor = OpenAIAssessor(
+        client=_FakeOpenAI(result=_FakeParseResult(payload))
+    )
+
+    with pytest.raises(OpportunityAssessmentValidationError) as raised:
+        OpportunityAssessmentService(assessor).assess(_job_analysis(), _profile())
+
+    assert any(
+        "profile_evidence" in ".".join(str(p) for p in error.loc)
+        or "profile evidence" in error.msg.lower()
+        or "at least 1" in error.msg.lower()
+        for error in raised.value.errors
+    )
 
 
 def test_non_assumption_with_assumption_text_fails_through_service() -> None:
@@ -376,7 +407,12 @@ def test_non_assumption_with_assumption_text_fails_through_service() -> None:
     with pytest.raises(OpportunityAssessmentValidationError) as raised:
         OpportunityAssessmentService(assessor).assess(_job_analysis(), _profile())
 
-    assert any("assumption" in error.msg.lower() for error in raised.value.errors)
+    assert any(
+        "assumption" in ".".join(str(p) for p in error.loc).lower()
+        or "assumption" in error.msg.lower()
+        or "none" in error.msg.lower()
+        for error in raised.value.errors
+    )
 
 
 def test_bare_profile_ref_without_namespace_fails_through_service() -> None:
@@ -411,7 +447,12 @@ def test_portfolio_alignment_without_job_evidence_fails_through_service() -> Non
     with pytest.raises(OpportunityAssessmentValidationError) as raised:
         OpportunityAssessmentService(assessor).assess(_job_analysis(), _profile())
 
-    assert any("job evidence" in error.msg.lower() for error in raised.value.errors)
+    assert any(
+        "job_evidence" in ".".join(str(p) for p in error.loc)
+        or "job evidence" in error.msg.lower()
+        or "at least 1" in error.msg.lower()
+        for error in raised.value.errors
+    )
 
 
 def test_openai_assessor_remains_package_private() -> None:

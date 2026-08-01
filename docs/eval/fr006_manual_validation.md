@@ -35,8 +35,9 @@ Do **not** ask only “does the CV look good?”
 - Package installed: `pip install -e ".[dev]"`
 - Career profile available (`data/career_profile.yaml` or `--profile-path`)
 - For the FR-005 manual validation corpus: matching JSON under
-  `manual_validation/outputs/{job_stem}.json` (produced by
-  `scripts/run_application_strategy_manual.py --output-json …`)
+  `manual_validation/outputs/{job_stem}.json` (written automatically by
+  `scripts/run_application_strategy_manual.py --job-file …`, or via
+  `--output-json …`)
 - For live upstream re-run of FR-002/003: `OPENAI_API_KEY` and `--live-upstream`
 - For Phase C summary rewrite: `OPENAI_API_KEY`, `--rewrite-summary`, and (on
   Windows SSL environments) the same optional `truststore` package used by

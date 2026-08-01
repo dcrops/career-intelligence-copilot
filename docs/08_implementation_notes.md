@@ -69,7 +69,7 @@ There is **no silent production default assessor** — callers must inject one.
 | Assessor | Role |
 |----------|------|
 | **`FixtureAssessor`** | Deterministic offline scaffolding. Matched by shared FR-002 fixture markers in `job_analysis.posting.raw_text`. Used in unit, functional, and golden journey tests. Never a public default. |
-| **`OpenAIAssessor`** | Package-private live path via OpenAI Responses API (`responses.parse`) into internal `OpportunityAssessmentExtraction`. Prompt version **v11**. Default model `gpt-4o-mini`. Client injectable for offline tests. Not exported from `career_intelligence.opportunity_assessment`. |
+| **`OpenAIAssessor`** | Package-private live path via OpenAI Responses API (`responses.parse`) into internal `OpportunityAssessmentExtraction`. Extraction findings use a kind-discriminated schema so required `job_evidence` / `profile_evidence` arrays carry `minItems` in JSON Schema (domain `FitFinding` validators stay fail-closed and unchanged). Prompt version **v11**. Default model `gpt-4o-mini`. Client injectable for offline tests. Not exported from `career_intelligence.opportunity_assessment`. |
 
 ### Evidence model
 
@@ -704,7 +704,16 @@ python scripts/run_application_strategy_manual.py \
   --job-file path/to/real_job.txt \
   --title "AI Engineer" \
   --company "Example Co" \
-  --source-url "https://example.com/jobs/123" \
+  --source-url "https://example.com/jobs/123"
+```
+
+When ``--job-file`` is set and ``--output-json`` is omitted, the runner writes
+``manual_validation/outputs/{job_file stem}.json`` so FR-006 / FR-007 can reuse
+the trusted strategy. Override the path with ``--output-json`` when needed:
+
+```bash
+python scripts/run_application_strategy_manual.py \
+  --job-file path/to/real_job.txt \
   --output-json artifacts/manual_strategy.json
 ```
 

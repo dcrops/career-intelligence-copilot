@@ -11,6 +11,12 @@ Default path (live / owner validation):
 Offline smoke requires an explicit ``--offline-fixtures`` flag and is clearly
 labelled as non-production. Fixture behaviour is never substituted silently.
 
+When ``--job-file`` is provided and ``--output-json`` is omitted, the full pipeline
+JSON is written to ``manual_validation/outputs/{job_file stem}.json`` so FR-006 /
+FR-007 manual runners can reuse the trusted strategy. ``--output-json`` overrides
+that default. Stdin-only runs do not auto-write (no stem). ``--persist`` remains
+the separate durable Opportunity store under ``data/opportunities/``.
+
 Examples:
   python scripts/run_application_strategy_manual.py --job-file path/to/job.txt
   Get-Content job.txt | python scripts/run_application_strategy_manual.py
@@ -114,7 +120,11 @@ def build_parser() -> argparse.ArgumentParser:
         "--output-json",
         type=Path,
         default=None,
-        help="Optional path to write the full typed pipeline result as JSON.",
+        help=(
+            "Path to write the full typed pipeline result as JSON. "
+            "When omitted and --job-file is set, defaults to "
+            "manual_validation/outputs/{job_file stem}.json for FR-006/FR-007 reuse."
+        ),
     )
     parser.add_argument(
         "--offline-fixtures",
@@ -522,6 +532,33 @@ def pipeline_to_jsonable(result: PipelineResult) -> dict[str, Any]:
     }
 
 
+def default_manual_validation_output_json(
+    job_file: Path,
+    *,
+    repo_root: Path = REPO_ROOT,
+) -> Path:
+    """Canonical pipeline JSON path consumed by FR-006/FR-007 manual runners."""
+    return repo_root / "manual_validation" / "outputs" / f"{job_file.stem}.json"
+
+
+def resolve_pipeline_json_path(
+    *,
+    job_file: Path | None,
+    output_json: Path | None,
+    repo_root: Path = REPO_ROOT,
+) -> Path | None:
+    """Resolve where to write pipeline JSON for downstream manual reuse.
+
+    Explicit ``--output-json`` wins. Otherwise, when ``--job-file`` is present,
+    write ``manual_validation/outputs/{stem}.json``. Stdin-only runs return None.
+    """
+    if output_json is not None:
+        return output_json
+    if job_file is not None:
+        return default_manual_validation_output_json(job_file, repo_root=repo_root)
+    return None
+
+
 def write_json(path: Path, result: PipelineResult) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
     path.write_text(
@@ -590,9 +627,10 @@ def _failure_component(exc: BaseException) -> str:
     return "Pipeline"
 
 
-def main(argv: list[str] | None = None) -> int:
+def main(argv: list[str] | None = None, *, repo_root: Path | None = None) -> int:
     parser = build_parser()
     args = parser.parse_args(argv)
+    root = repo_root if repo_root is not None else REPO_ROOT
 
     try:
         raw_text = read_job_text(args.job_file)
@@ -616,9 +654,14 @@ def main(argv: list[str] | None = None) -> int:
         raise SystemExit(1) from exc
 
     print(format_report(result))
-    if args.output_json is not None:
-        write_json(args.output_json, result)
-        print(f"\nWrote JSON output to {args.output_json}")
+    output_json = resolve_pipeline_json_path(
+        job_file=args.job_file,
+        output_json=args.output_json,
+        repo_root=root,
+    )
+    if output_json is not None:
+        write_json(output_json, result)
+        print(f"\nWrote JSON output to {output_json}")
 
     if args.persist:
         try:

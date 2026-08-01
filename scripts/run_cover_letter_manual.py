@@ -113,7 +113,9 @@ def resolve_strategy(*, job_file: Path | None, strategy_json: Path | None) -> tu
         if candidate.is_file():
             return load_strategy_from_pipeline_json(candidate), str(candidate.resolve())
         raise SystemExit(
-            f"No pipeline JSON at {candidate}. Pass --strategy-json or run FR-005 first."
+            f"No pipeline JSON at {candidate}. Run "
+            f"`python scripts/run_application_strategy_manual.py --job-file {job_file}` "
+            "first (writes manual_validation/outputs/{stem}.json), or pass --strategy-json."
         )
     raise SystemExit("Provide --job-file or --strategy-json.")
 

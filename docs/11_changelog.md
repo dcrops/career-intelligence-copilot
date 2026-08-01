@@ -4,6 +4,56 @@ Records product strategy and engineering knowledge changes. Routine typo fixes a
 
 ---
 
+## Version 1.74
+
+### Owner manual workflow — strategy runner persists pipeline JSON by default
+
+**Defect.** `run_application_strategy_manual.py` printed a successful strategy for a
+job file but did not write `manual_validation/outputs/{stem}.json` unless
+`--output-json` was passed. FR-006 and FR-007 reuse that path, so cover-letter
+(and corpus CV) runs failed after a successful strategy run.
+
+**Architecture (A, not B).** The strategy runner is the producer of the trusted
+pipeline JSON; CV and cover-letter runners consume it. Cover letter does **not**
+regenerate live upstream from the job file.
+
+**Fix.** When `--job-file` is set and `--output-json` is omitted, write
+`manual_validation/outputs/{stem}.json` automatically. Explicit `--output-json`
+still overrides. Stdin-only runs still skip auto-write. `--persist` remains the
+separate durable Opportunity store.
+
+---
+
+## Version 1.73
+
+### Bug fix — assessor structured output could emit ungrounded alignment findings
+
+**Defect.** Live Opportunity Assessment intermittently failed validation with
+`commercial_fit.findings.0: alignment finding requires at least one profile evidence
+ref`, blocking FR-006 CV generation. The domain validator was correct; the defect was
+in the assessor's structured-output contract. `OpportunityAssessmentExtraction` reused
+domain `FitFinding`, whose per-kind evidence rules live in Python `model_validator`s
+that do not appear in JSON Schema, so the emitted schema permitted
+`profile_evidence: []` on alignment-family findings.
+
+**Fix.** Extraction-side findings are now kind-specific models in
+[`extraction.py`](../src/career_intelligence/opportunity_assessment/extraction.py),
+so required evidence arrays carry `minItems: 1` in the schema sent to the model.
+Alignment, partial alignment, transferable alignment, and conflict require non-empty
+job **and** profile evidence; gap requires job evidence only. Domain `FitFinding`
+validation is unchanged and remains the fail-closed trust boundary.
+
+**Structured-output constraints (learned from live 400s).** `kind` is declared first
+in every branch (OpenAI rejects `anyOf` branches sharing identical first keys), and the
+union is a plain `Union` rather than a Pydantic discriminated union — `Field(discriminator=...)`
+emits `oneOf`, which OpenAI rejects with `'oneOf' is not permitted`.
+
+**Validation.** Live end-to-end CV generation for the Mars Recruitment AI Engineer job
+now completes (assessment, plan, and CV drafts produced). No prompt, tier, ranking, or
+policy calibration changed.
+
+---
+
 ## Version 1.72
 
 ### FR-012 complete — Submission Assistance closed out
