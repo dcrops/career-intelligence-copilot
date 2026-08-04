@@ -15,7 +15,7 @@ from career_intelligence.cv_generation import (
 from career_intelligence.profile import CareerProfileService
 
 _REPO_ROOT = Path(__file__).resolve().parents[3]
-_OUTPUTS = _REPO_ROOT / "manual_validation" / "outputs"
+_OUTPUTS = _REPO_ROOT / "tests" / "fixtures" / "application_strategy"
 _PROFILE = _REPO_ROOT / "data" / "career_profile.yaml"
 
 # Technologies observed as false summary themes during owner validation.
@@ -133,9 +133,10 @@ def test_officeworks_ranks_python_above_pd_only_snowflake() -> None:
         item for item in plan.jd_priorities if item.label.casefold() == "snowflake"
     ]
     assert snowflake_priorities, (
-        "expected Snowflake in jd_priorities for committed Officeworks corpus; "
-        "if this fails after a live re-run, restore "
-        "manual_validation/outputs/011_officeworks_ai_engineer.json from git"
+        "expected Snowflake in jd_priorities for Officeworks strategy fixture; "
+        "if this fails after regenerating the fixture, update "
+        "tests/fixtures/application_strategy/011_officeworks_ai_engineer.json "
+        "deliberately (do not use live outputs)"
     )
     assert snowflake_priorities[0].candidate_support == "supported"
 

@@ -12,10 +12,13 @@ Offline smoke requires an explicit ``--offline-fixtures`` flag and is clearly
 labelled as non-production. Fixture behaviour is never substituted silently.
 
 When ``--job-file`` is provided and ``--output-json`` is omitted, the full pipeline
-JSON is written to ``manual_validation/outputs/{job_file stem}.json`` so FR-006 /
+JSON is written to ``manual_validation/outputs/live/{job_file stem}.json`` so FR-006 /
 FR-007 manual runners can reuse the trusted strategy. ``--output-json`` overrides
 that default. Stdin-only runs do not auto-write (no stem). ``--persist`` remains
 the separate durable Opportunity store under ``data/opportunities/``.
+
+Immutable regression corpus fixtures live under
+``tests/fixtures/application_strategy/`` and are never the default write target.
 
 Examples:
   python scripts/run_application_strategy_manual.py --job-file path/to/job.txt
@@ -123,7 +126,7 @@ def build_parser() -> argparse.ArgumentParser:
         help=(
             "Path to write the full typed pipeline result as JSON. "
             "When omitted and --job-file is set, defaults to "
-            "manual_validation/outputs/{job_file stem}.json for FR-006/FR-007 reuse."
+            "manual_validation/outputs/live/{job_file stem}.json for FR-006/FR-007 reuse."
         ),
     )
     parser.add_argument(
@@ -537,8 +540,14 @@ def default_manual_validation_output_json(
     *,
     repo_root: Path = REPO_ROOT,
 ) -> Path:
-    """Canonical pipeline JSON path consumed by FR-006/FR-007 manual runners."""
-    return repo_root / "manual_validation" / "outputs" / f"{job_file.stem}.json"
+    """Live pipeline JSON path for FR-006/FR-007 manual reuse (not the test corpus)."""
+    return (
+        repo_root
+        / "manual_validation"
+        / "outputs"
+        / "live"
+        / f"{job_file.stem}.json"
+    )
 
 
 def resolve_pipeline_json_path(
@@ -550,7 +559,9 @@ def resolve_pipeline_json_path(
     """Resolve where to write pipeline JSON for downstream manual reuse.
 
     Explicit ``--output-json`` wins. Otherwise, when ``--job-file`` is present,
-    write ``manual_validation/outputs/{stem}.json``. Stdin-only runs return None.
+    write ``manual_validation/outputs/live/{stem}.json``. Stdin-only runs return None.
+    Regression corpus fixtures live under ``tests/fixtures/application_strategy/``
+    and are never the default write target.
     """
     if output_json is not None:
         return output_json

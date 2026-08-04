@@ -18,6 +18,9 @@ Profile evidence refs use ``ExtractionProfileEvidenceRef`` (plain non-empty stri
 rather than domain ``ProfileEvidenceRef``, so OpenAI structured output can constrain
 ``ref`` to the request catalogue via JSON Schema ``enum``, and the assessor may
 narrowly canonicalise serialisation punctuation before domain validation.
+
+Job evidence refs use source-specific extraction types so each list collection's
+``item_index`` can be enum-constrained to that JobAnalysis length independently.
 """
 
 from __future__ import annotations
@@ -27,13 +30,18 @@ from typing import Annotated, Literal, Union
 
 from pydantic import Field, field_validator, model_validator
 
+from career_intelligence.job_analysis.models import JobAnalysis
+
+from .job_evidence_indexes import (
+    inject_job_evidence_item_index_enums,
+    job_analysis_list_lengths,
+)
 from .models import (
     AssessmentModel,
     AssessmentSummary,
     FindingImportance,
     FitDimension,
     FitJudgment,
-    JobEvidenceRef,
     NonEmptyString,
     ProfileEvidenceSource,
 )
@@ -63,7 +71,49 @@ class ExtractionProfileEvidenceRef(AssessmentModel):
         return value
 
 
-RequiredJobEvidence = Annotated[list[JobEvidenceRef], Field(min_length=1)]
+class ExtractionTechnologyJobEvidenceRef(AssessmentModel):
+    source: Literal["technology"]
+    item_index: int = Field(ge=0)
+    name: NonEmptyString | None = None
+    excerpt: NonEmptyString | None = None
+
+
+class ExtractionResponsibilityJobEvidenceRef(AssessmentModel):
+    source: Literal["responsibility"]
+    item_index: int = Field(ge=0)
+    name: NonEmptyString | None = None
+    excerpt: NonEmptyString | None = None
+
+
+class ExtractionExperienceRequirementJobEvidenceRef(AssessmentModel):
+    source: Literal["experience_requirement"]
+    item_index: int = Field(ge=0)
+    name: NonEmptyString | None = None
+    excerpt: NonEmptyString | None = None
+
+
+class ExtractionScalarJobEvidenceRef(AssessmentModel):
+    source: Literal[
+        "role_family",
+        "seniority",
+        "compensation",
+        "location",
+        "work_arrangement",
+        "employment",
+    ]
+    item_index: None = None
+    name: NonEmptyString | None = None
+    excerpt: NonEmptyString | None = None
+
+
+ExtractionJobEvidenceRef = Union[
+    ExtractionTechnologyJobEvidenceRef,
+    ExtractionResponsibilityJobEvidenceRef,
+    ExtractionExperienceRequirementJobEvidenceRef,
+    ExtractionScalarJobEvidenceRef,
+]
+
+RequiredJobEvidence = Annotated[list[ExtractionJobEvidenceRef], Field(min_length=1)]
 RequiredProfileEvidence = Annotated[
     list[ExtractionProfileEvidenceRef], Field(min_length=1)
 ]
@@ -124,7 +174,7 @@ class UncertaintyExtractionFinding(AssessmentModel):
     summary: NonEmptyString
     detail: NonEmptyString | None = None
     importance: FindingImportance
-    job_evidence: list[JobEvidenceRef] = Field(default_factory=list)
+    job_evidence: list[ExtractionJobEvidenceRef] = Field(default_factory=list)
     profile_evidence: list[ExtractionProfileEvidenceRef] = Field(default_factory=list)
     assumption: None = None
 
@@ -134,7 +184,7 @@ class AssumptionExtractionFinding(AssessmentModel):
     summary: NonEmptyString
     detail: NonEmptyString | None = None
     importance: FindingImportance
-    job_evidence: list[JobEvidenceRef] = Field(default_factory=list)
+    job_evidence: list[ExtractionJobEvidenceRef] = Field(default_factory=list)
     profile_evidence: list[ExtractionProfileEvidenceRef] = Field(default_factory=list)
     assumption: NonEmptyString
 
@@ -232,24 +282,58 @@ def inject_profile_evidence_ref_catalogue_enum(
     return patched
 
 
-def catalogue_constrained_extraction_type(
+def request_constrained_extraction_type(
     catalogue: Sequence[str],
+    job_analysis: JobAnalysis,
 ) -> type[OpportunityAssessmentExtraction]:
-    """Return an extraction type whose JSON Schema enums ``ref`` to ``catalogue``."""
+    """Extraction type with per-request profile-ref and item_index enums."""
     tokens = tuple(dict.fromkeys(token for token in catalogue if token))
+    lengths = job_analysis_list_lengths(job_analysis)
 
-    class CatalogueConstrainedOpportunityAssessmentExtraction(
+    class RequestConstrainedOpportunityAssessmentExtraction(
         OpportunityAssessmentExtraction
     ):
         @classmethod
         def model_json_schema(cls, *args: object, **kwargs: object) -> dict[str, object]:
             schema = OpportunityAssessmentExtraction.model_json_schema(*args, **kwargs)
-            return inject_profile_evidence_ref_catalogue_enum(schema, tokens)
+            schema = inject_profile_evidence_ref_catalogue_enum(schema, tokens)
+            return inject_job_evidence_item_index_enums(schema, lengths)
 
-    CatalogueConstrainedOpportunityAssessmentExtraction.__name__ = (
+    RequestConstrainedOpportunityAssessmentExtraction.__name__ = (
         "OpportunityAssessmentExtraction"
     )
-    CatalogueConstrainedOpportunityAssessmentExtraction.__qualname__ = (
+    RequestConstrainedOpportunityAssessmentExtraction.__qualname__ = (
         "OpportunityAssessmentExtraction"
     )
-    return CatalogueConstrainedOpportunityAssessmentExtraction
+    return RequestConstrainedOpportunityAssessmentExtraction
+
+
+def catalogue_constrained_extraction_type(
+    catalogue: Sequence[str],
+    job_analysis: JobAnalysis | None = None,
+) -> type[OpportunityAssessmentExtraction]:
+    """Backward-compatible alias; prefer ``request_constrained_extraction_type``."""
+    if job_analysis is None:
+        # Profile-ref-only constraint (unit tests that omit JobAnalysis).
+        tokens = tuple(dict.fromkeys(token for token in catalogue if token))
+
+        class CatalogueConstrainedOpportunityAssessmentExtraction(
+            OpportunityAssessmentExtraction
+        ):
+            @classmethod
+            def model_json_schema(
+                cls, *args: object, **kwargs: object
+            ) -> dict[str, object]:
+                schema = OpportunityAssessmentExtraction.model_json_schema(
+                    *args, **kwargs
+                )
+                return inject_profile_evidence_ref_catalogue_enum(schema, tokens)
+
+        CatalogueConstrainedOpportunityAssessmentExtraction.__name__ = (
+            "OpportunityAssessmentExtraction"
+        )
+        CatalogueConstrainedOpportunityAssessmentExtraction.__qualname__ = (
+            "OpportunityAssessmentExtraction"
+        )
+        return CatalogueConstrainedOpportunityAssessmentExtraction
+    return request_constrained_extraction_type(catalogue, job_analysis)

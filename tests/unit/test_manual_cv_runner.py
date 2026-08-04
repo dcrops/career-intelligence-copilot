@@ -46,17 +46,40 @@ def test_parser_accepts_strategy_json_and_live_upstream() -> None:
     assert args.plan_only is True
 
 
-def test_find_manual_validation_pipeline_json_for_013() -> None:
+def test_find_manual_validation_pipeline_json_uses_live_dir(tmp_path: Path) -> None:
     runner = _load_runner()
-    job = (
-        _REPO_ROOT
-        / "manual_validation"
-        / "jobs"
-        / "013_pay_com_au_ai_automation_engineer.txt"
+    job = tmp_path / "jobs" / "013_pay_com_au_ai_automation_engineer.txt"
+    job.parent.mkdir(parents=True)
+    job.write_text("placeholder", encoding="utf-8")
+    live_dir = tmp_path / "manual_validation" / "outputs" / "live"
+    live_dir.mkdir(parents=True)
+    live = live_dir / "013_pay_com_au_ai_automation_engineer.json"
+    live.write_text("{}", encoding="utf-8")
+    # Fixture corpus must not be consulted by the live finder.
+    fixture_dir = tmp_path / "tests" / "fixtures" / "application_strategy"
+    fixture_dir.mkdir(parents=True)
+    (fixture_dir / "013_pay_com_au_ai_automation_engineer.json").write_text(
+        '{"should_not_be_used": true}', encoding="utf-8"
     )
-    found = runner.find_manual_validation_pipeline_json(job, repo_root=_REPO_ROOT)
-    assert found is not None
-    assert found.name == "013_pay_com_au_ai_automation_engineer.json"
+    found = runner.find_manual_validation_pipeline_json(job, repo_root=tmp_path)
+    assert found == live.resolve()
+
+
+def test_find_manual_validation_pipeline_json_ignores_fixture_corpus(
+    tmp_path: Path,
+) -> None:
+    runner = _load_runner()
+    job = tmp_path / "jobs" / "013_pay_com_au_ai_automation_engineer.txt"
+    job.parent.mkdir(parents=True)
+    job.write_text("placeholder", encoding="utf-8")
+    fixture_dir = tmp_path / "tests" / "fixtures" / "application_strategy"
+    fixture_dir.mkdir(parents=True)
+    (fixture_dir / "013_pay_com_au_ai_automation_engineer.json").write_text(
+        "{}", encoding="utf-8"
+    )
+    assert (
+        runner.find_manual_validation_pipeline_json(job, repo_root=tmp_path) is None
+    )
 
 
 def test_reuse_fr005_corpus_job_without_fixture_markers(tmp_path: Path) -> None:
@@ -76,21 +99,39 @@ def test_reuse_fr005_corpus_job_without_fixture_markers(tmp_path: Path) -> None:
         company="Pay.com.au",
         source_url=None,
     )
+    # Seed live output under tmp_path so auto-reuse finds it (not the fixture tree).
+    live_dir = tmp_path / "manual_validation" / "outputs" / "live"
+    live_dir.mkdir(parents=True)
+    fixture = (
+        _REPO_ROOT
+        / "tests"
+        / "fixtures"
+        / "application_strategy"
+        / "013_pay_com_au_ai_automation_engineer.json"
+    )
+    live = live_dir / "013_pay_com_au_ai_automation_engineer.json"
+    live.write_text(fixture.read_text(encoding="utf-8"), encoding="utf-8")
+    tmp_job = tmp_path / "jobs" / "013_pay_com_au_ai_automation_engineer.txt"
+    tmp_job.parent.mkdir(parents=True)
+    tmp_job.write_text(raw, encoding="utf-8")
+
     # Job 013 is silver without consider_cv_tailoring — override for full FR-006 path.
     result = runner.run_cv_pipeline(
         posting=posting,
-        job_file=job,
+        job_file=tmp_job,
         strategy_json=None,
         profile_path=_REPO_ROOT / "data" / "career_profile.yaml",
         offline_fixtures=True,  # should be ignored in favour of reused JSON
         live_upstream=False,
         override_material_benefit=True,
-        output_dir=tmp_path,
+        output_dir=tmp_path / "cv_out",
         plan_only=False,
+        repo_root=tmp_path,
     )
     assert result.upstream_mode == "reused_pipeline_json"
     assert result.upstream_source is not None
     assert "013_pay_com_au_ai_automation_engineer.json" in result.upstream_source
+    assert "live" in Path(result.upstream_source).parts
     assert result.plan is not None
     assert result.cv is not None
     assert result.drafts is not None
@@ -103,17 +144,18 @@ def test_reuse_fr005_corpus_job_without_fixture_markers(tmp_path: Path) -> None:
 
 
 def test_strategy_json_explicit_path_platinum_job(tmp_path: Path) -> None:
-    """Explicit ``--strategy-json`` reuse for the committed platinum Bluefin corpus.
+    """Explicit ``--strategy-json`` reuse for the platinum Bluefin fixture.
 
-    Uses ``002_bluefin_ai_systems_developer.json`` from the FR-005 corpus baseline
-    (platinum). Do not overwrite that fixture with a silver live re-run without
-    updating this test.
+    Uses ``tests/fixtures/application_strategy/002_bluefin_ai_systems_developer.json``
+    (immutable regression corpus). Live owner runs write under
+    ``manual_validation/outputs/live/`` and must not mutate this fixture.
     """
     runner = _load_runner()
     strategy_json = (
         _REPO_ROOT
-        / "manual_validation"
-        / "outputs"
+        / "tests"
+        / "fixtures"
+        / "application_strategy"
         / "002_bluefin_ai_systems_developer.json"
     )
     result = runner.run_cv_pipeline(
@@ -138,12 +180,17 @@ def test_corpus_silver_job_surfaces_material_benefit_gate(tmp_path: Path) -> Non
         / "jobs"
         / "013_pay_com_au_ai_automation_engineer.txt"
     )
+    strategy_json = (
+        _REPO_ROOT
+        / "tests"
+        / "fixtures"
+        / "application_strategy"
+        / "013_pay_com_au_ai_automation_engineer.json"
+    )
     result = runner.run_cv_pipeline(
         posting=None,
         job_file=job,
-        strategy_json=runner.find_manual_validation_pipeline_json(
-            job, repo_root=_REPO_ROOT
-        ),
+        strategy_json=strategy_json,
         profile_path=_REPO_ROOT / "data" / "career_profile.yaml",
         override_material_benefit=False,
         output_dir=tmp_path,

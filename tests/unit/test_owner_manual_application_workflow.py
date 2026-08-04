@@ -27,9 +27,9 @@ def test_owner_manual_workflow_strategy_json_feeds_cv_and_cover_letter(
 ) -> None:
     """Regression for the intended FR-005 → FR-006 → FR-007 owner path.
 
-    Architecture (A): strategy runner persists ``manual_validation/outputs/{stem}.json``;
-    CV and cover-letter runners reuse that JSON. Cover letter does not regenerate
-    live upstream.
+    Architecture (A): strategy runner persists
+    ``manual_validation/outputs/live/{stem}.json``; CV and cover-letter runners
+    reuse that JSON. Cover letter does not regenerate live upstream.
     """
     strategy_runner = _load_script(
         "run_application_strategy_manual_workflow",
@@ -70,6 +70,7 @@ def test_owner_manual_workflow_strategy_json_feeds_cv_and_cover_letter(
         tmp_path
         / "manual_validation"
         / "outputs"
+        / "live"
         / "zz_owner_workflow_fixture.json"
     )
     assert strategy_json.is_file()

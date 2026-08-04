@@ -4,12 +4,15 @@
 Upstream (FR-001→FR-005) resolution order:
 
 1. ``--strategy-json PATH`` — reuse a saved FR-005 pipeline JSON
-   (e.g. ``manual_validation/outputs/013_….json``).
+   (e.g. ``manual_validation/outputs/live/013_….json`` or a fixture path).
 2. Auto-reuse — when ``--job-file`` stem matches
-   ``manual_validation/outputs/{stem}.json`` (unless ``--live-upstream``).
+   ``manual_validation/outputs/live/{stem}.json`` (unless ``--live-upstream``).
 3. ``--offline-fixtures`` — FixtureExtractor/Assessor smoke only for texts that
    contain a recognised ``[CIC-FIXTURE:…]`` marker. Not for real SEEK/LinkedIn ads.
 4. Live OpenAI upstream — requires ``OPENAI_API_KEY``.
+
+Immutable regression corpus: ``tests/fixtures/application_strategy/``.
+Live owner strategy artefacts: ``manual_validation/outputs/live/``.
 
 FR-006 Tailoring Plan and CV render are deterministic (Markdown + standalone HTML).
 Phase C summary rewrite is opt-in via ``--rewrite-summary`` (OpenAI) and remains off
@@ -21,7 +24,7 @@ Examples:
     --job-file manual_validation/jobs/013_pay_com_au_ai_automation_engineer.txt
 
   python scripts/run_cv_generation_manual.py \\
-    --strategy-json manual_validation/outputs/013_pay_com_au_ai_automation_engineer.json
+    --strategy-json manual_validation/outputs/live/013_pay_com_au_ai_automation_engineer.json
 
   # Phase C opt-in summary rewrite (requires OPENAI_API_KEY)
   python scripts/run_cv_generation_manual.py \\
@@ -64,6 +67,8 @@ from career_intelligence.profile import CareerProfile, CareerProfileService
 _REPO_ROOT = Path(__file__).resolve().parents[1]
 _STRATEGY_SCRIPT = _REPO_ROOT / "scripts" / "run_application_strategy_manual.py"
 _MANUAL_OUTPUTS = _REPO_ROOT / "manual_validation" / "outputs"
+_LIVE_OUTPUTS = _MANUAL_OUTPUTS / "live"
+_STRATEGY_FIXTURES = _REPO_ROOT / "tests" / "fixtures" / "application_strategy"
 
 
 def _load_strategy_runner():
@@ -224,10 +229,21 @@ def find_manual_validation_pipeline_json(
     *,
     repo_root: Path = _REPO_ROOT,
 ) -> Path | None:
-    """Return manual_validation/outputs/{stem}.json when present."""
-    candidate = repo_root / "manual_validation" / "outputs" / f"{job_file.stem}.json"
-    if candidate.is_file():
-        return candidate.resolve()
+    """Return live strategy JSON for ``job_file`` stem when present.
+
+    Prefers ``manual_validation/outputs/live/{stem}.json`` (owner workflow).
+    Does not read ``tests/fixtures/application_strategy/`` — that tree is the
+    immutable regression corpus only.
+    """
+    live = (
+        repo_root
+        / "manual_validation"
+        / "outputs"
+        / "live"
+        / f"{job_file.stem}.json"
+    )
+    if live.is_file():
+        return live.resolve()
     return None
 
 

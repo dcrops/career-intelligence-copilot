@@ -4,6 +4,24 @@ Records product strategy and engineering knowledge changes. Routine typo fixes a
 
 ---
 
+## Version 1.79
+
+### Reliability — constrain job_evidence item_index; separate live outputs from fixtures
+
+**Part 1 — item_index structured-output defect.** OpenAI could emit list
+`item_index` values outside the bound JobAnalysis collection (e.g. responsibility
+index 9 of 6). Extraction now uses source-specific job-evidence types and injects
+per-collection JSON Schema enums from the current JobAnalysis lengths; coerce
+rejects invalid indexes before domain assembly. Domain `validate_references`
+unchanged (fail-closed). No clamp/remap.
+
+**Part 2 — corpus hygiene.** Live strategy auto-persist writes
+`manual_validation/outputs/live/{stem}.json`. Immutable regression corpus moved to
+`tests/fixtures/application_strategy/`. CV/cover-letter auto-reuse reads live only.
+`--output-json` still overrides. Normal live runs cannot overwrite regression fixtures.
+
+---
+
 ## Version 1.78
 
 ### Stabilisation — restore CV corpus fixtures; record job-evidence item_index debt

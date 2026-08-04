@@ -1,0 +1,1593 @@
+{
+  "components": [
+    {
+      "name": "CareerProfile",
+      "implementation": "CareerProfileService / YAML",
+      "mode": "deterministic_production"
+    },
+    {
+      "name": "JobAnalysis",
+      "implementation": "OpenAIJobExtractor",
+      "mode": "openai_production"
+    },
+    {
+      "name": "OpportunityAssessment",
+      "implementation": "OpenAIAssessor",
+      "mode": "openai_production"
+    },
+    {
+      "name": "PortfolioMatch",
+      "implementation": "DeterministicMatcher",
+      "mode": "deterministic_production"
+    },
+    {
+      "name": "ApplicationStrategy",
+      "implementation": "DeterministicStrategyPlanner",
+      "mode": "deterministic_production"
+    }
+  ],
+  "volume_applications_enabled": false,
+  "profile_identity": {
+    "full_name": "David Cropper",
+    "target_role": "AI Engineer"
+  },
+  "posting": {
+    "raw_text": "Graduate / Junior Full Stack Developer (AI & Agile) - Immediate Start\nExpedient Software\nView all jobs\n\n\nMelbourne VIC (Hybrid)\nDevelopers/Programmers (Information & Communication Technology)\nFull time\nSalary undisclosed\n\n\nGraduate / Junior Full Stack Developer (AI & Agile)-\nNewly Created Position – Make Your Mark!\n\nDynamic & Growing Software Specialist\n\n🚀 AI-Driven Development Environment\n\n🔄 Agile Team Culture\n\nHybrid or Work from Home\n\n🌟 Excellent Career Growth & Mentoring Opportunities\n\nAbout Expedient Software\nFor over 30 years, Expedient Software has been delivering specialist software solutions to the Customs, Freight Forwarding, Logistics, and Accounting industries. Our clients range from global multinational organisations to growing SMEs that rely on our innovative SaaS platforms to run their businesses.\n\nAs we continue to grow and embrace AI-powered development practices, we have created an exciting opportunity for a Graduate or Junior Full Stack Developer to join our team and make a real impact from day one.\n\nThis is not a role where you'll be confined to a single technology or development task. You'll gain exposure across the entire software development lifecycle, work with modern technologies, leverage AI development tools, and be mentored by experienced professionals in a collaborative Agile environment.\n\nAbout the Role\nAs a Graduate/Junior Full Stack Developer, you will work as part of an Agile development team building, enhancing, and supporting innovative SaaS applications. You'll have the opportunity to contribute across both front-end and back-end development while learning best practices in software engineering, cloud technologies, AI-assisted development, and solution design.\n\nThis role is ideal for someone who is passionate about technology, eager to learn, and excited about using AI tools to improve productivity, code quality, and innovation.\n\nKey Responsibilities\nParticipate in the design, development, testing, and deployment of software solutions\n\nCollaborate with developers, business analysts, and stakeholders in an Agile environment\n\nUtilise modern AI development tools to enhance coding efficiency and problem solving\n\nDevelop and maintain front-end and back-end application components\n\nWork with relational databases, data modelling, and SQL queries\n\nAssist with troubleshooting, debugging, and performance optimisation\n\nContribute to code reviews, sprint planning, and continuous improvement initiatives\n\nLearn and apply best practices throughout the software development lifecycle\n\nAbout You\nWe're looking for someone who has a genuine passion for software development and technology. You are curious, motivated, and eager to continuously learn and improve.\n\nEssential Skills & Experience\nRecently completed or nearing completion of a relevant degree (Computer Science, Software Engineering, Information Technology, or similar)\n\nExposure to software development in any programming language\n\nUnderstanding of relational database concepts\n\nKnowledge of data modelling and SQL\n\nExperience using AI tools such as GitHub Copilot, ChatGPT, Claude, Cursor, or similar\n\nStrong analytical, diagnostic, and problem-solving abilities\n\nExcellent verbal and written communication skills\n\nUnderstanding of Agile methodologies and collaborative development practices\n\nAbility to work effectively both independently and within a team\n\nDesirable\nExposure to web application development\n\nKnowledge of cloud technologies or SaaS platforms\n\nExperience with version control systems such as Git\n\nPersonal development projects, internships, or contributions to open-source projects\n\nWhat We Offer\nA genuine opportunity to launch your software development career\n\nMentoring from experienced software professionals\n\nExposure to the latest AI-powered development practices\n\nA supportive and collaborative Agile culture\n\nCareer progression and ongoing professional development\n\nThe opportunity to work across the full software development lifecycle\n\nA stable, growing Australian software company with a strong industry reputation\n\nReady to Apply?\nIf you're a bright and motivated developer looking for a unique opportunity to build your career, work with modern AI technologies, and make a meaningful contribution in a growing software company, we'd love to hear from you.",
+    "title": "Graduate / Junior Full Stack Developer (AI & Agile)",
+    "company": "Expedient Software",
+    "source_url": null
+  },
+  "job_analysis": {
+    "posting": {
+      "raw_text": "Graduate / Junior Full Stack Developer (AI & Agile) - Immediate Start\nExpedient Software\nView all jobs\n\n\nMelbourne VIC (Hybrid)\nDevelopers/Programmers (Information & Communication Technology)\nFull time\nSalary undisclosed\n\n\nGraduate / Junior Full Stack Developer (AI & Agile)-\nNewly Created Position – Make Your Mark!\n\nDynamic & Growing Software Specialist\n\n🚀 AI-Driven Development Environment\n\n🔄 Agile Team Culture\n\nHybrid or Work from Home\n\n🌟 Excellent Career Growth & Mentoring Opportunities\n\nAbout Expedient Software\nFor over 30 years, Expedient Software has been delivering specialist software solutions to the Customs, Freight Forwarding, Logistics, and Accounting industries. Our clients range from global multinational organisations to growing SMEs that rely on our innovative SaaS platforms to run their businesses.\n\nAs we continue to grow and embrace AI-powered development practices, we have created an exciting opportunity for a Graduate or Junior Full Stack Developer to join our team and make a real impact from day one.\n\nThis is not a role where you'll be confined to a single technology or development task. You'll gain exposure across the entire software development lifecycle, work with modern technologies, leverage AI development tools, and be mentored by experienced professionals in a collaborative Agile environment.\n\nAbout the Role\nAs a Graduate/Junior Full Stack Developer, you will work as part of an Agile development team building, enhancing, and supporting innovative SaaS applications. You'll have the opportunity to contribute across both front-end and back-end development while learning best practices in software engineering, cloud technologies, AI-assisted development, and solution design.\n\nThis role is ideal for someone who is passionate about technology, eager to learn, and excited about using AI tools to improve productivity, code quality, and innovation.\n\nKey Responsibilities\nParticipate in the design, development, testing, and deployment of software solutions\n\nCollaborate with developers, business analysts, and stakeholders in an Agile environment\n\nUtilise modern AI development tools to enhance coding efficiency and problem solving\n\nDevelop and maintain front-end and back-end application components\n\nWork with relational databases, data modelling, and SQL queries\n\nAssist with troubleshooting, debugging, and performance optimisation\n\nContribute to code reviews, sprint planning, and continuous improvement initiatives\n\nLearn and apply best practices throughout the software development lifecycle\n\nAbout You\nWe're looking for someone who has a genuine passion for software development and technology. You are curious, motivated, and eager to continuously learn and improve.\n\nEssential Skills & Experience\nRecently completed or nearing completion of a relevant degree (Computer Science, Software Engineering, Information Technology, or similar)\n\nExposure to software development in any programming language\n\nUnderstanding of relational database concepts\n\nKnowledge of data modelling and SQL\n\nExperience using AI tools such as GitHub Copilot, ChatGPT, Claude, Cursor, or similar\n\nStrong analytical, diagnostic, and problem-solving abilities\n\nExcellent verbal and written communication skills\n\nUnderstanding of Agile methodologies and collaborative development practices\n\nAbility to work effectively both independently and within a team\n\nDesirable\nExposure to web application development\n\nKnowledge of cloud technologies or SaaS platforms\n\nExperience with version control systems such as Git\n\nPersonal development projects, internships, or contributions to open-source projects\n\nWhat We Offer\nA genuine opportunity to launch your software development career\n\nMentoring from experienced software professionals\n\nExposure to the latest AI-powered development practices\n\nA supportive and collaborative Agile culture\n\nCareer progression and ongoing professional development\n\nThe opportunity to work across the full software development lifecycle\n\nA stable, growing Australian software company with a strong industry reputation\n\nReady to Apply?\nIf you're a bright and motivated developer looking for a unique opportunity to build your career, work with modern AI technologies, and make a meaningful contribution in a growing software company, we'd love to hear from you.",
+      "title": "Graduate / Junior Full Stack Developer (AI & Agile)",
+      "company": "Expedient Software",
+      "source_url": null
+    },
+    "role_family": {
+      "family": "software_engineering",
+      "evidence": [
+        {
+          "excerpt": "Graduate / Junior Full Stack Developer (AI & Agile)",
+          "section": "Job title"
+        }
+      ]
+    },
+    "seniority": {
+      "level": "entry",
+      "ambiguous": false,
+      "candidate_levels": [],
+      "evidence": [
+        {
+          "excerpt": "Graduate / Junior Full Stack Developer (AI & Agile)",
+          "section": "Job title"
+        }
+      ]
+    },
+    "technologies": [
+      {
+        "name": "AI tools",
+        "level": "preferred",
+        "evidence": [
+          {
+            "excerpt": "Experience using AI tools such as GitHub Copilot, ChatGPT, Claude, Cursor, or similar",
+            "section": "Essential Skills & Experience"
+          }
+        ]
+      },
+      {
+        "name": "SQL",
+        "level": "required",
+        "evidence": [
+          {
+            "excerpt": "Knowledge of data modelling and SQL",
+            "section": "Essential Skills & Experience"
+          }
+        ]
+      },
+      {
+        "name": "Git",
+        "level": "preferred",
+        "evidence": [
+          {
+            "excerpt": "Experience with version control systems such as Git",
+            "section": "Desirable"
+          }
+        ]
+      }
+    ],
+    "responsibilities": [
+      {
+        "description": "Participate in the design, development, testing, and deployment of software solutions",
+        "evidence": [
+          {
+            "excerpt": "Key Responsibilities",
+            "section": "About the Role"
+          }
+        ]
+      },
+      {
+        "description": "Collaborate with developers, business analysts, and stakeholders in an Agile environment",
+        "evidence": [
+          {
+            "excerpt": "Key Responsibilities",
+            "section": "About the Role"
+          }
+        ]
+      },
+      {
+        "description": "Utilise modern AI development tools to enhance coding efficiency and problem solving",
+        "evidence": [
+          {
+            "excerpt": "Key Responsibilities",
+            "section": "About the Role"
+          }
+        ]
+      },
+      {
+        "description": "Develop and maintain front-end and back-end application components",
+        "evidence": [
+          {
+            "excerpt": "Key Responsibilities",
+            "section": "About the Role"
+          }
+        ]
+      },
+      {
+        "description": "Work with relational databases, data modelling, and SQL queries",
+        "evidence": [
+          {
+            "excerpt": "Key Responsibilities",
+            "section": "About the Role"
+          }
+        ]
+      },
+      {
+        "description": "Assist with troubleshooting, debugging, and performance optimisation",
+        "evidence": [
+          {
+            "excerpt": "Key Responsibilities",
+            "section": "About the Role"
+          }
+        ]
+      },
+      {
+        "description": "Contribute to code reviews, sprint planning, and continuous improvement initiatives",
+        "evidence": [
+          {
+            "excerpt": "Key Responsibilities",
+            "section": "About the Role"
+          }
+        ]
+      },
+      {
+        "description": "Learn and apply best practices throughout the software development lifecycle",
+        "evidence": [
+          {
+            "excerpt": "Key Responsibilities",
+            "section": "About the Role"
+          }
+        ]
+      }
+    ],
+    "compensation": {
+      "clarity": "unstated",
+      "minimum": null,
+      "maximum": null,
+      "currency": null,
+      "period": null,
+      "raw_text": null,
+      "evidence": []
+    },
+    "location": {
+      "clarity": "stated",
+      "summary": "Melbourne VIC (Hybrid)",
+      "evidence": [
+        {
+          "excerpt": "Melbourne VIC (Hybrid)",
+          "section": "Job Description"
+        }
+      ]
+    },
+    "work_arrangement": {
+      "arrangement": "hybrid",
+      "details": "Hybrid or Work from Home",
+      "evidence": [
+        {
+          "excerpt": "Hybrid or Work from Home",
+          "section": "Job Description"
+        }
+      ]
+    },
+    "employment": {
+      "working_hours": "full_time",
+      "engagement_type": "unspecified",
+      "evidence": [
+        {
+          "excerpt": "Full time",
+          "section": "Job Description"
+        }
+      ]
+    },
+    "experience_requirements": [
+      {
+        "description": "Recently completed or nearing completion of a relevant degree (Computer Science, Software Engineering, Information Technology, or similar)",
+        "level": "required",
+        "minimum_years": null,
+        "maximum_years": null,
+        "evidence": [
+          {
+            "excerpt": "Recently completed or nearing completion of a relevant degree (Computer Science, Software Engineering, Information Technology, or similar)",
+            "section": "Essential Skills & Experience"
+          }
+        ]
+      }
+    ]
+  },
+  "opportunity_assessment": {
+    "job_analysis": {
+      "posting": {
+        "raw_text": "Graduate / Junior Full Stack Developer (AI & Agile) - Immediate Start\nExpedient Software\nView all jobs\n\n\nMelbourne VIC (Hybrid)\nDevelopers/Programmers (Information & Communication Technology)\nFull time\nSalary undisclosed\n\n\nGraduate / Junior Full Stack Developer (AI & Agile)-\nNewly Created Position – Make Your Mark!\n\nDynamic & Growing Software Specialist\n\n🚀 AI-Driven Development Environment\n\n🔄 Agile Team Culture\n\nHybrid or Work from Home\n\n🌟 Excellent Career Growth & Mentoring Opportunities\n\nAbout Expedient Software\nFor over 30 years, Expedient Software has been delivering specialist software solutions to the Customs, Freight Forwarding, Logistics, and Accounting industries. Our clients range from global multinational organisations to growing SMEs that rely on our innovative SaaS platforms to run their businesses.\n\nAs we continue to grow and embrace AI-powered development practices, we have created an exciting opportunity for a Graduate or Junior Full Stack Developer to join our team and make a real impact from day one.\n\nThis is not a role where you'll be confined to a single technology or development task. You'll gain exposure across the entire software development lifecycle, work with modern technologies, leverage AI development tools, and be mentored by experienced professionals in a collaborative Agile environment.\n\nAbout the Role\nAs a Graduate/Junior Full Stack Developer, you will work as part of an Agile development team building, enhancing, and supporting innovative SaaS applications. You'll have the opportunity to contribute across both front-end and back-end development while learning best practices in software engineering, cloud technologies, AI-assisted development, and solution design.\n\nThis role is ideal for someone who is passionate about technology, eager to learn, and excited about using AI tools to improve productivity, code quality, and innovation.\n\nKey Responsibilities\nParticipate in the design, development, testing, and deployment of software solutions\n\nCollaborate with developers, business analysts, and stakeholders in an Agile environment\n\nUtilise modern AI development tools to enhance coding efficiency and problem solving\n\nDevelop and maintain front-end and back-end application components\n\nWork with relational databases, data modelling, and SQL queries\n\nAssist with troubleshooting, debugging, and performance optimisation\n\nContribute to code reviews, sprint planning, and continuous improvement initiatives\n\nLearn and apply best practices throughout the software development lifecycle\n\nAbout You\nWe're looking for someone who has a genuine passion for software development and technology. You are curious, motivated, and eager to continuously learn and improve.\n\nEssential Skills & Experience\nRecently completed or nearing completion of a relevant degree (Computer Science, Software Engineering, Information Technology, or similar)\n\nExposure to software development in any programming language\n\nUnderstanding of relational database concepts\n\nKnowledge of data modelling and SQL\n\nExperience using AI tools such as GitHub Copilot, ChatGPT, Claude, Cursor, or similar\n\nStrong analytical, diagnostic, and problem-solving abilities\n\nExcellent verbal and written communication skills\n\nUnderstanding of Agile methodologies and collaborative development practices\n\nAbility to work effectively both independently and within a team\n\nDesirable\nExposure to web application development\n\nKnowledge of cloud technologies or SaaS platforms\n\nExperience with version control systems such as Git\n\nPersonal development projects, internships, or contributions to open-source projects\n\nWhat We Offer\nA genuine opportunity to launch your software development career\n\nMentoring from experienced software professionals\n\nExposure to the latest AI-powered development practices\n\nA supportive and collaborative Agile culture\n\nCareer progression and ongoing professional development\n\nThe opportunity to work across the full software development lifecycle\n\nA stable, growing Australian software company with a strong industry reputation\n\nReady to Apply?\nIf you're a bright and motivated developer looking for a unique opportunity to build your career, work with modern AI technologies, and make a meaningful contribution in a growing software company, we'd love to hear from you.",
+        "title": "Graduate / Junior Full Stack Developer (AI & Agile)",
+        "company": "Expedient Software",
+        "source_url": null
+      },
+      "role_family": {
+        "family": "software_engineering",
+        "evidence": [
+          {
+            "excerpt": "Graduate / Junior Full Stack Developer (AI & Agile)",
+            "section": "Job title"
+          }
+        ]
+      },
+      "seniority": {
+        "level": "entry",
+        "ambiguous": false,
+        "candidate_levels": [],
+        "evidence": [
+          {
+            "excerpt": "Graduate / Junior Full Stack Developer (AI & Agile)",
+            "section": "Job title"
+          }
+        ]
+      },
+      "technologies": [
+        {
+          "name": "AI tools",
+          "level": "preferred",
+          "evidence": [
+            {
+              "excerpt": "Experience using AI tools such as GitHub Copilot, ChatGPT, Claude, Cursor, or similar",
+              "section": "Essential Skills & Experience"
+            }
+          ]
+        },
+        {
+          "name": "SQL",
+          "level": "required",
+          "evidence": [
+            {
+              "excerpt": "Knowledge of data modelling and SQL",
+              "section": "Essential Skills & Experience"
+            }
+          ]
+        },
+        {
+          "name": "Git",
+          "level": "preferred",
+          "evidence": [
+            {
+              "excerpt": "Experience with version control systems such as Git",
+              "section": "Desirable"
+            }
+          ]
+        }
+      ],
+      "responsibilities": [
+        {
+          "description": "Participate in the design, development, testing, and deployment of software solutions",
+          "evidence": [
+            {
+              "excerpt": "Key Responsibilities",
+              "section": "About the Role"
+            }
+          ]
+        },
+        {
+          "description": "Collaborate with developers, business analysts, and stakeholders in an Agile environment",
+          "evidence": [
+            {
+              "excerpt": "Key Responsibilities",
+              "section": "About the Role"
+            }
+          ]
+        },
+        {
+          "description": "Utilise modern AI development tools to enhance coding efficiency and problem solving",
+          "evidence": [
+            {
+              "excerpt": "Key Responsibilities",
+              "section": "About the Role"
+            }
+          ]
+        },
+        {
+          "description": "Develop and maintain front-end and back-end application components",
+          "evidence": [
+            {
+              "excerpt": "Key Responsibilities",
+              "section": "About the Role"
+            }
+          ]
+        },
+        {
+          "description": "Work with relational databases, data modelling, and SQL queries",
+          "evidence": [
+            {
+              "excerpt": "Key Responsibilities",
+              "section": "About the Role"
+            }
+          ]
+        },
+        {
+          "description": "Assist with troubleshooting, debugging, and performance optimisation",
+          "evidence": [
+            {
+              "excerpt": "Key Responsibilities",
+              "section": "About the Role"
+            }
+          ]
+        },
+        {
+          "description": "Contribute to code reviews, sprint planning, and continuous improvement initiatives",
+          "evidence": [
+            {
+              "excerpt": "Key Responsibilities",
+              "section": "About the Role"
+            }
+          ]
+        },
+        {
+          "description": "Learn and apply best practices throughout the software development lifecycle",
+          "evidence": [
+            {
+              "excerpt": "Key Responsibilities",
+              "section": "About the Role"
+            }
+          ]
+        }
+      ],
+      "compensation": {
+        "clarity": "unstated",
+        "minimum": null,
+        "maximum": null,
+        "currency": null,
+        "period": null,
+        "raw_text": null,
+        "evidence": []
+      },
+      "location": {
+        "clarity": "stated",
+        "summary": "Melbourne VIC (Hybrid)",
+        "evidence": [
+          {
+            "excerpt": "Melbourne VIC (Hybrid)",
+            "section": "Job Description"
+          }
+        ]
+      },
+      "work_arrangement": {
+        "arrangement": "hybrid",
+        "details": "Hybrid or Work from Home",
+        "evidence": [
+          {
+            "excerpt": "Hybrid or Work from Home",
+            "section": "Job Description"
+          }
+        ]
+      },
+      "employment": {
+        "working_hours": "full_time",
+        "engagement_type": "unspecified",
+        "evidence": [
+          {
+            "excerpt": "Full time",
+            "section": "Job Description"
+          }
+        ]
+      },
+      "experience_requirements": [
+        {
+          "description": "Recently completed or nearing completion of a relevant degree (Computer Science, Software Engineering, Information Technology, or similar)",
+          "level": "required",
+          "minimum_years": null,
+          "maximum_years": null,
+          "evidence": [
+            {
+              "excerpt": "Recently completed or nearing completion of a relevant degree (Computer Science, Software Engineering, Information Technology, or similar)",
+              "section": "Essential Skills & Experience"
+            }
+          ]
+        }
+      ]
+    },
+    "technical_fit": {
+      "dimension": "technical",
+      "judgment": "mixed",
+      "summary": "The candidate possesses relevant technical skills and independent project experience, but lacks direct commercial software development experience in a full-time role.",
+      "findings": [
+        {
+          "kind": "partial_alignment",
+          "summary": "Candidates' independent engineering projects align with the required technical skills, but lack the commercial application context required for the role.",
+          "detail": "The candidate has demonstrated proficiency in Python, SQL, and AI tools through independent projects, but lacks formal work experience in a full-time employed role as required by the job.",
+          "importance": "material",
+          "job_evidence": [
+            {
+              "source": "technology",
+              "item_index": 0,
+              "name": "AI tools",
+              "excerpt": "Experience using AI tools such as GitHub Copilot, ChatGPT, Claude, Cursor, or similar"
+            },
+            {
+              "source": "technology",
+              "item_index": 1,
+              "name": "SQL",
+              "excerpt": "Knowledge of data modelling and SQL"
+            },
+            {
+              "source": "technology",
+              "item_index": 2,
+              "name": "Git",
+              "excerpt": "Experience with version control systems such as Git"
+            }
+          ],
+          "profile_evidence": [
+            {
+              "source": "experience",
+              "ref": "experience:chase-risk-compliance-ai-engineer",
+              "excerpt": "Delivered a portfolio of AI applications spanning retrieval-augmented generation, operational intelligence, explainable diagnostics, and enterprise decision support."
+            },
+            {
+              "source": "project",
+              "ref": "project:operational-intelligence-copilot",
+              "excerpt": "Intelligent intent routing, dataset profiling, and anomaly detection."
+            },
+            {
+              "source": "project",
+              "ref": "project:governance-document-rag",
+              "excerpt": "Supports grounded responses over multi-format organizational documents."
+            }
+          ],
+          "assumption": null
+        },
+        {
+          "kind": "gap",
+          "summary": "Lacks formal commercial software development experience in a full-time employment context, which is a key requirement for the role.",
+          "detail": "While the candidate has relevant project experience, the role specifies a full-time employment background which the candidate does not demonstrate.",
+          "importance": "material",
+          "job_evidence": [
+            {
+              "source": "experience_requirement",
+              "item_index": 0,
+              "name": "Recently completed or nearing completion of a relevant degree (Computer Science, Software Engineering, Information Technology, or similar)",
+              "excerpt": "Recently completed or nearing completion of a relevant degree (Computer Science, Software Engineering, Information Technology, or similar)"
+            }
+          ],
+          "profile_evidence": [],
+          "assumption": null
+        }
+      ]
+    },
+    "commercial_fit": {
+      "dimension": "commercial",
+      "judgment": "weak",
+      "summary": "The candidate's profile lacks clear evidence of necessary commercial production experience, particularly in AI applications.",
+      "findings": [
+        {
+          "kind": "gap",
+          "summary": "Positions require commercial experience in developing and deploying AI tools which are not evidenced in the candidate's profile.",
+          "detail": "The role clearly states a need for proven production experience with AI technology, which is not reflected in the candidate's history as most experience is derived from independent projects or academic settings.",
+          "importance": "material",
+          "job_evidence": [
+            {
+              "source": "employment",
+              "item_index": null,
+              "name": "Full time/unspecified",
+              "excerpt": "Full time"
+            }
+          ],
+          "profile_evidence": [],
+          "assumption": null
+        },
+        {
+          "kind": "uncertainty",
+          "summary": "Compensation is unstated which may affect candidate's acceptance of potential offers.",
+          "detail": "The absence of any stated compensation information complicates the candidate's capacity to evaluate the applicability of the role against their financial expectations.",
+          "importance": "minor",
+          "job_evidence": [
+            {
+              "source": "compensation",
+              "item_index": null,
+              "name": "unstated",
+              "excerpt": "unstated"
+            }
+          ],
+          "profile_evidence": [],
+          "assumption": null
+        }
+      ]
+    },
+    "portfolio_fit": {
+      "dimension": "portfolio",
+      "judgment": "mixed",
+      "summary": "The candidate has engaged in several independent projects relevant to software development but lacks formal portfolio projects showcasing commercial applications.",
+      "findings": [
+        {
+          "kind": "gap",
+          "summary": "While candidates' independent projects align with role expectations, they are not established commercial products, leading to a critical gap in evidenced experience.",
+          "detail": "Each of the candidate's projects demonstrates technical ability but they lack the commercial delivery context that's necessary for this position.",
+          "importance": "material",
+          "job_evidence": [
+            {
+              "source": "responsibility",
+              "item_index": 0,
+              "name": "Participate in the design, development, testing, and deployment of software solutions",
+              "excerpt": "Key Responsibilities"
+            }
+          ],
+          "profile_evidence": [],
+          "assumption": null
+        }
+      ]
+    },
+    "summary": {
+      "summary": "The candidate has relevant technical experience and skills through independent projects, yet lacks formal commercial experience required for the Graduate / Junior Full Stack Developer role at Expedient Software. Performance in technical areas shows potential, however, commercial fit remains weak due to limited evidence of production AI delivery.",
+      "key_alignments": [
+        "Proficient in Python, SQL, and Git",
+        "Independent AI projects align with role responsibilities"
+      ],
+      "key_gaps": [
+        "Missing formal commercial experience in a full-time role",
+        "Compensation details are ambiguous"
+      ]
+    }
+  },
+  "portfolio_match": {
+    "job_analysis": {
+      "posting": {
+        "raw_text": "Graduate / Junior Full Stack Developer (AI & Agile) - Immediate Start\nExpedient Software\nView all jobs\n\n\nMelbourne VIC (Hybrid)\nDevelopers/Programmers (Information & Communication Technology)\nFull time\nSalary undisclosed\n\n\nGraduate / Junior Full Stack Developer (AI & Agile)-\nNewly Created Position – Make Your Mark!\n\nDynamic & Growing Software Specialist\n\n🚀 AI-Driven Development Environment\n\n🔄 Agile Team Culture\n\nHybrid or Work from Home\n\n🌟 Excellent Career Growth & Mentoring Opportunities\n\nAbout Expedient Software\nFor over 30 years, Expedient Software has been delivering specialist software solutions to the Customs, Freight Forwarding, Logistics, and Accounting industries. Our clients range from global multinational organisations to growing SMEs that rely on our innovative SaaS platforms to run their businesses.\n\nAs we continue to grow and embrace AI-powered development practices, we have created an exciting opportunity for a Graduate or Junior Full Stack Developer to join our team and make a real impact from day one.\n\nThis is not a role where you'll be confined to a single technology or development task. You'll gain exposure across the entire software development lifecycle, work with modern technologies, leverage AI development tools, and be mentored by experienced professionals in a collaborative Agile environment.\n\nAbout the Role\nAs a Graduate/Junior Full Stack Developer, you will work as part of an Agile development team building, enhancing, and supporting innovative SaaS applications. You'll have the opportunity to contribute across both front-end and back-end development while learning best practices in software engineering, cloud technologies, AI-assisted development, and solution design.\n\nThis role is ideal for someone who is passionate about technology, eager to learn, and excited about using AI tools to improve productivity, code quality, and innovation.\n\nKey Responsibilities\nParticipate in the design, development, testing, and deployment of software solutions\n\nCollaborate with developers, business analysts, and stakeholders in an Agile environment\n\nUtilise modern AI development tools to enhance coding efficiency and problem solving\n\nDevelop and maintain front-end and back-end application components\n\nWork with relational databases, data modelling, and SQL queries\n\nAssist with troubleshooting, debugging, and performance optimisation\n\nContribute to code reviews, sprint planning, and continuous improvement initiatives\n\nLearn and apply best practices throughout the software development lifecycle\n\nAbout You\nWe're looking for someone who has a genuine passion for software development and technology. You are curious, motivated, and eager to continuously learn and improve.\n\nEssential Skills & Experience\nRecently completed or nearing completion of a relevant degree (Computer Science, Software Engineering, Information Technology, or similar)\n\nExposure to software development in any programming language\n\nUnderstanding of relational database concepts\n\nKnowledge of data modelling and SQL\n\nExperience using AI tools such as GitHub Copilot, ChatGPT, Claude, Cursor, or similar\n\nStrong analytical, diagnostic, and problem-solving abilities\n\nExcellent verbal and written communication skills\n\nUnderstanding of Agile methodologies and collaborative development practices\n\nAbility to work effectively both independently and within a team\n\nDesirable\nExposure to web application development\n\nKnowledge of cloud technologies or SaaS platforms\n\nExperience with version control systems such as Git\n\nPersonal development projects, internships, or contributions to open-source projects\n\nWhat We Offer\nA genuine opportunity to launch your software development career\n\nMentoring from experienced software professionals\n\nExposure to the latest AI-powered development practices\n\nA supportive and collaborative Agile culture\n\nCareer progression and ongoing professional development\n\nThe opportunity to work across the full software development lifecycle\n\nA stable, growing Australian software company with a strong industry reputation\n\nReady to Apply?\nIf you're a bright and motivated developer looking for a unique opportunity to build your career, work with modern AI technologies, and make a meaningful contribution in a growing software company, we'd love to hear from you.",
+        "title": "Graduate / Junior Full Stack Developer (AI & Agile)",
+        "company": "Expedient Software",
+        "source_url": null
+      },
+      "role_family": {
+        "family": "software_engineering",
+        "evidence": [
+          {
+            "excerpt": "Graduate / Junior Full Stack Developer (AI & Agile)",
+            "section": "Job title"
+          }
+        ]
+      },
+      "seniority": {
+        "level": "entry",
+        "ambiguous": false,
+        "candidate_levels": [],
+        "evidence": [
+          {
+            "excerpt": "Graduate / Junior Full Stack Developer (AI & Agile)",
+            "section": "Job title"
+          }
+        ]
+      },
+      "technologies": [
+        {
+          "name": "AI tools",
+          "level": "preferred",
+          "evidence": [
+            {
+              "excerpt": "Experience using AI tools such as GitHub Copilot, ChatGPT, Claude, Cursor, or similar",
+              "section": "Essential Skills & Experience"
+            }
+          ]
+        },
+        {
+          "name": "SQL",
+          "level": "required",
+          "evidence": [
+            {
+              "excerpt": "Knowledge of data modelling and SQL",
+              "section": "Essential Skills & Experience"
+            }
+          ]
+        },
+        {
+          "name": "Git",
+          "level": "preferred",
+          "evidence": [
+            {
+              "excerpt": "Experience with version control systems such as Git",
+              "section": "Desirable"
+            }
+          ]
+        }
+      ],
+      "responsibilities": [
+        {
+          "description": "Participate in the design, development, testing, and deployment of software solutions",
+          "evidence": [
+            {
+              "excerpt": "Key Responsibilities",
+              "section": "About the Role"
+            }
+          ]
+        },
+        {
+          "description": "Collaborate with developers, business analysts, and stakeholders in an Agile environment",
+          "evidence": [
+            {
+              "excerpt": "Key Responsibilities",
+              "section": "About the Role"
+            }
+          ]
+        },
+        {
+          "description": "Utilise modern AI development tools to enhance coding efficiency and problem solving",
+          "evidence": [
+            {
+              "excerpt": "Key Responsibilities",
+              "section": "About the Role"
+            }
+          ]
+        },
+        {
+          "description": "Develop and maintain front-end and back-end application components",
+          "evidence": [
+            {
+              "excerpt": "Key Responsibilities",
+              "section": "About the Role"
+            }
+          ]
+        },
+        {
+          "description": "Work with relational databases, data modelling, and SQL queries",
+          "evidence": [
+            {
+              "excerpt": "Key Responsibilities",
+              "section": "About the Role"
+            }
+          ]
+        },
+        {
+          "description": "Assist with troubleshooting, debugging, and performance optimisation",
+          "evidence": [
+            {
+              "excerpt": "Key Responsibilities",
+              "section": "About the Role"
+            }
+          ]
+        },
+        {
+          "description": "Contribute to code reviews, sprint planning, and continuous improvement initiatives",
+          "evidence": [
+            {
+              "excerpt": "Key Responsibilities",
+              "section": "About the Role"
+            }
+          ]
+        },
+        {
+          "description": "Learn and apply best practices throughout the software development lifecycle",
+          "evidence": [
+            {
+              "excerpt": "Key Responsibilities",
+              "section": "About the Role"
+            }
+          ]
+        }
+      ],
+      "compensation": {
+        "clarity": "unstated",
+        "minimum": null,
+        "maximum": null,
+        "currency": null,
+        "period": null,
+        "raw_text": null,
+        "evidence": []
+      },
+      "location": {
+        "clarity": "stated",
+        "summary": "Melbourne VIC (Hybrid)",
+        "evidence": [
+          {
+            "excerpt": "Melbourne VIC (Hybrid)",
+            "section": "Job Description"
+          }
+        ]
+      },
+      "work_arrangement": {
+        "arrangement": "hybrid",
+        "details": "Hybrid or Work from Home",
+        "evidence": [
+          {
+            "excerpt": "Hybrid or Work from Home",
+            "section": "Job Description"
+          }
+        ]
+      },
+      "employment": {
+        "working_hours": "full_time",
+        "engagement_type": "unspecified",
+        "evidence": [
+          {
+            "excerpt": "Full time",
+            "section": "Job Description"
+          }
+        ]
+      },
+      "experience_requirements": [
+        {
+          "description": "Recently completed or nearing completion of a relevant degree (Computer Science, Software Engineering, Information Technology, or similar)",
+          "level": "required",
+          "minimum_years": null,
+          "maximum_years": null,
+          "evidence": [
+            {
+              "excerpt": "Recently completed or nearing completion of a relevant degree (Computer Science, Software Engineering, Information Technology, or similar)",
+              "section": "Essential Skills & Experience"
+            }
+          ]
+        }
+      ]
+    },
+    "ranked_projects": [
+      {
+        "rank": 1,
+        "project_id": "career-intelligence-copilot",
+        "rationale": "Project 'career-intelligence-copilot' ranked on 1 preferred technology hit(s), 1 demonstrates overlap(s), 4 responsibility overlap(s).",
+        "factors": [
+          {
+            "kind": "preferred_technology",
+            "summary": "Project evidence supports preferred technology 'Git'.",
+            "job_evidence": [
+              {
+                "source": "technology",
+                "item_index": 2,
+                "name": "Git",
+                "excerpt": "Experience with version control systems such as Git"
+              }
+            ],
+            "profile_evidence": [
+              {
+                "source": "project",
+                "ref": "project:career-intelligence-copilot",
+                "excerpt": "Git"
+              }
+            ]
+          },
+          {
+            "kind": "responsibility_overlap",
+            "summary": "Project summary, outcomes, or technologies overlap responsibility 'Utilise modern AI development tools to enhance coding efficiency and problem solving'.",
+            "job_evidence": [
+              {
+                "source": "responsibility",
+                "item_index": 2,
+                "name": null,
+                "excerpt": "Key Responsibilities"
+              }
+            ],
+            "profile_evidence": [
+              {
+                "source": "project",
+                "ref": "project:career-intelligence-copilot",
+                "excerpt": "Enables an AI Engineering job seeker to decide which roles deserve effort. Reviews job ads against a structured career profile, ranks fit, recommends applicati…"
+              }
+            ]
+          },
+          {
+            "kind": "demonstrates_overlap",
+            "summary": "Project demonstrates capabilities overlapping responsibility 'Develop and maintain front-end and back-end application components'.",
+            "job_evidence": [
+              {
+                "source": "responsibility",
+                "item_index": 3,
+                "name": null,
+                "excerpt": "Key Responsibilities"
+              }
+            ],
+            "profile_evidence": [
+              {
+                "source": "project",
+                "ref": "project:career-intelligence-copilot",
+                "excerpt": "Deterministic application-strategy recommendation"
+              }
+            ]
+          },
+          {
+            "kind": "responsibility_overlap",
+            "summary": "Project summary, outcomes, or technologies overlap responsibility 'Develop and maintain front-end and back-end application components'.",
+            "job_evidence": [
+              {
+                "source": "responsibility",
+                "item_index": 3,
+                "name": null,
+                "excerpt": "Key Responsibilities"
+              }
+            ],
+            "profile_evidence": [
+              {
+                "source": "project",
+                "ref": "project:career-intelligence-copilot",
+                "excerpt": "Enables an AI Engineering job seeker to decide which roles deserve effort. Reviews job ads against a structured career profile, ranks fit, recommends applicati…"
+              }
+            ]
+          },
+          {
+            "kind": "responsibility_overlap",
+            "summary": "Project summary, outcomes, or technologies overlap responsibility 'Work with relational databases, data modelling, and SQL queries'.",
+            "job_evidence": [
+              {
+                "source": "responsibility",
+                "item_index": 4,
+                "name": null,
+                "excerpt": "Key Responsibilities"
+              }
+            ],
+            "profile_evidence": [
+              {
+                "source": "project",
+                "ref": "project:career-intelligence-copilot",
+                "excerpt": "Enables an AI Engineering job seeker to decide which roles deserve effort. Reviews job ads against a structured career profile, ranks fit, recommends applicati…"
+              }
+            ]
+          },
+          {
+            "kind": "responsibility_overlap",
+            "summary": "Project summary, outcomes, or technologies overlap responsibility 'Contribute to code reviews, sprint planning, and continuous improvement initiatives'.",
+            "job_evidence": [
+              {
+                "source": "responsibility",
+                "item_index": 6,
+                "name": null,
+                "excerpt": "Key Responsibilities"
+              }
+            ],
+            "profile_evidence": [
+              {
+                "source": "project",
+                "ref": "project:career-intelligence-copilot",
+                "excerpt": "Enables an AI Engineering job seeker to decide which roles deserve effort. Reviews job ads against a structured career profile, ranks fit, recommends applicati…"
+              }
+            ]
+          }
+        ],
+        "tie_group": null,
+        "tie_break_reason": null
+      },
+      {
+        "rank": 2,
+        "project_id": "operational-intelligence-copilot",
+        "rationale": "Project 'operational-intelligence-copilot' ranked on 1 preferred technology hit(s), 1 demonstrates overlap(s), 3 responsibility overlap(s).",
+        "factors": [
+          {
+            "kind": "preferred_technology",
+            "summary": "Project evidence supports preferred technology 'Git'.",
+            "job_evidence": [
+              {
+                "source": "technology",
+                "item_index": 2,
+                "name": "Git",
+                "excerpt": "Experience with version control systems such as Git"
+              }
+            ],
+            "profile_evidence": [
+              {
+                "source": "project",
+                "ref": "project:operational-intelligence-copilot",
+                "excerpt": "Git"
+              }
+            ]
+          },
+          {
+            "kind": "responsibility_overlap",
+            "summary": "Project summary, outcomes, or technologies overlap responsibility 'Collaborate with developers, business analysts, and stakeholders in an Agile environment'.",
+            "job_evidence": [
+              {
+                "source": "responsibility",
+                "item_index": 1,
+                "name": null,
+                "excerpt": "Key Responsibilities"
+              }
+            ],
+            "profile_evidence": [
+              {
+                "source": "project",
+                "ref": "project:operational-intelligence-copilot",
+                "excerpt": "Demonstrates operational intelligence capability for understanding business data. Combines reliable analytics with AI reasoning to surface anomalies and produc…"
+              }
+            ]
+          },
+          {
+            "kind": "demonstrates_overlap",
+            "summary": "Project demonstrates capabilities overlapping responsibility 'Utilise modern AI development tools to enhance coding efficiency and problem solving'.",
+            "job_evidence": [
+              {
+                "source": "responsibility",
+                "item_index": 2,
+                "name": null,
+                "excerpt": "Key Responsibilities"
+              }
+            ],
+            "profile_evidence": [
+              {
+                "source": "project",
+                "ref": "project:operational-intelligence-copilot",
+                "excerpt": "Explainable AI recommendations"
+              }
+            ]
+          },
+          {
+            "kind": "responsibility_overlap",
+            "summary": "Project summary, outcomes, or technologies overlap responsibility 'Utilise modern AI development tools to enhance coding efficiency and problem solving'.",
+            "job_evidence": [
+              {
+                "source": "responsibility",
+                "item_index": 2,
+                "name": null,
+                "excerpt": "Key Responsibilities"
+              }
+            ],
+            "profile_evidence": [
+              {
+                "source": "project",
+                "ref": "project:operational-intelligence-copilot",
+                "excerpt": "Demonstrates operational intelligence capability for understanding business data. Combines reliable analytics with AI reasoning to surface anomalies and produc…"
+              }
+            ]
+          },
+          {
+            "kind": "responsibility_overlap",
+            "summary": "Project summary, outcomes, or technologies overlap responsibility 'Work with relational databases, data modelling, and SQL queries'.",
+            "job_evidence": [
+              {
+                "source": "responsibility",
+                "item_index": 4,
+                "name": null,
+                "excerpt": "Key Responsibilities"
+              }
+            ],
+            "profile_evidence": [
+              {
+                "source": "project",
+                "ref": "project:operational-intelligence-copilot",
+                "excerpt": "Demonstrates operational intelligence capability for understanding business data. Combines reliable analytics with AI reasoning to surface anomalies and produc…"
+              }
+            ]
+          }
+        ],
+        "tie_group": null,
+        "tie_break_reason": null
+      },
+      {
+        "rank": 3,
+        "project_id": "governance-document-rag",
+        "rationale": "Project 'governance-document-rag' ranked on 1 preferred technology hit(s), 1 demonstrates overlap(s), 1 responsibility overlap(s).",
+        "factors": [
+          {
+            "kind": "preferred_technology",
+            "summary": "Project evidence supports preferred technology 'Git'.",
+            "job_evidence": [
+              {
+                "source": "technology",
+                "item_index": 2,
+                "name": "Git",
+                "excerpt": "Experience with version control systems such as Git"
+              }
+            ],
+            "profile_evidence": [
+              {
+                "source": "project",
+                "ref": "project:governance-document-rag",
+                "excerpt": "Git"
+              }
+            ]
+          },
+          {
+            "kind": "demonstrates_overlap",
+            "summary": "Project demonstrates capabilities overlapping responsibility 'Utilise modern AI development tools to enhance coding efficiency and problem solving'.",
+            "job_evidence": [
+              {
+                "source": "responsibility",
+                "item_index": 2,
+                "name": null,
+                "excerpt": "Key Responsibilities"
+              }
+            ],
+            "profile_evidence": [
+              {
+                "source": "project",
+                "ref": "project:governance-document-rag",
+                "excerpt": "AI evaluation frameworks"
+              }
+            ]
+          },
+          {
+            "kind": "responsibility_overlap",
+            "summary": "Project summary, outcomes, or technologies overlap responsibility 'Utilise modern AI development tools to enhance coding efficiency and problem solving'.",
+            "job_evidence": [
+              {
+                "source": "responsibility",
+                "item_index": 2,
+                "name": null,
+                "excerpt": "Key Responsibilities"
+              }
+            ],
+            "profile_evidence": [
+              {
+                "source": "project",
+                "ref": "project:governance-document-rag",
+                "excerpt": "Allows organisations to answer questions from their own documents with responses that stay grounded in source material. Built for teams that need trustworthy A…"
+              }
+            ]
+          }
+        ],
+        "tie_group": null,
+        "tie_break_reason": null
+      },
+      {
+        "rank": 4,
+        "project_id": "public-holiday-entitlements",
+        "rationale": "Project 'public-holiday-entitlements' ranked on 1 preferred technology hit(s), 1 demonstrates overlap(s).",
+        "factors": [
+          {
+            "kind": "preferred_technology",
+            "summary": "Project evidence supports preferred technology 'Git'.",
+            "job_evidence": [
+              {
+                "source": "technology",
+                "item_index": 2,
+                "name": "Git",
+                "excerpt": "Experience with version control systems such as Git"
+              }
+            ],
+            "profile_evidence": [
+              {
+                "source": "project",
+                "ref": "project:public-holiday-entitlements",
+                "excerpt": "Git"
+              }
+            ]
+          },
+          {
+            "kind": "demonstrates_overlap",
+            "summary": "Project demonstrates capabilities overlapping responsibility 'Collaborate with developers, business analysts, and stakeholders in an Agile environment'.",
+            "job_evidence": [
+              {
+                "source": "responsibility",
+                "item_index": 1,
+                "name": null,
+                "excerpt": "Key Responsibilities"
+              }
+            ],
+            "profile_evidence": [
+              {
+                "source": "project",
+                "ref": "project:public-holiday-entitlements",
+                "excerpt": "Business rules"
+              }
+            ]
+          }
+        ],
+        "tie_group": null,
+        "tie_break_reason": null
+      },
+      {
+        "rank": 5,
+        "project_id": "payroll-diagnostics-engine",
+        "rationale": "Project 'payroll-diagnostics-engine' ranked on 1 preferred technology hit(s), 3 responsibility overlap(s).",
+        "factors": [
+          {
+            "kind": "preferred_technology",
+            "summary": "Project evidence supports preferred technology 'Git'.",
+            "job_evidence": [
+              {
+                "source": "technology",
+                "item_index": 2,
+                "name": "Git",
+                "excerpt": "Experience with version control systems such as Git"
+              }
+            ],
+            "profile_evidence": [
+              {
+                "source": "project",
+                "ref": "project:payroll-diagnostics-engine",
+                "excerpt": "Git"
+              }
+            ]
+          },
+          {
+            "kind": "responsibility_overlap",
+            "summary": "Project summary, outcomes, or technologies overlap responsibility 'Collaborate with developers, business analysts, and stakeholders in an Agile environment'.",
+            "job_evidence": [
+              {
+                "source": "responsibility",
+                "item_index": 1,
+                "name": null,
+                "excerpt": "Key Responsibilities"
+              }
+            ],
+            "profile_evidence": [
+              {
+                "source": "project",
+                "ref": "project:payroll-diagnostics-engine",
+                "excerpt": "Reviews payroll data against deterministic business rules to identify anomalies. Produces explainable findings and executive-ready reports so issues can be inv…"
+              }
+            ]
+          },
+          {
+            "kind": "responsibility_overlap",
+            "summary": "Project summary, outcomes, or technologies overlap responsibility 'Work with relational databases, data modelling, and SQL queries'.",
+            "job_evidence": [
+              {
+                "source": "responsibility",
+                "item_index": 4,
+                "name": null,
+                "excerpt": "Key Responsibilities"
+              }
+            ],
+            "profile_evidence": [
+              {
+                "source": "project",
+                "ref": "project:payroll-diagnostics-engine",
+                "excerpt": "Reviews payroll data against deterministic business rules to identify anomalies. Produces explainable findings and executive-ready reports so issues can be inv…"
+              }
+            ]
+          },
+          {
+            "kind": "responsibility_overlap",
+            "summary": "Project summary, outcomes, or technologies overlap responsibility 'Contribute to code reviews, sprint planning, and continuous improvement initiatives'.",
+            "job_evidence": [
+              {
+                "source": "responsibility",
+                "item_index": 6,
+                "name": null,
+                "excerpt": "Key Responsibilities"
+              }
+            ],
+            "profile_evidence": [
+              {
+                "source": "project",
+                "ref": "project:payroll-diagnostics-engine",
+                "excerpt": "Reviews payroll data against deterministic business rules to identify anomalies. Produces explainable findings and executive-ready reports so issues can be inv…"
+              }
+            ]
+          }
+        ],
+        "tie_group": null,
+        "tie_break_reason": null
+      }
+    ],
+    "unranked_project_ids": [],
+    "summary": "Ranked 5 project(s); lead with 'career-intelligence-copilot'. 0 project(s) had no matching factors.",
+    "insufficient_evidence": false
+  },
+  "application_strategy": {
+    "job_analysis": {
+      "posting": {
+        "raw_text": "Graduate / Junior Full Stack Developer (AI & Agile) - Immediate Start\nExpedient Software\nView all jobs\n\n\nMelbourne VIC (Hybrid)\nDevelopers/Programmers (Information & Communication Technology)\nFull time\nSalary undisclosed\n\n\nGraduate / Junior Full Stack Developer (AI & Agile)-\nNewly Created Position – Make Your Mark!\n\nDynamic & Growing Software Specialist\n\n🚀 AI-Driven Development Environment\n\n🔄 Agile Team Culture\n\nHybrid or Work from Home\n\n🌟 Excellent Career Growth & Mentoring Opportunities\n\nAbout Expedient Software\nFor over 30 years, Expedient Software has been delivering specialist software solutions to the Customs, Freight Forwarding, Logistics, and Accounting industries. Our clients range from global multinational organisations to growing SMEs that rely on our innovative SaaS platforms to run their businesses.\n\nAs we continue to grow and embrace AI-powered development practices, we have created an exciting opportunity for a Graduate or Junior Full Stack Developer to join our team and make a real impact from day one.\n\nThis is not a role where you'll be confined to a single technology or development task. You'll gain exposure across the entire software development lifecycle, work with modern technologies, leverage AI development tools, and be mentored by experienced professionals in a collaborative Agile environment.\n\nAbout the Role\nAs a Graduate/Junior Full Stack Developer, you will work as part of an Agile development team building, enhancing, and supporting innovative SaaS applications. You'll have the opportunity to contribute across both front-end and back-end development while learning best practices in software engineering, cloud technologies, AI-assisted development, and solution design.\n\nThis role is ideal for someone who is passionate about technology, eager to learn, and excited about using AI tools to improve productivity, code quality, and innovation.\n\nKey Responsibilities\nParticipate in the design, development, testing, and deployment of software solutions\n\nCollaborate with developers, business analysts, and stakeholders in an Agile environment\n\nUtilise modern AI development tools to enhance coding efficiency and problem solving\n\nDevelop and maintain front-end and back-end application components\n\nWork with relational databases, data modelling, and SQL queries\n\nAssist with troubleshooting, debugging, and performance optimisation\n\nContribute to code reviews, sprint planning, and continuous improvement initiatives\n\nLearn and apply best practices throughout the software development lifecycle\n\nAbout You\nWe're looking for someone who has a genuine passion for software development and technology. You are curious, motivated, and eager to continuously learn and improve.\n\nEssential Skills & Experience\nRecently completed or nearing completion of a relevant degree (Computer Science, Software Engineering, Information Technology, or similar)\n\nExposure to software development in any programming language\n\nUnderstanding of relational database concepts\n\nKnowledge of data modelling and SQL\n\nExperience using AI tools such as GitHub Copilot, ChatGPT, Claude, Cursor, or similar\n\nStrong analytical, diagnostic, and problem-solving abilities\n\nExcellent verbal and written communication skills\n\nUnderstanding of Agile methodologies and collaborative development practices\n\nAbility to work effectively both independently and within a team\n\nDesirable\nExposure to web application development\n\nKnowledge of cloud technologies or SaaS platforms\n\nExperience with version control systems such as Git\n\nPersonal development projects, internships, or contributions to open-source projects\n\nWhat We Offer\nA genuine opportunity to launch your software development career\n\nMentoring from experienced software professionals\n\nExposure to the latest AI-powered development practices\n\nA supportive and collaborative Agile culture\n\nCareer progression and ongoing professional development\n\nThe opportunity to work across the full software development lifecycle\n\nA stable, growing Australian software company with a strong industry reputation\n\nReady to Apply?\nIf you're a bright and motivated developer looking for a unique opportunity to build your career, work with modern AI technologies, and make a meaningful contribution in a growing software company, we'd love to hear from you.",
+        "title": "Graduate / Junior Full Stack Developer (AI & Agile)",
+        "company": "Expedient Software",
+        "source_url": null
+      },
+      "role_family": {
+        "family": "software_engineering",
+        "evidence": [
+          {
+            "excerpt": "Graduate / Junior Full Stack Developer (AI & Agile)",
+            "section": "Job title"
+          }
+        ]
+      },
+      "seniority": {
+        "level": "entry",
+        "ambiguous": false,
+        "candidate_levels": [],
+        "evidence": [
+          {
+            "excerpt": "Graduate / Junior Full Stack Developer (AI & Agile)",
+            "section": "Job title"
+          }
+        ]
+      },
+      "technologies": [
+        {
+          "name": "AI tools",
+          "level": "preferred",
+          "evidence": [
+            {
+              "excerpt": "Experience using AI tools such as GitHub Copilot, ChatGPT, Claude, Cursor, or similar",
+              "section": "Essential Skills & Experience"
+            }
+          ]
+        },
+        {
+          "name": "SQL",
+          "level": "required",
+          "evidence": [
+            {
+              "excerpt": "Knowledge of data modelling and SQL",
+              "section": "Essential Skills & Experience"
+            }
+          ]
+        },
+        {
+          "name": "Git",
+          "level": "preferred",
+          "evidence": [
+            {
+              "excerpt": "Experience with version control systems such as Git",
+              "section": "Desirable"
+            }
+          ]
+        }
+      ],
+      "responsibilities": [
+        {
+          "description": "Participate in the design, development, testing, and deployment of software solutions",
+          "evidence": [
+            {
+              "excerpt": "Key Responsibilities",
+              "section": "About the Role"
+            }
+          ]
+        },
+        {
+          "description": "Collaborate with developers, business analysts, and stakeholders in an Agile environment",
+          "evidence": [
+            {
+              "excerpt": "Key Responsibilities",
+              "section": "About the Role"
+            }
+          ]
+        },
+        {
+          "description": "Utilise modern AI development tools to enhance coding efficiency and problem solving",
+          "evidence": [
+            {
+              "excerpt": "Key Responsibilities",
+              "section": "About the Role"
+            }
+          ]
+        },
+        {
+          "description": "Develop and maintain front-end and back-end application components",
+          "evidence": [
+            {
+              "excerpt": "Key Responsibilities",
+              "section": "About the Role"
+            }
+          ]
+        },
+        {
+          "description": "Work with relational databases, data modelling, and SQL queries",
+          "evidence": [
+            {
+              "excerpt": "Key Responsibilities",
+              "section": "About the Role"
+            }
+          ]
+        },
+        {
+          "description": "Assist with troubleshooting, debugging, and performance optimisation",
+          "evidence": [
+            {
+              "excerpt": "Key Responsibilities",
+              "section": "About the Role"
+            }
+          ]
+        },
+        {
+          "description": "Contribute to code reviews, sprint planning, and continuous improvement initiatives",
+          "evidence": [
+            {
+              "excerpt": "Key Responsibilities",
+              "section": "About the Role"
+            }
+          ]
+        },
+        {
+          "description": "Learn and apply best practices throughout the software development lifecycle",
+          "evidence": [
+            {
+              "excerpt": "Key Responsibilities",
+              "section": "About the Role"
+            }
+          ]
+        }
+      ],
+      "compensation": {
+        "clarity": "unstated",
+        "minimum": null,
+        "maximum": null,
+        "currency": null,
+        "period": null,
+        "raw_text": null,
+        "evidence": []
+      },
+      "location": {
+        "clarity": "stated",
+        "summary": "Melbourne VIC (Hybrid)",
+        "evidence": [
+          {
+            "excerpt": "Melbourne VIC (Hybrid)",
+            "section": "Job Description"
+          }
+        ]
+      },
+      "work_arrangement": {
+        "arrangement": "hybrid",
+        "details": "Hybrid or Work from Home",
+        "evidence": [
+          {
+            "excerpt": "Hybrid or Work from Home",
+            "section": "Job Description"
+          }
+        ]
+      },
+      "employment": {
+        "working_hours": "full_time",
+        "engagement_type": "unspecified",
+        "evidence": [
+          {
+            "excerpt": "Full time",
+            "section": "Job Description"
+          }
+        ]
+      },
+      "experience_requirements": [
+        {
+          "description": "Recently completed or nearing completion of a relevant degree (Computer Science, Software Engineering, Information Technology, or similar)",
+          "level": "required",
+          "minimum_years": null,
+          "maximum_years": null,
+          "evidence": [
+            {
+              "excerpt": "Recently completed or nearing completion of a relevant degree (Computer Science, Software Engineering, Information Technology, or similar)",
+              "section": "Essential Skills & Experience"
+            }
+          ]
+        }
+      ]
+    },
+    "application_tier": "silver",
+    "pursuit_posture": "consider",
+    "practical_value": "acceptable_opportunity",
+    "effort_level": "minimal",
+    "summary": "Recommend posture 'consider' with effort tier 'silver' (minimal). Technical fit 'mixed', commercial fit 'weak', portfolio fit 'mixed'. Owner review is required before any application action.",
+    "reasons": [
+      {
+        "kind": "alignment",
+        "summary": "Technical fit is 'mixed' and portfolio fit is 'mixed' for this opportunity.",
+        "importance": "material",
+        "evidence": [
+          {
+            "origin": "opportunity_assessment",
+            "job_evidence": null,
+            "profile_evidence": null,
+            "assessment_dimension": "technical",
+            "assessment_judgment": "mixed",
+            "portfolio_project_id": null,
+            "excerpt": null
+          },
+          {
+            "origin": "opportunity_assessment",
+            "job_evidence": null,
+            "profile_evidence": null,
+            "assessment_dimension": "portfolio",
+            "assessment_judgment": "mixed",
+            "portfolio_project_id": null,
+            "excerpt": null
+          }
+        ]
+      },
+      {
+        "kind": "priority",
+        "summary": "Pursuit posture 'consider' with effort tier 'silver' reflects commercial fit 'weak' and software engineering role family.",
+        "importance": "material",
+        "evidence": [
+          {
+            "origin": "opportunity_assessment",
+            "job_evidence": null,
+            "profile_evidence": null,
+            "assessment_dimension": "commercial",
+            "assessment_judgment": "weak",
+            "portfolio_project_id": null,
+            "excerpt": null
+          },
+          {
+            "origin": "job_analysis",
+            "job_evidence": {
+              "source": "role_family",
+              "item_index": null,
+              "name": null,
+              "excerpt": null
+            },
+            "profile_evidence": null,
+            "assessment_dimension": null,
+            "assessment_judgment": null,
+            "portfolio_project_id": null,
+            "excerpt": null
+          }
+        ]
+      }
+    ],
+    "risks_or_gaps": [
+      {
+        "summary": "Commercial fit is 'weak', which may reduce the value of investing significant effort.",
+        "importance": "material",
+        "evidence": [
+          {
+            "origin": "opportunity_assessment",
+            "job_evidence": null,
+            "profile_evidence": null,
+            "assessment_dimension": "commercial",
+            "assessment_judgment": "weak",
+            "portfolio_project_id": null,
+            "excerpt": null
+          }
+        ]
+      },
+      {
+        "summary": "Lacks formal commercial software development experience in a full-time employment context, which is a key requirement for the role.",
+        "importance": "material",
+        "evidence": [
+          {
+            "origin": "opportunity_assessment",
+            "job_evidence": null,
+            "profile_evidence": null,
+            "assessment_dimension": "technical",
+            "assessment_judgment": "mixed",
+            "portfolio_project_id": null,
+            "excerpt": null
+          }
+        ]
+      }
+    ],
+    "manual_checks": [
+      {
+        "summary": "Review compensation once salary or rate information is available.",
+        "why_it_matters": "Compensation clarity can change commercial priority; no salary conflict was invented from missing data.",
+        "could_change_recommendation": true,
+        "evidence": [
+          {
+            "origin": "job_analysis",
+            "job_evidence": {
+              "source": "compensation",
+              "item_index": null,
+              "name": null,
+              "excerpt": null
+            },
+            "profile_evidence": null,
+            "assessment_dimension": null,
+            "assessment_judgment": null,
+            "portfolio_project_id": null,
+            "excerpt": null
+          }
+        ]
+      }
+    ],
+    "next_actions": [
+      {
+        "kind": "consider_reviewing_compensation",
+        "summary": "Consider reviewing compensation before investing significant effort.",
+        "related_project_id": null,
+        "evidence": [
+          {
+            "origin": "job_analysis",
+            "job_evidence": {
+              "source": "compensation",
+              "item_index": null,
+              "name": null,
+              "excerpt": null
+            },
+            "profile_evidence": null,
+            "assessment_dimension": null,
+            "assessment_judgment": null,
+            "portfolio_project_id": null,
+            "excerpt": null
+          }
+        ]
+      },
+      {
+        "kind": "consider_emphasising_portfolio_projects",
+        "summary": "Consider emphasising the strongest matched portfolio project(s) in any application materials you prepare.",
+        "related_project_id": "career-intelligence-copilot",
+        "evidence": [
+          {
+            "origin": "portfolio_match",
+            "job_evidence": null,
+            "profile_evidence": null,
+            "assessment_dimension": null,
+            "assessment_judgment": null,
+            "portfolio_project_id": "career-intelligence-copilot",
+            "excerpt": null
+          }
+        ]
+      },
+      {
+        "kind": "consider_owner_review",
+        "summary": "Consider reviewing this full strategy before taking any external action.",
+        "related_project_id": null,
+        "evidence": [
+          {
+            "origin": "opportunity_assessment",
+            "job_evidence": null,
+            "profile_evidence": null,
+            "assessment_dimension": "technical",
+            "assessment_judgment": "mixed",
+            "portfolio_project_id": null,
+            "excerpt": null
+          }
+        ]
+      }
+    ],
+    "portfolio_emphasis": [
+      {
+        "project_id": "career-intelligence-copilot",
+        "source_rank": 1,
+        "summary": "Consider emphasising 'career-intelligence-copilot' (PortfolioMatch rank 1).",
+        "evidence": [
+          {
+            "origin": "portfolio_match",
+            "job_evidence": null,
+            "profile_evidence": null,
+            "assessment_dimension": null,
+            "assessment_judgment": null,
+            "portfolio_project_id": "career-intelligence-copilot",
+            "excerpt": null
+          }
+        ]
+      },
+      {
+        "project_id": "operational-intelligence-copilot",
+        "source_rank": 2,
+        "summary": "Consider emphasising 'operational-intelligence-copilot' (PortfolioMatch rank 2).",
+        "evidence": [
+          {
+            "origin": "portfolio_match",
+            "job_evidence": null,
+            "profile_evidence": null,
+            "assessment_dimension": null,
+            "assessment_judgment": null,
+            "portfolio_project_id": "operational-intelligence-copilot",
+            "excerpt": null
+          }
+        ]
+      },
+      {
+        "project_id": "governance-document-rag",
+        "source_rank": 3,
+        "summary": "Consider emphasising 'governance-document-rag' (PortfolioMatch rank 3).",
+        "evidence": [
+          {
+            "origin": "portfolio_match",
+            "job_evidence": null,
+            "profile_evidence": null,
+            "assessment_dimension": null,
+            "assessment_judgment": null,
+            "portfolio_project_id": "governance-document-rag",
+            "excerpt": null
+          }
+        ]
+      }
+    ],
+    "assumptions": [
+      "Compensation fit is not scored because salary/rate evidence is missing or ambiguous.",
+      "No candidate salary minimum is configured, so compensation was not treated as a hard threshold conflict."
+    ],
+    "decision_blockers": [],
+    "owner_review_required": true,
+    "insufficient_information": false
+  }
+}

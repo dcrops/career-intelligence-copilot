@@ -18,7 +18,7 @@ from career_intelligence.cv_generation import (
 from career_intelligence.profile import CareerProfileService
 
 _ROOT = Path(__file__).resolve().parents[1]
-_OUTPUTS = _ROOT / "manual_validation" / "outputs"
+_OUTPUTS = _ROOT / "tests" / "fixtures" / "application_strategy"
 _GENERATED = _ROOT / "career-documents" / "cv" / "generated" / "fr006b_golden"
 
 GOLDEN = (

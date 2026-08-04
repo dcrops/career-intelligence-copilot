@@ -134,6 +134,10 @@ Delivered:
 - Per-request catalogue ``enum`` on extraction ``profile_evidence[].ref`` plus narrow
   serialisation-punctuation canonicalisation before domain validation (domain
   ``ProfileEvidenceRef`` remains fail-closed; no fuzzy mapping)
+- Per-request ``item_index`` enums on source-specific extraction job-evidence types
+  (technology / responsibility / experience_requirement), derived from the bound
+  JobAnalysis collection lengths; coerce rejects out-of-range indexes (domain
+  ``validate_references`` unchanged)
 - Live manual evaluation ([eval/fr003_openai_manual_eval.md](eval/fr003_openai_manual_eval.md))
 - Cross-stage golden journeys (`tests/golden/test_opportunity_assessment_user_journey.py`)
 - FR-001 → FR-002 → FR-003 offline integration
@@ -711,7 +715,7 @@ python scripts/run_application_strategy_manual.py \
 ```
 
 When ``--job-file`` is set and ``--output-json`` is omitted, the runner writes
-``manual_validation/outputs/{job_file stem}.json`` so FR-006 / FR-007 can reuse
+``manual_validation/outputs/live/{job_file stem}.json`` so FR-006 / FR-007 can reuse
 the trusted strategy. Override the path with ``--output-json`` when needed:
 
 ```bash
@@ -720,18 +724,16 @@ python scripts/run_application_strategy_manual.py \
   --output-json artifacts/manual_strategy.json
 ```
 
-**Corpus stewardship:** unit tests under `tests/unit/cv_generation/test_planner_corpus_regression.py`
-and `tests/unit/test_manual_cv_runner.py` pin behaviour to committed files in
-`manual_validation/outputs/` (notably `002_bluefin_…` platinum and `011_officeworks_…`
-with early Snowflake). Prefer ``--output-json`` outside the corpus tree for exploratory
-live re-runs, or restore the committed fixture after accidental overwrite. CV planner
-``jd_priorities`` is capped at ``_MAX_JD_PRIORITIES`` (8); late-listed JD technologies
-may be omitted from that list.
+**Corpus stewardship:** unit tests and the FR-006b golden suite read immutable
+strategy JSON from ``tests/fixtures/application_strategy/``. Live owner runs write
+only under ``manual_validation/outputs/live/`` and must not mutate the fixture tree.
+CV planner ``jd_priorities`` is capped at ``_MAX_JD_PRIORITIES`` (8); late-listed JD
+technologies may be omitted from that list.
 
-**Known live intermittent (accepted debt):** job_evidence ``item_index`` remains an
-unconstrained integer in structured output. Out-of-range indexes are rejected by
-domain reference validation (fail-closed). Follow-up: enum valid indexes per request,
-same pattern as catalogue-constrained profile evidence refs.
+**Job evidence indexes:** extraction structured output enums ``item_index`` per
+list collection (technology / responsibility / experience_requirement) from the
+bound JobAnalysis lengths. Out-of-range values are rejected at the extraction
+boundary and again by domain reference validation (fail-closed; no clamp).
 
 Optional volume mode:
 

@@ -120,7 +120,13 @@ def test_resolve_pipeline_json_path_defaults_to_manual_outputs(tmp_path: Path) -
         job_file=job,
         output_json=None,
         repo_root=tmp_path,
-    ) == tmp_path / "manual_validation" / "outputs" / "017_mars_recruitment_AI_Engineer.json"
+    ) == (
+        tmp_path
+        / "manual_validation"
+        / "outputs"
+        / "live"
+        / "017_mars_recruitment_AI_Engineer.json"
+    )
 
 
 def test_resolve_pipeline_json_path_explicit_override_wins(tmp_path: Path) -> None:
@@ -167,6 +173,7 @@ def test_main_without_output_json_writes_manual_validation_outputs(
         tmp_path
         / "manual_validation"
         / "outputs"
+        / "live"
         / "zz_owner_workflow_fixture.json"
     )
     assert output.is_file()

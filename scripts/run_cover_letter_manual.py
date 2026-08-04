@@ -4,7 +4,7 @@
 Upstream resolution mirrors FR-006:
 
 1. ``--strategy-json PATH`` — reuse a saved FR-005 pipeline JSON
-2. Auto-reuse — ``manual_validation/outputs/{job-file stem}.json``
+2. Auto-reuse — ``manual_validation/outputs/live/{job-file stem}.json``
 3. Otherwise exit with guidance (live upstream not required for FR-007 smoke)
 
 Examples:
@@ -12,7 +12,7 @@ Examples:
     --job-file manual_validation/jobs/002_bluefin_ai_systems_developer.txt
 
   python scripts/run_cover_letter_manual.py \\
-    --strategy-json manual_validation/outputs/009_forever_new_senior_ai_automation_engineer_digital.json
+    --strategy-json manual_validation/outputs/live/009_forever_new_senior_ai_automation_engineer_digital.json
 """
 
 from __future__ import annotations
@@ -41,6 +41,7 @@ from career_intelligence.profile import CareerProfile, CareerProfileService
 
 _REPO_ROOT = Path(__file__).resolve().parents[1]
 _MANUAL_OUTPUTS = _REPO_ROOT / "manual_validation" / "outputs"
+_LIVE_OUTPUTS = _MANUAL_OUTPUTS / "live"
 
 # Matches FR-006 CV manual runner — same professional suite contact block.
 _DEFAULT_CONTACT = ContactDetails(
@@ -109,13 +110,14 @@ def resolve_strategy(*, job_file: Path | None, strategy_json: Path | None) -> tu
         path = strategy_json.resolve()
         return load_strategy_from_pipeline_json(path), str(path)
     if job_file is not None:
-        candidate = _MANUAL_OUTPUTS / f"{job_file.stem}.json"
+        candidate = _LIVE_OUTPUTS / f"{job_file.stem}.json"
         if candidate.is_file():
             return load_strategy_from_pipeline_json(candidate), str(candidate.resolve())
         raise SystemExit(
             f"No pipeline JSON at {candidate}. Run "
             f"`python scripts/run_application_strategy_manual.py --job-file {job_file}` "
-            "first (writes manual_validation/outputs/{stem}.json), or pass --strategy-json."
+            "first (writes manual_validation/outputs/live/{stem}.json), or pass "
+            "--strategy-json."
         )
     raise SystemExit("Provide --job-file or --strategy-json.")
 

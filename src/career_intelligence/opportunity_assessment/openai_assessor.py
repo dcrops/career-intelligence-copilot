@@ -20,8 +20,9 @@ from .assessor import OpportunityAssessmentPayload
 from .errors import ErrorDetail, OpportunityAssessmentError, OpportunityAssessmentValidationError
 from .extraction import (
     OpportunityAssessmentExtraction,
-    catalogue_constrained_extraction_type,
+    request_constrained_extraction_type,
 )
+from .job_evidence_indexes import validate_job_evidence_indexes_in_payload
 from .profile_evidence_canonicalisation import (
     canonicalize_profile_evidence_refs_in_payload,
 )
@@ -81,7 +82,7 @@ class OpenAIAssessor:
         profile: CareerProfile,
     ) -> OpportunityAssessmentPayload:
         catalogue = _profile_reference_tokens(profile)
-        text_format = catalogue_constrained_extraction_type(catalogue)
+        text_format = request_constrained_extraction_type(catalogue, job_analysis)
         try:
             response = self._client.responses.parse(
                 model=self._model,
@@ -104,7 +105,9 @@ class OpenAIAssessor:
         if parsed is None:
             raise OpportunityAssessmentError("OpenAI returned an empty structured assessment response")
 
-        extraction = _coerce_extraction(parsed, catalogue=catalogue)
+        extraction = _coerce_extraction(
+            parsed, catalogue=catalogue, job_analysis=job_analysis
+        )
         return extraction.model_dump(mode="python")
 
 
@@ -409,6 +412,7 @@ def _coerce_extraction(
     parsed: object,
     *,
     catalogue: list[str] | None = None,
+    job_analysis: JobAnalysis | None = None,
 ) -> OpportunityAssessmentExtraction:
     allowed = catalogue or []
     if isinstance(parsed, OpportunityAssessmentExtraction):
@@ -424,6 +428,20 @@ def _coerce_extraction(
                 [
                     ErrorDetail(
                         loc=("profile_evidence", "ref"),
+                        msg=str(error),
+                        type="value_error",
+                    )
+                ]
+            ) from error
+
+    if job_analysis is not None:
+        try:
+            payload = validate_job_evidence_indexes_in_payload(payload, job_analysis)
+        except ValueError as error:
+            raise OpportunityAssessmentValidationError(
+                [
+                    ErrorDetail(
+                        loc=("job_evidence", "item_index"),
                         msg=str(error),
                         type="value_error",
                     )
