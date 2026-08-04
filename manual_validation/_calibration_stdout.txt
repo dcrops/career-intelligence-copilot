@@ -1,0 +1,551 @@
+﻿Preferred strategy calibration review
+outputs root: C:\Users\dcropper\Projects\AI_Projects\career-intelligence-copilot\manual_validation\outputs
+live prefer:  C:\Users\dcropper\Projects\AI_Projects\career-intelligence-copilot\manual_validation\outputs\live
+
+========================================================================
+stem=014  source=live  file=014_anton_ai_automation_engineer.json
+  company=Anton Murray Consulting  title=AI Automation Engineer
+  tier=silver  posture=consider  effort=minimal  role_family=ai_engineering
+  technical_fit: mixed | Candidate demonstrates relevant technical skills but lacks commercially produced AI experience essential for the role.
+  commercial_fit: mixed | Job clear on commercial AI delivery experience, but candidate's profile primarily reflects individual projects rather than established commΓÇª
+  portfolio_fit: weak | Independent projects reflect potential but do not align fully with the commercial AI responsibilities stated in the job.
+  commercial_fit detail: judgment=mixed
+    summary: Job clear on commercial AI delivery experience, but candidate's profile primarily reflects individual projects rather than established commΓÇª
+    findings (2):
+      - kind=gap | The profile does not contain direct evidence of commercial success in AI deployΓÇª
+      - kind=uncertainty | Compensation expectations are unclear due to absence of stated salary requiremeΓÇª
+    note mentions: commercial ai, independent
+  technical_fit detail: judgment=mixed
+    summary: Candidate demonstrates relevant technical skills but lacks commercially produced AI experience essential for the role.
+    findings (2):
+      - kind=gap | The role requires proven commercial experience in deploying AI models, which isΓÇª
+      - kind=partial_alignment | Profile exhibits strong proficiency in Python and SQL, but key tools such as GeΓÇª
+    note mentions: ai
+  portfolio_match ranked (5):
+    #1 governance-document-rag: Project 'governance-document-rag' ranked on 1 required technology hit(s), 1 preferred technology hiΓÇª factors=[required_technology, preferred_technology, demonstrates_overlap, responsibility_overlap, demonstrates_overlap, responsibility_overlap, ΓÇª+4]
+    #2 operational-intelligence-copilot: Project 'operational-intelligence-copilot' ranked on 1 required technology hit(s), 6 demonstrates oΓÇª factors=[required_technology, demonstrates_overlap, demonstrates_overlap, responsibility_overlap, demonstrates_overlap, responsibility_overlap, ΓÇª+5]
+    #3 payroll-diagnostics-engine: Project 'payroll-diagnostics-engine' ranked on 1 required technology hit(s), 1 demonstrates overlapΓÇª factors=[required_technology, responsibility_overlap, responsibility_overlap, demonstrates_overlap, responsibility_overlap, responsibility_overlap]
+    #4 public-holiday-entitlements: Project 'public-holiday-entitlements' ranked on 1 required technology hit(s), 1 demonstrates overlaΓÇª factors=[required_technology, responsibility_overlap, demonstrates_overlap, responsibility_overlap]
+    #5 career-intelligence-copilot: Project 'career-intelligence-copilot' ranked on 1 required technology hit(s), 4 responsibility overΓÇª factors=[required_technology, responsibility_overlap, responsibility_overlap, responsibility_overlap, responsibility_overlap]
+  strategy.next_actions kinds: ['consider_reviewing_compensation', 'consider_reviewing_location_or_arrangement', 'consider_emphasising_portfolio_projects', 'consider_owner_review']
+  strategy.portfolio_emphasis project_ids: ['governance-document-rag', 'operational-intelligence-copilot', 'payroll-diagnostics-engine']
+
+========================================================================
+stem=015  source=live  file=015_expedient_software_junior_full_stack_developer.json
+  company=Expedient Software  title=Graduate / Junior Full Stack Developer (AI & Agile)
+  tier=silver  posture=consider  effort=minimal  role_family=software_engineering
+  technical_fit: mixed | The candidate possesses relevant technical skills and independent project experience, but lacks direct commercial software development expeΓÇª
+  commercial_fit: weak | The candidate's profile lacks clear evidence of necessary commercial production experience, particularly in AI applications.
+  portfolio_fit: mixed | The candidate has engaged in several independent projects relevant to software development but lacks formal portfolio projects showcasing cΓÇª
+  commercial_fit detail: judgment=weak
+    summary: The candidate's profile lacks clear evidence of necessary commercial production experience, particularly in AI applications.
+    findings (2):
+      - kind=gap | Positions require commercial experience in developing and deploying AI tools whΓÇª
+      - kind=uncertainty | Compensation is unstated which may affect candidate's acceptance of potential oΓÇª
+    note mentions: independent
+  technical_fit detail: judgment=mixed
+    summary: The candidate possesses relevant technical skills and independent project experience, but lacks direct commercial software development expeΓÇª
+    findings (2):
+      - kind=partial_alignment | Candidates' independent engineering projects align with the required technical ΓÇª
+      - kind=gap | Lacks formal commercial software development experience in a full-time employmeΓÇª
+    note mentions: ai
+  portfolio_match ranked (5):
+    #1 career-intelligence-copilot: Project 'career-intelligence-copilot' ranked on 1 preferred technology hit(s), 1 demonstrates overlΓÇª factors=[preferred_technology, responsibility_overlap, demonstrates_overlap, responsibility_overlap, responsibility_overlap, responsibility_overlap]
+    #2 operational-intelligence-copilot: Project 'operational-intelligence-copilot' ranked on 1 preferred technology hit(s), 1 demonstrates ΓÇª factors=[preferred_technology, responsibility_overlap, demonstrates_overlap, responsibility_overlap, responsibility_overlap]
+    #3 governance-document-rag: Project 'governance-document-rag' ranked on 1 preferred technology hit(s), 1 demonstrates overlap(sΓÇª factors=[preferred_technology, demonstrates_overlap, responsibility_overlap]
+    #4 public-holiday-entitlements: Project 'public-holiday-entitlements' ranked on 1 preferred technology hit(s), 1 demonstrates overlΓÇª factors=[preferred_technology, demonstrates_overlap]
+    #5 payroll-diagnostics-engine: Project 'payroll-diagnostics-engine' ranked on 1 preferred technology hit(s), 3 responsibility overΓÇª factors=[preferred_technology, responsibility_overlap, responsibility_overlap, responsibility_overlap]
+  strategy.next_actions kinds: ['consider_reviewing_compensation', 'consider_emphasising_portfolio_projects', 'consider_owner_review']
+  strategy.portfolio_emphasis project_ids: ['career-intelligence-copilot', 'operational-intelligence-copilot', 'governance-document-rag']
+
+========================================================================
+stem=017  source=live  file=017_mars_recruitment_AI_Engineer.json
+  company=Mars Recruitment  title=AI Engineer
+  tier=silver  posture=consider  effort=minimal  role_family=ai_engineering
+  technical_fit: strong | Candidate demonstrates strong technical capabilities through relevant experience and skills in AI engineering and application development.
+  commercial_fit: weak | Material gaps in commercial experience against the requirements for proven deliverables in commercial AI production settings.
+  portfolio_fit: strong | Significant portfolio evidence shows capability in delivering AI solutions and engineering practices relevant to the role.
+  commercial_fit detail: judgment=weak
+    summary: Material gaps in commercial experience against the requirements for proven deliverables in commercial AI production settings.
+    findings (1):
+      - kind=gap | Role requires commercial experience in delivering AI-enabled applications, not ΓÇª
+    note mentions: commercial ai, independent
+  technical_fit detail: judgment=strong
+    summary: Candidate demonstrates strong technical capabilities through relevant experience and skills in AI engineering and application development.
+    findings (2):
+      - kind=alignment | Profile aligns well with the technical requirements for developing production-rΓÇª
+      - kind=partial_alignment | While the candidate shows alignment with technical skills, seniority remains unΓÇª
+    note mentions: ai
+  portfolio_match ranked (5):
+    #1 public-holiday-entitlements: Project 'public-holiday-entitlements' ranked on 2 required technology hit(s), 1 preferred technologΓÇª factors=[required_technology, required_technology, preferred_technology, demonstrates_overlap, responsibility_overlap, responsibility_overlap, ΓÇª+1]
+    #2 governance-document-rag: Project 'governance-document-rag' ranked on 1 required technology hit(s), 3 preferred technology hiΓÇª factors=[required_technology, preferred_technology, preferred_technology, preferred_technology, demonstrates_overlap, responsibility_overlap, ΓÇª+8]
+    #3 operational-intelligence-copilot: Project 'operational-intelligence-copilot' ranked on 1 required technology hit(s), 2 preferred techΓÇª factors=[required_technology, preferred_technology, preferred_technology, demonstrates_overlap, responsibility_overlap, demonstrates_overlap, ΓÇª+7]
+    #4 payroll-diagnostics-engine: Project 'payroll-diagnostics-engine' ranked on 1 required technology hit(s), 1 preferred technologyΓÇª factors=[required_technology, preferred_technology, responsibility_overlap, demonstrates_overlap, responsibility_overlap, responsibility_overlap, ΓÇª+4]
+    #5 career-intelligence-copilot: Project 'career-intelligence-copilot' ranked on 1 required technology hit(s), 1 preferred technologΓÇª factors=[required_technology, preferred_technology, responsibility_overlap, responsibility_overlap, demonstrates_overlap, responsibility_overlap, ΓÇª+3]
+  strategy.next_actions kinds: ['consider_emphasising_portfolio_projects', 'consider_owner_review']
+  strategy.portfolio_emphasis project_ids: ['public-holiday-entitlements', 'governance-document-rag', 'operational-intelligence-copilot']
+
+========================================================================
+stem=013  source=live  file=013_pay_com_au_ai_automation_engineer.json
+  company=pay.com.au  title=AI Automation Engineer
+  tier=silver  posture=consider  effort=minimal  role_family=ai_engineering
+  technical_fit: mixed | While the profile demonstrates technical skills relevant to AI engineering, gaps in required automation project experience may hinder alignΓÇª
+  commercial_fit: unknown | Compensation details are unstated, leading to uncertainty in fit regarding financial expectations.
+  portfolio_fit: mixed | The candidate's projects show capabilities that align reasonably with the role requirements, but some elements remain unaddressed.
+  commercial_fit detail: judgment=unknown
+    summary: Compensation details are unstated, leading to uncertainty in fit regarding financial expectations.
+    findings (1):
+      - kind=uncertainty | The job posting does not specify a salary or compensation range.
+    note mentions: (none of watched terms)
+  technical_fit detail: judgment=mixed
+    summary: While the profile demonstrates technical skills relevant to AI engineering, gaps in required automation project experience may hinder alignΓÇª
+    findings (1):
+      - kind=partial_alignment | The profile shows experience in AI projects but lacks extensive engagement in aΓÇª
+    note mentions: ai
+  portfolio_match ranked (5):
+    #1 governance-document-rag: Project 'governance-document-rag' ranked on 1 required technology hit(s), 3 demonstrates overlap(s)ΓÇª factors=[required_technology, demonstrates_overlap, responsibility_overlap, demonstrates_overlap, responsibility_overlap, demonstrates_overlap, ΓÇª+1]
+    #2 operational-intelligence-copilot: Project 'operational-intelligence-copilot' ranked on 1 required technology hit(s), 3 demonstrates oΓÇª factors=[required_technology, demonstrates_overlap, responsibility_overlap, demonstrates_overlap, responsibility_overlap, demonstrates_overlap, ΓÇª+1]
+    #3 career-intelligence-copilot: Project 'career-intelligence-copilot' ranked on 1 required technology hit(s), 1 demonstrates overlaΓÇª factors=[required_technology, responsibility_overlap, demonstrates_overlap, responsibility_overlap, responsibility_overlap, responsibility_overlap]
+    #4 payroll-diagnostics-engine: Project 'payroll-diagnostics-engine' ranked on 1 required technology hit(s), 1 responsibility overlΓÇª factors=[required_technology, responsibility_overlap]
+    #5 public-holiday-entitlements: Project 'public-holiday-entitlements' ranked on 1 required technology hit(s). factors=[required_technology]
+  strategy.next_actions kinds: ['consider_reviewing_compensation', 'consider_emphasising_portfolio_projects', 'consider_owner_review']
+  strategy.portfolio_emphasis project_ids: ['governance-document-rag', 'operational-intelligence-copilot', 'career-intelligence-copilot']
+
+========================================================================
+stem=001  source=outputs  file=001_strong_ai_engineer.json
+  company=Allura Partners  title=AI Engineer
+  tier=silver  posture=consider  effort=minimal  role_family=ai_engineering
+  technical_fit: mixed | Candidate has strong technical skills in Python and related technologies, but lacks documented commercial production experience with LLM apΓÇª
+  commercial_fit: mixed | Candidate's preferences align with the compensation stated, but there is uncertainty regarding commercial production experience in AI appliΓÇª
+  portfolio_fit: mixed | Candidate has relevant projects demonstrating AI engineering capabilities, yet they do not directly align with commercial production requirΓÇª
+  commercial_fit detail: judgment=mixed
+    summary: Candidate's preferences align with the compensation stated, but there is uncertainty regarding commercial production experience in AI appliΓÇª
+    findings (2):
+      - kind=uncertainty | The candidate's compensation expectations are not explicitly stated in the profΓÇª
+      - kind=gap | Proven commercial production AI experience is not evidenced in the profile, whiΓÇª
+    note mentions: independent
+  technical_fit detail: judgment=mixed
+    summary: Candidate has strong technical skills in Python and related technologies, but lacks documented commercial production experience with LLM apΓÇª
+    findings (2):
+      - kind=gap | Role requires experience shipping LLM powered applications in a real productionΓÇª
+      - kind=partial_alignment | Profile includes independent AI engineering projects, but lacks direct commerciΓÇª
+    note mentions: ai, llm
+  portfolio_match ranked (5):
+    #1 public-holiday-entitlements: Project 'public-holiday-entitlements' ranked on 2 required technology hit(s), 2 demonstrates overlaΓÇª factors=[required_technology, required_technology, demonstrates_overlap, demonstrates_overlap, responsibility_overlap]
+    #2 governance-document-rag: Project 'governance-document-rag' ranked on 1 required technology hit(s), 4 demonstrates overlap(s)ΓÇª factors=[required_technology, demonstrates_overlap, responsibility_overlap, demonstrates_overlap, responsibility_overlap, demonstrates_overlap, ΓÇª+3]
+    #3 operational-intelligence-copilot: Project 'operational-intelligence-copilot' ranked on 1 required technology hit(s), 3 demonstrates oΓÇª factors=[required_technology, demonstrates_overlap, responsibility_overlap, demonstrates_overlap, responsibility_overlap, responsibility_overlap, ΓÇª+2]
+    #4 career-intelligence-copilot: Project 'career-intelligence-copilot' ranked on 1 required technology hit(s), 1 demonstrates overlaΓÇª factors=[required_technology, responsibility_overlap, responsibility_overlap, demonstrates_overlap, responsibility_overlap, responsibility_overlap, ΓÇª+1]
+    #5 payroll-diagnostics-engine: Project 'payroll-diagnostics-engine' ranked on 1 required technology hit(s), 1 demonstrates overlapΓÇª factors=[required_technology, responsibility_overlap, demonstrates_overlap, responsibility_overlap]
+  strategy.next_actions kinds: ['consider_emphasising_portfolio_projects', 'consider_owner_review']
+  strategy.portfolio_emphasis project_ids: ['public-holiday-entitlements', 'governance-document-rag', 'operational-intelligence-copilot']
+
+========================================================================
+stem=002_bluefin  source=outputs  file=002_bluefin_ai_systems_developer.json
+  company=Bluefin Resources Pty Limited  title=AI Systems Developer
+  tier=platinum  posture=prioritise  effort=full  role_family=ai_engineering
+  technical_fit: strong | The candidate has relevant experience and skills in AI Engineering, including production systems and the required technologies.
+  commercial_fit: moderate | The candidate's clarity regarding compensation is ambiguous, and their preference aligns with the job's hybrid work arrangement.
+  portfolio_fit: strong | The candidate's projects in AI Engineering demonstrate relevant capabilities and approaches that align with the role.
+  commercial_fit detail: judgment=moderate
+    summary: The candidate's clarity regarding compensation is ambiguous, and their preference aligns with the job's hybrid work arrangement.
+    findings (2):
+      - kind=uncertainty | The candidate's salary expectation is not clearly defined, while the job offersΓÇª
+      - kind=alignment | The candidate prefers a flexible work arrangement, which aligns with the job's ΓÇª
+    note mentions: (none of watched terms)
+  technical_fit detail: judgment=strong
+    summary: The candidate has relevant experience and skills in AI Engineering, including production systems and the required technologies.
+    findings (3):
+      - kind=alignment | The candidate has hands-on experience with LLM applications and related technolΓÇª
+      - kind=alignment | The candidate possesses strong AWS experience, which aligns with the job requirΓÇª
+      - kind=gap | The role requires experience operating production systems at scale, which is noΓÇª
+    note mentions: ai, llm
+  portfolio_match ranked (4):
+    #1 operational-intelligence-copilot: Project 'operational-intelligence-copilot' ranked on 6 demonstrates overlap(s), 4 responsibility ovΓÇª factors=[demonstrates_overlap, demonstrates_overlap, demonstrates_overlap, responsibility_overlap, responsibility_overlap, demonstrates_overlap, ΓÇª+4]
+    #2 governance-document-rag: Project 'governance-document-rag' ranked on 1 demonstrates overlap(s), 6 responsibility overlap(s). factors=[responsibility_overlap, responsibility_overlap, demonstrates_overlap, responsibility_overlap, responsibility_overlap, responsibility_overlap, ΓÇª+1]
+    #3 payroll-diagnostics-engine: Project 'payroll-diagnostics-engine' ranked on 2 responsibility overlap(s). factors=[responsibility_overlap, responsibility_overlap]
+    #4 public-holiday-entitlements: Project 'public-holiday-entitlements' ranked on 1 responsibility overlap(s). factors=[responsibility_overlap]
+  strategy.next_actions kinds: ['consider_verifying_working_rights', 'consider_reviewing_compensation', 'consider_emphasising_portfolio_projects', 'consider_cv_tailoring', 'consider_cover_letter']
+  strategy.portfolio_emphasis project_ids: ['operational-intelligence-copilot', 'governance-document-rag', 'payroll-diagnostics-engine']
+
+========================================================================
+stem=004  source=outputs  file=004_associate_ai_product_manager.json
+  company=SEEK Limited  title=Associate AI Product Manager
+  tier=silver  posture=consider  effort=minimal  role_family=ai_adjacent
+  technical_fit: mixed | The profile shows relevant AI and data science skills, but lacks explicit AI product management experience and demonstrated success in drivΓÇª
+  commercial_fit: mixed | The compensation is unstated, which raises uncertainties regarding alignment with the candidate's expectations. Additionally, there is insuΓÇª
+  portfolio_fit: mixed | The profile includes significant project work in AI but lacks direct application in a commercial environment, which is crucial for the role.
+  commercial_fit detail: judgment=mixed
+    summary: The compensation is unstated, which raises uncertainties regarding alignment with the candidate's expectations. Additionally, there is insuΓÇª
+    findings (2):
+      - kind=uncertainty | Compensation details are unstated, creating uncertainty in alignment with the cΓÇª
+      - kind=gap | The role necessitates experience in driving AI products to market, which is misΓÇª
+    note mentions: commercial ai
+  technical_fit detail: judgment=mixed
+    summary: The profile shows relevant AI and data science skills, but lacks explicit AI product management experience and demonstrated success in drivΓÇª
+    findings (2):
+      - kind=gap | The role requires proven AI product management experience which is not evidenceΓÇª
+      - kind=partial_alignment | Profile demonstrates relevant AI development projects but lacks clear AI producΓÇª
+    note mentions: ai
+  portfolio_match ranked (5):
+    #1 career-intelligence-copilot: Project 'career-intelligence-copilot' ranked on 1 required technology hit(s), 1 demonstrates overlaΓÇª factors=[required_technology, responsibility_overlap, demonstrates_overlap, responsibility_overlap, responsibility_overlap, responsibility_overlap]
+    #2 governance-document-rag: Project 'governance-document-rag' ranked on 1 required technology hit(s), 1 responsibility overlap(ΓÇª factors=[required_technology, responsibility_overlap]
+    #3 operational-intelligence-copilot: Project 'operational-intelligence-copilot' ranked on 1 required technology hit(s). factors=[required_technology]
+    #4 payroll-diagnostics-engine: Project 'payroll-diagnostics-engine' ranked on 1 responsibility overlap(s). factors=[responsibility_overlap]
+    #5 public-holiday-entitlements: Project 'public-holiday-entitlements' ranked on 1 responsibility overlap(s). factors=[responsibility_overlap]
+  strategy.next_actions kinds: ['consider_verifying_working_rights', 'consider_reviewing_compensation', 'consider_emphasising_portfolio_projects', 'consider_owner_review']
+  strategy.portfolio_emphasis project_ids: ['career-intelligence-copilot', 'governance-document-rag', 'operational-intelligence-copilot']
+
+========================================================================
+stem=006  source=outputs  file=006_senior_ai_engineer_kogan.json
+  company=Kogan.com  title=Senior AI Engineer
+  tier=silver  posture=consider  effort=minimal  role_family=ai_engineering
+  technical_fit: mixed | Candidate has relevant skills and recent experience in AI engineering but lacks specific experience with key technologies and responsibilitΓÇª
+  commercial_fit: mixed | Candidate's work arrangement preferences and uncertainty about compensation clarity complicate full commercial alignment.
+  portfolio_fit: mixed | Candidate demonstrates relevant project experience but lacks specific links to commercial AI production requirements.
+  commercial_fit detail: judgment=mixed
+    summary: Candidate's work arrangement preferences and uncertainty about compensation clarity complicate full commercial alignment.
+    findings (2):
+      - kind=uncertainty | Unclear compensation could impact acceptance if offered.
+      - kind=gap | Profile lacks specific commercial production AI experience needed for the role.
+    note mentions: commercial ai
+  technical_fit detail: judgment=mixed
+    summary: Candidate has relevant skills and recent experience in AI engineering but lacks specific experience with key technologies and responsibilitΓÇª
+    findings (2):
+      - kind=partial_alignment | Profile shows experience in Python and Docker, yet lacks production experience ΓÇª
+      - kind=gap | Required technologies OpenClaw, OpenHands, and LangGraph not evidenced in candiΓÇª
+    note mentions: ai
+  portfolio_match ranked (4):
+    #1 governance-document-rag: Project 'governance-document-rag' ranked on 1 required technology hit(s), 4 demonstrates overlap(s)ΓÇª factors=[required_technology, demonstrates_overlap, demonstrates_overlap, responsibility_overlap, demonstrates_overlap, responsibility_overlap, ΓÇª+2]
+    #2 operational-intelligence-copilot: Project 'operational-intelligence-copilot' ranked on 5 demonstrates overlap(s), 3 responsibility ovΓÇª factors=[demonstrates_overlap, demonstrates_overlap, responsibility_overlap, demonstrates_overlap, responsibility_overlap, demonstrates_overlap, ΓÇª+2]
+    #3 career-intelligence-copilot: Project 'career-intelligence-copilot' ranked on 1 demonstrates overlap(s), 5 responsibility overlapΓÇª factors=[responsibility_overlap, responsibility_overlap, responsibility_overlap, demonstrates_overlap, responsibility_overlap, responsibility_overlap]
+    #4 payroll-diagnostics-engine: Project 'payroll-diagnostics-engine' ranked on 1 responsibility overlap(s). factors=[responsibility_overlap]
+  strategy.next_actions kinds: ['consider_reviewing_compensation', 'consider_reviewing_seniority_expectations', 'consider_emphasising_portfolio_projects', 'consider_owner_review']
+  strategy.portfolio_emphasis project_ids: ['governance-document-rag', 'operational-intelligence-copilot', 'career-intelligence-copilot']
+
+========================================================================
+stem=008  source=outputs  file=008_repurpose_it_ai_adoption_specialist.json
+  company=Repurpose It  title=AI Adoption Specialist
+  tier=silver  posture=consider  effort=minimal  role_family=ai_adjacent
+  technical_fit: mixed | The candidate demonstrates familiarity with AI tools, but lacks explicit commercial experience with the required technology stack in a fullΓÇª
+  commercial_fit: mixed | While the candidate is willing to work full-time and is suitable for onsite arrangements, compensation expectations remain unclear and may ΓÇª
+  portfolio_fit: mixed | The candidate has relevant projects and responsibilities which align with the job requirements, but lacks significant commercial experienceΓÇª
+  commercial_fit detail: judgment=mixed
+    summary: While the candidate is willing to work full-time and is suitable for onsite arrangements, compensation expectations remain unclear and may ΓÇª
+    findings (1):
+      - kind=uncertainty | Compensation clarity is unattainable due to unspecified salary expectations froΓÇª
+    note mentions: (none of watched terms)
+  technical_fit detail: judgment=mixed
+    summary: The candidate demonstrates familiarity with AI tools, but lacks explicit commercial experience with the required technology stack in a fullΓÇª
+    findings (2):
+      - kind=partial_alignment | Profile showcases hands-on experience with various AI technologies but lacks coΓÇª
+      - kind=gap | Industry experience with AI tool applications in a corporate setting is not eviΓÇª
+    note mentions: ai
+  portfolio_match ranked (5):
+    #1 governance-document-rag: Project 'governance-document-rag' ranked on 3 demonstrates overlap(s), 3 responsibility overlap(s). factors=[demonstrates_overlap, responsibility_overlap, demonstrates_overlap, responsibility_overlap, demonstrates_overlap, responsibility_overlap]
+    #2 operational-intelligence-copilot: Project 'operational-intelligence-copilot' ranked on 3 demonstrates overlap(s), 3 responsibility ovΓÇª factors=[demonstrates_overlap, responsibility_overlap, demonstrates_overlap, responsibility_overlap, demonstrates_overlap, responsibility_overlap]
+    #3 public-holiday-entitlements: Project 'public-holiday-entitlements' ranked on 1 demonstrates overlap(s). factors=[demonstrates_overlap]
+    #4 career-intelligence-copilot: Project 'career-intelligence-copilot' ranked on 4 responsibility overlap(s). factors=[responsibility_overlap, responsibility_overlap, responsibility_overlap, responsibility_overlap]
+    #5 payroll-diagnostics-engine: Project 'payroll-diagnostics-engine' ranked on 2 responsibility overlap(s). factors=[responsibility_overlap, responsibility_overlap]
+  strategy.next_actions kinds: ['consider_verifying_working_rights', 'consider_reviewing_compensation', 'consider_emphasising_portfolio_projects', 'consider_owner_review']
+  strategy.portfolio_emphasis project_ids: ['governance-document-rag', 'operational-intelligence-copilot', 'public-holiday-entitlements']
+
+========================================================================
+stem=009  source=outputs  file=009_forever_new_senior_ai_automation_engineer_digital.json
+  company=Forever New Clothing  title=Senior AI Automation Engineer ΓÇô Digital
+  tier=silver  posture=consider  effort=minimal  role_family=ai_engineering
+  technical_fit: mixed | The candidate demonstrates strong technical skills but lacks proven commercial experience in the retail sector, which is critical for the rΓÇª
+  commercial_fit: mixed | The candidate has flexibility regarding employment types and location but lacks clarity regarding compensation expectations.
+  portfolio_fit: mixed | The candidate has relevant project experience but lacks formal commercial production in retail-focused applications.
+  commercial_fit detail: judgment=mixed
+    summary: The candidate has flexibility regarding employment types and location but lacks clarity regarding compensation expectations.
+    findings (2):
+      - kind=uncertainty | Compensation details are stated as 'Generous Salary' but lack specific figures.
+      - kind=alignment | The candidate prefers full-time employment in Melbourne, which is consistent wiΓÇª
+    note mentions: employment
+  technical_fit detail: judgment=mixed
+    summary: The candidate demonstrates strong technical skills but lacks proven commercial experience in the retail sector, which is critical for the rΓÇª
+    findings (2):
+      - kind=gap | 3+ years of experience in the retail or related industry is required, but the cΓÇª
+      - kind=alignment | The candidate's technical skills align well with key technologies required for ΓÇª
+    note mentions: ai
+  portfolio_match ranked (5):
+    #1 operational-intelligence-copilot: Project 'operational-intelligence-copilot' ranked on 1 required technology hit(s), 5 demonstrates oΓÇª factors=[required_technology, demonstrates_overlap, responsibility_overlap, responsibility_overlap, demonstrates_overlap, responsibility_overlap, ΓÇª+6]
+    #2 governance-document-rag: Project 'governance-document-rag' ranked on 1 required technology hit(s), 5 demonstrates overlap(s)ΓÇª factors=[required_technology, demonstrates_overlap, responsibility_overlap, demonstrates_overlap, responsibility_overlap, demonstrates_overlap, ΓÇª+5]
+    #3 public-holiday-entitlements: Project 'public-holiday-entitlements' ranked on 1 required technology hit(s), 2 demonstrates overlaΓÇª factors=[required_technology, demonstrates_overlap, demonstrates_overlap]
+    #4 career-intelligence-copilot: Project 'career-intelligence-copilot' ranked on 1 required technology hit(s), 6 responsibility overΓÇª factors=[required_technology, responsibility_overlap, responsibility_overlap, responsibility_overlap, responsibility_overlap, responsibility_overlap, ΓÇª+1]
+    #5 payroll-diagnostics-engine: Project 'payroll-diagnostics-engine' ranked on 1 required technology hit(s), 2 responsibility overlΓÇª factors=[required_technology, responsibility_overlap, responsibility_overlap]
+  strategy.next_actions kinds: ['consider_reviewing_seniority_expectations', 'consider_emphasising_portfolio_projects', 'consider_owner_review']
+  strategy.portfolio_emphasis project_ids: ['operational-intelligence-copilot', 'governance-document-rag', 'public-holiday-entitlements']
+
+========================================================================
+stem=010  source=outputs  file=010_pisell_ai_quality_systems_reliability_engineer.json
+  company=Pisell  title=AI Quality & Systems Reliability Engineer
+  tier=silver  posture=consider  effort=minimal  role_family=software_engineering
+  technical_fit: mixed | The candidate shows a solid technical background in software engineering and AI, but lacks the required five years of direct software testiΓÇª
+  commercial_fit: mixed | Profile indicates a flexible salary preference, but lacks a clearly defined minimum salary, creating uncertainty about alignment with the rΓÇª
+  portfolio_fit: strong | The candidate has relevant projects that demonstrate their capabilities in AI testing and quality engineering, thereby aligning well with tΓÇª
+  commercial_fit detail: judgment=mixed
+    summary: Profile indicates a flexible salary preference, but lacks a clearly defined minimum salary, creating uncertainty about alignment with the rΓÇª
+    findings (1):
+      - kind=uncertainty | Candidate's minimum expected salary is unstated; the stated compensation for thΓÇª
+    note mentions: (none of watched terms)
+  technical_fit detail: judgment=mixed
+    summary: The candidate shows a solid technical background in software engineering and AI, but lacks the required five years of direct software testiΓÇª
+    findings (2):
+      - kind=gap | Role requires at least five years of experience in software testing, quality enΓÇª
+      - kind=partial_alignment | The candidate has extensive skills in Python and test automation, but lacks theΓÇª
+    note mentions: ai
+  portfolio_match ranked (5):
+    #1 governance-document-rag: Project 'governance-document-rag' ranked on 1 required technology hit(s), 2 demonstrates overlap(s)ΓÇª factors=[required_technology, demonstrates_overlap, responsibility_overlap, demonstrates_overlap, responsibility_overlap]
+    #2 operational-intelligence-copilot: Project 'operational-intelligence-copilot' ranked on 1 required technology hit(s), 2 demonstrates oΓÇª factors=[required_technology, demonstrates_overlap, responsibility_overlap, demonstrates_overlap, responsibility_overlap]
+    #3 career-intelligence-copilot: Project 'career-intelligence-copilot' ranked on 1 required technology hit(s), 1 demonstrates overlaΓÇª factors=[required_technology, responsibility_overlap, demonstrates_overlap, responsibility_overlap, responsibility_overlap]
+    #4 payroll-diagnostics-engine: Project 'payroll-diagnostics-engine' ranked on 1 required technology hit(s), 1 demonstrates overlapΓÇª factors=[required_technology, responsibility_overlap, demonstrates_overlap, responsibility_overlap]
+    #5 public-holiday-entitlements: Project 'public-holiday-entitlements' ranked on 1 required technology hit(s). factors=[required_technology]
+  strategy.next_actions kinds: ['consider_verifying_working_rights', 'consider_emphasising_portfolio_projects', 'consider_owner_review']
+  strategy.portfolio_emphasis project_ids: ['governance-document-rag', 'operational-intelligence-copilot', 'career-intelligence-copilot']
+
+========================================================================
+stem=011  source=outputs  file=011_officeworks_ai_engineer.json
+  company=Officeworks  title=AI Engineer
+  tier=silver  posture=consider  effort=minimal  role_family=ai_engineering
+  technical_fit: mixed | Candidate has strong skills in Python and relevant technologies but lacks the required 5+ years of professional experience in commercial seΓÇª
+  commercial_fit: mixed | Compensation details are unstated, and there is no clear alignment in the expected engagement type, complicating fit evaluation for commercΓÇª
+  portfolio_fit: strong | The profile includes several projects in AI development that align well with the requirements of the role, supporting the candidate's potenΓÇª
+  commercial_fit detail: judgment=mixed
+    summary: Compensation details are unstated, and there is no clear alignment in the expected engagement type, complicating fit evaluation for commercΓÇª
+    findings (2):
+      - kind=gap | The role stipulates full-time engagement whereas the current engagement type isΓÇª
+      - kind=uncertainty | Compensation is unstated, making it unclear if the role's salary aligns with caΓÇª
+    note mentions: (none of watched terms)
+  technical_fit detail: judgment=mixed
+    summary: Candidate has strong skills in Python and relevant technologies but lacks the required 5+ years of professional experience in commercial seΓÇª
+    findings (2):
+      - kind=gap | Role requires 5+ years of professional (commercial) software engineering experiΓÇª
+      - kind=partial_alignment | Profile shows strong technical skills in Python, FastAPI, and relevant frameworΓÇª
+    note mentions: (none of watched terms)
+  portfolio_match ranked (4):
+    #1 operational-intelligence-copilot: Project 'operational-intelligence-copilot' ranked on 1 required technology hit(s), 5 demonstrates oΓÇª factors=[required_technology, demonstrates_overlap, responsibility_overlap, demonstrates_overlap, responsibility_overlap, demonstrates_overlap, ΓÇª+3]
+    #2 governance-document-rag: Project 'governance-document-rag' ranked on 1 required technology hit(s), 1 demonstrates overlap(s)ΓÇª factors=[required_technology, responsibility_overlap, responsibility_overlap, demonstrates_overlap, responsibility_overlap, responsibility_overlap, ΓÇª+1]
+    #3 public-holiday-entitlements: Project 'public-holiday-entitlements' ranked on 1 required technology hit(s), 1 demonstrates overlaΓÇª factors=[required_technology, responsibility_overlap, demonstrates_overlap, responsibility_overlap]
+    #4 payroll-diagnostics-engine: Project 'payroll-diagnostics-engine' ranked on 1 required technology hit(s), 2 responsibility overlΓÇª factors=[required_technology, responsibility_overlap, responsibility_overlap]
+  strategy.next_actions kinds: ['consider_reviewing_compensation', 'consider_emphasising_portfolio_projects', 'consider_owner_review']
+  strategy.portfolio_emphasis project_ids: ['operational-intelligence-copilot', 'governance-document-rag', 'public-holiday-entitlements']
+
+========================================================================
+stem=012  source=outputs  file=012_maincode_ai_infrastructure_engineer.json
+  company=Maincode  title=AI Infrastructure Engineer
+  tier=silver  posture=consider  effort=minimal  role_family=ai_engineering
+  technical_fit: mixed | Profile demonstrates relevant experience with Python and AI systems but lacks direct hands-on experience with large-scale GPU infrastructurΓÇª
+  commercial_fit: mixed | The compensation details are unstated, and while the location aligns with the preference, there may be ambiguities regarding employment typΓÇª
+  portfolio_fit: weak | The profile includes relevant independent projects, but they do not demonstrate direct experience in large-scale AI infrastructure operatioΓÇª
+  commercial_fit detail: judgment=mixed
+    summary: The compensation details are unstated, and while the location aligns with the preference, there may be ambiguities regarding employment typΓÇª
+    findings (2):
+      - kind=uncertainty | Compensation is unstated and creates uncertainty regarding the suitability for ΓÇª
+      - kind=uncertainty | The job requires an onsite work arrangement whereas the profile mentions flexibΓÇª
+    note mentions: employment
+  technical_fit detail: judgment=mixed
+    summary: Profile demonstrates relevant experience with Python and AI systems but lacks direct hands-on experience with large-scale GPU infrastructurΓÇª
+    findings (2):
+      - kind=gap | Job requires hands-on experience working close to the metal with computational ΓÇª
+      - kind=gap | Role requires GPU knowledge not supported by the profile.
+    note mentions: ai
+  portfolio_match ranked (4):
+    #1 operational-intelligence-copilot: Project 'operational-intelligence-copilot' ranked on 3 demonstrates overlap(s), 4 responsibility ovΓÇª factors=[demonstrates_overlap, responsibility_overlap, demonstrates_overlap, responsibility_overlap, demonstrates_overlap, responsibility_overlap, ΓÇª+1]
+    #2 governance-document-rag: Project 'governance-document-rag' ranked on 3 demonstrates overlap(s), 3 responsibility overlap(s). factors=[demonstrates_overlap, responsibility_overlap, demonstrates_overlap, responsibility_overlap, demonstrates_overlap, responsibility_overlap]
+    #3 career-intelligence-copilot: Project 'career-intelligence-copilot' ranked on 1 demonstrates overlap(s), 4 responsibility overlapΓÇª factors=[responsibility_overlap, responsibility_overlap, responsibility_overlap, demonstrates_overlap, responsibility_overlap]
+    #4 payroll-diagnostics-engine: Project 'payroll-diagnostics-engine' ranked on 1 demonstrates overlap(s), 1 responsibility overlap(ΓÇª factors=[demonstrates_overlap, responsibility_overlap]
+  strategy.next_actions kinds: ['consider_reviewing_compensation', 'consider_emphasising_portfolio_projects', 'consider_owner_review']
+  strategy.portfolio_emphasis project_ids: ['operational-intelligence-copilot', 'governance-document-rag', 'career-intelligence-copilot']
+
+========================================================================
+stem=007  source=outputs  file=007_technology_and_automation_lead.json
+  company=Buildlab  title=Technology and Automation Lead
+  tier=bronze  posture=do_not_prioritise  effort=none  role_family=other
+  technical_fit: mixed | Candidate has solid AI engineering skills but lacks specific commercial experience in technology leadership roles required for the position.
+  commercial_fit: mixed | Role requires demonstrated leadership in technology systems which is only partially evidenced in the candidate's profile.
+  portfolio_fit: weak | Limited alignment with required technologies for commercial projects in construction automation.
+  commercial_fit detail: judgment=mixed
+    summary: Role requires demonstrated leadership in technology systems which is only partially evidenced in the candidate's profile.
+    findings (1):
+      - kind=uncertainty | Compensation parameters are clear, but no evidence of applicant's alignment witΓÇª
+    note mentions: (none of watched terms)
+  technical_fit detail: judgment=mixed
+    summary: Candidate has solid AI engineering skills but lacks specific commercial experience in technology leadership roles required for the position.
+    findings (2):
+      - kind=gap | No evidence of managing technology leadership roles despite foundational knowleΓÇª
+      - kind=partial_alignment | Profile demonstrates experience with AI systems and relevant technical skills, ΓÇª
+    note mentions: ai
+  portfolio_match ranked (5):
+    #1 operational-intelligence-copilot: Project 'operational-intelligence-copilot' ranked on 2 demonstrates overlap(s), 4 responsibility ovΓÇª factors=[demonstrates_overlap, demonstrates_overlap, responsibility_overlap, responsibility_overlap, responsibility_overlap, responsibility_overlap]
+    #2 public-holiday-entitlements: Project 'public-holiday-entitlements' ranked on 2 demonstrates overlap(s). factors=[demonstrates_overlap, demonstrates_overlap]
+    #3 career-intelligence-copilot: Project 'career-intelligence-copilot' ranked on 1 demonstrates overlap(s), 2 responsibility overlapΓÇª factors=[demonstrates_overlap, responsibility_overlap, responsibility_overlap]
+    #4 governance-document-rag: Project 'governance-document-rag' ranked on 1 demonstrates overlap(s), 1 responsibility overlap(s). factors=[demonstrates_overlap, responsibility_overlap]
+    #5 payroll-diagnostics-engine: Project 'payroll-diagnostics-engine' ranked on 2 responsibility overlap(s). factors=[responsibility_overlap, responsibility_overlap]
+  strategy.next_actions kinds: ['consider_verifying_working_rights', 'consider_emphasising_portfolio_projects', 'consider_logging_and_deprioritising', 'consider_owner_review']
+  strategy.portfolio_emphasis project_ids: ['operational-intelligence-copilot', 'public-holiday-entitlements', 'career-intelligence-copilot']
+
+========================================================================
+stem=005  source=outputs  file=005_network_engineer_automation_ai.json
+  company=Capgemini Australia Pty Ltd  title=Network Engineer- Automation & AI
+  tier=bronze  posture=do_not_prioritise  effort=none  role_family=network_engineering
+  technical_fit: moderate | Profile shows relevant skills and experience in network engineering and automation, yet the seniority level remains ambiguous, indicating pΓÇª
+  commercial_fit: mixed | While the job environment is fully hybrid, the stated compensation is unclear, impacting the fit assessment.
+  portfolio_fit: mixed | The candidate has relevant project experience in AI/ML, but lacks explicit commercial production experience in the networking domain as staΓÇª
+  commercial_fit detail: judgment=mixed
+    summary: While the job environment is fully hybrid, the stated compensation is unclear, impacting the fit assessment.
+    findings (1):
+      - kind=uncertainty | Compensation cannot be evaluated accurately as the salary conditions remain unsΓÇª
+    note mentions: (none of watched terms)
+  technical_fit detail: judgment=moderate
+    summary: Profile shows relevant skills and experience in network engineering and automation, yet the seniority level remains ambiguous, indicating pΓÇª
+    findings (2):
+      - kind=gap | Candidate has strong experience in AI/ML but lacks explicit 6+ years in Layer 2ΓÇª
+      - kind=gap | Skills in relevant technologies are evident, but experience with specific systeΓÇª
+    note mentions: ai
+  portfolio_match ranked (5):
+    #1 career-intelligence-copilot: Project 'career-intelligence-copilot' ranked on 1 required technology hit(s), 3 demonstrates overlaΓÇª factors=[required_technology, demonstrates_overlap, responsibility_overlap, demonstrates_overlap, responsibility_overlap, demonstrates_overlap, ΓÇª+2]
+    #2 governance-document-rag: Project 'governance-document-rag' ranked on 1 required technology hit(s), 3 demonstrates overlap(s)ΓÇª factors=[required_technology, demonstrates_overlap, responsibility_overlap, demonstrates_overlap, responsibility_overlap, demonstrates_overlap]
+    #3 operational-intelligence-copilot: Project 'operational-intelligence-copilot' ranked on 1 required technology hit(s), 3 demonstrates oΓÇª factors=[required_technology, demonstrates_overlap, responsibility_overlap, demonstrates_overlap, responsibility_overlap, demonstrates_overlap]
+    #4 public-holiday-entitlements: Project 'public-holiday-entitlements' ranked on 1 required technology hit(s), 1 responsibility overΓÇª factors=[required_technology, responsibility_overlap]
+    #5 payroll-diagnostics-engine: Project 'payroll-diagnostics-engine' ranked on 1 required technology hit(s). factors=[required_technology]
+  strategy.next_actions kinds: ['consider_reviewing_compensation', 'consider_emphasising_portfolio_projects', 'consider_logging_and_deprioritising', 'consider_owner_review']
+  strategy.portfolio_emphasis project_ids: ['career-intelligence-copilot', 'governance-document-rag', 'operational-intelligence-copilot']
+
+========================================================================
+stem=001_after_fix  source=outputs  file=001_strong_ai_engineer_after_fix.json
+  company=Allura Partners  title=AI Engineer
+  tier=gold  posture=pursue  effort=targeted  role_family=ai_engineering
+  technical_fit: strong | The candidate exhibits a strong alignment with the technical requirements for the AI Engineer position, showcasing experience and skills diΓÇª
+  commercial_fit: strong | The candidate meets commercial expectations effectively, particularly regarding compensation and location preferences.
+  portfolio_fit: mixed | While the candidate's portfolio showcases relevant projects, the transition from independent to commercial experiences leaves room for growΓÇª
+  commercial_fit detail: judgment=strong
+    summary: The candidate meets commercial expectations effectively, particularly regarding compensation and location preferences.
+    findings (3):
+      - kind=alignment | The stated compensation range of $170,000 to $190,000 aligns well with the candΓÇª
+      - kind=alignment | The candidate resides in Melbourne, which aligns with the job's location requirΓÇª
+      - kind=alignment | The candidate's preference for full-time work correlates with the job's engagemΓÇª
+    note mentions: (none of watched terms)
+  technical_fit detail: judgment=strong
+    summary: The candidate exhibits a strong alignment with the technical requirements for the AI Engineer position, showcasing experience and skills diΓÇª
+    findings (3):
+      - kind=alignment | The candidate's independent engineering projects demonstrate strong proficiencyΓÇª
+      - kind=alignment | The candidate's role in developing production AI systems supports the experiencΓÇª
+      - kind=alignment | Expertise in REST APIs aligns with technical requirements for integrating systeΓÇª
+    note mentions: ai
+  portfolio_match ranked (4):
+    #1 public-holiday-entitlements: Project 'public-holiday-entitlements' ranked on 2 required technology hit(s), 2 demonstrates overlaΓÇª factors=[required_technology, required_technology, demonstrates_overlap, responsibility_overlap, demonstrates_overlap, responsibility_overlap]
+    #2 operational-intelligence-copilot: Project 'operational-intelligence-copilot' ranked on 1 required technology hit(s), 3 demonstrates oΓÇª factors=[required_technology, demonstrates_overlap, demonstrates_overlap, responsibility_overlap, responsibility_overlap, demonstrates_overlap]
+    #3 governance-document-rag: Project 'governance-document-rag' ranked on 1 required technology hit(s), 2 demonstrates overlap(s)ΓÇª factors=[required_technology, demonstrates_overlap, responsibility_overlap, responsibility_overlap, demonstrates_overlap, responsibility_overlap]
+    #4 payroll-diagnostics-engine: Project 'payroll-diagnostics-engine' ranked on 1 required technology hit(s), 1 demonstrates overlapΓÇª factors=[required_technology, responsibility_overlap, responsibility_overlap, demonstrates_overlap, responsibility_overlap, responsibility_overlap]
+  strategy.next_actions kinds: ['consider_emphasising_portfolio_projects', 'consider_cv_tailoring', 'consider_owner_review']
+  strategy.portfolio_emphasis project_ids: ['public-holiday-entitlements', 'operational-intelligence-copilot', 'governance-document-rag']
+
+========================================================================
+stem=006_after_fix  source=outputs  file=006_senior_ai_engineer_kogan_after_fix.json
+  company=Kogan.com  title=Senior AI Engineer
+  tier=gold  posture=pursue  effort=targeted  role_family=ai_engineering
+  technical_fit: strong | The candidate's skills and experience align significantly with the technical requirements of the Senior AI Engineer role at Kogan.com. StroΓÇª
+  commercial_fit: mixed | The candidate's commercial experience is somewhat aligned with the position's requirements and expectations, particularly in building AI soΓÇª
+  portfolio_fit: strong | The candidate's projects demonstrate a high level of capability in AI Engineering that closely matches the expectations of the role.
+  commercial_fit detail: judgment=mixed
+    summary: The candidate's commercial experience is somewhat aligned with the position's requirements and expectations, particularly in building AI soΓÇª
+    findings (2):
+      - kind=gap | While the candidate has experience in AI engineering, there is no direct evidenΓÇª
+      - kind=partial_alignment | The candidate shows a strong foundation in working on AI engineering projects bΓÇª
+    note mentions: (none of watched terms)
+  technical_fit detail: judgment=strong
+    summary: The candidate's skills and experience align significantly with the technical requirements of the Senior AI Engineer role at Kogan.com. StroΓÇª
+    findings (3):
+      - kind=alignment | The candidate has extensive experience using AI automation tools as evidenced iΓÇª
+      - kind=alignment | The candidate's experience with multi-agent systems is robust, matching the rolΓÇª
+      - kind=alignment | Strong alignment with required skills in Docker, which is essential for the rolΓÇª
+    note mentions: ai
+  portfolio_match ranked (3):
+    #1 governance-document-rag: Project 'governance-document-rag' ranked on 1 required technology hit(s), 1 demonstrates overlap(s)ΓÇª factors=[required_technology, demonstrates_overlap, responsibility_overlap, responsibility_overlap, responsibility_overlap, responsibility_overlap]
+    #2 operational-intelligence-copilot: Project 'operational-intelligence-copilot' ranked on 6 demonstrates overlap(s). factors=[demonstrates_overlap, demonstrates_overlap, demonstrates_overlap, demonstrates_overlap, demonstrates_overlap, demonstrates_overlap]
+    #3 payroll-diagnostics-engine: Project 'payroll-diagnostics-engine' ranked on 1 responsibility overlap(s). factors=[responsibility_overlap]
+  strategy.next_actions kinds: ['consider_reviewing_compensation', 'consider_emphasising_portfolio_projects', 'consider_cv_tailoring', 'consider_owner_review']
+  strategy.portfolio_emphasis project_ids: ['governance-document-rag', 'operational-intelligence-copilot', 'payroll-diagnostics-engine']
+
+========================================================================
+stem=009_after_calibration  source=outputs  file=009_forever_new_senior_ai_automation_engineer_digital_after_calibration.json
+  company=Forever New Clothing  title=Senior AI Automation Engineer ΓÇô Digital
+  tier=silver  posture=consider  effort=minimal  role_family=ai_engineering
+  technical_fit: mixed | Candidate has strong technical skills in relevant technologies but lacks direct experience in the retail industry, which is a significant rΓÇª
+  commercial_fit: mixed | The candidate's expected compensation and employment arrangement align with the role's conditions, but uncertainty exists regarding flexibiΓÇª
+  portfolio_fit: strong | Candidate demonstrates substantial portfolio work relevant to the role, showcasing applied AI engineering and independent engineering projeΓÇª
+  commercial_fit detail: judgment=mixed
+    summary: The candidate's expected compensation and employment arrangement align with the role's conditions, but uncertainty exists regarding flexibiΓÇª
+    findings (1):
+      - kind=gap | The role requires a stated compensation structure, but candidate's expected ranΓÇª
+    note mentions: employment
+  technical_fit detail: judgment=mixed
+    summary: Candidate has strong technical skills in relevant technologies but lacks direct experience in the retail industry, which is a significant rΓÇª
+    findings (2):
+      - kind=gap | The role requires 3+ years of experience in the retail industry, which the candΓÇª
+      - kind=partial_alignment | The candidate has strong skills in Python and SQL, necessary for the role, but ΓÇª
+    note mentions: ai, llm
+  portfolio_match ranked (4):
+    #1 operational-intelligence-copilot: Project 'operational-intelligence-copilot' ranked on 1 required technology hit(s), 2 demonstrates oΓÇª factors=[required_technology, demonstrates_overlap, responsibility_overlap, responsibility_overlap, responsibility_overlap, demonstrates_overlap, ΓÇª+1]
+    #2 public-holiday-entitlements: Project 'public-holiday-entitlements' ranked on 1 required technology hit(s), 2 demonstrates overlaΓÇª factors=[required_technology, demonstrates_overlap, responsibility_overlap, responsibility_overlap, demonstrates_overlap, responsibility_overlap]
+    #3 governance-document-rag: Project 'governance-document-rag' ranked on 1 required technology hit(s), 1 demonstrates overlap(s)ΓÇª factors=[required_technology, responsibility_overlap, demonstrates_overlap, responsibility_overlap, responsibility_overlap]
+    #4 payroll-diagnostics-engine: Project 'payroll-diagnostics-engine' ranked on 1 required technology hit(s), 4 responsibility overlΓÇª factors=[required_technology, responsibility_overlap, responsibility_overlap, responsibility_overlap, responsibility_overlap]
+  strategy.next_actions kinds: ['consider_emphasising_portfolio_projects', 'consider_owner_review']
+  strategy.portfolio_emphasis project_ids: ['operational-intelligence-copilot', 'public-holiday-entitlements', 'governance-document-rag']
+
+========================================================================
+stem=job  source=live  file=job.json
+  company=None  title=None
+  tier=gold  posture=pursue  effort=targeted  role_family=ai_engineering
+  technical_fit: strong | Required Python and FastAPI align with demonstrated profile skills and portfolio work.
+  commercial_fit: moderate | Role aligns with AI Engineering direction; Sydney hybrid location is workable but not ideal.
+  portfolio_fit: strong | Portfolio projects credibly demonstrate applied AI engineering and RAG capability.
+  commercial_fit detail: judgment=moderate
+    summary: Role aligns with AI Engineering direction; Sydney hybrid location is workable but not ideal.
+    findings (2):
+      - kind=partial_alignment | Applied AI Engineering role family aligns with the candidate target role.
+      - kind=partial_alignment | Hybrid Sydney arrangement is compatible with flexible remote preference but notΓÇª
+    note mentions: (none of watched terms)
+  technical_fit detail: judgment=strong
+    summary: Required Python and FastAPI align with demonstrated profile skills and portfolio work.
+    findings (2):
+      - kind=alignment | Required Python is demonstrated across employment, skills, and projects.
+      - kind=alignment | Required FastAPI is demonstrated in independent engineering and portfolio projeΓÇª
+    note mentions: portfolio
+  portfolio_match ranked (4):
+    #1 operational-intelligence-copilot: Project 'operational-intelligence-copilot' ranked on 2 required technology hit(s), 1 demonstrates oΓÇª factors=[required_technology, required_technology, demonstrates_overlap]
+    #2 governance-document-rag: Project 'governance-document-rag' ranked on 2 required technology hit(s), 1 responsibility overlap(ΓÇª factors=[required_technology, required_technology, responsibility_overlap]
+    #3 payroll-diagnostics-engine: Project 'payroll-diagnostics-engine' ranked on 1 required technology hit(s). factors=[required_technology]
+    #4 public-holiday-entitlements: Project 'public-holiday-entitlements' ranked on 1 required technology hit(s). factors=[required_technology]
+  strategy.next_actions kinds: ['consider_reviewing_location_or_arrangement', 'consider_emphasising_portfolio_projects', 'consider_cv_tailoring', 'consider_owner_review']
+  strategy.portfolio_emphasis project_ids: ['operational-intelligence-copilot', 'governance-document-rag', 'payroll-diagnostics-engine']
+
+========================================================================
+AGGREGATES (preferred non-after jobs only)
+n_jobs=16  (excluded after_*=3)
+
+Project appearances in TOP-1:
+  operational-intelligence-copilot  6
+  governance-document-rag           5
+  career-intelligence-copilot       3
+  public-holiday-entitlements       2
+
+Project appearances in TOP-3:
+  operational-intelligence-copilot  16
+  governance-document-rag           15
+  career-intelligence-copilot       8
+  public-holiday-entitlements       6
+  payroll-diagnostics-engine        3
+
+Commercial judgment counts:
+  mixed     11
+  weak      2
+  moderate  2
+  unknown   1
+
+Tier counts:
+  silver    12
+  bronze    2
+  platinum  1
+  gold      1

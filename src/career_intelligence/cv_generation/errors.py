@@ -61,3 +61,11 @@ class CvHtmlRenderError(CvGenerationError):
     def __init__(self, message: str) -> None:
         self.message = message
         super().__init__(message)
+
+
+class CvPdfRenderError(CvGenerationError):
+    """Raised when TailoredCv PDF rendering or PDF draft write fails."""
+
+    def __init__(self, message: str) -> None:
+        self.message = message
+        super().__init__(message)

@@ -12,6 +12,7 @@ from career_intelligence.profile.models import CareerProfile, Project
 
 from .models import CoverLetterPlan, StrongestProject
 from .opening_strategies import (
+    domain_cue,
     lead_project_name,
     leading_technologies,
     select_opening_strategy,
@@ -270,6 +271,7 @@ def _compose_opening(
     employer: dict[str, str],
 ) -> str:
     """Deterministic opening chosen from role, employer, evidence, and profile."""
+    del role
     attraction = _scrub_marketing(_clean_phrase(plan.company_alignment.alignment_hook))
     themes = _scrub_marketing(_clean_phrase(plan.role_motivation.motivation))
 
@@ -286,56 +288,82 @@ def _compose_opening(
     )
     subject = employer["opening_subject"]
     subject_cap = _capitalize_phrase(subject)
+    intent = _opening_intent_sentence(subject, subject_cap, chance)
 
     if strategy == "technology_led":
         techs = leading_technologies(plan, limit=3)
         tech_phrase = _oxford_join(techs) if techs else "production AI delivery"
         return (
-            f"The {role} brief around {tech_phrase} matches how I design and ship "
-            f"production systems. For {subject}, I want to {chance}."
+            f"Roles centred on {tech_phrase} are where I do my best engineering work. "
+            f"{intent}"
         )
 
     if strategy == "business_problem_led":
-        problem = _as_gerund_phrase(secondary or primary, limit=90)
-        # Avoid restating the same clause as both problem and chance.
-        if problem and _same_delivery_theme(problem, chance):
+        problem = _safe_gerund_problem(secondary or primary)
+        # Avoid restating a safe default chance after a safe default problem.
+        if (
+            problem == "shipping useful AI under real operational constraints"
+            or _same_delivery_theme(problem, chance)
+            or chance == "build production AI systems with clear engineering accountability"
+        ):
             return (
                 f"{subject_cap} is ultimately about {problem}. That is the kind of "
                 "delivery problem I want to own next."
             )
         return (
             f"{subject_cap} is ultimately about {problem}. That is the kind of "
-            f"delivery problem I want to own: {chance}."
+            f"delivery problem I want to own next: {chance}."
         )
 
     if strategy == "organisation_led":
         org = company.strip() or "the hiring organisation"
+        org_variant = _organisation_opening_variant(plan)
         if employer["mode"] == "recruiter":
-            org_line = (
-                f"The advertised organisation is hiring for production AI delivery "
-                f"with real operational constraints."
+            return (
+                "The advertised organisation is hiring for production AI delivery "
+                f"with real operational constraints. {intent}"
             )
-        else:
-            org_line = (
-                f"What stands out about {org} is the focus on shipping useful systems "
-                f"under real delivery pressure."
+        if org_variant == 0:
+            return (
+                f"{org} stands out for shipping useful systems under real delivery "
+                f"pressure rather than slideware demos. {intent}"
+            )
+        if org_variant == 1:
+            return (
+                f"{_possessive(org)} engineering environment looks like a place "
+                f"where production AI has to earn its keep. {intent}"
             )
         return (
-            f"{org_line} {subject_cap} is a chance to {chance}."
+            f"I am interested in {org} because the work centres on shipping systems "
+            f"under real constraints, not prototype theatre. {intent}"
         )
 
     if strategy == "career_transition_led":
         years = _independent_portfolio_years(profile)
         return (
             f"After 3.5 years of commercial Data Engineering and the past {years} "
-            f"building independent AI systems, {subject} is a natural next step: "
-            f"{chance}."
+            f"building independent AI systems, {subject} is a natural next step. "
+            f"I want to {chance}."
         )
 
     if strategy == "mission_capability_led":
         return (
             "I look for roles where AI systems have to stay reviewable under real "
-            f"operational pressure. {subject_cap} fits that bar: {chance}."
+            f"operational pressure. {subject_cap} fits that bar. I want to {chance}."
+        )
+
+    if strategy == "domain_led":
+        cue = domain_cue(plan) or "this domain"
+        return (
+            f"I am drawn to AI engineering work grounded in {cue}, where systems "
+            f"have to earn trust in day-to-day operations. {intent}"
+        )
+
+    if strategy == "adoption_led":
+        return (
+            "I look for AI roles where adoption matters as much as the model: "
+            "clear demos, explainable behaviour, and systems people will actually "
+            f"use. {intent}"
         )
 
     # experience_led (default)
@@ -349,6 +377,20 @@ def _compose_opening(
         f"Recent production-style AI engineering work is a strong fit for {subject}. "
         f"I want to {chance}."
     )
+
+
+def _organisation_opening_variant(plan: CoverLetterPlan) -> int:
+    fingerprint = f"{plan.company_alignment.company}|{plan.role_motivation.role_title}"
+    return sum(ord(char) for char in fingerprint) % 3
+
+
+def _opening_intent_sentence(subject: str, subject_cap: str, chance: str) -> str:
+    """Complete grammatical intent sentence — never stitches raw JD fragments."""
+    del subject_cap
+    if chance.startswith("contribute to "):
+        # Defensive: chance clause must never return contribute-to fragments.
+        chance = "build production AI systems with clear engineering accountability"
+    return f"For {subject}, I want to {chance}."
 
 
 def _capitalize_phrase(text: str) -> str:
@@ -405,6 +447,7 @@ def _compose_motivation(
     """Credibility, portfolio breadth, philosophy, and collaboration."""
     del company
     years = _independent_portfolio_years(profile)
+    credibility = f"{_credibility_claim_short(profile)}."
     breadth = (
         f"Over the past {years} I have built a portfolio of production-style AI "
         "engineering projects spanning intelligent document search, operational "
@@ -426,11 +469,44 @@ def _compose_motivation(
             " I also translate business requirements into practical AI systems "
             "and support adoption with concrete demos rather than slideware."
         )
+    close = f"That is the approach I would bring to {employer['challenge_owner']}."
+    variant = _motivation_variant_index(plan)
+    # Same factual content; different order and light transitions.
+    if variant == 0:
+        return f"{credibility} {breadth} {craft} {collaboration}{stakeholder} {close}"
+    if variant == 1:
+        return (
+            f"{credibility} {craft} {breadth} {collaboration}{stakeholder} {close}"
+        )
+    if variant == 2:
+        return (
+            f"{breadth} {credibility} In practice, {_as_mid_sentence(craft)} "
+            f"{collaboration}{stakeholder} {close}"
+        )
     return (
-        f"{_credibility_claim_short(profile)}. {breadth} {craft} "
-        f"{collaboration}{stakeholder} "
-        f"That is the approach I would bring to {employer['challenge_owner']}."
+        f"{credibility} {collaboration}{stakeholder} On the engineering side, "
+        f"{_as_mid_sentence(craft)} {breadth} {close}"
     )
+
+
+def _motivation_variant_index(plan: CoverLetterPlan) -> int:
+    fingerprint = (
+        f"{plan.company_alignment.company}|{plan.role_motivation.role_title}|"
+        f"{plan.job_analysis.role_family.family}"
+    )
+    return sum(ord(char) for char in fingerprint) % 4
+
+
+def _as_mid_sentence(text: str) -> str:
+    """Lowercase leading capital for mid-sentence use; keep pronoun I."""
+    cleaned = text.strip()
+    if not cleaned:
+        return cleaned
+    if cleaned.startswith("I ") or cleaned.startswith("I'"):
+        return cleaned
+    if cleaned[0].isupper():
+        return cleaned[0].lower() + cleaned[1:]
+    return cleaned
 
 
 def _compose_project_paragraphs(
@@ -468,9 +544,9 @@ def _compose_project_paragraphs(
 
 
 def _project_structure_index(fingerprint: str, project_id: str, index: int) -> int:
-    """Stable 0..2 structure choice — same inputs always yield the same rhythm."""
+    """Stable 0..3 structure choice — same inputs always yield the same rhythm."""
     seed = sum(ord(char) for char in f"{fingerprint}|{project_id}") + (index * 17)
-    return seed % 3
+    return seed % 4
 
 
 def _compose_projects(
@@ -508,15 +584,18 @@ def _project_block(
     outcome = narrative.outcome.strip().rstrip(".")
     bridge = _role_relevance_bridge(project.fit_focus)
 
-    style = structure % 3
+    style = structure % 4
     if style == 0:
-        # Problem → architecture → outcome
+        # Problem → architecture → outcome (full lead treatment)
         body = (
             f"{name} addresses a concrete delivery need: it {does}. "
             f"The architecture centres on {engineering}. "
             f"Result: {outcome}."
         )
-    elif style == 1:
+        if bridge:
+            return f"{body} {bridge}"
+        return body
+    if style == 1:
         # Business need → technical solution → business value
         if is_lead:
             body = (
@@ -529,26 +608,37 @@ def _project_block(
                 f"It {does}, with design decisions around {engineering}. "
                 f"In practice, {outcome}."
             )
-    else:
-        # Challenge → design decisions → result
-        lead = name if is_lead else f"I would also point to {name}"
+        if bridge:
+            return f"{body} {bridge}"
+        return body
+    if style == 2:
+        # Challenge → design decisions (invite walkthrough; skip restating outcome)
         if is_lead:
             body = (
                 f"{name} is a useful reference here. The engineering challenge is "
                 f"keeping the system reviewable while it {does}. Design decisions "
-                f"centre on {engineering}. If useful, I can walk through the working "
-                "software and the trade-offs behind it."
+                f"centre on {engineering}."
             )
         else:
             body = (
-                f"{lead}. "
+                f"I would also point to {name}. "
                 f"The engineering challenge is keeping the system reviewable while it "
-                f"{does}. Design decisions centre on {engineering}. "
-                f"If useful, I can walk through the working software and the trade-offs "
-                "behind it."
+                f"{does}. Design decisions centre on {engineering}."
             )
-    if bridge and style != 2:
-        return f"{body} {bridge}"
+        return body
+    # style 3: compact capability + outcome (secondary projects stay short)
+    if is_lead:
+        body = (
+            f"{name} is compact evidence for this work: it {does}. "
+            f"Engineering centres on {engineering}."
+        )
+    else:
+        body = (
+            f"{name} is similarly relevant: it {does}. "
+            f"Engineering centres on {engineering}."
+        )
+    if is_lead and outcome:
+        return f"{body} Result: {outcome}."
     return body
 
 
@@ -614,21 +704,46 @@ def _compose_closing(
     *,
     employer: dict[str, str],
 ) -> str:
-    """Confident close that invites curiosity about tangible artefacts."""
+    """Confident close that invites a technical conversation (3–4 styles)."""
     del company, role
-    if plan.closing_strategy.approach == "contribution_focus":
+    style = _closing_style_index(plan)
+    subject = (
+        employer["contribution_role"]
+        if plan.closing_strategy.approach == "contribution_focus"
+        else employer["closing_role"]
+    )
+    if style == 0:
         return (
-            f"I would welcome a conversation about {employer['contribution_role']}. "
-            "Happy to open the portfolio, walk through architecture decisions "
-            "and engineering trade-offs, and show live demonstrations of the systems "
-            "above."
+            f"I would welcome a conversation about {subject}. "
+            "Happy to open the portfolio and walk through working software, "
+            "including architecture decisions behind the systems above."
+        )
+    if style == 1:
+        return (
+            f"I would welcome a conversation about {subject}. "
+            "If useful, we can dig into engineering trade-offs: what stayed "
+            "deterministic, what used models, and how evaluation kept the system "
+            "reviewable."
+        )
+    if style == 2:
+        return (
+            f"I would welcome a conversation about {subject}. "
+            "I can talk through delivery approach end to end: from problem "
+            "framing and architecture choices through to demos you can inspect."
         )
     return (
-        f"I would welcome a conversation about {employer['closing_role']}. "
-        "If useful, we can inspect the working software together, including "
-        "architecture choices, evaluation approach, and the trade-offs I made "
-        "along the way."
+        f"I would welcome a technical conversation about {subject}. "
+        "Happy to share live demonstrations and the evaluation approach behind "
+        "the portfolio systems above."
     )
+
+
+def _closing_style_index(plan: CoverLetterPlan) -> int:
+    fingerprint = (
+        f"{plan.company_alignment.company}|{plan.role_motivation.role_title}|"
+        f"{plan.closing_strategy.approach}"
+    )
+    return sum(ord(char) for char in fingerprint) % 4
 
 
 def _portfolio_lead(contact: dict[str, str] | None, *, count: int = 2) -> str:
@@ -812,30 +927,119 @@ def _clean_phrase(text: str) -> str:
 
 
 def _as_chance_clause(phrase: str, *, limit: int = 120) -> str:
+    """Return a clean infinitive delivery intent — never raw advertisement text."""
+    safe = "build production AI systems with clear engineering accountability"
     cleaned = _truncate_words(_scrub_marketing(_clean_phrase(phrase)), limit=limit)
     including_at = cleaned.casefold().find(", including")
     if including_at > 40:
         cleaned = cleaned[:including_at].rstrip()
-    if not cleaned or _is_recruiting_noun_phrase(cleaned):
-        return "build production AI systems with clear engineering accountability"
-    infinitive = _to_infinitive_verb_list(cleaned)
-    first = re.split(r"[,\s]+", infinitive, maxsplit=1)[0].casefold() if infinitive else ""
-    if first in _IMPERATIVE_TO_GERUND or first in {"learn", "help", "work"}:
-        return infinitive
-    # Do not wrap noun phrases ("an experienced AI Engineer…") as "contribute to …".
-    if _is_recruiting_noun_phrase(infinitive) or first in {
-        "a",
-        "an",
-        "the",
-        "exciting",
-        "opportunity",
-        "experienced",
-        "skilled",
-        "senior",
-        "junior",
-    }:
-        return "build production AI systems with clear engineering accountability"
-    return f"contribute to {infinitive}"
+    if not cleaned or _is_advertisement_fragment(cleaned):
+        return safe
+    if _is_recruiting_noun_phrase(cleaned):
+        return safe
+    # JD section headers often use "Title: Verb rest…" — prefer the verb clause.
+    candidates = [cleaned]
+    if ":" in cleaned:
+        left, right = (part.strip() for part in cleaned.split(":", 1))
+        candidates = [right, left, cleaned]
+    for candidate in candidates:
+        result = _chance_from_verb_phrase(candidate)
+        if result is not None:
+            return result
+    return safe
+
+
+def _chance_from_verb_phrase(phrase: str) -> str | None:
+    """Return infinitive chance when phrase leads with a known delivery verb."""
+    if not phrase or _is_advertisement_fragment(phrase):
+        return None
+    infinitive = _to_infinitive_verb_list(phrase)
+    first = (
+        re.split(r"[,\s]+", infinitive, maxsplit=1)[0].casefold() if infinitive else ""
+    )
+    if first not in _IMPERATIVE_TO_GERUND and first not in {"learn", "help", "work"}:
+        return None
+    if _is_advertisement_fragment(infinitive) or _is_recruiting_noun_phrase(infinitive):
+        return None
+    if _verb_phrase_looks_like_title_dump(infinitive):
+        return None
+    # Reject remaining Title-Case marketing blobs after the leading verb.
+    if re.search(r"\b[A-Z][a-z]+(?:[\s-][A-Z][a-z]+){1,}\b", infinitive):
+        # Allow common tech tokens; strip other Camel/Title fragments by lowercasing
+        # the remainder when it still looks like a JD header.
+        if re.search(
+            r"\b(?:solutions|architect|opportunity|permanent|graduate)\b",
+            infinitive,
+            flags=re.I,
+        ):
+            return None
+    return infinitive
+
+
+def _safe_gerund_problem(phrase: str, *, limit: int = 90) -> str:
+    """Gerund problem phrase, or a safe default when the source is advertisement noise."""
+    default = "shipping useful AI under real operational constraints"
+    if _is_advertisement_fragment(phrase):
+        return default
+    problem = _as_gerund_phrase(phrase, limit=limit)
+    if _is_advertisement_fragment(problem) or len(problem) < 20:
+        return default
+    first = re.split(r"[,\s]+", problem, maxsplit=1)[0].casefold() if problem else ""
+    known_gerunds = set(_IMPERATIVE_TO_GERUND.values()) | {"learning", "helping", "working"}
+    if first not in known_gerunds:
+        return default
+    # Recruiting verbs that are not engineering delivery.
+    if first in {"participating", "joining", "applying"}:
+        return default
+    return problem
+
+
+def _is_advertisement_fragment(text: str) -> bool:
+    """True when text looks like a JD title dump or recruiting boilerplate snippet."""
+    folded = text.casefold().strip()
+    if not folded:
+        return True
+    if "/" in text or "|" in text:
+        return True
+    soft_rejects = (
+        "we're looking",
+        "we are looking",
+        "looking for",
+        "has become available",
+        "exciting opportunity",
+        "apply now",
+        "job description",
+        "click here",
+    )
+    if any(marker in folded for marker in soft_rejects):
+        return True
+    # Employment/location meta dominating a short fragment.
+    if len(folded) < 72 and re.search(
+        r"\b(?:permanent|full[\s-]?time|part[\s-]?time|hybrid|on[\s-]?site|"
+        r"melbourne|sydney|brisbane|graduate|junior)\b",
+        folded,
+    ):
+        return True
+    # Bare role-title fragments.
+    if re.match(
+        r"^(?:an?\s+)?(?:experienced\s+|skilled\s+|senior\s+|junior\s+)?"
+        r"(?:ai|ml|software|data|full[\s-]?stack)\s+"
+        r"(?:engineer|developer|specialist|analyst)\b",
+        folded,
+    ):
+        return True
+    return False
+
+
+def _verb_phrase_looks_like_title_dump(phrase: str) -> bool:
+    folded = phrase.casefold()
+    return bool(
+        re.search(
+            r"\b(?:ai|ml|software|data|full[\s-]?stack)\s+"
+            r"(?:engineer|developer|specialist)\b",
+            folded,
+        )
+    )
 
 
 def _is_recruiting_noun_phrase(text: str) -> bool:
@@ -984,6 +1188,30 @@ def _letter_quality_ok(
     if "contribute to an exciting opportunity" in folded:
         return False
     if "has become available" in folded:
+        return False
+    # Malformed openings that stitch raw advertisement fragments into intent.
+    opening = paragraphs[0].casefold() if paragraphs else ""
+    malformed_openers = (
+        "contribute to ai engineer",
+        "contribute to we're",
+        "contribute to we are",
+        "contribute to graduate",
+        "contribute to junior",
+        "contribute to permanent",
+        "contribute to looking",
+        "want to contribute to ai engineer",
+        "want to contribute to we're",
+        "want to contribute to graduate",
+        "want to contribute to permanent",
+        "brief around",
+    )
+    if any(marker in opening for marker in malformed_openers):
+        return False
+    # Slash dumps in the *intent* clause (not legitimate role titles).
+    if re.search(
+        r"want to (?:contribute to )?[^\n.]{0,40}/\s*(?:permanent|melbourne|sydney|junior)",
+        opening,
+    ):
         return False
     dangling = (
         " in.",

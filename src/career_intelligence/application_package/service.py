@@ -305,6 +305,7 @@ def _relative_document_refs(drafts) -> DocumentArtefactRefs:
         json_path=drafts.json_path.name,
         plan_json_path=drafts.plan_json_path.name,
         html_path=drafts.html_path.name if drafts.html_path is not None else None,
+        pdf_path=drafts.pdf_path.name if drafts.pdf_path is not None else None,
     )
 
 
@@ -322,6 +323,9 @@ def _resolve_document_refs(
             _resolve_path(refs.html_path, base_dir)
             if refs.html_path is not None
             else None
+        ),
+        pdf_path=(
+            _resolve_path(refs.pdf_path, base_dir) if refs.pdf_path is not None else None
         ),
     )
 
@@ -341,10 +345,12 @@ def _draft_path_entries(
         ("cv.json_path", manifest.cv.json_path),
         ("cv.plan_json_path", manifest.cv.plan_json_path),
         ("cv.html_path", manifest.cv.html_path),
+        ("cv.pdf_path", manifest.cv.pdf_path),
         ("cover_letter.markdown_path", manifest.cover_letter.markdown_path),
         ("cover_letter.json_path", manifest.cover_letter.json_path),
         ("cover_letter.plan_json_path", manifest.cover_letter.plan_json_path),
         ("cover_letter.html_path", manifest.cover_letter.html_path),
+        ("cover_letter.pdf_path", manifest.cover_letter.pdf_path),
     ]
 
 

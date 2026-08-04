@@ -18,14 +18,18 @@ OpeningStrategy = Literal[
     "organisation_led",
     "career_transition_led",
     "mission_capability_led",
+    "domain_led",
+    "adoption_led",
 ]
 
 # Tie-break order when scores are equal — fixed, never random.
 _STRATEGY_PRIORITY: tuple[OpeningStrategy, ...] = (
     "business_problem_led",
     "technology_led",
+    "domain_led",
     "experience_led",
     "mission_capability_led",
+    "adoption_led",
     "organisation_led",
     "career_transition_led",
 )
@@ -56,6 +60,38 @@ _TECH_CUES = (
     "openai",
 )
 
+_DOMAIN_CUES: tuple[str, ...] = (
+    "fintech",
+    "financial services",
+    "banking",
+    "insurance",
+    "payroll",
+    "healthcare",
+    "retail",
+    "fashion",
+    "logistics",
+    "supply chain",
+    "education",
+    "government",
+    "compliance",
+    "governance",
+    "legal",
+)
+
+_ADOPTION_CUES: tuple[str, ...] = (
+    "adoption",
+    "enablement",
+    "upskill",
+    "capability building",
+    "ai transformation",
+    "ai maturity",
+    "rollout",
+    "change management",
+    "stakeholder",
+    "coach",
+    "train the",
+)
+
 
 def select_opening_strategy(
     plan: CoverLetterPlan,
@@ -70,10 +106,12 @@ def select_opening_strategy(
     raw = (plan.job_analysis.posting.raw_text or "").casefold()
     hook = (plan.company_alignment.alignment_hook or "").casefold()
     motivation = (plan.role_motivation.motivation or "").casefold()
+    role_title = (plan.role_motivation.role_title or "").casefold()
     tech_names = [
         tech.name.casefold() for tech in plan.job_analysis.technologies
     ]
     project_ids = [item.project_id for item in plan.strongest_projects]
+    blob = " ".join((company, raw, hook, motivation, role_title))
 
     if family in {"ai_engineering", "ai_adjacent", "ml_engineering", "ai_solutions"}:
         scores["technology_led"] += 2
@@ -97,6 +135,7 @@ def select_opening_strategy(
         scores["business_problem_led"] += 3
         scores["organisation_led"] += 2
         scores["technology_led"] += 1
+        scores["domain_led"] += 3
         # Direct retail/product brands open on the organisation, not the stack.
         if employer_mode == "direct":
             scores["organisation_led"] += 3
@@ -107,8 +146,24 @@ def select_opening_strategy(
     elif tech_hits >= 1:
         scores["technology_led"] += 1
 
-    if any(token in hook or token in motivation for token in ("automati", "operat", "deploy", "product")):
+    if any(
+        token in hook or token in motivation
+        for token in ("automati", "operat", "deploy", "product")
+    ):
         scores["business_problem_led"] += 2
+
+    domain = domain_cue(plan)
+    if domain is not None:
+        scores["domain_led"] += 3
+        if blob.count(domain) >= 2:
+            scores["domain_led"] += 1
+
+    adoption_hits = sum(1 for cue in _ADOPTION_CUES if cue in blob)
+    if adoption_hits:
+        scores["adoption_led"] += 2 + min(adoption_hits, 3)
+    if "adoption" in role_title:
+        scores["adoption_led"] += 4
+        scores["organisation_led"] -= 1
 
     ai_projects = {
         "career-intelligence-copilot",
@@ -170,3 +225,18 @@ def lead_project_name(plan: CoverLetterPlan) -> str | None:
     if not plan.strongest_projects:
         return None
     return plan.strongest_projects[0].project_name
+
+
+def domain_cue(plan: CoverLetterPlan) -> str | None:
+    """Short domain cue when the JD clearly names one."""
+    parts = [
+        plan.company_alignment.company or "",
+        plan.company_alignment.alignment_hook or "",
+        plan.role_motivation.motivation or "",
+        plan.job_analysis.posting.raw_text or "",
+    ]
+    blob = " ".join(parts).casefold()
+    for cue in _DOMAIN_CUES:
+        if cue in blob:
+            return cue
+    return None

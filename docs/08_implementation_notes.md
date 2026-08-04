@@ -542,25 +542,41 @@ Opportunity Assessment is not on this path.
 
 | Matcher | Role |
 |---------|------|
-| **`DeterministicMatcher`** | Production ranking path. Technology phrase matching and responsibility/demonstrates token overlap; ordered by required → preferred → demonstrates → responsibility → unspecified → stable `project_id`. Package-private; inject explicitly. |
+| **`DeterministicMatcher`** | Production ranking path. Distinctive technology hits, capability-family overlap, responsibility/demonstrates token overlap; generic stack terms demoted in sort order. Package-private; inject explicitly. |
 | **`FixtureMatcher`** | Offline canned payloads keyed to shared FR-002 markers (plus `MARKER_PORTFOLIO_TIE`). Never a public default. |
 
 ### Ranking behaviour (deterministic)
 
 - Match job technologies against project `technologies`, `demonstrates`, `summary`, `outcomes`.
 - Match job responsibilities against project `demonstrates`, `summary`, `outcomes`, `technologies`.
+- Match shared **capability families** (orchestration, workflows/pipelines, agents,
+  RAG/retrieval, LLM/generative, explainability/governance, evaluation/LLMOps, HITL
+  review, production AI lifecycle, document generation) between job evidence and project
+  narrative — `capability_overlap` factors.
 - Emit explainable `RankingFactor` entries with job + `project:<id>` profile evidence.
+- Sort order (lexicographic counts): distinctive required tech → distinctive preferred
+  tech → demonstrates → responsibility → capability overlap → **generic** required tech →
+  generic preferred → unspecified → stable `project_id`.
+- Generic stack terms (`Python`, `SQL`, `REST`/`API`, `Docker`, `Git`, …) still emit
+  technology factors for explainability but are demoted in the sort key so they cannot
+  outrank demonstrates-heavy AI projects (Allura/Mars Public Holiday inflation fix).
+- Capability overlap supports agentic/RAG/HITL relevance (including Career Intelligence
+  Copilot when evidence supports it) without overriding denser demonstrates leads
+  (Bluefin Ops preservation).
 - Zero-factor projects go to `unranked_project_ids`.
 - Empty technologies and responsibilities → `insufficient_evidence=True`, all projects unranked.
 - Equal primary keys share `tie_group`; display order uses stable `project_id` ascending.
 
-No percentage scores, embeddings, or retrieval infrastructure.
+No percentage scores, embeddings, or retrieval infrastructure. Career Intelligence Copilot
+is not force-ranked; it rises when job evidence shares agentic/workflow/HITL/document-
+generation capability families with its project narrative.
 
 ### Known limitations
 
-- Shared baseline technologies (e.g. Python across all projects) can produce honest ties when
-  the job does not distinguish further stack evidence — accepted for non-target role families
-  such as Data Engineer; do not invent distinguishing evidence.
+- Shared baseline technologies (e.g. Python across all projects) can still produce honest
+  ties when the job has no distinctive stack or capability evidence — accepted for
+  non-target role families such as Data Engineer; do not invent distinguishing evidence.
+- Capability families are phrase/token based; they do not replace responsibility overlap.
 - Token/phrase overlap is intentionally simple; an optional narrative layer may be considered
   later only if deterministic rationales prove too thin in live use.
 - Fixture match payloads are aligned to the golden career profile project set.
@@ -930,7 +946,7 @@ or `fallback_profile_copy`. Owner review remains mandatory before external use.
 **Flow:** ApplicationStrategy + CareerProfile → `CoverLetterPlanService` /
 `DeterministicCoverLetterPlanner` (incl. `project_selection`) →
 `CoverLetterGenerationService` (narrative `composer` + product narratives) →
-`write_cover_letter_drafts` (Markdown + HTML + JSON) under
+`write_cover_letter_drafts` (Markdown + HTML + PDF + JSON) under
 `career-documents/cover-letters/generated/` (gitignored).
 
 **Presentation:** HTML reuses CV print CSS so cover letters and CVs read as one
@@ -959,15 +975,27 @@ Project paragraphs may add a short `fit_focus` bridge to the role. A determinist
 `_letter_quality_ok` gate rejects incomplete/malformed openings without an LLM
 call.
 
-**Final quality polish (v1.76 — before FR-013):**
+**Writing-quality refinement (FR-007 prose only):**
 
-- **Opening strategy policy.** Composer selects one of six deterministic opening
+- **Opening strategy policy.** Composer selects one of eight deterministic opening
   strategies via `opening_strategies.select_opening_strategy` (experience,
-  technology, business-problem, organisation, career-transition,
+  technology, business-problem, domain, organisation, adoption, career-transition,
   mission/capability). Selection scores role family, employer mode (recruiter vs
-  direct), retail/product cues, JD technologies, strongest projects, and career-
-  transition signals. Tie-break order is fixed. No randomness — identical inputs
-  always produce the same opening. Avoids default “What drew me…” and HR clichés.
+  direct), retail/product/domain cues, adoption cues, JD technologies, strongest
+  projects, and career-transition signals. Tie-break order is fixed. No randomness —
+  identical inputs always produce the same opening. Chance clauses never wrap
+  advertisement fragments (`AI Engineer / Permanent…`, `we're looking for…`) —
+  only known delivery verbs are accepted; otherwise a safe production-AI intent
+  is used. Recruiter openings still prefer “advertised through…”.
+- **Intro variation.** Motivation paragraph keeps the same factual content
+  (credibility, portfolio breadth, architecture-first craft, collaboration) but
+  chooses among four deterministic orderings/transitions from a company+role
+  fingerprint.
+- **Project paragraph variation.** Project blocks choose among four deterministic
+  structures, including a compact capability form for shorter secondary project
+  explanations (evidence retained; less over-explanation).
+- **Closing variation.** Four deterministic closing styles emphasise working
+  software, engineering trade-offs, delivery approach, or a technical conversation.
 - **Portfolio positioning policy.** For AI / software / platform / data
   engineering role families, the letter body includes a natural reference to
   working demonstrations, architecture notes, and GitHub (why they help a reviewer
@@ -976,10 +1004,6 @@ call.
 - **Engineering tone.** Forbidden recruitment filler includes “I am passionate…”,
   “I am excited…”, “I have always wanted…”. Prefer trade-offs, design reviews,
   production systems, architecture, and delivery language.
-- **Paragraph variation.** Project blocks choose among three deterministic
-  structures (problem→architecture→outcome; business need→solution→value;
-  challenge→design→result) from a stable fingerprint of company, role, and
-  project id.
 - **Recruiter-facing output policy.** Generated Markdown and HTML intended for
   recruiters must not contain internal workflow markers such as “Owner review
   required before any external use.” Owner-review gates remain mandatory in

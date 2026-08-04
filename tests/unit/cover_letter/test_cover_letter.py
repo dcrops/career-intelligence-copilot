@@ -124,12 +124,75 @@ def test_opening_reads_as_attraction_not_jd_dump() -> None:
     letter = make_letter()
     opening = letter.paragraphs[0]
     assert "the brief" not in opening.casefold()
+    assert "brief around" not in opening.casefold()
     assert "the role emphasises" not in opening.casefold()
     assert "chance to Build" not in opening
     assert "chance to Design" not in opening
     assert "contribute to an experienced" not in opening.casefold()
+    assert "contribute to ai engineer" not in opening.casefold()
+    assert "contribute to we're" not in opening.casefold()
+    assert "contribute to graduate" not in opening.casefold()
     assert "what drew me" not in opening.casefold()
     assert "i am passionate" not in opening.casefold()
+    assert " / permanent" not in opening.casefold()
+    assert " / melbourne" not in opening.casefold()
+
+
+def test_opening_rejects_advertisement_title_fragments() -> None:
+    from career_intelligence.cover_letter.composer import _as_chance_clause
+
+    safe = "build production AI systems with clear engineering accountability"
+    assert _as_chance_clause("AI Engineer / Permanent / Melbourne CBD") == safe
+    assert _as_chance_clause("we're looking for an AI Engineer") == safe
+    assert _as_chance_clause("graduate / Junior Full Stack Developer") == safe
+    assert _as_chance_clause("an experienced AI Engineer to join a team") == safe
+    assert _as_chance_clause("Design and build production RAG systems") == (
+        "design and build production RAG systems"
+    )
+
+
+def test_motivation_and_closing_vary_deterministically() -> None:
+    from career_intelligence.cover_letter.composer import (
+        _closing_style_index,
+        _motivation_variant_index,
+    )
+
+    a = make_plan()
+    b = make_plan(
+        strategy=strategy_from_payload(
+            job_analysis=job_analysis(
+                posting={
+                    "raw_text": "Forever New retail fashion AI automation Python.",
+                    "title": "Senior AI Automation Engineer",
+                    "company": "Forever New Clothing",
+                }
+            )
+        )
+    )
+    assert _motivation_variant_index(a) == _motivation_variant_index(a)
+    assert _closing_style_index(a) == _closing_style_index(a)
+    letter_a = make_letter()
+    letter_b = make_letter(
+        strategy=strategy_from_payload(
+            job_analysis=job_analysis(
+                posting={
+                    "raw_text": "Forever New retail fashion AI automation Python.",
+                    "title": "Senior AI Automation Engineer",
+                    "company": "Forever New Clothing",
+                }
+            )
+        )
+    )
+    # Same engineer, different employers → openings or intros diverge.
+    assert letter_a.paragraphs[0] != letter_b.paragraphs[0] or (
+        letter_a.paragraphs[1] != letter_b.paragraphs[1]
+    )
+    assert "i would welcome" in letter_a.paragraphs[-1].casefold()
+    assert "i would welcome" in letter_b.paragraphs[-1].casefold()
+    # Closing styles are chosen from a small deterministic set.
+    assert 0 <= _closing_style_index(a) <= 3
+    assert 0 <= _motivation_variant_index(a) <= 3
+    assert 0 <= _motivation_variant_index(b) <= 3
 
 
 def test_letter_includes_collaboration_philosophy_and_portfolio_body() -> None:
@@ -299,12 +362,14 @@ def test_composition_is_deterministic() -> None:
     assert first.rendered_markdown == second.rendered_markdown
 
 
-def test_draft_writer_writes_markdown_html_and_json(tmp_path: Path) -> None:
+def test_draft_writer_writes_markdown_html_pdf_and_json(tmp_path: Path) -> None:
     letter = make_letter()
     plan = make_plan()
     result = write_cover_letter_drafts(letter, plan, output_dir=tmp_path)
     assert result.markdown_path.exists()
     assert result.html_path is not None and result.html_path.exists()
+    assert result.pdf_path is not None and result.pdf_path.exists()
+    assert result.pdf_path.read_bytes()[:4] == b"%PDF"
     assert result.json_path.exists()
     assert result.plan_json_path.exists()
     markdown = result.markdown_path.read_text(encoding="utf-8")

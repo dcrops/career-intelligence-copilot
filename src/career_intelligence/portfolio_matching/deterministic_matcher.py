@@ -2,6 +2,12 @@
 
 Package-private production ranking path. Returns an untrusted payload; callers
 must obtain trusted output through PortfolioMatchingService.
+
+Calibration (corpus-justified):
+- Distinctive technology hits outrank generic stack hits (Python, SQL, REST, …).
+- Capability-family overlap ranks alongside technology (RAG, agents, orchestration, …).
+- Generic required/preferred hits remain explainable factors but sort after capability
+  and distinctive preferred signals so common stack terms cannot dominate ranking.
 """
 
 from __future__ import annotations
@@ -58,37 +64,178 @@ _STOPWORDS = frozenset(
     }
 )
 
+# Shared baseline stack terms that must not dominate capability-relevant ranking.
+# Kept conservative — distinctive AI/platform technologies stay fully weighted.
+_GENERIC_TECHNOLOGIES = frozenset(
+    {
+        "python",
+        "sql",
+        "t-sql",
+        "tsql",
+        "rest",
+        "rest api",
+        "rest apis",
+        "api",
+        "apis",
+        "docker",
+        "git",
+        "json",
+        "http",
+        "https",
+        "linux",
+        "bash",
+        "shell",
+        "javascript",
+        "html",
+        "css",
+        "excel",
+        "yaml",
+        "xml",
+        "csv",
+        "pytest",
+        "unittest",
+    }
+)
+
+# Capability families: phrase/token markers matched in job + project narrative text.
+# One shared family between job and project yields one capability_overlap factor.
+_CAPABILITY_FAMILIES: dict[str, tuple[str, ...]] = {
+    "orchestration": (
+        "orchestration",
+        "orchestrate",
+        "ai orchestration",
+    ),
+    "workflows_pipelines": (
+        "workflow",
+        "workflows",
+        "application pipeline",
+        "application pipelines",
+        "autonomous workflow",
+        "autonomous workflows",
+        "multi-stage",
+        "multistage",
+        "planning",
+    ),
+    "agents_reasoning": (
+        "agent",
+        "agents",
+        "agentic",
+        "multi-agent",
+        "multi agent",
+        "reasoning",
+        "intent routing",
+    ),
+    "rag_retrieval": (
+        "rag",
+        "retrieval",
+        "retrieval-augmented",
+        "retrieval augmented",
+        "embedding",
+        "embeddings",
+        "grounding",
+        "vector",
+        "document intelligence",
+    ),
+    "llm_generative": (
+        "llm",
+        "llms",
+        "generative ai",
+        "prompt engineering",
+        "openai",
+    ),
+    "explainability_governance": (
+        "explainability",
+        "explainable",
+        "governance",
+        "traceability",
+        "traceable",
+        "deterministic",
+        "audit",
+    ),
+    "evaluation_llmops": (
+        "evaluation",
+        "llmops",
+        "mlops",
+        "telemetry",
+        "observability",
+        "monitoring",
+    ),
+    "hitl_review": (
+        "human-in-the-loop",
+        "human in the loop",
+        "hitl",
+        "owner review",
+        "human review",
+    ),
+    "production_ai_lifecycle": (
+        "production ai",
+        "production system",
+        "production systems",
+        "reliability",
+        "incident response",
+        "operational intelligence",
+    ),
+    "document_generation": (
+        "document generation",
+        "cv generation",
+        "cover letter",
+        "tailored cv",
+    ),
+}
+
 _TIE_BREAK_REASON = (
-    "Equal primary ranking signals; ordered by stable project_id ascending"
+    "equal primary ranking signals; ordered by stable project_id ascending"
 )
 
 
 @dataclass(frozen=True)
 class _PrimaryKey:
-    required_technology: int
-    preferred_technology: int
+    distinctive_required_technology: int
+    distinctive_preferred_technology: int
     demonstrates_overlap: int
     responsibility_overlap: int
+    capability_overlap: int
+    generic_required_technology: int
+    generic_preferred_technology: int
     unspecified_technology: int
 
 
 @dataclass
 class _ProjectScore:
     project: Project
-    required_technology: int = 0
-    preferred_technology: int = 0
+    distinctive_required_technology: int = 0
+    distinctive_preferred_technology: int = 0
     demonstrates_overlap: int = 0
     responsibility_overlap: int = 0
+    capability_overlap: int = 0
+    generic_required_technology: int = 0
+    generic_preferred_technology: int = 0
     unspecified_technology: int = 0
     factors: list[dict[str, Any]] = field(default_factory=list)
 
     @property
+    def required_technology(self) -> int:
+        """Total required tech hits (distinctive + generic) for rationales."""
+        return (
+            self.distinctive_required_technology + self.generic_required_technology
+        )
+
+    @property
+    def preferred_technology(self) -> int:
+        return (
+            self.distinctive_preferred_technology + self.generic_preferred_technology
+        )
+
+    @property
     def primary_key(self) -> _PrimaryKey:
         return _PrimaryKey(
-            required_technology=self.required_technology,
-            preferred_technology=self.preferred_technology,
+            distinctive_required_technology=self.distinctive_required_technology,
+            distinctive_preferred_technology=self.distinctive_preferred_technology,
             demonstrates_overlap=self.demonstrates_overlap,
             responsibility_overlap=self.responsibility_overlap,
+            capability_overlap=self.capability_overlap,
+            generic_required_technology=self.generic_required_technology,
+            generic_preferred_technology=self.generic_preferred_technology,
             unspecified_technology=self.unspecified_technology,
         )
 
@@ -96,12 +243,15 @@ class _ProjectScore:
     def has_factors(self) -> bool:
         return bool(self.factors)
 
-    def sort_key(self) -> tuple[int, int, int, int, int, str]:
+    def sort_key(self) -> tuple[int, ...]:
         return (
-            -self.required_technology,
-            -self.preferred_technology,
+            -self.distinctive_required_technology,
+            -self.distinctive_preferred_technology,
             -self.demonstrates_overlap,
             -self.responsibility_overlap,
+            -self.capability_overlap,
+            -self.generic_required_technology,
+            -self.generic_preferred_technology,
             -self.unspecified_technology,
             self.project.id,
         )
@@ -130,7 +280,11 @@ class DeterministicMatcher:
                 "insufficient_evidence": True,
             }
 
-        scores = [_score_project(project, job_analysis) for project in profile.projects]
+        job_capabilities = _job_capability_families(job_analysis)
+        scores = [
+            _score_project(project, job_analysis, job_capabilities)
+            for project in profile.projects
+        ]
         ranked_scores = sorted(
             (score for score in scores if score.has_factors),
             key=lambda score: score.sort_key(),
@@ -152,12 +306,22 @@ def _has_usable_signals(job_analysis: JobAnalysis) -> bool:
     return bool(job_analysis.technologies) or bool(job_analysis.responsibilities)
 
 
-def _score_project(project: Project, job_analysis: JobAnalysis) -> _ProjectScore:
+def _normalise_tech_name(name: str) -> str:
+    return " ".join(name.casefold().strip().split())
+
+
+def _is_generic_technology(name: str) -> bool:
+    return _normalise_tech_name(name) in _GENERIC_TECHNOLOGIES
+
+
+def _score_project(
+    project: Project,
+    job_analysis: JobAnalysis,
+    job_capabilities: dict[str, dict[str, Any]],
+) -> _ProjectScore:
     score = _ProjectScore(project=project)
     searchable = _project_searchable_text(project)
-    demonstrates_tokens = _significant_tokens(
-        " ".join(project.demonstrates)
-    )
+    demonstrates_tokens = _significant_tokens(" ".join(project.demonstrates))
     responsibility_field_tokens = _significant_tokens(
         " ".join(
             [
@@ -167,16 +331,29 @@ def _score_project(project: Project, job_analysis: JobAnalysis) -> _ProjectScore
             ]
         )
     )
+    project_capability_text = " ".join(
+        [
+            *project.demonstrates,
+            project.summary,
+        ]
+    )
 
     for index, technology in enumerate(job_analysis.technologies):
         matched_excerpt = _technology_match_excerpt(technology.name, project, searchable)
         if matched_excerpt is None:
             continue
         kind = _technology_factor_kind(technology.level)
+        generic = _is_generic_technology(technology.name)
         if kind == "required_technology":
-            score.required_technology += 1
+            if generic:
+                score.generic_required_technology += 1
+            else:
+                score.distinctive_required_technology += 1
         elif kind == "preferred_technology":
-            score.preferred_technology += 1
+            if generic:
+                score.generic_preferred_technology += 1
+            else:
+                score.distinctive_preferred_technology += 1
         else:
             score.unspecified_technology += 1
         score.factors.append(
@@ -184,7 +361,8 @@ def _score_project(project: Project, job_analysis: JobAnalysis) -> _ProjectScore
                 kind=kind,
                 summary=(
                     f"Project evidence supports {technology.level} technology "
-                    f"'{technology.name}'."
+                    f"'{technology.name}'"
+                    + (" (generic stack term)." if generic else ".")
                 ),
                 job_evidence=[
                     {
@@ -199,6 +377,31 @@ def _score_project(project: Project, job_analysis: JobAnalysis) -> _ProjectScore
                         "source": "project",
                         "ref": f"project:{project.id}",
                         "excerpt": matched_excerpt,
+                    }
+                ],
+            )
+        )
+
+    for family, job_hit in job_capabilities.items():
+        project_phrase = _first_capability_phrase(
+            project_capability_text, _CAPABILITY_FAMILIES[family]
+        )
+        if project_phrase is None:
+            continue
+        score.capability_overlap += 1
+        score.factors.append(
+            _factor(
+                kind="capability_overlap",
+                summary=(
+                    f"Project demonstrates '{family.replace('_', ' ')}' capability "
+                    f"overlapping job evidence '{_clip(job_hit['excerpt'])}'."
+                ),
+                job_evidence=[job_hit["job_evidence"]],
+                profile_evidence=[
+                    {
+                        "source": "project",
+                        "ref": f"project:{project.id}",
+                        "excerpt": _clip(project_phrase),
                     }
                 ],
             )
@@ -270,6 +473,77 @@ def _score_project(project: Project, job_analysis: JobAnalysis) -> _ProjectScore
     return score
 
 
+def _job_capability_families(job_analysis: JobAnalysis) -> dict[str, dict[str, Any]]:
+    """Map capability family → first job evidence hit supporting that family."""
+    found: dict[str, dict[str, Any]] = {}
+
+    for index, technology in enumerate(job_analysis.technologies):
+        text = technology.name
+        for family, phrases in _CAPABILITY_FAMILIES.items():
+            if family in found:
+                continue
+            phrase = _first_capability_phrase(text, phrases)
+            if phrase is None:
+                continue
+            found[family] = {
+                "excerpt": technology.name,
+                "job_evidence": {
+                    "source": "technology",
+                    "item_index": index,
+                    "name": technology.name,
+                    "excerpt": _job_tech_excerpt(technology),
+                },
+            }
+
+    for index, responsibility in enumerate(job_analysis.responsibilities):
+        text = responsibility.description
+        for family, phrases in _CAPABILITY_FAMILIES.items():
+            if family in found:
+                continue
+            phrase = _first_capability_phrase(text, phrases)
+            if phrase is None:
+                continue
+            found[family] = {
+                "excerpt": responsibility.description,
+                "job_evidence": {
+                    "source": "responsibility",
+                    "item_index": index,
+                    "excerpt": _job_responsibility_excerpt(responsibility),
+                },
+            }
+
+    for index, requirement in enumerate(job_analysis.experience_requirements):
+        text = requirement.description
+        for family, phrases in _CAPABILITY_FAMILIES.items():
+            if family in found:
+                continue
+            phrase = _first_capability_phrase(text, phrases)
+            if phrase is None:
+                continue
+            found[family] = {
+                "excerpt": requirement.description,
+                "job_evidence": {
+                    "source": "experience_requirement",
+                    "item_index": index,
+                    "excerpt": _clip(
+                        requirement.evidence[0].excerpt
+                        if requirement.evidence
+                        else requirement.description
+                    ),
+                },
+            }
+
+    return found
+
+
+def _first_capability_phrase(text: str, phrases: tuple[str, ...]) -> str | None:
+    # Longer phrases first so "generative ai" wins over "generative".
+    for phrase in sorted(phrases, key=len, reverse=True):
+        if _phrase_in_text(phrase, text):
+            return phrase
+    return None
+
+
 def _technology_factor_kind(level: str) -> str:
     if level == "required":
         return "required_technology"
@@ -306,9 +580,7 @@ def _technology_match_excerpt(
 
 
 def _phrase_in_text(phrase: str, text: str) -> bool:
-    pattern = (
-        rf"(?<![a-z0-9]){re.escape(phrase.casefold())}(?![a-z0-9])"
-    )
+    pattern = rf"(?<![a-z0-9]){re.escape(phrase.casefold())}(?![a-z0-9])"
     return re.search(pattern, text.casefold()) is not None
 
 
@@ -417,14 +689,30 @@ def _assign_tie_groups(scores: list[_ProjectScore]) -> dict[str, int]:
 
 def _project_rationale(score: _ProjectScore) -> str:
     parts: list[str] = []
-    if score.required_technology:
-        parts.append(f"{score.required_technology} required technology hit(s)")
-    if score.preferred_technology:
-        parts.append(f"{score.preferred_technology} preferred technology hit(s)")
+    if score.distinctive_required_technology:
+        parts.append(
+            f"{score.distinctive_required_technology} distinctive required "
+            "technology hit(s)"
+        )
+    if score.distinctive_preferred_technology:
+        parts.append(
+            f"{score.distinctive_preferred_technology} distinctive preferred "
+            "technology hit(s)"
+        )
     if score.demonstrates_overlap:
         parts.append(f"{score.demonstrates_overlap} demonstrates overlap(s)")
     if score.responsibility_overlap:
         parts.append(f"{score.responsibility_overlap} responsibility overlap(s)")
+    if score.capability_overlap:
+        parts.append(f"{score.capability_overlap} capability overlap(s)")
+    if score.generic_required_technology:
+        parts.append(
+            f"{score.generic_required_technology} generic required technology hit(s)"
+        )
+    if score.generic_preferred_technology:
+        parts.append(
+            f"{score.generic_preferred_technology} generic preferred technology hit(s)"
+        )
     if score.unspecified_technology:
         parts.append(f"{score.unspecified_technology} unspecified technology hit(s)")
     if not parts:

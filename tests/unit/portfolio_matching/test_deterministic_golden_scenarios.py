@@ -98,7 +98,12 @@ def test_no_technologies_uses_responsibility_only_ranking() -> None:
     assert _rank_ids(match)[0] == "operational-intelligence-copilot"
     assert "public-holiday-entitlements" in match.unranked_project_ids
     assert all(
-        factor.kind in {"responsibility_overlap", "demonstrates_overlap"}
+        factor.kind
+        in {
+            "responsibility_overlap",
+            "demonstrates_overlap",
+            "capability_overlap",
+        }
         for entry in match.ranked_projects
         for factor in entry.factors
     )

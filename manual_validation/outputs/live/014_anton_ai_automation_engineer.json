@@ -61,6 +61,36 @@
     },
     "technologies": [
       {
+        "name": "GenAI",
+        "level": "required",
+        "evidence": [
+          {
+            "excerpt": "Architect and implement intelligent automation workflows using GenAI",
+            "section": "Key Responsibilities"
+          }
+        ]
+      },
+      {
+        "name": "LLMs",
+        "level": "required",
+        "evidence": [
+          {
+            "excerpt": "Architect and implement intelligent automation workflows using LLMs",
+            "section": "Key Responsibilities"
+          }
+        ]
+      },
+      {
+        "name": "RPA tools",
+        "level": "required",
+        "evidence": [
+          {
+            "excerpt": "Architect and implement intelligent automation workflows using RPA tools",
+            "section": "Key Responsibilities"
+          }
+        ]
+      },
+      {
         "name": "Python",
         "level": "required",
         "evidence": [
@@ -82,7 +112,7 @@
       },
       {
         "name": "AWS",
-        "level": "preferred",
+        "level": "required",
         "evidence": [
           {
             "excerpt": "cloud platforms like AWS, Azure, or GCP",
@@ -92,7 +122,7 @@
       },
       {
         "name": "Azure",
-        "level": "preferred",
+        "level": "required",
         "evidence": [
           {
             "excerpt": "cloud platforms like AWS, Azure, or GCP",
@@ -102,7 +132,7 @@
       },
       {
         "name": "GCP",
-        "level": "preferred",
+        "level": "required",
         "evidence": [
           {
             "excerpt": "cloud platforms like AWS, Azure, or GCP",
@@ -112,7 +142,7 @@
       },
       {
         "name": "PyTorch",
-        "level": "preferred",
+        "level": "required",
         "evidence": [
           {
             "excerpt": "Hands-on experience with frameworks such as PyTorch, TensorFlow, LangChain, or Hugging Face",
@@ -122,7 +152,7 @@
       },
       {
         "name": "TensorFlow",
-        "level": "preferred",
+        "level": "required",
         "evidence": [
           {
             "excerpt": "Hands-on experience with frameworks such as PyTorch, TensorFlow, LangChain, or Hugging Face",
@@ -132,7 +162,7 @@
       },
       {
         "name": "LangChain",
-        "level": "preferred",
+        "level": "required",
         "evidence": [
           {
             "excerpt": "Hands-on experience with frameworks such as PyTorch, TensorFlow, LangChain, or Hugging Face",
@@ -142,7 +172,7 @@
       },
       {
         "name": "Hugging Face",
-        "level": "preferred",
+        "level": "required",
         "evidence": [
           {
             "excerpt": "Hands-on experience with frameworks such as PyTorch, TensorFlow, LangChain, or Hugging Face",
@@ -152,7 +182,7 @@
       },
       {
         "name": "UiPath",
-        "level": "preferred",
+        "level": "required",
         "evidence": [
           {
             "excerpt": "Proven track record with enterprise automation tools like UiPath or native cloud automation services",
@@ -166,7 +196,7 @@
         "description": "Design End-to-End Solutions: Architect and implement intelligent automation workflows using GenAI, LLMs, and RPA tools.",
         "evidence": [
           {
-            "excerpt": "Architect and implement intelligent automation workflows using GenAI, LLMs, and RPA tools",
+            "excerpt": "Architect and implement intelligent automation workflows using GenAI, LLMs, and RPA tools.",
             "section": "Key Responsibilities"
           }
         ]
@@ -175,7 +205,7 @@
         "description": "Develop AI Models: Build, fine-tune, and deploy machine learning models tailored for financial data processing.",
         "evidence": [
           {
-            "excerpt": "Build, fine-tune, and deploy machine learning models tailored for financial data processing",
+            "excerpt": "Build, fine-tune, and deploy machine learning models tailored for financial data processing.",
             "section": "Key Responsibilities"
           }
         ]
@@ -184,7 +214,7 @@
         "description": "Integrate Systems: Connect AI capabilities seamlessly with existing legacy banking platforms and modern cloud infrastructure.",
         "evidence": [
           {
-            "excerpt": "Connect AI capabilities seamlessly with existing legacy banking platforms and modern cloud infrastructure",
+            "excerpt": "Connect AI capabilities seamlessly with existing legacy banking platforms and modern cloud infrastructure.",
             "section": "Key Responsibilities"
           }
         ]
@@ -193,7 +223,7 @@
         "description": "Optimize Processes: Analyze complex banking workflows to identify automation bottlenecks and deliver high-performance fixes.",
         "evidence": [
           {
-            "excerpt": "Analyze complex banking workflows to identify automation bottlenecks and deliver high-performance fixes",
+            "excerpt": "Analyze complex banking workflows to identify automation bottlenecks and deliver high-performance fixes.",
             "section": "Key Responsibilities"
           }
         ]
@@ -202,7 +232,7 @@
         "description": "Ensure Compliance: Collaborate with risk and security teams to build explainable AI systems that meet strict financial regulations.",
         "evidence": [
           {
-            "excerpt": "Collaborate with risk and security teams to build explainable AI systems that meet strict financial regulations",
+            "excerpt": "Collaborate with risk and security teams to build explainable AI systems that meet strict financial regulations.",
             "section": "Key Responsibilities"
           }
         ]
@@ -211,7 +241,7 @@
         "description": "Maintain Infrastructure: Monitor, test, and upscale production AI pipelines to ensure maximum uptime and data integrity.",
         "evidence": [
           {
-            "excerpt": "Monitor, test, and upscale production AI pipelines to ensure maximum uptime and data integrity",
+            "excerpt": "Monitor, test, and upscale production AI pipelines to ensure maximum uptime and data integrity.",
             "section": "Key Responsibilities"
           }
         ]
@@ -228,20 +258,20 @@
     },
     "location": {
       "clarity": "stated",
-      "summary": "Melbourne or Sydney, primarily in Melbourne",
+      "summary": "Melbourne, VIC",
       "evidence": [
         {
-          "excerpt": "Applications are welcomed from candidates based in either Melbourne or Sydney, with the broader team primarily located in Melbourne",
-          "section": "JobDescription"
+          "excerpt": "Applications are welcomed from candidates based in either Melbourne or Sydney",
+          "section": "Job description"
         }
       ]
     },
     "work_arrangement": {
       "arrangement": "hybrid",
-      "details": "Hybrid work model with a balance of home and premium Melbourne CBD office days",
+      "details": "a balance of home and premium Melbourne CBD office days",
       "evidence": [
         {
-          "excerpt": "Hybrid work model with a balance of home and premium Melbourne CBD office days",
+          "excerpt": "Hybrid work model with a balance of home and premium Melbourne CBD office days.",
           "section": "What Our Client has on Offer"
         }
       ]
@@ -252,7 +282,7 @@
       "evidence": [
         {
           "excerpt": "Full time",
-          "section": "JobDescription"
+          "section": "Job description"
         }
       ]
     },
@@ -264,7 +294,19 @@
         "maximum_years": null,
         "evidence": [
           {
-            "excerpt": "Bachelor’s or Master’s degree in Computer Science, Data Science, or a related quantitative field",
+            "excerpt": "Education: Bachelor’s or Master’s degree in Computer Science, Data Science, or a related quantitative field.",
+            "section": "Skills and Experience Required"
+          }
+        ]
+      },
+      {
+        "description": "Understanding of investment banking operations, market data, or regulatory reporting is highly desirable.",
+        "level": "preferred",
+        "minimum_years": null,
+        "maximum_years": null,
+        "evidence": [
+          {
+            "excerpt": "Financial Domain Knowledge: Understanding of investment banking operations, market data, or regulatory reporting is highly desirable.",
             "section": "Skills and Experience Required"
           }
         ]
@@ -296,6 +338,36 @@
       },
       "technologies": [
         {
+          "name": "GenAI",
+          "level": "required",
+          "evidence": [
+            {
+              "excerpt": "Architect and implement intelligent automation workflows using GenAI",
+              "section": "Key Responsibilities"
+            }
+          ]
+        },
+        {
+          "name": "LLMs",
+          "level": "required",
+          "evidence": [
+            {
+              "excerpt": "Architect and implement intelligent automation workflows using LLMs",
+              "section": "Key Responsibilities"
+            }
+          ]
+        },
+        {
+          "name": "RPA tools",
+          "level": "required",
+          "evidence": [
+            {
+              "excerpt": "Architect and implement intelligent automation workflows using RPA tools",
+              "section": "Key Responsibilities"
+            }
+          ]
+        },
+        {
           "name": "Python",
           "level": "required",
           "evidence": [
@@ -317,7 +389,7 @@
         },
         {
           "name": "AWS",
-          "level": "preferred",
+          "level": "required",
           "evidence": [
             {
               "excerpt": "cloud platforms like AWS, Azure, or GCP",
@@ -327,7 +399,7 @@
         },
         {
           "name": "Azure",
-          "level": "preferred",
+          "level": "required",
           "evidence": [
             {
               "excerpt": "cloud platforms like AWS, Azure, or GCP",
@@ -337,7 +409,7 @@
         },
         {
           "name": "GCP",
-          "level": "preferred",
+          "level": "required",
           "evidence": [
             {
               "excerpt": "cloud platforms like AWS, Azure, or GCP",
@@ -347,7 +419,7 @@
         },
         {
           "name": "PyTorch",
-          "level": "preferred",
+          "level": "required",
           "evidence": [
             {
               "excerpt": "Hands-on experience with frameworks such as PyTorch, TensorFlow, LangChain, or Hugging Face",
@@ -357,7 +429,7 @@
         },
         {
           "name": "TensorFlow",
-          "level": "preferred",
+          "level": "required",
           "evidence": [
             {
               "excerpt": "Hands-on experience with frameworks such as PyTorch, TensorFlow, LangChain, or Hugging Face",
@@ -367,7 +439,7 @@
         },
         {
           "name": "LangChain",
-          "level": "preferred",
+          "level": "required",
           "evidence": [
             {
               "excerpt": "Hands-on experience with frameworks such as PyTorch, TensorFlow, LangChain, or Hugging Face",
@@ -377,7 +449,7 @@
         },
         {
           "name": "Hugging Face",
-          "level": "preferred",
+          "level": "required",
           "evidence": [
             {
               "excerpt": "Hands-on experience with frameworks such as PyTorch, TensorFlow, LangChain, or Hugging Face",
@@ -387,7 +459,7 @@
         },
         {
           "name": "UiPath",
-          "level": "preferred",
+          "level": "required",
           "evidence": [
             {
               "excerpt": "Proven track record with enterprise automation tools like UiPath or native cloud automation services",
@@ -401,7 +473,7 @@
           "description": "Design End-to-End Solutions: Architect and implement intelligent automation workflows using GenAI, LLMs, and RPA tools.",
           "evidence": [
             {
-              "excerpt": "Architect and implement intelligent automation workflows using GenAI, LLMs, and RPA tools",
+              "excerpt": "Architect and implement intelligent automation workflows using GenAI, LLMs, and RPA tools.",
               "section": "Key Responsibilities"
             }
           ]
@@ -410,7 +482,7 @@
           "description": "Develop AI Models: Build, fine-tune, and deploy machine learning models tailored for financial data processing.",
           "evidence": [
             {
-              "excerpt": "Build, fine-tune, and deploy machine learning models tailored for financial data processing",
+              "excerpt": "Build, fine-tune, and deploy machine learning models tailored for financial data processing.",
               "section": "Key Responsibilities"
             }
           ]
@@ -419,7 +491,7 @@
           "description": "Integrate Systems: Connect AI capabilities seamlessly with existing legacy banking platforms and modern cloud infrastructure.",
           "evidence": [
             {
-              "excerpt": "Connect AI capabilities seamlessly with existing legacy banking platforms and modern cloud infrastructure",
+              "excerpt": "Connect AI capabilities seamlessly with existing legacy banking platforms and modern cloud infrastructure.",
               "section": "Key Responsibilities"
             }
           ]
@@ -428,7 +500,7 @@
           "description": "Optimize Processes: Analyze complex banking workflows to identify automation bottlenecks and deliver high-performance fixes.",
           "evidence": [
             {
-              "excerpt": "Analyze complex banking workflows to identify automation bottlenecks and deliver high-performance fixes",
+              "excerpt": "Analyze complex banking workflows to identify automation bottlenecks and deliver high-performance fixes.",
               "section": "Key Responsibilities"
             }
           ]
@@ -437,7 +509,7 @@
           "description": "Ensure Compliance: Collaborate with risk and security teams to build explainable AI systems that meet strict financial regulations.",
           "evidence": [
             {
-              "excerpt": "Collaborate with risk and security teams to build explainable AI systems that meet strict financial regulations",
+              "excerpt": "Collaborate with risk and security teams to build explainable AI systems that meet strict financial regulations.",
               "section": "Key Responsibilities"
             }
           ]
@@ -446,7 +518,7 @@
           "description": "Maintain Infrastructure: Monitor, test, and upscale production AI pipelines to ensure maximum uptime and data integrity.",
           "evidence": [
             {
-              "excerpt": "Monitor, test, and upscale production AI pipelines to ensure maximum uptime and data integrity",
+              "excerpt": "Monitor, test, and upscale production AI pipelines to ensure maximum uptime and data integrity.",
               "section": "Key Responsibilities"
             }
           ]
@@ -463,20 +535,20 @@
       },
       "location": {
         "clarity": "stated",
-        "summary": "Melbourne or Sydney, primarily in Melbourne",
+        "summary": "Melbourne, VIC",
         "evidence": [
           {
-            "excerpt": "Applications are welcomed from candidates based in either Melbourne or Sydney, with the broader team primarily located in Melbourne",
-            "section": "JobDescription"
+            "excerpt": "Applications are welcomed from candidates based in either Melbourne or Sydney",
+            "section": "Job description"
           }
         ]
       },
       "work_arrangement": {
         "arrangement": "hybrid",
-        "details": "Hybrid work model with a balance of home and premium Melbourne CBD office days",
+        "details": "a balance of home and premium Melbourne CBD office days",
         "evidence": [
           {
-            "excerpt": "Hybrid work model with a balance of home and premium Melbourne CBD office days",
+            "excerpt": "Hybrid work model with a balance of home and premium Melbourne CBD office days.",
             "section": "What Our Client has on Offer"
           }
         ]
@@ -487,7 +559,7 @@
         "evidence": [
           {
             "excerpt": "Full time",
-            "section": "JobDescription"
+            "section": "Job description"
           }
         ]
       },
@@ -499,7 +571,19 @@
           "maximum_years": null,
           "evidence": [
             {
-              "excerpt": "Bachelor’s or Master’s degree in Computer Science, Data Science, or a related quantitative field",
+              "excerpt": "Education: Bachelor’s or Master’s degree in Computer Science, Data Science, or a related quantitative field.",
+              "section": "Skills and Experience Required"
+            }
+          ]
+        },
+        {
+          "description": "Understanding of investment banking operations, market data, or regulatory reporting is highly desirable.",
+          "level": "preferred",
+          "minimum_years": null,
+          "maximum_years": null,
+          "evidence": [
+            {
+              "excerpt": "Financial Domain Knowledge: Understanding of investment banking operations, market data, or regulatory reporting is highly desirable.",
               "section": "Skills and Experience Required"
             }
           ]
@@ -509,19 +593,19 @@
     "technical_fit": {
       "dimension": "technical",
       "judgment": "mixed",
-      "summary": "Candidate demonstrates relevant technical skills but lacks commercially produced AI experience essential for the role.",
+      "summary": "The candidate demonstrates strong technical skills and relevant experience, but lacks significant evidence in investment banking operations which is preferred for the role.",
       "findings": [
         {
           "kind": "gap",
-          "summary": "The role requires proven commercial experience in deploying AI models, which is not fully evidenced in the profile.",
-          "detail": "The profile includes independent AI engineering work but lacks commercial production experience directly in banking contexts, which is crucial for this position.",
+          "summary": "Understanding of investment banking operations, market data, or regulatory reporting is required but not evidenced in the candidate's profile.",
+          "detail": "While the candidate has strong AI engineering and data engineering expertise, they do not exhibit direct experience in the financial domain as outlined in the job requirements.",
           "importance": "material",
           "job_evidence": [
             {
               "source": "experience_requirement",
-              "item_index": 0,
-              "name": "Bachelor’s or Master’s degree in Computer Science, Data Science, or a related quantitative field",
-              "excerpt": "Bachelor’s or Master’s degree in Computer Science, Data Science, or a related quantitative field"
+              "item_index": 1,
+              "name": "Understanding of investment banking operations, market data, or regulatory reporting",
+              "excerpt": "Financial Domain Knowledge: Understanding of investment banking operations, market data, or regulatory reporting is highly desirable."
             }
           ],
           "profile_evidence": [],
@@ -529,28 +613,39 @@
         },
         {
           "kind": "partial_alignment",
-          "summary": "Profile exhibits strong proficiency in Python and SQL, but key tools such as GenAI or RPA are not covered.",
-          "detail": "While the candidate has proficiency in required technologies, the absence of specific experience with GenAI or RPA tools creates a gap that limits full alignment with job expectations.",
-          "importance": "minor",
+          "summary": "Strong technical skills aligned with the role's technology requirements, with notable experience in Python, cloud platforms, and AI frameworks.",
+          "detail": "The profile shows strong proficiency in technical areas like Python and cloud technologies, but there is a lack of direct application in financial contexts.",
+          "importance": "material",
           "job_evidence": [
             {
               "source": "technology",
-              "item_index": 0,
+              "item_index": 3,
               "name": "Python",
               "excerpt": "Strong proficiency in Python"
             },
             {
               "source": "technology",
-              "item_index": 1,
-              "name": "SQL",
-              "excerpt": "Strong proficiency in SQL"
+              "item_index": 5,
+              "name": "AWS",
+              "excerpt": "cloud platforms like AWS, Azure, or GCP"
+            },
+            {
+              "source": "technology",
+              "item_index": 9,
+              "name": "TensorFlow",
+              "excerpt": "Hands-on experience with frameworks such as PyTorch, TensorFlow, LangChain, or Hugging Face"
             }
           ],
           "profile_evidence": [
             {
-              "source": "project",
-              "ref": "project:operational-intelligence-copilot",
-              "excerpt": "Demonstrates AI capabilities through various projects."
+              "source": "experience",
+              "ref": "experience:chase-risk-compliance-ai-engineer",
+              "excerpt": null
+            },
+            {
+              "source": "experience",
+              "ref": "experience:nbn-data-engineer-2020",
+              "excerpt": null
             }
           ],
           "assumption": null
@@ -559,35 +654,19 @@
     },
     "commercial_fit": {
       "dimension": "commercial",
-      "judgment": "mixed",
-      "summary": "Job clear on commercial AI delivery experience, but candidate's profile primarily reflects individual projects rather than established commercial roles.",
+      "judgment": "unknown",
+      "summary": "Compensation details are unspecified, indicating uncertainty about bridging potential gaps in expectations.",
       "findings": [
         {
-          "kind": "gap",
-          "summary": "The profile does not contain direct evidence of commercial success in AI deployment, which is crucial for the role.",
-          "detail": "The candidate’s experience is largely independent, and lacks explicit commercial engagements that showcase their ability to manage and deliver AI solutions in a corporate setting, particularly in banking.",
-          "importance": "material",
-          "job_evidence": [
-            {
-              "source": "employment",
-              "item_index": null,
-              "name": "Employment status",
-              "excerpt": "Employment status is unspecific, suggesting gaps."
-            }
-          ],
-          "profile_evidence": [],
-          "assumption": null
-        },
-        {
           "kind": "uncertainty",
-          "summary": "Compensation expectations are unclear due to absence of stated salary requirements in the profile.",
-          "detail": "Since the candidate has provided no minimum salary expectations, this could be a barrier to fit given the role's undisclosed salary.",
+          "summary": "Compensation has not been specified in the job posting, which may lead to misalignment in candidate expectations.",
+          "detail": "The expected compensation range is not indicated in the job advertisement, leaving open questions regarding whether it meets the candidate's needs.",
           "importance": "minor",
           "job_evidence": [
             {
               "source": "compensation",
               "item_index": null,
-              "name": "Compensation",
+              "name": "compensation",
               "excerpt": "unstated"
             }
           ],
@@ -598,13 +677,13 @@
     },
     "portfolio_fit": {
       "dimension": "portfolio",
-      "judgment": "weak",
-      "summary": "Independent projects reflect potential but do not align fully with the commercial AI responsibilities stated in the job.",
+      "judgment": "strong",
+      "summary": "The candidate possesses a range of relevant portfolio projects that directly demonstrate capabilities expected in the role.",
       "findings": [
         {
-          "kind": "gap",
-          "summary": "Independent engineering projects lack the necessary commercial application context that this role demands.",
-          "detail": "Although the profile includes projects that demonstrate technical abilities, they do not include sufficient context or results from a commercial perspective, particularly in the banking domain.",
+          "kind": "alignment",
+          "summary": "Portfolio includes multiple AI projects demonstrating relevant skill and application.",
+          "detail": "The candidate has engaged in independent engineering projects that showcase relevant skills in AI and automation, which connect well with the responsibilities listed in the job description.",
           "importance": "material",
           "job_evidence": [
             {
@@ -612,18 +691,24 @@
               "item_index": 0,
               "name": "Design End-to-End Solutions",
               "excerpt": "Architect and implement intelligent automation workflows using GenAI, LLMs, and RPA tools."
+            },
+            {
+              "source": "responsibility",
+              "item_index": 1,
+              "name": "Develop AI Models",
+              "excerpt": "Build, fine-tune, and deploy machine learning models tailored for financial data processing."
             }
           ],
           "profile_evidence": [
             {
               "source": "project",
-              "ref": "project:governance-document-rag",
-              "excerpt": "Supports grounded responses over documents."
+              "ref": "project:operational-intelligence-copilot",
+              "excerpt": null
             },
             {
               "source": "project",
-              "ref": "project:payroll-diagnostics-engine",
-              "excerpt": "Produces explainable operational findings."
+              "ref": "project:career-intelligence-copilot",
+              "excerpt": null
             }
           ],
           "assumption": null
@@ -631,12 +716,14 @@
       ]
     },
     "summary": {
-      "summary": "The assessment reveals that while the candidate holds valuable technical skills and has undertaken independent projects relevant to AI Engineering, there are significant gaps in commercial experience, particularly in the banking sector, which limit the fit for the AI Automation Engineer role.",
+      "summary": "The assessment indicates mixed alignment across technical, commercial, and portfolio dimensions. Significant strengths in AI engineering capabilities are noted, yet gaps remain in financial domain experience and unspecified compensation expectations. Portfolio projects showcase relevant skills and practical application.",
       "key_alignments": [
-        "Technical skills in Python and SQL."
+        "Technical skills in Python and cloud technologies align well with the role requirements.",
+        "Positive evidence from portfolio projects demonstrating AI engineering capabilities."
       ],
       "key_gaps": [
-        "Lack of commercial experience delivering AI solutions in a corporate banking context."
+        "Lack of direct experience in investment banking operations and regulatory reporting which is a preferred requirement.",
+        "Uncertainty regarding compensation, which is unstated in the job posting."
       ]
     }
   },
@@ -665,6 +752,36 @@
       },
       "technologies": [
         {
+          "name": "GenAI",
+          "level": "required",
+          "evidence": [
+            {
+              "excerpt": "Architect and implement intelligent automation workflows using GenAI",
+              "section": "Key Responsibilities"
+            }
+          ]
+        },
+        {
+          "name": "LLMs",
+          "level": "required",
+          "evidence": [
+            {
+              "excerpt": "Architect and implement intelligent automation workflows using LLMs",
+              "section": "Key Responsibilities"
+            }
+          ]
+        },
+        {
+          "name": "RPA tools",
+          "level": "required",
+          "evidence": [
+            {
+              "excerpt": "Architect and implement intelligent automation workflows using RPA tools",
+              "section": "Key Responsibilities"
+            }
+          ]
+        },
+        {
           "name": "Python",
           "level": "required",
           "evidence": [
@@ -686,7 +803,7 @@
         },
         {
           "name": "AWS",
-          "level": "preferred",
+          "level": "required",
           "evidence": [
             {
               "excerpt": "cloud platforms like AWS, Azure, or GCP",
@@ -696,7 +813,7 @@
         },
         {
           "name": "Azure",
-          "level": "preferred",
+          "level": "required",
           "evidence": [
             {
               "excerpt": "cloud platforms like AWS, Azure, or GCP",
@@ -706,7 +823,7 @@
         },
         {
           "name": "GCP",
-          "level": "preferred",
+          "level": "required",
           "evidence": [
             {
               "excerpt": "cloud platforms like AWS, Azure, or GCP",
@@ -716,7 +833,7 @@
         },
         {
           "name": "PyTorch",
-          "level": "preferred",
+          "level": "required",
           "evidence": [
             {
               "excerpt": "Hands-on experience with frameworks such as PyTorch, TensorFlow, LangChain, or Hugging Face",
@@ -726,7 +843,7 @@
         },
         {
           "name": "TensorFlow",
-          "level": "preferred",
+          "level": "required",
           "evidence": [
             {
               "excerpt": "Hands-on experience with frameworks such as PyTorch, TensorFlow, LangChain, or Hugging Face",
@@ -736,7 +853,7 @@
         },
         {
           "name": "LangChain",
-          "level": "preferred",
+          "level": "required",
           "evidence": [
             {
               "excerpt": "Hands-on experience with frameworks such as PyTorch, TensorFlow, LangChain, or Hugging Face",
@@ -746,7 +863,7 @@
         },
         {
           "name": "Hugging Face",
-          "level": "preferred",
+          "level": "required",
           "evidence": [
             {
               "excerpt": "Hands-on experience with frameworks such as PyTorch, TensorFlow, LangChain, or Hugging Face",
@@ -756,7 +873,7 @@
         },
         {
           "name": "UiPath",
-          "level": "preferred",
+          "level": "required",
           "evidence": [
             {
               "excerpt": "Proven track record with enterprise automation tools like UiPath or native cloud automation services",
@@ -770,7 +887,7 @@
           "description": "Design End-to-End Solutions: Architect and implement intelligent automation workflows using GenAI, LLMs, and RPA tools.",
           "evidence": [
             {
-              "excerpt": "Architect and implement intelligent automation workflows using GenAI, LLMs, and RPA tools",
+              "excerpt": "Architect and implement intelligent automation workflows using GenAI, LLMs, and RPA tools.",
               "section": "Key Responsibilities"
             }
           ]
@@ -779,7 +896,7 @@
           "description": "Develop AI Models: Build, fine-tune, and deploy machine learning models tailored for financial data processing.",
           "evidence": [
             {
-              "excerpt": "Build, fine-tune, and deploy machine learning models tailored for financial data processing",
+              "excerpt": "Build, fine-tune, and deploy machine learning models tailored for financial data processing.",
               "section": "Key Responsibilities"
             }
           ]
@@ -788,7 +905,7 @@
           "description": "Integrate Systems: Connect AI capabilities seamlessly with existing legacy banking platforms and modern cloud infrastructure.",
           "evidence": [
             {
-              "excerpt": "Connect AI capabilities seamlessly with existing legacy banking platforms and modern cloud infrastructure",
+              "excerpt": "Connect AI capabilities seamlessly with existing legacy banking platforms and modern cloud infrastructure.",
               "section": "Key Responsibilities"
             }
           ]
@@ -797,7 +914,7 @@
           "description": "Optimize Processes: Analyze complex banking workflows to identify automation bottlenecks and deliver high-performance fixes.",
           "evidence": [
             {
-              "excerpt": "Analyze complex banking workflows to identify automation bottlenecks and deliver high-performance fixes",
+              "excerpt": "Analyze complex banking workflows to identify automation bottlenecks and deliver high-performance fixes.",
               "section": "Key Responsibilities"
             }
           ]
@@ -806,7 +923,7 @@
           "description": "Ensure Compliance: Collaborate with risk and security teams to build explainable AI systems that meet strict financial regulations.",
           "evidence": [
             {
-              "excerpt": "Collaborate with risk and security teams to build explainable AI systems that meet strict financial regulations",
+              "excerpt": "Collaborate with risk and security teams to build explainable AI systems that meet strict financial regulations.",
               "section": "Key Responsibilities"
             }
           ]
@@ -815,7 +932,7 @@
           "description": "Maintain Infrastructure: Monitor, test, and upscale production AI pipelines to ensure maximum uptime and data integrity.",
           "evidence": [
             {
-              "excerpt": "Monitor, test, and upscale production AI pipelines to ensure maximum uptime and data integrity",
+              "excerpt": "Monitor, test, and upscale production AI pipelines to ensure maximum uptime and data integrity.",
               "section": "Key Responsibilities"
             }
           ]
@@ -832,20 +949,20 @@
       },
       "location": {
         "clarity": "stated",
-        "summary": "Melbourne or Sydney, primarily in Melbourne",
+        "summary": "Melbourne, VIC",
         "evidence": [
           {
-            "excerpt": "Applications are welcomed from candidates based in either Melbourne or Sydney, with the broader team primarily located in Melbourne",
-            "section": "JobDescription"
+            "excerpt": "Applications are welcomed from candidates based in either Melbourne or Sydney",
+            "section": "Job description"
           }
         ]
       },
       "work_arrangement": {
         "arrangement": "hybrid",
-        "details": "Hybrid work model with a balance of home and premium Melbourne CBD office days",
+        "details": "a balance of home and premium Melbourne CBD office days",
         "evidence": [
           {
-            "excerpt": "Hybrid work model with a balance of home and premium Melbourne CBD office days",
+            "excerpt": "Hybrid work model with a balance of home and premium Melbourne CBD office days.",
             "section": "What Our Client has on Offer"
           }
         ]
@@ -856,7 +973,7 @@
         "evidence": [
           {
             "excerpt": "Full time",
-            "section": "JobDescription"
+            "section": "Job description"
           }
         ]
       },
@@ -868,7 +985,19 @@
           "maximum_years": null,
           "evidence": [
             {
-              "excerpt": "Bachelor’s or Master’s degree in Computer Science, Data Science, or a related quantitative field",
+              "excerpt": "Education: Bachelor’s or Master’s degree in Computer Science, Data Science, or a related quantitative field.",
+              "section": "Skills and Experience Required"
+            }
+          ]
+        },
+        {
+          "description": "Understanding of investment banking operations, market data, or regulatory reporting is highly desirable.",
+          "level": "preferred",
+          "minimum_years": null,
+          "maximum_years": null,
+          "evidence": [
+            {
+              "excerpt": "Financial Domain Knowledge: Understanding of investment banking operations, market data, or regulatory reporting is highly desirable.",
               "section": "Skills and Experience Required"
             }
           ]
@@ -879,15 +1008,15 @@
       {
         "rank": 1,
         "project_id": "governance-document-rag",
-        "rationale": "Project 'governance-document-rag' ranked on 1 required technology hit(s), 1 preferred technology hit(s), 4 demonstrates overlap(s), 4 responsibility overlap(s).",
+        "rationale": "Project 'governance-document-rag' ranked on 1 distinctive required technology hit(s), 4 demonstrates overlap(s), 4 responsibility overlap(s), 1 capability overlap(s), 1 generic required technology hit(s).",
         "factors": [
           {
             "kind": "required_technology",
-            "summary": "Project evidence supports required technology 'Python'.",
+            "summary": "Project evidence supports required technology 'Python' (generic stack term).",
             "job_evidence": [
               {
                 "source": "technology",
-                "item_index": 0,
+                "item_index": 3,
                 "name": "Python",
                 "excerpt": "Strong proficiency in Python"
               }
@@ -901,12 +1030,12 @@
             ]
           },
           {
-            "kind": "preferred_technology",
-            "summary": "Project evidence supports preferred technology 'LangChain'.",
+            "kind": "required_technology",
+            "summary": "Project evidence supports required technology 'LangChain'.",
             "job_evidence": [
               {
                 "source": "technology",
-                "item_index": 7,
+                "item_index": 10,
                 "name": "LangChain",
                 "excerpt": "Hands-on experience with frameworks such as PyTorch, TensorFlow, LangChain, or Hugging Face"
               }
@@ -920,6 +1049,25 @@
             ]
           },
           {
+            "kind": "capability_overlap",
+            "summary": "Project demonstrates 'explainability governance' capability overlapping job evidence 'Ensure Compliance: Collaborate with risk and security teams to build explainable AI systems that meet strict financial regulations.'.",
+            "job_evidence": [
+              {
+                "source": "responsibility",
+                "item_index": 4,
+                "name": null,
+                "excerpt": "Collaborate with risk and security teams to build explainable AI systems that meet strict financial regulations."
+              }
+            ],
+            "profile_evidence": [
+              {
+                "source": "project",
+                "ref": "project:governance-document-rag",
+                "excerpt": "explainability"
+              }
+            ]
+          },
+          {
             "kind": "demonstrates_overlap",
             "summary": "Project demonstrates capabilities overlapping responsibility 'Develop AI Models: Build, fine-tune, and deploy machine learning models tailored for financial data processing.'.",
             "job_evidence": [
@@ -927,7 +1075,7 @@
                 "source": "responsibility",
                 "item_index": 1,
                 "name": null,
-                "excerpt": "Build, fine-tune, and deploy machine learning models tailored for financial data processing"
+                "excerpt": "Build, fine-tune, and deploy machine learning models tailored for financial data processing."
               }
             ],
             "profile_evidence": [
@@ -946,7 +1094,7 @@
                 "source": "responsibility",
                 "item_index": 1,
                 "name": null,
-                "excerpt": "Build, fine-tune, and deploy machine learning models tailored for financial data processing"
+                "excerpt": "Build, fine-tune, and deploy machine learning models tailored for financial data processing."
               }
             ],
             "profile_evidence": [
@@ -965,7 +1113,7 @@
                 "source": "responsibility",
                 "item_index": 2,
                 "name": null,
-                "excerpt": "Connect AI capabilities seamlessly with existing legacy banking platforms and modern cloud infrastructure"
+                "excerpt": "Connect AI capabilities seamlessly with existing legacy banking platforms and modern cloud infrastructure."
               }
             ],
             "profile_evidence": [
@@ -984,7 +1132,7 @@
                 "source": "responsibility",
                 "item_index": 2,
                 "name": null,
-                "excerpt": "Connect AI capabilities seamlessly with existing legacy banking platforms and modern cloud infrastructure"
+                "excerpt": "Connect AI capabilities seamlessly with existing legacy banking platforms and modern cloud infrastructure."
               }
             ],
             "profile_evidence": [
@@ -1003,7 +1151,7 @@
                 "source": "responsibility",
                 "item_index": 4,
                 "name": null,
-                "excerpt": "Collaborate with risk and security teams to build explainable AI systems that meet strict financial regulations"
+                "excerpt": "Collaborate with risk and security teams to build explainable AI systems that meet strict financial regulations."
               }
             ],
             "profile_evidence": [
@@ -1022,7 +1170,7 @@
                 "source": "responsibility",
                 "item_index": 4,
                 "name": null,
-                "excerpt": "Collaborate with risk and security teams to build explainable AI systems that meet strict financial regulations"
+                "excerpt": "Collaborate with risk and security teams to build explainable AI systems that meet strict financial regulations."
               }
             ],
             "profile_evidence": [
@@ -1041,7 +1189,7 @@
                 "source": "responsibility",
                 "item_index": 5,
                 "name": null,
-                "excerpt": "Monitor, test, and upscale production AI pipelines to ensure maximum uptime and data integrity"
+                "excerpt": "Monitor, test, and upscale production AI pipelines to ensure maximum uptime and data integrity."
               }
             ],
             "profile_evidence": [
@@ -1060,7 +1208,7 @@
                 "source": "responsibility",
                 "item_index": 5,
                 "name": null,
-                "excerpt": "Monitor, test, and upscale production AI pipelines to ensure maximum uptime and data integrity"
+                "excerpt": "Monitor, test, and upscale production AI pipelines to ensure maximum uptime and data integrity."
               }
             ],
             "profile_evidence": [
@@ -1078,15 +1226,15 @@
       {
         "rank": 2,
         "project_id": "operational-intelligence-copilot",
-        "rationale": "Project 'operational-intelligence-copilot' ranked on 1 required technology hit(s), 6 demonstrates overlap(s), 4 responsibility overlap(s).",
+        "rationale": "Project 'operational-intelligence-copilot' ranked on 6 demonstrates overlap(s), 4 responsibility overlap(s), 3 capability overlap(s), 1 generic required technology hit(s).",
         "factors": [
           {
             "kind": "required_technology",
-            "summary": "Project evidence supports required technology 'Python'.",
+            "summary": "Project evidence supports required technology 'Python' (generic stack term).",
             "job_evidence": [
               {
                 "source": "technology",
-                "item_index": 0,
+                "item_index": 3,
                 "name": "Python",
                 "excerpt": "Strong proficiency in Python"
               }
@@ -1100,6 +1248,63 @@
             ]
           },
           {
+            "kind": "capability_overlap",
+            "summary": "Project demonstrates 'workflows pipelines' capability overlapping job evidence 'Design End-to-End Solutions: Architect and implement intelligent automation workflows using GenAI, LLMs, and RPA tools.'.",
+            "job_evidence": [
+              {
+                "source": "responsibility",
+                "item_index": 0,
+                "name": null,
+                "excerpt": "Architect and implement intelligent automation workflows using GenAI, LLMs, and RPA tools."
+              }
+            ],
+            "profile_evidence": [
+              {
+                "source": "project",
+                "ref": "project:operational-intelligence-copilot",
+                "excerpt": "workflows"
+              }
+            ]
+          },
+          {
+            "kind": "capability_overlap",
+            "summary": "Project demonstrates 'explainability governance' capability overlapping job evidence 'Ensure Compliance: Collaborate with risk and security teams to build explainable AI systems that meet strict financial regulations.'.",
+            "job_evidence": [
+              {
+                "source": "responsibility",
+                "item_index": 4,
+                "name": null,
+                "excerpt": "Collaborate with risk and security teams to build explainable AI systems that meet strict financial regulations."
+              }
+            ],
+            "profile_evidence": [
+              {
+                "source": "project",
+                "ref": "project:operational-intelligence-copilot",
+                "excerpt": "explainable"
+              }
+            ]
+          },
+          {
+            "kind": "capability_overlap",
+            "summary": "Project demonstrates 'production ai lifecycle' capability overlapping job evidence 'Maintain Infrastructure: Monitor, test, and upscale production AI pipelines to ensure maximum uptime and data integrity.'.",
+            "job_evidence": [
+              {
+                "source": "responsibility",
+                "item_index": 5,
+                "name": null,
+                "excerpt": "Monitor, test, and upscale production AI pipelines to ensure maximum uptime and data integrity."
+              }
+            ],
+            "profile_evidence": [
+              {
+                "source": "project",
+                "ref": "project:operational-intelligence-copilot",
+                "excerpt": "operational intelligence"
+              }
+            ]
+          },
+          {
             "kind": "demonstrates_overlap",
             "summary": "Project demonstrates capabilities overlapping responsibility 'Design End-to-End Solutions: Architect and implement intelligent automation workflows using GenAI, LLMs, and RPA tools.'.",
             "job_evidence": [
@@ -1107,7 +1312,7 @@
                 "source": "responsibility",
                 "item_index": 0,
                 "name": null,
-                "excerpt": "Architect and implement intelligent automation workflows using GenAI, LLMs, and RPA tools"
+                "excerpt": "Architect and implement intelligent automation workflows using GenAI, LLMs, and RPA tools."
               }
             ],
             "profile_evidence": [
@@ -1126,7 +1331,7 @@
                 "source": "responsibility",
                 "item_index": 1,
                 "name": null,
-                "excerpt": "Build, fine-tune, and deploy machine learning models tailored for financial data processing"
+                "excerpt": "Build, fine-tune, and deploy machine learning models tailored for financial data processing."
               }
             ],
             "profile_evidence": [
@@ -1145,7 +1350,7 @@
                 "source": "responsibility",
                 "item_index": 1,
                 "name": null,
-                "excerpt": "Build, fine-tune, and deploy machine learning models tailored for financial data processing"
+                "excerpt": "Build, fine-tune, and deploy machine learning models tailored for financial data processing."
               }
             ],
             "profile_evidence": [
@@ -1164,7 +1369,7 @@
                 "source": "responsibility",
                 "item_index": 2,
                 "name": null,
-                "excerpt": "Connect AI capabilities seamlessly with existing legacy banking platforms and modern cloud infrastructure"
+                "excerpt": "Connect AI capabilities seamlessly with existing legacy banking platforms and modern cloud infrastructure."
               }
             ],
             "profile_evidence": [
@@ -1183,7 +1388,7 @@
                 "source": "responsibility",
                 "item_index": 2,
                 "name": null,
-                "excerpt": "Connect AI capabilities seamlessly with existing legacy banking platforms and modern cloud infrastructure"
+                "excerpt": "Connect AI capabilities seamlessly with existing legacy banking platforms and modern cloud infrastructure."
               }
             ],
             "profile_evidence": [
@@ -1202,7 +1407,7 @@
                 "source": "responsibility",
                 "item_index": 3,
                 "name": null,
-                "excerpt": "Analyze complex banking workflows to identify automation bottlenecks and deliver high-performance fixes"
+                "excerpt": "Analyze complex banking workflows to identify automation bottlenecks and deliver high-performance fixes."
               }
             ],
             "profile_evidence": [
@@ -1221,7 +1426,7 @@
                 "source": "responsibility",
                 "item_index": 4,
                 "name": null,
-                "excerpt": "Collaborate with risk and security teams to build explainable AI systems that meet strict financial regulations"
+                "excerpt": "Collaborate with risk and security teams to build explainable AI systems that meet strict financial regulations."
               }
             ],
             "profile_evidence": [
@@ -1240,7 +1445,7 @@
                 "source": "responsibility",
                 "item_index": 4,
                 "name": null,
-                "excerpt": "Collaborate with risk and security teams to build explainable AI systems that meet strict financial regulations"
+                "excerpt": "Collaborate with risk and security teams to build explainable AI systems that meet strict financial regulations."
               }
             ],
             "profile_evidence": [
@@ -1259,7 +1464,7 @@
                 "source": "responsibility",
                 "item_index": 5,
                 "name": null,
-                "excerpt": "Monitor, test, and upscale production AI pipelines to ensure maximum uptime and data integrity"
+                "excerpt": "Monitor, test, and upscale production AI pipelines to ensure maximum uptime and data integrity."
               }
             ],
             "profile_evidence": [
@@ -1278,7 +1483,7 @@
                 "source": "responsibility",
                 "item_index": 5,
                 "name": null,
-                "excerpt": "Monitor, test, and upscale production AI pipelines to ensure maximum uptime and data integrity"
+                "excerpt": "Monitor, test, and upscale production AI pipelines to ensure maximum uptime and data integrity."
               }
             ],
             "profile_evidence": [
@@ -1296,15 +1501,15 @@
       {
         "rank": 3,
         "project_id": "payroll-diagnostics-engine",
-        "rationale": "Project 'payroll-diagnostics-engine' ranked on 1 required technology hit(s), 1 demonstrates overlap(s), 4 responsibility overlap(s).",
+        "rationale": "Project 'payroll-diagnostics-engine' ranked on 1 demonstrates overlap(s), 4 responsibility overlap(s), 1 capability overlap(s), 1 generic required technology hit(s).",
         "factors": [
           {
             "kind": "required_technology",
-            "summary": "Project evidence supports required technology 'Python'.",
+            "summary": "Project evidence supports required technology 'Python' (generic stack term).",
             "job_evidence": [
               {
                 "source": "technology",
-                "item_index": 0,
+                "item_index": 3,
                 "name": "Python",
                 "excerpt": "Strong proficiency in Python"
               }
@@ -1318,6 +1523,25 @@
             ]
           },
           {
+            "kind": "capability_overlap",
+            "summary": "Project demonstrates 'explainability governance' capability overlapping job evidence 'Ensure Compliance: Collaborate with risk and security teams to build explainable AI systems that meet strict financial regulations.'.",
+            "job_evidence": [
+              {
+                "source": "responsibility",
+                "item_index": 4,
+                "name": null,
+                "excerpt": "Collaborate with risk and security teams to build explainable AI systems that meet strict financial regulations."
+              }
+            ],
+            "profile_evidence": [
+              {
+                "source": "project",
+                "ref": "project:payroll-diagnostics-engine",
+                "excerpt": "deterministic"
+              }
+            ]
+          },
+          {
             "kind": "responsibility_overlap",
             "summary": "Project summary, outcomes, or technologies overlap responsibility 'Develop AI Models: Build, fine-tune, and deploy machine learning models tailored for financial data processing.'.",
             "job_evidence": [
@@ -1325,7 +1549,7 @@
                 "source": "responsibility",
                 "item_index": 1,
                 "name": null,
-                "excerpt": "Build, fine-tune, and deploy machine learning models tailored for financial data processing"
+                "excerpt": "Build, fine-tune, and deploy machine learning models tailored for financial data processing."
               }
             ],
             "profile_evidence": [
@@ -1344,7 +1568,7 @@
                 "source": "responsibility",
                 "item_index": 3,
                 "name": null,
-                "excerpt": "Analyze complex banking workflows to identify automation bottlenecks and deliver high-performance fixes"
+                "excerpt": "Analyze complex banking workflows to identify automation bottlenecks and deliver high-performance fixes."
               }
             ],
             "profile_evidence": [
@@ -1363,7 +1587,7 @@
                 "source": "responsibility",
                 "item_index": 4,
                 "name": null,
-                "excerpt": "Collaborate with risk and security teams to build explainable AI systems that meet strict financial regulations"
+                "excerpt": "Collaborate with risk and security teams to build explainable AI systems that meet strict financial regulations."
               }
             ],
             "profile_evidence": [
@@ -1382,7 +1606,7 @@
                 "source": "responsibility",
                 "item_index": 4,
                 "name": null,
-                "excerpt": "Collaborate with risk and security teams to build explainable AI systems that meet strict financial regulations"
+                "excerpt": "Collaborate with risk and security teams to build explainable AI systems that meet strict financial regulations."
               }
             ],
             "profile_evidence": [
@@ -1401,7 +1625,7 @@
                 "source": "responsibility",
                 "item_index": 5,
                 "name": null,
-                "excerpt": "Monitor, test, and upscale production AI pipelines to ensure maximum uptime and data integrity"
+                "excerpt": "Monitor, test, and upscale production AI pipelines to ensure maximum uptime and data integrity."
               }
             ],
             "profile_evidence": [
@@ -1419,15 +1643,15 @@
       {
         "rank": 4,
         "project_id": "public-holiday-entitlements",
-        "rationale": "Project 'public-holiday-entitlements' ranked on 1 required technology hit(s), 1 demonstrates overlap(s), 2 responsibility overlap(s).",
+        "rationale": "Project 'public-holiday-entitlements' ranked on 1 demonstrates overlap(s), 2 responsibility overlap(s), 1 generic required technology hit(s).",
         "factors": [
           {
             "kind": "required_technology",
-            "summary": "Project evidence supports required technology 'Python'.",
+            "summary": "Project evidence supports required technology 'Python' (generic stack term).",
             "job_evidence": [
               {
                 "source": "technology",
-                "item_index": 0,
+                "item_index": 3,
                 "name": "Python",
                 "excerpt": "Strong proficiency in Python"
               }
@@ -1448,7 +1672,7 @@
                 "source": "responsibility",
                 "item_index": 1,
                 "name": null,
-                "excerpt": "Build, fine-tune, and deploy machine learning models tailored for financial data processing"
+                "excerpt": "Build, fine-tune, and deploy machine learning models tailored for financial data processing."
               }
             ],
             "profile_evidence": [
@@ -1467,7 +1691,7 @@
                 "source": "responsibility",
                 "item_index": 4,
                 "name": null,
-                "excerpt": "Collaborate with risk and security teams to build explainable AI systems that meet strict financial regulations"
+                "excerpt": "Collaborate with risk and security teams to build explainable AI systems that meet strict financial regulations."
               }
             ],
             "profile_evidence": [
@@ -1486,7 +1710,7 @@
                 "source": "responsibility",
                 "item_index": 4,
                 "name": null,
-                "excerpt": "Collaborate with risk and security teams to build explainable AI systems that meet strict financial regulations"
+                "excerpt": "Collaborate with risk and security teams to build explainable AI systems that meet strict financial regulations."
               }
             ],
             "profile_evidence": [
@@ -1504,15 +1728,15 @@
       {
         "rank": 5,
         "project_id": "career-intelligence-copilot",
-        "rationale": "Project 'career-intelligence-copilot' ranked on 1 required technology hit(s), 4 responsibility overlap(s).",
+        "rationale": "Project 'career-intelligence-copilot' ranked on 4 responsibility overlap(s), 1 capability overlap(s), 1 generic required technology hit(s).",
         "factors": [
           {
             "kind": "required_technology",
-            "summary": "Project evidence supports required technology 'Python'.",
+            "summary": "Project evidence supports required technology 'Python' (generic stack term).",
             "job_evidence": [
               {
                 "source": "technology",
-                "item_index": 0,
+                "item_index": 3,
                 "name": "Python",
                 "excerpt": "Strong proficiency in Python"
               }
@@ -1526,6 +1750,25 @@
             ]
           },
           {
+            "kind": "capability_overlap",
+            "summary": "Project demonstrates 'explainability governance' capability overlapping job evidence 'Ensure Compliance: Collaborate with risk and security teams to build explainable AI systems that meet strict financial regulations.'.",
+            "job_evidence": [
+              {
+                "source": "responsibility",
+                "item_index": 4,
+                "name": null,
+                "excerpt": "Collaborate with risk and security teams to build explainable AI systems that meet strict financial regulations."
+              }
+            ],
+            "profile_evidence": [
+              {
+                "source": "project",
+                "ref": "project:career-intelligence-copilot",
+                "excerpt": "deterministic"
+              }
+            ]
+          },
+          {
             "kind": "responsibility_overlap",
             "summary": "Project summary, outcomes, or technologies overlap responsibility 'Develop AI Models: Build, fine-tune, and deploy machine learning models tailored for financial data processing.'.",
             "job_evidence": [
@@ -1533,7 +1776,7 @@
                 "source": "responsibility",
                 "item_index": 1,
                 "name": null,
-                "excerpt": "Build, fine-tune, and deploy machine learning models tailored for financial data processing"
+                "excerpt": "Build, fine-tune, and deploy machine learning models tailored for financial data processing."
               }
             ],
             "profile_evidence": [
@@ -1552,7 +1795,7 @@
                 "source": "responsibility",
                 "item_index": 2,
                 "name": null,
-                "excerpt": "Connect AI capabilities seamlessly with existing legacy banking platforms and modern cloud infrastructure"
+                "excerpt": "Connect AI capabilities seamlessly with existing legacy banking platforms and modern cloud infrastructure."
               }
             ],
             "profile_evidence": [
@@ -1571,7 +1814,7 @@
                 "source": "responsibility",
                 "item_index": 4,
                 "name": null,
-                "excerpt": "Collaborate with risk and security teams to build explainable AI systems that meet strict financial regulations"
+                "excerpt": "Collaborate with risk and security teams to build explainable AI systems that meet strict financial regulations."
               }
             ],
             "profile_evidence": [
@@ -1590,7 +1833,7 @@
                 "source": "responsibility",
                 "item_index": 5,
                 "name": null,
-                "excerpt": "Monitor, test, and upscale production AI pipelines to ensure maximum uptime and data integrity"
+                "excerpt": "Monitor, test, and upscale production AI pipelines to ensure maximum uptime and data integrity."
               }
             ],
             "profile_evidence": [
@@ -1635,6 +1878,36 @@
       },
       "technologies": [
         {
+          "name": "GenAI",
+          "level": "required",
+          "evidence": [
+            {
+              "excerpt": "Architect and implement intelligent automation workflows using GenAI",
+              "section": "Key Responsibilities"
+            }
+          ]
+        },
+        {
+          "name": "LLMs",
+          "level": "required",
+          "evidence": [
+            {
+              "excerpt": "Architect and implement intelligent automation workflows using LLMs",
+              "section": "Key Responsibilities"
+            }
+          ]
+        },
+        {
+          "name": "RPA tools",
+          "level": "required",
+          "evidence": [
+            {
+              "excerpt": "Architect and implement intelligent automation workflows using RPA tools",
+              "section": "Key Responsibilities"
+            }
+          ]
+        },
+        {
           "name": "Python",
           "level": "required",
           "evidence": [
@@ -1656,7 +1929,7 @@
         },
         {
           "name": "AWS",
-          "level": "preferred",
+          "level": "required",
           "evidence": [
             {
               "excerpt": "cloud platforms like AWS, Azure, or GCP",
@@ -1666,7 +1939,7 @@
         },
         {
           "name": "Azure",
-          "level": "preferred",
+          "level": "required",
           "evidence": [
             {
               "excerpt": "cloud platforms like AWS, Azure, or GCP",
@@ -1676,7 +1949,7 @@
         },
         {
           "name": "GCP",
-          "level": "preferred",
+          "level": "required",
           "evidence": [
             {
               "excerpt": "cloud platforms like AWS, Azure, or GCP",
@@ -1686,7 +1959,7 @@
         },
         {
           "name": "PyTorch",
-          "level": "preferred",
+          "level": "required",
           "evidence": [
             {
               "excerpt": "Hands-on experience with frameworks such as PyTorch, TensorFlow, LangChain, or Hugging Face",
@@ -1696,7 +1969,7 @@
         },
         {
           "name": "TensorFlow",
-          "level": "preferred",
+          "level": "required",
           "evidence": [
             {
               "excerpt": "Hands-on experience with frameworks such as PyTorch, TensorFlow, LangChain, or Hugging Face",
@@ -1706,7 +1979,7 @@
         },
         {
           "name": "LangChain",
-          "level": "preferred",
+          "level": "required",
           "evidence": [
             {
               "excerpt": "Hands-on experience with frameworks such as PyTorch, TensorFlow, LangChain, or Hugging Face",
@@ -1716,7 +1989,7 @@
         },
         {
           "name": "Hugging Face",
-          "level": "preferred",
+          "level": "required",
           "evidence": [
             {
               "excerpt": "Hands-on experience with frameworks such as PyTorch, TensorFlow, LangChain, or Hugging Face",
@@ -1726,7 +1999,7 @@
         },
         {
           "name": "UiPath",
-          "level": "preferred",
+          "level": "required",
           "evidence": [
             {
               "excerpt": "Proven track record with enterprise automation tools like UiPath or native cloud automation services",
@@ -1740,7 +2013,7 @@
           "description": "Design End-to-End Solutions: Architect and implement intelligent automation workflows using GenAI, LLMs, and RPA tools.",
           "evidence": [
             {
-              "excerpt": "Architect and implement intelligent automation workflows using GenAI, LLMs, and RPA tools",
+              "excerpt": "Architect and implement intelligent automation workflows using GenAI, LLMs, and RPA tools.",
               "section": "Key Responsibilities"
             }
           ]
@@ -1749,7 +2022,7 @@
           "description": "Develop AI Models: Build, fine-tune, and deploy machine learning models tailored for financial data processing.",
           "evidence": [
             {
-              "excerpt": "Build, fine-tune, and deploy machine learning models tailored for financial data processing",
+              "excerpt": "Build, fine-tune, and deploy machine learning models tailored for financial data processing.",
               "section": "Key Responsibilities"
             }
           ]
@@ -1758,7 +2031,7 @@
           "description": "Integrate Systems: Connect AI capabilities seamlessly with existing legacy banking platforms and modern cloud infrastructure.",
           "evidence": [
             {
-              "excerpt": "Connect AI capabilities seamlessly with existing legacy banking platforms and modern cloud infrastructure",
+              "excerpt": "Connect AI capabilities seamlessly with existing legacy banking platforms and modern cloud infrastructure.",
               "section": "Key Responsibilities"
             }
           ]
@@ -1767,7 +2040,7 @@
           "description": "Optimize Processes: Analyze complex banking workflows to identify automation bottlenecks and deliver high-performance fixes.",
           "evidence": [
             {
-              "excerpt": "Analyze complex banking workflows to identify automation bottlenecks and deliver high-performance fixes",
+              "excerpt": "Analyze complex banking workflows to identify automation bottlenecks and deliver high-performance fixes.",
               "section": "Key Responsibilities"
             }
           ]
@@ -1776,7 +2049,7 @@
           "description": "Ensure Compliance: Collaborate with risk and security teams to build explainable AI systems that meet strict financial regulations.",
           "evidence": [
             {
-              "excerpt": "Collaborate with risk and security teams to build explainable AI systems that meet strict financial regulations",
+              "excerpt": "Collaborate with risk and security teams to build explainable AI systems that meet strict financial regulations.",
               "section": "Key Responsibilities"
             }
           ]
@@ -1785,7 +2058,7 @@
           "description": "Maintain Infrastructure: Monitor, test, and upscale production AI pipelines to ensure maximum uptime and data integrity.",
           "evidence": [
             {
-              "excerpt": "Monitor, test, and upscale production AI pipelines to ensure maximum uptime and data integrity",
+              "excerpt": "Monitor, test, and upscale production AI pipelines to ensure maximum uptime and data integrity.",
               "section": "Key Responsibilities"
             }
           ]
@@ -1802,20 +2075,20 @@
       },
       "location": {
         "clarity": "stated",
-        "summary": "Melbourne or Sydney, primarily in Melbourne",
+        "summary": "Melbourne, VIC",
         "evidence": [
           {
-            "excerpt": "Applications are welcomed from candidates based in either Melbourne or Sydney, with the broader team primarily located in Melbourne",
-            "section": "JobDescription"
+            "excerpt": "Applications are welcomed from candidates based in either Melbourne or Sydney",
+            "section": "Job description"
           }
         ]
       },
       "work_arrangement": {
         "arrangement": "hybrid",
-        "details": "Hybrid work model with a balance of home and premium Melbourne CBD office days",
+        "details": "a balance of home and premium Melbourne CBD office days",
         "evidence": [
           {
-            "excerpt": "Hybrid work model with a balance of home and premium Melbourne CBD office days",
+            "excerpt": "Hybrid work model with a balance of home and premium Melbourne CBD office days.",
             "section": "What Our Client has on Offer"
           }
         ]
@@ -1826,7 +2099,7 @@
         "evidence": [
           {
             "excerpt": "Full time",
-            "section": "JobDescription"
+            "section": "Job description"
           }
         ]
       },
@@ -1838,7 +2111,19 @@
           "maximum_years": null,
           "evidence": [
             {
-              "excerpt": "Bachelor’s or Master’s degree in Computer Science, Data Science, or a related quantitative field",
+              "excerpt": "Education: Bachelor’s or Master’s degree in Computer Science, Data Science, or a related quantitative field.",
+              "section": "Skills and Experience Required"
+            }
+          ]
+        },
+        {
+          "description": "Understanding of investment banking operations, market data, or regulatory reporting is highly desirable.",
+          "level": "preferred",
+          "minimum_years": null,
+          "maximum_years": null,
+          "evidence": [
+            {
+              "excerpt": "Financial Domain Knowledge: Understanding of investment banking operations, market data, or regulatory reporting is highly desirable.",
               "section": "Skills and Experience Required"
             }
           ]
@@ -1849,11 +2134,11 @@
     "pursuit_posture": "consider",
     "practical_value": "acceptable_opportunity",
     "effort_level": "minimal",
-    "summary": "Recommend posture 'consider' with effort tier 'silver' (minimal). Technical fit 'mixed', commercial fit 'mixed', portfolio fit 'weak'. Owner review is required before any application action.",
+    "summary": "Recommend posture 'consider' with effort tier 'silver' (minimal). Technical fit 'mixed', commercial fit 'unknown', portfolio fit 'strong'. Owner review is required before any application action.",
     "reasons": [
       {
         "kind": "alignment",
-        "summary": "Technical fit is 'mixed' and portfolio fit is 'weak' for this opportunity.",
+        "summary": "Technical fit is 'mixed' and portfolio fit is 'strong' for this opportunity.",
         "importance": "material",
         "evidence": [
           {
@@ -1870,7 +2155,7 @@
             "job_evidence": null,
             "profile_evidence": null,
             "assessment_dimension": "portfolio",
-            "assessment_judgment": "weak",
+            "assessment_judgment": "strong",
             "portfolio_project_id": null,
             "excerpt": null
           }
@@ -1878,7 +2163,7 @@
       },
       {
         "kind": "priority",
-        "summary": "Pursuit posture 'consider' with effort tier 'silver' reflects commercial fit 'mixed' and AI-aligned role family.",
+        "summary": "Pursuit posture 'consider' with effort tier 'silver' reflects commercial fit 'unknown' and AI-aligned role family.",
         "importance": "material",
         "evidence": [
           {
@@ -1886,7 +2171,7 @@
             "job_evidence": null,
             "profile_evidence": null,
             "assessment_dimension": "commercial",
-            "assessment_judgment": "mixed",
+            "assessment_judgment": "unknown",
             "portfolio_project_id": null,
             "excerpt": null
           },
@@ -1909,70 +2194,22 @@
     ],
     "risks_or_gaps": [
       {
-        "summary": "Portfolio fit is limited relative to the role; emphasise only honest project evidence.",
+        "summary": "Commercial fit is 'unknown', which may reduce the value of investing significant effort.",
         "importance": "material",
         "evidence": [
           {
             "origin": "opportunity_assessment",
             "job_evidence": null,
             "profile_evidence": null,
-            "assessment_dimension": "portfolio",
-            "assessment_judgment": "weak",
-            "portfolio_project_id": null,
-            "excerpt": null
-          }
-        ]
-      },
-      {
-        "summary": "Location or work-arrangement signals conflict with confirmed preferences; treat as a soft constraint unless the owner accepts it.",
-        "importance": "minor",
-        "evidence": [
-          {
-            "origin": "job_analysis",
-            "job_evidence": {
-              "source": "location",
-              "item_index": null,
-              "name": null,
-              "excerpt": null
-            },
-            "profile_evidence": null,
-            "assessment_dimension": null,
-            "assessment_judgment": null,
-            "portfolio_project_id": null,
-            "excerpt": null
-          },
-          {
-            "origin": "career_profile",
-            "job_evidence": null,
-            "profile_evidence": {
-              "source": "preference",
-              "ref": "preference:locations",
-              "excerpt": null
-            },
-            "assessment_dimension": null,
-            "assessment_judgment": null,
-            "portfolio_project_id": null,
-            "excerpt": null
-          }
-        ]
-      },
-      {
-        "summary": "Commercial fit is 'mixed', which may reduce the value of investing significant effort.",
-        "importance": "minor",
-        "evidence": [
-          {
-            "origin": "opportunity_assessment",
-            "job_evidence": null,
-            "profile_evidence": null,
             "assessment_dimension": "commercial",
-            "assessment_judgment": "mixed",
+            "assessment_judgment": "unknown",
             "portfolio_project_id": null,
             "excerpt": null
           }
         ]
       },
       {
-        "summary": "The role requires proven commercial experience in deploying AI models, which is not fully evidenced in the profile.",
+        "summary": "Understanding of investment banking operations, market data, or regulatory reporting is required but not evidenced in the candidate's profile.",
         "importance": "material",
         "evidence": [
           {
@@ -2008,27 +2245,6 @@
             "excerpt": null
           }
         ]
-      },
-      {
-        "summary": "Review location and work-arrangement expectations.",
-        "why_it_matters": "Soft location mismatches should be accepted consciously by the owner.",
-        "could_change_recommendation": true,
-        "evidence": [
-          {
-            "origin": "job_analysis",
-            "job_evidence": {
-              "source": "location",
-              "item_index": null,
-              "name": null,
-              "excerpt": null
-            },
-            "profile_evidence": null,
-            "assessment_dimension": null,
-            "assessment_judgment": null,
-            "portfolio_project_id": null,
-            "excerpt": null
-          }
-        ]
       }
     ],
     "next_actions": [
@@ -2041,27 +2257,6 @@
             "origin": "job_analysis",
             "job_evidence": {
               "source": "compensation",
-              "item_index": null,
-              "name": null,
-              "excerpt": null
-            },
-            "profile_evidence": null,
-            "assessment_dimension": null,
-            "assessment_judgment": null,
-            "portfolio_project_id": null,
-            "excerpt": null
-          }
-        ]
-      },
-      {
-        "kind": "consider_reviewing_location_or_arrangement",
-        "summary": "Consider reviewing location or work-arrangement expectations.",
-        "related_project_id": null,
-        "evidence": [
-          {
-            "origin": "job_analysis",
-            "job_evidence": {
-              "source": "location",
               "item_index": null,
               "name": null,
               "excerpt": null

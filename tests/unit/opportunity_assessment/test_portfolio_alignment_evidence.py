@@ -33,7 +33,7 @@ from .test_openai_assessor import (
 
 
 def test_prompt_requires_job_evidence_for_every_alignment_finding() -> None:
-    assert ASSESSMENT_PROMPT_VERSION == "v11"
+    assert ASSESSMENT_PROMPT_VERSION == "v12"
     text = ASSESSMENT_INSTRUCTIONS_V1
     assert "alignment: non-empty job_evidence AND non-empty profile_evidence" in text
     assert "Never emit portfolio_fit" in text

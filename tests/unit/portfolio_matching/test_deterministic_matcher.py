@@ -85,15 +85,15 @@ def _ranks(payload: dict[str, object]) -> list[str]:
     return [entry["project_id"] for entry in payload["ranked_projects"]]
 
 
-def test_required_technology_outranks_preferred_only_match() -> None:
+def test_distinctive_required_technology_outranks_preferred_only_match() -> None:
     profile = _profile(
-        _project("preferred-only", technologies=["LangChain"]),
-        _project("required-hit", technologies=["Python"]),
+        _project("preferred-only", technologies=["FastAPI"]),
+        _project("required-hit", technologies=["LangChain"]),
     )
     job = _job_analysis(
         technologies=[
-            _tech("Python", "required"),
-            _tech("LangChain", "preferred"),
+            _tech("LangChain", "required"),
+            _tech("FastAPI", "preferred"),
         ]
     )
 
@@ -101,6 +101,100 @@ def test_required_technology_outranks_preferred_only_match() -> None:
 
     assert _ranks(payload) == ["required-hit", "preferred-only"]
     assert payload["insufficient_evidence"] is False
+
+
+def test_generic_required_does_not_outrank_capability_heavy_project() -> None:
+    """R3: Python/REST must not dominate AI capability-relevant projects."""
+    profile = _profile(
+        _project(
+            "public-holiday-entitlements",
+            technologies=["Python", "REST APIs"],
+            demonstrates=["Geospatial logic", "Business rules"],
+            summary="Determines public-holiday entitlements from location rules.",
+        ),
+        _project(
+            "governance-document-rag",
+            technologies=["Python", "LangChain"],
+            demonstrates=[
+                "Retrieval orchestration",
+                "AI evaluation frameworks",
+                "Grounding validation",
+            ],
+            summary="Grounded answers over organisational documents with RAG.",
+        ),
+    )
+    job = _job_analysis(
+        technologies=[
+            _tech("Python", "required"),
+            _tech("REST APIs", "required"),
+            _tech("LLM", "required"),
+            _tech("retrieval-augmented generation (RAG)", "preferred"),
+        ],
+        responsibilities=[
+            _responsibility(
+                "Build retrieval orchestration and grounded document intelligence"
+            )
+        ],
+    )
+
+    payload = DeterministicMatcher().match(job, profile)
+
+    assert _ranks(payload)[0] == "governance-document-rag"
+    assert "public-holiday-entitlements" in _ranks(payload)
+    lead_kinds = {f["kind"] for f in payload["ranked_projects"][0]["factors"]}
+    assert "capability_overlap" in lead_kinds
+
+
+def test_agentic_job_surfaces_cic_via_capability_overlap() -> None:
+    """R4: CIC rises on agentic/workflow evidence without forced top rank."""
+    profile = _profile(
+        _project(
+            "public-holiday-entitlements",
+            technologies=["Python", "REST APIs"],
+            demonstrates=["Geospatial logic", "API integration"],
+        ),
+        _project(
+            "career-intelligence-copilot",
+            technologies=["Python", "OpenAI APIs"],
+            demonstrates=[
+                "Deterministic application-strategy recommendation",
+                "Evidence-grounded CV generation pipeline",
+                "Human-in-the-loop review of generated outputs",
+            ],
+            summary="Orchestrates job-intelligence workflows under owner review.",
+        ),
+        _project(
+            "governance-document-rag",
+            technologies=["Python", "LangChain"],
+            demonstrates=["Retrieval orchestration", "Grounding validation"],
+            summary="RAG over governance documents.",
+        ),
+    )
+    job = _job_analysis(
+        technologies=[
+            _tech("Python", "required"),
+            _tech("REST APIs", "required"),
+            _tech("AI orchestration", "preferred"),
+            _tech("LLMs", "preferred"),
+        ],
+        responsibilities=[
+            _responsibility(
+                "Design agentic workflows and human-in-the-loop review for AI systems"
+            )
+        ],
+    )
+
+    payload = DeterministicMatcher().match(job, profile)
+    ranks = _ranks(payload)
+
+    assert ranks[0] != "public-holiday-entitlements"
+    assert "career-intelligence-copilot" in ranks[:3]
+    cic = next(
+        entry
+        for entry in payload["ranked_projects"]
+        if entry["project_id"] == "career-intelligence-copilot"
+    )
+    assert any(factor["kind"] == "capability_overlap" for factor in cic["factors"])
 
 
 def test_preferred_technology_outranks_unspecified_only_match() -> None:

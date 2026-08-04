@@ -613,11 +613,11 @@
       {
         "rank": 1,
         "project_id": "operational-intelligence-copilot",
-        "rationale": "Project 'operational-intelligence-copilot' ranked on 2 required technology hit(s), 1 demonstrates overlap(s).",
+        "rationale": "Project 'operational-intelligence-copilot' ranked on 1 distinctive required technology hit(s), 1 demonstrates overlap(s), 1 generic required technology hit(s).",
         "factors": [
           {
             "kind": "required_technology",
-            "summary": "Project evidence supports required technology 'Python'.",
+            "summary": "Project evidence supports required technology 'Python' (generic stack term).",
             "job_evidence": [
               {
                 "source": "technology",
@@ -679,11 +679,11 @@
       {
         "rank": 2,
         "project_id": "governance-document-rag",
-        "rationale": "Project 'governance-document-rag' ranked on 2 required technology hit(s), 1 responsibility overlap(s).",
+        "rationale": "Project 'governance-document-rag' ranked on 1 distinctive required technology hit(s), 1 responsibility overlap(s), 1 generic required technology hit(s).",
         "factors": [
           {
             "kind": "required_technology",
-            "summary": "Project evidence supports required technology 'Python'.",
+            "summary": "Project evidence supports required technology 'Python' (generic stack term).",
             "job_evidence": [
               {
                 "source": "technology",
@@ -745,11 +745,11 @@
       {
         "rank": 3,
         "project_id": "payroll-diagnostics-engine",
-        "rationale": "Project 'payroll-diagnostics-engine' ranked on 1 required technology hit(s).",
+        "rationale": "Project 'payroll-diagnostics-engine' ranked on 1 generic required technology hit(s).",
         "factors": [
           {
             "kind": "required_technology",
-            "summary": "Project evidence supports required technology 'Python'.",
+            "summary": "Project evidence supports required technology 'Python' (generic stack term).",
             "job_evidence": [
               {
                 "source": "technology",
@@ -768,16 +768,16 @@
           }
         ],
         "tie_group": 1,
-        "tie_break_reason": "Equal primary ranking signals; ordered by stable project_id ascending"
+        "tie_break_reason": "equal primary ranking signals; ordered by stable project_id ascending"
       },
       {
         "rank": 4,
         "project_id": "public-holiday-entitlements",
-        "rationale": "Project 'public-holiday-entitlements' ranked on 1 required technology hit(s).",
+        "rationale": "Project 'public-holiday-entitlements' ranked on 1 generic required technology hit(s).",
         "factors": [
           {
             "kind": "required_technology",
-            "summary": "Project evidence supports required technology 'Python'.",
+            "summary": "Project evidence supports required technology 'Python' (generic stack term).",
             "job_evidence": [
               {
                 "source": "technology",
@@ -796,7 +796,7 @@
           }
         ],
         "tie_group": 1,
-        "tie_break_reason": "Equal primary ranking signals; ordered by stable project_id ascending"
+        "tie_break_reason": "equal primary ranking signals; ordered by stable project_id ascending"
       }
     ],
     "unranked_project_ids": [],

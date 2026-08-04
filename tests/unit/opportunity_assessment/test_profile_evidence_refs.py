@@ -161,7 +161,7 @@ def test_valid_minimal_profile_experience_ref_passes() -> None:
 
 
 def test_prompt_and_cite_guide_require_exact_catalogue_tokens() -> None:
-    assert ASSESSMENT_PROMPT_VERSION == "v11"
+    assert ASSESSMENT_PROMPT_VERSION == "v12"
     assert "trailing punctuation" in ASSESSMENT_INSTRUCTIONS_V1
     assert "Do not invent experience/project IDs" in ASSESSMENT_INSTRUCTIONS_V1
 

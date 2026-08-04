@@ -420,7 +420,135 @@ def test_service_rejects_strong_commercial_with_production_gap() -> None:
 
 
 def test_prompt_documents_judgment_calibration() -> None:
-    assert ASSESSMENT_PROMPT_VERSION == "v11"
+    assert ASSESSMENT_PROMPT_VERSION == "v12"
     assert 'MUST NOT be "strong"' in ASSESSMENT_INSTRUCTIONS_V1
     assert 'never "strong"' in ASSESSMENT_INSTRUCTIONS_V1
     assert "genuinely supports that industry" in ASSESSMENT_INSTRUCTIONS_V1
+    assert "data engineering" in ASSESSMENT_INSTRUCTIONS_V1.casefold()
+    assert "transferable commercial alignment" in ASSESSMENT_INSTRUCTIONS_V1
+    assert "not commercial AI" in ASSESSMENT_INSTRUCTIONS_V1
+    assert "commercial AI employment" in ASSESSMENT_INSTRUCTIONS_V1
+
+
+def test_commercial_de_partial_alignment_with_ai_gap_passes_calibration() -> None:
+    """R5 shape: SE/DE employment partial_alignment + commercial AI gap stays mixed."""
+    analysis = job_analysis(
+        posting={
+            "raw_text": (
+                "AI Engineer. 5+ years across software development, data engineering "
+                "or AI. Proven experience shipping LLM/agent applications to production."
+            ),
+            "title": "AI Engineer",
+        },
+        experience_requirements=[
+            {
+                "description": (
+                    "5+ years across software development, data engineering "
+                    "or AI and automation"
+                ),
+                "level": "required",
+                "evidence": [
+                    {
+                        "excerpt": (
+                            "5+ years across software development, data engineering "
+                            "or AI and automation"
+                        ),
+                        "section": "requirements",
+                    }
+                ],
+            },
+            {
+                "description": (
+                    "Proven experience designing, building and shipping "
+                    "LLM/agent applications to production"
+                ),
+                "level": "required",
+                "evidence": [
+                    {
+                        "excerpt": (
+                            "Proven experience designing, building and shipping "
+                            "LLM/agent applications to production"
+                        ),
+                        "section": "requirements",
+                    }
+                ],
+            },
+        ],
+    )
+    profile = minimal_profile()
+    payload = _assessment_payload(
+        analysis,
+        commercial=_dim(
+            "commercial",
+            "mixed",
+            (
+                "Commercial data engineering employment partially aligns with "
+                "accepted SE/DE backgrounds; commercial AI production employment "
+                "is not evidenced."
+            ),
+            [
+                _finding(
+                    kind="partial_alignment",
+                    summary=(
+                        "Commercial Data Engineering employment partially aligns "
+                        "with software/data engineering background requirements."
+                    ),
+                    importance="material",
+                    job_evidence=[
+                        {
+                            "source": "experience_requirement",
+                            "item_index": 0,
+                            "excerpt": "software development, data engineering or AI",
+                        }
+                    ],
+                    profile_evidence=[
+                        {
+                            "source": "experience",
+                            "ref": "experience:example-role",
+                            "excerpt": "Data Engineer at Example Company",
+                        }
+                    ],
+                ),
+                _finding(
+                    kind="gap",
+                    summary=(
+                        "Proven commercial production LLM/agent delivery is not "
+                        "evidenced in employment history."
+                    ),
+                    importance="material",
+                    job_evidence=[
+                        {
+                            "source": "experience_requirement",
+                            "item_index": 1,
+                            "excerpt": "LLM/agent applications to production",
+                        }
+                    ],
+                    profile_evidence=[],
+                ),
+            ],
+        ),
+        technical=_dim(
+            "technical",
+            "mixed",
+            "Technical skills align partially.",
+            [
+                _finding(
+                    kind="partial_alignment",
+                    summary="Required Python aligns with profile skills.",
+                    job_evidence=[
+                        {
+                            "source": "technology",
+                            "item_index": 0,
+                            "name": "Python",
+                            "excerpt": "Python",
+                        }
+                    ],
+                    profile_evidence=[
+                        {"source": "skill", "ref": "skill:Python", "excerpt": "Python"}
+                    ],
+                )
+            ],
+        ),
+    )
+    assessment = OpportunityAssessment.model_validate(payload)
+    validate_calibration(assessment, profile)

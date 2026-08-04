@@ -65,6 +65,7 @@ class RunResult:
     stem: str | None
     markdown_path: Path | None
     html_path: Path | None
+    pdf_path: Path | None = None
 
 
 def build_parser() -> argparse.ArgumentParser:
@@ -171,6 +172,7 @@ def run(
             stem=None,
             markdown_path=None,
             html_path=None,
+            pdf_path=None,
         )
 
     if plan_only or not cover_letter_plan_approved:
@@ -184,6 +186,7 @@ def run(
             stem=None,
             markdown_path=None,
             html_path=None,
+            pdf_path=None,
         )
 
     letter = CoverLetterGenerationService().generate(
@@ -207,6 +210,7 @@ def run(
         stem=drafts.stem,
         markdown_path=drafts.markdown_path,
         html_path=drafts.html_path,
+        pdf_path=drafts.pdf_path,
     )
 
 
@@ -268,12 +272,13 @@ def format_report(result: RunResult) -> str:
             f"  composition_source: {letter.composition_source}",
             f"  paragraphs: {len(letter.paragraphs)}",
             "",
-            "Draft outputs (visual regression: review MD + HTML together)",
+            "Draft outputs (visual regression: review MD + HTML + PDF together)",
             "-" * 40,
             f"  output_dir: {result.output_dir}",
             f"  stem: {result.stem}",
             f"  markdown: {result.markdown_path}",
             f"  html: {result.html_path}",
+            f"  pdf: {result.pdf_path}",
             "",
             "Preview (Markdown)",
             "-" * 40,

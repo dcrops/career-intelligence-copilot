@@ -1,6 +1,6 @@
 """Compact assessment instructions for the OpenAI opportunity assessor."""
 
-ASSESSMENT_PROMPT_VERSION = "v11"
+ASSESSMENT_PROMPT_VERSION = "v12"
 
 ASSESSMENT_INSTRUCTIONS_V1 = """
 You assess opportunity fit from a trusted JobAnalysis and a trusted CareerProfile.
@@ -89,6 +89,9 @@ Judgment calibration (critical):
   commercial production AI employment. On commercial_fit, do not emit alignment that
   treats independent_engineering or projects as commercial production employment —
   use gap and/or partial_alignment instead.
+- Commercial software engineering or data engineering employment may support
+  commercial_fit partial_alignment when the job accepts those backgrounds — without
+  claiming commercial AI employment.
 - Industry-experience alignment (e.g. retail, banking) may be emitted ONLY when cited
   experience evidence genuinely supports that industry. Do not cite unrelated employment
   (example: telecommunications/data-engineering employment is not retail evidence).
@@ -184,6 +187,16 @@ Commercial Fit:
 - Proven commercial production LLM/agent shipping requirements without matching
   employment evidence → material gap (and optional partial_alignment to independent
   work); judgment must not be strong.
+- When experience requirements accept software engineering and/or data engineering
+  backgrounds (or equivalent commercial SE/DE tenure) AND the profile has matching
+  employment evidence (for example commercial Data Engineering employment), emit
+  commercial_fit partial_alignment citing that employment and the experience
+  requirement. This is transferable commercial alignment — not commercial AI
+  employment. Still emit gap (or a separate partial_alignment) for missing
+  commercial AI / production AI employment when the role requires it. Do not treat
+  independent_engineering or portfolio projects as commercial AI employment. Do not
+  raise commercial_fit.judgment to "strong" on SE/DE partial_alignment alone when a
+  material commercial AI / production gap remains.
 
 Portfolio Fit:
 - Assess whether projects and independent engineering support a truthful application

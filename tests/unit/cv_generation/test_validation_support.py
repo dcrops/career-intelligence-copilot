@@ -110,8 +110,12 @@ def test_write_tailored_cv_drafts_writes_markdown_json_and_plan(
     assert result.json_path == tmp_path / "test_stem.json"
     assert result.plan_json_path == tmp_path / "test_stem.tailoring_plan.json"
     assert result.html_path == tmp_path / "test_stem.html"
+    assert result.pdf_path == tmp_path / "test_stem.pdf"
     assert result.html_path is not None
     assert result.html_path.is_file()
+    assert result.pdf_path is not None
+    assert result.pdf_path.is_file()
+    assert result.pdf_path.read_bytes()[:4] == b"%PDF"
 
     markdown = result.markdown_path.read_text(encoding="utf-8")
     assert markdown == cv.rendered_markdown

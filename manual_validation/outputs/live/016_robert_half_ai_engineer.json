@@ -1,0 +1,1796 @@
+{
+  "components": [
+    {
+      "name": "CareerProfile",
+      "implementation": "CareerProfileService / YAML",
+      "mode": "deterministic_production"
+    },
+    {
+      "name": "JobAnalysis",
+      "implementation": "OpenAIJobExtractor",
+      "mode": "openai_production"
+    },
+    {
+      "name": "OpportunityAssessment",
+      "implementation": "OpenAIAssessor",
+      "mode": "openai_production"
+    },
+    {
+      "name": "PortfolioMatch",
+      "implementation": "DeterministicMatcher",
+      "mode": "deterministic_production"
+    },
+    {
+      "name": "ApplicationStrategy",
+      "implementation": "DeterministicStrategyPlanner",
+      "mode": "deterministic_production"
+    }
+  ],
+  "volume_applications_enabled": false,
+  "profile_identity": {
+    "full_name": "David Cropper",
+    "target_role": "AI Engineer"
+  },
+  "posting": {
+    "raw_text": "AI Engineer | Contact Centre\n\nRobert Half \nView all jobs\n\n\nMelbourne VIC (Hybrid)\nEngineering - Software (Information & Communication Technology)\nFull time\nSalary undisclosed\n\nOur client is a leading global investment bank seeking an AI Automation Engineer to join their Global Markets Trading Automation team. Applications are welcomed from candidates based in either Melbourne or Sydney, with the broader team primarily located in Melbourne.\n\nThe Company\n\nA well-established business that has supported the profession for decades, providing their service to all facets of the healthcare industry. With a strong heritage behind it, the organisation is now entering an exciting period of modernisation, rethinking how it operates and delivers value as it builds for the future. A rare opportunity to join a trusted institution at a genuine turning point of the AI boom.\n\n\nThe Role\n\nSitting at the intersection of business strategy, operational needs and technical delivery, you'll translate real business problems into practical AI solutions, rapidly building proof-of-concepts and guiding the best ideas through to production. You'll be the bridge between stakeholders and technology, turning opportunity into impact. This role will be sitting in the Contact Centre team and will be solely responsible for the AI solutions in contact centre / interaction management use cases for the business. Liaising with multiple stakeholders internally, you will be required to gather requirements, contextualise the ideas and tailor a high-quality AI solution for the business. You will be a part of a close-knit AI team that has been newly formed hence the successful professional will have an exciting role.\n\n\nYour Profile\n\nTechnical\n\nHands-on experience developing solutions with Generative AI and LLMs, including agentic workflows and AI-powered automation.\nPrior experience with Contact Centre or Interaction Management use cases would be highly desirable\nStrong grasp of prompt engineering, RAG, vector databases and AI orchestration frameworks.\nExperience integrating AI solutions with enterprise systems and data sources.\nProficiency with Python, low-code AI platforms and cloud AI services.\nSound understanding of AI governance, security and privacy\nExceptional communication and facilitation skills, with the credibility to engage executives, operational teams, SMEs and technical specialists alike.\nStrong consulting, workshop facilitation and business analysis capabilities.\nA proven ability to influence stakeholders and drive outcomes in ambiguous environments.\n\nApply Today\n\nPlease send your resume by clicking on the apply button.\n\nJob Reference Number: 06810-0013364679NI",
+    "title": "AI Engineer | Contact Centre",
+    "company": "Robert Half",
+    "source_url": null
+  },
+  "job_analysis": {
+    "posting": {
+      "raw_text": "AI Engineer | Contact Centre\n\nRobert Half \nView all jobs\n\n\nMelbourne VIC (Hybrid)\nEngineering - Software (Information & Communication Technology)\nFull time\nSalary undisclosed\n\nOur client is a leading global investment bank seeking an AI Automation Engineer to join their Global Markets Trading Automation team. Applications are welcomed from candidates based in either Melbourne or Sydney, with the broader team primarily located in Melbourne.\n\nThe Company\n\nA well-established business that has supported the profession for decades, providing their service to all facets of the healthcare industry. With a strong heritage behind it, the organisation is now entering an exciting period of modernisation, rethinking how it operates and delivers value as it builds for the future. A rare opportunity to join a trusted institution at a genuine turning point of the AI boom.\n\n\nThe Role\n\nSitting at the intersection of business strategy, operational needs and technical delivery, you'll translate real business problems into practical AI solutions, rapidly building proof-of-concepts and guiding the best ideas through to production. You'll be the bridge between stakeholders and technology, turning opportunity into impact. This role will be sitting in the Contact Centre team and will be solely responsible for the AI solutions in contact centre / interaction management use cases for the business. Liaising with multiple stakeholders internally, you will be required to gather requirements, contextualise the ideas and tailor a high-quality AI solution for the business. You will be a part of a close-knit AI team that has been newly formed hence the successful professional will have an exciting role.\n\n\nYour Profile\n\nTechnical\n\nHands-on experience developing solutions with Generative AI and LLMs, including agentic workflows and AI-powered automation.\nPrior experience with Contact Centre or Interaction Management use cases would be highly desirable\nStrong grasp of prompt engineering, RAG, vector databases and AI orchestration frameworks.\nExperience integrating AI solutions with enterprise systems and data sources.\nProficiency with Python, low-code AI platforms and cloud AI services.\nSound understanding of AI governance, security and privacy\nExceptional communication and facilitation skills, with the credibility to engage executives, operational teams, SMEs and technical specialists alike.\nStrong consulting, workshop facilitation and business analysis capabilities.\nA proven ability to influence stakeholders and drive outcomes in ambiguous environments.\n\nApply Today\n\nPlease send your resume by clicking on the apply button.\n\nJob Reference Number: 06810-0013364679NI",
+      "title": "AI Engineer | Contact Centre",
+      "company": "Robert Half",
+      "source_url": null
+    },
+    "role_family": {
+      "family": "ai_engineering",
+      "evidence": [
+        {
+          "excerpt": "AI Automation Engineer",
+          "section": "Job title"
+        }
+      ]
+    },
+    "seniority": {
+      "level": "unknown",
+      "ambiguous": false,
+      "candidate_levels": [],
+      "evidence": []
+    },
+    "technologies": [
+      {
+        "name": "Generative AI",
+        "level": "required",
+        "evidence": [
+          {
+            "excerpt": "Hands-on experience developing solutions with Generative AI and LLMs",
+            "section": "Your Profile"
+          }
+        ]
+      },
+      {
+        "name": "LLMs",
+        "level": "required",
+        "evidence": [
+          {
+            "excerpt": "Hands-on experience developing solutions with Generative AI and LLMs",
+            "section": "Your Profile"
+          }
+        ]
+      },
+      {
+        "name": "Python",
+        "level": "required",
+        "evidence": [
+          {
+            "excerpt": "Proficiency with Python, low-code AI platforms and cloud AI services",
+            "section": "Your Profile"
+          }
+        ]
+      },
+      {
+        "name": "low-code AI platforms",
+        "level": "required",
+        "evidence": [
+          {
+            "excerpt": "Proficiency with Python, low-code AI platforms and cloud AI services",
+            "section": "Your Profile"
+          }
+        ]
+      },
+      {
+        "name": "cloud AI services",
+        "level": "required",
+        "evidence": [
+          {
+            "excerpt": "Proficiency with Python, low-code AI platforms and cloud AI services",
+            "section": "Your Profile"
+          }
+        ]
+      },
+      {
+        "name": "prompt engineering",
+        "level": "preferred",
+        "evidence": [
+          {
+            "excerpt": "Strong grasp of prompt engineering, RAG, vector databases and AI orchestration frameworks",
+            "section": "Your Profile"
+          }
+        ]
+      },
+      {
+        "name": "RAG",
+        "level": "preferred",
+        "evidence": [
+          {
+            "excerpt": "Strong grasp of prompt engineering, RAG, vector databases and AI orchestration frameworks",
+            "section": "Your Profile"
+          }
+        ]
+      },
+      {
+        "name": "vector databases",
+        "level": "preferred",
+        "evidence": [
+          {
+            "excerpt": "Strong grasp of prompt engineering, RAG, vector databases and AI orchestration frameworks",
+            "section": "Your Profile"
+          }
+        ]
+      },
+      {
+        "name": "AI orchestration frameworks",
+        "level": "preferred",
+        "evidence": [
+          {
+            "excerpt": "Strong grasp of prompt engineering, RAG, vector databases and AI orchestration frameworks",
+            "section": "Your Profile"
+          }
+        ]
+      }
+    ],
+    "responsibilities": [
+      {
+        "description": "Translate real business problems into practical AI solutions, rapidly building proof-of-concepts and guiding the best ideas through to production.",
+        "evidence": [
+          {
+            "excerpt": "you'll translate real business problems into practical AI solutions, rapidly building proof-of-concepts",
+            "section": "The Role"
+          }
+        ]
+      },
+      {
+        "description": "Act as a bridge between stakeholders and technology, turning opportunity into impact.",
+        "evidence": [
+          {
+            "excerpt": "You'll be the bridge between stakeholders and technology",
+            "section": "The Role"
+          }
+        ]
+      },
+      {
+        "description": "Gather requirements and contextualise ideas to tailor high-quality AI solutions for the business.",
+        "evidence": [
+          {
+            "excerpt": "you will be required to gather requirements, contextualise the ideas and tailor a high-quality AI solution",
+            "section": "The Role"
+          }
+        ]
+      },
+      {
+        "description": "Work within the Contact Centre team to solely be responsible for the AI solutions in contact centre / interaction management use cases.",
+        "evidence": [
+          {
+            "excerpt": "This role will be sitting in the Contact Centre team and will be solely responsible for the AI solutions in contact centre / interaction management use cases",
+            "section": "The Role"
+          }
+        ]
+      }
+    ],
+    "compensation": {
+      "clarity": "unstated",
+      "minimum": null,
+      "maximum": null,
+      "currency": null,
+      "period": null,
+      "raw_text": null,
+      "evidence": []
+    },
+    "location": {
+      "clarity": "stated",
+      "summary": "Melbourne VIC (Hybrid)",
+      "evidence": [
+        {
+          "excerpt": "Melbourne VIC (Hybrid)",
+          "section": "Job title"
+        }
+      ]
+    },
+    "work_arrangement": {
+      "arrangement": "hybrid",
+      "details": null,
+      "evidence": [
+        {
+          "excerpt": "Melbourne VIC (Hybrid)",
+          "section": "Job title"
+        }
+      ]
+    },
+    "employment": {
+      "working_hours": "full_time",
+      "engagement_type": "unspecified",
+      "evidence": [
+        {
+          "excerpt": "Full time",
+          "section": "Job title"
+        }
+      ]
+    },
+    "experience_requirements": [
+      {
+        "description": "Prior experience with Contact Centre or Interaction Management use cases would be highly desirable.",
+        "level": "preferred",
+        "minimum_years": null,
+        "maximum_years": null,
+        "evidence": [
+          {
+            "excerpt": "Prior experience with Contact Centre or Interaction Management use cases would be highly desirable",
+            "section": "Your Profile"
+          }
+        ]
+      }
+    ]
+  },
+  "opportunity_assessment": {
+    "job_analysis": {
+      "posting": {
+        "raw_text": "AI Engineer | Contact Centre\n\nRobert Half \nView all jobs\n\n\nMelbourne VIC (Hybrid)\nEngineering - Software (Information & Communication Technology)\nFull time\nSalary undisclosed\n\nOur client is a leading global investment bank seeking an AI Automation Engineer to join their Global Markets Trading Automation team. Applications are welcomed from candidates based in either Melbourne or Sydney, with the broader team primarily located in Melbourne.\n\nThe Company\n\nA well-established business that has supported the profession for decades, providing their service to all facets of the healthcare industry. With a strong heritage behind it, the organisation is now entering an exciting period of modernisation, rethinking how it operates and delivers value as it builds for the future. A rare opportunity to join a trusted institution at a genuine turning point of the AI boom.\n\n\nThe Role\n\nSitting at the intersection of business strategy, operational needs and technical delivery, you'll translate real business problems into practical AI solutions, rapidly building proof-of-concepts and guiding the best ideas through to production. You'll be the bridge between stakeholders and technology, turning opportunity into impact. This role will be sitting in the Contact Centre team and will be solely responsible for the AI solutions in contact centre / interaction management use cases for the business. Liaising with multiple stakeholders internally, you will be required to gather requirements, contextualise the ideas and tailor a high-quality AI solution for the business. You will be a part of a close-knit AI team that has been newly formed hence the successful professional will have an exciting role.\n\n\nYour Profile\n\nTechnical\n\nHands-on experience developing solutions with Generative AI and LLMs, including agentic workflows and AI-powered automation.\nPrior experience with Contact Centre or Interaction Management use cases would be highly desirable\nStrong grasp of prompt engineering, RAG, vector databases and AI orchestration frameworks.\nExperience integrating AI solutions with enterprise systems and data sources.\nProficiency with Python, low-code AI platforms and cloud AI services.\nSound understanding of AI governance, security and privacy\nExceptional communication and facilitation skills, with the credibility to engage executives, operational teams, SMEs and technical specialists alike.\nStrong consulting, workshop facilitation and business analysis capabilities.\nA proven ability to influence stakeholders and drive outcomes in ambiguous environments.\n\nApply Today\n\nPlease send your resume by clicking on the apply button.\n\nJob Reference Number: 06810-0013364679NI",
+        "title": "AI Engineer | Contact Centre",
+        "company": "Robert Half",
+        "source_url": null
+      },
+      "role_family": {
+        "family": "ai_engineering",
+        "evidence": [
+          {
+            "excerpt": "AI Automation Engineer",
+            "section": "Job title"
+          }
+        ]
+      },
+      "seniority": {
+        "level": "unknown",
+        "ambiguous": false,
+        "candidate_levels": [],
+        "evidence": []
+      },
+      "technologies": [
+        {
+          "name": "Generative AI",
+          "level": "required",
+          "evidence": [
+            {
+              "excerpt": "Hands-on experience developing solutions with Generative AI and LLMs",
+              "section": "Your Profile"
+            }
+          ]
+        },
+        {
+          "name": "LLMs",
+          "level": "required",
+          "evidence": [
+            {
+              "excerpt": "Hands-on experience developing solutions with Generative AI and LLMs",
+              "section": "Your Profile"
+            }
+          ]
+        },
+        {
+          "name": "Python",
+          "level": "required",
+          "evidence": [
+            {
+              "excerpt": "Proficiency with Python, low-code AI platforms and cloud AI services",
+              "section": "Your Profile"
+            }
+          ]
+        },
+        {
+          "name": "low-code AI platforms",
+          "level": "required",
+          "evidence": [
+            {
+              "excerpt": "Proficiency with Python, low-code AI platforms and cloud AI services",
+              "section": "Your Profile"
+            }
+          ]
+        },
+        {
+          "name": "cloud AI services",
+          "level": "required",
+          "evidence": [
+            {
+              "excerpt": "Proficiency with Python, low-code AI platforms and cloud AI services",
+              "section": "Your Profile"
+            }
+          ]
+        },
+        {
+          "name": "prompt engineering",
+          "level": "preferred",
+          "evidence": [
+            {
+              "excerpt": "Strong grasp of prompt engineering, RAG, vector databases and AI orchestration frameworks",
+              "section": "Your Profile"
+            }
+          ]
+        },
+        {
+          "name": "RAG",
+          "level": "preferred",
+          "evidence": [
+            {
+              "excerpt": "Strong grasp of prompt engineering, RAG, vector databases and AI orchestration frameworks",
+              "section": "Your Profile"
+            }
+          ]
+        },
+        {
+          "name": "vector databases",
+          "level": "preferred",
+          "evidence": [
+            {
+              "excerpt": "Strong grasp of prompt engineering, RAG, vector databases and AI orchestration frameworks",
+              "section": "Your Profile"
+            }
+          ]
+        },
+        {
+          "name": "AI orchestration frameworks",
+          "level": "preferred",
+          "evidence": [
+            {
+              "excerpt": "Strong grasp of prompt engineering, RAG, vector databases and AI orchestration frameworks",
+              "section": "Your Profile"
+            }
+          ]
+        }
+      ],
+      "responsibilities": [
+        {
+          "description": "Translate real business problems into practical AI solutions, rapidly building proof-of-concepts and guiding the best ideas through to production.",
+          "evidence": [
+            {
+              "excerpt": "you'll translate real business problems into practical AI solutions, rapidly building proof-of-concepts",
+              "section": "The Role"
+            }
+          ]
+        },
+        {
+          "description": "Act as a bridge between stakeholders and technology, turning opportunity into impact.",
+          "evidence": [
+            {
+              "excerpt": "You'll be the bridge between stakeholders and technology",
+              "section": "The Role"
+            }
+          ]
+        },
+        {
+          "description": "Gather requirements and contextualise ideas to tailor high-quality AI solutions for the business.",
+          "evidence": [
+            {
+              "excerpt": "you will be required to gather requirements, contextualise the ideas and tailor a high-quality AI solution",
+              "section": "The Role"
+            }
+          ]
+        },
+        {
+          "description": "Work within the Contact Centre team to solely be responsible for the AI solutions in contact centre / interaction management use cases.",
+          "evidence": [
+            {
+              "excerpt": "This role will be sitting in the Contact Centre team and will be solely responsible for the AI solutions in contact centre / interaction management use cases",
+              "section": "The Role"
+            }
+          ]
+        }
+      ],
+      "compensation": {
+        "clarity": "unstated",
+        "minimum": null,
+        "maximum": null,
+        "currency": null,
+        "period": null,
+        "raw_text": null,
+        "evidence": []
+      },
+      "location": {
+        "clarity": "stated",
+        "summary": "Melbourne VIC (Hybrid)",
+        "evidence": [
+          {
+            "excerpt": "Melbourne VIC (Hybrid)",
+            "section": "Job title"
+          }
+        ]
+      },
+      "work_arrangement": {
+        "arrangement": "hybrid",
+        "details": null,
+        "evidence": [
+          {
+            "excerpt": "Melbourne VIC (Hybrid)",
+            "section": "Job title"
+          }
+        ]
+      },
+      "employment": {
+        "working_hours": "full_time",
+        "engagement_type": "unspecified",
+        "evidence": [
+          {
+            "excerpt": "Full time",
+            "section": "Job title"
+          }
+        ]
+      },
+      "experience_requirements": [
+        {
+          "description": "Prior experience with Contact Centre or Interaction Management use cases would be highly desirable.",
+          "level": "preferred",
+          "minimum_years": null,
+          "maximum_years": null,
+          "evidence": [
+            {
+              "excerpt": "Prior experience with Contact Centre or Interaction Management use cases would be highly desirable",
+              "section": "Your Profile"
+            }
+          ]
+        }
+      ]
+    },
+    "technical_fit": {
+      "dimension": "technical",
+      "judgment": "mixed",
+      "summary": "The candidate possesses strong technical skills in key technologies but lacks direct experience with Contact Centre or Interaction Management use cases defined in the role's requirements.",
+      "findings": [
+        {
+          "kind": "gap",
+          "summary": "The role requires prior experience with Contact Centre or Interaction Management use cases, which is not evidenced in the profile.",
+          "detail": "While the profile showcases strengths in Generative AI and related technologies, it does not address the specific experience with Contact Centre or Interaction Management applications that this role values.",
+          "importance": "material",
+          "job_evidence": [
+            {
+              "source": "experience_requirement",
+              "item_index": 0,
+              "name": "Prior experience with Contact Centre or Interaction Management use cases would be highly desirable",
+              "excerpt": "Prior experience with Contact Centre or Interaction Management use cases would be highly desirable"
+            }
+          ],
+          "profile_evidence": [],
+          "assumption": null
+        },
+        {
+          "kind": "alignment",
+          "summary": "Strong technical capabilities evidenced in Generative AI, Python programming, and cloud services align well with requirements.",
+          "detail": "The candidate has demonstrated skills and experiences applicable to the principles required for this AI Engineering role.",
+          "importance": "material",
+          "job_evidence": [
+            {
+              "source": "technology",
+              "item_index": 0,
+              "name": "Generative AI",
+              "excerpt": "Hands-on experience developing solutions with Generative AI and LLMs"
+            },
+            {
+              "source": "technology",
+              "item_index": 2,
+              "name": "Python",
+              "excerpt": "Proficiency with Python, low-code AI platforms and cloud AI services"
+            }
+          ],
+          "profile_evidence": [
+            {
+              "source": "experience",
+              "ref": "experience:chase-risk-compliance-ai-engineer",
+              "excerpt": "Delivered a portfolio of AI applications spanning retrieval-augmented generation, operational intelligence, explainable diagnostics, and enterprise decision support."
+            },
+            {
+              "source": "experience",
+              "ref": "experience:nbn-data-engineer-2020",
+              "excerpt": "Developed and maintained enterprise data pipelines and operational reporting solutions using AWS services, Python, SQL, and Apache NiFi."
+            }
+          ],
+          "assumption": null
+        }
+      ]
+    },
+    "commercial_fit": {
+      "dimension": "commercial",
+      "judgment": "mixed",
+      "summary": "The profile does not clarify compensation expectations and working rights, leading to uncertainty in commercial alignment.",
+      "findings": [
+        {
+          "kind": "uncertainty",
+          "summary": "Compensation details remain unstated in the job posting; this may influence mutual expectations.",
+          "detail": "The lack of stated salary range makes it difficult to assess fit regarding compensation expectations. A discussion on compensation would be necessary.",
+          "importance": "minor",
+          "job_evidence": [
+            {
+              "source": "compensation",
+              "item_index": null,
+              "name": null,
+              "excerpt": "unstated"
+            }
+          ],
+          "profile_evidence": [],
+          "assumption": null
+        },
+        {
+          "kind": "alignment",
+          "summary": "Preferred engagement type as full-time matches the candidate's employment preference.",
+          "detail": "The candidate expressly seeks full-time roles, matching the job's engagement type.",
+          "importance": "minor",
+          "job_evidence": [
+            {
+              "source": "employment",
+              "item_index": null,
+              "name": null,
+              "excerpt": "Full time"
+            }
+          ],
+          "profile_evidence": [
+            {
+              "source": "preference",
+              "ref": "preference:employment_types",
+              "excerpt": "full_time"
+            }
+          ],
+          "assumption": null
+        }
+      ]
+    },
+    "portfolio_fit": {
+      "dimension": "portfolio",
+      "judgment": "mixed",
+      "summary": "The profile lists project work that demonstrates capability but does not directly correlate to Contact Centre applications.",
+      "findings": [
+        {
+          "kind": "gap",
+          "summary": "Missing portfolio evidence directly related to Contact Centre or Interaction Management applications required for the role.",
+          "detail": "While portfolio projects demonstrate a wide array of AI capabilities, they do not specifically align with the contact centre applications defined in the role requirements.",
+          "importance": "material",
+          "job_evidence": [
+            {
+              "source": "experience_requirement",
+              "item_index": 0,
+              "name": "Prior experience with Contact Centre or Interaction Management use cases would be highly desirable",
+              "excerpt": "Prior experience with Contact Centre or Interaction Management use cases would be highly desirable"
+            }
+          ],
+          "profile_evidence": [],
+          "assumption": null
+        }
+      ]
+    },
+    "summary": {
+      "summary": "The candidate demonstrates strong technical skills and foundational knowledge that align with most job requirements. However, a significant gap exists regarding specific professional experience in Contact Centre or Interaction Management applications, making complete alignment difficult. Compensation expectations remain uncertain, further complicating commercial alignment.",
+      "key_alignments": [
+        "Strong technical skills in Generative AI and Python programming adequate for the technical requirements of the role.",
+        "Full-time employment preference aligns with job engagement type."
+      ],
+      "key_gaps": [
+        "Missing direct experience in Contact Centre or Interaction Management use cases."
+      ]
+    }
+  },
+  "portfolio_match": {
+    "job_analysis": {
+      "posting": {
+        "raw_text": "AI Engineer | Contact Centre\n\nRobert Half \nView all jobs\n\n\nMelbourne VIC (Hybrid)\nEngineering - Software (Information & Communication Technology)\nFull time\nSalary undisclosed\n\nOur client is a leading global investment bank seeking an AI Automation Engineer to join their Global Markets Trading Automation team. Applications are welcomed from candidates based in either Melbourne or Sydney, with the broader team primarily located in Melbourne.\n\nThe Company\n\nA well-established business that has supported the profession for decades, providing their service to all facets of the healthcare industry. With a strong heritage behind it, the organisation is now entering an exciting period of modernisation, rethinking how it operates and delivers value as it builds for the future. A rare opportunity to join a trusted institution at a genuine turning point of the AI boom.\n\n\nThe Role\n\nSitting at the intersection of business strategy, operational needs and technical delivery, you'll translate real business problems into practical AI solutions, rapidly building proof-of-concepts and guiding the best ideas through to production. You'll be the bridge between stakeholders and technology, turning opportunity into impact. This role will be sitting in the Contact Centre team and will be solely responsible for the AI solutions in contact centre / interaction management use cases for the business. Liaising with multiple stakeholders internally, you will be required to gather requirements, contextualise the ideas and tailor a high-quality AI solution for the business. You will be a part of a close-knit AI team that has been newly formed hence the successful professional will have an exciting role.\n\n\nYour Profile\n\nTechnical\n\nHands-on experience developing solutions with Generative AI and LLMs, including agentic workflows and AI-powered automation.\nPrior experience with Contact Centre or Interaction Management use cases would be highly desirable\nStrong grasp of prompt engineering, RAG, vector databases and AI orchestration frameworks.\nExperience integrating AI solutions with enterprise systems and data sources.\nProficiency with Python, low-code AI platforms and cloud AI services.\nSound understanding of AI governance, security and privacy\nExceptional communication and facilitation skills, with the credibility to engage executives, operational teams, SMEs and technical specialists alike.\nStrong consulting, workshop facilitation and business analysis capabilities.\nA proven ability to influence stakeholders and drive outcomes in ambiguous environments.\n\nApply Today\n\nPlease send your resume by clicking on the apply button.\n\nJob Reference Number: 06810-0013364679NI",
+        "title": "AI Engineer | Contact Centre",
+        "company": "Robert Half",
+        "source_url": null
+      },
+      "role_family": {
+        "family": "ai_engineering",
+        "evidence": [
+          {
+            "excerpt": "AI Automation Engineer",
+            "section": "Job title"
+          }
+        ]
+      },
+      "seniority": {
+        "level": "unknown",
+        "ambiguous": false,
+        "candidate_levels": [],
+        "evidence": []
+      },
+      "technologies": [
+        {
+          "name": "Generative AI",
+          "level": "required",
+          "evidence": [
+            {
+              "excerpt": "Hands-on experience developing solutions with Generative AI and LLMs",
+              "section": "Your Profile"
+            }
+          ]
+        },
+        {
+          "name": "LLMs",
+          "level": "required",
+          "evidence": [
+            {
+              "excerpt": "Hands-on experience developing solutions with Generative AI and LLMs",
+              "section": "Your Profile"
+            }
+          ]
+        },
+        {
+          "name": "Python",
+          "level": "required",
+          "evidence": [
+            {
+              "excerpt": "Proficiency with Python, low-code AI platforms and cloud AI services",
+              "section": "Your Profile"
+            }
+          ]
+        },
+        {
+          "name": "low-code AI platforms",
+          "level": "required",
+          "evidence": [
+            {
+              "excerpt": "Proficiency with Python, low-code AI platforms and cloud AI services",
+              "section": "Your Profile"
+            }
+          ]
+        },
+        {
+          "name": "cloud AI services",
+          "level": "required",
+          "evidence": [
+            {
+              "excerpt": "Proficiency with Python, low-code AI platforms and cloud AI services",
+              "section": "Your Profile"
+            }
+          ]
+        },
+        {
+          "name": "prompt engineering",
+          "level": "preferred",
+          "evidence": [
+            {
+              "excerpt": "Strong grasp of prompt engineering, RAG, vector databases and AI orchestration frameworks",
+              "section": "Your Profile"
+            }
+          ]
+        },
+        {
+          "name": "RAG",
+          "level": "preferred",
+          "evidence": [
+            {
+              "excerpt": "Strong grasp of prompt engineering, RAG, vector databases and AI orchestration frameworks",
+              "section": "Your Profile"
+            }
+          ]
+        },
+        {
+          "name": "vector databases",
+          "level": "preferred",
+          "evidence": [
+            {
+              "excerpt": "Strong grasp of prompt engineering, RAG, vector databases and AI orchestration frameworks",
+              "section": "Your Profile"
+            }
+          ]
+        },
+        {
+          "name": "AI orchestration frameworks",
+          "level": "preferred",
+          "evidence": [
+            {
+              "excerpt": "Strong grasp of prompt engineering, RAG, vector databases and AI orchestration frameworks",
+              "section": "Your Profile"
+            }
+          ]
+        }
+      ],
+      "responsibilities": [
+        {
+          "description": "Translate real business problems into practical AI solutions, rapidly building proof-of-concepts and guiding the best ideas through to production.",
+          "evidence": [
+            {
+              "excerpt": "you'll translate real business problems into practical AI solutions, rapidly building proof-of-concepts",
+              "section": "The Role"
+            }
+          ]
+        },
+        {
+          "description": "Act as a bridge between stakeholders and technology, turning opportunity into impact.",
+          "evidence": [
+            {
+              "excerpt": "You'll be the bridge between stakeholders and technology",
+              "section": "The Role"
+            }
+          ]
+        },
+        {
+          "description": "Gather requirements and contextualise ideas to tailor high-quality AI solutions for the business.",
+          "evidence": [
+            {
+              "excerpt": "you will be required to gather requirements, contextualise the ideas and tailor a high-quality AI solution",
+              "section": "The Role"
+            }
+          ]
+        },
+        {
+          "description": "Work within the Contact Centre team to solely be responsible for the AI solutions in contact centre / interaction management use cases.",
+          "evidence": [
+            {
+              "excerpt": "This role will be sitting in the Contact Centre team and will be solely responsible for the AI solutions in contact centre / interaction management use cases",
+              "section": "The Role"
+            }
+          ]
+        }
+      ],
+      "compensation": {
+        "clarity": "unstated",
+        "minimum": null,
+        "maximum": null,
+        "currency": null,
+        "period": null,
+        "raw_text": null,
+        "evidence": []
+      },
+      "location": {
+        "clarity": "stated",
+        "summary": "Melbourne VIC (Hybrid)",
+        "evidence": [
+          {
+            "excerpt": "Melbourne VIC (Hybrid)",
+            "section": "Job title"
+          }
+        ]
+      },
+      "work_arrangement": {
+        "arrangement": "hybrid",
+        "details": null,
+        "evidence": [
+          {
+            "excerpt": "Melbourne VIC (Hybrid)",
+            "section": "Job title"
+          }
+        ]
+      },
+      "employment": {
+        "working_hours": "full_time",
+        "engagement_type": "unspecified",
+        "evidence": [
+          {
+            "excerpt": "Full time",
+            "section": "Job title"
+          }
+        ]
+      },
+      "experience_requirements": [
+        {
+          "description": "Prior experience with Contact Centre or Interaction Management use cases would be highly desirable.",
+          "level": "preferred",
+          "minimum_years": null,
+          "maximum_years": null,
+          "evidence": [
+            {
+              "excerpt": "Prior experience with Contact Centre or Interaction Management use cases would be highly desirable",
+              "section": "Your Profile"
+            }
+          ]
+        }
+      ]
+    },
+    "ranked_projects": [
+      {
+        "rank": 1,
+        "project_id": "governance-document-rag",
+        "rationale": "Project 'governance-document-rag' ranked on 3 demonstrates overlap(s), 3 responsibility overlap(s), 2 capability overlap(s), 1 generic required technology hit(s).",
+        "factors": [
+          {
+            "kind": "required_technology",
+            "summary": "Project evidence supports required technology 'Python' (generic stack term).",
+            "job_evidence": [
+              {
+                "source": "technology",
+                "item_index": 2,
+                "name": "Python",
+                "excerpt": "Proficiency with Python, low-code AI platforms and cloud AI services"
+              }
+            ],
+            "profile_evidence": [
+              {
+                "source": "project",
+                "ref": "project:governance-document-rag",
+                "excerpt": "Python"
+              }
+            ]
+          },
+          {
+            "kind": "capability_overlap",
+            "summary": "Project demonstrates 'rag retrieval' capability overlapping job evidence 'RAG'.",
+            "job_evidence": [
+              {
+                "source": "technology",
+                "item_index": 6,
+                "name": "RAG",
+                "excerpt": "Strong grasp of prompt engineering, RAG, vector databases and AI orchestration frameworks"
+              }
+            ],
+            "profile_evidence": [
+              {
+                "source": "project",
+                "ref": "project:governance-document-rag",
+                "excerpt": "retrieval"
+              }
+            ]
+          },
+          {
+            "kind": "capability_overlap",
+            "summary": "Project demonstrates 'orchestration' capability overlapping job evidence 'AI orchestration frameworks'.",
+            "job_evidence": [
+              {
+                "source": "technology",
+                "item_index": 8,
+                "name": "AI orchestration frameworks",
+                "excerpt": "Strong grasp of prompt engineering, RAG, vector databases and AI orchestration frameworks"
+              }
+            ],
+            "profile_evidence": [
+              {
+                "source": "project",
+                "ref": "project:governance-document-rag",
+                "excerpt": "orchestration"
+              }
+            ]
+          },
+          {
+            "kind": "demonstrates_overlap",
+            "summary": "Project demonstrates capabilities overlapping responsibility 'Translate real business problems into practical AI solutions, rapidly building proof-of-concepts and guiding the best ideas through to production.'.",
+            "job_evidence": [
+              {
+                "source": "responsibility",
+                "item_index": 0,
+                "name": null,
+                "excerpt": "you'll translate real business problems into practical AI solutions, rapidly building proof-of-concepts"
+              }
+            ],
+            "profile_evidence": [
+              {
+                "source": "project",
+                "ref": "project:governance-document-rag",
+                "excerpt": "AI evaluation frameworks"
+              }
+            ]
+          },
+          {
+            "kind": "responsibility_overlap",
+            "summary": "Project summary, outcomes, or technologies overlap responsibility 'Translate real business problems into practical AI solutions, rapidly building proof-of-concepts and guiding the best ideas through to production.'.",
+            "job_evidence": [
+              {
+                "source": "responsibility",
+                "item_index": 0,
+                "name": null,
+                "excerpt": "you'll translate real business problems into practical AI solutions, rapidly building proof-of-concepts"
+              }
+            ],
+            "profile_evidence": [
+              {
+                "source": "project",
+                "ref": "project:governance-document-rag",
+                "excerpt": "Allows organisations to answer questions from their own documents with responses that stay grounded in source material. Built for teams that need trustworthy A…"
+              }
+            ]
+          },
+          {
+            "kind": "demonstrates_overlap",
+            "summary": "Project demonstrates capabilities overlapping responsibility 'Gather requirements and contextualise ideas to tailor high-quality AI solutions for the business.'.",
+            "job_evidence": [
+              {
+                "source": "responsibility",
+                "item_index": 2,
+                "name": null,
+                "excerpt": "you will be required to gather requirements, contextualise the ideas and tailor a high-quality AI solution"
+              }
+            ],
+            "profile_evidence": [
+              {
+                "source": "project",
+                "ref": "project:governance-document-rag",
+                "excerpt": "AI evaluation frameworks"
+              }
+            ]
+          },
+          {
+            "kind": "responsibility_overlap",
+            "summary": "Project summary, outcomes, or technologies overlap responsibility 'Gather requirements and contextualise ideas to tailor high-quality AI solutions for the business.'.",
+            "job_evidence": [
+              {
+                "source": "responsibility",
+                "item_index": 2,
+                "name": null,
+                "excerpt": "you will be required to gather requirements, contextualise the ideas and tailor a high-quality AI solution"
+              }
+            ],
+            "profile_evidence": [
+              {
+                "source": "project",
+                "ref": "project:governance-document-rag",
+                "excerpt": "Allows organisations to answer questions from their own documents with responses that stay grounded in source material. Built for teams that need trustworthy A…"
+              }
+            ]
+          },
+          {
+            "kind": "demonstrates_overlap",
+            "summary": "Project demonstrates capabilities overlapping responsibility 'Work within the Contact Centre team to solely be responsible for the AI solutions in contact centre / interaction management use cases.'.",
+            "job_evidence": [
+              {
+                "source": "responsibility",
+                "item_index": 3,
+                "name": null,
+                "excerpt": "This role will be sitting in the Contact Centre team and will be solely responsible for the AI solutions in contact centre / interaction management use cases"
+              }
+            ],
+            "profile_evidence": [
+              {
+                "source": "project",
+                "ref": "project:governance-document-rag",
+                "excerpt": "AI evaluation frameworks"
+              }
+            ]
+          },
+          {
+            "kind": "responsibility_overlap",
+            "summary": "Project summary, outcomes, or technologies overlap responsibility 'Work within the Contact Centre team to solely be responsible for the AI solutions in contact centre / interaction management use cases.'.",
+            "job_evidence": [
+              {
+                "source": "responsibility",
+                "item_index": 3,
+                "name": null,
+                "excerpt": "This role will be sitting in the Contact Centre team and will be solely responsible for the AI solutions in contact centre / interaction management use cases"
+              }
+            ],
+            "profile_evidence": [
+              {
+                "source": "project",
+                "ref": "project:governance-document-rag",
+                "excerpt": "Allows organisations to answer questions from their own documents with responses that stay grounded in source material. Built for teams that need trustworthy A…"
+              }
+            ]
+          }
+        ],
+        "tie_group": null,
+        "tie_break_reason": null
+      },
+      {
+        "rank": 2,
+        "project_id": "operational-intelligence-copilot",
+        "rationale": "Project 'operational-intelligence-copilot' ranked on 3 demonstrates overlap(s), 3 responsibility overlap(s), 1 generic required technology hit(s).",
+        "factors": [
+          {
+            "kind": "required_technology",
+            "summary": "Project evidence supports required technology 'Python' (generic stack term).",
+            "job_evidence": [
+              {
+                "source": "technology",
+                "item_index": 2,
+                "name": "Python",
+                "excerpt": "Proficiency with Python, low-code AI platforms and cloud AI services"
+              }
+            ],
+            "profile_evidence": [
+              {
+                "source": "project",
+                "ref": "project:operational-intelligence-copilot",
+                "excerpt": "Python"
+              }
+            ]
+          },
+          {
+            "kind": "demonstrates_overlap",
+            "summary": "Project demonstrates capabilities overlapping responsibility 'Translate real business problems into practical AI solutions, rapidly building proof-of-concepts and guiding the best ideas through to production.'.",
+            "job_evidence": [
+              {
+                "source": "responsibility",
+                "item_index": 0,
+                "name": null,
+                "excerpt": "you'll translate real business problems into practical AI solutions, rapidly building proof-of-concepts"
+              }
+            ],
+            "profile_evidence": [
+              {
+                "source": "project",
+                "ref": "project:operational-intelligence-copilot",
+                "excerpt": "Explainable AI recommendations"
+              }
+            ]
+          },
+          {
+            "kind": "responsibility_overlap",
+            "summary": "Project summary, outcomes, or technologies overlap responsibility 'Translate real business problems into practical AI solutions, rapidly building proof-of-concepts and guiding the best ideas through to production.'.",
+            "job_evidence": [
+              {
+                "source": "responsibility",
+                "item_index": 0,
+                "name": null,
+                "excerpt": "you'll translate real business problems into practical AI solutions, rapidly building proof-of-concepts"
+              }
+            ],
+            "profile_evidence": [
+              {
+                "source": "project",
+                "ref": "project:operational-intelligence-copilot",
+                "excerpt": "Demonstrates operational intelligence capability for understanding business data. Combines reliable analytics with AI reasoning to surface anomalies and produc…"
+              }
+            ]
+          },
+          {
+            "kind": "demonstrates_overlap",
+            "summary": "Project demonstrates capabilities overlapping responsibility 'Gather requirements and contextualise ideas to tailor high-quality AI solutions for the business.'.",
+            "job_evidence": [
+              {
+                "source": "responsibility",
+                "item_index": 2,
+                "name": null,
+                "excerpt": "you will be required to gather requirements, contextualise the ideas and tailor a high-quality AI solution"
+              }
+            ],
+            "profile_evidence": [
+              {
+                "source": "project",
+                "ref": "project:operational-intelligence-copilot",
+                "excerpt": "Explainable AI recommendations"
+              }
+            ]
+          },
+          {
+            "kind": "responsibility_overlap",
+            "summary": "Project summary, outcomes, or technologies overlap responsibility 'Gather requirements and contextualise ideas to tailor high-quality AI solutions for the business.'.",
+            "job_evidence": [
+              {
+                "source": "responsibility",
+                "item_index": 2,
+                "name": null,
+                "excerpt": "you will be required to gather requirements, contextualise the ideas and tailor a high-quality AI solution"
+              }
+            ],
+            "profile_evidence": [
+              {
+                "source": "project",
+                "ref": "project:operational-intelligence-copilot",
+                "excerpt": "Demonstrates operational intelligence capability for understanding business data. Combines reliable analytics with AI reasoning to surface anomalies and produc…"
+              }
+            ]
+          },
+          {
+            "kind": "demonstrates_overlap",
+            "summary": "Project demonstrates capabilities overlapping responsibility 'Work within the Contact Centre team to solely be responsible for the AI solutions in contact centre / interaction management use cases.'.",
+            "job_evidence": [
+              {
+                "source": "responsibility",
+                "item_index": 3,
+                "name": null,
+                "excerpt": "This role will be sitting in the Contact Centre team and will be solely responsible for the AI solutions in contact centre / interaction management use cases"
+              }
+            ],
+            "profile_evidence": [
+              {
+                "source": "project",
+                "ref": "project:operational-intelligence-copilot",
+                "excerpt": "Explainable AI recommendations"
+              }
+            ]
+          },
+          {
+            "kind": "responsibility_overlap",
+            "summary": "Project summary, outcomes, or technologies overlap responsibility 'Work within the Contact Centre team to solely be responsible for the AI solutions in contact centre / interaction management use cases.'.",
+            "job_evidence": [
+              {
+                "source": "responsibility",
+                "item_index": 3,
+                "name": null,
+                "excerpt": "This role will be sitting in the Contact Centre team and will be solely responsible for the AI solutions in contact centre / interaction management use cases"
+              }
+            ],
+            "profile_evidence": [
+              {
+                "source": "project",
+                "ref": "project:operational-intelligence-copilot",
+                "excerpt": "Demonstrates operational intelligence capability for understanding business data. Combines reliable analytics with AI reasoning to surface anomalies and produc…"
+              }
+            ]
+          }
+        ],
+        "tie_group": null,
+        "tie_break_reason": null
+      },
+      {
+        "rank": 3,
+        "project_id": "public-holiday-entitlements",
+        "rationale": "Project 'public-holiday-entitlements' ranked on 2 demonstrates overlap(s), 1 generic required technology hit(s).",
+        "factors": [
+          {
+            "kind": "required_technology",
+            "summary": "Project evidence supports required technology 'Python' (generic stack term).",
+            "job_evidence": [
+              {
+                "source": "technology",
+                "item_index": 2,
+                "name": "Python",
+                "excerpt": "Proficiency with Python, low-code AI platforms and cloud AI services"
+              }
+            ],
+            "profile_evidence": [
+              {
+                "source": "project",
+                "ref": "project:public-holiday-entitlements",
+                "excerpt": "Python"
+              }
+            ]
+          },
+          {
+            "kind": "demonstrates_overlap",
+            "summary": "Project demonstrates capabilities overlapping responsibility 'Translate real business problems into practical AI solutions, rapidly building proof-of-concepts and guiding the best ideas through to production.'.",
+            "job_evidence": [
+              {
+                "source": "responsibility",
+                "item_index": 0,
+                "name": null,
+                "excerpt": "you'll translate real business problems into practical AI solutions, rapidly building proof-of-concepts"
+              }
+            ],
+            "profile_evidence": [
+              {
+                "source": "project",
+                "ref": "project:public-holiday-entitlements",
+                "excerpt": "Business rules"
+              }
+            ]
+          },
+          {
+            "kind": "demonstrates_overlap",
+            "summary": "Project demonstrates capabilities overlapping responsibility 'Gather requirements and contextualise ideas to tailor high-quality AI solutions for the business.'.",
+            "job_evidence": [
+              {
+                "source": "responsibility",
+                "item_index": 2,
+                "name": null,
+                "excerpt": "you will be required to gather requirements, contextualise the ideas and tailor a high-quality AI solution"
+              }
+            ],
+            "profile_evidence": [
+              {
+                "source": "project",
+                "ref": "project:public-holiday-entitlements",
+                "excerpt": "Business rules"
+              }
+            ]
+          }
+        ],
+        "tie_group": null,
+        "tie_break_reason": null
+      },
+      {
+        "rank": 4,
+        "project_id": "career-intelligence-copilot",
+        "rationale": "Project 'career-intelligence-copilot' ranked on 1 demonstrates overlap(s), 3 responsibility overlap(s), 1 generic required technology hit(s).",
+        "factors": [
+          {
+            "kind": "required_technology",
+            "summary": "Project evidence supports required technology 'Python' (generic stack term).",
+            "job_evidence": [
+              {
+                "source": "technology",
+                "item_index": 2,
+                "name": "Python",
+                "excerpt": "Proficiency with Python, low-code AI platforms and cloud AI services"
+              }
+            ],
+            "profile_evidence": [
+              {
+                "source": "project",
+                "ref": "project:career-intelligence-copilot",
+                "excerpt": "Python"
+              }
+            ]
+          },
+          {
+            "kind": "responsibility_overlap",
+            "summary": "Project summary, outcomes, or technologies overlap responsibility 'Translate real business problems into practical AI solutions, rapidly building proof-of-concepts and guiding the best ideas through to production.'.",
+            "job_evidence": [
+              {
+                "source": "responsibility",
+                "item_index": 0,
+                "name": null,
+                "excerpt": "you'll translate real business problems into practical AI solutions, rapidly building proof-of-concepts"
+              }
+            ],
+            "profile_evidence": [
+              {
+                "source": "project",
+                "ref": "project:career-intelligence-copilot",
+                "excerpt": "Enables an AI Engineering job seeker to decide which roles deserve effort. Reviews job ads against a structured career profile, ranks fit, recommends applicati…"
+              }
+            ]
+          },
+          {
+            "kind": "demonstrates_overlap",
+            "summary": "Project demonstrates capabilities overlapping responsibility 'Act as a bridge between stakeholders and technology, turning opportunity into impact.'.",
+            "job_evidence": [
+              {
+                "source": "responsibility",
+                "item_index": 1,
+                "name": null,
+                "excerpt": "You'll be the bridge between stakeholders and technology"
+              }
+            ],
+            "profile_evidence": [
+              {
+                "source": "project",
+                "ref": "project:career-intelligence-copilot",
+                "excerpt": "Evidence-cited opportunity assessment"
+              }
+            ]
+          },
+          {
+            "kind": "responsibility_overlap",
+            "summary": "Project summary, outcomes, or technologies overlap responsibility 'Gather requirements and contextualise ideas to tailor high-quality AI solutions for the business.'.",
+            "job_evidence": [
+              {
+                "source": "responsibility",
+                "item_index": 2,
+                "name": null,
+                "excerpt": "you will be required to gather requirements, contextualise the ideas and tailor a high-quality AI solution"
+              }
+            ],
+            "profile_evidence": [
+              {
+                "source": "project",
+                "ref": "project:career-intelligence-copilot",
+                "excerpt": "Enables an AI Engineering job seeker to decide which roles deserve effort. Reviews job ads against a structured career profile, ranks fit, recommends applicati…"
+              }
+            ]
+          },
+          {
+            "kind": "responsibility_overlap",
+            "summary": "Project summary, outcomes, or technologies overlap responsibility 'Work within the Contact Centre team to solely be responsible for the AI solutions in contact centre / interaction management use cases.'.",
+            "job_evidence": [
+              {
+                "source": "responsibility",
+                "item_index": 3,
+                "name": null,
+                "excerpt": "This role will be sitting in the Contact Centre team and will be solely responsible for the AI solutions in contact centre / interaction management use cases"
+              }
+            ],
+            "profile_evidence": [
+              {
+                "source": "project",
+                "ref": "project:career-intelligence-copilot",
+                "excerpt": "Enables an AI Engineering job seeker to decide which roles deserve effort. Reviews job ads against a structured career profile, ranks fit, recommends applicati…"
+              }
+            ]
+          }
+        ],
+        "tie_group": null,
+        "tie_break_reason": null
+      },
+      {
+        "rank": 5,
+        "project_id": "payroll-diagnostics-engine",
+        "rationale": "Project 'payroll-diagnostics-engine' ranked on 2 responsibility overlap(s), 1 generic required technology hit(s).",
+        "factors": [
+          {
+            "kind": "required_technology",
+            "summary": "Project evidence supports required technology 'Python' (generic stack term).",
+            "job_evidence": [
+              {
+                "source": "technology",
+                "item_index": 2,
+                "name": "Python",
+                "excerpt": "Proficiency with Python, low-code AI platforms and cloud AI services"
+              }
+            ],
+            "profile_evidence": [
+              {
+                "source": "project",
+                "ref": "project:payroll-diagnostics-engine",
+                "excerpt": "Python"
+              }
+            ]
+          },
+          {
+            "kind": "responsibility_overlap",
+            "summary": "Project summary, outcomes, or technologies overlap responsibility 'Translate real business problems into practical AI solutions, rapidly building proof-of-concepts and guiding the best ideas through to production.'.",
+            "job_evidence": [
+              {
+                "source": "responsibility",
+                "item_index": 0,
+                "name": null,
+                "excerpt": "you'll translate real business problems into practical AI solutions, rapidly building proof-of-concepts"
+              }
+            ],
+            "profile_evidence": [
+              {
+                "source": "project",
+                "ref": "project:payroll-diagnostics-engine",
+                "excerpt": "Reviews payroll data against deterministic business rules to identify anomalies. Produces explainable findings and executive-ready reports so issues can be inv…"
+              }
+            ]
+          },
+          {
+            "kind": "responsibility_overlap",
+            "summary": "Project summary, outcomes, or technologies overlap responsibility 'Gather requirements and contextualise ideas to tailor high-quality AI solutions for the business.'.",
+            "job_evidence": [
+              {
+                "source": "responsibility",
+                "item_index": 2,
+                "name": null,
+                "excerpt": "you will be required to gather requirements, contextualise the ideas and tailor a high-quality AI solution"
+              }
+            ],
+            "profile_evidence": [
+              {
+                "source": "project",
+                "ref": "project:payroll-diagnostics-engine",
+                "excerpt": "Reviews payroll data against deterministic business rules to identify anomalies. Produces explainable findings and executive-ready reports so issues can be inv…"
+              }
+            ]
+          }
+        ],
+        "tie_group": null,
+        "tie_break_reason": null
+      }
+    ],
+    "unranked_project_ids": [],
+    "summary": "Ranked 5 project(s); lead with 'governance-document-rag'. 0 project(s) had no matching factors.",
+    "insufficient_evidence": false
+  },
+  "application_strategy": {
+    "job_analysis": {
+      "posting": {
+        "raw_text": "AI Engineer | Contact Centre\n\nRobert Half \nView all jobs\n\n\nMelbourne VIC (Hybrid)\nEngineering - Software (Information & Communication Technology)\nFull time\nSalary undisclosed\n\nOur client is a leading global investment bank seeking an AI Automation Engineer to join their Global Markets Trading Automation team. Applications are welcomed from candidates based in either Melbourne or Sydney, with the broader team primarily located in Melbourne.\n\nThe Company\n\nA well-established business that has supported the profession for decades, providing their service to all facets of the healthcare industry. With a strong heritage behind it, the organisation is now entering an exciting period of modernisation, rethinking how it operates and delivers value as it builds for the future. A rare opportunity to join a trusted institution at a genuine turning point of the AI boom.\n\n\nThe Role\n\nSitting at the intersection of business strategy, operational needs and technical delivery, you'll translate real business problems into practical AI solutions, rapidly building proof-of-concepts and guiding the best ideas through to production. You'll be the bridge between stakeholders and technology, turning opportunity into impact. This role will be sitting in the Contact Centre team and will be solely responsible for the AI solutions in contact centre / interaction management use cases for the business. Liaising with multiple stakeholders internally, you will be required to gather requirements, contextualise the ideas and tailor a high-quality AI solution for the business. You will be a part of a close-knit AI team that has been newly formed hence the successful professional will have an exciting role.\n\n\nYour Profile\n\nTechnical\n\nHands-on experience developing solutions with Generative AI and LLMs, including agentic workflows and AI-powered automation.\nPrior experience with Contact Centre or Interaction Management use cases would be highly desirable\nStrong grasp of prompt engineering, RAG, vector databases and AI orchestration frameworks.\nExperience integrating AI solutions with enterprise systems and data sources.\nProficiency with Python, low-code AI platforms and cloud AI services.\nSound understanding of AI governance, security and privacy\nExceptional communication and facilitation skills, with the credibility to engage executives, operational teams, SMEs and technical specialists alike.\nStrong consulting, workshop facilitation and business analysis capabilities.\nA proven ability to influence stakeholders and drive outcomes in ambiguous environments.\n\nApply Today\n\nPlease send your resume by clicking on the apply button.\n\nJob Reference Number: 06810-0013364679NI",
+        "title": "AI Engineer | Contact Centre",
+        "company": "Robert Half",
+        "source_url": null
+      },
+      "role_family": {
+        "family": "ai_engineering",
+        "evidence": [
+          {
+            "excerpt": "AI Automation Engineer",
+            "section": "Job title"
+          }
+        ]
+      },
+      "seniority": {
+        "level": "unknown",
+        "ambiguous": false,
+        "candidate_levels": [],
+        "evidence": []
+      },
+      "technologies": [
+        {
+          "name": "Generative AI",
+          "level": "required",
+          "evidence": [
+            {
+              "excerpt": "Hands-on experience developing solutions with Generative AI and LLMs",
+              "section": "Your Profile"
+            }
+          ]
+        },
+        {
+          "name": "LLMs",
+          "level": "required",
+          "evidence": [
+            {
+              "excerpt": "Hands-on experience developing solutions with Generative AI and LLMs",
+              "section": "Your Profile"
+            }
+          ]
+        },
+        {
+          "name": "Python",
+          "level": "required",
+          "evidence": [
+            {
+              "excerpt": "Proficiency with Python, low-code AI platforms and cloud AI services",
+              "section": "Your Profile"
+            }
+          ]
+        },
+        {
+          "name": "low-code AI platforms",
+          "level": "required",
+          "evidence": [
+            {
+              "excerpt": "Proficiency with Python, low-code AI platforms and cloud AI services",
+              "section": "Your Profile"
+            }
+          ]
+        },
+        {
+          "name": "cloud AI services",
+          "level": "required",
+          "evidence": [
+            {
+              "excerpt": "Proficiency with Python, low-code AI platforms and cloud AI services",
+              "section": "Your Profile"
+            }
+          ]
+        },
+        {
+          "name": "prompt engineering",
+          "level": "preferred",
+          "evidence": [
+            {
+              "excerpt": "Strong grasp of prompt engineering, RAG, vector databases and AI orchestration frameworks",
+              "section": "Your Profile"
+            }
+          ]
+        },
+        {
+          "name": "RAG",
+          "level": "preferred",
+          "evidence": [
+            {
+              "excerpt": "Strong grasp of prompt engineering, RAG, vector databases and AI orchestration frameworks",
+              "section": "Your Profile"
+            }
+          ]
+        },
+        {
+          "name": "vector databases",
+          "level": "preferred",
+          "evidence": [
+            {
+              "excerpt": "Strong grasp of prompt engineering, RAG, vector databases and AI orchestration frameworks",
+              "section": "Your Profile"
+            }
+          ]
+        },
+        {
+          "name": "AI orchestration frameworks",
+          "level": "preferred",
+          "evidence": [
+            {
+              "excerpt": "Strong grasp of prompt engineering, RAG, vector databases and AI orchestration frameworks",
+              "section": "Your Profile"
+            }
+          ]
+        }
+      ],
+      "responsibilities": [
+        {
+          "description": "Translate real business problems into practical AI solutions, rapidly building proof-of-concepts and guiding the best ideas through to production.",
+          "evidence": [
+            {
+              "excerpt": "you'll translate real business problems into practical AI solutions, rapidly building proof-of-concepts",
+              "section": "The Role"
+            }
+          ]
+        },
+        {
+          "description": "Act as a bridge between stakeholders and technology, turning opportunity into impact.",
+          "evidence": [
+            {
+              "excerpt": "You'll be the bridge between stakeholders and technology",
+              "section": "The Role"
+            }
+          ]
+        },
+        {
+          "description": "Gather requirements and contextualise ideas to tailor high-quality AI solutions for the business.",
+          "evidence": [
+            {
+              "excerpt": "you will be required to gather requirements, contextualise the ideas and tailor a high-quality AI solution",
+              "section": "The Role"
+            }
+          ]
+        },
+        {
+          "description": "Work within the Contact Centre team to solely be responsible for the AI solutions in contact centre / interaction management use cases.",
+          "evidence": [
+            {
+              "excerpt": "This role will be sitting in the Contact Centre team and will be solely responsible for the AI solutions in contact centre / interaction management use cases",
+              "section": "The Role"
+            }
+          ]
+        }
+      ],
+      "compensation": {
+        "clarity": "unstated",
+        "minimum": null,
+        "maximum": null,
+        "currency": null,
+        "period": null,
+        "raw_text": null,
+        "evidence": []
+      },
+      "location": {
+        "clarity": "stated",
+        "summary": "Melbourne VIC (Hybrid)",
+        "evidence": [
+          {
+            "excerpt": "Melbourne VIC (Hybrid)",
+            "section": "Job title"
+          }
+        ]
+      },
+      "work_arrangement": {
+        "arrangement": "hybrid",
+        "details": null,
+        "evidence": [
+          {
+            "excerpt": "Melbourne VIC (Hybrid)",
+            "section": "Job title"
+          }
+        ]
+      },
+      "employment": {
+        "working_hours": "full_time",
+        "engagement_type": "unspecified",
+        "evidence": [
+          {
+            "excerpt": "Full time",
+            "section": "Job title"
+          }
+        ]
+      },
+      "experience_requirements": [
+        {
+          "description": "Prior experience with Contact Centre or Interaction Management use cases would be highly desirable.",
+          "level": "preferred",
+          "minimum_years": null,
+          "maximum_years": null,
+          "evidence": [
+            {
+              "excerpt": "Prior experience with Contact Centre or Interaction Management use cases would be highly desirable",
+              "section": "Your Profile"
+            }
+          ]
+        }
+      ]
+    },
+    "application_tier": "silver",
+    "pursuit_posture": "consider",
+    "practical_value": "acceptable_opportunity",
+    "effort_level": "minimal",
+    "summary": "Recommend posture 'consider' with effort tier 'silver' (minimal). Technical fit 'mixed', commercial fit 'mixed', portfolio fit 'mixed'. Owner review is required before any application action.",
+    "reasons": [
+      {
+        "kind": "alignment",
+        "summary": "Technical fit is 'mixed' and portfolio fit is 'mixed' for this opportunity.",
+        "importance": "material",
+        "evidence": [
+          {
+            "origin": "opportunity_assessment",
+            "job_evidence": null,
+            "profile_evidence": null,
+            "assessment_dimension": "technical",
+            "assessment_judgment": "mixed",
+            "portfolio_project_id": null,
+            "excerpt": null
+          },
+          {
+            "origin": "opportunity_assessment",
+            "job_evidence": null,
+            "profile_evidence": null,
+            "assessment_dimension": "portfolio",
+            "assessment_judgment": "mixed",
+            "portfolio_project_id": null,
+            "excerpt": null
+          }
+        ]
+      },
+      {
+        "kind": "priority",
+        "summary": "Pursuit posture 'consider' with effort tier 'silver' reflects commercial fit 'mixed' and AI-aligned role family.",
+        "importance": "material",
+        "evidence": [
+          {
+            "origin": "opportunity_assessment",
+            "job_evidence": null,
+            "profile_evidence": null,
+            "assessment_dimension": "commercial",
+            "assessment_judgment": "mixed",
+            "portfolio_project_id": null,
+            "excerpt": null
+          },
+          {
+            "origin": "job_analysis",
+            "job_evidence": {
+              "source": "role_family",
+              "item_index": null,
+              "name": null,
+              "excerpt": null
+            },
+            "profile_evidence": null,
+            "assessment_dimension": null,
+            "assessment_judgment": null,
+            "portfolio_project_id": null,
+            "excerpt": null
+          }
+        ]
+      }
+    ],
+    "risks_or_gaps": [
+      {
+        "summary": "Commercial fit is 'mixed', which may reduce the value of investing significant effort.",
+        "importance": "minor",
+        "evidence": [
+          {
+            "origin": "opportunity_assessment",
+            "job_evidence": null,
+            "profile_evidence": null,
+            "assessment_dimension": "commercial",
+            "assessment_judgment": "mixed",
+            "portfolio_project_id": null,
+            "excerpt": null
+          }
+        ]
+      },
+      {
+        "summary": "The role requires prior experience with Contact Centre or Interaction Management use cases, which is not evidenced in the profile.",
+        "importance": "material",
+        "evidence": [
+          {
+            "origin": "opportunity_assessment",
+            "job_evidence": null,
+            "profile_evidence": null,
+            "assessment_dimension": "technical",
+            "assessment_judgment": "mixed",
+            "portfolio_project_id": null,
+            "excerpt": null
+          }
+        ]
+      }
+    ],
+    "manual_checks": [
+      {
+        "summary": "Review compensation once salary or rate information is available.",
+        "why_it_matters": "Compensation clarity can change commercial priority; no salary conflict was invented from missing data.",
+        "could_change_recommendation": true,
+        "evidence": [
+          {
+            "origin": "job_analysis",
+            "job_evidence": {
+              "source": "compensation",
+              "item_index": null,
+              "name": null,
+              "excerpt": null
+            },
+            "profile_evidence": null,
+            "assessment_dimension": null,
+            "assessment_judgment": null,
+            "portfolio_project_id": null,
+            "excerpt": null
+          }
+        ]
+      }
+    ],
+    "next_actions": [
+      {
+        "kind": "consider_reviewing_compensation",
+        "summary": "Consider reviewing compensation before investing significant effort.",
+        "related_project_id": null,
+        "evidence": [
+          {
+            "origin": "job_analysis",
+            "job_evidence": {
+              "source": "compensation",
+              "item_index": null,
+              "name": null,
+              "excerpt": null
+            },
+            "profile_evidence": null,
+            "assessment_dimension": null,
+            "assessment_judgment": null,
+            "portfolio_project_id": null,
+            "excerpt": null
+          }
+        ]
+      },
+      {
+        "kind": "consider_emphasising_portfolio_projects",
+        "summary": "Consider emphasising the strongest matched portfolio project(s) in any application materials you prepare.",
+        "related_project_id": "governance-document-rag",
+        "evidence": [
+          {
+            "origin": "portfolio_match",
+            "job_evidence": null,
+            "profile_evidence": null,
+            "assessment_dimension": null,
+            "assessment_judgment": null,
+            "portfolio_project_id": "governance-document-rag",
+            "excerpt": null
+          }
+        ]
+      },
+      {
+        "kind": "consider_owner_review",
+        "summary": "Consider reviewing this full strategy before taking any external action.",
+        "related_project_id": null,
+        "evidence": [
+          {
+            "origin": "opportunity_assessment",
+            "job_evidence": null,
+            "profile_evidence": null,
+            "assessment_dimension": "technical",
+            "assessment_judgment": "mixed",
+            "portfolio_project_id": null,
+            "excerpt": null
+          }
+        ]
+      }
+    ],
+    "portfolio_emphasis": [
+      {
+        "project_id": "governance-document-rag",
+        "source_rank": 1,
+        "summary": "Consider emphasising 'governance-document-rag' (PortfolioMatch rank 1).",
+        "evidence": [
+          {
+            "origin": "portfolio_match",
+            "job_evidence": null,
+            "profile_evidence": null,
+            "assessment_dimension": null,
+            "assessment_judgment": null,
+            "portfolio_project_id": "governance-document-rag",
+            "excerpt": null
+          }
+        ]
+      },
+      {
+        "project_id": "operational-intelligence-copilot",
+        "source_rank": 2,
+        "summary": "Consider emphasising 'operational-intelligence-copilot' (PortfolioMatch rank 2).",
+        "evidence": [
+          {
+            "origin": "portfolio_match",
+            "job_evidence": null,
+            "profile_evidence": null,
+            "assessment_dimension": null,
+            "assessment_judgment": null,
+            "portfolio_project_id": "operational-intelligence-copilot",
+            "excerpt": null
+          }
+        ]
+      },
+      {
+        "project_id": "public-holiday-entitlements",
+        "source_rank": 3,
+        "summary": "Consider emphasising 'public-holiday-entitlements' (PortfolioMatch rank 3).",
+        "evidence": [
+          {
+            "origin": "portfolio_match",
+            "job_evidence": null,
+            "profile_evidence": null,
+            "assessment_dimension": null,
+            "assessment_judgment": null,
+            "portfolio_project_id": "public-holiday-entitlements",
+            "excerpt": null
+          }
+        ]
+      }
+    ],
+    "assumptions": [
+      "Compensation fit is not scored because salary/rate evidence is missing or ambiguous.",
+      "No candidate salary minimum is configured, so compensation was not treated as a hard threshold conflict."
+    ],
+    "decision_blockers": [],
+    "owner_review_required": true,
+    "insufficient_information": false
+  }
+}

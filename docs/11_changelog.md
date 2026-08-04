@@ -4,6 +4,69 @@ Records product strategy and engineering knowledge changes. Routine typo fixes a
 
 ---
 
+## Version 1.82
+
+### FR-007 cover letter writing-quality refinement
+
+Prose-only pass after full corpus validation. No planner, portfolio-matching,
+recommendation, CV, or FR-003/004/005 changes. No additional LLM calls.
+
+- Harden chance/gerund clauses so advertisement fragments (`AI Engineer /
+  Permanent…`, `we're looking for…`, colon-headed JD dumps) never enter openings.
+- Expand deterministic opening strategies from six to eight (add domain + adoption).
+- Modest deterministic intro paragraph reordering (four variants, same facts).
+- Four project-paragraph structures including a compact secondary form.
+- Four deterministic closing styles (working software, trade-offs, delivery,
+  technical conversation).
+- Preferred corpus cover letters regenerated for comparison.
+
+---
+
+## Version 1.81
+
+### PDF renderer for CV and cover letter drafts
+
+HTML→PDF via WeasyPrint as a **renderer-only** step after existing HTML renderers.
+Draft writers now emit `{stem}.pdf` beside Markdown/HTML/JSON. Application package
+manifests optionally record `pdf_path`. No planner/composer changes (FR-006/FR-007
+architecture unchanged). `weasyprint>=62` added as a runtime dependency.
+
+Post-calibration: rematch/replan helpers under `scripts/rematch_replan_calibrated.py`
+and `scripts/regenerate_calibrated_documents.py` refresh live strategy emphasis and
+regenerate recruiter-ready document sets.
+
+---
+
+## Version 1.80
+
+### FR-003 / FR-004 calibration iteration (corpus-justified)
+
+Accepted calibration review recommendations only — no Gold/Silver threshold changes,
+no FR-005 posture/tier changes, no relaxation of commercial-AI honesty.
+
+**FR-004 Portfolio Matching (`DeterministicMatcher`):**
+- Demote generic required/preferred stack terms (Python, SQL, REST/API, Docker, Git, …)
+  in the sort key so they cannot outrank capability-relevant projects (fixes Allura/Mars
+  Public Holiday inflation).
+- Add `capability_overlap` ranking factors from shared capability families
+  (orchestration, workflows/pipelines, agents, RAG, LLM/generative, governance/explainability,
+  evaluation/LLMOps, HITL, production AI lifecycle, document generation), matched against
+  project `demonstrates` + summary.
+- Sort: distinctive required → distinctive preferred → demonstrates → responsibility →
+  capability → generic required → generic preferred → unspecified → `project_id`.
+- Career Intelligence Copilot is not force-ranked; it rises when job evidence shares
+  agentic/workflow/HITL capability families with its project narrative.
+- Known trade-off: Bluefin top-two remain Ops + Governance (order may swap by one
+  responsibility hit); Public Holiday no longer leads AI Engineer packages.
+
+**FR-003 Opportunity Assessment (prompt v12):**
+- When the JD accepts software/data engineering backgrounds and the profile has matching
+  commercial DE/SE employment, instruct `commercial_fit` `partial_alignment` as
+  transferable commercial alignment — still gap commercial AI / production AI employment;
+  independent engineering remains non-employment.
+
+---
+
 ## Version 1.79
 
 ### Reliability — constrain job_evidence item_index; separate live outputs from fixtures

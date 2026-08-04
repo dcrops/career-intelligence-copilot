@@ -801,6 +801,7 @@ def format_report(result: CvPipelineResult) -> str:
         if result.cv is not None:
             lines.append(f"  cv_markdown: {result.drafts.markdown_path}")
             lines.append(f"  cv_html: {result.drafts.html_path}")
+            lines.append(f"  cv_pdf: {result.drafts.pdf_path}")
             lines.append(f"  cv_json: {result.drafts.json_path}")
         lines.append("")
 

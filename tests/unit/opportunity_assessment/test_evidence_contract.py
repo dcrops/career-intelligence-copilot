@@ -44,7 +44,7 @@ def _fixtures_profile():
 
 
 def test_prompt_documents_per_kind_evidence_contract() -> None:
-    assert ASSESSMENT_PROMPT_VERSION == "v11"
+    assert ASSESSMENT_PROMPT_VERSION == "v12"
     text = ASSESSMENT_INSTRUCTIONS_V1
     for kind in (
         "alignment",

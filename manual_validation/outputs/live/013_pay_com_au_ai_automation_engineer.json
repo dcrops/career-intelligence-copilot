@@ -48,7 +48,11 @@
       "family": "ai_engineering",
       "evidence": [
         {
-          "excerpt": "As pay.com.au has scaled, everyday processes that were once easy to manage have become work worth refining, optimising and automating",
+          "excerpt": "AI Automation Engineer",
+          "section": "Job title"
+        },
+        {
+          "excerpt": "...you’ll join a fast-growing team shaping the future of B2B payments...AI is one tool among several...",
           "section": "About the job"
         }
       ]
@@ -65,7 +69,7 @@
         "level": "required",
         "evidence": [
           {
-            "excerpt": "Strong coding fundamentals — comfortable writing and maintaining production code (e.g. Python or TypeScript)",
+            "excerpt": "...comfortable writing and maintaining production code (e.g. Python or TypeScript)...",
             "section": "About You"
           }
         ]
@@ -75,17 +79,7 @@
         "level": "required",
         "evidence": [
           {
-            "excerpt": "Strong coding fundamentals — comfortable writing and maintaining production code (e.g. Python or TypeScript)",
-            "section": "About You"
-          }
-        ]
-      },
-      {
-        "name": "n8n",
-        "level": "required",
-        "evidence": [
-          {
-            "excerpt": "working with APIs, and orchestrating with tools like n8n, agent SDKs, database fundamentals, SQL, and migration hygiene.",
+            "excerpt": "...comfortable writing and maintaining production code (e.g. Python or TypeScript)...",
             "section": "About You"
           }
         ]
@@ -95,37 +89,27 @@
         "level": "required",
         "evidence": [
           {
-            "excerpt": "database fundamentals, SQL, and migration hygiene",
+            "excerpt": "...database fundamentals, SQL, and migration hygiene.",
             "section": "About You"
           }
         ]
       },
       {
-        "name": "Claude",
-        "level": "preferred",
-        "evidence": [
-          {
-            "excerpt": "Fluency with mainstream AI tools (Claude, Cowork, connectors, MCPs)",
-            "section": "About You"
-          }
-        ]
-      },
-      {
-        "name": "Cowork",
-        "level": "preferred",
-        "evidence": [
-          {
-            "excerpt": "Fluency with mainstream AI tools (Claude, Cowork, connectors, MCPs)",
-            "section": "About You"
-          }
-        ]
-      },
-      {
-        "name": "agent SDKs",
+        "name": "mainstream AI tools (Claude, Cowork, connectors, MCPs)",
         "level": "required",
         "evidence": [
           {
-            "excerpt": "working with APIs, and orchestrating with tools like n8n, agent SDKs, database fundamentals, SQL, and migration hygiene",
+            "excerpt": "...Fluency with mainstream AI tools (Claude, Cowork, connectors, MCPs)...",
+            "section": "About You"
+          }
+        ]
+      },
+      {
+        "name": "n8n",
+        "level": "required",
+        "evidence": [
+          {
+            "excerpt": "...orchestrating with tools like n8n, agent SDKs...",
             "section": "About You"
           }
         ]
@@ -136,16 +120,16 @@
         "description": "Run discovery with non-technical stakeholders, elicit, question, push back, and reframe vague asks into well-scoped problems.",
         "evidence": [
           {
-            "excerpt": "Run discovery with non-technical stakeholders, elicit, question, push back, and reframe vague asks into well-scoped problems.",
+            "excerpt": "Run discovery with non-technical stakeholders...",
             "section": "Responsibilities"
           }
         ]
       },
       {
-        "description": "Design first, solution second, then build the automations and workflows — picking the right tool for the scale of the problem, whether that’s code, n8n, agent SDKs, a vendor product, or a well-configured off-the-shelf AI tool.",
+        "description": "Design first, solution second, then build the automations and workflows — picking the right tool for the scale of the problem...",
         "evidence": [
           {
-            "excerpt": "Design first, solution second, then build the automations and workflows — picking the right tool for the scale of the problem",
+            "excerpt": "Design first, solution second, then build the automations and workflows...",
             "section": "Responsibilities"
           }
         ]
@@ -154,16 +138,16 @@
         "description": "Ship with production discipline: human-in-the-loop where needed, secrets and PII handled properly, and failures that are observable and recoverable.",
         "evidence": [
           {
-            "excerpt": "Ship with production discipline: human-in-the-loop where needed, secrets and PII handled properly, and failures that are observable and recoverable.",
+            "excerpt": "Ship with production discipline: human-in-the-loop where needed...",
             "section": "Responsibilities"
           }
         ]
       },
       {
-        "description": "Package what you build into shareable workflows others can pick up and run, and support the team’s AI enablement efforts, including setting up connectors and MCPs.",
+        "description": "Package what you build into shareable workflows others can pick up and run, and support the team’s AI enablement efforts...",
         "evidence": [
           {
-            "excerpt": "Package what you build into shareable workflows others can pick up and run, and support the team’s AI enablement efforts",
+            "excerpt": "Package what you build into shareable workflows others can pick up and run...",
             "section": "Responsibilities"
           }
         ]
@@ -201,18 +185,18 @@
       "summary": "Melbourne, Victoria, Australia",
       "evidence": [
         {
-          "excerpt": "Melbourne, Victoria, Australia · 3 days ago",
-          "section": "JobDescription"
+          "excerpt": "Melbourne, Victoria, Australia",
+          "section": "Job title"
         }
       ]
     },
     "work_arrangement": {
       "arrangement": "hybrid",
-      "details": null,
+      "details": "Flexible working arrangements and a great work-life balance.",
       "evidence": [
         {
-          "excerpt": "Hybrid",
-          "section": "JobDescription"
+          "excerpt": "...enjoy flexible working arrangements and a great work-life balance.",
+          "section": "Why join us?"
         }
       ]
     },
@@ -222,19 +206,19 @@
       "evidence": [
         {
           "excerpt": "Full-time",
-          "section": "JobDescription"
+          "section": "Job title"
         }
       ]
     },
     "experience_requirements": [
       {
-        "description": "You’ve spent real time on automation projects across a range of contexts, and you can tell where AI genuinely helps and where conventional software is the better call.",
+        "description": "Strong coding fundamentals — comfortable writing and maintaining production code (e.g. Python or TypeScript)...",
         "level": "required",
         "minimum_years": null,
         "maximum_years": null,
         "evidence": [
           {
-            "excerpt": "You’ve spent real time on automation projects across a range of contexts, and you can tell where AI genuinely helps and where conventional software is the better call.",
+            "excerpt": "Strong coding fundamentals — comfortable writing and maintaining production code (e.g. Python or TypeScript)...",
             "section": "About You"
           }
         ]
@@ -253,7 +237,11 @@
         "family": "ai_engineering",
         "evidence": [
           {
-            "excerpt": "As pay.com.au has scaled, everyday processes that were once easy to manage have become work worth refining, optimising and automating",
+            "excerpt": "AI Automation Engineer",
+            "section": "Job title"
+          },
+          {
+            "excerpt": "...you’ll join a fast-growing team shaping the future of B2B payments...AI is one tool among several...",
             "section": "About the job"
           }
         ]
@@ -270,7 +258,7 @@
           "level": "required",
           "evidence": [
             {
-              "excerpt": "Strong coding fundamentals — comfortable writing and maintaining production code (e.g. Python or TypeScript)",
+              "excerpt": "...comfortable writing and maintaining production code (e.g. Python or TypeScript)...",
               "section": "About You"
             }
           ]
@@ -280,17 +268,7 @@
           "level": "required",
           "evidence": [
             {
-              "excerpt": "Strong coding fundamentals — comfortable writing and maintaining production code (e.g. Python or TypeScript)",
-              "section": "About You"
-            }
-          ]
-        },
-        {
-          "name": "n8n",
-          "level": "required",
-          "evidence": [
-            {
-              "excerpt": "working with APIs, and orchestrating with tools like n8n, agent SDKs, database fundamentals, SQL, and migration hygiene.",
+              "excerpt": "...comfortable writing and maintaining production code (e.g. Python or TypeScript)...",
               "section": "About You"
             }
           ]
@@ -300,37 +278,27 @@
           "level": "required",
           "evidence": [
             {
-              "excerpt": "database fundamentals, SQL, and migration hygiene",
+              "excerpt": "...database fundamentals, SQL, and migration hygiene.",
               "section": "About You"
             }
           ]
         },
         {
-          "name": "Claude",
-          "level": "preferred",
-          "evidence": [
-            {
-              "excerpt": "Fluency with mainstream AI tools (Claude, Cowork, connectors, MCPs)",
-              "section": "About You"
-            }
-          ]
-        },
-        {
-          "name": "Cowork",
-          "level": "preferred",
-          "evidence": [
-            {
-              "excerpt": "Fluency with mainstream AI tools (Claude, Cowork, connectors, MCPs)",
-              "section": "About You"
-            }
-          ]
-        },
-        {
-          "name": "agent SDKs",
+          "name": "mainstream AI tools (Claude, Cowork, connectors, MCPs)",
           "level": "required",
           "evidence": [
             {
-              "excerpt": "working with APIs, and orchestrating with tools like n8n, agent SDKs, database fundamentals, SQL, and migration hygiene",
+              "excerpt": "...Fluency with mainstream AI tools (Claude, Cowork, connectors, MCPs)...",
+              "section": "About You"
+            }
+          ]
+        },
+        {
+          "name": "n8n",
+          "level": "required",
+          "evidence": [
+            {
+              "excerpt": "...orchestrating with tools like n8n, agent SDKs...",
               "section": "About You"
             }
           ]
@@ -341,16 +309,16 @@
           "description": "Run discovery with non-technical stakeholders, elicit, question, push back, and reframe vague asks into well-scoped problems.",
           "evidence": [
             {
-              "excerpt": "Run discovery with non-technical stakeholders, elicit, question, push back, and reframe vague asks into well-scoped problems.",
+              "excerpt": "Run discovery with non-technical stakeholders...",
               "section": "Responsibilities"
             }
           ]
         },
         {
-          "description": "Design first, solution second, then build the automations and workflows — picking the right tool for the scale of the problem, whether that’s code, n8n, agent SDKs, a vendor product, or a well-configured off-the-shelf AI tool.",
+          "description": "Design first, solution second, then build the automations and workflows — picking the right tool for the scale of the problem...",
           "evidence": [
             {
-              "excerpt": "Design first, solution second, then build the automations and workflows — picking the right tool for the scale of the problem",
+              "excerpt": "Design first, solution second, then build the automations and workflows...",
               "section": "Responsibilities"
             }
           ]
@@ -359,16 +327,16 @@
           "description": "Ship with production discipline: human-in-the-loop where needed, secrets and PII handled properly, and failures that are observable and recoverable.",
           "evidence": [
             {
-              "excerpt": "Ship with production discipline: human-in-the-loop where needed, secrets and PII handled properly, and failures that are observable and recoverable.",
+              "excerpt": "Ship with production discipline: human-in-the-loop where needed...",
               "section": "Responsibilities"
             }
           ]
         },
         {
-          "description": "Package what you build into shareable workflows others can pick up and run, and support the team’s AI enablement efforts, including setting up connectors and MCPs.",
+          "description": "Package what you build into shareable workflows others can pick up and run, and support the team’s AI enablement efforts...",
           "evidence": [
             {
-              "excerpt": "Package what you build into shareable workflows others can pick up and run, and support the team’s AI enablement efforts",
+              "excerpt": "Package what you build into shareable workflows others can pick up and run...",
               "section": "Responsibilities"
             }
           ]
@@ -406,18 +374,18 @@
         "summary": "Melbourne, Victoria, Australia",
         "evidence": [
           {
-            "excerpt": "Melbourne, Victoria, Australia · 3 days ago",
-            "section": "JobDescription"
+            "excerpt": "Melbourne, Victoria, Australia",
+            "section": "Job title"
           }
         ]
       },
       "work_arrangement": {
         "arrangement": "hybrid",
-        "details": null,
+        "details": "Flexible working arrangements and a great work-life balance.",
         "evidence": [
           {
-            "excerpt": "Hybrid",
-            "section": "JobDescription"
+            "excerpt": "...enjoy flexible working arrangements and a great work-life balance.",
+            "section": "Why join us?"
           }
         ]
       },
@@ -427,19 +395,19 @@
         "evidence": [
           {
             "excerpt": "Full-time",
-            "section": "JobDescription"
+            "section": "Job title"
           }
         ]
       },
       "experience_requirements": [
         {
-          "description": "You’ve spent real time on automation projects across a range of contexts, and you can tell where AI genuinely helps and where conventional software is the better call.",
+          "description": "Strong coding fundamentals — comfortable writing and maintaining production code (e.g. Python or TypeScript)...",
           "level": "required",
           "minimum_years": null,
           "maximum_years": null,
           "evidence": [
             {
-              "excerpt": "You’ve spent real time on automation projects across a range of contexts, and you can tell where AI genuinely helps and where conventional software is the better call.",
+              "excerpt": "Strong coding fundamentals — comfortable writing and maintaining production code (e.g. Python or TypeScript)...",
               "section": "About You"
             }
           ]
@@ -449,26 +417,60 @@
     "technical_fit": {
       "dimension": "technical",
       "judgment": "mixed",
-      "summary": "While the profile demonstrates technical skills relevant to AI engineering, gaps in required automation project experience may hinder alignment with the role.",
+      "summary": "Profile demonstrates relevant skills in Python, production code, and AI tools, but lacks explicit commercial AI engineering experience required for this role.",
       "findings": [
         {
           "kind": "partial_alignment",
-          "summary": "The profile shows experience in AI projects but lacks extensive engagement in automation across varying contexts, which is crucial for this role.",
-          "detail": "The role requires candidates to have spent time on diverse automation projects, an area where the candidate's experience appears limited.",
+          "summary": "Candidate has strong foundational coding experience and relevant project work, but lacks direct commercial AI engineering roles which the job describes as essential.",
+          "detail": "Experience in independent engineering and related professional development shows capability but does not match the commercial delivery expectation outlined.",
           "importance": "material",
           "job_evidence": [
             {
               "source": "experience_requirement",
               "item_index": 0,
-              "name": "You’ve spent real time on automation projects across a range of contexts, and you can tell where AI genuinely helps and where conventional software is the better call.",
-              "excerpt": "You’ve spent real time on automation projects across a range of contexts, and you can tell where AI genuinely helps and where conventional software is the better call."
+              "name": "Strong coding fundamentals — comfortable writing and maintaining production code (e.g. Python or TypeScript)...",
+              "excerpt": "Strong coding fundamentals — comfortable writing and maintaining production code (e.g. Python or TypeScript)..."
+            },
+            {
+              "source": "technology",
+              "item_index": 0,
+              "name": "Python",
+              "excerpt": "...comfortable writing and maintaining production code (e.g. Python or TypeScript)..."
+            },
+            {
+              "source": "technology",
+              "item_index": 1,
+              "name": "TypeScript",
+              "excerpt": "...comfortable writing and maintaining production code (e.g. Python or TypeScript)..."
+            },
+            {
+              "source": "technology",
+              "item_index": 3,
+              "name": "mainstream AI tools (Claude, Cowork, connectors, MCPs)",
+              "excerpt": "...Fluency with mainstream AI tools (Claude, Cowork, connectors, MCPs)..."
+            },
+            {
+              "source": "technology",
+              "item_index": 4,
+              "name": "n8n",
+              "excerpt": "...orchestrating with tools like n8n, agent SDKs..."
             }
           ],
           "profile_evidence": [
             {
               "source": "experience",
               "ref": "experience:chase-risk-compliance-ai-engineer",
-              "excerpt": "Delivered a portfolio of AI applications spanning retrieval-augmented generation, operational intelligence, explainable diagnostics."
+              "excerpt": "Delivered a portfolio of AI applications spanning retrieval-augmented generation, operational intelligence, explainable diagnostics, and enterprise decision support."
+            },
+            {
+              "source": "experience",
+              "ref": "experience:ai-engineering-development-2025",
+              "excerpt": "Developed progressively more sophisticated portfolio projects."
+            },
+            {
+              "source": "experience",
+              "ref": "experience:data-engineering-development-2023",
+              "excerpt": "Full-time professional development focused initially on modern Data Engineering."
             }
           ],
           "assumption": null
@@ -477,15 +479,28 @@
     },
     "commercial_fit": {
       "dimension": "commercial",
-      "judgment": "unknown",
-      "summary": "Compensation details are unstated, leading to uncertainty in fit regarding financial expectations.",
+      "judgment": "mixed",
+      "summary": "The role requires solid commercial AI experience, which is not fully evident in the profile. Notable gaps exist in direct commercial AI engagement.",
       "findings": [
         {
-          "kind": "uncertainty",
-          "summary": "The job posting does not specify a salary or compensation range.",
-          "detail": "This lack of clarity poses potential misalignment in expectations regarding salary between the job role and the candidate's preferences.",
-          "importance": "minor",
-          "job_evidence": [],
+          "kind": "gap",
+          "summary": "Job highlights a need for proven commercial AI production experience that is not fully supported by the current profile evidence.",
+          "detail": "While the candidate possesses strong technical skills and relevant projects, there is no evidence of commercial production experience specifically in AI.",
+          "importance": "material",
+          "job_evidence": [
+            {
+              "source": "experience_requirement",
+              "item_index": 0,
+              "name": "Strong coding fundamentals — comfortable writing and maintaining production code (e.g. Python or TypeScript)...",
+              "excerpt": "Strong coding fundamentals — comfortable writing and maintaining production code (e.g. Python or TypeScript)..."
+            },
+            {
+              "source": "employment",
+              "item_index": null,
+              "name": "Full-time",
+              "excerpt": "Full-time"
+            }
+          ],
           "profile_evidence": [],
           "assumption": null
         }
@@ -493,32 +508,43 @@
     },
     "portfolio_fit": {
       "dimension": "portfolio",
-      "judgment": "mixed",
-      "summary": "The candidate's projects show capabilities that align reasonably with the role requirements, but some elements remain unaddressed.",
+      "judgment": "moderate",
+      "summary": "The candidate has demonstrated relevant project work in AI that aligns with the job requirements but lacks the commercial context desired.",
       "findings": [
         {
           "kind": "partial_alignment",
-          "summary": "Multiple projects within the portfolio demonstrate engineering skills, yet there is a lack of direct evidence of automation implementations in various business contexts.",
-          "detail": "Projects like the Operational Intelligence Copilot and Governance Document Intelligence RAG indicate potential fit but don't specifically address the breadth of automation experience required.",
-          "importance": "material",
+          "summary": "The profile includes several substantial projects that demonstrate relevant AI engineering skills.",
+          "detail": "Projects such as Operational Intelligence Copilot show hands-on experience, but the lack of commercial AI delivery limits alignment.",
+          "importance": "minor",
           "job_evidence": [
             {
               "source": "responsibility",
-              "item_index": 0,
-              "name": "Run discovery with non-technical stakeholders, elicit, question, push back, and reframe vague asks into well-scoped problems.",
-              "excerpt": "Run discovery with non-technical stakeholders, elicit, question, push back, and reframe vague asks into well-scoped problems."
+              "item_index": 1,
+              "name": "Design first, solution second, then build the automations and workflows — picking the right tool for the scale of the problem...",
+              "excerpt": "Design first, solution second, then build the automations and workflows..."
+            },
+            {
+              "source": "responsibility",
+              "item_index": 4,
+              "name": "Instrument usage and iterate on what you’ve shipped until it sticks.",
+              "excerpt": "Instrument usage and iterate on what you’ve shipped until it sticks."
             }
           ],
           "profile_evidence": [
             {
               "source": "project",
               "ref": "project:operational-intelligence-copilot",
-              "excerpt": "Produces evidence-backed executive reporting."
+              "excerpt": "Demonstrates operational intelligence capability for understanding business data."
+            },
+            {
+              "source": "project",
+              "ref": "project:career-intelligence-copilot",
+              "excerpt": "Enables an AI Engineering job seeker to decide which roles deserve effort."
             },
             {
               "source": "project",
               "ref": "project:governance-document-rag",
-              "excerpt": "Supports grounded responses over multi-format organisational documents."
+              "excerpt": "Allows organisations to answer questions from their own documents."
             }
           ],
           "assumption": null
@@ -526,14 +552,14 @@
       ]
     },
     "summary": {
-      "summary": "The assessment indicates a mixed fit for the candidate across technical, commercial, and portfolio dimensions. While there are relevant skills and projects, key experience in automation spans remains necessary for stronger alignment.",
+      "summary": "The candidate demonstrates a strong technical background with relevant portfolio projects but lacks explicit commercial AI experience which diminishes the strength of their fit for the role.",
       "key_alignments": [
-        "Relevant technical skills in Python and AI tools.",
-        "Strong independent project experience in AI engineering."
+        "Strong Python and TypeScript skills",
+        "Experience with mainstream AI tools and automation frameworks"
       ],
       "key_gaps": [
-        "Lack of diverse automation project experience.",
-        "Unstated compensation leading to potential misalignment."
+        "Lack of direct commercial AI engineering experience",
+        "No evidence of engaging in commercial production AI projects"
       ]
     }
   },
@@ -549,7 +575,11 @@
         "family": "ai_engineering",
         "evidence": [
           {
-            "excerpt": "As pay.com.au has scaled, everyday processes that were once easy to manage have become work worth refining, optimising and automating",
+            "excerpt": "AI Automation Engineer",
+            "section": "Job title"
+          },
+          {
+            "excerpt": "...you’ll join a fast-growing team shaping the future of B2B payments...AI is one tool among several...",
             "section": "About the job"
           }
         ]
@@ -566,7 +596,7 @@
           "level": "required",
           "evidence": [
             {
-              "excerpt": "Strong coding fundamentals — comfortable writing and maintaining production code (e.g. Python or TypeScript)",
+              "excerpt": "...comfortable writing and maintaining production code (e.g. Python or TypeScript)...",
               "section": "About You"
             }
           ]
@@ -576,17 +606,7 @@
           "level": "required",
           "evidence": [
             {
-              "excerpt": "Strong coding fundamentals — comfortable writing and maintaining production code (e.g. Python or TypeScript)",
-              "section": "About You"
-            }
-          ]
-        },
-        {
-          "name": "n8n",
-          "level": "required",
-          "evidence": [
-            {
-              "excerpt": "working with APIs, and orchestrating with tools like n8n, agent SDKs, database fundamentals, SQL, and migration hygiene.",
+              "excerpt": "...comfortable writing and maintaining production code (e.g. Python or TypeScript)...",
               "section": "About You"
             }
           ]
@@ -596,37 +616,27 @@
           "level": "required",
           "evidence": [
             {
-              "excerpt": "database fundamentals, SQL, and migration hygiene",
+              "excerpt": "...database fundamentals, SQL, and migration hygiene.",
               "section": "About You"
             }
           ]
         },
         {
-          "name": "Claude",
-          "level": "preferred",
-          "evidence": [
-            {
-              "excerpt": "Fluency with mainstream AI tools (Claude, Cowork, connectors, MCPs)",
-              "section": "About You"
-            }
-          ]
-        },
-        {
-          "name": "Cowork",
-          "level": "preferred",
-          "evidence": [
-            {
-              "excerpt": "Fluency with mainstream AI tools (Claude, Cowork, connectors, MCPs)",
-              "section": "About You"
-            }
-          ]
-        },
-        {
-          "name": "agent SDKs",
+          "name": "mainstream AI tools (Claude, Cowork, connectors, MCPs)",
           "level": "required",
           "evidence": [
             {
-              "excerpt": "working with APIs, and orchestrating with tools like n8n, agent SDKs, database fundamentals, SQL, and migration hygiene",
+              "excerpt": "...Fluency with mainstream AI tools (Claude, Cowork, connectors, MCPs)...",
+              "section": "About You"
+            }
+          ]
+        },
+        {
+          "name": "n8n",
+          "level": "required",
+          "evidence": [
+            {
+              "excerpt": "...orchestrating with tools like n8n, agent SDKs...",
               "section": "About You"
             }
           ]
@@ -637,16 +647,16 @@
           "description": "Run discovery with non-technical stakeholders, elicit, question, push back, and reframe vague asks into well-scoped problems.",
           "evidence": [
             {
-              "excerpt": "Run discovery with non-technical stakeholders, elicit, question, push back, and reframe vague asks into well-scoped problems.",
+              "excerpt": "Run discovery with non-technical stakeholders...",
               "section": "Responsibilities"
             }
           ]
         },
         {
-          "description": "Design first, solution second, then build the automations and workflows — picking the right tool for the scale of the problem, whether that’s code, n8n, agent SDKs, a vendor product, or a well-configured off-the-shelf AI tool.",
+          "description": "Design first, solution second, then build the automations and workflows — picking the right tool for the scale of the problem...",
           "evidence": [
             {
-              "excerpt": "Design first, solution second, then build the automations and workflows — picking the right tool for the scale of the problem",
+              "excerpt": "Design first, solution second, then build the automations and workflows...",
               "section": "Responsibilities"
             }
           ]
@@ -655,16 +665,16 @@
           "description": "Ship with production discipline: human-in-the-loop where needed, secrets and PII handled properly, and failures that are observable and recoverable.",
           "evidence": [
             {
-              "excerpt": "Ship with production discipline: human-in-the-loop where needed, secrets and PII handled properly, and failures that are observable and recoverable.",
+              "excerpt": "Ship with production discipline: human-in-the-loop where needed...",
               "section": "Responsibilities"
             }
           ]
         },
         {
-          "description": "Package what you build into shareable workflows others can pick up and run, and support the team’s AI enablement efforts, including setting up connectors and MCPs.",
+          "description": "Package what you build into shareable workflows others can pick up and run, and support the team’s AI enablement efforts...",
           "evidence": [
             {
-              "excerpt": "Package what you build into shareable workflows others can pick up and run, and support the team’s AI enablement efforts",
+              "excerpt": "Package what you build into shareable workflows others can pick up and run...",
               "section": "Responsibilities"
             }
           ]
@@ -702,18 +712,18 @@
         "summary": "Melbourne, Victoria, Australia",
         "evidence": [
           {
-            "excerpt": "Melbourne, Victoria, Australia · 3 days ago",
-            "section": "JobDescription"
+            "excerpt": "Melbourne, Victoria, Australia",
+            "section": "Job title"
           }
         ]
       },
       "work_arrangement": {
         "arrangement": "hybrid",
-        "details": null,
+        "details": "Flexible working arrangements and a great work-life balance.",
         "evidence": [
           {
-            "excerpt": "Hybrid",
-            "section": "JobDescription"
+            "excerpt": "...enjoy flexible working arrangements and a great work-life balance.",
+            "section": "Why join us?"
           }
         ]
       },
@@ -723,19 +733,19 @@
         "evidence": [
           {
             "excerpt": "Full-time",
-            "section": "JobDescription"
+            "section": "Job title"
           }
         ]
       },
       "experience_requirements": [
         {
-          "description": "You’ve spent real time on automation projects across a range of contexts, and you can tell where AI genuinely helps and where conventional software is the better call.",
+          "description": "Strong coding fundamentals — comfortable writing and maintaining production code (e.g. Python or TypeScript)...",
           "level": "required",
           "minimum_years": null,
           "maximum_years": null,
           "evidence": [
             {
-              "excerpt": "You’ve spent real time on automation projects across a range of contexts, and you can tell where AI genuinely helps and where conventional software is the better call.",
+              "excerpt": "Strong coding fundamentals — comfortable writing and maintaining production code (e.g. Python or TypeScript)...",
               "section": "About You"
             }
           ]
@@ -745,160 +755,18 @@
     "ranked_projects": [
       {
         "rank": 1,
-        "project_id": "governance-document-rag",
-        "rationale": "Project 'governance-document-rag' ranked on 1 required technology hit(s), 3 demonstrates overlap(s), 3 responsibility overlap(s).",
-        "factors": [
-          {
-            "kind": "required_technology",
-            "summary": "Project evidence supports required technology 'Python'.",
-            "job_evidence": [
-              {
-                "source": "technology",
-                "item_index": 0,
-                "name": "Python",
-                "excerpt": "Strong coding fundamentals — comfortable writing and maintaining production code (e.g. Python or TypeScript)"
-              }
-            ],
-            "profile_evidence": [
-              {
-                "source": "project",
-                "ref": "project:governance-document-rag",
-                "excerpt": "Python"
-              }
-            ]
-          },
-          {
-            "kind": "demonstrates_overlap",
-            "summary": "Project demonstrates capabilities overlapping responsibility 'Design first, solution second, then build the automations and workflows — picking the right tool for the scale of the problem, whether that’s code, n8n, agent…'.",
-            "job_evidence": [
-              {
-                "source": "responsibility",
-                "item_index": 1,
-                "name": null,
-                "excerpt": "Design first, solution second, then build the automations and workflows — picking the right tool for the scale of the problem"
-              }
-            ],
-            "profile_evidence": [
-              {
-                "source": "project",
-                "ref": "project:governance-document-rag",
-                "excerpt": "AI evaluation frameworks"
-              }
-            ]
-          },
-          {
-            "kind": "responsibility_overlap",
-            "summary": "Project summary, outcomes, or technologies overlap responsibility 'Design first, solution second, then build the automations and workflows — picking the right tool for the scale of the problem, whether that’s code, n8n, agent…'.",
-            "job_evidence": [
-              {
-                "source": "responsibility",
-                "item_index": 1,
-                "name": null,
-                "excerpt": "Design first, solution second, then build the automations and workflows — picking the right tool for the scale of the problem"
-              }
-            ],
-            "profile_evidence": [
-              {
-                "source": "project",
-                "ref": "project:governance-document-rag",
-                "excerpt": "Allows organisations to answer questions from their own documents with responses that stay grounded in source material. Built for teams that need trustworthy A…"
-              }
-            ]
-          },
-          {
-            "kind": "demonstrates_overlap",
-            "summary": "Project demonstrates capabilities overlapping responsibility 'Package what you build into shareable workflows others can pick up and run, and support the team’s AI enablement efforts, including setting up connectors and M…'.",
-            "job_evidence": [
-              {
-                "source": "responsibility",
-                "item_index": 3,
-                "name": null,
-                "excerpt": "Package what you build into shareable workflows others can pick up and run, and support the team’s AI enablement efforts"
-              }
-            ],
-            "profile_evidence": [
-              {
-                "source": "project",
-                "ref": "project:governance-document-rag",
-                "excerpt": "AI evaluation frameworks"
-              }
-            ]
-          },
-          {
-            "kind": "responsibility_overlap",
-            "summary": "Project summary, outcomes, or technologies overlap responsibility 'Package what you build into shareable workflows others can pick up and run, and support the team’s AI enablement efforts, including setting up connectors and M…'.",
-            "job_evidence": [
-              {
-                "source": "responsibility",
-                "item_index": 3,
-                "name": null,
-                "excerpt": "Package what you build into shareable workflows others can pick up and run, and support the team’s AI enablement efforts"
-              }
-            ],
-            "profile_evidence": [
-              {
-                "source": "project",
-                "ref": "project:governance-document-rag",
-                "excerpt": "Allows organisations to answer questions from their own documents with responses that stay grounded in source material. Built for teams that need trustworthy A…"
-              }
-            ]
-          },
-          {
-            "kind": "demonstrates_overlap",
-            "summary": "Project demonstrates capabilities overlapping responsibility 'Support the product team on AI initiatives.'.",
-            "job_evidence": [
-              {
-                "source": "responsibility",
-                "item_index": 5,
-                "name": null,
-                "excerpt": "Support the product team on AI initiatives."
-              }
-            ],
-            "profile_evidence": [
-              {
-                "source": "project",
-                "ref": "project:governance-document-rag",
-                "excerpt": "AI evaluation frameworks"
-              }
-            ]
-          },
-          {
-            "kind": "responsibility_overlap",
-            "summary": "Project summary, outcomes, or technologies overlap responsibility 'Support the product team on AI initiatives.'.",
-            "job_evidence": [
-              {
-                "source": "responsibility",
-                "item_index": 5,
-                "name": null,
-                "excerpt": "Support the product team on AI initiatives."
-              }
-            ],
-            "profile_evidence": [
-              {
-                "source": "project",
-                "ref": "project:governance-document-rag",
-                "excerpt": "Allows organisations to answer questions from their own documents with responses that stay grounded in source material. Built for teams that need trustworthy A…"
-              }
-            ]
-          }
-        ],
-        "tie_group": 1,
-        "tie_break_reason": "Equal primary ranking signals; ordered by stable project_id ascending"
-      },
-      {
-        "rank": 2,
         "project_id": "operational-intelligence-copilot",
-        "rationale": "Project 'operational-intelligence-copilot' ranked on 1 required technology hit(s), 3 demonstrates overlap(s), 3 responsibility overlap(s).",
+        "rationale": "Project 'operational-intelligence-copilot' ranked on 3 demonstrates overlap(s), 2 responsibility overlap(s), 1 capability overlap(s), 1 generic required technology hit(s).",
         "factors": [
           {
             "kind": "required_technology",
-            "summary": "Project evidence supports required technology 'Python'.",
+            "summary": "Project evidence supports required technology 'Python' (generic stack term).",
             "job_evidence": [
               {
                 "source": "technology",
                 "item_index": 0,
                 "name": "Python",
-                "excerpt": "Strong coding fundamentals — comfortable writing and maintaining production code (e.g. Python or TypeScript)"
+                "excerpt": "...comfortable writing and maintaining production code (e.g. Python or TypeScript)..."
               }
             ],
             "profile_evidence": [
@@ -910,14 +778,52 @@
             ]
           },
           {
-            "kind": "demonstrates_overlap",
-            "summary": "Project demonstrates capabilities overlapping responsibility 'Design first, solution second, then build the automations and workflows — picking the right tool for the scale of the problem, whether that’s code, n8n, agent…'.",
+            "kind": "capability_overlap",
+            "summary": "Project demonstrates 'workflows pipelines' capability overlapping job evidence 'Design first, solution second, then build the automations and workflows — picking the right tool for the scale of the problem...'.",
             "job_evidence": [
               {
                 "source": "responsibility",
                 "item_index": 1,
                 "name": null,
-                "excerpt": "Design first, solution second, then build the automations and workflows — picking the right tool for the scale of the problem"
+                "excerpt": "Design first, solution second, then build the automations and workflows..."
+              }
+            ],
+            "profile_evidence": [
+              {
+                "source": "project",
+                "ref": "project:operational-intelligence-copilot",
+                "excerpt": "workflows"
+              }
+            ]
+          },
+          {
+            "kind": "demonstrates_overlap",
+            "summary": "Project demonstrates capabilities overlapping responsibility 'Design first, solution second, then build the automations and workflows — picking the right tool for the scale of the problem...'.",
+            "job_evidence": [
+              {
+                "source": "responsibility",
+                "item_index": 1,
+                "name": null,
+                "excerpt": "Design first, solution second, then build the automations and workflows..."
+              }
+            ],
+            "profile_evidence": [
+              {
+                "source": "project",
+                "ref": "project:operational-intelligence-copilot",
+                "excerpt": "Regression-tested analytics workflows"
+              }
+            ]
+          },
+          {
+            "kind": "demonstrates_overlap",
+            "summary": "Project demonstrates capabilities overlapping responsibility 'Package what you build into shareable workflows others can pick up and run, and support the team’s AI enablement efforts...'.",
+            "job_evidence": [
+              {
+                "source": "responsibility",
+                "item_index": 3,
+                "name": null,
+                "excerpt": "Package what you build into shareable workflows others can pick up and run..."
               }
             ],
             "profile_evidence": [
@@ -930,51 +836,13 @@
           },
           {
             "kind": "responsibility_overlap",
-            "summary": "Project summary, outcomes, or technologies overlap responsibility 'Design first, solution second, then build the automations and workflows — picking the right tool for the scale of the problem, whether that’s code, n8n, agent…'.",
-            "job_evidence": [
-              {
-                "source": "responsibility",
-                "item_index": 1,
-                "name": null,
-                "excerpt": "Design first, solution second, then build the automations and workflows — picking the right tool for the scale of the problem"
-              }
-            ],
-            "profile_evidence": [
-              {
-                "source": "project",
-                "ref": "project:operational-intelligence-copilot",
-                "excerpt": "Demonstrates operational intelligence capability for understanding business data. Combines reliable analytics with AI reasoning to surface anomalies and produc…"
-              }
-            ]
-          },
-          {
-            "kind": "demonstrates_overlap",
-            "summary": "Project demonstrates capabilities overlapping responsibility 'Package what you build into shareable workflows others can pick up and run, and support the team’s AI enablement efforts, including setting up connectors and M…'.",
+            "summary": "Project summary, outcomes, or technologies overlap responsibility 'Package what you build into shareable workflows others can pick up and run, and support the team’s AI enablement efforts...'.",
             "job_evidence": [
               {
                 "source": "responsibility",
                 "item_index": 3,
                 "name": null,
-                "excerpt": "Package what you build into shareable workflows others can pick up and run, and support the team’s AI enablement efforts"
-              }
-            ],
-            "profile_evidence": [
-              {
-                "source": "project",
-                "ref": "project:operational-intelligence-copilot",
-                "excerpt": "Regression-tested analytics workflows"
-              }
-            ]
-          },
-          {
-            "kind": "responsibility_overlap",
-            "summary": "Project summary, outcomes, or technologies overlap responsibility 'Package what you build into shareable workflows others can pick up and run, and support the team’s AI enablement efforts, including setting up connectors and M…'.",
-            "job_evidence": [
-              {
-                "source": "responsibility",
-                "item_index": 3,
-                "name": null,
-                "excerpt": "Package what you build into shareable workflows others can pick up and run, and support the team’s AI enablement efforts"
+                "excerpt": "Package what you build into shareable workflows others can pick up and run..."
               }
             ],
             "profile_evidence": [
@@ -1024,23 +892,127 @@
             ]
           }
         ],
-        "tie_group": 1,
-        "tie_break_reason": "Equal primary ranking signals; ordered by stable project_id ascending"
+        "tie_group": null,
+        "tie_break_reason": null
       },
       {
-        "rank": 3,
-        "project_id": "career-intelligence-copilot",
-        "rationale": "Project 'career-intelligence-copilot' ranked on 1 required technology hit(s), 1 demonstrates overlap(s), 4 responsibility overlap(s).",
+        "rank": 2,
+        "project_id": "governance-document-rag",
+        "rationale": "Project 'governance-document-rag' ranked on 2 demonstrates overlap(s), 2 responsibility overlap(s), 1 generic required technology hit(s).",
         "factors": [
           {
             "kind": "required_technology",
-            "summary": "Project evidence supports required technology 'Python'.",
+            "summary": "Project evidence supports required technology 'Python' (generic stack term).",
             "job_evidence": [
               {
                 "source": "technology",
                 "item_index": 0,
                 "name": "Python",
-                "excerpt": "Strong coding fundamentals — comfortable writing and maintaining production code (e.g. Python or TypeScript)"
+                "excerpt": "...comfortable writing and maintaining production code (e.g. Python or TypeScript)..."
+              }
+            ],
+            "profile_evidence": [
+              {
+                "source": "project",
+                "ref": "project:governance-document-rag",
+                "excerpt": "Python"
+              }
+            ]
+          },
+          {
+            "kind": "demonstrates_overlap",
+            "summary": "Project demonstrates capabilities overlapping responsibility 'Package what you build into shareable workflows others can pick up and run, and support the team’s AI enablement efforts...'.",
+            "job_evidence": [
+              {
+                "source": "responsibility",
+                "item_index": 3,
+                "name": null,
+                "excerpt": "Package what you build into shareable workflows others can pick up and run..."
+              }
+            ],
+            "profile_evidence": [
+              {
+                "source": "project",
+                "ref": "project:governance-document-rag",
+                "excerpt": "AI evaluation frameworks"
+              }
+            ]
+          },
+          {
+            "kind": "responsibility_overlap",
+            "summary": "Project summary, outcomes, or technologies overlap responsibility 'Package what you build into shareable workflows others can pick up and run, and support the team’s AI enablement efforts...'.",
+            "job_evidence": [
+              {
+                "source": "responsibility",
+                "item_index": 3,
+                "name": null,
+                "excerpt": "Package what you build into shareable workflows others can pick up and run..."
+              }
+            ],
+            "profile_evidence": [
+              {
+                "source": "project",
+                "ref": "project:governance-document-rag",
+                "excerpt": "Allows organisations to answer questions from their own documents with responses that stay grounded in source material. Built for teams that need trustworthy A…"
+              }
+            ]
+          },
+          {
+            "kind": "demonstrates_overlap",
+            "summary": "Project demonstrates capabilities overlapping responsibility 'Support the product team on AI initiatives.'.",
+            "job_evidence": [
+              {
+                "source": "responsibility",
+                "item_index": 5,
+                "name": null,
+                "excerpt": "Support the product team on AI initiatives."
+              }
+            ],
+            "profile_evidence": [
+              {
+                "source": "project",
+                "ref": "project:governance-document-rag",
+                "excerpt": "AI evaluation frameworks"
+              }
+            ]
+          },
+          {
+            "kind": "responsibility_overlap",
+            "summary": "Project summary, outcomes, or technologies overlap responsibility 'Support the product team on AI initiatives.'.",
+            "job_evidence": [
+              {
+                "source": "responsibility",
+                "item_index": 5,
+                "name": null,
+                "excerpt": "Support the product team on AI initiatives."
+              }
+            ],
+            "profile_evidence": [
+              {
+                "source": "project",
+                "ref": "project:governance-document-rag",
+                "excerpt": "Allows organisations to answer questions from their own documents with responses that stay grounded in source material. Built for teams that need trustworthy A…"
+              }
+            ]
+          }
+        ],
+        "tie_group": null,
+        "tie_break_reason": null
+      },
+      {
+        "rank": 3,
+        "project_id": "career-intelligence-copilot",
+        "rationale": "Project 'career-intelligence-copilot' ranked on 1 demonstrates overlap(s), 3 responsibility overlap(s), 1 capability overlap(s), 1 generic required technology hit(s).",
+        "factors": [
+          {
+            "kind": "required_technology",
+            "summary": "Project evidence supports required technology 'Python' (generic stack term).",
+            "job_evidence": [
+              {
+                "source": "technology",
+                "item_index": 0,
+                "name": "Python",
+                "excerpt": "...comfortable writing and maintaining production code (e.g. Python or TypeScript)..."
               }
             ],
             "profile_evidence": [
@@ -1052,21 +1024,21 @@
             ]
           },
           {
-            "kind": "responsibility_overlap",
-            "summary": "Project summary, outcomes, or technologies overlap responsibility 'Design first, solution second, then build the automations and workflows — picking the right tool for the scale of the problem, whether that’s code, n8n, agent…'.",
+            "kind": "capability_overlap",
+            "summary": "Project demonstrates 'hitl review' capability overlapping job evidence 'Ship with production discipline: human-in-the-loop where needed, secrets and PII handled properly, and failures that are observable and recoverable.'.",
             "job_evidence": [
               {
                 "source": "responsibility",
-                "item_index": 1,
+                "item_index": 2,
                 "name": null,
-                "excerpt": "Design first, solution second, then build the automations and workflows — picking the right tool for the scale of the problem"
+                "excerpt": "Ship with production discipline: human-in-the-loop where needed..."
               }
             ],
             "profile_evidence": [
               {
                 "source": "project",
                 "ref": "project:career-intelligence-copilot",
-                "excerpt": "Enables an AI Engineering job seeker to decide which roles deserve effort. Reviews job ads against a structured career profile, ranks fit, recommends applicati…"
+                "excerpt": "human-in-the-loop"
               }
             ]
           },
@@ -1078,7 +1050,7 @@
                 "source": "responsibility",
                 "item_index": 2,
                 "name": null,
-                "excerpt": "Ship with production discipline: human-in-the-loop where needed, secrets and PII handled properly, and failures that are observable and recoverable."
+                "excerpt": "Ship with production discipline: human-in-the-loop where needed..."
               }
             ],
             "profile_evidence": [
@@ -1097,7 +1069,7 @@
                 "source": "responsibility",
                 "item_index": 2,
                 "name": null,
-                "excerpt": "Ship with production discipline: human-in-the-loop where needed, secrets and PII handled properly, and failures that are observable and recoverable."
+                "excerpt": "Ship with production discipline: human-in-the-loop where needed..."
               }
             ],
             "profile_evidence": [
@@ -1110,13 +1082,13 @@
           },
           {
             "kind": "responsibility_overlap",
-            "summary": "Project summary, outcomes, or technologies overlap responsibility 'Package what you build into shareable workflows others can pick up and run, and support the team’s AI enablement efforts, including setting up connectors and M…'.",
+            "summary": "Project summary, outcomes, or technologies overlap responsibility 'Package what you build into shareable workflows others can pick up and run, and support the team’s AI enablement efforts...'.",
             "job_evidence": [
               {
                 "source": "responsibility",
                 "item_index": 3,
                 "name": null,
-                "excerpt": "Package what you build into shareable workflows others can pick up and run, and support the team’s AI enablement efforts"
+                "excerpt": "Package what you build into shareable workflows others can pick up and run..."
               }
             ],
             "profile_evidence": [
@@ -1153,17 +1125,17 @@
       {
         "rank": 4,
         "project_id": "payroll-diagnostics-engine",
-        "rationale": "Project 'payroll-diagnostics-engine' ranked on 1 required technology hit(s), 1 responsibility overlap(s).",
+        "rationale": "Project 'payroll-diagnostics-engine' ranked on 1 responsibility overlap(s), 1 generic required technology hit(s).",
         "factors": [
           {
             "kind": "required_technology",
-            "summary": "Project evidence supports required technology 'Python'.",
+            "summary": "Project evidence supports required technology 'Python' (generic stack term).",
             "job_evidence": [
               {
                 "source": "technology",
                 "item_index": 0,
                 "name": "Python",
-                "excerpt": "Strong coding fundamentals — comfortable writing and maintaining production code (e.g. Python or TypeScript)"
+                "excerpt": "...comfortable writing and maintaining production code (e.g. Python or TypeScript)..."
               }
             ],
             "profile_evidence": [
@@ -1176,13 +1148,13 @@
           },
           {
             "kind": "responsibility_overlap",
-            "summary": "Project summary, outcomes, or technologies overlap responsibility 'Package what you build into shareable workflows others can pick up and run, and support the team’s AI enablement efforts, including setting up connectors and M…'.",
+            "summary": "Project summary, outcomes, or technologies overlap responsibility 'Package what you build into shareable workflows others can pick up and run, and support the team’s AI enablement efforts...'.",
             "job_evidence": [
               {
                 "source": "responsibility",
                 "item_index": 3,
                 "name": null,
-                "excerpt": "Package what you build into shareable workflows others can pick up and run, and support the team’s AI enablement efforts"
+                "excerpt": "Package what you build into shareable workflows others can pick up and run..."
               }
             ],
             "profile_evidence": [
@@ -1200,17 +1172,17 @@
       {
         "rank": 5,
         "project_id": "public-holiday-entitlements",
-        "rationale": "Project 'public-holiday-entitlements' ranked on 1 required technology hit(s).",
+        "rationale": "Project 'public-holiday-entitlements' ranked on 1 generic required technology hit(s).",
         "factors": [
           {
             "kind": "required_technology",
-            "summary": "Project evidence supports required technology 'Python'.",
+            "summary": "Project evidence supports required technology 'Python' (generic stack term).",
             "job_evidence": [
               {
                 "source": "technology",
                 "item_index": 0,
                 "name": "Python",
-                "excerpt": "Strong coding fundamentals — comfortable writing and maintaining production code (e.g. Python or TypeScript)"
+                "excerpt": "...comfortable writing and maintaining production code (e.g. Python or TypeScript)..."
               }
             ],
             "profile_evidence": [
@@ -1227,7 +1199,7 @@
       }
     ],
     "unranked_project_ids": [],
-    "summary": "Ranked 5 project(s); lead with 'governance-document-rag'. 0 project(s) had no matching factors.",
+    "summary": "Ranked 5 project(s); lead with 'operational-intelligence-copilot'. 0 project(s) had no matching factors.",
     "insufficient_evidence": false
   },
   "application_strategy": {
@@ -1242,7 +1214,11 @@
         "family": "ai_engineering",
         "evidence": [
           {
-            "excerpt": "As pay.com.au has scaled, everyday processes that were once easy to manage have become work worth refining, optimising and automating",
+            "excerpt": "AI Automation Engineer",
+            "section": "Job title"
+          },
+          {
+            "excerpt": "...you’ll join a fast-growing team shaping the future of B2B payments...AI is one tool among several...",
             "section": "About the job"
           }
         ]
@@ -1259,7 +1235,7 @@
           "level": "required",
           "evidence": [
             {
-              "excerpt": "Strong coding fundamentals — comfortable writing and maintaining production code (e.g. Python or TypeScript)",
+              "excerpt": "...comfortable writing and maintaining production code (e.g. Python or TypeScript)...",
               "section": "About You"
             }
           ]
@@ -1269,17 +1245,7 @@
           "level": "required",
           "evidence": [
             {
-              "excerpt": "Strong coding fundamentals — comfortable writing and maintaining production code (e.g. Python or TypeScript)",
-              "section": "About You"
-            }
-          ]
-        },
-        {
-          "name": "n8n",
-          "level": "required",
-          "evidence": [
-            {
-              "excerpt": "working with APIs, and orchestrating with tools like n8n, agent SDKs, database fundamentals, SQL, and migration hygiene.",
+              "excerpt": "...comfortable writing and maintaining production code (e.g. Python or TypeScript)...",
               "section": "About You"
             }
           ]
@@ -1289,37 +1255,27 @@
           "level": "required",
           "evidence": [
             {
-              "excerpt": "database fundamentals, SQL, and migration hygiene",
+              "excerpt": "...database fundamentals, SQL, and migration hygiene.",
               "section": "About You"
             }
           ]
         },
         {
-          "name": "Claude",
-          "level": "preferred",
-          "evidence": [
-            {
-              "excerpt": "Fluency with mainstream AI tools (Claude, Cowork, connectors, MCPs)",
-              "section": "About You"
-            }
-          ]
-        },
-        {
-          "name": "Cowork",
-          "level": "preferred",
-          "evidence": [
-            {
-              "excerpt": "Fluency with mainstream AI tools (Claude, Cowork, connectors, MCPs)",
-              "section": "About You"
-            }
-          ]
-        },
-        {
-          "name": "agent SDKs",
+          "name": "mainstream AI tools (Claude, Cowork, connectors, MCPs)",
           "level": "required",
           "evidence": [
             {
-              "excerpt": "working with APIs, and orchestrating with tools like n8n, agent SDKs, database fundamentals, SQL, and migration hygiene",
+              "excerpt": "...Fluency with mainstream AI tools (Claude, Cowork, connectors, MCPs)...",
+              "section": "About You"
+            }
+          ]
+        },
+        {
+          "name": "n8n",
+          "level": "required",
+          "evidence": [
+            {
+              "excerpt": "...orchestrating with tools like n8n, agent SDKs...",
               "section": "About You"
             }
           ]
@@ -1330,16 +1286,16 @@
           "description": "Run discovery with non-technical stakeholders, elicit, question, push back, and reframe vague asks into well-scoped problems.",
           "evidence": [
             {
-              "excerpt": "Run discovery with non-technical stakeholders, elicit, question, push back, and reframe vague asks into well-scoped problems.",
+              "excerpt": "Run discovery with non-technical stakeholders...",
               "section": "Responsibilities"
             }
           ]
         },
         {
-          "description": "Design first, solution second, then build the automations and workflows — picking the right tool for the scale of the problem, whether that’s code, n8n, agent SDKs, a vendor product, or a well-configured off-the-shelf AI tool.",
+          "description": "Design first, solution second, then build the automations and workflows — picking the right tool for the scale of the problem...",
           "evidence": [
             {
-              "excerpt": "Design first, solution second, then build the automations and workflows — picking the right tool for the scale of the problem",
+              "excerpt": "Design first, solution second, then build the automations and workflows...",
               "section": "Responsibilities"
             }
           ]
@@ -1348,16 +1304,16 @@
           "description": "Ship with production discipline: human-in-the-loop where needed, secrets and PII handled properly, and failures that are observable and recoverable.",
           "evidence": [
             {
-              "excerpt": "Ship with production discipline: human-in-the-loop where needed, secrets and PII handled properly, and failures that are observable and recoverable.",
+              "excerpt": "Ship with production discipline: human-in-the-loop where needed...",
               "section": "Responsibilities"
             }
           ]
         },
         {
-          "description": "Package what you build into shareable workflows others can pick up and run, and support the team’s AI enablement efforts, including setting up connectors and MCPs.",
+          "description": "Package what you build into shareable workflows others can pick up and run, and support the team’s AI enablement efforts...",
           "evidence": [
             {
-              "excerpt": "Package what you build into shareable workflows others can pick up and run, and support the team’s AI enablement efforts",
+              "excerpt": "Package what you build into shareable workflows others can pick up and run...",
               "section": "Responsibilities"
             }
           ]
@@ -1395,18 +1351,18 @@
         "summary": "Melbourne, Victoria, Australia",
         "evidence": [
           {
-            "excerpt": "Melbourne, Victoria, Australia · 3 days ago",
-            "section": "JobDescription"
+            "excerpt": "Melbourne, Victoria, Australia",
+            "section": "Job title"
           }
         ]
       },
       "work_arrangement": {
         "arrangement": "hybrid",
-        "details": null,
+        "details": "Flexible working arrangements and a great work-life balance.",
         "evidence": [
           {
-            "excerpt": "Hybrid",
-            "section": "JobDescription"
+            "excerpt": "...enjoy flexible working arrangements and a great work-life balance.",
+            "section": "Why join us?"
           }
         ]
       },
@@ -1416,19 +1372,19 @@
         "evidence": [
           {
             "excerpt": "Full-time",
-            "section": "JobDescription"
+            "section": "Job title"
           }
         ]
       },
       "experience_requirements": [
         {
-          "description": "You’ve spent real time on automation projects across a range of contexts, and you can tell where AI genuinely helps and where conventional software is the better call.",
+          "description": "Strong coding fundamentals — comfortable writing and maintaining production code (e.g. Python or TypeScript)...",
           "level": "required",
           "minimum_years": null,
           "maximum_years": null,
           "evidence": [
             {
-              "excerpt": "You’ve spent real time on automation projects across a range of contexts, and you can tell where AI genuinely helps and where conventional software is the better call.",
+              "excerpt": "Strong coding fundamentals — comfortable writing and maintaining production code (e.g. Python or TypeScript)...",
               "section": "About You"
             }
           ]
@@ -1439,11 +1395,11 @@
     "pursuit_posture": "consider",
     "practical_value": "acceptable_opportunity",
     "effort_level": "minimal",
-    "summary": "Recommend posture 'consider' with effort tier 'silver' (minimal). Technical fit 'mixed', commercial fit 'unknown', portfolio fit 'mixed'. Owner review is required before any application action.",
+    "summary": "Recommend posture 'consider' with effort tier 'silver' (minimal). Technical fit 'mixed', commercial fit 'mixed', portfolio fit 'moderate'. Owner review is required before any application action.",
     "reasons": [
       {
         "kind": "alignment",
-        "summary": "Technical fit is 'mixed' and portfolio fit is 'mixed' for this opportunity.",
+        "summary": "Technical fit is 'mixed' and portfolio fit is 'moderate' for this opportunity.",
         "importance": "material",
         "evidence": [
           {
@@ -1460,7 +1416,7 @@
             "job_evidence": null,
             "profile_evidence": null,
             "assessment_dimension": "portfolio",
-            "assessment_judgment": "mixed",
+            "assessment_judgment": "moderate",
             "portfolio_project_id": null,
             "excerpt": null
           }
@@ -1468,7 +1424,7 @@
       },
       {
         "kind": "priority",
-        "summary": "Pursuit posture 'consider' with effort tier 'silver' reflects commercial fit 'unknown' and AI-aligned role family.",
+        "summary": "Pursuit posture 'consider' with effort tier 'silver' reflects commercial fit 'mixed' and AI-aligned role family.",
         "importance": "material",
         "evidence": [
           {
@@ -1476,7 +1432,7 @@
             "job_evidence": null,
             "profile_evidence": null,
             "assessment_dimension": "commercial",
-            "assessment_judgment": "unknown",
+            "assessment_judgment": "mixed",
             "portfolio_project_id": null,
             "excerpt": null
           },
@@ -1499,15 +1455,15 @@
     ],
     "risks_or_gaps": [
       {
-        "summary": "Commercial fit is 'unknown', which may reduce the value of investing significant effort.",
-        "importance": "material",
+        "summary": "Commercial fit is 'mixed', which may reduce the value of investing significant effort.",
+        "importance": "minor",
         "evidence": [
           {
             "origin": "opportunity_assessment",
             "job_evidence": null,
             "profile_evidence": null,
             "assessment_dimension": "commercial",
-            "assessment_judgment": "unknown",
+            "assessment_judgment": "mixed",
             "portfolio_project_id": null,
             "excerpt": null
           }
@@ -1562,7 +1518,7 @@
       {
         "kind": "consider_emphasising_portfolio_projects",
         "summary": "Consider emphasising the strongest matched portfolio project(s) in any application materials you prepare.",
-        "related_project_id": "governance-document-rag",
+        "related_project_id": "operational-intelligence-copilot",
         "evidence": [
           {
             "origin": "portfolio_match",
@@ -1570,7 +1526,7 @@
             "profile_evidence": null,
             "assessment_dimension": null,
             "assessment_judgment": null,
-            "portfolio_project_id": "governance-document-rag",
+            "portfolio_project_id": "operational-intelligence-copilot",
             "excerpt": null
           }
         ]
@@ -1594,25 +1550,9 @@
     ],
     "portfolio_emphasis": [
       {
-        "project_id": "governance-document-rag",
-        "source_rank": 1,
-        "summary": "Consider emphasising 'governance-document-rag' (PortfolioMatch rank 1).",
-        "evidence": [
-          {
-            "origin": "portfolio_match",
-            "job_evidence": null,
-            "profile_evidence": null,
-            "assessment_dimension": null,
-            "assessment_judgment": null,
-            "portfolio_project_id": "governance-document-rag",
-            "excerpt": null
-          }
-        ]
-      },
-      {
         "project_id": "operational-intelligence-copilot",
-        "source_rank": 2,
-        "summary": "Consider emphasising 'operational-intelligence-copilot' (PortfolioMatch rank 2).",
+        "source_rank": 1,
+        "summary": "Consider emphasising 'operational-intelligence-copilot' (PortfolioMatch rank 1).",
         "evidence": [
           {
             "origin": "portfolio_match",
@@ -1621,6 +1561,22 @@
             "assessment_dimension": null,
             "assessment_judgment": null,
             "portfolio_project_id": "operational-intelligence-copilot",
+            "excerpt": null
+          }
+        ]
+      },
+      {
+        "project_id": "governance-document-rag",
+        "source_rank": 2,
+        "summary": "Consider emphasising 'governance-document-rag' (PortfolioMatch rank 2).",
+        "evidence": [
+          {
+            "origin": "portfolio_match",
+            "job_evidence": null,
+            "profile_evidence": null,
+            "assessment_dimension": null,
+            "assessment_judgment": null,
+            "portfolio_project_id": "governance-document-rag",
             "excerpt": null
           }
         ]

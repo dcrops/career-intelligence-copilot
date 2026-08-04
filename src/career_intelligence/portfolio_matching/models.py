@@ -20,6 +20,7 @@ RankingFactorKind = Literal[
     "required_technology",
     "preferred_technology",
     "unspecified_technology",
+    "capability_overlap",
     "responsibility_overlap",
     "demonstrates_overlap",
 ]

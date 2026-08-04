@@ -107,7 +107,7 @@ def _assessor_with(
 
 
 def test_prompt_version_and_instructions_are_defined() -> None:
-    assert ASSESSMENT_PROMPT_VERSION == "v11"
+    assert ASSESSMENT_PROMPT_VERSION == "v12"
     assert "Technical Fit" in ASSESSMENT_INSTRUCTIONS_V1 or "technical" in ASSESSMENT_INSTRUCTIONS_V1.lower()
     assert "commercial" in ASSESSMENT_INSTRUCTIONS_V1.lower()
     assert "portfolio" in ASSESSMENT_INSTRUCTIONS_V1.lower()
@@ -119,6 +119,8 @@ def test_prompt_version_and_instructions_are_defined() -> None:
     assert "Never emit a required evidence-reference array as empty" in ASSESSMENT_INSTRUCTIONS_V1
     assert "partial_alignment" in ASSESSMENT_INSTRUCTIONS_V1
     assert "transferable_alignment" in ASSESSMENT_INSTRUCTIONS_V1
+    assert "transferable commercial alignment" in ASSESSMENT_INSTRUCTIONS_V1
+    assert "data engineering" in ASSESSMENT_INSTRUCTIONS_V1.casefold()
     assert 'kind is exactly "assumption"' in ASSESSMENT_INSTRUCTIONS_V1 or "kind=\"assumption\"" in ASSESSMENT_INSTRUCTIONS_V1
     assert "assumption MUST be null" in ASSESSMENT_INSTRUCTIONS_V1 or "assumption: forbidden" in ASSESSMENT_INSTRUCTIONS_V1
     assert "cite-as" in ASSESSMENT_INSTRUCTIONS_V1.lower() or "cite-as JSON" in ASSESSMENT_INSTRUCTIONS_V1

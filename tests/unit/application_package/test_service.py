@@ -32,8 +32,11 @@ def test_apply_opportunity_produces_package_manifest(tmp_path: Path) -> None:
     assert manifest.owner_review_required is True
     assert Path(manifest.cv.markdown_path).is_file()
     assert Path(manifest.cv.html_path).is_file()
+    assert Path(manifest.cv.pdf_path).is_file()
     assert Path(manifest.cover_letter.markdown_path).is_file()
     assert Path(manifest.cover_letter.html_path).is_file()
+    assert Path(manifest.cover_letter.pdf_path).is_file()
+    assert Path(manifest.cv.pdf_path).read_bytes()[:4] == b"%PDF"
     assert service.get(opportunity_id) == manifest
 
 

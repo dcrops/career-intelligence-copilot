@@ -230,7 +230,12 @@ def test_responsibility_only_ranking(golden_profile_path: Path) -> None:
     assert match.ranked_projects[0].project_id == "operational-intelligence-copilot"
     assert "public-holiday-entitlements" in match.unranked_project_ids
     assert all(
-        factor.kind in {"responsibility_overlap", "demonstrates_overlap"}
+        factor.kind
+        in {
+            "responsibility_overlap",
+            "demonstrates_overlap",
+            "capability_overlap",
+        }
         for entry in match.ranked_projects
         for factor in entry.factors
     )

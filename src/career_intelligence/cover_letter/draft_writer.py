@@ -1,9 +1,10 @@
 """Deterministic draft writers for approved CoverLetter artifacts.
 
-Writes Markdown, HTML, typed JSON, and CoverLetterPlan JSON under
+Writes Markdown, HTML, PDF, typed JSON, and CoverLetterPlan JSON under
 ``career-documents/cover-letters/generated/`` by default.
 
-No PDF/DOCX. No submission or email. Owner review remains mandatory.
+No submission or email. Owner review remains mandatory.
+PDF is rendered from the same standalone HTML as the HTML draft.
 """
 
 from __future__ import annotations
@@ -14,11 +15,16 @@ from dataclasses import dataclass
 from datetime import UTC, datetime
 from pathlib import Path
 
+from career_intelligence.cover_letter.errors import CoverLetterPdfRenderError
 from career_intelligence.cover_letter.html_renderer import (
     CoverLetterHtmlRenderError,
     render_html,
 )
 from career_intelligence.cover_letter.models import CoverLetter, CoverLetterPlan
+from career_intelligence.cv_generation.pdf_renderer import (
+    PdfRenderError,
+    render_pdf_from_html,
+)
 
 _UNSAFE_FILENAME = re.compile(r"[^a-zA-Z0-9._-]+")
 
@@ -33,6 +39,7 @@ class DraftWriteResult:
     json_path: Path
     plan_json_path: Path
     html_path: Path | None = None
+    pdf_path: Path | None = None
 
 
 def default_generated_dir(repo_root: Path) -> Path:
@@ -58,10 +65,10 @@ def write_cover_letter_drafts(
     output_dir: Path,
     stem: str | None = None,
 ) -> DraftWriteResult:
-    """Write Markdown + HTML + CoverLetter JSON + plan JSON for review.
+    """Write Markdown + HTML + PDF + CoverLetter JSON + plan JSON for review.
 
-    HTML is rendered before any files are written. If HTML rendering fails, no
-    draft files are written.
+    HTML and PDF are rendered before any files are written. If either render
+    fails, no draft files are written.
     """
     output_dir.mkdir(parents=True, exist_ok=True)
     resolved_stem = stem or build_draft_stem(
@@ -72,14 +79,21 @@ def write_cover_letter_drafts(
     json_path = output_dir / f"{resolved_stem}.json"
     plan_json_path = output_dir / f"{resolved_stem}.cover_letter_plan.json"
     html_path = output_dir / f"{resolved_stem}.html"
+    pdf_path = output_dir / f"{resolved_stem}.pdf"
 
     try:
         html_document = render_html(letter)
     except CoverLetterHtmlRenderError:
         raise
 
+    try:
+        pdf_bytes = render_pdf_from_html(html_document)
+    except PdfRenderError as exc:
+        raise CoverLetterPdfRenderError(str(exc)) from exc
+
     _atomic_write_text(markdown_path, letter.rendered_markdown)
     _atomic_write_text(html_path, html_document)
+    _atomic_write_bytes(pdf_path, pdf_bytes)
     _atomic_write_text(
         json_path,
         json.dumps(letter.model_dump(mode="json"), indent=2, ensure_ascii=False) + "\n",
@@ -95,6 +109,7 @@ def write_cover_letter_drafts(
         json_path=json_path,
         plan_json_path=plan_json_path,
         html_path=html_path,
+        pdf_path=pdf_path,
     )
 
 
@@ -109,3 +124,9 @@ def _atomic_write_text(path: Path, content: str) -> str:
     tmp.write_text(content, encoding="utf-8")
     tmp.replace(path)
     return content
+
+
+def _atomic_write_bytes(path: Path, content: bytes) -> None:
+    tmp = path.with_suffix(path.suffix + ".tmp")
+    tmp.write_bytes(content)
+    tmp.replace(path)

@@ -51,6 +51,7 @@ class DocumentArtefactRefs(PackageModel):
     json_path: NonEmptyString
     plan_json_path: NonEmptyString
     html_path: NonEmptyString | None = None
+    pdf_path: NonEmptyString | None = None
 
 
 class AcquisitionProvenance(PackageModel):

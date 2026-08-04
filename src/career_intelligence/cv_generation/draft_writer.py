@@ -1,10 +1,10 @@
 """Deterministic draft writers for approved TailoredCv artifacts.
 
-Writes Markdown, HTML, typed JSON, and TailoringPlan JSON under a
+Writes Markdown, HTML, PDF, typed JSON, and TailoringPlan JSON under a
 caller-supplied directory (default: ``career-documents/cv/generated/``).
 
-No PDF/DOCX. No submission or email. Owner review remains mandatory.
-HTML uses the in-package renderer (no Pandoc).
+No submission or email. Owner review remains mandatory.
+HTML uses the in-package renderer (no Pandoc). PDF is rendered from that HTML.
 """
 
 from __future__ import annotations
@@ -16,9 +16,13 @@ from dataclasses import dataclass
 from datetime import UTC, datetime
 from pathlib import Path
 
-from career_intelligence.cv_generation.errors import CvHtmlRenderError
+from career_intelligence.cv_generation.errors import CvHtmlRenderError, CvPdfRenderError
 from career_intelligence.cv_generation.html_renderer import render_html
 from career_intelligence.cv_generation.models import TailoredCv, TailoringPlan
+from career_intelligence.cv_generation.pdf_renderer import (
+    PdfRenderError,
+    render_pdf_from_html,
+)
 
 _UNSAFE_FILENAME = re.compile(r"[^a-zA-Z0-9._-]+")
 
@@ -33,6 +37,7 @@ class DraftWriteResult:
     json_path: Path
     plan_json_path: Path
     html_path: Path | None = None
+    pdf_path: Path | None = None
 
 
 def default_generated_dir(repo_root: Path) -> Path:
@@ -59,11 +64,10 @@ def write_tailored_cv_drafts(
     output_dir: Path,
     stem: str | None = None,
 ) -> DraftWriteResult:
-    """Write Markdown + HTML + TailoredCv JSON + TailoringPlan JSON for review.
+    """Write Markdown + HTML + PDF + TailoredCv JSON + TailoringPlan JSON.
 
-    HTML is rendered before any files are written. If HTML rendering fails, no
-    draft files are written. Writes use a temp-then-replace pattern so a failed
-    write does not leave a corrupt final HTML path.
+    HTML and PDF are rendered before any files are written. If either render
+    fails, no draft files are written. Writes use a temp-then-replace pattern.
     """
     output_dir.mkdir(parents=True, exist_ok=True)
     resolved_stem = stem or build_draft_stem(
@@ -74,6 +78,7 @@ def write_tailored_cv_drafts(
     json_path = output_dir / f"{resolved_stem}.json"
     plan_json_path = output_dir / f"{resolved_stem}.tailoring_plan.json"
     html_path = output_dir / f"{resolved_stem}.html"
+    pdf_path = output_dir / f"{resolved_stem}.pdf"
 
     try:
         html_document = render_html(cv)
@@ -85,6 +90,11 @@ def write_tailored_cv_drafts(
     if not html_document.lstrip().lower().startswith("<!doctype html>"):
         raise CvHtmlRenderError("HTML renderer did not return a complete document")
 
+    try:
+        pdf_bytes = render_pdf_from_html(html_document)
+    except PdfRenderError as exc:
+        raise CvPdfRenderError(str(exc)) from exc
+
     markdown_body = cv.rendered_markdown
     cv_json = json.dumps(cv.model_dump(mode="json"), indent=2, ensure_ascii=False) + "\n"
     plan_json = (
@@ -95,6 +105,7 @@ def write_tailored_cv_drafts(
     _atomic_write_text(json_path, cv_json)
     _atomic_write_text(markdown_path, markdown_body)
     _atomic_write_text(html_path, html_document)
+    _atomic_write_bytes(pdf_path, pdf_bytes)
 
     return DraftWriteResult(
         output_dir=output_dir,
@@ -103,6 +114,7 @@ def write_tailored_cv_drafts(
         json_path=json_path,
         plan_json_path=plan_json_path,
         html_path=html_path,
+        pdf_path=pdf_path,
     )
 
 
@@ -121,6 +133,19 @@ def _atomic_write_text(path: Path, content: str) -> None:
                 f"Could not write HTML draft {path}: {error}"
             ) from error
         raise
+
+
+def _atomic_write_bytes(path: Path, content: bytes) -> None:
+    temporary = path.with_suffix(path.suffix + ".tmp")
+    try:
+        temporary.write_bytes(content)
+        temporary.replace(path)
+    except OSError as error:
+        with suppress(OSError):
+            temporary.unlink(missing_ok=True)
+        with suppress(OSError):
+            path.unlink(missing_ok=True)
+        raise CvPdfRenderError(f"Could not write PDF draft {path}: {error}") from error
 
 
 def _slug(value: str) -> str:

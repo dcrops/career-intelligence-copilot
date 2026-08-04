@@ -25,6 +25,7 @@ from .errors import (
     CvGenerationGateError,
     CvGenerationValidationError,
     CvHtmlRenderError,
+    CvPdfRenderError,
     ErrorDetail,
     TailoringPlanGateError,
     TailoringPlanValidationError,
@@ -35,6 +36,7 @@ from .experience_scope import (
 )
 from .generation_service import CvGenerationService
 from .html_renderer import clear_cv_print_css_cache, load_cv_print_css, render_html
+from .pdf_renderer import render_pdf_from_html
 from .models import (
     DeprioritisedSkill,
     EmphasisedProject,
@@ -57,6 +59,7 @@ __all__ = [
     "CvGenerationService",
     "CvGenerationValidationError",
     "CvHtmlRenderError",
+    "CvPdfRenderError",
     "DeprioritisedSkill",
     "DeterministicTailoringPlanner",
     "DraftWriteResult",
@@ -82,6 +85,7 @@ __all__ = [
     "master_html_uses_canonical_css",
     "render_html",
     "render_markdown",
+    "render_pdf_from_html",
     "sync_master_cv_html",
     "temporary_extended_history_experience_ids",
     "write_tailored_cv_drafts",
