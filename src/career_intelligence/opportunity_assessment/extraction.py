@@ -13,13 +13,19 @@ and are unchanged.
 than a Pydantic discriminated union: a ``Field(discriminator=...)`` emits ``oneOf``,
 which OpenAI structured outputs rejects (``'oneOf' is not permitted``). A plain union
 emits ``anyOf``, and the leading ``Literal`` ``kind`` const keeps branches unambiguous.
+
+Profile evidence refs use ``ExtractionProfileEvidenceRef`` (plain non-empty string)
+rather than domain ``ProfileEvidenceRef``, so OpenAI structured output can constrain
+``ref`` to the request catalogue via JSON Schema ``enum``, and the assessor may
+narrowly canonicalise serialisation punctuation before domain validation.
 """
 
 from __future__ import annotations
 
+from collections.abc import Sequence
 from typing import Annotated, Literal, Union
 
-from pydantic import Field, model_validator
+from pydantic import Field, field_validator, model_validator
 
 from .models import (
     AssessmentModel,
@@ -29,11 +35,38 @@ from .models import (
     FitJudgment,
     JobEvidenceRef,
     NonEmptyString,
-    ProfileEvidenceRef,
+    ProfileEvidenceSource,
 )
 
+
+class ExtractionProfileEvidenceRef(AssessmentModel):
+    """Extraction-boundary profile pointer.
+
+    Unlike domain ``ProfileEvidenceRef``, trailing serialisation punctuation is not
+    rejected here (canonicalisation + catalogue enum handle that). Bare ids without
+    ``namespace:id`` form are still rejected so extraction stays fail-closed on
+    structural shape.
+    """
+
+    source: ProfileEvidenceSource
+    ref: NonEmptyString
+    excerpt: NonEmptyString | None = None
+
+    @field_validator("ref")
+    @classmethod
+    def ref_has_namespace_form(cls, value: str) -> str:
+        if ":" not in value:
+            raise ValueError(
+                "profile evidence ref must use namespace:id form "
+                f"(got '{value}')"
+            )
+        return value
+
+
 RequiredJobEvidence = Annotated[list[JobEvidenceRef], Field(min_length=1)]
-RequiredProfileEvidence = Annotated[list[ProfileEvidenceRef], Field(min_length=1)]
+RequiredProfileEvidence = Annotated[
+    list[ExtractionProfileEvidenceRef], Field(min_length=1)
+]
 
 
 class AlignmentExtractionFinding(AssessmentModel):
@@ -82,7 +115,7 @@ class GapExtractionFinding(AssessmentModel):
     detail: NonEmptyString | None = None
     importance: FindingImportance
     job_evidence: RequiredJobEvidence
-    profile_evidence: list[ProfileEvidenceRef] = Field(default_factory=list)
+    profile_evidence: list[ExtractionProfileEvidenceRef] = Field(default_factory=list)
     assumption: None = None
 
 
@@ -92,7 +125,7 @@ class UncertaintyExtractionFinding(AssessmentModel):
     detail: NonEmptyString | None = None
     importance: FindingImportance
     job_evidence: list[JobEvidenceRef] = Field(default_factory=list)
-    profile_evidence: list[ProfileEvidenceRef] = Field(default_factory=list)
+    profile_evidence: list[ExtractionProfileEvidenceRef] = Field(default_factory=list)
     assumption: None = None
 
 
@@ -102,7 +135,7 @@ class AssumptionExtractionFinding(AssessmentModel):
     detail: NonEmptyString | None = None
     importance: FindingImportance
     job_evidence: list[JobEvidenceRef] = Field(default_factory=list)
-    profile_evidence: list[ProfileEvidenceRef] = Field(default_factory=list)
+    profile_evidence: list[ExtractionProfileEvidenceRef] = Field(default_factory=list)
     assumption: NonEmptyString
 
 
@@ -146,3 +179,77 @@ class OpportunityAssessmentExtraction(AssessmentModel):
     commercial_fit: ExtractionFitDimensionAssessment
     portfolio_fit: ExtractionFitDimensionAssessment
     summary: AssessmentSummary
+
+
+def inject_profile_evidence_ref_catalogue_enum(
+    schema: dict[str, object],
+    catalogue: Sequence[str],
+) -> dict[str, object]:
+    """Constrain ``ExtractionProfileEvidenceRef.ref`` to exact catalogue tokens.
+
+    Mutates a deep copy of ``schema`` so OpenAI structured output cannot emit
+    free-form punctuation-contaminated refs. Empty catalogues leave the schema
+    unchanged (caller should not request assessment without a profile catalogue).
+    """
+    import copy
+
+    tokens = list(dict.fromkeys(token for token in catalogue if token))
+    if not tokens:
+        return schema
+
+    patched = copy.deepcopy(schema)
+    defs = patched.get("$defs")
+    if not isinstance(defs, dict):
+        defs = patched.get("definitions")
+    if not isinstance(defs, dict):
+        return patched
+
+    for defn in defs.values():
+        if not isinstance(defn, dict):
+            continue
+        props = defn.get("properties")
+        if not isinstance(props, dict):
+            continue
+        # Extraction (and legacy domain) profile evidence ref shapes.
+        if "ref" not in props or "source" not in props:
+            continue
+        source = props.get("source")
+        if not isinstance(source, dict):
+            continue
+        source_enum = source.get("enum")
+        if not isinstance(source_enum, list):
+            continue
+        if "experience" not in source_enum or "project" not in source_enum:
+            continue
+        ref_schema = props.get("ref")
+        if not isinstance(ref_schema, dict):
+            continue
+        props["ref"] = {
+            **{key: value for key, value in ref_schema.items() if key != "enum"},
+            "enum": tokens,
+            "type": "string",
+        }
+    return patched
+
+
+def catalogue_constrained_extraction_type(
+    catalogue: Sequence[str],
+) -> type[OpportunityAssessmentExtraction]:
+    """Return an extraction type whose JSON Schema enums ``ref`` to ``catalogue``."""
+    tokens = tuple(dict.fromkeys(token for token in catalogue if token))
+
+    class CatalogueConstrainedOpportunityAssessmentExtraction(
+        OpportunityAssessmentExtraction
+    ):
+        @classmethod
+        def model_json_schema(cls, *args: object, **kwargs: object) -> dict[str, object]:
+            schema = OpportunityAssessmentExtraction.model_json_schema(*args, **kwargs)
+            return inject_profile_evidence_ref_catalogue_enum(schema, tokens)
+
+    CatalogueConstrainedOpportunityAssessmentExtraction.__name__ = (
+        "OpportunityAssessmentExtraction"
+    )
+    CatalogueConstrainedOpportunityAssessmentExtraction.__qualname__ = (
+        "OpportunityAssessmentExtraction"
+    )
+    return CatalogueConstrainedOpportunityAssessmentExtraction

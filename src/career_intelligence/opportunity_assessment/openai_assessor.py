@@ -18,7 +18,13 @@ from career_intelligence.profile.models import CareerProfile
 from .assessment_prompt import ASSESSMENT_INSTRUCTIONS_V1
 from .assessor import OpportunityAssessmentPayload
 from .errors import ErrorDetail, OpportunityAssessmentError, OpportunityAssessmentValidationError
-from .extraction import OpportunityAssessmentExtraction
+from .extraction import (
+    OpportunityAssessmentExtraction,
+    catalogue_constrained_extraction_type,
+)
+from .profile_evidence_canonicalisation import (
+    canonicalize_profile_evidence_refs_in_payload,
+)
 
 DEFAULT_MODEL = "gpt-4o-mini"
 DEFAULT_TIMEOUT_SECONDS = 60.0
@@ -74,12 +80,14 @@ class OpenAIAssessor:
         job_analysis: JobAnalysis,
         profile: CareerProfile,
     ) -> OpportunityAssessmentPayload:
+        catalogue = _profile_reference_tokens(profile)
+        text_format = catalogue_constrained_extraction_type(catalogue)
         try:
             response = self._client.responses.parse(
                 model=self._model,
                 instructions=ASSESSMENT_INSTRUCTIONS_V1,
                 input=format_assessment_input(job_analysis, profile),
-                text_format=OpportunityAssessmentExtraction,
+                text_format=text_format,
             )
         except ValidationError as error:
             raise OpportunityAssessmentValidationError(
@@ -96,7 +104,7 @@ class OpenAIAssessor:
         if parsed is None:
             raise OpportunityAssessmentError("OpenAI returned an empty structured assessment response")
 
-        extraction = _coerce_extraction(parsed)
+        extraction = _coerce_extraction(parsed, catalogue=catalogue)
         return extraction.model_dump(mode="python")
 
 
@@ -397,11 +405,33 @@ def _find_refusal(response: object) -> str | None:
     return None
 
 
-def _coerce_extraction(parsed: object) -> OpportunityAssessmentExtraction:
+def _coerce_extraction(
+    parsed: object,
+    *,
+    catalogue: list[str] | None = None,
+) -> OpportunityAssessmentExtraction:
+    allowed = catalogue or []
     if isinstance(parsed, OpportunityAssessmentExtraction):
-        return parsed
+        payload: object = parsed.model_dump(mode="python")
+    else:
+        payload = parsed
+
+    if allowed:
+        try:
+            payload = canonicalize_profile_evidence_refs_in_payload(payload, allowed)
+        except ValueError as error:
+            raise OpportunityAssessmentValidationError(
+                [
+                    ErrorDetail(
+                        loc=("profile_evidence", "ref"),
+                        msg=str(error),
+                        type="value_error",
+                    )
+                ]
+            ) from error
+
     try:
-        return OpportunityAssessmentExtraction.model_validate(parsed)
+        return OpportunityAssessmentExtraction.model_validate(payload)
     except ValidationError as error:
         raise OpportunityAssessmentValidationError(
             [ErrorDetail.from_pydantic(item) for item in error.errors()]

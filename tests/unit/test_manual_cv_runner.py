@@ -103,6 +103,12 @@ def test_reuse_fr005_corpus_job_without_fixture_markers(tmp_path: Path) -> None:
 
 
 def test_strategy_json_explicit_path_platinum_job(tmp_path: Path) -> None:
+    """Explicit ``--strategy-json`` reuse for the committed platinum Bluefin corpus.
+
+    Uses ``002_bluefin_ai_systems_developer.json`` from the FR-005 corpus baseline
+    (platinum). Do not overwrite that fixture with a silver live re-run without
+    updating this test.
+    """
     runner = _load_runner()
     strategy_json = (
         _REPO_ROOT

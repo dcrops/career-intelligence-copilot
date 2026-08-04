@@ -11,6 +11,11 @@ import re
 from career_intelligence.profile.models import CareerProfile, Project
 
 from .models import CoverLetterPlan, StrongestProject
+from .opening_strategies import (
+    lead_project_name,
+    leading_technologies,
+    select_opening_strategy,
+)
 from .project_eli10 import project_narrative
 
 _FORBIDDEN_PHRASES = (
@@ -24,6 +29,11 @@ _FORBIDDEN_PHRASES = (
     "i believe i would be a perfect fit",
     "leverage synergies",
     "passionate about leveraging",
+    "i am passionate",
+    "i am excited",
+    "i have always wanted",
+    "i've always wanted",
+    "dream role",
     "shaping the future",
     "furthermore",
     "moreover",
@@ -51,6 +61,17 @@ _FORBIDDEN_PHRASES = (
     "demonstrates operational intelligence capability",
     "selection_reason",
     "fit_focus",
+)
+
+_PORTFOLIO_BODY_ROLE_FAMILIES = frozenset(
+    {
+        "ai_engineering",
+        "ai_adjacent",
+        "ai_solutions",
+        "ml_engineering",
+        "software_engineering",
+        "data_engineering",
+    }
 )
 
 _MARKETING_FLUFF = (
@@ -153,20 +174,25 @@ def compose_cover_letter_paragraphs(
     """Compose ~1-page recruiter-ready paragraphs from the approved plan."""
     company = plan.company_alignment.company
     role = plan.role_motivation.role_title
+    employer = _employer_voice(plan)
 
-    opening = _compose_opening(plan, company, role)
-    motivation = _compose_motivation(plan, profile, company)
+    opening = _compose_opening(plan, profile, company, role, employer=employer)
+    motivation = _compose_motivation(plan, profile, company, employer=employer)
     project_paragraphs = _compose_project_paragraphs(plan, profile, contact=contact)
-    closing = _compose_closing(plan, company, role)
+    portfolio_note = _compose_portfolio_body_note(plan, contact=contact)
+    closing = _compose_closing(plan, company, role, employer=employer)
 
-    paragraphs = [opening, motivation, *project_paragraphs, closing]
+    paragraphs = [opening, motivation, *project_paragraphs]
+    if portfolio_note:
+        paragraphs.append(portfolio_note)
+    paragraphs.append(closing)
     # Keep within CoverLetter schema (max 5): merge trailing projects if needed.
     if len(paragraphs) > 5:
         head = paragraphs[:2]
-        projects = paragraphs[2:-1]
+        middle = paragraphs[2:-1]
         closing_part = paragraphs[-1]
-        merged_projects = " ".join(projects)
-        paragraphs = [*head, merged_projects, closing_part]
+        merged_middle = " ".join(middle)
+        paragraphs = [*head, merged_middle, closing_part]
 
     validated = [
         _strip_ai_punctuation(_clamp_sentence_spacing(part))
@@ -178,7 +204,54 @@ def compose_cover_letter_paragraphs(
         return _fallback_paragraphs(plan, profile, contact=contact)
     if "—" in " ".join(validated) or "–" in " ".join(validated):
         return _fallback_paragraphs(plan, profile, contact=contact)
+    if not _letter_quality_ok(validated, employer=employer):
+        return _fallback_paragraphs(plan, profile, contact=contact)
     return validated
+
+
+def _employer_voice(plan: CoverLetterPlan) -> dict[str, str]:
+    """Recruiter vs employer phrasing when the hiring company is unknown."""
+    company = (plan.company_alignment.company or "").strip()
+    raw = (plan.job_analysis.posting.raw_text or "").casefold()
+    company_folded = company.casefold()
+    recruiter_name_markers = (
+        "recruitment",
+        "recruiter",
+        "talent",
+        "staffing",
+        "search firm",
+        "personnel",
+    )
+    is_recruiter = any(marker in company_folded for marker in recruiter_name_markers)
+    client_cues = (
+        "our client",
+        "on behalf of",
+        "client organisation",
+        "client organization",
+        "for our client",
+    )
+    mentions_client = any(cue in raw for cue in client_cues)
+    if not is_recruiter and not mentions_client:
+        return {
+            "mode": "direct",
+            "opening_subject": f"{_possessive(company)} {plan.role_motivation.role_title} role",
+            "challenge_owner": f"{_possessive(company)} technical challenges",
+            "closing_role": f"the {plan.role_motivation.role_title} role at {company}",
+            "contribution_role": f"{_possessive(company)} {plan.role_motivation.role_title} work",
+        }
+    return {
+        "mode": "recruiter",
+        "opening_subject": (
+            f"the {plan.role_motivation.role_title} role advertised through {company}"
+        ),
+        "challenge_owner": "your client's technical challenges",
+        "closing_role": (
+            f"the {plan.role_motivation.role_title} role with your client"
+        ),
+        "contribution_role": (
+            f"the {plan.role_motivation.role_title} work with your client"
+        ),
+    }
 
 
 def _possessive(name: str) -> str:
@@ -188,8 +261,15 @@ def _possessive(name: str) -> str:
     return f"{cleaned}'s"
 
 
-def _compose_opening(plan: CoverLetterPlan, company: str, role: str) -> str:
-    """Specific attraction to this role's engineering work."""
+def _compose_opening(
+    plan: CoverLetterPlan,
+    profile: CareerProfile,
+    company: str,
+    role: str,
+    *,
+    employer: dict[str, str],
+) -> str:
+    """Deterministic opening chosen from role, employer, evidence, and profile."""
     attraction = _scrub_marketing(_clean_phrase(plan.company_alignment.alignment_hook))
     themes = _scrub_marketing(_clean_phrase(plan.role_motivation.motivation))
 
@@ -197,32 +277,133 @@ def _compose_opening(plan: CoverLetterPlan, company: str, role: str) -> str:
     secondary = themes
     if _is_weak_attraction(primary) and secondary:
         primary, secondary = secondary, attraction
+    if _is_recruiting_noun_phrase(primary) and secondary:
+        primary, secondary = secondary, ""
 
     chance = _as_chance_clause(primary)
-    opening = (
-        f"What drew me to {_possessive(company)} {role} role is the chance to "
-        f"{chance}."
+    strategy = select_opening_strategy(
+        plan, profile, employer_mode=employer["mode"]
     )
+    subject = employer["opening_subject"]
+    subject_cap = _capitalize_phrase(subject)
 
-    if not secondary or _themes_overlap(primary, secondary) or _is_weak_attraction(secondary):
+    if strategy == "technology_led":
+        techs = leading_technologies(plan, limit=3)
+        tech_phrase = _oxford_join(techs) if techs else "production AI delivery"
         return (
-            f"{opening} That kind of production engineering, with clear "
-            "accountability, is the work I want to do next."
+            f"The {role} brief around {tech_phrase} matches how I design and ship "
+            f"production systems. For {subject}, I want to {chance}."
         )
 
-    interest = _as_gerund_phrase(secondary, limit=100)
+    if strategy == "business_problem_led":
+        problem = _as_gerund_phrase(secondary or primary, limit=90)
+        # Avoid restating the same clause as both problem and chance.
+        if problem and _same_delivery_theme(problem, chance):
+            return (
+                f"{subject_cap} is ultimately about {problem}. That is the kind of "
+                "delivery problem I want to own next."
+            )
+        return (
+            f"{subject_cap} is ultimately about {problem}. That is the kind of "
+            f"delivery problem I want to own: {chance}."
+        )
+
+    if strategy == "organisation_led":
+        org = company.strip() or "the hiring organisation"
+        if employer["mode"] == "recruiter":
+            org_line = (
+                f"The advertised organisation is hiring for production AI delivery "
+                f"with real operational constraints."
+            )
+        else:
+            org_line = (
+                f"What stands out about {org} is the focus on shipping useful systems "
+                f"under real delivery pressure."
+            )
+        return (
+            f"{org_line} {subject_cap} is a chance to {chance}."
+        )
+
+    if strategy == "career_transition_led":
+        years = _independent_portfolio_years(profile)
+        return (
+            f"After 3.5 years of commercial Data Engineering and the past {years} "
+            f"building independent AI systems, {subject} is a natural next step: "
+            f"{chance}."
+        )
+
+    if strategy == "mission_capability_led":
+        return (
+            "I look for roles where AI systems have to stay reviewable under real "
+            f"operational pressure. {subject_cap} fits that bar: {chance}."
+        )
+
+    # experience_led (default)
+    project = lead_project_name(plan)
+    if project:
+        return (
+            f"Recent work on {project} and related production-style AI systems is "
+            f"directly relevant to {subject}. I want to {chance}."
+        )
     return (
-        f"{opening} I am particularly interested in {interest}, where careful "
-        "design and reviewable results matter."
+        f"Recent production-style AI engineering work is a strong fit for {subject}. "
+        f"I want to {chance}."
     )
+
+
+def _capitalize_phrase(text: str) -> str:
+    cleaned = text.strip()
+    if not cleaned:
+        return cleaned
+    if cleaned[:3].isupper() or cleaned.startswith(("LLM", "RAG", "API", "AI ")):
+        return cleaned
+    return cleaned[0].upper() + cleaned[1:]
+
+
+def _same_delivery_theme(left: str, right: str) -> bool:
+    """True when two chance/problem phrases describe the same delivery theme."""
+    def _norm(value: str) -> str:
+        text = value.casefold()
+        for gerund, base in (
+            ("designing", "design"),
+            ("building", "build"),
+            ("deploying", "deploy"),
+            ("developing", "develop"),
+            ("evaluating", "evaluate"),
+            ("operating", "operate"),
+            ("delivering", "deliver"),
+            ("creating", "create"),
+            ("implementing", "implement"),
+        ):
+            text = text.replace(gerund, base)
+        return re.sub(r"[^a-z0-9]+", " ", text).strip()
+
+    a = _norm(left)
+    b = _norm(right)
+    if not a or not b:
+        return False
+    return a == b or a in b or b in a
+
+
+def _oxford_join(items: list[str]) -> str:
+    if not items:
+        return ""
+    if len(items) == 1:
+        return items[0]
+    if len(items) == 2:
+        return f"{items[0]} and {items[1]}"
+    return f"{', '.join(items[:-1])}, and {items[-1]}"
 
 
 def _compose_motivation(
     plan: CoverLetterPlan,
     profile: CareerProfile,
     company: str,
+    *,
+    employer: dict[str, str],
 ) -> str:
     """Credibility, portfolio breadth, philosophy, and collaboration."""
+    del company
     years = _independent_portfolio_years(profile)
     breadth = (
         f"Over the past {years} I have built a portfolio of production-style AI "
@@ -236,20 +417,19 @@ def _compose_motivation(
         "I favour explainable, production-quality systems over opaque model responses."
     )
     collaboration = (
-        "I enjoy collaborating with engineers, learning from experienced teammates "
-        "and sharing knowledge as we build AI solutions together."
+        "I work well with engineers on design reviews, trade-offs and delivery "
+        "sequencing, and I am comfortable explaining technical decisions clearly."
     )
     stakeholder = ""
     if _jd_mentions_stakeholders(plan):
         stakeholder = (
-            " I am also comfortable translating business requirements into "
-            "practical AI systems and supporting adoption with clear communication."
+            " I also translate business requirements into practical AI systems "
+            "and support adoption with concrete demos rather than slideware."
         )
     return (
         f"{_credibility_claim_short(profile)}. {breadth} {craft} "
         f"{collaboration}{stakeholder} "
-        f"That is the approach I would bring to {_possessive(company)} "
-        "technical challenges."
+        f"That is the approach I would bring to {employer['challenge_owner']}."
     )
 
 
@@ -259,21 +439,38 @@ def _compose_project_paragraphs(
     *,
     contact: dict[str, str] | None,
 ) -> list[str]:
-    """One short paragraph per selected project, with varied phrasing."""
+    """One short paragraph per selected project, with varied structures."""
     projects = list(plan.strongest_projects[:3])
     if not projects:
         return []
 
     portfolio_lead = _portfolio_lead(contact, count=len(projects))
     by_id = {project.id: project for project in profile.projects}
+    fingerprint = (
+        f"{plan.company_alignment.company}|{plan.role_motivation.role_title}"
+    )
     paragraphs: list[str] = []
     for index, project in enumerate(projects):
-        block = _project_block(project, by_id.get(project.project_id), variant=index)
+        structure = _project_structure_index(
+            fingerprint, project.project_id, index
+        )
+        block = _project_block(
+            project,
+            by_id.get(project.project_id),
+            structure=structure,
+            is_lead=(index == 0),
+        )
         if index == 0:
             paragraphs.append(f"{portfolio_lead} {block}")
         else:
             paragraphs.append(block)
     return paragraphs
+
+
+def _project_structure_index(fingerprint: str, project_id: str, index: int) -> int:
+    """Stable 0..2 structure choice — same inputs always yield the same rhythm."""
+    seed = sum(ord(char) for char in f"{fingerprint}|{project_id}") + (index * 17)
+    return seed % 3
 
 
 def _compose_projects(
@@ -293,9 +490,10 @@ def _project_block(
     project: StrongestProject,
     profile_project: Project | None,
     *,
-    variant: int,
+    structure: int,
+    is_lead: bool = False,
 ) -> str:
-    """What it does, why it matters, and why it is relevant (varied voice)."""
+    """Project paragraph with deterministic structural variation."""
     narrative = project_narrative(
         project_id=project.project_id,
         project_name=project.project_name,
@@ -308,41 +506,128 @@ def _project_block(
     does = narrative.does.strip()
     engineering = narrative.engineering.strip().rstrip(".")
     outcome = narrative.outcome.strip().rstrip(".")
+    bridge = _role_relevance_bridge(project.fit_focus)
 
-    style = variant % 3
+    style = structure % 3
     if style == 0:
-        return (
-            f"{name} {does}. "
-            f"The engineering centre of it is {engineering}. "
-            f"In practice, {outcome}."
+        # Problem → architecture → outcome
+        body = (
+            f"{name} addresses a concrete delivery need: it {does}. "
+            f"The architecture centres on {engineering}. "
+            f"Result: {outcome}."
         )
-    if style == 1:
+    elif style == 1:
+        # Business need → technical solution → business value
+        if is_lead:
+            body = (
+                f"{name} solves a clear business need: it {does}, with design "
+                f"decisions around {engineering}. In practice, {outcome}."
+            )
+        else:
+            body = (
+                f"Another useful example is {name}. "
+                f"It {does}, with design decisions around {engineering}. "
+                f"In practice, {outcome}."
+            )
+    else:
+        # Challenge → design decisions → result
+        lead = name if is_lead else f"I would also point to {name}"
+        if is_lead:
+            body = (
+                f"{name} is a useful reference here. The engineering challenge is "
+                f"keeping the system reviewable while it {does}. Design decisions "
+                f"centre on {engineering}. If useful, I can walk through the working "
+                "software and the trade-offs behind it."
+            )
+        else:
+            body = (
+                f"{lead}. "
+                f"The engineering challenge is keeping the system reviewable while it "
+                f"{does}. Design decisions centre on {engineering}. "
+                f"If useful, I can walk through the working software and the trade-offs "
+                "behind it."
+            )
+    if bridge and style != 2:
+        return f"{body} {bridge}"
+    return body
+
+
+def _compose_portfolio_body_note(
+    plan: CoverLetterPlan,
+    *,
+    contact: dict[str, str] | None,
+) -> str | None:
+    """Natural body reference to portfolio/GitHub for engineering role families."""
+    family = plan.job_analysis.role_family.family
+    if family not in _PORTFOLIO_BODY_ROLE_FAMILIES:
+        return None
+    if not plan.strongest_projects:
+        return None
+    display = _portfolio_display(contact)
+    if display:
         return (
-            f"Another strong example is {name}, which {does}. "
-            f"What I would highlight in an interview is {engineering}. "
-            f"In practice, {outcome}."
+            "Working demonstrations and architecture notes for the systems above "
+            f"are on my portfolio ({display}), together with matching GitHub "
+            "repositories. Those artefacts matter when you want to inspect delivery "
+            "decisions rather than slideware."
         )
     return (
-        f"I would also point to {name}. It {does}. "
-        f"Under the hood that means {engineering}. "
-        f"If helpful, I can walk through the working software and the trade-offs "
-        "behind it."
+        "Working demonstrations, architecture notes and GitHub repositories for "
+        "the systems above are available in my portfolio. Those artefacts matter "
+        "when you want to inspect delivery decisions rather than slideware."
     )
 
 
-def _compose_closing(plan: CoverLetterPlan, company: str, role: str) -> str:
+def _role_relevance_bridge(fit_focus: str | None) -> str:
+    """Connect project capability to the advertised role without planner jargon."""
+    cleaned = _scrub_marketing(_clean_phrase(fit_focus or ""))
+    if len(cleaned) < 24:
+        return ""
+    # Prefer a complete first capability clause — avoid mid-list truncation.
+    clause = cleaned
+    for separator in ("; ", " and ", ", "):
+        at = cleaned.find(separator)
+        if at >= 28:
+            clause = cleaned[:at].strip()
+            break
+    short = _truncate_words(clause, limit=88)
+    # Keep bridges to a single capability clause (avoid mid-list fragments).
+    if "," in short:
+        short = short.split(",", 1)[0].strip()
+    if len(short) < 20:
+        return ""
+    dangling = (" structured", " including", " with", " and", " for", " to")
+    if short.casefold().endswith(dangling):
+        return ""
+    # Preserve leading acronyms (LLM, RAG, API); otherwise sentence-case.
+    if short[:3].isupper() or short.startswith(("LLM", "RAG", "API", "AI ")):
+        display = short
+    else:
+        display = short[0].lower() + short[1:]
+    return f"That is useful for teams that need {display}."
+
+
+def _compose_closing(
+    plan: CoverLetterPlan,
+    company: str,
+    role: str,
+    *,
+    employer: dict[str, str],
+) -> str:
     """Confident close that invites curiosity about tangible artefacts."""
+    del company, role
     if plan.closing_strategy.approach == "contribution_focus":
         return (
-            f"I would welcome a conversation about {_possessive(company)} {role} "
-            "work. Happy to open the portfolio, walk through architecture decisions "
+            f"I would welcome a conversation about {employer['contribution_role']}. "
+            "Happy to open the portfolio, walk through architecture decisions "
             "and engineering trade-offs, and show live demonstrations of the systems "
             "above."
         )
     return (
-        f"I would welcome a conversation about the {role} role at {company}. "
-        "If useful, we can look at the working software together, including "
-        "architecture choices and the trade-offs I made along the way."
+        f"I would welcome a conversation about {employer['closing_role']}. "
+        "If useful, we can inspect the working software together, including "
+        "architecture choices, evaluation approach, and the trade-offs I made "
+        "along the way."
     )
 
 
@@ -411,11 +696,71 @@ def _credibility_claim_short(profile: CareerProfile) -> str:
 
 
 def _independent_portfolio_years(profile: CareerProfile) -> str:
+    """Derive a truthful portfolio-timescale phrase from profile experience dates."""
     summary = (profile.identity.summary or "").casefold()
+    if "over the past year" in summary or "past year" in summary:
+        return "year"
     if "two years" in summary or "2 years" in summary:
         return "two years"
-    del profile
-    return "two years"
+    if "three years" in summary or "3 years" in summary:
+        return "three years"
+
+    months = _portfolio_span_months(profile)
+    if months is None:
+        return "year"
+    if months < 18:
+        return "year"
+    if months < 30:
+        return "two years"
+    return "three years"
+
+
+def _portfolio_span_months(profile: CareerProfile) -> int | None:
+    """Months from earliest AI/independent portfolio experience start to now."""
+    from datetime import date
+
+    starts: list[date] = []
+    for experience in profile.experience:
+        kind = (experience.kind or "").casefold()
+        title = (experience.title or "").casefold()
+        org = (experience.organisation or "").casefold()
+        # AI portfolio timescale only — exclude earlier Data Engineering study.
+        if kind == "independent_engineering":
+            relevant = True
+        elif kind == "professional_development" and (
+            "ai engineering" in title or "ai engineering" in org
+        ):
+            relevant = True
+        elif "ai engineering" in title and "data engineering" not in title:
+            relevant = True
+        else:
+            relevant = False
+        if not relevant or experience.start_date is None:
+            continue
+        parsed = _coerce_year_month(experience.start_date)
+        if parsed is not None:
+            starts.append(parsed)
+    if not starts:
+        return None
+    earliest = min(starts)
+    today = date.today()
+    return max(0, (today.year - earliest.year) * 12 + (today.month - earliest.month))
+
+
+def _coerce_year_month(value: object) -> date | None:
+    from datetime import date
+
+    if isinstance(value, date):
+        return date(value.year, value.month, 1)
+    text = str(value).strip()
+    match = re.match(r"^(\d{4})-(\d{2})", text)
+    if not match:
+        return None
+    year = int(match.group(1))
+    month = int(match.group(2))
+    if month < 1 or month > 12:
+        return None
+    return date(year, month, 1)
 
 
 def _is_weak_attraction(text: str) -> bool:
@@ -471,13 +816,49 @@ def _as_chance_clause(phrase: str, *, limit: int = 120) -> str:
     including_at = cleaned.casefold().find(", including")
     if including_at > 40:
         cleaned = cleaned[:including_at].rstrip()
-    if not cleaned:
+    if not cleaned or _is_recruiting_noun_phrase(cleaned):
         return "build production AI systems with clear engineering accountability"
     infinitive = _to_infinitive_verb_list(cleaned)
     first = re.split(r"[,\s]+", infinitive, maxsplit=1)[0].casefold() if infinitive else ""
     if first in _IMPERATIVE_TO_GERUND or first in {"learn", "help", "work"}:
         return infinitive
+    # Do not wrap noun phrases ("an experienced AI Engineer…") as "contribute to …".
+    if _is_recruiting_noun_phrase(infinitive) or first in {
+        "a",
+        "an",
+        "the",
+        "exciting",
+        "opportunity",
+        "experienced",
+        "skilled",
+        "senior",
+        "junior",
+    }:
+        return "build production AI systems with clear engineering accountability"
     return f"contribute to {infinitive}"
+
+
+def _is_recruiting_noun_phrase(text: str) -> bool:
+    folded = text.casefold().strip()
+    if not folded:
+        return True
+    if any(
+        marker in folded
+        for marker in (
+            "has become available",
+            "exciting opportunity",
+            "opportunity has become",
+            "to join a",
+            "to join an",
+        )
+    ):
+        return True
+    return bool(
+        re.match(
+            r"^(?:a|an|the)\s+(?:experienced|skilled|senior|junior|passionate)\b",
+            folded,
+        )
+    )
 
 
 def _as_gerund_phrase(phrase: str, *, limit: int = 100) -> str:
@@ -517,6 +898,11 @@ def _rewrite_leading_verb_list(phrase: str, *, gerund: bool) -> str:
             return _IMPERATIVE_TO_GERUND.get(
                 base, base if base.endswith("ing") else f"{base}ing"
             )
+        # Already-gerund leads ("Designing and building…") → imperative base.
+        if base.endswith("ing"):
+            for imperative, gerund_form in _IMPERATIVE_TO_GERUND.items():
+                if gerund_form == base:
+                    return imperative
         return base
 
     first = convert(match.group(1))
@@ -576,13 +962,62 @@ def _truncate_words(text: str, *, limit: int) -> str:
 
 
 def _strip_ai_punctuation(text: str) -> str:
-    """Prefer commas and full stops over em/en dashes."""
-    cleaned = text.replace("—", ". ").replace("–", ", ")
-    cleaned = re.sub(r"\.\s*\.", ".", cleaned)
+    """Replace em/en dashes without leaving orphaned sentence fragments."""
+    cleaned = text.replace("—", "; ").replace("–", ", ")
+    cleaned = re.sub(r";\s*;", ";", cleaned)
     cleaned = re.sub(r"\s+,", ",", cleaned)
     cleaned = re.sub(r",\s*,", ",", cleaned)
     cleaned = re.sub(r"\s{2,}", " ", cleaned)
     return cleaned.strip()
+
+
+def _letter_quality_ok(
+    paragraphs: list[str],
+    *,
+    employer: dict[str, str],
+) -> bool:
+    """Deterministic quality gate: incomplete sentences, bad openings, recruiter slips."""
+    joined = " ".join(paragraphs)
+    folded = joined.casefold()
+    if "contribute to an experienced" in folded:
+        return False
+    if "contribute to an exciting opportunity" in folded:
+        return False
+    if "has become available" in folded:
+        return False
+    dangling = (
+        " in.",
+        " for.",
+        " to.",
+        " and.",
+        " with.",
+        " the.",
+        " a.",
+        " an.",
+        " of.",
+    )
+    for paragraph in paragraphs:
+        stripped = paragraph.rstrip()
+        lowered = stripped.casefold()
+        if any(lowered.endswith(suffix.strip()) for suffix in dangling):
+            return False
+        # Incomplete truncated clause before the period.
+        if re.search(r"\b(?:in|for|to|and|with|the|a|an|of)\.\s*$", stripped):
+            return False
+    # Recruiter ads must not imply the agency owns the engineering environment.
+    if employer.get("mode") == "recruiter":
+        if re.search(r"recruitment'?s\s+technical challenges", folded):
+            return False
+        if "advertised through" not in folded and "your client" not in folded:
+            return False
+    # Repeated phrase density for common filler.
+    for phrase in (
+        "traceable, reviewable",
+        "evidence-backed and reviewable",
+    ):
+        if folded.count(phrase) >= 3:
+            return False
+    return True
 
 
 def _fallback_paragraphs(
@@ -591,26 +1026,26 @@ def _fallback_paragraphs(
     *,
     contact: dict[str, str] | None,
 ) -> list[str]:
-    company = plan.company_alignment.company
-    role = plan.role_motivation.role_title
-    chance = _as_chance_clause(
-        _scrub_marketing(plan.company_alignment.alignment_hook)
-    )
+    employer = _employer_voice(plan)
+    chance = "build production AI systems with clear engineering accountability"
     paragraphs = [
         (
-            f"What drew me to {_possessive(company)} {role} role is the chance to "
-            f"{chance}."
+            f"Recent production-style AI engineering work is a strong fit for "
+            f"{employer['opening_subject']}. I want to {chance}."
         ),
         (
-            f"{_credibility_claim_short(profile)}. I build explainable, "
-            "reviewable AI systems and enjoy collaborating with engineers."
+            f"{_credibility_claim_short(profile)}. Over the past "
+            f"{_independent_portfolio_years(profile)} I have built a portfolio of "
+            "production-style AI engineering projects. I build explainable, "
+            f"reviewable AI systems and would bring that approach to "
+            f"{employer['challenge_owner']}."
         ),
     ]
     projects = _compose_projects(plan, profile, contact=contact)
     if projects:
         paragraphs.append(_strip_ai_punctuation(projects))
     paragraphs.append(
-        f"I would welcome a conversation about the {role} role at {company}. "
+        f"I would welcome a conversation about {employer['closing_role']}. "
         "I can share working software and live demonstrations from the portfolio."
     )
     return [

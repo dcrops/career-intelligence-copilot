@@ -266,6 +266,23 @@ def select_projects_for_letter(
     }
 
     ranked: list[RankedProject] = []
+    role_family = strategy.job_analysis.role_family.family
+    ai_family = role_family in {"ai_engineering", "ai_adjacent"}
+    ai_capability_tags = frozenset(
+        {
+            "llm",
+            "rag",
+            "retrieval",
+            "orchestration",
+            "agent",
+            "agentic",
+            "architecture",
+            "evaluation",
+            "embedding",
+            "langchain",
+            "openai",
+        }
+    )
     for project in profile.projects:
         catalog = _PROJECT_CATALOG.get(project.id)
         tags = set(catalog["tags"]) if catalog else _tags_from_project(project)
@@ -285,6 +302,16 @@ def select_projects_for_letter(
             concern_hits = project_concerns & active_concerns
             score += len(concern_hits) * 5
             score += int(catalog.get("maturity", 1))  # type: ignore[arg-type]
+
+        if ai_family:
+            ai_hits = tags & ai_capability_tags
+            score += len(ai_hits) * 3
+            # Generic API/REST overlap alone should not outrank AI systems work.
+            low_only = set(matched) <= (
+                _LOW_SIGNAL_TAGS | {"rest", "rest apis", "rest api"}
+            )
+            if not ai_hits and low_only and matched:
+                score = max(0, score - 5)
 
         if catalog is None:
             outcome = (

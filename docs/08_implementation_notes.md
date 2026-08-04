@@ -131,6 +131,9 @@ Delivered:
 - Deterministic assessment fixtures keyed by shared FR-002 markers
 - Functional acceptance suite (`tests/functional/test_fr003_acceptance.py`)
 - `OpenAIAssessor` with structured output and prompt versioning through **v11**
+- Per-request catalogue ``enum`` on extraction ``profile_evidence[].ref`` plus narrow
+  serialisation-punctuation canonicalisation before domain validation (domain
+  ``ProfileEvidenceRef`` remains fail-closed; no fuzzy mapping)
 - Live manual evaluation ([eval/fr003_openai_manual_eval.md](eval/fr003_openai_manual_eval.md))
 - Cross-stage golden journeys (`tests/golden/test_opportunity_assessment_user_journey.py`)
 - FR-001 → FR-002 → FR-003 offline integration
@@ -717,6 +720,19 @@ python scripts/run_application_strategy_manual.py \
   --output-json artifacts/manual_strategy.json
 ```
 
+**Corpus stewardship:** unit tests under `tests/unit/cv_generation/test_planner_corpus_regression.py`
+and `tests/unit/test_manual_cv_runner.py` pin behaviour to committed files in
+`manual_validation/outputs/` (notably `002_bluefin_…` platinum and `011_officeworks_…`
+with early Snowflake). Prefer ``--output-json`` outside the corpus tree for exploratory
+live re-runs, or restore the committed fixture after accidental overwrite. CV planner
+``jd_priorities`` is capped at ``_MAX_JD_PRIORITIES`` (8); late-listed JD technologies
+may be omitted from that list.
+
+**Known live intermittent (accepted debt):** job_evidence ``item_index`` remains an
+unconstrained integer in structured output. Out-of-range indexes are rejected by
+domain reference validation (fail-closed). Follow-up: enum valid indexes per request,
+same pattern as catalogue-constrained profile evidence refs.
+
 Optional volume mode:
 
 ```bash
@@ -791,7 +807,7 @@ Career Profile → Job Analysis → Opportunity Assessment → Portfolio Match
 | `FixtureSummaryRewriter` | Offline deterministic stub for tests |
 | `summary_validation` | Allowlist / prohibition checks; fail-soft on failure |
 | `CvGenerationOptions.rewrite_summary` | Default `False` (opt-in Phase C) |
-| `CvGenerationOptions.presentation` | Default `submit` (employer-facing); `review` keeps plan meta |
+| `CvGenerationOptions.presentation` | Default `submit` (employer-facing); `review` keeps plan meta. Submit Markdown/HTML must not embed internal workflow notices such as “Owner review required…”; that gate stays on models, JSON, package, and CLI. |
 | `TailoredCv.summary_source` | `theme_aware_composition` (default Phase B) \| `profile_copy` \| `openai_rewrite` \| `fixture_rewrite` \| `fallback_profile_copy` |
 
 **FR-006b (quality):** Submit-ready Markdown is owned by `render_markdown` (hierarchy,
@@ -811,6 +827,20 @@ Soft ceiling 200 words. Primary job theme promoted once. Still evidence-only;
 `summary_source` stays `theme_aware_composition`. Engineering Highlights use
 `select_engineering_highlights` (impact lead first, then relevance).
 See [eval/fr006c_summary_intelligence.md](eval/fr006c_summary_intelligence.md).
+
+**Tailoring heuristics (quality refinements):** JD technology labels may promote
+related profile capabilities via `_RELATED_CAPABILITY_GROUPS` (e.g. JD `Azure` →
+profile `Azure Data Factory`; Docker/containers; CI/CD↔Jenkins; observability;
+data pipelines). For `ai_engineering` / `ai_adjacent` roles, project re-ranking
+weights AI capability signals (LLM, RAG, orchestration, architecture) above
+generic REST/API overlap alone. Profile-backed Career Intelligence Copilot may
+append after retained strategy emphasis projects; weaker non-AI emphasis entries
+may be deferred so CIC is not trapped below commercial/rules-only evidence.
+`plan_refs` still requires strategy projects first, then appends — never interleaved.
+
+**Summary Intelligence close:** the forward paragraph prefers advert-aligned tech
+accountability wording and must not repeat the methodology catchphrase
+“traceable, reviewable outputs”.
 
 Before (legacy theme-aware bridge):
 
@@ -916,6 +946,45 @@ python scripts/run_cover_letter_manual.py \
 ```
 
 Eval / closure: [eval/fr007_cover_letter.md](eval/fr007_cover_letter.md).
+
+**Quality refinements (Mars dogfooding):** Attraction hooks reject hiring-ad
+person blurbs (`an experienced X to join…`, `exciting opportunity has become
+available`). Chance clauses never wrap noun phrases as `contribute to …`.
+Recruiter ads (company name markers or “our client” in raw text) use “advertised
+through {recruiter}”, “your client's technical challenges”, and client-role
+closings. Portfolio timescale is derived from AI/independent experience dates.
+Project paragraphs may add a short `fit_focus` bridge to the role. A deterministic
+`_letter_quality_ok` gate rejects incomplete/malformed openings without an LLM
+call.
+
+**Final quality polish (v1.76 — before FR-013):**
+
+- **Opening strategy policy.** Composer selects one of six deterministic opening
+  strategies via `opening_strategies.select_opening_strategy` (experience,
+  technology, business-problem, organisation, career-transition,
+  mission/capability). Selection scores role family, employer mode (recruiter vs
+  direct), retail/product cues, JD technologies, strongest projects, and career-
+  transition signals. Tie-break order is fixed. No randomness — identical inputs
+  always produce the same opening. Avoids default “What drew me…” and HR clichés.
+- **Portfolio positioning policy.** For AI / software / platform / data
+  engineering role families, the letter body includes a natural reference to
+  working demonstrations, architecture notes, and GitHub (why they help a reviewer
+  inspect delivery decisions). Signature still carries LinkedIn, Portfolio, and
+  GitHub.
+- **Engineering tone.** Forbidden recruitment filler includes “I am passionate…”,
+  “I am excited…”, “I have always wanted…”. Prefer trade-offs, design reviews,
+  production systems, architecture, and delivery language.
+- **Paragraph variation.** Project blocks choose among three deterministic
+  structures (problem→architecture→outcome; business need→solution→value;
+  challenge→design→result) from a stable fingerprint of company, role, and
+  project id.
+- **Recruiter-facing output policy.** Generated Markdown and HTML intended for
+  recruiters must not contain internal workflow markers such as “Owner review
+  required before any external use.” Owner-review gates remain mandatory in
+  domain models (`owner_review_required=True`), draft JSON, Application Package /
+  Manifest / Preparation / Submission artefacts, and CLI messaging. CV
+  `presentation="submit"` stays clean; `presentation="review"` may retain owner
+  meta for debug.
 
 ### Engineering observations (from manual validation)
 

@@ -114,6 +114,55 @@ _RELATED_CAPABILITY_GROUPS: tuple[frozenset[str], ...] = (
             "api",
             "apis",
             "fastapi",
+            "backend services",
+            "backend service",
+        }
+    ),
+    frozenset(
+        {
+            "azure",
+            "azure data factory",
+            "microsoft fabric",
+            "data factory",
+        }
+    ),
+    frozenset(
+        {
+            "docker",
+            "containers",
+            "container",
+            "containerisation",
+            "containerization",
+        }
+    ),
+    frozenset(
+        {
+            "ci cd",
+            "cicd",
+            "continuous integration",
+            "continuous delivery",
+            "jenkins",
+            "deployment",
+            "deploy",
+        }
+    ),
+    frozenset(
+        {
+            "observability",
+            "monitoring",
+            "cloudwatch",
+            "logging",
+            "production support",
+        }
+    ),
+    frozenset(
+        {
+            "data pipeline",
+            "data pipelines",
+            "etl",
+            "azure data factory",
+            "pipeline",
+            "pipelines",
         }
     ),
     frozenset(
@@ -126,6 +175,24 @@ _RELATED_CAPABILITY_GROUPS: tuple[frozenset[str], ...] = (
             "explainable ai",
         }
     ),
+)
+
+# Portfolio signals that indicate AI systems / orchestration engineering.
+_AI_PROJECT_CAPABILITY_HINTS: tuple[str, ...] = (
+    "llm",
+    "openai",
+    "rag",
+    "retrieval",
+    "orchestration",
+    "agent",
+    "agentic",
+    "architecture",
+    "evaluation",
+    "decision support",
+    "human-in-the-loop",
+    "fastapi",
+    "pydantic",
+    "explainable",
 )
 
 
@@ -477,6 +544,9 @@ def _build_projects(
         relevance = (3 * score_text(blob, primary_hints)) + score_text(
             blob, secondary_hints
         )
+        family = strategy.job_analysis.role_family.family
+        if family in {"ai_engineering", "ai_adjacent"}:
+            relevance += 4 * score_text(blob, list(_AI_PROJECT_CAPABILITY_HINTS))
         ranked.append(
             (
                 -relevance,
@@ -504,27 +574,63 @@ def _build_projects(
     if ranked and ranked[0][1] != 0:
         assumptions.append(
             "Portfolio project order was re-ranked within ApplicationStrategy "
-            "emphasis by overlap with summary themes, promoted skills, and job "
-            "signals."
+            "emphasis by overlap with summary themes, promoted skills, AI "
+            "capability signals, and job signals."
         )
 
     # Ensure the Career Intelligence Copilot project can surface for AI-family
     # roles when strategy emphasis omitted it (factual portfolio evidence).
+    # Profile appends must follow all ApplicationStrategy emphasis projects
+    # (plan_refs); never interleave. Drop weaker non-AI emphasis entries so CIC
+    # is not trapped below pure commercial/rules evidence.
     cic_id = "career-intelligence-copilot"
     included = {item["project_id"] for item in projects}
+    family = strategy.job_analysis.role_family.family
     if (
-        strategy.job_analysis.role_family.family in {"ai_engineering", "ai_adjacent"}
+        family in {"ai_engineering", "ai_adjacent"}
         and cic_id in profile_by_id
         and cic_id not in included
     ):
+        cic_project = profile_by_id[cic_id]
+        cic_blob = " ".join(
+            [
+                cic_project.name,
+                cic_project.summary,
+                " ".join(cic_project.technologies),
+                " ".join(cic_project.outcomes),
+                " ".join(cic_project.demonstrates),
+            ]
+        )
+        cic_ai = score_text(cic_blob, list(_AI_PROJECT_CAPABILITY_HINTS))
+        retained: list[dict[str, Any]] = []
+        for item in projects:
+            existing = profile_by_id.get(item["project_id"])
+            if existing is None:
+                retained.append(item)
+                continue
+            existing_blob = " ".join(
+                [
+                    existing.name,
+                    existing.summary,
+                    " ".join(existing.technologies),
+                    " ".join(existing.outcomes),
+                    " ".join(existing.demonstrates),
+                ]
+            )
+            existing_ai = score_text(existing_blob, list(_AI_PROJECT_CAPABILITY_HINTS))
+            if existing_ai >= cic_ai:
+                retained.append(item)
+        if not retained and projects:
+            retained = [projects[0]]
+        projects = retained
         projects.append(
             {
-                "rank": len(projects) + 1,
+                "rank": 0,
                 "project_id": cic_id,
                 "rationale": (
                     "Career Intelligence Copilot added as Career Profile portfolio "
                     "evidence of AI Engineering methodology and decision-support "
-                    f"systems for role family '{strategy.job_analysis.role_family.family}'."
+                    f"systems for role family '{family}'."
                 ),
                 "evidence": [
                     {
@@ -541,6 +647,11 @@ def _build_projects(
             "Included Career Intelligence Copilot from the Career Profile because "
             "ApplicationStrategy portfolio emphasis omitted it for an AI-family role."
         )
+        if len(retained) < len(ranked):
+            assumptions.append(
+                "Deferred lower-AI-signal portfolio emphasis projects so Career "
+                "Intelligence Copilot could surface for this AI-family role."
+            )
         for index, item in enumerate(projects, start=1):
             item["rank"] = index
 

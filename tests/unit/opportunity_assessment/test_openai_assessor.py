@@ -213,7 +213,15 @@ def test_valid_assessment_returns_payload_without_caller_owned_fields() -> None:
     assert payload["technical_fit"]["judgment"] == "strong"
     assert client.responses.calls[0]["model"] == DEFAULT_MODEL
     assert client.responses.calls[0]["instructions"] == ASSESSMENT_INSTRUCTIONS_V1
-    assert client.responses.calls[0]["text_format"] is OpportunityAssessmentExtraction
+    text_format = client.responses.calls[0]["text_format"]
+    assert issubclass(text_format, OpportunityAssessmentExtraction)
+    ref_schema = (
+        (text_format.model_json_schema().get("$defs") or {})
+        .get("ExtractionProfileEvidenceRef", {})
+        .get("properties", {})
+        .get("ref", {})
+    )
+    assert "enum" in ref_schema
     assert "<JobAnalysis>" in client.responses.calls[0]["input"]
 
 
@@ -224,7 +232,14 @@ def test_openai_assessor_calls_responses_parse_with_extraction_schema() -> None:
     assessor.assess(_job_analysis(), _profile())
 
     assert len(client.responses.calls) == 1
-    assert client.responses.calls[0]["text_format"] is OpportunityAssessmentExtraction
+    text_format = client.responses.calls[0]["text_format"]
+    assert issubclass(text_format, OpportunityAssessmentExtraction)
+    assert "enum" in (
+        (text_format.model_json_schema().get("$defs") or {})
+        .get("ExtractionProfileEvidenceRef", {})
+        .get("properties", {})
+        .get("ref", {})
+    )
 
 
 def test_refusal_becomes_opportunity_assessment_error() -> None:

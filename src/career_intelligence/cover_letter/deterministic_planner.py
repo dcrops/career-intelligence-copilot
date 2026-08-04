@@ -179,7 +179,7 @@ def _is_usable_attraction_hook(
     company: str,
     role_title: str,
 ) -> bool:
-    """Reject title-only or company-blurb hooks (marketing already scrubbed)."""
+    """Reject title-only, company-blurb, or recruiting-ad person blurbs."""
     cleaned = " ".join(text.split()).strip().rstrip(".")
     if len(cleaned) < 24:
         return False
@@ -191,6 +191,28 @@ def _is_usable_attraction_hook(
     if company and folded.startswith(f"{company.casefold()} is "):
         return False
     if re.match(r"^[A-Z][\w .&'-]{1,60}\s+is an?\b", cleaned):
+        return False
+    # Hiring-ad person blurbs ("an experienced X to join…") are not attraction themes.
+    recruiting_blurb_markers = (
+        "has become available",
+        "exciting opportunity",
+        "opportunity has become",
+        "we are seeking",
+        "looking for an experienced",
+        "looking for a skilled",
+    )
+    if any(marker in folded for marker in recruiting_blurb_markers):
+        return False
+    if re.search(
+        r"\b(?:an?|the)\s+(?:experienced|skilled|senior|junior|passionate)\s+"
+        r".{0,40}\bto\s+join\b",
+        folded,
+    ):
+        return False
+    if re.match(
+        r"^(?:an?|the)\s+(?:experienced|skilled|senior|junior)\b",
+        folded,
+    ):
         return False
     return True
 

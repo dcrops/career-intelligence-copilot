@@ -4,6 +4,131 @@ Records product strategy and engineering knowledge changes. Routine typo fixes a
 
 ---
 
+## Version 1.78
+
+### Stabilisation — restore CV corpus fixtures; record job-evidence item_index debt
+
+Four unit failures after the ProfileEvidenceRef fix were **not** caused by that fix.
+
+**Classification:** stale / accidentally overwritten `manual_validation/outputs`
+corpus JSON used by FR-006 regression tests:
+
+- `002_bluefin_ai_systems_developer.json` had been live-rewritten from **platinum** to
+  **silver** (broke material-benefit assumptions and the platinum manual-runner test).
+- `011_officeworks_ai_engineer.json` had been re-extracted with technology order that
+  pushed Snowflake past CV planner `_MAX_JD_PRIORITIES` (8), so recognition assertions
+  failed.
+
+**Fix:** restore both files from the committed corpus baseline; harden corpus planner
+tests to auto-apply material-benefit override when a fixture is silver.
+
+**Accepted debt — job_evidence `item_index` out of range (live intermittent):** OpenAI
+structured output still types list `item_index` as an unconstrained integer. The model
+can cite `responsibility` index N when the bound JobAnalysis has fewer items; domain
+`validate_references` correctly fail-closes. Same class of defect as pre-fix profile
+`ref` free-form strings. Safe follow-up (not done here): per-request enum of valid
+indexes in the extraction schema, mirroring catalogue-constrained profile refs. No
+silent clamp.
+
+---
+
+## Version 1.77
+
+### Bug fix — Opportunity Assessment profile evidence refs contaminated by serialisation punctuation
+
+Live Application Strategy failed when the assessor emitted catalogue tokens with
+trailing/surrounding punctuation (e.g. `experience:nbn-data-engineer-2020.` or
+`…2025},`). Domain validation correctly rejected them; the structured-output
+schema had typed `ref` as a free-form string, so the model could emit junk.
+
+**Fix (extraction boundary only; domain validator unchanged):**
+
+- `ExtractionProfileEvidenceRef` replaces domain `ProfileEvidenceRef` inside
+  `OpportunityAssessmentExtraction` (keeps `namespace:id` shape; no punctuation
+  gate at extraction).
+- Per-request JSON Schema `enum` of `_profile_reference_tokens()` injected into
+  the OpenAI `text_format` schema so structured output must pick exact catalogue
+  tokens.
+- Narrow canonicalisation peels only recognised leading/trailing serialisation
+  punctuation, then requires an exact catalogue match (no fuzzy mapping; unknown
+  and ambiguous remain rejected).
+
+Regression: `tests/unit/opportunity_assessment/test_profile_evidence_canonicalisation.py`.
+
+---
+
+## Version 1.76
+
+### FR-006 / FR-007 final quality polish (openings, portfolio body, tone, cleanliness)
+
+Final planned document-quality refinement before Horizon 1A FR-013. No architecture
+redesign; planner / composer / renderer boundaries preserved; no additional LLM calls;
+domain validation unchanged.
+
+**FR-007 Cover Letter**
+
+- Deterministic opening strategy selection (`opening_strategies.py`): experience,
+  technology, business-problem, organisation, career-transition, and
+  mission/capability led — scored from role family, employer type, portfolio
+  evidence, and profile; fixed tie-break; same inputs always yield the same
+  opening.
+- Portfolio / GitHub positioned in the letter body for AI, software, platform, and
+  data engineering families (why the artefacts matter), with LinkedIn / Portfolio /
+  GitHub retained in the signature.
+- Engineering tone: forbid passionate/excited/always-wanted phrasing; prefer
+  trade-offs, design reviews, delivery, and production systems.
+- Deterministic project-paragraph structures (problem→architecture→outcome;
+  business need→solution→value; challenge→design→result) with lead-aware intros.
+- Recruiter-facing Markdown/HTML no longer embed “Owner review required…” notices;
+  `owner_review_required` remains on internal models, JSON drafts, package, and CLI.
+
+**FR-006 CV**
+
+- Submit presentation already omitted owner-review banners; review presentation
+  retains them for owner debug. Policy documented alongside FR-007.
+
+**Regression:** `tests/unit/cover_letter/`, `tests/unit/test_document_quality_refinements.py`.
+Manual regeneration: Mars Recruitment, Forever New, Allura Partners.
+
+---
+
+## Version 1.75
+
+### FR-006 / FR-007 document quality refinements (Mars dogfooding)
+
+Iterative quality improvements after first real-world CV + cover letter review for
+the Mars Recruitment AI Engineer role. No architecture redesign; validation
+unchanged; FR boundaries preserved.
+
+**FR-007 Cover Letter**
+
+- Reject hiring-ad person blurbs as attraction hooks; do not wrap noun phrases as
+  `contribute to …`.
+- Recruiter detection: when `posting.company` looks like a recruiter (or the ad
+  mentions “our client”), open with “advertised through {recruiter}”, refer to
+  “your client's technical challenges”, and close on the client role — never imply
+  the agency owns the engineering environment.
+- Portfolio timescale derived from AI/independent experience dates (not a hardcoded
+  “two years”).
+- Project paragraphs add a short capability→role bridge from `fit_focus`.
+- Deterministic quality gate rejects incomplete openings, recruiting blurbs, and
+  recruiter-environment slips (no extra LLM call).
+
+**FR-006 CV**
+
+- Related-capability groups now connect JD `Azure` → profile `Azure Data Factory`
+  (and Docker/CI/CD/observability/pipeline clusters) without fabricating skills.
+- AI-family project re-rank boosts LLM/orchestration/architecture evidence; weaker
+  non-AI emphasis can yield to Career Intelligence Copilot append (still after all
+  retained strategy projects — plan_refs order preserved).
+- Summary Intelligence forward paragraph no longer repeats “traceable, reviewable”.
+
+**Regression:** `tests/unit/test_document_quality_refinements.py`. Manual Mars
+regeneration confirms openings, recruiter wording, Azure Data Factory promotion,
+and CIC ranking.
+
+---
+
 ## Version 1.74
 
 ### Owner manual workflow — strategy runner persists pipeline JSON by default

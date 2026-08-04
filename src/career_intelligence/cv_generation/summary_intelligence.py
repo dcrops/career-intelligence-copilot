@@ -491,7 +491,7 @@ def _compose_how_paragraph(evidence: SummaryEvidence) -> str | None:
 
 
 def _compose_forward_paragraph(evidence: SummaryEvidence) -> str | None:
-    """Paragraph 4 — value to deliver (no repeated primary theme or domain list)."""
+    """Paragraph 4 — value to deliver (no repeated methodology catchphrases)."""
     source = evidence.source_summary.casefold()
     can_close = (
         "operational decision-making" in source
@@ -501,9 +501,17 @@ def _compose_forward_paragraph(evidence: SummaryEvidence) -> str | None:
     if not can_close:
         return None
 
+    # Prefer advert-aligned close using remaining tech themes over repeating
+    # "traceable, reviewable" already used in the methodology paragraph.
+    tech = [item for item in evidence.tech_focus[:2] if item]
+    if tech:
+        return (
+            f"Focused on delivering production AI systems with {_oxford_join(tech)} "
+            "and clear engineering accountability for operational decision-making."
+        )
     return (
-        "Focused on engineering AI systems with traceable, reviewable outputs "
-        "for operational decision-making."
+        "Focused on delivering production AI systems with clear engineering "
+        "accountability for operational decision-making."
     )
 
 

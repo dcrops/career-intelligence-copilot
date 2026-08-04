@@ -36,9 +36,6 @@ def render_markdown(letter: CoverLetter) -> str:
         lines.append(paragraph)
         lines.append("")
     lines.extend(_signature_lines(letter))
-    lines.append("---")
-    lines.append("")
-    lines.append("_Owner review required before any external use._")
     lines.append("")
     return "\n".join(lines)
 

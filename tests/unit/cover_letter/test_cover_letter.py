@@ -112,30 +112,34 @@ def test_letter_avoids_generic_and_planner_boilerplate() -> None:
     plain = letter.rendered_markdown.casefold()
     for phrase in _FORBIDDEN:
         assert phrase not in plain
-    assert "what drew me" in plain
     assert "kind regards" in plain
     assert "shaping the future" not in plain
+    assert "i am passionate" not in plain
+    assert "i am excited" not in plain
     assert "demonstrates operational intelligence capability" not in plain
+    assert "owner review required before any external use" not in plain
 
 
 def test_opening_reads_as_attraction_not_jd_dump() -> None:
     letter = make_letter()
     opening = letter.paragraphs[0]
-    assert opening.startswith("What drew me")
     assert "the brief" not in opening.casefold()
     assert "the role emphasises" not in opening.casefold()
     assert "chance to Build" not in opening
     assert "chance to Design" not in opening
+    assert "contribute to an experienced" not in opening.casefold()
+    assert "what drew me" not in opening.casefold()
+    assert "i am passionate" not in opening.casefold()
 
 
 def test_letter_includes_collaboration_philosophy_and_portfolio_body() -> None:
     letter = make_letter()
     body = " ".join(letter.paragraphs).casefold()
-    assert "collaborat" in body
+    assert "trade-off" in body or "design review" in body or "architect" in body
     assert "architecture-first" in body
     assert "portfolio" in body
     assert "journey.chaseriskandcompliance.com.au" in body
-    assert "working software" in body or "live demonstration" in body
+    assert "working software" in body or "working demonstration" in body
     assert "—" not in letter.rendered_markdown
     assert "–" not in letter.rendered_markdown
 
@@ -307,7 +311,8 @@ def test_draft_writer_writes_markdown_html_and_json(tmp_path: Path) -> None:
     html_document = result.html_path.read_text(encoding="utf-8")
     assert letter.company in markdown
     assert letter.role_title in markdown
-    assert "Owner review required" in markdown
+    assert "Owner review required" not in markdown
+    assert "Owner review required" not in html_document
     assert "<!DOCTYPE html>" in html_document
     assert letter.full_name in html_document
     assert "cover-letter" in html_document

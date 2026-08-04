@@ -37,15 +37,25 @@ def _load_strategy(name: str) -> ApplicationStrategy:
     return ApplicationStrategy.model_validate(payload["application_strategy"])
 
 
-def _plan_for(name: str, *, override: bool = False):
+def _needs_material_benefit_override(strategy: ApplicationStrategy) -> bool:
+    """Silver/bronze corpus jobs without consider_cv_tailoring need an explicit override."""
+    return strategy.application_tier not in {"platinum", "gold"} and not any(
+        action.kind == "consider_cv_tailoring" for action in strategy.next_actions
+    )
+
+
+def _plan_for(name: str, *, override: bool | None = None):
     profile = CareerProfileService.from_path(_PROFILE).load()
     strategy = _load_strategy(name)
+    use_override = (
+        _needs_material_benefit_override(strategy) if override is None else override
+    )
     return TailoringPlanService(DeterministicTailoringPlanner()).plan(
         strategy,
         profile,
         options=TailoringOptions(
             owner_approved_to_tailor=True,
-            override_material_benefit=override,
+            override_material_benefit=use_override,
         ),
     )
 
@@ -59,11 +69,7 @@ def test_corpus_jobs_keep_unsupported_out_of_themes_and_promotions(
     unsupported: frozenset[str],
 ) -> None:
     # Silver jobs (e.g. 013) need override to produce a plan; platinum/gold do not.
-    strategy = _load_strategy(output_name)
-    override = strategy.application_tier not in {"platinum", "gold"} and not any(
-        action.kind == "consider_cv_tailoring" for action in strategy.next_actions
-    )
-    plan = _plan_for(output_name, override=override)
+    plan = _plan_for(output_name)
 
     themes = {item.theme.casefold() for item in plan.summary_themes}
     promoted = {item.skill_name.casefold() for item in plan.skills_to_promote}
@@ -84,6 +90,8 @@ def test_corpus_jobs_keep_unsupported_out_of_themes_and_promotions(
 
 
 def test_bluefin_keeps_supported_python_and_llm_related_emphasis() -> None:
+    # Corpus baseline is platinum Bluefin (committed fixture). Override auto-applies
+    # if a live re-run accidentally leaves the JSON silver.
     plan = _plan_for("002_bluefin_ai_systems_developer.json")
     themes = [item.theme for item in plan.summary_themes]
     promoted = [item.skill_name for item in plan.skills_to_promote]
@@ -103,12 +111,14 @@ def test_bluefin_keeps_supported_python_and_llm_related_emphasis() -> None:
 
 
 def test_officeworks_ranks_python_above_pd_only_snowflake() -> None:
-    """Snowflake remains recognised but is not over-prioritised vs employment evidence."""
-    strategy = _load_strategy("011_officeworks_ai_engineer.json")
-    override = strategy.application_tier not in {"platinum", "gold"} and not any(
-        action.kind == "consider_cv_tailoring" for action in strategy.next_actions
-    )
-    plan = _plan_for("011_officeworks_ai_engineer.json", override=override)
+    """Snowflake remains recognised but is not over-prioritised vs employment evidence.
+
+    Relies on the committed Officeworks corpus where Snowflake is among the early
+    JD technologies (within ``_MAX_JD_PRIORITIES``). Live re-extraction that appends
+    many frontend tokens before Snowflake can push it past the priority cap — restore
+    the committed fixture rather than raising the cap.
+    """
+    plan = _plan_for("011_officeworks_ai_engineer.json")
     themes = [item.theme for item in plan.summary_themes]
     promoted = [item.skill_name for item in plan.skills_to_promote]
 
@@ -118,11 +128,15 @@ def test_officeworks_ranks_python_above_pd_only_snowflake() -> None:
         assert promoted.index("Python") < promoted.index("Snowflake")
     if "Snowflake" in themes:
         assert themes.index("Python") < themes.index("Snowflake")
-    # Truthful recognition: JD priority still lists Snowflake when present.
+    # Truthful recognition: JD priority still lists Snowflake when present in-cap.
     snowflake_priorities = [
         item for item in plan.jd_priorities if item.label.casefold() == "snowflake"
     ]
-    assert snowflake_priorities
+    assert snowflake_priorities, (
+        "expected Snowflake in jd_priorities for committed Officeworks corpus; "
+        "if this fails after a live re-run, restore "
+        "manual_validation/outputs/011_officeworks_ai_engineer.json from git"
+    )
     assert snowflake_priorities[0].candidate_support == "supported"
 
 
@@ -188,11 +202,8 @@ def test_fixture_rewrite_excludes_unsupported_technologies() -> None:
 
     profile = CareerProfileService.from_path(_PROFILE).load()
     for output_name, unsupported in _UNSUPPORTED_EMPHASIS_EXAMPLES.items():
+        plan = _plan_for(output_name)
         strategy = _load_strategy(output_name)
-        override = strategy.application_tier not in {"platinum", "gold"} and not any(
-            action.kind == "consider_cv_tailoring" for action in strategy.next_actions
-        )
-        plan = _plan_for(output_name, override=override)
         cv = CvGenerationService(FixtureSummaryRewriter()).generate(
             strategy,
             profile,

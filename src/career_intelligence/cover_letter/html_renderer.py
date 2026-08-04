@@ -82,9 +82,6 @@ def _render_body(letter: CoverLetter) -> str:
     for paragraph in letter.paragraphs:
         parts.append(f"<p>{_inline_to_html(paragraph)}</p>\n")
     parts.extend(_render_signature(letter))
-    parts.append(
-        '<p class="meta"><em>Owner review required before any external use.</em></p>\n'
-    )
     return "".join(parts)
 
 
