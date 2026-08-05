@@ -7,6 +7,7 @@ from __future__ import annotations
 
 import html
 import re
+from dataclasses import dataclass
 
 from career_intelligence.cover_letter.errors import CoverLetterError
 from career_intelligence.cover_letter.models import CoverLetter
@@ -40,11 +41,40 @@ class CoverLetterHtmlRenderError(CoverLetterError):
         super().__init__(message)
 
 
+@dataclass(frozen=True)
+class CoverLetterHtmlView:
+    """Presentation fields shared by model render and Markdown re-render."""
+
+    full_name: str
+    role_title: str
+    company: str
+    salutation: str
+    paragraphs: list[str]
+    contact: dict[str, str] | None = None
+
+
 def render_html(letter: CoverLetter, *, title: str | None = None) -> str:
     """Render a complete standalone HTML document for a CoverLetter."""
+    view = CoverLetterHtmlView(
+        full_name=letter.full_name,
+        role_title=letter.role_title,
+        company=letter.company,
+        salutation=letter.salutation,
+        paragraphs=list(letter.paragraphs),
+        contact=dict(letter.contact) if letter.contact else None,
+    )
+    return render_html_from_view(view, title=title)
+
+
+def render_html_from_view(
+    view: CoverLetterHtmlView,
+    *,
+    title: str | None = None,
+) -> str:
+    """Render HTML from presentation fields (generation or render-only path)."""
     try:
-        document_title = title or f"{letter.full_name} - {letter.role_title}"
-        body = _render_body(letter)
+        document_title = title or f"{view.full_name} - {view.role_title}"
+        body = _render_body(view)
         css = load_cv_print_css()
         # Cover letters are shorter; keep CV typography with a slight page padding cue.
         return (
@@ -71,27 +101,27 @@ def render_html(letter: CoverLetter, *, title: str | None = None) -> str:
         raise CoverLetterHtmlRenderError(f"HTML rendering failed: {exc}") from exc
 
 
-def _render_body(letter: CoverLetter) -> str:
+def _render_body(view: CoverLetterHtmlView) -> str:
     parts: list[str] = [
-        f"<h1>{_esc(letter.full_name)}</h1>\n",
+        f"<h1>{_esc(view.full_name)}</h1>\n",
         '<hr class="header-rule" />\n',
-        f'<p class="role letter-meta">{_esc(letter.role_title)} - '
-        f"{_esc(letter.company)}</p>\n",
-        f"<p>{_esc(letter.salutation)}</p>\n",
+        f'<p class="role letter-meta">{_esc(view.role_title)} - '
+        f"{_esc(view.company)}</p>\n",
+        f"<p>{_esc(view.salutation)}</p>\n",
     ]
-    for paragraph in letter.paragraphs:
+    for paragraph in view.paragraphs:
         parts.append(f"<p>{_inline_to_html(paragraph)}</p>\n")
-    parts.extend(_render_signature(letter))
+    parts.extend(_render_signature(view))
     return "".join(parts)
 
 
-def _render_signature(letter: CoverLetter) -> list[str]:
+def _render_signature(view: CoverLetterHtmlView) -> list[str]:
     parts = [
         '<div class="signature">\n',
         "<p>Kind regards,</p>\n",
-        f"<p><strong>{_esc(letter.full_name)}</strong></p>\n",
+        f"<p><strong>{_esc(view.full_name)}</strong></p>\n",
     ]
-    contact = letter.contact or {}
+    contact = view.contact or {}
     for key in _CONTACT_ORDER:
         value = contact.get(key)
         if not value:

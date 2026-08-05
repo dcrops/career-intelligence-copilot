@@ -1,0 +1,51 @@
+AI Engineer
+
+Redwolf + Rosch 
+View all jobs
+Melbourne VIC (Hybrid)
+Engineering - Software (Information & Communication Technology)
+Full time
+Competitive Salary (Depending on experience)
+
+
+A fantastic opportunity to drive an AI-first engineering culture at an established and growing startup.
+Remote (Anywhere in Australia)
+Competitive Salary (Depending on experience)
+Permanent / Full-Time (Flexible/Fractional arrangements also considered) 
+  
+About the Company
+Our client is a highly successful, mission-driven legal technology platform founded in Melbourne with a global footprint. They provide a no-code builder and an advanced AI module that empowers enterprise legal teams and community legal centres to turn complex processes into accessible, self-service tools.
+  
+With a deeply ingrained culture of purpose, scrappiness, and support, this small but mighty team of 20 is revolutionising how legal work gets done. They believe strongly in remote work—whether you're based in a major city or driving around Australia in a van. They maintain connection through regular all-hands meetings and fantastic team offsites (past trips include Bali, Vietnam, and the Great Ocean Road). Plus, every full-time employee enjoys one dedicated "Company Day" (a day dedicated to the company's core mission).
+  
+The Role
+We are seeking an innovative and strategic AI Engineer to join a flat-structured engineering team of five, reporting directly to the CEO. This is a greenfield, exploratory role where you will play a pivotal part in transitioning the company toward an AI-native delivery workflow.
+  
+You don't need decades of commercial AI experience; instead, we are looking for a curious, product-minded engineer who understands business problems and user needs. You will help build the orchestration layer that connects the company's core workflow builder with its new AI product, integrating with internal and external agents.
+  
+Key Responsibilities
+Strategic Implementation: Work closely with the Tech Leads and CEO to implement the technical vision, moving experimental AI prototypes into robust, production-ready features.
+Agent Orchestration: Design and build overarching orchestration capabilities, managing APIs and Model Context Protocols (MCPs) to expose products to other agents.
+Product Development: Contribute to the evolution of the company's two key products: the original no-code workflow builder and the strict, hallucination-free AI Q&A layer.
+Process Innovation: Help review and elevate the way the engineering team builds software, integrating AI tools (like Claude Code) to enhance coding, design, and delivery workflows.
+Continuous Improvement: Call out gaps in the current architecture (currently GCP, Python, TypeScript, Vue) and guide the team in establishing AI-driven DevOps practices.
+  
+About You
+Mindset Over Tech Stack: You possess a strong product mindset. While experience with Python, TypeScript, Vue, and GCP is highly advantageous, your attitude, curiosity, and openness to learning are what truly matter.
+AI Enthusiasm: You are an experienced and curious, mid-to-senior-level engineer with a deep interest in AI orchestration, agents, and LLMs.
+Strategic Thinker: You can understand complex business problems and take others on the journey with you, translating research and prototypes into meaningful outcomes.
+Adaptable: You thrive in a startup environment 
+Empathy for the User: You care about the end-user experience, specifically making life better and more efficient for legal teams.
+  
+Why Apply?
+Ultimate Flexibility: 100% remote across Australia. Open to full-time or flexible/fractional arrangements 
+Meaningful Work: Contribute to a platform that not only serves major enterprise clients such as international sporting and fitness brands but also does significant pro bono work for community legal centres.
+Exceptional Culture: Join a supportive, fun, and dedicated team that values work-life balance—no forced early morning or late-night calls.
+Growth Opportunity: Shape the technical direction of a business that is ready to go fully AI-native.
+  
+APPLY NOW
+
+If you are a curious, product-focused engineer ready to make a significant impact in the legal tech space, we want to hear from you. Please submit your updated resume via the Apply button below.
+  
+  
+Redwolf + Rosch invite and encourage applications from all backgrounds of gender, disability, culture, and race. If you are a person with a disability and require modifications to the recruitment process, please contact your Redwolf + Rosch Recruitment Consultant

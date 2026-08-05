@@ -1,0 +1,1881 @@
+{
+  "components": [
+    {
+      "name": "CareerProfile",
+      "implementation": "CareerProfileService / YAML",
+      "mode": "deterministic_production"
+    },
+    {
+      "name": "JobAnalysis",
+      "implementation": "OpenAIJobExtractor",
+      "mode": "openai_production"
+    },
+    {
+      "name": "OpportunityAssessment",
+      "implementation": "OpenAIAssessor",
+      "mode": "openai_production"
+    },
+    {
+      "name": "PortfolioMatch",
+      "implementation": "DeterministicMatcher",
+      "mode": "deterministic_production"
+    },
+    {
+      "name": "ApplicationStrategy",
+      "implementation": "DeterministicStrategyPlanner",
+      "mode": "deterministic_production"
+    }
+  ],
+  "volume_applications_enabled": false,
+  "profile_identity": {
+    "full_name": "David Cropper",
+    "target_role": "AI Engineer"
+  },
+  "posting": {
+    "raw_text": "AI Engineer\n\nRedwolf + Rosch \nView all jobs\nMelbourne VIC (Hybrid)\nEngineering - Software (Information & Communication Technology)\nFull time\nCompetitive Salary (Depending on experience)\n\n\nA fantastic opportunity to drive an AI-first engineering culture at an established and growing startup.\nRemote (Anywhere in Australia)\nCompetitive Salary (Depending on experience)\nPermanent / Full-Time (Flexible/Fractional arrangements also considered) \n  \nAbout the Company\nOur client is a highly successful, mission-driven legal technology platform founded in Melbourne with a global footprint. They provide a no-code builder and an advanced AI module that empowers enterprise legal teams and community legal centres to turn complex processes into accessible, self-service tools.\n  \nWith a deeply ingrained culture of purpose, scrappiness, and support, this small but mighty team of 20 is revolutionising how legal work gets done. They believe strongly in remote work—whether you're based in a major city or driving around Australia in a van. They maintain connection through regular all-hands meetings and fantastic team offsites (past trips include Bali, Vietnam, and the Great Ocean Road). Plus, every full-time employee enjoys one dedicated \"Company Day\" (a day dedicated to the company's core mission).\n  \nThe Role\nWe are seeking an innovative and strategic AI Engineer to join a flat-structured engineering team of five, reporting directly to the CEO. This is a greenfield, exploratory role where you will play a pivotal part in transitioning the company toward an AI-native delivery workflow.\n  \nYou don't need decades of commercial AI experience; instead, we are looking for a curious, product-minded engineer who understands business problems and user needs. You will help build the orchestration layer that connects the company's core workflow builder with its new AI product, integrating with internal and external agents.\n  \nKey Responsibilities\nStrategic Implementation: Work closely with the Tech Leads and CEO to implement the technical vision, moving experimental AI prototypes into robust, production-ready features.\nAgent Orchestration: Design and build overarching orchestration capabilities, managing APIs and Model Context Protocols (MCPs) to expose products to other agents.\nProduct Development: Contribute to the evolution of the company's two key products: the original no-code workflow builder and the strict, hallucination-free AI Q&A layer.\nProcess Innovation: Help review and elevate the way the engineering team builds software, integrating AI tools (like Claude Code) to enhance coding, design, and delivery workflows.\nContinuous Improvement: Call out gaps in the current architecture (currently GCP, Python, TypeScript, Vue) and guide the team in establishing AI-driven DevOps practices.\n  \nAbout You\nMindset Over Tech Stack: You possess a strong product mindset. While experience with Python, TypeScript, Vue, and GCP is highly advantageous, your attitude, curiosity, and openness to learning are what truly matter.\nAI Enthusiasm: You are an experienced and curious, mid-to-senior-level engineer with a deep interest in AI orchestration, agents, and LLMs.\nStrategic Thinker: You can understand complex business problems and take others on the journey with you, translating research and prototypes into meaningful outcomes.\nAdaptable: You thrive in a startup environment \nEmpathy for the User: You care about the end-user experience, specifically making life better and more efficient for legal teams.\n  \nWhy Apply?\nUltimate Flexibility: 100% remote across Australia. Open to full-time or flexible/fractional arrangements \nMeaningful Work: Contribute to a platform that not only serves major enterprise clients such as international sporting and fitness brands but also does significant pro bono work for community legal centres.\nExceptional Culture: Join a supportive, fun, and dedicated team that values work-life balance—no forced early morning or late-night calls.\nGrowth Opportunity: Shape the technical direction of a business that is ready to go fully AI-native.\n  \nAPPLY NOW\n\nIf you are a curious, product-focused engineer ready to make a significant impact in the legal tech space, we want to hear from you. Please submit your updated resume via the Apply button below.\n  \n  \nRedwolf + Rosch invite and encourage applications from all backgrounds of gender, disability, culture, and race. If you are a person with a disability and require modifications to the recruitment process, please contact your Redwolf + Rosch Recruitment Consultant",
+    "title": "AI Engineer",
+    "company": "Redwolf + Rosch",
+    "source_url": null
+  },
+  "job_analysis": {
+    "posting": {
+      "raw_text": "AI Engineer\n\nRedwolf + Rosch \nView all jobs\nMelbourne VIC (Hybrid)\nEngineering - Software (Information & Communication Technology)\nFull time\nCompetitive Salary (Depending on experience)\n\n\nA fantastic opportunity to drive an AI-first engineering culture at an established and growing startup.\nRemote (Anywhere in Australia)\nCompetitive Salary (Depending on experience)\nPermanent / Full-Time (Flexible/Fractional arrangements also considered) \n  \nAbout the Company\nOur client is a highly successful, mission-driven legal technology platform founded in Melbourne with a global footprint. They provide a no-code builder and an advanced AI module that empowers enterprise legal teams and community legal centres to turn complex processes into accessible, self-service tools.\n  \nWith a deeply ingrained culture of purpose, scrappiness, and support, this small but mighty team of 20 is revolutionising how legal work gets done. They believe strongly in remote work—whether you're based in a major city or driving around Australia in a van. They maintain connection through regular all-hands meetings and fantastic team offsites (past trips include Bali, Vietnam, and the Great Ocean Road). Plus, every full-time employee enjoys one dedicated \"Company Day\" (a day dedicated to the company's core mission).\n  \nThe Role\nWe are seeking an innovative and strategic AI Engineer to join a flat-structured engineering team of five, reporting directly to the CEO. This is a greenfield, exploratory role where you will play a pivotal part in transitioning the company toward an AI-native delivery workflow.\n  \nYou don't need decades of commercial AI experience; instead, we are looking for a curious, product-minded engineer who understands business problems and user needs. You will help build the orchestration layer that connects the company's core workflow builder with its new AI product, integrating with internal and external agents.\n  \nKey Responsibilities\nStrategic Implementation: Work closely with the Tech Leads and CEO to implement the technical vision, moving experimental AI prototypes into robust, production-ready features.\nAgent Orchestration: Design and build overarching orchestration capabilities, managing APIs and Model Context Protocols (MCPs) to expose products to other agents.\nProduct Development: Contribute to the evolution of the company's two key products: the original no-code workflow builder and the strict, hallucination-free AI Q&A layer.\nProcess Innovation: Help review and elevate the way the engineering team builds software, integrating AI tools (like Claude Code) to enhance coding, design, and delivery workflows.\nContinuous Improvement: Call out gaps in the current architecture (currently GCP, Python, TypeScript, Vue) and guide the team in establishing AI-driven DevOps practices.\n  \nAbout You\nMindset Over Tech Stack: You possess a strong product mindset. While experience with Python, TypeScript, Vue, and GCP is highly advantageous, your attitude, curiosity, and openness to learning are what truly matter.\nAI Enthusiasm: You are an experienced and curious, mid-to-senior-level engineer with a deep interest in AI orchestration, agents, and LLMs.\nStrategic Thinker: You can understand complex business problems and take others on the journey with you, translating research and prototypes into meaningful outcomes.\nAdaptable: You thrive in a startup environment \nEmpathy for the User: You care about the end-user experience, specifically making life better and more efficient for legal teams.\n  \nWhy Apply?\nUltimate Flexibility: 100% remote across Australia. Open to full-time or flexible/fractional arrangements \nMeaningful Work: Contribute to a platform that not only serves major enterprise clients such as international sporting and fitness brands but also does significant pro bono work for community legal centres.\nExceptional Culture: Join a supportive, fun, and dedicated team that values work-life balance—no forced early morning or late-night calls.\nGrowth Opportunity: Shape the technical direction of a business that is ready to go fully AI-native.\n  \nAPPLY NOW\n\nIf you are a curious, product-focused engineer ready to make a significant impact in the legal tech space, we want to hear from you. Please submit your updated resume via the Apply button below.\n  \n  \nRedwolf + Rosch invite and encourage applications from all backgrounds of gender, disability, culture, and race. If you are a person with a disability and require modifications to the recruitment process, please contact your Redwolf + Rosch Recruitment Consultant",
+      "title": "AI Engineer",
+      "company": "Redwolf + Rosch",
+      "source_url": null
+    },
+    "role_family": {
+      "family": "ai_engineering",
+      "evidence": [
+        {
+          "excerpt": "A fantastic opportunity to drive an AI-first engineering culture",
+          "section": "About the Company"
+        }
+      ]
+    },
+    "seniority": {
+      "level": "mid",
+      "ambiguous": false,
+      "candidate_levels": [],
+      "evidence": [
+        {
+          "excerpt": "We are seeking an innovative and strategic AI Engineer",
+          "section": "The Role"
+        }
+      ]
+    },
+    "technologies": [
+      {
+        "name": "Python",
+        "level": "preferred",
+        "evidence": [
+          {
+            "excerpt": "experience with Python, TypeScript, Vue, and GCP is highly advantageous",
+            "section": "About You"
+          }
+        ]
+      },
+      {
+        "name": "TypeScript",
+        "level": "preferred",
+        "evidence": [
+          {
+            "excerpt": "experience with Python, TypeScript, Vue, and GCP is highly advantageous",
+            "section": "About You"
+          }
+        ]
+      },
+      {
+        "name": "Vue",
+        "level": "preferred",
+        "evidence": [
+          {
+            "excerpt": "experience with Python, TypeScript, Vue, and GCP is highly advantageous",
+            "section": "About You"
+          }
+        ]
+      },
+      {
+        "name": "GCP",
+        "level": "preferred",
+        "evidence": [
+          {
+            "excerpt": "experience with Python, TypeScript, Vue, and GCP is highly advantageous",
+            "section": "About You"
+          }
+        ]
+      }
+    ],
+    "responsibilities": [
+      {
+        "description": "Work closely with the Tech Leads and CEO to implement the technical vision, moving experimental AI prototypes into robust, production-ready features.",
+        "evidence": [
+          {
+            "excerpt": "Work closely with the Tech Leads and CEO to implement the technical vision",
+            "section": "Key Responsibilities"
+          }
+        ]
+      },
+      {
+        "description": "Design and build overarching orchestration capabilities, managing APIs and Model Context Protocols (MCPs) to expose products to other agents.",
+        "evidence": [
+          {
+            "excerpt": "Design and build overarching orchestration capabilities",
+            "section": "Key Responsibilities"
+          }
+        ]
+      },
+      {
+        "description": "Contribute to the evolution of the company's two key products: the original no-code workflow builder and the strict, hallucination-free AI Q&A layer.",
+        "evidence": [
+          {
+            "excerpt": "Contribute to the evolution of the company's two key products",
+            "section": "Key Responsibilities"
+          }
+        ]
+      },
+      {
+        "description": "Help review and elevate the way the engineering team builds software, integrating AI tools (like Claude Code) to enhance coding, design, and delivery workflows.",
+        "evidence": [
+          {
+            "excerpt": "Help review and elevate the way the engineering team builds software",
+            "section": "Key Responsibilities"
+          }
+        ]
+      },
+      {
+        "description": "Call out gaps in the current architecture (currently GCP, Python, TypeScript, Vue) and guide the team in establishing AI-driven DevOps practices.",
+        "evidence": [
+          {
+            "excerpt": "Call out gaps in the current architecture (currently GCP, Python, TypeScript, Vue)",
+            "section": "Key Responsibilities"
+          }
+        ]
+      }
+    ],
+    "compensation": {
+      "clarity": "ambiguous",
+      "minimum": null,
+      "maximum": null,
+      "currency": null,
+      "period": null,
+      "raw_text": "Competitive Salary (Depending on experience)",
+      "evidence": [
+        {
+          "excerpt": "Competitive Salary (Depending on experience)",
+          "section": "JobDescription"
+        }
+      ]
+    },
+    "location": {
+      "clarity": "stated",
+      "summary": "Melbourne, VIC (Remote in Australia)",
+      "evidence": [
+        {
+          "excerpt": "Melbourne VIC (Hybrid)",
+          "section": "JobDescription"
+        }
+      ]
+    },
+    "work_arrangement": {
+      "arrangement": "hybrid",
+      "details": "Remote (Anywhere in Australia)",
+      "evidence": [
+        {
+          "excerpt": "Remote (Anywhere in Australia)",
+          "section": "JobDescription"
+        }
+      ]
+    },
+    "employment": {
+      "working_hours": "full_time",
+      "engagement_type": "permanent",
+      "evidence": [
+        {
+          "excerpt": "Permanent / Full-Time (Flexible/Fractional arrangements also considered)",
+          "section": "JobDescription"
+        }
+      ]
+    },
+    "experience_requirements": [
+      {
+        "description": "Experience as a mid-to-senior-level engineer with a deep interest in AI orchestration, agents, and LLMs.",
+        "level": "required",
+        "minimum_years": null,
+        "maximum_years": null,
+        "evidence": [
+          {
+            "excerpt": "You are an experienced and curious, mid-to-senior-level engineer with a deep interest in AI orchestration, agents, and LLMs",
+            "section": "About You"
+          }
+        ]
+      }
+    ]
+  },
+  "opportunity_assessment": {
+    "job_analysis": {
+      "posting": {
+        "raw_text": "AI Engineer\n\nRedwolf + Rosch \nView all jobs\nMelbourne VIC (Hybrid)\nEngineering - Software (Information & Communication Technology)\nFull time\nCompetitive Salary (Depending on experience)\n\n\nA fantastic opportunity to drive an AI-first engineering culture at an established and growing startup.\nRemote (Anywhere in Australia)\nCompetitive Salary (Depending on experience)\nPermanent / Full-Time (Flexible/Fractional arrangements also considered) \n  \nAbout the Company\nOur client is a highly successful, mission-driven legal technology platform founded in Melbourne with a global footprint. They provide a no-code builder and an advanced AI module that empowers enterprise legal teams and community legal centres to turn complex processes into accessible, self-service tools.\n  \nWith a deeply ingrained culture of purpose, scrappiness, and support, this small but mighty team of 20 is revolutionising how legal work gets done. They believe strongly in remote work—whether you're based in a major city or driving around Australia in a van. They maintain connection through regular all-hands meetings and fantastic team offsites (past trips include Bali, Vietnam, and the Great Ocean Road). Plus, every full-time employee enjoys one dedicated \"Company Day\" (a day dedicated to the company's core mission).\n  \nThe Role\nWe are seeking an innovative and strategic AI Engineer to join a flat-structured engineering team of five, reporting directly to the CEO. This is a greenfield, exploratory role where you will play a pivotal part in transitioning the company toward an AI-native delivery workflow.\n  \nYou don't need decades of commercial AI experience; instead, we are looking for a curious, product-minded engineer who understands business problems and user needs. You will help build the orchestration layer that connects the company's core workflow builder with its new AI product, integrating with internal and external agents.\n  \nKey Responsibilities\nStrategic Implementation: Work closely with the Tech Leads and CEO to implement the technical vision, moving experimental AI prototypes into robust, production-ready features.\nAgent Orchestration: Design and build overarching orchestration capabilities, managing APIs and Model Context Protocols (MCPs) to expose products to other agents.\nProduct Development: Contribute to the evolution of the company's two key products: the original no-code workflow builder and the strict, hallucination-free AI Q&A layer.\nProcess Innovation: Help review and elevate the way the engineering team builds software, integrating AI tools (like Claude Code) to enhance coding, design, and delivery workflows.\nContinuous Improvement: Call out gaps in the current architecture (currently GCP, Python, TypeScript, Vue) and guide the team in establishing AI-driven DevOps practices.\n  \nAbout You\nMindset Over Tech Stack: You possess a strong product mindset. While experience with Python, TypeScript, Vue, and GCP is highly advantageous, your attitude, curiosity, and openness to learning are what truly matter.\nAI Enthusiasm: You are an experienced and curious, mid-to-senior-level engineer with a deep interest in AI orchestration, agents, and LLMs.\nStrategic Thinker: You can understand complex business problems and take others on the journey with you, translating research and prototypes into meaningful outcomes.\nAdaptable: You thrive in a startup environment \nEmpathy for the User: You care about the end-user experience, specifically making life better and more efficient for legal teams.\n  \nWhy Apply?\nUltimate Flexibility: 100% remote across Australia. Open to full-time or flexible/fractional arrangements \nMeaningful Work: Contribute to a platform that not only serves major enterprise clients such as international sporting and fitness brands but also does significant pro bono work for community legal centres.\nExceptional Culture: Join a supportive, fun, and dedicated team that values work-life balance—no forced early morning or late-night calls.\nGrowth Opportunity: Shape the technical direction of a business that is ready to go fully AI-native.\n  \nAPPLY NOW\n\nIf you are a curious, product-focused engineer ready to make a significant impact in the legal tech space, we want to hear from you. Please submit your updated resume via the Apply button below.\n  \n  \nRedwolf + Rosch invite and encourage applications from all backgrounds of gender, disability, culture, and race. If you are a person with a disability and require modifications to the recruitment process, please contact your Redwolf + Rosch Recruitment Consultant",
+        "title": "AI Engineer",
+        "company": "Redwolf + Rosch",
+        "source_url": null
+      },
+      "role_family": {
+        "family": "ai_engineering",
+        "evidence": [
+          {
+            "excerpt": "A fantastic opportunity to drive an AI-first engineering culture",
+            "section": "About the Company"
+          }
+        ]
+      },
+      "seniority": {
+        "level": "mid",
+        "ambiguous": false,
+        "candidate_levels": [],
+        "evidence": [
+          {
+            "excerpt": "We are seeking an innovative and strategic AI Engineer",
+            "section": "The Role"
+          }
+        ]
+      },
+      "technologies": [
+        {
+          "name": "Python",
+          "level": "preferred",
+          "evidence": [
+            {
+              "excerpt": "experience with Python, TypeScript, Vue, and GCP is highly advantageous",
+              "section": "About You"
+            }
+          ]
+        },
+        {
+          "name": "TypeScript",
+          "level": "preferred",
+          "evidence": [
+            {
+              "excerpt": "experience with Python, TypeScript, Vue, and GCP is highly advantageous",
+              "section": "About You"
+            }
+          ]
+        },
+        {
+          "name": "Vue",
+          "level": "preferred",
+          "evidence": [
+            {
+              "excerpt": "experience with Python, TypeScript, Vue, and GCP is highly advantageous",
+              "section": "About You"
+            }
+          ]
+        },
+        {
+          "name": "GCP",
+          "level": "preferred",
+          "evidence": [
+            {
+              "excerpt": "experience with Python, TypeScript, Vue, and GCP is highly advantageous",
+              "section": "About You"
+            }
+          ]
+        }
+      ],
+      "responsibilities": [
+        {
+          "description": "Work closely with the Tech Leads and CEO to implement the technical vision, moving experimental AI prototypes into robust, production-ready features.",
+          "evidence": [
+            {
+              "excerpt": "Work closely with the Tech Leads and CEO to implement the technical vision",
+              "section": "Key Responsibilities"
+            }
+          ]
+        },
+        {
+          "description": "Design and build overarching orchestration capabilities, managing APIs and Model Context Protocols (MCPs) to expose products to other agents.",
+          "evidence": [
+            {
+              "excerpt": "Design and build overarching orchestration capabilities",
+              "section": "Key Responsibilities"
+            }
+          ]
+        },
+        {
+          "description": "Contribute to the evolution of the company's two key products: the original no-code workflow builder and the strict, hallucination-free AI Q&A layer.",
+          "evidence": [
+            {
+              "excerpt": "Contribute to the evolution of the company's two key products",
+              "section": "Key Responsibilities"
+            }
+          ]
+        },
+        {
+          "description": "Help review and elevate the way the engineering team builds software, integrating AI tools (like Claude Code) to enhance coding, design, and delivery workflows.",
+          "evidence": [
+            {
+              "excerpt": "Help review and elevate the way the engineering team builds software",
+              "section": "Key Responsibilities"
+            }
+          ]
+        },
+        {
+          "description": "Call out gaps in the current architecture (currently GCP, Python, TypeScript, Vue) and guide the team in establishing AI-driven DevOps practices.",
+          "evidence": [
+            {
+              "excerpt": "Call out gaps in the current architecture (currently GCP, Python, TypeScript, Vue)",
+              "section": "Key Responsibilities"
+            }
+          ]
+        }
+      ],
+      "compensation": {
+        "clarity": "ambiguous",
+        "minimum": null,
+        "maximum": null,
+        "currency": null,
+        "period": null,
+        "raw_text": "Competitive Salary (Depending on experience)",
+        "evidence": [
+          {
+            "excerpt": "Competitive Salary (Depending on experience)",
+            "section": "JobDescription"
+          }
+        ]
+      },
+      "location": {
+        "clarity": "stated",
+        "summary": "Melbourne, VIC (Remote in Australia)",
+        "evidence": [
+          {
+            "excerpt": "Melbourne VIC (Hybrid)",
+            "section": "JobDescription"
+          }
+        ]
+      },
+      "work_arrangement": {
+        "arrangement": "hybrid",
+        "details": "Remote (Anywhere in Australia)",
+        "evidence": [
+          {
+            "excerpt": "Remote (Anywhere in Australia)",
+            "section": "JobDescription"
+          }
+        ]
+      },
+      "employment": {
+        "working_hours": "full_time",
+        "engagement_type": "permanent",
+        "evidence": [
+          {
+            "excerpt": "Permanent / Full-Time (Flexible/Fractional arrangements also considered)",
+            "section": "JobDescription"
+          }
+        ]
+      },
+      "experience_requirements": [
+        {
+          "description": "Experience as a mid-to-senior-level engineer with a deep interest in AI orchestration, agents, and LLMs.",
+          "level": "required",
+          "minimum_years": null,
+          "maximum_years": null,
+          "evidence": [
+            {
+              "excerpt": "You are an experienced and curious, mid-to-senior-level engineer with a deep interest in AI orchestration, agents, and LLMs",
+              "section": "About You"
+            }
+          ]
+        }
+      ]
+    },
+    "technical_fit": {
+      "dimension": "technical",
+      "judgment": "mixed",
+      "summary": "Strong alignment on core skills but gaps in commercial AI experience.",
+      "findings": [
+        {
+          "kind": "partial_alignment",
+          "summary": "Profile shows capability in AI-related projects but lacks direct commercial experience with AI orchestration and agents.",
+          "detail": "The candidate has delivered independent AI applications but does not have direct experience in a commercial AI engineering role.",
+          "importance": "material",
+          "job_evidence": [
+            {
+              "source": "experience_requirement",
+              "item_index": 0,
+              "name": "Experience as a mid-to-senior-level engineer with a deep interest in AI orchestration, agents, and LLMs.",
+              "excerpt": "You are an experienced and curious, mid-to-senior-level engineer with a deep interest in AI orchestration, agents, and LLMs"
+            }
+          ],
+          "profile_evidence": [
+            {
+              "source": "experience",
+              "ref": "experience:chase-risk-compliance-ai-engineer",
+              "excerpt": "Delivered a portfolio of AI applications spanning retrieval-augmented generation, operational intelligence, explainable diagnostics, and enterprise decision support."
+            },
+            {
+              "source": "project",
+              "ref": "project:operational-intelligence-copilot",
+              "excerpt": "Demonstrates operational intelligence capability for understanding business data."
+            }
+          ],
+          "assumption": null
+        },
+        {
+          "kind": "gap",
+          "summary": "Missing demonstrated commercial experience with AI orchestration and delivery at a significant scale.",
+          "detail": "The position requires proven AI deployment experience which is not substantiated in the profile.",
+          "importance": "material",
+          "job_evidence": [
+            {
+              "source": "responsibility",
+              "item_index": 0,
+              "name": "Work closely with the Tech Leads and CEO to implement the technical vision, moving experimental AI prototypes into robust, production-ready features.",
+              "excerpt": "Work closely with the Tech Leads and CEO to implement the technical vision"
+            }
+          ],
+          "profile_evidence": [],
+          "assumption": null
+        }
+      ]
+    },
+    "commercial_fit": {
+      "dimension": "commercial",
+      "judgment": "mixed",
+      "summary": "Clarifications needed on compensation structure and commercial experience.",
+      "findings": [
+        {
+          "kind": "uncertainty",
+          "summary": "Compensation details are ambiguous as they depend on experience.",
+          "detail": "Since the salary range is not provided, compensation could be a potential issue depending on the candidate's expectations.",
+          "importance": "minor",
+          "job_evidence": [
+            {
+              "source": "compensation",
+              "item_index": null,
+              "name": null,
+              "excerpt": "Competitive Salary (Depending on experience)"
+            }
+          ],
+          "profile_evidence": [],
+          "assumption": null
+        },
+        {
+          "kind": "gap",
+          "summary": "Commercial AI production delivery experience is absent.",
+          "detail": "The job requires proven experience which the profile does not explicitly cover.",
+          "importance": "material",
+          "job_evidence": [
+            {
+              "source": "experience_requirement",
+              "item_index": 0,
+              "name": null,
+              "excerpt": "Experience as a mid-to-senior-level engineer with a deep interest in AI orchestration, agents, and LLMs."
+            }
+          ],
+          "profile_evidence": [],
+          "assumption": null
+        }
+      ]
+    },
+    "portfolio_fit": {
+      "dimension": "portfolio",
+      "judgment": "strong",
+      "summary": "The candidate has substantial independent projects that demonstrate relevant skills.",
+      "findings": [
+        {
+          "kind": "alignment",
+          "summary": "Portfolio demonstrates relevant skills and capabilities for AI engineering roles.",
+          "detail": "Projects feature applied AI technologies and showcase substantial engineering undertakings.",
+          "importance": "material",
+          "job_evidence": [
+            {
+              "source": "responsibility",
+              "item_index": 2,
+              "name": null,
+              "excerpt": "Contribute to the evolution of the company's two key products"
+            }
+          ],
+          "profile_evidence": [
+            {
+              "source": "project",
+              "ref": "project:governance-document-rag",
+              "excerpt": "Allows organisations to answer questions from their own documents with responses that stay grounded in source material."
+            },
+            {
+              "source": "project",
+              "ref": "project:operational-intelligence-copilot",
+              "excerpt": "Demonstrates operational intelligence capability for understanding business data."
+            }
+          ],
+          "assumption": null
+        }
+      ]
+    },
+    "summary": {
+      "summary": "The candidate shows a solid technical foundation with significant independent engineering projects but lacks direct commercial experience in applying AI orchestration at scale. Compensation expectations require clarification to align with the ambiguous job offer. Overall, while there are strengths in portfolio and technical capabilities, the commercial and experience aspects present material gaps.",
+      "key_alignments": [
+        "Technical skills match AI Engineering requirements.",
+        "Independent projects demonstrate capability."
+      ],
+      "key_gaps": [
+        "Commercial AI experience lacking.",
+        "Ambiguity in compensation expectations."
+      ]
+    }
+  },
+  "portfolio_match": {
+    "job_analysis": {
+      "posting": {
+        "raw_text": "AI Engineer\n\nRedwolf + Rosch \nView all jobs\nMelbourne VIC (Hybrid)\nEngineering - Software (Information & Communication Technology)\nFull time\nCompetitive Salary (Depending on experience)\n\n\nA fantastic opportunity to drive an AI-first engineering culture at an established and growing startup.\nRemote (Anywhere in Australia)\nCompetitive Salary (Depending on experience)\nPermanent / Full-Time (Flexible/Fractional arrangements also considered) \n  \nAbout the Company\nOur client is a highly successful, mission-driven legal technology platform founded in Melbourne with a global footprint. They provide a no-code builder and an advanced AI module that empowers enterprise legal teams and community legal centres to turn complex processes into accessible, self-service tools.\n  \nWith a deeply ingrained culture of purpose, scrappiness, and support, this small but mighty team of 20 is revolutionising how legal work gets done. They believe strongly in remote work—whether you're based in a major city or driving around Australia in a van. They maintain connection through regular all-hands meetings and fantastic team offsites (past trips include Bali, Vietnam, and the Great Ocean Road). Plus, every full-time employee enjoys one dedicated \"Company Day\" (a day dedicated to the company's core mission).\n  \nThe Role\nWe are seeking an innovative and strategic AI Engineer to join a flat-structured engineering team of five, reporting directly to the CEO. This is a greenfield, exploratory role where you will play a pivotal part in transitioning the company toward an AI-native delivery workflow.\n  \nYou don't need decades of commercial AI experience; instead, we are looking for a curious, product-minded engineer who understands business problems and user needs. You will help build the orchestration layer that connects the company's core workflow builder with its new AI product, integrating with internal and external agents.\n  \nKey Responsibilities\nStrategic Implementation: Work closely with the Tech Leads and CEO to implement the technical vision, moving experimental AI prototypes into robust, production-ready features.\nAgent Orchestration: Design and build overarching orchestration capabilities, managing APIs and Model Context Protocols (MCPs) to expose products to other agents.\nProduct Development: Contribute to the evolution of the company's two key products: the original no-code workflow builder and the strict, hallucination-free AI Q&A layer.\nProcess Innovation: Help review and elevate the way the engineering team builds software, integrating AI tools (like Claude Code) to enhance coding, design, and delivery workflows.\nContinuous Improvement: Call out gaps in the current architecture (currently GCP, Python, TypeScript, Vue) and guide the team in establishing AI-driven DevOps practices.\n  \nAbout You\nMindset Over Tech Stack: You possess a strong product mindset. While experience with Python, TypeScript, Vue, and GCP is highly advantageous, your attitude, curiosity, and openness to learning are what truly matter.\nAI Enthusiasm: You are an experienced and curious, mid-to-senior-level engineer with a deep interest in AI orchestration, agents, and LLMs.\nStrategic Thinker: You can understand complex business problems and take others on the journey with you, translating research and prototypes into meaningful outcomes.\nAdaptable: You thrive in a startup environment \nEmpathy for the User: You care about the end-user experience, specifically making life better and more efficient for legal teams.\n  \nWhy Apply?\nUltimate Flexibility: 100% remote across Australia. Open to full-time or flexible/fractional arrangements \nMeaningful Work: Contribute to a platform that not only serves major enterprise clients such as international sporting and fitness brands but also does significant pro bono work for community legal centres.\nExceptional Culture: Join a supportive, fun, and dedicated team that values work-life balance—no forced early morning or late-night calls.\nGrowth Opportunity: Shape the technical direction of a business that is ready to go fully AI-native.\n  \nAPPLY NOW\n\nIf you are a curious, product-focused engineer ready to make a significant impact in the legal tech space, we want to hear from you. Please submit your updated resume via the Apply button below.\n  \n  \nRedwolf + Rosch invite and encourage applications from all backgrounds of gender, disability, culture, and race. If you are a person with a disability and require modifications to the recruitment process, please contact your Redwolf + Rosch Recruitment Consultant",
+        "title": "AI Engineer",
+        "company": "Redwolf + Rosch",
+        "source_url": null
+      },
+      "role_family": {
+        "family": "ai_engineering",
+        "evidence": [
+          {
+            "excerpt": "A fantastic opportunity to drive an AI-first engineering culture",
+            "section": "About the Company"
+          }
+        ]
+      },
+      "seniority": {
+        "level": "mid",
+        "ambiguous": false,
+        "candidate_levels": [],
+        "evidence": [
+          {
+            "excerpt": "We are seeking an innovative and strategic AI Engineer",
+            "section": "The Role"
+          }
+        ]
+      },
+      "technologies": [
+        {
+          "name": "Python",
+          "level": "preferred",
+          "evidence": [
+            {
+              "excerpt": "experience with Python, TypeScript, Vue, and GCP is highly advantageous",
+              "section": "About You"
+            }
+          ]
+        },
+        {
+          "name": "TypeScript",
+          "level": "preferred",
+          "evidence": [
+            {
+              "excerpt": "experience with Python, TypeScript, Vue, and GCP is highly advantageous",
+              "section": "About You"
+            }
+          ]
+        },
+        {
+          "name": "Vue",
+          "level": "preferred",
+          "evidence": [
+            {
+              "excerpt": "experience with Python, TypeScript, Vue, and GCP is highly advantageous",
+              "section": "About You"
+            }
+          ]
+        },
+        {
+          "name": "GCP",
+          "level": "preferred",
+          "evidence": [
+            {
+              "excerpt": "experience with Python, TypeScript, Vue, and GCP is highly advantageous",
+              "section": "About You"
+            }
+          ]
+        }
+      ],
+      "responsibilities": [
+        {
+          "description": "Work closely with the Tech Leads and CEO to implement the technical vision, moving experimental AI prototypes into robust, production-ready features.",
+          "evidence": [
+            {
+              "excerpt": "Work closely with the Tech Leads and CEO to implement the technical vision",
+              "section": "Key Responsibilities"
+            }
+          ]
+        },
+        {
+          "description": "Design and build overarching orchestration capabilities, managing APIs and Model Context Protocols (MCPs) to expose products to other agents.",
+          "evidence": [
+            {
+              "excerpt": "Design and build overarching orchestration capabilities",
+              "section": "Key Responsibilities"
+            }
+          ]
+        },
+        {
+          "description": "Contribute to the evolution of the company's two key products: the original no-code workflow builder and the strict, hallucination-free AI Q&A layer.",
+          "evidence": [
+            {
+              "excerpt": "Contribute to the evolution of the company's two key products",
+              "section": "Key Responsibilities"
+            }
+          ]
+        },
+        {
+          "description": "Help review and elevate the way the engineering team builds software, integrating AI tools (like Claude Code) to enhance coding, design, and delivery workflows.",
+          "evidence": [
+            {
+              "excerpt": "Help review and elevate the way the engineering team builds software",
+              "section": "Key Responsibilities"
+            }
+          ]
+        },
+        {
+          "description": "Call out gaps in the current architecture (currently GCP, Python, TypeScript, Vue) and guide the team in establishing AI-driven DevOps practices.",
+          "evidence": [
+            {
+              "excerpt": "Call out gaps in the current architecture (currently GCP, Python, TypeScript, Vue)",
+              "section": "Key Responsibilities"
+            }
+          ]
+        }
+      ],
+      "compensation": {
+        "clarity": "ambiguous",
+        "minimum": null,
+        "maximum": null,
+        "currency": null,
+        "period": null,
+        "raw_text": "Competitive Salary (Depending on experience)",
+        "evidence": [
+          {
+            "excerpt": "Competitive Salary (Depending on experience)",
+            "section": "JobDescription"
+          }
+        ]
+      },
+      "location": {
+        "clarity": "stated",
+        "summary": "Melbourne, VIC (Remote in Australia)",
+        "evidence": [
+          {
+            "excerpt": "Melbourne VIC (Hybrid)",
+            "section": "JobDescription"
+          }
+        ]
+      },
+      "work_arrangement": {
+        "arrangement": "hybrid",
+        "details": "Remote (Anywhere in Australia)",
+        "evidence": [
+          {
+            "excerpt": "Remote (Anywhere in Australia)",
+            "section": "JobDescription"
+          }
+        ]
+      },
+      "employment": {
+        "working_hours": "full_time",
+        "engagement_type": "permanent",
+        "evidence": [
+          {
+            "excerpt": "Permanent / Full-Time (Flexible/Fractional arrangements also considered)",
+            "section": "JobDescription"
+          }
+        ]
+      },
+      "experience_requirements": [
+        {
+          "description": "Experience as a mid-to-senior-level engineer with a deep interest in AI orchestration, agents, and LLMs.",
+          "level": "required",
+          "minimum_years": null,
+          "maximum_years": null,
+          "evidence": [
+            {
+              "excerpt": "You are an experienced and curious, mid-to-senior-level engineer with a deep interest in AI orchestration, agents, and LLMs",
+              "section": "About You"
+            }
+          ]
+        }
+      ]
+    },
+    "ranked_projects": [
+      {
+        "rank": 1,
+        "project_id": "governance-document-rag",
+        "rationale": "Project 'governance-document-rag' ranked on 5 demonstrates overlap(s), 4 responsibility overlap(s), 1 capability overlap(s), 1 generic preferred technology hit(s).",
+        "factors": [
+          {
+            "kind": "preferred_technology",
+            "summary": "Project evidence supports preferred technology 'Python' (generic stack term).",
+            "job_evidence": [
+              {
+                "source": "technology",
+                "item_index": 0,
+                "name": "Python",
+                "excerpt": "experience with Python, TypeScript, Vue, and GCP is highly advantageous"
+              }
+            ],
+            "profile_evidence": [
+              {
+                "source": "project",
+                "ref": "project:governance-document-rag",
+                "excerpt": "Python"
+              }
+            ]
+          },
+          {
+            "kind": "capability_overlap",
+            "summary": "Project demonstrates 'orchestration' capability overlapping job evidence 'Design and build overarching orchestration capabilities, managing APIs and Model Context Protocols (MCPs) to expose products to other agents.'.",
+            "job_evidence": [
+              {
+                "source": "responsibility",
+                "item_index": 1,
+                "name": null,
+                "excerpt": "Design and build overarching orchestration capabilities"
+              }
+            ],
+            "profile_evidence": [
+              {
+                "source": "project",
+                "ref": "project:governance-document-rag",
+                "excerpt": "orchestration"
+              }
+            ]
+          },
+          {
+            "kind": "demonstrates_overlap",
+            "summary": "Project demonstrates capabilities overlapping responsibility 'Work closely with the Tech Leads and CEO to implement the technical vision, moving experimental AI prototypes into robust, production-ready features.'.",
+            "job_evidence": [
+              {
+                "source": "responsibility",
+                "item_index": 0,
+                "name": null,
+                "excerpt": "Work closely with the Tech Leads and CEO to implement the technical vision"
+              }
+            ],
+            "profile_evidence": [
+              {
+                "source": "project",
+                "ref": "project:governance-document-rag",
+                "excerpt": "AI evaluation frameworks"
+              }
+            ]
+          },
+          {
+            "kind": "responsibility_overlap",
+            "summary": "Project summary, outcomes, or technologies overlap responsibility 'Work closely with the Tech Leads and CEO to implement the technical vision, moving experimental AI prototypes into robust, production-ready features.'.",
+            "job_evidence": [
+              {
+                "source": "responsibility",
+                "item_index": 0,
+                "name": null,
+                "excerpt": "Work closely with the Tech Leads and CEO to implement the technical vision"
+              }
+            ],
+            "profile_evidence": [
+              {
+                "source": "project",
+                "ref": "project:governance-document-rag",
+                "excerpt": "Allows organisations to answer questions from their own documents with responses that stay grounded in source material. Built for teams that need trustworthy A…"
+              }
+            ]
+          },
+          {
+            "kind": "demonstrates_overlap",
+            "summary": "Project demonstrates capabilities overlapping responsibility 'Design and build overarching orchestration capabilities, managing APIs and Model Context Protocols (MCPs) to expose products to other agents.'.",
+            "job_evidence": [
+              {
+                "source": "responsibility",
+                "item_index": 1,
+                "name": null,
+                "excerpt": "Design and build overarching orchestration capabilities"
+              }
+            ],
+            "profile_evidence": [
+              {
+                "source": "project",
+                "ref": "project:governance-document-rag",
+                "excerpt": "Retrieval orchestration"
+              }
+            ]
+          },
+          {
+            "kind": "demonstrates_overlap",
+            "summary": "Project demonstrates capabilities overlapping responsibility 'Contribute to the evolution of the company's two key products: the original no-code workflow builder and the strict, hallucination-free AI Q&A layer.'.",
+            "job_evidence": [
+              {
+                "source": "responsibility",
+                "item_index": 2,
+                "name": null,
+                "excerpt": "Contribute to the evolution of the company's two key products"
+              }
+            ],
+            "profile_evidence": [
+              {
+                "source": "project",
+                "ref": "project:governance-document-rag",
+                "excerpt": "AI evaluation frameworks"
+              }
+            ]
+          },
+          {
+            "kind": "responsibility_overlap",
+            "summary": "Project summary, outcomes, or technologies overlap responsibility 'Contribute to the evolution of the company's two key products: the original no-code workflow builder and the strict, hallucination-free AI Q&A layer.'.",
+            "job_evidence": [
+              {
+                "source": "responsibility",
+                "item_index": 2,
+                "name": null,
+                "excerpt": "Contribute to the evolution of the company's two key products"
+              }
+            ],
+            "profile_evidence": [
+              {
+                "source": "project",
+                "ref": "project:governance-document-rag",
+                "excerpt": "Allows organisations to answer questions from their own documents with responses that stay grounded in source material. Built for teams that need trustworthy A…"
+              }
+            ]
+          },
+          {
+            "kind": "demonstrates_overlap",
+            "summary": "Project demonstrates capabilities overlapping responsibility 'Help review and elevate the way the engineering team builds software, integrating AI tools (like Claude Code) to enhance coding, design, and delivery workflows.'.",
+            "job_evidence": [
+              {
+                "source": "responsibility",
+                "item_index": 3,
+                "name": null,
+                "excerpt": "Help review and elevate the way the engineering team builds software"
+              }
+            ],
+            "profile_evidence": [
+              {
+                "source": "project",
+                "ref": "project:governance-document-rag",
+                "excerpt": "AI evaluation frameworks"
+              }
+            ]
+          },
+          {
+            "kind": "responsibility_overlap",
+            "summary": "Project summary, outcomes, or technologies overlap responsibility 'Help review and elevate the way the engineering team builds software, integrating AI tools (like Claude Code) to enhance coding, design, and delivery workflows.'.",
+            "job_evidence": [
+              {
+                "source": "responsibility",
+                "item_index": 3,
+                "name": null,
+                "excerpt": "Help review and elevate the way the engineering team builds software"
+              }
+            ],
+            "profile_evidence": [
+              {
+                "source": "project",
+                "ref": "project:governance-document-rag",
+                "excerpt": "Allows organisations to answer questions from their own documents with responses that stay grounded in source material. Built for teams that need trustworthy A…"
+              }
+            ]
+          },
+          {
+            "kind": "demonstrates_overlap",
+            "summary": "Project demonstrates capabilities overlapping responsibility 'Call out gaps in the current architecture (currently GCP, Python, TypeScript, Vue) and guide the team in establishing AI-driven DevOps practices.'.",
+            "job_evidence": [
+              {
+                "source": "responsibility",
+                "item_index": 4,
+                "name": null,
+                "excerpt": "Call out gaps in the current architecture (currently GCP, Python, TypeScript, Vue)"
+              }
+            ],
+            "profile_evidence": [
+              {
+                "source": "project",
+                "ref": "project:governance-document-rag",
+                "excerpt": "AI evaluation frameworks"
+              }
+            ]
+          },
+          {
+            "kind": "responsibility_overlap",
+            "summary": "Project summary, outcomes, or technologies overlap responsibility 'Call out gaps in the current architecture (currently GCP, Python, TypeScript, Vue) and guide the team in establishing AI-driven DevOps practices.'.",
+            "job_evidence": [
+              {
+                "source": "responsibility",
+                "item_index": 4,
+                "name": null,
+                "excerpt": "Call out gaps in the current architecture (currently GCP, Python, TypeScript, Vue)"
+              }
+            ],
+            "profile_evidence": [
+              {
+                "source": "project",
+                "ref": "project:governance-document-rag",
+                "excerpt": "Allows organisations to answer questions from their own documents with responses that stay grounded in source material. Built for teams that need trustworthy A…"
+              }
+            ]
+          }
+        ],
+        "tie_group": null,
+        "tie_break_reason": null
+      },
+      {
+        "rank": 2,
+        "project_id": "operational-intelligence-copilot",
+        "rationale": "Project 'operational-intelligence-copilot' ranked on 4 demonstrates overlap(s), 5 responsibility overlap(s), 2 capability overlap(s), 1 generic preferred technology hit(s).",
+        "factors": [
+          {
+            "kind": "preferred_technology",
+            "summary": "Project evidence supports preferred technology 'Python' (generic stack term).",
+            "job_evidence": [
+              {
+                "source": "technology",
+                "item_index": 0,
+                "name": "Python",
+                "excerpt": "experience with Python, TypeScript, Vue, and GCP is highly advantageous"
+              }
+            ],
+            "profile_evidence": [
+              {
+                "source": "project",
+                "ref": "project:operational-intelligence-copilot",
+                "excerpt": "Python"
+              }
+            ]
+          },
+          {
+            "kind": "capability_overlap",
+            "summary": "Project demonstrates 'agents reasoning' capability overlapping job evidence 'Design and build overarching orchestration capabilities, managing APIs and Model Context Protocols (MCPs) to expose products to other agents.'.",
+            "job_evidence": [
+              {
+                "source": "responsibility",
+                "item_index": 1,
+                "name": null,
+                "excerpt": "Design and build overarching orchestration capabilities"
+              }
+            ],
+            "profile_evidence": [
+              {
+                "source": "project",
+                "ref": "project:operational-intelligence-copilot",
+                "excerpt": "intent routing"
+              }
+            ]
+          },
+          {
+            "kind": "capability_overlap",
+            "summary": "Project demonstrates 'workflows pipelines' capability overlapping job evidence 'Contribute to the evolution of the company's two key products: the original no-code workflow builder and the strict, hallucination-free AI Q&A layer.'.",
+            "job_evidence": [
+              {
+                "source": "responsibility",
+                "item_index": 2,
+                "name": null,
+                "excerpt": "Contribute to the evolution of the company's two key products"
+              }
+            ],
+            "profile_evidence": [
+              {
+                "source": "project",
+                "ref": "project:operational-intelligence-copilot",
+                "excerpt": "workflows"
+              }
+            ]
+          },
+          {
+            "kind": "demonstrates_overlap",
+            "summary": "Project demonstrates capabilities overlapping responsibility 'Work closely with the Tech Leads and CEO to implement the technical vision, moving experimental AI prototypes into robust, production-ready features.'.",
+            "job_evidence": [
+              {
+                "source": "responsibility",
+                "item_index": 0,
+                "name": null,
+                "excerpt": "Work closely with the Tech Leads and CEO to implement the technical vision"
+              }
+            ],
+            "profile_evidence": [
+              {
+                "source": "project",
+                "ref": "project:operational-intelligence-copilot",
+                "excerpt": "Explainable AI recommendations"
+              }
+            ]
+          },
+          {
+            "kind": "responsibility_overlap",
+            "summary": "Project summary, outcomes, or technologies overlap responsibility 'Work closely with the Tech Leads and CEO to implement the technical vision, moving experimental AI prototypes into robust, production-ready features.'.",
+            "job_evidence": [
+              {
+                "source": "responsibility",
+                "item_index": 0,
+                "name": null,
+                "excerpt": "Work closely with the Tech Leads and CEO to implement the technical vision"
+              }
+            ],
+            "profile_evidence": [
+              {
+                "source": "project",
+                "ref": "project:operational-intelligence-copilot",
+                "excerpt": "Demonstrates operational intelligence capability for understanding business data. Combines reliable analytics with AI reasoning to surface anomalies and produc…"
+              }
+            ]
+          },
+          {
+            "kind": "responsibility_overlap",
+            "summary": "Project summary, outcomes, or technologies overlap responsibility 'Design and build overarching orchestration capabilities, managing APIs and Model Context Protocols (MCPs) to expose products to other agents.'.",
+            "job_evidence": [
+              {
+                "source": "responsibility",
+                "item_index": 1,
+                "name": null,
+                "excerpt": "Design and build overarching orchestration capabilities"
+              }
+            ],
+            "profile_evidence": [
+              {
+                "source": "project",
+                "ref": "project:operational-intelligence-copilot",
+                "excerpt": "OpenAI APIs"
+              }
+            ]
+          },
+          {
+            "kind": "demonstrates_overlap",
+            "summary": "Project demonstrates capabilities overlapping responsibility 'Contribute to the evolution of the company's two key products: the original no-code workflow builder and the strict, hallucination-free AI Q&A layer.'.",
+            "job_evidence": [
+              {
+                "source": "responsibility",
+                "item_index": 2,
+                "name": null,
+                "excerpt": "Contribute to the evolution of the company's two key products"
+              }
+            ],
+            "profile_evidence": [
+              {
+                "source": "project",
+                "ref": "project:operational-intelligence-copilot",
+                "excerpt": "Explainable AI recommendations"
+              }
+            ]
+          },
+          {
+            "kind": "responsibility_overlap",
+            "summary": "Project summary, outcomes, or technologies overlap responsibility 'Contribute to the evolution of the company's two key products: the original no-code workflow builder and the strict, hallucination-free AI Q&A layer.'.",
+            "job_evidence": [
+              {
+                "source": "responsibility",
+                "item_index": 2,
+                "name": null,
+                "excerpt": "Contribute to the evolution of the company's two key products"
+              }
+            ],
+            "profile_evidence": [
+              {
+                "source": "project",
+                "ref": "project:operational-intelligence-copilot",
+                "excerpt": "Demonstrates operational intelligence capability for understanding business data. Combines reliable analytics with AI reasoning to surface anomalies and produc…"
+              }
+            ]
+          },
+          {
+            "kind": "demonstrates_overlap",
+            "summary": "Project demonstrates capabilities overlapping responsibility 'Help review and elevate the way the engineering team builds software, integrating AI tools (like Claude Code) to enhance coding, design, and delivery workflows.'.",
+            "job_evidence": [
+              {
+                "source": "responsibility",
+                "item_index": 3,
+                "name": null,
+                "excerpt": "Help review and elevate the way the engineering team builds software"
+              }
+            ],
+            "profile_evidence": [
+              {
+                "source": "project",
+                "ref": "project:operational-intelligence-copilot",
+                "excerpt": "Regression-tested analytics workflows"
+              }
+            ]
+          },
+          {
+            "kind": "responsibility_overlap",
+            "summary": "Project summary, outcomes, or technologies overlap responsibility 'Help review and elevate the way the engineering team builds software, integrating AI tools (like Claude Code) to enhance coding, design, and delivery workflows.'.",
+            "job_evidence": [
+              {
+                "source": "responsibility",
+                "item_index": 3,
+                "name": null,
+                "excerpt": "Help review and elevate the way the engineering team builds software"
+              }
+            ],
+            "profile_evidence": [
+              {
+                "source": "project",
+                "ref": "project:operational-intelligence-copilot",
+                "excerpt": "Demonstrates operational intelligence capability for understanding business data. Combines reliable analytics with AI reasoning to surface anomalies and produc…"
+              }
+            ]
+          },
+          {
+            "kind": "demonstrates_overlap",
+            "summary": "Project demonstrates capabilities overlapping responsibility 'Call out gaps in the current architecture (currently GCP, Python, TypeScript, Vue) and guide the team in establishing AI-driven DevOps practices.'.",
+            "job_evidence": [
+              {
+                "source": "responsibility",
+                "item_index": 4,
+                "name": null,
+                "excerpt": "Call out gaps in the current architecture (currently GCP, Python, TypeScript, Vue)"
+              }
+            ],
+            "profile_evidence": [
+              {
+                "source": "project",
+                "ref": "project:operational-intelligence-copilot",
+                "excerpt": "Explainable AI recommendations"
+              }
+            ]
+          },
+          {
+            "kind": "responsibility_overlap",
+            "summary": "Project summary, outcomes, or technologies overlap responsibility 'Call out gaps in the current architecture (currently GCP, Python, TypeScript, Vue) and guide the team in establishing AI-driven DevOps practices.'.",
+            "job_evidence": [
+              {
+                "source": "responsibility",
+                "item_index": 4,
+                "name": null,
+                "excerpt": "Call out gaps in the current architecture (currently GCP, Python, TypeScript, Vue)"
+              }
+            ],
+            "profile_evidence": [
+              {
+                "source": "project",
+                "ref": "project:operational-intelligence-copilot",
+                "excerpt": "Demonstrates operational intelligence capability for understanding business data. Combines reliable analytics with AI reasoning to surface anomalies and produc…"
+              }
+            ]
+          }
+        ],
+        "tie_group": null,
+        "tie_break_reason": null
+      },
+      {
+        "rank": 3,
+        "project_id": "career-intelligence-copilot",
+        "rationale": "Project 'career-intelligence-copilot' ranked on 3 demonstrates overlap(s), 5 responsibility overlap(s), 1 generic preferred technology hit(s).",
+        "factors": [
+          {
+            "kind": "preferred_technology",
+            "summary": "Project evidence supports preferred technology 'Python' (generic stack term).",
+            "job_evidence": [
+              {
+                "source": "technology",
+                "item_index": 0,
+                "name": "Python",
+                "excerpt": "experience with Python, TypeScript, Vue, and GCP is highly advantageous"
+              }
+            ],
+            "profile_evidence": [
+              {
+                "source": "project",
+                "ref": "project:career-intelligence-copilot",
+                "excerpt": "Python"
+              }
+            ]
+          },
+          {
+            "kind": "responsibility_overlap",
+            "summary": "Project summary, outcomes, or technologies overlap responsibility 'Work closely with the Tech Leads and CEO to implement the technical vision, moving experimental AI prototypes into robust, production-ready features.'.",
+            "job_evidence": [
+              {
+                "source": "responsibility",
+                "item_index": 0,
+                "name": null,
+                "excerpt": "Work closely with the Tech Leads and CEO to implement the technical vision"
+              }
+            ],
+            "profile_evidence": [
+              {
+                "source": "project",
+                "ref": "project:career-intelligence-copilot",
+                "excerpt": "Enables an AI Engineering job seeker to decide which roles deserve effort. Reviews job ads against a structured career profile, ranks fit, recommends applicati…"
+              }
+            ]
+          },
+          {
+            "kind": "demonstrates_overlap",
+            "summary": "Project demonstrates capabilities overlapping responsibility 'Design and build overarching orchestration capabilities, managing APIs and Model Context Protocols (MCPs) to expose products to other agents.'.",
+            "job_evidence": [
+              {
+                "source": "responsibility",
+                "item_index": 1,
+                "name": null,
+                "excerpt": "Design and build overarching orchestration capabilities"
+              }
+            ],
+            "profile_evidence": [
+              {
+                "source": "project",
+                "ref": "project:career-intelligence-copilot",
+                "excerpt": "Structured career profile model"
+              }
+            ]
+          },
+          {
+            "kind": "responsibility_overlap",
+            "summary": "Project summary, outcomes, or technologies overlap responsibility 'Design and build overarching orchestration capabilities, managing APIs and Model Context Protocols (MCPs) to expose products to other agents.'.",
+            "job_evidence": [
+              {
+                "source": "responsibility",
+                "item_index": 1,
+                "name": null,
+                "excerpt": "Design and build overarching orchestration capabilities"
+              }
+            ],
+            "profile_evidence": [
+              {
+                "source": "project",
+                "ref": "project:career-intelligence-copilot",
+                "excerpt": "OpenAI APIs"
+              }
+            ]
+          },
+          {
+            "kind": "demonstrates_overlap",
+            "summary": "Project demonstrates capabilities overlapping responsibility 'Contribute to the evolution of the company's two key products: the original no-code workflow builder and the strict, hallucination-free AI Q&A layer.'.",
+            "job_evidence": [
+              {
+                "source": "responsibility",
+                "item_index": 2,
+                "name": null,
+                "excerpt": "Contribute to the evolution of the company's two key products"
+              }
+            ],
+            "profile_evidence": [
+              {
+                "source": "project",
+                "ref": "project:career-intelligence-copilot",
+                "excerpt": "Golden validation suites with GO / NO-GO release gates"
+              }
+            ]
+          },
+          {
+            "kind": "responsibility_overlap",
+            "summary": "Project summary, outcomes, or technologies overlap responsibility 'Contribute to the evolution of the company's two key products: the original no-code workflow builder and the strict, hallucination-free AI Q&A layer.'.",
+            "job_evidence": [
+              {
+                "source": "responsibility",
+                "item_index": 2,
+                "name": null,
+                "excerpt": "Contribute to the evolution of the company's two key products"
+              }
+            ],
+            "profile_evidence": [
+              {
+                "source": "project",
+                "ref": "project:career-intelligence-copilot",
+                "excerpt": "Enables an AI Engineering job seeker to decide which roles deserve effort. Reviews job ads against a structured career profile, ranks fit, recommends applicati…"
+              }
+            ]
+          },
+          {
+            "kind": "demonstrates_overlap",
+            "summary": "Project demonstrates capabilities overlapping responsibility 'Help review and elevate the way the engineering team builds software, integrating AI tools (like Claude Code) to enhance coding, design, and delivery workflows.'.",
+            "job_evidence": [
+              {
+                "source": "responsibility",
+                "item_index": 3,
+                "name": null,
+                "excerpt": "Help review and elevate the way the engineering team builds software"
+              }
+            ],
+            "profile_evidence": [
+              {
+                "source": "project",
+                "ref": "project:career-intelligence-copilot",
+                "excerpt": "Human-in-the-loop review of generated outputs"
+              }
+            ]
+          },
+          {
+            "kind": "responsibility_overlap",
+            "summary": "Project summary, outcomes, or technologies overlap responsibility 'Help review and elevate the way the engineering team builds software, integrating AI tools (like Claude Code) to enhance coding, design, and delivery workflows.'.",
+            "job_evidence": [
+              {
+                "source": "responsibility",
+                "item_index": 3,
+                "name": null,
+                "excerpt": "Help review and elevate the way the engineering team builds software"
+              }
+            ],
+            "profile_evidence": [
+              {
+                "source": "project",
+                "ref": "project:career-intelligence-copilot",
+                "excerpt": "Enables an AI Engineering job seeker to decide which roles deserve effort. Reviews job ads against a structured career profile, ranks fit, recommends applicati…"
+              }
+            ]
+          },
+          {
+            "kind": "responsibility_overlap",
+            "summary": "Project summary, outcomes, or technologies overlap responsibility 'Call out gaps in the current architecture (currently GCP, Python, TypeScript, Vue) and guide the team in establishing AI-driven DevOps practices.'.",
+            "job_evidence": [
+              {
+                "source": "responsibility",
+                "item_index": 4,
+                "name": null,
+                "excerpt": "Call out gaps in the current architecture (currently GCP, Python, TypeScript, Vue)"
+              }
+            ],
+            "profile_evidence": [
+              {
+                "source": "project",
+                "ref": "project:career-intelligence-copilot",
+                "excerpt": "Enables an AI Engineering job seeker to decide which roles deserve effort. Reviews job ads against a structured career profile, ranks fit, recommends applicati…"
+              }
+            ]
+          }
+        ],
+        "tie_group": null,
+        "tie_break_reason": null
+      },
+      {
+        "rank": 4,
+        "project_id": "payroll-diagnostics-engine",
+        "rationale": "Project 'payroll-diagnostics-engine' ranked on 2 responsibility overlap(s), 1 generic preferred technology hit(s).",
+        "factors": [
+          {
+            "kind": "preferred_technology",
+            "summary": "Project evidence supports preferred technology 'Python' (generic stack term).",
+            "job_evidence": [
+              {
+                "source": "technology",
+                "item_index": 0,
+                "name": "Python",
+                "excerpt": "experience with Python, TypeScript, Vue, and GCP is highly advantageous"
+              }
+            ],
+            "profile_evidence": [
+              {
+                "source": "project",
+                "ref": "project:payroll-diagnostics-engine",
+                "excerpt": "Python"
+              }
+            ]
+          },
+          {
+            "kind": "responsibility_overlap",
+            "summary": "Project summary, outcomes, or technologies overlap responsibility 'Work closely with the Tech Leads and CEO to implement the technical vision, moving experimental AI prototypes into robust, production-ready features.'.",
+            "job_evidence": [
+              {
+                "source": "responsibility",
+                "item_index": 0,
+                "name": null,
+                "excerpt": "Work closely with the Tech Leads and CEO to implement the technical vision"
+              }
+            ],
+            "profile_evidence": [
+              {
+                "source": "project",
+                "ref": "project:payroll-diagnostics-engine",
+                "excerpt": "Reviews payroll data against deterministic business rules to identify anomalies. Produces explainable findings and executive-ready reports so issues can be inv…"
+              }
+            ]
+          },
+          {
+            "kind": "responsibility_overlap",
+            "summary": "Project summary, outcomes, or technologies overlap responsibility 'Call out gaps in the current architecture (currently GCP, Python, TypeScript, Vue) and guide the team in establishing AI-driven DevOps practices.'.",
+            "job_evidence": [
+              {
+                "source": "responsibility",
+                "item_index": 4,
+                "name": null,
+                "excerpt": "Call out gaps in the current architecture (currently GCP, Python, TypeScript, Vue)"
+              }
+            ],
+            "profile_evidence": [
+              {
+                "source": "project",
+                "ref": "project:payroll-diagnostics-engine",
+                "excerpt": "Python"
+              }
+            ]
+          }
+        ],
+        "tie_group": 1,
+        "tie_break_reason": "equal primary ranking signals; ordered by stable project_id ascending"
+      },
+      {
+        "rank": 5,
+        "project_id": "public-holiday-entitlements",
+        "rationale": "Project 'public-holiday-entitlements' ranked on 2 responsibility overlap(s), 1 generic preferred technology hit(s).",
+        "factors": [
+          {
+            "kind": "preferred_technology",
+            "summary": "Project evidence supports preferred technology 'Python' (generic stack term).",
+            "job_evidence": [
+              {
+                "source": "technology",
+                "item_index": 0,
+                "name": "Python",
+                "excerpt": "experience with Python, TypeScript, Vue, and GCP is highly advantageous"
+              }
+            ],
+            "profile_evidence": [
+              {
+                "source": "project",
+                "ref": "project:public-holiday-entitlements",
+                "excerpt": "Python"
+              }
+            ]
+          },
+          {
+            "kind": "responsibility_overlap",
+            "summary": "Project summary, outcomes, or technologies overlap responsibility 'Design and build overarching orchestration capabilities, managing APIs and Model Context Protocols (MCPs) to expose products to other agents.'.",
+            "job_evidence": [
+              {
+                "source": "responsibility",
+                "item_index": 1,
+                "name": null,
+                "excerpt": "Design and build overarching orchestration capabilities"
+              }
+            ],
+            "profile_evidence": [
+              {
+                "source": "project",
+                "ref": "project:public-holiday-entitlements",
+                "excerpt": "Determines Australian public-holiday entitlements from location and rules for HR and payroll teams. Combines geospatial logic with external APIs to produce com…"
+              }
+            ]
+          },
+          {
+            "kind": "responsibility_overlap",
+            "summary": "Project summary, outcomes, or technologies overlap responsibility 'Call out gaps in the current architecture (currently GCP, Python, TypeScript, Vue) and guide the team in establishing AI-driven DevOps practices.'.",
+            "job_evidence": [
+              {
+                "source": "responsibility",
+                "item_index": 4,
+                "name": null,
+                "excerpt": "Call out gaps in the current architecture (currently GCP, Python, TypeScript, Vue)"
+              }
+            ],
+            "profile_evidence": [
+              {
+                "source": "project",
+                "ref": "project:public-holiday-entitlements",
+                "excerpt": "Python"
+              }
+            ]
+          }
+        ],
+        "tie_group": 1,
+        "tie_break_reason": "equal primary ranking signals; ordered by stable project_id ascending"
+      }
+    ],
+    "unranked_project_ids": [],
+    "summary": "Ranked 5 project(s); lead with 'governance-document-rag'. 0 project(s) had no matching factors.",
+    "insufficient_evidence": false
+  },
+  "application_strategy": {
+    "job_analysis": {
+      "posting": {
+        "raw_text": "AI Engineer\n\nRedwolf + Rosch \nView all jobs\nMelbourne VIC (Hybrid)\nEngineering - Software (Information & Communication Technology)\nFull time\nCompetitive Salary (Depending on experience)\n\n\nA fantastic opportunity to drive an AI-first engineering culture at an established and growing startup.\nRemote (Anywhere in Australia)\nCompetitive Salary (Depending on experience)\nPermanent / Full-Time (Flexible/Fractional arrangements also considered) \n  \nAbout the Company\nOur client is a highly successful, mission-driven legal technology platform founded in Melbourne with a global footprint. They provide a no-code builder and an advanced AI module that empowers enterprise legal teams and community legal centres to turn complex processes into accessible, self-service tools.\n  \nWith a deeply ingrained culture of purpose, scrappiness, and support, this small but mighty team of 20 is revolutionising how legal work gets done. They believe strongly in remote work—whether you're based in a major city or driving around Australia in a van. They maintain connection through regular all-hands meetings and fantastic team offsites (past trips include Bali, Vietnam, and the Great Ocean Road). Plus, every full-time employee enjoys one dedicated \"Company Day\" (a day dedicated to the company's core mission).\n  \nThe Role\nWe are seeking an innovative and strategic AI Engineer to join a flat-structured engineering team of five, reporting directly to the CEO. This is a greenfield, exploratory role where you will play a pivotal part in transitioning the company toward an AI-native delivery workflow.\n  \nYou don't need decades of commercial AI experience; instead, we are looking for a curious, product-minded engineer who understands business problems and user needs. You will help build the orchestration layer that connects the company's core workflow builder with its new AI product, integrating with internal and external agents.\n  \nKey Responsibilities\nStrategic Implementation: Work closely with the Tech Leads and CEO to implement the technical vision, moving experimental AI prototypes into robust, production-ready features.\nAgent Orchestration: Design and build overarching orchestration capabilities, managing APIs and Model Context Protocols (MCPs) to expose products to other agents.\nProduct Development: Contribute to the evolution of the company's two key products: the original no-code workflow builder and the strict, hallucination-free AI Q&A layer.\nProcess Innovation: Help review and elevate the way the engineering team builds software, integrating AI tools (like Claude Code) to enhance coding, design, and delivery workflows.\nContinuous Improvement: Call out gaps in the current architecture (currently GCP, Python, TypeScript, Vue) and guide the team in establishing AI-driven DevOps practices.\n  \nAbout You\nMindset Over Tech Stack: You possess a strong product mindset. While experience with Python, TypeScript, Vue, and GCP is highly advantageous, your attitude, curiosity, and openness to learning are what truly matter.\nAI Enthusiasm: You are an experienced and curious, mid-to-senior-level engineer with a deep interest in AI orchestration, agents, and LLMs.\nStrategic Thinker: You can understand complex business problems and take others on the journey with you, translating research and prototypes into meaningful outcomes.\nAdaptable: You thrive in a startup environment \nEmpathy for the User: You care about the end-user experience, specifically making life better and more efficient for legal teams.\n  \nWhy Apply?\nUltimate Flexibility: 100% remote across Australia. Open to full-time or flexible/fractional arrangements \nMeaningful Work: Contribute to a platform that not only serves major enterprise clients such as international sporting and fitness brands but also does significant pro bono work for community legal centres.\nExceptional Culture: Join a supportive, fun, and dedicated team that values work-life balance—no forced early morning or late-night calls.\nGrowth Opportunity: Shape the technical direction of a business that is ready to go fully AI-native.\n  \nAPPLY NOW\n\nIf you are a curious, product-focused engineer ready to make a significant impact in the legal tech space, we want to hear from you. Please submit your updated resume via the Apply button below.\n  \n  \nRedwolf + Rosch invite and encourage applications from all backgrounds of gender, disability, culture, and race. If you are a person with a disability and require modifications to the recruitment process, please contact your Redwolf + Rosch Recruitment Consultant",
+        "title": "AI Engineer",
+        "company": "Redwolf + Rosch",
+        "source_url": null
+      },
+      "role_family": {
+        "family": "ai_engineering",
+        "evidence": [
+          {
+            "excerpt": "A fantastic opportunity to drive an AI-first engineering culture",
+            "section": "About the Company"
+          }
+        ]
+      },
+      "seniority": {
+        "level": "mid",
+        "ambiguous": false,
+        "candidate_levels": [],
+        "evidence": [
+          {
+            "excerpt": "We are seeking an innovative and strategic AI Engineer",
+            "section": "The Role"
+          }
+        ]
+      },
+      "technologies": [
+        {
+          "name": "Python",
+          "level": "preferred",
+          "evidence": [
+            {
+              "excerpt": "experience with Python, TypeScript, Vue, and GCP is highly advantageous",
+              "section": "About You"
+            }
+          ]
+        },
+        {
+          "name": "TypeScript",
+          "level": "preferred",
+          "evidence": [
+            {
+              "excerpt": "experience with Python, TypeScript, Vue, and GCP is highly advantageous",
+              "section": "About You"
+            }
+          ]
+        },
+        {
+          "name": "Vue",
+          "level": "preferred",
+          "evidence": [
+            {
+              "excerpt": "experience with Python, TypeScript, Vue, and GCP is highly advantageous",
+              "section": "About You"
+            }
+          ]
+        },
+        {
+          "name": "GCP",
+          "level": "preferred",
+          "evidence": [
+            {
+              "excerpt": "experience with Python, TypeScript, Vue, and GCP is highly advantageous",
+              "section": "About You"
+            }
+          ]
+        }
+      ],
+      "responsibilities": [
+        {
+          "description": "Work closely with the Tech Leads and CEO to implement the technical vision, moving experimental AI prototypes into robust, production-ready features.",
+          "evidence": [
+            {
+              "excerpt": "Work closely with the Tech Leads and CEO to implement the technical vision",
+              "section": "Key Responsibilities"
+            }
+          ]
+        },
+        {
+          "description": "Design and build overarching orchestration capabilities, managing APIs and Model Context Protocols (MCPs) to expose products to other agents.",
+          "evidence": [
+            {
+              "excerpt": "Design and build overarching orchestration capabilities",
+              "section": "Key Responsibilities"
+            }
+          ]
+        },
+        {
+          "description": "Contribute to the evolution of the company's two key products: the original no-code workflow builder and the strict, hallucination-free AI Q&A layer.",
+          "evidence": [
+            {
+              "excerpt": "Contribute to the evolution of the company's two key products",
+              "section": "Key Responsibilities"
+            }
+          ]
+        },
+        {
+          "description": "Help review and elevate the way the engineering team builds software, integrating AI tools (like Claude Code) to enhance coding, design, and delivery workflows.",
+          "evidence": [
+            {
+              "excerpt": "Help review and elevate the way the engineering team builds software",
+              "section": "Key Responsibilities"
+            }
+          ]
+        },
+        {
+          "description": "Call out gaps in the current architecture (currently GCP, Python, TypeScript, Vue) and guide the team in establishing AI-driven DevOps practices.",
+          "evidence": [
+            {
+              "excerpt": "Call out gaps in the current architecture (currently GCP, Python, TypeScript, Vue)",
+              "section": "Key Responsibilities"
+            }
+          ]
+        }
+      ],
+      "compensation": {
+        "clarity": "ambiguous",
+        "minimum": null,
+        "maximum": null,
+        "currency": null,
+        "period": null,
+        "raw_text": "Competitive Salary (Depending on experience)",
+        "evidence": [
+          {
+            "excerpt": "Competitive Salary (Depending on experience)",
+            "section": "JobDescription"
+          }
+        ]
+      },
+      "location": {
+        "clarity": "stated",
+        "summary": "Melbourne, VIC (Remote in Australia)",
+        "evidence": [
+          {
+            "excerpt": "Melbourne VIC (Hybrid)",
+            "section": "JobDescription"
+          }
+        ]
+      },
+      "work_arrangement": {
+        "arrangement": "hybrid",
+        "details": "Remote (Anywhere in Australia)",
+        "evidence": [
+          {
+            "excerpt": "Remote (Anywhere in Australia)",
+            "section": "JobDescription"
+          }
+        ]
+      },
+      "employment": {
+        "working_hours": "full_time",
+        "engagement_type": "permanent",
+        "evidence": [
+          {
+            "excerpt": "Permanent / Full-Time (Flexible/Fractional arrangements also considered)",
+            "section": "JobDescription"
+          }
+        ]
+      },
+      "experience_requirements": [
+        {
+          "description": "Experience as a mid-to-senior-level engineer with a deep interest in AI orchestration, agents, and LLMs.",
+          "level": "required",
+          "minimum_years": null,
+          "maximum_years": null,
+          "evidence": [
+            {
+              "excerpt": "You are an experienced and curious, mid-to-senior-level engineer with a deep interest in AI orchestration, agents, and LLMs",
+              "section": "About You"
+            }
+          ]
+        }
+      ]
+    },
+    "application_tier": "silver",
+    "pursuit_posture": "consider",
+    "practical_value": "acceptable_opportunity",
+    "effort_level": "minimal",
+    "summary": "Recommend posture 'consider' with effort tier 'silver' (minimal). Technical fit 'mixed', commercial fit 'mixed', portfolio fit 'strong'. Owner review is required before any application action.",
+    "reasons": [
+      {
+        "kind": "alignment",
+        "summary": "Technical fit is 'mixed' and portfolio fit is 'strong' for this opportunity.",
+        "importance": "material",
+        "evidence": [
+          {
+            "origin": "opportunity_assessment",
+            "job_evidence": null,
+            "profile_evidence": null,
+            "assessment_dimension": "technical",
+            "assessment_judgment": "mixed",
+            "portfolio_project_id": null,
+            "excerpt": null
+          },
+          {
+            "origin": "opportunity_assessment",
+            "job_evidence": null,
+            "profile_evidence": null,
+            "assessment_dimension": "portfolio",
+            "assessment_judgment": "strong",
+            "portfolio_project_id": null,
+            "excerpt": null
+          }
+        ]
+      },
+      {
+        "kind": "priority",
+        "summary": "Pursuit posture 'consider' with effort tier 'silver' reflects commercial fit 'mixed' and AI-aligned role family.",
+        "importance": "material",
+        "evidence": [
+          {
+            "origin": "opportunity_assessment",
+            "job_evidence": null,
+            "profile_evidence": null,
+            "assessment_dimension": "commercial",
+            "assessment_judgment": "mixed",
+            "portfolio_project_id": null,
+            "excerpt": null
+          },
+          {
+            "origin": "job_analysis",
+            "job_evidence": {
+              "source": "role_family",
+              "item_index": null,
+              "name": null,
+              "excerpt": null
+            },
+            "profile_evidence": null,
+            "assessment_dimension": null,
+            "assessment_judgment": null,
+            "portfolio_project_id": null,
+            "excerpt": null
+          }
+        ]
+      }
+    ],
+    "risks_or_gaps": [
+      {
+        "summary": "Commercial fit is 'mixed', which may reduce the value of investing significant effort.",
+        "importance": "minor",
+        "evidence": [
+          {
+            "origin": "opportunity_assessment",
+            "job_evidence": null,
+            "profile_evidence": null,
+            "assessment_dimension": "commercial",
+            "assessment_judgment": "mixed",
+            "portfolio_project_id": null,
+            "excerpt": null
+          }
+        ]
+      },
+      {
+        "summary": "Missing demonstrated commercial experience with AI orchestration and delivery at a significant scale.",
+        "importance": "material",
+        "evidence": [
+          {
+            "origin": "opportunity_assessment",
+            "job_evidence": null,
+            "profile_evidence": null,
+            "assessment_dimension": "technical",
+            "assessment_judgment": "mixed",
+            "portfolio_project_id": null,
+            "excerpt": null
+          }
+        ]
+      }
+    ],
+    "manual_checks": [
+      {
+        "summary": "Review compensation once salary or rate information is available.",
+        "why_it_matters": "Compensation clarity can change commercial priority; no salary conflict was invented from missing data.",
+        "could_change_recommendation": true,
+        "evidence": [
+          {
+            "origin": "job_analysis",
+            "job_evidence": {
+              "source": "compensation",
+              "item_index": null,
+              "name": null,
+              "excerpt": null
+            },
+            "profile_evidence": null,
+            "assessment_dimension": null,
+            "assessment_judgment": null,
+            "portfolio_project_id": null,
+            "excerpt": null
+          }
+        ]
+      }
+    ],
+    "next_actions": [
+      {
+        "kind": "consider_reviewing_compensation",
+        "summary": "Consider reviewing compensation before investing significant effort.",
+        "related_project_id": null,
+        "evidence": [
+          {
+            "origin": "job_analysis",
+            "job_evidence": {
+              "source": "compensation",
+              "item_index": null,
+              "name": null,
+              "excerpt": null
+            },
+            "profile_evidence": null,
+            "assessment_dimension": null,
+            "assessment_judgment": null,
+            "portfolio_project_id": null,
+            "excerpt": null
+          }
+        ]
+      },
+      {
+        "kind": "consider_emphasising_portfolio_projects",
+        "summary": "Consider emphasising the strongest matched portfolio project(s) in any application materials you prepare.",
+        "related_project_id": "governance-document-rag",
+        "evidence": [
+          {
+            "origin": "portfolio_match",
+            "job_evidence": null,
+            "profile_evidence": null,
+            "assessment_dimension": null,
+            "assessment_judgment": null,
+            "portfolio_project_id": "governance-document-rag",
+            "excerpt": null
+          }
+        ]
+      },
+      {
+        "kind": "consider_owner_review",
+        "summary": "Consider reviewing this full strategy before taking any external action.",
+        "related_project_id": null,
+        "evidence": [
+          {
+            "origin": "opportunity_assessment",
+            "job_evidence": null,
+            "profile_evidence": null,
+            "assessment_dimension": "technical",
+            "assessment_judgment": "mixed",
+            "portfolio_project_id": null,
+            "excerpt": null
+          }
+        ]
+      }
+    ],
+    "portfolio_emphasis": [
+      {
+        "project_id": "governance-document-rag",
+        "source_rank": 1,
+        "summary": "Consider emphasising 'governance-document-rag' (PortfolioMatch rank 1).",
+        "evidence": [
+          {
+            "origin": "portfolio_match",
+            "job_evidence": null,
+            "profile_evidence": null,
+            "assessment_dimension": null,
+            "assessment_judgment": null,
+            "portfolio_project_id": "governance-document-rag",
+            "excerpt": null
+          }
+        ]
+      },
+      {
+        "project_id": "operational-intelligence-copilot",
+        "source_rank": 2,
+        "summary": "Consider emphasising 'operational-intelligence-copilot' (PortfolioMatch rank 2).",
+        "evidence": [
+          {
+            "origin": "portfolio_match",
+            "job_evidence": null,
+            "profile_evidence": null,
+            "assessment_dimension": null,
+            "assessment_judgment": null,
+            "portfolio_project_id": "operational-intelligence-copilot",
+            "excerpt": null
+          }
+        ]
+      },
+      {
+        "project_id": "career-intelligence-copilot",
+        "source_rank": 3,
+        "summary": "Consider emphasising 'career-intelligence-copilot' (PortfolioMatch rank 3).",
+        "evidence": [
+          {
+            "origin": "portfolio_match",
+            "job_evidence": null,
+            "profile_evidence": null,
+            "assessment_dimension": null,
+            "assessment_judgment": null,
+            "portfolio_project_id": "career-intelligence-copilot",
+            "excerpt": null
+          }
+        ]
+      }
+    ],
+    "assumptions": [
+      "Compensation fit is not scored because salary/rate evidence is missing or ambiguous.",
+      "No candidate salary minimum is configured, so compensation was not treated as a hard threshold conflict."
+    ],
+    "decision_blockers": [],
+    "owner_review_required": true,
+    "insufficient_information": false
+  }
+}

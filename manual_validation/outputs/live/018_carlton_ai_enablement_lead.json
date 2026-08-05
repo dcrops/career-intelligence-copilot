@@ -1,0 +1,2177 @@
+{
+  "components": [
+    {
+      "name": "CareerProfile",
+      "implementation": "CareerProfileService / YAML",
+      "mode": "deterministic_production"
+    },
+    {
+      "name": "JobAnalysis",
+      "implementation": "OpenAIJobExtractor",
+      "mode": "openai_production"
+    },
+    {
+      "name": "OpportunityAssessment",
+      "implementation": "OpenAIAssessor",
+      "mode": "openai_production"
+    },
+    {
+      "name": "PortfolioMatch",
+      "implementation": "DeterministicMatcher",
+      "mode": "deterministic_production"
+    },
+    {
+      "name": "ApplicationStrategy",
+      "implementation": "DeterministicStrategyPlanner",
+      "mode": "deterministic_production"
+    }
+  ],
+  "volume_applications_enabled": false,
+  "profile_identity": {
+    "full_name": "David Cropper",
+    "target_role": "AI Engineer"
+  },
+  "posting": {
+    "raw_text": "AI Enablement Lead\n\nCarlton Football Club \nView all jobs\nCarlton North, Melbourne VIC (Hybrid)\nOther (Sport & Recreation)\nContract/Temp\nSalary undisclosed\n\n\nCarlton Football Club has made a deliberate and significant investment in AI, with a genuine appetite for innovation from the top down, and the returns are already visible across the Club. Working closely with the GM of Data, Technology and AI, the AI Enablement Lead will be responsible for driving adoption and education across every part of the Club. This newly created role is one of the first of its kind in Australian sport, and provides an opportunity to play a highly influential role in the transformation of an elite sporting organisation. \n\nThe role is ultimately about people, and is best suited to someone who genuinely loves helping others learn. The focus is on identifying where AI can improve how staff work, removing the barriers that stop adoption, and building the skills and confidence of the Club to embrace it responsibly. \n\nLooking further ahead, the Club is ambitious about what AI can do. From agentic workflows to organisation-wide transformation, the roadmap beyond the first 12 months is compelling, and this role is where that journey begins. \n\nEducation and Adoption \n\nDesign and lead Carlton's AI learning program across all departments, structured workshops, regular training sessions, and drop-in support tailored to staff at every level \nBuild and maintain a thriving internal AI community, keeping staff informed, inspired, and connected to what others are building and learning across the Club \nManage and enable Carlton's AI champions network, ensuring champions across every department feel supported, capable, and are producing output with visible business impact \nOwn and run Carlton's AI adoption tracking program, surfacing patterns in usage, identifying blockers, and ensuring every insight leads to a closed-out action \nSupport all users across the Club, paid and free, ensuring no one is left behind regardless of which tools they have access to \n Building \n\nDevelop and maintain Carlton's AI playbook and internal resources, keeping them current and genuinely useful as the Club's primary reference for AI at work \nBuild prompt libraries, AI-powered workflows, and lightweight tools that solve real problems across the business, with a focus on outcomes that have clear business value \nWork closely with the Data and Technology teams to identify AI integration opportunities, including tools with AI capabilities built in, connectors, and workflow solutions \n Exploration \n\nContinuously scan the AI market for emerging tools, platforms, and techniques, evaluating what is worth adopting and bringing clear recommendations back to the team \nIdentify common themes and recurring gaps in how staff work, and explore whether agentic workflows or AI-driven solutions could address them at scale \nPrototype and test new AI approaches, including agentic solutions, that could meaningfully change how the Club operates, keeping Carlton ahead of the curve as the technology matures \n Governance \n\nEmbed safe and responsible AI use at the core of all education, training materials, and resources delivered to staff \nOwn Carlton's AI Use Policy as a living document and maintain governance guides that ensure AI is used responsibly and in line with the Club's values \n AI Strategy and Leadership \n\nDeliver regular AI adoption reporting to the executive leadership team and contribute ground-level insight to Carlton's broader AI strategy and roadmap \nTrack the AI landscape, flagging relevant emerging tools, opportunities, and risks to senior leadership on an ongoing basis \n Who We Are Looking For \n\nYou might have come from education, change management, consulting, tech enablement, or somewhere else entirely. What matters is that you can bring people on a journey with AI, and you have the hands-on experience to back it up. \n\n\nYou will be a strong fit if you \n\nHave hands-on experience building with AI, including workflows and automations in a real organisational context \nAre highly proficient with Claude or other reputable AI tools, and are always exploring what else is emerging in the market \nHave designed and delivered training or capability programs for technology or AI adoption \nCan translate a business problem into a practical, outcomes-focused AI solution \nCommunicate clearly with people at every level, from frontline staff to executives \nHave genuine intellectual curiosity about AI and a bias toward doing over theorising \nAre comfortable in an environment where not everything is defined yet, and see that as an opportunity \nHave an interest in Australian Rules Football or experience working in an elite sporting organisation, preferred but not essential \n \n\nEmployer questions\nYour application will include the following questions:\nWhich of the following statements best describes your right to work in Australia?\nHow would you rate your proficiency with Claude or other reputable AI tools, including your commitment to exploring emerging AI technologies?\nWhat is your experience in guiding individuals and teams through the adoption and integration of AI within an organizational setting?\nWhat are your salary expectations (including super) for a new position?\nDo you have a current Victorian Working With Children Check (WWCC)?",
+    "title": "AI Enablement Lead",
+    "company": "Carlton Football Club",
+    "source_url": null
+  },
+  "job_analysis": {
+    "posting": {
+      "raw_text": "AI Enablement Lead\n\nCarlton Football Club \nView all jobs\nCarlton North, Melbourne VIC (Hybrid)\nOther (Sport & Recreation)\nContract/Temp\nSalary undisclosed\n\n\nCarlton Football Club has made a deliberate and significant investment in AI, with a genuine appetite for innovation from the top down, and the returns are already visible across the Club. Working closely with the GM of Data, Technology and AI, the AI Enablement Lead will be responsible for driving adoption and education across every part of the Club. This newly created role is one of the first of its kind in Australian sport, and provides an opportunity to play a highly influential role in the transformation of an elite sporting organisation. \n\nThe role is ultimately about people, and is best suited to someone who genuinely loves helping others learn. The focus is on identifying where AI can improve how staff work, removing the barriers that stop adoption, and building the skills and confidence of the Club to embrace it responsibly. \n\nLooking further ahead, the Club is ambitious about what AI can do. From agentic workflows to organisation-wide transformation, the roadmap beyond the first 12 months is compelling, and this role is where that journey begins. \n\nEducation and Adoption \n\nDesign and lead Carlton's AI learning program across all departments, structured workshops, regular training sessions, and drop-in support tailored to staff at every level \nBuild and maintain a thriving internal AI community, keeping staff informed, inspired, and connected to what others are building and learning across the Club \nManage and enable Carlton's AI champions network, ensuring champions across every department feel supported, capable, and are producing output with visible business impact \nOwn and run Carlton's AI adoption tracking program, surfacing patterns in usage, identifying blockers, and ensuring every insight leads to a closed-out action \nSupport all users across the Club, paid and free, ensuring no one is left behind regardless of which tools they have access to \n Building \n\nDevelop and maintain Carlton's AI playbook and internal resources, keeping them current and genuinely useful as the Club's primary reference for AI at work \nBuild prompt libraries, AI-powered workflows, and lightweight tools that solve real problems across the business, with a focus on outcomes that have clear business value \nWork closely with the Data and Technology teams to identify AI integration opportunities, including tools with AI capabilities built in, connectors, and workflow solutions \n Exploration \n\nContinuously scan the AI market for emerging tools, platforms, and techniques, evaluating what is worth adopting and bringing clear recommendations back to the team \nIdentify common themes and recurring gaps in how staff work, and explore whether agentic workflows or AI-driven solutions could address them at scale \nPrototype and test new AI approaches, including agentic solutions, that could meaningfully change how the Club operates, keeping Carlton ahead of the curve as the technology matures \n Governance \n\nEmbed safe and responsible AI use at the core of all education, training materials, and resources delivered to staff \nOwn Carlton's AI Use Policy as a living document and maintain governance guides that ensure AI is used responsibly and in line with the Club's values \n AI Strategy and Leadership \n\nDeliver regular AI adoption reporting to the executive leadership team and contribute ground-level insight to Carlton's broader AI strategy and roadmap \nTrack the AI landscape, flagging relevant emerging tools, opportunities, and risks to senior leadership on an ongoing basis \n Who We Are Looking For \n\nYou might have come from education, change management, consulting, tech enablement, or somewhere else entirely. What matters is that you can bring people on a journey with AI, and you have the hands-on experience to back it up. \n\n\nYou will be a strong fit if you \n\nHave hands-on experience building with AI, including workflows and automations in a real organisational context \nAre highly proficient with Claude or other reputable AI tools, and are always exploring what else is emerging in the market \nHave designed and delivered training or capability programs for technology or AI adoption \nCan translate a business problem into a practical, outcomes-focused AI solution \nCommunicate clearly with people at every level, from frontline staff to executives \nHave genuine intellectual curiosity about AI and a bias toward doing over theorising \nAre comfortable in an environment where not everything is defined yet, and see that as an opportunity \nHave an interest in Australian Rules Football or experience working in an elite sporting organisation, preferred but not essential \n \n\nEmployer questions\nYour application will include the following questions:\nWhich of the following statements best describes your right to work in Australia?\nHow would you rate your proficiency with Claude or other reputable AI tools, including your commitment to exploring emerging AI technologies?\nWhat is your experience in guiding individuals and teams through the adoption and integration of AI within an organizational setting?\nWhat are your salary expectations (including super) for a new position?\nDo you have a current Victorian Working With Children Check (WWCC)?",
+      "title": "AI Enablement Lead",
+      "company": "Carlton Football Club",
+      "source_url": null
+    },
+    "role_family": {
+      "family": "ai_adjacent",
+      "evidence": [
+        {
+          "excerpt": "Carlton Football Club has made a deliberate and significant investment in AI",
+          "section": "Job description"
+        }
+      ]
+    },
+    "seniority": {
+      "level": "unknown",
+      "ambiguous": false,
+      "candidate_levels": [],
+      "evidence": []
+    },
+    "technologies": [
+      {
+        "name": "Claude",
+        "level": "preferred",
+        "evidence": [
+          {
+            "excerpt": "Are highly proficient with Claude or other reputable AI tools",
+            "section": "Who We Are Looking For"
+          }
+        ]
+      }
+    ],
+    "responsibilities": [
+      {
+        "description": "Design and lead Carlton's AI learning program across all departments, structured workshops, regular training sessions, and drop-in support tailored to staff at every level",
+        "evidence": [
+          {
+            "excerpt": "Design and lead Carlton's AI learning program",
+            "section": "Responsibilities"
+          }
+        ]
+      },
+      {
+        "description": "Build and maintain a thriving internal AI community, keeping staff informed, inspired, and connected to what others are building and learning across the Club",
+        "evidence": [
+          {
+            "excerpt": "Build and maintain a thriving internal AI community",
+            "section": "Responsibilities"
+          }
+        ]
+      },
+      {
+        "description": "Manage and enable Carlton's AI champions network, ensuring champions across every department feel supported, capable, and are producing output with visible business impact",
+        "evidence": [
+          {
+            "excerpt": "Manage and enable Carlton's AI champions network",
+            "section": "Responsibilities"
+          }
+        ]
+      },
+      {
+        "description": "Own and run Carlton's AI adoption tracking program, surfacing patterns in usage, identifying blockers, and ensuring every insight leads to a closed-out action",
+        "evidence": [
+          {
+            "excerpt": "Own and run Carlton's AI adoption tracking program",
+            "section": "Responsibilities"
+          }
+        ]
+      },
+      {
+        "description": "Develop and maintain Carlton's AI playbook and internal resources, keeping them current and genuinely useful as the Club's primary reference for AI at work",
+        "evidence": [
+          {
+            "excerpt": "Develop and maintain Carlton's AI playbook and internal resources",
+            "section": "Responsibilities"
+          }
+        ]
+      },
+      {
+        "description": "Build prompt libraries, AI-powered workflows, and lightweight tools that solve real problems across the business, with a focus on outcomes that have clear business value",
+        "evidence": [
+          {
+            "excerpt": "Build prompt libraries, AI-powered workflows, and lightweight tools",
+            "section": "Responsibilities"
+          }
+        ]
+      },
+      {
+        "description": "Continuously scan the AI market for emerging tools, platforms, and techniques, evaluating what is worth adopting and bringing clear recommendations back to the team",
+        "evidence": [
+          {
+            "excerpt": "Continuously scan the AI market for emerging tools, platforms, and techniques",
+            "section": "Responsibilities"
+          }
+        ]
+      },
+      {
+        "description": "Embed safe and responsible AI use at the core of all education, training materials, and resources delivered to staff",
+        "evidence": [
+          {
+            "excerpt": "Embed safe and responsible AI use at the core of all education, training materials",
+            "section": "Responsibilities"
+          }
+        ]
+      },
+      {
+        "description": "Deliver regular AI adoption reporting to the executive leadership team and contribute ground-level insight to Carlton's broader AI strategy and roadmap",
+        "evidence": [
+          {
+            "excerpt": "Deliver regular AI adoption reporting to the executive leadership team",
+            "section": "Responsibilities"
+          }
+        ]
+      }
+    ],
+    "compensation": {
+      "clarity": "unstated",
+      "minimum": null,
+      "maximum": null,
+      "currency": null,
+      "period": null,
+      "raw_text": null,
+      "evidence": []
+    },
+    "location": {
+      "clarity": "stated",
+      "summary": "Carlton North, Melbourne VIC (Hybrid)",
+      "evidence": [
+        {
+          "excerpt": "Carlton North, Melbourne VIC (Hybrid)",
+          "section": "Job description"
+        }
+      ]
+    },
+    "work_arrangement": {
+      "arrangement": "hybrid",
+      "details": null,
+      "evidence": [
+        {
+          "excerpt": "Carlton North, Melbourne VIC (Hybrid)",
+          "section": "Job description"
+        }
+      ]
+    },
+    "employment": {
+      "working_hours": "unspecified",
+      "engagement_type": "contract",
+      "evidence": [
+        {
+          "excerpt": "Contract/Temp",
+          "section": "Job description"
+        }
+      ]
+    },
+    "experience_requirements": [
+      {
+        "description": "Have hands-on experience building with AI, including workflows and automations in a real organisational context",
+        "level": "required",
+        "minimum_years": null,
+        "maximum_years": null,
+        "evidence": [
+          {
+            "excerpt": "Have hands-on experience building with AI, including workflows and automations",
+            "section": "Who We Are Looking For"
+          }
+        ]
+      }
+    ]
+  },
+  "opportunity_assessment": {
+    "job_analysis": {
+      "posting": {
+        "raw_text": "AI Enablement Lead\n\nCarlton Football Club \nView all jobs\nCarlton North, Melbourne VIC (Hybrid)\nOther (Sport & Recreation)\nContract/Temp\nSalary undisclosed\n\n\nCarlton Football Club has made a deliberate and significant investment in AI, with a genuine appetite for innovation from the top down, and the returns are already visible across the Club. Working closely with the GM of Data, Technology and AI, the AI Enablement Lead will be responsible for driving adoption and education across every part of the Club. This newly created role is one of the first of its kind in Australian sport, and provides an opportunity to play a highly influential role in the transformation of an elite sporting organisation. \n\nThe role is ultimately about people, and is best suited to someone who genuinely loves helping others learn. The focus is on identifying where AI can improve how staff work, removing the barriers that stop adoption, and building the skills and confidence of the Club to embrace it responsibly. \n\nLooking further ahead, the Club is ambitious about what AI can do. From agentic workflows to organisation-wide transformation, the roadmap beyond the first 12 months is compelling, and this role is where that journey begins. \n\nEducation and Adoption \n\nDesign and lead Carlton's AI learning program across all departments, structured workshops, regular training sessions, and drop-in support tailored to staff at every level \nBuild and maintain a thriving internal AI community, keeping staff informed, inspired, and connected to what others are building and learning across the Club \nManage and enable Carlton's AI champions network, ensuring champions across every department feel supported, capable, and are producing output with visible business impact \nOwn and run Carlton's AI adoption tracking program, surfacing patterns in usage, identifying blockers, and ensuring every insight leads to a closed-out action \nSupport all users across the Club, paid and free, ensuring no one is left behind regardless of which tools they have access to \n Building \n\nDevelop and maintain Carlton's AI playbook and internal resources, keeping them current and genuinely useful as the Club's primary reference for AI at work \nBuild prompt libraries, AI-powered workflows, and lightweight tools that solve real problems across the business, with a focus on outcomes that have clear business value \nWork closely with the Data and Technology teams to identify AI integration opportunities, including tools with AI capabilities built in, connectors, and workflow solutions \n Exploration \n\nContinuously scan the AI market for emerging tools, platforms, and techniques, evaluating what is worth adopting and bringing clear recommendations back to the team \nIdentify common themes and recurring gaps in how staff work, and explore whether agentic workflows or AI-driven solutions could address them at scale \nPrototype and test new AI approaches, including agentic solutions, that could meaningfully change how the Club operates, keeping Carlton ahead of the curve as the technology matures \n Governance \n\nEmbed safe and responsible AI use at the core of all education, training materials, and resources delivered to staff \nOwn Carlton's AI Use Policy as a living document and maintain governance guides that ensure AI is used responsibly and in line with the Club's values \n AI Strategy and Leadership \n\nDeliver regular AI adoption reporting to the executive leadership team and contribute ground-level insight to Carlton's broader AI strategy and roadmap \nTrack the AI landscape, flagging relevant emerging tools, opportunities, and risks to senior leadership on an ongoing basis \n Who We Are Looking For \n\nYou might have come from education, change management, consulting, tech enablement, or somewhere else entirely. What matters is that you can bring people on a journey with AI, and you have the hands-on experience to back it up. \n\n\nYou will be a strong fit if you \n\nHave hands-on experience building with AI, including workflows and automations in a real organisational context \nAre highly proficient with Claude or other reputable AI tools, and are always exploring what else is emerging in the market \nHave designed and delivered training or capability programs for technology or AI adoption \nCan translate a business problem into a practical, outcomes-focused AI solution \nCommunicate clearly with people at every level, from frontline staff to executives \nHave genuine intellectual curiosity about AI and a bias toward doing over theorising \nAre comfortable in an environment where not everything is defined yet, and see that as an opportunity \nHave an interest in Australian Rules Football or experience working in an elite sporting organisation, preferred but not essential \n \n\nEmployer questions\nYour application will include the following questions:\nWhich of the following statements best describes your right to work in Australia?\nHow would you rate your proficiency with Claude or other reputable AI tools, including your commitment to exploring emerging AI technologies?\nWhat is your experience in guiding individuals and teams through the adoption and integration of AI within an organizational setting?\nWhat are your salary expectations (including super) for a new position?\nDo you have a current Victorian Working With Children Check (WWCC)?",
+        "title": "AI Enablement Lead",
+        "company": "Carlton Football Club",
+        "source_url": null
+      },
+      "role_family": {
+        "family": "ai_adjacent",
+        "evidence": [
+          {
+            "excerpt": "Carlton Football Club has made a deliberate and significant investment in AI",
+            "section": "Job description"
+          }
+        ]
+      },
+      "seniority": {
+        "level": "unknown",
+        "ambiguous": false,
+        "candidate_levels": [],
+        "evidence": []
+      },
+      "technologies": [
+        {
+          "name": "Claude",
+          "level": "preferred",
+          "evidence": [
+            {
+              "excerpt": "Are highly proficient with Claude or other reputable AI tools",
+              "section": "Who We Are Looking For"
+            }
+          ]
+        }
+      ],
+      "responsibilities": [
+        {
+          "description": "Design and lead Carlton's AI learning program across all departments, structured workshops, regular training sessions, and drop-in support tailored to staff at every level",
+          "evidence": [
+            {
+              "excerpt": "Design and lead Carlton's AI learning program",
+              "section": "Responsibilities"
+            }
+          ]
+        },
+        {
+          "description": "Build and maintain a thriving internal AI community, keeping staff informed, inspired, and connected to what others are building and learning across the Club",
+          "evidence": [
+            {
+              "excerpt": "Build and maintain a thriving internal AI community",
+              "section": "Responsibilities"
+            }
+          ]
+        },
+        {
+          "description": "Manage and enable Carlton's AI champions network, ensuring champions across every department feel supported, capable, and are producing output with visible business impact",
+          "evidence": [
+            {
+              "excerpt": "Manage and enable Carlton's AI champions network",
+              "section": "Responsibilities"
+            }
+          ]
+        },
+        {
+          "description": "Own and run Carlton's AI adoption tracking program, surfacing patterns in usage, identifying blockers, and ensuring every insight leads to a closed-out action",
+          "evidence": [
+            {
+              "excerpt": "Own and run Carlton's AI adoption tracking program",
+              "section": "Responsibilities"
+            }
+          ]
+        },
+        {
+          "description": "Develop and maintain Carlton's AI playbook and internal resources, keeping them current and genuinely useful as the Club's primary reference for AI at work",
+          "evidence": [
+            {
+              "excerpt": "Develop and maintain Carlton's AI playbook and internal resources",
+              "section": "Responsibilities"
+            }
+          ]
+        },
+        {
+          "description": "Build prompt libraries, AI-powered workflows, and lightweight tools that solve real problems across the business, with a focus on outcomes that have clear business value",
+          "evidence": [
+            {
+              "excerpt": "Build prompt libraries, AI-powered workflows, and lightweight tools",
+              "section": "Responsibilities"
+            }
+          ]
+        },
+        {
+          "description": "Continuously scan the AI market for emerging tools, platforms, and techniques, evaluating what is worth adopting and bringing clear recommendations back to the team",
+          "evidence": [
+            {
+              "excerpt": "Continuously scan the AI market for emerging tools, platforms, and techniques",
+              "section": "Responsibilities"
+            }
+          ]
+        },
+        {
+          "description": "Embed safe and responsible AI use at the core of all education, training materials, and resources delivered to staff",
+          "evidence": [
+            {
+              "excerpt": "Embed safe and responsible AI use at the core of all education, training materials",
+              "section": "Responsibilities"
+            }
+          ]
+        },
+        {
+          "description": "Deliver regular AI adoption reporting to the executive leadership team and contribute ground-level insight to Carlton's broader AI strategy and roadmap",
+          "evidence": [
+            {
+              "excerpt": "Deliver regular AI adoption reporting to the executive leadership team",
+              "section": "Responsibilities"
+            }
+          ]
+        }
+      ],
+      "compensation": {
+        "clarity": "unstated",
+        "minimum": null,
+        "maximum": null,
+        "currency": null,
+        "period": null,
+        "raw_text": null,
+        "evidence": []
+      },
+      "location": {
+        "clarity": "stated",
+        "summary": "Carlton North, Melbourne VIC (Hybrid)",
+        "evidence": [
+          {
+            "excerpt": "Carlton North, Melbourne VIC (Hybrid)",
+            "section": "Job description"
+          }
+        ]
+      },
+      "work_arrangement": {
+        "arrangement": "hybrid",
+        "details": null,
+        "evidence": [
+          {
+            "excerpt": "Carlton North, Melbourne VIC (Hybrid)",
+            "section": "Job description"
+          }
+        ]
+      },
+      "employment": {
+        "working_hours": "unspecified",
+        "engagement_type": "contract",
+        "evidence": [
+          {
+            "excerpt": "Contract/Temp",
+            "section": "Job description"
+          }
+        ]
+      },
+      "experience_requirements": [
+        {
+          "description": "Have hands-on experience building with AI, including workflows and automations in a real organisational context",
+          "level": "required",
+          "minimum_years": null,
+          "maximum_years": null,
+          "evidence": [
+            {
+              "excerpt": "Have hands-on experience building with AI, including workflows and automations",
+              "section": "Who We Are Looking For"
+            }
+          ]
+        }
+      ]
+    },
+    "technical_fit": {
+      "dimension": "technical",
+      "judgment": "mixed",
+      "summary": "While the profile exhibits relevant experiences in AI engineering and technologies, it lacks specific commercial experience in AI applications within organizational contexts required for this role.",
+      "findings": [
+        {
+          "kind": "gap",
+          "summary": "The role requires hands-on experience building with AI in an organizational context, which is not fully evidenced in the profile.",
+          "detail": null,
+          "importance": "material",
+          "job_evidence": [
+            {
+              "source": "experience_requirement",
+              "item_index": 0,
+              "name": "Experience with AI workflows",
+              "excerpt": "Have hands-on experience building with AI, including workflows and automations"
+            }
+          ],
+          "profile_evidence": [],
+          "assumption": null
+        },
+        {
+          "kind": "partial_alignment",
+          "summary": "The candidate has experience in independent engineering with AI tools but lacks formal organizational roles that apply these technologies systematically.",
+          "detail": "The profile highlights independent AI projects but does not demonstrate equivalent organizational leadership or formal production experience explicitly required by the role.",
+          "importance": "material",
+          "job_evidence": [
+            {
+              "source": "experience_requirement",
+              "item_index": 0,
+              "name": "Experience with AI workflows",
+              "excerpt": "Have hands-on experience building with AI, including workflows and automations"
+            }
+          ],
+          "profile_evidence": [
+            {
+              "source": "experience",
+              "ref": "experience:chase-risk-compliance-ai-engineer",
+              "excerpt": "Delivered a portfolio of AI applications"
+            }
+          ],
+          "assumption": null
+        }
+      ]
+    },
+    "commercial_fit": {
+      "dimension": "commercial",
+      "judgment": "mixed",
+      "summary": "The compensation details are not provided, and while there are preferences declared, the alignment does not fully meet organizational expectations for commercial AI experience.",
+      "findings": [
+        {
+          "kind": "uncertainty",
+          "summary": "Compensation expectations are unclear as no specification is provided in the job posting.",
+          "detail": "The role states compensation is undisclosed, leading to uncertainty regarding alignment with the candidate's expectations.",
+          "importance": "minor",
+          "job_evidence": [
+            {
+              "source": "compensation",
+              "item_index": null,
+              "name": null,
+              "excerpt": "Salary undisclosed"
+            }
+          ],
+          "profile_evidence": [],
+          "assumption": null
+        }
+      ]
+    },
+    "portfolio_fit": {
+      "dimension": "portfolio",
+      "judgment": "strong",
+      "summary": "The candidate demonstrates substantial portfolio projects directly relevant to AI engineering needs, showcasing practical implementations and solutions.",
+      "findings": [
+        {
+          "kind": "alignment",
+          "summary": "The candidate's projects demonstrate direct application of AI engineering skills, aligning with the role's responsibilities.",
+          "detail": null,
+          "importance": "material",
+          "job_evidence": [
+            {
+              "source": "responsibility",
+              "item_index": 5,
+              "name": "Build prompt libraries and AI-powered workflows",
+              "excerpt": "Build prompt libraries, AI-powered workflows, and lightweight tools"
+            }
+          ],
+          "profile_evidence": [
+            {
+              "source": "project",
+              "ref": "project:operational-intelligence-copilot",
+              "excerpt": "Demonstrates operational intelligence capability for understanding business data."
+            }
+          ],
+          "assumption": null
+        }
+      ]
+    },
+    "summary": {
+      "summary": "The overall alignment indicates a candidate with a technical foundation in AI engineering and relevant project experience. However, gaps in formal organizational AI leadership and commercial production experience may impact suitability for the stated role.",
+      "key_alignments": [
+        "Demonstrated project experience in AI applications.",
+        "Established experience in independent engineering."
+      ],
+      "key_gaps": [
+        "Lack of commercial AI experience in an organizational context.",
+        "Undisclosed salary expectations."
+      ]
+    }
+  },
+  "portfolio_match": {
+    "job_analysis": {
+      "posting": {
+        "raw_text": "AI Enablement Lead\n\nCarlton Football Club \nView all jobs\nCarlton North, Melbourne VIC (Hybrid)\nOther (Sport & Recreation)\nContract/Temp\nSalary undisclosed\n\n\nCarlton Football Club has made a deliberate and significant investment in AI, with a genuine appetite for innovation from the top down, and the returns are already visible across the Club. Working closely with the GM of Data, Technology and AI, the AI Enablement Lead will be responsible for driving adoption and education across every part of the Club. This newly created role is one of the first of its kind in Australian sport, and provides an opportunity to play a highly influential role in the transformation of an elite sporting organisation. \n\nThe role is ultimately about people, and is best suited to someone who genuinely loves helping others learn. The focus is on identifying where AI can improve how staff work, removing the barriers that stop adoption, and building the skills and confidence of the Club to embrace it responsibly. \n\nLooking further ahead, the Club is ambitious about what AI can do. From agentic workflows to organisation-wide transformation, the roadmap beyond the first 12 months is compelling, and this role is where that journey begins. \n\nEducation and Adoption \n\nDesign and lead Carlton's AI learning program across all departments, structured workshops, regular training sessions, and drop-in support tailored to staff at every level \nBuild and maintain a thriving internal AI community, keeping staff informed, inspired, and connected to what others are building and learning across the Club \nManage and enable Carlton's AI champions network, ensuring champions across every department feel supported, capable, and are producing output with visible business impact \nOwn and run Carlton's AI adoption tracking program, surfacing patterns in usage, identifying blockers, and ensuring every insight leads to a closed-out action \nSupport all users across the Club, paid and free, ensuring no one is left behind regardless of which tools they have access to \n Building \n\nDevelop and maintain Carlton's AI playbook and internal resources, keeping them current and genuinely useful as the Club's primary reference for AI at work \nBuild prompt libraries, AI-powered workflows, and lightweight tools that solve real problems across the business, with a focus on outcomes that have clear business value \nWork closely with the Data and Technology teams to identify AI integration opportunities, including tools with AI capabilities built in, connectors, and workflow solutions \n Exploration \n\nContinuously scan the AI market for emerging tools, platforms, and techniques, evaluating what is worth adopting and bringing clear recommendations back to the team \nIdentify common themes and recurring gaps in how staff work, and explore whether agentic workflows or AI-driven solutions could address them at scale \nPrototype and test new AI approaches, including agentic solutions, that could meaningfully change how the Club operates, keeping Carlton ahead of the curve as the technology matures \n Governance \n\nEmbed safe and responsible AI use at the core of all education, training materials, and resources delivered to staff \nOwn Carlton's AI Use Policy as a living document and maintain governance guides that ensure AI is used responsibly and in line with the Club's values \n AI Strategy and Leadership \n\nDeliver regular AI adoption reporting to the executive leadership team and contribute ground-level insight to Carlton's broader AI strategy and roadmap \nTrack the AI landscape, flagging relevant emerging tools, opportunities, and risks to senior leadership on an ongoing basis \n Who We Are Looking For \n\nYou might have come from education, change management, consulting, tech enablement, or somewhere else entirely. What matters is that you can bring people on a journey with AI, and you have the hands-on experience to back it up. \n\n\nYou will be a strong fit if you \n\nHave hands-on experience building with AI, including workflows and automations in a real organisational context \nAre highly proficient with Claude or other reputable AI tools, and are always exploring what else is emerging in the market \nHave designed and delivered training or capability programs for technology or AI adoption \nCan translate a business problem into a practical, outcomes-focused AI solution \nCommunicate clearly with people at every level, from frontline staff to executives \nHave genuine intellectual curiosity about AI and a bias toward doing over theorising \nAre comfortable in an environment where not everything is defined yet, and see that as an opportunity \nHave an interest in Australian Rules Football or experience working in an elite sporting organisation, preferred but not essential \n \n\nEmployer questions\nYour application will include the following questions:\nWhich of the following statements best describes your right to work in Australia?\nHow would you rate your proficiency with Claude or other reputable AI tools, including your commitment to exploring emerging AI technologies?\nWhat is your experience in guiding individuals and teams through the adoption and integration of AI within an organizational setting?\nWhat are your salary expectations (including super) for a new position?\nDo you have a current Victorian Working With Children Check (WWCC)?",
+        "title": "AI Enablement Lead",
+        "company": "Carlton Football Club",
+        "source_url": null
+      },
+      "role_family": {
+        "family": "ai_adjacent",
+        "evidence": [
+          {
+            "excerpt": "Carlton Football Club has made a deliberate and significant investment in AI",
+            "section": "Job description"
+          }
+        ]
+      },
+      "seniority": {
+        "level": "unknown",
+        "ambiguous": false,
+        "candidate_levels": [],
+        "evidence": []
+      },
+      "technologies": [
+        {
+          "name": "Claude",
+          "level": "preferred",
+          "evidence": [
+            {
+              "excerpt": "Are highly proficient with Claude or other reputable AI tools",
+              "section": "Who We Are Looking For"
+            }
+          ]
+        }
+      ],
+      "responsibilities": [
+        {
+          "description": "Design and lead Carlton's AI learning program across all departments, structured workshops, regular training sessions, and drop-in support tailored to staff at every level",
+          "evidence": [
+            {
+              "excerpt": "Design and lead Carlton's AI learning program",
+              "section": "Responsibilities"
+            }
+          ]
+        },
+        {
+          "description": "Build and maintain a thriving internal AI community, keeping staff informed, inspired, and connected to what others are building and learning across the Club",
+          "evidence": [
+            {
+              "excerpt": "Build and maintain a thriving internal AI community",
+              "section": "Responsibilities"
+            }
+          ]
+        },
+        {
+          "description": "Manage and enable Carlton's AI champions network, ensuring champions across every department feel supported, capable, and are producing output with visible business impact",
+          "evidence": [
+            {
+              "excerpt": "Manage and enable Carlton's AI champions network",
+              "section": "Responsibilities"
+            }
+          ]
+        },
+        {
+          "description": "Own and run Carlton's AI adoption tracking program, surfacing patterns in usage, identifying blockers, and ensuring every insight leads to a closed-out action",
+          "evidence": [
+            {
+              "excerpt": "Own and run Carlton's AI adoption tracking program",
+              "section": "Responsibilities"
+            }
+          ]
+        },
+        {
+          "description": "Develop and maintain Carlton's AI playbook and internal resources, keeping them current and genuinely useful as the Club's primary reference for AI at work",
+          "evidence": [
+            {
+              "excerpt": "Develop and maintain Carlton's AI playbook and internal resources",
+              "section": "Responsibilities"
+            }
+          ]
+        },
+        {
+          "description": "Build prompt libraries, AI-powered workflows, and lightweight tools that solve real problems across the business, with a focus on outcomes that have clear business value",
+          "evidence": [
+            {
+              "excerpt": "Build prompt libraries, AI-powered workflows, and lightweight tools",
+              "section": "Responsibilities"
+            }
+          ]
+        },
+        {
+          "description": "Continuously scan the AI market for emerging tools, platforms, and techniques, evaluating what is worth adopting and bringing clear recommendations back to the team",
+          "evidence": [
+            {
+              "excerpt": "Continuously scan the AI market for emerging tools, platforms, and techniques",
+              "section": "Responsibilities"
+            }
+          ]
+        },
+        {
+          "description": "Embed safe and responsible AI use at the core of all education, training materials, and resources delivered to staff",
+          "evidence": [
+            {
+              "excerpt": "Embed safe and responsible AI use at the core of all education, training materials",
+              "section": "Responsibilities"
+            }
+          ]
+        },
+        {
+          "description": "Deliver regular AI adoption reporting to the executive leadership team and contribute ground-level insight to Carlton's broader AI strategy and roadmap",
+          "evidence": [
+            {
+              "excerpt": "Deliver regular AI adoption reporting to the executive leadership team",
+              "section": "Responsibilities"
+            }
+          ]
+        }
+      ],
+      "compensation": {
+        "clarity": "unstated",
+        "minimum": null,
+        "maximum": null,
+        "currency": null,
+        "period": null,
+        "raw_text": null,
+        "evidence": []
+      },
+      "location": {
+        "clarity": "stated",
+        "summary": "Carlton North, Melbourne VIC (Hybrid)",
+        "evidence": [
+          {
+            "excerpt": "Carlton North, Melbourne VIC (Hybrid)",
+            "section": "Job description"
+          }
+        ]
+      },
+      "work_arrangement": {
+        "arrangement": "hybrid",
+        "details": null,
+        "evidence": [
+          {
+            "excerpt": "Carlton North, Melbourne VIC (Hybrid)",
+            "section": "Job description"
+          }
+        ]
+      },
+      "employment": {
+        "working_hours": "unspecified",
+        "engagement_type": "contract",
+        "evidence": [
+          {
+            "excerpt": "Contract/Temp",
+            "section": "Job description"
+          }
+        ]
+      },
+      "experience_requirements": [
+        {
+          "description": "Have hands-on experience building with AI, including workflows and automations in a real organisational context",
+          "level": "required",
+          "minimum_years": null,
+          "maximum_years": null,
+          "evidence": [
+            {
+              "excerpt": "Have hands-on experience building with AI, including workflows and automations",
+              "section": "Who We Are Looking For"
+            }
+          ]
+        }
+      ]
+    },
+    "ranked_projects": [
+      {
+        "rank": 1,
+        "project_id": "operational-intelligence-copilot",
+        "rationale": "Project 'operational-intelligence-copilot' ranked on 9 demonstrates overlap(s), 9 responsibility overlap(s), 1 capability overlap(s).",
+        "factors": [
+          {
+            "kind": "capability_overlap",
+            "summary": "Project demonstrates 'workflows pipelines' capability overlapping job evidence 'Build prompt libraries, AI-powered workflows, and lightweight tools that solve real problems across the business, with a focus on outcomes that have clear busi…'.",
+            "job_evidence": [
+              {
+                "source": "responsibility",
+                "item_index": 5,
+                "name": null,
+                "excerpt": "Build prompt libraries, AI-powered workflows, and lightweight tools"
+              }
+            ],
+            "profile_evidence": [
+              {
+                "source": "project",
+                "ref": "project:operational-intelligence-copilot",
+                "excerpt": "workflows"
+              }
+            ]
+          },
+          {
+            "kind": "demonstrates_overlap",
+            "summary": "Project demonstrates capabilities overlapping responsibility 'Design and lead Carlton's AI learning program across all departments, structured workshops, regular training sessions, and drop-in support tailored to staff at…'.",
+            "job_evidence": [
+              {
+                "source": "responsibility",
+                "item_index": 0,
+                "name": null,
+                "excerpt": "Design and lead Carlton's AI learning program"
+              }
+            ],
+            "profile_evidence": [
+              {
+                "source": "project",
+                "ref": "project:operational-intelligence-copilot",
+                "excerpt": "Explainable AI recommendations"
+              }
+            ]
+          },
+          {
+            "kind": "responsibility_overlap",
+            "summary": "Project summary, outcomes, or technologies overlap responsibility 'Design and lead Carlton's AI learning program across all departments, structured workshops, regular training sessions, and drop-in support tailored to staff at…'.",
+            "job_evidence": [
+              {
+                "source": "responsibility",
+                "item_index": 0,
+                "name": null,
+                "excerpt": "Design and lead Carlton's AI learning program"
+              }
+            ],
+            "profile_evidence": [
+              {
+                "source": "project",
+                "ref": "project:operational-intelligence-copilot",
+                "excerpt": "Demonstrates operational intelligence capability for understanding business data. Combines reliable analytics with AI reasoning to surface anomalies and produc…"
+              }
+            ]
+          },
+          {
+            "kind": "demonstrates_overlap",
+            "summary": "Project demonstrates capabilities overlapping responsibility 'Build and maintain a thriving internal AI community, keeping staff informed, inspired, and connected to what others are building and learning across the Club'.",
+            "job_evidence": [
+              {
+                "source": "responsibility",
+                "item_index": 1,
+                "name": null,
+                "excerpt": "Build and maintain a thriving internal AI community"
+              }
+            ],
+            "profile_evidence": [
+              {
+                "source": "project",
+                "ref": "project:operational-intelligence-copilot",
+                "excerpt": "Explainable AI recommendations"
+              }
+            ]
+          },
+          {
+            "kind": "responsibility_overlap",
+            "summary": "Project summary, outcomes, or technologies overlap responsibility 'Build and maintain a thriving internal AI community, keeping staff informed, inspired, and connected to what others are building and learning across the Club'.",
+            "job_evidence": [
+              {
+                "source": "responsibility",
+                "item_index": 1,
+                "name": null,
+                "excerpt": "Build and maintain a thriving internal AI community"
+              }
+            ],
+            "profile_evidence": [
+              {
+                "source": "project",
+                "ref": "project:operational-intelligence-copilot",
+                "excerpt": "Demonstrates operational intelligence capability for understanding business data. Combines reliable analytics with AI reasoning to surface anomalies and produc…"
+              }
+            ]
+          },
+          {
+            "kind": "demonstrates_overlap",
+            "summary": "Project demonstrates capabilities overlapping responsibility 'Manage and enable Carlton's AI champions network, ensuring champions across every department feel supported, capable, and are producing output with visible bus…'.",
+            "job_evidence": [
+              {
+                "source": "responsibility",
+                "item_index": 2,
+                "name": null,
+                "excerpt": "Manage and enable Carlton's AI champions network"
+              }
+            ],
+            "profile_evidence": [
+              {
+                "source": "project",
+                "ref": "project:operational-intelligence-copilot",
+                "excerpt": "Explainable AI recommendations"
+              }
+            ]
+          },
+          {
+            "kind": "responsibility_overlap",
+            "summary": "Project summary, outcomes, or technologies overlap responsibility 'Manage and enable Carlton's AI champions network, ensuring champions across every department feel supported, capable, and are producing output with visible bus…'.",
+            "job_evidence": [
+              {
+                "source": "responsibility",
+                "item_index": 2,
+                "name": null,
+                "excerpt": "Manage and enable Carlton's AI champions network"
+              }
+            ],
+            "profile_evidence": [
+              {
+                "source": "project",
+                "ref": "project:operational-intelligence-copilot",
+                "excerpt": "Demonstrates operational intelligence capability for understanding business data. Combines reliable analytics with AI reasoning to surface anomalies and produc…"
+              }
+            ]
+          },
+          {
+            "kind": "demonstrates_overlap",
+            "summary": "Project demonstrates capabilities overlapping responsibility 'Own and run Carlton's AI adoption tracking program, surfacing patterns in usage, identifying blockers, and ensuring every insight leads to a closed-out action'.",
+            "job_evidence": [
+              {
+                "source": "responsibility",
+                "item_index": 3,
+                "name": null,
+                "excerpt": "Own and run Carlton's AI adoption tracking program"
+              }
+            ],
+            "profile_evidence": [
+              {
+                "source": "project",
+                "ref": "project:operational-intelligence-copilot",
+                "excerpt": "Explainable AI recommendations"
+              }
+            ]
+          },
+          {
+            "kind": "responsibility_overlap",
+            "summary": "Project summary, outcomes, or technologies overlap responsibility 'Own and run Carlton's AI adoption tracking program, surfacing patterns in usage, identifying blockers, and ensuring every insight leads to a closed-out action'.",
+            "job_evidence": [
+              {
+                "source": "responsibility",
+                "item_index": 3,
+                "name": null,
+                "excerpt": "Own and run Carlton's AI adoption tracking program"
+              }
+            ],
+            "profile_evidence": [
+              {
+                "source": "project",
+                "ref": "project:operational-intelligence-copilot",
+                "excerpt": "Demonstrates operational intelligence capability for understanding business data. Combines reliable analytics with AI reasoning to surface anomalies and produc…"
+              }
+            ]
+          },
+          {
+            "kind": "demonstrates_overlap",
+            "summary": "Project demonstrates capabilities overlapping responsibility 'Develop and maintain Carlton's AI playbook and internal resources, keeping them current and genuinely useful as the Club's primary reference for AI at work'.",
+            "job_evidence": [
+              {
+                "source": "responsibility",
+                "item_index": 4,
+                "name": null,
+                "excerpt": "Develop and maintain Carlton's AI playbook and internal resources"
+              }
+            ],
+            "profile_evidence": [
+              {
+                "source": "project",
+                "ref": "project:operational-intelligence-copilot",
+                "excerpt": "Explainable AI recommendations"
+              }
+            ]
+          },
+          {
+            "kind": "responsibility_overlap",
+            "summary": "Project summary, outcomes, or technologies overlap responsibility 'Develop and maintain Carlton's AI playbook and internal resources, keeping them current and genuinely useful as the Club's primary reference for AI at work'.",
+            "job_evidence": [
+              {
+                "source": "responsibility",
+                "item_index": 4,
+                "name": null,
+                "excerpt": "Develop and maintain Carlton's AI playbook and internal resources"
+              }
+            ],
+            "profile_evidence": [
+              {
+                "source": "project",
+                "ref": "project:operational-intelligence-copilot",
+                "excerpt": "Demonstrates operational intelligence capability for understanding business data. Combines reliable analytics with AI reasoning to surface anomalies and produc…"
+              }
+            ]
+          },
+          {
+            "kind": "demonstrates_overlap",
+            "summary": "Project demonstrates capabilities overlapping responsibility 'Build prompt libraries, AI-powered workflows, and lightweight tools that solve real problems across the business, with a focus on outcomes that have clear busi…'.",
+            "job_evidence": [
+              {
+                "source": "responsibility",
+                "item_index": 5,
+                "name": null,
+                "excerpt": "Build prompt libraries, AI-powered workflows, and lightweight tools"
+              }
+            ],
+            "profile_evidence": [
+              {
+                "source": "project",
+                "ref": "project:operational-intelligence-copilot",
+                "excerpt": "Regression-tested analytics workflows"
+              }
+            ]
+          },
+          {
+            "kind": "responsibility_overlap",
+            "summary": "Project summary, outcomes, or technologies overlap responsibility 'Build prompt libraries, AI-powered workflows, and lightweight tools that solve real problems across the business, with a focus on outcomes that have clear busi…'.",
+            "job_evidence": [
+              {
+                "source": "responsibility",
+                "item_index": 5,
+                "name": null,
+                "excerpt": "Build prompt libraries, AI-powered workflows, and lightweight tools"
+              }
+            ],
+            "profile_evidence": [
+              {
+                "source": "project",
+                "ref": "project:operational-intelligence-copilot",
+                "excerpt": "Demonstrates operational intelligence capability for understanding business data. Combines reliable analytics with AI reasoning to surface anomalies and produc…"
+              }
+            ]
+          },
+          {
+            "kind": "demonstrates_overlap",
+            "summary": "Project demonstrates capabilities overlapping responsibility 'Continuously scan the AI market for emerging tools, platforms, and techniques, evaluating what is worth adopting and bringing clear recommendations back to the…'.",
+            "job_evidence": [
+              {
+                "source": "responsibility",
+                "item_index": 6,
+                "name": null,
+                "excerpt": "Continuously scan the AI market for emerging tools, platforms, and techniques"
+              }
+            ],
+            "profile_evidence": [
+              {
+                "source": "project",
+                "ref": "project:operational-intelligence-copilot",
+                "excerpt": "Explainable AI recommendations"
+              }
+            ]
+          },
+          {
+            "kind": "responsibility_overlap",
+            "summary": "Project summary, outcomes, or technologies overlap responsibility 'Continuously scan the AI market for emerging tools, platforms, and techniques, evaluating what is worth adopting and bringing clear recommendations back to the…'.",
+            "job_evidence": [
+              {
+                "source": "responsibility",
+                "item_index": 6,
+                "name": null,
+                "excerpt": "Continuously scan the AI market for emerging tools, platforms, and techniques"
+              }
+            ],
+            "profile_evidence": [
+              {
+                "source": "project",
+                "ref": "project:operational-intelligence-copilot",
+                "excerpt": "Demonstrates operational intelligence capability for understanding business data. Combines reliable analytics with AI reasoning to surface anomalies and produc…"
+              }
+            ]
+          },
+          {
+            "kind": "demonstrates_overlap",
+            "summary": "Project demonstrates capabilities overlapping responsibility 'Embed safe and responsible AI use at the core of all education, training materials, and resources delivered to staff'.",
+            "job_evidence": [
+              {
+                "source": "responsibility",
+                "item_index": 7,
+                "name": null,
+                "excerpt": "Embed safe and responsible AI use at the core of all education, training materials"
+              }
+            ],
+            "profile_evidence": [
+              {
+                "source": "project",
+                "ref": "project:operational-intelligence-copilot",
+                "excerpt": "Explainable AI recommendations"
+              }
+            ]
+          },
+          {
+            "kind": "responsibility_overlap",
+            "summary": "Project summary, outcomes, or technologies overlap responsibility 'Embed safe and responsible AI use at the core of all education, training materials, and resources delivered to staff'.",
+            "job_evidence": [
+              {
+                "source": "responsibility",
+                "item_index": 7,
+                "name": null,
+                "excerpt": "Embed safe and responsible AI use at the core of all education, training materials"
+              }
+            ],
+            "profile_evidence": [
+              {
+                "source": "project",
+                "ref": "project:operational-intelligence-copilot",
+                "excerpt": "Demonstrates operational intelligence capability for understanding business data. Combines reliable analytics with AI reasoning to surface anomalies and produc…"
+              }
+            ]
+          },
+          {
+            "kind": "demonstrates_overlap",
+            "summary": "Project demonstrates capabilities overlapping responsibility 'Deliver regular AI adoption reporting to the executive leadership team and contribute ground-level insight to Carlton's broader AI strategy and roadmap'.",
+            "job_evidence": [
+              {
+                "source": "responsibility",
+                "item_index": 8,
+                "name": null,
+                "excerpt": "Deliver regular AI adoption reporting to the executive leadership team"
+              }
+            ],
+            "profile_evidence": [
+              {
+                "source": "project",
+                "ref": "project:operational-intelligence-copilot",
+                "excerpt": "Explainable AI recommendations"
+              }
+            ]
+          },
+          {
+            "kind": "responsibility_overlap",
+            "summary": "Project summary, outcomes, or technologies overlap responsibility 'Deliver regular AI adoption reporting to the executive leadership team and contribute ground-level insight to Carlton's broader AI strategy and roadmap'.",
+            "job_evidence": [
+              {
+                "source": "responsibility",
+                "item_index": 8,
+                "name": null,
+                "excerpt": "Deliver regular AI adoption reporting to the executive leadership team"
+              }
+            ],
+            "profile_evidence": [
+              {
+                "source": "project",
+                "ref": "project:operational-intelligence-copilot",
+                "excerpt": "Demonstrates operational intelligence capability for understanding business data. Combines reliable analytics with AI reasoning to surface anomalies and produc…"
+              }
+            ]
+          }
+        ],
+        "tie_group": null,
+        "tie_break_reason": null
+      },
+      {
+        "rank": 2,
+        "project_id": "governance-document-rag",
+        "rationale": "Project 'governance-document-rag' ranked on 9 demonstrates overlap(s), 9 responsibility overlap(s).",
+        "factors": [
+          {
+            "kind": "demonstrates_overlap",
+            "summary": "Project demonstrates capabilities overlapping responsibility 'Design and lead Carlton's AI learning program across all departments, structured workshops, regular training sessions, and drop-in support tailored to staff at…'.",
+            "job_evidence": [
+              {
+                "source": "responsibility",
+                "item_index": 0,
+                "name": null,
+                "excerpt": "Design and lead Carlton's AI learning program"
+              }
+            ],
+            "profile_evidence": [
+              {
+                "source": "project",
+                "ref": "project:governance-document-rag",
+                "excerpt": "AI evaluation frameworks"
+              }
+            ]
+          },
+          {
+            "kind": "responsibility_overlap",
+            "summary": "Project summary, outcomes, or technologies overlap responsibility 'Design and lead Carlton's AI learning program across all departments, structured workshops, regular training sessions, and drop-in support tailored to staff at…'.",
+            "job_evidence": [
+              {
+                "source": "responsibility",
+                "item_index": 0,
+                "name": null,
+                "excerpt": "Design and lead Carlton's AI learning program"
+              }
+            ],
+            "profile_evidence": [
+              {
+                "source": "project",
+                "ref": "project:governance-document-rag",
+                "excerpt": "Allows organisations to answer questions from their own documents with responses that stay grounded in source material. Built for teams that need trustworthy A…"
+              }
+            ]
+          },
+          {
+            "kind": "demonstrates_overlap",
+            "summary": "Project demonstrates capabilities overlapping responsibility 'Build and maintain a thriving internal AI community, keeping staff informed, inspired, and connected to what others are building and learning across the Club'.",
+            "job_evidence": [
+              {
+                "source": "responsibility",
+                "item_index": 1,
+                "name": null,
+                "excerpt": "Build and maintain a thriving internal AI community"
+              }
+            ],
+            "profile_evidence": [
+              {
+                "source": "project",
+                "ref": "project:governance-document-rag",
+                "excerpt": "AI evaluation frameworks"
+              }
+            ]
+          },
+          {
+            "kind": "responsibility_overlap",
+            "summary": "Project summary, outcomes, or technologies overlap responsibility 'Build and maintain a thriving internal AI community, keeping staff informed, inspired, and connected to what others are building and learning across the Club'.",
+            "job_evidence": [
+              {
+                "source": "responsibility",
+                "item_index": 1,
+                "name": null,
+                "excerpt": "Build and maintain a thriving internal AI community"
+              }
+            ],
+            "profile_evidence": [
+              {
+                "source": "project",
+                "ref": "project:governance-document-rag",
+                "excerpt": "Allows organisations to answer questions from their own documents with responses that stay grounded in source material. Built for teams that need trustworthy A…"
+              }
+            ]
+          },
+          {
+            "kind": "demonstrates_overlap",
+            "summary": "Project demonstrates capabilities overlapping responsibility 'Manage and enable Carlton's AI champions network, ensuring champions across every department feel supported, capable, and are producing output with visible bus…'.",
+            "job_evidence": [
+              {
+                "source": "responsibility",
+                "item_index": 2,
+                "name": null,
+                "excerpt": "Manage and enable Carlton's AI champions network"
+              }
+            ],
+            "profile_evidence": [
+              {
+                "source": "project",
+                "ref": "project:governance-document-rag",
+                "excerpt": "AI evaluation frameworks"
+              }
+            ]
+          },
+          {
+            "kind": "responsibility_overlap",
+            "summary": "Project summary, outcomes, or technologies overlap responsibility 'Manage and enable Carlton's AI champions network, ensuring champions across every department feel supported, capable, and are producing output with visible bus…'.",
+            "job_evidence": [
+              {
+                "source": "responsibility",
+                "item_index": 2,
+                "name": null,
+                "excerpt": "Manage and enable Carlton's AI champions network"
+              }
+            ],
+            "profile_evidence": [
+              {
+                "source": "project",
+                "ref": "project:governance-document-rag",
+                "excerpt": "Allows organisations to answer questions from their own documents with responses that stay grounded in source material. Built for teams that need trustworthy A…"
+              }
+            ]
+          },
+          {
+            "kind": "demonstrates_overlap",
+            "summary": "Project demonstrates capabilities overlapping responsibility 'Own and run Carlton's AI adoption tracking program, surfacing patterns in usage, identifying blockers, and ensuring every insight leads to a closed-out action'.",
+            "job_evidence": [
+              {
+                "source": "responsibility",
+                "item_index": 3,
+                "name": null,
+                "excerpt": "Own and run Carlton's AI adoption tracking program"
+              }
+            ],
+            "profile_evidence": [
+              {
+                "source": "project",
+                "ref": "project:governance-document-rag",
+                "excerpt": "AI evaluation frameworks"
+              }
+            ]
+          },
+          {
+            "kind": "responsibility_overlap",
+            "summary": "Project summary, outcomes, or technologies overlap responsibility 'Own and run Carlton's AI adoption tracking program, surfacing patterns in usage, identifying blockers, and ensuring every insight leads to a closed-out action'.",
+            "job_evidence": [
+              {
+                "source": "responsibility",
+                "item_index": 3,
+                "name": null,
+                "excerpt": "Own and run Carlton's AI adoption tracking program"
+              }
+            ],
+            "profile_evidence": [
+              {
+                "source": "project",
+                "ref": "project:governance-document-rag",
+                "excerpt": "Allows organisations to answer questions from their own documents with responses that stay grounded in source material. Built for teams that need trustworthy A…"
+              }
+            ]
+          },
+          {
+            "kind": "demonstrates_overlap",
+            "summary": "Project demonstrates capabilities overlapping responsibility 'Develop and maintain Carlton's AI playbook and internal resources, keeping them current and genuinely useful as the Club's primary reference for AI at work'.",
+            "job_evidence": [
+              {
+                "source": "responsibility",
+                "item_index": 4,
+                "name": null,
+                "excerpt": "Develop and maintain Carlton's AI playbook and internal resources"
+              }
+            ],
+            "profile_evidence": [
+              {
+                "source": "project",
+                "ref": "project:governance-document-rag",
+                "excerpt": "AI evaluation frameworks"
+              }
+            ]
+          },
+          {
+            "kind": "responsibility_overlap",
+            "summary": "Project summary, outcomes, or technologies overlap responsibility 'Develop and maintain Carlton's AI playbook and internal resources, keeping them current and genuinely useful as the Club's primary reference for AI at work'.",
+            "job_evidence": [
+              {
+                "source": "responsibility",
+                "item_index": 4,
+                "name": null,
+                "excerpt": "Develop and maintain Carlton's AI playbook and internal resources"
+              }
+            ],
+            "profile_evidence": [
+              {
+                "source": "project",
+                "ref": "project:governance-document-rag",
+                "excerpt": "Allows organisations to answer questions from their own documents with responses that stay grounded in source material. Built for teams that need trustworthy A…"
+              }
+            ]
+          },
+          {
+            "kind": "demonstrates_overlap",
+            "summary": "Project demonstrates capabilities overlapping responsibility 'Build prompt libraries, AI-powered workflows, and lightweight tools that solve real problems across the business, with a focus on outcomes that have clear busi…'.",
+            "job_evidence": [
+              {
+                "source": "responsibility",
+                "item_index": 5,
+                "name": null,
+                "excerpt": "Build prompt libraries, AI-powered workflows, and lightweight tools"
+              }
+            ],
+            "profile_evidence": [
+              {
+                "source": "project",
+                "ref": "project:governance-document-rag",
+                "excerpt": "AI evaluation frameworks"
+              }
+            ]
+          },
+          {
+            "kind": "responsibility_overlap",
+            "summary": "Project summary, outcomes, or technologies overlap responsibility 'Build prompt libraries, AI-powered workflows, and lightweight tools that solve real problems across the business, with a focus on outcomes that have clear busi…'.",
+            "job_evidence": [
+              {
+                "source": "responsibility",
+                "item_index": 5,
+                "name": null,
+                "excerpt": "Build prompt libraries, AI-powered workflows, and lightweight tools"
+              }
+            ],
+            "profile_evidence": [
+              {
+                "source": "project",
+                "ref": "project:governance-document-rag",
+                "excerpt": "Allows organisations to answer questions from their own documents with responses that stay grounded in source material. Built for teams that need trustworthy A…"
+              }
+            ]
+          },
+          {
+            "kind": "demonstrates_overlap",
+            "summary": "Project demonstrates capabilities overlapping responsibility 'Continuously scan the AI market for emerging tools, platforms, and techniques, evaluating what is worth adopting and bringing clear recommendations back to the…'.",
+            "job_evidence": [
+              {
+                "source": "responsibility",
+                "item_index": 6,
+                "name": null,
+                "excerpt": "Continuously scan the AI market for emerging tools, platforms, and techniques"
+              }
+            ],
+            "profile_evidence": [
+              {
+                "source": "project",
+                "ref": "project:governance-document-rag",
+                "excerpt": "AI evaluation frameworks"
+              }
+            ]
+          },
+          {
+            "kind": "responsibility_overlap",
+            "summary": "Project summary, outcomes, or technologies overlap responsibility 'Continuously scan the AI market for emerging tools, platforms, and techniques, evaluating what is worth adopting and bringing clear recommendations back to the…'.",
+            "job_evidence": [
+              {
+                "source": "responsibility",
+                "item_index": 6,
+                "name": null,
+                "excerpt": "Continuously scan the AI market for emerging tools, platforms, and techniques"
+              }
+            ],
+            "profile_evidence": [
+              {
+                "source": "project",
+                "ref": "project:governance-document-rag",
+                "excerpt": "Allows organisations to answer questions from their own documents with responses that stay grounded in source material. Built for teams that need trustworthy A…"
+              }
+            ]
+          },
+          {
+            "kind": "demonstrates_overlap",
+            "summary": "Project demonstrates capabilities overlapping responsibility 'Embed safe and responsible AI use at the core of all education, training materials, and resources delivered to staff'.",
+            "job_evidence": [
+              {
+                "source": "responsibility",
+                "item_index": 7,
+                "name": null,
+                "excerpt": "Embed safe and responsible AI use at the core of all education, training materials"
+              }
+            ],
+            "profile_evidence": [
+              {
+                "source": "project",
+                "ref": "project:governance-document-rag",
+                "excerpt": "AI evaluation frameworks"
+              }
+            ]
+          },
+          {
+            "kind": "responsibility_overlap",
+            "summary": "Project summary, outcomes, or technologies overlap responsibility 'Embed safe and responsible AI use at the core of all education, training materials, and resources delivered to staff'.",
+            "job_evidence": [
+              {
+                "source": "responsibility",
+                "item_index": 7,
+                "name": null,
+                "excerpt": "Embed safe and responsible AI use at the core of all education, training materials"
+              }
+            ],
+            "profile_evidence": [
+              {
+                "source": "project",
+                "ref": "project:governance-document-rag",
+                "excerpt": "Allows organisations to answer questions from their own documents with responses that stay grounded in source material. Built for teams that need trustworthy A…"
+              }
+            ]
+          },
+          {
+            "kind": "demonstrates_overlap",
+            "summary": "Project demonstrates capabilities overlapping responsibility 'Deliver regular AI adoption reporting to the executive leadership team and contribute ground-level insight to Carlton's broader AI strategy and roadmap'.",
+            "job_evidence": [
+              {
+                "source": "responsibility",
+                "item_index": 8,
+                "name": null,
+                "excerpt": "Deliver regular AI adoption reporting to the executive leadership team"
+              }
+            ],
+            "profile_evidence": [
+              {
+                "source": "project",
+                "ref": "project:governance-document-rag",
+                "excerpt": "AI evaluation frameworks"
+              }
+            ]
+          },
+          {
+            "kind": "responsibility_overlap",
+            "summary": "Project summary, outcomes, or technologies overlap responsibility 'Deliver regular AI adoption reporting to the executive leadership team and contribute ground-level insight to Carlton's broader AI strategy and roadmap'.",
+            "job_evidence": [
+              {
+                "source": "responsibility",
+                "item_index": 8,
+                "name": null,
+                "excerpt": "Deliver regular AI adoption reporting to the executive leadership team"
+              }
+            ],
+            "profile_evidence": [
+              {
+                "source": "project",
+                "ref": "project:governance-document-rag",
+                "excerpt": "Allows organisations to answer questions from their own documents with responses that stay grounded in source material. Built for teams that need trustworthy A…"
+              }
+            ]
+          }
+        ],
+        "tie_group": null,
+        "tie_break_reason": null
+      },
+      {
+        "rank": 3,
+        "project_id": "public-holiday-entitlements",
+        "rationale": "Project 'public-holiday-entitlements' ranked on 3 demonstrates overlap(s), 1 responsibility overlap(s).",
+        "factors": [
+          {
+            "kind": "demonstrates_overlap",
+            "summary": "Project demonstrates capabilities overlapping responsibility 'Manage and enable Carlton's AI champions network, ensuring champions across every department feel supported, capable, and are producing output with visible bus…'.",
+            "job_evidence": [
+              {
+                "source": "responsibility",
+                "item_index": 2,
+                "name": null,
+                "excerpt": "Manage and enable Carlton's AI champions network"
+              }
+            ],
+            "profile_evidence": [
+              {
+                "source": "project",
+                "ref": "project:public-holiday-entitlements",
+                "excerpt": "Business rules"
+              }
+            ]
+          },
+          {
+            "kind": "demonstrates_overlap",
+            "summary": "Project demonstrates capabilities overlapping responsibility 'Build prompt libraries, AI-powered workflows, and lightweight tools that solve real problems across the business, with a focus on outcomes that have clear busi…'.",
+            "job_evidence": [
+              {
+                "source": "responsibility",
+                "item_index": 5,
+                "name": null,
+                "excerpt": "Build prompt libraries, AI-powered workflows, and lightweight tools"
+              }
+            ],
+            "profile_evidence": [
+              {
+                "source": "project",
+                "ref": "project:public-holiday-entitlements",
+                "excerpt": "Business rules"
+              }
+            ]
+          },
+          {
+            "kind": "demonstrates_overlap",
+            "summary": "Project demonstrates capabilities overlapping responsibility 'Deliver regular AI adoption reporting to the executive leadership team and contribute ground-level insight to Carlton's broader AI strategy and roadmap'.",
+            "job_evidence": [
+              {
+                "source": "responsibility",
+                "item_index": 8,
+                "name": null,
+                "excerpt": "Deliver regular AI adoption reporting to the executive leadership team"
+              }
+            ],
+            "profile_evidence": [
+              {
+                "source": "project",
+                "ref": "project:public-holiday-entitlements",
+                "excerpt": "Compliance reporting"
+              }
+            ]
+          },
+          {
+            "kind": "responsibility_overlap",
+            "summary": "Project summary, outcomes, or technologies overlap responsibility 'Deliver regular AI adoption reporting to the executive leadership team and contribute ground-level insight to Carlton's broader AI strategy and roadmap'.",
+            "job_evidence": [
+              {
+                "source": "responsibility",
+                "item_index": 8,
+                "name": null,
+                "excerpt": "Deliver regular AI adoption reporting to the executive leadership team"
+              }
+            ],
+            "profile_evidence": [
+              {
+                "source": "project",
+                "ref": "project:public-holiday-entitlements",
+                "excerpt": "Produces compliance-oriented reporting."
+              }
+            ]
+          }
+        ],
+        "tie_group": null,
+        "tie_break_reason": null
+      },
+      {
+        "rank": 4,
+        "project_id": "career-intelligence-copilot",
+        "rationale": "Project 'career-intelligence-copilot' ranked on 2 demonstrates overlap(s), 9 responsibility overlap(s).",
+        "factors": [
+          {
+            "kind": "demonstrates_overlap",
+            "summary": "Project demonstrates capabilities overlapping responsibility 'Design and lead Carlton's AI learning program across all departments, structured workshops, regular training sessions, and drop-in support tailored to staff at…'.",
+            "job_evidence": [
+              {
+                "source": "responsibility",
+                "item_index": 0,
+                "name": null,
+                "excerpt": "Design and lead Carlton's AI learning program"
+              }
+            ],
+            "profile_evidence": [
+              {
+                "source": "project",
+                "ref": "project:career-intelligence-copilot",
+                "excerpt": "Structured career profile model"
+              }
+            ]
+          },
+          {
+            "kind": "responsibility_overlap",
+            "summary": "Project summary, outcomes, or technologies overlap responsibility 'Design and lead Carlton's AI learning program across all departments, structured workshops, regular training sessions, and drop-in support tailored to staff at…'.",
+            "job_evidence": [
+              {
+                "source": "responsibility",
+                "item_index": 0,
+                "name": null,
+                "excerpt": "Design and lead Carlton's AI learning program"
+              }
+            ],
+            "profile_evidence": [
+              {
+                "source": "project",
+                "ref": "project:career-intelligence-copilot",
+                "excerpt": "Enables an AI Engineering job seeker to decide which roles deserve effort. Reviews job ads against a structured career profile, ranks fit, recommends applicati…"
+              }
+            ]
+          },
+          {
+            "kind": "responsibility_overlap",
+            "summary": "Project summary, outcomes, or technologies overlap responsibility 'Build and maintain a thriving internal AI community, keeping staff informed, inspired, and connected to what others are building and learning across the Club'.",
+            "job_evidence": [
+              {
+                "source": "responsibility",
+                "item_index": 1,
+                "name": null,
+                "excerpt": "Build and maintain a thriving internal AI community"
+              }
+            ],
+            "profile_evidence": [
+              {
+                "source": "project",
+                "ref": "project:career-intelligence-copilot",
+                "excerpt": "Enables an AI Engineering job seeker to decide which roles deserve effort. Reviews job ads against a structured career profile, ranks fit, recommends applicati…"
+              }
+            ]
+          },
+          {
+            "kind": "responsibility_overlap",
+            "summary": "Project summary, outcomes, or technologies overlap responsibility 'Manage and enable Carlton's AI champions network, ensuring champions across every department feel supported, capable, and are producing output with visible bus…'.",
+            "job_evidence": [
+              {
+                "source": "responsibility",
+                "item_index": 2,
+                "name": null,
+                "excerpt": "Manage and enable Carlton's AI champions network"
+              }
+            ],
+            "profile_evidence": [
+              {
+                "source": "project",
+                "ref": "project:career-intelligence-copilot",
+                "excerpt": "Enables an AI Engineering job seeker to decide which roles deserve effort. Reviews job ads against a structured career profile, ranks fit, recommends applicati…"
+              }
+            ]
+          },
+          {
+            "kind": "responsibility_overlap",
+            "summary": "Project summary, outcomes, or technologies overlap responsibility 'Own and run Carlton's AI adoption tracking program, surfacing patterns in usage, identifying blockers, and ensuring every insight leads to a closed-out action'.",
+            "job_evidence": [
+              {
+                "source": "responsibility",
+                "item_index": 3,
+                "name": null,
+                "excerpt": "Own and run Carlton's AI adoption tracking program"
+              }
+            ],
+            "profile_evidence": [
+              {
+                "source": "project",
+                "ref": "project:career-intelligence-copilot",
+                "excerpt": "Enables an AI Engineering job seeker to decide which roles deserve effort. Reviews job ads against a structured career profile, ranks fit, recommends applicati…"
+              }
+            ]
+          },
+          {
+            "kind": "responsibility_overlap",
+            "summary": "Project summary, outcomes, or technologies overlap responsibility 'Develop and maintain Carlton's AI playbook and internal resources, keeping them current and genuinely useful as the Club's primary reference for AI at work'.",
+            "job_evidence": [
+              {
+                "source": "responsibility",
+                "item_index": 4,
+                "name": null,
+                "excerpt": "Develop and maintain Carlton's AI playbook and internal resources"
+              }
+            ],
+            "profile_evidence": [
+              {
+                "source": "project",
+                "ref": "project:career-intelligence-copilot",
+                "excerpt": "Enables an AI Engineering job seeker to decide which roles deserve effort. Reviews job ads against a structured career profile, ranks fit, recommends applicati…"
+              }
+            ]
+          },
+          {
+            "kind": "responsibility_overlap",
+            "summary": "Project summary, outcomes, or technologies overlap responsibility 'Build prompt libraries, AI-powered workflows, and lightweight tools that solve real problems across the business, with a focus on outcomes that have clear busi…'.",
+            "job_evidence": [
+              {
+                "source": "responsibility",
+                "item_index": 5,
+                "name": null,
+                "excerpt": "Build prompt libraries, AI-powered workflows, and lightweight tools"
+              }
+            ],
+            "profile_evidence": [
+              {
+                "source": "project",
+                "ref": "project:career-intelligence-copilot",
+                "excerpt": "Enables an AI Engineering job seeker to decide which roles deserve effort. Reviews job ads against a structured career profile, ranks fit, recommends applicati…"
+              }
+            ]
+          },
+          {
+            "kind": "responsibility_overlap",
+            "summary": "Project summary, outcomes, or technologies overlap responsibility 'Continuously scan the AI market for emerging tools, platforms, and techniques, evaluating what is worth adopting and bringing clear recommendations back to the…'.",
+            "job_evidence": [
+              {
+                "source": "responsibility",
+                "item_index": 6,
+                "name": null,
+                "excerpt": "Continuously scan the AI market for emerging tools, platforms, and techniques"
+              }
+            ],
+            "profile_evidence": [
+              {
+                "source": "project",
+                "ref": "project:career-intelligence-copilot",
+                "excerpt": "Enables an AI Engineering job seeker to decide which roles deserve effort. Reviews job ads against a structured career profile, ranks fit, recommends applicati…"
+              }
+            ]
+          },
+          {
+            "kind": "responsibility_overlap",
+            "summary": "Project summary, outcomes, or technologies overlap responsibility 'Embed safe and responsible AI use at the core of all education, training materials, and resources delivered to staff'.",
+            "job_evidence": [
+              {
+                "source": "responsibility",
+                "item_index": 7,
+                "name": null,
+                "excerpt": "Embed safe and responsible AI use at the core of all education, training materials"
+              }
+            ],
+            "profile_evidence": [
+              {
+                "source": "project",
+                "ref": "project:career-intelligence-copilot",
+                "excerpt": "Enables an AI Engineering job seeker to decide which roles deserve effort. Reviews job ads against a structured career profile, ranks fit, recommends applicati…"
+              }
+            ]
+          },
+          {
+            "kind": "demonstrates_overlap",
+            "summary": "Project demonstrates capabilities overlapping responsibility 'Deliver regular AI adoption reporting to the executive leadership team and contribute ground-level insight to Carlton's broader AI strategy and roadmap'.",
+            "job_evidence": [
+              {
+                "source": "responsibility",
+                "item_index": 8,
+                "name": null,
+                "excerpt": "Deliver regular AI adoption reporting to the executive leadership team"
+              }
+            ],
+            "profile_evidence": [
+              {
+                "source": "project",
+                "ref": "project:career-intelligence-copilot",
+                "excerpt": "Deterministic application-strategy recommendation"
+              }
+            ]
+          },
+          {
+            "kind": "responsibility_overlap",
+            "summary": "Project summary, outcomes, or technologies overlap responsibility 'Deliver regular AI adoption reporting to the executive leadership team and contribute ground-level insight to Carlton's broader AI strategy and roadmap'.",
+            "job_evidence": [
+              {
+                "source": "responsibility",
+                "item_index": 8,
+                "name": null,
+                "excerpt": "Deliver regular AI adoption reporting to the executive leadership team"
+              }
+            ],
+            "profile_evidence": [
+              {
+                "source": "project",
+                "ref": "project:career-intelligence-copilot",
+                "excerpt": "Enables an AI Engineering job seeker to decide which roles deserve effort. Reviews job ads against a structured career profile, ranks fit, recommends applicati…"
+              }
+            ]
+          }
+        ],
+        "tie_group": null,
+        "tie_break_reason": null
+      },
+      {
+        "rank": 5,
+        "project_id": "payroll-diagnostics-engine",
+        "rationale": "Project 'payroll-diagnostics-engine' ranked on 3 responsibility overlap(s).",
+        "factors": [
+          {
+            "kind": "responsibility_overlap",
+            "summary": "Project summary, outcomes, or technologies overlap responsibility 'Manage and enable Carlton's AI champions network, ensuring champions across every department feel supported, capable, and are producing output with visible bus…'.",
+            "job_evidence": [
+              {
+                "source": "responsibility",
+                "item_index": 2,
+                "name": null,
+                "excerpt": "Manage and enable Carlton's AI champions network"
+              }
+            ],
+            "profile_evidence": [
+              {
+                "source": "project",
+                "ref": "project:payroll-diagnostics-engine",
+                "excerpt": "Reviews payroll data against deterministic business rules to identify anomalies. Produces explainable findings and executive-ready reports so issues can be inv…"
+              }
+            ]
+          },
+          {
+            "kind": "responsibility_overlap",
+            "summary": "Project summary, outcomes, or technologies overlap responsibility 'Build prompt libraries, AI-powered workflows, and lightweight tools that solve real problems across the business, with a focus on outcomes that have clear busi…'.",
+            "job_evidence": [
+              {
+                "source": "responsibility",
+                "item_index": 5,
+                "name": null,
+                "excerpt": "Build prompt libraries, AI-powered workflows, and lightweight tools"
+              }
+            ],
+            "profile_evidence": [
+              {
+                "source": "project",
+                "ref": "project:payroll-diagnostics-engine",
+                "excerpt": "Reviews payroll data against deterministic business rules to identify anomalies. Produces explainable findings and executive-ready reports so issues can be inv…"
+              }
+            ]
+          },
+          {
+            "kind": "responsibility_overlap",
+            "summary": "Project summary, outcomes, or technologies overlap responsibility 'Deliver regular AI adoption reporting to the executive leadership team and contribute ground-level insight to Carlton's broader AI strategy and roadmap'.",
+            "job_evidence": [
+              {
+                "source": "responsibility",
+                "item_index": 8,
+                "name": null,
+                "excerpt": "Deliver regular AI adoption reporting to the executive leadership team"
+              }
+            ],
+            "profile_evidence": [
+              {
+                "source": "project",
+                "ref": "project:payroll-diagnostics-engine",
+                "excerpt": "Reviews payroll data against deterministic business rules to identify anomalies. Produces explainable findings and executive-ready reports so issues can be inv…"
+              }
+            ]
+          }
+        ],
+        "tie_group": null,
+        "tie_break_reason": null
+      }
+    ],
+    "unranked_project_ids": [],
+    "summary": "Ranked 5 project(s); lead with 'operational-intelligence-copilot'. 0 project(s) had no matching factors.",
+    "insufficient_evidence": false
+  },
+  "application_strategy": {
+    "job_analysis": {
+      "posting": {
+        "raw_text": "AI Enablement Lead\n\nCarlton Football Club \nView all jobs\nCarlton North, Melbourne VIC (Hybrid)\nOther (Sport & Recreation)\nContract/Temp\nSalary undisclosed\n\n\nCarlton Football Club has made a deliberate and significant investment in AI, with a genuine appetite for innovation from the top down, and the returns are already visible across the Club. Working closely with the GM of Data, Technology and AI, the AI Enablement Lead will be responsible for driving adoption and education across every part of the Club. This newly created role is one of the first of its kind in Australian sport, and provides an opportunity to play a highly influential role in the transformation of an elite sporting organisation. \n\nThe role is ultimately about people, and is best suited to someone who genuinely loves helping others learn. The focus is on identifying where AI can improve how staff work, removing the barriers that stop adoption, and building the skills and confidence of the Club to embrace it responsibly. \n\nLooking further ahead, the Club is ambitious about what AI can do. From agentic workflows to organisation-wide transformation, the roadmap beyond the first 12 months is compelling, and this role is where that journey begins. \n\nEducation and Adoption \n\nDesign and lead Carlton's AI learning program across all departments, structured workshops, regular training sessions, and drop-in support tailored to staff at every level \nBuild and maintain a thriving internal AI community, keeping staff informed, inspired, and connected to what others are building and learning across the Club \nManage and enable Carlton's AI champions network, ensuring champions across every department feel supported, capable, and are producing output with visible business impact \nOwn and run Carlton's AI adoption tracking program, surfacing patterns in usage, identifying blockers, and ensuring every insight leads to a closed-out action \nSupport all users across the Club, paid and free, ensuring no one is left behind regardless of which tools they have access to \n Building \n\nDevelop and maintain Carlton's AI playbook and internal resources, keeping them current and genuinely useful as the Club's primary reference for AI at work \nBuild prompt libraries, AI-powered workflows, and lightweight tools that solve real problems across the business, with a focus on outcomes that have clear business value \nWork closely with the Data and Technology teams to identify AI integration opportunities, including tools with AI capabilities built in, connectors, and workflow solutions \n Exploration \n\nContinuously scan the AI market for emerging tools, platforms, and techniques, evaluating what is worth adopting and bringing clear recommendations back to the team \nIdentify common themes and recurring gaps in how staff work, and explore whether agentic workflows or AI-driven solutions could address them at scale \nPrototype and test new AI approaches, including agentic solutions, that could meaningfully change how the Club operates, keeping Carlton ahead of the curve as the technology matures \n Governance \n\nEmbed safe and responsible AI use at the core of all education, training materials, and resources delivered to staff \nOwn Carlton's AI Use Policy as a living document and maintain governance guides that ensure AI is used responsibly and in line with the Club's values \n AI Strategy and Leadership \n\nDeliver regular AI adoption reporting to the executive leadership team and contribute ground-level insight to Carlton's broader AI strategy and roadmap \nTrack the AI landscape, flagging relevant emerging tools, opportunities, and risks to senior leadership on an ongoing basis \n Who We Are Looking For \n\nYou might have come from education, change management, consulting, tech enablement, or somewhere else entirely. What matters is that you can bring people on a journey with AI, and you have the hands-on experience to back it up. \n\n\nYou will be a strong fit if you \n\nHave hands-on experience building with AI, including workflows and automations in a real organisational context \nAre highly proficient with Claude or other reputable AI tools, and are always exploring what else is emerging in the market \nHave designed and delivered training or capability programs for technology or AI adoption \nCan translate a business problem into a practical, outcomes-focused AI solution \nCommunicate clearly with people at every level, from frontline staff to executives \nHave genuine intellectual curiosity about AI and a bias toward doing over theorising \nAre comfortable in an environment where not everything is defined yet, and see that as an opportunity \nHave an interest in Australian Rules Football or experience working in an elite sporting organisation, preferred but not essential \n \n\nEmployer questions\nYour application will include the following questions:\nWhich of the following statements best describes your right to work in Australia?\nHow would you rate your proficiency with Claude or other reputable AI tools, including your commitment to exploring emerging AI technologies?\nWhat is your experience in guiding individuals and teams through the adoption and integration of AI within an organizational setting?\nWhat are your salary expectations (including super) for a new position?\nDo you have a current Victorian Working With Children Check (WWCC)?",
+        "title": "AI Enablement Lead",
+        "company": "Carlton Football Club",
+        "source_url": null
+      },
+      "role_family": {
+        "family": "ai_adjacent",
+        "evidence": [
+          {
+            "excerpt": "Carlton Football Club has made a deliberate and significant investment in AI",
+            "section": "Job description"
+          }
+        ]
+      },
+      "seniority": {
+        "level": "unknown",
+        "ambiguous": false,
+        "candidate_levels": [],
+        "evidence": []
+      },
+      "technologies": [
+        {
+          "name": "Claude",
+          "level": "preferred",
+          "evidence": [
+            {
+              "excerpt": "Are highly proficient with Claude or other reputable AI tools",
+              "section": "Who We Are Looking For"
+            }
+          ]
+        }
+      ],
+      "responsibilities": [
+        {
+          "description": "Design and lead Carlton's AI learning program across all departments, structured workshops, regular training sessions, and drop-in support tailored to staff at every level",
+          "evidence": [
+            {
+              "excerpt": "Design and lead Carlton's AI learning program",
+              "section": "Responsibilities"
+            }
+          ]
+        },
+        {
+          "description": "Build and maintain a thriving internal AI community, keeping staff informed, inspired, and connected to what others are building and learning across the Club",
+          "evidence": [
+            {
+              "excerpt": "Build and maintain a thriving internal AI community",
+              "section": "Responsibilities"
+            }
+          ]
+        },
+        {
+          "description": "Manage and enable Carlton's AI champions network, ensuring champions across every department feel supported, capable, and are producing output with visible business impact",
+          "evidence": [
+            {
+              "excerpt": "Manage and enable Carlton's AI champions network",
+              "section": "Responsibilities"
+            }
+          ]
+        },
+        {
+          "description": "Own and run Carlton's AI adoption tracking program, surfacing patterns in usage, identifying blockers, and ensuring every insight leads to a closed-out action",
+          "evidence": [
+            {
+              "excerpt": "Own and run Carlton's AI adoption tracking program",
+              "section": "Responsibilities"
+            }
+          ]
+        },
+        {
+          "description": "Develop and maintain Carlton's AI playbook and internal resources, keeping them current and genuinely useful as the Club's primary reference for AI at work",
+          "evidence": [
+            {
+              "excerpt": "Develop and maintain Carlton's AI playbook and internal resources",
+              "section": "Responsibilities"
+            }
+          ]
+        },
+        {
+          "description": "Build prompt libraries, AI-powered workflows, and lightweight tools that solve real problems across the business, with a focus on outcomes that have clear business value",
+          "evidence": [
+            {
+              "excerpt": "Build prompt libraries, AI-powered workflows, and lightweight tools",
+              "section": "Responsibilities"
+            }
+          ]
+        },
+        {
+          "description": "Continuously scan the AI market for emerging tools, platforms, and techniques, evaluating what is worth adopting and bringing clear recommendations back to the team",
+          "evidence": [
+            {
+              "excerpt": "Continuously scan the AI market for emerging tools, platforms, and techniques",
+              "section": "Responsibilities"
+            }
+          ]
+        },
+        {
+          "description": "Embed safe and responsible AI use at the core of all education, training materials, and resources delivered to staff",
+          "evidence": [
+            {
+              "excerpt": "Embed safe and responsible AI use at the core of all education, training materials",
+              "section": "Responsibilities"
+            }
+          ]
+        },
+        {
+          "description": "Deliver regular AI adoption reporting to the executive leadership team and contribute ground-level insight to Carlton's broader AI strategy and roadmap",
+          "evidence": [
+            {
+              "excerpt": "Deliver regular AI adoption reporting to the executive leadership team",
+              "section": "Responsibilities"
+            }
+          ]
+        }
+      ],
+      "compensation": {
+        "clarity": "unstated",
+        "minimum": null,
+        "maximum": null,
+        "currency": null,
+        "period": null,
+        "raw_text": null,
+        "evidence": []
+      },
+      "location": {
+        "clarity": "stated",
+        "summary": "Carlton North, Melbourne VIC (Hybrid)",
+        "evidence": [
+          {
+            "excerpt": "Carlton North, Melbourne VIC (Hybrid)",
+            "section": "Job description"
+          }
+        ]
+      },
+      "work_arrangement": {
+        "arrangement": "hybrid",
+        "details": null,
+        "evidence": [
+          {
+            "excerpt": "Carlton North, Melbourne VIC (Hybrid)",
+            "section": "Job description"
+          }
+        ]
+      },
+      "employment": {
+        "working_hours": "unspecified",
+        "engagement_type": "contract",
+        "evidence": [
+          {
+            "excerpt": "Contract/Temp",
+            "section": "Job description"
+          }
+        ]
+      },
+      "experience_requirements": [
+        {
+          "description": "Have hands-on experience building with AI, including workflows and automations in a real organisational context",
+          "level": "required",
+          "minimum_years": null,
+          "maximum_years": null,
+          "evidence": [
+            {
+              "excerpt": "Have hands-on experience building with AI, including workflows and automations",
+              "section": "Who We Are Looking For"
+            }
+          ]
+        }
+      ]
+    },
+    "application_tier": "bronze",
+    "pursuit_posture": "do_not_prioritise",
+    "practical_value": "acceptable_opportunity",
+    "effort_level": "none",
+    "summary": "Do not prioritise significant effort for this opportunity (tier bronze, effort none). Bronze means low effort investment guidance, not an automatic never-apply decision.",
+    "reasons": [
+      {
+        "kind": "constraint",
+        "summary": "Job engagement type is contract, but the profile preference is full-time only.",
+        "importance": "material",
+        "evidence": [
+          {
+            "origin": "job_analysis",
+            "job_evidence": {
+              "source": "employment",
+              "item_index": null,
+              "name": null,
+              "excerpt": null
+            },
+            "profile_evidence": null,
+            "assessment_dimension": null,
+            "assessment_judgment": null,
+            "portfolio_project_id": null,
+            "excerpt": null
+          },
+          {
+            "origin": "career_profile",
+            "job_evidence": null,
+            "profile_evidence": {
+              "source": "preference",
+              "ref": "preference:employment_types",
+              "excerpt": null
+            },
+            "assessment_dimension": null,
+            "assessment_judgment": null,
+            "portfolio_project_id": null,
+            "excerpt": null
+          }
+        ]
+      }
+    ],
+    "risks_or_gaps": [
+      {
+        "summary": "The role requires hands-on experience building with AI in an organizational context, which is not fully evidenced in the profile.",
+        "importance": "material",
+        "evidence": [
+          {
+            "origin": "opportunity_assessment",
+            "job_evidence": null,
+            "profile_evidence": null,
+            "assessment_dimension": "technical",
+            "assessment_judgment": "mixed",
+            "portfolio_project_id": null,
+            "excerpt": null
+          }
+        ]
+      }
+    ],
+    "manual_checks": [
+      {
+        "summary": "Review compensation once salary or rate information is available.",
+        "why_it_matters": "Compensation clarity can change commercial priority; no salary conflict was invented from missing data.",
+        "could_change_recommendation": true,
+        "evidence": [
+          {
+            "origin": "job_analysis",
+            "job_evidence": {
+              "source": "compensation",
+              "item_index": null,
+              "name": null,
+              "excerpt": null
+            },
+            "profile_evidence": null,
+            "assessment_dimension": null,
+            "assessment_judgment": null,
+            "portfolio_project_id": null,
+            "excerpt": null
+          }
+        ]
+      },
+      {
+        "summary": "Verify working-rights wording against your own eligibility.",
+        "why_it_matters": "The posting states a working-rights requirement; the system does not infer owner eligibility.",
+        "could_change_recommendation": true,
+        "evidence": [
+          {
+            "origin": "opportunity_assessment",
+            "job_evidence": null,
+            "profile_evidence": null,
+            "assessment_dimension": "commercial",
+            "assessment_judgment": "mixed",
+            "portfolio_project_id": null,
+            "excerpt": null
+          }
+        ]
+      }
+    ],
+    "next_actions": [
+      {
+        "kind": "consider_verifying_working_rights",
+        "summary": "Consider verifying working-rights wording against your eligibility.",
+        "related_project_id": null,
+        "evidence": [
+          {
+            "origin": "opportunity_assessment",
+            "job_evidence": null,
+            "profile_evidence": null,
+            "assessment_dimension": "commercial",
+            "assessment_judgment": "mixed",
+            "portfolio_project_id": null,
+            "excerpt": null
+          }
+        ]
+      },
+      {
+        "kind": "consider_reviewing_compensation",
+        "summary": "Consider reviewing compensation before investing significant effort.",
+        "related_project_id": null,
+        "evidence": [
+          {
+            "origin": "job_analysis",
+            "job_evidence": {
+              "source": "compensation",
+              "item_index": null,
+              "name": null,
+              "excerpt": null
+            },
+            "profile_evidence": null,
+            "assessment_dimension": null,
+            "assessment_judgment": null,
+            "portfolio_project_id": null,
+            "excerpt": null
+          }
+        ]
+      },
+      {
+        "kind": "consider_emphasising_portfolio_projects",
+        "summary": "Consider emphasising the strongest matched portfolio project(s) in any application materials you prepare.",
+        "related_project_id": "operational-intelligence-copilot",
+        "evidence": [
+          {
+            "origin": "portfolio_match",
+            "job_evidence": null,
+            "profile_evidence": null,
+            "assessment_dimension": null,
+            "assessment_judgment": null,
+            "portfolio_project_id": "operational-intelligence-copilot",
+            "excerpt": null
+          }
+        ]
+      },
+      {
+        "kind": "consider_logging_and_deprioritising",
+        "summary": "Consider logging the rationale and not investing significant effort.",
+        "related_project_id": null,
+        "evidence": [
+          {
+            "origin": "opportunity_assessment",
+            "job_evidence": null,
+            "profile_evidence": null,
+            "assessment_dimension": "technical",
+            "assessment_judgment": "mixed",
+            "portfolio_project_id": null,
+            "excerpt": null
+          }
+        ]
+      },
+      {
+        "kind": "consider_owner_review",
+        "summary": "Consider reviewing this full strategy before taking any external action.",
+        "related_project_id": null,
+        "evidence": [
+          {
+            "origin": "opportunity_assessment",
+            "job_evidence": null,
+            "profile_evidence": null,
+            "assessment_dimension": "technical",
+            "assessment_judgment": "mixed",
+            "portfolio_project_id": null,
+            "excerpt": null
+          }
+        ]
+      }
+    ],
+    "portfolio_emphasis": [
+      {
+        "project_id": "operational-intelligence-copilot",
+        "source_rank": 1,
+        "summary": "Consider emphasising 'operational-intelligence-copilot' (PortfolioMatch rank 1).",
+        "evidence": [
+          {
+            "origin": "portfolio_match",
+            "job_evidence": null,
+            "profile_evidence": null,
+            "assessment_dimension": null,
+            "assessment_judgment": null,
+            "portfolio_project_id": "operational-intelligence-copilot",
+            "excerpt": null
+          }
+        ]
+      },
+      {
+        "project_id": "governance-document-rag",
+        "source_rank": 2,
+        "summary": "Consider emphasising 'governance-document-rag' (PortfolioMatch rank 2).",
+        "evidence": [
+          {
+            "origin": "portfolio_match",
+            "job_evidence": null,
+            "profile_evidence": null,
+            "assessment_dimension": null,
+            "assessment_judgment": null,
+            "portfolio_project_id": "governance-document-rag",
+            "excerpt": null
+          }
+        ]
+      },
+      {
+        "project_id": "public-holiday-entitlements",
+        "source_rank": 3,
+        "summary": "Consider emphasising 'public-holiday-entitlements' (PortfolioMatch rank 3).",
+        "evidence": [
+          {
+            "origin": "portfolio_match",
+            "job_evidence": null,
+            "profile_evidence": null,
+            "assessment_dimension": null,
+            "assessment_judgment": null,
+            "portfolio_project_id": "public-holiday-entitlements",
+            "excerpt": null
+          }
+        ]
+      }
+    ],
+    "assumptions": [
+      "Compensation fit is not scored because salary/rate evidence is missing or ambiguous.",
+      "No candidate salary minimum is configured, so compensation was not treated as a hard threshold conflict.",
+      "Owner working-rights eligibility is unknown to the system and was not inferred."
+    ],
+    "decision_blockers": [
+      "Job engagement type is contract, but the profile preference is full-time only."
+    ],
+    "owner_review_required": true,
+    "insufficient_information": false
+  }
+}

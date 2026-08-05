@@ -94,6 +94,7 @@ Acquisition today: paste or local export file via
 - FR-005 Application Strategy (pursuit posture + effort tiers)
 - FR-006 CV Generation (deterministic plan + optional OpenAI summary rewrite)
 - FR-007 Cover Letter Generation
+- Render-only HTML/PDF refresh from edited Markdown (`scripts/render_document.py`)
 - M1 Opportunity persistence (`OpportunityService`, `opp_<ULID>`, immutable artefacts)
 - M2 Owner decision & outcome logging (Phase 2; historically FR-013 subset; foundation for FR-013)
 - M3 CSV operational bridge (export + one-time legacy import; structured store = SoT)
@@ -198,10 +199,10 @@ Details: [docs/08_implementation_notes.md](docs/08_implementation_notes.md).
 | `docs/eval/` | Manual eval and release reports |
 | `src/` | Python implementation |
 | `tests/` | Unit, functional, and golden journey tests |
-| `scripts/` | Owner / developer manual validation runners |
+| `scripts/` | Owner / developer manual validation runners; `render_document.py` is render-only |
 | `data/` | Career profile and opportunities store (SoT) |
 | `applications/` | Live job search — applications, network, company notes |
-| `career-documents/` | Career artefacts (e.g. Master CV, generated CVs) |
+| `career-documents/` | Career artefacts (Master CV, generated CVs / cover letters) |
 | `templates/` | Message and document templates (placeholders) |
 | `metrics/` | Review and analytics placeholders |
 | `tools/` | Engineering evaluation harnesses (not product CLIs) |

@@ -883,8 +883,14 @@ files for diffs.
 
 The LLM never receives raw job-description text and never changes the Tailoring Plan.
 FR-006b improves presentation inside the Markdown render layer; generated drafts also
-emit standalone HTML via `html_renderer` (shared print CSS; no Pandoc). PDF/DOCX export
-remains out of scope for the runner (canonical Master PDF is the print visual SoT).
+emit standalone HTML via `html_renderer` (shared print CSS; no Pandoc) and PDF via
+WeasyPrint (`pdf_renderer.render_pdf_from_html`). DOCX export remains out of scope.
+
+**Document generation vs document rendering:** Generation runs planner → composer →
+Markdown/HTML/PDF. **Render-only** (`scripts/render_document.py`, package
+`career_intelligence.document_rendering`) re-reads an existing Markdown draft and
+rewrites sibling HTML/PDF only — no Job Analysis, assessment, matching, strategy,
+planner, composer, or OpenAI. Use it after owner Markdown edits.
 
 **Shared presentation system:** `src/career_intelligence/cv_generation/assets/cv_print.css`
 is the single CSS source for Master HTML and tailored HTML. Master embeds the CSS between
@@ -951,6 +957,9 @@ or `fallback_profile_copy`. Owner review remains mandatory before external use.
 
 **Presentation:** HTML reuses CV print CSS so cover letters and CVs read as one
 document suite. Signature / body portfolio contact matches FR-006 `ContactDetails`.
+After owner Markdown edits, re-emit HTML/PDF with
+`python scripts/render_document.py --markdown <path>` (render-only; see
+§ Document Rendering below).
 
 **Gates:** `owner_approved_to_plan`; material benefit (platinum/gold or
 `consider_cover_letter`); `cover_letter_plan_approved`; always
@@ -1035,6 +1044,42 @@ These are durable lessons for this capability — not prompt instructions:
 7. **Validate on genuinely different roles.** Closures required multi-role
    manual review (openings, projects, and closings must diverge for different
    employers).
+
+---
+
+## Document Rendering (render-only)
+
+**Status:** Available (2026-08-05).
+
+**Purpose:** After an owner edits a generated Markdown draft (factual correction,
+wording tweak), regenerate sibling HTML and PDF **without** re-running document
+generation.
+
+| Document generation | Document rendering |
+|---------------------|--------------------|
+| Planner → composer → Markdown (+ HTML/PDF) | Existing Markdown → HTML → PDF |
+| May use OpenAI (CV summary rewrite) | Never uses OpenAI |
+| Selects evidence and writes prose | Preserves Markdown text as-is |
+| Invoked by FR-006 / FR-007 runners | Invoked by `scripts/render_document.py` |
+
+**Public boundary:** `career_intelligence.document_rendering`
+
+**CLI:**
+
+```bash
+python scripts/render_document.py \
+  --markdown career-documents/cover-letters/generated/example.md
+
+python scripts/render_document.py \
+  --markdown career-documents/cv/generated/example.md
+```
+
+Optional `--kind cover_letter|cv` overrides path/content detection.
+
+**Behaviour:** Reads Markdown (unchanged on disk), builds HTML via existing
+presentation CSS (`cv_print.css`) and cover-letter / CV HTML paths, then PDF via
+`render_pdf_from_html` (WeasyPrint). Fails clearly on missing Markdown,
+unsupported type, HTML failure, or PDF failure.
 
 ---
 

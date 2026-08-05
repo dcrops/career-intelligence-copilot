@@ -1,0 +1,83 @@
+AI Engineer
+
+Accenture 
+3.5
+View all jobs
+Melbourne VIC
+Developers/Programmers (Information & Communication Technology)
+Full time
+Salary undisclosed
+
+
+Accenture is a global professional services company with leading capabilities in digital, cloud and security. Find out more about us at accenture.com.
+
+Group Description: We are looking for a DevSecOps Specialist with expertise in securing and automating AI/ML pipelines. In this role, you will ensure that our AI/ML systems are deployed securely and reliably, integrating robust security measures into CI/CD workflows. You will work closely with data scientists, AI engineers, and IT teams to enable seamless, secure, and scalable AI/ML operations. We would expect 2-4  years professional experience in this role.
+
+
+
+Project Description:
+
+Develop and maintain secure CI/CD pipelines for AI/ML workflows.
+
+Integrate security best practices across model development, training, and deployment phases.
+
+Implement tools for monitoring and securing AI/ML infrastructure and data pipelines.
+
+Conduct vulnerability assessments for AI models and infrastructure.
+
+Collaborate with teams to ensure compliance with security and privacy standards.
+
+
+
+Key Skills: 
+
+Proficiency in CI/CD tools (e.g., Jenkins, GitHub Actions, GitLab) and automation frameworks.
+
+Strong knowledge of cloud security (AWS, Azure, or Google Cloud) and containerization (Docker, Kubernetes).
+
+Experience with MLOps frameworks (e.g., Kubeflow, MLflow) and securing ML pipelines.
+
+Familiarity with AI-specific vulnerabilities (e.g., adversarial attacks, model poisoning) and mitigation techniques.
+
+Expertise in infrastructure as code (IaC) tools (e.g., Terraform, Ansible) and security compliance frameworks.
+
+
+ 
+
+Benefits of working at Accenture:
+
+·       18 weeks paid parental leave
+
+·       Long & short-term career break opportunities
+
+·       Structured career development program
+
+·       Local and international career opportunities.
+
+·       Certified as a Family Inclusive Workplace™
+
+·       Flexible Work Arrangements - centered around Accenture’s Truly Human ethos and our commitment to supporting the health and wellbeing of our people.
+
+·       We are proud to be in the top 3 of last year’s Diversity & Inclusion Index!
+
+
+ 
+
+We are a WORK180 Endorsed Employer, to see our benefits and policies click here
+
+All our consulting professionals receive comprehensive training covering business acumen, technical and professional skills development. You’ll also have opportunities to hone your functional skills and expertise in an area of specialization. We offer a variety of formal and informal training programs at every level to help you acquire and build specialized skills faster. Learning takes place both on the job and through formal training conducted online, in the classroom, or in collaboration with teammates. The sheer variety of work we do, and the experience it offers, provide an unbeatable platform from which to build a career. 
+
+Accenture is a an EEO and Affirmative Action Employee of Females/Minorities/Veterans/Individuals with Disabilities. 
+
+ 
+
+Equal Employment Opportunity Statement for Australia and New Zealand:
+ 
+
+At Accenture, our intention is to foster a culture and a workplace in which all of our people feel a sense of belonging and are respected and empowered to do their best work.
+ 
+
+We encourage applications from all people with the relevant skillset, and we are committed to removing barriers to the recruitment process and employee lifecycle. All employment decisions shall be made without regard to age, disability status, ethnicity, gender, gender identity or expression, religion or sexual orientation and we do not tolerate discrimination. If you require any accommodations or adjustments for interviews and/or at work, please reach out to ••••@accenture.com or contact us at +61 • •••• •000 (Australia) or +64 •••••056 (New Zealand).
+ 
+
+Learn how Accenture protects your personal data and know your rights in relation to your personal data. Read more about our Privacy Statement.

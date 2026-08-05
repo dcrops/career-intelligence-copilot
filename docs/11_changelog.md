@@ -4,6 +4,21 @@ Records product strategy and engineering knowledge changes. Routine typo fixes a
 
 ---
 
+## Version 1.83
+
+### Render-only Markdown → HTML → PDF
+
+Architectural gap closed: owner-edited generated Markdown can refresh sibling
+HTML/PDF without re-running planners or composers.
+
+- New package `career_intelligence.document_rendering` and CLI
+  `scripts/render_document.py --markdown <path>`
+- Supports CV and cover-letter drafts; reuses shared print CSS and WeasyPrint
+- Does not modify Markdown; does not invoke Job Analysis, assessment, matching,
+  strategy, planner, composer, or OpenAI
+
+---
+
 ## Version 1.82
 
 ### FR-007 cover letter writing-quality refinement
