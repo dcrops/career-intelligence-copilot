@@ -1,0 +1,24 @@
+{
+  "event_id": "ple_01KZ7YSDN6NH0W33KAVGCDBWNC",
+  "opportunity_id": "opp_01KZ7YSDG9SA0ES9Q1XQ5R2SYE",
+  "occurred_at": "2026-08-05T03:17:04.806220Z",
+  "recorded_at": "2026-08-05T03:17:04.806220Z",
+  "kind": "evidence_added",
+  "from_status": null,
+  "to_status": null,
+  "outcome": null,
+  "interview_stage": null,
+  "follow_up_date": null,
+  "clear_follow_up_date": false,
+  "evidence": {
+    "note": "Acknowledgement received",
+    "channel": null,
+    "submission_attempt_id": null,
+    "package": null,
+    "submitted_at": null,
+    "rejection_reason": null,
+    "offer_detail": null
+  },
+  "actor": "owner",
+  "supersedes_event_id": null
+}

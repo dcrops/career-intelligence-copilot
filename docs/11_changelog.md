@@ -4,6 +4,96 @@ Records product strategy and engineering knowledge changes. Routine typo fixes a
 
 ---
 
+## Version 1.89
+
+### FR-013 close-out — documentation freeze confirmed
+
+**Date:** 2026-08-05.
+
+Owner manual validation confirmed FR-013 operational readiness, including expected
+legacy behaviour (stored Opportunity status without PipelineEvent history for
+pre-FR-013 / `update_outcome` rows). Final acceptance report expanded with
+architecture, debt classification, retrospective, and owner workflow confirmation.
+Phase history and remaining stale “FR-013 next / not started” references aligned.
+FR-013 remains **ACCEPTED and FROZEN**. Next active FR: **FR-014**.
+Evidence: [eval/fr013_application_pipeline_tracking.md](eval/fr013_application_pipeline_tracking.md).
+
+---
+
+## Version 1.88
+
+### FR-013 Application Pipeline Tracking completed and frozen
+
+**Date:** 2026-08-05.
+
+M4 delivers derived pipeline reporting (`cic pipeline report` / `due`),
+owner-controlled `cic pipeline export` CSV (no legacy migration), multi-opportunity
+manual acceptance, and freeze documentation. ADR-005 unchanged. FR-013 **ACCEPTED**.
+Next: **FR-014** Recruiter Document Truth Validation.
+Evidence: [eval/fr013_application_pipeline_tracking.md](eval/fr013_application_pipeline_tracking.md),
+[eval/fr013_m4_reporting_acceptance.md](eval/fr013_m4_reporting_acceptance.md).
+
+---
+
+## Version 1.87
+
+### FR-013 M3 owner pipeline workflow (`cic pipeline`)
+
+**Date:** 2026-08-05.
+
+Thin owner CLI for application lifecycle tracking after submit: list / show /
+history / preparing / submit / acknowledge / interview / reject / offer / accept /
+withdraw / follow-up / note / evidence / correct / check / repair. SubmissionAttempt
+ids remain optional evidence citations (ADR-005). Projection watermark deferred —
+divergence detection and repair suffice. Manual journey PASS.
+[eval/fr013_m3_owner_workflow.md](eval/fr013_m3_owner_workflow.md). M4 not started.
+
+---
+
+## Version 1.86
+
+### FR-013 M2 PipelineTrackingService — event-first dual write
+
+**Date:** 2026-08-05.
+
+Implemented coordinated persistence for application pipeline tracking:
+validate → append `PipelineEvent` → project onto Opportunity. Partial Opportunity
+failures raise `PipelinePartialWriteError` and recover idempotently via
+`apply_stored_event` / `reconcile`. Divergence detection and terminal corrections
+are supported. SubmissionAttempt success still never auto-advances status
+(ADR-005).
+
+Evidence: [eval/fr013_m2_pipeline_tracking.md](eval/fr013_m2_pipeline_tracking.md).
+Manual: `scripts/run_fr013_pipeline_manual.py demo` — PASS. No CLI / FR-012 bridge
+(M3).
+
+---
+
+## Version 1.85
+
+### FR-013 M0 accepted; M1 pipeline contracts + ADR-005
+
+**Date:** 2026-08-05.
+
+Owner accepted the FR-013 engineering spike (hybrid architecture: Opportunity
+current-state SoT + append-only PipelineEvents; coarse PipelineStatus +
+InterviewStage; M0–M4 milestones). **ADR-005** records the lifecycle decision and
+the invariant that **SubmissionAttempt success never automatically advances
+`Opportunity.status`** — pipeline advancement is an explicit owner action;
+corrections are new events only.
+
+**M1 delivered:** package `career_intelligence.pipeline` — typed `PipelineEvent`
+(`ple_<ULID>`), evidence rules, forward/correction transitions, append-only
+JSON/memory stores under `data/pipeline_events/`. Unit tests:
+`tests/unit/pipeline/` (55 passed). No tracking service, Opportunity dual-write,
+or CLI (M2/M3).
+
+Evidence: [eval/fr013_m0_engineering_spike.md](eval/fr013_m0_engineering_spike.md),
+[eval/fr013_m1_pipeline_contracts.md](eval/fr013_m1_pipeline_contracts.md),
+[adr/005_application_pipeline_lifecycle.md](adr/005_application_pipeline_lifecycle.md).
+
+---
+
 ## Version 1.84
 
 ### FR-014 Recruiter Document Truth Validation inserted; future FRs renumbered

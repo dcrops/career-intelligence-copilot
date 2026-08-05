@@ -1,0 +1,137 @@
+schema_version: '1'
+opportunities:
+- identity:
+    opportunity_id: opp_01KZ7YSDG9SA0ES9Q1XQ5R2SYE
+    created_at: '2026-08-05T03:17:04.649979Z'
+    source_kind: other
+    platform_job_id: null
+    canonical_url: https://example.com/jobs/offerco
+    source_url: https://example.com/jobs/offerco
+    company: OfferCo
+    title: Offer Role
+    location_text: Melbourne
+    content_fingerprint: e8386ad2f99514ddb78fe6f6391ac006147346b0982622d3289f3307dc0ca491
+  status: accepted
+  decision:
+    decision: apply
+    decided_at: '2026-08-05T03:17:04.661982Z'
+    notes: null
+  outcome:
+    outcome: accepted
+    interview_stage: other
+    follow_up_date: null
+    notes: Offer accepted
+    updated_at: '2026-08-05T03:17:05.186059Z'
+  strategy_summary:
+    pursuit_posture: prioritise
+    application_tier: platinum
+    practical_value: career_priority
+    technical_fit: strong
+    commercial_fit: moderate
+    portfolio_fit: moderate
+  artifact_paths:
+    posting.json: artifacts/opp_01KZ7YSDG9SA0ES9Q1XQ5R2SYE/posting.json
+    job_analysis.json: artifacts/opp_01KZ7YSDG9SA0ES9Q1XQ5R2SYE/job_analysis.json
+    assessment.json: artifacts/opp_01KZ7YSDG9SA0ES9Q1XQ5R2SYE/assessment.json
+    portfolio_match.json: artifacts/opp_01KZ7YSDG9SA0ES9Q1XQ5R2SYE/portfolio_match.json
+    strategy.json: artifacts/opp_01KZ7YSDG9SA0ES9Q1XQ5R2SYE/strategy.json
+  legacy_import: null
+  review:
+    reviewed_at: null
+    pinned: false
+    defer_until: null
+    archived_at: null
+  review_actions: []
+  duplicate: null
+  duplicate_rejections: []
+  updated_at: '2026-08-05T03:17:05.186059Z'
+- identity:
+    opportunity_id: opp_01KZ7YSDGWZX9SYP04DDXRV7AX
+    created_at: '2026-08-05T03:17:04.668980Z'
+    source_kind: other
+    platform_job_id: null
+    canonical_url: https://example.com/jobs/rejectco
+    source_url: https://example.com/jobs/rejectco
+    company: RejectCo
+    title: Reject Role
+    location_text: Melbourne
+    content_fingerprint: 59265b66c69d74f908c4ddbdb51daeee257bcd422627e64f823b3cff32ed3a37
+  status: rejected
+  decision:
+    decision: apply
+    decided_at: '2026-08-05T03:17:04.684982Z'
+    notes: null
+  outcome:
+    outcome: rejected
+    interview_stage: none
+    follow_up_date: null
+    notes: Rejected
+    updated_at: '2026-08-05T03:17:05.426918Z'
+  strategy_summary:
+    pursuit_posture: prioritise
+    application_tier: platinum
+    practical_value: career_priority
+    technical_fit: strong
+    commercial_fit: moderate
+    portfolio_fit: moderate
+  artifact_paths:
+    posting.json: artifacts/opp_01KZ7YSDGWZX9SYP04DDXRV7AX/posting.json
+    job_analysis.json: artifacts/opp_01KZ7YSDGWZX9SYP04DDXRV7AX/job_analysis.json
+    assessment.json: artifacts/opp_01KZ7YSDGWZX9SYP04DDXRV7AX/assessment.json
+    portfolio_match.json: artifacts/opp_01KZ7YSDGWZX9SYP04DDXRV7AX/portfolio_match.json
+    strategy.json: artifacts/opp_01KZ7YSDGWZX9SYP04DDXRV7AX/strategy.json
+  legacy_import: null
+  review:
+    reviewed_at: null
+    pinned: false
+    defer_until: null
+    archived_at: null
+  review_actions: []
+  duplicate: null
+  duplicate_rejections: []
+  updated_at: '2026-08-05T03:17:05.426918Z'
+- identity:
+    opportunity_id: opp_01KZ7YSDHNNE8E0TE5FPXM6YHW
+    created_at: '2026-08-05T03:17:04.693979Z'
+    source_kind: other
+    platform_job_id: null
+    canonical_url: https://example.com/jobs/withdrawco
+    source_url: https://example.com/jobs/withdrawco
+    company: WithdrawCo
+    title: Withdraw Role
+    location_text: Melbourne
+    content_fingerprint: 782eb62e1e4822fe0054d29f2a40e9ea76af714c7ad92cfdaabd9cb05047d99d
+  status: withdrawn
+  decision:
+    decision: apply
+    decided_at: '2026-08-05T03:17:04.715430Z'
+    notes: null
+  outcome:
+    outcome: withdrawn
+    interview_stage: none
+    follow_up_date: '2026-08-01'
+    notes: Withdrawn by owner
+    updated_at: '2026-08-05T03:17:05.612093Z'
+  strategy_summary:
+    pursuit_posture: prioritise
+    application_tier: platinum
+    practical_value: career_priority
+    technical_fit: strong
+    commercial_fit: moderate
+    portfolio_fit: moderate
+  artifact_paths:
+    posting.json: artifacts/opp_01KZ7YSDHNNE8E0TE5FPXM6YHW/posting.json
+    job_analysis.json: artifacts/opp_01KZ7YSDHNNE8E0TE5FPXM6YHW/job_analysis.json
+    assessment.json: artifacts/opp_01KZ7YSDHNNE8E0TE5FPXM6YHW/assessment.json
+    portfolio_match.json: artifacts/opp_01KZ7YSDHNNE8E0TE5FPXM6YHW/portfolio_match.json
+    strategy.json: artifacts/opp_01KZ7YSDHNNE8E0TE5FPXM6YHW/strategy.json
+  legacy_import: null
+  review:
+    reviewed_at: null
+    pinned: false
+    defer_until: null
+    archived_at: null
+  review_actions: []
+  duplicate: null
+  duplicate_rejections: []
+  updated_at: '2026-08-05T03:17:05.612093Z'

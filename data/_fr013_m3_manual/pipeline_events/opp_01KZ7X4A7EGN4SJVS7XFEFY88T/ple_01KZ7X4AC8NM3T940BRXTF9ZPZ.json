@@ -1,0 +1,24 @@
+{
+  "event_id": "ple_01KZ7X4AC8NM3T940BRXTF9ZPZ",
+  "opportunity_id": "opp_01KZ7X4A7EGN4SJVS7XFEFY88T",
+  "occurred_at": "2026-08-05T02:48:04.744145Z",
+  "recorded_at": "2026-08-05T02:48:04.744145Z",
+  "kind": "interview_stage_change",
+  "from_status": null,
+  "to_status": null,
+  "outcome": null,
+  "interview_stage": "other",
+  "follow_up_date": null,
+  "clear_follow_up_date": false,
+  "evidence": {
+    "note": "final",
+    "channel": null,
+    "submission_attempt_id": null,
+    "package": null,
+    "submitted_at": null,
+    "rejection_reason": null,
+    "offer_detail": null
+  },
+  "actor": "owner",
+  "supersedes_event_id": null
+}

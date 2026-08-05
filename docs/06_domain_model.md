@@ -38,11 +38,16 @@ owner gates composed from FR-006/007 — review required before external use)
       ↓
 Preparation Orchestration (FR-011 — coordinates package prep; does not extend FR-008)
       ↓
-      ├─→ Reject / revise package (owner)
-      └─→ Submit assistance (FR-012 — never silent; separate submission approval)
+Owner Review → Render (HTML/PDF) → Manual / Assisted Submission (FR-012 — never silent)
       ↓
-Pipeline Tracking + Outcomes (FR-013; builds on Phase 2 M2)
+Pipeline Tracking (FR-013; builds on Phase 2 M2)
+      ↓
+Reporting → Operational History (derived report / due / export + append-only events)
 ```
+
+**Owner-facing summary (post–FR-013):** Opportunity → Assessment → Strategy →
+Application Package → Owner Review → Render → Manual Submission → Pipeline Tracking →
+Reporting → Operational History.
 
 Opportunity Assessment and Portfolio Matching remain sibling consumers of Career Profile +
 Job Analysis. Application Strategy consumes both. Document generation and submission are
@@ -429,6 +434,38 @@ Submission Readiness never creates attempts. Assisted Submission and Manual
 Completion are distinct operations. Live browser / board automation is deferred.
 No ``PipelineStatus`` writes (FR-013).
 
+### Pipeline Event (FR-013 M1)
+
+**Maps to:** FR-013 — [spike](eval/fr013_m0_engineering_spike.md) (Accepted);
+[M1 contracts](eval/fr013_m1_pipeline_contracts.md); [ADR-005](adr/005_application_pipeline_lifecycle.md)
+
+One immutable audit event for application lifecycle progress on an Opportunity.
+Opportunity remains the business system of record for **current**
+`PipelineStatus` / `OutcomeRecord`. Events under ``data/pipeline_events/`` are
+append-only audit only.
+
+| Field group | Role |
+|-------------|------|
+| Identity | ``ple_<ULID>``; references ``opportunity_id`` |
+| Kind | status_transition / interview_stage_change / outcome_change / evidence_added / follow_up_set / correction / note |
+| Status delta | optional ``from_status`` / ``to_status`` (coarse ``PipelineStatus``) |
+| Evidence | optional package ref, ``submission_attempt_id``, channel, submitted_at, notes |
+| Actor | ``owner`` (default) or future ``agent:<id>`` |
+
+**Invariant:** FR-012 ``SubmissionAttempt`` success never automatically appends a
+pipeline event or advances ``Opportunity.status``. Citing an attempt id is
+evidence for an **explicit owner** pipeline action (M2+).
+
+**M1 delivered:** typed contracts, transition/correction policy, evidence rules,
+append-only store.  
+**M2 delivered:** ``PipelineTrackingService`` — event-first dual-write onto
+Opportunity via ``apply_pipeline_projection``; divergence detection; reconcile;
+terminal corrections.  
+**M3 delivered:** thin ``cic pipeline`` owner workflow.  
+**M4 delivered:** derived ``summary_report`` / ``due`` / ``export``; acceptance freeze.
+SubmissionAttempt ids remain optional evidence citations. No projection watermark.
+No FR-014 work in this FR.
+
 ---
 
 ## Entity Relationships
@@ -448,7 +485,10 @@ No ``PipelineStatus`` writes (FR-013).
 | Opportunity | Application Package | Apply decision enables FR-010 package preparation (M0) |
 | Opportunity | Preparation Orchestration | FR-011 coordinates package prep for apply Opportunities |
 | Opportunity | Submission Attempt | FR-012 records append-only submit attempts (audit; not pipeline SoT) |
+| Opportunity | Pipeline Event | FR-013 append-only lifecycle audit (not a second SoT; current status stays on Opportunity) |
 | Application Package | Submission Attempt | Attempt references package prepared_at / optional hash |
+| Application Package | Pipeline Event | Event may cite package prepared_at / hash as submit evidence |
+| Submission Attempt | Pipeline Event | Event may cite attempt id; never auto-creates events (ADR-005) |
 | Application Strategy | User Decision | User accepts, overrides, or defers the recommendation |
 | User Decision | Outcome Record | Decision and subsequent events logged (M2 / FR-013) |
 | Outcome Record | Opportunity | Outcomes attach to durable opportunities |
@@ -523,8 +563,8 @@ continue to connect to this layer rather than invent a parallel tracker.
 | Application Package Preparation | **FR-010** (Horizon 1A; complete — [acceptance](eval/fr010_application_package.md)) |
 | Application Preparation Orchestration | **FR-011** (Horizon 1A; complete — [acceptance](eval/fr011_application_preparation.md)) |
 | Submission Assistance | **FR-012** (Horizon 1A; complete — [acceptance](eval/fr012_submission_assistance.md)) |
-| Application Pipeline Tracking | **FR-013** (Horizon 1A) |
-| Recruiter Document Truth Validation | **FR-014** (Horizon 1A; planned — [planning](eval/fr014_recruiter_document_truth_validation.md)) |
+| Application Pipeline Tracking | **FR-013** (Horizon 1A; complete — [acceptance](eval/fr013_application_pipeline_tracking.md); [ADR-005](adr/005_application_pipeline_lifecycle.md)) |
+| Recruiter Document Truth Validation | **FR-014** (Horizon 1A; planned / current — [planning](eval/fr014_recruiter_document_truth_validation.md)) |
 | Bounded Agentic Workflow | **FR-015** (Horizon 1A; first bounded agents) |
 | Multi-Agent Orchestration | **FR-016** (Horizon 1A) |
 | Agent Evaluation & Observability | **FR-017** (Horizon 1A) |

@@ -73,8 +73,8 @@ SoT shape, ranking sort key, or Horizon 2 domains (recruiters, networking, meetu
 
 ## Next
 
-**Current focus:** Horizon 1A — **FR-013** Application Pipeline Tracking (not started);
-then **FR-014** Recruiter Document Truth Validation (automation-safety gate)
+**Current focus:** Horizon 1A — **FR-014** Recruiter Document Truth Validation
+(automation-safety gate — [planning](eval/fr014_recruiter_document_truth_validation.md)).
 **Completed:** FR-008 Job Acquisition & Workflow Orchestration (2026-07-29);
 **FR-009** Opportunity Review Queue & Ranking (2026-07-30 —
 [acceptance](eval/fr009_opportunity_review_queue.md)); **FR-010** Application Package
@@ -87,7 +87,11 @@ milestones [M0](eval/fr011_m0_application_preparation.md),
 [acceptance](eval/fr012_submission_assistance.md);
 milestones [M0](eval/fr012_m0_submission_contracts.md),
 [M1](eval/fr012_m1_submission_orchestration.md),
-[M2](eval/fr012_m2_owner_workflow.md))  
+[M2](eval/fr012_m2_owner_workflow.md));
+**FR-013** Application Pipeline Tracking (2026-08-05 —
+[acceptance](eval/fr013_application_pipeline_tracking.md);
+[ADR-005](adr/005_application_pipeline_lifecycle.md);
+milestones [M0](eval/fr013_m0_engineering_spike.md)–[M4](eval/fr013_m4_reporting_acceptance.md))  
 **Then:** FR-015–FR-017 bounded agents → multi-agent → evaluation
 **After 1A:** Horizon 1B recruiter / market engagement (FR-018–FR-024)
 **Principle:** Job acquisition first. Recruiter outreach second.  

@@ -1,0 +1,44 @@
+schema_version: '1'
+opportunities:
+- identity:
+    opportunity_id: opp_01KZ7W0H3Z34SGZSEDMJMTN3ZW
+    created_at: '2026-08-05T02:28:31.999718Z'
+    source_kind: seek
+    platform_job_id: '93487188'
+    canonical_url: https://au.seek.com/job/93487188
+    source_url: https://au.seek.com/job/93487188
+    company: Example AI Co
+    title: Senior AI Engineer
+    location_text: Melbourne
+    content_fingerprint: 071ee10ac2991f0bf24613d78b0b9096ceefb909258fecf5227ada5247dcecaa
+  status: offer
+  decision: null
+  outcome:
+    outcome: pending
+    interview_stage: recruiter
+    follow_up_date: null
+    notes: inject fail
+    updated_at: '2026-08-05T02:28:32.070588Z'
+  strategy_summary:
+    pursuit_posture: prioritise
+    application_tier: platinum
+    practical_value: career_priority
+    technical_fit: strong
+    commercial_fit: moderate
+    portfolio_fit: moderate
+  artifact_paths:
+    posting.json: artifacts/opp_01KZ7W0H3Z34SGZSEDMJMTN3ZW/posting.json
+    job_analysis.json: artifacts/opp_01KZ7W0H3Z34SGZSEDMJMTN3ZW/job_analysis.json
+    assessment.json: artifacts/opp_01KZ7W0H3Z34SGZSEDMJMTN3ZW/assessment.json
+    portfolio_match.json: artifacts/opp_01KZ7W0H3Z34SGZSEDMJMTN3ZW/portfolio_match.json
+    strategy.json: artifacts/opp_01KZ7W0H3Z34SGZSEDMJMTN3ZW/strategy.json
+  legacy_import: null
+  review:
+    reviewed_at: null
+    pinned: false
+    defer_until: null
+    archived_at: null
+  review_actions: []
+  duplicate: null
+  duplicate_rejections: []
+  updated_at: '2026-08-05T02:28:32.070588Z'

@@ -6,9 +6,10 @@
 | [002](002_opportunity_persistence.md) | Opportunity persistence | Accepted |
 | [003](003_application_workflow_orchestration.md) | Application workflow orchestration architecture | Accepted — thin in-repo runner; LangGraph not required for current FR-008 scope |
 | [004](004_opportunity_review_boundary.md) | Opportunity as pre-decision system of record; review queue as derived projection | Accepted (FR-009 M0), implemented and closed (FR-009 M1–M4; Decision 8 amended by the M4 ranking calibration) — amends ADR-002 persistence boundary |
+| [005](005_application_pipeline_lifecycle.md) | Application pipeline lifecycle (stored status + append-only events) | Accepted (FR-013 M1) — amends ADR-002 lifecycle audit; reaffirms ADR-004; SubmissionAttempt never auto-advances status |
 
 Related: [04_functional_specification.md](../04_functional_specification.md) § FR-008,
-§ FR-009, § FR-010, § FR-011, § FR-012; [10_roadmap.md](../10_roadmap.md) § Horizon 1A.
+§ FR-009, § FR-010, § FR-011, § FR-012, § FR-013; [10_roadmap.md](../10_roadmap.md) § Horizon 1A.
 
 Close-out records:
 [eval/fr008_workflow_orchestration.md](../eval/fr008_workflow_orchestration.md),
@@ -20,7 +21,14 @@ Close-out records:
 [eval/fr012_submission_assistance.md](../eval/fr012_submission_assistance.md)
 (milestones [M0](../eval/fr012_m0_submission_contracts.md),
 [M1](../eval/fr012_m1_submission_orchestration.md),
-[M2](../eval/fr012_m2_owner_workflow.md)).
+[M2](../eval/fr012_m2_owner_workflow.md)),
+[eval/fr013_m0_engineering_spike.md](../eval/fr013_m0_engineering_spike.md) (Accepted),
+[eval/fr013_m1_pipeline_contracts.md](../eval/fr013_m1_pipeline_contracts.md),
+[eval/fr013_m2_pipeline_tracking.md](../eval/fr013_m2_pipeline_tracking.md),
+[eval/fr013_m3_owner_workflow.md](../eval/fr013_m3_owner_workflow.md),
+[eval/fr013_m4_reporting_acceptance.md](../eval/fr013_m4_reporting_acceptance.md),
+[eval/fr013_application_pipeline_tracking.md](../eval/fr013_application_pipeline_tracking.md)
+(FR-013 frozen).
 Post-FR-010 architecture validation:
 [eval/architecture_health_check_post_fr010.md](../eval/architecture_health_check_post_fr010.md).
 
@@ -30,3 +38,9 @@ outside the FR-008 runner and does not amend ADR-002 / ADR-003 / ADR-004.
 **FR-012 ADR note:** No new ADR. Submission assistance is a dedicated coordinator
 with append-only attempt audit and a thin CLI. It does not amend ADR-002 / ADR-003 /
 ADR-004, does not write PipelineStatus (FR-013), and does not wire FR-008 submit.
+
+**FR-013 ADR note:** [ADR-005](005_application_pipeline_lifecycle.md) accepted at M1;
+FR-013 **complete and frozen**
+([eval/fr013_application_pipeline_tracking.md](../eval/fr013_application_pipeline_tracking.md)).
+Opportunity remains current-state SoT; append-only PipelineEvents provide audit;
+SubmissionAttempt success never auto-advances `Opportunity.status`.

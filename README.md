@@ -77,8 +77,12 @@ decides.
 [M1](docs/eval/fr012_m1_submission_orchestration.md),
 [M2](docs/eval/fr012_m2_owner_workflow.md)).
 
-**Current focus:** **FR-013** Application Pipeline Tracking (next active FR, not started).
-Then **FR-014** Recruiter Document Truth Validation (automation-safety gate —
+**FR-013 Application Pipeline Tracking — complete** and frozen
+([acceptance](docs/eval/fr013_application_pipeline_tracking.md);
+[ADR-005](docs/adr/005_application_pipeline_lifecycle.md); milestones
+[M0](docs/eval/fr013_m0_engineering_spike.md)–[M4](docs/eval/fr013_m4_reporting_acceptance.md)).
+
+**Current focus:** **FR-014** Recruiter Document Truth Validation (automation-safety gate —
 [planning](docs/eval/fr014_recruiter_document_truth_validation.md)).
 Details: [docs/10_roadmap.md](docs/10_roadmap.md).
 

@@ -1365,20 +1365,46 @@ output, and maps outcomes to exit codes only.
 ## FR-013 Application Pipeline Tracking
 
 **Phase:** Horizon 1A Stage 7  
-**Status:** Planned — **next active FR**
+**Status:** **Complete and frozen**  
+**Acceptance:** [eval/fr013_application_pipeline_tracking.md](eval/fr013_application_pipeline_tracking.md)  
+**Architecture:** [ADR-005](adr/005_application_pipeline_lifecycle.md)  
+**Milestones:** [M0](eval/fr013_m0_engineering_spike.md),
+[M1](eval/fr013_m1_pipeline_contracts.md),
+[M2](eval/fr013_m2_pipeline_tracking.md),
+[M3](eval/fr013_m3_owner_workflow.md),
+[M4](eval/fr013_m4_reporting_acceptance.md)
 
 Track application lifecycle with timestamps, evidence, and full audit history.
 Builds on Phase 2 **M2 outcome logging** (`OpportunityService.record_decision` /
 `update_outcome`; historically labelled “FR-013 subset”).
 
-Indicative states: discovery; assessment; review; preparation; submission;
-employer response; recruiter screen; interview; rejection; offer — plus supporting
-states such as awaiting owner review, approved, rejected by owner, submission
-failed, withdrawn.
+**Architecture (accepted):** Opportunity remains the aggregate and stored
+current-state source of truth (`PipelineStatus` + `OutcomeRecord`). Append-only
+`PipelineEvent` records provide the audit trail. Coarse status plus separate
+`InterviewStage` — no mega-enum. **SubmissionAttempt success does not
+automatically advance `Opportunity.status`**; pipeline advancement is an explicit
+owner action. Corrections are new events (never mutate or delete prior events).
 
 Decision, pipeline status, and outcome kind remain distinct concepts. Automatic
 feedback of outcome history into FR-003 assessments remains deferred unless later
 scoped under Horizon 2.
+
+| Milestone | Intent | Status |
+|-----------|--------|--------|
+| **M0** | Engineering spike | **Accepted** ([eval](eval/fr013_m0_engineering_spike.md)) |
+| **M1** | Domain contracts, event store, ADR-005 | **Complete** ([eval](eval/fr013_m1_pipeline_contracts.md)) |
+| **M2** | `PipelineTrackingService` (event + Opportunity dual-write) | **Complete** ([eval](eval/fr013_m2_pipeline_tracking.md)) |
+| **M3** | Owner workflow; thin CLI | **Complete** ([eval](eval/fr013_m3_owner_workflow.md)) |
+| **M4** | Reporting, CSV continuity, acceptance | **Complete** ([eval](eval/fr013_m4_reporting_acceptance.md)) |
+| **Close-out** | Freeze | **Complete** ([acceptance](eval/fr013_application_pipeline_tracking.md)) |
+
+Owner CLI:
+
+```
+cic pipeline list|show|history|preparing|submit|acknowledge|interview
+cic pipeline reject|offer|accept|withdraw|follow-up|note|evidence|correct
+cic pipeline check|repair|report|due|export
+```
 
 Acceptance Criteria
 
@@ -1389,6 +1415,10 @@ Acceptance Criteria
 ✓ Failed submission and recovery attempts are recordable.
 
 ✓ Outcomes can be recorded against assessed opportunities (Phase 2 M2 retained).
+
+✓ SubmissionAttempt success never silently advances pipeline status (ADR-005).
+
+✓ Derived reporting and owner-controlled pipeline CSV export available.
 
 ---
 
@@ -1418,8 +1448,9 @@ owner review.
 
 **Roadmap dependency:** **FR-014 must be accepted before any future work that
 increases application automation or reduces owner review.** FR-013 Application
-Pipeline Tracking keeps its established identifier and may proceed as planned;
-truth validation is the automation-safety gate inserted immediately afterwards.
+Pipeline Tracking is **complete and frozen** and keeps its established identifier;
+truth validation is the automation-safety gate immediately afterwards (current
+active FR).
 
 Distinguish: (A) candidate claims (require candidate evidence); (B) employer-context
 statements (JD evidence OK; must not become candidate capability); (C) aspirational /

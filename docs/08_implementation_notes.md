@@ -2270,3 +2270,101 @@ harness PASS. No behavioural changes at close-out.
 **Freeze:** [eval/fr012_submission_assistance.md](eval/fr012_submission_assistance.md).
 Next: **FR-013** Application Pipeline Tracking.
 
+---
+
+## FR-013 M1 — Pipeline contracts
+
+**Date:** 2026-08-05  
+**Eval:** [eval/fr013_m1_pipeline_contracts.md](eval/fr013_m1_pipeline_contracts.md)  
+**ADR:** [adr/005_application_pipeline_lifecycle.md](adr/005_application_pipeline_lifecycle.md)  
+**Spike:** [eval/fr013_m0_engineering_spike.md](eval/fr013_m0_engineering_spike.md) (Accepted)
+
+Package `career_intelligence.pipeline`: typed `PipelineEvent` (`ple_<ULID>`), evidence
+rules, forward + correction status changes, append-only stores under
+`data/pipeline_events/{opportunity_id}/`.
+
+### M1 invariants
+
+| Invariant | Status |
+|-----------|--------|
+| Opportunity remains current-state SoT | Held (M1 does not write Opportunity) |
+| PipelineEvents are append-only (no update/delete) | Held |
+| Coarse `PipelineStatus` + `InterviewStage` (no mega-enum) | Held |
+| SubmissionAttempt success never auto-advances status | Held (ADR-005; no bridge code in M1) |
+| Corrections require note; may leave terminal | Held |
+| Transition to `submitted` requires substantive evidence | Held |
+| No tracking service / CLI | Held (M2 / M3) |
+
+**Tests:** `tests/unit/pipeline/` (55 passed at M1).
+
+---
+
+## FR-013 M2 — PipelineTrackingService
+
+**Date:** 2026-08-05  
+**Eval:** [eval/fr013_m2_pipeline_tracking.md](eval/fr013_m2_pipeline_tracking.md)
+
+`PipelineTrackingService` coordinates event-first dual writes: validate → append
+`PipelineEvent` → `OpportunityService.apply_pipeline_projection`. Partial failures
+raise `PipelinePartialWriteError` and recover via `apply_stored_event` / `reconcile`.
+
+### M2 invariants
+
+| Invariant | Status |
+|-----------|--------|
+| Event appended before Opportunity projection | Held |
+| Validation precedes any write | Held |
+| Partial write is recoverable and idempotent | Held |
+| Divergence detectable; reconcile restores projection | Held |
+| Terminal correction via new event only | Held |
+| No SubmissionAttempt auto-advance | Held |
+| No CLI / FR-012 bridge | Held (M3) |
+
+**Tests:** unit + `tests/functional/test_fr013_pipeline_tracking.py`  
+**Manual:** `scripts/run_fr013_pipeline_manual.py demo` — PASS
+
+---
+
+## FR-013 M3 — Owner pipeline CLI
+
+**Date:** 2026-08-05  
+**Eval:** [eval/fr013_m3_owner_workflow.md](eval/fr013_m3_owner_workflow.md)
+
+Thin `cic pipeline` over `PipelineTrackingService`. Owner-natural commands; history
+hides internal ids unless `--verbose`. `--attempt-id` cites FR-012 evidence only.
+No `last_projected_event_id` watermark. No M4 reporting.
+
+### M3 invariants
+
+| Invariant | Status |
+|-----------|--------|
+| CLI is presentation only | Held |
+| No auto-advance from SubmissionAttempt | Held |
+| Append-only notes / corrections | Held |
+| Follow-up is reminder intent only | Held |
+| No projection watermark | Held (rejected) |
+
+**Manual:** `scripts/run_fr013_pipeline_manual.py journey` — PASS
+
+---
+
+## FR-013 M4 — Reporting & acceptance freeze
+
+**Date:** 2026-08-05  
+**Eval:** [eval/fr013_m4_reporting_acceptance.md](eval/fr013_m4_reporting_acceptance.md)  
+**Acceptance:** [eval/fr013_application_pipeline_tracking.md](eval/fr013_application_pipeline_tracking.md)
+
+Derived `summary_report` / `due` / `export` from existing Opportunity + events.
+No domain redesign. FR-013 **ACCEPTED and FROZEN**.
+
+**Manual:** `scripts/run_fr013_pipeline_manual.py accept` — PASS
+
+### FR-013 close-out (documentation freeze)
+
+**Date:** 2026-08-05  
+**Acceptance:** [eval/fr013_application_pipeline_tracking.md](eval/fr013_application_pipeline_tracking.md)
+
+Owner manual validation confirmed. Legacy Opportunity rows may show pipeline status
+without event history (pre-FR-013 / `update_outcome`). FR-013-managed advances create
+append-only events and project correctly. Documentation frozen. Next: FR-014.
+

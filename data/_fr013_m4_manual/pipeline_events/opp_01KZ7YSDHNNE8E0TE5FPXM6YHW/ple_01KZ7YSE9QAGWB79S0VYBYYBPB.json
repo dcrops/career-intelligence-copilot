@@ -1,0 +1,24 @@
+{
+  "event_id": "ple_01KZ7YSE9QAGWB79S0VYBYYBPB",
+  "opportunity_id": "opp_01KZ7YSDHNNE8E0TE5FPXM6YHW",
+  "occurred_at": "2026-08-05T03:17:05.463916Z",
+  "recorded_at": "2026-08-05T03:17:05.463916Z",
+  "kind": "status_transition",
+  "from_status": "assessed",
+  "to_status": "submitted",
+  "outcome": "pending",
+  "interview_stage": null,
+  "follow_up_date": null,
+  "clear_follow_up_date": false,
+  "evidence": {
+    "note": "Application submitted",
+    "channel": null,
+    "submission_attempt_id": null,
+    "package": null,
+    "submitted_at": "2026-08-05T03:17:05.458817Z",
+    "rejection_reason": null,
+    "offer_detail": null
+  },
+  "actor": "owner",
+  "supersedes_event_id": null
+}

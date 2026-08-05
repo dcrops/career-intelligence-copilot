@@ -1,0 +1,86 @@
+{
+  "posting": {
+    "raw_text": "Offer Role OfferCo Python AI Melbourne.",
+    "title": "Offer Role",
+    "company": "OfferCo",
+    "source_url": "https://example.com/jobs/offerco"
+  },
+  "role_family": {
+    "family": "ai_engineering",
+    "evidence": [
+      {
+        "excerpt": "Senior AI Engineer",
+        "section": "title"
+      }
+    ]
+  },
+  "seniority": {
+    "level": "senior",
+    "ambiguous": false,
+    "candidate_levels": [],
+    "evidence": [
+      {
+        "excerpt": "Senior AI Engineer",
+        "section": "title"
+      }
+    ]
+  },
+  "technologies": [
+    {
+      "name": "Python",
+      "level": "required",
+      "evidence": [
+        {
+          "excerpt": "Python required",
+          "section": "requirements"
+        }
+      ]
+    }
+  ],
+  "responsibilities": [
+    {
+      "description": "Build LLM applications",
+      "evidence": [
+        {
+          "excerpt": "Build LLM applications",
+          "section": "responsibilities"
+        }
+      ]
+    }
+  ],
+  "compensation": {
+    "clarity": "unstated",
+    "minimum": null,
+    "maximum": null,
+    "currency": null,
+    "period": null,
+    "raw_text": null,
+    "evidence": []
+  },
+  "location": {
+    "clarity": "stated",
+    "summary": "Melbourne",
+    "evidence": [
+      {
+        "excerpt": "Hybrid Melbourne",
+        "section": "location"
+      }
+    ]
+  },
+  "work_arrangement": {
+    "arrangement": "hybrid",
+    "details": null,
+    "evidence": [
+      {
+        "excerpt": "Hybrid Melbourne",
+        "section": "location"
+      }
+    ]
+  },
+  "employment": {
+    "working_hours": "unspecified",
+    "engagement_type": "unspecified",
+    "evidence": []
+  },
+  "experience_requirements": []
+}

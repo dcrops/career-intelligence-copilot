@@ -613,9 +613,36 @@ credentials, CAPTCHA, multi-agent submit.
 
 ---
 
+## FR-013 Application Pipeline Tracking coverage (complete — frozen)
+
+FR-013 is **complete**. Acceptance:
+[docs/eval/fr013_application_pipeline_tracking.md](eval/fr013_application_pipeline_tracking.md).
+
+[ADR-005](adr/005_application_pipeline_lifecycle.md);
+[M0](eval/fr013_m0_engineering_spike.md);
+[M1](eval/fr013_m1_pipeline_contracts.md);
+[M2](eval/fr013_m2_pipeline_tracking.md);
+[M3](eval/fr013_m3_owner_workflow.md);
+[M4](eval/fr013_m4_reporting_acceptance.md).
+
+| Area | Coverage |
+|------|----------|
+| Models / store | Append-only events; transitions; evidence |
+| Tracking service | Event-first dual-write; partial failure; divergence/reconcile |
+| Owner CLI | `cic pipeline` natural commands; history; corrections |
+| Reporting | Summary rates/counts/ageing; due; CSV export |
+| Manual | `scripts/run_fr013_pipeline_manual.py demo|journey|accept` |
+
+**Unit:** `tests/unit/pipeline/`  
+**Functional:** `tests/functional/test_fr013_*.py`
+
+Does **not** cover: FR-012 auto-advance (forbidden), dashboards, adaptive scoring.
+
+---
+
 ## Horizon 1A — Planned test coverage (remaining)
 
-When FR-013–FR-017 are built, prefer behaviour over implementation detail:
+When FR-014–FR-017 are built, prefer behaviour over implementation detail:
 
 | Area | Expected coverage |
 |------|-------------------|
@@ -625,7 +652,7 @@ When FR-013–FR-017 are built, prefer behaviour over implementation detail:
 | FR-010 packages (**delivered** — see FR-010 coverage above) | Composition, durability, owner CLI |
 | FR-011 preparation (**delivered** — see FR-011 coverage above) | Preconditions; package coordination; fail-closed; run audit; owner CLI |
 | FR-012 submission (**delivered** — see FR-012 coverage above) | Readiness; Assisted Submission; Manual Completion; append-only audit; owner CLI |
-| FR-013 tracking | Status transitions with timestamps and audit history |
+| FR-013 tracking (**delivered** — frozen) | Dual-write + owner CLI + reporting; see FR-013 coverage |
 | FR-014 truth validation | Fail-closed findings for unsupported candidate claims; JD evidence ≠ candidate evidence; Redwolf-style regression |
 | FR-015 agents | Max iterations, stop conditions, restricted tools, validation before state update |
 | FR-016 / FR-017 | Loop prevention; fault injection; token/cost/latency where LLM-backed; browser journey evidence when Playwright is used |

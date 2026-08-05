@@ -1,0 +1,4 @@
+﻿opportunity_id,company,title,status,outcome,interview_stage,follow_up_date,owner_decision,days_in_current_status,updated_at,source_url
+opp_01KZ7YSDG9SA0ES9Q1XQ5R2SYE,OfferCo,Offer Role,accepted,accepted,other,,apply,0.00,2026-08-05T03:17:05.186059Z,https://example.com/jobs/offerco
+opp_01KZ7YSDGWZX9SYP04DDXRV7AX,RejectCo,Reject Role,rejected,rejected,none,,apply,0.00,2026-08-05T03:17:05.426918Z,https://example.com/jobs/rejectco
+opp_01KZ7YSDHNNE8E0TE5FPXM6YHW,WithdrawCo,Withdraw Role,withdrawn,withdrawn,none,2026-08-01,apply,0.00,2026-08-05T03:17:05.612093Z,https://example.com/jobs/withdrawco

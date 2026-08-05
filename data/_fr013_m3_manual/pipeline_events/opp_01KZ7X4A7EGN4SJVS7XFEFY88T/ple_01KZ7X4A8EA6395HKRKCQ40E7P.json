@@ -1,0 +1,24 @@
+{
+  "event_id": "ple_01KZ7X4A8EA6395HKRKCQ40E7P",
+  "opportunity_id": "opp_01KZ7X4A7EGN4SJVS7XFEFY88T",
+  "occurred_at": "2026-08-05T02:48:04.622715Z",
+  "recorded_at": "2026-08-05T02:48:04.622715Z",
+  "kind": "status_transition",
+  "from_status": "assessed",
+  "to_status": "preparing",
+  "outcome": null,
+  "interview_stage": null,
+  "follow_up_date": null,
+  "clear_follow_up_date": false,
+  "evidence": {
+    "note": "Preparing application package",
+    "channel": null,
+    "submission_attempt_id": null,
+    "package": null,
+    "submitted_at": null,
+    "rejection_reason": null,
+    "offer_detail": null
+  },
+  "actor": "owner",
+  "supersedes_event_id": null
+}

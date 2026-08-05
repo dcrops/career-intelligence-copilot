@@ -40,7 +40,7 @@ Scale to multi-agent systems → Expand into recruiter and market intelligence.
 |-------|--------|
 | **Phase 1** — Product Definition | **Complete** |
 | **Phase 2** — Job Intelligence MVP | **Complete** ([release report](eval/phase2_release_report.md)) |
-| **Horizon 1A** — Job application workflow | **Current** (FR-008–FR-012 complete; FR-013 Pipeline Tracking next; FR-014 Truth Validation planned; FR-015–FR-017 planned) |
+| **Horizon 1A** — Job application workflow | **Current** (FR-008–FR-013 complete; FR-014 Truth Validation next; FR-015–FR-017 planned) |
 | **Horizon 1B** — Recruiter / market engagement | Not started (FR-018–FR-024; after 1A) |
 | **Horizon 2** — Platform capabilities | Not started (FR-025+) |
 
@@ -137,9 +137,9 @@ FR-011 Application Preparation Orchestration  ✅ Complete (2026-07-31)
         ▼
 FR-012 Submission Assistance  ✅ Complete (2026-07-31)
         ▼
-FR-013 Application Pipeline Tracking  ← Now
+FR-013 Application Pipeline Tracking  ← Complete
         ▼
-FR-014 Recruiter Document Truth Validation  ← automation-safety gate
+FR-014 Recruiter Document Truth Validation  ← Now (automation-safety gate)
         ▼
 FR-015 Bounded Agentic Workflow
         ▼
@@ -157,8 +157,8 @@ FR-017 Agent Evaluation & Observability
 | **Completed** | **FR-010** (2026-07-31) | Application Package Preparation — standalone composition over FR-006/007, durability/regeneration, owner CLI — [acceptance](eval/fr010_application_package.md); milestones [M0](eval/fr010_m0_application_package.md), [M1](eval/fr010_m1_package_durability.md), [M2](eval/fr010_m2_owner_cli.md) |
 | **Completed** | **FR-011** (2026-07-31) | Application Preparation Orchestration — dedicated orchestrator + owner CLI; [acceptance](eval/fr011_application_preparation.md); milestones [M0](eval/fr011_m0_application_preparation.md), [M1](eval/fr011_m1_executable_preparation.md) |
 | **Completed** | **FR-012** (2026-07-31) | Submission Assistance — owner-assisted submit with append-only audit; [acceptance](eval/fr012_submission_assistance.md); milestones [M0](eval/fr012_m0_submission_contracts.md), [M1](eval/fr012_m1_submission_orchestration.md), [M2](eval/fr012_m2_owner_workflow.md) |
-| **Now** | **FR-013** | Application pipeline tracking |
-| **Next / gate** | **FR-014** | Recruiter document truth validation — fail-closed factual trust boundary before automation scales; [planning](eval/fr014_recruiter_document_truth_validation.md) |
+| **Completed** | **FR-013** (2026-08-05) | Application pipeline tracking — Opportunity SoT + append-only events + owner CLI + reporting; [ADR-005](adr/005_application_pipeline_lifecycle.md); [acceptance](eval/fr013_application_pipeline_tracking.md); milestones [M0](eval/fr013_m0_engineering_spike.md)–[M4](eval/fr013_m4_reporting_acceptance.md) |
+| **Now** | **FR-014** | Recruiter document truth validation — fail-closed factual trust boundary before automation scales; [planning](eval/fr014_recruiter_document_truth_validation.md) |
 | Later in 1A | **FR-015 → FR-017** | Bounded agents → multi-agent → evaluation |
 | **After 1A** | **Horizon 1B (FR-018–FR-024)** | Recruiters, outreach, meetups, LinkedIn, market |
 
@@ -284,6 +284,34 @@ offline-first adapters, or FR-013 PipelineStatus separation.
 
 Not in FR-012: live board automation, Playwright, PipelineStatus lifecycle
 (FR-013), FR-008 `submit` node wiring, credentials, CAPTCHA, multi-agent submit.
+
+### FR-013 completion summary
+
+**Complete — documentation frozen (2026-08-05).**
+[acceptance](eval/fr013_application_pipeline_tracking.md);
+[ADR-005](adr/005_application_pipeline_lifecycle.md).
+
+| Milestone | Intent | Status |
+|-----------|--------|--------|
+| M0 | Engineering spike (hybrid architecture) | **Complete** |
+| M1 | Contracts, event store, ADR-005 | **Complete** |
+| M2 | `PipelineTrackingService` event-first dual-write | **Complete** |
+| M3 | Owner-operable workflow (`cic pipeline`) | **Complete** |
+| M4 | Reporting, CSV continuity, acceptance | **Complete** |
+| Close-out | Owner manual validation + documentation freeze | **Complete** |
+
+Canonical flow: Owner → `cic pipeline` → `PipelineTrackingService` → append
+`PipelineEvent` → project Opportunity current state → derived report / due / export.
+CLI is thin; Opportunity remains SoT; SubmissionAttempt success never auto-advances
+status; corrections are new events only. Legacy Phase 2 M2 `update_outcome` rows may
+show status without event history — expected accepted debt.
+
+**Do not reopen without explicit owner request:** Opportunity current-state SoT,
+append-only PipelineEvents, event-first dual-write, SubmissionAttempt non-auto-advance,
+or divergence/repair without projection watermark.
+
+Not in FR-013: adaptive scoring, dashboards, email, recruiter messaging, silent
+automation, Application aggregate, FR-014 truth validation.
 
 ### Job acquisition (not “web scraping”)
 

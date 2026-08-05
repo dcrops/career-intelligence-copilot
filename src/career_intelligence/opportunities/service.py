@@ -427,6 +427,120 @@ class OpportunityService:
         )
         return self._store.save(updated)
 
+    def apply_pipeline_projection(
+        self,
+        opportunity_id: str,
+        *,
+        status: PipelineStatus | None = None,
+        outcome: OutcomeKind | None = None,
+        interview_stage: InterviewStage | None = None,
+        follow_up_date: date | None = None,
+        notes: str | None = None,
+        clear_follow_up_date: bool = False,
+        allow_terminal_reopen: bool = False,
+    ) -> Opportunity:
+        """Apply lifecycle fields already validated by PipelineTrackingService.
+
+        Used for FR-013 dual-write projection. Unlike ``update_outcome``, same-status
+        is allowed (idempotent retry) and ``allow_terminal_reopen`` permits leaving a
+        terminal ``PipelineStatus`` after an audited correction event.
+        """
+        if status is None and outcome is None and interview_stage is None and (
+            notes is None and follow_up_date is None and not clear_follow_up_date
+        ):
+            raise OpportunityValidationError(
+                [
+                    ErrorDetail(
+                        loc=(),
+                        msg=(
+                            "Provide at least one of: status, outcome, "
+                            "interview_stage, follow_up_date, notes."
+                        ),
+                        type="value_error",
+                    )
+                ]
+            )
+
+        if status is not None and status not in PIPELINE_STATUSES:
+            allowed = ", ".join(PIPELINE_STATUSES)
+            raise OpportunityValidationError(
+                [
+                    ErrorDetail(
+                        loc=("status",),
+                        msg=f"Invalid status '{status}'. Choose from: {allowed}.",
+                        type="value_error",
+                    )
+                ]
+            )
+        if outcome is not None and outcome not in OUTCOME_KINDS:
+            allowed = ", ".join(OUTCOME_KINDS)
+            raise OpportunityValidationError(
+                [
+                    ErrorDetail(
+                        loc=("outcome",),
+                        msg=f"Invalid outcome '{outcome}'. Choose from: {allowed}.",
+                        type="value_error",
+                    )
+                ]
+            )
+
+        current = self._store.get(opportunity_id)
+        now = datetime.now(UTC)
+
+        new_status = current.status
+        if status is not None:
+            if status != current.status:
+                if allow_terminal_reopen:
+                    # FR-013 correction path — transition legality already checked
+                    # by PipelineTrackingService against the correction event.
+                    new_status = status
+                else:
+                    try:
+                        validate_status_transition(current.status, status)
+                    except OpportunityTransitionError:
+                        raise
+                    new_status = status
+
+        existing = current.outcome
+        outcome_payload: dict[str, object] = {
+            "outcome": existing.outcome if existing is not None else "pending",
+            "interview_stage": (
+                existing.interview_stage if existing is not None else "none"
+            ),
+            "follow_up_date": (
+                existing.follow_up_date if existing is not None else None
+            ),
+            "notes": existing.notes if existing is not None else None,
+            "updated_at": now,
+        }
+        if outcome is not None:
+            outcome_payload["outcome"] = outcome
+        if interview_stage is not None:
+            outcome_payload["interview_stage"] = interview_stage
+        if clear_follow_up_date:
+            outcome_payload["follow_up_date"] = None
+        elif follow_up_date is not None:
+            outcome_payload["follow_up_date"] = follow_up_date
+        if notes is not None:
+            outcome_payload["notes"] = notes
+
+        try:
+            outcome_record = OutcomeRecord.model_validate(outcome_payload)
+        except ValidationError as error:
+            raise OpportunityValidationError(
+                [ErrorDetail.from_pydantic(item) for item in error.errors()]
+            ) from error
+
+        updated = current.model_copy(
+            update={
+                "status": new_status,
+                "outcome": outcome_record,
+                "updated_at": now,
+            },
+            deep=True,
+        )
+        return self._store.save(updated)
+
     def backfill_identity_from_posting_artifacts(self) -> list[dict[str, object]]:
         """Fill missing identity title/company from trusted posting.json snapshots.
 

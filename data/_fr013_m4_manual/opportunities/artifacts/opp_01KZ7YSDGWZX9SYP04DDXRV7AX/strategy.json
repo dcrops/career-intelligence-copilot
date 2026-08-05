@@ -1,0 +1,230 @@
+{
+  "job_analysis": {
+    "posting": {
+      "raw_text": "Reject Role RejectCo Python AI Melbourne.",
+      "title": "Reject Role",
+      "company": "RejectCo",
+      "source_url": "https://example.com/jobs/rejectco"
+    },
+    "role_family": {
+      "family": "ai_engineering",
+      "evidence": [
+        {
+          "excerpt": "Senior AI Engineer",
+          "section": "title"
+        }
+      ]
+    },
+    "seniority": {
+      "level": "senior",
+      "ambiguous": false,
+      "candidate_levels": [],
+      "evidence": [
+        {
+          "excerpt": "Senior AI Engineer",
+          "section": "title"
+        }
+      ]
+    },
+    "technologies": [
+      {
+        "name": "Python",
+        "level": "required",
+        "evidence": [
+          {
+            "excerpt": "Python required",
+            "section": "requirements"
+          }
+        ]
+      }
+    ],
+    "responsibilities": [
+      {
+        "description": "Build LLM applications",
+        "evidence": [
+          {
+            "excerpt": "Build LLM applications",
+            "section": "responsibilities"
+          }
+        ]
+      }
+    ],
+    "compensation": {
+      "clarity": "unstated",
+      "minimum": null,
+      "maximum": null,
+      "currency": null,
+      "period": null,
+      "raw_text": null,
+      "evidence": []
+    },
+    "location": {
+      "clarity": "stated",
+      "summary": "Melbourne",
+      "evidence": [
+        {
+          "excerpt": "Hybrid Melbourne",
+          "section": "location"
+        }
+      ]
+    },
+    "work_arrangement": {
+      "arrangement": "hybrid",
+      "details": null,
+      "evidence": [
+        {
+          "excerpt": "Hybrid Melbourne",
+          "section": "location"
+        }
+      ]
+    },
+    "employment": {
+      "working_hours": "unspecified",
+      "engagement_type": "unspecified",
+      "evidence": []
+    },
+    "experience_requirements": []
+  },
+  "application_tier": "platinum",
+  "pursuit_posture": "prioritise",
+  "practical_value": "career_priority",
+  "effort_level": "full",
+  "summary": "Prioritise this AI Engineer opportunity with full effort.",
+  "reasons": [
+    {
+      "kind": "alignment",
+      "summary": "Technical fit is strong for an AI Engineering role.",
+      "importance": "material",
+      "evidence": [
+        {
+          "origin": "opportunity_assessment",
+          "job_evidence": null,
+          "profile_evidence": null,
+          "assessment_dimension": "technical",
+          "assessment_judgment": "strong",
+          "portfolio_project_id": null,
+          "excerpt": null
+        }
+      ]
+    }
+  ],
+  "risks_or_gaps": [
+    {
+      "summary": "Compensation is unstated and should be reviewed.",
+      "importance": "minor",
+      "evidence": [
+        {
+          "origin": "job_analysis",
+          "job_evidence": {
+            "source": "compensation",
+            "item_index": null,
+            "name": null,
+            "excerpt": null
+          },
+          "profile_evidence": null,
+          "assessment_dimension": null,
+          "assessment_judgment": null,
+          "portfolio_project_id": null,
+          "excerpt": null
+        }
+      ]
+    }
+  ],
+  "manual_checks": [
+    {
+      "summary": "Confirm compensation once disclosed.",
+      "why_it_matters": "Salary clarity could change commercial priority.",
+      "could_change_recommendation": true,
+      "evidence": [
+        {
+          "origin": "job_analysis",
+          "job_evidence": {
+            "source": "compensation",
+            "item_index": null,
+            "name": null,
+            "excerpt": null
+          },
+          "profile_evidence": null,
+          "assessment_dimension": null,
+          "assessment_judgment": null,
+          "portfolio_project_id": null,
+          "excerpt": null
+        }
+      ]
+    }
+  ],
+  "next_actions": [
+    {
+      "kind": "consider_emphasising_portfolio_projects",
+      "summary": "Consider emphasising example-project in the application.",
+      "related_project_id": "example-project",
+      "evidence": [
+        {
+          "origin": "portfolio_match",
+          "job_evidence": null,
+          "profile_evidence": null,
+          "assessment_dimension": null,
+          "assessment_judgment": null,
+          "portfolio_project_id": "example-project",
+          "excerpt": null
+        }
+      ]
+    },
+    {
+      "kind": "consider_cv_tailoring",
+      "summary": "Consider whether CV tailoring is worth the effort.",
+      "related_project_id": null,
+      "evidence": [
+        {
+          "origin": "opportunity_assessment",
+          "job_evidence": null,
+          "profile_evidence": null,
+          "assessment_dimension": "technical",
+          "assessment_judgment": "strong",
+          "portfolio_project_id": null,
+          "excerpt": null
+        }
+      ]
+    },
+    {
+      "kind": "consider_owner_review",
+      "summary": "Review this strategy before taking any external action.",
+      "related_project_id": null,
+      "evidence": [
+        {
+          "origin": "opportunity_assessment",
+          "job_evidence": null,
+          "profile_evidence": null,
+          "assessment_dimension": "technical",
+          "assessment_judgment": "strong",
+          "portfolio_project_id": null,
+          "excerpt": null
+        }
+      ]
+    }
+  ],
+  "portfolio_emphasis": [
+    {
+      "project_id": "example-project",
+      "source_rank": 1,
+      "summary": "Lead with example-project for required Python overlap.",
+      "evidence": [
+        {
+          "origin": "portfolio_match",
+          "job_evidence": null,
+          "profile_evidence": null,
+          "assessment_dimension": null,
+          "assessment_judgment": null,
+          "portfolio_project_id": "example-project",
+          "excerpt": null
+        }
+      ]
+    }
+  ],
+  "assumptions": [
+    "Compensation remains compatible once disclosed."
+  ],
+  "decision_blockers": [],
+  "owner_review_required": true,
+  "insufficient_information": false
+}

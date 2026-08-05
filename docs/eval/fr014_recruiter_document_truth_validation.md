@@ -77,12 +77,13 @@ Related owner artefact workflow (already shipped):
 
 | Rule | Meaning |
 |------|---------|
-| FR-013 identifier unchanged | Application Pipeline Tracking stays FR-013 |
-| FR-014 inserted next | Recruiter Document Truth Validation |
+| FR-013 identifier unchanged | Application Pipeline Tracking stays FR-013 (**complete and frozen**) |
+| FR-014 is current | Recruiter Document Truth Validation (next active FR) |
 | Automation gate | **FR-014 must be accepted before any future work that increases application automation or reduces owner review** |
 
-FR-013 may proceed as the established next pipeline milestone. FR-014 is the
-safety prerequisite before automation scales.
+FR-013 Application Pipeline Tracking is **complete and frozen**
+([acceptance](fr013_application_pipeline_tracking.md)). FR-014 is the next active
+FR and the safety prerequisite before automation scales.
 
 ---
 
@@ -168,6 +169,6 @@ Do not prescribe a large NLP or LLM solution prematurely.
 
 ## 10. Numbering note
 
-FR-013 remains Application Pipeline Tracking. Former FR-014+ (bounded agents and
-later) shift by one after this insertion. See [11_changelog.md](../11_changelog.md)
-§ 1.84.
+FR-013 remains Application Pipeline Tracking (**complete and frozen**). Former FR-014+
+(bounded agents and later) shift by one after this insertion. See
+[11_changelog.md](../11_changelog.md) § 1.84.

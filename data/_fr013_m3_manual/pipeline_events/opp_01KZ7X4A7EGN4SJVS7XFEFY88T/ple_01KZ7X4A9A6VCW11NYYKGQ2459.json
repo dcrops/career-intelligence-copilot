@@ -1,0 +1,24 @@
+{
+  "event_id": "ple_01KZ7X4A9A6VCW11NYYKGQ2459",
+  "opportunity_id": "opp_01KZ7X4A7EGN4SJVS7XFEFY88T",
+  "occurred_at": "2026-08-05T02:48:04.650779Z",
+  "recorded_at": "2026-08-05T02:48:04.650779Z",
+  "kind": "status_transition",
+  "from_status": "preparing",
+  "to_status": "submitted",
+  "outcome": "pending",
+  "interview_stage": null,
+  "follow_up_date": null,
+  "clear_follow_up_date": false,
+  "evidence": {
+    "note": "sent JD portal",
+    "channel": "manual",
+    "submission_attempt_id": null,
+    "package": null,
+    "submitted_at": null,
+    "rejection_reason": null,
+    "offer_detail": null
+  },
+  "actor": "owner",
+  "supersedes_event_id": null
+}

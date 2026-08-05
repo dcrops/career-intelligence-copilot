@@ -79,6 +79,24 @@ from career_intelligence.submission import (
     SubmissionStorageError,
     SubmissionValidationError,
 )
+from career_intelligence.pipeline import (
+    DEFAULT_PIPELINE_EVENTS_ROOT,
+    DEFAULT_PIPELINE_EXPORT_PATH,
+    JsonDirectoryPipelineEventStore,
+    PackageEvidenceRef,
+    PipelineApplyResult,
+    PipelineConsistencyError,
+    PipelineDivergenceError,
+    PipelineError,
+    PipelineEvent,
+    PipelineEvidence,
+    PipelinePartialWriteError,
+    PipelineStorageError,
+    PipelineSummaryReport,
+    PipelineTrackingService,
+    PipelineTransitionError,
+    PipelineValidationError,
+)
 
 app = typer.Typer(help="Career Intelligence Copilot.")
 profile_app = typer.Typer(help="Manage and inspect the career profile.")
@@ -94,11 +112,20 @@ preparation_app = typer.Typer(
 submission_app = typer.Typer(
     help="Run assisted submission workflow (FR-012)."
 )
+pipeline_app = typer.Typer(
+    help=(
+        "Track and report the application pipeline after submit (FR-013). "
+        "Commands: list, show, history, preparing, submit, acknowledge, interview, "
+        "reject, offer, accept, withdraw, follow-up, note, evidence, correct, "
+        "check, repair, report, due, export."
+    ),
+)
 app.add_typer(profile_app, name="profile")
 app.add_typer(opportunity_app, name="opportunity")
 app.add_typer(package_app, name="package")
 app.add_typer(preparation_app, name="preparation")
 app.add_typer(submission_app, name="submission")
+app.add_typer(pipeline_app, name="pipeline")
 
 PathOption = Annotated[
     Path | None,
@@ -142,6 +169,17 @@ SubmissionAttemptsDirOption = Annotated[
         help=(
             "Override the submission-attempts store directory "
             f"(default: {DEFAULT_SUBMISSION_ATTEMPTS_ROOT})."
+        ),
+    ),
+]
+
+PipelineEventsDirOption = Annotated[
+    Path | None,
+    typer.Option(
+        "--events-dir",
+        help=(
+            "Override the pipeline-events store directory "
+            f"(default: {DEFAULT_PIPELINE_EVENTS_ROOT})."
         ),
     ),
 ]
@@ -239,6 +277,24 @@ def _submission_orchestrator(
             "fake": fake,
             "manual_assisted": ManualAssistedAdapter(),
         },
+    )
+
+
+def _pipeline_tracking_service(
+    *,
+    opportunities_dir: Path | None,
+    events_dir: Path | None,
+) -> PipelineTrackingService:
+    opportunities = _opportunity_service(opportunities_dir)
+    if events_dir is not None:
+        events_root = events_dir
+    elif opportunities_dir is not None:
+        events_root = opportunities_dir.parent / "pipeline_events"
+    else:
+        events_root = DEFAULT_PIPELINE_EVENTS_ROOT
+    return PipelineTrackingService(
+        opportunities=opportunities,
+        events=JsonDirectoryPipelineEventStore(events_root),
     )
 
 
@@ -1580,6 +1636,874 @@ def list_submissions(
             f"{attempt.attempt_id}  {attempt.status}  "
             f"{attempt.channel}  {attempt.opportunity_id}"
         )
+
+
+# --- FR-013 pipeline owner workflow (thin CLI) -------------------------------
+
+
+def _exit_for_pipeline(error: PipelineError) -> Never:
+    message = str(error)
+    if isinstance(error, PipelineValidationError):
+        typer.echo("Pipeline validation failed:", err=True)
+        for detail in error.errors:
+            typer.echo(f"- {_format_location(detail.loc)}: {detail.msg}", err=True)
+        raise typer.Exit(code=1)
+    if isinstance(error, (PipelineTransitionError, PipelineConsistencyError)):
+        typer.echo(message, err=True)
+        raise typer.Exit(code=1)
+    if isinstance(error, PipelinePartialWriteError):
+        typer.echo("Pipeline write incomplete - history saved, status not updated.", err=True)
+        typer.echo(message, err=True)
+        typer.echo(
+            f"Retry with: cic pipeline repair {error.opportunity_id}",
+            err=True,
+        )
+        raise typer.Exit(code=1)
+    if isinstance(error, PipelineDivergenceError):
+        typer.echo("Pipeline history and current status disagree.", err=True)
+        typer.echo(message, err=True)
+        raise typer.Exit(code=1)
+    if isinstance(error, PipelineStorageError):
+        typer.echo(message, err=True)
+        raise typer.Exit(code=2)
+    typer.echo(message, err=True)
+    raise typer.Exit(code=2)
+
+
+def _print_pipeline_result(result: PipelineApplyResult, *, headline: str) -> None:
+    opportunity = result.opportunity
+    typer.echo(headline)
+    typer.echo(f"opportunity_id: {opportunity.opportunity_id}")
+    typer.echo(f"status: {opportunity.status}")
+    if opportunity.outcome is not None:
+        typer.echo(f"outcome: {opportunity.outcome.outcome}")
+        if opportunity.outcome.interview_stage not in {None, "none"}:
+            typer.echo(f"interview_stage: {opportunity.outcome.interview_stage}")
+        if opportunity.outcome.follow_up_date is not None:
+            typer.echo(f"follow_up_date: {opportunity.outcome.follow_up_date.isoformat()}")
+    if result.event.evidence.note:
+        typer.echo(f"note: {result.event.evidence.note}")
+    if result.event.evidence.submission_attempt_id:
+        typer.echo(
+            f"submission_attempt_id: {result.event.evidence.submission_attempt_id}"
+        )
+
+
+def _print_opportunity_pipeline(opportunity: object) -> None:
+    from career_intelligence.opportunities import Opportunity
+
+    assert isinstance(opportunity, Opportunity)
+    title = opportunity.identity.title or "(untitled)"
+    company = opportunity.identity.company or "(unknown company)"
+    typer.echo(f"{opportunity.opportunity_id}")
+    typer.echo(f"  {company} - {title}")
+    typer.echo(f"  status: {opportunity.status}")
+    if opportunity.decision is not None:
+        typer.echo(f"  decision: {opportunity.decision.decision}")
+    if opportunity.outcome is not None:
+        typer.echo(f"  outcome: {opportunity.outcome.outcome}")
+        if opportunity.outcome.interview_stage not in {None, "none"}:
+            typer.echo(f"  interview_stage: {opportunity.outcome.interview_stage}")
+        if opportunity.outcome.follow_up_date is not None:
+            typer.echo(
+                f"  follow_up_date: {opportunity.outcome.follow_up_date.isoformat()}"
+            )
+        if opportunity.outcome.notes:
+            typer.echo(f"  notes: {opportunity.outcome.notes}")
+
+
+def _history_line(event: PipelineEvent, *, verbose: bool) -> list[str]:
+    when = event.occurred_at.isoformat()
+    lines: list[str] = []
+    if event.kind == "status_transition":
+        lines.append(f"{when}  Status -> {event.to_status}")
+    elif event.kind == "correction":
+        lines.append(
+            f"{when}  Correction: {event.from_status} -> {event.to_status}"
+        )
+    elif event.kind == "interview_stage_change":
+        lines.append(f"{when}  Interview stage -> {event.interview_stage}")
+    elif event.kind == "outcome_change":
+        lines.append(f"{when}  Outcome -> {event.outcome}")
+    elif event.kind == "follow_up_set":
+        if event.clear_follow_up_date:
+            lines.append(f"{when}  Follow-up cleared")
+        else:
+            lines.append(f"{when}  Follow-up -> {event.follow_up_date}")
+    elif event.kind == "note":
+        lines.append(f"{when}  Note")
+    elif event.kind == "evidence_added":
+        lines.append(f"{when}  Evidence")
+    else:
+        lines.append(f"{when}  {event.kind}")
+
+    detail_parts: list[str] = []
+    if event.interview_stage and event.kind == "status_transition":
+        detail_parts.append(f"interview_stage={event.interview_stage}")
+    if event.outcome and event.kind in {"status_transition", "correction"}:
+        detail_parts.append(f"outcome={event.outcome}")
+    if event.evidence.note:
+        detail_parts.append(event.evidence.note)
+    if event.evidence.channel:
+        detail_parts.append(f"channel={event.evidence.channel}")
+    if event.evidence.submission_attempt_id:
+        detail_parts.append(f"attempt={event.evidence.submission_attempt_id}")
+    if event.evidence.rejection_reason:
+        detail_parts.append(f"reason={event.evidence.rejection_reason}")
+    if event.evidence.offer_detail:
+        detail_parts.append(f"offer={event.evidence.offer_detail}")
+    if detail_parts:
+        lines.append("            " + " | ".join(detail_parts))
+    if verbose:
+        lines.append(f"            id={event.event_id} kind={event.kind}")
+    return lines
+
+
+def _parse_optional_date(value: str | None):
+    from datetime import date
+
+    if value is None:
+        return None
+    return date.fromisoformat(value)
+
+
+def _parse_optional_datetime(value: str | None):
+    from datetime import datetime
+
+    if value is None:
+        return None
+    parsed = datetime.fromisoformat(value)
+    if parsed.tzinfo is None:
+        from datetime import UTC
+
+        return parsed.replace(tzinfo=UTC)
+    return parsed
+
+
+def _submit_evidence(
+    *,
+    opportunity_id: str,
+    note: str | None,
+    channel: str | None,
+    attempt_id: str | None,
+    package_prepared_at: str | None,
+    submitted_at: str | None,
+) -> PipelineEvidence:
+    package = None
+    prepared = _parse_optional_datetime(package_prepared_at)
+    if prepared is not None:
+        package = PackageEvidenceRef(
+            opportunity_id=opportunity_id,
+            prepared_at=prepared,
+        )
+    return PipelineEvidence(
+        note=note or "Application submitted",
+        channel=channel,
+        submission_attempt_id=attempt_id,  # type: ignore[arg-type]
+        package=package,
+        submitted_at=_parse_optional_datetime(submitted_at),
+    )
+
+
+@pipeline_app.command("list")
+def pipeline_list(
+    dir: OpportunitiesDirOption = None,
+    events_dir: PipelineEventsDirOption = None,
+    status: Annotated[
+        str | None,
+        typer.Option("--status", help="Filter by exact pipeline status."),
+    ] = None,
+    all_records: Annotated[
+        bool,
+        typer.Option(
+            "--all",
+            help="List all opportunities (not only active pipeline).",
+        ),
+    ] = False,
+    yaml_output: Annotated[
+        bool,
+        typer.Option("--yaml", help="Emit opportunities as YAML."),
+    ] = False,
+) -> None:
+    """List applications in the active pipeline (default) or all opportunities."""
+    try:
+        tracking = _pipeline_tracking_service(
+            opportunities_dir=dir,
+            events_dir=events_dir,
+        )
+        items = tracking.list_pipeline(
+            active_only=not all_records,
+            status=status,  # type: ignore[arg-type]
+        )
+    except OpportunityError as error:
+        _exit_for_opportunity(error)
+    except PipelineError as error:
+        _exit_for_pipeline(error)
+
+    if yaml_output:
+        typer.echo(_render(items))
+        return
+    if not items:
+        typer.echo("No applications in the pipeline.")
+        return
+    for item in items:
+        company = item.identity.company or "?"
+        title = item.identity.title or "?"
+        stage = ""
+        if item.outcome and item.outcome.interview_stage not in {None, "none"}:
+            stage = f"  interview={item.outcome.interview_stage}"
+        typer.echo(
+            f"{item.opportunity_id}  {item.status}  {company} - {title}{stage}"
+        )
+
+
+@pipeline_app.command("show")
+def pipeline_show(
+    opportunity_id: Annotated[str, typer.Argument(help="Opportunity id (opp_<ULID>).")],
+    dir: OpportunitiesDirOption = None,
+    events_dir: PipelineEventsDirOption = None,
+    yaml_output: Annotated[
+        bool,
+        typer.Option("--yaml", help="Emit the opportunity as YAML."),
+    ] = False,
+) -> None:
+    """Show current pipeline status for one opportunity."""
+    try:
+        tracking = _pipeline_tracking_service(
+            opportunities_dir=dir,
+            events_dir=events_dir,
+        )
+        opportunity = tracking.get_opportunity(opportunity_id)
+        report = tracking.detect_divergence(opportunity_id)
+    except OpportunityError as error:
+        _exit_for_opportunity(error)
+    except PipelineError as error:
+        _exit_for_pipeline(error)
+
+    if yaml_output:
+        typer.echo(_render(opportunity))
+        return
+    typer.echo("Current Pipeline")
+    _print_opportunity_pipeline(opportunity)
+    if report.divergent:
+        typer.echo("  consistency: divergent (run cic pipeline repair)")
+    else:
+        typer.echo("  consistency: ok")
+
+
+@pipeline_app.command("history")
+def pipeline_history(
+    opportunity_id: Annotated[str, typer.Argument(help="Opportunity id (opp_<ULID>).")],
+    dir: OpportunitiesDirOption = None,
+    events_dir: PipelineEventsDirOption = None,
+    verbose: Annotated[
+        bool,
+        typer.Option("--verbose", help="Include internal history ids."),
+    ] = False,
+    yaml_output: Annotated[
+        bool,
+        typer.Option("--yaml", help="Emit raw history records as YAML."),
+    ] = False,
+) -> None:
+    """Show chronological application history (append-only)."""
+    try:
+        tracking = _pipeline_tracking_service(
+            opportunities_dir=dir,
+            events_dir=events_dir,
+        )
+        events = tracking.list_events(opportunity_id)
+    except OpportunityError as error:
+        _exit_for_opportunity(error)
+    except PipelineError as error:
+        _exit_for_pipeline(error)
+
+    if yaml_output:
+        typer.echo(_render(events))
+        return
+    if not events:
+        typer.echo("No pipeline history yet.")
+        return
+    typer.echo(f"History for {opportunity_id}")
+    for event in events:
+        for line in _history_line(event, verbose=verbose):
+            typer.echo(line)
+
+
+@pipeline_app.command("submit")
+def pipeline_submit(
+    opportunity_id: Annotated[str, typer.Argument(help="Opportunity id (opp_<ULID>).")],
+    dir: OpportunitiesDirOption = None,
+    events_dir: PipelineEventsDirOption = None,
+    note: Annotated[str | None, typer.Option("--note")] = None,
+    channel: Annotated[str | None, typer.Option("--channel")] = None,
+    attempt_id: Annotated[
+        str | None,
+        typer.Option(
+            "--attempt-id",
+            help="Optional FR-012 submission attempt id (evidence only).",
+        ),
+    ] = None,
+    package_prepared_at: Annotated[
+        str | None,
+        typer.Option(
+            "--package-prepared-at",
+            help="Optional package prepared_at ISO timestamp (evidence).",
+        ),
+    ] = None,
+    submitted_at: Annotated[
+        str | None,
+        typer.Option("--submitted-at", help="Optional submission time (ISO)."),
+    ] = None,
+) -> None:
+    """Record that the owner submitted the application (explicit; never automatic)."""
+    try:
+        tracking = _pipeline_tracking_service(
+            opportunities_dir=dir,
+            events_dir=events_dir,
+        )
+        evidence = _submit_evidence(
+            opportunity_id=opportunity_id,
+            note=note,
+            channel=channel,
+            attempt_id=attempt_id,
+            package_prepared_at=package_prepared_at,
+            submitted_at=submitted_at,
+        )
+        # Ensure substantive evidence even when only defaults.
+        if evidence.submitted_at is None and note is None and channel is None and (
+            attempt_id is None and package_prepared_at is None
+        ):
+            from datetime import UTC, datetime
+
+            evidence = evidence.model_copy(
+                update={"submitted_at": datetime.now(UTC)}
+            )
+        result = tracking.record_submitted(opportunity_id, evidence=evidence)
+    except OpportunityError as error:
+        _exit_for_opportunity(error)
+    except PipelineError as error:
+        _exit_for_pipeline(error)
+    _print_pipeline_result(result, headline="Application Submitted")
+
+
+@pipeline_app.command("preparing")
+def pipeline_preparing(
+    opportunity_id: Annotated[str, typer.Argument(help="Opportunity id (opp_<ULID>).")],
+    dir: OpportunitiesDirOption = None,
+    events_dir: PipelineEventsDirOption = None,
+    note: Annotated[str | None, typer.Option("--note")] = None,
+) -> None:
+    """Mark the opportunity as preparing an application package."""
+    try:
+        tracking = _pipeline_tracking_service(
+            opportunities_dir=dir,
+            events_dir=events_dir,
+        )
+        result = tracking.advance_status(
+            opportunity_id,
+            "preparing",
+            evidence=PipelineEvidence(note=note or "Preparing application package"),
+        )
+    except OpportunityError as error:
+        _exit_for_opportunity(error)
+    except PipelineError as error:
+        _exit_for_pipeline(error)
+    _print_pipeline_result(result, headline="Preparing Application")
+
+
+@pipeline_app.command("acknowledge")
+def pipeline_acknowledge(
+    opportunity_id: Annotated[str, typer.Argument(help="Opportunity id (opp_<ULID>).")],
+    dir: OpportunitiesDirOption = None,
+    events_dir: PipelineEventsDirOption = None,
+    note: Annotated[str | None, typer.Option("--note")] = None,
+) -> None:
+    """Record acknowledgement received (does not change pipeline status)."""
+    try:
+        tracking = _pipeline_tracking_service(
+            opportunities_dir=dir,
+            events_dir=events_dir,
+        )
+        result = tracking.record_acknowledgement(opportunity_id, note=note)
+    except OpportunityError as error:
+        _exit_for_opportunity(error)
+    except PipelineError as error:
+        _exit_for_pipeline(error)
+    _print_pipeline_result(result, headline="Acknowledgement Recorded")
+
+
+@pipeline_app.command("interview")
+def pipeline_interview(
+    opportunity_id: Annotated[str, typer.Argument(help="Opportunity id (opp_<ULID>).")],
+    dir: OpportunitiesDirOption = None,
+    events_dir: PipelineEventsDirOption = None,
+    stage: Annotated[
+        str,
+        typer.Option(
+            "--stage",
+            help="Interview stage: recruiter|hiring_manager|technical|other|unknown",
+        ),
+    ] = "recruiter",
+    note: Annotated[str | None, typer.Option("--note")] = None,
+) -> None:
+    """Record interviewing progress (moves to interviewing or updates stage)."""
+    try:
+        tracking = _pipeline_tracking_service(
+            opportunities_dir=dir,
+            events_dir=events_dir,
+        )
+        result = tracking.record_interview(
+            opportunity_id,
+            stage,  # type: ignore[arg-type]
+            note=note,
+        )
+    except OpportunityError as error:
+        _exit_for_opportunity(error)
+    except PipelineError as error:
+        _exit_for_pipeline(error)
+    _print_pipeline_result(result, headline="Interview Updated")
+
+
+@pipeline_app.command("reject")
+def pipeline_reject(
+    opportunity_id: Annotated[str, typer.Argument(help="Opportunity id (opp_<ULID>).")],
+    dir: OpportunitiesDirOption = None,
+    events_dir: PipelineEventsDirOption = None,
+    note: Annotated[str | None, typer.Option("--note")] = None,
+    reason: Annotated[str | None, typer.Option("--reason")] = None,
+) -> None:
+    """Record rejection."""
+    try:
+        tracking = _pipeline_tracking_service(
+            opportunities_dir=dir,
+            events_dir=events_dir,
+        )
+        result = tracking.advance_status(
+            opportunity_id,
+            "rejected",
+            evidence=PipelineEvidence(
+                note=note or "Rejected",
+                rejection_reason=reason,
+            ),
+            outcome="rejected",
+        )
+    except OpportunityError as error:
+        _exit_for_opportunity(error)
+    except PipelineError as error:
+        _exit_for_pipeline(error)
+    _print_pipeline_result(result, headline="Application Rejected")
+
+
+@pipeline_app.command("offer")
+def pipeline_offer(
+    opportunity_id: Annotated[str, typer.Argument(help="Opportunity id (opp_<ULID>).")],
+    dir: OpportunitiesDirOption = None,
+    events_dir: PipelineEventsDirOption = None,
+    note: Annotated[str | None, typer.Option("--note")] = None,
+    detail: Annotated[str | None, typer.Option("--detail")] = None,
+) -> None:
+    """Record that an offer was received."""
+    try:
+        tracking = _pipeline_tracking_service(
+            opportunities_dir=dir,
+            events_dir=events_dir,
+        )
+        result = tracking.advance_status(
+            opportunity_id,
+            "offer",
+            evidence=PipelineEvidence(
+                note=note or "Offer received",
+                offer_detail=detail,
+            ),
+            outcome="offer",
+        )
+    except OpportunityError as error:
+        _exit_for_opportunity(error)
+    except PipelineError as error:
+        _exit_for_pipeline(error)
+    _print_pipeline_result(result, headline="Offer Recorded")
+
+
+@pipeline_app.command("accept")
+def pipeline_accept(
+    opportunity_id: Annotated[str, typer.Argument(help="Opportunity id (opp_<ULID>).")],
+    dir: OpportunitiesDirOption = None,
+    events_dir: PipelineEventsDirOption = None,
+    note: Annotated[str | None, typer.Option("--note")] = None,
+) -> None:
+    """Record that an offer was accepted."""
+    try:
+        tracking = _pipeline_tracking_service(
+            opportunities_dir=dir,
+            events_dir=events_dir,
+        )
+        result = tracking.advance_status(
+            opportunity_id,
+            "accepted",
+            evidence=PipelineEvidence(note=note or "Offer accepted"),
+            outcome="accepted",
+        )
+    except OpportunityError as error:
+        _exit_for_opportunity(error)
+    except PipelineError as error:
+        _exit_for_pipeline(error)
+    _print_pipeline_result(result, headline="Offer Accepted")
+
+
+@pipeline_app.command("withdraw")
+def pipeline_withdraw(
+    opportunity_id: Annotated[str, typer.Argument(help="Opportunity id (opp_<ULID>).")],
+    dir: OpportunitiesDirOption = None,
+    events_dir: PipelineEventsDirOption = None,
+    note: Annotated[str | None, typer.Option("--note")] = None,
+) -> None:
+    """Withdraw the application."""
+    try:
+        tracking = _pipeline_tracking_service(
+            opportunities_dir=dir,
+            events_dir=events_dir,
+        )
+        result = tracking.advance_status(
+            opportunity_id,
+            "withdrawn",
+            evidence=PipelineEvidence(note=note or "Withdrawn by owner"),
+            outcome="withdrawn",
+        )
+    except OpportunityError as error:
+        _exit_for_opportunity(error)
+    except PipelineError as error:
+        _exit_for_pipeline(error)
+    _print_pipeline_result(result, headline="Application Withdrawn")
+
+
+@pipeline_app.command("follow-up")
+def pipeline_follow_up(
+    opportunity_id: Annotated[str, typer.Argument(help="Opportunity id (opp_<ULID>).")],
+    dir: OpportunitiesDirOption = None,
+    events_dir: PipelineEventsDirOption = None,
+    date_value: Annotated[
+        str | None,
+        typer.Option("--date", help="Follow-up date (YYYY-MM-DD)."),
+    ] = None,
+    clear: Annotated[
+        bool,
+        typer.Option("--clear", help="Clear the follow-up date."),
+    ] = False,
+    note: Annotated[str | None, typer.Option("--note")] = None,
+) -> None:
+    """Record or clear a follow-up reminder (tracking only — no notifications)."""
+    if not clear and date_value is None:
+        typer.echo("Provide --date YYYY-MM-DD or --clear.", err=True)
+        raise typer.Exit(code=1)
+    try:
+        tracking = _pipeline_tracking_service(
+            opportunities_dir=dir,
+            events_dir=events_dir,
+        )
+        result = tracking.set_follow_up(
+            opportunity_id,
+            _parse_optional_date(date_value),
+            clear=clear,
+            evidence=PipelineEvidence(note=note) if note else PipelineEvidence(),
+        )
+    except OpportunityError as error:
+        _exit_for_opportunity(error)
+    except PipelineError as error:
+        _exit_for_pipeline(error)
+    except ValueError as error:
+        typer.echo(str(error), err=True)
+        raise typer.Exit(code=1) from error
+    _print_pipeline_result(result, headline="Follow-up Updated")
+
+
+@pipeline_app.command("note")
+def pipeline_note(
+    opportunity_id: Annotated[str, typer.Argument(help="Opportunity id (opp_<ULID>).")],
+    text: Annotated[str, typer.Argument(help="Owner note text.")],
+    dir: OpportunitiesDirOption = None,
+    events_dir: PipelineEventsDirOption = None,
+) -> None:
+    """Add an append-only owner note (does not rewrite history)."""
+    try:
+        tracking = _pipeline_tracking_service(
+            opportunities_dir=dir,
+            events_dir=events_dir,
+        )
+        result = tracking.add_note(opportunity_id, text)
+    except OpportunityError as error:
+        _exit_for_opportunity(error)
+    except PipelineError as error:
+        _exit_for_pipeline(error)
+    _print_pipeline_result(result, headline="Note Added")
+
+
+@pipeline_app.command("evidence")
+def pipeline_evidence(
+    opportunity_id: Annotated[str, typer.Argument(help="Opportunity id (opp_<ULID>).")],
+    dir: OpportunitiesDirOption = None,
+    events_dir: PipelineEventsDirOption = None,
+    note: Annotated[str | None, typer.Option("--note")] = None,
+    channel: Annotated[str | None, typer.Option("--channel")] = None,
+    attempt_id: Annotated[
+        str | None,
+        typer.Option("--attempt-id", help="Optional FR-012 attempt id (evidence only)."),
+    ] = None,
+) -> None:
+    """Attach evidence (channel, attempt citation, note) without changing status."""
+    evidence = PipelineEvidence(
+        note=note,
+        channel=channel,
+        submission_attempt_id=attempt_id,  # type: ignore[arg-type]
+    )
+    if not evidence.has_substantive_fields():
+        typer.echo("Provide at least one of --note, --channel, --attempt-id.", err=True)
+        raise typer.Exit(code=1)
+    try:
+        tracking = _pipeline_tracking_service(
+            opportunities_dir=dir,
+            events_dir=events_dir,
+        )
+        result = tracking.add_evidence(opportunity_id, evidence)
+    except OpportunityError as error:
+        _exit_for_opportunity(error)
+    except PipelineError as error:
+        _exit_for_pipeline(error)
+    _print_pipeline_result(result, headline="Evidence Attached")
+
+
+@pipeline_app.command("correct")
+def pipeline_correct(
+    opportunity_id: Annotated[str, typer.Argument(help="Opportunity id (opp_<ULID>).")],
+    to_status: Annotated[
+        str,
+        typer.Option("--to", help="Corrected pipeline status."),
+    ],
+    note: Annotated[
+        str,
+        typer.Option("--note", help="Required explanation for the correction."),
+    ],
+    dir: OpportunitiesDirOption = None,
+    events_dir: PipelineEventsDirOption = None,
+    supersedes: Annotated[
+        str | None,
+        typer.Option("--supersedes", help="Optional prior history id being corrected."),
+    ] = None,
+    outcome: Annotated[str | None, typer.Option("--outcome")] = None,
+) -> None:
+    """Correct a previous pipeline status (append-only; never deletes history)."""
+    try:
+        tracking = _pipeline_tracking_service(
+            opportunities_dir=dir,
+            events_dir=events_dir,
+        )
+        result = tracking.correct_status(
+            opportunity_id,
+            to_status,  # type: ignore[arg-type]
+            note=note,
+            supersedes_event_id=supersedes,
+            outcome=outcome,  # type: ignore[arg-type]
+        )
+    except OpportunityError as error:
+        _exit_for_opportunity(error)
+    except PipelineError as error:
+        _exit_for_pipeline(error)
+    _print_pipeline_result(result, headline="Pipeline Corrected")
+
+
+@pipeline_app.command("check")
+def pipeline_check(
+    opportunity_id: Annotated[str, typer.Argument(help="Opportunity id (opp_<ULID>).")],
+    dir: OpportunitiesDirOption = None,
+    events_dir: PipelineEventsDirOption = None,
+) -> None:
+    """Check that current status agrees with append-only history."""
+    try:
+        tracking = _pipeline_tracking_service(
+            opportunities_dir=dir,
+            events_dir=events_dir,
+        )
+        report = tracking.detect_divergence(opportunity_id)
+    except OpportunityError as error:
+        _exit_for_opportunity(error)
+    except PipelineError as error:
+        _exit_for_pipeline(error)
+
+    if report.divergent:
+        typer.echo("Pipeline Divergent", err=True)
+        for reason in report.reasons:
+            typer.echo(f"- {reason}", err=True)
+        raise typer.Exit(code=1)
+    typer.echo("Pipeline Consistent")
+    typer.echo(f"opportunity_id: {opportunity_id}")
+    typer.echo(f"status: {report.actual_status}")
+
+
+@pipeline_app.command("repair")
+def pipeline_repair(
+    opportunity_id: Annotated[str, typer.Argument(help="Opportunity id (opp_<ULID>).")],
+    dir: OpportunitiesDirOption = None,
+    events_dir: PipelineEventsDirOption = None,
+) -> None:
+    """Restore current status from append-only history after a partial write."""
+    try:
+        tracking = _pipeline_tracking_service(
+            opportunities_dir=dir,
+            events_dir=events_dir,
+        )
+        opportunity = tracking.reconcile(opportunity_id)
+    except OpportunityError as error:
+        _exit_for_opportunity(error)
+    except PipelineError as error:
+        _exit_for_pipeline(error)
+    typer.echo("Pipeline Repaired")
+    _print_opportunity_pipeline(opportunity)
+
+
+def _print_pipeline_report(report: PipelineSummaryReport) -> None:
+    typer.echo("Pipeline Report")
+    typer.echo(f"as_of: {report.as_of.isoformat()}")
+    typer.echo(f"total_opportunities: {report.total_opportunities}")
+    typer.echo(f"active: {report.active_count}")
+    typer.echo(f"submitted_cohort: {report.submitted_count}")
+    typer.echo(f"awaiting_response: {report.awaiting_response_count}")
+    typer.echo(f"interviewing: {report.interviewing_count}")
+    typer.echo(f"offers: {report.offer_count}")
+    typer.echo(f"accepted: {report.accepted_count}")
+    typer.echo(f"rejected: {report.rejected_count}")
+    typer.echo(f"withdrawn: {report.withdrawn_count}")
+    typer.echo(f"follow_ups_due: {report.follow_ups_due_count}")
+    typer.echo(f"follow_ups_overdue: {report.follow_ups_overdue_count}")
+    typer.echo(f"history_entries: {report.historical_event_count}")
+    if report.interview_rate is not None:
+        typer.echo(f"interview_rate: {report.interview_rate:.2%}")
+    if report.offer_rate is not None:
+        typer.echo(f"offer_rate: {report.offer_rate:.2%}")
+    if report.acceptance_rate is not None:
+        typer.echo(f"acceptance_rate: {report.acceptance_rate:.2%}")
+    typer.echo("by_status:")
+    for status, count in report.by_status.items():
+        typer.echo(f"  {status}: {count}")
+    if report.by_outcome:
+        typer.echo("by_outcome:")
+        for outcome, count in report.by_outcome.items():
+            typer.echo(f"  {outcome}: {count}")
+    if report.ageing:
+        typer.echo("ageing (active):")
+        for item in report.ageing[:10]:
+            days = (
+                f"{item.days_in_status:.1f}d"
+                if item.days_in_status is not None
+                else "n/a"
+            )
+            company = item.company or "?"
+            typer.echo(
+                f"  {item.opportunity_id}  {item.status}  {days}  {company}"
+            )
+
+
+@pipeline_app.command("report")
+def pipeline_report(
+    dir: OpportunitiesDirOption = None,
+    events_dir: PipelineEventsDirOption = None,
+    yaml_output: Annotated[
+        bool,
+        typer.Option("--yaml", help="Emit the full report as YAML."),
+    ] = False,
+) -> None:
+    """Show derived pipeline counts, rates, ageing, and follow-ups due."""
+    try:
+        tracking = _pipeline_tracking_service(
+            opportunities_dir=dir,
+            events_dir=events_dir,
+        )
+        report = tracking.summary_report()
+    except OpportunityError as error:
+        _exit_for_opportunity(error)
+    except PipelineError as error:
+        _exit_for_pipeline(error)
+
+    if yaml_output:
+        from dataclasses import asdict
+
+        typer.echo(
+            yaml.safe_dump(asdict(report), sort_keys=False, allow_unicode=True).rstrip()
+        )
+        return
+    _print_pipeline_report(report)
+
+
+@pipeline_app.command("due")
+def pipeline_due(
+    dir: OpportunitiesDirOption = None,
+    events_dir: PipelineEventsDirOption = None,
+    on_date: Annotated[
+        str | None,
+        typer.Option("--on", help="Reference date YYYY-MM-DD (default: today UTC)."),
+    ] = None,
+) -> None:
+    """List follow-up reminders due on or before the reference date."""
+    try:
+        tracking = _pipeline_tracking_service(
+            opportunities_dir=dir,
+            events_dir=events_dir,
+        )
+        reference = _parse_optional_date(on_date)
+        items = tracking.follow_ups_due(reference_date=reference)
+    except OpportunityError as error:
+        _exit_for_opportunity(error)
+    except PipelineError as error:
+        _exit_for_pipeline(error)
+    except ValueError as error:
+        typer.echo(str(error), err=True)
+        raise typer.Exit(code=1) from error
+
+    if not items:
+        typer.echo("No follow-ups due.")
+        return
+    for item in items:
+        company = item.company or "?"
+        title = item.title or "?"
+        label = "overdue" if item.days_until_due < 0 else "due"
+        typer.echo(
+            f"{item.follow_up_date.isoformat()}  {label}  "
+            f"{item.opportunity_id}  {item.status}  {company} - {title}"
+        )
+
+
+@pipeline_app.command("export")
+def pipeline_export(
+    dir: OpportunitiesDirOption = None,
+    events_dir: PipelineEventsDirOption = None,
+    output: Annotated[
+        Path | None,
+        typer.Option(
+            "--output",
+            help=f"CSV path (default: {DEFAULT_PIPELINE_EXPORT_PATH}).",
+        ),
+    ] = None,
+    active_only: Annotated[
+        bool,
+        typer.Option(
+            "--active-only",
+            help="Export only active pipeline rows (preparing/submitted/interviewing/offer).",
+        ),
+    ] = False,
+) -> None:
+    """Export pipeline rows to CSV (owner-controlled; does not migrate legacy trackers)."""
+    try:
+        tracking = _pipeline_tracking_service(
+            opportunities_dir=dir,
+            events_dir=events_dir,
+        )
+        path = tracking.export_csv(output, active_only=active_only)
+    except OpportunityError as error:
+        _exit_for_opportunity(error)
+    except PipelineError as error:
+        _exit_for_pipeline(error)
+    except OSError as error:
+        typer.echo(f"Could not write export: {error}", err=True)
+        raise typer.Exit(code=2) from error
+    typer.echo(f"Exported pipeline CSV to {path}")
 
 
 if __name__ == "__main__":

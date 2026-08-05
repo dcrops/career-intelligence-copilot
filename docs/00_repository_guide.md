@@ -36,7 +36,7 @@ Objectives.
 |----------|--------|
 | What is this project? | Decision-support for job search (Horizon 1), evolving toward a Career Intelligence Platform (Horizon 2). |
 | What has been completed? | **Phase 1** and **Phase 2** — see [12_phase_history.md](12_phase_history.md) and [eval/phase2_release_report.md](eval/phase2_release_report.md). |
-| What is next? | **FR-013** Application Pipeline Tracking, inside **Horizon 1A** (FR-008–FR-012 complete). Then **FR-014** Recruiter Document Truth Validation (automation gate). Recruiter outreach is Horizon 1B (**FR-018+**) — [10_roadmap.md](10_roadmap.md). |
+| What is next? | **FR-014** Recruiter Document Truth Validation (automation gate), inside **Horizon 1A** (FR-008–FR-013 complete). Recruiter outreach is Horizon 1B (**FR-018+**) — [10_roadmap.md](10_roadmap.md). |
 | Where should I start reading? | This guide → [AGENTS.md](../AGENTS.md) → [04_functional_specification.md](04_functional_specification.md) → [10_roadmap.md](10_roadmap.md). |
 
 ---
@@ -64,18 +64,23 @@ milestones [M0](eval/fr011_m0_application_preparation.md),
 ([eval/fr012_submission_assistance.md](eval/fr012_submission_assistance.md);
 milestones [M0](eval/fr012_m0_submission_contracts.md),
 [M1](eval/fr012_m1_submission_orchestration.md),
-[M2](eval/fr012_m2_owner_workflow.md)).
+[M2](eval/fr012_m2_owner_workflow.md)), and **FR-013** Application Pipeline Tracking
+([eval/fr013_application_pipeline_tracking.md](eval/fr013_application_pipeline_tracking.md);
+[ADR-005](adr/005_application_pipeline_lifecycle.md)).
 
-**Active FR:** **FR-013** Application Pipeline Tracking — next in Horizon 1A, not started.
-**FR-014** Recruiter Document Truth Validation is the automation-safety gate
+**Active FR:** **FR-014** Recruiter Document Truth Validation
 ([planning](eval/fr014_recruiter_document_truth_validation.md)).
+**FR-013** Application Pipeline Tracking is **complete and frozen**
+([acceptance](eval/fr013_application_pipeline_tracking.md);
+[ADR-005](adr/005_application_pipeline_lifecycle.md)).
 
 **Thereafter:** Complete Horizon 1A (through FR-017), then Horizon 1B (FR-018–FR-024).
 
 Architecture decisions: `docs/adr/` (ADR-001, ADR-002, **ADR-003** thin in-repo
 workflow runner accepted — LangGraph not required for current FR-008 scope; **ADR-004**
 Opportunity as pre-decision system of record with the review queue as a derived
-projection). Release evidence:
+projection; **ADR-005** application pipeline lifecycle — stored status + append-only
+events; SubmissionAttempt never auto-advances status). Release evidence:
 [eval/phase2_release_report.md](eval/phase2_release_report.md).
 
 ---
