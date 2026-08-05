@@ -55,11 +55,13 @@ milestones [M0](docs/eval/fr012_m0_submission_contracts.md),
 [M1](docs/eval/fr012_m1_submission_orchestration.md),
 [M2](docs/eval/fr012_m2_owner_workflow.md). **Current focus — Horizon 1A:**
 **FR-013** Application Pipeline Tracking (next active FR, not started), then
-FR-014–FR-016.
+**FR-014** Recruiter Document Truth Validation (automation-safety gate —
+[planning](docs/eval/fr014_recruiter_document_truth_validation.md)), then
+FR-015–FR-017.
 Do not reopen Phase 2, FR-008, FR-009, FR-010, FR-011, or FR-012 exit criteria without
 explicit owner request.
 **Principle:** Job acquisition first. Recruiter outreach second (Horizon 1B /
-FR-017–FR-023 — do not start while 1A is incomplete).
+FR-018–FR-024 — do not start while 1A is incomplete).
 
 **Implementation foundation:** Python 3.11+, Pydantic, YAML storage, and the public profile
 service boundary are recorded in
@@ -90,12 +92,13 @@ frozen** (standalone package composition, durability/regeneration, owner CLI;
 [acceptance](docs/eval/fr011_application_preparation.md)). **FR-012 complete and
 frozen** (owner-assisted submission; append-only attempts; thin `cic submission`;
 [acceptance](docs/eval/fr012_submission_assistance.md)). **FR-013 Application
-Pipeline Tracking is the next active FR** — then FR-014–FR-016. See
+Pipeline Tracking is the next active FR** — then **FR-014** Recruiter Document
+Truth Validation (required before increased automation), then FR-015–FR-017. See
 [docs/10_roadmap.md](docs/10_roadmap.md).
 
 Full detail: [docs/04_functional_specification.md](docs/04_functional_specification.md) and [docs/10_roadmap.md](docs/10_roadmap.md).
 
-Do not expand scope into Horizon 1B (FR-017+), Phase 3+, or Horizon 2 capabilities unless
+Do not expand scope into Horizon 1B (FR-018+), Phase 3+, or Horizon 2 capabilities unless
 explicitly requested by the owner.
 
 ---

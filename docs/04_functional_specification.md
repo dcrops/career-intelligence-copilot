@@ -52,15 +52,16 @@ baseline before FR-006b. See [10_roadmap.md](10_roadmap.md),
 **Historical Phase 2 FR labels (superseded numbering):** M4 ranked comparison was
 tracked as “FR-012 partial”; M2 outcome logging as “FR-013 subset”. Those
 *capabilities* remain complete. Current Horizon 1A ids: Submission **FR-012**,
-pipeline tracking **FR-013**, bounded agents **FR-014** — see remapping in
-[11_changelog.md](11_changelog.md) § 1.47 and § 1.65.
+pipeline tracking **FR-013**, Recruiter Document Truth Validation **FR-014**,
+bounded agents **FR-015** — see remapping in [11_changelog.md](11_changelog.md)
+§ 1.47, § 1.65, and § 1.84.
 
 ### Post–Phase 2 / Horizon 1
 
 - **Complete:** FR-001–FR-007 (through Cover Letter)
-- **Current — Horizon 1A (Job application workflow):** FR-008–FR-016
-- **Then — Horizon 1B (Recruiter and market engagement):** FR-017–FR-023
-- **Later — Horizon 2:** FR-024+ (interview, dashboard, cross-domain prioritisation)
+- **Current — Horizon 1A (Job application workflow):** FR-008–FR-017
+- **Then — Horizon 1B (Recruiter and market engagement):** FR-018–FR-024
+- **Later — Horizon 2:** FR-025+ (interview, dashboard, cross-domain prioritisation)
 
 **Principle:** Job acquisition first. Recruiter outreach second.
 
@@ -676,7 +677,7 @@ Eval / closure: [eval/fr007_cover_letter.md](eval/fr007_cover_letter.md)
 
 ---
 
-## Horizon 1A — Job Application Workflow (FR-008–FR-016)
+## Horizon 1A — Job Application Workflow (FR-008–FR-017)
 
 **Product rule:** Complete the discover → assess → prepare → review → submit → track
 loop before Horizon 1B recruiter / meetup / LinkedIn engagement work.
@@ -712,9 +713,10 @@ problems.
 | 5 | Application preparation orchestration | FR-011 |
 | 6 | Submission assistance | FR-012 |
 | 7 | Application pipeline tracking | FR-013 |
-| 8 | Bounded agentic workflow | FR-014 |
-| 9 | Multi-agent orchestration | FR-015 |
-| 10 | Agent evaluation & observability | FR-016 |
+| 8 | Recruiter document truth validation | FR-014 |
+| 9 | Bounded agentic workflow | FR-015 |
+| 10 | Multi-agent orchestration | FR-016 |
+| 11 | Agent evaluation & observability | FR-017 |
 
 Near-term entry: **Agent Orchestration Learning Spike** under FR-008 (saved/manual
 job only — no live acquisition, no real submission). Live source adapters follow
@@ -1363,11 +1365,11 @@ output, and maps outcomes to exit codes only.
 ## FR-013 Application Pipeline Tracking
 
 **Phase:** Horizon 1A Stage 7  
-**Status:** Planned
+**Status:** Planned — **next active FR**
 
 Track application lifecycle with timestamps, evidence, and full audit history.
 Builds on Phase 2 **M2 outcome logging** (`OpportunityService.record_decision` /
-`update_outcome`; historically labelled “FR-013 subset”, later FR-012, now FR-013).
+`update_outcome`; historically labelled “FR-013 subset”).
 
 Indicative states: discovery; assessment; review; preparation; submission;
 employer response; recruiter screen; interview; rejection; offer — plus supporting
@@ -1390,12 +1392,80 @@ Acceptance Criteria
 
 ---
 
-## FR-014 Bounded Agentic Workflow
+## FR-014 Recruiter Document Truth Validation
 
 **Phase:** Horizon 1A Stage 8  
-**Status:** Planned — **first introduction of bounded agentic reasoning**
+**Status:** Planned  
+**Planning record:** [eval/fr014_recruiter_document_truth_validation.md](eval/fr014_recruiter_document_truth_validation.md)
 
-Only after the deterministic workflow (FR-008) is functioning may selected nodes
+Prevent unsupported, misleading, or incorrectly framed **candidate** claims from
+reaching recruiter-facing CVs, cover letters, application answers, or future
+semi-automated / automated submissions.
+
+**Core principle:** Every material first-person candidate claim must be supported by
+approved profile, employment, certification, project, or application evidence.
+
+This is a **deterministic factual trust boundary**, not grammar checking, writing
+improvement, or prompt optimisation. Motivating defect: a Redwolf cover letter
+framed JD stack terms (TypeScript, Vue) as candidate capability (“…where I do my
+best engineering work”) without profile evidence — an employer-evidence →
+candidate-evidence boundary failure.
+
+Preferred conceptual order: Planner → Composer → **Truth Validation** → Markdown →
+HTML → PDF → Owner Review → Submission. Exact insertion points are decided by an
+engineering spike. Owner review remains mandatory. Truth validation does not replace
+owner review.
+
+**Roadmap dependency:** **FR-014 must be accepted before any future work that
+increases application automation or reduces owner review.** FR-013 Application
+Pipeline Tracking keeps its established identifier and may proceed as planned;
+truth validation is the automation-safety gate inserted immediately afterwards.
+
+Distinguish: (A) candidate claims (require candidate evidence); (B) employer-context
+statements (JD evidence OK; must not become candidate capability); (C) aspirational /
+transition statements (must not imply existing expertise); (D) judgement / motivation
+(must not misrepresent facts).
+
+Initial scope includes technology/framework claims, experience-duration claims,
+employment claims (never equate independent work with commercial employment without
+evidence), certifications/education, domain claims, project/delivery claims,
+recruiter vs employer attribution, and identity/contact links.
+
+Behaviour: deterministic where possible; evidence-backed; explainable; **fail-closed**
+for material unsupported candidate claims; traceable findings (claim, type, source,
+evidence found/missing, severity, recommended owner action). Indicative results:
+PASS / WARNING / FAIL. Must not silently delete claims, invent evidence, treat JD
+requirements as candidate evidence, or use an LLM as the sole truth authority.
+
+Acceptance Criteria
+
+✓ Engineering spike completed and architecture accepted before broad implementation.
+
+✓ Material unsupported candidate technology claims (e.g. TypeScript/Vue without
+  profile evidence) fail closed and block submission.
+
+✓ Supported candidate claims (e.g. Python/FastAPI with profile evidence) pass.
+
+✓ Employer technology mentions are not converted into candidate capability claims.
+
+✓ Independent engineering is not represented as commercial AI employment without
+  evidence; historical proficiency is not overstated as current expertise.
+
+✓ Generated and owner-edited Markdown can both be validated; findings are explainable.
+
+✓ Owner review remains mandatory; truth validation does not replace it.
+
+---
+
+## FR-015 Bounded Agentic Workflow
+
+**Phase:** Horizon 1A Stage 9  
+**Status:** Planned — **first introduction of bounded agentic reasoning**  
+*(Originally planned as FR-014; renumbered to FR-015 after insertion of FR-014
+Recruiter Document Truth Validation — 2026-08-05.)*
+
+Only after the deterministic workflow (FR-008) is functioning — and after FR-014
+truth validation is accepted before any automation increase — may selected nodes
 become agentic.
 
 Potential bounded agents (examples): search-query refinement; company-context
@@ -1419,12 +1489,13 @@ Acceptance Criteria
 
 ---
 
-## FR-015 Multi-Agent Orchestration
+## FR-016 Multi-Agent Orchestration
 
-**Phase:** Horizon 1A Stage 9  
-**Status:** Planned — **introduces multi-agent orchestration**
+**Phase:** Horizon 1A Stage 10  
+**Status:** Planned — **introduces multi-agent orchestration**  
+*(Originally planned as FR-015; renumbered 2026-08-05.)*
 
-Only after bounded agents (FR-014) are reliable.
+Only after bounded agents (FR-015) are reliable.
 
 Evaluate: supervisor pattern; agents as tools; handoffs; context isolation; shared
 state; orchestration trade-offs; centralised vs distributed control.
@@ -1443,17 +1514,19 @@ Acceptance Criteria
 
 ---
 
-## FR-016 Agent Evaluation & Observability
+## FR-017 Agent Evaluation & Observability
 
-**Phase:** Horizon 1A Stage 10  
-**Status:** Planned
+**Phase:** Horizon 1A Stage 11  
+**Status:** Planned  
+*(Originally planned as FR-016; renumbered 2026-08-05.)*
 
 Explicit evaluation for the orchestration layer:
 
 traces; checkpoints; retries; replay; latency; token usage; cost; approval
 interrupts; deterministic replay where possible; fault injection; orchestration
 testing; browser journey evidence; golden workflow tests; loop prevention;
-unsupported-claim checks.
+unsupported-claim checks (complementary to FR-014 truth validation — not a
+substitute).
 
 Acceptance Criteria
 
@@ -1465,9 +1538,10 @@ Acceptance Criteria
 
 ---
 
-## Horizon 1B — Recruiter and Market Engagement (FR-017–FR-023)
+## Horizon 1B — Recruiter and Market Engagement (FR-018–FR-024)
 
-**Status:** Planned — **only after FR-016** (Horizon 1A complete and usable).
+**Status:** Planned — **only after FR-017** (Horizon 1A complete and usable).  
+*(Previously numbered FR-017–FR-023; renumbered 2026-08-05.)*
 
 Recruiter outreach is an *additional acquisition channel* after the owner can
 discover, assess, prepare, review, submit and track applications end to end.
@@ -1477,96 +1551,106 @@ All externally visible outreach must require user review before sending.
 
 ---
 
-## FR-017 Recruiter Intelligence
+## FR-018 Recruiter Intelligence
 
 **Phase:** Horizon 1B  
-**Status:** Planned
+**Status:** Planned  
+*(Originally FR-017; renumbered 2026-08-05.)*
 
 Discover and prioritise suitable recruiters. Track recruiter history. Recommend
 follow-ups. Surface relationship context for outreach decisions.
 
 ---
 
-## FR-018 Recruiter Outreach
+## FR-019 Recruiter Outreach
 
 **Phase:** Horizon 1B  
-**Status:** Planned
+**Status:** Planned  
+*(Originally FR-018; renumbered 2026-08-05.)*
 
 Generate tailored recruiter outreach messages under mandatory owner review. No
 autonomous sending.
 
 ---
 
-## FR-019 Existing Connection Outreach
+## FR-020 Existing Connection Outreach
 
 **Phase:** Horizon 1B  
-**Status:** Planned
+**Status:** Planned  
+*(Originally FR-019; renumbered 2026-08-05.)*
 
 Support outreach to existing LinkedIn connections (and similar) with review gates,
 prioritisation, and follow-up tracking.
 
 ---
 
-## FR-020 LinkedIn Network Intelligence
+## FR-021 LinkedIn Network Intelligence
 
 **Phase:** Horizon 1B  
-**Status:** Planned
+**Status:** Planned  
+*(Originally FR-020; renumbered 2026-08-05.)*
 
 Analyse and develop the owner’s professional network strategically — without
 displacing job-application throughput.
 
 ---
 
-## FR-021 Meetup Intelligence
+## FR-022 Meetup Intelligence
 
 **Phase:** Horizon 1B  
-**Status:** Planned
+**Status:** Planned  
+*(Originally FR-021; renumbered 2026-08-05.)*
 
 Discover and recommend relevant Melbourne AI (and related) meetups as a networking
 and learning channel.
 
 ---
 
-## FR-022 LinkedIn Content Planning
+## FR-023 LinkedIn Content Planning
 
 **Phase:** Horizon 1B  
-**Status:** Planned
+**Status:** Planned  
+*(Originally FR-022; renumbered 2026-08-05.)*
 
 Plan LinkedIn articles and related content to improve visibility — owner-approved
 publishing only.
 
 ---
 
-## FR-023 Market Intelligence
+## FR-024 Market Intelligence
 
 **Phase:** Horizon 1B / Horizon 2 boundary  
-**Status:** Planned
+**Status:** Planned  
+*(Originally FR-023; renumbered 2026-08-05.)*
 
 Track recurring technologies, salary trends, and learning priorities that inform
 search strategy. May begin late in 1B if it directly improves application targeting.
 
 ---
 
-## Horizon 2 — Platform Capabilities (FR-023+)
+## Horizon 2 — Platform Capabilities (FR-025+)
 
 Deferred unless they directly accelerate Horizon 1 during the active search.
+*(Previously labelled FR-024+ / FR-023+ in older drafts; renumbered 2026-08-05.)*
 
 ---
 
-## FR-024 Interview Preparation
+## FR-025 Interview Preparation
 
 **Phase:** Horizon 2  
-**Status:** Planned
+**Status:** Planned  
+*(Originally FR-024; renumbered 2026-08-05.)*
 
 Generate recruiter, technical, and behavioural interview prep; project walkthroughs;
 and questions to ask.
 
 ---
 
-## FR-025 Career Dashboard
+## FR-026 Career Dashboard
 
 **Phase:** Horizon 2  
-**Status:** Planned
+**Status:** Planned  
+*(Originally FR-025; renumbered 2026-08-05.)*
 
 Provide a live dashboard showing applications, recruiters, visibility, portfolio,
 market trends, and priority actions. Phase 2 already provides a simple opportunity
@@ -1574,10 +1658,11 @@ list / CLI comparison — the full dashboard remains out of early scope.
 
 ---
 
-## FR-026 Daily Prioritisation (cross-domain)
+## FR-027 Daily Prioritisation (cross-domain)
 
 **Phase:** Horizon 2  
-**Status:** Planned
+**Status:** Planned  
+*(Originally FR-026; renumbered 2026-08-05.)*
 
 Recommend the highest-value activities for the day across jobs, recruiters,
 networking, and learning. Phase 2 M4 ranked comparison of *open job opportunities*
@@ -1586,12 +1671,6 @@ remains complete and is the job-scoped foundation (now extended by FR-009).
 Acceptance Criteria (future)
 
 ○ Cross-domain daily prioritisation (recruiters, networking, meetups) — deferred.
-
----
-
- path.
-
-✓ Token/latency/cost are measurable for LLM/agent nodes.
 
 ---
 

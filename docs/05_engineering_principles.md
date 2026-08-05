@@ -44,7 +44,7 @@ adapters, or workflow graphs. Spikes use saved/manual jobs before live acquisiti
 ### Deterministic first; agents only when justified
 
 Prefer deterministic workflow nodes and typed services where decisions are already
-understood. Introduce bounded agents (FR-014) only after the deterministic path
+understood. Introduce bounded agents (FR-015) only after the deterministic path
 (FR-008) works; multi-agent patterns (FR-015) only after bounded agents are reliable.
 Do not blur workflow orchestration with agent reasoning.
 
@@ -172,7 +172,7 @@ context rather than ranking factors. Absent evidence must never improve a positi
 
 ### Scope control
 
-Horizon 1A owns the application workflow (FR-008–FR-016). Resist Horizon 1B recruiter
+Horizon 1A owns the application workflow (FR-008–FR-017). Resist Horizon 1B recruiter
 modules, dashboards, and unofficial presentation polish that displace acquisition and
 submission. FR-006/FR-007 document generation is complete; do not reopen for polish
 while the application loop is incomplete.

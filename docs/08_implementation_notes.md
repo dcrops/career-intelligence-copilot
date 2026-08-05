@@ -1081,6 +1081,29 @@ presentation CSS (`cv_print.css`) and cover-letter / CV HTML paths, then PDF via
 `render_pdf_from_html` (WeasyPrint). Fails clearly on missing Markdown,
 unsupported type, HTML failure, or PDF failure.
 
+### Owner workflow (generate → review → optional edit → render → verify → submit)
+
+Keep generation, review, editing, rendering, and submission distinct:
+
+```
+Generate                 (FR-006 / FR-007 / FR-010–FR-011 — planner → composer → Markdown/HTML/PDF)
+    ↓
+Owner Review             (mandatory; never skip for external use)
+    ↓
+Optional Markdown Edit   (factual corrections and wording — Markdown only)
+    ↓
+Render Only              (scripts/render_document.py — HTML/PDF refresh; no planner/composer/OpenAI)
+    ↓
+Verify                   (confirm corrected wording, links, layout)
+    ↓
+Submit                   (FR-012 — explicit owner approval; never silent)
+```
+
+Do **not** edit HTML or PDF as the source of truth. Owner edits belong in Markdown;
+render-only regenerates the canonical HTML/PDF suite from that Markdown.
+Future **FR-014 Recruiter Document Truth Validation** will gate recruiter-facing
+claims before automation scales; it does not replace owner review or render-only.
+
 ---
 
 ## M1 Opportunity Persistence
@@ -1118,7 +1141,9 @@ FR-009 duplicate detection, OpenAI.
 ## M2 Decision and Outcome Logging
 
 **Status:** Complete (2026-07-24). Phase 2 M2 outcome logging only (historically
-labelled “FR-013 subset”; Horizon 1A **FR-013** extends this).
+labelled “FR-013 subset”; Horizon 1A **FR-013** Application Pipeline Tracking
+extends this. FR-014 is Recruiter Document Truth Validation — inserted after
+FR-013; pipeline identifier unchanged).
 
 **Concepts (kept separate):**
 
@@ -1564,9 +1589,10 @@ cannot be cancelled (already failed).
 ### Sequencing (remaining)
 
 1. **FR-009 → FR-013** — review queue, packages, preparation orchestration, submission, tracking.
-2. **Additional acquisition adapters** (URL/API/email) — only when explicitly requested.
-3. **FR-014 → FR-016** — bounded agents → multi-agent → evaluation.
-4. **Horizon 1B (FR-017–FR-023)** — only after 1A.
+2. **FR-014** — Recruiter Document Truth Validation (automation-safety gate before automation increases).
+3. **Additional acquisition adapters** (URL/API/email) — only when explicitly requested.
+4. **FR-015 → FR-017** — bounded agents → multi-agent → evaluation.
+5. **Horizon 1B (FR-018–FR-024)** — only after 1A.
 
 ### FR-008 acquisition foundation (complete — closes FR-008)
 

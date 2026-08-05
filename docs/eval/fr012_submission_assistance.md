@@ -3,7 +3,14 @@
 **Status:** **Complete** — documentation frozen  
 **Date:** 2026-07-31  
 **Recommendation:** **FR-012 ACCEPTED**  
-**Next:** Begin **FR-013** Application Pipeline Tracking
+**Next (at freeze):** Begin **FR-013** Application Pipeline Tracking  
+
+**Renumber note (2026-08-05):** Application Pipeline Tracking remains **FR-013**
+(unchanged). **FR-014 Recruiter Document Truth Validation** was inserted immediately
+afterwards; later planned FRs shifted by one. Historical freeze text below is
+unchanged (“Next: Begin FR-013 Application Pipeline Tracking” remains correct).
+Truth Validation planning:
+[fr014_recruiter_document_truth_validation.md](fr014_recruiter_document_truth_validation.md).
 
 Milestone acceptance records:
 [M0](fr012_m0_submission_contracts.md),

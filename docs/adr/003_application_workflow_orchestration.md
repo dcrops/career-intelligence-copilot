@@ -84,7 +84,8 @@ Revisit only if several of the following become true:
   owner-review + continue_run
 - Need for managed distributed execution, multi-tenant isolation, or first-class
   tooling the in-repo runner cannot provide cost-effectively
-- Bounded agents (FR-013+) require a shared runtime that the thin runner cannot
+- Bounded agents (FR-015+; historically cited as FR-013+ / FR-014+ in earlier
+  roadmap numbering) require a shared runtime that the thin runner cannot
   host without becoming a de-facto framework itself
 
 Any reconsideration must be a new ADR amending or superseding this decision,

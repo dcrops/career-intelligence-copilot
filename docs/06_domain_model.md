@@ -46,9 +46,11 @@ Pipeline Tracking + Outcomes (FR-013; builds on Phase 2 M2)
 
 Opportunity Assessment and Portfolio Matching remain sibling consumers of Career Profile +
 Job Analysis. Application Strategy consumes both. Document generation and submission are
-separate stages under mandatory owner review. Workflow orchestration (FR-008) coordinates
+separate stages under mandatory owner review. Recruiter Document Truth Validation (FR-014)
+is the planned fail-closed factual trust boundary before recruiter-facing artefacts scale
+toward automation. Workflow orchestration (FR-008) coordinates
 these nodes; preparation orchestration (FR-011) is a separate coordinator for package
-prep; bounded agents (FR-014+) appear only after the deterministic path works.
+prep; bounded agents (FR-015+) appear only after the deterministic path works.
 
 ---
 
@@ -359,7 +361,7 @@ Open filter: status ∈ {assessed, deferred, preparing, submitted, interviewing,
 and decision ≠ skip. Each ranked item includes explainable `reasons`. Owner review
 required — ranking does not apply, skip, or mutate opportunities.
 
-Cross-domain daily prioritisation is Horizon 2 **FR-026**.
+Cross-domain daily prioritisation is Horizon 2 **FR-027**.
 
 ---
 
@@ -484,7 +486,7 @@ The operational layer is the manual precursor to the automated domain model.
 | Career Profile | `career-documents/cv/`, owner knowledge |
 | Opportunity (durable) | `data/opportunities/` (SoT); CSV under `data/exports/` is derived (M3) |
 | Outcome Record | Status / notes on Opportunity (M2); tracker Outcome column is import/export projection |
-| Network contacts | `applications/network/network_tracker.csv` (Horizon 1B / FR-017+) |
+| Network contacts | `applications/network/network_tracker.csv` (Horizon 1B / FR-018+) |
 | Company context | `applications/company_notes/` |
 | Career milestones | `career-log.md` |
 | Future templates | `templates/` (placeholders) |
@@ -522,16 +524,17 @@ continue to connect to this layer rather than invent a parallel tracker.
 | Application Preparation Orchestration | **FR-011** (Horizon 1A; complete — [acceptance](eval/fr011_application_preparation.md)) |
 | Submission Assistance | **FR-012** (Horizon 1A; complete — [acceptance](eval/fr012_submission_assistance.md)) |
 | Application Pipeline Tracking | **FR-013** (Horizon 1A) |
-| Bounded Agentic Workflow | **FR-014** (Horizon 1A; first bounded agents) |
-| Multi-Agent Orchestration | **FR-015** (Horizon 1A) |
-| Agent Evaluation & Observability | **FR-016** (Horizon 1A) |
-| Recruiter Intelligence | **FR-017** (Horizon 1B) |
-| Recruiter Outreach | **FR-018** (Horizon 1B) |
-| Existing Connection Outreach | **FR-019** (Horizon 1B) |
-| LinkedIn Network Intelligence | **FR-020** (Horizon 1B) |
-| Meetup Intelligence | **FR-021** (Horizon 1B) |
-| LinkedIn Content Planning | **FR-022** (Horizon 1B) |
-| Market Intelligence | **FR-023** (Horizon 1B) |
-| Interview Preparation | **FR-024** (Horizon 2) |
-| Career Dashboard | **FR-025** (Horizon 2) |
-| Daily Prioritisation (cross-domain) | **FR-026** (Horizon 2) |
+| Recruiter Document Truth Validation | **FR-014** (Horizon 1A; planned — [planning](eval/fr014_recruiter_document_truth_validation.md)) |
+| Bounded Agentic Workflow | **FR-015** (Horizon 1A; first bounded agents) |
+| Multi-Agent Orchestration | **FR-016** (Horizon 1A) |
+| Agent Evaluation & Observability | **FR-017** (Horizon 1A) |
+| Recruiter Intelligence | **FR-018** (Horizon 1B) |
+| Recruiter Outreach | **FR-019** (Horizon 1B) |
+| Existing Connection Outreach | **FR-020** (Horizon 1B) |
+| LinkedIn Network Intelligence | **FR-021** (Horizon 1B) |
+| Meetup Intelligence | **FR-022** (Horizon 1B) |
+| LinkedIn Content Planning | **FR-023** (Horizon 1B) |
+| Market Intelligence | **FR-024** (Horizon 1B) |
+| Interview Preparation | **FR-025** (Horizon 2) |
+| Career Dashboard | **FR-026** (Horizon 2) |
+| Daily Prioritisation (cross-domain) | **FR-027** (Horizon 2) |

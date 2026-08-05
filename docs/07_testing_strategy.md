@@ -615,7 +615,7 @@ credentials, CAPTCHA, multi-agent submit.
 
 ## Horizon 1A — Planned test coverage (remaining)
 
-When FR-013–FR-016 are built, prefer behaviour over implementation detail:
+When FR-013–FR-017 are built, prefer behaviour over implementation detail:
 
 | Area | Expected coverage |
 |------|-------------------|
@@ -626,8 +626,9 @@ When FR-013–FR-016 are built, prefer behaviour over implementation detail:
 | FR-011 preparation (**delivered** — see FR-011 coverage above) | Preconditions; package coordination; fail-closed; run audit; owner CLI |
 | FR-012 submission (**delivered** — see FR-012 coverage above) | Readiness; Assisted Submission; Manual Completion; append-only audit; owner CLI |
 | FR-013 tracking | Status transitions with timestamps and audit history |
-| FR-014 agents | Max iterations, stop conditions, restricted tools, validation before state update |
-| FR-015 / FR-016 | Loop prevention; fault injection; token/cost/latency where LLM-backed; browser journey evidence when Playwright is used |
+| FR-014 truth validation | Fail-closed findings for unsupported candidate claims; JD evidence ≠ candidate evidence; Redwolf-style regression |
+| FR-015 agents | Max iterations, stop conditions, restricted tools, validation before state update |
+| FR-016 / FR-017 | Loop prevention; fault injection; token/cost/latency where LLM-backed; browser journey evidence when Playwright is used |
 
 **Spike rule:** First FR-008 tests use fixture/saved jobs only — not live acquisition
 or real submission. Deterministic replay where possible; owner manual validation for

@@ -4,6 +4,49 @@ Records product strategy and engineering knowledge changes. Routine typo fixes a
 
 ---
 
+## Version 1.84
+
+### FR-014 Recruiter Document Truth Validation inserted; future FRs renumbered
+
+**Documentation and roadmap planning only** (2026-08-05). No production code.
+
+**Rationale.** Real CIC packages have been submitted. A Redwolf cover letter framed
+JD stack terms (TypeScript, Vue) as first-person candidate capability without profile
+evidence — an evidence-boundary failure. Before scaling toward semi-automated or
+automated submission, CIC needs a deterministic, fail-closed **Recruiter Document
+Truth Validation** layer.
+
+**Owner decision:** Keep **FR-013 Application Pipeline Tracking** unchanged. Insert
+Truth Validation as the new **FR-014** immediately afterwards; shift only later
+planned FRs by one. Do not renumber completed FRs or rewrite historical acceptance
+reports.
+
+**Remapping (insert Recruiter Document Truth Validation as FR-014):**
+
+| Previous id | New id | Title |
+|-------------|--------|-------|
+| FR-013 | **FR-013** (unchanged) | Application Pipeline Tracking |
+| — | **FR-014** | Recruiter Document Truth Validation |
+| FR-014 | **FR-015** | Bounded Agentic Workflow |
+| FR-015 | **FR-016** | Multi-Agent Orchestration |
+| FR-016 | **FR-017** | Agent Evaluation & Observability |
+| FR-017–FR-023 | **FR-018–FR-024** | Horizon 1B |
+| FR-024–FR-026 | **FR-025–FR-027** | Horizon 2 (Interview / Dashboard / Daily) |
+
+Horizon 1A is now **FR-008–FR-017**. **FR-014 must be accepted before any future
+work that increases application automation or reduces owner review.** Planning
+record:
+[docs/eval/fr014_recruiter_document_truth_validation.md](eval/fr014_recruiter_document_truth_validation.md).
+
+Historical frozen acceptance reports keep their original wording (e.g. freeze-time
+“next FR-013 = pipeline tracking” remains correct for that identifier). Clarifying
+notes may point to this remapping for later planned FRs only.
+
+Render-only owner workflow documentation was verified and lightly extended
+(Generate → Owner Review → Optional Markdown Edit → Render Only → Verify → Submit).
+
+---
+
 ## Version 1.83
 
 ### Render-only Markdown → HTML → PDF

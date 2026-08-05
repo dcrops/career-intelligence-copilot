@@ -72,7 +72,8 @@ complete. Within Horizon 1A, job acquisition and workflow orchestration (FR-008)
 opportunity review queue, duplicate handling, and ranked recommendations (FR-009),
 application package preparation (FR-010), application preparation orchestration
 (FR-011), and submission assistance (FR-012) are also complete; **FR-013 application
-pipeline tracking is next**. Horizon 1B recruiter engagement follows. See
+pipeline tracking is next**, then **FR-014** Recruiter Document Truth Validation
+(automation-safety gate). Horizon 1B recruiter engagement follows. See
 [10_roadmap.md](10_roadmap.md).
 
 ---
@@ -96,8 +97,8 @@ Career Intelligence Copilot aims to help professionals:
 
 **Horizon 1 — Immediate:** Help the user secure a suitable AI Engineering role while reducing job-search effort.
 
-- **1A (current):** Job application workflow end to end (FR-008–FR-016)
-- **1B (later):** Recruiter and market engagement (FR-017–FR-023)
+- **1A (current):** Job application workflow end to end (FR-008–FR-017)
+- **1B (later):** Recruiter and market engagement (FR-018–FR-024)
 
 **Horizon 2 — Long term:** Evolve into a reusable Career Intelligence Platform supporting career progression, networking, learning, promotion, role changes, and future opportunity evaluation.
 

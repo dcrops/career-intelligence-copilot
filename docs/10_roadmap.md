@@ -24,13 +24,13 @@ Near-term work should satisfy at least one of:
 
 | Sub-horizon | Scope | FRs | When |
 |-------------|--------|-----|------|
-| **Horizon 1A** | End-to-end job application workflow | FR-008–FR-016 | **Current — complete first** |
-| **Horizon 1B** | Recruiter and market engagement | FR-017–FR-023 | After FR-016 |
+| **Horizon 1A** | End-to-end job application workflow | FR-008–FR-017 | **Current — complete first** |
+| **Horizon 1B** | Recruiter and market engagement | FR-018–FR-024 | After FR-017 |
 
 **Product progression:** Understand the candidate → Understand the opportunity →
-Generate the application → Acquire jobs → Orchestrate applications → Introduce
-bounded agents → Scale to multi-agent systems → Expand into recruiter and market
-intelligence.
+Generate the application → Acquire jobs → Orchestrate applications → Track
+pipeline → **Validate recruiter-document truth** → Introduce bounded agents →
+Scale to multi-agent systems → Expand into recruiter and market intelligence.
 
 ---
 
@@ -40,14 +40,16 @@ intelligence.
 |-------|--------|
 | **Phase 1** — Product Definition | **Complete** |
 | **Phase 2** — Job Intelligence MVP | **Complete** ([release report](eval/phase2_release_report.md)) |
-| **Horizon 1A** — Job application workflow | **Current** (FR-008–FR-012 complete; FR-013–FR-016 planned) |
-| **Horizon 1B** — Recruiter / market engagement | Not started (FR-017–FR-023; after 1A) |
-| **Horizon 2** — Platform capabilities | Not started (FR-024+) |
+| **Horizon 1A** — Job application workflow | **Current** (FR-008–FR-012 complete; FR-013 Pipeline Tracking next; FR-014 Truth Validation planned; FR-015–FR-017 planned) |
+| **Horizon 1B** — Recruiter / market engagement | Not started (FR-018–FR-024; after 1A) |
+| **Horizon 2** — Platform capabilities | Not started (FR-025+) |
 
 Narrative history of completed phases: [12_phase_history.md](12_phase_history.md).
 
-**FR remapping (v1.47):** Future requirements after FR-007 were renumbered so numbering
-follows implementation order. See [11_changelog.md](11_changelog.md) § 1.47.
+**FR remapping:** Future requirements after FR-007 were renumbered so numbering
+follows implementation order — see [11_changelog.md](11_changelog.md) § 1.47,
+§ 1.65, and **§ 1.84** (insert Recruiter Document Truth Validation as **FR-014**;
+FR-013 Pipeline Tracking identifier unchanged).
 
 ---
 
@@ -109,10 +111,14 @@ CSV bridge connect to `applications/`.
 
 ---
 
-## Current Focus — Horizon 1A Job Application Workflow (FR-008–FR-016)
+## Current Focus — Horizon 1A Job Application Workflow (FR-008–FR-017)
 
 **Objective:** Discover, assess, prepare, review, submit and track suitable
 applications — before recruiter outreach or networking automation.
+
+**Automation safety:** **FR-014 Recruiter Document Truth Validation** must be
+accepted before any future work that increases application automation or reduces
+owner review. FR-013 Application Pipeline Tracking keeps its established identifier.
 
 **Learning objective:** Teach **agent orchestration** progressively and transparently
 while building the workflow (deterministic first; bounded agents only when justified).
@@ -133,13 +139,15 @@ FR-012 Submission Assistance  ✅ Complete (2026-07-31)
         ▼
 FR-013 Application Pipeline Tracking  ← Now
         ▼
-FR-014 Bounded Agentic Workflow
+FR-014 Recruiter Document Truth Validation  ← automation-safety gate
         ▼
-FR-015 Multi-Agent Orchestration
+FR-015 Bounded Agentic Workflow
         ▼
-FR-016 Agent Evaluation & Observability
+FR-016 Multi-Agent Orchestration
         ▼
-   Horizon 1B (FR-017+)
+FR-017 Agent Evaluation & Observability
+        ▼
+   Horizon 1B (FR-018+)
 ```
 
 | Priority | Item | Intent |
@@ -150,8 +158,9 @@ FR-016 Agent Evaluation & Observability
 | **Completed** | **FR-011** (2026-07-31) | Application Preparation Orchestration — dedicated orchestrator + owner CLI; [acceptance](eval/fr011_application_preparation.md); milestones [M0](eval/fr011_m0_application_preparation.md), [M1](eval/fr011_m1_executable_preparation.md) |
 | **Completed** | **FR-012** (2026-07-31) | Submission Assistance — owner-assisted submit with append-only audit; [acceptance](eval/fr012_submission_assistance.md); milestones [M0](eval/fr012_m0_submission_contracts.md), [M1](eval/fr012_m1_submission_orchestration.md), [M2](eval/fr012_m2_owner_workflow.md) |
 | **Now** | **FR-013** | Application pipeline tracking |
-| Later in 1A | **FR-014 → FR-016** | Bounded agents → multi-agent → evaluation |
-| **After 1A** | **Horizon 1B (FR-017–FR-023)** | Recruiters, outreach, meetups, LinkedIn, market |
+| **Next / gate** | **FR-014** | Recruiter document truth validation — fail-closed factual trust boundary before automation scales; [planning](eval/fr014_recruiter_document_truth_validation.md) |
+| Later in 1A | **FR-015 → FR-017** | Bounded agents → multi-agent → evaluation |
+| **After 1A** | **Horizon 1B (FR-018–FR-024)** | Recruiters, outreach, meetups, LinkedIn, market |
 
 ### FR-008 completion summary
 
@@ -197,6 +206,8 @@ submission (FR-011), UI, LLM ranking.
 *(Remap after FR-011 M0: preparation orchestration is FR-011; submission is FR-012;
 pipeline tracking is FR-013.)*
 
+
+
 **Do not reopen without explicit owner request:** the persistence boundary, the derived
 queue projection, link-never-merge duplicate policy, or the calibrated sort key.
 
@@ -223,6 +234,8 @@ Not in FR-010: submission (FR-011), PipelineStatus (FR-012), orchestration packa
 node, package versioning, PDF/DOCX, ranking or duplicate changes.
 *(Remap after FR-011 M0: preparation orchestration is FR-011; submission is FR-012;
 pipeline tracking is FR-013.)*
+
+
 
 **Do not reopen without explicit owner request:** standalone composition (not
 orchestration), manifest-only persistence, replace-on-regenerate cardinality, or
@@ -294,42 +307,42 @@ Phase 2 documentation remains a **stable baseline**. Prefer additive changes.
 
 ---
 
-## Horizon 1B — Recruiter and Market Engagement (FR-017–FR-023)
+## Horizon 1B — Recruiter and Market Engagement (FR-018–FR-024)
 
-**Status:** Not started. Blocked until Horizon 1A (through FR-016) is usable end to end.
+**Status:** Not started. Blocked until Horizon 1A (through FR-017) is usable end to end.
 
 | FR | Capability |
 |----|------------|
-| FR-017 | Recruiter Intelligence |
-| FR-018 | Recruiter Outreach |
-| FR-019 | Existing Connection Outreach |
-| FR-020 | LinkedIn Network Intelligence |
-| FR-021 | Meetup Intelligence |
-| FR-022 | LinkedIn Content Planning |
-| FR-023 | Market Intelligence |
+| FR-018 | Recruiter Intelligence |
+| FR-019 | Recruiter Outreach |
+| FR-020 | Existing Connection Outreach |
+| FR-021 | LinkedIn Network Intelligence |
+| FR-022 | Meetup Intelligence |
+| FR-023 | LinkedIn Content Planning |
+| FR-024 | Market Intelligence |
 
 Do not implement Horizon 1B in the current phase.
 
 ---
 
-## Future — Horizon 2 (FR-024+)
+## Future — Horizon 2 (FR-025+)
 
 | FR | Capability |
 |----|------------|
-| FR-024 | Interview Preparation |
-| FR-025 | Career Dashboard |
-| FR-026 | Daily Prioritisation (cross-domain) |
+| FR-025 | Interview Preparation |
+| FR-026 | Career Dashboard |
+| FR-027 | Daily Prioritisation (cross-domain) |
 
 Capability phases below organise Horizon 2 domains after Horizon 1 priorities are met.
 
 | Phase | Domain |
 |-------|--------|
-| Phase 3+ | Recruiter / network (also Horizon 1B FR-017–FR-022) |
+| Phase 3+ | Recruiter / network (also Horizon 1B FR-018–FR-023) |
 | Phase 4 | Portfolio Intelligence |
 | Phase 5 | Networking Intelligence |
 | Phase 6 | Learning Intelligence |
-| Phase 7 | Interview Intelligence (FR-024) |
-| Phase 8 | Career Dashboard (FR-025) |
+| Phase 7 | Interview Intelligence (FR-025) |
+| Phase 8 | Career Dashboard (FR-026) |
 
 ### Parking Lot
 

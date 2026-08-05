@@ -29,5 +29,7 @@ recruiter/interview feedback, or measurable application outcomes.
 
 ## Other folders
 
-- `generated/` — tailored CVs from FR-006 (plan JSON, CV JSON, Markdown, standalone HTML)
+- `generated/` — tailored CVs from FR-006 (plan JSON, CV JSON, Markdown, standalone HTML, PDF)
+- After owner Markdown edits, refresh HTML/PDF with
+  `python scripts/render_document.py --markdown <path>` (do not edit HTML/PDF as source)
 - `archive/` — superseded Master CV versions

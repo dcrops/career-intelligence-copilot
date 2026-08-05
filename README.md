@@ -78,12 +78,14 @@ decides.
 [M2](docs/eval/fr012_m2_owner_workflow.md)).
 
 **Current focus:** **FR-013** Application Pipeline Tracking (next active FR, not started).
+Then **FR-014** Recruiter Document Truth Validation (automation-safety gate —
+[planning](docs/eval/fr014_recruiter_document_truth_validation.md)).
 Details: [docs/10_roadmap.md](docs/10_roadmap.md).
 
 Acquisition today: paste or local export file via
 `scripts/run_fr008_workflow_manual.py` (`--source paste|export`). Playwright deferred.
 
-**Thereafter — Horizon 1B:** Recruiter / meetup / LinkedIn engagement (FR-017–FR-023).
+**Thereafter — Horizon 1B:** Recruiter / meetup / LinkedIn engagement (FR-018–FR-024).
 
 ### Phase 2 + document generation (baseline — frozen)
 
