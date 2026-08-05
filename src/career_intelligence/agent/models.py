@@ -164,6 +164,13 @@ class ReadinessSnapshot(BaseModel):
     contradictory_flags: tuple[str, ...] = ()
     prior_agent_run_id: AgentRunId | None = None
     prior_agent_run_incomplete: bool = False
+    pipeline_status: NonEmptyString | None = Field(
+        default=None,
+        description=(
+            "Informational Opportunity pipeline status at observation time. "
+            "Not ToolPolicy authority; agent never mutates pipeline."
+        ),
+    )
     snapshot_hash: NonEmptyString | None = Field(
         default=None,
         description="Optional content hash of normalised snapshot fields for loop detection.",

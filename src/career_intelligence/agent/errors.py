@@ -34,4 +34,4 @@ class AgentProviderError(AgentRuntimeError):
 
 
 class AdapterExecutionError(AgentRuntimeError):
-    """Raised when a thin service adapter fails unexpectedly."""
+    """Raised when a thin service adapter fails (mapped to owner stop reasons)."""

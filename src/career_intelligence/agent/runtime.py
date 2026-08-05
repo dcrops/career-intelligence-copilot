@@ -9,6 +9,7 @@ from __future__ import annotations
 from datetime import UTC, datetime
 
 from .adapters import AgentActionExecutor
+from .error_mapping import stop_reason_for_adapter_error
 from .errors import AgentProviderError, AdapterExecutionError, AgentRuntimeError
 from .hashing import compute_snapshot_hash
 from .ids import (
@@ -63,6 +64,7 @@ _AWAITING_OWNER_STOPS: frozenset[AgentStopReason] = frozenset(
         "owner_approval_required",
         "clarification_required",
         "truth_validation_blocked",
+        "material_benefit_required",
     }
 )
 
@@ -373,7 +375,9 @@ class AgentRuntime:
                 action=proposal.action,
                 message=str(error),
             )
-            return self._stop(run, "unexpected_failure", status="failed"), False
+            stop_reason = stop_reason_for_adapter_error(error)
+            status = "awaiting_owner" if stop_reason in _AWAITING_OWNER_STOPS else "failed"
+            return self._stop(run, stop_reason, status=status), False
 
         step = AgentStep(
             step_id=step_id,
@@ -459,6 +463,8 @@ class AgentRuntime:
             }:
                 status = "failed"
             if reason == "completed_for_owner_review":
+                status = "awaiting_owner"
+            if reason == "material_benefit_required":
                 status = "awaiting_owner"
             return self._stop(run, reason, status=status), False
 

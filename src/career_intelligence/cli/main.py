@@ -2927,7 +2927,11 @@ def agent_run(
         bool,
         typer.Option(
             "--override-material-benefit",
-            help="Pass explicit FR-006/FR-007 material-benefit override into preparation.",
+            help=(
+                "Pass explicit FR-006/FR-007 material-benefit override into preparation. "
+                "Use when BOPA stops with material_benefit_required "
+                "(Silver/Bronze without consider_cv_tailoring)."
+            ),
         ),
     ] = False,
     max_steps: Annotated[
@@ -3023,7 +3027,11 @@ def agent_resume(
         bool,
         typer.Option(
             "--override-material-benefit",
-            help="Pass explicit FR-006/FR-007 material-benefit override into preparation.",
+            help=(
+                "Pass explicit FR-006/FR-007 material-benefit override into preparation. "
+                "Use when BOPA stops with material_benefit_required "
+                "(Silver/Bronze without consider_cv_tailoring)."
+            ),
         ),
     ] = False,
     max_steps: Annotated[

@@ -18,6 +18,10 @@ BOPA is **not yet frictionless** for daily owner use. On representative `apply` 
 
 **Overall recommendation:** **Ready with minor improvements**
 
+> **Update (OAT-001 Phase 4):** Presentation defects D1–D3 and enhancements E1–E3
+> are addressed in [oat001_phase4_operational_polish.md](oat001_phase4_operational_polish.md).
+> Post-polish verdict: **Operationally Ready**.
+
 ---
 
 ## 2. Scenarios tested

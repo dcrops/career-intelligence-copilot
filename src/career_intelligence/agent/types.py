@@ -32,6 +32,7 @@ AgentStopReason = Literal[
     "owner_approval_required",
     "clarification_required",
     "truth_validation_blocked",
+    "material_benefit_required",
     "invalid_state",
     "policy_blocked",
     "retry_exhausted",

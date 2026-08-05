@@ -44,6 +44,7 @@ def validate_agent_run_contract(run: AgentRun) -> None:
         "clarification_required",
         "completed_for_owner_review",
         "truth_validation_blocked",
+        "material_benefit_required",
         None,
     }:
         # awaiting_owner may carry a stop reason describing the gate; None allowed

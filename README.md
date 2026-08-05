@@ -170,6 +170,14 @@ cic package verify <opp_id>
 cic preparation run <opp_id> --approve [--override-material-benefit]
 cic preparation show <run_id>
 
+# FR-015 BOPA (post-acquisition readiness; does not submit or advance pipeline)
+cic agent run <opp_id> --approve [--override-material-benefit]
+cic agent show <run_id>
+cic agent history <run_id>
+cic agent resume <run_id> --approve [--override-material-benefit]
+# status=awaiting_owner → resume; status=failed → start a new run (not resume)
+# material_benefit_required → add --override-material-benefit when appropriate
+
 # FR-012 assisted submission (after package ready)
 cic submission check <opp_id>
 cic submission run <opp_id> --channel manual_assisted --approve-submit --destination URL

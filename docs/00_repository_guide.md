@@ -36,7 +36,7 @@ Objectives.
 |----------|--------|
 | What is this project? | Decision-support for job search (Horizon 1), evolving toward a Career Intelligence Platform (Horizon 2). |
 | What has been completed? | **Phase 1** and **Phase 2** — see [12_phase_history.md](12_phase_history.md) and [eval/phase2_release_report.md](eval/phase2_release_report.md). |
-| What is next? | **FR-016** Multi-Agent Orchestration (not started — owner request). **FR-015** bounded agent is **complete and frozen** ([acceptance](eval/fr015_bounded_agentic_workflow.md)). Recruiter outreach is Horizon 1B (**FR-018+**) — [10_roadmap.md](10_roadmap.md). |
+| What is next? | **FR-016** Multi-Agent Orchestration (not started — owner request). **FR-015** bounded agent is **complete and frozen** ([acceptance](eval/fr015_bounded_agentic_workflow.md)). OAT-001 operational polish: [eval/oat001_phase4_operational_polish.md](eval/oat001_phase4_operational_polish.md). Recruiter outreach is Horizon 1B (**FR-018+**) — [10_roadmap.md](10_roadmap.md). |
 | Where should I start reading? | This guide → [AGENTS.md](../AGENTS.md) → [04_functional_specification.md](04_functional_specification.md) → [10_roadmap.md](10_roadmap.md). |
 
 ---

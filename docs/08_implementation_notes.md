@@ -2519,6 +2519,19 @@ Deterministic proposer remains operational default.
 
 **Operational Acceptance Trial (outside FR-015):** Live Opportunity corpus dogfooding
 is a separate OAT — see
-[eval/fr015_bounded_agentic_workflow.md](eval/fr015_bounded_agentic_workflow.md) §27.
+[eval/fr015_bounded_agentic_workflow.md](eval/fr015_bounded_agentic_workflow.md) §27
+and [eval/oat001_phase4_operational_polish.md](eval/oat001_phase4_operational_polish.md).
 Do not reopen FR-015 exit criteria for OAT findings unless a defect requires it.
+
+### OAT-001 Phase 4 — operational polish (presentation only)
+
+Owner UX improvements without ToolPolicy / allow-list / pipeline / truth behaviour changes:
+
+- Stop reason `material_benefit_required` (awaiting_owner) instead of `unexpected_failure`
+- Owner action text always matches legal next step (`failed` → new run; `awaiting_owner` → resume)
+- `--override-material-benefit` called out in owner guidance and CLI help
+- Pipeline stage shown on readiness (informational; preparation usually unnecessary after submit/interview)
+- `cic agent show` surfaces owner-facing truth blockers and an initial-inspection summary
+
+**Tests:** `tests/unit/agent/test_oat001_phase4_presentation.py`
 

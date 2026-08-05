@@ -70,6 +70,7 @@ from .presentation import (
     format_agent_list_line,
     format_agent_run_report,
     owner_action_required,
+    pipeline_owner_note,
 )
 from .proposer import (
     ActionProposer,
@@ -196,6 +197,7 @@ __all__ = [
     "new_agent_run_id",
     "new_agent_step_id",
     "owner_action_required",
+    "pipeline_owner_note",
     "primary_state_class",
     "require_action_allowed",
     "run_corpus",

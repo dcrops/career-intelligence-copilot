@@ -51,6 +51,29 @@ cic agent list
 
 Agent status ≠ Opportunity pipeline status (stated on every report).
 
+### Owner stop statuses (OAT-001 Phase 4 polish)
+
+| `status` | Legal next step |
+|----------|-----------------|
+| `awaiting_owner` | `cic agent resume <run_id> --approve` (add flags as guided) |
+| `failed` | Start a **new** `cic agent run <opportunity_id> --approve` — resume is not available |
+
+### Material-benefit stop
+
+When preparation refuses Silver/Bronze without `consider_cv_tailoring`, BOPA stops with
+`material_benefit_required` (not `unexpected_failure`). Owner action points at
+`--override-material-benefit` on resume or a new run. Service gate behaviour is unchanged.
+
+### Show report (polish)
+
+`cic agent show` includes:
+
+1. **Initial inspection** summary (even when step 0 is not `inspect_readiness`)
+2. Observed readiness including **pipeline** stage (informational only — no pipeline authority)
+3. Steps / policy / results
+4. **Truth blockers** (owner-facing labels such as unsupported certification/technology)
+5. Owner action mapped to legal next step for the run status
+
 ---
 
 ## 3. Implementation summary
@@ -71,14 +94,16 @@ Live wiring: `LiveReadinessBuilder` + `ServiceActionExecutor` + store under
 
 `cic agent show` prints:
 
-1. Observed readiness (primary state, decision, artefacts, package, truth, hash)
-2. Per-step proposed action (+ rationale with `--verbose`)
-3. Policy result (allow/deny + reason)
-4. Executed service action / idempotent skip
-5. Result refs (preparation run / truth reports when present)
-6. Stop reason + run/checkpoint identity
-7. Owner action required (mapped from stop reason)
-8. Explicit note: no submit / no pipeline advance
+1. Initial inspection summary
+2. Observed readiness (primary state, decision, artefacts, package, truth, pipeline, hash)
+3. Per-step proposed action (+ rationale with `--verbose`)
+4. Policy result (allow/deny + reason)
+5. Executed service action / idempotent skip
+6. Result refs (preparation run / truth reports when present)
+7. Owner-facing truth blockers when present
+8. Stop reason + run/checkpoint identity
+9. Owner action required (mapped from stop reason **and** run status)
+10. Explicit note: no submit / no pipeline advance; failed → new run; awaiting_owner → resume
 
 `cic agent history` lists append-only events (`action_blocked`, `stop_recorded`, …).
 
