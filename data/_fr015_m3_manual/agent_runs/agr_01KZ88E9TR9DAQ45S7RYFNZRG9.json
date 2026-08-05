@@ -1,0 +1,187 @@
+{
+  "agent_run_id": "agr_01KZ88E9TR9DAQ45S7RYFNZRG9",
+  "goal": {
+    "goal_kind": "prepare_for_owner_review",
+    "opportunity_id": "opp_01ARZ3NDEKTSV4RRFFQ69G5FAA",
+    "owner_notes": null
+  },
+  "status": "failed",
+  "step_count": 1,
+  "max_steps": 8,
+  "last_snapshot": {
+    "opportunity_id": "opp_01ARZ3NDEKTSV4RRFFQ69G5FAA",
+    "decision": "apply",
+    "artefacts": {
+      "job_analysis": false,
+      "assessment": true,
+      "portfolio_match": true,
+      "strategy": true
+    },
+    "package": {
+      "status": "absent",
+      "cv_present": false,
+      "cover_letter_present": false,
+      "manifest_ref": null
+    },
+    "truth": {
+      "status": "absent",
+      "report_ref": null,
+      "owner_edited_markdown_since_validation": false,
+      "blocking_finding_codes": []
+    },
+    "owner_approvals_present": true,
+    "clarification_required": false,
+    "clarification_message": null,
+    "provider_available": true,
+    "contradictory_flags": [],
+    "prior_agent_run_id": null,
+    "prior_agent_run_incomplete": false,
+    "snapshot_hash": "b166a56a9fd7e09c057382b48e7fc0507a8f3bb49aed67ea3deec2a37f887783",
+    "observed_at": "2026-08-05T12:00:00Z"
+  },
+  "primary_state_class": "missing_analysis",
+  "stop_reason": "invalid_state",
+  "checkpoint_ref": "step:ags_01KZ88E9TSVAK0TYJF6CJXCK91",
+  "events": [
+    {
+      "event_id": "aae_01KZ88E9TRVHM2T3X5AHG4JRE5",
+      "kind": "run_started",
+      "at": "2026-08-05T06:05:46.200034Z",
+      "step_id": null,
+      "state_class": null,
+      "action": null,
+      "policy_decision": null,
+      "stop_reason": null,
+      "message": "goal=prepare_for_owner_review opportunity=opp_01ARZ3NDEKTSV4RRFFQ69G5FAA",
+      "refs": [],
+      "provider": null
+    },
+    {
+      "event_id": "aae_01KZ88E9TSN22R1K5FXEK035SW",
+      "kind": "snapshot_observed",
+      "at": "2026-08-05T06:05:46.201118Z",
+      "step_id": null,
+      "state_class": "missing_analysis",
+      "action": null,
+      "policy_decision": null,
+      "stop_reason": null,
+      "message": "hash=b166a56a9fd7e09c057382b48e7fc0507a8f3bb49aed67ea3deec2a37f887783",
+      "refs": [
+        "package:absent",
+        "truth:absent"
+      ],
+      "provider": null
+    },
+    {
+      "event_id": "aae_01KZ88E9TSE162SSYN1G8DEDEK",
+      "kind": "action_proposed",
+      "at": "2026-08-05T06:05:46.201183Z",
+      "step_id": null,
+      "state_class": "missing_analysis",
+      "action": "stop",
+      "policy_decision": null,
+      "stop_reason": null,
+      "message": "Immediate stop for primary state 'missing_analysis'.",
+      "refs": [],
+      "provider": null
+    },
+    {
+      "event_id": "aae_01KZ88E9TSTSCAS04EK94RXX4E",
+      "kind": "policy_evaluated",
+      "at": "2026-08-05T06:05:46.201196Z",
+      "step_id": null,
+      "state_class": "missing_analysis",
+      "action": "stop",
+      "policy_decision": "allow",
+      "stop_reason": "invalid_state",
+      "message": null,
+      "refs": [],
+      "provider": null
+    },
+    {
+      "event_id": "aae_01KZ88E9TS86FGC0F6XH3TE4JJ",
+      "kind": "stop_recorded",
+      "at": "2026-08-05T06:05:46.201213Z",
+      "step_id": null,
+      "state_class": null,
+      "action": null,
+      "policy_decision": null,
+      "stop_reason": "invalid_state",
+      "message": "status=failed",
+      "refs": [],
+      "provider": null
+    }
+  ],
+  "steps": [
+    {
+      "step_id": "ags_01KZ88E9TSVAK0TYJF6CJXCK91",
+      "index": 0,
+      "snapshot": {
+        "opportunity_id": "opp_01ARZ3NDEKTSV4RRFFQ69G5FAA",
+        "decision": "apply",
+        "artefacts": {
+          "job_analysis": false,
+          "assessment": true,
+          "portfolio_match": true,
+          "strategy": true
+        },
+        "package": {
+          "status": "absent",
+          "cv_present": false,
+          "cover_letter_present": false,
+          "manifest_ref": null
+        },
+        "truth": {
+          "status": "absent",
+          "report_ref": null,
+          "owner_edited_markdown_since_validation": false,
+          "blocking_finding_codes": []
+        },
+        "owner_approvals_present": true,
+        "clarification_required": false,
+        "clarification_message": null,
+        "provider_available": true,
+        "contradictory_flags": [],
+        "prior_agent_run_id": null,
+        "prior_agent_run_incomplete": false,
+        "snapshot_hash": "b166a56a9fd7e09c057382b48e7fc0507a8f3bb49aed67ea3deec2a37f887783",
+        "observed_at": "2026-08-05T12:00:00Z"
+      },
+      "primary_state_class": "missing_analysis",
+      "proposal": {
+        "action": "stop",
+        "rationale": "Immediate stop for primary state 'missing_analysis'.",
+        "evidence_refs": [
+          "state:missing_analysis",
+          "hash:b166a56a9fd7e09c057382b48e7fc0507a8f3bb49aed67ea3deec2a37f887783"
+        ],
+        "primary_state_class": "missing_analysis"
+      },
+      "policy": {
+        "decision": "allow",
+        "action": "stop",
+        "primary_state_class": "missing_analysis",
+        "applicable_state_classes": [
+          "missing_analysis",
+          "missing_package"
+        ],
+        "approved_actions": [
+          "inspect_readiness",
+          "request_owner_review",
+          "stop"
+        ],
+        "deny_reason": null,
+        "stop_reason": "invalid_state"
+      },
+      "executed": true,
+      "skipped_as_idempotent": false,
+      "service_result_summary": "stopped: invalid_state",
+      "error_summary": null
+    }
+  ],
+  "completed_operations": [],
+  "provider": null,
+  "owner_approvals_present": true,
+  "created_at": "2026-08-05T06:05:46.200005Z",
+  "updated_at": "2026-08-05T06:05:46.201217Z"
+}

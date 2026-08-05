@@ -4,6 +4,103 @@ Records product strategy and engineering knowledge changes. Routine typo fixes a
 
 ---
 
+## Version 1.98
+
+### FR-015 documentation freeze and close-out
+
+**Date:** 2026-08-05.
+
+Documentation-only close-out: expanded final acceptance report, decision-loop /
+roadmap / ADR-index consistency, technical-debt classification, Operational
+Acceptance Trial note (live corpus dogfooding outside FR-015 exit criteria). No
+production code or test changes. **FR-015 ACCEPTED and frozen.** Active FR:
+**FR-016** (not started — owner request required).
+
+Evidence: [eval/fr015_bounded_agentic_workflow.md](eval/fr015_bounded_agentic_workflow.md).
+
+---
+
+## Version 1.97
+
+### FR-015 M4 evaluation and freeze
+
+**Date:** 2026-08-05.
+
+M4 closes FR-015: corpus evaluation (16 representative readiness worlds),
+observability metrics from AgentRun audit, deterministic-vs-alternate proposer
+comparison, owner manual validation, and documentation freeze. Deterministic
+proposer remains the operational default; `--llm` stays optional under ToolPolicy.
+No new authority (no submit / pipeline / discovery / truth waiver / multi-agent).
+
+Evidence: [eval/fr015_m4_evaluation.md](eval/fr015_m4_evaluation.md);
+[acceptance](eval/fr015_bounded_agentic_workflow.md). **FR-015 ACCEPTED and frozen.**
+Next: FR-016 only on owner request.
+
+---
+
+## Version 1.96
+
+### FR-015 M3 owner CLI
+
+**Date:** 2026-08-05.
+
+Thin `cic agent` CLI (`run` / `resume` / `show` / `history` / `list`) over M2
+AgentRuntime with owner-facing readiness/policy/execution/stop presentation.
+`--approve` required for run/resume; deterministic proposer by default; no
+submit/pipeline/FR-008. Manual script PASS; unit/functional tests green.
+
+Evidence: [eval/fr015_m3_owner_cli.md](eval/fr015_m3_owner_cli.md).
+
+---
+
+## Version 1.95
+
+### FR-015 M2 bounded agent runtime
+
+**Date:** 2026-08-05.
+
+M2 delivers `AgentRuntime`: observe → propose → ToolPolicy → thin service adapters →
+append-only audit → checkpoint/resume. Deterministic + OpenAI proposer ports;
+`data/agent_runs/` store; missing FR-002–005 fail as `invalid_state`; no submit,
+pipeline, discovery, or FR-008 wrap. Unit/functional tests green; manual script PASS.
+
+Evidence: [eval/fr015_m2_agent_runtime.md](eval/fr015_m2_agent_runtime.md).
+
+---
+
+## Version 1.94
+
+### FR-015 M1 agent contracts and ADR-007
+
+**Date:** 2026-08-05.
+
+Owner accepted FR-015 M0 with clarification. M1 freezes BOPA contracts in
+`career_intelligence.agent`: readiness snapshots, state-class matrix (value beyond
+FR-008), allow-listed actions, deterministic ToolPolicy, AgentRun audit shapes, and
+[ADR-007](adr/007_bounded_agentic_workflow.md). Unit tests: 39 passed. No runtime,
+provider, CLI, or FR-016 abstractions.
+
+Evidence: [eval/fr015_m1_agent_contracts.md](eval/fr015_m1_agent_contracts.md),
+[eval/fr015_m0_engineering_spike.md](eval/fr015_m0_engineering_spike.md).
+
+---
+
+## Version 1.93
+
+### FR-015 M0 engineering spike (proposed)
+
+**Date:** 2026-08-05.
+
+Architecture-only spike for **FR-015 Bounded Agentic Workflow**. Recommends a
+Bounded Opportunity Preparation Agent (BOPA) with policy B (LLM proposes;
+deterministic ToolPolicy validates; services execute). Finds that wrapping FR-008
+alone is not genuine agentic value. No production code, tests, or M1 start.
+**Awaiting owner acceptance.** FR-014 remains frozen.
+
+Evidence: [eval/fr015_m0_engineering_spike.md](eval/fr015_m0_engineering_spike.md).
+
+---
+
 ## Version 1.92
 
 ### FR-014 documentation freeze and close-out

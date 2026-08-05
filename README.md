@@ -82,11 +82,17 @@ decides.
 [ADR-005](docs/adr/005_application_pipeline_lifecycle.md); milestones
 [M0](docs/eval/fr013_m0_engineering_spike.md)–[M4](docs/eval/fr013_m4_reporting_acceptance.md)).
 
-**Current focus:** **FR-015** Bounded Agentic Workflow (not started — owner request
-required). **FR-014** Recruiter Document Truth Validation is **complete and frozen**
+**FR-014 Recruiter Document Truth Validation — complete** and frozen
 ([acceptance](docs/eval/fr014_recruiter_document_truth_validation.md);
 [ADR-006](docs/adr/006_recruiter_document_truth_validation.md)).
-Details: [docs/10_roadmap.md](docs/10_roadmap.md).
+
+**FR-015 Bounded Agentic Workflow — complete** and frozen
+([acceptance](docs/eval/fr015_bounded_agentic_workflow.md);
+[ADR-007](docs/adr/007_bounded_agentic_workflow.md); milestones
+[M0](docs/eval/fr015_m0_engineering_spike.md)–[M4](docs/eval/fr015_m4_evaluation.md)).
+
+**Current focus:** **FR-016** Multi-Agent Orchestration (not started — owner request
+required). Details: [docs/10_roadmap.md](docs/10_roadmap.md).
 
 Acquisition today: paste or local export file via
 `scripts/run_fr008_workflow_manual.py` (`--source paste|export`). Playwright deferred.

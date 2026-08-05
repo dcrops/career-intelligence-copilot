@@ -1,0 +1,31 @@
+{
+  "results": [
+    {
+      "name": "A happy path -> completed_for_owner_review",
+      "passed": true,
+      "detail": "completed_for_owner_review"
+    },
+    {
+      "name": "B missing analysis -> invalid_state",
+      "passed": true,
+      "detail": "invalid_state"
+    },
+    {
+      "name": "C truth fail -> truth_validation_blocked",
+      "passed": true,
+      "detail": "truth_validation_blocked"
+    },
+    {
+      "name": "D illegal proposal blocked by ToolPolicy",
+      "passed": true,
+      "detail": "policy_blocked"
+    },
+    {
+      "name": "E provider down -> provider_unavailable",
+      "passed": true,
+      "detail": "provider_unavailable"
+    }
+  ],
+  "sample_run_id": "agr_01KZ87RMJDHMK52J9PJDFB93QJ",
+  "sample_event_count": 15
+}

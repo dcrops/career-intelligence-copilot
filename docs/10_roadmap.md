@@ -40,7 +40,7 @@ Scale to multi-agent systems → Expand into recruiter and market intelligence.
 |-------|--------|
 | **Phase 1** — Product Definition | **Complete** |
 | **Phase 2** — Job Intelligence MVP | **Complete** ([release report](eval/phase2_release_report.md)) |
-| **Horizon 1A** — Job application workflow | **Current** (FR-008–FR-014 complete; FR-015 Bounded Agentic Workflow next; FR-016–FR-017 planned) |
+| **Horizon 1A** — Job application workflow | **Current** (FR-008–FR-015 complete; FR-016 Multi-Agent Orchestration next; FR-017 planned) |
 | **Horizon 1B** — Recruiter / market engagement | Not started (FR-018–FR-024; after 1A) |
 | **Horizon 2** — Platform capabilities | Not started (FR-025+) |
 
@@ -142,9 +142,9 @@ FR-013 Application Pipeline Tracking  ← Complete
         ▼
 FR-014 Recruiter Document Truth Validation  ← Complete (automation-safety gate)
         ▼
-FR-015 Bounded Agentic Workflow  ← Now (owner request required)
+FR-015 Bounded Agentic Workflow  ← Complete (frozen)
         ▼
-FR-016 Multi-Agent Orchestration
+FR-016 Multi-Agent Orchestration  ← Now (owner request required)
         ▼
 FR-017 Agent Evaluation & Observability
         ▼
@@ -160,8 +160,9 @@ FR-017 Agent Evaluation & Observability
 | **Completed** | **FR-012** (2026-07-31) | Submission Assistance — owner-assisted submit with append-only audit; [acceptance](eval/fr012_submission_assistance.md); milestones [M0](eval/fr012_m0_submission_contracts.md), [M1](eval/fr012_m1_submission_orchestration.md), [M2](eval/fr012_m2_owner_workflow.md) |
 | **Completed** | **FR-013** (2026-08-05) | Application pipeline tracking — Opportunity SoT + append-only events + owner CLI + reporting; [ADR-005](adr/005_application_pipeline_lifecycle.md); [acceptance](eval/fr013_application_pipeline_tracking.md); milestones [M0](eval/fr013_m0_engineering_spike.md)–[M4](eval/fr013_m4_reporting_acceptance.md) |
 | **Completed** | **FR-014** (2026-08-05) | Recruiter document truth validation — **complete and frozen**; [acceptance](eval/fr014_recruiter_document_truth_validation.md); [M0](eval/fr014_m0_engineering_spike.md)–[M4](eval/fr014_m4_claim_validation.md); [ADR-006](adr/006_recruiter_document_truth_validation.md) |
-| **Now** | **FR-015** | Bounded Agentic Workflow — not started; requires owner request; FR-014 truth gate must remain in force |
-| Later in 1A | **FR-016 → FR-017** | Multi-agent → evaluation |
+| **Completed** | **FR-015** (2026-08-05) | Bounded Agentic Workflow — **complete and frozen**; BOPA; [acceptance](eval/fr015_bounded_agentic_workflow.md); [M0](eval/fr015_m0_engineering_spike.md)–[M4](eval/fr015_m4_evaluation.md); [ADR-007](adr/007_bounded_agentic_workflow.md) |
+| **Now** | **FR-016** | Multi-Agent Orchestration — not started; owner request required; FR-014/015 gates remain in force |
+| Later in 1A | **FR-017** | Agent Evaluation & Observability (orchestration layer) |
 | **After 1A** | **Horizon 1B (FR-018–FR-024)** | Recruiters, outreach, meetups, LinkedIn, market |
 
 ### FR-008 completion summary

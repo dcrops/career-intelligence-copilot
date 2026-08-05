@@ -73,8 +73,13 @@ SoT shape, ranking sort key, or Horizon 2 domains (recruiters, networking, meetu
 
 ## Next
 
-**Current focus:** Horizon 1A — **FR-015** Bounded Agentic Workflow (not started —
-owner request required). **FR-014** Recruiter Document Truth Validation is
+**Current focus:** Horizon 1A — **FR-016** Multi-Agent Orchestration (not started —
+owner request required). **FR-015** Bounded Agentic Workflow is
+**complete and frozen**
+([acceptance](eval/fr015_bounded_agentic_workflow.md);
+[ADR-007](adr/007_bounded_agentic_workflow.md);
+milestones [M0](eval/fr015_m0_engineering_spike.md)–[M4](eval/fr015_m4_evaluation.md)).
+**FR-014** Recruiter Document Truth Validation is
 **complete and frozen**
 ([acceptance](eval/fr014_recruiter_document_truth_validation.md);
 [ADR-006](adr/006_recruiter_document_truth_validation.md)).
@@ -97,8 +102,13 @@ milestones [M0](eval/fr012_m0_submission_contracts.md),
 milestones [M0](eval/fr013_m0_engineering_spike.md)–[M4](eval/fr013_m4_reporting_acceptance.md));
 **FR-014** Recruiter Document Truth Validation (2026-08-05 —
 [acceptance](eval/fr014_recruiter_document_truth_validation.md);
-milestones [M0](eval/fr014_m0_engineering_spike.md)–[M4](eval/fr014_m4_claim_validation.md))  
-**Then:** FR-016–FR-017 multi-agent → evaluation  
+[ADR-006](adr/006_recruiter_document_truth_validation.md);
+milestones [M0](eval/fr014_m0_engineering_spike.md)–[M4](eval/fr014_m4_claim_validation.md));
+**FR-015** Bounded Agentic Workflow (2026-08-05 —
+[acceptance](eval/fr015_bounded_agentic_workflow.md);
+[ADR-007](adr/007_bounded_agentic_workflow.md);
+milestones [M0](eval/fr015_m0_engineering_spike.md)–[M4](eval/fr015_m4_evaluation.md)).
+**Then:** FR-016 Multi-Agent Orchestration (active FR — owner request required) → FR-017  
 **After 1A:** Horizon 1B recruiter / market engagement (FR-018–FR-024)  
 **Principle:** Job acquisition first. Recruiter outreach second.  
 **Later:** Horizon 2 capability phases (see roadmap)

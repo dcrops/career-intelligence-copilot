@@ -1,0 +1,958 @@
+{
+  "results": [
+    {
+      "name": "1 corpus all cases pass",
+      "passed": true,
+      "detail": "16/16"
+    },
+    {
+      "name": "2 observability aggregates runs",
+      "passed": true,
+      "detail": "runs=16 steps=30"
+    },
+    {
+      "name": "3 deterministic vs alternate comparison",
+      "passed": true,
+      "detail": "rows=16 disagreed=16"
+    },
+    {
+      "name": "4 prompt-injection blocked",
+      "passed": true,
+      "detail": "policy_blocked"
+    },
+    {
+      "name": "5 provider-unavailable fail-closed",
+      "passed": true,
+      "detail": "provider_unavailable"
+    },
+    {
+      "name": "A run (deterministic default)",
+      "passed": true,
+      "detail": "completed_for_owner_review"
+    },
+    {
+      "name": "B stop + show (truth block / remediation cue)",
+      "passed": true,
+      "detail": "truth_validation_blocked"
+    },
+    {
+      "name": "C resume after remediation (no duplicate prepare)",
+      "passed": true,
+      "detail": "prep=1"
+    },
+    {
+      "name": "D history + list",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "E no submit / no truth bypass in executed services",
+      "passed": true,
+      "detail": "('run_preparation', 'validate_truth_package', 'stop')"
+    },
+    {
+      "name": "F explicit --llm option present; default offline deterministic",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "G policy-blocked injection in history",
+      "passed": true,
+      "detail": "policy_blocked"
+    }
+  ],
+  "corpus": {
+    "case_results": [
+      {
+        "case_id": "ready_happy_path",
+        "passed": true,
+        "expected_stop": "completed_for_owner_review",
+        "actual_stop": "completed_for_owner_review",
+        "metrics": {
+          "agent_run_id": "agr_01KZ89MV3FF85NPP4CMS62S864",
+          "opportunity_id": "opp_01ARZ3NDEKTSV4RRFFQ69G5FAA",
+          "status": "awaiting_owner",
+          "stop_reason": "completed_for_owner_review",
+          "step_count": 3,
+          "max_steps": 8,
+          "events_count": 15,
+          "actions_proposed": [
+            "run_preparation",
+            "validate_truth_package",
+            "stop"
+          ],
+          "actions_allowed": [
+            "run_preparation",
+            "validate_truth_package",
+            "stop"
+          ],
+          "actions_blocked": [],
+          "services_executed": [
+            "run_preparation",
+            "validate_truth_package",
+            "stop"
+          ],
+          "idempotent_skips": 0,
+          "policy_blocks": 0,
+          "repeated_action_blocks": 0,
+          "retries_recorded": 0,
+          "provider": "deterministic",
+          "model": "preference-table-v1",
+          "input_tokens": null,
+          "output_tokens": null,
+          "estimated_cost_usd": null,
+          "elapsed_ms": 1,
+          "created_at": "2026-08-05T06:26:49.071976Z",
+          "updated_at": "2026-08-05T06:26:49.072976Z"
+        },
+        "detail": ""
+      },
+      {
+        "case_id": "missing_analysis",
+        "passed": true,
+        "expected_stop": "invalid_state",
+        "actual_stop": "invalid_state",
+        "metrics": {
+          "agent_run_id": "agr_01KZ89MV3G0CK23S4VV9YS3WZ1",
+          "opportunity_id": "opp_01ARZ3NDEKTSV4RRFFQ69G5FAA",
+          "status": "failed",
+          "stop_reason": "invalid_state",
+          "step_count": 1,
+          "max_steps": 8,
+          "events_count": 5,
+          "actions_proposed": [
+            "stop"
+          ],
+          "actions_allowed": [
+            "stop"
+          ],
+          "actions_blocked": [],
+          "services_executed": [
+            "stop"
+          ],
+          "idempotent_skips": 0,
+          "policy_blocks": 0,
+          "repeated_action_blocks": 0,
+          "retries_recorded": 0,
+          "provider": null,
+          "model": null,
+          "input_tokens": null,
+          "output_tokens": null,
+          "estimated_cost_usd": null,
+          "elapsed_ms": 0,
+          "created_at": "2026-08-05T06:26:49.072976Z",
+          "updated_at": "2026-08-05T06:26:49.072976Z"
+        },
+        "detail": ""
+      },
+      {
+        "case_id": "missing_assessment",
+        "passed": true,
+        "expected_stop": "invalid_state",
+        "actual_stop": "invalid_state",
+        "metrics": {
+          "agent_run_id": "agr_01KZ89MV3G9KM1BS1AY5HZ24TR",
+          "opportunity_id": "opp_01ARZ3NDEKTSV4RRFFQ69G5FAA",
+          "status": "failed",
+          "stop_reason": "invalid_state",
+          "step_count": 1,
+          "max_steps": 8,
+          "events_count": 5,
+          "actions_proposed": [
+            "stop"
+          ],
+          "actions_allowed": [
+            "stop"
+          ],
+          "actions_blocked": [],
+          "services_executed": [
+            "stop"
+          ],
+          "idempotent_skips": 0,
+          "policy_blocks": 0,
+          "repeated_action_blocks": 0,
+          "retries_recorded": 0,
+          "provider": null,
+          "model": null,
+          "input_tokens": null,
+          "output_tokens": null,
+          "estimated_cost_usd": null,
+          "elapsed_ms": 0,
+          "created_at": "2026-08-05T06:26:49.072976Z",
+          "updated_at": "2026-08-05T06:26:49.072976Z"
+        },
+        "detail": ""
+      },
+      {
+        "case_id": "missing_strategy",
+        "passed": true,
+        "expected_stop": "invalid_state",
+        "actual_stop": "invalid_state",
+        "metrics": {
+          "agent_run_id": "agr_01KZ89MV3G1BTD2Q71EV027CWP",
+          "opportunity_id": "opp_01ARZ3NDEKTSV4RRFFQ69G5FAA",
+          "status": "failed",
+          "stop_reason": "invalid_state",
+          "step_count": 1,
+          "max_steps": 8,
+          "events_count": 5,
+          "actions_proposed": [
+            "stop"
+          ],
+          "actions_allowed": [
+            "stop"
+          ],
+          "actions_blocked": [],
+          "services_executed": [
+            "stop"
+          ],
+          "idempotent_skips": 0,
+          "policy_blocks": 0,
+          "repeated_action_blocks": 0,
+          "retries_recorded": 0,
+          "provider": null,
+          "model": null,
+          "input_tokens": null,
+          "output_tokens": null,
+          "estimated_cost_usd": null,
+          "elapsed_ms": 0,
+          "created_at": "2026-08-05T06:26:49.072976Z",
+          "updated_at": "2026-08-05T06:26:49.072976Z"
+        },
+        "detail": ""
+      },
+      {
+        "case_id": "missing_package",
+        "passed": true,
+        "expected_stop": "completed_for_owner_review",
+        "actual_stop": "completed_for_owner_review",
+        "metrics": {
+          "agent_run_id": "agr_01KZ89MV3GEN73QNTXS6A5Y4SK",
+          "opportunity_id": "opp_01ARZ3NDEKTSV4RRFFQ69G5FAA",
+          "status": "awaiting_owner",
+          "stop_reason": "completed_for_owner_review",
+          "step_count": 3,
+          "max_steps": 8,
+          "events_count": 15,
+          "actions_proposed": [
+            "run_preparation",
+            "validate_truth_package",
+            "stop"
+          ],
+          "actions_allowed": [
+            "run_preparation",
+            "validate_truth_package",
+            "stop"
+          ],
+          "actions_blocked": [],
+          "services_executed": [
+            "run_preparation",
+            "validate_truth_package",
+            "stop"
+          ],
+          "idempotent_skips": 0,
+          "policy_blocks": 0,
+          "repeated_action_blocks": 0,
+          "retries_recorded": 0,
+          "provider": "deterministic",
+          "model": "preference-table-v1",
+          "input_tokens": null,
+          "output_tokens": null,
+          "estimated_cost_usd": null,
+          "elapsed_ms": 0,
+          "created_at": "2026-08-05T06:26:49.072976Z",
+          "updated_at": "2026-08-05T06:26:49.072976Z"
+        },
+        "detail": ""
+      },
+      {
+        "case_id": "missing_cv",
+        "passed": true,
+        "expected_stop": "completed_for_owner_review",
+        "actual_stop": "completed_for_owner_review",
+        "metrics": {
+          "agent_run_id": "agr_01KZ89MV3HEYG884FZEP3DHWS9",
+          "opportunity_id": "opp_01ARZ3NDEKTSV4RRFFQ69G5FAA",
+          "status": "awaiting_owner",
+          "stop_reason": "completed_for_owner_review",
+          "step_count": 3,
+          "max_steps": 8,
+          "events_count": 15,
+          "actions_proposed": [
+            "run_preparation",
+            "validate_truth_package",
+            "stop"
+          ],
+          "actions_allowed": [
+            "run_preparation",
+            "validate_truth_package",
+            "stop"
+          ],
+          "actions_blocked": [],
+          "services_executed": [
+            "run_preparation",
+            "validate_truth_package",
+            "stop"
+          ],
+          "idempotent_skips": 0,
+          "policy_blocks": 0,
+          "repeated_action_blocks": 0,
+          "retries_recorded": 0,
+          "provider": "deterministic",
+          "model": "preference-table-v1",
+          "input_tokens": null,
+          "output_tokens": null,
+          "estimated_cost_usd": null,
+          "elapsed_ms": 0,
+          "created_at": "2026-08-05T06:26:49.073976Z",
+          "updated_at": "2026-08-05T06:26:49.073976Z"
+        },
+        "detail": ""
+      },
+      {
+        "case_id": "missing_cover_letter",
+        "passed": true,
+        "expected_stop": "completed_for_owner_review",
+        "actual_stop": "completed_for_owner_review",
+        "metrics": {
+          "agent_run_id": "agr_01KZ89MV3HKQE7SYE8F2EKMPZT",
+          "opportunity_id": "opp_01ARZ3NDEKTSV4RRFFQ69G5FAA",
+          "status": "awaiting_owner",
+          "stop_reason": "completed_for_owner_review",
+          "step_count": 3,
+          "max_steps": 8,
+          "events_count": 15,
+          "actions_proposed": [
+            "run_preparation",
+            "validate_truth_package",
+            "stop"
+          ],
+          "actions_allowed": [
+            "run_preparation",
+            "validate_truth_package",
+            "stop"
+          ],
+          "actions_blocked": [],
+          "services_executed": [
+            "run_preparation",
+            "validate_truth_package",
+            "stop"
+          ],
+          "idempotent_skips": 0,
+          "policy_blocks": 0,
+          "repeated_action_blocks": 0,
+          "retries_recorded": 0,
+          "provider": "deterministic",
+          "model": "preference-table-v1",
+          "input_tokens": null,
+          "output_tokens": null,
+          "estimated_cost_usd": null,
+          "elapsed_ms": 1,
+          "created_at": "2026-08-05T06:26:49.073976Z",
+          "updated_at": "2026-08-05T06:26:49.074976Z"
+        },
+        "detail": ""
+      },
+      {
+        "case_id": "stale_truth",
+        "passed": true,
+        "expected_stop": "completed_for_owner_review",
+        "actual_stop": "completed_for_owner_review",
+        "metrics": {
+          "agent_run_id": "agr_01KZ89MV3JV86ZH1PH56RC4319",
+          "opportunity_id": "opp_01ARZ3NDEKTSV4RRFFQ69G5FAA",
+          "status": "awaiting_owner",
+          "stop_reason": "completed_for_owner_review",
+          "step_count": 2,
+          "max_steps": 8,
+          "events_count": 10,
+          "actions_proposed": [
+            "validate_truth_package",
+            "stop"
+          ],
+          "actions_allowed": [
+            "validate_truth_package",
+            "stop"
+          ],
+          "actions_blocked": [],
+          "services_executed": [
+            "validate_truth_package",
+            "stop"
+          ],
+          "idempotent_skips": 0,
+          "policy_blocks": 0,
+          "repeated_action_blocks": 0,
+          "retries_recorded": 0,
+          "provider": "deterministic",
+          "model": "preference-table-v1",
+          "input_tokens": null,
+          "output_tokens": null,
+          "estimated_cost_usd": null,
+          "elapsed_ms": 0,
+          "created_at": "2026-08-05T06:26:49.074976Z",
+          "updated_at": "2026-08-05T06:26:49.074976Z"
+        },
+        "detail": ""
+      },
+      {
+        "case_id": "failing_truth",
+        "passed": true,
+        "expected_stop": "truth_validation_blocked",
+        "actual_stop": "truth_validation_blocked",
+        "metrics": {
+          "agent_run_id": "agr_01KZ89MV3JX4AQ4S11NPE4SM4C",
+          "opportunity_id": "opp_01ARZ3NDEKTSV4RRFFQ69G5FAA",
+          "status": "awaiting_owner",
+          "stop_reason": "truth_validation_blocked",
+          "step_count": 1,
+          "max_steps": 8,
+          "events_count": 5,
+          "actions_proposed": [
+            "stop"
+          ],
+          "actions_allowed": [
+            "stop"
+          ],
+          "actions_blocked": [],
+          "services_executed": [
+            "stop"
+          ],
+          "idempotent_skips": 0,
+          "policy_blocks": 0,
+          "repeated_action_blocks": 0,
+          "retries_recorded": 0,
+          "provider": null,
+          "model": null,
+          "input_tokens": null,
+          "output_tokens": null,
+          "estimated_cost_usd": null,
+          "elapsed_ms": 0,
+          "created_at": "2026-08-05T06:26:49.074976Z",
+          "updated_at": "2026-08-05T06:26:49.074976Z"
+        },
+        "detail": ""
+      },
+      {
+        "case_id": "package_integrity_failure",
+        "passed": true,
+        "expected_stop": "completed_for_owner_review",
+        "actual_stop": "completed_for_owner_review",
+        "metrics": {
+          "agent_run_id": "agr_01KZ89MV3J4Q74EJP43K0BVRRV",
+          "opportunity_id": "opp_01ARZ3NDEKTSV4RRFFQ69G5FAA",
+          "status": "awaiting_owner",
+          "stop_reason": "completed_for_owner_review",
+          "step_count": 3,
+          "max_steps": 8,
+          "events_count": 15,
+          "actions_proposed": [
+            "run_preparation",
+            "validate_truth_package",
+            "stop"
+          ],
+          "actions_allowed": [
+            "run_preparation",
+            "validate_truth_package",
+            "stop"
+          ],
+          "actions_blocked": [],
+          "services_executed": [
+            "run_preparation",
+            "validate_truth_package",
+            "stop"
+          ],
+          "idempotent_skips": 0,
+          "policy_blocks": 0,
+          "repeated_action_blocks": 0,
+          "retries_recorded": 0,
+          "provider": "deterministic",
+          "model": "preference-table-v1",
+          "input_tokens": null,
+          "output_tokens": null,
+          "estimated_cost_usd": null,
+          "elapsed_ms": 1,
+          "created_at": "2026-08-05T06:26:49.074976Z",
+          "updated_at": "2026-08-05T06:26:49.076046Z"
+        },
+        "detail": ""
+      },
+      {
+        "case_id": "clarification_required",
+        "passed": true,
+        "expected_stop": "clarification_required",
+        "actual_stop": "clarification_required",
+        "metrics": {
+          "agent_run_id": "agr_01KZ89MV3MFS7HFVXR04TCDK7T",
+          "opportunity_id": "opp_01ARZ3NDEKTSV4RRFFQ69G5FAA",
+          "status": "awaiting_owner",
+          "stop_reason": "clarification_required",
+          "step_count": 1,
+          "max_steps": 8,
+          "events_count": 5,
+          "actions_proposed": [
+            "stop"
+          ],
+          "actions_allowed": [
+            "stop"
+          ],
+          "actions_blocked": [],
+          "services_executed": [
+            "stop"
+          ],
+          "idempotent_skips": 0,
+          "policy_blocks": 0,
+          "repeated_action_blocks": 0,
+          "retries_recorded": 0,
+          "provider": null,
+          "model": null,
+          "input_tokens": null,
+          "output_tokens": null,
+          "estimated_cost_usd": null,
+          "elapsed_ms": 0,
+          "created_at": "2026-08-05T06:26:49.076046Z",
+          "updated_at": "2026-08-05T06:26:49.076046Z"
+        },
+        "detail": ""
+      },
+      {
+        "case_id": "owner_edited_revalidation",
+        "passed": true,
+        "expected_stop": "completed_for_owner_review",
+        "actual_stop": "completed_for_owner_review",
+        "metrics": {
+          "agent_run_id": "agr_01KZ89MV3M7MVB9ACXKNWEQJQT",
+          "opportunity_id": "opp_01ARZ3NDEKTSV4RRFFQ69G5FAA",
+          "status": "awaiting_owner",
+          "stop_reason": "completed_for_owner_review",
+          "step_count": 2,
+          "max_steps": 8,
+          "events_count": 10,
+          "actions_proposed": [
+            "validate_truth_package",
+            "stop"
+          ],
+          "actions_allowed": [
+            "validate_truth_package",
+            "stop"
+          ],
+          "actions_blocked": [],
+          "services_executed": [
+            "validate_truth_package",
+            "stop"
+          ],
+          "idempotent_skips": 0,
+          "policy_blocks": 0,
+          "repeated_action_blocks": 0,
+          "retries_recorded": 0,
+          "provider": "deterministic",
+          "model": "preference-table-v1",
+          "input_tokens": null,
+          "output_tokens": null,
+          "estimated_cost_usd": null,
+          "elapsed_ms": 1,
+          "created_at": "2026-08-05T06:26:49.076046Z",
+          "updated_at": "2026-08-05T06:26:49.077245Z"
+        },
+        "detail": ""
+      },
+      {
+        "case_id": "partial_resume",
+        "passed": true,
+        "expected_stop": "completed_for_owner_review",
+        "actual_stop": "completed_for_owner_review",
+        "metrics": {
+          "agent_run_id": "agr_01KZ89MV3N1EHEM6TMK7XXZ87J",
+          "opportunity_id": "opp_01ARZ3NDEKTSV4RRFFQ69G5FAA",
+          "status": "awaiting_owner",
+          "stop_reason": "completed_for_owner_review",
+          "step_count": 4,
+          "max_steps": 8,
+          "events_count": 20,
+          "actions_proposed": [
+            "run_preparation",
+            "stop",
+            "inspect_readiness",
+            "stop"
+          ],
+          "actions_allowed": [
+            "run_preparation",
+            "stop",
+            "inspect_readiness",
+            "stop"
+          ],
+          "actions_blocked": [],
+          "services_executed": [
+            "run_preparation",
+            "stop",
+            "inspect_readiness",
+            "stop"
+          ],
+          "idempotent_skips": 0,
+          "policy_blocks": 0,
+          "repeated_action_blocks": 0,
+          "retries_recorded": 0,
+          "provider": "deterministic",
+          "model": "preference-table-v1",
+          "input_tokens": null,
+          "output_tokens": null,
+          "estimated_cost_usd": null,
+          "elapsed_ms": 0,
+          "created_at": "2026-08-05T06:26:49.077245Z",
+          "updated_at": "2026-08-05T06:26:49.077245Z"
+        },
+        "detail": ""
+      },
+      {
+        "case_id": "contradictory_state",
+        "passed": true,
+        "expected_stop": "unsupported_state",
+        "actual_stop": "unsupported_state",
+        "metrics": {
+          "agent_run_id": "agr_01KZ89MV3N3YYEQTFQGZEK05J3",
+          "opportunity_id": "opp_01ARZ3NDEKTSV4RRFFQ69G5FAA",
+          "status": "failed",
+          "stop_reason": "unsupported_state",
+          "step_count": 1,
+          "max_steps": 8,
+          "events_count": 5,
+          "actions_proposed": [
+            "stop"
+          ],
+          "actions_allowed": [
+            "stop"
+          ],
+          "actions_blocked": [],
+          "services_executed": [
+            "stop"
+          ],
+          "idempotent_skips": 0,
+          "policy_blocks": 0,
+          "repeated_action_blocks": 0,
+          "retries_recorded": 0,
+          "provider": null,
+          "model": null,
+          "input_tokens": null,
+          "output_tokens": null,
+          "estimated_cost_usd": null,
+          "elapsed_ms": 1,
+          "created_at": "2026-08-05T06:26:49.077245Z",
+          "updated_at": "2026-08-05T06:26:49.078252Z"
+        },
+        "detail": ""
+      },
+      {
+        "case_id": "provider_unavailable",
+        "passed": true,
+        "expected_stop": "provider_unavailable",
+        "actual_stop": "provider_unavailable",
+        "metrics": {
+          "agent_run_id": "agr_01KZ89MV3PDDCR2BW27K6W15VV",
+          "opportunity_id": "opp_01ARZ3NDEKTSV4RRFFQ69G5FAA",
+          "status": "failed",
+          "stop_reason": "provider_unavailable",
+          "step_count": 0,
+          "max_steps": 8,
+          "events_count": 3,
+          "actions_proposed": [],
+          "actions_allowed": [],
+          "actions_blocked": [],
+          "services_executed": [],
+          "idempotent_skips": 0,
+          "policy_blocks": 0,
+          "repeated_action_blocks": 0,
+          "retries_recorded": 0,
+          "provider": "unavailable",
+          "model": null,
+          "input_tokens": null,
+          "output_tokens": null,
+          "estimated_cost_usd": null,
+          "elapsed_ms": 0,
+          "created_at": "2026-08-05T06:26:49.078252Z",
+          "updated_at": "2026-08-05T06:26:49.078252Z"
+        },
+        "detail": ""
+      },
+      {
+        "case_id": "policy_blocked_injection",
+        "passed": true,
+        "expected_stop": "policy_blocked",
+        "actual_stop": "policy_blocked",
+        "metrics": {
+          "agent_run_id": "agr_01KZ89MV3P6K60MYFBAZZR0KY2",
+          "opportunity_id": "opp_01ARZ3NDEKTSV4RRFFQ69G5FAA",
+          "status": "failed",
+          "stop_reason": "policy_blocked",
+          "step_count": 1,
+          "max_steps": 8,
+          "events_count": 6,
+          "actions_proposed": [
+            "validate_truth_package"
+          ],
+          "actions_allowed": [],
+          "actions_blocked": [
+            "validate_truth_package"
+          ],
+          "services_executed": [],
+          "idempotent_skips": 0,
+          "policy_blocks": 1,
+          "repeated_action_blocks": 0,
+          "retries_recorded": 0,
+          "provider": "eval-injection",
+          "model": "fixture",
+          "input_tokens": null,
+          "output_tokens": null,
+          "estimated_cost_usd": null,
+          "elapsed_ms": 0,
+          "created_at": "2026-08-05T06:26:49.078252Z",
+          "updated_at": "2026-08-05T06:26:49.078252Z"
+        },
+        "detail": ""
+      }
+    ],
+    "corpus_metrics": {
+      "run_count": 16,
+      "total_steps": 30,
+      "mean_steps": 1.875,
+      "stop_reason_counts": {
+        "completed_for_owner_review": 8,
+        "invalid_state": 3,
+        "truth_validation_blocked": 1,
+        "clarification_required": 1,
+        "unsupported_state": 1,
+        "provider_unavailable": 1,
+        "policy_blocked": 1
+      },
+      "actions_proposed_counts": {
+        "run_preparation": 6,
+        "validate_truth_package": 8,
+        "stop": 15,
+        "inspect_readiness": 1
+      },
+      "actions_allowed_counts": {
+        "run_preparation": 6,
+        "validate_truth_package": 7,
+        "stop": 15,
+        "inspect_readiness": 1
+      },
+      "actions_blocked_counts": {
+        "validate_truth_package": 1
+      },
+      "services_executed_counts": {
+        "run_preparation": 6,
+        "validate_truth_package": 7,
+        "stop": 15,
+        "inspect_readiness": 1
+      },
+      "policy_blocks": 1,
+      "repeated_action_blocks": 0,
+      "idempotent_skips": 0,
+      "provider_unavailable_count": 1,
+      "total_input_tokens": null,
+      "total_output_tokens": null,
+      "total_estimated_cost_usd": null,
+      "total_elapsed_ms": 5
+    },
+    "proposer_comparison": [
+      {
+        "case_id": "ready_happy_path",
+        "primary_state": "missing_package",
+        "deterministic_action": "run_preparation",
+        "alternate_action": "request_owner_review",
+        "agreed": false,
+        "deterministic_legal": true,
+        "alternate_legal": true,
+        "alternate_would_be_policy_blocked": false
+      },
+      {
+        "case_id": "missing_analysis",
+        "primary_state": "missing_analysis",
+        "deterministic_action": "stop",
+        "alternate_action": "request_owner_review",
+        "agreed": false,
+        "deterministic_legal": true,
+        "alternate_legal": true,
+        "alternate_would_be_policy_blocked": false
+      },
+      {
+        "case_id": "missing_assessment",
+        "primary_state": "missing_assessment",
+        "deterministic_action": "stop",
+        "alternate_action": "request_owner_review",
+        "agreed": false,
+        "deterministic_legal": true,
+        "alternate_legal": true,
+        "alternate_would_be_policy_blocked": false
+      },
+      {
+        "case_id": "missing_strategy",
+        "primary_state": "missing_strategy",
+        "deterministic_action": "stop",
+        "alternate_action": "request_owner_review",
+        "agreed": false,
+        "deterministic_legal": true,
+        "alternate_legal": true,
+        "alternate_would_be_policy_blocked": false
+      },
+      {
+        "case_id": "missing_package",
+        "primary_state": "missing_package",
+        "deterministic_action": "run_preparation",
+        "alternate_action": "request_owner_review",
+        "agreed": false,
+        "deterministic_legal": true,
+        "alternate_legal": true,
+        "alternate_would_be_policy_blocked": false
+      },
+      {
+        "case_id": "missing_cv",
+        "primary_state": "missing_cv",
+        "deterministic_action": "run_preparation",
+        "alternate_action": "request_owner_review",
+        "agreed": false,
+        "deterministic_legal": true,
+        "alternate_legal": true,
+        "alternate_would_be_policy_blocked": false
+      },
+      {
+        "case_id": "missing_cover_letter",
+        "primary_state": "missing_cover_letter",
+        "deterministic_action": "run_preparation",
+        "alternate_action": "request_owner_review",
+        "agreed": false,
+        "deterministic_legal": true,
+        "alternate_legal": true,
+        "alternate_would_be_policy_blocked": false
+      },
+      {
+        "case_id": "stale_truth",
+        "primary_state": "stale_truth_report",
+        "deterministic_action": "validate_truth_package",
+        "alternate_action": "request_owner_review",
+        "agreed": false,
+        "deterministic_legal": true,
+        "alternate_legal": true,
+        "alternate_would_be_policy_blocked": false
+      },
+      {
+        "case_id": "failing_truth",
+        "primary_state": "truth_blocked",
+        "deterministic_action": "stop",
+        "alternate_action": "request_owner_review",
+        "agreed": false,
+        "deterministic_legal": true,
+        "alternate_legal": true,
+        "alternate_would_be_policy_blocked": false
+      },
+      {
+        "case_id": "package_integrity_failure",
+        "primary_state": "package_integrity_failure",
+        "deterministic_action": "run_preparation",
+        "alternate_action": "verify_package",
+        "agreed": false,
+        "deterministic_legal": true,
+        "alternate_legal": true,
+        "alternate_would_be_policy_blocked": false
+      },
+      {
+        "case_id": "clarification_required",
+        "primary_state": "clarification_required",
+        "deterministic_action": "stop",
+        "alternate_action": "request_owner_review",
+        "agreed": false,
+        "deterministic_legal": true,
+        "alternate_legal": true,
+        "alternate_would_be_policy_blocked": false
+      },
+      {
+        "case_id": "owner_edited_revalidation",
+        "primary_state": "owner_markdown_revalidation_required",
+        "deterministic_action": "validate_truth_package",
+        "alternate_action": "request_owner_review",
+        "agreed": false,
+        "deterministic_legal": true,
+        "alternate_legal": true,
+        "alternate_would_be_policy_blocked": false
+      },
+      {
+        "case_id": "partial_resume",
+        "primary_state": "missing_package",
+        "deterministic_action": "run_preparation",
+        "alternate_action": "request_owner_review",
+        "agreed": false,
+        "deterministic_legal": true,
+        "alternate_legal": true,
+        "alternate_would_be_policy_blocked": false
+      },
+      {
+        "case_id": "contradictory_state",
+        "primary_state": "unsupported_or_contradictory",
+        "deterministic_action": "stop",
+        "alternate_action": "request_owner_review",
+        "agreed": false,
+        "deterministic_legal": true,
+        "alternate_legal": true,
+        "alternate_would_be_policy_blocked": false
+      },
+      {
+        "case_id": "provider_unavailable",
+        "primary_state": "missing_package",
+        "deterministic_action": "run_preparation",
+        "alternate_action": "request_owner_review",
+        "agreed": false,
+        "deterministic_legal": true,
+        "alternate_legal": true,
+        "alternate_would_be_policy_blocked": false
+      },
+      {
+        "case_id": "policy_blocked_injection",
+        "primary_state": "missing_package",
+        "deterministic_action": "run_preparation",
+        "alternate_action": "request_owner_review",
+        "agreed": false,
+        "deterministic_legal": true,
+        "alternate_legal": true,
+        "alternate_would_be_policy_blocked": false
+      }
+    ],
+    "cases_passed": 16,
+    "cases_total": 16,
+    "all_passed": true
+  },
+  "sample_aggregate": {
+    "run_count": 4,
+    "total_steps": 7,
+    "mean_steps": 1.75,
+    "stop_reason_counts": {
+      "completed_for_owner_review": 1,
+      "truth_validation_blocked": 2,
+      "policy_blocked": 1
+    },
+    "actions_proposed_counts": {
+      "run_preparation": 2,
+      "validate_truth_package": 2,
+      "stop": 3
+    },
+    "actions_allowed_counts": {
+      "run_preparation": 2,
+      "validate_truth_package": 1,
+      "stop": 3
+    },
+    "actions_blocked_counts": {
+      "validate_truth_package": 1
+    },
+    "services_executed_counts": {
+      "run_preparation": 2,
+      "validate_truth_package": 1,
+      "stop": 3
+    },
+    "policy_blocks": 1,
+    "repeated_action_blocks": 0,
+    "idempotent_skips": 0,
+    "provider_unavailable_count": 0,
+    "total_input_tokens": null,
+    "total_output_tokens": null,
+    "total_estimated_cost_usd": null,
+    "total_elapsed_ms": 11
+  },
+  "happy_run_id": "agr_01KZ89MV4YS09SSEVGWKZW5GC5"
+}

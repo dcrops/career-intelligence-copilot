@@ -44,9 +44,9 @@ adapters, or workflow graphs. Spikes use saved/manual jobs before live acquisiti
 ### Deterministic first; agents only when justified
 
 Prefer deterministic workflow nodes and typed services where decisions are already
-understood. Introduce bounded agents (FR-015) only after the deterministic path
-(FR-008) works; multi-agent patterns (FR-015) only after bounded agents are reliable.
-Do not blur workflow orchestration with agent reasoning.
+understood. Introduce bounded agents (FR-015 — **complete / frozen**) only after the
+deterministic path (FR-008) works; multi-agent patterns (FR-016) only after bounded
+agents are reliable. Do not blur workflow orchestration with agent reasoning.
 
 **Orchestration coordinates; services execute; adapters channel; interfaces remain thin.**
 A dedicated coordinator (FR-011 preparation, FR-012 submission) sequences existing

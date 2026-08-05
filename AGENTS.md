@@ -61,9 +61,12 @@ Truth Validation is **complete and frozen** —
 [acceptance](docs/eval/fr014_recruiter_document_truth_validation.md);
 milestones [M0](docs/eval/fr014_m0_engineering_spike.md)–[M4](docs/eval/fr014_m4_claim_validation.md);
 [ADR-006](docs/adr/006_recruiter_document_truth_validation.md). **Current focus — Horizon 1A:**
-**FR-015** Bounded Agentic Workflow (not started — owner request required), then
-FR-016–FR-017.
-Do not reopen Phase 2, FR-008, FR-009, FR-010, FR-011, FR-012, FR-013, or FR-014 exit criteria without
+**FR-016** Multi-Agent Orchestration (not started — owner request required). **FR-015**
+Bounded Agentic Workflow is **complete and frozen** —
+[acceptance](docs/eval/fr015_bounded_agentic_workflow.md);
+milestones [M0](docs/eval/fr015_m0_engineering_spike.md)–[M4](docs/eval/fr015_m4_evaluation.md);
+[ADR-007](docs/adr/007_bounded_agentic_workflow.md).
+Do not reopen Phase 2, FR-008, FR-009, FR-010, FR-011, FR-012, FR-013, FR-014, or FR-015 exit criteria without
 explicit owner request.
 **Principle:** Job acquisition first. Recruiter outreach second (Horizon 1B /
 FR-018–FR-024 — do not start while 1A is incomplete).
@@ -100,9 +103,12 @@ frozen** (owner-assisted submission; append-only attempts; thin `cic submission`
 Pipeline Tracking is complete and frozen**
 ([acceptance](docs/eval/fr013_application_pipeline_tracking.md)). **FR-014**
 Recruiter Document Truth Validation is **complete and frozen**
-([acceptance](docs/eval/fr014_recruiter_document_truth_validation.md)). Next:
-**FR-015** Bounded Agentic Workflow (not started), then FR-016–FR-017. See
-[docs/10_roadmap.md](docs/10_roadmap.md).
+([acceptance](docs/eval/fr014_recruiter_document_truth_validation.md)). **FR-015**
+Bounded Agentic Workflow is **complete and frozen**
+([acceptance](docs/eval/fr015_bounded_agentic_workflow.md);
+[ADR-007](docs/adr/007_bounded_agentic_workflow.md)). Next:
+**FR-016** Multi-Agent Orchestration (not started — owner request required), then
+FR-017. See [docs/10_roadmap.md](docs/10_roadmap.md).
 
 Full detail: [docs/04_functional_specification.md](docs/04_functional_specification.md) and [docs/10_roadmap.md](docs/10_roadmap.md).
 
@@ -136,10 +142,15 @@ Apply [docs/05_engineering_principles.md](docs/05_engineering_principles.md) for
  score, no LLM ranking. Change the key only with explicit owner approval
 - **Acquisition via adapters** — prefer APIs/feeds/alerts/URLs/paste/exports; Playwright is a controlled fallback, not crawlers
 - **Recruiter-document truth is fail-closed (FR-014 — frozen)** — Markdown is authoritative;
-  Career Profile authorizes Class A; JD/assessment/strategy/plans are context only;
-  detection certainty ≠ evidence status; fresh content-hash TruthReports gate package
-  external use and submission; never rewrite; owner review remains mandatory
-  ([ADR-006](docs/adr/006_recruiter_document_truth_validation.md))
+ Career Profile authorizes Class A; JD/assessment/strategy/plans are context only;
+ detection certainty ≠ evidence status; fresh content-hash TruthReports gate package
+ external use and submission; never rewrite; owner review remains mandatory
+ ([ADR-006](docs/adr/006_recruiter_document_truth_validation.md))
+- **Bounded agent coordinates; services remain authoritative (FR-015 — frozen)** — BOPA proposes
+ allow-listed actions; ToolPolicy validates; existing services execute; no FR-008 wrap,
+ submit, pipeline mutation, discovery, or truth waive; deterministic proposer is the
+ operational default
+ ([ADR-007](docs/adr/007_bounded_agentic_workflow.md))
 
 ---
 

@@ -1,0 +1,205 @@
+"""Public API for Bounded Agentic Workflow (FR-015).
+
+M1: typed contracts, readiness state classes, deterministic ToolPolicy.
+M2: AgentRuntime, proposers, thin adapters, audit store, checkpoint/resume.
+M3: owner presentation + factory for thin ``cic agent`` CLI.
+"""
+
+from __future__ import annotations
+
+from .adapters import AdapterResult, ScriptedActionExecutor, ServiceActionExecutor
+from .contracts import (
+    validate_action_proposal_contract,
+    validate_agent_run_contract,
+    validate_readiness_snapshot_contract,
+)
+from .errors import (
+    AdapterExecutionError,
+    AgentContractError,
+    AgentPolicyError,
+    AgentProviderError,
+    AgentRunNotFoundError,
+    AgentRuntimeError,
+    AgentStorageError,
+)
+from .evaluation import (
+    AlternatePreferenceProposer,
+    CaseResult,
+    CorpusCase,
+    EvaluationReport,
+    ProposerComparisonRow,
+    build_default_corpus,
+    compare_proposers_on_first_snapshots,
+    run_corpus,
+)
+from .factory import build_agent_runtime
+from .hashing import compute_snapshot_hash
+from .ids import (
+    new_agent_audit_event_id,
+    new_agent_run_id,
+    new_agent_step_id,
+)
+from .json_store import DEFAULT_AGENT_RUNS_ROOT, JsonDirectoryAgentRunStore
+from .memory_store import InMemoryAgentRunStore
+from .models import (
+    AgentActionProposal,
+    AgentAuditEvent,
+    AgentAuditEventId,
+    AgentGoal,
+    AgentRun,
+    AgentRunId,
+    AgentStep,
+    AgentStepId,
+    ArtefactPresence,
+    CompletedOperationRecord,
+    PackageReadiness,
+    PolicyDecision,
+    ProviderMetadata,
+    ReadinessSnapshot,
+    TruthReadiness,
+)
+from .observability import (
+    AgentCorpusMetrics,
+    AgentRunMetrics,
+    aggregate_metrics,
+    extract_run_metrics,
+)
+from .policy import evaluate_action_policy, require_action_allowed
+from .presentation import (
+    format_agent_history,
+    format_agent_list_line,
+    format_agent_run_report,
+    owner_action_required,
+)
+from .proposer import (
+    ActionProposer,
+    DeterministicActionProposer,
+    OpenAIActionProposer,
+    StructuredActionProposal,
+    default_proposal_for_snapshot,
+)
+from .readiness import LiveReadinessBuilder, StaticReadinessBuilder
+from .runtime import AgentRuntime
+from .state_classes import (
+    applicable_state_classes,
+    approved_actions_for,
+    expected_owner_stop_reason,
+    primary_state_class,
+)
+from .types import (
+    AGENT_ACTIONS,
+    AGENT_GOAL_KINDS,
+    AGENT_RUN_STATUSES,
+    AGENT_STOP_REASONS,
+    AUDIT_EVENT_KINDS,
+    DEFAULT_MAX_STEPS,
+    FORBIDDEN_ACTION_NAMES,
+    OWNER_DECISION_KINDS,
+    PACKAGE_STATUSES,
+    POLICY_DECISION_KINDS,
+    READINESS_STATE_CLASSES,
+    STATE_CLASS_PRIORITY,
+    TRUTH_STATUSES,
+    AgentAction,
+    AgentGoalKind,
+    AgentRunStatus,
+    AgentStopReason,
+    AuditEventKind,
+    OwnerDecisionKind,
+    PackageStatus,
+    PolicyDecisionKind,
+    ReadinessStateClass,
+    TruthStatus,
+)
+
+__all__ = [
+    "AGENT_ACTIONS",
+    "AGENT_GOAL_KINDS",
+    "AGENT_RUN_STATUSES",
+    "AGENT_STOP_REASONS",
+    "AUDIT_EVENT_KINDS",
+    "DEFAULT_AGENT_RUNS_ROOT",
+    "DEFAULT_MAX_STEPS",
+    "FORBIDDEN_ACTION_NAMES",
+    "OWNER_DECISION_KINDS",
+    "PACKAGE_STATUSES",
+    "POLICY_DECISION_KINDS",
+    "READINESS_STATE_CLASSES",
+    "STATE_CLASS_PRIORITY",
+    "TRUTH_STATUSES",
+    "ActionProposer",
+    "AdapterExecutionError",
+    "AdapterResult",
+    "AgentAction",
+    "AgentActionProposal",
+    "AgentAuditEvent",
+    "AgentAuditEventId",
+    "AgentContractError",
+    "AgentCorpusMetrics",
+    "AgentGoal",
+    "AgentGoalKind",
+    "AgentPolicyError",
+    "AgentProviderError",
+    "AgentRun",
+    "AgentRunId",
+    "AgentRunMetrics",
+    "AgentRunNotFoundError",
+    "AgentRunStatus",
+    "AgentRuntime",
+    "AgentRuntimeError",
+    "AgentStep",
+    "AgentStepId",
+    "AgentStopReason",
+    "AgentStorageError",
+    "AlternatePreferenceProposer",
+    "ArtefactPresence",
+    "AuditEventKind",
+    "CaseResult",
+    "CompletedOperationRecord",
+    "CorpusCase",
+    "DeterministicActionProposer",
+    "EvaluationReport",
+    "InMemoryAgentRunStore",
+    "JsonDirectoryAgentRunStore",
+    "LiveReadinessBuilder",
+    "OpenAIActionProposer",
+    "OwnerDecisionKind",
+    "PackageReadiness",
+    "PackageStatus",
+    "PolicyDecision",
+    "PolicyDecisionKind",
+    "ProposerComparisonRow",
+    "ProviderMetadata",
+    "ReadinessSnapshot",
+    "ReadinessStateClass",
+    "ScriptedActionExecutor",
+    "ServiceActionExecutor",
+    "StaticReadinessBuilder",
+    "StructuredActionProposal",
+    "TruthReadiness",
+    "TruthStatus",
+    "aggregate_metrics",
+    "applicable_state_classes",
+    "approved_actions_for",
+    "build_agent_runtime",
+    "build_default_corpus",
+    "compare_proposers_on_first_snapshots",
+    "compute_snapshot_hash",
+    "default_proposal_for_snapshot",
+    "evaluate_action_policy",
+    "expected_owner_stop_reason",
+    "extract_run_metrics",
+    "format_agent_history",
+    "format_agent_list_line",
+    "format_agent_run_report",
+    "new_agent_audit_event_id",
+    "new_agent_run_id",
+    "new_agent_step_id",
+    "owner_action_required",
+    "primary_state_class",
+    "require_action_allowed",
+    "run_corpus",
+    "validate_action_proposal_contract",
+    "validate_agent_run_contract",
+    "validate_readiness_snapshot_contract",
+]

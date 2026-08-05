@@ -1481,8 +1481,9 @@ computable), project delivery, and domain claims — profile-authorised only
 **Roadmap dependency:** **FR-014 is accepted and frozen** and must remain in force
 before any future work that increases application automation or reduces owner review.
 FR-013 Application Pipeline Tracking is **complete and frozen** and keeps its
-established identifier. Next active FR: **FR-015** Bounded Agentic Workflow (not
-started — owner request required).
+established identifier. **FR-015** Bounded Agentic Workflow is **complete and frozen**.
+Next active FR: **FR-016** Multi-Agent Orchestration (not started — owner request
+required).
 
 Distinguish: (A) candidate claims (require candidate evidence); (B) employer-context
 statements (JD evidence OK; must not become candidate capability); (C) aspirational /
@@ -1523,24 +1524,25 @@ Acceptance Criteria
 ## FR-015 Bounded Agentic Workflow
 
 **Phase:** Horizon 1A Stage 9  
-**Status:** Planned — **first introduction of bounded agentic reasoning**  
+**Status:** **Complete and frozen** —
+[acceptance](eval/fr015_bounded_agentic_workflow.md);
+[ADR-007](adr/007_bounded_agentic_workflow.md)  
 *(Originally planned as FR-014; renumbered to FR-015 after insertion of FR-014
-Recruiter Document Truth Validation — 2026-08-05.)*
+Recruiter Document Truth Validation — 2026-08-05.)*  
+**M0:** [eval/fr015_m0_engineering_spike.md](eval/fr015_m0_engineering_spike.md) (Accepted)  
+**M1:** [eval/fr015_m1_agent_contracts.md](eval/fr015_m1_agent_contracts.md)  
+**M2:** [eval/fr015_m2_agent_runtime.md](eval/fr015_m2_agent_runtime.md)  
+**M3:** [eval/fr015_m3_owner_cli.md](eval/fr015_m3_owner_cli.md)  
+**M4:** [eval/fr015_m4_evaluation.md](eval/fr015_m4_evaluation.md)
 
-Only after the deterministic workflow (FR-008) is functioning — and after FR-014
-truth validation is accepted before any automation increase — may selected nodes
-become agentic.
+Delivers Bounded Opportunity Preparation Agent (BOPA): one agent, one Opportunity,
+post-acquisition. ActionProposer suggests; ToolPolicy authorises; CIC services
+execute. Closed allow-list; no submit / pipeline / discovery / truth waiver /
+multi-agent. Deterministic proposer is the operational default (`--llm` optional).
+Thin `cic agent` CLI. Additive audit under `data/agent_runs/`.
 
-Potential bounded agents (examples): search-query refinement; company-context
-research; application-question drafting; submission recovery; quality review;
-incomplete-job investigation.
-
-Each agent must have: bounded scope; explicit tools; typed inputs; typed outputs;
-maximum iterations; stop conditions; traceable reasoning; owner escalation where
-necessary; validation before state updates.
-
-Document why each selected capability benefits from agentic reasoning rather than
-deterministic logic.
+Do not reopen FR-015 exit criteria without explicit owner request. Do not begin
+FR-016 without explicit owner request.
 
 Acceptance Criteria
 
@@ -1550,15 +1552,18 @@ Acceptance Criteria
 
 ✓ Deterministic alternatives were considered and documented for each agent.
 
+✓ Evaluation / observability / owner manual validation complete (M4).
+
 ---
 
 ## FR-016 Multi-Agent Orchestration
 
 **Phase:** Horizon 1A Stage 10  
-**Status:** Planned — **introduces multi-agent orchestration**  
+**Status:** **Current active FR** — Planned / not started — **owner request required**  
 *(Originally planned as FR-015; renumbered 2026-08-05.)*
 
-Only after bounded agents (FR-015) are reliable.
+Only after bounded agents (FR-015) are reliable — **FR-015 is complete and frozen**.
+Do not begin implementation without explicit owner request.
 
 Evaluate: supervisor pattern; agents as tools; handoffs; context isolation; shared
 state; orchestration trade-offs; centralised vs distributed control.

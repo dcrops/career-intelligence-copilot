@@ -1,0 +1,615 @@
+{
+  "agent_run_id": "agr_01KZ89MV66RSCBDPNWP5WRWWQN",
+  "goal": {
+    "goal_kind": "prepare_for_owner_review",
+    "opportunity_id": "opp_01ARZ3NDEKTSV4RRFFQ69G5FAA",
+    "owner_notes": null
+  },
+  "status": "awaiting_owner",
+  "step_count": 4,
+  "max_steps": 8,
+  "last_snapshot": {
+    "opportunity_id": "opp_01ARZ3NDEKTSV4RRFFQ69G5FAA",
+    "decision": "apply",
+    "artefacts": {
+      "job_analysis": true,
+      "assessment": true,
+      "portfolio_match": true,
+      "strategy": true
+    },
+    "package": {
+      "status": "present",
+      "cv_present": true,
+      "cover_letter_present": true,
+      "manifest_ref": "package:m4"
+    },
+    "truth": {
+      "status": "pass",
+      "report_ref": "trp_01ARZ3NDEKTSV4RRFFQ69G5FAA",
+      "owner_edited_markdown_since_validation": false,
+      "blocking_finding_codes": []
+    },
+    "owner_approvals_present": true,
+    "clarification_required": false,
+    "clarification_message": null,
+    "provider_available": true,
+    "contradictory_flags": [],
+    "prior_agent_run_id": null,
+    "prior_agent_run_incomplete": false,
+    "snapshot_hash": "8175718f92e0ccf195fbdcf80538791686d7b1729bc77c17eace3105cad1dcf0",
+    "observed_at": "2026-08-05T12:00:00Z"
+  },
+  "primary_state_class": "ready_for_owner_review",
+  "stop_reason": "completed_for_owner_review",
+  "checkpoint_ref": "step:ags_01KZ89MV7CF0VHX164CTDV0VV8",
+  "events": [
+    {
+      "event_id": "aae_01KZ89MV66TNSAMK3YS70BD9PR",
+      "kind": "run_started",
+      "at": "2026-08-05T06:26:49.158994Z",
+      "step_id": null,
+      "state_class": null,
+      "action": null,
+      "policy_decision": null,
+      "stop_reason": null,
+      "message": "goal=prepare_for_owner_review opportunity=opp_01ARZ3NDEKTSV4RRFFQ69G5FAA",
+      "refs": [],
+      "provider": null
+    },
+    {
+      "event_id": "aae_01KZ89MV67TD5C21BMT8K59BXH",
+      "kind": "snapshot_observed",
+      "at": "2026-08-05T06:26:49.159994Z",
+      "step_id": null,
+      "state_class": "missing_package",
+      "action": null,
+      "policy_decision": null,
+      "stop_reason": null,
+      "message": "hash=a8237a4e9521365e86c4ddf0e9f1023d8279230fc65e4d8f501d11d1591f8f52",
+      "refs": [
+        "package:absent",
+        "truth:absent"
+      ],
+      "provider": null
+    },
+    {
+      "event_id": "aae_01KZ89MV6791AEBC01VTB97T6B",
+      "kind": "action_proposed",
+      "at": "2026-08-05T06:26:49.159994Z",
+      "step_id": null,
+      "state_class": "missing_package",
+      "action": "run_preparation",
+      "policy_decision": null,
+      "stop_reason": null,
+      "message": "Deterministic preference for primary state 'missing_package' given approved actions ['inspect_readiness', 'request_owner_review', 'run_preparation', 'stop'].",
+      "refs": [],
+      "provider": {
+        "provider": "deterministic",
+        "model": "preference-table-v1",
+        "latency_ms": null,
+        "input_tokens": null,
+        "output_tokens": null,
+        "estimated_cost_usd": null
+      }
+    },
+    {
+      "event_id": "aae_01KZ89MV67BV5CCJW3RWDX62T2",
+      "kind": "policy_evaluated",
+      "at": "2026-08-05T06:26:49.159994Z",
+      "step_id": null,
+      "state_class": "missing_package",
+      "action": "run_preparation",
+      "policy_decision": "allow",
+      "stop_reason": null,
+      "message": null,
+      "refs": [],
+      "provider": null
+    },
+    {
+      "event_id": "aae_01KZ89MV67587FE4E8R29CTYRM",
+      "kind": "action_executed",
+      "at": "2026-08-05T06:26:49.159994Z",
+      "step_id": "ags_01KZ89MV671GKQ4A6H3BCTN426",
+      "state_class": "missing_package",
+      "action": "run_preparation",
+      "policy_decision": "allow",
+      "stop_reason": null,
+      "message": "prepared",
+      "refs": [
+        "apr_c"
+      ],
+      "provider": null
+    },
+    {
+      "event_id": "aae_01KZ89MV67PPQ6YBR9QSX0PTY6",
+      "kind": "service_result",
+      "at": "2026-08-05T06:26:49.159994Z",
+      "step_id": "ags_01KZ89MV671GKQ4A6H3BCTN426",
+      "state_class": null,
+      "action": "run_preparation",
+      "policy_decision": null,
+      "stop_reason": null,
+      "message": "prepared",
+      "refs": [
+        "apr_c"
+      ],
+      "provider": null
+    },
+    {
+      "event_id": "aae_01KZ89MV69QMFAEB3BW0CEKZBM",
+      "kind": "snapshot_observed",
+      "at": "2026-08-05T06:26:49.161997Z",
+      "step_id": null,
+      "state_class": "truth_blocked",
+      "action": null,
+      "policy_decision": null,
+      "stop_reason": null,
+      "message": "hash=69f79ab1584c3736de4bc41c4f045f9557c91b45d3f0a3b102718474a5d9e533",
+      "refs": [
+        "package:present",
+        "truth:fail"
+      ],
+      "provider": null
+    },
+    {
+      "event_id": "aae_01KZ89MV69XG2JD66D5MWNVG17",
+      "kind": "action_proposed",
+      "at": "2026-08-05T06:26:49.161997Z",
+      "step_id": null,
+      "state_class": "truth_blocked",
+      "action": "stop",
+      "policy_decision": null,
+      "stop_reason": null,
+      "message": "Immediate stop for primary state 'truth_blocked'.",
+      "refs": [],
+      "provider": null
+    },
+    {
+      "event_id": "aae_01KZ89MV69YFW10BDSHNYQDVR6",
+      "kind": "policy_evaluated",
+      "at": "2026-08-05T06:26:49.161997Z",
+      "step_id": null,
+      "state_class": "truth_blocked",
+      "action": "stop",
+      "policy_decision": "allow",
+      "stop_reason": "truth_validation_blocked",
+      "message": null,
+      "refs": [],
+      "provider": null
+    },
+    {
+      "event_id": "aae_01KZ89MV69DWSWTAX7JFYR7WP4",
+      "kind": "stop_recorded",
+      "at": "2026-08-05T06:26:49.161997Z",
+      "step_id": null,
+      "state_class": null,
+      "action": null,
+      "policy_decision": null,
+      "stop_reason": "truth_validation_blocked",
+      "message": "status=awaiting_owner",
+      "refs": [],
+      "provider": null
+    },
+    {
+      "event_id": "aae_01KZ89MV78Z72D9CTRTXE9A607",
+      "kind": "resume_observed",
+      "at": "2026-08-05T06:26:49.192940Z",
+      "step_id": null,
+      "state_class": null,
+      "action": null,
+      "policy_decision": null,
+      "stop_reason": null,
+      "message": "resuming agr_01KZ89MV66RSCBDPNWP5WRWWQN",
+      "refs": [
+        "agr_01KZ89MV66RSCBDPNWP5WRWWQN"
+      ],
+      "provider": null
+    },
+    {
+      "event_id": "aae_01KZ89MV7A0KC47NBS7AF1405H",
+      "kind": "snapshot_observed",
+      "at": "2026-08-05T06:26:49.194994Z",
+      "step_id": null,
+      "state_class": "truth_blocked",
+      "action": null,
+      "policy_decision": null,
+      "stop_reason": null,
+      "message": "hash=69f79ab1584c3736de4bc41c4f045f9557c91b45d3f0a3b102718474a5d9e533",
+      "refs": [
+        "package:present",
+        "truth:fail"
+      ],
+      "provider": null
+    },
+    {
+      "event_id": "aae_01KZ89MV7A4SGNQE1QTDRDGPJV",
+      "kind": "action_proposed",
+      "at": "2026-08-05T06:26:49.194994Z",
+      "step_id": null,
+      "state_class": "truth_blocked",
+      "action": "inspect_readiness",
+      "policy_decision": null,
+      "stop_reason": null,
+      "message": "Resume requires inspect_readiness before further actions.",
+      "refs": [],
+      "provider": null
+    },
+    {
+      "event_id": "aae_01KZ89MV7ATDWH2XWCQ7N5GW9R",
+      "kind": "policy_evaluated",
+      "at": "2026-08-05T06:26:49.194994Z",
+      "step_id": null,
+      "state_class": "truth_blocked",
+      "action": "inspect_readiness",
+      "policy_decision": "allow",
+      "stop_reason": null,
+      "message": null,
+      "refs": [],
+      "provider": null
+    },
+    {
+      "event_id": "aae_01KZ89MV7AZ70HMV2A0X6Q3C5D",
+      "kind": "action_executed",
+      "at": "2026-08-05T06:26:49.194994Z",
+      "step_id": "ags_01KZ89MV7AR57JQDES0GS0GTK2",
+      "state_class": "truth_blocked",
+      "action": "inspect_readiness",
+      "policy_decision": "allow",
+      "stop_reason": null,
+      "message": "scripted inspect_readiness",
+      "refs": [],
+      "provider": null
+    },
+    {
+      "event_id": "aae_01KZ89MV7A3HMG7NX84C2FKNEB",
+      "kind": "service_result",
+      "at": "2026-08-05T06:26:49.194994Z",
+      "step_id": "ags_01KZ89MV7AR57JQDES0GS0GTK2",
+      "state_class": null,
+      "action": "inspect_readiness",
+      "policy_decision": null,
+      "stop_reason": null,
+      "message": "scripted inspect_readiness",
+      "refs": [],
+      "provider": null
+    },
+    {
+      "event_id": "aae_01KZ89MV7CX6Z17HW04ZEGD371",
+      "kind": "snapshot_observed",
+      "at": "2026-08-05T06:26:49.196994Z",
+      "step_id": null,
+      "state_class": "ready_for_owner_review",
+      "action": null,
+      "policy_decision": null,
+      "stop_reason": null,
+      "message": "hash=8175718f92e0ccf195fbdcf80538791686d7b1729bc77c17eace3105cad1dcf0",
+      "refs": [
+        "package:present",
+        "truth:pass"
+      ],
+      "provider": null
+    },
+    {
+      "event_id": "aae_01KZ89MV7C4C904A1F8P0HX81R",
+      "kind": "action_proposed",
+      "at": "2026-08-05T06:26:49.196994Z",
+      "step_id": null,
+      "state_class": "ready_for_owner_review",
+      "action": "stop",
+      "policy_decision": null,
+      "stop_reason": null,
+      "message": "Immediate stop for primary state 'ready_for_owner_review'.",
+      "refs": [],
+      "provider": null
+    },
+    {
+      "event_id": "aae_01KZ89MV7CKVSDDP1P58ZCPY54",
+      "kind": "policy_evaluated",
+      "at": "2026-08-05T06:26:49.196994Z",
+      "step_id": null,
+      "state_class": "ready_for_owner_review",
+      "action": "stop",
+      "policy_decision": "allow",
+      "stop_reason": "completed_for_owner_review",
+      "message": null,
+      "refs": [],
+      "provider": null
+    },
+    {
+      "event_id": "aae_01KZ89MV7CD15RGAQRXV9WT8P0",
+      "kind": "stop_recorded",
+      "at": "2026-08-05T06:26:49.196994Z",
+      "step_id": null,
+      "state_class": null,
+      "action": null,
+      "policy_decision": null,
+      "stop_reason": "completed_for_owner_review",
+      "message": "status=awaiting_owner",
+      "refs": [],
+      "provider": null
+    }
+  ],
+  "steps": [
+    {
+      "step_id": "ags_01KZ89MV671GKQ4A6H3BCTN426",
+      "index": 0,
+      "snapshot": {
+        "opportunity_id": "opp_01ARZ3NDEKTSV4RRFFQ69G5FAA",
+        "decision": "apply",
+        "artefacts": {
+          "job_analysis": true,
+          "assessment": true,
+          "portfolio_match": true,
+          "strategy": true
+        },
+        "package": {
+          "status": "absent",
+          "cv_present": false,
+          "cover_letter_present": false,
+          "manifest_ref": null
+        },
+        "truth": {
+          "status": "absent",
+          "report_ref": null,
+          "owner_edited_markdown_since_validation": false,
+          "blocking_finding_codes": []
+        },
+        "owner_approvals_present": true,
+        "clarification_required": false,
+        "clarification_message": null,
+        "provider_available": true,
+        "contradictory_flags": [],
+        "prior_agent_run_id": null,
+        "prior_agent_run_incomplete": false,
+        "snapshot_hash": "a8237a4e9521365e86c4ddf0e9f1023d8279230fc65e4d8f501d11d1591f8f52",
+        "observed_at": "2026-08-05T12:00:00Z"
+      },
+      "primary_state_class": "missing_package",
+      "proposal": {
+        "action": "run_preparation",
+        "rationale": "Deterministic preference for primary state 'missing_package' given approved actions ['inspect_readiness', 'request_owner_review', 'run_preparation', 'stop'].",
+        "evidence_refs": [
+          "state:missing_package",
+          "decision:apply",
+          "package:absent",
+          "truth:absent"
+        ],
+        "primary_state_class": "missing_package"
+      },
+      "policy": {
+        "decision": "allow",
+        "action": "run_preparation",
+        "primary_state_class": "missing_package",
+        "applicable_state_classes": [
+          "missing_package"
+        ],
+        "approved_actions": [
+          "inspect_readiness",
+          "request_owner_review",
+          "run_preparation",
+          "stop"
+        ],
+        "deny_reason": null,
+        "stop_reason": null
+      },
+      "executed": true,
+      "skipped_as_idempotent": false,
+      "service_result_summary": "prepared",
+      "error_summary": null
+    },
+    {
+      "step_id": "ags_01KZ89MV69B7GFV80DTMDPSSJH",
+      "index": 1,
+      "snapshot": {
+        "opportunity_id": "opp_01ARZ3NDEKTSV4RRFFQ69G5FAA",
+        "decision": "apply",
+        "artefacts": {
+          "job_analysis": true,
+          "assessment": true,
+          "portfolio_match": true,
+          "strategy": true
+        },
+        "package": {
+          "status": "present",
+          "cv_present": true,
+          "cover_letter_present": true,
+          "manifest_ref": "package:m4"
+        },
+        "truth": {
+          "status": "fail",
+          "report_ref": "trp_01ARZ3NDEKTSV4RRFFQ69G5FAA",
+          "owner_edited_markdown_since_validation": false,
+          "blocking_finding_codes": []
+        },
+        "owner_approvals_present": true,
+        "clarification_required": false,
+        "clarification_message": null,
+        "provider_available": true,
+        "contradictory_flags": [],
+        "prior_agent_run_id": null,
+        "prior_agent_run_incomplete": false,
+        "snapshot_hash": "69f79ab1584c3736de4bc41c4f045f9557c91b45d3f0a3b102718474a5d9e533",
+        "observed_at": "2026-08-05T12:00:00Z"
+      },
+      "primary_state_class": "truth_blocked",
+      "proposal": {
+        "action": "stop",
+        "rationale": "Immediate stop for primary state 'truth_blocked'.",
+        "evidence_refs": [
+          "state:truth_blocked",
+          "hash:69f79ab1584c3736de4bc41c4f045f9557c91b45d3f0a3b102718474a5d9e533"
+        ],
+        "primary_state_class": "truth_blocked"
+      },
+      "policy": {
+        "decision": "allow",
+        "action": "stop",
+        "primary_state_class": "truth_blocked",
+        "applicable_state_classes": [
+          "truth_blocked"
+        ],
+        "approved_actions": [
+          "inspect_readiness",
+          "request_owner_review",
+          "stop",
+          "validate_truth_package"
+        ],
+        "deny_reason": null,
+        "stop_reason": "truth_validation_blocked"
+      },
+      "executed": true,
+      "skipped_as_idempotent": false,
+      "service_result_summary": "stopped: truth_validation_blocked",
+      "error_summary": null
+    },
+    {
+      "step_id": "ags_01KZ89MV7AR57JQDES0GS0GTK2",
+      "index": 2,
+      "snapshot": {
+        "opportunity_id": "opp_01ARZ3NDEKTSV4RRFFQ69G5FAA",
+        "decision": "apply",
+        "artefacts": {
+          "job_analysis": true,
+          "assessment": true,
+          "portfolio_match": true,
+          "strategy": true
+        },
+        "package": {
+          "status": "present",
+          "cv_present": true,
+          "cover_letter_present": true,
+          "manifest_ref": "package:m4"
+        },
+        "truth": {
+          "status": "fail",
+          "report_ref": "trp_01ARZ3NDEKTSV4RRFFQ69G5FAA",
+          "owner_edited_markdown_since_validation": false,
+          "blocking_finding_codes": []
+        },
+        "owner_approvals_present": true,
+        "clarification_required": false,
+        "clarification_message": null,
+        "provider_available": true,
+        "contradictory_flags": [],
+        "prior_agent_run_id": "agr_01KZ89MV66RSCBDPNWP5WRWWQN",
+        "prior_agent_run_incomplete": true,
+        "snapshot_hash": "69f79ab1584c3736de4bc41c4f045f9557c91b45d3f0a3b102718474a5d9e533",
+        "observed_at": "2026-08-05T12:00:00Z"
+      },
+      "primary_state_class": "truth_blocked",
+      "proposal": {
+        "action": "inspect_readiness",
+        "rationale": "Resume requires inspect_readiness before further actions.",
+        "evidence_refs": [
+          "run:agr_01KZ89MV66RSCBDPNWP5WRWWQN"
+        ],
+        "primary_state_class": "truth_blocked"
+      },
+      "policy": {
+        "decision": "allow",
+        "action": "inspect_readiness",
+        "primary_state_class": "truth_blocked",
+        "applicable_state_classes": [
+          "truth_blocked",
+          "partial_agent_run"
+        ],
+        "approved_actions": [
+          "inspect_readiness",
+          "request_owner_review",
+          "stop",
+          "validate_truth_package"
+        ],
+        "deny_reason": null,
+        "stop_reason": null
+      },
+      "executed": true,
+      "skipped_as_idempotent": false,
+      "service_result_summary": "scripted inspect_readiness",
+      "error_summary": null
+    },
+    {
+      "step_id": "ags_01KZ89MV7CF0VHX164CTDV0VV8",
+      "index": 3,
+      "snapshot": {
+        "opportunity_id": "opp_01ARZ3NDEKTSV4RRFFQ69G5FAA",
+        "decision": "apply",
+        "artefacts": {
+          "job_analysis": true,
+          "assessment": true,
+          "portfolio_match": true,
+          "strategy": true
+        },
+        "package": {
+          "status": "present",
+          "cv_present": true,
+          "cover_letter_present": true,
+          "manifest_ref": "package:m4"
+        },
+        "truth": {
+          "status": "pass",
+          "report_ref": "trp_01ARZ3NDEKTSV4RRFFQ69G5FAA",
+          "owner_edited_markdown_since_validation": false,
+          "blocking_finding_codes": []
+        },
+        "owner_approvals_present": true,
+        "clarification_required": false,
+        "clarification_message": null,
+        "provider_available": true,
+        "contradictory_flags": [],
+        "prior_agent_run_id": null,
+        "prior_agent_run_incomplete": false,
+        "snapshot_hash": "8175718f92e0ccf195fbdcf80538791686d7b1729bc77c17eace3105cad1dcf0",
+        "observed_at": "2026-08-05T12:00:00Z"
+      },
+      "primary_state_class": "ready_for_owner_review",
+      "proposal": {
+        "action": "stop",
+        "rationale": "Immediate stop for primary state 'ready_for_owner_review'.",
+        "evidence_refs": [
+          "state:ready_for_owner_review",
+          "hash:8175718f92e0ccf195fbdcf80538791686d7b1729bc77c17eace3105cad1dcf0"
+        ],
+        "primary_state_class": "ready_for_owner_review"
+      },
+      "policy": {
+        "decision": "allow",
+        "action": "stop",
+        "primary_state_class": "ready_for_owner_review",
+        "applicable_state_classes": [
+          "ready_for_owner_review"
+        ],
+        "approved_actions": [
+          "inspect_readiness",
+          "request_owner_review",
+          "stop",
+          "verify_package"
+        ],
+        "deny_reason": null,
+        "stop_reason": "completed_for_owner_review"
+      },
+      "executed": true,
+      "skipped_as_idempotent": false,
+      "service_result_summary": "stopped: completed_for_owner_review",
+      "error_summary": null
+    }
+  ],
+  "completed_operations": [
+    {
+      "action": "run_preparation",
+      "at": "2026-08-05T06:26:49.159994Z",
+      "result_ref": "apr_c",
+      "skipped_as_idempotent": false
+    }
+  ],
+  "provider": {
+    "provider": "deterministic",
+    "model": "preference-table-v1",
+    "latency_ms": null,
+    "input_tokens": null,
+    "output_tokens": null,
+    "estimated_cost_usd": null
+  },
+  "owner_approvals_present": true,
+  "created_at": "2026-08-05T06:26:49.158994Z",
+  "updated_at": "2026-08-05T06:26:49.196994Z"
+}

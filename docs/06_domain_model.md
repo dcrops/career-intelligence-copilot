@@ -33,37 +33,44 @@ Owner Review / Approval Interrupt (FR-008) → apply | skip | defer recorded on 
       ↓
 Rank / Review Queue (Phase 2 M4 baseline + FR-009 derived projection)
       ↓
-Application Package (FR-010: Tailoring Plan + CV FR-006 + Cover Letter FR-007;
-owner gates composed from FR-006/007 — review required before external use)
+CV Generation (FR-006) + Cover Letter Generation (FR-007)
       ↓
-Preparation Orchestration (FR-011 — coordinates package prep; does not extend FR-008)
+Application Package (FR-010 / FR-011 — composition + preparation orchestration)
       ↓
 Truth Validation (FR-014 — Markdown authoritative; fail-closed external-use gate;
 [ADR-006](adr/006_recruiter_document_truth_validation.md))
       ↓
-Owner Review → Render (HTML/PDF) → Manual / Assisted Submission (FR-012 — never silent)
+Bounded Opportunity Preparation Agent (FR-015 — readiness coordination; stops for owner;
+[ADR-007](adr/007_bounded_agentic_workflow.md))
+      ↓
+Owner Review (mandatory) → Render (HTML/PDF) → Manual / Assisted Submission (FR-012 — never silent)
       ↓
 Pipeline Tracking (FR-013; builds on Phase 2 M2)
       ↓
 Reporting → Operational History (derived report / due / export + append-only events)
 ```
 
-**Owner-facing summary (post–FR-014):** Opportunity → Assessment → Strategy →
-Application Package → Truth Validation → Owner Review → Render → Manual Submission →
-Pipeline Tracking → Reporting → Operational History.
+**Owner-facing production summary (post–FR-015):** Job Analysis → Opportunity
+Assessment → Portfolio Match → Application Strategy → CV Generation → Cover Letter
+Generation → Application Package → Truth Validation → Bounded Opportunity Preparation
+Agent → Owner Review → Submission → Pipeline Tracking.
 
 **FR-014 (complete and frozen):** Truth Validation gates recruiter-facing Markdown
 (advisory after generate; authoritative after owner edit) before external use. It does
 not replace owner review.
+
+**FR-015 (complete and frozen):** BOPA coordinates post-acquisition package/truth
+readiness and stops for owner review. It does not submit, advance pipeline, or waive
+truth ([acceptance](eval/fr015_bounded_agentic_workflow.md)).
 
 Opportunity Assessment and Portfolio Matching remain sibling consumers of Career Profile +
 Job Analysis. Application Strategy consumes both. Document generation and submission are
 separate stages under mandatory owner review. Recruiter Document Truth Validation (FR-014)
 is the fail-closed factual trust boundary before recruiter-facing artefacts scale
 toward automation ([ADR-006](adr/006_recruiter_document_truth_validation.md)). Workflow
-orchestration (FR-008) coordinates
-these nodes; preparation orchestration (FR-011) is a separate coordinator for package
-prep; bounded agents (FR-015+) appear only after the deterministic path works.
+orchestration (FR-008) coordinates acquisition/pre-decision nodes; preparation
+orchestration (FR-011) coordinates package prep; BOPA (FR-015) coordinates readiness
+for owner review without replacing those services.
 
 ---
 
@@ -506,6 +513,34 @@ domain ([eval/fr014_m4_claim_validation.md](eval/fr014_m4_claim_validation.md)).
 **Frozen:** [acceptance](eval/fr014_recruiter_document_truth_validation.md).
 Education / identity / soft claims remain excluded.
 
+### Bounded Agentic Workflow (FR-015 — complete / frozen)
+
+**Maps to:** FR-015 — [acceptance](eval/fr015_bounded_agentic_workflow.md);
+[M0](eval/fr015_m0_engineering_spike.md)–[M4](eval/fr015_m4_evaluation.md);
+[ADR-007](adr/007_bounded_agentic_workflow.md)
+
+Bounded Opportunity Preparation Agent (BOPA): one agent, one Opportunity,
+post-acquisition. ActionProposer suggests allow-listed actions; deterministic
+ToolPolicy validates; existing CIC services execute. Does not wrap FR-008.
+Deterministic proposer is the operational default.
+
+| Concept | Role |
+|---------|------|
+| AgentGoal | Bounded owner goal (`prepare_for_owner_review`) |
+| ReadinessSnapshot | Derived observation of artefacts / package / truth |
+| ReadinessStateClass | Priority classification of where BOPA adds value beyond FR-008 |
+| AgentAction / AgentActionProposal | Closed allow-list + structured proposal |
+| ToolPolicy | Deterministic allow/deny (`evaluate_action_policy`) |
+| AgentRun / AgentAuditEvent | Additive audit/recovery — not Opportunity SoT |
+| AgentStopReason | Fail-closed terminal reasons |
+| AgentRunMetrics | M4 observability derived from audit |
+
+**M1 delivered:** typed contracts + state-class matrix + ToolPolicy + unit tests.  
+**M2 delivered:** AgentRuntime, proposers, thin adapters, audit store, checkpoint/resume.  
+**M3 delivered:** thin `cic agent` CLI + owner presentation.  
+**M4 delivered:** corpus evaluation, observability, owner validation, freeze.  
+**Frozen:** [acceptance](eval/fr015_bounded_agentic_workflow.md). FR-016 not started.
+
 ---
 
 ## Entity Relationships
@@ -526,12 +561,15 @@ Education / identity / soft claims remain excluded.
 | Opportunity | Preparation Orchestration | FR-011 coordinates package prep for apply Opportunities |
 | Opportunity | Submission Attempt | FR-012 records append-only submit attempts (audit; not pipeline SoT) |
 | Opportunity | Pipeline Event | FR-013 append-only lifecycle audit (not a second SoT; current status stays on Opportunity) |
+| Opportunity | AgentRun | FR-015 BOPA observes one Opportunity; audit only (ADR-007) |
 | Application Package | Submission Attempt | Attempt references package prepared_at / optional hash |
 | Application Package | Pipeline Event | Event may cite package prepared_at / hash as submit evidence |
+| Application Package | AgentRun | BOPA may request prepare/verify via thin adapters (M2) |
 | Submission Attempt | Pipeline Event | Event may cite attempt id; never auto-creates events (ADR-005) |
 | Career Profile | Truth Validation | Authoritative candidate evidence for Class A claims (ADR-006) |
 | Job Analysis | Truth Validation | Context-only; leakage detection; never authorizes capability |
 | CV / Cover Letter Markdown | Truth Validation | Primary validation surface (artefact under test) |
+| Truth Validation | AgentRun | BOPA may request validate / stop on block; never waives (ADR-007) |
 | TruthReport | Submission / Package gates | Consumed by M3 external-use readiness; does not own submit or package rules |
 | Application Strategy | User Decision | User accepts, overrides, or defers the recommendation |
 | User Decision | Outcome Record | Decision and subsequent events logged (M2 / FR-013) |
@@ -609,7 +647,7 @@ continue to connect to this layer rather than invent a parallel tracker.
 | Submission Assistance | **FR-012** (Horizon 1A; complete — [acceptance](eval/fr012_submission_assistance.md)) |
 | Application Pipeline Tracking | **FR-013** (Horizon 1A; complete — [acceptance](eval/fr013_application_pipeline_tracking.md); [ADR-005](adr/005_application_pipeline_lifecycle.md)) |
 | Recruiter Document Truth Validation | **FR-014** (Horizon 1A; **complete and frozen** — [acceptance](eval/fr014_recruiter_document_truth_validation.md); [ADR-006](adr/006_recruiter_document_truth_validation.md)) |
-| Bounded Agentic Workflow | **FR-015** (Horizon 1A; first bounded agents) |
+| Bounded Agentic Workflow | **FR-015** (Horizon 1A; **complete / frozen** — ADR-007) |
 | Multi-Agent Orchestration | **FR-016** (Horizon 1A) |
 | Agent Evaluation & Observability | **FR-017** (Horizon 1A) |
 | Recruiter Intelligence | **FR-018** (Horizon 1B) |

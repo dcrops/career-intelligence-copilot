@@ -1,0 +1,45 @@
+{
+  "results": [
+    {
+      "name": "A happy path CLI run",
+      "passed": true,
+      "detail": "Note: Agent status is separate from Opportunity pipeline status. This run does not submit or advance pipeline."
+    },
+    {
+      "name": "B truth failure show",
+      "passed": true,
+      "detail": "truth_validation_blocked"
+    },
+    {
+      "name": "C invalid-state show",
+      "passed": true,
+      "detail": "invalid_state"
+    },
+    {
+      "name": "D provider-unavailable show",
+      "passed": true,
+      "detail": "provider_unavailable"
+    },
+    {
+      "name": "E resume without duplicate prepare",
+      "passed": true,
+      "detail": "prep_calls=1"
+    },
+    {
+      "name": "F policy-blocked visible in history",
+      "passed": true,
+      "detail": "policy_blocked"
+    },
+    {
+      "name": "G injection cannot grant validate/submit",
+      "passed": true,
+      "detail": "blocked"
+    },
+    {
+      "name": "list shows runs",
+      "passed": true,
+      "detail": ""
+    }
+  ],
+  "happy_run_id": "agr_01KZ88E9T34HD08XFBMBTR5X4P"
+}

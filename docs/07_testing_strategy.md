@@ -662,7 +662,7 @@ FR-014 **complete and frozen**:
 
 ## Horizon 1A — Planned test coverage (remaining)
 
-When FR-015–FR-017 are built, prefer behaviour over implementation detail:
+When FR-016–FR-017 are built, prefer behaviour over implementation detail:
 
 | Area | Expected coverage |
 |------|-------------------|
@@ -674,8 +674,23 @@ When FR-015–FR-017 are built, prefer behaviour over implementation detail:
 | FR-012 submission (**delivered** — see FR-012 coverage above) | Readiness; Assisted Submission; Manual Completion; append-only audit; owner CLI |
 | FR-013 tracking (**delivered** — frozen) | Dual-write + owner CLI + reporting; see FR-013 coverage |
 | FR-014 truth validation (**complete / frozen**) | Fail-closed findings; package/submission gates; Redwolf + M4 claim matrix; see FR-014 coverage |
-| FR-015 agents | Max iterations, stop conditions, restricted tools, validation before state update |
-| FR-016 / FR-017 | Loop prevention; fault injection; token/cost/latency where LLM-backed; browser journey evidence when Playwright is used |
+| FR-015 agents (**complete / frozen**) | Corpus eval + observability + `cic agent`; see below |
+| FR-016 / FR-017 | Multi-agent loop prevention; orchestration-layer fault injection; token/cost/latency; browser journey evidence when Playwright is used |
+
+### FR-015 coverage (M1–M4 — frozen)
+
+| Area | Coverage |
+|------|----------|
+| Models | AgentGoal, ReadinessSnapshot, AgentActionProposal, AgentRun, AgentAuditEvent |
+| State classes | Priority classification for missing artefacts/package/truth, integrity, clarification, provider-down, contradictory, ready |
+| ToolPolicy | Allow/deny vs state; hard rules; repeated no-op; max steps |
+| Runtime (M2) | start/resume; immediate stops; provider failure; idempotent adapters; JSON store |
+| Owner CLI (M3) | `cic agent` + presentation; approve gate; list/show/history |
+| Evaluation (M4) | Corpus harness; proposer comparison; `extract_run_metrics` / `aggregate_metrics` |
+| Unit | `tests/unit/agent/` |
+| Functional | `test_fr015_m2_*.py`, `test_fr015_m3_*.py` |
+| Manual | `scripts/run_fr015_m2_manual.py`, `scripts/run_fr015_m3_manual.py`, `scripts/run_fr015_m4_manual.py` |
+| Acceptance | [eval/fr015_bounded_agentic_workflow.md](eval/fr015_bounded_agentic_workflow.md) |
 
 **Spike rule:** First FR-008 tests use fixture/saved jobs only — not live acquisition
 or real submission. Deterministic replay where possible; owner manual validation for

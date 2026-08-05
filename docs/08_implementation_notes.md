@@ -1591,12 +1591,14 @@ cannot be cancelled (already failed).
 
 ### Sequencing (remaining)
 
-1. **FR-015 → FR-017** — bounded agents → multi-agent → evaluation (FR-015 not started;
-   owner request required; FR-014 truth gate must remain in force).
+1. **FR-016 → FR-017** — multi-agent → orchestration evaluation (FR-015 **complete and
+   frozen** — [acceptance](eval/fr015_bounded_agentic_workflow.md);
+   [ADR-007](adr/007_bounded_agentic_workflow.md); do not begin FR-016 without owner
+   request; FR-014 truth gate must remain in force).
 2. **Additional acquisition adapters** (URL/API/email) — only when explicitly requested.
 3. **Horizon 1B (FR-018–FR-024)** — only after 1A.
 
-**Completed in this sequence:** FR-009 → FR-014 (review queue through truth validation).
+**Completed in this sequence:** FR-009 → FR-015 (review queue through bounded agent).
 
 ### FR-008 acquisition foundation (complete — closes FR-008)
 
@@ -2443,5 +2445,80 @@ certifications, years (computable tenure only), project delivery, and domain.
 excluded. Redwolf technology regression retained.
 
 **Manual:** `scripts/run_fr014_m4_manual.py` — PASS  
-**Status:** FR-014 **complete and frozen**. Do not begin FR-015 without owner request.
+**Status:** FR-014 **complete and frozen**. FR-015 is also complete and frozen —
+[acceptance](eval/fr015_bounded_agentic_workflow.md).
+
+---
+
+## FR-015 M1 — Bounded agent contracts
+
+**Date:** 2026-08-05  
+**Eval:** [eval/fr015_m1_agent_contracts.md](eval/fr015_m1_agent_contracts.md)  
+**ADR:** [adr/007_bounded_agentic_workflow.md](adr/007_bounded_agentic_workflow.md)  
+**Spike:** [eval/fr015_m0_engineering_spike.md](eval/fr015_m0_engineering_spike.md) (Accepted)
+
+Package `career_intelligence.agent` freezes BOPA contracts:
+
+- `ReadinessSnapshot` + `ReadinessStateClass` matrix (value beyond FR-008)
+- Allow-listed `AgentAction` + `evaluate_action_policy` ToolPolicy
+- `AgentRun` / `AgentAuditEvent` / `AgentStopReason`
+- Unit tests in `tests/unit/agent/` (39 passed)
+
+No AgentRuntime, provider, tool adapters, CLI, or FR-016 messaging in M1.
+
+**Next:** M2 runtime — **complete**
+([eval/fr015_m2_agent_runtime.md](eval/fr015_m2_agent_runtime.md)).
+
+---
+
+## FR-015 M2 — Bounded agent runtime
+
+**Date:** 2026-08-05  
+**Eval:** [eval/fr015_m2_agent_runtime.md](eval/fr015_m2_agent_runtime.md)  
+**ADR:** [adr/007_bounded_agentic_workflow.md](adr/007_bounded_agentic_workflow.md)
+
+`AgentRuntime` coordinates BOPA: readiness observe → propose → ToolPolicy → thin
+adapters (preparation / package verify / truth validate) → append-only audit under
+`data/agent_runs/`. Deterministic proposer for offline; OpenAI proposer port for
+structured suggestions. Resume forces inspect; completed ops are not repeated.
+Missing FR-002–005 stop as `invalid_state`. No CLI (M3), no FR-016.
+
+**Manual:** `scripts/run_fr015_m2_manual.py` — PASS  
+**Status:** M2 complete. M3 owner CLI — **complete**
+([eval/fr015_m3_owner_cli.md](eval/fr015_m3_owner_cli.md)).
+
+---
+
+## FR-015 M3 — Owner CLI
+
+**Date:** 2026-08-05  
+**Eval:** [eval/fr015_m3_owner_cli.md](eval/fr015_m3_owner_cli.md)
+
+Thin `cic agent` (`run` / `resume` / `show` / `history` / `list`) with owner report
+covering readiness, proposed action, policy, execution, stop reason, and next owner
+action. `--approve` required for run/resume. Deterministic proposer default.
+
+**Manual:** `scripts/run_fr015_m3_manual.py` — PASS  
+**Status:** M3 complete.
+
+---
+
+## FR-015 M4 — Evaluation and freeze
+
+**Date:** 2026-08-05  
+**Eval:** [eval/fr015_m4_evaluation.md](eval/fr015_m4_evaluation.md)  
+**Acceptance:** [eval/fr015_bounded_agentic_workflow.md](eval/fr015_bounded_agentic_workflow.md)
+
+Corpus harness (`evaluation.py`), observability metrics (`observability.py`),
+deterministic-vs-alternate proposer comparison, owner manual validation.
+StaticReadinessBuilder preserves fixture clarification/contradiction markers.
+Deterministic proposer remains operational default.
+
+**Manual:** `scripts/run_fr015_m4_manual.py` — PASS  
+**Status:** FR-015 **complete and frozen**. Do not begin FR-016 without owner request.
+
+**Operational Acceptance Trial (outside FR-015):** Live Opportunity corpus dogfooding
+is a separate OAT — see
+[eval/fr015_bounded_agentic_workflow.md](eval/fr015_bounded_agentic_workflow.md) §27.
+Do not reopen FR-015 exit criteria for OAT findings unless a defect requires it.
 

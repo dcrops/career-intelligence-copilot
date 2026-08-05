@@ -72,9 +72,9 @@ complete. Within Horizon 1A, job acquisition and workflow orchestration (FR-008)
 opportunity review queue, duplicate handling, and ranked recommendations (FR-009),
 application package preparation (FR-010), application preparation orchestration
 (FR-011), submission assistance (FR-012), application pipeline tracking (FR-013), and
-**recruiter document truth validation (FR-014)** are **complete and frozen**.
-**FR-015** Bounded Agentic Workflow is next (not started — owner request required).
-Horizon 1B recruiter engagement follows. See [10_roadmap.md](10_roadmap.md).
+**recruiter document truth validation (FR-014)** and **bounded agentic workflow
+(FR-015)** are **complete and frozen**. **FR-016** Multi-Agent Orchestration is next
+(not started — owner request required). See [10_roadmap.md](10_roadmap.md).
 
 ---
 

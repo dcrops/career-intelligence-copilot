@@ -1,0 +1,187 @@
+{
+  "agent_run_id": "agr_01KZ89213ENM5WSH8SRQJ273S8",
+  "goal": {
+    "goal_kind": "prepare_for_owner_review",
+    "opportunity_id": "opp_01ARZ3NDEKTSV4RRFFQ69G5FAA",
+    "owner_notes": null
+  },
+  "status": "awaiting_owner",
+  "step_count": 1,
+  "max_steps": 8,
+  "last_snapshot": {
+    "opportunity_id": "opp_01ARZ3NDEKTSV4RRFFQ69G5FAA",
+    "decision": "apply",
+    "artefacts": {
+      "job_analysis": true,
+      "assessment": true,
+      "portfolio_match": true,
+      "strategy": true
+    },
+    "package": {
+      "status": "present",
+      "cv_present": true,
+      "cover_letter_present": true,
+      "manifest_ref": "package:m4"
+    },
+    "truth": {
+      "status": "fail",
+      "report_ref": "trp_01ARZ3NDEKTSV4RRFFQ69G5FAA",
+      "owner_edited_markdown_since_validation": false,
+      "blocking_finding_codes": []
+    },
+    "owner_approvals_present": true,
+    "clarification_required": false,
+    "clarification_message": null,
+    "provider_available": true,
+    "contradictory_flags": [],
+    "prior_agent_run_id": null,
+    "prior_agent_run_incomplete": false,
+    "snapshot_hash": "69f79ab1584c3736de4bc41c4f045f9557c91b45d3f0a3b102718474a5d9e533",
+    "observed_at": "2026-08-05T12:00:00Z"
+  },
+  "primary_state_class": "truth_blocked",
+  "stop_reason": "truth_validation_blocked",
+  "checkpoint_ref": "step:ags_01KZ89213G6NAKGDWVP1X628WS",
+  "events": [
+    {
+      "event_id": "aae_01KZ89213EJPJW4V90KW3Y1A0N",
+      "kind": "run_started",
+      "at": "2026-08-05T06:16:32.622711Z",
+      "step_id": null,
+      "state_class": null,
+      "action": null,
+      "policy_decision": null,
+      "stop_reason": null,
+      "message": "goal=prepare_for_owner_review opportunity=opp_01ARZ3NDEKTSV4RRFFQ69G5FAA",
+      "refs": [],
+      "provider": null
+    },
+    {
+      "event_id": "aae_01KZ89213F6ADM08ZKSBGVTASK",
+      "kind": "snapshot_observed",
+      "at": "2026-08-05T06:16:32.623973Z",
+      "step_id": null,
+      "state_class": "truth_blocked",
+      "action": null,
+      "policy_decision": null,
+      "stop_reason": null,
+      "message": "hash=69f79ab1584c3736de4bc41c4f045f9557c91b45d3f0a3b102718474a5d9e533",
+      "refs": [
+        "package:present",
+        "truth:fail"
+      ],
+      "provider": null
+    },
+    {
+      "event_id": "aae_01KZ89213G6S07CACZ12NX8SWH",
+      "kind": "action_proposed",
+      "at": "2026-08-05T06:16:32.624039Z",
+      "step_id": null,
+      "state_class": "truth_blocked",
+      "action": "stop",
+      "policy_decision": null,
+      "stop_reason": null,
+      "message": "Immediate stop for primary state 'truth_blocked'.",
+      "refs": [],
+      "provider": null
+    },
+    {
+      "event_id": "aae_01KZ89213GHH6WEBKNXNP3JYVR",
+      "kind": "policy_evaluated",
+      "at": "2026-08-05T06:16:32.624051Z",
+      "step_id": null,
+      "state_class": "truth_blocked",
+      "action": "stop",
+      "policy_decision": "allow",
+      "stop_reason": "truth_validation_blocked",
+      "message": null,
+      "refs": [],
+      "provider": null
+    },
+    {
+      "event_id": "aae_01KZ89213GB7R6A6NRFS6NT1SX",
+      "kind": "stop_recorded",
+      "at": "2026-08-05T06:16:32.624068Z",
+      "step_id": null,
+      "state_class": null,
+      "action": null,
+      "policy_decision": null,
+      "stop_reason": "truth_validation_blocked",
+      "message": "status=awaiting_owner",
+      "refs": [],
+      "provider": null
+    }
+  ],
+  "steps": [
+    {
+      "step_id": "ags_01KZ89213G6NAKGDWVP1X628WS",
+      "index": 0,
+      "snapshot": {
+        "opportunity_id": "opp_01ARZ3NDEKTSV4RRFFQ69G5FAA",
+        "decision": "apply",
+        "artefacts": {
+          "job_analysis": true,
+          "assessment": true,
+          "portfolio_match": true,
+          "strategy": true
+        },
+        "package": {
+          "status": "present",
+          "cv_present": true,
+          "cover_letter_present": true,
+          "manifest_ref": "package:m4"
+        },
+        "truth": {
+          "status": "fail",
+          "report_ref": "trp_01ARZ3NDEKTSV4RRFFQ69G5FAA",
+          "owner_edited_markdown_since_validation": false,
+          "blocking_finding_codes": []
+        },
+        "owner_approvals_present": true,
+        "clarification_required": false,
+        "clarification_message": null,
+        "provider_available": true,
+        "contradictory_flags": [],
+        "prior_agent_run_id": null,
+        "prior_agent_run_incomplete": false,
+        "snapshot_hash": "69f79ab1584c3736de4bc41c4f045f9557c91b45d3f0a3b102718474a5d9e533",
+        "observed_at": "2026-08-05T12:00:00Z"
+      },
+      "primary_state_class": "truth_blocked",
+      "proposal": {
+        "action": "stop",
+        "rationale": "Immediate stop for primary state 'truth_blocked'.",
+        "evidence_refs": [
+          "state:truth_blocked",
+          "hash:69f79ab1584c3736de4bc41c4f045f9557c91b45d3f0a3b102718474a5d9e533"
+        ],
+        "primary_state_class": "truth_blocked"
+      },
+      "policy": {
+        "decision": "allow",
+        "action": "stop",
+        "primary_state_class": "truth_blocked",
+        "applicable_state_classes": [
+          "truth_blocked"
+        ],
+        "approved_actions": [
+          "inspect_readiness",
+          "request_owner_review",
+          "stop",
+          "validate_truth_package"
+        ],
+        "deny_reason": null,
+        "stop_reason": "truth_validation_blocked"
+      },
+      "executed": true,
+      "skipped_as_idempotent": false,
+      "service_result_summary": "stopped: truth_validation_blocked",
+      "error_summary": null
+    }
+  ],
+  "completed_operations": [],
+  "provider": null,
+  "owner_approvals_present": true,
+  "created_at": "2026-08-05T06:16:32.622662Z",
+  "updated_at": "2026-08-05T06:16:32.624072Z"
+}

@@ -3,7 +3,9 @@
 **Status:** **Complete** — documentation frozen  
 **Date:** 2026-08-05  
 **Recommendation:** **FR-014 ACCEPTED**  
-**Next:** Begin **FR-015** Bounded Agentic Workflow — **only on explicit owner request**
+**Next:** **FR-015** Bounded Agentic Workflow is now **complete and frozen**
+([fr015_bounded_agentic_workflow.md](fr015_bounded_agentic_workflow.md)).
+Begin **FR-016** only on explicit owner request.
 
 **ADR:** [ADR-006](../adr/006_recruiter_document_truth_validation.md) (Accepted)
 
@@ -359,7 +361,7 @@ Key invariant tests: detection certainty ≠ evidence status; empty findings + n
 | LLM judge | **Out of Scope** | Non-deterministic; can invent evidence; violates ADR-006. |
 | Generate auto-invoke deferred | **Deferred** | Truth validation not auto-invoked at generation time in production path; owner runs `cic truth validate-package` explicitly. |
 | WeasyPrint stub accepted | **Accepted** | Autouse stub when WeasyPrint missing in tests; real PDF tests still need the package. Does not affect truth boundary. |
-| FR-015 consuming TruthReport | **Future FR** | Agentic workflow may read TruthReport for bounded automation; consumption pattern belongs to FR-015, not FR-014. |
+| FR-015 consuming TruthReport | **Delivered (FR-015 frozen)** | BOPA may request `validate_truth_package` / stop on block; never waives ([ADR-007](../adr/007_bounded_agentic_workflow.md)). |
 
 ---
 
@@ -446,11 +448,13 @@ Owner edits Markdown then render-only refreshes HTML/PDF. Validating only pre-ed
 - Prefer `review_required` over invented precision.
 - Extend claim kinds only with corpus justification — not as a general NL fact checker.
 
-### What should change for FR-015
+### What changed for FR-015 (now complete)
 
-- FR-015 agents may **consume** TruthReport findings but must not bypass or weaken the gate.
-- Any automation increase requires explicit owner request and must preserve fail-closed external-use semantics.
-- Agent loops should treat blocking findings as hard stop conditions, not prompt hints.
+- FR-015 BOPA **consumes** TruthReport findings via `validate_truth_package` / stop on
+  block and must not bypass or weaken the gate ([ADR-007](../adr/007_bounded_agentic_workflow.md)).
+- Automation increase beyond FR-015 still requires explicit owner request and must
+  preserve fail-closed external-use semantics.
+- Agent loops treat blocking findings as hard stop conditions, not prompt hints.
 
 ---
 
@@ -499,7 +503,7 @@ Truth Validation assists owner judgment; it does not replace owner review. FAIL 
 - [x] Unit + functional regression green
 - [x] Documentation updated and FR frozen
 - [x] No rewriting; owner review mandatory
-- [x] No future FR (FR-015) started without owner request
+- [x] No future FR (FR-015) started without owner request *(historical at FR-014 freeze; FR-015 later completed under owner request)*
 - [x] Validator version pinned (`fr014-m4-deterministic-1`)
 
 ---
@@ -510,7 +514,11 @@ Truth Validation assists owner judgment; it does not replace owner review. FAIL 
 
 Recruiter Document Truth Validation delivers the deterministic fail-closed trust boundary required before any increase in application automation. Unsupported material candidate claims are blocked from external use and FR-012 submission with explainable findings. Owner review remains mandatory.
 
-Next Horizon 1A work is **FR-015 Bounded Agentic Workflow**, only after explicit owner request. Do not increase automation without this gate remaining in force.
+Next Horizon 1A work after FR-014 was **FR-015 Bounded Agentic Workflow**, which is
+now **complete and frozen**
+([fr015_bounded_agentic_workflow.md](fr015_bounded_agentic_workflow.md)).
+**Active FR:** **FR-016** Multi-Agent Orchestration (not started — owner request
+required). Do not increase automation without the FR-014 gate remaining in force.
 
 ---
 
@@ -519,7 +527,8 @@ Next Horizon 1A work is **FR-015 Bounded Agentic Workflow**, only after explicit
 | Item | Status |
 |------|--------|
 | FR-014 Recruiter Document Truth Validation | **Complete and frozen** |
-| FR-015 Bounded Agentic Workflow | **Active FR — not started** (owner request required) |
+| FR-015 Bounded Agentic Workflow | **Complete and frozen** |
+| FR-016 Multi-Agent Orchestration | **Active FR — not started** (owner request required) |
 | Package | `career_intelligence.truth_validation` |
 | Validator version | `fr014-m4-deterministic-1` |
 | ADR | [ADR-006](../adr/006_recruiter_document_truth_validation.md) (Accepted) |

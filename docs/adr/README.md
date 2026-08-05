@@ -8,9 +8,10 @@
 | [004](004_opportunity_review_boundary.md) | Opportunity as pre-decision system of record; review queue as derived projection | Accepted (FR-009 M0), implemented and closed (FR-009 M1–M4; Decision 8 amended by the M4 ranking calibration) — amends ADR-002 persistence boundary |
 | [005](005_application_pipeline_lifecycle.md) | Application pipeline lifecycle (stored status + append-only events) | Accepted (FR-013 M1) — amends ADR-002 lifecycle audit; reaffirms ADR-004; SubmissionAttempt never auto-advances status |
 | [006](006_recruiter_document_truth_validation.md) | Recruiter document truth validation (deterministic fail-closed boundary) | Accepted (FR-014 M1) — detection certainty ≠ evidence validation; JD never authorizes candidate capability |
+| [007](007_bounded_agentic_workflow.md) | Bounded Agentic Workflow (BOPA; policy B; ToolPolicy) | Accepted (FR-015 frozen) — one agent, one Opportunity, post-acquisition; does not wrap FR-008; no submit/pipeline/discovery |
 
 Related: [04_functional_specification.md](../04_functional_specification.md) § FR-008,
-§ FR-009, § FR-010, § FR-011, § FR-012, § FR-013, § FR-014; [10_roadmap.md](../10_roadmap.md) § Horizon 1A.
+§ FR-009, § FR-010, § FR-011, § FR-012, § FR-013, § FR-014, § FR-015; [10_roadmap.md](../10_roadmap.md) § Horizon 1A.
 
 Close-out records:
 [eval/fr008_workflow_orchestration.md](../eval/fr008_workflow_orchestration.md),
@@ -35,7 +36,11 @@ Close-out records:
 [eval/fr014_m2_technology_validation.md](../eval/fr014_m2_technology_validation.md),
 [eval/fr014_m3_owner_workflow.md](../eval/fr014_m3_owner_workflow.md),
 [eval/fr014_m4_claim_validation.md](../eval/fr014_m4_claim_validation.md),
-[eval/fr014_recruiter_document_truth_validation.md](../eval/fr014_recruiter_document_truth_validation.md) (FR-014 frozen).
+[eval/fr014_recruiter_document_truth_validation.md](../eval/fr014_recruiter_document_truth_validation.md) (FR-014 frozen),
+[eval/fr015_m0_engineering_spike.md](../eval/fr015_m0_engineering_spike.md) (Accepted),
+[eval/fr015_m1_agent_contracts.md](../eval/fr015_m1_agent_contracts.md),
+[eval/fr015_m2_agent_runtime.md](../eval/fr015_m2_agent_runtime.md),
+[eval/fr015_m3_owner_cli.md](../eval/fr015_m3_owner_cli.md).
 Post-FR-010 architecture validation:
 [eval/architecture_health_check_post_fr010.md](../eval/architecture_health_check_post_fr010.md).
 
@@ -59,3 +64,8 @@ Detection certainty is distinct from evidence validation; PASS requires complete
 coverage and performed detection + validation; JD/assessment/strategy/plans never
 authorize candidate capability. M2–M4 delivered technology + extended claim kinds,
 owner CLI, and fail-closed package/submission gates.
+
+**FR-015 ADR note:** [ADR-007](007_bounded_agentic_workflow.md) accepted; FR-015 frozen (M1–M4).
+BOPA coordinates post-acquisition package/truth readiness under deterministic
+ToolPolicy; does not wrap FR-008. M1 contracts; M2 runtime; M3 owner CLI
+([eval/fr015_m3_owner_cli.md](../eval/fr015_m3_owner_cli.md)).

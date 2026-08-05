@@ -107,6 +107,19 @@ from career_intelligence.pipeline import (
     PipelineTransitionError,
     PipelineValidationError,
 )
+from career_intelligence.agent import (
+    DEFAULT_AGENT_RUNS_ROOT,
+    DEFAULT_MAX_STEPS,
+    AgentGoal,
+    AgentRunNotFoundError,
+    AgentRuntimeError,
+    AgentStorageError,
+    JsonDirectoryAgentRunStore,
+    build_agent_runtime,
+    format_agent_history,
+    format_agent_list_line,
+    format_agent_run_report,
+)
 
 app = typer.Typer(help="Career Intelligence Copilot.")
 profile_app = typer.Typer(help="Manage and inspect the career profile.")
@@ -136,6 +149,13 @@ truth_app = typer.Typer(
         "Commands: validate, show, validate-package."
     ),
 )
+agent_app = typer.Typer(
+    help=(
+        "Bounded Opportunity Preparation Agent (FR-015). "
+        "Commands: run, resume, show, history, list. "
+        "Does not submit, advance pipeline, or invoke FR-008."
+    ),
+)
 app.add_typer(profile_app, name="profile")
 app.add_typer(opportunity_app, name="opportunity")
 app.add_typer(package_app, name="package")
@@ -143,6 +163,7 @@ app.add_typer(preparation_app, name="preparation")
 app.add_typer(submission_app, name="submission")
 app.add_typer(pipeline_app, name="pipeline")
 app.add_typer(truth_app, name="truth")
+app.add_typer(agent_app, name="agent")
 
 PathOption = Annotated[
     Path | None,
@@ -208,6 +229,17 @@ TruthReportsDirOption = Annotated[
         help=(
             "Override the truth-reports store directory "
             f"(default: {DEFAULT_TRUTH_REPORTS_ROOT})."
+        ),
+    ),
+]
+
+AgentRunsDirOption = Annotated[
+    Path | None,
+    typer.Option(
+        "--agent-runs-dir",
+        help=(
+            "Override the agent-runs store directory "
+            f"(default: {DEFAULT_AGENT_RUNS_ROOT})."
         ),
     ),
 ]
@@ -2749,6 +2781,300 @@ def truth_validate_package(
             typer.echo(f"    {message}")
     if not status.external_use_allowed:
         raise typer.Exit(code=1)
+
+
+def _exit_for_agent(error: Exception) -> Never:
+    if isinstance(error, AgentRunNotFoundError):
+        typer.echo(str(error), err=True)
+        raise typer.Exit(code=1) from error
+    if isinstance(error, AgentStorageError):
+        typer.echo(f"Agent storage error: {error}", err=True)
+        raise typer.Exit(code=2) from error
+    if isinstance(error, AgentRuntimeError):
+        typer.echo(f"Agent runtime error: {error}", err=True)
+        raise typer.Exit(code=1) from error
+    typer.echo(f"Agent error: {error}", err=True)
+    raise typer.Exit(code=1) from error
+
+
+def _agent_store(agent_runs_dir: Path | None) -> JsonDirectoryAgentRunStore:
+    return JsonDirectoryAgentRunStore(agent_runs_dir or DEFAULT_AGENT_RUNS_ROOT)
+
+
+def _print_agent_run(run, *, verbose: bool = False, yaml_output: bool = False) -> None:
+    if yaml_output:
+        typer.echo(_render(run))
+    else:
+        typer.echo(format_agent_run_report(run, verbose=verbose), nl=False)
+
+
+def _exit_for_agent_status(run) -> None:
+    if run.status == "failed":
+        raise typer.Exit(code=1)
+    # awaiting_owner / completed are successful agent outcomes for the owner.
+    if run.status not in {"awaiting_owner", "completed", "running", "cancelled"}:
+        raise typer.Exit(code=1)
+
+
+@agent_app.command("run")
+def agent_run(
+    opportunity_id: Annotated[str, typer.Argument(help="Opportunity id (opp_<ULID>).")],
+    dir: OpportunitiesDirOption = None,
+    packages_dir: PackagesDirOption = None,
+    runs_dir: PreparationRunsDirOption = None,
+    agent_runs_dir: AgentRunsDirOption = None,
+    truth_reports_dir: TruthReportsDirOption = None,
+    profile: ProfilePathOption = None,
+    cv_dir: Annotated[
+        Path | None,
+        typer.Option("--cv-dir", help="Override CV draft output directory."),
+    ] = None,
+    cover_letter_dir: Annotated[
+        Path | None,
+        typer.Option(
+            "--cover-letter-dir",
+            help="Override cover-letter draft output directory.",
+        ),
+    ] = None,
+    approve: Annotated[
+        bool,
+        typer.Option(
+            "--approve",
+            help=(
+                "Explicitly set FR-006/FR-007 owner-approval gates required for "
+                "preparation (never silently defaulted)."
+            ),
+        ),
+    ] = False,
+    llm: Annotated[
+        bool,
+        typer.Option(
+            "--llm",
+            help=(
+                "Use OpenAI structured proposer instead of the deterministic "
+                "preference table. Proposer still receives readiness flags only."
+            ),
+        ),
+    ] = False,
+    override_material_benefit: Annotated[
+        bool,
+        typer.Option(
+            "--override-material-benefit",
+            help="Pass explicit FR-006/FR-007 material-benefit override into preparation.",
+        ),
+    ] = False,
+    max_steps: Annotated[
+        int,
+        typer.Option("--max-steps", help="Maximum agent steps for this run."),
+    ] = DEFAULT_MAX_STEPS,
+    verbose: Annotated[
+        bool,
+        typer.Option("--verbose", "-v", help="Include proposal rationales in the report."),
+    ] = False,
+    yaml_output: Annotated[
+        bool,
+        typer.Option("--yaml", help="Emit the full AgentRun as YAML."),
+    ] = False,
+) -> None:
+    """Run BOPA for one Opportunity (prepare_for_owner_review).
+
+    Thin CLI over AgentRuntime. Does not invoke FR-008, submit, or advance pipeline.
+    """
+    if not approve:
+        typer.echo(
+            "Refusing agent run: pass --approve to set FR-006/FR-007 "
+            "owner-approval gates explicitly when preparation may run. "
+            "Owner review remains mandatory before external use.",
+            err=True,
+        )
+        raise typer.Exit(code=1)
+
+    try:
+        runtime = build_agent_runtime(
+            opportunities_dir=dir,
+            packages_dir=packages_dir,
+            preparation_runs_dir=runs_dir,
+            agent_runs_dir=agent_runs_dir,
+            truth_reports_dir=truth_reports_dir,
+            profile_path=profile,
+            cv_output_dir=cv_dir,
+            cover_letter_output_dir=cover_letter_dir,
+            use_llm_proposer=llm,
+            max_steps=max_steps,
+            override_material_benefit=override_material_benefit,
+        )
+        run = runtime.start(
+            AgentGoal(opportunity_id=opportunity_id),  # type: ignore[arg-type]
+            owner_approvals_present=True,
+            provider_available=True,
+        )
+    except OpportunityError as error:
+        _exit_for_opportunity(error)
+    except ProfileError as error:
+        _exit_for_profile(error)
+    except AgentRuntimeError as error:
+        _exit_for_agent(error)
+    except Exception as error:  # noqa: BLE001 — surface unexpected adapter failures
+        _exit_for_agent(error)
+
+    _print_agent_run(run, verbose=verbose, yaml_output=yaml_output)
+    _exit_for_agent_status(run)
+
+
+@agent_app.command("resume")
+def agent_resume(
+    agent_run_id: Annotated[str, typer.Argument(help="Agent run id (agr_<ULID>).")],
+    dir: OpportunitiesDirOption = None,
+    packages_dir: PackagesDirOption = None,
+    runs_dir: PreparationRunsDirOption = None,
+    agent_runs_dir: AgentRunsDirOption = None,
+    truth_reports_dir: TruthReportsDirOption = None,
+    profile: ProfilePathOption = None,
+    cv_dir: Annotated[
+        Path | None,
+        typer.Option("--cv-dir", help="Override CV draft output directory."),
+    ] = None,
+    cover_letter_dir: Annotated[
+        Path | None,
+        typer.Option(
+            "--cover-letter-dir",
+            help="Override cover-letter draft output directory.",
+        ),
+    ] = None,
+    approve: Annotated[
+        bool,
+        typer.Option(
+            "--approve",
+            help="Confirm FR-006/FR-007 approval gates remain set for this resume.",
+        ),
+    ] = False,
+    llm: Annotated[
+        bool,
+        typer.Option("--llm", help="Use OpenAI structured proposer for this resume."),
+    ] = False,
+    override_material_benefit: Annotated[
+        bool,
+        typer.Option(
+            "--override-material-benefit",
+            help="Pass explicit FR-006/FR-007 material-benefit override into preparation.",
+        ),
+    ] = False,
+    max_steps: Annotated[
+        int,
+        typer.Option("--max-steps", help="Maximum agent steps for this resume."),
+    ] = DEFAULT_MAX_STEPS,
+    verbose: Annotated[
+        bool,
+        typer.Option("--verbose", "-v", help="Include proposal rationales in the report."),
+    ] = False,
+    yaml_output: Annotated[
+        bool,
+        typer.Option("--yaml", help="Emit the full AgentRun as YAML."),
+    ] = False,
+) -> None:
+    """Resume a paused AgentRun from checkpoint after re-inspecting SoT."""
+    if not approve:
+        typer.echo(
+            "Refusing agent resume: pass --approve to confirm FR-006/FR-007 "
+            "owner-approval gates explicitly.",
+            err=True,
+        )
+        raise typer.Exit(code=1)
+
+    try:
+        runtime = build_agent_runtime(
+            opportunities_dir=dir,
+            packages_dir=packages_dir,
+            preparation_runs_dir=runs_dir,
+            agent_runs_dir=agent_runs_dir,
+            truth_reports_dir=truth_reports_dir,
+            profile_path=profile,
+            cv_output_dir=cv_dir,
+            cover_letter_output_dir=cover_letter_dir,
+            use_llm_proposer=llm,
+            max_steps=max_steps,
+            override_material_benefit=override_material_benefit,
+        )
+        run = runtime.resume(
+            agent_run_id,
+            owner_approvals_present=True,
+            provider_available=True,
+        )
+    except OpportunityError as error:
+        _exit_for_opportunity(error)
+    except ProfileError as error:
+        _exit_for_profile(error)
+    except AgentRuntimeError as error:
+        _exit_for_agent(error)
+    except Exception as error:  # noqa: BLE001
+        _exit_for_agent(error)
+
+    _print_agent_run(run, verbose=verbose, yaml_output=yaml_output)
+    _exit_for_agent_status(run)
+
+
+@agent_app.command("show")
+def agent_show(
+    agent_run_id: Annotated[str, typer.Argument(help="Agent run id (agr_<ULID>).")],
+    agent_runs_dir: AgentRunsDirOption = None,
+    verbose: Annotated[
+        bool,
+        typer.Option("--verbose", "-v", help="Include proposal rationales."),
+    ] = False,
+    yaml_output: Annotated[
+        bool,
+        typer.Option("--yaml", help="Emit the full AgentRun as YAML."),
+    ] = False,
+) -> None:
+    """Show an AgentRun with readiness, steps, stop reason, and owner action."""
+    try:
+        run = _agent_store(agent_runs_dir).load(agent_run_id)
+    except (AgentRunNotFoundError, AgentStorageError) as error:
+        _exit_for_agent(error)
+    _print_agent_run(run, verbose=verbose, yaml_output=yaml_output)
+
+
+@agent_app.command("history")
+def agent_history(
+    agent_run_id: Annotated[str, typer.Argument(help="Agent run id (agr_<ULID>).")],
+    agent_runs_dir: AgentRunsDirOption = None,
+    verbose: Annotated[
+        bool,
+        typer.Option("--verbose", "-v", help="Include full event messages and refs."),
+    ] = False,
+) -> None:
+    """Show append-only audit events for an AgentRun."""
+    try:
+        run = _agent_store(agent_runs_dir).load(agent_run_id)
+    except (AgentRunNotFoundError, AgentStorageError) as error:
+        _exit_for_agent(error)
+    typer.echo(format_agent_history(run, verbose=verbose), nl=False)
+
+
+@agent_app.command("list")
+def agent_list(
+    agent_runs_dir: AgentRunsDirOption = None,
+    opportunity_id: Annotated[
+        str | None,
+        typer.Option("--opportunity", help="Filter by opportunity id."),
+    ] = None,
+    limit: Annotated[
+        int,
+        typer.Option("--limit", help="Maximum runs to list (newest first)."),
+    ] = 50,
+) -> None:
+    """List AgentRuns (newest updated_at first)."""
+    try:
+        runs = _agent_store(agent_runs_dir).list_runs()
+    except AgentStorageError as error:
+        _exit_for_agent(error)
+    if opportunity_id:
+        runs = [r for r in runs if r.goal.opportunity_id == opportunity_id]
+    if not runs:
+        typer.echo("No agent runs found.")
+        return
+    for run in runs[: max(limit, 0)]:
+        typer.echo(format_agent_list_line(run))
 
 
 if __name__ == "__main__":
