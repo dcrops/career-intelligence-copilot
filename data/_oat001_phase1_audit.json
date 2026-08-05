@@ -1,0 +1,736 @@
+{
+  "totals": {
+    "job_txt_files": 21,
+    "numbered_jobs": 20,
+    "opportunities": 16,
+    "artifact_dirs": 16
+  },
+  "opportunities": [
+    {
+      "opportunity_id": "opp_01KYP7Y6R0X0V9F4V00SKZVKW6",
+      "title": "AI Engineer",
+      "company": "Allura Partners",
+      "posting_title": "AI Engineer",
+      "posting_company": "Allura Partners",
+      "analysis_title": null,
+      "analysis_company": null,
+      "artefacts": {
+        "posting": true,
+        "analysis": true,
+        "assessment": true,
+        "portfolio": true,
+        "strategy": true
+      },
+      "decision": "apply",
+      "pipeline": null,
+      "source_ref": null,
+      "source": {},
+      "ident_fp": "cb0dc81f90ca57fd130e773f5964c7bd7a619affba7fb7bf6b44ce5f5e8a5e71",
+      "post_fp": "ece3e4518c2195409592e7217c8fcd840338d301383d8f093f20dce63e46f611",
+      "needs_identity_backfill": false,
+      "backfill_available_from_posting": false,
+      "backfill_available_from_analysis": false
+    },
+    {
+      "opportunity_id": "opp_01KY8ZDEEHFN6CDPPTY2PNC9PS",
+      "title": "AI Infrastructure Engineer",
+      "company": "Maincode",
+      "posting_title": "AI Infrastructure Engineer",
+      "posting_company": "Maincode",
+      "analysis_title": null,
+      "analysis_company": null,
+      "artefacts": {
+        "posting": true,
+        "analysis": true,
+        "assessment": true,
+        "portfolio": true,
+        "strategy": true
+      },
+      "decision": null,
+      "pipeline": null,
+      "source_ref": null,
+      "source": {},
+      "ident_fp": "9dc6461e28fc97d57f1e457e68cba4563a9e7984d44dc18a3b42654f3f78477a",
+      "post_fp": "f3008b6b3da8e8d7b9bae4b74532c80d2137230ca7d41f9560580f3aeb228428",
+      "needs_identity_backfill": false,
+      "backfill_available_from_posting": false,
+      "backfill_available_from_analysis": false
+    },
+    {
+      "opportunity_id": "opp_01KY8YA5KWQWDFBEQ68N71PDEM",
+      "title": null,
+      "company": null,
+      "posting_title": null,
+      "posting_company": null,
+      "analysis_title": null,
+      "analysis_company": null,
+      "artefacts": {
+        "posting": true,
+        "analysis": true,
+        "assessment": true,
+        "portfolio": true,
+        "strategy": true
+      },
+      "decision": null,
+      "pipeline": null,
+      "source_ref": null,
+      "source": {},
+      "ident_fp": "9dc6461e28fc97d57f1e457e68cba4563a9e7984d44dc18a3b42654f3f78477a",
+      "post_fp": "f3008b6b3da8e8d7b9bae4b74532c80d2137230ca7d41f9560580f3aeb228428",
+      "needs_identity_backfill": true,
+      "backfill_available_from_posting": false,
+      "backfill_available_from_analysis": false
+    },
+    {
+      "opportunity_id": "opp_01KY8X7SSERDT9BGAHQ71RF6F3",
+      "title": null,
+      "company": null,
+      "posting_title": null,
+      "posting_company": null,
+      "analysis_title": null,
+      "analysis_company": null,
+      "artefacts": {
+        "posting": true,
+        "analysis": true,
+        "assessment": true,
+        "portfolio": true,
+        "strategy": true
+      },
+      "decision": "skip",
+      "pipeline": null,
+      "source_ref": null,
+      "source": {},
+      "ident_fp": "75e64e10aa3ca635a0d1b9f8f78ee49b922650d20df35601d6221536f34ef2a3",
+      "post_fp": "ce70794537ad01c60931a5255a7df9d92b394299bc93ae7231b78b47ddd55e3a",
+      "needs_identity_backfill": true,
+      "backfill_available_from_posting": false,
+      "backfill_available_from_analysis": false
+    },
+    {
+      "opportunity_id": "opp_01KY8X6V6N32558CDNXW0RXW7V",
+      "title": null,
+      "company": null,
+      "posting_title": null,
+      "posting_company": null,
+      "analysis_title": null,
+      "analysis_company": null,
+      "artefacts": {
+        "posting": true,
+        "analysis": true,
+        "assessment": true,
+        "portfolio": true,
+        "strategy": true
+      },
+      "decision": null,
+      "pipeline": null,
+      "source_ref": null,
+      "source": {},
+      "ident_fp": "9dc6461e28fc97d57f1e457e68cba4563a9e7984d44dc18a3b42654f3f78477a",
+      "post_fp": "f3008b6b3da8e8d7b9bae4b74532c80d2137230ca7d41f9560580f3aeb228428",
+      "needs_identity_backfill": true,
+      "backfill_available_from_posting": false,
+      "backfill_available_from_analysis": false
+    },
+    {
+      "opportunity_id": "opp_01KY8X66C3NSYXJ4E2RNTMMKM5",
+      "title": null,
+      "company": null,
+      "posting_title": null,
+      "posting_company": null,
+      "analysis_title": null,
+      "analysis_company": null,
+      "artefacts": {
+        "posting": true,
+        "analysis": true,
+        "assessment": true,
+        "portfolio": true,
+        "strategy": true
+      },
+      "decision": null,
+      "pipeline": null,
+      "source_ref": null,
+      "source": {},
+      "ident_fp": "ef9c21f51fdd2f3b8332b20f41511ac50cfc19779822dc46fda5ad1805806176",
+      "post_fp": "7fd03e9b619f2b5d2bb396b0875c3b2b4f9253b67e4dec1cdbd2c1ef8fdb5e32",
+      "needs_identity_backfill": true,
+      "backfill_available_from_posting": false,
+      "backfill_available_from_analysis": false
+    },
+    {
+      "opportunity_id": "opp_01KY8X5A6VFW3RK70WXNX0A36P",
+      "title": null,
+      "company": null,
+      "posting_title": null,
+      "posting_company": null,
+      "analysis_title": null,
+      "analysis_company": null,
+      "artefacts": {
+        "posting": true,
+        "analysis": true,
+        "assessment": true,
+        "portfolio": true,
+        "strategy": true
+      },
+      "decision": null,
+      "pipeline": null,
+      "source_ref": null,
+      "source": {},
+      "ident_fp": "7eca9b26dfe3267ff98d656477f5e0eff996b27cde921a9bd0897739c9497a79",
+      "post_fp": "e01d0b1da102b4e81bfea71283bacec41cfd445e89a48dfd00587f0f640ba3b4",
+      "needs_identity_backfill": true,
+      "backfill_available_from_posting": false,
+      "backfill_available_from_analysis": false
+    },
+    {
+      "opportunity_id": "opp_01KY8X4NPVYNZ4W27ZN9MEDV3Q",
+      "title": null,
+      "company": null,
+      "posting_title": null,
+      "posting_company": null,
+      "analysis_title": null,
+      "analysis_company": null,
+      "artefacts": {
+        "posting": true,
+        "analysis": true,
+        "assessment": true,
+        "portfolio": true,
+        "strategy": true
+      },
+      "decision": null,
+      "pipeline": null,
+      "source_ref": null,
+      "source": {},
+      "ident_fp": "e2712a2857e1252084bd755afed38a732c6f1a7f8ad31cdcc63e3808fb1f62ad",
+      "post_fp": "87ba7d794d2e00803631375543d14bd9ebb5dd1c180904a12b22bea0b97c5312",
+      "needs_identity_backfill": true,
+      "backfill_available_from_posting": false,
+      "backfill_available_from_analysis": false
+    },
+    {
+      "opportunity_id": "opp_01KY8X3XQ5NP8JKTXEKQ1J8GR0",
+      "title": null,
+      "company": null,
+      "posting_title": null,
+      "posting_company": null,
+      "analysis_title": null,
+      "analysis_company": null,
+      "artefacts": {
+        "posting": true,
+        "analysis": true,
+        "assessment": true,
+        "portfolio": true,
+        "strategy": true
+      },
+      "decision": null,
+      "pipeline": null,
+      "source_ref": null,
+      "source": {},
+      "ident_fp": "ea2b71d62759be6fbeaf825d3f53b7516d3e649ab95de5b921a7bc2f9058c8b2",
+      "post_fp": "cc5d1e6627491ea35f63e206cd66a0702518ec75ee1c19346aaa971c2921240d",
+      "needs_identity_backfill": true,
+      "backfill_available_from_posting": false,
+      "backfill_available_from_analysis": false
+    },
+    {
+      "opportunity_id": "opp_01KY8X38A0QEFV3PQCV7V68WSD",
+      "title": null,
+      "company": null,
+      "posting_title": null,
+      "posting_company": null,
+      "analysis_title": null,
+      "analysis_company": null,
+      "artefacts": {
+        "posting": true,
+        "analysis": true,
+        "assessment": true,
+        "portfolio": true,
+        "strategy": true
+      },
+      "decision": null,
+      "pipeline": null,
+      "source_ref": null,
+      "source": {},
+      "ident_fp": "409f2e943bbc2d2b42a2f407bd4d98a240bed65de636b31b8d7f09f16c523c10",
+      "post_fp": "340763d57fd147c08e5a6a923febaa07d832790cac4d8ef2042f5896fbc13434",
+      "needs_identity_backfill": true,
+      "backfill_available_from_posting": false,
+      "backfill_available_from_analysis": false
+    },
+    {
+      "opportunity_id": "opp_01KY8X1S0BC20YEX2QDAGAKEEH",
+      "title": null,
+      "company": null,
+      "posting_title": null,
+      "posting_company": null,
+      "analysis_title": null,
+      "analysis_company": null,
+      "artefacts": {
+        "posting": true,
+        "analysis": true,
+        "assessment": true,
+        "portfolio": true,
+        "strategy": true
+      },
+      "decision": null,
+      "pipeline": null,
+      "source_ref": null,
+      "source": {},
+      "ident_fp": "a5a6bdaa8e73cc3506021c1f07d3c2084bb1129149af42a1c69982f25d09fd03",
+      "post_fp": "fb345d984724f3b03a0047d5f37f61e8dcd22be55426dcb683cd2b13723428e9",
+      "needs_identity_backfill": true,
+      "backfill_available_from_posting": false,
+      "backfill_available_from_analysis": false
+    },
+    {
+      "opportunity_id": "opp_01KY8X103H78C9WXJ2B71KHXHG",
+      "title": null,
+      "company": null,
+      "posting_title": null,
+      "posting_company": null,
+      "analysis_title": null,
+      "analysis_company": null,
+      "artefacts": {
+        "posting": true,
+        "analysis": true,
+        "assessment": true,
+        "portfolio": true,
+        "strategy": true
+      },
+      "decision": null,
+      "pipeline": null,
+      "source_ref": null,
+      "source": {},
+      "ident_fp": "8d361e859d851c2b39ad0014e9aed4157aceb743eafd8cf320ffc01d49333180",
+      "post_fp": "c0758816e53a89d6fd6c53c3d0181647401269f8bb7ed5a3719f8d163d4d1cfc",
+      "needs_identity_backfill": true,
+      "backfill_available_from_posting": false,
+      "backfill_available_from_analysis": false
+    },
+    {
+      "opportunity_id": "opp_01KY8WYE6RM54EYV8QT0YXHCQP",
+      "title": null,
+      "company": null,
+      "posting_title": null,
+      "posting_company": null,
+      "analysis_title": null,
+      "analysis_company": null,
+      "artefacts": {
+        "posting": true,
+        "analysis": true,
+        "assessment": true,
+        "portfolio": true,
+        "strategy": true
+      },
+      "decision": null,
+      "pipeline": null,
+      "source_ref": null,
+      "source": {},
+      "ident_fp": "b109bc4f1c0a4be9a7118e2c11ca07610da5b1b369304b6e34f659be5f252252",
+      "post_fp": "f568c30018cf4a69a65fc6db43d170a578013b9d088b307e0f1c659898b6cb93",
+      "needs_identity_backfill": true,
+      "backfill_available_from_posting": false,
+      "backfill_available_from_analysis": false
+    },
+    {
+      "opportunity_id": "opp_01KY8WXQ8HQ4J5G2XTM3XFHGEX",
+      "title": null,
+      "company": null,
+      "posting_title": null,
+      "posting_company": null,
+      "analysis_title": null,
+      "analysis_company": null,
+      "artefacts": {
+        "posting": true,
+        "analysis": true,
+        "assessment": true,
+        "portfolio": true,
+        "strategy": true
+      },
+      "decision": null,
+      "pipeline": null,
+      "source_ref": null,
+      "source": {},
+      "ident_fp": "6b775f2370fd6d54ee46c873059da4856b0c56bbff6af44f172497a9ad81781b",
+      "post_fp": "83dd5a445982dc41e95d44e6d5f563d2446802bc188ccde40fffb1bfe1b43582",
+      "needs_identity_backfill": true,
+      "backfill_available_from_posting": false,
+      "backfill_available_from_analysis": false
+    },
+    {
+      "opportunity_id": "opp_01KY8WWW3AK8KKXAKM5KRZ03VE",
+      "title": null,
+      "company": null,
+      "posting_title": null,
+      "posting_company": null,
+      "analysis_title": null,
+      "analysis_company": null,
+      "artefacts": {
+        "posting": true,
+        "analysis": true,
+        "assessment": true,
+        "portfolio": true,
+        "strategy": true
+      },
+      "decision": null,
+      "pipeline": null,
+      "source_ref": null,
+      "source": {},
+      "ident_fp": "cb0dc81f90ca57fd130e773f5964c7bd7a619affba7fb7bf6b44ce5f5e8a5e71",
+      "post_fp": "ece3e4518c2195409592e7217c8fcd840338d301383d8f093f20dce63e46f611",
+      "needs_identity_backfill": true,
+      "backfill_available_from_posting": false,
+      "backfill_available_from_analysis": false
+    },
+    {
+      "opportunity_id": "opp_01KY8RFAH81M9V30ZVH9TM09T5",
+      "title": null,
+      "company": null,
+      "posting_title": null,
+      "posting_company": null,
+      "analysis_title": null,
+      "analysis_company": null,
+      "artefacts": {
+        "posting": true,
+        "analysis": true,
+        "assessment": true,
+        "portfolio": true,
+        "strategy": true
+      },
+      "decision": "apply",
+      "pipeline": null,
+      "source_ref": null,
+      "source": {},
+      "ident_fp": "6b775f2370fd6d54ee46c873059da4856b0c56bbff6af44f172497a9ad81781b",
+      "post_fp": "83dd5a445982dc41e95d44e6d5f563d2446802bc188ccde40fffb1bfe1b43582",
+      "needs_identity_backfill": true,
+      "backfill_available_from_posting": false,
+      "backfill_available_from_analysis": false
+    }
+  ],
+  "mappings": [
+    {
+      "job_file": "001_strong_ai_engineer.txt",
+      "job_path": "manual_validation\\jobs\\001_strong_ai_engineer.txt",
+      "job_fp": "ece3e4518c2195409592e7217c8fcd840338d301383d8f093f20dce63e46f611",
+      "job_head": "AI Engineer |  | Allura Partners  | View all jobs |  | Melbourne VIC (Hybrid) | Engineering - Software (Information & Communication Technology) | Full time | 190000 | Posted 4d ago | \u2022 | Medium application volume |  | How you match | 3 skills and credentials match you",
+      "match_count": 2,
+      "matches": [
+        {
+          "opportunity_id": "opp_01KYP7Y6R0X0V9F4V00SKZVKW6",
+          "score": 100,
+          "reasons": [
+            "exact_posting_raw_fingerprint"
+          ],
+          "title": "AI Engineer",
+          "company": "Allura Partners"
+        },
+        {
+          "opportunity_id": "opp_01KY8WWW3AK8KKXAKM5KRZ03VE",
+          "score": 100,
+          "reasons": [
+            "exact_posting_raw_fingerprint"
+          ],
+          "title": null,
+          "company": null
+        }
+      ]
+    },
+    {
+      "job_file": "002_bluefin_ai_systems_developer.txt",
+      "job_path": "manual_validation\\jobs\\002_bluefin_ai_systems_developer.txt",
+      "job_fp": "83dd5a445982dc41e95d44e6d5f563d2446802bc188ccde40fffb1bfe1b43582",
+      "job_head": "AI Systems Developer |  | Bluefin Resources Pty Limited  | View all jobs |  | Melbourne VIC (Hybrid) | Engineering - Software (Information & Communication Technology) | Full time | Posted 20h ago | \u2022 | Medium application volume |  | How you match | 1 skill or creden",
+      "match_count": 2,
+      "matches": [
+        {
+          "opportunity_id": "opp_01KY8WXQ8HQ4J5G2XTM3XFHGEX",
+          "score": 100,
+          "reasons": [
+            "exact_posting_raw_fingerprint"
+          ],
+          "title": null,
+          "company": null
+        },
+        {
+          "opportunity_id": "opp_01KY8RFAH81M9V30ZVH9TM09T5",
+          "score": 100,
+          "reasons": [
+            "exact_posting_raw_fingerprint"
+          ],
+          "title": null,
+          "company": null
+        }
+      ]
+    },
+    {
+      "job_file": "003_mid_role.txt",
+      "job_path": "manual_validation\\jobs\\003_mid_role.txt",
+      "job_fp": "f568c30018cf4a69a65fc6db43d170a578013b9d088b307e0f1c659898b6cb93",
+      "job_head": "Junior Software / DevOps Engineer |  | Jirotech Pty Ltd  | View all jobs |  | Melbourne VIC | Developers/Programmers (Information & Communication Technology) | Full time | Posted 7d ago | \u2022 | High application volume |  | How you match | 1 skill or credential matches",
+      "match_count": 1,
+      "matches": [
+        {
+          "opportunity_id": "opp_01KY8WYE6RM54EYV8QT0YXHCQP",
+          "score": 100,
+          "reasons": [
+            "exact_posting_raw_fingerprint"
+          ],
+          "title": null,
+          "company": null
+        }
+      ]
+    },
+    {
+      "job_file": "004_associate_ai_product_manager.txt",
+      "job_path": "manual_validation\\jobs\\004_associate_ai_product_manager.txt",
+      "job_fp": "c0758816e53a89d6fd6c53c3d0181647401269f8bb7ed5a3719f8d163d4d1cfc",
+      "job_head": "Associate AI Product Manager |  | SEEK Limited  | 4.6 | 201 reviews | \u00b7 | View all jobs | Cremorne, Melbourne VIC (Hybrid) | Product Management & Development (Information & Communication Technology) | Full time | Posted 3h ago |  | How you match | Matches based on y",
+      "match_count": 1,
+      "matches": [
+        {
+          "opportunity_id": "opp_01KY8X103H78C9WXJ2B71KHXHG",
+          "score": 100,
+          "reasons": [
+            "exact_posting_raw_fingerprint"
+          ],
+          "title": null,
+          "company": null
+        }
+      ]
+    },
+    {
+      "job_file": "005_network_engineer_automation_ai.txt",
+      "job_path": "manual_validation\\jobs\\005_network_engineer_automation_ai.txt",
+      "job_fp": "fb345d984724f3b03a0047d5f37f61e8dcd22be55426dcb683cd2b13723428e9",
+      "job_head": "Network Engineer- Automation & AI |  | Capgemini Australia Pty Ltd  | 2.9 | 82 reviews | \u00b7 | View all jobs | Docklands, Melbourne VIC (Hybrid) | Engineering - Network (Information & Communication Technology) | Full time | Posted 29d ago |  | How you match | 4 skills",
+      "match_count": 1,
+      "matches": [
+        {
+          "opportunity_id": "opp_01KY8X1S0BC20YEX2QDAGAKEEH",
+          "score": 100,
+          "reasons": [
+            "exact_posting_raw_fingerprint"
+          ],
+          "title": null,
+          "company": null
+        }
+      ]
+    },
+    {
+      "job_file": "006_senior_ai_engineer_kogan.txt",
+      "job_path": "manual_validation\\jobs\\006_senior_ai_engineer_kogan.txt",
+      "job_fp": "54a9777b2caa606c83f4d4d671dd77003b5c2e3cd7e4c28c2f9a5b4db7ef8278",
+      "job_head": "Senior AI Engineer | Kogan.com | 3.7 | 20 reviews | \u00b7 | View all jobs |  | South Melbourne, Melbourne VIC | Developers/Programmers (Information & Communication Technology) | Full time | Posted 26d ago |  | How you match | Matches based on your career history | API Int",
+      "match_count": 0,
+      "matches": []
+    },
+    {
+      "job_file": "007_technology_and_automation_lead.txt",
+      "job_path": "manual_validation\\jobs\\007_technology_and_automation_lead.txt",
+      "job_fp": "340763d57fd147c08e5a6a923febaa07d832790cac4d8ef2042f5896fbc13434",
+      "job_head": "Technology and Automation Lead |  | Buildlab  | View all jobs | South Melbourne, Melbourne VIC (Hybrid) | Business/Systems Analysts (Information & Communication Technology) | Full time | $140,000 \u2013 $150,000 per year | Posted 12d ago | \u2022 | High application volu",
+      "match_count": 1,
+      "matches": [
+        {
+          "opportunity_id": "opp_01KY8X38A0QEFV3PQCV7V68WSD",
+          "score": 100,
+          "reasons": [
+            "exact_posting_raw_fingerprint"
+          ],
+          "title": null,
+          "company": null
+        }
+      ]
+    },
+    {
+      "job_file": "008_repurpose_it_ai_adoption_specialist.txt",
+      "job_path": "manual_validation\\jobs\\008_repurpose_it_ai_adoption_specialist.txt",
+      "job_fp": "cc5d1e6627491ea35f63e206cd66a0702518ec75ee1c19346aaa971c2921240d",
+      "job_head": " |  | Strong applicant | AI Adoption Specialist |  | REPURPOSE IT P/L  | View all jobs | Essendon Fields, Melbourne VIC | Other (Information & Communication Technology) | Full time | Profile salary match |  | Posted 8d ago | \u2022 | Medium application volume |  | About Repurp",
+      "match_count": 1,
+      "matches": [
+        {
+          "opportunity_id": "opp_01KY8X3XQ5NP8JKTXEKQ1J8GR0",
+          "score": 100,
+          "reasons": [
+            "exact_posting_raw_fingerprint"
+          ],
+          "title": null,
+          "company": null
+        }
+      ]
+    },
+    {
+      "job_file": "009_forever_new_senior_ai_automation_engineer_digital.txt",
+      "job_path": "manual_validation\\jobs\\009_forever_new_senior_ai_automation_engineer_digital.txt",
+      "job_fp": "87ba7d794d2e00803631375543d14bd9ebb5dd1c180904a12b22bea0b97c5312",
+      "job_head": " |  | Strong applicant | Senior AI Automation Engineer \u2013 Digital |  | Forever New Clothing  | 3.3 | 120 reviews | \u00b7 | View all jobs | Melbourne VIC (Hybrid) | Engineering - Software (Information & Communication Technology) | Full time | Generous Salary + Super + 40%",
+      "match_count": 1,
+      "matches": [
+        {
+          "opportunity_id": "opp_01KY8X4NPVYNZ4W27ZN9MEDV3Q",
+          "score": 100,
+          "reasons": [
+            "exact_posting_raw_fingerprint"
+          ],
+          "title": null,
+          "company": null
+        }
+      ]
+    },
+    {
+      "job_file": "010_pisell_ai_quality_systems_reliability_engineer.txt",
+      "job_path": "manual_validation\\jobs\\010_pisell_ai_quality_systems_reliability_engineer.txt",
+      "job_fp": "e01d0b1da102b4e81bfea71283bacec41cfd445e89a48dfd00587f0f640ba3b4",
+      "job_head": "AI Quality & Systems Reliability Engineer | Pisell | View all jobs | Glen Waverley, Melbourne VIC | Testing & Quality Assurance (Information & Communication Technology) | Full time | $80,000 \u2013 $120,000 per year | Profile salary match |  | Posted 6d ago | \u2022 | Med",
+      "match_count": 1,
+      "matches": [
+        {
+          "opportunity_id": "opp_01KY8X5A6VFW3RK70WXNX0A36P",
+          "score": 100,
+          "reasons": [
+            "exact_posting_raw_fingerprint"
+          ],
+          "title": null,
+          "company": null
+        }
+      ]
+    },
+    {
+      "job_file": "011_officeworks_ai_engineer.txt",
+      "job_path": "manual_validation\\jobs\\011_officeworks_ai_engineer.txt",
+      "job_fp": "7fd03e9b619f2b5d2bb396b0875c3b2b4f9253b67e4dec1cdbd2c1ef8fdb5e32",
+      "job_head": "Company logo for, Officeworks. | Officeworks |  |  | AI Engineer  |  | Chadstone, Victoria, Australia \u00b7 Reposted 2 weeks ago \u00b7 Over 100 people clicked apply |  | Promoted by hirer \u00b7 Responses managed off LinkedIn |  | Full-time | Apply |  | Save | Your profile and res",
+      "match_count": 1,
+      "matches": [
+        {
+          "opportunity_id": "opp_01KY8X66C3NSYXJ4E2RNTMMKM5",
+          "score": 100,
+          "reasons": [
+            "exact_posting_raw_fingerprint"
+          ],
+          "title": null,
+          "company": null
+        }
+      ]
+    },
+    {
+      "job_file": "012_maincode_ai_infrastructure_engineer.txt",
+      "job_path": "manual_validation\\jobs\\012_maincode_ai_infrastructure_engineer.txt",
+      "job_fp": "f3008b6b3da8e8d7b9bae4b74532c80d2137230ca7d41f9560580f3aeb228428",
+      "job_head": "Company logo for, Maincode. | Maincode |  |  | AI Infrastructure Engineer |  | Melbourne, Victoria, Australia \u00b7 Reposted 6 days ago \u00b7 Over 100 people clicked apply |  | Promoted by hirer \u00b7 Responses managed off LinkedIn |  | On-site | Full-time | Apply |  | Save | Your ",
+      "match_count": 3,
+      "matches": [
+        {
+          "opportunity_id": "opp_01KY8ZDEEHFN6CDPPTY2PNC9PS",
+          "score": 100,
+          "reasons": [
+            "exact_posting_raw_fingerprint"
+          ],
+          "title": "AI Infrastructure Engineer",
+          "company": "Maincode"
+        },
+        {
+          "opportunity_id": "opp_01KY8YA5KWQWDFBEQ68N71PDEM",
+          "score": 100,
+          "reasons": [
+            "exact_posting_raw_fingerprint"
+          ],
+          "title": null,
+          "company": null
+        },
+        {
+          "opportunity_id": "opp_01KY8X6V6N32558CDNXW0RXW7V",
+          "score": 100,
+          "reasons": [
+            "exact_posting_raw_fingerprint"
+          ],
+          "title": null,
+          "company": null
+        }
+      ]
+    },
+    {
+      "job_file": "013_pay_com_au_ai_automation_engineer.txt",
+      "job_path": "manual_validation\\jobs\\013_pay_com_au_ai_automation_engineer.txt",
+      "job_fp": "ce70794537ad01c60931a5255a7df9d92b394299bc93ae7231b78b47ddd55e3a",
+      "job_head": "Company logo for, pay.com.au. | pay.com.au |  |  | AI Automation Engineer  |  | Melbourne, Victoria, Australia \u00b7 3 days ago \u00b7 Over 100 people clicked apply |  | Promoted by hirer \u00b7 Responses managed off LinkedIn |  | Hybrid | Full-time | Apply |  | Save | Your profile a",
+      "match_count": 1,
+      "matches": [
+        {
+          "opportunity_id": "opp_01KY8X7SSERDT9BGAHQ71RF6F3",
+          "score": 100,
+          "reasons": [
+            "exact_posting_raw_fingerprint"
+          ],
+          "title": null,
+          "company": null
+        }
+      ]
+    },
+    {
+      "job_file": "014_anton_ai_automation_engineer.txt",
+      "job_path": "manual_validation\\jobs\\014_anton_ai_automation_engineer.txt",
+      "job_fp": "5c2a4f0f88410e918ee8c433a21d81bcd5b9fb539837f2cee76b1d3b4ff4f64e",
+      "job_head": "AI Automation Engineer |  | Anton Murray Consulting  | View all jobs | Melbourne VIC | Engineering - Software (Information & Communication Technology) | Full time | Salary undisclosed |  |  | Our client is a leading global investment bank seeking an AI Automat",
+      "match_count": 0,
+      "matches": []
+    },
+    {
+      "job_file": "015_expedient_software_junior_full_stack_developer.txt",
+      "job_path": "manual_validation\\jobs\\015_expedient_software_junior_full_stack_developer.txt",
+      "job_fp": "31961758be725632e8df7cec2dd4756f410711965c04ed0a70fafa319ea936d6",
+      "job_head": "Graduate / Junior Full Stack Developer (AI & Agile) - Immediate Start | Expedient Software | View all jobs |  |  | Melbourne VIC (Hybrid) | Developers/Programmers (Information & Communication Technology) | Full time | Salary undisclosed |  |  | Graduate / Junior",
+      "match_count": 0,
+      "matches": []
+    },
+    {
+      "job_file": "016_robert_half_ai_engineer.txt",
+      "job_path": "manual_validation\\jobs\\016_robert_half_ai_engineer.txt",
+      "job_fp": "1c602378f0b5f4e94e8c9b38b38e99cd81116ed26a94b2b7707128df176d1e37",
+      "job_head": "AI Engineer | Contact Centre |  | Robert Half  | View all jobs |  |  | Melbourne VIC (Hybrid) | Engineering - Software (Information & Communication Technology) | Full time | Salary undisclosed |  | Our client is a leading global investment bank seeking an AI Aut",
+      "match_count": 0,
+      "matches": []
+    },
+    {
+      "job_file": "017_mars_recruitment_ai_engineer.txt",
+      "job_path": "manual_validation\\jobs\\017_mars_recruitment_ai_engineer.txt",
+      "job_fp": "f35061258fb77c82a15eb4a6a37d35e2b3ec5de392669798930ae40fcc7c4998",
+      "job_head": "AI Engineer |  | Mars Recruitment  | View all jobs | Melbourne VIC (Hybrid) | Engineering - Software (Information & Communication Technology) | Full time | Up to $200000.00 p.a. |  |  | An exciting opportunity has become available for an experienced AI DEngine",
+      "match_count": 0,
+      "matches": []
+    },
+    {
+      "job_file": "018_carlton_ai_enablement_lead.txt",
+      "job_path": "manual_validation\\jobs\\018_carlton_ai_enablement_lead.txt",
+      "job_fp": "37486eb08c24ecbc1894c71d779f900e0fef4b1fb475f1e855767e157a9acc23",
+      "job_head": "AI Enablement Lead |  | Carlton Football Club  | View all jobs | Carlton North, Melbourne VIC (Hybrid) | Other (Sport & Recreation) | Contract/Temp | Salary undisclosed |  |  | Carlton Football Club has made a deliberate and significant investment in AI, with ",
+      "match_count": 0,
+      "matches": []
+    },
+    {
+      "job_file": "019_redwolf_ai_engineer.txt",
+      "job_path": "manual_validation\\jobs\\019_redwolf_ai_engineer.txt",
+      "job_fp": "dffb82ba437de00104a00d0566c18e603c535acedb708ee0cb1b2ccd5e364edd",
+      "job_head": "AI Engineer |  | Redwolf + Rosch  | View all jobs | Melbourne VIC (Hybrid) | Engineering - Software (Information & Communication Technology) | Full time | Competitive Salary (Depending on experience) |  |  | A fantastic opportunity to drive an AI-first enginee",
+      "match_count": 0,
+      "matches": []
+    },
+    {
+      "job_file": "020_acenture_ai_engineer.txt",
+      "job_path": "manual_validation\\jobs\\020_acenture_ai_engineer.txt",
+      "job_fp": "614a1ec18787a1c96c507d73c5322cbb6535c87ca3a4f101ad3adff9395f74da",
+      "job_head": "AI Engineer |  | Accenture  | 3.5 | View all jobs | Melbourne VIC | Developers/Programmers (Information & Communication Technology) | Full time | Salary undisclosed |  |  | Accenture is a global professional services company with leading capabilities in digital,",
+      "match_count": 0,
+      "matches": []
+    },
+    {
+      "job_file": "_tmp_fr008_m2.txt",
+      "job_path": "manual_validation\\jobs\\_tmp_fr008_m2.txt",
+      "job_fp": "d0ccd9a6d51038caae1654c6186a47b9ea999ebf7145fc05a042927a09984655",
+      "job_head": "[CIC-FIXTURE:ai-engineer] | Senior AI Engineer \u2014 Northside Analytics (Melbourne) |  | About the role | We are hiring a Senior AI Engineer to design and ship production LLM applications for | Australian enterprise clients. You will own retrieval pipel",
+      "match_count": 0,
+      "matches": []
+    }
+  ]
+}

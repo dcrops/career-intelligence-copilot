@@ -35,6 +35,7 @@ from .models import (
     OwnerDecisionKind,
     OwnerDecisionRecord,
     PipelineStatus,
+    ReviewActionRecord,
     StrategySummary,
 )
 from .store import OpportunityStore
@@ -631,6 +632,138 @@ class OpportunityService:
                 }
             )
         return results
+
+    def repair_identity(
+        self,
+        opportunity_id: str,
+        *,
+        title: str | None = None,
+        company: str | None = None,
+        override: bool = False,
+        source_note: str | None = None,
+        occurred_at: datetime | None = None,
+    ) -> Opportunity:
+        """Owner-controlled repair of missing identity.title / identity.company.
+
+        Updates only the Opportunity identity projection and appends a
+        ``repair_identity`` review-action audit entry. Never modifies posting or
+        other immutable artefact files. Never changes decision, outcome, pipeline
+        status, duplicate links, or review flags.
+
+        By default refuses to overwrite a non-empty identity field that differs
+        from the requested value unless ``override=True``.
+        """
+        cleaned_title = title.strip() if title is not None else None
+        cleaned_company = company.strip() if company is not None else None
+        cleaned_note = source_note.strip() if source_note is not None else None
+
+        if cleaned_title is not None and not cleaned_title:
+            raise OpportunityValidationError(
+                [ErrorDetail(loc=("title",), msg="title must be non-empty", type="value_error")]
+            )
+        if cleaned_company is not None and not cleaned_company:
+            raise OpportunityValidationError(
+                [
+                    ErrorDetail(
+                        loc=("company",),
+                        msg="company must be non-empty",
+                        type="value_error",
+                    )
+                ]
+            )
+        if cleaned_title is None and cleaned_company is None:
+            raise OpportunityValidationError(
+                [
+                    ErrorDetail(
+                        loc=("identity",),
+                        msg="provide at least one of title or company",
+                        type="value_error",
+                    )
+                ]
+            )
+        if cleaned_note is not None and not cleaned_note:
+            raise OpportunityValidationError(
+                [
+                    ErrorDetail(
+                        loc=("source_note",),
+                        msg="source_note must be non-empty when provided",
+                        type="value_error",
+                    )
+                ]
+            )
+
+        current = self._store.get(opportunity_id)
+        identity = current.identity
+        updates: dict[str, object] = {}
+        conflicts: list[str] = []
+
+        if cleaned_title is not None:
+            if identity.title is None:
+                updates["title"] = cleaned_title
+            elif identity.title == cleaned_title:
+                pass
+            elif override:
+                updates["title"] = cleaned_title
+            else:
+                conflicts.append(
+                    f"title already set to {identity.title!r}; pass --override to replace"
+                )
+
+        if cleaned_company is not None:
+            if identity.company is None:
+                updates["company"] = cleaned_company
+            elif identity.company == cleaned_company:
+                pass
+            elif override:
+                updates["company"] = cleaned_company
+            else:
+                conflicts.append(
+                    f"company already set to {identity.company!r}; pass --override to replace"
+                )
+
+        if conflicts:
+            raise OpportunityTransitionError("; ".join(conflicts))
+
+        if not updates:
+            # Idempotent: requested values already match (or only matched fields supplied).
+            return current
+
+        stamp = occurred_at or datetime.now(UTC)
+        prior_title = identity.title
+        prior_company = identity.company
+        new_identity = identity.model_copy(update=updates)
+        detail_parts = [
+            "owner_supplied_repair",
+            f"prior_title={prior_title!r}",
+            f"prior_company={prior_company!r}",
+            f"new_title={new_identity.title!r}",
+            f"new_company={new_identity.company!r}",
+            f"fields={','.join(sorted(updates))}",
+        ]
+        if cleaned_note is not None:
+            detail_parts.append(f"source_note={cleaned_note}")
+        detail = "; ".join(detail_parts)
+
+        try:
+            entry = ReviewActionRecord(
+                action="repair_identity",
+                occurred_at=stamp,
+                detail=detail,
+            )
+            updated = current.model_copy(
+                update={
+                    "identity": new_identity,
+                    "review_actions": (*current.review_actions, entry),
+                    "updated_at": stamp,
+                },
+                deep=True,
+            )
+        except ValidationError as error:
+            raise OpportunityValidationError(
+                [ErrorDetail.from_pydantic(item) for item in error.errors()]
+            ) from error
+
+        return self._store.save(updated)
 
 
 def _configured_root() -> Path:

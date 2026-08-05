@@ -801,6 +801,73 @@ def backfill_identity(
         raise typer.Exit(code=1)
 
 
+@opportunity_app.command("repair-identity")
+def repair_identity(
+    opportunity_id: Annotated[str, typer.Argument(help="Opportunity id (opp_<ULID>).")],
+    dir: OpportunitiesDirOption = None,
+    title: Annotated[
+        str | None,
+        typer.Option("--title", help="Owner-supplied job title."),
+    ] = None,
+    company: Annotated[
+        str | None,
+        typer.Option("--company", help="Owner-supplied company name."),
+    ] = None,
+    override: Annotated[
+        bool,
+        typer.Option(
+            "--override",
+            help="Allow replacing an existing non-empty identity field.",
+        ),
+    ] = False,
+    source_note: Annotated[
+        str | None,
+        typer.Option(
+            "--source-note",
+            help="Optional provenance note (job file, live strategy path, etc.).",
+        ),
+    ] = None,
+) -> None:
+    """Owner-controlled repair of missing identity.title / identity.company.
+
+    Does not modify posting.json or other immutable artefacts. Does not change
+    decision, outcome, pipeline status, or duplicate links. By default refuses to
+    overwrite non-empty identity fields unless --override is set.
+    """
+    try:
+        service = _opportunity_service(dir)
+        before = service.get(opportunity_id)
+        opportunity = service.repair_identity(
+            opportunity_id,
+            title=title,
+            company=company,
+            override=override,
+            source_note=source_note,
+        )
+    except OpportunityError as error:
+        _exit_for_opportunity(error)
+
+    if (
+        before.identity.title == opportunity.identity.title
+        and before.identity.company == opportunity.identity.company
+        and len(before.review_actions) == len(opportunity.review_actions)
+    ):
+        typer.echo(
+            f"Identity already matches for {opportunity.opportunity_id} "
+            f"(title={opportunity.identity.title!r}, company={opportunity.identity.company!r})"
+        )
+        return
+
+    typer.echo(
+        f"Repaired identity for {opportunity.opportunity_id}: "
+        f"title={opportunity.identity.title!r}, company={opportunity.identity.company!r}"
+    )
+    if opportunity.review_actions:
+        last = opportunity.review_actions[-1]
+        if last.action == "repair_identity" and last.detail:
+            typer.echo(f"  audit: {last.detail}")
+
+
 @opportunity_app.command("compare")
 def compare_open_opportunities(
     dir: OpportunitiesDirOption = None,

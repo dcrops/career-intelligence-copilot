@@ -19,6 +19,11 @@ data/exports/
 data/workflow_runs/
 data/workflow_runs_m1_smoke/
 data/workflow_runs_m2_smoke/
+data/agent_runs/
+data/preparation_runs/**
+!data/preparation_runs/README.md
+data/truth_reports/
+data/_oat001_*/
 
 # Generated documents
 career-documents/**/generated/

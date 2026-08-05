@@ -8,7 +8,10 @@ comparison package.
 
 FR-009 M0 adds owner review metadata and an optional duplicate relationship as
 additive contracts (ADR-004). FR-009 M2 adds append-only ``review_actions`` audit
-evidence alongside the current-state ``review`` fields. An Opportunity is the
+evidence alongside the current-state ``review`` fields. OAT-001 adds
+``repair_identity`` as an append-only audit action when the owner repairs missing
+``identity.title`` / ``identity.company`` without mutating immutable artefacts.
+An Opportunity is the
 durable record of a successfully analysed job candidate that may require an
 owner decision — it does not imply the owner chose to apply. Review metadata,
 owner decision, pipeline status, and duplicate state stay separate fields
@@ -108,6 +111,7 @@ ReviewActionKind = Literal[
     "confirm_duplicate",
     "reject_duplicate",
     "confirm_canonical",
+    "repair_identity",
 ]
 
 PIPELINE_STATUSES: tuple[PipelineStatus, ...] = get_args(PipelineStatus)
