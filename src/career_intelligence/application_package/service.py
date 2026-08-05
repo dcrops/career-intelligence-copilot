@@ -263,6 +263,10 @@ class ApplicationPackageService:
             return self._profile_source.load()
         return self._profile_source
 
+    def load_profile(self) -> CareerProfile:
+        """Return the Career Profile bound to this package service (FR-014 gates)."""
+        return self._load_profile()
+
     def _resolve_manifest(
         self, manifest: ApplicationPackageManifest
     ) -> ApplicationPackageManifest:

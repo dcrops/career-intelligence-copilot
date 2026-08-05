@@ -1,0 +1,90 @@
+{
+  "artefact": {
+    "content_fingerprint": "a47b328e690580c996592a7788743cfd26487d731ac7a28adc8a94944a64c62b",
+    "kind": "cover_letter_markdown",
+    "path": "C:\\Users\\dcropper\\Projects\\AI_Projects\\career-intelligence-copilot\\data\\_fr014_m3_manual\\cover_letter_generated\\opp_01KZ832B53MG847NSBYCWSKGNX.md"
+  },
+  "catalogue_id": "cat_a2738fcfdc3bdd9d",
+  "coverage_status": "complete",
+  "created_at": "2026-08-05T04:31:52.556703Z",
+  "detection_performed": true,
+  "findings": [
+    {
+      "claim": {
+        "claim_class": "A",
+        "claim_id": "tcl_01KZ832C7C4A5CNHD1SY73NSH6",
+        "claim_kind": "technology",
+        "object_key": "python",
+        "predicate": "has_skill",
+        "source_artefact": "cover_letter_markdown",
+        "span_hint": "Roles centred on Python, TypeScript, and Vue are where I do my best engineering work.",
+        "strength": "strongest",
+        "subject": "candidate",
+        "surface_text": "Python"
+      },
+      "detection_certainty": "certain",
+      "evidence_citations": [
+        {
+          "authority": "candidate_authoritative",
+          "excerpt": "Python",
+          "provenance_ref": "skill:Python",
+          "source_kind": "profile_skill"
+        }
+      ],
+      "evidence_status": "supported",
+      "finding_id": "tfd_01KZ832C7DQ4WFRM7RX8ZAW5PM",
+      "notes": "Supported via profile_skill (skill:Python)",
+      "recommended_action": "none \u2014 supported by candidate evidence",
+      "severity": "info"
+    },
+    {
+      "claim": {
+        "claim_class": "A",
+        "claim_id": "tcl_01KZ832C7DY98D2B2JCNXWTSAQ",
+        "claim_kind": "technology",
+        "object_key": "typescript",
+        "predicate": "has_skill",
+        "source_artefact": "cover_letter_markdown",
+        "span_hint": "Roles centred on Python, TypeScript, and Vue are where I do my best engineering work.",
+        "strength": "strongest",
+        "subject": "candidate",
+        "surface_text": "TypeScript"
+      },
+      "detection_certainty": "certain",
+      "evidence_citations": [],
+      "evidence_status": "unsupported",
+      "finding_id": "tfd_01KZ832C7DYM2XFTPT50TWSJWD",
+      "notes": "No candidate_authoritative catalogue entry for 'typescript'. JD/context labels cannot authorize capability. Sentence: Roles centred on Python, TypeScript, and Vue are where I do my best engineering work.",
+      "recommended_action": "remove or reframe unsupported candidate technology claim: TypeScript",
+      "severity": "blocking"
+    },
+    {
+      "claim": {
+        "claim_class": "A",
+        "claim_id": "tcl_01KZ832C7D3NXD4MAZDFK1HRHZ",
+        "claim_kind": "technology",
+        "object_key": "vue",
+        "predicate": "has_skill",
+        "source_artefact": "cover_letter_markdown",
+        "span_hint": "Roles centred on Python, TypeScript, and Vue are where I do my best engineering work.",
+        "strength": "strongest",
+        "subject": "candidate",
+        "surface_text": "Vue"
+      },
+      "detection_certainty": "certain",
+      "evidence_citations": [],
+      "evidence_status": "unsupported",
+      "finding_id": "tfd_01KZ832C7DY34QA15BF13A888N",
+      "notes": "No candidate_authoritative catalogue entry for 'vue'. JD/context labels cannot authorize capability. Sentence: Roles centred on Python, TypeScript, and Vue are where I do my best engineering work.",
+      "recommended_action": "remove or reframe unsupported candidate technology claim: Vue",
+      "severity": "blocking"
+    }
+  ],
+  "gate": "post_edit_authoritative",
+  "opportunity_id": "opp_01KZ832B53MG847NSBYCWSKGNX",
+  "outcome": "fail",
+  "report_id": "trp_01KZ832C7D8D660Z5KZDS2CV8S",
+  "summary": "Technology validation fail: 2 blocking, 0 review-required, 1 supported, 0 employer-context finding(s).",
+  "validation_performed": true,
+  "validator_version": "fr014-m2-technology-1"
+}

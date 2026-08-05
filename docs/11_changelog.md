@@ -4,6 +4,94 @@ Records product strategy and engineering knowledge changes. Routine typo fixes a
 
 ---
 
+## Version 1.92
+
+### FR-014 documentation freeze and close-out
+
+**Date:** 2026-08-05.
+
+Documentation-only close-out. Expanded acceptance freeze report; aligned executive
+summary, phase history, domain decision loop, functional spec status, implementation
+notes owner workflow, ADR-006 consequences, and roadmap consistency. No production
+code or test changes. **FR-014 remains ACCEPTED and frozen.** Active FR: **FR-015**
+(not started).
+
+Evidence: [eval/fr014_recruiter_document_truth_validation.md](eval/fr014_recruiter_document_truth_validation.md).
+
+---
+
+## Version 1.91
+
+### FR-014 M4 expanded claim validation and FR freeze
+
+**Date:** 2026-08-05.
+
+M4 extends deterministic truth validation to employment honesty (commercial AI /
+software / independent), certifications, years of experience (fail-closed when not
+computable), project delivery, and domain claims — all authorised only by Career
+Profile evidence. Soft skills and subjective claims remain out of scope. Redwolf
+technology regression retained. **FR-014 ACCEPTED and frozen.**
+
+Evidence: [eval/fr014_m4_claim_validation.md](eval/fr014_m4_claim_validation.md);
+[eval/fr014_recruiter_document_truth_validation.md](eval/fr014_recruiter_document_truth_validation.md).
+Manual: `scripts/run_fr014_m4_manual.py` — PASS. Next: FR-015 only on owner request.
+
+---
+
+### FR-014 M3 owner CLI and external-use gates
+
+**Date:** 2026-08-05.
+
+M3 makes truth validation operational: thin `cic truth` CLI, sidecar TruthReport
+persistence with Markdown content hashing, package external-use readiness, and
+fail-closed FR-012 submission protection. Stale or missing reports never authorize
+external use. Owner correction workflow is edit Markdown → revalidate (no rewrite).
+Claim kinds remain technology/framework (M2 scope).
+
+Evidence: [eval/fr014_m3_owner_workflow.md](eval/fr014_m3_owner_workflow.md).
+Manual: `scripts/run_fr014_m3_manual.py`. Next: M4 (not started).
+
+---
+
+### FR-014 M2 technology claim validation (Redwolf blocked)
+
+**Date:** 2026-08-05.
+
+M2 populates `CandidateEvidenceCatalogue` from Career Profile and validates
+technology/framework claims in Markdown via `TruthValidationService`. Redwolf-style
+TypeScript/Vue capability leakage fails closed; supported Python/FastAPI claims pass;
+employer-context mentions are Class B. JD/context labels expand the scan lexicon only
+and never authorize capability. No CLI or gates (M3).
+
+Evidence: [eval/fr014_m2_technology_validation.md](eval/fr014_m2_technology_validation.md).
+Manual: `scripts/run_fr014_truth_manual.py` — PASS. Tests: 32 focused passed.
+
+---
+
+## Version 1.90
+
+### FR-014 M0 accepted; M1 truth-validation contracts + ADR-006
+
+**Date:** 2026-08-05.
+
+Owner accepted the FR-014 hybrid architecture (Candidate Evidence Catalogue → Claim
+Detection → Validator → TruthReport; Markdown primary; dual gates; fail closed;
+JD/assessment/strategy/plans never authorize candidate capability). **ADR-006**
+records the boundary and explicitly separates **detection certainty** from
+**evidence / truth validation**; PASS requires complete coverage and performed
+detection + validation (empty findings alone are not proof of truth).
+
+**M1 delivered:** package `career_intelligence.truth_validation` — typed Claim /
+catalogue / TruthFinding / TruthReport contracts and invariant helpers. Unit tests:
+`tests/unit/truth_validation/` (22 passed). No detectors, catalogue population, CLI,
+or gates (M2/M3). M4 breadth remains corpus-justified only.
+
+Evidence: [eval/fr014_m0_engineering_spike.md](eval/fr014_m0_engineering_spike.md),
+[eval/fr014_m1_truth_validation_contracts.md](eval/fr014_m1_truth_validation_contracts.md),
+[adr/006_recruiter_document_truth_validation.md](adr/006_recruiter_document_truth_validation.md).
+
+---
+
 ## Version 1.89
 
 ### FR-013 close-out — documentation freeze confirmed

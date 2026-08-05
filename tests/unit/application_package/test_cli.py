@@ -21,6 +21,7 @@ def _paths(tmp_path: Path) -> dict[str, str]:
         "cv": str(tmp_path / "cv_generated"),
         "cover": str(tmp_path / "cover_letter_generated"),
         "profile": str(PROFILE),
+        "truth": str(tmp_path / "truth_reports"),
     }
 
 
@@ -85,6 +86,28 @@ def test_prepare_show_and_verify_happy_path(tmp_path: Path) -> None:
     assert "cv:" in shown.output
     assert "cover_letter:" in shown.output
 
+    validated = runner.invoke(
+        app,
+        [
+            "truth",
+            "validate-package",
+            oid,
+            "--dir",
+            paths["dir"],
+            "--packages-dir",
+            paths["packages"],
+            "--cv-dir",
+            paths["cv"],
+            "--cover-letter-dir",
+            paths["cover"],
+            "--profile",
+            paths["profile"],
+            "--truth-reports-dir",
+            paths["truth"],
+        ],
+    )
+    assert validated.exit_code == 0, validated.output
+
     verified = runner.invoke(
         app,
         [
@@ -101,10 +124,13 @@ def test_prepare_show_and_verify_happy_path(tmp_path: Path) -> None:
             paths["cover"],
             "--profile",
             paths["profile"],
+            "--truth-reports-dir",
+            paths["truth"],
         ],
     )
     assert verified.exit_code == 0, verified.output
     assert "is intact" in verified.output
+    assert "ALLOWED" in verified.output
 
 
 def test_prepare_yaml_and_show_yaml(tmp_path: Path) -> None:

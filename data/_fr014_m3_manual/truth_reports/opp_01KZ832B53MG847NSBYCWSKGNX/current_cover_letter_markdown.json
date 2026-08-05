@@ -1,0 +1,48 @@
+{
+  "artefact": {
+    "content_fingerprint": "b721c58b8f32cf9843bd9655053bdf1863fa161f61c2146e61ba63b2167c46f4",
+    "kind": "cover_letter_markdown",
+    "path": "C:\\Users\\dcropper\\Projects\\AI_Projects\\career-intelligence-copilot\\data\\_fr014_m3_manual\\cover_letter_generated\\opp_01KZ832B53MG847NSBYCWSKGNX.md"
+  },
+  "catalogue_id": "cat_a2738fcfdc3bdd9d",
+  "coverage_status": "complete",
+  "created_at": "2026-08-05T04:31:52.609218Z",
+  "detection_performed": true,
+  "findings": [
+    {
+      "claim": {
+        "claim_class": "A",
+        "claim_id": "tcl_01KZ832C91D0WBWF9FGPDAC7W1",
+        "claim_kind": "technology",
+        "object_key": "python",
+        "predicate": "has_skill",
+        "source_artefact": "cover_letter_markdown",
+        "span_hint": "I have experience with Python.",
+        "strength": "experienced",
+        "subject": "candidate",
+        "surface_text": "Python"
+      },
+      "detection_certainty": "certain",
+      "evidence_citations": [
+        {
+          "authority": "candidate_authoritative",
+          "excerpt": "Python",
+          "provenance_ref": "skill:Python",
+          "source_kind": "profile_skill"
+        }
+      ],
+      "evidence_status": "supported",
+      "finding_id": "tfd_01KZ832C91BH3BY0K9MSY138RS",
+      "notes": "Supported via profile_skill (skill:Python)",
+      "recommended_action": "none \u2014 supported by candidate evidence",
+      "severity": "info"
+    }
+  ],
+  "gate": "post_edit_authoritative",
+  "opportunity_id": "opp_01KZ832B53MG847NSBYCWSKGNX",
+  "outcome": "pass",
+  "report_id": "trp_01KZ832C91714QKYYK1B765XM7",
+  "summary": "Technology validation complete: 1 supported candidate claim(s), 0 employer-context mention(s); no blocking issues.",
+  "validation_performed": true,
+  "validator_version": "fr014-m2-technology-1"
+}

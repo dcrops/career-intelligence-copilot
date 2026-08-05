@@ -38,6 +38,9 @@ owner gates composed from FR-006/007 — review required before external use)
       ↓
 Preparation Orchestration (FR-011 — coordinates package prep; does not extend FR-008)
       ↓
+Truth Validation (FR-014 — Markdown authoritative; fail-closed external-use gate;
+[ADR-006](adr/006_recruiter_document_truth_validation.md))
+      ↓
 Owner Review → Render (HTML/PDF) → Manual / Assisted Submission (FR-012 — never silent)
       ↓
 Pipeline Tracking (FR-013; builds on Phase 2 M2)
@@ -45,15 +48,20 @@ Pipeline Tracking (FR-013; builds on Phase 2 M2)
 Reporting → Operational History (derived report / due / export + append-only events)
 ```
 
-**Owner-facing summary (post–FR-013):** Opportunity → Assessment → Strategy →
-Application Package → Owner Review → Render → Manual Submission → Pipeline Tracking →
-Reporting → Operational History.
+**Owner-facing summary (post–FR-014):** Opportunity → Assessment → Strategy →
+Application Package → Truth Validation → Owner Review → Render → Manual Submission →
+Pipeline Tracking → Reporting → Operational History.
+
+**FR-014 (complete and frozen):** Truth Validation gates recruiter-facing Markdown
+(advisory after generate; authoritative after owner edit) before external use. It does
+not replace owner review.
 
 Opportunity Assessment and Portfolio Matching remain sibling consumers of Career Profile +
 Job Analysis. Application Strategy consumes both. Document generation and submission are
 separate stages under mandatory owner review. Recruiter Document Truth Validation (FR-014)
-is the planned fail-closed factual trust boundary before recruiter-facing artefacts scale
-toward automation. Workflow orchestration (FR-008) coordinates
+is the fail-closed factual trust boundary before recruiter-facing artefacts scale
+toward automation ([ADR-006](adr/006_recruiter_document_truth_validation.md)). Workflow
+orchestration (FR-008) coordinates
 these nodes; preparation orchestration (FR-011) is a separate coordinator for package
 prep; bounded agents (FR-015+) appear only after the deterministic path works.
 
@@ -466,6 +474,38 @@ terminal corrections.
 SubmissionAttempt ids remain optional evidence citations. No projection watermark.
 No FR-014 work in this FR.
 
+### Truth Validation (FR-014 — complete)
+
+**Maps to:** FR-014 — [acceptance](eval/fr014_recruiter_document_truth_validation.md)
+(frozen); [ADR-006](adr/006_recruiter_document_truth_validation.md);
+milestones [M0](eval/fr014_m0_engineering_spike.md)–[M4](eval/fr014_m4_claim_validation.md)
+
+Deterministic fail-closed trust boundary for recruiter-facing documents.
+Validates; does not generate or rewrite.
+
+| Concept | Role |
+|---------|------|
+| Candidate Evidence Catalogue | Normalised candidate facts; Class A support requires ``candidate_authoritative`` provenance |
+| Claim (classes A–D) | Structured factual assertion with strength |
+| TruthFinding | **Detection certainty** and **evidence status** are distinct dimensions |
+| TruthReport | Coverage + performed flags + findings + overall outcome |
+
+**Invariants (ADR-006):** JD / assessment / strategy / plans are context-only and
+never authorize candidate capability. ``outcome=pass`` requires complete coverage
+and performed detection + validation — empty findings alone are not proof of truth.
+Ambiguous Class A detection is review-required or blocking by severity.
+
+**M1 delivered:** typed contracts only.  
+**M2 delivered:** catalogue population from Career Profile; deterministic technology
+detection/validation via ``TruthValidationService``; Redwolf leakage blocked.  
+**M3 delivered:** ``cic truth`` CLI; sidecar TruthReports + content hashing;
+package/submission fail-closed external-use gates
+([eval/fr014_m3_owner_workflow.md](eval/fr014_m3_owner_workflow.md)).  
+**M4 delivered:** employment honesty, certifications, duration, project delivery,
+domain ([eval/fr014_m4_claim_validation.md](eval/fr014_m4_claim_validation.md)).  
+**Frozen:** [acceptance](eval/fr014_recruiter_document_truth_validation.md).
+Education / identity / soft claims remain excluded.
+
 ---
 
 ## Entity Relationships
@@ -489,6 +529,10 @@ No FR-014 work in this FR.
 | Application Package | Submission Attempt | Attempt references package prepared_at / optional hash |
 | Application Package | Pipeline Event | Event may cite package prepared_at / hash as submit evidence |
 | Submission Attempt | Pipeline Event | Event may cite attempt id; never auto-creates events (ADR-005) |
+| Career Profile | Truth Validation | Authoritative candidate evidence for Class A claims (ADR-006) |
+| Job Analysis | Truth Validation | Context-only; leakage detection; never authorizes capability |
+| CV / Cover Letter Markdown | Truth Validation | Primary validation surface (artefact under test) |
+| TruthReport | Submission / Package gates | Consumed by M3 external-use readiness; does not own submit or package rules |
 | Application Strategy | User Decision | User accepts, overrides, or defers the recommendation |
 | User Decision | Outcome Record | Decision and subsequent events logged (M2 / FR-013) |
 | Outcome Record | Opportunity | Outcomes attach to durable opportunities |
@@ -564,7 +608,7 @@ continue to connect to this layer rather than invent a parallel tracker.
 | Application Preparation Orchestration | **FR-011** (Horizon 1A; complete — [acceptance](eval/fr011_application_preparation.md)) |
 | Submission Assistance | **FR-012** (Horizon 1A; complete — [acceptance](eval/fr012_submission_assistance.md)) |
 | Application Pipeline Tracking | **FR-013** (Horizon 1A; complete — [acceptance](eval/fr013_application_pipeline_tracking.md); [ADR-005](adr/005_application_pipeline_lifecycle.md)) |
-| Recruiter Document Truth Validation | **FR-014** (Horizon 1A; planned / current — [planning](eval/fr014_recruiter_document_truth_validation.md)) |
+| Recruiter Document Truth Validation | **FR-014** (Horizon 1A; **complete and frozen** — [acceptance](eval/fr014_recruiter_document_truth_validation.md); [ADR-006](adr/006_recruiter_document_truth_validation.md)) |
 | Bounded Agentic Workflow | **FR-015** (Horizon 1A; first bounded agents) |
 | Multi-Agent Orchestration | **FR-016** (Horizon 1A) |
 | Agent Evaluation & Observability | **FR-017** (Horizon 1A) |

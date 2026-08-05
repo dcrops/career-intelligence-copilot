@@ -7,9 +7,10 @@
 | [003](003_application_workflow_orchestration.md) | Application workflow orchestration architecture | Accepted — thin in-repo runner; LangGraph not required for current FR-008 scope |
 | [004](004_opportunity_review_boundary.md) | Opportunity as pre-decision system of record; review queue as derived projection | Accepted (FR-009 M0), implemented and closed (FR-009 M1–M4; Decision 8 amended by the M4 ranking calibration) — amends ADR-002 persistence boundary |
 | [005](005_application_pipeline_lifecycle.md) | Application pipeline lifecycle (stored status + append-only events) | Accepted (FR-013 M1) — amends ADR-002 lifecycle audit; reaffirms ADR-004; SubmissionAttempt never auto-advances status |
+| [006](006_recruiter_document_truth_validation.md) | Recruiter document truth validation (deterministic fail-closed boundary) | Accepted (FR-014 M1) — detection certainty ≠ evidence validation; JD never authorizes candidate capability |
 
 Related: [04_functional_specification.md](../04_functional_specification.md) § FR-008,
-§ FR-009, § FR-010, § FR-011, § FR-012, § FR-013; [10_roadmap.md](../10_roadmap.md) § Horizon 1A.
+§ FR-009, § FR-010, § FR-011, § FR-012, § FR-013, § FR-014; [10_roadmap.md](../10_roadmap.md) § Horizon 1A.
 
 Close-out records:
 [eval/fr008_workflow_orchestration.md](../eval/fr008_workflow_orchestration.md),
@@ -28,7 +29,13 @@ Close-out records:
 [eval/fr013_m3_owner_workflow.md](../eval/fr013_m3_owner_workflow.md),
 [eval/fr013_m4_reporting_acceptance.md](../eval/fr013_m4_reporting_acceptance.md),
 [eval/fr013_application_pipeline_tracking.md](../eval/fr013_application_pipeline_tracking.md)
-(FR-013 frozen).
+(FR-013 frozen),
+[eval/fr014_m0_engineering_spike.md](../eval/fr014_m0_engineering_spike.md) (Accepted),
+[eval/fr014_m1_truth_validation_contracts.md](../eval/fr014_m1_truth_validation_contracts.md),
+[eval/fr014_m2_technology_validation.md](../eval/fr014_m2_technology_validation.md),
+[eval/fr014_m3_owner_workflow.md](../eval/fr014_m3_owner_workflow.md),
+[eval/fr014_m4_claim_validation.md](../eval/fr014_m4_claim_validation.md),
+[eval/fr014_recruiter_document_truth_validation.md](../eval/fr014_recruiter_document_truth_validation.md) (FR-014 frozen).
 Post-FR-010 architecture validation:
 [eval/architecture_health_check_post_fr010.md](../eval/architecture_health_check_post_fr010.md).
 
@@ -44,3 +51,11 @@ FR-013 **complete and frozen**
 ([eval/fr013_application_pipeline_tracking.md](../eval/fr013_application_pipeline_tracking.md)).
 Opportunity remains current-state SoT; append-only PipelineEvents provide audit;
 SubmissionAttempt success never auto-advances `Opportunity.status`.
+
+**FR-014 ADR note:** [ADR-006](006_recruiter_document_truth_validation.md) accepted at M1.
+FR-014 **complete and frozen**
+([eval/fr014_recruiter_document_truth_validation.md](../eval/fr014_recruiter_document_truth_validation.md)).
+Detection certainty is distinct from evidence validation; PASS requires complete
+coverage and performed detection + validation; JD/assessment/strategy/plans never
+authorize candidate capability. M2–M4 delivered technology + extended claim kinds,
+owner CLI, and fail-closed package/submission gates.

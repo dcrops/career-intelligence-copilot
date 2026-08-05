@@ -20,6 +20,13 @@ from career_intelligence.opportunities import (
     OpportunityService,
     OpportunityStorageError,
 )
+from career_intelligence.truth_validation import (
+    DEFAULT_TRUTH_REPORTS_ROOT,
+    JsonDirectoryTruthReportStore,
+    TruthGateError,
+    evaluate_package_truth,
+    require_package_external_use,
+)
 
 from .adapters import SubmissionAdapter, SubmissionAdapterRequest, SubmissionAdapterResult
 from .errors import (
@@ -61,6 +68,8 @@ class SubmissionOrchestrator:
         store: SubmissionAttemptStore | None = None,
         attempts_root: Path | None = None,
         adapters: dict[SubmissionChannel, SubmissionAdapter] | None = None,
+        truth_reports_root: Path | None = None,
+        enable_truth_gate: bool = True,
     ) -> None:
         self._opportunities = opportunities
         self._packages = packages
@@ -81,6 +90,12 @@ class SubmissionOrchestrator:
                 "manual_assisted": ManualAssistedAdapter(),
             }
         )
+        self._truth_root = (
+            truth_reports_root
+            if truth_reports_root is not None
+            else DEFAULT_TRUTH_REPORTS_ROOT
+        )
+        self._enable_truth_gate = enable_truth_gate
 
     def get_attempt(self, attempt_id: str) -> SubmissionAttempt:
         """Reload a submission attempt by id."""
@@ -111,6 +126,7 @@ class SubmissionOrchestrator:
         decision: str | None = None
         package_verified = False
         package_prepared_at = None
+        manifest = None
 
         try:
             opportunity = self._opportunities.get(opportunity_id)
@@ -150,6 +166,19 @@ class SubmissionOrchestrator:
             messages.append(str(error))
         except ApplicationPackageError as error:
             messages.append(str(error))
+
+        if package_verified and manifest is not None and self._enable_truth_gate:
+            try:
+                truth_status = evaluate_package_truth(
+                    manifest=manifest,
+                    profile=self._packages.load_profile(),
+                    store=JsonDirectoryTruthReportStore(self._truth_root),
+                    revalidate=False,
+                )
+                if not truth_status.external_use_allowed:
+                    messages.extend(truth_status.messages)
+            except Exception as error:  # noqa: BLE001 — surface as readiness message
+                messages.append(f"Truth validation check failed: {error}")
 
         if channel is not None:
             try:
@@ -486,6 +515,17 @@ class SubmissionOrchestrator:
             raise SubmissionGateError(
                 "Package opportunity_id does not match requested opportunity_id"
             )
+
+        if self._enable_truth_gate:
+            try:
+                require_package_external_use(
+                    manifest=manifest,
+                    profile=self._packages.load_profile(),
+                    store=JsonDirectoryTruthReportStore(self._truth_root),
+                    revalidate=False,
+                )
+            except TruthGateError as error:
+                raise SubmissionGateError(str(error)) from error
 
         needs_destination = (
             adapter.requires_destination

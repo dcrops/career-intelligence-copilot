@@ -79,6 +79,16 @@ from career_intelligence.submission import (
     SubmissionStorageError,
     SubmissionValidationError,
 )
+from career_intelligence.truth_validation import (
+    DEFAULT_TRUTH_REPORTS_ROOT,
+    JsonDirectoryTruthReportStore,
+    TruthGateError,
+    TruthReport,
+    TruthReportNotFoundError,
+    TruthValidationError,
+    TruthValidationService,
+    evaluate_package_truth,
+)
 from career_intelligence.pipeline import (
     DEFAULT_PIPELINE_EVENTS_ROOT,
     DEFAULT_PIPELINE_EXPORT_PATH,
@@ -120,12 +130,19 @@ pipeline_app = typer.Typer(
         "check, repair, report, due, export."
     ),
 )
+truth_app = typer.Typer(
+    help=(
+        "Validate recruiter-facing Markdown claims (FR-014). "
+        "Commands: validate, show, validate-package."
+    ),
+)
 app.add_typer(profile_app, name="profile")
 app.add_typer(opportunity_app, name="opportunity")
 app.add_typer(package_app, name="package")
 app.add_typer(preparation_app, name="preparation")
 app.add_typer(submission_app, name="submission")
 app.add_typer(pipeline_app, name="pipeline")
+app.add_typer(truth_app, name="truth")
 
 PathOption = Annotated[
     Path | None,
@@ -180,6 +197,17 @@ PipelineEventsDirOption = Annotated[
         help=(
             "Override the pipeline-events store directory "
             f"(default: {DEFAULT_PIPELINE_EVENTS_ROOT})."
+        ),
+    ),
+]
+
+TruthReportsDirOption = Annotated[
+    Path | None,
+    typer.Option(
+        "--truth-reports-dir",
+        help=(
+            "Override the truth-reports store directory "
+            f"(default: {DEFAULT_TRUTH_REPORTS_ROOT})."
         ),
     ),
 ]
@@ -257,6 +285,7 @@ def _submission_orchestrator(
     cv_output_dir: Path | None = None,
     cover_letter_output_dir: Path | None = None,
     fake_outcome: str | None = None,
+    truth_reports_dir: Path | None = None,
 ) -> SubmissionOrchestrator:
     opportunities = _opportunity_service(opportunities_dir)
     packages = _package_service(
@@ -277,6 +306,8 @@ def _submission_orchestrator(
             "fake": fake,
             "manual_assisted": ManualAssistedAdapter(),
         },
+        truth_reports_root=truth_reports_dir,
+        enable_truth_gate=True,
     )
 
 
@@ -956,8 +987,9 @@ def verify_package(
             help="Override cover-letter draft output directory.",
         ),
     ] = None,
+    truth_reports_dir: TruthReportsDirOption = None,
 ) -> None:
-    """Verify that the current package manifest and referenced drafts are intact."""
+    """Verify package integrity and fail-closed truth external-use readiness."""
     try:
         service = _package_service(
             opportunities_dir=dir,
@@ -967,17 +999,33 @@ def verify_package(
             cover_letter_output_dir=cover_letter_dir,
         )
         manifest = service.get(opportunity_id, verify=True)
+        truth_status = evaluate_package_truth(
+            manifest=manifest,
+            profile=service.load_profile(),
+            store=JsonDirectoryTruthReportStore(truth_reports_dir or DEFAULT_TRUTH_REPORTS_ROOT),
+            revalidate=False,
+        )
     except OpportunityError as error:
         _exit_for_opportunity(error)
     except ApplicationPackageError as error:
         _exit_for_package(error)
     except ProfileError as error:
         _exit_for_profile(error)
+    except TruthValidationError as error:
+        typer.echo(f"Truth validation error: {error}", err=True)
+        raise typer.Exit(code=2) from error
 
     typer.echo(
         f"Application package for {manifest.opportunity_id} is intact "
         f"(owner_review_required={manifest.owner_review_required})."
     )
+    if truth_status.external_use_allowed:
+        typer.echo("Truth external-use: ALLOWED")
+    else:
+        typer.echo("Truth external-use: BLOCKED", err=True)
+        for message in truth_status.messages:
+            typer.echo(f"- {message}", err=True)
+        raise typer.Exit(code=1)
 
 
 @preparation_app.command("run")
@@ -1263,6 +1311,7 @@ def check_submission(
         bool,
         typer.Option("--yaml", help="Emit the readiness report as YAML."),
     ] = False,
+    truth_reports_dir: TruthReportsDirOption = None,
 ) -> None:
     """Validate submission readiness without creating an attempt."""
     try:
@@ -1273,6 +1322,7 @@ def check_submission(
             attempts_dir=attempts_dir,
             cv_output_dir=cv_dir,
             cover_letter_output_dir=cover_letter_dir,
+            truth_reports_dir=truth_reports_dir,
         )
         report = orchestrator.check_readiness(
             opportunity_id,
@@ -1366,6 +1416,7 @@ def run_submission(
         bool,
         typer.Option("--yaml", help="Emit the full SubmissionAttempt as YAML."),
     ] = False,
+    truth_reports_dir: TruthReportsDirOption = None,
 ) -> None:
     """Run assisted submission for an apply Opportunity (FR-012).
 
@@ -1389,6 +1440,7 @@ def run_submission(
             cv_output_dir=cv_dir,
             cover_letter_output_dir=cover_letter_dir,
             fake_outcome=fake_outcome,
+            truth_reports_dir=truth_reports_dir,
         )
         attempt = orchestrator.submit(
             opportunity_id,
@@ -1481,6 +1533,7 @@ def record_manual_submission(
         bool,
         typer.Option("--yaml", help="Emit the full SubmissionAttempt as YAML."),
     ] = False,
+    truth_reports_dir: TruthReportsDirOption = None,
 ) -> None:
     """Record that the owner completed submission outside the system."""
     if not approve_submit:
@@ -1506,6 +1559,7 @@ def record_manual_submission(
             attempts_dir=attempts_dir,
             cv_output_dir=cv_dir,
             cover_letter_output_dir=cover_letter_dir,
+            truth_reports_dir=truth_reports_dir,
         )
         attempt = orchestrator.record_manual_completion(
             opportunity_id,
@@ -1556,6 +1610,7 @@ def show_submission(
         bool,
         typer.Option("--yaml", help="Emit the full SubmissionAttempt as YAML."),
     ] = False,
+    truth_reports_dir: TruthReportsDirOption = None,
 ) -> None:
     """Show a submission attempt by id (read-only)."""
     try:
@@ -1566,6 +1621,7 @@ def show_submission(
             attempts_dir=attempts_dir,
             cv_output_dir=cv_dir,
             cover_letter_output_dir=cover_letter_dir,
+            truth_reports_dir=truth_reports_dir,
         )
         attempt = orchestrator.get_attempt(attempt_id)
     except SubmissionError as error:
@@ -1608,6 +1664,7 @@ def list_submissions(
         bool,
         typer.Option("--yaml", help="Emit attempts as YAML."),
     ] = False,
+    truth_reports_dir: TruthReportsDirOption = None,
 ) -> None:
     """List submission attempts (read-only)."""
     try:
@@ -1618,6 +1675,7 @@ def list_submissions(
             attempts_dir=attempts_dir,
             cv_output_dir=cv_dir,
             cover_letter_output_dir=cover_letter_dir,
+            truth_reports_dir=truth_reports_dir,
         )
         attempts = orchestrator.list_attempts(opportunity_id=opportunity_id)
     except SubmissionError as error:
@@ -2504,6 +2562,193 @@ def pipeline_export(
         typer.echo(f"Could not write export: {error}", err=True)
         raise typer.Exit(code=2) from error
     typer.echo(f"Exported pipeline CSV to {path}")
+
+
+def _print_truth_report(report: TruthReport) -> None:
+    typer.echo(f"report_id: {report.report_id}")
+    typer.echo(f"outcome: {report.outcome}")
+    typer.echo(f"coverage: {report.coverage_status}")
+    typer.echo(f"gate: {report.gate}")
+    typer.echo(f"artefact: {report.artefact.kind}")
+    if report.artefact.path:
+        typer.echo(f"path: {report.artefact.path}")
+    typer.echo(f"content_hash: {report.artefact.content_fingerprint}")
+    typer.echo(f"validator_version: {report.validator_version}")
+    typer.echo(f"summary: {report.summary}")
+    blocking = [f for f in report.findings if f.severity == "blocking"]
+    review = [f for f in report.findings if f.severity == "review_required"]
+    supported = [
+        f
+        for f in report.findings
+        if f.claim.claim_class == "A" and f.evidence_status == "supported"
+    ]
+    typer.echo(f"blocking: {len(blocking)}")
+    for finding in blocking:
+        typer.echo(
+            f"  - [{finding.claim.object_key}] class={finding.claim.claim_class} "
+            f"strength={finding.claim.strength} detection={finding.detection_certainty} "
+            f"evidence={finding.evidence_status}"
+        )
+        typer.echo(f"    claim: {finding.claim.surface_text}")
+        typer.echo(f"    action: {finding.recommended_action}")
+    typer.echo(f"review_required: {len(review)}")
+    for finding in review:
+        typer.echo(
+            f"  - [{finding.claim.object_key}] {finding.claim.surface_text} "
+            f"({finding.recommended_action})"
+        )
+    if supported:
+        typer.echo(f"supported: {len(supported)}")
+        for finding in supported:
+            typer.echo(
+                f"  - [{finding.claim.object_key}] {finding.claim.surface_text}"
+            )
+
+
+@truth_app.command("validate")
+def truth_validate(
+    markdown_path: Annotated[Path, typer.Argument(help="Markdown file to validate.")],
+    profile: ProfilePathOption = None,
+    opportunity_id: Annotated[
+        str | None,
+        typer.Option("--opportunity-id", help="Opportunity id for report persistence."),
+    ] = None,
+    kind: Annotated[
+        str | None,
+        typer.Option(
+            "--kind",
+            help="Artefact kind: cv_markdown|cover_letter_markdown (auto-detected if omitted).",
+        ),
+    ] = None,
+    persist: Annotated[
+        bool,
+        typer.Option("--persist/--no-persist", help="Persist TruthReport (default: on when opportunity-id set)."),
+    ] = True,
+    truth_reports_dir: TruthReportsDirOption = None,
+    yaml_output: Annotated[
+        bool,
+        typer.Option("--yaml", help="Emit full TruthReport as YAML."),
+    ] = False,
+) -> None:
+    """Validate recruiter-facing Markdown (authoritative surface)."""
+    try:
+        profile_service = CareerProfileService.from_path(profile) if profile else CareerProfileService()
+        career_profile = profile_service.load()
+        service = TruthValidationService()
+        report = service.validate_markdown_path(
+            markdown_path,
+            profile=career_profile,
+            artefact_kind=kind,  # type: ignore[arg-type]
+            opportunity_id=opportunity_id,
+        )
+        saved: Path | None = None
+        if persist and opportunity_id:
+            store = JsonDirectoryTruthReportStore(
+                truth_reports_dir or DEFAULT_TRUTH_REPORTS_ROOT
+            )
+            saved = store.save(report, as_current=True)
+    except (ProfileError, TruthValidationError, OSError) as error:
+        typer.echo(f"Truth validation failed: {error}", err=True)
+        raise typer.Exit(code=2) from error
+
+    if yaml_output:
+        typer.echo(_render(report))
+    else:
+        _print_truth_report(report)
+        if saved is not None:
+            typer.echo(f"persisted: {saved}")
+    if report.outcome in {"fail", "review_required"}:
+        raise typer.Exit(code=1)
+
+
+@truth_app.command("show")
+def truth_show(
+    report_path: Annotated[Path, typer.Argument(help="Path to a TruthReport JSON file.")],
+    yaml_output: Annotated[
+        bool,
+        typer.Option("--yaml", help="Emit full TruthReport as YAML."),
+    ] = False,
+) -> None:
+    """Show a persisted TruthReport."""
+    try:
+        report = JsonDirectoryTruthReportStore().load_path(report_path)
+    except (TruthReportNotFoundError, TruthValidationError, OSError) as error:
+        typer.echo(f"Could not load report: {error}", err=True)
+        raise typer.Exit(code=2) from error
+    if yaml_output:
+        typer.echo(_render(report))
+    else:
+        _print_truth_report(report)
+
+
+@truth_app.command("validate-package")
+def truth_validate_package(
+    opportunity_id: Annotated[str, typer.Argument(help="Opportunity id (opp_<ULID>).")],
+    dir: OpportunitiesDirOption = None,
+    packages_dir: PackagesDirOption = None,
+    profile: ProfilePathOption = None,
+    cv_dir: Annotated[
+        Path | None,
+        typer.Option("--cv-dir", help="Override CV draft output directory."),
+    ] = None,
+    cover_letter_dir: Annotated[
+        Path | None,
+        typer.Option(
+            "--cover-letter-dir",
+            help="Override cover-letter draft output directory.",
+        ),
+    ] = None,
+    truth_reports_dir: TruthReportsDirOption = None,
+    check_only: Annotated[
+        bool,
+        typer.Option(
+            "--check-only",
+            help="Evaluate stored reports for freshness without re-detecting claims.",
+        ),
+    ] = False,
+) -> None:
+    """Validate CV + cover-letter Markdown for a package and update current reports."""
+    try:
+        packages = _package_service(
+            opportunities_dir=dir,
+            packages_dir=packages_dir,
+            profile_path=profile,
+            cv_output_dir=cv_dir,
+            cover_letter_output_dir=cover_letter_dir,
+        )
+        manifest = packages.get(opportunity_id, verify=True)
+        status = evaluate_package_truth(
+            manifest=manifest,
+            profile=packages.load_profile(),
+            store=JsonDirectoryTruthReportStore(
+                truth_reports_dir or DEFAULT_TRUTH_REPORTS_ROOT
+            ),
+            revalidate=not check_only,
+        )
+    except OpportunityError as error:
+        _exit_for_opportunity(error)
+    except ApplicationPackageError as error:
+        _exit_for_package(error)
+    except ProfileError as error:
+        _exit_for_profile(error)
+    except TruthValidationError as error:
+        typer.echo(f"Truth validation failed: {error}", err=True)
+        raise typer.Exit(code=2) from error
+
+    typer.echo(f"opportunity_id: {status.opportunity_id}")
+    typer.echo(
+        "external_use: "
+        + ("ALLOWED" if status.external_use_allowed else "BLOCKED")
+    )
+    for doc in status.documents:
+        typer.echo(
+            f"- {doc.artefact_kind}: outcome={doc.outcome} fresh={doc.fresh} "
+            f"allowed={doc.external_use_allowed} report={doc.report_id}"
+        )
+        for message in doc.messages:
+            typer.echo(f"    {message}")
+    if not status.external_use_allowed:
+        raise typer.Exit(code=1)
 
 
 if __name__ == "__main__":

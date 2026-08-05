@@ -1,0 +1,109 @@
+{
+  "full_name": "Test Candidate",
+  "company": "Example AI Co",
+  "role_title": "Senior AI Engineer",
+  "salutation": "Hello,",
+  "paragraphs": [
+    "Roles centred on Python are where I do my best engineering work. For Example AI Co's Senior AI Engineer role, I want to build production AI systems with clear engineering accountability.",
+    "Builds evidence-backed systems. I work well with engineers on design reviews, trade-offs and delivery sequencing, and I am comfortable explaining technical decisions clearly. On the engineering side, I build with an architecture-first mindset. I keep logic deterministic where that is the right tool, validate with evidence, and keep a human in the loop where the stakes require it. I favour explainable, production-quality systems over opaque model responses. Over the past year I have built a portfolio of production-style AI engineering projects spanning intelligent document search, operational analytics, AI governance and career intelligence systems. That is the approach I would bring to Example AI Co's technical challenges.",
+    "One project from my portfolio is especially useful evidence for this role. Example Project is compact evidence for this work: it is software that a production-minded example. Engineering centres on production-minded AI Engineering delivery. Result: Produced a traceable result.",
+    "Working demonstrations, architecture notes and GitHub repositories for the systems above are available in my portfolio. Those artefacts matter when you want to inspect delivery decisions rather than slideware.",
+    "I would welcome a conversation about Example AI Co's Senior AI Engineer work. I can talk through delivery approach end to end: from problem framing and architecture choices through to demos you can inspect."
+  ],
+  "rendered_markdown": "# Test Candidate\n\n**Senior AI Engineer - Example AI Co**\n\n---\n\nHello,\n\nRoles centred on Python are where I do my best engineering work. For Example AI Co's Senior AI Engineer role, I want to build production AI systems with clear engineering accountability.\n\nBuilds evidence-backed systems. I work well with engineers on design reviews, trade-offs and delivery sequencing, and I am comfortable explaining technical decisions clearly. On the engineering side, I build with an architecture-first mindset. I keep logic deterministic where that is the right tool, validate with evidence, and keep a human in the loop where the stakes require it. I favour explainable, production-quality systems over opaque model responses. Over the past year I have built a portfolio of production-style AI engineering projects spanning intelligent document search, operational analytics, AI governance and career intelligence systems. That is the approach I would bring to Example AI Co's technical challenges.\n\nOne project from my portfolio is especially useful evidence for this role. Example Project is compact evidence for this work: it is software that a production-minded example. Engineering centres on production-minded AI Engineering delivery. Result: Produced a traceable result.\n\nWorking demonstrations, architecture notes and GitHub repositories for the systems above are available in my portfolio. Those artefacts matter when you want to inspect delivery decisions rather than slideware.\n\nI would welcome a conversation about Example AI Co's Senior AI Engineer work. I can talk through delivery approach end to end: from problem framing and architecture choices through to demos you can inspect.\n\nKind regards,\n\nTest Candidate\n\n",
+  "contact": null,
+  "job_analysis": {
+    "posting": {
+      "raw_text": "Senior AI Engineer. Python required. Hybrid Melbourne.",
+      "title": "Senior AI Engineer",
+      "company": "Example AI Co",
+      "source_url": "https://au.seek.com/job/93487188"
+    },
+    "role_family": {
+      "family": "ai_engineering",
+      "evidence": [
+        {
+          "excerpt": "Senior AI Engineer",
+          "section": "title"
+        }
+      ]
+    },
+    "seniority": {
+      "level": "senior",
+      "ambiguous": false,
+      "candidate_levels": [],
+      "evidence": [
+        {
+          "excerpt": "Senior AI Engineer",
+          "section": "title"
+        }
+      ]
+    },
+    "technologies": [
+      {
+        "name": "Python",
+        "level": "required",
+        "evidence": [
+          {
+            "excerpt": "Python required",
+            "section": "requirements"
+          }
+        ]
+      }
+    ],
+    "responsibilities": [
+      {
+        "description": "Build LLM applications",
+        "evidence": [
+          {
+            "excerpt": "Build LLM applications",
+            "section": "responsibilities"
+          }
+        ]
+      }
+    ],
+    "compensation": {
+      "clarity": "unstated",
+      "minimum": null,
+      "maximum": null,
+      "currency": null,
+      "period": null,
+      "raw_text": null,
+      "evidence": []
+    },
+    "location": {
+      "clarity": "stated",
+      "summary": "Melbourne",
+      "evidence": [
+        {
+          "excerpt": "Hybrid Melbourne",
+          "section": "location"
+        }
+      ]
+    },
+    "work_arrangement": {
+      "arrangement": "hybrid",
+      "details": null,
+      "evidence": [
+        {
+          "excerpt": "Hybrid Melbourne",
+          "section": "location"
+        }
+      ]
+    },
+    "employment": {
+      "working_hours": "unspecified",
+      "engagement_type": "unspecified",
+      "evidence": []
+    },
+    "experience_requirements": []
+  },
+  "application_tier": "platinum",
+  "pursuit_posture": "prioritise",
+  "assumptions": [
+    "Cover letter composed deterministically from CoverLetterPlan fields and Career Profile evidence (narrative rendering; no LLM rewrite)."
+  ],
+  "cover_letter_plan_approved": true,
+  "owner_review_required": true,
+  "composition_source": "deterministic_composition"
+}

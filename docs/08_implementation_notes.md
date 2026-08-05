@@ -1088,11 +1088,13 @@ Keep generation, review, editing, rendering, and submission distinct:
 ```
 Generate                 (FR-006 / FR-007 / FR-010–FR-011 — planner → composer → Markdown/HTML/PDF)
     ↓
+Truth Validation         (FR-014 — deterministic; Markdown authoritative; fail-closed)
+    ↓
 Owner Review             (mandatory; never skip for external use)
     ↓
 Optional Markdown Edit   (factual corrections and wording — Markdown only)
     ↓
-Render Only              (scripts/render_document.py — HTML/PDF refresh; no planner/composer/OpenAI)
+Revalidate / Render Only (truth again if Markdown changed; scripts/render_document.py)
     ↓
 Verify                   (confirm corrected wording, links, layout)
     ↓
@@ -1101,8 +1103,9 @@ Submit                   (FR-012 — explicit owner approval; never silent)
 
 Do **not** edit HTML or PDF as the source of truth. Owner edits belong in Markdown;
 render-only regenerates the canonical HTML/PDF suite from that Markdown.
-Future **FR-014 Recruiter Document Truth Validation** will gate recruiter-facing
-claims before automation scales; it does not replace owner review or render-only.
+**FR-014 Recruiter Document Truth Validation** is **complete and frozen** and gates
+recruiter-facing claims before external use; it does not replace owner review or
+render-only ([acceptance](eval/fr014_recruiter_document_truth_validation.md)).
 
 ---
 
@@ -1588,11 +1591,12 @@ cannot be cancelled (already failed).
 
 ### Sequencing (remaining)
 
-1. **FR-009 → FR-013** — review queue, packages, preparation orchestration, submission, tracking.
-2. **FR-014** — Recruiter Document Truth Validation (automation-safety gate before automation increases).
-3. **Additional acquisition adapters** (URL/API/email) — only when explicitly requested.
-4. **FR-015 → FR-017** — bounded agents → multi-agent → evaluation.
-5. **Horizon 1B (FR-018–FR-024)** — only after 1A.
+1. **FR-015 → FR-017** — bounded agents → multi-agent → evaluation (FR-015 not started;
+   owner request required; FR-014 truth gate must remain in force).
+2. **Additional acquisition adapters** (URL/API/email) — only when explicitly requested.
+3. **Horizon 1B (FR-018–FR-024)** — only after 1A.
+
+**Completed in this sequence:** FR-009 → FR-014 (review queue through truth validation).
 
 ### FR-008 acquisition foundation (complete — closes FR-008)
 
@@ -2366,5 +2370,78 @@ No domain redesign. FR-013 **ACCEPTED and FROZEN**.
 
 Owner manual validation confirmed. Legacy Opportunity rows may show pipeline status
 without event history (pre-FR-013 / `update_outcome`). FR-013-managed advances create
-append-only events and project correctly. Documentation frozen. Next: FR-014.
+append-only events and project correctly. Documentation frozen. Next at freeze:
+FR-014 (now **complete and frozen** —
+[eval/fr014_recruiter_document_truth_validation.md](eval/fr014_recruiter_document_truth_validation.md)).
+
+---
+
+## FR-014 M0 accepted; M1 truth-validation contracts
+
+**Date:** 2026-08-05  
+**Eval:** [eval/fr014_m1_truth_validation_contracts.md](eval/fr014_m1_truth_validation_contracts.md)  
+**ADR:** [adr/006_recruiter_document_truth_validation.md](adr/006_recruiter_document_truth_validation.md)
+
+Owner accepted hybrid Truth Validation architecture. M1 freezes typed contracts in
+`career_intelligence.truth_validation` (Claim, catalogue, TruthFinding, TruthReport).
+Detection certainty is distinct from evidence status. PASS requires complete coverage
+plus performed detection and validation. No detectors, catalogue builders, CLI, or
+gates in M1.
+
+**Unit:** `tests/unit/truth_validation/` — 22 passed.
+
+**Next:** M2 core deterministic validation (technology + Redwolf leakage).
+
+---
+
+## FR-014 M2 — Technology claim validation
+
+**Date:** 2026-08-05  
+**Eval:** [eval/fr014_m2_technology_validation.md](eval/fr014_m2_technology_validation.md)
+
+`TruthValidationService` builds the catalogue from Career Profile and validates
+technology claims in Markdown. Redwolf TypeScript/Vue capability leakage fails;
+supported Python/FastAPI passes; employer-context Class B passes. Context JD labels
+never authorize capability.
+
+**Manual:** `scripts/run_fr014_truth_manual.py` — PASS  
+**Next:** M3 owner CLI + fail-closed external-use gates — **complete**
+([eval/fr014_m3_owner_workflow.md](eval/fr014_m3_owner_workflow.md)).
+
+---
+
+## FR-014 M3 — Owner CLI and external-use gates
+
+**Date:** 2026-08-05  
+**Eval:** [eval/fr014_m3_owner_workflow.md](eval/fr014_m3_owner_workflow.md)
+
+Operational truth validation:
+
+- `cic truth validate|show|validate-package`
+- Sidecar reports under `data/truth_reports/` with Markdown SHA-256 freshness
+- `evaluate_package_truth` / `require_package_external_use` for CV + cover letter
+- FR-012 submission readiness/submit fail-closed when reports missing/stale/failing
+- `cic package verify` reports truth external-use ALLOWED/BLOCKED
+
+FR-010 manifest schema unchanged. No rewriting. Claim kinds remain technology-only.
+
+**Manual:** `scripts/run_fr014_m3_manual.py`  
+**Next:** M4 expanded claim kinds — **complete**
+([eval/fr014_m4_claim_validation.md](eval/fr014_m4_claim_validation.md)).
+
+---
+
+## FR-014 M4 — Expanded deterministic claim validation (close-out)
+
+**Date:** 2026-08-05  
+**Eval:** [eval/fr014_m4_claim_validation.md](eval/fr014_m4_claim_validation.md)  
+**Acceptance:** [eval/fr014_recruiter_document_truth_validation.md](eval/fr014_recruiter_document_truth_validation.md)
+
+Extends catalogue + `extended_claims` detection for employment honesty,
+certifications, years (computable tenure only), project delivery, and domain.
+`VALIDATOR_VERSION = fr014-m4-deterministic-1`. Soft skills / subjective claims
+excluded. Redwolf technology regression retained.
+
+**Manual:** `scripts/run_fr014_m4_manual.py` — PASS  
+**Status:** FR-014 **complete and frozen**. Do not begin FR-015 without owner request.
 

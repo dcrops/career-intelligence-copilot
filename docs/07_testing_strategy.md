@@ -640,9 +640,29 @@ Does **not** cover: FR-012 auto-advance (forbidden), dashboards, adaptive scorin
 
 ---
 
+## FR-014 Truth Validation coverage (M1–M4 — frozen)
+
+FR-014 **complete and frozen**:
+[docs/eval/fr014_recruiter_document_truth_validation.md](eval/fr014_recruiter_document_truth_validation.md);
+[ADR-006](adr/006_recruiter_document_truth_validation.md).
+
+| Area | Coverage |
+|------|----------|
+| Models | Claim classes/strengths; catalogue (+ `supported_years`); TruthFinding; TruthReport |
+| ADR-006 invariants | Detection ≠ evidence; PASS requires coverage + performed flags; JD context-only |
+| Catalogue builder | Tech, domain, employment markers, certs, project delivery, tenure |
+| Technology detection | Class A/B/C framing; Redwolf pattern; bare-keyword ignore |
+| Extended claims (M4) | Employment honesty; certification; duration; delivery; domain |
+| Gates / CLI (M3) | Package external-use; FR-012 readiness/submit; `cic truth` |
+| Unit | `tests/unit/truth_validation/` |
+| Functional | `test_fr014_m2_*.py`, `test_fr014_m3_*.py`, `test_fr014_m4_*.py` |
+| Manual | `scripts/run_fr014_truth_manual.py`, `run_fr014_m3_manual.py`, `run_fr014_m4_manual.py` |
+
+---
+
 ## Horizon 1A — Planned test coverage (remaining)
 
-When FR-014–FR-017 are built, prefer behaviour over implementation detail:
+When FR-015–FR-017 are built, prefer behaviour over implementation detail:
 
 | Area | Expected coverage |
 |------|-------------------|
@@ -653,7 +673,7 @@ When FR-014–FR-017 are built, prefer behaviour over implementation detail:
 | FR-011 preparation (**delivered** — see FR-011 coverage above) | Preconditions; package coordination; fail-closed; run audit; owner CLI |
 | FR-012 submission (**delivered** — see FR-012 coverage above) | Readiness; Assisted Submission; Manual Completion; append-only audit; owner CLI |
 | FR-013 tracking (**delivered** — frozen) | Dual-write + owner CLI + reporting; see FR-013 coverage |
-| FR-014 truth validation | Fail-closed findings for unsupported candidate claims; JD evidence ≠ candidate evidence; Redwolf-style regression |
+| FR-014 truth validation (**complete / frozen**) | Fail-closed findings; package/submission gates; Redwolf + M4 claim matrix; see FR-014 coverage |
 | FR-015 agents | Max iterations, stop conditions, restricted tools, validation before state update |
 | FR-016 / FR-017 | Loop prevention; fault injection; token/cost/latency where LLM-backed; browser journey evidence when Playwright is used |
 

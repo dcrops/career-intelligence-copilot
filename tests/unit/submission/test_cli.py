@@ -28,6 +28,7 @@ def _paths(tmp_path: Path) -> dict[str, str]:
         "cv": str(tmp_path / "cv_generated"),
         "cover": str(tmp_path / "cover_letter_generated"),
         "profile": str(PROFILE),
+        "truth": str(tmp_path / "truth_reports"),
     }
 
 
@@ -45,6 +46,8 @@ def _common(paths: dict[str, str]) -> list[str]:
         paths["cover"],
         "--profile",
         paths["profile"],
+        "--truth-reports-dir",
+        paths["truth"],
     ]
 
 
@@ -52,7 +55,19 @@ def _prepare(tmp_path: Path) -> tuple[str, dict[str, str]]:
     opportunities, oid, profile = seed_applied_opportunity(tmp_path)
     packages = package_service(tmp_path, opportunities, profile)
     packages.prepare(oid, **approved_gate_options())  # type: ignore[arg-type]
-    return oid, _paths(tmp_path)
+    paths = _paths(tmp_path)
+    from career_intelligence.truth_validation import (
+        JsonDirectoryTruthReportStore,
+        evaluate_package_truth,
+    )
+
+    evaluate_package_truth(
+        manifest=packages.get(oid, verify=True),
+        profile=profile,
+        store=JsonDirectoryTruthReportStore(Path(paths["truth"])),
+        revalidate=True,
+    )
+    return oid, paths
 
 
 def _attempt_id(output: str) -> str:

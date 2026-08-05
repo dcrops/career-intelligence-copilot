@@ -56,11 +56,14 @@ milestones [M0](docs/eval/fr012_m0_submission_contracts.md),
 [M2](docs/eval/fr012_m2_owner_workflow.md). **FR-013** Application Pipeline Tracking
 is **complete and frozen** —
 [docs/eval/fr013_application_pipeline_tracking.md](docs/eval/fr013_application_pipeline_tracking.md);
-[ADR-005](docs/adr/005_application_pipeline_lifecycle.md). **Current focus — Horizon 1A:**
-**FR-014** Recruiter Document Truth Validation (automation-safety gate —
-[planning](docs/eval/fr014_recruiter_document_truth_validation.md)), then
-FR-015–FR-017.
-Do not reopen Phase 2, FR-008, FR-009, FR-010, FR-011, FR-012, or FR-013 exit criteria without
+[ADR-005](docs/adr/005_application_pipeline_lifecycle.md). **FR-014** Recruiter Document
+Truth Validation is **complete and frozen** —
+[acceptance](docs/eval/fr014_recruiter_document_truth_validation.md);
+milestones [M0](docs/eval/fr014_m0_engineering_spike.md)–[M4](docs/eval/fr014_m4_claim_validation.md);
+[ADR-006](docs/adr/006_recruiter_document_truth_validation.md). **Current focus — Horizon 1A:**
+**FR-015** Bounded Agentic Workflow (not started — owner request required), then
+FR-016–FR-017.
+Do not reopen Phase 2, FR-008, FR-009, FR-010, FR-011, FR-012, FR-013, or FR-014 exit criteria without
 explicit owner request.
 **Principle:** Job acquisition first. Recruiter outreach second (Horizon 1B /
 FR-018–FR-024 — do not start while 1A is incomplete).
@@ -96,8 +99,9 @@ frozen** (owner-assisted submission; append-only attempts; thin `cic submission`
 [acceptance](docs/eval/fr012_submission_assistance.md)). **FR-013 Application
 Pipeline Tracking is complete and frozen**
 ([acceptance](docs/eval/fr013_application_pipeline_tracking.md)). **FR-014**
-Recruiter Document Truth Validation is next (required before increased
-automation), then FR-015–FR-017. See
+Recruiter Document Truth Validation is **complete and frozen**
+([acceptance](docs/eval/fr014_recruiter_document_truth_validation.md)). Next:
+**FR-015** Bounded Agentic Workflow (not started), then FR-016–FR-017. See
 [docs/10_roadmap.md](docs/10_roadmap.md).
 
 Full detail: [docs/04_functional_specification.md](docs/04_functional_specification.md) and [docs/10_roadmap.md](docs/10_roadmap.md).
@@ -131,6 +135,11 @@ Apply [docs/05_engineering_principles.md](docs/05_engineering_principles.md) for
  evidence cannot improve ranking and unavailable data is never invented. No composite
  score, no LLM ranking. Change the key only with explicit owner approval
 - **Acquisition via adapters** — prefer APIs/feeds/alerts/URLs/paste/exports; Playwright is a controlled fallback, not crawlers
+- **Recruiter-document truth is fail-closed (FR-014 — frozen)** — Markdown is authoritative;
+  Career Profile authorizes Class A; JD/assessment/strategy/plans are context only;
+  detection certainty ≠ evidence status; fresh content-hash TruthReports gate package
+  external use and submission; never rewrite; owner review remains mandatory
+  ([ADR-006](docs/adr/006_recruiter_document_truth_validation.md))
 
 ---
 

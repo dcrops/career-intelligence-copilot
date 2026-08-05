@@ -1425,8 +1425,14 @@ Acceptance Criteria
 ## FR-014 Recruiter Document Truth Validation
 
 **Phase:** Horizon 1A Stage 8  
-**Status:** Planned  
-**Planning record:** [eval/fr014_recruiter_document_truth_validation.md](eval/fr014_recruiter_document_truth_validation.md)
+**Status:** **Complete and frozen** — M0–M4  
+**Acceptance:** [eval/fr014_recruiter_document_truth_validation.md](eval/fr014_recruiter_document_truth_validation.md)  
+**M0 spike:** [eval/fr014_m0_engineering_spike.md](eval/fr014_m0_engineering_spike.md) (**Accepted**)  
+**M1 contracts:** [eval/fr014_m1_truth_validation_contracts.md](eval/fr014_m1_truth_validation_contracts.md)  
+**M2 technology validation:** [eval/fr014_m2_technology_validation.md](eval/fr014_m2_technology_validation.md)  
+**M3 owner CLI / gates:** [eval/fr014_m3_owner_workflow.md](eval/fr014_m3_owner_workflow.md)  
+**M4 expanded claims:** [eval/fr014_m4_claim_validation.md](eval/fr014_m4_claim_validation.md)  
+**Architecture:** [ADR-006](adr/006_recruiter_document_truth_validation.md) (Accepted)
 
 Prevent unsupported, misleading, or incorrectly framed **candidate** claims from
 reaching recruiter-facing CVs, cover letters, application answers, or future
@@ -1442,25 +1448,51 @@ best engineering work”) without profile evidence — an employer-evidence →
 candidate-evidence boundary failure.
 
 Preferred conceptual order: Planner → Composer → **Truth Validation** → Markdown →
-HTML → PDF → Owner Review → Submission. Exact insertion points are decided by an
-engineering spike. Owner review remains mandatory. Truth validation does not replace
-owner review.
+HTML → PDF → Owner Review → Submission. Exact insertion points are decided by the
+engineering spike
+([eval/fr014_m0_engineering_spike.md](eval/fr014_m0_engineering_spike.md))
+(**Accepted**): **Markdown is the primary validation surface**; dual gates after
+generate (advisory) and after owner edit (authoritative before submit). Owner review
+remains mandatory. Truth validation does not replace owner review.
 
-**Roadmap dependency:** **FR-014 must be accepted before any future work that
-increases application automation or reduces owner review.** FR-013 Application
-Pipeline Tracking is **complete and frozen** and keeps its established identifier;
-truth validation is the automation-safety gate immediately afterwards (current
-active FR).
+**M1 (complete):** typed contracts in `career_intelligence.truth_validation` —
+Claim, CandidateEvidenceCatalogue, TruthFinding, TruthReport; detection certainty
+distinct from evidence status; PASS requires complete coverage + performed
+detection/validation ([ADR-006](adr/006_recruiter_document_truth_validation.md);
+[eval](eval/fr014_m1_truth_validation_contracts.md)).
+
+**M2 (complete):** catalogue population from Career Profile;
+`TruthValidationService.validate_markdown` for technology/framework claims;
+Redwolf TypeScript/Vue FAIL; Python/FastAPI PASS; employer-context Class B
+([eval](eval/fr014_m2_technology_validation.md)).
+
+**M3 (complete):** thin `cic truth` CLI; sidecar TruthReport persistence with
+Markdown content hashing; package external-use readiness; fail-closed FR-012
+submission protection; owner correction via edit → revalidate (no rewrite)
+([eval](eval/fr014_m3_owner_workflow.md)).
+
+**M4 (complete):** employment honesty (commercial AI / software / independent),
+certifications, years of experience (fail-closed or review_required when not
+computable), project delivery, and domain claims — profile-authorised only
+([eval](eval/fr014_m4_claim_validation.md)). Soft skills and subjective claims excluded.
+
+**Frozen:** [acceptance](eval/fr014_recruiter_document_truth_validation.md).
+
+**Roadmap dependency:** **FR-014 is accepted and frozen** and must remain in force
+before any future work that increases application automation or reduces owner review.
+FR-013 Application Pipeline Tracking is **complete and frozen** and keeps its
+established identifier. Next active FR: **FR-015** Bounded Agentic Workflow (not
+started — owner request required).
 
 Distinguish: (A) candidate claims (require candidate evidence); (B) employer-context
 statements (JD evidence OK; must not become candidate capability); (C) aspirational /
 transition statements (must not imply existing expertise); (D) judgement / motivation
 (must not misrepresent facts).
 
-Initial scope includes technology/framework claims, experience-duration claims,
-employment claims (never equate independent work with commercial employment without
-evidence), certifications/education, domain claims, project/delivery claims,
-recruiter vs employer attribution, and identity/contact links.
+Initial delivered scope (frozen): technology/framework claims, experience-duration
+claims (computable tenure only), employment honesty (never equate independent work
+with commercial employment without evidence), certifications, domain claims, and
+project/delivery claims. Education and identity/contact crawling remain out of scope.
 
 Behaviour: deterministic where possible; evidence-backed; explainable; **fail-closed**
 for material unsupported candidate claims; traceable findings (claim, type, source,

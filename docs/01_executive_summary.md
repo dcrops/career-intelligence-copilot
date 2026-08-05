@@ -71,10 +71,10 @@ Near-term delivery: Phase 2 Job Intelligence and document generation (FR-006/007
 complete. Within Horizon 1A, job acquisition and workflow orchestration (FR-008), the
 opportunity review queue, duplicate handling, and ranked recommendations (FR-009),
 application package preparation (FR-010), application preparation orchestration
-(FR-011), submission assistance (FR-012), and **application pipeline tracking
-(FR-013)** are also complete; **FR-014** Recruiter Document Truth Validation
-(automation-safety gate). Horizon 1B recruiter engagement follows. See
-[10_roadmap.md](10_roadmap.md).
+(FR-011), submission assistance (FR-012), application pipeline tracking (FR-013), and
+**recruiter document truth validation (FR-014)** are **complete and frozen**.
+**FR-015** Bounded Agentic Workflow is next (not started — owner request required).
+Horizon 1B recruiter engagement follows. See [10_roadmap.md](10_roadmap.md).
 
 ---
 

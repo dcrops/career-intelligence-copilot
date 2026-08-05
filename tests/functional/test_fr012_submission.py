@@ -25,6 +25,7 @@ def test_offline_submission_journey(tmp_path: Path) -> None:
         packages,
         store=store,
         adapters={"fake": fake, "manual_assisted": manual},
+        enable_truth_gate=False,
     )
 
     try:
@@ -74,6 +75,7 @@ def test_offline_submission_journey(tmp_path: Path) -> None:
             "fake": fake2,
             "manual_assisted": ManualAssistedAdapter(),
         },
+        enable_truth_gate=False,
     )
     unknown = orch2.submit(
         opportunity_id2,

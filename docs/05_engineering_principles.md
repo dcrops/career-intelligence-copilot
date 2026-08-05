@@ -71,6 +71,15 @@ package / document gates.
 are immutable; corrections are new events; legacy Phase 2 M2 `update_outcome` may
 still write status without events (accepted debt — owner path is `cic pipeline`).
 
+**Recruiter-document truth is a deterministic fail-closed boundary (FR-014 — complete).**
+Detection certainty is distinct from evidence validation
+([ADR-006](adr/006_recruiter_document_truth_validation.md)). PASS requires complete
+coverage and performed detection + validation. JD / assessment / strategy / plans never
+authorize candidate capability. Claim kinds in force: technology, employment honesty,
+certification, duration, project delivery, domain — not soft skills or subjective prose.
+Truth Validation does not rewrite or replace owner review. Fresh content-hash reports
+gate package external use and submission.
+
 ### Intelligence before automation
 
 Decision quality is the product. Automation serves intelligence — it does not replace it. Automate structured extraction and comparison; do not automate tier commitment or externally visible actions.

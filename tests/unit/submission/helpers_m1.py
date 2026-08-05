@@ -61,5 +61,6 @@ def make_orchestrator(
             "fake": fake_adapter,
             "manual_assisted": manual_adapter,
         },
+        enable_truth_gate=False,
     )
     return orchestrator, fake_adapter, manual_adapter

@@ -149,6 +149,7 @@ def test_unknown_channel(tmp_path: Path) -> None:
         packages,
         store=store,
         adapters={},
+        enable_truth_gate=False,
     )
     with pytest.raises(SubmissionChannelError):
         orchestrator.submit(
@@ -396,6 +397,7 @@ def test_adapters_do_not_persist(tmp_path: Path) -> None:
         packages,
         store=store,
         adapters={"fake": fake, "manual_assisted": ManualAssistedAdapter()},
+        enable_truth_gate=False,
     )
     # Adapter alone has no store reference.
     assert not hasattr(fake, "store")
