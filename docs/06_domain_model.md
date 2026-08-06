@@ -539,7 +539,37 @@ Deterministic proposer is the operational default.
 **M2 delivered:** AgentRuntime, proposers, thin adapters, audit store, checkpoint/resume.  
 **M3 delivered:** thin `cic agent` CLI + owner presentation.  
 **M4 delivered:** corpus evaluation, observability, owner validation, freeze.  
-**Frozen:** [acceptance](eval/fr015_bounded_agentic_workflow.md). FR-016 not started.
+**Frozen:** [acceptance](eval/fr015_bounded_agentic_workflow.md).
+
+### Multi-Agent Orchestration (FR-016)
+
+**ADR:** [ADR-008](adr/008_multi_agent_orchestration.md)  
+**Spike:** [eval/fr016_m0_engineering_spike.md](eval/fr016_m0_engineering_spike.md)
+(Accepted with revisions)  
+**M1:** [eval/fr016_m1_orchestration_contracts.md](eval/fr016_m1_orchestration_contracts.md)
+
+Constrained multi-agent substrate (learning + future permission separation). Not
+strong near-term commercial automation. Prep/Truth/Review persona split rejected.
+
+| Concept | Role |
+|---------|------|
+| OrchestrationGoal / OrchestrationRun | Parent DOS run (audit/recovery; not Opportunity SoT) |
+| OrchestrationObservation | Derived cross-surface observation for routing |
+| DelegationPolicy | Sole admission for specialist invocation |
+| Handoff | Typed, append-only, idempotent specialist handoff |
+| OBS / OperationalBrief | Read-only briefing specialist + derived brief |
+| BOPA (child) | Frozen FR-015 specialist; mutating allow-list unchanged |
+| Specialist registry | Static OBS + BOPA boundaries |
+
+**M1 delivered:** contracts + DelegationPolicy + OBS ToolPolicy + unit tests.  
+**M2 delivered:** DOS runtime, OBS, BOPA adapter, corpus A–O, go/no-go
+**GO AS LEARNING PROOF ONLY**
+([eval/fr016_m2_supervisor_runtime.md](eval/fr016_m2_supervisor_runtime.md)).  
+**M3 delivered:** `cic agent orchestrate` owner CLI
+([eval/fr016_m3_owner_cli.md](eval/fr016_m3_owner_cli.md)).  
+**M4 delivered:** final corpus 20/20, safety/product review, study-aid source, freeze
+([eval/fr016_m4_evaluation.md](eval/fr016_m4_evaluation.md)).  
+**Frozen:** [acceptance](eval/fr016_multi_agent_orchestration.md).
 
 ---
 
@@ -562,6 +592,10 @@ Deterministic proposer is the operational default.
 | Opportunity | Submission Attempt | FR-012 records append-only submit attempts (audit; not pipeline SoT) |
 | Opportunity | Pipeline Event | FR-013 append-only lifecycle audit (not a second SoT; current status stays on Opportunity) |
 | Opportunity | AgentRun | FR-015 BOPA observes one Opportunity; audit only (ADR-007) |
+| Opportunity | OrchestrationRun | FR-016 DOS parent run cites Opportunity; audit only (ADR-008) |
+| OrchestrationRun | Handoff | Append-only typed specialist handoffs |
+| OrchestrationRun | AgentRun | BOPA child runs under DOS |
+| OrchestrationRun | OperationalBrief | OBS briefing output (derived) |
 | Application Package | Submission Attempt | Attempt references package prepared_at / optional hash |
 | Application Package | Pipeline Event | Event may cite package prepared_at / hash as submit evidence |
 | Application Package | AgentRun | BOPA may request prepare/verify via thin adapters (M2) |
@@ -648,7 +682,7 @@ continue to connect to this layer rather than invent a parallel tracker.
 | Application Pipeline Tracking | **FR-013** (Horizon 1A; complete — [acceptance](eval/fr013_application_pipeline_tracking.md); [ADR-005](adr/005_application_pipeline_lifecycle.md)) |
 | Recruiter Document Truth Validation | **FR-014** (Horizon 1A; **complete and frozen** — [acceptance](eval/fr014_recruiter_document_truth_validation.md); [ADR-006](adr/006_recruiter_document_truth_validation.md)) |
 | Bounded Agentic Workflow | **FR-015** (Horizon 1A; **complete / frozen** — ADR-007) |
-| Multi-Agent Orchestration | **FR-016** (Horizon 1A) |
+| Multi-Agent Orchestration | **FR-016** (Horizon 1A — **complete / frozen**; learning proof) |
 | Agent Evaluation & Observability | **FR-017** (Horizon 1A) |
 | Recruiter Intelligence | **FR-018** (Horizon 1B) |
 | Recruiter Outreach | **FR-019** (Horizon 1B) |

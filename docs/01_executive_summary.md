@@ -73,8 +73,11 @@ opportunity review queue, duplicate handling, and ranked recommendations (FR-009
 application package preparation (FR-010), application preparation orchestration
 (FR-011), submission assistance (FR-012), application pipeline tracking (FR-013), and
 **recruiter document truth validation (FR-014)** and **bounded agentic workflow
-(FR-015)** are **complete and frozen**. **FR-016** Multi-Agent Orchestration is next
-(not started — owner request required). See [10_roadmap.md](10_roadmap.md).
+(FR-015)** are **complete and frozen**. **FR-016** Multi-Agent Orchestration is
+**complete and frozen** as a learning proof only (**GO AS LEARNING PROOF ONLY** —
+prefer `cic agent run` for ordinary prep; Engineering Learning Academy ready).
+**FR-017** is the active next FR (Not Started — owner request required).
+See [10_roadmap.md](10_roadmap.md).
 
 ---
 

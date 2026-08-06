@@ -1482,8 +1482,10 @@ computable), project delivery, and domain claims — profile-authorised only
 before any future work that increases application automation or reduces owner review.
 FR-013 Application Pipeline Tracking is **complete and frozen** and keeps its
 established identifier. **FR-015** Bounded Agentic Workflow is **complete and frozen**.
-Next active FR: **FR-016** Multi-Agent Orchestration (not started — owner request
-required).
+**FR-016** Multi-Agent Orchestration is **complete and frozen** (learning proof —
+[acceptance](eval/fr016_multi_agent_orchestration.md)).
+Next active FR: **FR-017** Agent Evaluation & Observability (owner request required;
+do not auto-start).
 
 Distinguish: (A) candidate claims (require candidate evidence); (B) employer-context
 statements (JD evidence OK; must not become candidate capability); (C) aspirational /
@@ -1559,33 +1561,58 @@ Acceptance Criteria
 ## FR-016 Multi-Agent Orchestration
 
 **Phase:** Horizon 1A Stage 10  
-**Status:** **Current active FR** — Planned / not started — **owner request required**  
+**Status:** **Complete / Frozen / Accepted** — learning proof only (**GO AS LEARNING
+PROOF ONLY**); prefer `cic agent run` for ordinary preparation; Engineering
+Learning Academy ready
+([acceptance](eval/fr016_multi_agent_orchestration.md);
+[eval/fr016_m4_evaluation.md](eval/fr016_m4_evaluation.md);
+[ADR-008](adr/008_multi_agent_orchestration.md)).  
 *(Originally planned as FR-015; renumbered 2026-08-05.)*
 
 Only after bounded agents (FR-015) are reliable — **FR-015 is complete and frozen**.
-Do not begin implementation without explicit owner request.
 
-Evaluate: supervisor pattern; agents as tools; handoffs; context isolation; shared
-state; orchestration trade-offs; centralised vs distributed control.
+**Approved purpose (owner):** constrained learning milestone in production
+multi-agent engineering, and architectural substrate for future
+permission-separated capabilities (e.g. Job Discovery). Do **not** claim strong
+near-term commercial value.
 
-Avoid role-playing agents. Each specialist must represent a genuine engineering
-boundary (acquisition, job intelligence, evidence matching, preparation, submission,
-compliance/approval).
+**Topology:** Deterministic Orchestration Supervisor (DOS) + frozen BOPA +
+read-only Operational Briefing Specialist (OBS); typed handoffs; DelegationPolicy
++ per-specialist ToolPolicy; deterministic default; optional LLM propose only
+behind policy. Prep/Truth/Review persona splitting is **rejected as multi-agent
+theatre**.
+
+Package: `career_intelligence.multi_agent` (distinct from FR-008
+`orchestration` and FR-015 `agent`).
 
 Acceptance Criteria
 
 ✓ Pattern choice is justified in an ADR or engineering note.
+  → [ADR-008](adr/008_multi_agent_orchestration.md); [M0](eval/fr016_m0_engineering_spike.md).
 
 ✓ Specialists have distinct tools/context boundaries.
+  → M1 registry + OBS vs BOPA allow-lists
+  ([eval/fr016_m1_orchestration_contracts.md](eval/fr016_m1_orchestration_contracts.md)).
 
-✓ Loop detection and stop conditions remain enforced across agents.
+○ Loop detection and stop conditions remain enforced across agents.
+  → Contracted in M1; **enforced in M2 runtime** (corpus I/J + limits).
+
+✓ M2 go/no-go evidence (DOS/OBS value, complexity, continue vs defer).
+  → **GO AS LEARNING PROOF ONLY**
+  ([eval/fr016_m2_supervisor_runtime.md](eval/fr016_m2_supervisor_runtime.md)).
+
+○ M3–M4 minimal owner surface / freeze only if owner requests learning close-out.
+  → **M3 complete**; **M4 complete** — FR-016 **Complete / Frozen**
+  ([acceptance](eval/fr016_multi_agent_orchestration.md);
+  [eval/fr016_m4_evaluation.md](eval/fr016_m4_evaluation.md)).
 
 ---
 
 ## FR-017 Agent Evaluation & Observability
 
 **Phase:** Horizon 1A Stage 11  
-**Status:** Planned  
+**Status:** Planned — **only after FR-016 freeze**; **owner request required**
+(do not auto-start; FR-016 learning-proof result does not compel FR-017)  
 *(Originally planned as FR-016; renumbered 2026-08-05.)*
 
 Explicit evaluation for the orchestration layer:

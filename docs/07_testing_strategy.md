@@ -662,7 +662,7 @@ FR-014 **complete and frozen**:
 
 ## Horizon 1A — Planned test coverage (remaining)
 
-When FR-016–FR-017 are built, prefer behaviour over implementation detail:
+When FR-017 is built, prefer behaviour over implementation detail:
 
 | Area | Expected coverage |
 |------|-------------------|
@@ -675,7 +675,8 @@ When FR-016–FR-017 are built, prefer behaviour over implementation detail:
 | FR-013 tracking (**delivered** — frozen) | Dual-write + owner CLI + reporting; see FR-013 coverage |
 | FR-014 truth validation (**complete / frozen**) | Fail-closed findings; package/submission gates; Redwolf + M4 claim matrix; see FR-014 coverage |
 | FR-015 agents (**complete / frozen**) | Corpus eval + observability + `cic agent`; see below |
-| FR-016 / FR-017 | Multi-agent loop prevention; orchestration-layer fault injection; token/cost/latency; browser journey evidence when Playwright is used |
+| FR-016 multi-agent (**complete / frozen**) | Loop prevention; handoffs; delegation; resume; CLI; corpus 20/20; see below |
+| FR-017 | Orchestration-layer fault injection; token/cost/latency; browser journey evidence when Playwright is used |
 
 ### FR-015 coverage (M1–M4 — frozen)
 
@@ -691,6 +692,18 @@ When FR-016–FR-017 are built, prefer behaviour over implementation detail:
 | Functional | `test_fr015_m2_*.py`, `test_fr015_m3_*.py` |
 | Manual | `scripts/run_fr015_m2_manual.py`, `scripts/run_fr015_m3_manual.py`, `scripts/run_fr015_m4_manual.py` |
 | Acceptance | [eval/fr015_bounded_agentic_workflow.md](eval/fr015_bounded_agentic_workflow.md) |
+
+### FR-016 coverage (M1–M4 — frozen)
+
+| Area | Coverage |
+|------|----------|
+| Contracts | Goals, observations, handoffs, briefs, DelegationPolicy, OBS ToolPolicy |
+| Runtime | DOS; OBS; BOPA adapter; loop/visit/repeated/circular controls |
+| CLI (M3) | `cic agent orchestrate` + presentation + approve gate |
+| Evaluation (M4) | Final corpus 20/20; safety; product-value honesty |
+| Unit | `tests/unit/multi_agent/` |
+| Manual | `scripts/run_fr016_m2_manual.py`, `run_fr016_m3_manual.py`, `run_fr016_m4_manual.py` |
+| Acceptance | [eval/fr016_multi_agent_orchestration.md](eval/fr016_multi_agent_orchestration.md) |
 
 **Spike rule:** First FR-008 tests use fixture/saved jobs only — not live acquisition
 or real submission. Deterministic replay where possible; owner manual validation for

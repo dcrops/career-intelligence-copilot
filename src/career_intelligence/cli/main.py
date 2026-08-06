@@ -120,6 +120,22 @@ from career_intelligence.agent import (
     format_agent_list_line,
     format_agent_run_report,
 )
+from career_intelligence.multi_agent import (
+    DEFAULT_MAX_ORCHESTRATION_STEPS,
+    DEFAULT_ORCHESTRATION_RUNS_ROOT,
+    OWNER_ORCHESTRATION_GOALS,
+    JsonDirectoryOrchestrationStore,
+    OrchestrationRunNotFoundError,
+    OrchestrationRuntimeError,
+    OrchestrationStorageError,
+    SpecialistDelegationProposal,
+    build_orchestration_supervisor,
+    evaluate_delegation_policy,
+    format_orchestration_history,
+    format_orchestration_list_line,
+    format_orchestration_report,
+    goal_from_owner_name,
+)
 
 app = typer.Typer(help="Career Intelligence Copilot.")
 profile_app = typer.Typer(help="Manage and inspect the career profile.")
@@ -151,9 +167,19 @@ truth_app = typer.Typer(
 )
 agent_app = typer.Typer(
     help=(
-        "Bounded Opportunity Preparation Agent (FR-015). "
-        "Commands: run, resume, show, history, list. "
-        "Does not submit, advance pipeline, or invoke FR-008."
+        "Bounded Opportunity Preparation Agent (FR-015) and FR-016 learning-proof "
+        "orchestration under `orchestrate`. "
+        "Ordinary preparation: run / resume / show / history / list. "
+        "Learning proof: orchestrate … (DOS + BOPA + OBS). "
+        "Does not submit, advance pipeline, or invoke FR-008. "
+        "Direct `cic agent run` remains preferred for daily preparation."
+    ),
+)
+orchestrate_app = typer.Typer(
+    help=(
+        "FR-016 multi-agent learning proof (DOS + BOPA + OBS). "
+        "Not the default daily workflow — prefer `cic agent run` for ordinary prep. "
+        "Commands: run, resume, show, history, list."
     ),
 )
 app.add_typer(profile_app, name="profile")
@@ -164,6 +190,7 @@ app.add_typer(submission_app, name="submission")
 app.add_typer(pipeline_app, name="pipeline")
 app.add_typer(truth_app, name="truth")
 app.add_typer(agent_app, name="agent")
+agent_app.add_typer(orchestrate_app, name="orchestrate")
 
 PathOption = Annotated[
     Path | None,
@@ -240,6 +267,17 @@ AgentRunsDirOption = Annotated[
         help=(
             "Override the agent-runs store directory "
             f"(default: {DEFAULT_AGENT_RUNS_ROOT})."
+        ),
+    ),
+]
+
+OrchestrationRunsDirOption = Annotated[
+    Path | None,
+    typer.Option(
+        "--orchestration-runs-dir",
+        help=(
+            "Override the orchestration-runs store directory "
+            f"(default: {DEFAULT_ORCHESTRATION_RUNS_ROOT})."
         ),
     ),
 ]
@@ -3150,6 +3188,403 @@ def agent_list(
         return
     for run in runs[: max(limit, 0)]:
         typer.echo(format_agent_list_line(run))
+
+
+def _exit_for_orchestration(error: Exception) -> Never:
+    if isinstance(error, OrchestrationRunNotFoundError):
+        typer.echo(str(error), err=True)
+        raise typer.Exit(code=1) from error
+    if isinstance(error, OrchestrationStorageError):
+        typer.echo(f"Orchestration storage error: {error}", err=True)
+        raise typer.Exit(code=2) from error
+    if isinstance(error, OrchestrationRuntimeError):
+        typer.echo(f"Orchestration runtime error: {error}", err=True)
+        raise typer.Exit(code=1) from error
+    typer.echo(f"Orchestration error: {error}", err=True)
+    raise typer.Exit(code=1) from error
+
+
+def _orchestration_store(
+    orchestration_runs_dir: Path | None,
+) -> JsonDirectoryOrchestrationStore:
+    return JsonDirectoryOrchestrationStore(
+        orchestration_runs_dir or DEFAULT_ORCHESTRATION_RUNS_ROOT
+    )
+
+
+def _print_orchestration_run(
+    run,
+    store: JsonDirectoryOrchestrationStore,
+    *,
+    verbose: bool = False,
+    yaml_output: bool = False,
+) -> None:
+    if yaml_output:
+        typer.echo(_render(run))
+    else:
+        typer.echo(format_orchestration_report(run, store, verbose=verbose), nl=False)
+
+
+def _exit_for_orchestration_status(run) -> None:
+    if run.status == "failed":
+        raise typer.Exit(code=1)
+    if run.status not in {"awaiting_owner", "completed", "running", "cancelled"}:
+        raise typer.Exit(code=1)
+
+
+@orchestrate_app.command("run")
+def orchestrate_run(
+    opportunity_id: Annotated[str, typer.Argument(help="Opportunity id (opp_<ULID>).")],
+    goal: Annotated[
+        str,
+        typer.Option(
+            "--goal",
+            help="Owner goal: brief | prepare | prepare_then_brief.",
+        ),
+    ] = "brief",
+    dir: OpportunitiesDirOption = None,
+    packages_dir: PackagesDirOption = None,
+    runs_dir: PreparationRunsDirOption = None,
+    agent_runs_dir: AgentRunsDirOption = None,
+    orchestration_runs_dir: OrchestrationRunsDirOption = None,
+    truth_reports_dir: TruthReportsDirOption = None,
+    profile: ProfilePathOption = None,
+    cv_dir: Annotated[
+        Path | None,
+        typer.Option("--cv-dir", help="Override CV draft output directory."),
+    ] = None,
+    cover_letter_dir: Annotated[
+        Path | None,
+        typer.Option(
+            "--cover-letter-dir",
+            help="Override cover-letter draft output directory.",
+        ),
+    ] = None,
+    approve: Annotated[
+        bool,
+        typer.Option(
+            "--approve",
+            help=(
+                "Explicit owner approval for orchestration (and FR-006/FR-007 "
+                "gates when preparation may run)."
+            ),
+        ),
+    ] = False,
+    llm: Annotated[
+        bool,
+        typer.Option(
+            "--llm",
+            help=(
+                "Optional LLM proposer for BOPA child runs only. "
+                "DOS routing remains deterministic."
+            ),
+        ),
+    ] = False,
+    override_material_benefit: Annotated[
+        bool,
+        typer.Option(
+            "--override-material-benefit",
+            help="Pass FR-006/FR-007 material-benefit override into BOPA preparation.",
+        ),
+    ] = False,
+    max_steps: Annotated[
+        int,
+        typer.Option("--max-steps", help="Maximum orchestration steps."),
+    ] = DEFAULT_MAX_ORCHESTRATION_STEPS,
+    verbose: Annotated[
+        bool,
+        typer.Option("--verbose", "-v", help="Include extra handoff/brief detail."),
+    ] = False,
+    yaml_output: Annotated[
+        bool,
+        typer.Option("--yaml", help="Emit the full OrchestrationRun as YAML."),
+    ] = False,
+) -> None:
+    """Run FR-016 learning-proof orchestration (DOS + BOPA and/or OBS).
+
+    Not the preferred daily preparation path — use ``cic agent run`` for ordinary prep.
+    """
+    if goal not in OWNER_ORCHESTRATION_GOALS:
+        typer.echo(
+            f"Unsupported --goal {goal!r}. Choose one of: "
+            + ", ".join(OWNER_ORCHESTRATION_GOALS),
+            err=True,
+        )
+        raise typer.Exit(code=1)
+    if not approve:
+        typer.echo(
+            "Refusing orchestration run: pass --approve. "
+            "FR-016 is a learning proof; owner gates remain mandatory. "
+            "Ordinary preparation: cic agent run <opportunity_id> --approve",
+            err=True,
+        )
+        raise typer.Exit(code=1)
+
+    try:
+        supervisor, store = build_orchestration_supervisor(
+            opportunities_dir=dir,
+            packages_dir=packages_dir,
+            preparation_runs_dir=runs_dir,
+            agent_runs_dir=agent_runs_dir,
+            orchestration_runs_dir=orchestration_runs_dir,
+            truth_reports_dir=truth_reports_dir,
+            profile_path=profile,
+            cv_output_dir=cv_dir,
+            cover_letter_output_dir=cover_letter_dir,
+            use_llm_proposer=llm,
+            max_steps=max_steps,
+            override_material_benefit=override_material_benefit,
+        )
+        orch_goal = goal_from_owner_name(goal, opportunity_id)  # type: ignore[arg-type]
+        run = supervisor.start(orch_goal, owner_approvals_present=True)
+    except (
+        OrchestrationRuntimeError,
+        OrchestrationStorageError,
+        OrchestrationRunNotFoundError,
+        AgentRuntimeError,
+        AgentStorageError,
+        ValueError,
+    ) as error:
+        _exit_for_orchestration(error)
+
+    _print_orchestration_run(run, store, verbose=verbose, yaml_output=yaml_output)
+    _exit_for_orchestration_status(run)
+
+
+@orchestrate_app.command("resume")
+def orchestrate_resume(
+    orchestration_run_id: Annotated[
+        str, typer.Argument(help="Orchestration run id (orr_<ULID>).")
+    ],
+    dir: OpportunitiesDirOption = None,
+    packages_dir: PackagesDirOption = None,
+    runs_dir: PreparationRunsDirOption = None,
+    agent_runs_dir: AgentRunsDirOption = None,
+    orchestration_runs_dir: OrchestrationRunsDirOption = None,
+    truth_reports_dir: TruthReportsDirOption = None,
+    profile: ProfilePathOption = None,
+    cv_dir: Annotated[
+        Path | None,
+        typer.Option("--cv-dir", help="Override CV draft output directory."),
+    ] = None,
+    cover_letter_dir: Annotated[
+        Path | None,
+        typer.Option(
+            "--cover-letter-dir",
+            help="Override cover-letter draft output directory.",
+        ),
+    ] = None,
+    approve: Annotated[
+        bool,
+        typer.Option("--approve", help="Explicit owner approval to resume."),
+    ] = False,
+    llm: Annotated[
+        bool,
+        typer.Option("--llm", help="Optional LLM proposer for BOPA child runs only."),
+    ] = False,
+    override_material_benefit: Annotated[
+        bool,
+        typer.Option(
+            "--override-material-benefit",
+            help="Pass FR-006/FR-007 material-benefit override into BOPA preparation.",
+        ),
+    ] = False,
+    max_steps: Annotated[
+        int,
+        typer.Option("--max-steps", help="Maximum orchestration steps."),
+    ] = DEFAULT_MAX_ORCHESTRATION_STEPS,
+    verbose: Annotated[
+        bool,
+        typer.Option("--verbose", "-v", help="Include extra handoff/brief detail."),
+    ] = False,
+    yaml_output: Annotated[
+        bool,
+        typer.Option("--yaml", help="Emit the full OrchestrationRun as YAML."),
+    ] = False,
+) -> None:
+    """Resume an orchestration run after owner pause (re-inspects SoT)."""
+    if not approve:
+        typer.echo(
+            "Refusing orchestration resume: pass --approve.",
+            err=True,
+        )
+        raise typer.Exit(code=1)
+
+    try:
+        supervisor, store = build_orchestration_supervisor(
+            opportunities_dir=dir,
+            packages_dir=packages_dir,
+            preparation_runs_dir=runs_dir,
+            agent_runs_dir=agent_runs_dir,
+            orchestration_runs_dir=orchestration_runs_dir,
+            truth_reports_dir=truth_reports_dir,
+            profile_path=profile,
+            cv_output_dir=cv_dir,
+            cover_letter_output_dir=cover_letter_dir,
+            use_llm_proposer=llm,
+            max_steps=max_steps,
+            override_material_benefit=override_material_benefit,
+        )
+        run = supervisor.resume(
+            orchestration_run_id,
+            owner_approvals_present=True,
+        )
+    except (
+        OrchestrationRuntimeError,
+        OrchestrationStorageError,
+        OrchestrationRunNotFoundError,
+        AgentRuntimeError,
+        AgentStorageError,
+    ) as error:
+        _exit_for_orchestration(error)
+
+    _print_orchestration_run(run, store, verbose=verbose, yaml_output=yaml_output)
+    _exit_for_orchestration_status(run)
+
+
+@orchestrate_app.command("show")
+def orchestrate_show(
+    orchestration_run_id: Annotated[
+        str, typer.Argument(help="Orchestration run id (orr_<ULID>).")
+    ],
+    orchestration_runs_dir: OrchestrationRunsDirOption = None,
+    verbose: Annotated[
+        bool,
+        typer.Option("--verbose", "-v", help="Include extra handoff/brief detail."),
+    ] = False,
+    yaml_output: Annotated[
+        bool,
+        typer.Option("--yaml", help="Emit the full OrchestrationRun as YAML."),
+    ] = False,
+) -> None:
+    """Show owner report for an orchestration run (learning-proof presentation)."""
+    store = _orchestration_store(orchestration_runs_dir)
+    try:
+        run = store.load(orchestration_run_id)
+    except (OrchestrationRunNotFoundError, OrchestrationStorageError) as error:
+        _exit_for_orchestration(error)
+    _print_orchestration_run(run, store, verbose=verbose, yaml_output=yaml_output)
+
+
+@orchestrate_app.command("history")
+def orchestrate_history(
+    orchestration_run_id: Annotated[
+        str, typer.Argument(help="Orchestration run id (orr_<ULID>).")
+    ],
+    orchestration_runs_dir: OrchestrationRunsDirOption = None,
+    verbose: Annotated[
+        bool,
+        typer.Option("--verbose", "-v", help="Include full event messages and refs."),
+    ] = False,
+) -> None:
+    """Show append-only orchestration audit events."""
+    try:
+        run = _orchestration_store(orchestration_runs_dir).load(orchestration_run_id)
+    except (OrchestrationRunNotFoundError, OrchestrationStorageError) as error:
+        _exit_for_orchestration(error)
+    typer.echo(format_orchestration_history(run, verbose=verbose), nl=False)
+
+
+@orchestrate_app.command("list")
+def orchestrate_list(
+    orchestration_runs_dir: OrchestrationRunsDirOption = None,
+    opportunity_id: Annotated[
+        str | None,
+        typer.Option("--opportunity", help="Filter by opportunity id."),
+    ] = None,
+    limit: Annotated[
+        int,
+        typer.Option("--limit", help="Maximum runs to list (newest first)."),
+    ] = 50,
+) -> None:
+    """List OrchestrationRuns (newest updated_at first)."""
+    try:
+        runs = _orchestration_store(orchestration_runs_dir).list_runs()
+    except OrchestrationStorageError as error:
+        _exit_for_orchestration(error)
+    if opportunity_id:
+        runs = [r for r in runs if r.goal.opportunity_id == opportunity_id]
+    if not runs:
+        typer.echo("No orchestration runs found.")
+        return
+    for run in runs[: max(limit, 0)]:
+        typer.echo(format_orchestration_list_line(run))
+
+
+@orchestrate_app.command("check-delegation")
+def orchestrate_check_delegation(
+    opportunity_id: Annotated[str, typer.Argument(help="Opportunity id (opp_<ULID>).")],
+    target: Annotated[
+        str,
+        typer.Option("--target", help="Specialist to test: obs | bopa."),
+    ] = "bopa",
+    goal: Annotated[
+        str,
+        typer.Option("--goal", help="Owner goal context: brief | prepare | prepare_then_brief."),
+    ] = "brief",
+    dir: OpportunitiesDirOption = None,
+    packages_dir: PackagesDirOption = None,
+    agent_runs_dir: AgentRunsDirOption = None,
+    orchestration_runs_dir: OrchestrationRunsDirOption = None,
+    truth_reports_dir: TruthReportsDirOption = None,
+    profile: ProfilePathOption = None,
+) -> None:
+    """Show whether DelegationPolicy would admit a specialist (teaching / validation).
+
+    Does not execute specialists. Useful for illegal-delegation demos.
+    """
+    if goal not in OWNER_ORCHESTRATION_GOALS:
+        typer.echo(
+            f"Unsupported --goal {goal!r}. Choose one of: "
+            + ", ".join(OWNER_ORCHESTRATION_GOALS),
+            err=True,
+        )
+        raise typer.Exit(code=1)
+    if target not in {"obs", "bopa"}:
+        typer.echo("Unsupported --target; choose obs or bopa.", err=True)
+        raise typer.Exit(code=1)
+    try:
+        supervisor, _store = build_orchestration_supervisor(
+            opportunities_dir=dir,
+            packages_dir=packages_dir,
+            agent_runs_dir=agent_runs_dir,
+            orchestration_runs_dir=orchestration_runs_dir,
+            truth_reports_dir=truth_reports_dir,
+            profile_path=profile,
+        )
+        orch_goal = goal_from_owner_name(goal, opportunity_id)  # type: ignore[arg-type]
+        observation = supervisor._observation.build(  # noqa: SLF001
+            orch_goal,
+            owner_approvals_present=True,
+            provider_available=True,
+        )
+        requested = (
+            "brief_opportunity_readiness"
+            if target == "obs"
+            else "prepare_for_owner_review"
+        )
+        decision = evaluate_delegation_policy(
+            orch_goal,
+            observation,
+            SpecialistDelegationProposal(
+                target_specialist=target,  # type: ignore[arg-type]
+                rationale="owner check-delegation (no execution)",
+                requested_goal_kind=requested,
+            ),
+            owner_approvals_present=True,
+        )
+    except Exception as error:  # noqa: BLE001
+        _exit_for_orchestration(error)
+
+    typer.echo(f"goal={goal} opportunity={opportunity_id} target={target}")
+    typer.echo(f"decision={decision.decision}")
+    if decision.deny_reason:
+        typer.echo(f"deny_reason={decision.deny_reason}")
+    if decision.stop_reason:
+        typer.echo(f"stop_reason={decision.stop_reason}")
+    typer.echo(f"approved_specialists={', '.join(decision.approved_specialists)}")
+    if decision.decision == "deny":
+        raise typer.Exit(code=1)
 
 
 if __name__ == "__main__":

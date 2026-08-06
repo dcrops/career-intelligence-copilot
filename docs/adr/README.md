@@ -9,9 +9,10 @@
 | [005](005_application_pipeline_lifecycle.md) | Application pipeline lifecycle (stored status + append-only events) | Accepted (FR-013 M1) — amends ADR-002 lifecycle audit; reaffirms ADR-004; SubmissionAttempt never auto-advances status |
 | [006](006_recruiter_document_truth_validation.md) | Recruiter document truth validation (deterministic fail-closed boundary) | Accepted (FR-014 M1) — detection certainty ≠ evidence validation; JD never authorizes candidate capability |
 | [007](007_bounded_agentic_workflow.md) | Bounded Agentic Workflow (BOPA; policy B; ToolPolicy) | Accepted (FR-015 frozen) — one agent, one Opportunity, post-acquisition; does not wrap FR-008; no submit/pipeline/discovery |
+| [008](008_multi_agent_orchestration.md) | Multi-Agent Orchestration (DOS + BOPA + OBS; typed handoffs) | Accepted — FR-016 **Complete / Frozen** (learning proof; Prep/Truth/Review theatre rejected) |
 
 Related: [04_functional_specification.md](../04_functional_specification.md) § FR-008,
-§ FR-009, § FR-010, § FR-011, § FR-012, § FR-013, § FR-014, § FR-015; [10_roadmap.md](../10_roadmap.md) § Horizon 1A.
+§ FR-009, § FR-010, § FR-011, § FR-012, § FR-013, § FR-014, § FR-015, § FR-016; [10_roadmap.md](../10_roadmap.md) § Horizon 1A.
 
 Close-out records:
 [eval/fr008_workflow_orchestration.md](../eval/fr008_workflow_orchestration.md),
@@ -69,3 +70,13 @@ owner CLI, and fail-closed package/submission gates.
 BOPA coordinates post-acquisition package/truth readiness under deterministic
 ToolPolicy; does not wrap FR-008. M1 contracts; M2 runtime; M3 owner CLI
 ([eval/fr015_m3_owner_cli.md](../eval/fr015_m3_owner_cli.md)).
+
+**FR-016 ADR note:** [ADR-008](008_multi_agent_orchestration.md) — FR-016
+**Complete / Frozen / Accepted** (learning proof; M2 **GO AS LEARNING PROOF ONLY**
+preserved; Engineering Learning Academy ready).
+Acceptance: [eval/fr016_multi_agent_orchestration.md](../eval/fr016_multi_agent_orchestration.md).
+Constrained multi-agent: Deterministic Orchestration Supervisor + frozen BOPA +
+read-only Operational Briefing Specialist; typed handoffs; DelegationPolicy +
+per-specialist ToolPolicy. Prefer `cic agent run` for ordinary prep. Prep/Truth/Review
+persona split rejected as theatre.
+Spike: [eval/fr016_m0_engineering_spike.md](../eval/fr016_m0_engineering_spike.md).

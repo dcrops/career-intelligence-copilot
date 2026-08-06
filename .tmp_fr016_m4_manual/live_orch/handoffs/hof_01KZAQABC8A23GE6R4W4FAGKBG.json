@@ -1,0 +1,23 @@
+{
+  "handoff_id": "hof_01KZAQABC8A23GE6R4W4FAGKBG",
+  "orchestration_run_id": "orr_01KZAQAB9CDP37EWFK3JHEXZ45",
+  "source": "supervisor",
+  "target_specialist": "obs",
+  "opportunity_id": "opp_01KY8RFAH81M9V30ZVH9TM09T5",
+  "requested_goal_kind": "brief_opportunity_readiness",
+  "observed_state_hash": "d144106b07a31752d5ab9203feead70c",
+  "input_artefact_refs": [],
+  "preconditions": [],
+  "expected_output_kind": "operational_brief",
+  "owner_approval_status": "present",
+  "policy_decision": "allow",
+  "policy_deny_reason": null,
+  "reason": "deterministic selection of obs",
+  "acceptance": "completed",
+  "acceptance_reason": null,
+  "child_agent_run_id": null,
+  "child_brief_id": "obr_01KZAQABCDFJM6DCXBX2929Q9N",
+  "idempotency_key": "orr_01KZAQAB9CDP37EWFK3JHEXZ45|obs|brief_opportunity_readiness|d144106b07a31752d5ab9203feead70c",
+  "created_at": "2026-08-06T05:04:14.216328Z",
+  "resolved_at": "2026-08-06T05:04:14.222424Z"
+}

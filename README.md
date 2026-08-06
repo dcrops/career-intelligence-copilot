@@ -91,8 +91,15 @@ decides.
 [ADR-007](docs/adr/007_bounded_agentic_workflow.md); milestones
 [M0](docs/eval/fr015_m0_engineering_spike.md)–[M4](docs/eval/fr015_m4_evaluation.md)).
 
-**Current focus:** **FR-016** Multi-Agent Orchestration (not started — owner request
-required). Details: [docs/10_roadmap.md](docs/10_roadmap.md).
+**FR-016 Multi-Agent Orchestration — complete** and frozen (learning proof only —
+**GO AS LEARNING PROOF ONLY**; prefer `cic agent run` for ordinary prep;
+Engineering Learning Academy ready)
+([acceptance](docs/eval/fr016_multi_agent_orchestration.md);
+[ADR-008](docs/adr/008_multi_agent_orchestration.md); milestones
+[M0](docs/eval/fr016_m0_engineering_spike.md)–[M4](docs/eval/fr016_m4_evaluation.md)).
+
+**Current focus:** **FR-017** Agent Evaluation & Observability (**Active FR; Not
+Started** — owner request required). Details: [docs/10_roadmap.md](docs/10_roadmap.md).
 
 Acquisition today: paste or local export file via
 `scripts/run_fr008_workflow_manual.py` (`--source paste|export`). Playwright deferred.
@@ -177,6 +184,14 @@ cic agent history <run_id>
 cic agent resume <run_id> --approve [--override-material-benefit]
 # status=awaiting_owner → resume; status=failed → start a new run (not resume)
 # material_benefit_required → add --override-material-benefit when appropriate
+
+# FR-016 multi-agent learning proof (optional; not preferred daily prep)
+cic agent orchestrate run <opp_id> --goal brief|prepare|prepare_then_brief --approve
+cic agent orchestrate show <orchestration_run_id>
+cic agent orchestrate resume <orchestration_run_id> --approve
+cic agent orchestrate history <orchestration_run_id>
+cic agent orchestrate list
+cic agent orchestrate check-delegation <opp_id> --goal brief --target bopa
 
 # FR-012 assisted submission (after package ready)
 cic submission check <opp_id>

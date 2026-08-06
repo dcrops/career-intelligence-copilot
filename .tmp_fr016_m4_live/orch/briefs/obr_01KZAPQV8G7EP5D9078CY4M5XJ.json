@@ -1,0 +1,24 @@
+{
+  "brief_id": "obr_01KZAPQV8G7EP5D9078CY4M5XJ",
+  "opportunity_id": "opp_01KY8RFAH81M9V30ZVH9TM09T5",
+  "orchestration_run_id": "orr_01KZAPQV6V0MTMSV87YCS4Z2QG",
+  "briefing_need_classes": [
+    "owner_requested_brief_only",
+    "pipeline_advises_against_preparation"
+  ],
+  "readiness_primary_state_class": "missing_package",
+  "pipeline_status": "interviewing",
+  "pipeline_note": "Preparation is usually unnecessary while interviewing.",
+  "truth_blocker_labels": [],
+  "package_status": "absent",
+  "prior_agent_run_ids": [],
+  "recommended_next_step": "owner_review",
+  "recommended_specialist": null,
+  "owner_action_summary": "Review pipeline stage before any preparation. Do not run preparation unless you explicitly intend to.",
+  "evidence_refs": [
+    "handoff:hof_01KZAPQV8CJPTK98CD5Y7NQYB0",
+    "obs_hash:d144106b07a31752d5ab9203feead70c"
+  ],
+  "observation_hash": "d144106b07a31752d5ab9203feead70c",
+  "created_at": "2026-08-06T04:54:07.888866Z"
+}

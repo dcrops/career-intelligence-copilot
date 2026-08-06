@@ -4,6 +4,92 @@ Records product strategy and engineering knowledge changes. Routine typo fixes a
 
 ---
 
+## Version 1.103
+
+### FR-016 documentation close-out — Engineering Learning Academy ready
+
+**Date:** 2026-08-06.
+
+Documentation-only freeze consistency: canonical acceptance report expanded to
+full engineering record; navigation/ADR consequences aligned; FR-016 Complete /
+Frozen / Accepted; FR-017 Active (Not Started). No runtime changes.
+
+Evidence: [eval/fr016_multi_agent_orchestration.md](eval/fr016_multi_agent_orchestration.md).
+
+---
+
+## Version 1.102
+
+### FR-016 Multi-Agent Orchestration — complete and frozen (learning proof)
+
+**Date:** 2026-08-06.
+
+M4 evaluation closed FR-016: final corpus 20/20, safety/product review, study-aid
+source capture, documentation freeze. Binding posture remains **GO AS LEARNING
+PROOF ONLY** — not the preferred daily replacement for `cic agent run`. FR-017
+not started (owner request required).
+
+Evidence: [eval/fr016_multi_agent_orchestration.md](eval/fr016_multi_agent_orchestration.md);
+[eval/fr016_m4_evaluation.md](eval/fr016_m4_evaluation.md).
+
+---
+
+## Version 1.101
+
+### FR-016 M3 minimal owner CLI (learning proof)
+
+**Date:** 2026-08-06.
+
+Added `cic agent orchestrate` (run / resume / show / history / list /
+check-delegation) with owner goals `brief`, `prepare`, `prepare_then_brief`.
+Presentation shows specialist selection, authority boundaries, typed handoffs,
+and parent/child refs. M2 verdict unchanged: **GO AS LEARNING PROOF ONLY** —
+not the preferred daily replacement for `cic agent run`. M4 not started.
+
+Evidence: [eval/fr016_m3_owner_cli.md](eval/fr016_m3_owner_cli.md).
+
+---
+
+## Version 1.100
+
+### FR-016 M2 DOS runtime — GO AS LEARNING PROOF ONLY
+
+**Date:** 2026-08-06.
+
+Implemented Deterministic Orchestration Supervisor, read-only OBS runtime, thin
+BOPA adapter (BOPA unchanged), typed handoff lifecycle, orchestration audit
+store, corpus A–O (15/15), and manual runner. M2 go/no-go:
+**GO AS LEARNING PROOF ONLY** — minimal M3/M4 may close the learning milestone;
+do not claim strong near-term product value; defer richer productisation until
+Job Discovery or another real specialist boundary.
+
+Evidence: [eval/fr016_m2_supervisor_runtime.md](eval/fr016_m2_supervisor_runtime.md).
+
+---
+
+## Version 1.99
+
+### FR-016 M0 accepted with revisions; M1 contracts + ADR-008
+
+**Date:** 2026-08-06.
+
+Owner accepted the narrow multi-agent topology: Deterministic Orchestration
+Supervisor (DOS) + frozen BOPA + read-only Operational Briefing Specialist (OBS),
+typed handoffs, DelegationPolicy + per-specialist ToolPolicy, deterministic
+default, optional LLM propose-only behind policy. Prep/Truth/Review persona
+splitting remains explicitly rejected as multi-agent theatre. FR-016 is primarily
+a learning milestone and substrate for future permission-separated capabilities;
+do not claim strong near-term commercial value. Mandatory M2 go/no-go before M3.
+
+M1 delivers contracts only under `career_intelligence.multi_agent` (no runtime,
+CLI, or framework). BOPA package unchanged.
+
+Evidence: [eval/fr016_m0_engineering_spike.md](eval/fr016_m0_engineering_spike.md),
+[eval/fr016_m1_orchestration_contracts.md](eval/fr016_m1_orchestration_contracts.md),
+[ADR-008](adr/008_multi_agent_orchestration.md).
+
+---
+
 ## Version 1.98
 
 ### FR-015 documentation freeze and close-out

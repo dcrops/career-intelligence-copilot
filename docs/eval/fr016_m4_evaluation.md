@@ -1,0 +1,196 @@
+# FR-016 M4 — Evaluation, Acceptance Freeze, and Study-Aid Source Capture
+
+**Date:** 2026-08-06  
+**Status:** Complete (M4) — FR-016 **Complete / Frozen / Accepted**  
+**Engineering Learning Academy:** Ready (canonical source =
+[acceptance](fr016_multi_agent_orchestration.md))  
+**Architecture:** [ADR-008](../adr/008_multi_agent_orchestration.md)  
+**Acceptance:** [fr016_multi_agent_orchestration.md](fr016_multi_agent_orchestration.md)  
+**Preceding:** [M3 owner CLI](fr016_m3_owner_cli.md); [M2 go/no-go](fr016_m2_supervisor_runtime.md)  
+**Binding M2 verdict (unchanged):** **GO AS LEARNING PROOF ONLY**  
+**Does not begin:** FR-017; Job Discovery; new specialists; visual study-aid artefacts
+
+---
+
+## 1. Scope
+
+M4 closes FR-016 as a validated multi-agent **learning proof** and future substrate.
+It does **not** add product scope, specialists, frameworks, discovery, submission,
+pipeline mutation, truth waiver, chat, or an LLM supervisor.
+
+---
+
+## 2. Evaluation design
+
+| Layer | Mechanism |
+|-------|-----------|
+| Final corpus | `run_corpus()` — 20 deterministic cases |
+| Manual | `scripts/run_fr016_m4_manual.py` (A–H + live interviewing brief) |
+| CLI | `cic agent orchestrate` (M3) + approve-gate regression |
+| BOPA regression | `tests/unit/agent/` + multi_agent suite |
+| Comparison | Direct `cic agent run` vs `cic agent orchestrate run` |
+
+---
+
+## 3. Direct BOPA versus multi-agent comparison
+
+| Dimension | `cic agent run` | `cic agent orchestrate` |
+|-----------|-----------------|-------------------------|
+| Commands for ordinary prep | 1 | 1 (+ `--goal`) |
+| Runtime steps (happy prep) | BOPA loop only | DOS + BOPA (+ optional OBS) |
+| Latency | Lower | Higher (extra observe/handoff) |
+| Owner interpretation | Readiness stop reason | Full selection/authority/handoff story |
+| Audit clarity | AgentRun | Parent OrchestrationRun → handoff → child |
+| Authority visibility | BOPA ToolPolicy | DOS + DelegationPolicy + per-specialist |
+| Permission separation | Single specialist | Explicit DOS≠BOPA≠OBS |
+| Failure isolation | BOPA stop | Specialist + orchestration stops |
+| Resume | AgentRun resume | Parent resume; child resume when needed |
+| Added complexity | Low | Material (justified for learning/substrate) |
+| OBS briefings | N/A | Useful on pipeline/truth/brief goals |
+| `prepare_then_brief` | Manual second command | One orchestrated goal |
+| Non-obvious DOS decisions | N/A | Interviewing → OBS; brief → OBS; inject ignore |
+
+**Verdict:** For ordinary preparation, direct BOPA remains preferable. Multi-agent
+adds teaching value, auditability of delegation, and substrate for a future
+second mutating specialist — not daily throughput.
+
+---
+
+## 4. Corpus results (20/20)
+
+| # | Case | Result | Stop / detail |
+|---|------|--------|---------------|
+| 1 | A_brief_only | PASS | briefing_complete / OBS |
+| 2 | B_prepare | PASS | BOPA → awaiting_owner |
+| 3 | C_prepare_then_brief | PASS | bopa, obs |
+| 4 | D_pipeline_advises | PASS | OBS (interviewing) |
+| 5 | E_truth_blocked | PASS | owner_remediate_truth |
+| 6 | P_material_benefit | PASS | material_benefit_required |
+| 7 | F_illegal_delegation | PASS | deny |
+| 8 | G_obs_mutate_blocked | PASS | OBS ToolPolicy deny |
+| 9 | H_dos_domain_work | PASS | DomainWorkForbiddenError |
+| 10 | I_repeated_handoff | PASS | repeated_delegation |
+| 11 | J_circular | PASS | circular_delegation |
+| 12 | L_stale_state | PASS | re-inspect on resume |
+| 13 | K_partial_resume | PASS | no duplicate prep |
+| 14 | Q_unchanged_obs_resume | PASS | same brief_id |
+| 15 | M_provider_unavailable | PASS | provider_unavailable |
+| 16 | N_prompt_injection | PASS | OBS only |
+| 17 | O_pipeline_safety | PASS | no advance API |
+| 18 | R_submission_safety | PASS | no submit authority |
+| 19 | S_truth_waiver_blocked | PASS | waive_truth denied |
+| 20 | T_step_and_visit_limits | PASS | max_steps + visit limit |
+
+---
+
+## 5. Owner manual validation
+
+| ID | Journey | Result |
+|----|---------|--------|
+| A | brief-only | PASS |
+| B | prepare | PASS |
+| C | prepare_then_brief | PASS |
+| D | truth blocked | PASS |
+| E | interviewing | PASS |
+| F | illegal delegation | PASS |
+| G | resume idempotency | PASS |
+| H | audit reconstruction | PASS |
+| Live | brief on `opp_01KY8RFAH81M9V30ZVH9TM09T5` (interviewing) | PASS — OBS; pipeline note; no mutation |
+
+Mutating prepare against live packages intentionally offline during freeze.
+
+---
+
+## 6. Safety verification
+
+| Check | Result |
+|-------|--------|
+| DOS never calls domain services | PASS (`attempt_domain_work` forbidden) |
+| DOS never gains specialist tools | PASS |
+| OBS never mutates | PASS (allow-list + policy) |
+| BOPA allow-list unchanged | PASS (`AGENT_ACTIONS`) |
+| No permission inheritance via handoff | PASS |
+| Job/recruiter text untrusted | PASS (notes ignored for routing) |
+| Prompt injection cannot alter delegation | PASS (N) |
+| Truth cannot be waived | PASS (S) |
+| Pipeline cannot be silently changed | PASS (O) |
+| Submission cannot occur | PASS (R) |
+| Owner `--approve` mandatory | PASS (CLI) |
+| Loops / repeats fail closed | PASS (I/J/T) |
+
+---
+
+## 7. Observability review
+
+**Reconstructable today:** owner goal, observed state, candidates/selection,
+selection reason, policy result, handoff lifecycle, authority boundary, child
+AgentRun / OperationalBrief, steps/visits, stop reason, owner action, elapsed
+time (`created_at`→`updated_at`).
+
+**Deferred to FR-017:** rich traces, token/cost/provider aggregates, latency
+histograms, fault-injection harness, golden orchestration replay, browser
+journey evidence.
+
+---
+
+## 8. Product-value verdict (honest)
+
+| Question | Answer |
+|----------|--------|
+| Does DOS materially improve ordinary preparation? | **No** |
+| Does OBS remove a meaningful interpretation task? | **Yes** (pipeline/truth brief) |
+| Does `prepare_then_brief` help? | Modest — convenience only |
+| Is permission separation worth complexity? | **Yes for learning/substrate**; not for daily prep |
+| Future extensibility? | **Yes** (Job Discovery / second authority) |
+| Ready for daily use as default? | **No** |
+| Remain optional? | **Yes** |
+| What would make it commercially stronger? | Job Discovery or another genuine specialist boundary |
+
+M2 **GO AS LEARNING PROOF ONLY** is preserved.
+
+---
+
+## 9. Tests (exact)
+
+| Suite | Result |
+|-------|--------|
+| `tests/unit/multi_agent/` | green (corpus 20/20) |
+| `tests/unit/agent/test_cli.py` | green |
+| `scripts/run_fr016_m4_manual.py` | EXIT 0 |
+
+---
+
+## 10. Documentation freeze
+
+Acceptance report + this M4 eval + ADR-008 status + roadmap / AGENTS / README /
+functional spec / principles / domain model / testing strategy / implementation
+notes / changelog / phase history / ADR index updated. Milestone reports M0–M3
+remain historical.
+
+---
+
+## 11. Technical debt classification
+
+| Item | Class |
+|------|-------|
+| Live LLM supervisor evaluation | Deferred / Future FR-017 |
+| Richer multi-specialist topology | Future FR (after Job Discovery) |
+| Scheduled briefings | Future FR / Out of Scope now |
+| Job Discovery integration | Future FR |
+| Framework migration | Out of Scope (ADR-003) |
+| FR-017 orchestration evaluation | Future FR |
+| Visual study-aid generation | Deferred (source captured in acceptance) |
+| Populated SoT mutating OAT | Accepted (optional operational trial) |
+
+---
+
+## 12. Acceptance recommendation
+
+**ACCEPT AND FREEZE — LEARNING PROOF COMPLETE**
+
+FR-017 remains the active next Functional Requirement on the roadmap only if the
+owner still wants Horizon 1A evaluation/observability after this learning-proof
+result — **do not auto-start**.
+
+Documentation close-out confirms Engineering Learning Academy readiness via the
+canonical acceptance report.

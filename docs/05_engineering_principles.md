@@ -45,7 +45,8 @@ adapters, or workflow graphs. Spikes use saved/manual jobs before live acquisiti
 
 Prefer deterministic workflow nodes and typed services where decisions are already
 understood. Introduce bounded agents (FR-015 — **complete / frozen**) only after the
-deterministic path (FR-008) works; multi-agent patterns (FR-016) only after bounded
+deterministic path (FR-008) works; multi-agent patterns (FR-016 — **complete / frozen**
+as a learning proof only; prefer `cic agent run` for ordinary prep) only after bounded
 agents are reliable. Do not blur workflow orchestration with agent reasoning.
 
 **Orchestration coordinates; services execute; adapters channel; interfaces remain thin.**

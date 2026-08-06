@@ -1,0 +1,176 @@
+{
+  "orchestration_run_id": "orr_01KZAQAB9CDP37EWFK3JHEXZ45",
+  "goal": {
+    "goal_kind": "brief_opportunity_readiness",
+    "opportunity_id": "opp_01KY8RFAH81M9V30ZVH9TM09T5",
+    "owner_notes": null,
+    "brief_only": true,
+    "synthesize_after_prepare": false
+  },
+  "status": "awaiting_owner",
+  "step_count": 1,
+  "max_steps": 12,
+  "max_visits_per_specialist": 3,
+  "active_specialist": null,
+  "active_handoff_id": null,
+  "last_observation": {
+    "opportunity_id": "opp_01KY8RFAH81M9V30ZVH9TM09T5",
+    "decision": "apply",
+    "readiness_primary_state_class": "missing_package",
+    "package_status": "absent",
+    "truth_status": "absent",
+    "pipeline_status": "interviewing",
+    "owner_approvals_present": true,
+    "prior_agent_run_ids": [],
+    "prior_orchestration_run_id": "orr_01KZAQAB9CDP37EWFK3JHEXZ45",
+    "truth_blocking_labels": [],
+    "contradictory_flags": [],
+    "briefing_need_classes": [
+      "owner_requested_brief_only",
+      "pipeline_advises_against_preparation"
+    ],
+    "observation_hash": "d144106b07a31752d5ab9203feead70c",
+    "observed_at": "2026-08-06T05:04:14.126432Z"
+  },
+  "last_brief_id": "obr_01KZAQABCDFJM6DCXBX2929Q9N",
+  "child_agent_run_ids": [],
+  "handoff_ids": [
+    "hof_01KZAQABC8A23GE6R4W4FAGKBG"
+  ],
+  "specialist_visits": [
+    {
+      "specialist_id": "obs",
+      "visit_count": 1,
+      "last_handoff_id": "hof_01KZAQABC8A23GE6R4W4FAGKBG",
+      "last_observation_hash": "d144106b07a31752d5ab9203feead70c",
+      "completed_output_refs": [
+        "d144106b07a31752d5ab9203feead70c"
+      ]
+    }
+  ],
+  "stop_reason": "briefing_complete",
+  "owner_action_required": "Review pipeline stage before any preparation. Do not run preparation unless you explicitly intend to.",
+  "checkpoint_ref": "checkpoint:orr_01KZAQAB9CDP37EWFK3JHEXZ45:1",
+  "events": [
+    {
+      "event_id": "oae_01KZAQAB9CDADXD9P85K8GHC2J",
+      "kind": "orchestration_started",
+      "at": "2026-08-06T05:04:14.124376Z",
+      "specialist_id": null,
+      "handoff_id": null,
+      "policy_decision": null,
+      "stop_reason": null,
+      "message": "goal=brief_opportunity_readiness opportunity=opp_01KY8RFAH81M9V30ZVH9TM09T5",
+      "refs": []
+    },
+    {
+      "event_id": "oae_01KZAQABC850RY1XDK2YX39C0K",
+      "kind": "state_observed",
+      "at": "2026-08-06T05:04:14.216328Z",
+      "specialist_id": null,
+      "handoff_id": null,
+      "policy_decision": null,
+      "stop_reason": null,
+      "message": "hash=d144106b07a31752d5ab9203feead70c",
+      "refs": [
+        "package:absent",
+        "truth:absent",
+        "pipeline:interviewing"
+      ]
+    },
+    {
+      "event_id": "oae_01KZAQABC8HQEY9Y8TFZ72XRFK",
+      "kind": "specialist_considered",
+      "at": "2026-08-06T05:04:14.216328Z",
+      "specialist_id": "obs",
+      "handoff_id": null,
+      "policy_decision": null,
+      "stop_reason": null,
+      "message": "selected='obs' approved visits={}",
+      "refs": []
+    },
+    {
+      "event_id": "oae_01KZAQABC8GC1HZYZ2W27PR4GS",
+      "kind": "specialist_selected",
+      "at": "2026-08-06T05:04:14.216328Z",
+      "specialist_id": "obs",
+      "handoff_id": null,
+      "policy_decision": null,
+      "stop_reason": null,
+      "message": "delegate to obs",
+      "refs": []
+    },
+    {
+      "event_id": "oae_01KZAQABC90SM1383WBGR1AY83",
+      "kind": "delegation_allowed",
+      "at": "2026-08-06T05:04:14.217328Z",
+      "specialist_id": "obs",
+      "handoff_id": "hof_01KZAQABC8A23GE6R4W4FAGKBG",
+      "policy_decision": "allow",
+      "stop_reason": null,
+      "message": null,
+      "refs": []
+    },
+    {
+      "event_id": "oae_01KZAQABC9FWP5XTHPNGEVWTHR",
+      "kind": "handoff_created",
+      "at": "2026-08-06T05:04:14.217328Z",
+      "specialist_id": "obs",
+      "handoff_id": "hof_01KZAQABC8A23GE6R4W4FAGKBG",
+      "policy_decision": null,
+      "stop_reason": null,
+      "message": "orr_01KZAQAB9CDP37EWFK3JHEXZ45|obs|brief_opportunity_readiness|d144106b07a31752d5ab9203feead70c",
+      "refs": []
+    },
+    {
+      "event_id": "oae_01KZAQABC9REEBV2PVFRK3Q3NH",
+      "kind": "handoff_accepted",
+      "at": "2026-08-06T05:04:14.217328Z",
+      "specialist_id": "obs",
+      "handoff_id": "hof_01KZAQABC8A23GE6R4W4FAGKBG",
+      "policy_decision": null,
+      "stop_reason": null,
+      "message": null,
+      "refs": []
+    },
+    {
+      "event_id": "oae_01KZAQABCCF9MB657VVQRT8KYY",
+      "kind": "specialist_started",
+      "at": "2026-08-06T05:04:14.220422Z",
+      "specialist_id": "obs",
+      "handoff_id": "hof_01KZAQABC8A23GE6R4W4FAGKBG",
+      "policy_decision": null,
+      "stop_reason": null,
+      "message": null,
+      "refs": []
+    },
+    {
+      "event_id": "oae_01KZAQABCF9J2XEZ0DNQ2GHD7A",
+      "kind": "specialist_completed",
+      "at": "2026-08-06T05:04:14.223422Z",
+      "specialist_id": "obs",
+      "handoff_id": "hof_01KZAQABC8A23GE6R4W4FAGKBG",
+      "policy_decision": null,
+      "stop_reason": null,
+      "message": "Review pipeline stage before any preparation. Do not run preparation unless you explicitly intend to.",
+      "refs": [
+        "obr_01KZAQABCDFJM6DCXBX2929Q9N"
+      ]
+    },
+    {
+      "event_id": "oae_01KZAQABCHKY5ZNHSRT7NTN159",
+      "kind": "owner_gate_reached",
+      "at": "2026-08-06T05:04:14.225486Z",
+      "specialist_id": null,
+      "handoff_id": null,
+      "policy_decision": null,
+      "stop_reason": "briefing_complete",
+      "message": "Review pipeline stage before any preparation. Do not run preparation unless you explicitly intend to.",
+      "refs": []
+    }
+  ],
+  "owner_approvals_present": true,
+  "provider_available": true,
+  "created_at": "2026-08-06T05:04:14.124376Z",
+  "updated_at": "2026-08-06T05:04:14.225486Z"
+}

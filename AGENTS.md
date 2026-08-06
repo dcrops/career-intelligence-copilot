@@ -61,12 +61,17 @@ Truth Validation is **complete and frozen** —
 [acceptance](docs/eval/fr014_recruiter_document_truth_validation.md);
 milestones [M0](docs/eval/fr014_m0_engineering_spike.md)–[M4](docs/eval/fr014_m4_claim_validation.md);
 [ADR-006](docs/adr/006_recruiter_document_truth_validation.md). **Current focus — Horizon 1A:**
-**FR-016** Multi-Agent Orchestration (not started — owner request required). **FR-015**
+**FR-017** Agent Evaluation & Observability (not started — owner request required).
+**FR-016** Multi-Agent Orchestration is **complete and frozen** (learning proof —
+**GO AS LEARNING PROOF ONLY**; prefer `cic agent run` for ordinary prep;
+Engineering Learning Academy ready —
+[acceptance](docs/eval/fr016_multi_agent_orchestration.md);
+[ADR-008](docs/adr/008_multi_agent_orchestration.md)). **FR-015**
 Bounded Agentic Workflow is **complete and frozen** —
 [acceptance](docs/eval/fr015_bounded_agentic_workflow.md);
 milestones [M0](docs/eval/fr015_m0_engineering_spike.md)–[M4](docs/eval/fr015_m4_evaluation.md);
 [ADR-007](docs/adr/007_bounded_agentic_workflow.md).
-Do not reopen Phase 2, FR-008, FR-009, FR-010, FR-011, FR-012, FR-013, FR-014, or FR-015 exit criteria without
+Do not reopen Phase 2, FR-008, FR-009, FR-010, FR-011, FR-012, FR-013, FR-014, FR-015, or FR-016 exit criteria without
 explicit owner request.
 **Principle:** Job acquisition first. Recruiter outreach second (Horizon 1B /
 FR-018–FR-024 — do not start while 1A is incomplete).
@@ -107,8 +112,9 @@ Recruiter Document Truth Validation is **complete and frozen**
 Bounded Agentic Workflow is **complete and frozen**
 ([acceptance](docs/eval/fr015_bounded_agentic_workflow.md);
 [ADR-007](docs/adr/007_bounded_agentic_workflow.md)). Next:
-**FR-016** Multi-Agent Orchestration (not started — owner request required), then
-FR-017. See [docs/10_roadmap.md](docs/10_roadmap.md).
+**FR-017** Agent Evaluation & Observability (not started — owner request required).
+**FR-016** is **complete and frozen** (learning proof only). See
+[docs/10_roadmap.md](docs/10_roadmap.md).
 
 Full detail: [docs/04_functional_specification.md](docs/04_functional_specification.md) and [docs/10_roadmap.md](docs/10_roadmap.md).
 
@@ -147,10 +153,16 @@ Apply [docs/05_engineering_principles.md](docs/05_engineering_principles.md) for
  external use and submission; never rewrite; owner review remains mandatory
  ([ADR-006](docs/adr/006_recruiter_document_truth_validation.md))
 - **Bounded agent coordinates; services remain authoritative (FR-015 — frozen)** — BOPA proposes
- allow-listed actions; ToolPolicy validates; existing services execute; no FR-008 wrap,
- submit, pipeline mutation, discovery, or truth waive; deterministic proposer is the
- operational default
- ([ADR-007](docs/adr/007_bounded_agentic_workflow.md))
+  allow-listed actions; ToolPolicy validates; existing services execute; no FR-008 wrap,
+  submit, pipeline mutation, discovery, or truth waive; deterministic proposer is the
+  operational default
+  ([ADR-007](docs/adr/007_bounded_agentic_workflow.md))
+- **Constrained multi-agent substrate (FR-016 — frozen)** — DOS delegates only; BOPA mutating
+  allow-list unchanged; OBS is strictly read-only; typed handoffs; DelegationPolicy +
+  per-specialist ToolPolicy; Prep/Truth/Review persona split rejected as theatre;
+  learning/substrate purpose only — not preferred daily replacement for `cic agent run`
+  ([ADR-008](docs/adr/008_multi_agent_orchestration.md);
+  [acceptance](docs/eval/fr016_multi_agent_orchestration.md))
 
 ---
 
