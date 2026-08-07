@@ -36,7 +36,7 @@ Objectives.
 |----------|--------|
 | What is this project? | Decision-support for job search (Horizon 1), evolving toward a Career Intelligence Platform (Horizon 2). |
 | What has been completed? | **Phase 1** and **Phase 2** — see [12_phase_history.md](12_phase_history.md) and [eval/phase2_release_report.md](eval/phase2_release_report.md). |
-| What is next? | **Horizon 1B** (FR-018+) when owner requests — **not blocked on FR-017**. **Horizon 1A complete:** FR-008–FR-017 frozen. **FR-017** ([acceptance](eval/fr017_agent_evaluation_observability.md); [package](masterclass/FR017/); [ADR-009](adr/009_orchestration_evaluation_substrate.md)). Prefer `cic agent run`. **FR-016** Complete / Frozen ([package](masterclass/FR016/)). — [10_roadmap.md](10_roadmap.md). |
+| What is next? | **Horizon 1B** starting with **FR-018 Opportunity Discovery & Acquisition** (FR-018–FR-025) when owner requests — **not blocked on FR-017**. **Horizon 1A complete:** FR-008–FR-017 frozen. **FR-017** ([acceptance](eval/fr017_agent_evaluation_observability.md); [package](masterclass/FR017/); [ADR-009](adr/009_orchestration_evaluation_substrate.md)). Prefer `cic agent run`. **FR-016** Complete / Frozen ([package](masterclass/FR016/)). Remap § 1.115 — [10_roadmap.md](10_roadmap.md). |
 | Where should I start reading? | This guide → [AGENTS.md](../AGENTS.md) → [04_functional_specification.md](04_functional_specification.md) → [10_roadmap.md](10_roadmap.md). |
 
 ---
@@ -68,7 +68,8 @@ milestones [M0](eval/fr012_m0_submission_contracts.md),
 ([eval/fr013_application_pipeline_tracking.md](eval/fr013_application_pipeline_tracking.md);
 [ADR-005](adr/005_application_pipeline_lifecycle.md)).
 
-**Active focus:** Horizon 1B on owner request. **Horizon 1A complete.** **FR-017** is
+**Active focus:** Horizon 1B on owner request — **FR-018 Opportunity Discovery &
+Acquisition** first. **Horizon 1A complete.** **FR-017** is
 **complete and frozen**
 ([eval/fr017_agent_evaluation_observability.md](eval/fr017_agent_evaluation_observability.md);
 [ADR-009](adr/009_orchestration_evaluation_substrate.md);
@@ -89,8 +90,10 @@ Validation is **complete and frozen**
 ([acceptance](eval/fr013_application_pipeline_tracking.md);
 [ADR-005](adr/005_application_pipeline_lifecycle.md)).
 
-**Thereafter:** Horizon 1B when the owner requests it (**not** gated on FR-017).
-Horizon 1A (FR-008–FR-017) is complete and frozen.
+**Thereafter:** Horizon 1B when the owner requests it — **FR-018 Opportunity
+Discovery & Acquisition** first (**not** gated on FR-017). Horizon 1A
+(FR-008–FR-017) is complete and frozen. Remap: [11_changelog.md](11_changelog.md)
+§ 1.115.
 
 Architecture decisions: `docs/adr/` (ADR-001, ADR-002, **ADR-003** thin in-repo
 workflow runner accepted — LangGraph not required for current FR-008 scope; **ADR-004**
@@ -192,6 +195,8 @@ Do **not** generate presentations in this repository as part of FR close-out.
 Do **not** hand-edit `sources/` snapshots — regenerate from SoT.
 Do **not** replace deep-learning artefacts with interview-only materials.
 FR-018+ inherits Brief/Deck structure automatically — no rediscovery.
+(After § 1.115, FR-018 is Opportunity Discovery & Acquisition; Academy packages
+still follow freeze → package → Lean Masterclass → PDF → Gamma → Brief/Deck.)
 
 ---
 

@@ -90,6 +90,8 @@ python scripts/render_masterclass_pdf.py docs/masterclass/FRnnn/Engineering_Mast
 ### Interview Brief + Interview Deck
 
 Required for future completed FRs (FR-018+) once deep-learning artefacts exist.
+(FR-018 is **Opportunity Discovery & Acquisition** after roadmap § 1.115; do not
+assume Recruiter Intelligence.)
 Structure and slide count are defined in the standards above — **no rediscovery**.
 
 Do **not** regenerate FR-016 / FR-017 Interview Briefs or Decks unless the owner

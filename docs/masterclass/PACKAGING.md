@@ -45,6 +45,7 @@ After SoT changes: re-run the builder; do not patch snapshots by hand.
 
 FR-018+ inherits this process automatically — do not rediscover Brief/Deck
 structure or the deep-learning vs rapid-revision split.
+(FR-018 after § 1.115: Opportunity Discovery & Acquisition.)
 
 Do not populate FR001–FR015 until the owner requests packaging for those FRs.
 Do not regenerate FR-016 / FR-017 interview artefacts unless explicitly requested.

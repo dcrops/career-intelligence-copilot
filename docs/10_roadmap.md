@@ -22,15 +22,23 @@ Near-term work should satisfy at least one of:
 
 **Job acquisition first. Recruiter outreach second.**
 
+After Horizon 1A, that means: **scale lawful opportunity inflow** into the finished
+application loop, then recruiter / network / market engagement.
+
 | Sub-horizon | Scope | FRs | When |
 |-------------|--------|-----|------|
 | **Horizon 1A** | End-to-end job application workflow | FR-008–FR-017 | **Complete / frozen** |
-| **Horizon 1B** | Recruiter and market engagement | FR-018–FR-024 | After usable 1A application loop (**not** gated on FR-017) |
+| **Horizon 1B** | Scaled acquisition and market engagement | FR-018–FR-025 | After usable 1A application loop (**not** gated on FR-017); **FR-018 first** |
 
 **Product progression:** Understand the candidate → Understand the opportunity →
 Generate the application → Acquire jobs → Orchestrate applications → Track
 pipeline → **Validate recruiter-document truth** → Introduce bounded agents →
-Scale to multi-agent systems → Expand into recruiter and market intelligence.
+Scale to multi-agent systems → **Scale opportunity discovery/acquisition** →
+Expand into recruiter and market intelligence.
+
+**FR remapping (1.115):** Opportunity Discovery & Acquisition inserted as **FR-018**;
+prior Horizon 1B recruiter/network/market FRs and Horizon 2 FRs shifted +1 — see
+[11_changelog.md](11_changelog.md) § 1.115.
 
 ---
 
@@ -41,15 +49,16 @@ Scale to multi-agent systems → Expand into recruiter and market intelligence.
 | **Phase 1** — Product Definition | **Complete** |
 | **Phase 2** — Job Intelligence MVP | **Complete** ([release report](eval/phase2_release_report.md)) |
 | **Horizon 1A** — Job application workflow | **Complete** (FR-008–FR-017 frozen; Horizon 1B next when owner chooses) |
-| **Horizon 1B** — Recruiter / market engagement | Not started (FR-018–FR-024; **not blocked on FR-017** — gated on usable application loop) |
-| **Horizon 2** — Platform capabilities | Not started (FR-025+) |
+| **Horizon 1B** — Scaled acquisition and market engagement | Not started (FR-018–FR-025; **FR-018** Opportunity Discovery & Acquisition first; **not blocked on FR-017**) |
+| **Horizon 2** — Platform capabilities | Not started (FR-026+) |
 
 Narrative history of completed phases: [12_phase_history.md](12_phase_history.md).
 
 **FR remapping:** Future requirements after FR-007 were renumbered so numbering
 follows implementation order — see [11_changelog.md](11_changelog.md) § 1.47,
-§ 1.65, and **§ 1.84** (insert Recruiter Document Truth Validation as **FR-014**;
-FR-013 Pipeline Tracking identifier unchanged).
+§ 1.65, **§ 1.84** (insert Recruiter Document Truth Validation as **FR-014**;
+FR-013 Pipeline Tracking identifier unchanged), and **§ 1.115** (Horizon 1B
+reprioritisation — Opportunity Discovery & Acquisition as FR-018).
 
 ---
 
@@ -117,8 +126,13 @@ FR-008–FR-017 are **complete and frozen**. Next product focus is **Horizon 1B*
 (FR-018+) when the owner requests it — gated on usable application loop
 (FR-008–FR-015), **not** on FR-017.
 
+**First Horizon 1B FR:** **FR-018 Opportunity Discovery & Acquisition** — scale
+lawful inflow of suitable opportunities into the frozen FR-008/FR-009 path.
+Recruiter Intelligence is **FR-019** (not first). See § 1.115 remapping.
+
 **Objective:** Discover, assess, prepare, review, submit and track suitable
-applications — before recruiter outreach or networking automation.
+applications — then scale acquisition — before recruiter outreach or networking
+automation.
 
 **Automation safety:** **FR-014 Recruiter Document Truth Validation** is **accepted
 and frozen** and must remain in force before any future work that increases
@@ -166,9 +180,9 @@ FR-017 Agent Evaluation & Observability  ← Complete / Frozen
 | **Completed** | **FR-014** (2026-08-05) | Recruiter document truth validation — **complete and frozen**; [acceptance](eval/fr014_recruiter_document_truth_validation.md); [M0](eval/fr014_m0_engineering_spike.md)–[M4](eval/fr014_m4_claim_validation.md); [ADR-006](adr/006_recruiter_document_truth_validation.md) |
 | **Completed** | **FR-015** (2026-08-05) | Bounded Agentic Workflow — **complete and frozen**; BOPA; [acceptance](eval/fr015_bounded_agentic_workflow.md); [M0](eval/fr015_m0_engineering_spike.md)–[M4](eval/fr015_m4_evaluation.md); [ADR-007](adr/007_bounded_agentic_workflow.md) |
 | **Done** | **FR-016** | Multi-Agent Orchestration — **Complete / Frozen / Accepted** (learning proof; prefer `cic agent run`; Academy package — [acceptance](eval/fr016_multi_agent_orchestration.md); [package](masterclass/FR016/); [M4](eval/fr016_m4_evaluation.md); [ADR-008](adr/008_multi_agent_orchestration.md) |
-| **Now** | **Horizon 1B** | Recruiter / market engagement (FR-018+) — owner request required; **not blocked on FR-017** |
+| **Now** | **Horizon 1B / FR-018** | Opportunity Discovery & Acquisition — owner request required; **not blocked on FR-017** |
 | Just completed | **FR-017** | Agent Evaluation & Observability — **Complete / Frozen** ([acceptance](eval/fr017_agent_evaluation_observability.md); [ADR-009](adr/009_orchestration_evaluation_substrate.md); [package](masterclass/FR017/)) |
-| **After 1A** | **Horizon 1B (FR-018–FR-024)** | Recruiters, outreach, meetups, LinkedIn, market |
+| **After FR-018** | **Horizon 1B (FR-019–FR-025)** | Recruiters, outreach, meetups, LinkedIn, market |
 
 ### FR-008 completion summary
 
@@ -323,13 +337,15 @@ automation, Application aggregate, FR-014 truth validation.
 
 ### Job acquisition (not “web scraping”)
 
-Acquire via **source adapters**. Supported today: **paste** and **local export
-file**. Preferred later order: APIs/feeds → job-alert email → saved-search
-notifications → owner URLs → Playwright-assisted browser workflows where necessary.
+Acquire via **source adapters**. Supported today (FR-008 frozen): **paste** and
+**local export file**. Further discovery/acquisition channels are planned under
+**FR-018 Opportunity Discovery & Acquisition** (Horizon 1B lead). Preferred
+investigation order for FR-018: official APIs → structured feeds → email alerts →
+exports → manual URLs → supported integrations → browser automation last.
 
 Playwright is a **controlled fallback adapter** — intentionally deferred; isolated
 when built; not the sole strategy. Avoid uncontrolled crawlers, mass collection,
-and bypass of access controls.
+and bypass of access controls. Do not describe FR-018 as “web scraping.”
 
 ### Agent Orchestration Learning Spike (complete under FR-008)
 
@@ -343,44 +359,47 @@ Phase 2 documentation remains a **stable baseline**. Prefer additive changes.
 
 ---
 
-## Horizon 1B — Recruiter and Market Engagement (FR-018–FR-024)
+## Horizon 1B — Scaled Acquisition and Market Engagement (FR-018–FR-025)
 
-**Status:** Not started. Gated on usable Horizon 1A **application loop**
-(FR-008–FR-015). **Not blocked on FR-017**
-([eval/fr017_m0_engineering_spike.md](eval/fr017_m0_engineering_spike.md) §9).
+**Status:** Not started (documentation remapped 2026-08-07 — changelog § 1.115).
+Gated on usable Horizon 1A **application loop** (FR-008–FR-015). **Not blocked on
+FR-017** ([eval/fr017_m0_engineering_spike.md](eval/fr017_m0_engineering_spike.md) §9).
+
+**Lead FR:** Opportunity Discovery & Acquisition — feed the frozen Horizon 1A
+pipeline. Recruiter / network / content / market work follows. Owner approval
+required before FR-018 planning/M0 or implementation. No scrape-first design.
 
 | FR | Capability |
 |----|------------|
-| FR-018 | Recruiter Intelligence |
-| FR-019 | Recruiter Outreach |
-| FR-020 | Existing Connection Outreach |
-| FR-021 | LinkedIn Network Intelligence |
-| FR-022 | Meetup Intelligence |
-| FR-023 | LinkedIn Content Planning |
-| FR-024 | Market Intelligence |
-
-Do not implement Horizon 1B in the current phase.
+| FR-018 | Opportunity Discovery & Acquisition |
+| FR-019 | Recruiter Intelligence |
+| FR-020 | Recruiter Outreach |
+| FR-021 | Existing Connection Outreach |
+| FR-022 | LinkedIn Network Intelligence |
+| FR-023 | Meetup Intelligence |
+| FR-024 | LinkedIn Content Planning |
+| FR-025 | Market Intelligence |
 
 ---
 
-## Future — Horizon 2 (FR-025+)
+## Future — Horizon 2 (FR-026+)
 
 | FR | Capability |
 |----|------------|
-| FR-025 | Interview Preparation |
-| FR-026 | Career Dashboard |
-| FR-027 | Daily Prioritisation (cross-domain) |
+| FR-026 | Interview Preparation |
+| FR-027 | Career Dashboard |
+| FR-028 | Daily Prioritisation (cross-domain) |
 
 Capability phases below organise Horizon 2 domains after Horizon 1 priorities are met.
 
 | Phase | Domain |
 |-------|--------|
-| Phase 3+ | Recruiter / network (also Horizon 1B FR-018–FR-023) |
+| Phase 3+ | Recruiter / network (also Horizon 1B FR-019–FR-024) |
 | Phase 4 | Portfolio Intelligence |
 | Phase 5 | Networking Intelligence |
 | Phase 6 | Learning Intelligence |
-| Phase 7 | Interview Intelligence (FR-025) |
-| Phase 8 | Career Dashboard (FR-026) |
+| Phase 7 | Interview Intelligence (FR-026) |
+| Phase 8 | Career Dashboard (FR-027) |
 
 ### Parking Lot
 

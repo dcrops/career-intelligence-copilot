@@ -59,18 +59,20 @@ bounded agents **FR-015** — see remapping in [11_changelog.md](11_changelog.md
 ### Post–Phase 2 / Horizon 1
 
 - **Complete:** FR-001–FR-007 (through Cover Letter)
-- **Current — Horizon 1A (Job application workflow):** FR-008–FR-017
-- **Then — Horizon 1B (Recruiter and market engagement):** FR-018–FR-024
-- **Later — Horizon 2:** FR-025+ (interview, dashboard, cross-domain prioritisation)
+- **Complete — Horizon 1A (Job application workflow):** FR-008–FR-017
+- **Then — Horizon 1B (Scaled acquisition and market engagement):** FR-018–FR-025
+  (**FR-018** Opportunity Discovery & Acquisition first; recruiter work from FR-019)
+- **Later — Horizon 2:** FR-026+ (interview, dashboard, cross-domain prioritisation)
 
-**Principle:** Job acquisition first. Recruiter outreach second.
+**Principle:** Job acquisition first. Recruiter outreach second. After 1A, that means
+scale lawful opportunity inflow before recruiter CRM/outreach.
 
 **Product progression:** Understand the candidate → Understand the opportunity →
 Generate the application → Acquire jobs → Orchestrate applications → Introduce
-bounded agents → Scale to multi-agent systems → Expand into recruiter and market
-intelligence.
+bounded agents → Scale to multi-agent systems → **Scale opportunity discovery** →
+Expand into recruiter and market intelligence.
 
-See [10_roadmap.md](10_roadmap.md).
+See [10_roadmap.md](10_roadmap.md). Remap: [11_changelog.md](11_changelog.md) § 1.115.
 
 ---
 
@@ -795,13 +797,16 @@ are **out of scope** for FR-008.
 
 ### Preferred acquisition methods (reliability / compliance order)
 
-1. Supported APIs or structured feeds where available *(future)*
-2. Job-alert email ingestion *(future)*
-3. Saved-search notifications *(future)*
-4. User-supplied job URLs *(future)*
+1. Supported APIs or structured feeds where available *(future — FR-018)*
+2. Job-alert email ingestion *(future — FR-018)*
+3. Saved-search notifications *(future — FR-018)*
+4. User-supplied job URLs *(future — FR-018)*
 5. User-supplied pasted job descriptions ✅
 6. Exported or downloaded job data ✅
-7. Playwright-assisted browser workflows where necessary *(deferred)*
+7. Playwright-assisted browser workflows where necessary *(deferred — FR-018 last resort)*
+
+Further discovery/acquisition beyond paste/export is **FR-018 Opportunity Discovery &
+Acquisition** (Horizon 1B lead). FR-008 exit criteria remain frozen.
 
 ### Explicitly avoid as default design
 
@@ -1486,8 +1491,10 @@ established identifier. **FR-015** Bounded Agentic Workflow is **complete and fr
 [acceptance](eval/fr016_multi_agent_orchestration.md)).
 **FR-017** Agent Evaluation & Observability is **complete and frozen**
 ([acceptance](eval/fr017_agent_evaluation_observability.md)).
-Next product focus: **Horizon 1B** (FR-018+) on owner request — **not gated on
-FR-017**; do not auto-start.
+Next product focus: **Horizon 1B** starting with **FR-018 Opportunity Discovery &
+Acquisition** on owner request — **not gated on FR-017**; do not auto-start.
+Recruiter Intelligence is **FR-019**. Remap: [11_changelog.md](11_changelog.md)
+§ 1.115.
 
 Distinguish: (A) candidate claims (require candidate evidence); (B) employer-context
 statements (JD evidence OK; must not become candidate capability); (C) aspirational /
@@ -1643,122 +1650,154 @@ Acceptance Criteria (frozen)
 
 ---
 
-## Horizon 1B — Recruiter and Market Engagement (FR-018–FR-024)
+## Horizon 1B — Scaled Acquisition and Market Engagement (FR-018–FR-025)
 
 **Status:** Planned — after Horizon 1A **application loop** is usable
 (FR-008–FR-015). **Not blocked on FR-017**
 ([eval/fr017_m0_engineering_spike.md](eval/fr017_m0_engineering_spike.md) §9).  
-*(Previously numbered FR-017–FR-023; renumbered 2026-08-05.)*
+*(Recruiter/network FRs previously FR-018–FR-024; remapped 2026-08-07 — changelog
+§ 1.115. Opportunity Discovery & Acquisition leads.)*
 
-Recruiter outreach is an *additional acquisition channel* after the owner can
-discover, assess, prepare, review, submit and track applications end to end.
-Do not displace Horizon 1A work. Horizon 1A (including FR-017) is complete;
+**Lead capability:** Scale lawful discovery and acquisition of suitable
+opportunities into the frozen FR-008/FR-009 path. Recruiter outreach remains an
+*additional* channel after acquisition can feed the loop at volume. Do not
+displace live application throughput. Horizon 1A (including FR-017) is complete;
 starting 1B is preference timing, not an FR-017 engineering gate.
 
 All externally visible outreach must require user review before sending.
 
+**Discovery philosophy (FR-018 planning posture):** Investigate lawful acquisition
+mechanisms in preference order — official APIs → structured feeds → email alerts →
+exports → manual URLs → supported integrations → browser automation last. Browser
+automation is a last resort where simpler lawful approaches prove insufficient.
+Do not design FR-018 as uncontrolled crawling or “web scraping.”
+
 ---
 
-## FR-018 Recruiter Intelligence
+## FR-018 Opportunity Discovery & Acquisition
+
+**Phase:** Horizon 1B (lead)  
+**Status:** Planned — ready for planning; M0 not started  
+*(Inserted 2026-08-07 — changelog § 1.115. Extends the FR-008 acquisition adapter
+boundary additively; does not reopen FR-008–FR-017. Synonym in older notes: Job
+Discovery.)*
+
+Discover and acquire suitable job advertisements into CIC via lawful source
+adapters, with explicit provenance and idempotent handoff into the frozen
+FR-008/FR-009 Opportunity path. Owner review before apply remains mandatory.
+Prefer APIs, feeds, alerts, exports, and owner URLs over browser automation.
+
+---
+
+## FR-019 Recruiter Intelligence
 
 **Phase:** Horizon 1B  
 **Status:** Planned  
-*(Originally FR-017; renumbered 2026-08-05.)*
+*(Originally FR-017; renumbered 2026-08-05 to FR-018; renumbered 2026-08-07 to
+FR-019 — changelog § 1.115.)*
 
 Discover and prioritise suitable recruiters. Track recruiter history. Recommend
 follow-ups. Surface relationship context for outreach decisions.
 
 ---
 
-## FR-019 Recruiter Outreach
+## FR-020 Recruiter Outreach
 
 **Phase:** Horizon 1B  
 **Status:** Planned  
-*(Originally FR-018; renumbered 2026-08-05.)*
+*(Originally FR-018; renumbered 2026-08-05 to FR-019; renumbered 2026-08-07 to
+FR-020 — changelog § 1.115.)*
 
 Generate tailored recruiter outreach messages under mandatory owner review. No
 autonomous sending.
 
 ---
 
-## FR-020 Existing Connection Outreach
+## FR-021 Existing Connection Outreach
 
 **Phase:** Horizon 1B  
 **Status:** Planned  
-*(Originally FR-019; renumbered 2026-08-05.)*
+*(Originally FR-019; renumbered 2026-08-05 to FR-020; renumbered 2026-08-07 to
+FR-021 — changelog § 1.115.)*
 
 Support outreach to existing LinkedIn connections (and similar) with review gates,
 prioritisation, and follow-up tracking.
 
 ---
 
-## FR-021 LinkedIn Network Intelligence
+## FR-022 LinkedIn Network Intelligence
 
 **Phase:** Horizon 1B  
 **Status:** Planned  
-*(Originally FR-020; renumbered 2026-08-05.)*
+*(Originally FR-020; renumbered 2026-08-05 to FR-021; renumbered 2026-08-07 to
+FR-022 — changelog § 1.115.)*
 
 Analyse and develop the owner’s professional network strategically — without
 displacing job-application throughput.
 
 ---
 
-## FR-022 Meetup Intelligence
+## FR-023 Meetup Intelligence
 
 **Phase:** Horizon 1B  
 **Status:** Planned  
-*(Originally FR-021; renumbered 2026-08-05.)*
+*(Originally FR-021; renumbered 2026-08-05 to FR-022; renumbered 2026-08-07 to
+FR-023 — changelog § 1.115.)*
 
 Discover and recommend relevant Melbourne AI (and related) meetups as a networking
 and learning channel.
 
 ---
 
-## FR-023 LinkedIn Content Planning
+## FR-024 LinkedIn Content Planning
 
 **Phase:** Horizon 1B  
 **Status:** Planned  
-*(Originally FR-022; renumbered 2026-08-05.)*
+*(Originally FR-022; renumbered 2026-08-05 to FR-023; renumbered 2026-08-07 to
+FR-024 — changelog § 1.115.)*
 
 Plan LinkedIn articles and related content to improve visibility — owner-approved
 publishing only.
 
 ---
 
-## FR-024 Market Intelligence
+## FR-025 Market Intelligence
 
 **Phase:** Horizon 1B / Horizon 2 boundary  
 **Status:** Planned  
-*(Originally FR-023; renumbered 2026-08-05.)*
+*(Originally FR-023; renumbered 2026-08-05 to FR-024; renumbered 2026-08-07 to
+FR-025 — changelog § 1.115.)*
 
 Track recurring technologies, salary trends, and learning priorities that inform
 search strategy. May begin late in 1B if it directly improves application targeting.
 
 ---
 
-## Horizon 2 — Platform Capabilities (FR-025+)
+## Horizon 2 — Platform Capabilities (FR-026+)
 
 Deferred unless they directly accelerate Horizon 1 during the active search.
-*(Previously labelled FR-024+ / FR-023+ in older drafts; renumbered 2026-08-05.)*
+*(Previously FR-025+ before § 1.115 remap; earlier drafts FR-024+ / FR-023+.)*
 
 ---
 
-## FR-025 Interview Preparation
+## FR-026 Interview Preparation
 
 **Phase:** Horizon 2  
 **Status:** Planned  
-*(Originally FR-024; renumbered 2026-08-05.)*
+*(Originally FR-024; renumbered 2026-08-05 to FR-025; renumbered 2026-08-07 to
+FR-026 — changelog § 1.115.)*
 
 Generate recruiter, technical, and behavioural interview prep; project walkthroughs;
 and questions to ask.
 
 ---
 
-## FR-026 Career Dashboard
+## FR-027 Career Dashboard
 
 **Phase:** Horizon 2  
 **Status:** Planned  
-*(Originally FR-025; renumbered 2026-08-05.)*
+*(Originally FR-025; renumbered 2026-08-05 to FR-026; renumbered 2026-08-07 to
+FR-027 — changelog § 1.115.)*
 
 Provide a live dashboard showing applications, recruiters, visibility, portfolio,
 market trends, and priority actions. Phase 2 already provides a simple opportunity
@@ -1766,11 +1805,12 @@ list / CLI comparison — the full dashboard remains out of early scope.
 
 ---
 
-## FR-027 Daily Prioritisation (cross-domain)
+## FR-028 Daily Prioritisation (cross-domain)
 
 **Phase:** Horizon 2  
 **Status:** Planned  
-*(Originally FR-026; renumbered 2026-08-05.)*
+*(Originally FR-026; renumbered 2026-08-05 to FR-027; renumbered 2026-08-07 to
+FR-028 — changelog § 1.115.)*
 
 Recommend the highest-value activities for the day across jobs, recruiters,
 networking, and learning. Phase 2 M4 ranked comparison of *open job opportunities*

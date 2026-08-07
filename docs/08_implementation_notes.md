@@ -1591,12 +1591,15 @@ cannot be cancelled (already failed).
 
 ### Sequencing (remaining)
 
-1. **Horizon 1B (FR-018–FR-024)** — on owner request when application loop is usable;
-   **not** gated on FR-017.
-2. **Additional acquisition adapters** (URL/API/email) — only when explicitly requested.
+1. **Horizon 1B / FR-018 Opportunity Discovery & Acquisition** — on owner request when
+   application loop is usable; **not** gated on FR-017. Prefer APIs/feeds/alerts/exports/URLs;
+   Playwright last. Extends FR-008 adapters additively; does not reopen FR-008 exit criteria.
+2. **Horizon 1B FR-019–FR-025** — recruiter intelligence, outreach, network, meetups,
+   content, market — after FR-018 (or owner-approved reorder).
+3. **Horizon 2 (FR-026+)** — interview, dashboard, cross-domain prioritisation.
 
 **Completed in this sequence:** FR-009 → FR-017 (review queue through orchestration
-evaluation); Horizon 1A Stage 11 closed.
+evaluation); Horizon 1A Stage 11 closed. Remap: [11_changelog.md](11_changelog.md) § 1.115.
 
 ### FR-008 acquisition foundation (complete — closes FR-008)
 

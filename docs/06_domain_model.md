@@ -102,7 +102,9 @@ current.
 
 ### Job Acquisition Record
 
-**Maps to:** FR-008 (complete); provenance feeds FR-009 duplicate detection
+**Maps to:** FR-008 (complete — paste/export); further channels planned under
+**FR-018 Opportunity Discovery & Acquisition**; provenance feeds FR-009 duplicate
+detection
 
 Canonical record of how a job entered the system via a **source adapter**. Indicative
 fields: source type; source identifier; source URL; acquisition timestamp; raw and
@@ -113,7 +115,7 @@ Preferred adapters (reliability / compliance order): APIs/feeds → job-alert em
 saved-search notifications → owner URLs → pasted descriptions → exports →
 Playwright-assisted browser workflows as a **controlled fallback**. Do not assume
 browser automation for every job. See [04_functional_specification.md](04_functional_specification.md)
-§ FR-008 and [10_roadmap.md](10_roadmap.md) § Horizon 1A.
+§ FR-008 / FR-018 and [10_roadmap.md](10_roadmap.md) § Horizon 1B.
 
 ---
 
@@ -665,7 +667,7 @@ The operational layer is the manual precursor to the automated domain model.
 | Career Profile | `career-documents/cv/`, owner knowledge |
 | Opportunity (durable) | `data/opportunities/` (SoT); CSV under `data/exports/` is derived (M3) |
 | Outcome Record | Status / notes on Opportunity (M2); tracker Outcome column is import/export projection |
-| Network contacts | `applications/network/network_tracker.csv` (Horizon 1B / FR-018+) |
+| Network contacts | `applications/network/network_tracker.csv` (Horizon 1B / FR-019+) |
 | Company context | `applications/company_notes/` |
 | Career milestones | `career-log.md` |
 | Future templates | `templates/` (placeholders) |
@@ -707,13 +709,14 @@ continue to connect to this layer rather than invent a parallel tracker.
 | Bounded Agentic Workflow | **FR-015** (Horizon 1A; **complete / frozen** — ADR-007) |
 | Multi-Agent Orchestration | **FR-016** (Horizon 1A — **complete / frozen**; learning proof) |
 | Agent Evaluation & Observability | **FR-017** (Horizon 1A — **complete / frozen**; derive-only) |
-| Recruiter Intelligence | **FR-018** (Horizon 1B) |
-| Recruiter Outreach | **FR-019** (Horizon 1B) |
-| Existing Connection Outreach | **FR-020** (Horizon 1B) |
-| LinkedIn Network Intelligence | **FR-021** (Horizon 1B) |
-| Meetup Intelligence | **FR-022** (Horizon 1B) |
-| LinkedIn Content Planning | **FR-023** (Horizon 1B) |
-| Market Intelligence | **FR-024** (Horizon 1B) |
-| Interview Preparation | **FR-025** (Horizon 2) |
-| Career Dashboard | **FR-026** (Horizon 2) |
-| Daily Prioritisation (cross-domain) | **FR-027** (Horizon 2) |
+| Opportunity Discovery & Acquisition | **FR-018** (Horizon 1B lead) |
+| Recruiter Intelligence | **FR-019** (Horizon 1B) |
+| Recruiter Outreach | **FR-020** (Horizon 1B) |
+| Existing Connection Outreach | **FR-021** (Horizon 1B) |
+| LinkedIn Network Intelligence | **FR-022** (Horizon 1B) |
+| Meetup Intelligence | **FR-023** (Horizon 1B) |
+| LinkedIn Content Planning | **FR-024** (Horizon 1B) |
+| Market Intelligence | **FR-025** (Horizon 1B) |
+| Interview Preparation | **FR-026** (Horizon 2) |
+| Career Dashboard | **FR-027** (Horizon 2) |
+| Daily Prioritisation (cross-domain) | **FR-028** (Horizon 2) |

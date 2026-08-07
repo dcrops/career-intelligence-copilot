@@ -73,7 +73,8 @@ SoT shape, ranking sort key, or Horizon 2 domains (recruiters, networking, meetu
 
 ## Next
 
-**Current focus:** Horizon 1B (FR-018+) on owner request — **not blocked on FR-017**.
+**Current focus:** Horizon 1B on owner request — **FR-018 Opportunity Discovery &
+Acquisition** first (FR-018–FR-025) — **not blocked on FR-017**.
 **Horizon 1A complete:** FR-008–FR-017 frozen. **FR-017** is **complete and frozen**
 ([acceptance](eval/fr017_agent_evaluation_observability.md);
 [ADR-009](adr/009_orchestration_evaluation_substrate.md);
@@ -122,7 +123,9 @@ milestones [M0](eval/fr016_m0_engineering_spike.md)–[M4](eval/fr016_m4_evaluat
 [acceptance](eval/fr017_agent_evaluation_observability.md);
 [ADR-009](adr/009_orchestration_evaluation_substrate.md);
 milestones [M0](eval/fr017_m0_engineering_spike.md)–[M4](eval/fr017_m4_evaluation.md)).
-**After usable 1A application loop:** Horizon 1B recruiter / market engagement
-(FR-018–FR-024) — **not gated on FR-017**  
+**After usable 1A application loop:** Horizon 1B scaled acquisition and market
+engagement (FR-018–FR-025) — **FR-018 Opportunity Discovery & Acquisition** first;
+recruiter work FR-019+ — **not gated on FR-017** (remap [11_changelog.md](11_changelog.md)
+§ 1.115)  
 **Principle:** Job acquisition first. Recruiter outreach second.  
-**Later:** Horizon 2 capability phases (see roadmap)
+**Later:** Horizon 2 capability phases (FR-026+; see roadmap)

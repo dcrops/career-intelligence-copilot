@@ -20,11 +20,12 @@ The platform treats career management as an ongoing decision-making process rath
 
 The current priority is to help the repository owner secure an appropriate AI Engineering role as quickly as reasonably possible.
 
-Near-term work focuses on the **full job-application workflow** (Horizon 1A): discover,
-assess, prepare, review, submit and track suitable applications — before recruiter
-outreach or networking automation (Horizon 1B).
+Near-term work: Horizon 1A application loop is **complete**. Horizon 1B starts with
+**FR-018 Opportunity Discovery & Acquisition** (scale lawful inflow into that loop),
+then recruiter outreach and networking automation (FR-019+).
 
-**Job acquisition first. Recruiter outreach second.**
+**Job acquisition first. Recruiter outreach second.** After 1A, scale opportunity
+inflow before recruiter CRM.
 
 The product should improve the likelihood of securing relevant interviews or offers and reduce repetitive administrative work. It does not guarantee employment, interviews, or recruiter engagement.
 
@@ -103,11 +104,12 @@ Career Intelligence Copilot aims to help professionals:
 **Horizon 1 — Immediate:** Help the user secure a suitable AI Engineering role while reducing job-search effort.
 
 - **1A (complete):** Job application workflow end to end (FR-008–FR-017 frozen)
-- **1B (next, owner request):** Recruiter and market engagement (FR-018–FR-024)
+- **1B (next, owner request):** Scaled acquisition and market engagement (FR-018–FR-025) —
+  **FR-018 Opportunity Discovery & Acquisition** first; recruiter/network from FR-019
 
 **Horizon 2 — Long term:** Evolve into a reusable Career Intelligence Platform supporting career progression, networking, learning, promotion, role changes, and future opportunity evaluation.
 
-Horizon 1 takes priority whenever the two horizons compete. Within Horizon 1, 1A completes before 1B.
+Horizon 1 takes priority whenever the two horizons compete. Within Horizon 1, 1A completes before 1B. Within 1B, opportunity discovery leads recruiter work.
 
 ---
 

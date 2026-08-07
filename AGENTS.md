@@ -62,7 +62,8 @@ Truth Validation is **complete and frozen** —
 [acceptance](docs/eval/fr014_recruiter_document_truth_validation.md);
 milestones [M0](docs/eval/fr014_m0_engineering_spike.md)–[M4](docs/eval/fr014_m4_claim_validation.md);
 [ADR-006](docs/adr/006_recruiter_document_truth_validation.md). **Current focus — Horizon 1B
-(when owner requests):** FR-018+. **Horizon 1A (FR-008–FR-017) is complete and frozen.**
+(when owner requests):** **FR-018 Opportunity Discovery & Acquisition** first
+(FR-018–FR-025). **Horizon 1A (FR-008–FR-017) is complete and frozen.**
 **FR-017** Agent Evaluation & Observability is **complete and frozen** (derive-only;
 **must not block Horizon 1B**) —
 [acceptance](docs/eval/fr017_agent_evaluation_observability.md);
@@ -78,8 +79,10 @@ milestones [M0](docs/eval/fr015_m0_engineering_spike.md)–[M4](docs/eval/fr015_
 [ADR-007](docs/adr/007_bounded_agentic_workflow.md).
 Do not reopen Phase 2, FR-008, FR-009, FR-010, FR-011, FR-012, FR-013, FR-014, FR-015, FR-016, or FR-017 exit criteria without
 explicit owner request.
-**Principle:** Job acquisition first. Recruiter outreach second (Horizon 1B /
-FR-018–FR-024 — 1A application loop is usable; owner may start 1B).
+**Principle:** Job acquisition first. Recruiter outreach second (Horizon 1B —
+scale lawful opportunity inflow via **FR-018**, then recruiter work **FR-019+**;
+1A application loop is usable; owner may start 1B). Remap:
+[docs/11_changelog.md](docs/11_changelog.md) § 1.115.
 
 **Implementation foundation:** Python 3.11+, Pydantic, YAML storage, and the public profile
 service boundary are recorded in
@@ -120,7 +123,8 @@ Bounded Agentic Workflow is **complete and frozen**
 (learning proof only). **FR-017** is **complete and frozen**
 ([docs/eval/fr017_agent_evaluation_observability.md](docs/eval/fr017_agent_evaluation_observability.md);
 [ADR-009](docs/adr/009_orchestration_evaluation_substrate.md)).
-Next: Horizon 1B on owner request — **not blocked on FR-017**.
+Next: Horizon 1B on owner request — **FR-018 Opportunity Discovery & Acquisition**
+first — **not blocked on FR-017**.
 See [docs/10_roadmap.md](docs/10_roadmap.md).
 
 Full detail: [docs/04_functional_specification.md](docs/04_functional_specification.md) and [docs/10_roadmap.md](docs/10_roadmap.md).
@@ -134,7 +138,7 @@ explicitly requested by the owner.
 
 Apply [docs/05_engineering_principles.md](docs/05_engineering_principles.md) for all tradeoffs. Non-negotiables:
 
-- **Job acquisition first** — Horizon 1A application loop before Horizon 1B recruiter work (1A is complete; start 1B only on owner request)
+- **Job acquisition first** — Horizon 1A application loop before Horizon 1B recruiter work (1A is complete; start 1B only on owner request). Within 1B, **FR-018 Opportunity Discovery & Acquisition** before Recruiter Intelligence (FR-019+)
 - **Intelligence before automation** — explain before acting; deterministic workflow before agents
 - **Human review** — tiers, packages, and submission require owner judgment; never silent submit
 - **Dual-value test** — every capability must improve interview/offer odds or reduce repetitive search effort

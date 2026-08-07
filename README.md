@@ -14,10 +14,12 @@ reviewed applications as quickly and reliably as possible.
 
 - **Horizon 1A (complete):** Job application workflow — acquire → assess → prepare →
   review → submit → track (FR-008–FR-017 frozen)
-- **Horizon 1B (next, owner request):** Recruiter and market engagement — application
-  loop usable; **not** gated on FR-017
+- **Horizon 1B (next, owner request):** Scaled acquisition and market engagement —
+  **FR-018 Opportunity Discovery & Acquisition** first, then recruiter/network/market
+  (FR-019–FR-025); application loop usable; **not** gated on FR-017
 
-**Principle:** Job acquisition first. Recruiter outreach second.
+**Principle:** Job acquisition first. Recruiter outreach second. After 1A, scale
+lawful opportunity inflow before recruiter CRM.
 
 **Horizon 2 (long term):** Evolve into a reusable Career Intelligence Platform for
 ongoing career progression after employment is secured.
@@ -107,13 +109,18 @@ Horizon 1B **not** blocked) —
 [package](docs/masterclass/FR017/);
 [ADR-009](docs/adr/009_orchestration_evaluation_substrate.md).
 
-**Current focus:** Horizon 1B on owner request (FR-018+). Horizon 1A (FR-008–FR-017)
-is complete. Details: [docs/10_roadmap.md](docs/10_roadmap.md).
+**Current focus:** Horizon 1B on owner request — **FR-018 Opportunity Discovery &
+Acquisition** first (FR-018–FR-025). Horizon 1A (FR-008–FR-017) is complete.
+Details: [docs/10_roadmap.md](docs/10_roadmap.md). Remap:
+[docs/11_changelog.md](docs/11_changelog.md) § 1.115.
 
 Acquisition today: paste or local export file via
-`scripts/run_fr008_workflow_manual.py` (`--source paste|export`). Playwright deferred.
+`scripts/run_fr008_workflow_manual.py` (`--source paste|export`). Further channels
+are FR-018 (prefer APIs/feeds/alerts/exports/URLs; Playwright last). Playwright
+deferred.
 
-**Thereafter — Horizon 1B:** Recruiter / meetup / LinkedIn engagement (FR-018–FR-024).
+**Thereafter — Horizon 1B:** Opportunity discovery/acquisition (FR-018), then
+recruiter / meetup / LinkedIn engagement (FR-019–FR-025).
 
 ### Phase 2 + document generation (baseline — frozen)
 

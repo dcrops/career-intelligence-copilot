@@ -4,6 +4,48 @@ Records product strategy and engineering knowledge changes. Routine typo fixes a
 
 ---
 
+## Version 1.115
+
+### Horizon 1B reprioritised — Opportunity Discovery & Acquisition leads
+
+**Date:** 2026-08-07.
+
+Owner-approved roadmap remapping after Horizon 1A freeze and FR-018 planning
+review. Largest remaining bottleneck is lawful automatic acquisition of suitable
+opportunities into the completed Horizon 1A pipeline — not recruiter CRM first.
+
+**Terminology:** **Opportunity Discovery & Acquisition** (FR-018). Aligns with the
+Opportunity system of record (`data/opportunities/`, identity, review queue).
+Synonym in older FR-016 notes: “Job Discovery.” FR-008 remains **Job Acquisition &
+Workflow Orchestration** (paste/export frozen); FR-018 extends that adapter
+boundary additively and does **not** reopen FR-008–FR-017 exit criteria.
+
+| Prior planned ID | New ID | Title |
+|------------------|--------|--------|
+| *(deferred FR-008 adapters / unnumbered Job Discovery)* | **FR-018** | Opportunity Discovery & Acquisition |
+| FR-018 | **FR-019** | Recruiter Intelligence |
+| FR-019 | **FR-020** | Recruiter Outreach |
+| FR-020 | **FR-021** | Existing Connection Outreach |
+| FR-021 | **FR-022** | LinkedIn Network Intelligence |
+| FR-022 | **FR-023** | Meetup Intelligence |
+| FR-023 | **FR-024** | LinkedIn Content Planning |
+| FR-024 | **FR-025** | Market Intelligence |
+| FR-025 | **FR-026** | Interview Preparation (Horizon 2) |
+| FR-026 | **FR-027** | Career Dashboard (Horizon 2) |
+| FR-027 | **FR-028** | Daily Prioritisation (Horizon 2) |
+
+Horizon 1B retitled **Scaled Acquisition and Market Engagement** (FR-018–FR-025).
+Discovery philosophy (planning posture only): prefer official APIs → structured
+feeds → email alerts → exports → manual URLs → supported integrations → browser
+automation last. No scrape-first design. No production adapters or M0 in this
+change — documentation only.
+
+Historical acceptance / milestone reports for FR-008–FR-017 are **not** rewritten.
+
+Evidence: [10_roadmap.md](10_roadmap.md); [04_functional_specification.md](04_functional_specification.md).
+
+---
+
 ## Version 1.114
 
 ### Engineering Learning Academy — Interview Brief + Interview Deck layers
