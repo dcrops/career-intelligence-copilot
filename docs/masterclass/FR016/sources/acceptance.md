@@ -1,3 +1,11 @@
+<!--
+GENERATED MASTERCLASS SNAPSHOT — DO NOT EDIT BY HAND.
+Authoritative source: docs/eval/fr016_multi_agent_orchestration.md
+Mode: full-file snapshot
+Regenerate: python scripts/build_masterclass_package.py <FR_ID>
+Repository documentation remains the source of truth.
+-->
+
 # FR-016 — Multi-Agent Orchestration
 
 **Status:** **Complete / Frozen / Accepted**  

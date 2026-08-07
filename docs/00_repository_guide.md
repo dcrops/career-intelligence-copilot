@@ -36,7 +36,7 @@ Objectives.
 |----------|--------|
 | What is this project? | Decision-support for job search (Horizon 1), evolving toward a Career Intelligence Platform (Horizon 2). |
 | What has been completed? | **Phase 1** and **Phase 2** — see [12_phase_history.md](12_phase_history.md) and [eval/phase2_release_report.md](eval/phase2_release_report.md). |
-| What is next? | **FR-017** Agent Evaluation & Observability (**Active FR; Not Started** — owner request required). **FR-016** is **Complete / Frozen / Accepted** (learning proof; Engineering Learning Academy ready — [acceptance](eval/fr016_multi_agent_orchestration.md)). Prefer `cic agent run` for ordinary prep. **FR-015** bounded agent is **complete and frozen** ([acceptance](eval/fr015_bounded_agentic_workflow.md)). OAT-001 operational polish: [eval/oat001_phase4_operational_polish.md](eval/oat001_phase4_operational_polish.md). Recruiter outreach is Horizon 1B (**FR-018+**) — [10_roadmap.md](10_roadmap.md). |
+| What is next? | **FR-017** Agent Evaluation & Observability (**Active FR; Not Started** — owner request required). **FR-016** is **Complete / Frozen / Accepted** (learning proof; Academy bridge — [masterclass/FR016](masterclass/FR016/README.md); [acceptance](eval/fr016_multi_agent_orchestration.md)). Prefer `cic agent run` for ordinary prep. **FR-015** bounded agent is **complete and frozen** ([acceptance](eval/fr015_bounded_agentic_workflow.md)). OAT-001: [eval/oat001_phase4_operational_polish.md](eval/oat001_phase4_operational_polish.md). Horizon 1B (**FR-018+**) — [10_roadmap.md](10_roadmap.md). |
 | Where should I start reading? | This guide → [AGENTS.md](../AGENTS.md) → [04_functional_specification.md](04_functional_specification.md) → [10_roadmap.md](10_roadmap.md). |
 
 ---
@@ -124,6 +124,7 @@ candidate capability). Release evidence:
 | [01_executive_summary.md](01_executive_summary.md) | Supporting | Quick narrative overview |
 | [02_problem_statement.md](02_problem_statement.md) | Supporting | Problem context |
 | [11_changelog.md](11_changelog.md) | Historical | Why documentation changed |
+| [masterclass/README.md](masterclass/README.md) | Educational source | Academy packages (`FRnnn/` + regenerable `sources/`) |
 | [AGENTS.md](../AGENTS.md) | **Authoritative — agent behaviour** | Cursor agent bootstrap and invariants |
 
 When documents overlap, prefer the authoritative source for that concern. Do not treat
@@ -149,11 +150,38 @@ Supporting documents (01, 02) are optional for onboarding.
 
 ---
 
+## Engineering Learning Academy workflow
+
+Frozen engineering becomes interview-ready learning material through a fixed
+pipeline. The repository owns steps through **Masterclass Source Package** and
+**Commit**. The Academy consumes a committed package folder afterward.
+
+```text
+Engineering → Validation → OAT → Close-out → Freeze
+    → Masterclass Source Package (docs/masterclass/FRnnn/)
+    → Commit
+    → Engineering Learning Academy
+```
+
+| Step | Where |
+|------|--------|
+| Freeze / acceptance | `docs/eval/`, `docs/adr/` (authoritative) |
+| Package | `docs/masterclass/FRnnn/` — `README.md`, `MANIFEST.md`, regenerable `sources/` |
+| First packaged FR | [masterclass/FR016/](masterclass/FR016/) |
+| Regenerate snapshots | `python scripts/build_masterclass_package.py FR016` |
+| Academy index | [masterclass/README.md](masterclass/README.md) |
+
+Do **not** generate presentations in this repository as part of FR close-out.
+Do **not** hand-edit `sources/` snapshots — regenerate from SoT.
+
+---
+
 ## Repository Structure
 
 | Path | Layer | Purpose |
 |------|-------|---------|
 | `docs/` | Specification | Product and engineering knowledge |
+| `docs/masterclass/` | Educational source | Attachable Masterclass Source Packages (after freeze) |
 | `docs/assets/` | Specification | Diagrams and verification images |
 | `docs/adr/` | Specification | Architecture decision records |
 | `docs/eval/` | Specification | Manual eval and release reports |
@@ -226,3 +254,5 @@ repository — not left in conversation history.
 - **Engineering invariant changes** → [05_engineering_principles.md](05_engineering_principles.md) and changelog
 - **Requirement or semantic changes** → [04_functional_specification.md](04_functional_specification.md) and changelog
 - **Phase or sequencing changes** → [10_roadmap.md](10_roadmap.md) and changelog
+- **Frozen FR → Academy package** → `docs/masterclass/FRnnn/` + regenerate
+  `sources/` via `scripts/build_masterclass_package.py`

@@ -2590,5 +2590,7 @@ documentation freeze. Binding M2 verdict unchanged: **GO AS LEARNING PROOF ONLY*
 FR-017 Active (Not Started). Engineering Learning Academy ready via acceptance report.
 
 **Manual:** `scripts/run_fr016_m4_manual.py`  
-**Tests:** `tests/unit/multi_agent/` (corpus includes P–T)
+**Tests:** `tests/unit/multi_agent/` (corpus includes P–T)  
+**Academy package:** [masterclass/FR016/](masterclass/FR016/) — regenerate with
+`python scripts/build_masterclass_package.py FR016`
 

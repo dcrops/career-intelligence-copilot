@@ -569,7 +569,9 @@ strong near-term commercial automation. Prep/Truth/Review persona split rejected
 ([eval/fr016_m3_owner_cli.md](eval/fr016_m3_owner_cli.md)).  
 **M4 delivered:** final corpus 20/20, safety/product review, study-aid source, freeze
 ([eval/fr016_m4_evaluation.md](eval/fr016_m4_evaluation.md)).  
-**Frozen:** [acceptance](eval/fr016_multi_agent_orchestration.md).
+**Frozen:** [acceptance](eval/fr016_multi_agent_orchestration.md).  
+**Academy bridge:** [masterclass/FR016/README.md](masterclass/FR016/README.md).  
+**Academy package:** [masterclass/FR016/](masterclass/FR016/) (`MANIFEST.md` + `sources/`).
 
 ---
 

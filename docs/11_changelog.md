@@ -4,6 +4,32 @@ Records product strategy and engineering knowledge changes. Routine typo fixes a
 
 ---
 
+## Version 1.105
+
+### FR-016 Masterclass Source Package (regenerable snapshots)
+
+**Date:** 2026-08-06.
+
+FR-016 Academy packaging: `docs/masterclass/FR016/` now includes `MANIFEST.md` and
+regenerable `sources/` snapshots of authoritative docs (full-file or mechanical
+section extract). Builder: `scripts/build_masterclass_package.py`. No engineering
+rewrites; repository SoT unchanged. Pattern is the standard for future frozen FRs.
+
+---
+
+## Version 1.104
+
+### Engineering Learning Academy — masterclass source tree
+
+**Date:** 2026-08-06.
+
+Added `docs/masterclass/` as the post-freeze educational source for the Engineering
+Learning Academy. Populated **FR016** bridge only; FR001–FR015, PROJECT, and
+SUBSYSTEMS are placeholders. Workflow documented: Engineering → Validation → OAT →
+Close-out → Freeze → Masterclass Source → Commit → Academy. No presentations generated.
+
+---
+
 ## Version 1.103
 
 ### FR-016 documentation close-out — Engineering Learning Academy ready

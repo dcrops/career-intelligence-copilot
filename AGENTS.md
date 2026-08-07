@@ -16,6 +16,7 @@ The repository — not conversation history — is the project's long-term memor
 4. [docs/05_engineering_principles.md](docs/05_engineering_principles.md) — engineering tradeoffs
 5. [docs/07_testing_strategy.md](docs/07_testing_strategy.md) — testing and regression conventions
 6. [docs/10_roadmap.md](docs/10_roadmap.md) — completed vs current focus vs future
+7. [docs/masterclass/README.md](docs/masterclass/README.md) — Engineering Learning Academy source (after freeze)
 
 ---
 
@@ -174,6 +175,9 @@ Apply [docs/05_engineering_principles.md](docs/05_engineering_principles.md) for
 - Treat executive summary or problem statement as requirements sources
 - Duplicate content that already exists in authoritative docs — cross-reference instead
 - Guarantee employment, interviews, or recruiter engagement in any output
+- Generate Engineering Learning Academy presentations/decks unless explicitly asked;
+  build Masterclass Source Packages under `docs/masterclass/FRnnn/` only after freeze
+  (acceptance remains canonical; regenerate `sources/` — do not hand-edit snapshots)
 
 ---
 
@@ -198,5 +202,11 @@ When a session produces a durable decision or invariant, update the appropriate 
 | Requirements or tier semantics | [docs/04_functional_specification.md](docs/04_functional_specification.md) |
 | Engineering tradeoffs | [docs/05_engineering_principles.md](docs/05_engineering_principles.md) |
 | Phase or scope | [docs/10_roadmap.md](docs/10_roadmap.md) |
+| Frozen FR → Academy Masterclass package | [docs/masterclass/](docs/masterclass/README.md) + `scripts/build_masterclass_package.py` |
 
 Do not leave important knowledge only in chat history.
+
+**Engineering Learning Academy pipeline:** Engineering → Validation → OAT → Close-out →
+Freeze → Masterclass Source Package (`docs/masterclass/FRnnn/`) → Commit → Academy.
+Regenerate `sources/` snapshots after SoT doc changes; do not hand-edit snapshots.
+Do not generate Masterclass presentations in-repo during FR close-out.

@@ -35,6 +35,7 @@ modern AI engineering workflows with Cursor. When those goals conflict with Hori
 | Cursor agents | [AGENTS.md](AGENTS.md) |
 | What was delivered in Phase 2 | [docs/eval/phase2_release_report.md](docs/eval/phase2_release_report.md) · [docs/12_phase_history.md](docs/12_phase_history.md) |
 | What is next | [docs/10_roadmap.md](docs/10_roadmap.md) |
+| Engineering Learning Academy source | [docs/masterclass/README.md](docs/masterclass/README.md) · [FR-016 package](docs/masterclass/FR016/) |
 
 ---
 
@@ -95,6 +96,7 @@ decides.
 **GO AS LEARNING PROOF ONLY**; prefer `cic agent run` for ordinary prep;
 Engineering Learning Academy ready)
 ([acceptance](docs/eval/fr016_multi_agent_orchestration.md);
+[educational package](docs/masterclass/FR016/);
 [ADR-008](docs/adr/008_multi_agent_orchestration.md); milestones
 [M0](docs/eval/fr016_m0_engineering_spike.md)–[M4](docs/eval/fr016_m4_evaluation.md)).
 
