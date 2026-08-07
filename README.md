@@ -12,9 +12,10 @@ human review; the system must never silently submit applications or send outreac
 **Horizon 1 (current priority):** Help the owner identify and submit strong,
 reviewed applications as quickly and reliably as possible.
 
-- **Horizon 1A (now):** Job application workflow — acquire → assess → prepare →
-  review → submit → track
-- **Horizon 1B (later):** Recruiter and market engagement — only after 1A works
+- **Horizon 1A (complete):** Job application workflow — acquire → assess → prepare →
+  review → submit → track (FR-008–FR-017 frozen)
+- **Horizon 1B (next, owner request):** Recruiter and market engagement — application
+  loop usable; **not** gated on FR-017
 
 **Principle:** Job acquisition first. Recruiter outreach second.
 
@@ -35,7 +36,7 @@ modern AI engineering workflows with Cursor. When those goals conflict with Hori
 | Cursor agents | [AGENTS.md](AGENTS.md) |
 | What was delivered in Phase 2 | [docs/eval/phase2_release_report.md](docs/eval/phase2_release_report.md) · [docs/12_phase_history.md](docs/12_phase_history.md) |
 | What is next | [docs/10_roadmap.md](docs/10_roadmap.md) |
-| Engineering Learning Academy source | [docs/masterclass/README.md](docs/masterclass/README.md) · [FR-016 package](docs/masterclass/FR016/) |
+| Engineering Learning Academy source | [docs/masterclass/README.md](docs/masterclass/README.md) · [FR-016](docs/masterclass/FR016/) · [FR-017](docs/masterclass/FR017/) · [Interview Brief](docs/masterclass/INTERVIEW_BRIEF_STANDARD.md) · [Interview Deck](docs/masterclass/INTERVIEW_DECK_STANDARD.md) |
 
 ---
 
@@ -100,8 +101,14 @@ Engineering Learning Academy ready)
 [ADR-008](docs/adr/008_multi_agent_orchestration.md); milestones
 [M0](docs/eval/fr016_m0_engineering_spike.md)–[M4](docs/eval/fr016_m4_evaluation.md)).
 
-**Current focus:** **FR-017** Agent Evaluation & Observability (**Active FR; Not
-Started** — owner request required). Details: [docs/10_roadmap.md](docs/10_roadmap.md).
+**FR-017** Agent Evaluation & Observability is **complete and frozen** (derive-only;
+Horizon 1B **not** blocked) —
+[acceptance](docs/eval/fr017_agent_evaluation_observability.md);
+[package](docs/masterclass/FR017/);
+[ADR-009](docs/adr/009_orchestration_evaluation_substrate.md).
+
+**Current focus:** Horizon 1B on owner request (FR-018+). Horizon 1A (FR-008–FR-017)
+is complete. Details: [docs/10_roadmap.md](docs/10_roadmap.md).
 
 Acquisition today: paste or local export file via
 `scripts/run_fr008_workflow_manual.py` (`--source paste|export`). Playwright deferred.

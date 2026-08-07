@@ -1591,16 +1591,12 @@ cannot be cancelled (already failed).
 
 ### Sequencing (remaining)
 
-1. **FR-017** — Agent Evaluation & Observability (**Active FR; Not Started** —
-   owner request required). FR-016 is **Complete / Frozen / Accepted** (learning
-   proof — [acceptance](eval/fr016_multi_agent_orchestration.md);
-   [ADR-008](adr/008_multi_agent_orchestration.md)). Prefer `cic agent run` for
-   ordinary prep. FR-014/015 gates remain in force.
+1. **Horizon 1B (FR-018–FR-024)** — on owner request when application loop is usable;
+   **not** gated on FR-017.
 2. **Additional acquisition adapters** (URL/API/email) — only when explicitly requested.
-3. **Horizon 1B (FR-018–FR-024)** — only after 1A.
 
-**Completed in this sequence:** FR-009 → FR-016 (review queue through multi-agent
-learning proof).
+**Completed in this sequence:** FR-009 → FR-017 (review queue through orchestration
+evaluation); Horizon 1A Stage 11 closed.
 
 ### FR-008 acquisition foundation (complete — closes FR-008)
 
@@ -2587,10 +2583,57 @@ M2 verdict unchanged: learning proof only — prefer `cic agent run` for daily p
 
 Final corpus 20/20; safety and product-value review; study-aid source capture;
 documentation freeze. Binding M2 verdict unchanged: **GO AS LEARNING PROOF ONLY**.
-FR-017 Active (Not Started). Engineering Learning Academy ready via acceptance report.
+**FR-017** later **Complete / Frozen**
+([eval/fr017_agent_evaluation_observability.md](eval/fr017_agent_evaluation_observability.md)).
+Engineering Learning Academy ready via acceptance report / [masterclass/FR016/](masterclass/FR016/).
 
 **Manual:** `scripts/run_fr016_m4_manual.py`  
 **Tests:** `tests/unit/multi_agent/` (corpus includes P–T)  
 **Academy package:** [masterclass/FR016/](masterclass/FR016/) — regenerate with
 `python scripts/build_masterclass_package.py FR016`
+
+## FR-017 M0 — Evaluation & observability spike (document-only)
+
+**Date:** 2026-08-07  
+**Eval:** [eval/fr017_m0_engineering_spike.md](eval/fr017_m0_engineering_spike.md)
+
+Narrow GO accepted: derive-only orchestration metrics; reconstructability R1–R12;
+no dashboards; **Horizon 1B not blocked on FR-017**.
+
+## FR-017 M1 — Observability contracts
+
+**Date:** 2026-08-07  
+**Eval:** [eval/fr017_m1_observability_contracts.md](eval/fr017_m1_observability_contracts.md)  
+**ADR:** [ADR-009](adr/009_orchestration_evaluation_substrate.md)
+
+`multi_agent.observability` derive API; R1–R12 helpers; missing≠zero; unit tests.
+No DOS/BOPA/OBS changes.
+
+## FR-017 M2 — Corpus reconstructability
+
+**Date:** 2026-08-07  
+**Eval:** [eval/fr017_m2_corpus_reconstructability.md](eval/fr017_m2_corpus_reconstructability.md)
+
+15/15 deterministic corpus **GO**; correlation/orphan; aggregates; repeatability.
+
+## FR-017 M3 — Read-only metrics CLI
+
+**Date:** 2026-08-07  
+**Eval:** [eval/fr017_m3_owner_cli.md](eval/fr017_m3_owner_cli.md)
+
+`cic agent orchestrate metrics` / `metrics-corpus`; fixture demos; presentation.
+
+## FR-017 M4 — Evaluation and documentation freeze
+
+**Date:** 2026-08-07  
+**Eval:** [eval/fr017_m4_evaluation.md](eval/fr017_m4_evaluation.md)  
+**Acceptance:** [eval/fr017_agent_evaluation_observability.md](eval/fr017_agent_evaluation_observability.md)
+
+Final corpus + owner validation; product/learning honesty; docs freeze; Academy
+package. Binding posture: narrow derive-only; Horizon 1B unblocked.
+
+**Manual:** `scripts/run_fr017_m4_manual.py`  
+**Tests:** `tests/unit/multi_agent/test_observability_*.py`  
+**Academy package:** [masterclass/FR017/](masterclass/FR017/) — regenerate with
+`python scripts/build_masterclass_package.py FR017`
 

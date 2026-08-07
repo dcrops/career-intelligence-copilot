@@ -1,8 +1,14 @@
 # Masterclass packaging — implementation note
 
-**Date:** 2026-08-06  
-**Scope:** FR-016 first package; pattern for future frozen FRs  
-**Related:** [masterclass/README.md](README.md), [FR016/MANIFEST.md](FR016/MANIFEST.md),
+**Date:** 2026-08-07 (updated: Interview Brief + Interview Deck layers)  
+**Scope:** FR-016 and FR-017 packages; pattern for future frozen FRs  
+**Related:** [masterclass/README.md](README.md),
+[LEAN_MASTERCLASS_STANDARD.md](LEAN_MASTERCLASS_STANDARD.md),
+[MASTERCLASS_GENERATOR_LEAN.md](MASTERCLASS_GENERATOR_LEAN.md),
+[INTERVIEW_BRIEF_STANDARD.md](INTERVIEW_BRIEF_STANDARD.md),
+[INTERVIEW_DECK_STANDARD.md](INTERVIEW_DECK_STANDARD.md),
+[FR016/MANIFEST.md](FR016/MANIFEST.md),
+[FR017/MANIFEST.md](FR017/MANIFEST.md),
 `scripts/build_masterclass_package.py`
 
 ## How authoritative documentation is preserved
@@ -25,5 +31,20 @@ After SoT changes: re-run the builder; do not patch snapshots by hand.
 3. Register source mappings in `scripts/build_masterclass_package.py`.
 4. Run `python scripts/build_masterclass_package.py FRnnn`.
 5. Commit the package; attach `FRnnn/` for Academy generation.
+6. Generate the Lean Engineering Masterclass
+   ([MASTERCLASS_GENERATOR_LEAN.md](MASTERCLASS_GENERATOR_LEAN.md) /
+   [LEAN_MASTERCLASS_STANDARD.md](LEAN_MASTERCLASS_STANDARD.md)).
+7. Render the mandatory PDF study edition
+   (`scripts/render_masterclass_pdf.py`).
+8. Produce the Gamma **Learning** Presentation (~15–20 slides).
+9. Produce the **Interview Brief** (~1 page) per
+   [INTERVIEW_BRIEF_STANDARD.md](INTERVIEW_BRIEF_STANDARD.md).
+10. Produce the **Interview Deck** (~3–5 slides) per
+    [INTERVIEW_DECK_STANDARD.md](INTERVIEW_DECK_STANDARD.md).
+11. Use Interview Revision / coaching as needed.
+
+FR-018+ inherits this process automatically — do not rediscover Brief/Deck
+structure or the deep-learning vs rapid-revision split.
 
 Do not populate FR001–FR015 until the owner requests packaging for those FRs.
+Do not regenerate FR-016 / FR-017 interview artefacts unless explicitly requested.

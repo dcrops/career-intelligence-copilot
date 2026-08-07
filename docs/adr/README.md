@@ -10,9 +10,10 @@
 | [006](006_recruiter_document_truth_validation.md) | Recruiter document truth validation (deterministic fail-closed boundary) | Accepted (FR-014 M1) — detection certainty ≠ evidence validation; JD never authorizes candidate capability |
 | [007](007_bounded_agentic_workflow.md) | Bounded Agentic Workflow (BOPA; policy B; ToolPolicy) | Accepted (FR-015 frozen) — one agent, one Opportunity, post-acquisition; does not wrap FR-008; no submit/pipeline/discovery |
 | [008](008_multi_agent_orchestration.md) | Multi-Agent Orchestration (DOS + BOPA + OBS; typed handoffs) | Accepted — FR-016 **Complete / Frozen** (learning proof; Prep/Truth/Review theatre rejected) |
+| [009](009_orchestration_evaluation_substrate.md) | Orchestration evaluation substrate (derive-only) | Accepted — FR-017 **Complete / Frozen** (M1–M4; no dashboards; must not block 1B) |
 
 Related: [04_functional_specification.md](../04_functional_specification.md) § FR-008,
-§ FR-009, § FR-010, § FR-011, § FR-012, § FR-013, § FR-014, § FR-015, § FR-016; [10_roadmap.md](../10_roadmap.md) § Horizon 1A.
+§ FR-009, § FR-010, § FR-011, § FR-012, § FR-013, § FR-014, § FR-015, § FR-016, § FR-017; [10_roadmap.md](../10_roadmap.md) § Horizon 1A / 1B.
 
 Close-out records:
 [eval/fr008_workflow_orchestration.md](../eval/fr008_workflow_orchestration.md),
@@ -80,3 +81,11 @@ read-only Operational Briefing Specialist; typed handoffs; DelegationPolicy +
 per-specialist ToolPolicy. Prefer `cic agent run` for ordinary prep. Prep/Truth/Review
 persona split rejected as theatre.
 Spike: [eval/fr016_m0_engineering_spike.md](../eval/fr016_m0_engineering_spike.md).
+
+**FR-017 ADR note:** [ADR-009](009_orchestration_evaluation_substrate.md) — FR-017
+**Complete / Frozen / Accepted**. Acceptance:
+[eval/fr017_agent_evaluation_observability.md](../eval/fr017_agent_evaluation_observability.md).
+Derive-only orchestration metrics + R1–R12; reuse FR-015 child metrics;
+`cic agent orchestrate metrics` / `metrics-corpus`; no DOS/BOPA/OBS runtime change;
+Horizon 1B not gated. Academy: [masterclass/FR017/](../masterclass/FR017/).
+Spike: [eval/fr017_m0_engineering_spike.md](../eval/fr017_m0_engineering_spike.md) (Accepted).

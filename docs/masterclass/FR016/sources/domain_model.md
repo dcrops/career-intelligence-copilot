@@ -1,7 +1,7 @@
 <!--
 GENERATED MASTERCLASS SNAPSHOT — DO NOT EDIT BY HAND.
 Authoritative source: docs/06_domain_model.md
-Mode: section snapshot ('### Multi-Agent Orchestration (FR-016)' → '## Entity Relationships')
+Mode: section snapshot ('### Multi-Agent Orchestration (FR-016)' → '### Agent Evaluation & Observability (FR-017)')
 Regenerate: python scripts/build_masterclass_package.py <FR_ID>
 Repository documentation remains the source of truth.
 -->
@@ -37,5 +37,3 @@ strong near-term commercial automation. Prep/Truth/Review persona split rejected
 **Frozen:** [acceptance](eval/fr016_multi_agent_orchestration.md).  
 **Academy bridge:** [masterclass/FR016/README.md](masterclass/FR016/README.md).  
 **Academy package:** [masterclass/FR016/](masterclass/FR016/) (`MANIFEST.md` + `sources/`).
-
----

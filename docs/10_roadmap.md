@@ -24,8 +24,8 @@ Near-term work should satisfy at least one of:
 
 | Sub-horizon | Scope | FRs | When |
 |-------------|--------|-----|------|
-| **Horizon 1A** | End-to-end job application workflow | FR-008–FR-017 | **Current — complete first** |
-| **Horizon 1B** | Recruiter and market engagement | FR-018–FR-024 | After FR-017 |
+| **Horizon 1A** | End-to-end job application workflow | FR-008–FR-017 | **Complete / frozen** |
+| **Horizon 1B** | Recruiter and market engagement | FR-018–FR-024 | After usable 1A application loop (**not** gated on FR-017) |
 
 **Product progression:** Understand the candidate → Understand the opportunity →
 Generate the application → Acquire jobs → Orchestrate applications → Track
@@ -40,8 +40,8 @@ Scale to multi-agent systems → Expand into recruiter and market intelligence.
 |-------|--------|
 | **Phase 1** — Product Definition | **Complete** |
 | **Phase 2** — Job Intelligence MVP | **Complete** ([release report](eval/phase2_release_report.md)) |
-| **Horizon 1A** — Job application workflow | **Current** (FR-008–FR-016 complete; FR-017 next on owner request) |
-| **Horizon 1B** — Recruiter / market engagement | Not started (FR-018–FR-024; after 1A) |
+| **Horizon 1A** — Job application workflow | **Complete** (FR-008–FR-017 frozen; Horizon 1B next when owner chooses) |
+| **Horizon 1B** — Recruiter / market engagement | Not started (FR-018–FR-024; **not blocked on FR-017** — gated on usable application loop) |
 | **Horizon 2** — Platform capabilities | Not started (FR-025+) |
 
 Narrative history of completed phases: [12_phase_history.md](12_phase_history.md).
@@ -111,7 +111,11 @@ CSV bridge connect to `applications/`.
 
 ---
 
-## Current Focus — Horizon 1A Job Application Workflow (FR-008–FR-017)
+## Current Focus — Horizon 1A complete; Horizon 1B next (owner choice)
+
+FR-008–FR-017 are **complete and frozen**. Next product focus is **Horizon 1B**
+(FR-018+) when the owner requests it — gated on usable application loop
+(FR-008–FR-015), **not** on FR-017.
 
 **Objective:** Discover, assess, prepare, review, submit and track suitable
 applications — before recruiter outreach or networking automation.
@@ -146,9 +150,9 @@ FR-015 Bounded Agentic Workflow  ← Complete (frozen)
         ▼
 FR-016 Multi-Agent Orchestration  ← Complete / Frozen / Accepted (learning proof; Academy ready)
         ▼
-FR-017 Agent Evaluation & Observability  ← Active FR; Not Started (owner request required)
+FR-017 Agent Evaluation & Observability  ← Complete / Frozen
         ▼
-   Horizon 1B (FR-018+)
+   Horizon 1B (FR-018+)  ← Not blocked on FR-017; gated on usable application loop
 ```
 
 | Priority | Item | Intent |
@@ -162,7 +166,8 @@ FR-017 Agent Evaluation & Observability  ← Active FR; Not Started (owner reque
 | **Completed** | **FR-014** (2026-08-05) | Recruiter document truth validation — **complete and frozen**; [acceptance](eval/fr014_recruiter_document_truth_validation.md); [M0](eval/fr014_m0_engineering_spike.md)–[M4](eval/fr014_m4_claim_validation.md); [ADR-006](adr/006_recruiter_document_truth_validation.md) |
 | **Completed** | **FR-015** (2026-08-05) | Bounded Agentic Workflow — **complete and frozen**; BOPA; [acceptance](eval/fr015_bounded_agentic_workflow.md); [M0](eval/fr015_m0_engineering_spike.md)–[M4](eval/fr015_m4_evaluation.md); [ADR-007](adr/007_bounded_agentic_workflow.md) |
 | **Done** | **FR-016** | Multi-Agent Orchestration — **Complete / Frozen / Accepted** (learning proof; prefer `cic agent run`; Academy package — [acceptance](eval/fr016_multi_agent_orchestration.md); [package](masterclass/FR016/); [M4](eval/fr016_m4_evaluation.md); [ADR-008](adr/008_multi_agent_orchestration.md) |
-| **Now** | **FR-017** | Agent Evaluation & Observability — **Active FR; Not Started** (owner request required; do not auto-start) |
+| **Now** | **Horizon 1B** | Recruiter / market engagement (FR-018+) — owner request required; **not blocked on FR-017** |
+| Just completed | **FR-017** | Agent Evaluation & Observability — **Complete / Frozen** ([acceptance](eval/fr017_agent_evaluation_observability.md); [ADR-009](adr/009_orchestration_evaluation_substrate.md); [package](masterclass/FR017/)) |
 | **After 1A** | **Horizon 1B (FR-018–FR-024)** | Recruiters, outreach, meetups, LinkedIn, market |
 
 ### FR-008 completion summary
@@ -340,7 +345,9 @@ Phase 2 documentation remains a **stable baseline**. Prefer additive changes.
 
 ## Horizon 1B — Recruiter and Market Engagement (FR-018–FR-024)
 
-**Status:** Not started. Blocked until Horizon 1A (through FR-017) is usable end to end.
+**Status:** Not started. Gated on usable Horizon 1A **application loop**
+(FR-008–FR-015). **Not blocked on FR-017**
+([eval/fr017_m0_engineering_spike.md](eval/fr017_m0_engineering_spike.md) §9).
 
 | FR | Capability |
 |----|------------|

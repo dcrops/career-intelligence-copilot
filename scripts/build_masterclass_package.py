@@ -66,19 +66,19 @@ PACKAGES: dict[str, PackageSpec] = {
                 "docs/06_domain_model.md",
                 "sources/domain_model.md",
                 start_heading="### Multi-Agent Orchestration (FR-016)",
-                end_heading="## Entity Relationships",
+                end_heading="### Agent Evaluation & Observability (FR-017)",
             ),
             SectionExtract(
                 "docs/08_implementation_notes.md",
                 "sources/implementation_notes.md",
                 start_heading="## FR-016 M1 — Multi-agent orchestration contracts",
-                end_heading=None,
+                end_heading="## FR-017 M0 — Evaluation & observability spike (document-only)",
             ),
             SectionExtract(
                 "docs/07_testing_strategy.md",
                 "sources/testing_strategy.md",
                 start_heading="### FR-016 coverage (M1–M4 — frozen)",
-                end_heading="**Spike rule:**",
+                end_heading="### FR-017 coverage (M1–M4 — frozen)",
             ),
             FullCopy(
                 "docs/eval/fr016_m0_engineering_spike.md",
@@ -98,6 +98,63 @@ PACKAGES: dict[str, PackageSpec] = {
             ),
             FullCopy(
                 "docs/eval/fr016_m4_evaluation.md",
+                "sources/optional/m4.md",
+            ),
+        ),
+    ),
+    "FR017": PackageSpec(
+        fr_id="FR017",
+        sources=(
+            FullCopy(
+                "docs/eval/fr017_agent_evaluation_observability.md",
+                "sources/acceptance.md",
+            ),
+            FullCopy(
+                "docs/adr/009_orchestration_evaluation_substrate.md",
+                "sources/adr.md",
+            ),
+            SectionExtract(
+                "docs/04_functional_specification.md",
+                "sources/functional_specification.md",
+                start_heading="## FR-017 Agent Evaluation & Observability",
+                end_heading="## Horizon 1B — Recruiter and Market Engagement (FR-018–FR-024)",
+            ),
+            SectionExtract(
+                "docs/06_domain_model.md",
+                "sources/domain_model.md",
+                start_heading="### Agent Evaluation & Observability (FR-017)",
+                end_heading="## Entity Relationships",
+            ),
+            SectionExtract(
+                "docs/08_implementation_notes.md",
+                "sources/implementation_notes.md",
+                start_heading="## FR-017 M0 — Evaluation & observability spike (document-only)",
+                end_heading=None,
+            ),
+            SectionExtract(
+                "docs/07_testing_strategy.md",
+                "sources/testing_strategy.md",
+                start_heading="### FR-017 coverage (M1–M4 — frozen)",
+                end_heading="**Spike rule:**",
+            ),
+            FullCopy(
+                "docs/eval/fr017_m0_engineering_spike.md",
+                "sources/optional/m0_spike.md",
+            ),
+            FullCopy(
+                "docs/eval/fr017_m1_observability_contracts.md",
+                "sources/optional/m1.md",
+            ),
+            FullCopy(
+                "docs/eval/fr017_m2_corpus_reconstructability.md",
+                "sources/optional/m2.md",
+            ),
+            FullCopy(
+                "docs/eval/fr017_m3_owner_cli.md",
+                "sources/optional/m3.md",
+            ),
+            FullCopy(
+                "docs/eval/fr017_m4_evaluation.md",
                 "sources/optional/m4.md",
             ),
         ),

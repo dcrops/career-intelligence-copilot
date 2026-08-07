@@ -76,7 +76,9 @@ application package preparation (FR-010), application preparation orchestration
 (FR-015)** are **complete and frozen**. **FR-016** Multi-Agent Orchestration is
 **complete and frozen** as a learning proof only (**GO AS LEARNING PROOF ONLY** —
 prefer `cic agent run` for ordinary prep; Engineering Learning Academy ready).
-**FR-017** is the active next FR (Not Started — owner request required).
+**FR-017** Agent Evaluation & Observability is **complete and frozen** (derive-only
+orchestration evaluation; **Horizon 1B is not blocked on FR-017** —
+[eval/fr017_agent_evaluation_observability.md](eval/fr017_agent_evaluation_observability.md)).
 See [10_roadmap.md](10_roadmap.md).
 
 ---
@@ -100,8 +102,8 @@ Career Intelligence Copilot aims to help professionals:
 
 **Horizon 1 — Immediate:** Help the user secure a suitable AI Engineering role while reducing job-search effort.
 
-- **1A (current):** Job application workflow end to end (FR-008–FR-017)
-- **1B (later):** Recruiter and market engagement (FR-018–FR-024)
+- **1A (complete):** Job application workflow end to end (FR-008–FR-017 frozen)
+- **1B (next, owner request):** Recruiter and market engagement (FR-018–FR-024)
 
 **Horizon 2 — Long term:** Evolve into a reusable Career Intelligence Platform supporting career progression, networking, learning, promotion, role changes, and future opportunity evaluation.
 

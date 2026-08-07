@@ -78,13 +78,23 @@ They must not be hand-edited. Repository paths remain authoritative.
 
 Academy generators should produce (outside this repository unless later requested):
 
-- Engineering Masterclass narrative (architecture, authority, handoffs)
+- Engineering Masterclass narrative (architecture, authority, handoffs) per
+  [LEAN_MASTERCLASS_STANDARD.md](../LEAN_MASTERCLASS_STANDARD.md) and
+  [MASTERCLASS_GENERATOR_LEAN.md](../MASTERCLASS_GENERATOR_LEAN.md)
 - Interview Q&A grounded in acceptance study-aid source (§25)
 - Diagrams derived from acceptance Mermaid (do not invent new architecture)
 - Explicit statement: learning proof; prefer direct BOPA for ordinary prep
+- Permanent sections: Runtime Example, Why Employers Care, Validation Summary,
+  Memorable Closing Statement
+- **Mandatory PDF study edition** (`scripts/render_masterclass_pdf.py`)
+- **Interview Brief** (~1 page) and **Interview Deck** (~3–5 slides) per
+  [INTERVIEW_BRIEF_STANDARD.md](../INTERVIEW_BRIEF_STANDARD.md) and
+  [INTERVIEW_DECK_STANDARD.md](../INTERVIEW_DECK_STANDARD.md)
+  (produce on owner request; existing Masterclass / Gamma Learning work preserved)
 
 **Do not** invent new specialists, waive truth, claim strong near-term product value,
 or contradict ADR-008.
+**Do not** replace the Gamma Learning Presentation with the Interview Deck.
 
 ## Design contract
 

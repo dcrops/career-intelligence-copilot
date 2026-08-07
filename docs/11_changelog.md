@@ -4,6 +4,148 @@ Records product strategy and engineering knowledge changes. Routine typo fixes a
 
 ---
 
+## Version 1.114
+
+### Engineering Learning Academy — Interview Brief + Interview Deck layers
+
+**Date:** 2026-08-07.
+
+Permanent Academy split: deep learning (Lean Masterclass, PDF, Gamma Learning
+Presentation ~15–20) vs rapid interview revision (Interview Brief ~1 page,
+Interview Deck ~3–5). Standards added; workflow/docs updated. FR-016/FR-017
+artefacts not regenerated — manifests acknowledge future Brief/Deck outputs.
+
+Evidence: [masterclass/INTERVIEW_BRIEF_STANDARD.md](masterclass/INTERVIEW_BRIEF_STANDARD.md);
+[masterclass/INTERVIEW_DECK_STANDARD.md](masterclass/INTERVIEW_DECK_STANDARD.md);
+[masterclass/README.md](masterclass/README.md).
+
+---
+
+## Version 1.113
+
+### Engineering Learning Academy — Masterclass PDF mandatory
+
+**Date:** 2026-08-07.
+
+Official Masterclass PDF study edition added to the permanent Academy workflow
+(Markdown → PDF → Gamma → Interview). FR-017 PDF rendered from the Lean Masterclass;
+`scripts/render_masterclass_pdf.py` provides faithful title page / TOC / page-number
+rendering. No Masterclass engineering rewrite.
+
+Evidence: [masterclass/FR017/Engineering_Masterclass_002_FR017.pdf](masterclass/FR017/Engineering_Masterclass_002_FR017.pdf);
+[masterclass/README.md](masterclass/README.md);
+[scripts/render_masterclass_pdf.py](../scripts/render_masterclass_pdf.py).
+
+---
+
+## Version 1.112
+
+### Engineering Learning Academy — Lean Masterclass standard improvements
+
+**Date:** 2026-08-07.
+
+Permanent Lean Masterclass requirements added (Runtime Example, Why Employers Care,
+Validation Summary, Memorable Closing Statement). Generator prompt and Academy
+docs updated so future Masterclasses inherit the standard. FR-017 Masterclass
+updated with required sections only — no engineering rewrite.
+
+Evidence: [masterclass/LEAN_MASTERCLASS_STANDARD.md](masterclass/LEAN_MASTERCLASS_STANDARD.md);
+[masterclass/MASTERCLASS_GENERATOR_LEAN.md](masterclass/MASTERCLASS_GENERATOR_LEAN.md);
+[masterclass/FR017/Engineering_Masterclass_002_FR017.md](masterclass/FR017/Engineering_Masterclass_002_FR017.md).
+
+---
+
+## Version 1.111
+
+### FR-017 repository close-out — documentation consistency
+
+**Date:** 2026-08-07.
+
+Documentation-only close-out after FR-017 acceptance: removed stale “FR-017 next /
+not started” pointers from functional specification, FR-016 status tables, and
+implementation notes; aligned AGENTS / principles / Academy workflow wording with
+Horizon 1A complete and FR017 package ready. No runtime or FR-017 behaviour changes.
+
+Evidence: [eval/fr017_agent_evaluation_observability.md](eval/fr017_agent_evaluation_observability.md);
+[masterclass/FR017/](masterclass/FR017/); [masterclass/README.md](masterclass/README.md).
+
+---
+
+## Version 1.110
+
+### FR-017 Complete / Frozen — derive-only evaluation accepted
+
+**Date:** 2026-08-07.
+
+FR-017 Agent Evaluation & Observability frozen: derive-only metrics, R1–R12,
+15/15 corpus GO, read-only `metrics` CLI, Academy package FR017. Low commercial
+value; high learning value. Horizon 1B remains unblocked. No DOS/BOPA/OBS changes.
+
+Evidence: [eval/fr017_agent_evaluation_observability.md](eval/fr017_agent_evaluation_observability.md);
+[eval/fr017_m4_evaluation.md](eval/fr017_m4_evaluation.md);
+[ADR-009](adr/009_orchestration_evaluation_substrate.md);
+[masterclass/FR017/](masterclass/FR017/).
+
+---
+
+## Version 1.109
+
+### FR-017 M3 — read-only orchestrate metrics CLI
+
+**Date:** 2026-08-07.
+
+Minimal owner CLI: `cic agent orchestrate metrics` / `metrics-corpus` (derive-only;
+fixtures + store loads; R1-R12 presentation). No dashboards, no runtime mutation,
+Horizon 1B unblocked. M4 not started.
+
+Evidence: [eval/fr017_m3_owner_cli.md](eval/fr017_m3_owner_cli.md).
+
+---
+
+## Version 1.108
+
+### FR-017 M2 — corpus reconstructability (derive-only GO)
+
+**Date:** 2026-08-07.
+
+M2 deterministic observability corpus (15 cases) over static audits; R1–R12,
+correlation/orphan, missing-vs-zero, aggregates, repeatability. **GO** — no runtime
+instrumentation or FR-016 redesign. Horizon 1B remains unblocked. M3 not started.
+
+Evidence: [eval/fr017_m2_corpus_reconstructability.md](eval/fr017_m2_corpus_reconstructability.md).
+
+---
+
+## Version 1.107
+
+### FR-017 M1 — orchestration observability contracts (derive-only)
+
+**Date:** 2026-08-07.
+
+Owner-accepted M0 narrow scope. M1 freezes derive-only metrics + R1–R12
+reconstructability helpers in `multi_agent.observability` ([ADR-009](adr/009_orchestration_evaluation_substrate.md)).
+No DOS/BOPA/OBS/runtime changes; no dashboards/CLI; Horizon 1B remains unblocked.
+M2 not started.
+
+Evidence: [eval/fr017_m1_observability_contracts.md](eval/fr017_m1_observability_contracts.md).
+
+---
+
+## Version 1.106
+
+### FR-017 M0 engineering spike — narrow GO; Horizon 1B uncoupled
+
+**Date:** 2026-08-07.
+
+Document-only FR-017 M0 spike: laundry-list observability rejected; derive-only
+orchestration metrics + reconstructability R1–R12 recommended; full dashboards /
+frameworks NO-GO. **Horizon 1B must not be blocked on FR-017.** M1 not started
+(owner accept required).
+
+Evidence: [eval/fr017_m0_engineering_spike.md](eval/fr017_m0_engineering_spike.md).
+
+---
+
 ## Version 1.105
 
 ### FR-016 Masterclass Source Package (regenerable snapshots)

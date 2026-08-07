@@ -91,3 +91,11 @@ FR016/
 ```
 
 Follow [MANIFEST.md](MANIFEST.md) for recommended generation order and expected outputs.
+
+## Interview revision layer
+
+Deep learning artefacts (Masterclass / PDF / Gamma Learning Presentation) are preserved.
+Rapid interview revision follows Academy standards — generate only on owner request:
+
+- [INTERVIEW_BRIEF_STANDARD.md](../INTERVIEW_BRIEF_STANDARD.md) (~1 page)
+- [INTERVIEW_DECK_STANDARD.md](../INTERVIEW_DECK_STANDARD.md) (~3–5 slides)

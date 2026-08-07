@@ -660,9 +660,9 @@ FR-014 **complete and frozen**:
 
 ---
 
-## Horizon 1A — Planned test coverage (remaining)
+## Horizon 1A — Test coverage (FR-008–FR-017 frozen)
 
-When FR-017 is built, prefer behaviour over implementation detail:
+Prefer behaviour over implementation detail:
 
 | Area | Expected coverage |
 |------|-------------------|
@@ -676,7 +676,7 @@ When FR-017 is built, prefer behaviour over implementation detail:
 | FR-014 truth validation (**complete / frozen**) | Fail-closed findings; package/submission gates; Redwolf + M4 claim matrix; see FR-014 coverage |
 | FR-015 agents (**complete / frozen**) | Corpus eval + observability + `cic agent`; see below |
 | FR-016 multi-agent (**complete / frozen**) | Loop prevention; handoffs; delegation; resume; CLI; corpus 20/20; see below |
-| FR-017 | Orchestration-layer fault injection; token/cost/latency; browser journey evidence when Playwright is used |
+| FR-017 evaluation (**complete / frozen**) | Derive-only metrics + R1–R12 corpus + read-only metrics CLI; **no** dashboards; **must not block 1B** — see below |
 
 ### FR-015 coverage (M1–M4 — frozen)
 
@@ -704,6 +704,18 @@ When FR-017 is built, prefer behaviour over implementation detail:
 | Unit | `tests/unit/multi_agent/` |
 | Manual | `scripts/run_fr016_m2_manual.py`, `run_fr016_m3_manual.py`, `run_fr016_m4_manual.py` |
 | Acceptance | [eval/fr016_multi_agent_orchestration.md](eval/fr016_multi_agent_orchestration.md) |
+
+### FR-017 coverage (M1–M4 — frozen)
+
+| Area | Coverage |
+|------|----------|
+| Contracts | OrchestrationRunMetrics; R1–R12; missing≠zero; parent/child correlation |
+| Corpus | 15/15 deterministic fixtures; go/no-go GO |
+| CLI (M3) | `cic agent orchestrate metrics` / `metrics-corpus`; fixtures |
+| Evaluation (M4) | Final corpus; owner validation; product-value honesty; freeze |
+| Unit | `tests/unit/multi_agent/test_observability_*.py` |
+| Manual | `scripts/run_fr017_m3_manual.py`, `run_fr017_m4_manual.py` |
+| Acceptance | [eval/fr017_agent_evaluation_observability.md](eval/fr017_agent_evaluation_observability.md) |
 
 **Spike rule:** First FR-008 tests use fixture/saved jobs only — not live acquisition
 or real submission. Deterministic replay where possible; owner manual validation for

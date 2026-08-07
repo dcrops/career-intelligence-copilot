@@ -1,7 +1,7 @@
 <!--
 GENERATED MASTERCLASS SNAPSHOT — DO NOT EDIT BY HAND.
 Authoritative source: docs/08_implementation_notes.md
-Mode: section snapshot ('## FR-016 M1 — Multi-agent orchestration contracts' → None)
+Mode: section snapshot ('## FR-016 M1 — Multi-agent orchestration contracts' → '## FR-017 M0 — Evaluation & observability spike (document-only)')
 Regenerate: python scripts/build_masterclass_package.py <FR_ID>
 Repository documentation remains the source of truth.
 -->
@@ -53,7 +53,9 @@ M2 verdict unchanged: learning proof only — prefer `cic agent run` for daily p
 
 Final corpus 20/20; safety and product-value review; study-aid source capture;
 documentation freeze. Binding M2 verdict unchanged: **GO AS LEARNING PROOF ONLY**.
-FR-017 Active (Not Started). Engineering Learning Academy ready via acceptance report.
+**FR-017** later **Complete / Frozen**
+([eval/fr017_agent_evaluation_observability.md](eval/fr017_agent_evaluation_observability.md)).
+Engineering Learning Academy ready via acceptance report / [masterclass/FR016/](masterclass/FR016/).
 
 **Manual:** `scripts/run_fr016_m4_manual.py`  
 **Tests:** `tests/unit/multi_agent/` (corpus includes P–T)  

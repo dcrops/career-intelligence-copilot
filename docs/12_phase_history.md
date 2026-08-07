@@ -73,8 +73,11 @@ SoT shape, ranking sort key, or Horizon 2 domains (recruiters, networking, meetu
 
 ## Next
 
-**Current focus:** Horizon 1A — **FR-017** Agent Evaluation & Observability (not
-started — owner request required). **FR-016** Multi-Agent Orchestration is
+**Current focus:** Horizon 1B (FR-018+) on owner request — **not blocked on FR-017**.
+**Horizon 1A complete:** FR-008–FR-017 frozen. **FR-017** is **complete and frozen**
+([acceptance](eval/fr017_agent_evaluation_observability.md);
+[ADR-009](adr/009_orchestration_evaluation_substrate.md);
+[package](masterclass/FR017/)). **FR-016** is
 **complete and frozen** (learning proof — **GO AS LEARNING PROOF ONLY**;
 [acceptance](eval/fr016_multi_agent_orchestration.md);
 [ADR-008](adr/008_multi_agent_orchestration.md)). **FR-015** Bounded Agentic Workflow is
@@ -114,8 +117,12 @@ milestones [M0](eval/fr015_m0_engineering_spike.md)–[M4](eval/fr015_m4_evaluat
 **FR-016** Multi-Agent Orchestration (2026-08-06 —
 [acceptance](eval/fr016_multi_agent_orchestration.md);
 [ADR-008](adr/008_multi_agent_orchestration.md);
-milestones [M0](eval/fr016_m0_engineering_spike.md)–[M4](eval/fr016_m4_evaluation.md)).
-**Then:** FR-017 on owner request (do not auto-start)  
-**After 1A:** Horizon 1B recruiter / market engagement (FR-018–FR-024)  
+milestones [M0](eval/fr016_m0_engineering_spike.md)–[M4](eval/fr016_m4_evaluation.md));
+**FR-017** Agent Evaluation & Observability (2026-08-07 —
+[acceptance](eval/fr017_agent_evaluation_observability.md);
+[ADR-009](adr/009_orchestration_evaluation_substrate.md);
+milestones [M0](eval/fr017_m0_engineering_spike.md)–[M4](eval/fr017_m4_evaluation.md)).
+**After usable 1A application loop:** Horizon 1B recruiter / market engagement
+(FR-018–FR-024) — **not gated on FR-017**  
 **Principle:** Job acquisition first. Recruiter outreach second.  
 **Later:** Horizon 2 capability phases (see roadmap)

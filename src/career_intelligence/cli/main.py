@@ -131,10 +131,15 @@ from career_intelligence.multi_agent import (
     SpecialistDelegationProposal,
     build_orchestration_supervisor,
     evaluate_delegation_policy,
+    format_corpus_cli,
+    format_fixture_observability,
     format_orchestration_history,
     format_orchestration_list_line,
     format_orchestration_report,
+    format_store_observability,
+    get_demo_fixture,
     goal_from_owner_name,
+    list_demo_fixture_ids,
 )
 
 app = typer.Typer(help="Career Intelligence Copilot.")
@@ -179,7 +184,8 @@ orchestrate_app = typer.Typer(
     help=(
         "FR-016 multi-agent learning proof (DOS + BOPA + OBS). "
         "Not the default daily workflow — prefer `cic agent run` for ordinary prep. "
-        "Commands: run, resume, show, history, list."
+        "Commands: run, resume, show, history, list, check-delegation, "
+        "metrics, metrics-corpus (FR-017 read-only)."
     ),
 )
 app.add_typer(profile_app, name="profile")
@@ -3584,6 +3590,102 @@ def orchestrate_check_delegation(
         typer.echo(f"stop_reason={decision.stop_reason}")
     typer.echo(f"approved_specialists={', '.join(decision.approved_specialists)}")
     if decision.decision == "deny":
+        raise typer.Exit(code=1)
+
+
+@orchestrate_app.command("metrics")
+def orchestrate_metrics(
+    orchestration_run_id: Annotated[
+        str | None,
+        typer.Argument(
+            help="Orchestration run id (orr_<ULID>). Omit when using --fixture.",
+        ),
+    ] = None,
+    fixture: Annotated[
+        str | None,
+        typer.Option(
+            "--fixture",
+            help=(
+                "Evaluate a static FR-017 demo fixture (no store I/O). "
+                "Example: C01_complete_successful"
+            ),
+        ),
+    ] = None,
+    orchestration_runs_dir: OrchestrationRunsDirOption = None,
+    agent_runs_dir: AgentRunsDirOption = None,
+    prior_hash: Annotated[
+        str | None,
+        typer.Option(
+            "--prior-hash",
+            help="Optional prior observation hash for R12 resume evidence.",
+        ),
+    ] = None,
+    list_fixtures: Annotated[
+        bool,
+        typer.Option(
+            "--list-fixtures",
+            help="List demo fixture ids and exit.",
+        ),
+    ] = False,
+) -> None:
+    """FR-017 read-only metrics / reconstructability for one orchestration run.
+
+    Derive-only over existing audits. Does not mutate DOS, BOPA, OBS, or stores.
+    """
+    if list_fixtures:
+        for fid in list_demo_fixture_ids():
+            typer.echo(fid)
+        return
+
+    if fixture and orchestration_run_id:
+        typer.echo("Provide either an orchestration run id or --fixture, not both.", err=True)
+        raise typer.Exit(code=1)
+    if not fixture and not orchestration_run_id:
+        typer.echo(
+            "Provide an orchestration run id or --fixture <id> "
+            "(see --list-fixtures).",
+            err=True,
+        )
+        raise typer.Exit(code=1)
+
+    if fixture:
+        try:
+            demo = get_demo_fixture(fixture)
+        except KeyError as error:
+            typer.echo(str(error), err=True)
+            raise typer.Exit(code=1) from error
+        typer.echo(format_fixture_observability(demo), nl=False)
+        return
+
+    assert orchestration_run_id is not None
+    store = _orchestration_store(orchestration_runs_dir)
+    try:
+        run = store.load(orchestration_run_id)
+    except (OrchestrationRunNotFoundError, OrchestrationStorageError) as error:
+        _exit_for_orchestration(error)
+
+    agent_store = _agent_store(agent_runs_dir)
+    typer.echo(
+        format_store_observability(
+            run,
+            store,
+            agent_store=agent_store,
+            prior_observation_hash=prior_hash,
+        ),
+        nl=False,
+    )
+
+
+@orchestrate_app.command("metrics-corpus")
+def orchestrate_metrics_corpus() -> None:
+    """Run the FR-017 deterministic observability acceptance corpus (read-only).
+
+    Static fixtures only — no store writes, no DOS/BOPA/OBS execution.
+    """
+    report_text = format_corpus_cli()
+    typer.echo(report_text, nl=False)
+    # Exit non-zero if corpus failed (should not happen after M2 GO).
+    if "go_no_go=DEFER" in report_text or "all_passed=False" in report_text:
         raise typer.Exit(code=1)
 
 

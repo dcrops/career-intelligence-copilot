@@ -1484,8 +1484,10 @@ FR-013 Application Pipeline Tracking is **complete and frozen** and keeps its
 established identifier. **FR-015** Bounded Agentic Workflow is **complete and frozen**.
 **FR-016** Multi-Agent Orchestration is **complete and frozen** (learning proof —
 [acceptance](eval/fr016_multi_agent_orchestration.md)).
-Next active FR: **FR-017** Agent Evaluation & Observability (owner request required;
-do not auto-start).
+**FR-017** Agent Evaluation & Observability is **complete and frozen**
+([acceptance](eval/fr017_agent_evaluation_observability.md)).
+Next product focus: **Horizon 1B** (FR-018+) on owner request — **not gated on
+FR-017**; do not auto-start.
 
 Distinguish: (A) candidate claims (require candidate evidence); (B) employer-context
 statements (JD evidence OK; must not become candidate capability); (C) aspirational /
@@ -1611,36 +1613,47 @@ Acceptance Criteria
 ## FR-017 Agent Evaluation & Observability
 
 **Phase:** Horizon 1A Stage 11  
-**Status:** Planned — **only after FR-016 freeze**; **owner request required**
-(do not auto-start; FR-016 learning-proof result does not compel FR-017)  
+**Status:** **Complete / Frozen / Accepted**
+([eval/fr017_agent_evaluation_observability.md](eval/fr017_agent_evaluation_observability.md);
+[M4](eval/fr017_m4_evaluation.md);
+[ADR-009](adr/009_orchestration_evaluation_substrate.md);
+Academy [masterclass/FR017/](masterclass/FR017/)). Learning/substrate;
+**derive-only**; R1–R12; read-only `cic agent orchestrate metrics`; **must not block
+Horizon 1B**. Do not reopen without owner request.  
 *(Originally planned as FR-016; renumbered 2026-08-05.)*
 
-Explicit evaluation for the orchestration layer:
+**Narrowed intent (M0–M4):** orchestration-layer **derived metrics**, R1–R12, and
+thin read-only CLI over existing FR-016 audits — mirror FR-015 observability. Not a
+dashboard. Not a re-implementation of FR-008/014/015.
 
-traces; checkpoints; retries; replay; latency; token usage; cost; approval
-interrupts; deterministic replay where possible; fault injection; orchestration
-testing; browser journey evidence; golden workflow tests; loop prevention;
-unsupported-claim checks (complementary to FR-014 truth validation — not a
-substitute).
+Historical laundry-list wording (traces, checkpoints, browser journeys, etc.) is
+**dispositioned in M0** — most items already owned elsewhere or out of scope.
 
-Acceptance Criteria
+Acceptance Criteria (frozen)
 
-✓ Workflow runs produce inspectable traces.
+● Derived orchestration metrics from existing audits only (no DOS behaviour change).
 
-✓ Golden workflow tests cover happy path and at least one failure/recovery path.
+● Reconstructability R1–R12 demonstrated on offline corpus — M2 GO / M4 freeze.
 
-✓ Token/latency/cost are measurable for LLM/agent nodes.
+● Child AgentRun token/cost reused via FR-015 helpers when present (null offline OK).
+
+● Owner-operable read-only CLI (`metrics`, `metrics-corpus`) — M3.
+
+● Horizon 1B is **not** gated on FR-017 completion.
 
 ---
 
 ## Horizon 1B — Recruiter and Market Engagement (FR-018–FR-024)
 
-**Status:** Planned — **only after FR-017** (Horizon 1A complete and usable).  
+**Status:** Planned — after Horizon 1A **application loop** is usable
+(FR-008–FR-015). **Not blocked on FR-017**
+([eval/fr017_m0_engineering_spike.md](eval/fr017_m0_engineering_spike.md) §9).  
 *(Previously numbered FR-017–FR-023; renumbered 2026-08-05.)*
 
 Recruiter outreach is an *additional acquisition channel* after the owner can
 discover, assess, prepare, review, submit and track applications end to end.
-Do not displace Horizon 1A work.
+Do not displace Horizon 1A work. Horizon 1A (including FR-017) is complete;
+starting 1B is preference timing, not an FR-017 engineering gate.
 
 All externally visible outreach must require user review before sending.
 

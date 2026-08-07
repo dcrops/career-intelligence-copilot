@@ -36,7 +36,7 @@ Objectives.
 |----------|--------|
 | What is this project? | Decision-support for job search (Horizon 1), evolving toward a Career Intelligence Platform (Horizon 2). |
 | What has been completed? | **Phase 1** and **Phase 2** — see [12_phase_history.md](12_phase_history.md) and [eval/phase2_release_report.md](eval/phase2_release_report.md). |
-| What is next? | **FR-017** Agent Evaluation & Observability (**Active FR; Not Started** — owner request required). **FR-016** is **Complete / Frozen / Accepted** (learning proof; Academy bridge — [masterclass/FR016](masterclass/FR016/README.md); [acceptance](eval/fr016_multi_agent_orchestration.md)). Prefer `cic agent run` for ordinary prep. **FR-015** bounded agent is **complete and frozen** ([acceptance](eval/fr015_bounded_agentic_workflow.md)). OAT-001: [eval/oat001_phase4_operational_polish.md](eval/oat001_phase4_operational_polish.md). Horizon 1B (**FR-018+**) — [10_roadmap.md](10_roadmap.md). |
+| What is next? | **Horizon 1B** (FR-018+) when owner requests — **not blocked on FR-017**. **Horizon 1A complete:** FR-008–FR-017 frozen. **FR-017** ([acceptance](eval/fr017_agent_evaluation_observability.md); [package](masterclass/FR017/); [ADR-009](adr/009_orchestration_evaluation_substrate.md)). Prefer `cic agent run`. **FR-016** Complete / Frozen ([package](masterclass/FR016/)). — [10_roadmap.md](10_roadmap.md). |
 | Where should I start reading? | This guide → [AGENTS.md](../AGENTS.md) → [04_functional_specification.md](04_functional_specification.md) → [10_roadmap.md](10_roadmap.md). |
 
 ---
@@ -68,8 +68,12 @@ milestones [M0](eval/fr012_m0_submission_contracts.md),
 ([eval/fr013_application_pipeline_tracking.md](eval/fr013_application_pipeline_tracking.md);
 [ADR-005](adr/005_application_pipeline_lifecycle.md)).
 
-**Active FR:** **FR-017** Agent Evaluation & Observability (not started — owner
-request required). **FR-016** Multi-Agent Orchestration is **complete and frozen**
+**Active focus:** Horizon 1B on owner request. **Horizon 1A complete.** **FR-017** is
+**complete and frozen**
+([eval/fr017_agent_evaluation_observability.md](eval/fr017_agent_evaluation_observability.md);
+[ADR-009](adr/009_orchestration_evaluation_substrate.md);
+[masterclass/FR017/](masterclass/FR017/)). Horizon 1B is **not** blocked on FR-017.
+**FR-016** is **complete and frozen**
 (learning proof — **GO AS LEARNING PROOF ONLY**; prefer `cic agent run`;
 [acceptance](eval/fr016_multi_agent_orchestration.md);
 [M0](eval/fr016_m0_engineering_spike.md)–[M4](eval/fr016_m4_evaluation.md);
@@ -85,7 +89,8 @@ Validation is **complete and frozen**
 ([acceptance](eval/fr013_application_pipeline_tracking.md);
 [ADR-005](adr/005_application_pipeline_lifecycle.md)).
 
-**Thereafter:** Complete Horizon 1A (FR-017 on request), then Horizon 1B (FR-018–FR-024).
+**Thereafter:** Horizon 1B when the owner requests it (**not** gated on FR-017).
+Horizon 1A (FR-008–FR-017) is complete and frozen.
 
 Architecture decisions: `docs/adr/` (ADR-001, ADR-002, **ADR-003** thin in-repo
 workflow runner accepted — LangGraph not required for current FR-008 scope; **ADR-004**
@@ -153,26 +158,40 @@ Supporting documents (01, 02) are optional for onboarding.
 ## Engineering Learning Academy workflow
 
 Frozen engineering becomes interview-ready learning material through a fixed
-pipeline. The repository owns steps through **Masterclass Source Package** and
-**Commit**. The Academy consumes a committed package folder afterward.
+pipeline. The repository owns packaging through **Masterclass Source Package**.
+Deep learning and rapid interview revision follow Academy standards.
 
 ```text
-Engineering → Validation → OAT → Close-out → Freeze
+Engineering → Validation → Acceptance → Freeze
     → Masterclass Source Package (docs/masterclass/FRnnn/)
-    → Commit
-    → Engineering Learning Academy
+    → Lean Engineering Masterclass (Markdown)
+    → Masterclass PDF (official study edition)
+    → Gamma Learning Presentation (~15–20 slides)
+    → Interview Brief (~1 page)
+    → Interview Deck (~3–5 slides)
+    → Interview Revision / Coaching
 ```
 
 | Step | Where |
 |------|--------|
 | Freeze / acceptance | `docs/eval/`, `docs/adr/` (authoritative) |
 | Package | `docs/masterclass/FRnnn/` — `README.md`, `MANIFEST.md`, regenerable `sources/` |
-| First packaged FR | [masterclass/FR016/](masterclass/FR016/) |
-| Regenerate snapshots | `python scripts/build_masterclass_package.py FR016` |
+| Lean Masterclass standard | [masterclass/LEAN_MASTERCLASS_STANDARD.md](masterclass/LEAN_MASTERCLASS_STANDARD.md) |
+| Generator prompt | [masterclass/MASTERCLASS_GENERATOR_LEAN.md](masterclass/MASTERCLASS_GENERATOR_LEAN.md) |
+| Masterclass PDF | `scripts/render_masterclass_pdf.py` → `Engineering_Masterclass_*.pdf` |
+| Interview Brief | [masterclass/INTERVIEW_BRIEF_STANDARD.md](masterclass/INTERVIEW_BRIEF_STANDARD.md) |
+| Interview Deck | [masterclass/INTERVIEW_DECK_STANDARD.md](masterclass/INTERVIEW_DECK_STANDARD.md) |
+| First packaged FRs | [masterclass/FR016/](masterclass/FR016/), [masterclass/FR017/](masterclass/FR017/) |
+| Regenerate snapshots | `python scripts/build_masterclass_package.py FRnnn` |
 | Academy index | [masterclass/README.md](masterclass/README.md) |
+
+**Deep learning** = Masterclass + PDF + Gamma Learning Presentation.  
+**Rapid interview revision** = Interview Brief + Interview Deck.
 
 Do **not** generate presentations in this repository as part of FR close-out.
 Do **not** hand-edit `sources/` snapshots — regenerate from SoT.
+Do **not** replace deep-learning artefacts with interview-only materials.
+FR-018+ inherits Brief/Deck structure automatically — no rediscovery.
 
 ---
 

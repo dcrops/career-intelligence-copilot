@@ -573,6 +573,26 @@ strong near-term commercial automation. Prep/Truth/Review persona split rejected
 **Academy bridge:** [masterclass/FR016/README.md](masterclass/FR016/README.md).  
 **Academy package:** [masterclass/FR016/](masterclass/FR016/) (`MANIFEST.md` + `sources/`).
 
+### Agent Evaluation & Observability (FR-017)
+
+**ADR:** [ADR-009](adr/009_orchestration_evaluation_substrate.md)  
+**Acceptance:** [eval/fr017_agent_evaluation_observability.md](eval/fr017_agent_evaluation_observability.md)
+
+Narrow derive-only evaluation over FR-016 audits. Not a dashboard. Not a second SoT.
+
+| Concept | Role |
+|---------|------|
+| OrchestrationRunMetrics | Derived per-run metrics (not SoT) |
+| HandoffMetrics | Derived handoff summary |
+| ParentChildCorrelation | Orphan / gap detection |
+| ReconstructabilityReport | R1–R12 evidence checks |
+| Observability corpus | Deterministic offline fixtures (15 cases) |
+| `metrics` / `metrics-corpus` CLI | Read-only owner presentation |
+
+**M0–M4 delivered:** spike → contracts → corpus GO → CLI → freeze.  
+**Frozen:** [acceptance](eval/fr017_agent_evaluation_observability.md).  
+**Academy package:** [masterclass/FR017/](masterclass/FR017/).
+
 ---
 
 ## Entity Relationships
@@ -598,6 +618,7 @@ strong near-term commercial automation. Prep/Truth/Review persona split rejected
 | OrchestrationRun | Handoff | Append-only typed specialist handoffs |
 | OrchestrationRun | AgentRun | BOPA child runs under DOS |
 | OrchestrationRun | OperationalBrief | OBS briefing output (derived) |
+| OrchestrationRun | OrchestrationRunMetrics | FR-017 derive-only evaluation (ADR-009; not SoT) |
 | Application Package | Submission Attempt | Attempt references package prepared_at / optional hash |
 | Application Package | Pipeline Event | Event may cite package prepared_at / hash as submit evidence |
 | Application Package | AgentRun | BOPA may request prepare/verify via thin adapters (M2) |
@@ -685,7 +706,7 @@ continue to connect to this layer rather than invent a parallel tracker.
 | Recruiter Document Truth Validation | **FR-014** (Horizon 1A; **complete and frozen** — [acceptance](eval/fr014_recruiter_document_truth_validation.md); [ADR-006](adr/006_recruiter_document_truth_validation.md)) |
 | Bounded Agentic Workflow | **FR-015** (Horizon 1A; **complete / frozen** — ADR-007) |
 | Multi-Agent Orchestration | **FR-016** (Horizon 1A — **complete / frozen**; learning proof) |
-| Agent Evaluation & Observability | **FR-017** (Horizon 1A) |
+| Agent Evaluation & Observability | **FR-017** (Horizon 1A — **complete / frozen**; derive-only) |
 | Recruiter Intelligence | **FR-018** (Horizon 1B) |
 | Recruiter Outreach | **FR-019** (Horizon 1B) |
 | Existing Connection Outreach | **FR-020** (Horizon 1B) |

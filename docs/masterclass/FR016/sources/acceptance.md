@@ -17,8 +17,10 @@ Repository documentation remains the source of truth.
 this report; attachable package =
 [masterclass/FR016/](../masterclass/FR016/) (`README.md`, `MANIFEST.md`, regenerable
 `sources/`)  
-**Next:** **FR-017** Agent Evaluation & Observability — **Active FR; Not Started**;
-owner request required (do not auto-start). Ordinary prep remains `cic agent run`.
+**Next:** Horizon 1B (FR-018+) on owner request — **not gated on FR-017**.
+**FR-017** is **complete and frozen**
+([fr017_agent_evaluation_observability.md](fr017_agent_evaluation_observability.md)).
+Ordinary prep remains `cic agent run`.
 
 **ADR:** [ADR-008](../adr/008_multi_agent_orchestration.md) (Accepted — M1–M4 close-out)
 
@@ -592,5 +594,5 @@ See §6.
 | M2 verdict | **GO AS LEARNING PROOF ONLY** (preserved) |
 | Daily prep | **`cic agent run`** |
 | Orchestration CLI | Optional learning/substrate |
-| FR-017 | **Active FR — Not Started** (owner request required) |
-| Horizon 1B | Blocked until 1A posture confirmed by owner |
+| FR-017 | **Complete / Frozen** ([fr017_agent_evaluation_observability.md](fr017_agent_evaluation_observability.md)) |
+| Horizon 1B | **Not blocked** on FR-017; start on owner request (usable 1A application loop) |

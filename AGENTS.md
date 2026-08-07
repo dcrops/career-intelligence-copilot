@@ -61,9 +61,13 @@ is **complete and frozen** —
 Truth Validation is **complete and frozen** —
 [acceptance](docs/eval/fr014_recruiter_document_truth_validation.md);
 milestones [M0](docs/eval/fr014_m0_engineering_spike.md)–[M4](docs/eval/fr014_m4_claim_validation.md);
-[ADR-006](docs/adr/006_recruiter_document_truth_validation.md). **Current focus — Horizon 1A:**
-**FR-017** Agent Evaluation & Observability (not started — owner request required).
-**FR-016** Multi-Agent Orchestration is **complete and frozen** (learning proof —
+[ADR-006](docs/adr/006_recruiter_document_truth_validation.md). **Current focus — Horizon 1B
+(when owner requests):** FR-018+. **Horizon 1A (FR-008–FR-017) is complete and frozen.**
+**FR-017** Agent Evaluation & Observability is **complete and frozen** (derive-only;
+**must not block Horizon 1B**) —
+[acceptance](docs/eval/fr017_agent_evaluation_observability.md);
+[ADR-009](docs/adr/009_orchestration_evaluation_substrate.md);
+[package](docs/masterclass/FR017/). **FR-016** Multi-Agent Orchestration is **complete and frozen** (learning proof —
 **GO AS LEARNING PROOF ONLY**; prefer `cic agent run` for ordinary prep;
 Engineering Learning Academy ready —
 [acceptance](docs/eval/fr016_multi_agent_orchestration.md);
@@ -72,10 +76,10 @@ Bounded Agentic Workflow is **complete and frozen** —
 [acceptance](docs/eval/fr015_bounded_agentic_workflow.md);
 milestones [M0](docs/eval/fr015_m0_engineering_spike.md)–[M4](docs/eval/fr015_m4_evaluation.md);
 [ADR-007](docs/adr/007_bounded_agentic_workflow.md).
-Do not reopen Phase 2, FR-008, FR-009, FR-010, FR-011, FR-012, FR-013, FR-014, FR-015, or FR-016 exit criteria without
+Do not reopen Phase 2, FR-008, FR-009, FR-010, FR-011, FR-012, FR-013, FR-014, FR-015, FR-016, or FR-017 exit criteria without
 explicit owner request.
 **Principle:** Job acquisition first. Recruiter outreach second (Horizon 1B /
-FR-018–FR-024 — do not start while 1A is incomplete).
+FR-018–FR-024 — 1A application loop is usable; owner may start 1B).
 
 **Implementation foundation:** Python 3.11+, Pydantic, YAML storage, and the public profile
 service boundary are recorded in
@@ -95,7 +99,7 @@ service boundary are recorded in
 
 **Delivered outside original Phase 2 exit criteria (owner-sequenced):** FR-006 CV Generation (complete, including FR-006b/c); **FR-007 Cover Letter** (complete — plan + deterministic narrative render; manual validation passed).
 
-**Horizon 1A (current):** FR-008 **complete** (acquisition adapters + orchestration;
+**Horizon 1A (complete / frozen):** FR-008 **complete** (acquisition adapters + orchestration;
 ADR-003; persistence boundary since amended by FR-009 M1). **FR-009 complete and frozen**
 (pre-review persistence, derived review queue, owner review actions, owner-confirmed
 duplicates, calibrated quality-first ranking and derived recommendations; ADR-004
@@ -112,10 +116,12 @@ Recruiter Document Truth Validation is **complete and frozen**
 ([acceptance](docs/eval/fr014_recruiter_document_truth_validation.md)). **FR-015**
 Bounded Agentic Workflow is **complete and frozen**
 ([acceptance](docs/eval/fr015_bounded_agentic_workflow.md);
-[ADR-007](docs/adr/007_bounded_agentic_workflow.md)). Next:
-**FR-017** Agent Evaluation & Observability (not started — owner request required).
-**FR-016** is **complete and frozen** (learning proof only). See
-[docs/10_roadmap.md](docs/10_roadmap.md).
+[ADR-007](docs/adr/007_bounded_agentic_workflow.md)). **FR-016** is **complete and frozen**
+(learning proof only). **FR-017** is **complete and frozen**
+([docs/eval/fr017_agent_evaluation_observability.md](docs/eval/fr017_agent_evaluation_observability.md);
+[ADR-009](docs/adr/009_orchestration_evaluation_substrate.md)).
+Next: Horizon 1B on owner request — **not blocked on FR-017**.
+See [docs/10_roadmap.md](docs/10_roadmap.md).
 
 Full detail: [docs/04_functional_specification.md](docs/04_functional_specification.md) and [docs/10_roadmap.md](docs/10_roadmap.md).
 
@@ -128,7 +134,7 @@ explicitly requested by the owner.
 
 Apply [docs/05_engineering_principles.md](docs/05_engineering_principles.md) for all tradeoffs. Non-negotiables:
 
-- **Job acquisition first** — complete Horizon 1A before Horizon 1B recruiter work
+- **Job acquisition first** — Horizon 1A application loop before Horizon 1B recruiter work (1A is complete; start 1B only on owner request)
 - **Intelligence before automation** — explain before acting; deterministic workflow before agents
 - **Human review** — tiers, packages, and submission require owner judgment; never silent submit
 - **Dual-value test** — every capability must improve interview/offer odds or reduce repetitive search effort
@@ -154,10 +160,14 @@ Apply [docs/05_engineering_principles.md](docs/05_engineering_principles.md) for
  external use and submission; never rewrite; owner review remains mandatory
  ([ADR-006](docs/adr/006_recruiter_document_truth_validation.md))
 - **Bounded agent coordinates; services remain authoritative (FR-015 — frozen)** — BOPA proposes
-  allow-listed actions; ToolPolicy validates; existing services execute; no FR-008 wrap,
-  submit, pipeline mutation, discovery, or truth waive; deterministic proposer is the
-  operational default
-  ([ADR-007](docs/adr/007_bounded_agentic_workflow.md))
+ allow-listed actions; ToolPolicy validates; existing services execute; no FR-008 wrap,
+ submit, pipeline mutation, discovery, or truth waive; deterministic proposer is the
+ operational default
+ ([ADR-007](docs/adr/007_bounded_agentic_workflow.md))
+- **Orchestration evaluation is derive-only (FR-017 — frozen)** — metrics and R1–R12
+ reconstructability are pure views over existing FR-016 audits (+ reused FR-015 child
+ metrics); read-only CLI; no dashboards; must not block Horizon 1B
+ ([ADR-009](docs/adr/009_orchestration_evaluation_substrate.md))
 - **Constrained multi-agent substrate (FR-016 — frozen)** — DOS delegates only; BOPA mutating
   allow-list unchanged; OBS is strictly read-only; typed handoffs; DelegationPolicy +
   per-specialist ToolPolicy; Prep/Truth/Review persona split rejected as theatre;
@@ -177,7 +187,13 @@ Apply [docs/05_engineering_principles.md](docs/05_engineering_principles.md) for
 - Guarantee employment, interviews, or recruiter engagement in any output
 - Generate Engineering Learning Academy presentations/decks unless explicitly asked;
   build Masterclass Source Packages under `docs/masterclass/FRnnn/` only after freeze
-  (acceptance remains canonical; regenerate `sources/` — do not hand-edit snapshots)
+  (acceptance remains canonical; regenerate `sources/` — do not hand-edit snapshots).
+  When a Masterclass is requested, follow
+  [docs/masterclass/LEAN_MASTERCLASS_STANDARD.md](docs/masterclass/LEAN_MASTERCLASS_STANDARD.md).
+  Interview Brief / Deck follow
+  [docs/masterclass/INTERVIEW_BRIEF_STANDARD.md](docs/masterclass/INTERVIEW_BRIEF_STANDARD.md) and
+  [docs/masterclass/INTERVIEW_DECK_STANDARD.md](docs/masterclass/INTERVIEW_DECK_STANDARD.md)
+  — do not regenerate FR-016/FR-017 interview artefacts unless asked.
 
 ---
 
@@ -206,7 +222,18 @@ When a session produces a durable decision or invariant, update the appropriate 
 
 Do not leave important knowledge only in chat history.
 
-**Engineering Learning Academy pipeline:** Engineering → Validation → OAT → Close-out →
-Freeze → Masterclass Source Package (`docs/masterclass/FRnnn/`) → Commit → Academy.
+**Engineering Learning Academy pipeline:** Engineering → Validation → Acceptance →
+Freeze → Masterclass Source Package (`docs/masterclass/FRnnn/`) →
+Lean Masterclass (Markdown) → **Masterclass PDF** → Gamma Learning Presentation
+(~15–20) → **Interview Brief** (~1 page) → **Interview Deck** (~3–5) →
+Interview Revision / Coaching.
 Regenerate `sources/` snapshots after SoT doc changes; do not hand-edit snapshots.
 Do not generate Masterclass presentations in-repo during FR close-out.
+When generating a Masterclass, follow
+[docs/masterclass/LEAN_MASTERCLASS_STANDARD.md](docs/masterclass/LEAN_MASTERCLASS_STANDARD.md)
+and [docs/masterclass/MASTERCLASS_GENERATOR_LEAN.md](docs/masterclass/MASTERCLASS_GENERATOR_LEAN.md),
+then render the PDF with `python scripts/render_masterclass_pdf.py <masterclass.md>`.
+Interview Brief / Deck standards:
+[docs/masterclass/INTERVIEW_BRIEF_STANDARD.md](docs/masterclass/INTERVIEW_BRIEF_STANDARD.md),
+[docs/masterclass/INTERVIEW_DECK_STANDARD.md](docs/masterclass/INTERVIEW_DECK_STANDARD.md).
+Do not regenerate FR-016/FR-017 interview artefacts unless explicitly requested.

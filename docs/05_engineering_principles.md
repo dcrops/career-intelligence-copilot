@@ -48,6 +48,9 @@ understood. Introduce bounded agents (FR-015 — **complete / frozen**) only aft
 deterministic path (FR-008) works; multi-agent patterns (FR-016 — **complete / frozen**
 as a learning proof only; prefer `cic agent run` for ordinary prep) only after bounded
 agents are reliable. Do not blur workflow orchestration with agent reasoning.
+**FR-017** (frozen) evaluates orchestration audits by **derive-only** metrics and
+R1–R12 reconstructability — not dashboards or new SoTs
+([ADR-009](adr/009_orchestration_evaluation_substrate.md)).
 
 **Orchestration coordinates; services execute; adapters channel; interfaces remain thin.**
 A dedicated coordinator (FR-011 preparation, FR-012 submission) sequences existing
@@ -195,13 +198,15 @@ context rather than ranking factors. Absent evidence must never improve a positi
 
 ### Scope control
 
-Horizon 1A owns the application workflow (FR-008–FR-017). Resist Horizon 1B recruiter
-modules, dashboards, and unofficial presentation polish that displace acquisition and
-submission. FR-006/FR-007 document generation is complete; do not reopen for polish
-while the application loop is incomplete.
+Horizon 1A (FR-008–FR-017) owns the application workflow and is **complete / frozen**.
+Resist Horizon 1B recruiter modules, dashboards, and unofficial presentation polish
+that displace acquisition and submission unless the owner explicitly starts 1B.
+FR-006/FR-007 document generation is complete; do not reopen for polish that displaces
+live job-search throughput.
 
 **Violate when:** An addition passes the dual-value test, has an approved FR (or explicit
-owner request), and accelerates Horizon 1A without delaying the application loop.
+owner request), and accelerates Horizon 1 (job acquisition) without delaying submitted
+applications.
 
 ### Simplicity over flexibility
 
