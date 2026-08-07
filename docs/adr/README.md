@@ -11,9 +11,11 @@
 | [007](007_bounded_agentic_workflow.md) | Bounded Agentic Workflow (BOPA; policy B; ToolPolicy) | Accepted (FR-015 frozen) — one agent, one Opportunity, post-acquisition; does not wrap FR-008; no submit/pipeline/discovery |
 | [008](008_multi_agent_orchestration.md) | Multi-Agent Orchestration (DOS + BOPA + OBS; typed handoffs) | Accepted — FR-016 **Complete / Frozen** (learning proof; Prep/Truth/Review theatre rejected) |
 | [009](009_orchestration_evaluation_substrate.md) | Orchestration evaluation substrate (derive-only) | Accepted — FR-017 **Complete / Frozen** (M1–M4; no dashboards; must not block 1B) |
+| [010](010_opportunity_discovery_ingress.md) | Opportunity Discovery Ingress boundary (thin coordinator; URL + email) | Accepted — FR-018 **Complete / Frozen** |
 
 Related: [04_functional_specification.md](../04_functional_specification.md) § FR-008,
-§ FR-009, § FR-010, § FR-011, § FR-012, § FR-013, § FR-014, § FR-015, § FR-016, § FR-017; [10_roadmap.md](../10_roadmap.md) § Horizon 1A / 1B.
+§ FR-009, § FR-010, § FR-011, § FR-012, § FR-013, § FR-014, § FR-015, § FR-016, § FR-017,
+§ FR-018; [10_roadmap.md](../10_roadmap.md) § Horizon 1A / 1B.
 
 Close-out records:
 [eval/fr008_workflow_orchestration.md](../eval/fr008_workflow_orchestration.md),
@@ -89,3 +91,10 @@ Derive-only orchestration metrics + R1–R12; reuse FR-015 child metrics;
 `cic agent orchestrate metrics` / `metrics-corpus`; no DOS/BOPA/OBS runtime change;
 Horizon 1B not gated. Academy: [masterclass/FR017/](../masterclass/FR017/).
 Spike: [eval/fr017_m0_engineering_spike.md](../eval/fr017_m0_engineering_spike.md) (Accepted).
+
+**FR-018 ADR note:** [ADR-010](010_opportunity_discovery_ingress.md) — FR-018
+**Complete / Frozen / Accepted**. Acceptance:
+[eval/fr018_opportunity_discovery_acquisition.md](../eval/fr018_opportunity_discovery_acquisition.md).
+Thin Discovery Ingress + URL / email adapters; email discovers, URL enrich for
+card-only alerts; Academy: [masterclass/FR018/](../masterclass/FR018/).
+Spike: [eval/fr018_m0_engineering_spike.md](../eval/fr018_m0_engineering_spike.md).

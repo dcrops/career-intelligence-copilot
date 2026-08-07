@@ -1,0 +1,254 @@
+{
+  "generated_at_utc": "20260807T062952Z",
+  "purpose": "FR-018 post-M2 live URL validation (no M3)",
+  "method": "classify via M2 classify_supported_job_url; record UrllibHttpClient outcome; fetch HTML via curl.exe (system TLS); extract via extract_job_content_from_html (same as UrlAcquisitionAdapter). No Opportunity persistence. No Playwright.",
+  "ssl_environment": {
+    "urllib_ssl_broken_for": [
+      "SEEK",
+      "LINKEDIN",
+      "LINKEDIN_ALT",
+      "INDEED"
+    ],
+    "note": "Python urllib SSL verify fails on this host for major boards (CERTIFICATE_VERIFY_FAILED). curl.exe succeeds TLS. Board accessibility conclusions use curl + extract, not a redesigned adapter."
+  },
+  "urls": [
+    {
+      "label": "SEEK",
+      "url": "https://www.seek.com.au/job/93312273"
+    },
+    {
+      "label": "LINKEDIN",
+      "url": "https://www.linkedin.com/jobs/view/4429615445"
+    },
+    {
+      "label": "LINKEDIN_ALT",
+      "url": "https://www.linkedin.com/jobs/view/4436067784"
+    },
+    {
+      "label": "INDEED",
+      "url": "https://au.indeed.com/viewjob?jk=6449f2b22e094d45"
+    },
+    {
+      "label": "CAREERS",
+      "url": "https://www.thoughtworks.com/careers/jobs/7920279"
+    }
+  ],
+  "results": [
+    {
+      "label": "SEEK",
+      "url": "https://www.seek.com.au/job/93312273",
+      "source_classification": "allow-listed_board",
+      "platform": "seek",
+      "platform_job_id": "93312273",
+      "canonical_url": "https://www.seek.com.au/job/93312273",
+      "production_urllib": {
+        "ok": false,
+        "kind": "network_failure",
+        "status": null,
+        "detail": "[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: Basic Constraints of CA cert not marked critical (_ssl.c:1028)"
+      },
+      "curl_http": {
+        "status": 200,
+        "final_url": "https://au.seek.com/job/93312273",
+        "bytes": 176554,
+        "signals": [
+          "robot"
+        ],
+        "error": null,
+        "content_type_guess": "html"
+      },
+      "usable_job_content": true,
+      "title": "AI Engineer Job in Cremorne, Melbourne VIC - SEEK",
+      "company": null,
+      "raw_content_len": 1763,
+      "provenance": {
+        "source_kind": "url",
+        "source_identifier": "https://www.seek.com.au/job/93312273",
+        "canonical_url": "https://www.seek.com.au/job/93312273"
+      },
+      "identity_facets": {
+        "source_kind": "seek",
+        "platform_job_id": "93312273",
+        "canonical_url": "https://www.seek.com.au/job/93312273"
+      },
+      "opportunity_outcome": "would_create_if_persisted",
+      "failure_category": null,
+      "support_verdict": "SUPPORTED",
+      "notes": []
+    },
+    {
+      "label": "LINKEDIN",
+      "url": "https://www.linkedin.com/jobs/view/4429615445",
+      "source_classification": "allow-listed_board",
+      "platform": "linkedin",
+      "platform_job_id": "4429615445",
+      "canonical_url": "https://www.linkedin.com/jobs/view/4429615445",
+      "production_urllib": {
+        "ok": false,
+        "kind": "network_failure",
+        "status": null,
+        "detail": "[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: Basic Constraints of CA cert not marked critical (_ssl.c:1028)"
+      },
+      "curl_http": {
+        "status": 200,
+        "final_url": "https://www.linkedin.com/jobs/digital-project-manager-jobs?trk=expired_jd_redirect",
+        "bytes": 250968,
+        "signals": [
+          "captcha",
+          "login",
+          "sign in",
+          "robot",
+          "expired_jd_redirect"
+        ],
+        "error": null,
+        "content_type_guess": "html"
+      },
+      "usable_job_content": false,
+      "title": "1,000+ Digital Project Manager jobs in United States",
+      "company": null,
+      "raw_content_len": 8350,
+      "provenance": {
+        "source_kind": "url",
+        "source_identifier": "https://www.linkedin.com/jobs/view/4429615445",
+        "canonical_url": "https://www.linkedin.com/jobs/view/4429615445"
+      },
+      "identity_facets": {
+        "source_kind": "linkedin",
+        "platform_job_id": "4429615445",
+        "canonical_url": "https://www.linkedin.com/jobs/view/4429615445"
+      },
+      "opportunity_outcome": "failed",
+      "failure_category": "linkedin_expired_or_search_redirect",
+      "support_verdict": "PARTIALLY_SUPPORTED",
+      "notes": [
+        "HTTP/extract produced text, but live quality gate rejected it as non-job content (linkedin_expired_or_search_redirect)"
+      ]
+    },
+    {
+      "label": "LINKEDIN_ALT",
+      "url": "https://www.linkedin.com/jobs/view/4436067784",
+      "source_classification": "allow-listed_board",
+      "platform": "linkedin",
+      "platform_job_id": "4436067784",
+      "canonical_url": "https://www.linkedin.com/jobs/view/4436067784",
+      "production_urllib": {
+        "ok": false,
+        "kind": "network_failure",
+        "status": null,
+        "detail": "[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: Basic Constraints of CA cert not marked critical (_ssl.c:1028)"
+      },
+      "curl_http": {
+        "status": 200,
+        "final_url": "https://www.linkedin.com/jobs/belong-jobs?trk=expired_jd_redirect",
+        "bytes": 300929,
+        "signals": [
+          "captcha",
+          "login",
+          "sign in",
+          "robot",
+          "expired_jd_redirect"
+        ],
+        "error": null,
+        "content_type_guess": "html"
+      },
+      "usable_job_content": false,
+      "title": "72,000+ Belong jobs in United States",
+      "company": null,
+      "raw_content_len": 10377,
+      "provenance": {
+        "source_kind": "url",
+        "source_identifier": "https://www.linkedin.com/jobs/view/4436067784",
+        "canonical_url": "https://www.linkedin.com/jobs/view/4436067784"
+      },
+      "identity_facets": {
+        "source_kind": "linkedin",
+        "platform_job_id": "4436067784",
+        "canonical_url": "https://www.linkedin.com/jobs/view/4436067784"
+      },
+      "opportunity_outcome": "failed",
+      "failure_category": "linkedin_expired_or_search_redirect",
+      "support_verdict": "PARTIALLY_SUPPORTED",
+      "notes": [
+        "HTTP/extract produced text, but live quality gate rejected it as non-job content (linkedin_expired_or_search_redirect)"
+      ]
+    },
+    {
+      "label": "INDEED",
+      "url": "https://au.indeed.com/viewjob?jk=6449f2b22e094d45",
+      "source_classification": "allow-listed_board",
+      "platform": "indeed",
+      "platform_job_id": "6449f2b22e094d45",
+      "canonical_url": "https://www.indeed.com/viewjob?jk=6449f2b22e094d45",
+      "production_urllib": {
+        "ok": false,
+        "kind": "network_failure",
+        "status": null,
+        "detail": "[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: Basic Constraints of CA cert not marked critical (_ssl.c:1028)"
+      },
+      "curl_http": {
+        "status": 403,
+        "final_url": "https://au.indeed.com/viewjob?jk=6449f2b22e094d45",
+        "bytes": 27655,
+        "signals": [
+          "captcha"
+        ],
+        "error": null,
+        "content_type_guess": "html"
+      },
+      "usable_job_content": false,
+      "title": null,
+      "company": null,
+      "raw_content_len": null,
+      "provenance": {
+        "source_kind": "url",
+        "source_identifier": "https://www.indeed.com/viewjob?jk=6449f2b22e094d45",
+        "canonical_url": "https://www.indeed.com/viewjob?jk=6449f2b22e094d45"
+      },
+      "identity_facets": {
+        "source_kind": "indeed",
+        "platform_job_id": "6449f2b22e094d45",
+        "canonical_url": "https://www.indeed.com/viewjob?jk=6449f2b22e094d45"
+      },
+      "opportunity_outcome": "failed",
+      "failure_category": "http_403",
+      "support_verdict": "BLOCKED / UNSUPPORTED",
+      "notes": []
+    },
+    {
+      "label": "CAREERS",
+      "url": "https://www.thoughtworks.com/careers/jobs/7920279",
+      "source_classification": "unsupported_source",
+      "platform": null,
+      "platform_job_id": null,
+      "canonical_url": null,
+      "production_urllib": {},
+      "curl_http": {
+        "status": 404,
+        "final_url": "https://www.thoughtworks.com/careers/jobs/7920279",
+        "bytes": 127122,
+        "signals": [
+          "robot",
+          "enable javascript"
+        ],
+        "error": null
+      },
+      "usable_job_content": false,
+      "title": null,
+      "company": null,
+      "raw_content_len": null,
+      "provenance": {},
+      "identity_facets": {},
+      "opportunity_outcome": "failed",
+      "failure_category": "unsupported_source",
+      "support_verdict": "BLOCKED / UNSUPPORTED",
+      "notes": [
+        "URL host is not a supported job board for M2 discovery"
+      ]
+    }
+  ],
+  "url_first_hypothesis_survived": true,
+  "recommended_m3_direction": "A. M3 = operationalise URL acquisition",
+  "meaningful_supported_sources": [
+    "SEEK"
+  ]
+}

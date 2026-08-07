@@ -26,7 +26,26 @@ def test_seek_job_id_extraction() -> None:
     )
     assert kind == "seek"
     assert job_id == "93487188"
-    assert canonical == "https://au.seek.com/job/93487188"
+    # M3: host variants share a stable AU canonical.
+    assert canonical == "https://www.seek.com.au/job/93487188"
+
+
+def test_linkedin_slug_job_id_extraction() -> None:
+    kind, job_id, canonical = derive_source_facets(
+        "https://au.linkedin.com/jobs/view/senior-ai-engineer-at-fyndr-group-4429615445"
+    )
+    assert kind == "linkedin"
+    assert job_id == "4429615445"
+    assert canonical == "https://www.linkedin.com/jobs/view/4429615445"
+
+
+def test_linkedin_comm_jobs_view_facets() -> None:
+    kind, job_id, canonical = derive_source_facets(
+        "https://www.linkedin.com/comm/jobs/view/4381552675/?trackingId=abc"
+    )
+    assert kind == "linkedin"
+    assert job_id == "4381552675"
+    assert canonical == "https://www.linkedin.com/jobs/view/4381552675"
 
 
 def test_linkedin_current_job_id_extraction() -> None:

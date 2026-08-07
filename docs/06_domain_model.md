@@ -102,9 +102,11 @@ current.
 
 ### Job Acquisition Record
 
-**Maps to:** FR-008 (complete — paste/export); further channels planned under
-**FR-018 Opportunity Discovery & Acquisition**; provenance feeds FR-009 duplicate
-detection
+**Maps to:** FR-008 (complete — paste/export); further channels under
+**FR-018 Opportunity Discovery & Acquisition** (**complete / frozen** —
+[eval/fr018_opportunity_discovery_acquisition.md](eval/fr018_opportunity_discovery_acquisition.md);
+[ADR-010](adr/010_opportunity_discovery_ingress.md)); provenance feeds FR-009
+duplicate detection
 
 Canonical record of how a job entered the system via a **source adapter**. Indicative
 fields: source type; source identifier; source URL; acquisition timestamp; raw and
@@ -116,6 +118,37 @@ saved-search notifications → owner URLs → pasted descriptions → exports �
 Playwright-assisted browser workflows as a **controlled fallback**. Do not assume
 browser automation for every job. See [04_functional_specification.md](04_functional_specification.md)
 § FR-008 / FR-018 and [10_roadmap.md](10_roadmap.md) § Horizon 1B.
+
+---
+
+### Opportunity Source (transient — FR-018)
+
+**Maps to:** FR-018 (`OpportunitySource` in `career_intelligence.discovery`)
+
+Transient ingress locator (**URL** or **email** `.eml#job=N`). **Not** a durable
+business record. Dissolves into `AcquisitionResult` provenance when acquire succeeds.
+Must never be persisted as a parallel Opportunity catalogue
+([ADR-010](adr/010_opportunity_discovery_ingress.md);
+[ADR-004](adr/004_opportunity_review_boundary.md)).
+
+**Discovery Ingress** coordinates only: resolve sources → instantiate
+`AcquisitionAdapter` → invoke existing `ApplicationWorkflowRunner` (URL + email
+channels; M1 froze the Protocol).
+
+### Opportunity Discovery & Acquisition (FR-018)
+
+**Maps to:** FR-018 (**Complete / Frozen / Accepted** —
+[eval/fr018_opportunity_discovery_acquisition.md](eval/fr018_opportunity_discovery_acquisition.md))
+
+Lawful channel adapters under a thin ingress into frozen Horizon 1A:
+
+- **URL channel** — owner-supplied SEEK (production) / LinkedIn / Indeed (attempt).
+- **Email channel** — owner-saved job-alert `.eml`; job URL is the durable identity
+  facet; alert body is **discovery**. When the alert is card-only, enrich via
+  existing URL acquisition (fail-soft). Provenance stays `source_kind=email`.
+
+Email is not an authoritative job description. Playwright / IMAP / Easy Apply are
+out of FR-018 freeze scope.
 
 ---
 
@@ -709,7 +742,7 @@ continue to connect to this layer rather than invent a parallel tracker.
 | Bounded Agentic Workflow | **FR-015** (Horizon 1A; **complete / frozen** — ADR-007) |
 | Multi-Agent Orchestration | **FR-016** (Horizon 1A — **complete / frozen**; learning proof) |
 | Agent Evaluation & Observability | **FR-017** (Horizon 1A — **complete / frozen**; derive-only) |
-| Opportunity Discovery & Acquisition | **FR-018** (Horizon 1B lead) |
+| Opportunity Discovery & Acquisition | **FR-018** (Horizon 1B lead — **Complete / Frozen / Accepted**; [acceptance](eval/fr018_opportunity_discovery_acquisition.md); [ADR-010](adr/010_opportunity_discovery_ingress.md); [Academy](masterclass/FR018/)) |
 | Recruiter Intelligence | **FR-019** (Horizon 1B) |
 | Recruiter Outreach | **FR-020** (Horizon 1B) |
 | Existing Connection Outreach | **FR-021** (Horizon 1B) |

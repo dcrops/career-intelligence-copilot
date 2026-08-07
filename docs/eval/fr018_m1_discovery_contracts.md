@@ -1,0 +1,260 @@
+# FR-018 M1 — Opportunity Discovery Contracts & Architecture
+
+**Status:** **Complete (M1)** — contracts + authority frozen; executable ingress /
+URL adapter deferred to M2  
+**Date:** 2026-08-07  
+**Phase:** Horizon 1B (lead FR)  
+**Preceding:** [M0 spike](fr018_m0_engineering_spike.md) (**Accepted** — GO under
+narrow scope)  
+**ADR:** [ADR-010](../adr/010_opportunity_discovery_ingress.md) (Accepted)  
+**Scope (M1):** Production contracts, provenance validators, Protocol surface,
+documentation. **No** URL fetch, email, feeds, scheduling, Playwright, CLI, or
+Horizon 1A runtime changes.  
+**Package:** `career_intelligence.discovery`
+
+**Milestone note:** M0’s illustrative table listed URL adapter under “M1”. Owner
+M1 brief redefined this milestone as **contracts & architecture only**. Executable
+URL-first ingress is **M2**.
+
+---
+
+## 1. Executive summary
+
+M1 freezes the production design accepted at M0:
+
+```text
+OpportunitySource → DiscoveryIngress → AcquisitionAdapter
+  → ApplicationWorkflowRunner → frozen Horizon 1A pipeline
+```
+
+Typed contracts live in `career_intelligence.discovery`. FR-008
+`AcquisitionAdapter` / `AcquisitionResult` are **reused**, not redefined.
+Discovery Ingress is a **Protocol** only — no executable coordinator yet.
+
+**Recommendation:** Accept M1. Proceed to **M2** (URL adapter + thin ingress
+implementation + fixtures) only after explicit owner approval.
+
+---
+
+## 2. Architecture overview
+
+| Layer | Responsibility | M1 deliverable |
+|-------|----------------|----------------|
+| OpportunitySource | Transient locator | Typed model (`url` only) |
+| DiscoveryRequest / Outcome | Owner request + per-item results | Typed models |
+| DiscoveryIngress | Thin coordination | **Protocol** (no impl) |
+| AcquisitionAdapter | One posting acquire | **Reuse** FR-008 |
+| ApplicationWorkflowRunner | Frozen pipeline | **Reuse** — not called in M1 |
+| Opportunity SoT | Durable business record | **Reuse** FR-009 |
+
+No second orchestration engine, workflow, or Opportunity store.
+
+---
+
+## 3. Production contracts
+
+### Introduced (`career_intelligence.discovery`)
+
+| Contract | Role |
+|----------|------|
+| `OpportunitySource` | Transient `source_kind` + `locator` (http/https URL) |
+| `DiscoveryRequest` | One or more sources; optional `force` flag (contract only) |
+| `DiscoveryItemOutcome` | `acquired` / `skipped` / `failed` with consistent fields |
+| `DiscoveryOutcome` | Aggregate items + count helpers |
+| `DiscoveryIngress` | `discover(request) -> DiscoveryOutcome` Protocol |
+| `opportunity_source_from_url` | Fail-closed URL → source helper |
+| `assert_url_acquisition_provenance` | Fail-closed URL `AcquisitionResult` checks |
+
+### Reused (not duplicated)
+
+| Contract | Owner |
+|----------|-------|
+| `AcquisitionAdapter` / `AcquisitionResult` / `AcquisitionError` | FR-008 |
+| `AcquisitionSourceKind` (includes `url`, …) | FR-008 |
+| `OpportunityIdentity` / `derive_source_facets` | FR-009 |
+| `ApplicationWorkflowRunner` | FR-008 |
+
+### Deliberately not introduced
+
+| Speculative name | Why omitted |
+|------------------|-------------|
+| Separate `OpportunityProvenance` aggregate | `AcquisitionResult` already carries provenance into AcquireNode |
+| `OpportunityAcquisitionMetadata` store | Would tempt a second catalogue |
+| Batch `acquire_many` on adapter | Widens frozen Protocol |
+
+---
+
+## 4. Authority boundaries
+
+### Discovery Ingress MAY
+
+- Resolve `OpportunitySource` values
+- Instantiate `AcquisitionAdapter` implementations (M2+)
+- Invoke `ApplicationWorkflowRunner.start` (M2+)
+- Read Opportunities for definite-identity idempotent **skip** (M2+)
+- Return typed `DiscoveryOutcome` items
+
+### Discovery Ingress MUST NOT
+
+- Rank opportunities or replace FR-009 ranking
+- Assess suitability / run strategy
+- Own Opportunity persistence (runner/PersistOpportunityNode owns side effects)
+- Replace FR-009 duplicate **confirmation** (link/merge policy unchanged)
+- Generate documents, submit, advance pipeline, or contact recruiters
+- Become a durable “seen jobs” SoT
+
+Recorded in [ADR-010](../adr/010_opportunity_discovery_ingress.md).
+
+---
+
+## 5. Provenance model
+
+### Carrier
+
+`AcquisitionResult` remains the provenance object applied by AcquireNode.
+
+### URL-path minimum (enforced by `assert_url_acquisition_provenance`)
+
+| Field | Requirement |
+|-------|-------------|
+| `source_kind` | Must be `"url"` |
+| `raw_content` | Non-empty (model-enforced) |
+| `posting` | Present |
+| `source_url` | Required — feeds `derive_source_facets` |
+| `source_identifier` | Required — stable locator string |
+| `acquired_at` | Required |
+| `warnings` | Optional soft issues |
+
+### FR-009 compatibility
+
+URL `source_url` enables Seek/LinkedIn/Indeed `platform_job_id` / `canonical_url`
+derivation. Fingerprint alone remains non-merge. Idempotent **skip** uses definite
+identity match → `DiscoveryItemOutcome(status="skipped",
+skip_reason="definite_identity_match", matched_opportunity_id=…)`.
+
+---
+
+## 6. Integration with Horizon 1A
+
+Target path (M2+; not executed in M1):
+
+```text
+DiscoveryIngress.discover
+  → (optional identity pre-check)
+  → AcquisitionAdapter.acquire → assert_url_acquisition_provenance
+  → ApplicationWorkflowRunner.start(adapter)
+  → acquire → … → persist → owner_review
+```
+
+| Frozen FR | M1 change |
+|-----------|-----------|
+| FR-008–017 runtime | **None** |
+| FR-009 SoT / duplicates | **None** (contracts cite them) |
+
+---
+
+## 7. Failure modes (contracted)
+
+| Scenario | Representation |
+|----------|----------------|
+| Invalid URL | `DiscoveryValidationError` / source schema reject |
+| Unsupported source kind | M1 allow-list (`url` only); `unsupported_source` |
+| Network failure | Item `failed` + `network_failure` (M2 adapter) |
+| Adapter failure | `adapter_failure` |
+| Malformed / empty content | `malformed_content` / provenance error |
+| Partial metadata | `partial_metadata` or provenance assert |
+| Definite duplicate | Item `skipped` + `definite_identity_match` |
+| Runner failure | `runner_failure` |
+
+All fail closed — no silent success without content/provenance.
+
+---
+
+## 8. Testing strategy (M1)
+
+| Layer | Coverage |
+|-------|----------|
+| Unit | `tests/unit/discovery/test_models_m1.py` — source/request/outcome validators, Protocol runtime check, provenance asserts |
+| Contract | Pydantic `extra=forbid`; status field consistency |
+| Integration | **Deferred to M2** (adapter → runner) |
+| Manual | **Deferred to M2** (real owner URLs) |
+| CI | Offline; no network |
+
+---
+
+## 9. Learning decisions
+
+**D1 — Reuse `AcquisitionResult` as provenance**  
+- **Why:** Already applied by AcquireNode.  
+- **Alternative:** New provenance aggregate.  
+- **Rejected:** Dual models / dual SoT risk.  
+- **Principle:** Reuse before redesign.  
+- **Interview:** Extend frozen carriers; don’t invent parallel truth.
+
+**D2 — Protocol-only Ingress in M1**  
+- **Why:** Freeze authority before fetch complexity.  
+- **Alternative:** Implement URL adapter in same milestone.  
+- **Rejected (this M1):** Owner scoped M1 to contracts.  
+- **Principle:** Validate first; change second.  
+- **Interview:** Contracts before I/O.
+
+**D3 — URL-only `DiscoverySourceKind` in M1**  
+- **Why:** Prevent email/API scope creep in schemas.  
+- **Alternative:** Allow all `AcquisitionSourceKind` values now.  
+- **Rejected:** Speculative surface.  
+- **Principle:** Narrow interfaces.  
+- **Interview:** Type the milestone you are shipping.
+
+**D4 — ADR-010**  
+- **Why:** Ingress authority is a durable decision beyond ADR-003.  
+- **Alternative:** Docs-only note.  
+- **Rejected:** Academy/acceptance need an ADR handle.  
+- **Principle:** Record decisions in the repository.
+
+---
+
+## 10. Documentation updated
+
+| Document | Update |
+|----------|--------|
+| This report | Canonical M1 |
+| [ADR-010](../adr/010_opportunity_discovery_ingress.md) | Ingress boundary |
+| [adr/README.md](../adr/README.md) | Index |
+| Functional specification § FR-018 | M1 status |
+| Domain model | Discovery entities / FR index |
+| Testing strategy | FR-018 M1 section |
+| Implementation notes | M1 sequencing |
+| Roadmap / phase history / changelog | § 1.117 |
+| AGENTS / README / repo guide | Current focus |
+
+Historical FR-008–017 acceptance bodies unchanged.
+
+---
+
+## 11. Recommendation
+
+**Accept M1.** Unlock **M2 planning/implementation**:
+
+1. `UrlAcquisitionAdapter` (`source_kind="url"`) with fixture HTTP (no live CI net)
+2. Executable thin `DiscoveryIngress` implementation
+3. Idempotency pre-check against Opportunity identity
+4. Thin owner CLI
+5. Manual validation on owner-supplied URLs
+
+**Still NO-GO:** Playwright, email/feeds, scheduling, scrape-first, Horizon 1A redesign.
+
+---
+
+## 12. Final repository status
+
+| Item | Status |
+|------|--------|
+| Horizon 1A | Frozen / unchanged at runtime |
+| FR-018 M0 | Accepted |
+| FR-018 M1 | **Complete** |
+| URL adapter / executable ingress / CLI | **Not started** (M2) |
+| ADR-010 | Accepted |
+
+**M1 COMPLETE**  
+**READY FOR M2 (IF OWNER APPROVES)**  
+**HORIZON 1A REMAINS FROZEN**

@@ -33,9 +33,9 @@ updated. Phase 2 established them in practice; they continue to bind Horizon 1 w
 
 Complete the discover → assess → prepare → review → submit → track loop before
 investing in recruiter discovery, outreach messaging, meetup intelligence, or LinkedIn
-network automation. That loop is **complete** (Horizon 1A). Next: **scale lawful
-opportunity discovery/acquisition (FR-018)** into the frozen pipeline, then recruiter
-work (FR-019+). Recruiter work is an additional channel once inflow can feed the loop
+network automation. That loop is **complete** (Horizon 1A). **FR-018** Opportunity
+Discovery & Acquisition is **complete / frozen**. Next: recruiter work (**FR-019+**)
+on owner request. Recruiter work is an additional channel once inflow can feed the loop
 at volume — not a parallel distraction. Prefer APIs/feeds/alerts/exports/URLs over
 browser automation; no scrape-first design.
 
@@ -202,8 +202,8 @@ context rather than ranking factors. Absent evidence must never improve a positi
 ### Scope control
 
 Horizon 1A (FR-008–FR-017) owns the application workflow and is **complete / frozen**.
-Within Horizon 1B, resist starting recruiter modules (FR-019+) before **FR-018
-Opportunity Discovery & Acquisition** unless the owner explicitly reprioritises.
+**FR-018** is **complete / frozen**. Within Horizon 1B, start **FR-019+** only on
+owner request — do not reopen FR-018 or Horizon 1A for polish.
 Resist dashboards and unofficial presentation polish that displace acquisition and
 submission. FR-006/FR-007 document generation is complete; do not reopen for polish
 that displaces live job-search throughput.

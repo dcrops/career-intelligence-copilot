@@ -1,7 +1,7 @@
 # Masterclass packaging — implementation note
 
-**Date:** 2026-08-07 (updated: Interview Brief + Interview Deck layers)  
-**Scope:** FR-016 and FR-017 packages; pattern for future frozen FRs  
+**Date:** 2026-08-07 (updated: Interview Brief + Interview Deck layers; FR-018 package)  
+**Scope:** FR-016, FR-017, and FR-018 packages; pattern for future frozen FRs  
 **Related:** [masterclass/README.md](README.md),
 [LEAN_MASTERCLASS_STANDARD.md](LEAN_MASTERCLASS_STANDARD.md),
 [MASTERCLASS_GENERATOR_LEAN.md](MASTERCLASS_GENERATOR_LEAN.md),
@@ -9,6 +9,7 @@
 [INTERVIEW_DECK_STANDARD.md](INTERVIEW_DECK_STANDARD.md),
 [FR016/MANIFEST.md](FR016/MANIFEST.md),
 [FR017/MANIFEST.md](FR017/MANIFEST.md),
+[FR018/MANIFEST.md](FR018/MANIFEST.md),
 `scripts/build_masterclass_package.py`
 
 ## How authoritative documentation is preserved

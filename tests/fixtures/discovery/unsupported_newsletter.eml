@@ -1,0 +1,22 @@
+From: News <news@random-corp.example>
+To: owner@example.com
+Subject: Weekly tech newsletter
+Message-ID: <news-001@random-corp.example>
+MIME-Version: 1.0
+Content-Type: multipart/alternative;
+ boundary="===============2653679296091259112=="
+
+--===============2653679296091259112==
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+
+No jobs here
+
+--===============2653679296091259112==
+Content-Type: text/html; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+MIME-Version: 1.0
+
+<html><body><p>No jobs here</p></body></html>
+
+--===============2653679296091259112==--

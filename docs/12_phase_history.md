@@ -73,8 +73,11 @@ SoT shape, ranking sort key, or Horizon 2 domains (recruiters, networking, meetu
 
 ## Next
 
-**Current focus:** Horizon 1B on owner request — **FR-018 Opportunity Discovery &
-Acquisition** first (FR-018–FR-025) — **not blocked on FR-017**.
+**Current focus:** Horizon 1B — **FR-019 Recruiter Intelligence** on owner request.
+**FR-018 Complete / Frozen / Accepted**
+([eval/fr018_opportunity_discovery_acquisition.md](eval/fr018_opportunity_discovery_acquisition.md);
+[ADR-010](adr/010_opportunity_discovery_ingress.md);
+[package](masterclass/FR018/)).
 **Horizon 1A complete:** FR-008–FR-017 frozen. **FR-017** is **complete and frozen**
 ([acceptance](eval/fr017_agent_evaluation_observability.md);
 [ADR-009](adr/009_orchestration_evaluation_substrate.md);

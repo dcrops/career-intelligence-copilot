@@ -1,0 +1,27 @@
+From: LinkedIn Job Alerts <jobs-listings@linkedin.com>
+To: owner@example.com
+Subject: Your job alert for AI Engineer
+Message-ID: <linkedin-alert-001@linkedin.com>
+MIME-Version: 1.0
+Content-Type: multipart/alternative;
+ boundary="===============3262587421378274957=="
+
+--===============3262587421378274957==
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+
+Senior AI Engineer https://www.linkedin.com/jobs/view/4429615445
+
+--===============3262587421378274957==
+Content-Type: text/html; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+MIME-Version: 1.0
+
+<html><body>
+  <p><a href=3D"https://www.linkedin.com/jobs/view/4429615445">Senior AI Engi=
+neer</a>
+     =E2=80=94 Fyndr Group =E2=80=94 Melbourne</p>
+  <p>Build production AI systems.</p>
+  </body></html>
+
+--===============3262587421378274957==--

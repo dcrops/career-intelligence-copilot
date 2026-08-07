@@ -1,7 +1,7 @@
 <!--
 GENERATED MASTERCLASS SNAPSHOT — DO NOT EDIT BY HAND.
 Authoritative source: docs/07_testing_strategy.md
-Mode: section snapshot ('### FR-017 coverage (M1–M4 — frozen)' → '**Spike rule:**')
+Mode: section snapshot ('### FR-017 coverage (M1–M4 — frozen)' → '### FR-018 coverage (M1–M4 — frozen)')
 Regenerate: python scripts/build_masterclass_package.py <FR_ID>
 Repository documentation remains the source of truth.
 -->

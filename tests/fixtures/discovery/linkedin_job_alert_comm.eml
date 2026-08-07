@@ -1,0 +1,51 @@
+From: LinkedIn Job Alerts <jobalerts-noreply@linkedin.com>
+To: owner@example.com
+Subject: Your job alerts for AI Engineer in Melbourne
+Message-ID: <linkedin-comm-alert-001@linkedin.com>
+MIME-Version: 1.0
+Content-Type: multipart/alternative;
+ boundary="===============5653600027568371341=="
+
+--===============5653600027568371341==
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+
+Your job alert for software engineer in Greater Melbourne Area
+New jobs match your preferences.
+
+AI Software Engineer (Back End)
+Maincode
+Melbourne, VIC
+View job: https://www.linkedin.com/comm/jobs/view/4381552675/?trackingId=abc
+
+---------------------------------------------------------
+
+AI GTM Engineer
+pay.com.au
+Melbourne, VIC
+
+This company is actively hiring
+View job: https://www.linkedin.com/comm/jobs/view/4444879919/?trackingId=def
+
+---------------------------------------------------------
+
+Legacy path still works
+Fyndr Group
+Melbourne, VIC
+View job: https://www.linkedin.com/jobs/view/4429615445
+
+--===============5653600027568371341==
+Content-Type: text/html; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+MIME-Version: 1.0
+
+<html><body>
+  <p><a href=3D"https://www.linkedin.com/comm/jobs/view/4381552675/?trackingI=
+d=3Dabc"></a></p>
+  <p><a href=3D"https://www.linkedin.com/comm/jobs/view/4444879919/?trackingI=
+d=3Ddef"></a></p>
+  <p><a href=3D"https://www.linkedin.com/jobs/view/4429615445">Legacy path st=
+ill works</a></p>
+  </body></html>
+
+--===============5653600027568371341==--

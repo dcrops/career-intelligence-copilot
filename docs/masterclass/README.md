@@ -89,8 +89,8 @@ python scripts/render_masterclass_pdf.py docs/masterclass/FRnnn/Engineering_Mast
 
 ### Interview Brief + Interview Deck
 
-Required for future completed FRs (FR-018+) once deep-learning artefacts exist.
-(FR-018 is **Opportunity Discovery & Acquisition** after roadmap § 1.115; do not
+Required for future completed FRs (FR-019+) once deep-learning artefacts exist.
+(FR-018 is packaged — Opportunity Discovery & Acquisition; do not
 assume Recruiter Intelligence.)
 Structure and slide count are defined in the standards above — **no rediscovery**.
 
@@ -150,6 +150,7 @@ Lean Masterclass → PDF → Gamma Learning Presentation → Interview Brief →
 | [FR001/](FR001/) … [FR015/](FR015/) | Placeholders — package when owner requests |
 | [FR016/](FR016/) | Packaged — Multi-Agent Orchestration |
 | [FR017/](FR017/) | Packaged — Agent Evaluation & Observability |
+| [FR018/](FR018/) | Packaged — Opportunity Discovery & Acquisition |
 | [PROJECT/](PROJECT/) | Future overall CIC Masterclass |
 | [SUBSYSTEMS/](SUBSYSTEMS/) | Future subsystem Masterclasses |
 | [PACKAGING.md](PACKAGING.md) | Snapshot packaging rules |

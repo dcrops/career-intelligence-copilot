@@ -49,7 +49,7 @@ prior Horizon 1B recruiter/network/market FRs and Horizon 2 FRs shifted +1 — s
 | **Phase 1** — Product Definition | **Complete** |
 | **Phase 2** — Job Intelligence MVP | **Complete** ([release report](eval/phase2_release_report.md)) |
 | **Horizon 1A** — Job application workflow | **Complete** (FR-008–FR-017 frozen; Horizon 1B next when owner chooses) |
-| **Horizon 1B** — Scaled acquisition and market engagement | Not started (FR-018–FR-025; **FR-018** Opportunity Discovery & Acquisition first; **not blocked on FR-017**) |
+| **Horizon 1B** — Scaled acquisition and market engagement | **FR-018 Complete / Frozen** ([acceptance](eval/fr018_opportunity_discovery_acquisition.md)); next **FR-019**; FR-020–FR-025 planned |
 | **Horizon 2** — Platform capabilities | Not started (FR-026+) |
 
 Narrative history of completed phases: [12_phase_history.md](12_phase_history.md).
@@ -120,15 +120,14 @@ CSV bridge connect to `applications/`.
 
 ---
 
-## Current Focus — Horizon 1A complete; Horizon 1B next (owner choice)
+## Current Focus — Horizon 1A + FR-018 complete; FR-019 next (owner choice)
 
-FR-008–FR-017 are **complete and frozen**. Next product focus is **Horizon 1B**
-(FR-018+) when the owner requests it — gated on usable application loop
-(FR-008–FR-015), **not** on FR-017.
+FR-008–FR-018 are **complete and frozen**. Next product focus is **FR-019
+Recruiter Intelligence** when the owner requests it.
 
-**First Horizon 1B FR:** **FR-018 Opportunity Discovery & Acquisition** — scale
-lawful inflow of suitable opportunities into the frozen FR-008/FR-009 path.
-Recruiter Intelligence is **FR-019** (not first). See § 1.115 remapping.
+**FR-018 Opportunity Discovery & Acquisition** scaled lawful inflow (SEEK URL +
+email alerts with URL enrich) into the frozen FR-008/FR-009 path —
+[acceptance](eval/fr018_opportunity_discovery_acquisition.md).
 
 **Objective:** Discover, assess, prepare, review, submit and track suitable
 applications — then scale acquisition — before recruiter outreach or networking
@@ -180,9 +179,10 @@ FR-017 Agent Evaluation & Observability  ← Complete / Frozen
 | **Completed** | **FR-014** (2026-08-05) | Recruiter document truth validation — **complete and frozen**; [acceptance](eval/fr014_recruiter_document_truth_validation.md); [M0](eval/fr014_m0_engineering_spike.md)–[M4](eval/fr014_m4_claim_validation.md); [ADR-006](adr/006_recruiter_document_truth_validation.md) |
 | **Completed** | **FR-015** (2026-08-05) | Bounded Agentic Workflow — **complete and frozen**; BOPA; [acceptance](eval/fr015_bounded_agentic_workflow.md); [M0](eval/fr015_m0_engineering_spike.md)–[M4](eval/fr015_m4_evaluation.md); [ADR-007](adr/007_bounded_agentic_workflow.md) |
 | **Done** | **FR-016** | Multi-Agent Orchestration — **Complete / Frozen / Accepted** (learning proof; prefer `cic agent run`; Academy package — [acceptance](eval/fr016_multi_agent_orchestration.md); [package](masterclass/FR016/); [M4](eval/fr016_m4_evaluation.md); [ADR-008](adr/008_multi_agent_orchestration.md) |
-| **Now** | **Horizon 1B / FR-018** | Opportunity Discovery & Acquisition — owner request required; **not blocked on FR-017** |
+| **Done** | **FR-018** | Opportunity Discovery & Acquisition — **Complete / Frozen / Accepted** ([acceptance](eval/fr018_opportunity_discovery_acquisition.md); [ADR-010](adr/010_opportunity_discovery_ingress.md); [package](masterclass/FR018/); SEEK URL + email alerts with URL enrich) |
 | Just completed | **FR-017** | Agent Evaluation & Observability — **Complete / Frozen** ([acceptance](eval/fr017_agent_evaluation_observability.md); [ADR-009](adr/009_orchestration_evaluation_substrate.md); [package](masterclass/FR017/)) |
-| **After FR-018** | **Horizon 1B (FR-019–FR-025)** | Recruiters, outreach, meetups, LinkedIn, market |
+| **Now** | **FR-019** | Recruiter Intelligence — on owner request |
+| **After FR-019** | **Horizon 1B (FR-020–FR-025)** | Outreach, meetups, LinkedIn, market |
 
 ### FR-008 completion summary
 
@@ -361,18 +361,22 @@ Phase 2 documentation remains a **stable baseline**. Prefer additive changes.
 
 ## Horizon 1B — Scaled Acquisition and Market Engagement (FR-018–FR-025)
 
-**Status:** Not started (documentation remapped 2026-08-07 — changelog § 1.115).
-Gated on usable Horizon 1A **application loop** (FR-008–FR-015). **Not blocked on
-FR-017** ([eval/fr017_m0_engineering_spike.md](eval/fr017_m0_engineering_spike.md) §9).
+**Status:** **FR-018 Complete / Frozen / Accepted** (2026-08-07) —
+[eval/fr018_opportunity_discovery_acquisition.md](eval/fr018_opportunity_discovery_acquisition.md);
+[ADR-010](adr/010_opportunity_discovery_ingress.md); Academy
+[masterclass/FR018/](masterclass/FR018/). SEEK URL + email job-alert channels
+(email discovers; URL enrich for card-only alerts); LinkedIn/Indeed URL
+attempt/fail-closed. **Next:** FR-019 on owner request.
 
-**Lead FR:** Opportunity Discovery & Acquisition — feed the frozen Horizon 1A
-pipeline. Recruiter / network / content / market work follows. Owner approval
-required before FR-018 planning/M0 or implementation. No scrape-first design.
+**Lead FR (done):** Opportunity Acquisition Framework — thin Discovery Ingress +
+URL / email adapters (`cic opportunity discover`, `discover-email`). Recruiter /
+network / content / market work follows (FR-019+). No scrape-first / Playwright
+in FR-018.
 
 | FR | Capability |
 |----|------------|
-| FR-018 | Opportunity Discovery & Acquisition |
-| FR-019 | Recruiter Intelligence |
+| FR-018 | Opportunity Discovery & Acquisition (**Complete / Frozen**) |
+| FR-019 | Recruiter Intelligence (**next**) |
 | FR-020 | Recruiter Outreach |
 | FR-021 | Existing Connection Outreach |
 | FR-022 | LinkedIn Network Intelligence |

@@ -1,7 +1,7 @@
 <!--
 GENERATED MASTERCLASS SNAPSHOT — DO NOT EDIT BY HAND.
 Authoritative source: docs/04_functional_specification.md
-Mode: section snapshot ('## FR-017 Agent Evaluation & Observability' → '## Horizon 1B — Recruiter and Market Engagement (FR-018–FR-024)')
+Mode: section snapshot ('## FR-017 Agent Evaluation & Observability' → '## Horizon 1B — Scaled Acquisition and Market Engagement (FR-018–FR-025)')
 Regenerate: python scripts/build_masterclass_package.py <FR_ID>
 Repository documentation remains the source of truth.
 -->

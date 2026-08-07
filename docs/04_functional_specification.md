@@ -797,16 +797,16 @@ are **out of scope** for FR-008.
 
 ### Preferred acquisition methods (reliability / compliance order)
 
-1. Supported APIs or structured feeds where available *(future — FR-018)*
-2. Job-alert email ingestion *(future — FR-018)*
-3. Saved-search notifications *(future — FR-018)*
-4. User-supplied job URLs *(future — FR-018)*
+1. Supported APIs or structured feeds where available *(future — later FR-018 channels / successor)*
+2. Job-alert email ingestion ✅ *(FR-018 — owner-saved `.eml`; URL enrich when card-only)*
+3. Saved-search notifications *(future)*
+4. User-supplied job URLs ✅ *(FR-018 — SEEK production; LinkedIn/Indeed attempt)*
 5. User-supplied pasted job descriptions ✅
 6. Exported or downloaded job data ✅
-7. Playwright-assisted browser workflows where necessary *(deferred — FR-018 last resort)*
+7. Playwright-assisted browser workflows where necessary *(deferred — later FR; not FR-018 exit)*
 
 Further discovery/acquisition beyond paste/export is **FR-018 Opportunity Discovery &
-Acquisition** (Horizon 1B lead). FR-008 exit criteria remain frozen.
+Acquisition** (Horizon 1B — **complete / frozen**). FR-008 exit criteria remain frozen.
 
 ### Explicitly avoid as default design
 
@@ -1491,10 +1491,10 @@ established identifier. **FR-015** Bounded Agentic Workflow is **complete and fr
 [acceptance](eval/fr016_multi_agent_orchestration.md)).
 **FR-017** Agent Evaluation & Observability is **complete and frozen**
 ([acceptance](eval/fr017_agent_evaluation_observability.md)).
-Next product focus: **Horizon 1B** starting with **FR-018 Opportunity Discovery &
-Acquisition** on owner request — **not gated on FR-017**; do not auto-start.
-Recruiter Intelligence is **FR-019**. Remap: [11_changelog.md](11_changelog.md)
-§ 1.115.
+Next product focus: **FR-019 Recruiter Intelligence** on owner request.
+**FR-018 Opportunity Discovery & Acquisition** is **complete and frozen**
+([eval/fr018_opportunity_discovery_acquisition.md](eval/fr018_opportunity_discovery_acquisition.md)).
+Remap: [11_changelog.md](11_changelog.md) § 1.115; freeze § 1.125.
 
 Distinguish: (A) candidate claims (require candidate evidence); (B) employer-context
 statements (JD evidence OK; must not become candidate capability); (C) aspirational /
@@ -1652,8 +1652,8 @@ Acceptance Criteria (frozen)
 
 ## Horizon 1B — Scaled Acquisition and Market Engagement (FR-018–FR-025)
 
-**Status:** Planned — after Horizon 1A **application loop** is usable
-(FR-008–FR-015). **Not blocked on FR-017**
+**Status:** **FR-018 Complete / Frozen**; FR-019+ planned — after Horizon 1A
+**application loop** is usable (FR-008–FR-015). **Not blocked on FR-017**
 ([eval/fr017_m0_engineering_spike.md](eval/fr017_m0_engineering_spike.md) §9).  
 *(Recruiter/network FRs previously FR-018–FR-024; remapped 2026-08-07 — changelog
 § 1.115. Opportunity Discovery & Acquisition leads.)*
@@ -1677,15 +1677,46 @@ Do not design FR-018 as uncontrolled crawling or “web scraping.”
 ## FR-018 Opportunity Discovery & Acquisition
 
 **Phase:** Horizon 1B (lead)  
-**Status:** Planned — ready for planning; M0 not started  
-*(Inserted 2026-08-07 — changelog § 1.115. Extends the FR-008 acquisition adapter
-boundary additively; does not reopen FR-008–FR-017. Synonym in older notes: Job
-Discovery.)*
+**Status:** **Complete / Frozen / Accepted**
+([eval/fr018_opportunity_discovery_acquisition.md](eval/fr018_opportunity_discovery_acquisition.md);
+[ADR-010](adr/010_opportunity_discovery_ingress.md); Academy
+[masterclass/FR018/](masterclass/FR018/))  
+*(Inserted 2026-08-07 — changelog § 1.115. M0–M4 + live close-out: § 1.116–1.125.
+Extends the FR-008 acquisition adapter boundary additively; does not reopen
+FR-008–FR-017. Synonym in older notes: Job Discovery. Architecture: permanent
+Opportunity Acquisition Framework — channels as adapters under FR-018.)*
 
 Discover and acquire suitable job advertisements into CIC via lawful source
 adapters, with explicit provenance and idempotent handoff into the frozen
 FR-008/FR-009 Opportunity path. Owner review before apply remains mandatory.
 Prefer APIs, feeds, alerts, exports, and owner URLs over browser automation.
+
+**M0 architecture (accepted):** thin Discovery Ingress
+(resolve → `AcquisitionAdapter` → existing `ApplicationWorkflowRunner` only);
+Opportunity sole durable SoT; **URL-first** first executable path; email/feeds
+later; Playwright last-resort / not near-term.
+
+**M1 delivered:** typed discovery contracts; provenance validators;
+DiscoveryIngress Protocol; ADR-010.
+
+**M2 delivered:** `UrlAcquisitionAdapter`, `ThinDiscoveryIngress`,
+`cic opportunity discover`; SEEK/LinkedIn/Indeed locator support with offline
+fixtures; definite idempotency; fail-closed unsupported/blocked/network. Live
+board HTTP may fail — paste/export remain available. No Playwright.
+
+**M3 delivered:** SEEK production-ready URL path; OS trust-store TLS
+(`truststore.SSLContext`); LinkedIn/Indeed evidence-based fail-closed (no
+Playwright / anti-bot bypass); no new boards.
+
+**M4 delivered (accepted):** Email job-alert channel — owner-saved SEEK / LinkedIn /
+Indeed `.eml` → `EmailAcquisitionAdapter` → optional **URL enrich** via existing
+`UrlAcquisitionAdapter` when the alert is card-only → ingress → Horizon 1A;
+`cic opportunity discover-email`. Digests expand to one Opportunity per job URL.
+Email is a **discovery** mechanism; the job URL acquire path remains the
+authoritative advertisement source when enrichment succeeds. No IMAP, no
+recruiter CRM, no Playwright. Recruiter Intelligence is **FR-019+**.
+
+**Do not reopen** without explicit owner request.
 
 ---
 

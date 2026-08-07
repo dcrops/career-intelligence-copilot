@@ -37,6 +37,11 @@ from career_intelligence.cv_generation import (
     TailoringOptions,
     TailoringPlanGateError,
 )
+from career_intelligence.discovery import (
+    DiscoveryRequest,
+    ThinDiscoveryIngress,
+    opportunity_source_from_url,
+)
 from career_intelligence.opportunities import (
     DEFAULT_EXPORT_PATH,
     INTERVIEW_STAGES,
@@ -303,6 +308,77 @@ def _profile_service(path: Path | None) -> CareerProfileService:
 
 def _opportunity_service(root: Path | None) -> OpportunityService:
     return OpportunityService.from_path(root) if root else OpportunityService()
+
+
+def _workflow_runner_for_discovery(
+    *,
+    opportunities_dir: Path | None,
+    checkpoint_dir: Path | None,
+    profile_path: Path | None,
+    offline_fixtures: bool,
+) -> object:
+    """Build ApplicationWorkflowRunner for discover (live or offline fixtures)."""
+    import os
+
+    from career_intelligence.application_strategy import ApplicationStrategyService
+    from career_intelligence.application_strategy.deterministic_planner import (
+        DeterministicStrategyPlanner,
+    )
+    from career_intelligence.job_analysis import JobAnalysisService
+    from career_intelligence.opportunity_assessment import OpportunityAssessmentService
+    from career_intelligence.orchestration import (
+        ApplicationWorkflowRunner,
+        JsonDirectoryCheckpointStore,
+        WorkflowDependencies,
+    )
+    from career_intelligence.portfolio_matching import PortfolioMatchingService
+    from career_intelligence.portfolio_matching.deterministic_matcher import (
+        DeterministicMatcher,
+    )
+
+    profile_service = _profile_service(profile_path)
+    profile = profile_service.load()
+    opportunities = _opportunity_service(opportunities_dir)
+    store = JsonDirectoryCheckpointStore(
+        checkpoint_dir or Path("data") / "workflow_runs"
+    )
+
+    if offline_fixtures:
+        from career_intelligence.job_analysis.fixture_extractor import FixtureExtractor
+        from career_intelligence.opportunity_assessment.fixture_assessor import (
+            FixtureAssessor,
+        )
+
+        job_analysis = JobAnalysisService(FixtureExtractor())
+        assessment = OpportunityAssessmentService(FixtureAssessor())
+    else:
+        if not os.getenv("OPENAI_API_KEY"):
+            raise SystemExit(
+                "OPENAI_API_KEY is not set. Pass --offline-fixtures for smoke, "
+                "or set the key for live FR-002/FR-003 analysis."
+            )
+        try:
+            import truststore
+
+            truststore.inject_into_ssl()
+        except ImportError:
+            pass
+        from career_intelligence.job_analysis.openai_extractor import OpenAIJobExtractor
+        from career_intelligence.opportunity_assessment.openai_assessor import OpenAIAssessor
+
+        job_analysis = JobAnalysisService(OpenAIJobExtractor())
+        assessment = OpportunityAssessmentService(OpenAIAssessor())
+
+    deps = WorkflowDependencies(
+        profile=profile,
+        job_analysis=job_analysis,
+        assessment=assessment,
+        portfolio_matching=PortfolioMatchingService(DeterministicMatcher()),
+        application_strategy=ApplicationStrategyService(DeterministicStrategyPlanner()),
+        store=store,
+        opportunities=opportunities,
+    )
+    return ApplicationWorkflowRunner(deps)
 
 
 def _package_service(
@@ -644,6 +720,198 @@ def show_opportunity(
     except OpportunityError as error:
         _exit_for_opportunity(error)
     typer.echo(_render(opportunity))
+
+
+@opportunity_app.command("discover")
+def discover_opportunity(
+    url: Annotated[
+        str,
+        typer.Argument(
+            help="Owner-supplied job URL (SEEK production; LinkedIn/Indeed attempt)."
+        ),
+    ],
+    dir: OpportunitiesDirOption = None,
+    checkpoint_dir: Annotated[
+        Path | None,
+        typer.Option(
+            "--checkpoint-dir",
+            help="Workflow checkpoint directory (default data/workflow_runs).",
+        ),
+    ] = None,
+    profile: Annotated[
+        Path | None,
+        typer.Option("--profile", help="Career profile YAML path."),
+    ] = None,
+    force: Annotated[
+        bool,
+        typer.Option(
+            "--force",
+            help="Re-run even when a definite identity match already exists.",
+        ),
+    ] = False,
+    offline_fixtures: Annotated[
+        bool,
+        typer.Option(
+            "--offline-fixtures",
+            help="Use FixtureExtractor/Assessor (injects CIC fixture marker).",
+        ),
+    ] = False,
+) -> None:
+    """Acquire one supported job URL into the frozen Horizon 1A workflow (FR-018).
+
+    Production path: SEEK job URLs are the primary supported live source.
+    LinkedIn/Indeed remain attempt paths that fail closed when boards block or
+    redirect away from a single job advertisement. Thin Discovery Ingress only —
+    does not submit, rank, or replace FR-009.
+
+    For job-alert emails use: cic opportunity discover-email <file.eml>
+    """
+    from career_intelligence.job_analysis.fixtures import MARKER_AI_ENGINEER
+
+    try:
+        source = opportunity_source_from_url(url)
+    except Exception as error:  # noqa: BLE001
+        typer.secho(f"FAILED invalid_url: {error}", fg=typer.colors.RED, err=True)
+        raise typer.Exit(code=1) from error
+
+    opportunities = _opportunity_service(dir)
+    marker = MARKER_AI_ENGINEER if offline_fixtures else None
+
+    def _factory() -> object:
+        return _workflow_runner_for_discovery(
+            opportunities_dir=dir,
+            checkpoint_dir=checkpoint_dir,
+            profile_path=profile,
+            offline_fixtures=offline_fixtures,
+        )
+
+    ingress = ThinDiscoveryIngress(
+        opportunities=opportunities,
+        runner_factory=_factory,  # type: ignore[arg-type]
+        offline_fixture_marker=marker,
+    )
+    outcome = ingress.discover(DiscoveryRequest(sources=[source], force=force))
+    _print_discovery_outcome(outcome)
+
+
+@opportunity_app.command("discover-email")
+def discover_opportunity_email(
+    eml_path: Annotated[
+        Path,
+        typer.Argument(
+            help="Owner-supplied job-alert .eml file (SEEK / LinkedIn / Indeed).",
+            exists=True,
+            dir_okay=False,
+            readable=True,
+        ),
+    ],
+    dir: OpportunitiesDirOption = None,
+    checkpoint_dir: Annotated[
+        Path | None,
+        typer.Option(
+            "--checkpoint-dir",
+            help="Workflow checkpoint directory (default data/workflow_runs).",
+        ),
+    ] = None,
+    profile: Annotated[
+        Path | None,
+        typer.Option("--profile", help="Career profile YAML path."),
+    ] = None,
+    force: Annotated[
+        bool,
+        typer.Option(
+            "--force",
+            help="Re-run even when a definite identity match already exists.",
+        ),
+    ] = False,
+    offline_fixtures: Annotated[
+        bool,
+        typer.Option(
+            "--offline-fixtures",
+            help="Use FixtureExtractor/Assessor (injects CIC fixture marker).",
+        ),
+    ] = False,
+) -> None:
+    """Acquire jobs from a saved job-alert email into Horizon 1A (FR-018 M4).
+
+    Parses SEEK / LinkedIn / Indeed alert ``.eml`` digests into one Opportunity
+    per job URL. Unsupported senders and emails without job links fail closed.
+    Recruiter CRM / outreach mail is out of scope.
+    """
+    from career_intelligence.discovery import (
+        DiscoveryRequest,
+        ThinDiscoveryIngress,
+        opportunity_sources_from_email_file,
+    )
+    from career_intelligence.job_analysis.fixtures import MARKER_AI_ENGINEER
+
+    try:
+        sources = opportunity_sources_from_email_file(eml_path)
+    except Exception as error:  # noqa: BLE001
+        typer.secho(f"FAILED unsupported_source: {error}", fg=typer.colors.RED, err=True)
+        typer.echo(
+            "Hint: save a SEEK / LinkedIn / Indeed *job alert* as .eml. "
+            "Recruiter conversation email is out of scope for FR-018.",
+            err=True,
+        )
+        raise typer.Exit(code=1) from error
+
+    if not sources:
+        typer.secho("FAILED malformed_content: no jobs in email", fg=typer.colors.RED, err=True)
+        raise typer.Exit(code=1)
+
+    typer.echo(f"Parsed {len(sources)} job(s) from {eml_path.name}")
+    opportunities = _opportunity_service(dir)
+    marker = MARKER_AI_ENGINEER if offline_fixtures else None
+
+    def _factory() -> object:
+        return _workflow_runner_for_discovery(
+            opportunities_dir=dir,
+            checkpoint_dir=checkpoint_dir,
+            profile_path=profile,
+            offline_fixtures=offline_fixtures,
+        )
+
+    ingress = ThinDiscoveryIngress(
+        opportunities=opportunities,
+        runner_factory=_factory,  # type: ignore[arg-type]
+        offline_fixture_marker=marker,
+    )
+    outcome = ingress.discover(DiscoveryRequest(sources=sources, force=force))
+    _print_discovery_outcome(outcome)
+    if outcome.failed_count and outcome.acquired_count == 0 and outcome.skipped_count == 0:
+        raise typer.Exit(code=1)
+
+
+def _print_discovery_outcome(outcome: object) -> None:
+    from career_intelligence.discovery import DiscoveryOutcome
+
+    assert isinstance(outcome, DiscoveryOutcome)
+    for item in outcome.items:
+        if item.status == "acquired":
+            typer.secho("ACQUIRED", fg=typer.colors.GREEN)
+            typer.echo(f"opportunity_id: {item.opportunity_id}")
+            typer.echo(f"workflow_run_id: {item.workflow_run_id}")
+            typer.echo(f"locator: {item.source.locator}")
+            if item.message:
+                typer.echo(item.message)
+            typer.echo("Next: cic opportunity show <id>  then  cic opportunity decide …")
+        elif item.status == "skipped":
+            typer.secho("SKIPPED_ALREADY_REPRESENTED", fg=typer.colors.YELLOW)
+            typer.echo(f"matched_opportunity_id: {item.matched_opportunity_id}")
+            typer.echo(f"locator: {item.source.locator}")
+            if item.message:
+                typer.echo(item.message)
+        else:
+            typer.secho(f"FAILED {item.failure_kind}", fg=typer.colors.RED, err=True)
+            typer.echo(f"locator: {item.source.locator}", err=True)
+            if item.message:
+                typer.echo(item.message, err=True)
+
+    typer.echo(
+        f"Summary: acquired={outcome.acquired_count} "
+        f"skipped={outcome.skipped_count} failed={outcome.failed_count}"
+    )
 
 
 @opportunity_app.command("decide")

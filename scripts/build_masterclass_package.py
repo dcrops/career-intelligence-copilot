@@ -117,7 +117,7 @@ PACKAGES: dict[str, PackageSpec] = {
                 "docs/04_functional_specification.md",
                 "sources/functional_specification.md",
                 start_heading="## FR-017 Agent Evaluation & Observability",
-                end_heading="## Horizon 1B — Recruiter and Market Engagement (FR-018–FR-024)",
+                end_heading="## Horizon 1B — Scaled Acquisition and Market Engagement (FR-018–FR-025)",
             ),
             SectionExtract(
                 "docs/06_domain_model.md",
@@ -135,7 +135,7 @@ PACKAGES: dict[str, PackageSpec] = {
                 "docs/07_testing_strategy.md",
                 "sources/testing_strategy.md",
                 start_heading="### FR-017 coverage (M1–M4 — frozen)",
-                end_heading="**Spike rule:**",
+                end_heading="### FR-018 coverage (M1–M4 — frozen)",
             ),
             FullCopy(
                 "docs/eval/fr017_m0_engineering_spike.md",
@@ -155,6 +155,63 @@ PACKAGES: dict[str, PackageSpec] = {
             ),
             FullCopy(
                 "docs/eval/fr017_m4_evaluation.md",
+                "sources/optional/m4.md",
+            ),
+        ),
+    ),
+    "FR018": PackageSpec(
+        fr_id="FR018",
+        sources=(
+            FullCopy(
+                "docs/eval/fr018_opportunity_discovery_acquisition.md",
+                "sources/acceptance.md",
+            ),
+            FullCopy(
+                "docs/adr/010_opportunity_discovery_ingress.md",
+                "sources/adr.md",
+            ),
+            SectionExtract(
+                "docs/04_functional_specification.md",
+                "sources/functional_specification.md",
+                start_heading="## FR-018 Opportunity Discovery & Acquisition",
+                end_heading="## FR-019 Recruiter Intelligence",
+            ),
+            SectionExtract(
+                "docs/06_domain_model.md",
+                "sources/domain_model.md",
+                start_heading="### Opportunity Discovery & Acquisition (FR-018)",
+                end_heading="### Job Posting",
+            ),
+            SectionExtract(
+                "docs/08_implementation_notes.md",
+                "sources/implementation_notes.md",
+                start_heading="## FR-018 Opportunity Discovery & Acquisition (complete / frozen)",
+                end_heading="### FR-008 acquisition foundation (complete — closes FR-008)",
+            ),
+            SectionExtract(
+                "docs/07_testing_strategy.md",
+                "sources/testing_strategy.md",
+                start_heading="### FR-018 coverage (M1–M4 — frozen)",
+                end_heading="**Spike rule:**",
+            ),
+            FullCopy(
+                "docs/eval/fr018_m0_engineering_spike.md",
+                "sources/optional/m0_spike.md",
+            ),
+            FullCopy(
+                "docs/eval/fr018_m1_discovery_contracts.md",
+                "sources/optional/m1.md",
+            ),
+            FullCopy(
+                "docs/eval/fr018_m2_url_discovery_ingress.md",
+                "sources/optional/m2.md",
+            ),
+            FullCopy(
+                "docs/eval/fr018_m3_production_hardening.md",
+                "sources/optional/m3.md",
+            ),
+            FullCopy(
+                "docs/eval/fr018_m4_email_job_alert_acquisition.md",
                 "sources/optional/m4.md",
             ),
         ),

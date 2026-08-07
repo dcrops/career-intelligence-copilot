@@ -1,0 +1,23 @@
+From: SEEK Job Mail <jobmail@seek.com.au>
+To: owner@example.com
+Subject: Your SEEK job alert
+Message-ID: <seek-empty-001@seek.com.au>
+MIME-Version: 1.0
+Content-Type: multipart/alternative;
+ boundary="===============6164603484173162426=="
+
+--===============6164603484173162426==
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+
+No matching jobs today.
+
+--===============6164603484173162426==
+Content-Type: text/html; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+MIME-Version: 1.0
+
+<html><body><p>No matching jobs today. <a href=3D"https://www.seek.com.au/">V=
+isit SEEK</a></p></body></html>
+
+--===============6164603484173162426==--

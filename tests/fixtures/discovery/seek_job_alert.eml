@@ -1,0 +1,31 @@
+From: SEEK Job Mail <jobmail@seek.com.au>
+To: owner@example.com
+Subject: Your SEEK job alert: AI Engineer
+Message-ID: <seek-alert-001@seek.com.au>
+MIME-Version: 1.0
+Content-Type: multipart/alternative;
+ boundary="===============0020378375238660192=="
+
+--===============0020378375238660192==
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+
+AI Engineer https://www.seek.com.au/job/93312273
+Senior AI Engineer https://www.seek.com.au/job/93302836
+
+--===============0020378375238660192==
+Content-Type: text/html; charset="utf-8"
+Content-Transfer-Encoding: 8bit
+MIME-Version: 1.0
+
+<html><body>
+  <h1>New jobs matching AI Engineer</h1>
+  <p><a href="https://www.seek.com.au/job/93312273">AI Engineer</a>
+     at Example AI Labs — Melbourne VIC</p>
+  <p>Build production RAG systems with Python.</p>
+  <p><a href="https://www.seek.com.au/job/93302836">Senior AI Engineer</a>
+     at Contoso — Sydney NSW</p>
+  <p>Lead agentic workflows for enterprise clients.</p>
+  </body></html>
+
+--===============0020378375238660192==--

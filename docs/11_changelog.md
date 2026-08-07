@@ -4,6 +4,174 @@ Records product strategy and engineering knowledge changes. Routine typo fixes a
 
 ---
 
+## Version 1.125
+
+### FR-018 Opportunity Discovery & Acquisition — Accepted / Frozen
+
+**Date:** 2026-08-07.
+
+Owner acceptance complete. FR-018 is **Complete / Frozen / Accepted**. Live
+LinkedIn `.eml` validation: email discovers job URLs; `UrlAcquisitionAdapter`
+supplies full advertisements; Horizon 1A pipeline succeeds (`acquired=6`);
+re-run definite skip (`skipped=6`). Canonical record:
+[eval/fr018_opportunity_discovery_acquisition.md](eval/fr018_opportunity_discovery_acquisition.md);
+[ADR-010](adr/010_opportunity_discovery_ingress.md); Academy
+[masterclass/FR018/](masterclass/FR018/). Next: **FR-019** on owner request.
+Horizon 1A not reopened.
+
+---
+
+## Version 1.124
+
+### FR-018 email → job-URL enrichment (LinkedIn card gap)
+
+**Date:** 2026-08-07.
+
+Live LinkedIn alert emails yield title/company/location cards only (~500 chars),
+which is insufficient for Job Analysis / Assessment / strategy. Email acquire now
+optionally enriches via the existing URL adapter when not using offline fixtures;
+fail-soft keeps the email card if fetch/extract fails. Provenance remains
+`source_kind=email`.
+
+---
+
+## Version 1.123
+
+### FR-018 LinkedIn email — title/company cards + runner error surfacing
+
+**Date:** 2026-08-07.
+
+Live LinkedIn digests put title/company above `View job:` in plaintext; HTML
+anchors are often empty, so AcquisitionResults reached the runner with thin
+snippets and Horizon 1A failed before `persist` (no `opportunity_id`). Parser
+now prefers LinkedIn plaintext cards. Thin ingress surfaces `last_error` when
+the runner fails before id allocation instead of masking it.
+
+---
+
+## Version 1.122
+
+### FR-018 email parser — LinkedIn `/comm/jobs/view/` alerts
+
+**Date:** 2026-08-07.
+
+Live LinkedIn Job Alert digests use `linkedin.com/comm/jobs/view/<id>/`.
+Email URL detection previously matched only `/jobs/view/`, so valid alerts
+failed closed with “No supported job URLs found.” Parser + identity facets now
+accept optional `comm/` and still canonicalise to `/jobs/view/<id>`.
+
+---
+
+## Version 1.121
+
+### FR-018 M4 — email job-alert acquisition
+
+**Date:** 2026-08-07.
+
+Second acquisition channel under the Opportunity Acquisition Framework: owner
+saves SEEK / LinkedIn / Indeed job-alert `.eml` → parse → thin Discovery Ingress
+→ `AcquisitionResult(source_kind=email)` → frozen Horizon 1A. CLI:
+`cic opportunity discover-email`. Digests expand to one Opportunity per job URL;
+FR-009 definite identity reused; unsupported senders fail closed. No IMAP, no
+recruiter CRM, no Playwright. **Verdict: GO TO ACCEPTANCE.**
+
+Evidence: [eval/fr018_m4_email_job_alert_acquisition.md](eval/fr018_m4_email_job_alert_acquisition.md).
+
+---
+
+## Version 1.120
+
+### FR-018 M3 — production hardening & source expansion
+
+**Date:** 2026-08-07.
+
+SEEK URL path production-hardened: stable AU canonical, extract/title polish,
+OS trust-store TLS via `truststore.SSLContext` in `UrllibHttpClient` (conda
+`SSL_CERT_FILE` CA was the local defect — not architecture). LinkedIn slug
+normalisation + fail-closed listing/redirect gates; Indeed remains Cloudflare
+403. No Playwright; no new boards; ingress stays thin.
+**Verdict: GO WITH REVISED SCOPE** — next volume path is email-alert (M4+).
+
+Evidence: [eval/fr018_m3_production_hardening.md](eval/fr018_m3_production_hardening.md).
+
+---
+
+## Version 1.119
+
+### FR-018 post-M2 live URL validation (M3 not started)
+
+**Date:** 2026-08-07.
+
+Owner-controlled live check of the M2 URL path on public SEEK / LinkedIn /
+Indeed / careers URLs. SEEK usable via lawful plain HTTP (system TLS);
+LinkedIn expires to search pages; Indeed Cloudflare 403; careers unsupported.
+Production `UrllibHttpClient` SSL trust fails on this host (`network_failure`).
+**Recommend M3 = A (operationalise URL / SEEK-first)**; email alerts later for
+LinkedIn/Indeed. No Playwright, no M3 implementation.
+
+Evidence: [eval/fr018_post_m2_live_url_validation.md](eval/fr018_post_m2_live_url_validation.md).
+
+---
+
+## Version 1.118
+
+### FR-018 M2 — URL acquisition + thin Discovery Ingress
+
+**Date:** 2026-08-07.
+
+Executable URL-first discovery: `UrlAcquisitionAdapter` (injectable HTTP),
+`ThinDiscoveryIngress`, definite-identity idempotency (FR-009 reuse),
+`cic opportunity discover <url>`. Offline fixtures for SEEK/LinkedIn/Indeed HTML.
+Live sample SEEK fetch failed closed (`network_failure`) — no Playwright.
+**Verdict: GO WITH REVISED SCOPE.** Horizon 1A runtime graph unchanged.
+
+Evidence: [eval/fr018_m2_url_discovery_ingress.md](eval/fr018_m2_url_discovery_ingress.md);
+[ADR-010](adr/010_opportunity_discovery_ingress.md).
+
+---
+
+## Version 1.117
+
+### FR-018 M1 — discovery contracts & ingress architecture
+
+**Date:** 2026-08-07.
+
+M1 freezes Opportunity Discovery production contracts after accepted M0 GO:
+`career_intelligence.discovery` (`OpportunitySource`, `DiscoveryRequest` /
+`DiscoveryOutcome`, `DiscoveryIngress` Protocol, URL provenance asserts). Reuses
+FR-008 `AcquisitionAdapter` / `AcquisitionResult`. [ADR-010](adr/010_opportunity_discovery_ingress.md)
+records thin ingress authority (no second orchestrator or Opportunity store).
+URL-first executable adapter/CLI deferred to **M2** (owner redefined M1 as
+contracts-only vs M0’s illustrative milestone table). No Horizon 1A runtime change;
+no network/email/Playwright. Tests: `tests/unit/discovery/test_models_m1.py` (18).
+
+Evidence: [eval/fr018_m1_discovery_contracts.md](eval/fr018_m1_discovery_contracts.md);
+[eval/fr018_m0_engineering_spike.md](eval/fr018_m0_engineering_spike.md).
+
+---
+
+## Version 1.116
+
+### FR-018 M0 — Opportunity Discovery & Acquisition engineering spike (GO)
+
+**Date:** 2026-08-07.
+
+Documentation-only M0 spike for Horizon 1B lead FR. Validates thin **Discovery
+Ingress** (resolve sources → instantiate `AcquisitionAdapter` → invoke existing
+`ApplicationWorkflowRunner` only — not a second orchestrator or Opportunity store).
+Confirms Opportunity as sole durable SoT; OpportunitySource as transient ingress
+metadata. Mechanism comparison pressure-tests URL-first vs email/API/Playwright.
+
+**Verdict:** **GO to M1 under narrow scope** (URL acquisition adapter + thin CLI +
+fixtures + idempotency pre-check). Email/feeds deferred to M2+. Playwright /
+scrape-first / parallel discovery catalogues / Horizon 1A redesign: **NO-GO**.
+No production adapters or runtime changes in this version. M1 awaits owner
+acceptance of M0.
+
+Evidence: [eval/fr018_m0_engineering_spike.md](eval/fr018_m0_engineering_spike.md).
+
+---
+
 ## Version 1.115
 
 ### Horizon 1B reprioritised — Opportunity Discovery & Acquisition leads

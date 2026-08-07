@@ -13,6 +13,10 @@ from .models import OpportunityIdentity, SourceKind
 from .ulid import generate_ulid
 
 _SEEK_JOB_PATH = re.compile(r"^/job/(\d+)/?", re.IGNORECASE)
+_LINKEDIN_SLUG_JOB = re.compile(
+    r"/(?:comm/)?jobs/view/(?:[^/]*-)?(\d{6,})/?$",
+    re.IGNORECASE,
+)
 _INDEED_JK = re.compile(r"^[a-f0-9]{16,32}$", re.IGNORECASE)
 
 
@@ -75,9 +79,8 @@ def derive_source_facets(
         match = _SEEK_JOB_PATH.match(path)
         if match:
             job_id = match.group(1)
-            canonical = urlunparse(
-                (parsed.scheme or "https", parsed.netloc, f"/job/{job_id}", "", "", "")
-            )
+            # Stable AU canonical — host variants (www / au.seek.com) share identity.
+            canonical = f"https://www.seek.com.au/job/{job_id}"
             return "seek", job_id, canonical
         return "seek", None, _strip_query_fragment(parsed)
 
@@ -88,9 +91,13 @@ def derive_source_facets(
             job_id = job_ids[0]
             canonical = f"https://www.linkedin.com/jobs/view/{job_id}"
             return "linkedin", job_id, canonical
-        view_match = re.search(r"/jobs/view/(\d+)", path)
+        view_match = re.search(r"/(?:comm/)?jobs/view/(\d+)/?", path)
         if view_match:
             job_id = view_match.group(1)
+            return "linkedin", job_id, f"https://www.linkedin.com/jobs/view/{job_id}"
+        slug_match = _LINKEDIN_SLUG_JOB.search(path)
+        if slug_match:
+            job_id = slug_match.group(1)
             return "linkedin", job_id, f"https://www.linkedin.com/jobs/view/{job_id}"
         return "linkedin", None, None
 
@@ -101,6 +108,7 @@ def derive_source_facets(
             jk = jk_values[0]
             canonical = f"https://www.indeed.com/viewjob?jk={jk}"
             return "indeed", jk, canonical
+        # Also accept /viewjob paths that put jk in the path rarely — keep query-only.
         return "indeed", None, _strip_query_fragment(parsed)
 
     return "other", None, _strip_query_fragment(parsed)
