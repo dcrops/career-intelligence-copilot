@@ -12,6 +12,9 @@ Files in `sources/` are **generated snapshots** — regenerate; do not hand-edit
 python scripts/build_masterclass_package.py FR018
 ```
 
+That command regenerates `sources/` Markdown **and** sibling PDFs for required +
+optional snapshots (and the Lean Masterclass PDF when present).
+
 ---
 
 ## What this Functional Requirement teaches
@@ -79,8 +82,9 @@ readiness, Academy-transferable lesson on validation-driven design.
 FR018/
   README.md
   MANIFEST.md
-  sources/          ← regenerable snapshots
-    optional/       ← M0–M4 milestone mirrors
+  Engineering_Masterclass_003_FR018.md|.pdf
+  sources/          ← regenerable snapshots + sibling .pdf
+    optional/       ← M0–M4 milestone mirrors + sibling .pdf
 ```
 
 CLI demos (repository, not packaged as SoT):
@@ -88,6 +92,17 @@ CLI demos (repository, not packaged as SoT):
 
 ## Generated Masterclass
 
-Lean Masterclass / PDF / Gamma / Interview Brief / Deck are **not** generated in
-this close-out unless the owner requests them separately. Follow
-[LEAN_MASTERCLASS_STANDARD.md](../LEAN_MASTERCLASS_STANDARD.md) when asked.
+| Artefact | Path |
+|----------|------|
+| Lean Masterclass (Markdown) | [Engineering_Masterclass_003_FR018.md](Engineering_Masterclass_003_FR018.md) |
+| Official PDF study edition | [Engineering_Masterclass_003_FR018.pdf](Engineering_Masterclass_003_FR018.pdf) |
+| Source + optional PDFs | Sibling `.pdf` next to each file under [sources/](sources/) |
+
+```powershell
+python scripts/build_masterclass_package.py FR018
+# or PDFs only:
+python scripts/render_masterclass_pdf.py --package FR018
+```
+
+Gamma Learning Presentation / Interview Brief / Deck are separate owner requests.
+Follow [LEAN_MASTERCLASS_STANDARD.md](../LEAN_MASTERCLASS_STANDARD.md).

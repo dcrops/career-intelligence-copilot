@@ -40,6 +40,13 @@ _YEARS_RE = re.compile(
     re.IGNORECASE,
 )
 
+# Overall career positioning (default identity) — multi-domain, not domain-only.
+_OVERALL_POSITIONING_RE = re.compile(
+    r"(Experienced engineer with\s+\d+\+?\s*years?\s+across\s+"
+    r"[^.]{10,200})",
+    re.IGNORECASE,
+)
+
 _PORTFOLIO_ACROSS_RE = re.compile(
     r"(?:independent\s+)?AI Engineering portfolio work across\s+([^.;]+)",
     re.IGNORECASE,
@@ -101,6 +108,7 @@ class SummaryEvidence:
     source_summary: str
     tech_focus: tuple[str, ...]
     primary_theme: str | None
+    overall_positioning: str | None
     commercial_years: str | None
     portfolio_domains: str | None
     portfolio_domain_parts: tuple[str, ...]
@@ -182,6 +190,13 @@ def gather_summary_evidence(
     years_match = _YEARS_RE.search(source_summary)
     commercial_years = years_match.group(1) if years_match else None
 
+    overall_match = _OVERALL_POSITIONING_RE.search(source_summary)
+    overall_positioning = (
+        overall_match.group(1).strip().rstrip(".")
+        if overall_match
+        else None
+    )
+
     portfolio_match = _PORTFOLIO_ACROSS_RE.search(source_summary)
     portfolio_domains = (
         portfolio_match.group(1).strip().rstrip(",")
@@ -207,6 +222,7 @@ def gather_summary_evidence(
         source_summary=source_summary,
         tech_focus=tuple(tech_focus),
         primary_theme=primary_theme,
+        overall_positioning=overall_positioning,
         commercial_years=commercial_years,
         portfolio_domains=portfolio_domains,
         portfolio_domain_parts=portfolio_domain_parts,
@@ -290,7 +306,10 @@ def apply_summary_bolding(
         return out
 
     brand_phrases: list[str] = []
-    if evidence.commercial_years:
+    if evidence.overall_positioning:
+        brand_phrases.append(evidence.overall_positioning)
+    elif evidence.commercial_years:
+        # Supporting DE tenure only when overall positioning is absent.
         brand_phrases.append(
             f"{evidence.commercial_years} years of commercial enterprise "
             "Data Engineering"
@@ -394,8 +413,24 @@ def validate_summary_composition(
 
 def _compose_who_paragraph(evidence: SummaryEvidence) -> str:
     """Paragraph 1 — stable personal brand: why interview this engineer."""
+    if evidence.production_minded:
+        product = "production-minded AI applications"
+    elif evidence.builds_end_to_end:
+        product = "end-to-end AI applications"
+    else:
+        product = "AI applications"
+
+    # Prefer overall multi-domain positioning when present in the profile summary.
+    if evidence.overall_positioning:
+        lead = evidence.overall_positioning
+        return (
+            f"{lead}. Builds {product} with software engineering discipline."
+        )
+
     role = evidence.brand_role
 
+    # Domain-specific DE tenure is supporting evidence only — never the default
+    # identity when overall positioning is absent.
     if evidence.commercial_years and evidence.portfolio_domains:
         credibility = (
             f"{role} with {evidence.commercial_years} years of commercial "
@@ -419,15 +454,6 @@ def _compose_who_paragraph(evidence: SummaryEvidence) -> str:
     else:
         return f"{role} designing and building AI applications."
 
-    if evidence.production_minded:
-        product = "production-minded AI applications"
-    elif evidence.builds_end_to_end:
-        product = "end-to-end AI applications"
-    else:
-        product = "AI applications"
-
-    # Credibility first; a short second sentence establishes what they build
-    # without role-specific technology (that belongs in paragraph 2).
     return (
         f"{credibility} Builds {product} with software engineering discipline."
     )
@@ -623,6 +649,13 @@ def _extract_methodology_sentence(
 
 def _supporting_body_without_role_prefix(source_summary: str, role: str) -> str | None:
     body = source_summary.strip()
+    overall = _OVERALL_POSITIONING_RE.search(body)
+    if overall:
+        remainder = body[overall.end() :].lstrip(" .")
+        if remainder:
+            remainder = remainder[0].upper() + remainder[1:]
+            return remainder
+        return None
     if body.casefold().startswith(role.casefold()):
         remainder = body[len(role) :].lstrip(" ,.-")
         if remainder.casefold().startswith("with "):

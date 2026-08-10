@@ -493,17 +493,10 @@ def _build_closing_strategy(
 
 
 def _profile_credibility_claim(summary: str, target_role: str) -> str:
-    lowered = summary.casefold()
-    if "3.5 years" in lowered and "data engineering" in lowered:
-        return (
-            f"{target_role} with 3.5 years of commercial enterprise Data Engineering "
-            "experience and an independent AI Engineering portfolio."
-        )
-    if "data engineering" in lowered:
-        first = summary.split(".")[0].strip()
-        return first if first else summary[:200]
-    first = summary.split(".")[0].strip()
-    return first if first else f"{target_role} with evidence-backed AI delivery."
+    first = summary.split(".")[0].strip() if summary else ""
+    if first:
+        return first
+    return f"{target_role} with evidence-backed AI delivery."
 
 
 def _project_by_id(profile: CareerProfile, project_id: str) -> Project | None:

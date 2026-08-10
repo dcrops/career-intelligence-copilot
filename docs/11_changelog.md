@@ -4,6 +4,37 @@ Records product strategy and engineering knowledge changes. Routine typo fixes a
 
 ---
 
+## Version 1.127
+
+### Career experience positioning — overall engineering maturity
+
+**Date:** 2026-08-10.
+
+Default career identity is now overall engineering maturity: **experienced
+engineer with 10+ years across testing, automation, data engineering and applied
+AI engineering**. “3.5 years of Data Engineering” is no longer the headline
+representation (nbn DE chronology remains factual where specifically relevant).
+FR-006 summary composition and FR-007 cover-letter paths inherit the profile
+summary; hardcoded “3.5 years” strings removed. FR-014 adds
+`OVERALL_ENGINEERING_EXPERIENCE_DURATION` (chronology-derived multi-domain floor)
+while continuing to block domain-specific 10+ inflation (AI / DE / commercial AI).
+
+---
+
+## Version 1.126
+
+### Academy — automatic PDFs for Masterclass sources and optional docs
+
+**Date:** 2026-08-10.
+
+Masterclass packaging now renders sibling PDFs for the Lean Masterclass (when
+present), every `sources/*.md`, and every `sources/optional/*.md`. Default:
+`python scripts/build_masterclass_package.py FRnnn`. Standalone:
+`python scripts/render_masterclass_pdf.py --package FRnnn`. Skip with `--no-pdf`.
+Documented in [masterclass/PACKAGING.md](masterclass/PACKAGING.md).
+
+---
+
 ## Version 1.125
 
 ### FR-018 Opportunity Discovery & Acquisition — Accepted / Frozen

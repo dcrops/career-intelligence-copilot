@@ -341,9 +341,9 @@ def _compose_opening(
     if strategy == "career_transition_led":
         years = _independent_portfolio_years(profile)
         return (
-            f"After 3.5 years of commercial Data Engineering and the past {years} "
-            f"building independent AI systems, {subject} is a natural next step. "
-            f"I want to {chance}."
+            f"After building depth across testing, automation, data engineering "
+            f"and applied AI, and the past {years} building independent AI systems, "
+            f"{subject} is a natural next step. I want to {chance}."
         )
 
     if strategy == "mission_capability_led":
@@ -796,15 +796,14 @@ def _jd_mentions_stakeholders(plan: CoverLetterPlan) -> bool:
 
 def _credibility_claim_short(profile: CareerProfile) -> str:
     summary = (profile.identity.summary or "").strip()
-    lowered = summary.casefold()
-    if "3.5 years" in lowered and "data engineering" in lowered:
-        return (
-            "I am an AI Engineer with 3.5 years of commercial enterprise Data "
-            "Engineering experience and an independent AI Engineering practice"
-        )
     if summary:
         first = summary.split(".")[0].strip()
+        lowered = first.casefold()
+        if "years across" in lowered and "experienced engineer" in lowered:
+            return first
         if first.casefold().startswith("ai engineer"):
+            return f"I am an {first}"
+        if first.casefold().startswith("experienced engineer"):
             return f"I am an {first}"
         return first
     return f"I am an {profile.identity.target_role}"

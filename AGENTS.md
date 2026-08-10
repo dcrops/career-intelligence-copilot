@@ -238,15 +238,19 @@ Do not leave important knowledge only in chat history.
 
 **Engineering Learning Academy pipeline:** Engineering → Validation → Acceptance →
 Freeze → Masterclass Source Package (`docs/masterclass/FRnnn/`) →
-Lean Masterclass (Markdown) → **Masterclass PDF** → Gamma Learning Presentation
+Lean Masterclass (Markdown) → **Masterclass PDF** (+ sibling PDFs for `sources/`
+and `sources/optional/`) → Gamma Learning Presentation
 (~15–20) → **Interview Brief** (~1 page) → **Interview Deck** (~3–5) →
 Interview Revision / Coaching.
-Regenerate `sources/` snapshots after SoT doc changes; do not hand-edit snapshots.
+Regenerate `sources/` snapshots **and** sibling PDFs after SoT doc changes via
+`python scripts/build_masterclass_package.py FRnnn`; do not hand-edit snapshots or PDFs.
 Do not generate Masterclass presentations in-repo during FR close-out.
 When generating a Masterclass, follow
 [docs/masterclass/LEAN_MASTERCLASS_STANDARD.md](docs/masterclass/LEAN_MASTERCLASS_STANDARD.md)
 and [docs/masterclass/MASTERCLASS_GENERATOR_LEAN.md](docs/masterclass/MASTERCLASS_GENERATOR_LEAN.md),
-then render the PDF with `python scripts/render_masterclass_pdf.py <masterclass.md>`.
+then render package PDFs with
+`python scripts/render_masterclass_pdf.py --package FRnnn`
+(or re-run the package builder). See [docs/masterclass/PACKAGING.md](docs/masterclass/PACKAGING.md).
 Interview Brief / Deck standards:
 [docs/masterclass/INTERVIEW_BRIEF_STANDARD.md](docs/masterclass/INTERVIEW_BRIEF_STANDARD.md),
 [docs/masterclass/INTERVIEW_DECK_STANDARD.md](docs/masterclass/INTERVIEW_DECK_STANDARD.md).

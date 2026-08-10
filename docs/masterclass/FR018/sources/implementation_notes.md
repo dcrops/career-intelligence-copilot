@@ -3,6 +3,7 @@ GENERATED MASTERCLASS SNAPSHOT — DO NOT EDIT BY HAND.
 Authoritative source: docs/08_implementation_notes.md
 Mode: section snapshot ('## FR-018 Opportunity Discovery & Acquisition (complete / frozen)' → '### FR-008 acquisition foundation (complete — closes FR-008)')
 Regenerate: python scripts/build_masterclass_package.py <FR_ID>
+Sibling PDF is rendered automatically by the same command (or: python scripts/render_masterclass_pdf.py --package <FR_ID>).
 Repository documentation remains the source of truth.
 -->
 

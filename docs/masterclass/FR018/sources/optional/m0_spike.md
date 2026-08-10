@@ -3,6 +3,7 @@ GENERATED MASTERCLASS SNAPSHOT — DO NOT EDIT BY HAND.
 Authoritative source: docs/eval/fr018_m0_engineering_spike.md
 Mode: full-file snapshot
 Regenerate: python scripts/build_masterclass_package.py <FR_ID>
+Sibling PDF is rendered automatically by the same command (or: python scripts/render_masterclass_pdf.py --package <FR_ID>).
 Repository documentation remains the source of truth.
 -->
 

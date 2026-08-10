@@ -81,8 +81,9 @@ Academy generators should produce (outside this repository unless later requeste
 - interview-transferable talking points on derive-only observability
 - permanent sections: Runtime Example, Why Employers Care, Validation Summary,
   Memorable Closing Statement
-- **mandatory PDF study edition** via
-  `python scripts/render_masterclass_pdf.py …/Engineering_Masterclass_002_FR017.md`
+- **mandatory package PDFs** (Lean + `sources/` + `sources/optional/`) via
+  `python scripts/build_masterclass_package.py FR017` or
+  `python scripts/render_masterclass_pdf.py --package FR017`
 - **Interview Brief** (~1 page) and **Interview Deck** (~3–5 slides) per
   [INTERVIEW_BRIEF_STANDARD.md](../INTERVIEW_BRIEF_STANDARD.md) and
   [INTERVIEW_DECK_STANDARD.md](../INTERVIEW_DECK_STANDARD.md)

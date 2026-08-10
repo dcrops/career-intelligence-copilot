@@ -59,6 +59,11 @@ python scripts/build_masterclass_package.py FR018
 Snapshots are full-file or mechanical section extracts with a generated banner.
 They must not be hand-edited. Repository paths remain authoritative.
 
+The same command **automatically renders sibling PDFs** for:
+`Engineering_Masterclass_*.md` (when present), every `sources/*.md`, and every
+`sources/optional/*.md`. Use `--no-pdf` for Markdown-only regeneration.
+Standalone: `python scripts/render_masterclass_pdf.py --package FR018`.
+
 ## Recommended generation order
 
 1. `README.md` — teaching frame  
@@ -71,14 +76,18 @@ They must not be hand-edited. Repository paths remain authoritative.
 
 ## Expected outputs
 
-Academy generators should produce (outside this repository unless later requested):
+| Artefact | Status |
+|----------|--------|
+| Lean Masterclass | [Engineering_Masterclass_003_FR018.md](Engineering_Masterclass_003_FR018.md) |
+| Masterclass PDF | [Engineering_Masterclass_003_FR018.pdf](Engineering_Masterclass_003_FR018.pdf) |
+| Source / optional PDFs | Sibling `.pdf` under [sources/](sources/) (automatic with package build) |
+| Gamma Learning Presentation (~15–20) | Owner request |
+| Interview Brief / Interview Deck | Owner request |
 
-- lean Engineering Masterclass narrative per
-  [LEAN_MASTERCLASS_STANDARD.md](../LEAN_MASTERCLASS_STANDARD.md) and
-  [MASTERCLASS_GENERATOR_LEAN.md](../MASTERCLASS_GENERATOR_LEAN.md)
-- Masterclass PDF via `scripts/render_masterclass_pdf.py`
-- Gamma Learning Presentation (~15–20)
-- Interview Brief / Interview Deck per standards
+```powershell
+python scripts/build_masterclass_package.py FR018
+python scripts/render_masterclass_pdf.py --package FR018
+```
 
 ## Teaching emphasis (from live acceptance)
 

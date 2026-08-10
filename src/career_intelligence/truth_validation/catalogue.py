@@ -53,6 +53,15 @@ COMMERCIAL_SOFTWARE_KEY = "commercial_software_engineering"
 INDEPENDENT_ENGINEERING_KEY = "independent_engineering"
 SOFTWARE_ENGINEERING_DURATION_KEY = "software_engineering"
 AI_ENGINEERING_DURATION_KEY = "ai_engineering"
+DATA_ENGINEERING_DURATION_KEY = "data_engineering"
+# Conservative evidence floor for multi-domain "years across …" claims only.
+# Does NOT authorize domain-specific inflation (AI / DE / commercial AI tenure).
+OVERALL_ENGINEERING_EXPERIENCE_DURATION_KEY = "overall_engineering_experience"
+
+_DATA_ENGINEERING_MARKERS = re.compile(
+    r"\b(data\s+engineer|data\s+engineering)\b",
+    re.IGNORECASE,
+)
 
 
 def build_catalogue_from_profile(
@@ -115,6 +124,13 @@ def build_catalogue_from_profile(
             years=years,
             years_known=years_known,
         )
+
+    _add_overall_engineering_duration(
+        seen_keys,
+        entries,
+        profile=profile,
+        as_of=as_of_date,
+    )
 
     for project in profile.projects:
         for tech in project.technologies:
@@ -241,7 +257,8 @@ def catalogue_entry_by_key(
             continue
         if kinds is not None and not any(k in entry.claim_kinds for k in kinds):
             continue
-        if entry.object_key == key:
+        entry_key = normalise_object_key(entry.object_key)
+        if entry.object_key == key or entry_key == key:
             return entry
         if any(normalise_object_key(alias) == key for alias in entry.aliases):
             return entry
@@ -266,6 +283,7 @@ def _add_employment_markers(
     )
     is_ai = bool(_AI_MARKERS.search(text_blob))
     is_software = bool(_SOFTWARE_MARKERS.search(text_blob)) or is_ai
+    is_data_engineering = bool(_DATA_ENGINEERING_MARKERS.search(text_blob))
 
     if experience.kind == "independent_engineering":
         _add_labelled_entry(
@@ -308,6 +326,30 @@ def _add_employment_markers(
 
     if experience.kind != "employment":
         return
+
+    if is_data_engineering:
+        _add_labelled_entry(
+            seen_keys,
+            entries,
+            label="data engineering",
+            claim_kinds=("duration", "domain"),
+            provenance=EvidenceProvenance(
+                source_kind="profile_experience",
+                authority="candidate_authoritative",
+                provenance_ref=f"experience:{experience.id}",
+                excerpt=experience.title,
+            ),
+            employment_kind="commercial",
+            recency=_recency_for_experience(experience),
+            supported_years=years if years_known else None,
+            accumulate_years=years_known,
+            forced_key=DATA_ENGINEERING_DURATION_KEY,
+            extra_aliases=[
+                "data engineering experience",
+                "commercial data engineering",
+                "commercial enterprise data engineering",
+            ],
+        )
 
     if is_software:
         _add_labelled_entry(
@@ -390,6 +432,67 @@ def _add_employment_markers(
             accumulate_years=years_known,
             forced_key=AI_ENGINEERING_DURATION_KEY,
         )
+
+
+def _add_overall_engineering_duration(
+    seen_keys: dict[str, CatalogueEvidenceEntry],
+    entries: list[CatalogueEvidenceEntry],
+    *,
+    profile: CareerProfile,
+    as_of: date,
+) -> None:
+    """Add chronology-derived floor for multi-domain overall engineering claims.
+
+    Does not read identity.summary. Supported years = span from earliest
+    employment / independent_engineering start to as_of.
+    """
+    years = _overall_engineering_years(profile, as_of=as_of)
+    if years is None:
+        return
+    earliest = _earliest_engineering_start(profile)
+    excerpt = (
+        f"Overall engineering chronology from {earliest.isoformat()} "
+        f"({years:g} years as of {as_of.isoformat()})"
+        if earliest is not None
+        else f"Overall engineering chronology ({years:g} years)"
+    )
+    _add_labelled_entry(
+        seen_keys,
+        entries,
+        label="overall engineering experience",
+        claim_kinds=("duration",),
+        provenance=EvidenceProvenance(
+            source_kind="profile_experience",
+            authority="candidate_authoritative",
+            provenance_ref="experience:overall_engineering_span",
+            excerpt=excerpt[:240],
+        ),
+        employment_kind=None,
+        recency="current",
+        supported_years=years,
+        accumulate_years=False,
+        forced_key=OVERALL_ENGINEERING_EXPERIENCE_DURATION_KEY,
+        extra_aliases=[
+            "overall engineering",
+            "engineering experience across testing automation data engineering",
+            "testing automation data engineering and applied ai engineering",
+        ],
+    )
+
+
+def _earliest_engineering_start(profile: CareerProfile) -> date | None:
+    starts: list[date] = []
+    for experience in profile.experience:
+        if experience.kind in {"employment", "independent_engineering"}:
+            starts.append(experience.start_date)
+    return min(starts) if starts else None
+
+
+def _overall_engineering_years(profile: CareerProfile, *, as_of: date) -> float | None:
+    earliest = _earliest_engineering_start(profile)
+    if earliest is None or as_of < earliest:
+        return None
+    return round((as_of - earliest).days / 365.25, 2)
 
 
 def _add_skill_entry(

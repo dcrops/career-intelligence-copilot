@@ -9,7 +9,9 @@ from career_intelligence.truth_validation.catalogue import (
     AI_ENGINEERING_DURATION_KEY,
     COMMERCIAL_AI_KEY,
     COMMERCIAL_SOFTWARE_KEY,
+    DATA_ENGINEERING_DURATION_KEY,
     INDEPENDENT_ENGINEERING_KEY,
+    OVERALL_ENGINEERING_EXPERIENCE_DURATION_KEY,
     SOFTWARE_ENGINEERING_DURATION_KEY,
 )
 from career_intelligence.truth_validation.models import (
@@ -68,6 +70,16 @@ _YEARS = re.compile(
     rf"\b(?P<years>{_YEAR_NUMBER})\s*(?P<plus>\+|plus)?\s+years?\s+"
     r"(?:of\s+)?(?:experience\s+(?:with|in)\s+|of\s+)?(?P<object>[A-Za-z0-9+#.\-/ ]+?)"
     r"(?=(?:\s+(?:experience|development|engineering|work))?\s*(?:[,.!;]|$))",
+    re.I,
+)
+_YEARS_ACROSS = re.compile(
+    rf"\b(?P<years>{_YEAR_NUMBER})\s*(?P<plus>\+|plus)?\s+years?\s+across\s+"
+    r"(?P<object>[^.!?;]+)",
+    re.I,
+)
+_YEARS_AS_ROLE = re.compile(
+    rf"\b(?P<years>{_YEAR_NUMBER})\s*(?P<plus>\+|plus)?\s+years?\s+as\s+"
+    r"(?:an?\s+)?(?P<object>[A-Za-z0-9+#.\-/ ]+?)\s*(?=[,.!;]|$)",
     re.I,
 )
 _NUMBER_WORDS = {
@@ -193,35 +205,127 @@ def _label_hits(sentence: str, offset: int, claim_class: ClaimClass, certainty: 
 
 
 def _duration_hits(sentence: str, offset: int, claim_class: ClaimClass, certainty: str,
-                   catalogue: CandidateEvidenceCatalogue) -> list[DetectedExtendedSpan]:
+                catalogue: CandidateEvidenceCatalogue) -> list[DetectedExtendedSpan]:
     hits = []
-    for match in _YEARS.finditer(sentence):
-        raw_object = match.group("object").strip()
-        key = _resolve_duration_key(raw_object, catalogue)
-        number = _NUMBER_WORDS.get(match.group("years").casefold())
-        claimed = number if number is not None else float(match.group("years"))
-        precision = "minimum" if match.group("plus") else "exact"
-        ambiguous = key is None
-        hits.append(_hit("duration", key or normalise_object_key(raw_object) or "unknown_duration",
-                         match.group(), sentence, claim_class, "ambiguous" if ambiguous else certainty,
-                         offset + match.start(), offset + match.end(), "has_duration",
-                         claimed_years=claimed, years_precision="ambiguous" if ambiguous else precision))
-    return hits
+    for pattern in (_YEARS_ACROSS, _YEARS_AS_ROLE, _YEARS):
+        for match in pattern.finditer(sentence):
+            raw_object = match.group("object").strip()
+            if pattern is _YEARS:
+                raw_object = _extend_duration_object(raw_object, sentence[match.end() :])
+            key = _resolve_duration_key(raw_object, catalogue, pattern=pattern)
+            number = _NUMBER_WORDS.get(match.group("years").casefold())
+            claimed = number if number is not None else float(match.group("years"))
+            precision = "minimum" if match.group("plus") else "exact"
+            ambiguous = key is None
+            hits.append(_hit(
+                "duration",
+                key or normalise_object_key(raw_object) or "unknown_duration",
+                match.group(),
+                sentence,
+                claim_class,
+                "ambiguous" if ambiguous else certainty,
+                offset + match.start(),
+                offset + match.end(),
+                "has_duration",
+                claimed_years=claimed,
+                years_precision="ambiguous" if ambiguous else precision,
+            ))
+    # Prefer longer / more specific matches when overlapping.
+    hits.sort(key=lambda hit: (hit.start, -(hit.end - hit.start), hit.end))
+    deduped: list[DetectedExtendedSpan] = []
+    covered: list[tuple[int, int]] = []
+    for hit in hits:
+        if any(hit.start < end and hit.end > start for start, end in covered):
+            continue
+        deduped.append(hit)
+        covered.append((hit.start, hit.end))
+    return deduped
 
 
-def _resolve_duration_key(label: str, catalogue: CandidateEvidenceCatalogue) -> str | None:
-    candidate = normalise_object_key(label)
+def _extend_duration_object(raw_object: str, remainder: str) -> str:
+    """Attach trailing domain nouns the non-greedy years regex left behind."""
+    trailing = re.match(
+        r"\s+(engineering|development|experience)\b",
+        remainder,
+        re.I,
+    )
+    if not trailing:
+        return raw_object
+    folded = raw_object.casefold()
+    noun = trailing.group(1)
+    if noun.casefold() in folded:
+        return raw_object
+    return f"{raw_object} {noun}".strip()
+
+
+def _resolve_duration_key(
+    label: str,
+    catalogue: CandidateEvidenceCatalogue,
+    *,
+    pattern: re.Pattern[str] | None = None,
+) -> str | None:
+    folded = label.casefold().strip()
+    folded = re.sub(r"\s+experience$", "", folded).strip()
+    candidate = normalise_object_key(folded)
+
+    # Multi-domain "across …" → overall engineering floor only.
+    if pattern is _YEARS_ACROSS or _is_overall_multi_domain_object(folded):
+        return OVERALL_ENGINEERING_EXPERIENCE_DURATION_KEY
+
+    # "years as an AI Engineer" / similar role titles → domain AI duration.
+    if pattern is _YEARS_AS_ROLE:
+        if "ai engineer" in folded or folded in {"ai", "artificial intelligence"}:
+            return AI_ENGINEERING_DURATION_KEY
+        if "data engineer" in folded:
+            return DATA_ENGINEERING_DURATION_KEY
+
+    # Dual-domain inflation without overall "across" framing.
+    if _is_data_and_ai_inflation(folded):
+        return AI_ENGINEERING_DURATION_KEY
+
     for entry in catalogue.entries:
         if "technology" in entry.claim_kinds or "duration" in entry.claim_kinds:
             keys = {entry.object_key, *(normalise_object_key(alias) for alias in entry.aliases)}
             if candidate in keys:
                 return entry.object_key
     aliases = {
-        "software engineering": SOFTWARE_ENGINEERING_DURATION_KEY,
-        "ai engineering": AI_ENGINEERING_DURATION_KEY,
-        "artificial intelligence engineering": AI_ENGINEERING_DURATION_KEY,
+        normalise_object_key("software engineering"): SOFTWARE_ENGINEERING_DURATION_KEY,
+        normalise_object_key("ai engineering"): AI_ENGINEERING_DURATION_KEY,
+        normalise_object_key("applied ai engineering"): AI_ENGINEERING_DURATION_KEY,
+        normalise_object_key("artificial intelligence engineering"): AI_ENGINEERING_DURATION_KEY,
+        normalise_object_key("data engineering"): DATA_ENGINEERING_DURATION_KEY,
+        normalise_object_key("commercial ai engineering"): COMMERCIAL_AI_KEY,
+        normalise_object_key("commercial artificial intelligence engineering"): COMMERCIAL_AI_KEY,
+        normalise_object_key("commercial software engineering"): COMMERCIAL_SOFTWARE_KEY,
+        normalise_object_key("overall engineering experience"): (
+            OVERALL_ENGINEERING_EXPERIENCE_DURATION_KEY
+        ),
+        normalise_object_key("overall engineering"): (
+            OVERALL_ENGINEERING_EXPERIENCE_DURATION_KEY
+        ),
     }
     return aliases.get(candidate)
+
+
+def _is_overall_multi_domain_object(folded: str) -> bool:
+    if "across" not in folded:
+        return False
+    markers = (
+        "testing",
+        "automation",
+        "data engineering",
+        "ai engineering",
+        "applied ai",
+    )
+    return sum(1 for marker in markers if marker in folded) >= 2
+
+
+def _is_data_and_ai_inflation(folded: str) -> bool:
+    if "across" in folded:
+        return False
+    has_data = "data" in folded and "engineering" in folded
+    has_ai = "ai" in folded or "artificial intelligence" in folded
+    return has_data and has_ai
 
 
 def _delivery_hits(sentence: str, offset: int, claim_class: ClaimClass, certainty: str,

@@ -86,7 +86,9 @@ Academy generators should produce (outside this repository unless later requeste
 - Explicit statement: learning proof; prefer direct BOPA for ordinary prep
 - Permanent sections: Runtime Example, Why Employers Care, Validation Summary,
   Memorable Closing Statement
-- **Mandatory PDF study edition** (`scripts/render_masterclass_pdf.py`)
+- **Mandatory package PDFs** — Lean Masterclass + every `sources/` and
+  `sources/optional/` sibling via `python scripts/build_masterclass_package.py FR016`
+  or `python scripts/render_masterclass_pdf.py --package FR016`
 - **Interview Brief** (~1 page) and **Interview Deck** (~3–5 slides) per
   [INTERVIEW_BRIEF_STANDARD.md](../INTERVIEW_BRIEF_STANDARD.md) and
   [INTERVIEW_DECK_STANDARD.md](../INTERVIEW_DECK_STANDARD.md)
@@ -104,5 +106,5 @@ or contradict ADR-008.
 | Minimal manual effort | Regenerable `sources/` + this manifest |
 | No duplicated engineering | Snapshots only; edit SoT in `docs/` |
 | Repository remains authoritative | Banner + regenerate script |
-| Easy regeneration | `scripts/build_masterclass_package.py` |
+| Easy regeneration | `scripts/build_masterclass_package.py` (Markdown + sibling PDFs) |
 | Future-proof | Register new FRs in the build script after freeze |

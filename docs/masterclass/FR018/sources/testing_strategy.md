@@ -3,6 +3,7 @@ GENERATED MASTERCLASS SNAPSHOT — DO NOT EDIT BY HAND.
 Authoritative source: docs/07_testing_strategy.md
 Mode: section snapshot ('### FR-018 coverage (M1–M4 — frozen)' → '**Spike rule:**')
 Regenerate: python scripts/build_masterclass_package.py <FR_ID>
+Sibling PDF is rendered automatically by the same command (or: python scripts/render_masterclass_pdf.py --package <FR_ID>).
 Repository documentation remains the source of truth.
 -->
 

@@ -10,6 +10,13 @@ mirrors for single-folder Academy attachment — do not edit them by hand.
 Usage:
   python scripts/build_masterclass_package.py FR016
   python scripts/build_masterclass_package.py --all
+  python scripts/build_masterclass_package.py FR018 --no-pdf
+
+After writing Markdown snapshots, the builder **also renders sibling PDFs** for:
+  - ``Engineering_Masterclass_*.md`` (Lean study edition, when present)
+  - every ``sources/**/*.md`` (required + optional milestone mirrors)
+
+Use ``--no-pdf`` only for Markdown-only regenerations (e.g. CI without WeasyPrint).
 """
 
 from __future__ import annotations
@@ -227,6 +234,8 @@ def _banner(repo_rel: str, mode: str) -> str:
         f"Mode: {mode}\n"
         "Regenerate: python scripts/build_masterclass_package.py "
         f"<FR_ID>\n"
+        "Sibling PDF is rendered automatically by the same command "
+        "(or: python scripts/render_masterclass_pdf.py --package <FR_ID>).\n"
         "Repository documentation remains the source of truth.\n"
         "-->\n\n"
     )
@@ -282,6 +291,16 @@ def build_package(spec: PackageSpec) -> list[Path]:
     return written
 
 
+def _render_package_pdfs(fr_id: str) -> list[Path]:
+    """Render Lean Masterclass + sources/optional PDFs for one package."""
+    scripts_dir = str(ROOT / "scripts")
+    if scripts_dir not in sys.path:
+        sys.path.insert(0, scripts_dir)
+    from render_masterclass_pdf import render_package_pdfs, resolve_package_root
+
+    return render_package_pdfs(resolve_package_root(fr_id))
+
+
 def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument(
@@ -293,6 +312,11 @@ def main(argv: list[str] | None = None) -> int:
         "--all",
         action="store_true",
         help="Build every registered package",
+    )
+    parser.add_argument(
+        "--no-pdf",
+        action="store_true",
+        help="Skip sibling PDF rendering (Markdown snapshots only)",
     )
     args = parser.parse_args(argv)
 
@@ -318,6 +342,11 @@ def main(argv: list[str] | None = None) -> int:
         print(f"{spec.fr_id}: wrote {len(paths)} snapshot(s)")
         for path in paths:
             print(f"  {path.relative_to(ROOT)}")
+        if not args.no_pdf:
+            pdfs = _render_package_pdfs(spec.fr_id)
+            print(f"{spec.fr_id}: wrote {len(pdfs)} PDF(s)")
+            for path in pdfs:
+                print(f"  {path.relative_to(ROOT)}")
     return 0
 
 

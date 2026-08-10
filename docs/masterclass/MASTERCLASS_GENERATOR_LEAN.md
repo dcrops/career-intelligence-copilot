@@ -81,16 +81,19 @@ interview, and that can later be imported into Gamma.
 - Attach `docs/masterclass/FRnnn/` (README, MANIFEST, `sources/`).  
 - After generation, store the narrative beside the package when the owner requests
   in-repo retention (e.g. `Engineering_Masterclass_00N_FRnnn.md`).  
-- **Mandatory next step:** render the official PDF study edition:
+- **Mandatory next step:** render package PDFs (Lean Masterclass + `sources/` +
+  `sources/optional/`):
 
 ```powershell
-python scripts/render_masterclass_pdf.py docs/masterclass/FRnnn/Engineering_Masterclass_00N_FRnnn.md
+python scripts/render_masterclass_pdf.py --package FRnnn
+# or (also refreshes Markdown snapshots):
+python scripts/build_masterclass_package.py FRnnn
 ```
 
-- Packaging (`sources/` snapshots) is separate from Masterclass generation — see
+- Packaging (`sources/` snapshots + automatic sibling PDFs) — see
   [PACKAGING.md](PACKAGING.md).  
-- Deep learning workflow: Markdown Masterclass → **Masterclass PDF** → Gamma
-  **Learning** Presentation (~15–20).  
+- Deep learning workflow: Markdown Masterclass → **Masterclass PDF** (package-wide)
+  → Gamma **Learning** Presentation (~15–20).  
 - Rapid revision (after deep learning): **Interview Brief** → **Interview Deck**
   → coaching — see [INTERVIEW_BRIEF_STANDARD.md](INTERVIEW_BRIEF_STANDARD.md) and
   [INTERVIEW_DECK_STANDARD.md](INTERVIEW_DECK_STANDARD.md).  

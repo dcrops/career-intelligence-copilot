@@ -42,14 +42,15 @@ from tests.unit.cv_generation.helpers import rich_job_analysis
 
 _REPO = Path(__file__).resolve().parents[2]
 _MASTER_LIKE_SUMMARY = (
-    "AI Engineer applying software engineering discipline to build end-to-end AI "
-    "applications with Python, FastAPI, Docker, and OpenAI APIs. 3.5 years of "
-    "commercial enterprise Data Engineering experience, plus independent AI "
-    "Engineering portfolio work across retrieval systems, operational "
-    "intelligence, explainable AI, and enterprise decision support. Applies a "
-    "disciplined AI Engineering methodology — architecture-first design, "
-    "evidence-based validation, and human-in-the-loop review — to build AI "
-    "systems with traceable, reviewable outputs for operational decision-making."
+    "Experienced engineer with 10+ years across testing, automation, data "
+    "engineering and applied AI engineering. Applies software engineering "
+    "discipline to build end-to-end AI applications with Python, FastAPI, Docker, "
+    "and OpenAI APIs, with independent AI Engineering portfolio work across "
+    "retrieval systems, operational intelligence, explainable AI, and enterprise "
+    "decision support. Applies a disciplined AI Engineering methodology — "
+    "architecture-first design, evidence-based validation, and human-in-the-loop "
+    "review — to build AI systems with traceable, reviewable outputs for "
+    "operational decision-making."
 )
 
 

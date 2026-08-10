@@ -29,8 +29,18 @@ faithfully render the Markdown — no engineering rewrite.
 Render with:
 
 ```powershell
+# Entire package (Lean Masterclass + sources/ + sources/optional/)
+python scripts/render_masterclass_pdf.py --package FRnnn
+
+# Or via package builder (snapshots + PDFs)
+python scripts/build_masterclass_package.py FRnnn
+
+# Single Lean Masterclass file
 python scripts/render_masterclass_pdf.py docs/masterclass/FRnnn/Engineering_Masterclass_00N_FRnnn.md
 ```
+
+Source and optional milestone snapshots also receive sibling PDFs as part of the
+same automatic packaging step — see [PACKAGING.md](PACKAGING.md).
 
 Rapid interview revision (Brief + Deck) is defined separately — see Related. This
 Lean Masterclass standard is **not** shortened or replaced by those artefacts.
@@ -119,8 +129,10 @@ When generating a Masterclass:
 3. Satisfy this standard (spine + permanent sections).  
 4. Do not generate slides, presentation notes, or image prompts unless explicitly requested.  
 5. Do not contradict the FR’s acceptance report or ADRs.  
-6. After the Markdown Masterclass is complete, render the mandatory PDF study
-   edition (`scripts/render_masterclass_pdf.py`) before Gamma.
+6. After the Markdown Masterclass is complete, render package PDFs (Lean study
+   edition **plus** `sources/` and `sources/optional/` siblings) via
+   `scripts/build_masterclass_package.py` or
+   `scripts/render_masterclass_pdf.py --package FRnnn` before Gamma.
 7. After the Gamma Learning Presentation, produce Interview Brief + Interview Deck
    per [INTERVIEW_BRIEF_STANDARD.md](INTERVIEW_BRIEF_STANDARD.md) and
    [INTERVIEW_DECK_STANDARD.md](INTERVIEW_DECK_STANDARD.md) (do not turn them into
@@ -135,6 +147,7 @@ When generating a Masterclass:
 | [README.md](README.md) | Academy index and workflow |
 | [MASTERCLASS_GENERATOR_LEAN.md](MASTERCLASS_GENERATOR_LEAN.md) | Lean Edition generator prompt |
 | [PACKAGING.md](PACKAGING.md) | Source-package snapshot rules |
-| `scripts/render_masterclass_pdf.py` | Markdown → official PDF study edition |
+| `scripts/render_masterclass_pdf.py` | Markdown → PDF (single file or `--package`) |
+| `scripts/build_masterclass_package.py` | Snapshots + automatic sibling PDFs |
 | [INTERVIEW_BRIEF_STANDARD.md](INTERVIEW_BRIEF_STANDARD.md) | Rapid text revision (~1 page) |
 | [INTERVIEW_DECK_STANDARD.md](INTERVIEW_DECK_STANDARD.md) | Rapid visual revision (~3–5 slides) |

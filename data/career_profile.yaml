@@ -10,15 +10,20 @@ schema_version: "1"
 identity:
   full_name: David Cropper
   target_role: AI Engineer
+  # Positioning policy: overall engineering maturity is the default identity.
+  # Do NOT headline domain-only tenure (e.g. "3.5 years of Data Engineering").
+  # Role chronology in experience[] remains authoritative for domain-specific facts.
+  # Forbidden reinterpretations: "10+ years of AI / data / data and AI engineering".
   summary: >-
-    AI Engineer applying software engineering discipline to build end-to-end AI
-    applications with Python, FastAPI, Docker, and OpenAI APIs. 3.5 years of
-    commercial enterprise Data Engineering experience, plus independent AI
-    Engineering portfolio work across retrieval systems, operational
-    intelligence, explainable AI, and enterprise decision support. Applies a
-    disciplined AI Engineering methodology — architecture-first design,
-    evidence-based validation, and human-in-the-loop review — to build AI
-    systems with traceable, reviewable outputs for operational decision-making.
+    Experienced engineer with 10+ years across testing, automation, data
+    engineering and applied AI engineering. Applies software engineering
+    discipline to build end-to-end AI applications with Python, FastAPI, Docker,
+    and OpenAI APIs, with independent AI Engineering portfolio work across
+    retrieval systems, operational intelligence, explainable AI, and enterprise
+    decision support. Applies a disciplined AI Engineering methodology —
+    architecture-first design, evidence-based validation, and human-in-the-loop
+    review — to build AI systems with traceable, reviewable outputs for
+    operational decision-making.
 experience:
   - id: chase-risk-compliance-ai-engineer
     kind: independent_engineering

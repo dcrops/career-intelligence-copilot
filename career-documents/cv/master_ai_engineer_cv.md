@@ -12,9 +12,9 @@ LinkedIn: [linkedin.com/in/david-cropper](https://www.linkedin.com/in/david-crop
 
 ## Professional Summary
 
-AI Engineer applying software engineering discipline to build end-to-end AI applications with **Python, FastAPI, Docker, and OpenAI APIs**.
+**Experienced engineer with 10+ years across testing, automation, data engineering and applied AI engineering.**
 
-**3.5 years of commercial enterprise Data Engineering** experience, plus independent AI Engineering portfolio work across retrieval systems, operational intelligence, explainable AI, and enterprise decision support.
+Applies software engineering discipline to build end-to-end AI applications with **Python, FastAPI, Docker, and OpenAI APIs**, with independent AI Engineering portfolio work across retrieval systems, operational intelligence, explainable AI, and enterprise decision support.
 
 Applies a disciplined **AI Engineering methodology** — architecture-first design, evidence-based validation, and human-in-the-loop review — to build AI systems with traceable, reviewable outputs for operational decision-making.
 

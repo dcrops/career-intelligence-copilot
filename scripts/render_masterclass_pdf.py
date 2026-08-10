@@ -1,12 +1,21 @@
 #!/usr/bin/env python3
-"""Render an Engineering Learning Academy Masterclass Markdown to PDF.
+"""Render Engineering Learning Academy Masterclass Markdown to PDF.
 
-Official study edition. Does not rewrite Masterclass content — formatting only.
+Official study editions. Does not rewrite content — formatting only.
 
 Usage:
-  python scripts/render_masterclass_pdf.py docs/masterclass/FR017/Engineering_Masterclass_002_FR017.md
+  # Lean Masterclass study edition
+  python scripts/render_masterclass_pdf.py \\
+    docs/masterclass/FR018/Engineering_Masterclass_003_FR018.md
+
+  # Entire package: Lean Masterclass (if present) + sources/ + sources/optional/
+  python scripts/render_masterclass_pdf.py --package FR018
+  python scripts/render_masterclass_pdf.py --package docs/masterclass/FR018
 
 Requires: weasyprint (project dependency), markdown (pip install markdown).
+
+Package PDF rendering is also invoked automatically by
+``scripts/build_masterclass_package.py`` after snapshot regeneration.
 """
 
 from __future__ import annotations
@@ -16,6 +25,13 @@ import html
 import re
 import sys
 from pathlib import Path
+
+ROOT = Path(__file__).resolve().parents[1]
+
+_GENERATED_BANNER_RE = re.compile(
+    r"\A\s*<!--.*?-->\s*",
+    re.DOTALL,
+)
 
 
 def _parse_meta(md: str) -> dict[str, str]:
@@ -28,6 +44,11 @@ def _parse_meta(md: str) -> dict[str, str]:
         "status": "",
         "audience": "",
         "functional_requirement": "",
+        "document_type": "Official study edition (PDF)",
+        "footer_note": (
+            "Faithful rendering of the Lean Engineering Masterclass Markdown. "
+            "Canonical engineering remains the FR acceptance report and ADR."
+        ),
     }
     lines = md.splitlines()
     for line in lines[:40]:
@@ -37,7 +58,9 @@ def _parse_meta(md: str) -> dict[str, str]:
             meta["work_title"] = line[3:].strip()
             m = re.search(r"(FR-\d+)\s+(.+)$", meta["work_title"])
             if m:
-                meta["functional_requirement"] = f"{m.group(1)} — {m.group(2).strip()}"
+                meta["functional_requirement"] = (
+                    f"{m.group(1)} — {m.group(2).strip()}"
+                )
             else:
                 m2 = re.search(r"(FR-\d+)\b", meta["work_title"])
                 if m2:
@@ -51,6 +74,57 @@ def _parse_meta(md: str) -> dict[str, str]:
         elif line.startswith("**Audience:**"):
             meta["audience"] = line.split(":**", 1)[1].strip().rstrip(" *")
     return meta
+
+
+def _parse_source_meta(md: str, md_path: Path, package_root: Path) -> dict[str, str]:
+    """Meta for regenerable sources/ and sources/optional/ snapshots."""
+    fr_match = re.search(r"(FR\d{3})", package_root.name, re.IGNORECASE)
+    fr_label = ""
+    if fr_match:
+        digits = fr_match.group(1)[2:]
+        fr_label = f"FR-{int(digits):03d}"
+
+    title = md_path.stem.replace("_", " ")
+    status = ""
+    for line in md.splitlines()[:50]:
+        if line.startswith("# "):
+            title = line[2:].strip()
+            break
+    for line in md.splitlines()[:60]:
+        if line.startswith("**Status:**"):
+            status = line.split(":**", 1)[1].strip().rstrip(" *")
+            break
+
+    try:
+        rel = md_path.relative_to(package_root).as_posix()
+    except ValueError:
+        rel = md_path.name
+
+    fr_from_title = re.search(r"(FR-\d+)\b", title)
+    functional = (
+        f"{fr_from_title.group(1)}" if fr_from_title else fr_label or package_root.name
+    )
+
+    return {
+        "document_title": title,
+        "work_title": f"{package_root.name} — {rel}",
+        "subtitle": "Masterclass source package snapshot",
+        "edition": "Engineering Learning Academy — Source Package snapshot",
+        "status": status,
+        "audience": "Academy generation and study (snapshot; SoT remains authoritative)",
+        "functional_requirement": functional,
+        "document_type": "Source package snapshot (PDF)",
+        "footer_note": (
+            "Faithful rendering of a regenerable Masterclass source snapshot. "
+            "Do not hand-edit; regenerate via "
+            "python scripts/build_masterclass_package.py. "
+            "Repository documentation remains the source of truth."
+        ),
+    }
+
+
+def _strip_generated_banner(md: str) -> str:
+    return _GENERATED_BANNER_RE.sub("", md, count=1).lstrip("\n")
 
 
 def _strip_leading_titles(md: str) -> str:
@@ -296,10 +370,9 @@ def _build_document(meta: dict[str, str], body_html: str, toc_html: str) -> str:
     <tr><th>Edition</th><td>{esc("edition")}</td></tr>
     <tr><th>Status</th><td>{esc("status")}</td></tr>
     <tr><th>Audience</th><td>{esc("audience")}</td></tr>
-    <tr><th>Document type</th><td>Official study edition (PDF)</td></tr>
+    <tr><th>Document type</th><td>{esc("document_type")}</td></tr>
   </table>
-  <p class="footer-note">Faithful rendering of the Lean Engineering Masterclass Markdown.
-Canonical engineering remains the FR acceptance report and ADR.</p>
+  <p class="footer-note">{esc("footer_note")}</p>
 </section>
 {toc_block}
 <section class="body">
@@ -310,12 +383,7 @@ Canonical engineering remains the FR acceptance report and ADR.</p>
 """
 
 
-def render_masterclass_pdf(md_path: Path, pdf_path: Path | None = None) -> Path:
-    md_text = md_path.read_text(encoding="utf-8")
-    meta = _parse_meta(md_text)
-    body_md = _strip_leading_titles(md_text)
-
-    # markdown TOC extension injects [TOC] when present; build separately.
+def _md_to_html(body_md: str) -> tuple[str, str]:
     import markdown
     from markdown.extensions.toc import TocExtension
 
@@ -331,7 +399,41 @@ def render_masterclass_pdf(md_path: Path, pdf_path: Path | None = None) -> Path:
     )
     body_html = md_converter.convert(body_md)
     toc_html = getattr(md_converter, "toc", "") or ""
+    return body_html, toc_html
 
+
+def render_masterclass_pdf(
+    md_path: Path,
+    pdf_path: Path | None = None,
+    *,
+    mode: str = "lean",
+    package_root: Path | None = None,
+) -> Path:
+    """Render one Markdown file to a sibling (or explicit) PDF.
+
+    ``mode``:
+      - ``lean`` — Lean Engineering Masterclass (title-page meta strip)
+      - ``source`` — package ``sources/`` / ``optional/`` snapshot (banner strip only)
+    """
+    md_text = md_path.read_text(encoding="utf-8")
+    if mode == "source":
+        root = package_root
+        if root is None:
+            root = md_path.parent
+            for parent in md_path.parents:
+                if parent.parent.name == "masterclass" and parent.name.startswith(
+                    "FR"
+                ):
+                    root = parent
+                    break
+        cleaned = _strip_generated_banner(md_text)
+        meta = _parse_source_meta(cleaned, md_path, root)
+        body_md = cleaned
+    else:
+        meta = _parse_meta(md_text)
+        body_md = _strip_leading_titles(md_text)
+
+    body_html, toc_html = _md_to_html(body_md)
     document = _build_document(meta, body_html, toc_html)
 
     try:
@@ -346,26 +448,121 @@ def render_masterclass_pdf(md_path: Path, pdf_path: Path | None = None) -> Path:
     return out
 
 
+def iter_package_pdf_targets(package_root: Path) -> list[tuple[Path, str]]:
+    """Return (markdown_path, mode) for Lean Masterclass + sources tree."""
+    package_root = package_root.resolve()
+    targets: list[tuple[Path, str]] = []
+    for md in sorted(package_root.glob("Engineering_Masterclass_*.md")):
+        targets.append((md, "lean"))
+    sources = package_root / "sources"
+    if sources.is_dir():
+        for md in sorted(sources.rglob("*.md")):
+            targets.append((md, "source"))
+    return targets
+
+
+def resolve_package_root(package_arg: str) -> Path:
+    """Resolve ``FR018`` or a path to ``docs/masterclass/FRnnn``."""
+    raw = package_arg.strip()
+    path = Path(raw)
+    if path.is_dir():
+        return path.resolve()
+    key = raw.upper().replace("-", "").replace("_", "")
+    if not key.startswith("FR"):
+        key = f"FR{key}"
+    match = re.fullmatch(r"FR0*(\d+)", key)
+    if match:
+        key = f"FR{int(match.group(1)):03d}"
+    candidate = ROOT / "docs" / "masterclass" / key
+    if not candidate.is_dir():
+        raise FileNotFoundError(f"Masterclass package not found: {candidate}")
+    return candidate.resolve()
+
+
+def render_package_pdfs(package_root: Path) -> list[Path]:
+    """Render Lean Masterclass (if any) and all ``sources/**/*.md`` to PDF."""
+    package_root = package_root.resolve()
+    written: list[Path] = []
+    for md_path, mode in iter_package_pdf_targets(package_root):
+        written.append(
+            render_masterclass_pdf(
+                md_path,
+                mode=mode,
+                package_root=package_root,
+            )
+        )
+    return written
+
+
 def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument(
         "markdown",
         type=Path,
-        help="Path to Engineering_Masterclass_*.md",
+        nargs="?",
+        help="Path to a single Markdown file (Lean Masterclass or source)",
     )
     parser.add_argument(
         "-o",
         "--output",
         type=Path,
         default=None,
-        help="Output PDF path (default: same stem as Markdown)",
+        help="Output PDF path (single-file mode only; default: same stem)",
+    )
+    parser.add_argument(
+        "--package",
+        metavar="FR_OR_PATH",
+        help="Render all PDFs for a Masterclass package (Lean + sources/optional)",
+    )
+    parser.add_argument(
+        "--mode",
+        choices=("lean", "source", "auto"),
+        default="auto",
+        help="Single-file render mode (default: auto-detect from path)",
     )
     args = parser.parse_args(argv)
+
+    if args.package:
+        try:
+            package_root = resolve_package_root(args.package)
+        except FileNotFoundError as exc:
+            print(exc, file=sys.stderr)
+            return 1
+        written = render_package_pdfs(package_root)
+        print(f"{package_root.name}: wrote {len(written)} PDF(s)")
+        for path in written:
+            try:
+                print(f"  {path.relative_to(ROOT)}")
+            except ValueError:
+                print(f"  {path}")
+        return 0
+
+    if not args.markdown:
+        parser.error("provide a Markdown path or --package FR018")
+
     md_path = args.markdown
     if not md_path.is_file():
         print(f"Markdown not found: {md_path}", file=sys.stderr)
         return 1
-    out = render_masterclass_pdf(md_path, args.output)
+
+    mode = args.mode
+    if mode == "auto":
+        parts = {p.lower() for p in md_path.parts}
+        mode = "source" if "sources" in parts else "lean"
+
+    package_root = None
+    if mode == "source":
+        for parent in md_path.parents:
+            if parent.parent.name == "masterclass" and parent.name.startswith("FR"):
+                package_root = parent
+                break
+
+    out = render_masterclass_pdf(
+        md_path,
+        args.output,
+        mode=mode,
+        package_root=package_root,
+    )
     print(f"Wrote {out}")
     return 0
 

@@ -81,11 +81,20 @@ Future Masterclasses **must** follow the Lean standard (~8–12 pages), includin
 3. **Validation Summary** — compact outcome / counts / recommendation / constraints  
 4. **Memorable Closing Statement** — one final takeaway  
 
-PDF after Markdown:
+PDF after Markdown (Lean Masterclass **and** package sources/optional):
 
 ```powershell
+# Preferred: regenerate snapshots + all package PDFs
+python scripts/build_masterclass_package.py FRnnn
+
+# Or render PDFs only for an existing package
+python scripts/render_masterclass_pdf.py --package FRnnn
+
+# Single Lean Masterclass file
 python scripts/render_masterclass_pdf.py docs/masterclass/FRnnn/Engineering_Masterclass_00N_FRnnn.md
 ```
+
+See [PACKAGING.md](PACKAGING.md) § PDF study editions (automatic).
 
 ### Interview Brief + Interview Deck
 
@@ -112,12 +121,18 @@ docs/masterclass/FRnnn/
     optional/        # milestone history, etc.
 ```
 
-After deep-learning generation (typical):
+After package build / deep-learning generation (typical):
 
 ```text
   Engineering_Masterclass_00N_FRnnn.md
   Engineering_Masterclass_00N_FRnnn.pdf
+  sources/*.md + sources/*.pdf
+  sources/optional/*.md + sources/optional/*.pdf
 ```
+
+Sibling PDFs for Lean Masterclass + `sources/` + `sources/optional/` are a
+**mandatory automatic step** of
+`python scripts/build_masterclass_package.py FRnnn` (unless `--no-pdf`).
 
 After rapid-revision generation (when produced):
 
@@ -130,7 +145,8 @@ After rapid-revision generation (when produced):
 
 - Engineering is edited only under `docs/eval/`, `docs/adr/`, and related SoT paths.
 - `sources/` files are **generated snapshots** — regenerate; do not hand-edit.
-- Regenerate with `python scripts/build_masterclass_package.py FRnnn`.
+- Regenerate Markdown **and** sibling PDFs with
+  `python scripts/build_masterclass_package.py FRnnn`.
 
 ### Single-folder attachment
 
@@ -160,12 +176,14 @@ Lean Masterclass → PDF → Gamma Learning Presentation → Interview Brief →
 ## Rules
 
 1. Package a `FRnnn/` folder only after that FR is **Complete / Frozen**.
-2. Register the FR in `scripts/build_masterclass_package.py`, then regenerate `sources/`.
+2. Register the FR in `scripts/build_masterclass_package.py`, then regenerate
+   `sources/` **and** sibling PDFs (`build_masterclass_package.py FRnnn`).
 3. Keep acceptance / ADR as canonical engineering; Masterclass as educational source.
 4. Do not begin Masterclass generation from unfrozen work.
 5. Do not reopen frozen FR exit criteria to improve packaging.
 6. Generate Masterclasses to the [Lean Masterclass Standard](LEAN_MASTERCLASS_STANDARD.md).
-7. After Markdown Masterclass completion, render the mandatory PDF study edition.
+7. After Markdown Masterclass completion, render package PDFs (Lean + sources +
+   optional) via the builder or `render_masterclass_pdf.py --package FRnnn`.
 8. Produce Gamma **Learning** Presentation (~15–20) for deep visual learning.
 9. Produce Interview Brief + Interview Deck for rapid revision ([standards](INTERVIEW_BRIEF_STANDARD.md)).
 10. Do not replace deep-learning artefacts with interview-only materials.

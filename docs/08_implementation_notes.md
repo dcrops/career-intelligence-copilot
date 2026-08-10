@@ -416,9 +416,15 @@ was supplied directly by the owner in an interactive confirmation session on 202
   `professional_development`. Course projects (job-listing web scraping with NLP/predictive
   modelling; real-estate price analysis) are attributed here, not to Bakers Delight.
 
-The professional summary now distinguishes total commercial technology experience (since
-2009), the 3.5 years of commercial Data Engineering experience, and independent AI
-Engineering/portfolio development. It does not claim commercial AI Engineering employment.
+The professional summary leads with overall engineering positioning
+(**experienced engineer with 10+ years across testing, automation, data
+engineering and applied AI engineering**). Role chronology in `experience[]`
+remains the authoritative record for domain-specific tenure (including the
+~3.5-year commercial Data Engineer period at nbn). Domain-only years claims
+must not be the default/headline identity. Forbidden reinterpretations include
+“10+ years of AI engineering”, “10+ years as an AI Engineer”, “10+ years of
+data engineering”, “10+ years of data and AI engineering”, and “10+ years of
+commercial AI engineering”.
 
 **Certifications.** `Certification` gained a required `status: active | expired` and an
 optional `expiry_date` (`YYYY-MM`) so credentials are represented truthfully. Owner-supplied
@@ -868,13 +874,12 @@ Before (legacy theme-aware bridge):
 
 After (Summary Intelligence):
 
-> AI Engineer designing and building end-to-end AI applications with Python and
-> FastAPI. Combines 3.5 years of commercial enterprise Data Engineering
-> experience with independent AI Engineering portfolio work across retrieval
-> systems, operational intelligence, explainable AI, and enterprise decision
-> support. Applies software engineering discipline — architecture-first design,
-> evidence-based validation, and human-in-the-loop review — to deliver AI
-> systems with traceable, reviewable outputs.
+> Experienced engineer with 10+ years across testing, automation, data
+> engineering and applied AI engineering. Builds end-to-end AI applications with
+> Python and FastAPI. Applies software engineering discipline — architecture-first
+> design, evidence-based validation, and human-in-the-loop review — with
+> independent AI Engineering portfolio work across retrieval systems, operational
+> intelligence, explainable AI, and enterprise decision support.
 
 **Prompt versions:** `cv_summary_v1.md` (historical), `cv_summary_v2.md` (current —
 employer-relevant lead, capabilities before chronology). Bump

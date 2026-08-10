@@ -13,6 +13,12 @@ from pathlib import Path
 from career_intelligence.profile.models import CareerProfile
 from career_intelligence.truth_validation.hashing import markdown_content_hash
 from career_intelligence.truth_validation.catalogue import (
+    AI_ENGINEERING_DURATION_KEY,
+    COMMERCIAL_AI_KEY,
+    COMMERCIAL_SOFTWARE_KEY,
+    DATA_ENGINEERING_DURATION_KEY,
+    OVERALL_ENGINEERING_EXPERIENCE_DURATION_KEY,
+    SOFTWARE_ENGINEERING_DURATION_KEY,
     build_catalogue_from_profile,
     catalogue_entry_by_key,
     catalogue_supports_kind,
@@ -325,11 +331,34 @@ class TruthValidationService:
             return self._supported_or_blocking(
                 claim, certainty, entry, span.sentence, "project delivery"
             )
-        # duration
-        entry = catalogue_entry_by_key(catalogue, span.object_key)
+        # duration — prefer duration-labelled entries; fall back to tech tenure years
+        entry = catalogue_entry_by_key(
+            catalogue, span.object_key, kinds=("duration",)
+        )
+        if entry is None:
+            entry = catalogue_entry_by_key(catalogue, span.object_key)
         if certainty == "ambiguous" or span.years_precision == "ambiguous":
             return _review_finding(claim, certainty, span.sentence, "clarify the duration subject before external use")
+        known_domain_duration = span.object_key in {
+            AI_ENGINEERING_DURATION_KEY,
+            SOFTWARE_ENGINEERING_DURATION_KEY,
+            DATA_ENGINEERING_DURATION_KEY,
+            COMMERCIAL_AI_KEY,
+            COMMERCIAL_SOFTWARE_KEY,
+            OVERALL_ENGINEERING_EXPERIENCE_DURATION_KEY,
+        }
         if entry is None or entry.supported_years is None:
+            if known_domain_duration and span.claimed_years is not None:
+                return TruthFinding(
+                    finding_id=new_truth_finding_id(), claim=claim,
+                    detection_certainty=certainty, evidence_status="unsupported",
+                    severity="blocking", evidence_citations=[],
+                    recommended_action="remove or reframe unsupported candidate duration claim",
+                    notes=(
+                        f"No chronology-backed duration support for {span.object_key}. "
+                        f"{span.sentence[:200]}"
+                    ),
+                )
             return _review_finding(claim, certainty, span.sentence, "candidate evidence cannot deterministically estimate this duration")
         if span.claimed_years is not None and span.claimed_years > entry.supported_years + 0.5:
             return TruthFinding(

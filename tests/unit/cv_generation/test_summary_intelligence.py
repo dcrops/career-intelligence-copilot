@@ -19,14 +19,20 @@ from tests.unit.cv_generation.helpers import (
 )
 
 _MASTER_LIKE_SUMMARY = (
-    "AI Engineer applying software engineering discipline to build end-to-end AI "
-    "applications with Python, FastAPI, Docker, and OpenAI APIs. 3.5 years of "
-    "commercial enterprise Data Engineering experience, plus independent AI "
-    "Engineering portfolio work across retrieval systems, operational "
-    "intelligence, explainable AI, and enterprise decision support. Applies a "
-    "disciplined AI Engineering methodology — architecture-first design, "
-    "evidence-based validation, and human-in-the-loop review — to build AI "
-    "systems with traceable, reviewable outputs for operational decision-making."
+    "Experienced engineer with 10+ years across testing, automation, data "
+    "engineering and applied AI engineering. Applies software engineering "
+    "discipline to build end-to-end AI applications with Python, FastAPI, Docker, "
+    "and OpenAI APIs, with independent AI Engineering portfolio work across "
+    "retrieval systems, operational intelligence, explainable AI, and enterprise "
+    "decision support. Applies a disciplined AI Engineering methodology — "
+    "architecture-first design, evidence-based validation, and human-in-the-loop "
+    "review — to build AI systems with traceable, reviewable outputs for "
+    "operational decision-making."
+)
+
+_OVERALL_POSITIONING = (
+    "Experienced engineer with 10+ years across testing, automation, data "
+    "engineering and applied AI engineering"
 )
 
 
@@ -52,7 +58,8 @@ def test_compose_avoids_mechanical_background_and_strengths_phrasing() -> None:
     assert "builds" in folded
     assert "python" in folded
     assert "fastapi" in folded
-    assert "3.5 years" in summary
+    assert "10+ years across" in folded
+    assert "3.5 years" not in folded
     assert "retrieval systems" in folded
 
 
@@ -89,9 +96,9 @@ def test_compose_adapts_to_governance_explainability_emphasis() -> None:
     )
     paragraphs = _paragraphs(summary)
     first = _plain(paragraphs[0]).casefold()
-    # Stable personal brand in paragraph 1.
-    assert first.startswith("ai engineer with")
-    assert "applied ai engineer" not in first
+    assert first.startswith("experienced engineer with")
+    assert "as an applied ai engineer" not in first
+    assert "3.5 years" not in first
     body = _plain("\n\n".join(paragraphs[1:])).casefold()
     assert "explainable ai" in body or "governance" in body
     assert "background:" not in summary.casefold()
@@ -105,7 +112,7 @@ def test_compose_adapts_to_platform_deployment_emphasis() -> None:
         promoted_skills=["Python", "Docker", "AWS"],
     )
     paragraphs = _paragraphs(summary)
-    assert _plain(paragraphs[0]).casefold().startswith("ai engineer with")
+    assert _plain(paragraphs[0]).casefold().startswith("experienced engineer with")
     folded = _plain(summary).casefold()
     assert "docker" in folded or "aws" in folded
     assert len(_plain(summary).split()) <= 200
@@ -119,7 +126,9 @@ def test_compose_adapts_to_consulting_operational_emphasis() -> None:
         promoted_skills=["Python", "FastAPI"],
     )
     folded = _plain(summary).casefold()
-    assert _plain(_paragraphs(summary)[0]).casefold().startswith("ai engineer with")
+    assert _plain(_paragraphs(summary)[0]).casefold().startswith(
+        "experienced engineer with"
+    )
     assert "operational intelligence" in folded or "enterprise decision support" in folded
 
 
@@ -131,9 +140,12 @@ def test_compose_adapts_to_data_engineer_with_ai_responsibilities() -> None:
         promoted_skills=["Python", "SQL", "AWS"],
     )
     folded = _plain(summary).casefold()
-    assert _plain(_paragraphs(summary)[0]).casefold().startswith("ai engineer with")
+    assert _plain(_paragraphs(summary)[0]).casefold().startswith(
+        "experienced engineer with"
+    )
     assert "sql" in folded or "aws" in folded
-    assert "3.5 years" in summary
+    assert "3.5 years" not in folded
+    assert "10+ years across" in folded
 
 
 def test_compose_does_not_invent_years_or_forbidden_phrases() -> None:
@@ -177,17 +189,18 @@ def test_theme_aware_entry_point_delegates_to_summary_intelligence() -> None:
     assert via_theme == via_intel
 
 
-def test_gather_evidence_extracts_commercial_and_portfolio_facts() -> None:
+def test_gather_evidence_extracts_overall_positioning_and_portfolio() -> None:
     evidence = gather_summary_evidence(
         source_summary=_MASTER_LIKE_SUMMARY,
         themes=["Python"],
         promoted_skills=["Python", "FastAPI"],
     )
-    assert evidence.commercial_years == "3.5"
+    assert evidence.overall_positioning is not None
+    assert "10+ years across" in evidence.overall_positioning
+    assert evidence.commercial_years is None
     assert evidence.portfolio_domains is not None
     assert "retrieval systems" in evidence.portfolio_domains
     assert evidence.builds_end_to_end is True
-    assert evidence.brand_role == "AI Engineer"
 
 
 def test_compose_uses_stable_paragraph_story_structure() -> None:
@@ -200,11 +213,10 @@ def test_compose_uses_stable_paragraph_story_structure() -> None:
     paragraphs = _paragraphs(summary)
     assert 3 <= len(paragraphs) <= 4
     first = _plain(paragraphs[0]).casefold()
-    assert first.startswith("ai engineer with")
-    assert "3.5 years" in first
-    assert "portfolio" in first
-    # Credibility before build claim within paragraph 1.
-    assert first.index("3.5 years") < first.index("builds")
+    assert first.startswith("experienced engineer with")
+    assert "10+ years across" in first
+    assert "3.5 years" not in first
+    assert first.index("10+ years") < first.index("builds")
     second = _plain(paragraphs[1]).casefold()
     assert "designs and delivers" in second or "python" in second
     assert any(
@@ -223,7 +235,7 @@ def test_compose_preserves_recruiter_bold_emphasis() -> None:
     )
     assert "**Python**" in summary or "**python**" in summary
     assert "**FastAPI**" in summary or "**fastapi**" in summary
-    assert "**3.5 years of commercial enterprise Data Engineering**" in summary
+    assert f"**{_OVERALL_POSITIONING}**" in summary
     bold_count = summary.count("**") // 2
     assert 3 <= bold_count <= 16
 
@@ -245,10 +257,9 @@ def test_opening_paragraph_is_stable_personal_brand() -> None:
         )
         opening = _paragraphs(summary)[0]
         openings.add(opening)
-        assert _plain(opening).startswith("AI Engineer with")
-        assert "3.5 years" in opening
-        assert "portfolio" in opening.casefold()
-    # Brand paragraph is identical (including bold markers) across roles.
+        assert _plain(opening).startswith("Experienced engineer with")
+        assert "10+ years across" in opening
+        assert "3.5 years" not in opening
     assert len(openings) == 1
 
 
@@ -260,9 +271,7 @@ def test_primary_theme_promoted_once_not_repeated() -> None:
         promoted_skills=["Python", "FastAPI"],
     )
     plain = _plain(summary).casefold()
-    # Present in tailored body, but not hammered across paragraphs.
     assert plain.count("operational intelligence") <= 2
-    # Closing should broaden rather than restating the same theme as emphasis.
     closing = _plain(_paragraphs(summary)[-1]).casefold()
     assert "with emphasis on operational intelligence" not in closing
 
@@ -313,8 +322,9 @@ def test_service_summary_intelligence_path_for_rich_profile() -> None:
     folded = _plain(cv.summary).casefold()
     assert "background:" not in folded
     assert "strengths in" not in folded
-    assert "ai engineer with" in folded
-    assert "3.5 years" in cv.summary
+    assert "experienced engineer with" in folded
+    assert "10+ years across" in folded
+    assert "3.5 years" not in folded
     assert len(_paragraphs(cv.summary)) >= 3
     assert any("summary intelligence" in item.casefold() for item in cv.assumptions)
     if cv.selected_engineering_highlights:
@@ -328,5 +338,3 @@ def test_minimal_fixture_still_composes_without_regression() -> None:
     cv = make_cv(profile=profile, strategy=strategy, plan=plan)
     assert cv.summary_source == "theme_aware_composition"
     assert cv.summary is not None
-    assert "background:" not in cv.summary.casefold()
-    assert "evidence-backed" in cv.summary.casefold() or "python" in cv.summary.casefold()

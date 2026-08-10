@@ -3,6 +3,7 @@ GENERATED MASTERCLASS SNAPSHOT — DO NOT EDIT BY HAND.
 Authoritative source: docs/04_functional_specification.md
 Mode: section snapshot ('## FR-018 Opportunity Discovery & Acquisition' → '## FR-019 Recruiter Intelligence')
 Regenerate: python scripts/build_masterclass_package.py <FR_ID>
+Sibling PDF is rendered automatically by the same command (or: python scripts/render_masterclass_pdf.py --package <FR_ID>).
 Repository documentation remains the source of truth.
 -->
 

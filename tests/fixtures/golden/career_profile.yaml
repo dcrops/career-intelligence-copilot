@@ -3,10 +3,12 @@ identity:
   full_name: David Cropper
   target_role: AI Engineer
   summary: >-
-    AI Engineer with commercial technology experience since 2009 spanning
-    software quality assurance, test automation, and Data Engineering,
-    including 3.5 years of commercial enterprise Data Engineering experience,
-    plus independent AI Engineering and portfolio development.
+    Experienced engineer with 10+ years across testing, automation, data
+    engineering and applied AI engineering. Applies software engineering
+    discipline to build end-to-end AI applications with Python, FastAPI, Docker,
+    and OpenAI APIs, with independent AI Engineering portfolio work across
+    retrieval systems, operational intelligence, explainable AI, and enterprise
+    decision support.
 experience:
   - id: chase-risk-compliance-ai-engineer
     kind: independent_engineering

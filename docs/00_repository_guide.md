@@ -180,18 +180,19 @@ Engineering → Validation → Acceptance → Freeze
 | Package | `docs/masterclass/FRnnn/` — `README.md`, `MANIFEST.md`, regenerable `sources/` |
 | Lean Masterclass standard | [masterclass/LEAN_MASTERCLASS_STANDARD.md](masterclass/LEAN_MASTERCLASS_STANDARD.md) |
 | Generator prompt | [masterclass/MASTERCLASS_GENERATOR_LEAN.md](masterclass/MASTERCLASS_GENERATOR_LEAN.md) |
-| Masterclass PDF | `scripts/render_masterclass_pdf.py` → `Engineering_Masterclass_*.pdf` |
+| Masterclass PDF | `scripts/render_masterclass_pdf.py --package FRnnn` (Lean + `sources/` + optional); also automatic from `build_masterclass_package.py` |
 | Interview Brief | [masterclass/INTERVIEW_BRIEF_STANDARD.md](masterclass/INTERVIEW_BRIEF_STANDARD.md) |
 | Interview Deck | [masterclass/INTERVIEW_DECK_STANDARD.md](masterclass/INTERVIEW_DECK_STANDARD.md) |
-| First packaged FRs | [masterclass/FR016/](masterclass/FR016/), [masterclass/FR017/](masterclass/FR017/) |
-| Regenerate snapshots | `python scripts/build_masterclass_package.py FRnnn` |
+| First packaged FRs | [masterclass/FR016/](masterclass/FR016/), [masterclass/FR017/](masterclass/FR017/), [masterclass/FR018/](masterclass/FR018/) |
+| Regenerate snapshots + PDFs | `python scripts/build_masterclass_package.py FRnnn` |
 | Academy index | [masterclass/README.md](masterclass/README.md) |
 
 **Deep learning** = Masterclass + PDF + Gamma Learning Presentation.  
 **Rapid interview revision** = Interview Brief + Interview Deck.
 
 Do **not** generate presentations in this repository as part of FR close-out.
-Do **not** hand-edit `sources/` snapshots — regenerate from SoT.
+Do **not** hand-edit `sources/` snapshots or their sibling PDFs — regenerate from SoT
+(`build_masterclass_package.py`).
 Do **not** replace deep-learning artefacts with interview-only materials.
 FR-019+ inherits Brief/Deck structure automatically — no rediscovery.
 (FR-018 Academy package: [masterclass/FR018/](masterclass/FR018/); packages still
