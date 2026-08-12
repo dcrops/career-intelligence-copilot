@@ -103,14 +103,17 @@ def test_regeneration_replaces_previous_package(tmp_path: Path) -> None:
 def test_existing_approval_gates_remain_enforced(tmp_path: Path) -> None:
     opportunities, opportunity_id, profile = seed_applied_opportunity(tmp_path)
     service = package_service(tmp_path, opportunities, profile)
+    options = approved_gate_options()
 
     with pytest.raises(TailoringPlanGateError, match="owner_approved_to_tailor"):
         service.prepare(
             opportunity_id,
             tailoring_options=TailoringOptions(owner_approved_to_tailor=False),
+            cv_options=options["cv_options"],
+            cover_letter_plan_options=options["cover_letter_plan_options"],
+            cover_letter_options=options["cover_letter_options"],
         )
 
-    options = approved_gate_options()
     options["cover_letter_plan_options"] = options["cover_letter_plan_options"].model_copy(
         update={"owner_approved_to_plan": False}
     )

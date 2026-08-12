@@ -20,12 +20,13 @@ The platform treats career management as an ongoing decision-making process rath
 
 The current priority is to help the repository owner secure an appropriate AI Engineering role as quickly as reasonably possible.
 
-Near-term work: Horizon 1A application loop is **complete**. Horizon 1B starts with
-**FR-018 Opportunity Discovery & Acquisition** (scale lawful inflow into that loop),
-then recruiter outreach and networking automation (FR-019+).
+Near-term work: Horizon 1A application loop is **complete**. Horizon 1B delivered
+**FR-018 Opportunity Discovery & Acquisition**; **FR-019 Core Loop
+Operationalisation** is current. After FR-019: Submission Automation investigation,
+then recruiter outreach and networking automation (**FR-020+**).
 
 **Job acquisition first. Recruiter outreach second.** After 1A, scale opportunity
-inflow before recruiter CRM.
+inflow and operationalise the daily apply loop before recruiter CRM.
 
 The product should improve the likelihood of securing relevant interviews or offers and reduce repetitive administrative work. It does not guarantee employment, interviews, or recruiter engagement.
 

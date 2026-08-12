@@ -1509,11 +1509,12 @@ python scripts/run_fr008_workflow_manual.py show --run-id wfr_...
 
 | Class | Examples | Runner behaviour |
 |-------|----------|------------------|
-| recoverable | provider timeout, rate limit, connection, injected transient | Retry if node eligible and budget remains |
-| unrecoverable | validation, missing artefact, invalid state, unsupported decision, trust-boundary reject, unknown exceptions | No retry; terminal `failed` (pre-approval) |
+| recoverable | provider timeout, rate limit, connection, injected transient; **FR-019 M1.1:** selected typed Opportunity Assessment generated-output validation codes (`judgment_material_inconsistency`, `evidence_ref_name_mismatch`, `evidence_ref_index_out_of_range`) | Retry if node eligible and budget remains |
+| unrecoverable | unknown/unclassified validation, missing artefact, invalid state, unsupported decision, trust-boundary reject (`forbidden_embedded_input`), unknown exceptions | No retry; terminal `failed` (pre-approval) |
 
 Unknown exceptions **fail closed** (`recoverable=False`) unless transient markers
-match `looks_transient` / `classify_exception`.
+match `looks_transient` / `classify_exception`. Unknown assessment validation
+`ErrorDetail.type` values also fail closed (no blanket schema-coercion retry).
 
 #### Retry policy (injectable `RetryPolicy`)
 
@@ -1523,7 +1524,17 @@ match `looks_transient` / `classify_exception`.
 - No automatic policy retry for `validate_normalise`, `owner_review`, or
   post-approval `persist` / `record_decision` (M2 resumable pause remains)
 - Why bounded: avoid infinite provider loops; preserve explainability and cost
-- Why validation is not retried: deterministic defects do not heal by repetition
+- Why most validation is not retried: deterministic / trust-boundary defects do
+  not heal by repetition; M1.1 permits only explicitly coded stochastic
+  assessment-output validations to re-sample under the same validators
+
+#### Owner failed-run recovery (FR-019 M1.1)
+
+- `ApplicationWorkflowRunner.retry_failed(run_id)` reopens terminal `failed`
+  analyse/assess checkpoints (clears `completed_at` / `last_error`, resumes loop)
+- CLI: `cic opportunity retry-run <workflow_run_id>`
+- Does not mutate mailbox ledger; does not allocate a new `run_id`
+- See [eval/fr019_m1_1_reliability_hardening.md](eval/fr019_m1_1_reliability_hardening.md)
 
 #### Retry state + checkpoints
 
@@ -1596,13 +1607,71 @@ cannot be cancelled (already failed).
 
 ### Sequencing (remaining)
 
-1. **Horizon 1B / FR-019+** — Recruiter Intelligence and later market engagement
-   on owner request. **FR-018 Complete / Frozen**
+1. **FR-019 Core Loop Operationalisation** — current (M0 GO; M1 GO proposed with
+   M1.1; M2 not started) —
+   [eval/fr019_core_loop_operationalisation.md](eval/fr019_core_loop_operationalisation.md).
+2. **Submission Automation & Channel Adapters** investigation — after FR-019
+   acceptance (FR number when authorised).
+3. **FR-020+** — Recruiter Intelligence and later market engagement (deferred).
+   **FR-018 Complete / Frozen**
    ([eval/fr018_opportunity_discovery_acquisition.md](eval/fr018_opportunity_discovery_acquisition.md)).
-2. **Horizon 2 (FR-026+)** — interview, dashboard, cross-domain prioritisation.
+4. **Horizon 2 (FR-027+)** — interview, dashboard, cross-domain prioritisation.
 
 **Completed in this sequence:** FR-009 → FR-018; Horizon 1A closed; FR-018 acquisition
-framework frozen. Remap § 1.115; FR-018 freeze § 1.125.
+framework frozen. Remap § 1.115; FR-018 freeze § 1.125; FR-019 formalisation § 1.128;
+M1.1 reliability § 1.131.
+
+## FR-019 Core Loop Operationalisation (in progress)
+
+**Status:** M0 Accepted / GO; M1 GO proposed with M1.1; M1.1 Reliability Hardening
+proposed GO. Capability:
+[docs/eval/fr019_core_loop_operationalisation.md](eval/fr019_core_loop_operationalisation.md).
+M1: [docs/eval/fr019_m1_mailbox_intake.md](eval/fr019_m1_mailbox_intake.md).
+M1.1: [docs/eval/fr019_m1_1_reliability_hardening.md](eval/fr019_m1_1_reliability_hardening.md).
+
+| Symbol / concern | Role |
+|------------------|------|
+| Yahoo IMAP / `CIC Job Alerts` | Production alert intake |
+| `MailboxIntakeService` / `YahooImapMailboxClient` | Connect, `BODY.PEEK[]`, email ledger |
+| `config/local_secrets.env` | Owner secrets (gitignored); env wins |
+| `.eml` `--drop-folder` | Fallback / tests only |
+| `cic opportunity mailbox-intake` | M1 owner CLI (not `cic daily`) |
+| `fail_closed_on_card_only` | Mailbox path only; discover-email default unchanged |
+| `assessment_validation_is_retryable` | M1.1 selective assess retry codes |
+| `cic opportunity retry-run` | M1.1 failed analyse/assess checkpoint recovery |
+
+### FR-019 dogfood defect — nested certification claim splitting (2026-08-11)
+
+**Context:** First PATH A application package for Repurpose It —
+`opp_01KZQJY6AX3EGX7TGYTHR3ABG1`. Package compose succeeded; external-use truth
+gate blocked CV.
+
+| | |
+|--|--|
+| **Symptom** | `external_use: BLOCKED`; CV fail with one blocking certification finding on the Certifications line `AWS Certified Developer - Associate` |
+| **Root cause** | `extended_claims._label_hits` matched both the catalogue full title and well-known truncated `AWS Certified Developer` on the same span; truncated twin keyed `awscertifieddeveloper` had no catalogue support → blocking, while the longer claim was supported |
+| **CV truth** | Claim was truthful; CareerProfile has `certification:aws-certified-developer-associate` |
+| **Fix** | Longest-first occupancy for certification/domain label hits — overlapping nested truncations are not emitted independently (`extended_claims.py`). Does **not** weaken the gate, whitelist opportunities, or invent profile evidence |
+| **Tests** | `tests/unit/truth_validation/test_m4_claim_kinds.py` — supported Associate without truncated twin; unsupported Associate still blocking; distinct certs independent; existing cert/domain cases retained |
+| **Live before** | CV fail / `allowed=False`; blocking `awscertifieddeveloper`; cover letter pass |
+| **Live after** | `external_use: ALLOWED`; CV pass (`trp_01KZQN2J8VVZG9HN5M24TSG4KD`); single supported `awscertifieddeveloperassociate`; cover letter pass; no remaining blocking findings |
+| **Changelog** | § 1.132 |
+
+Bounded FR-014 detector hardening discovered under FR-019 dogfood — not a new FR.
+
+### FR-019 dogfood defect — application contact wiring (2026-08-11)
+
+**Context:** Same Repurpose It application after truth ALLOWED. Owner review found
+generated CV/cover letter had **no** email/phone/location/LinkedIn/portfolio/GitHub
+despite Master CV containing them and renderers supporting `.contact`.
+
+| | |
+|--|--|
+| **Symptom** | Tailored external docs: name + role only; portfolio/GitHub mentioned in cover-letter prose without URLs |
+| **Root cause** | `ContactDetails` optional overlay never loaded on package prepare / preparation / agent defaults (`contact=None`); CareerProfile intentionally has no contact fields |
+| **Fix** | Owner `config/candidate_contact.yaml` (gitignored) → FR-006 `ContactDetails`; fail-closed incomplete config (`ApplicationPackageContactError`); wire CLI + agent factory; dedicated labelled Portfolio/GitHub cover-letter paragraph; no URL-less availability claims |
+| **Tests** | `tests/unit/candidate_contact/`; `tests/functional/test_application_contact_completeness.py`; cover-letter portfolio navigation unit tests |
+| **Changelog** | § 1.133 |
 
 ## FR-018 Opportunity Discovery & Acquisition (complete / frozen)
 
@@ -2507,6 +2576,11 @@ Extends catalogue + `extended_claims` detection for employment honesty,
 certifications, years (computable tenure only), project delivery, and domain.
 `VALIDATOR_VERSION = fr014-m4-deterministic-1`. Soft skills / subjective claims
 excluded. Redwolf technology regression retained.
+
+**Post-freeze hardening (FR-019 dogfood, 2026-08-11):** certification/domain
+`_label_hits` now skip overlapping shorter labels after a longer match occupies
+the span (nested well-known truncations). Fail-closed unsupported certs unchanged
+— see § FR-019 dogfood defect (nested certification claims); changelog § 1.132.
 
 **Manual:** `scripts/run_fr014_m4_manual.py` — PASS  
 **Status:** FR-014 **complete and frozen**. FR-015 is also complete and frozen —

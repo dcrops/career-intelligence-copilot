@@ -700,7 +700,7 @@ The operational layer is the manual precursor to the automated domain model.
 | Career Profile | `career-documents/cv/`, owner knowledge |
 | Opportunity (durable) | `data/opportunities/` (SoT); CSV under `data/exports/` is derived (M3) |
 | Outcome Record | Status / notes on Opportunity (M2); tracker Outcome column is import/export projection |
-| Network contacts | `applications/network/network_tracker.csv` (Horizon 1B / FR-019+) |
+| Network contacts | `applications/network/network_tracker.csv` (Horizon 1B / FR-020+) |
 | Company context | `applications/company_notes/` |
 | Career milestones | `career-log.md` |
 | Future templates | `templates/` (placeholders) |

@@ -17,6 +17,7 @@ from pydantic import (
     field_validator,
     model_validator,
 )
+from pydantic_core import PydanticCustomError
 
 from career_intelligence.job_analysis.models import JobAnalysis
 
@@ -182,9 +183,14 @@ class FitDimensionAssessment(AssessmentModel):
             for finding in self.findings
         )
         if has_material_negative and self.judgment == "strong":
-            raise ValueError(
-                f"{self.dimension} judgment 'strong' is inconsistent with material "
-                "gap/conflict findings"
+            # Typed code for FR-019 M1.1 selective assess retry (validators unchanged).
+            raise PydanticCustomError(
+                "judgment_material_inconsistency",
+                (
+                    "{dimension} judgment 'strong' is inconsistent with material "
+                    "gap/conflict findings"
+                ),
+                {"dimension": self.dimension},
             )
         return self
 

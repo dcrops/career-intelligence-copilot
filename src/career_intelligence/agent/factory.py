@@ -6,6 +6,7 @@ from pathlib import Path
 
 from career_intelligence.application_package import ApplicationPackageService
 from career_intelligence.application_preparation import ApplicationPreparationOrchestrator
+from career_intelligence.candidate_contact import load_candidate_contact
 from career_intelligence.cover_letter import (
     CoverLetterGenerationOptions,
     CoverLetterPlanOptions,
@@ -68,6 +69,7 @@ def build_agent_runtime(
         profile=profile,
         truth_store=truth_store,
     )
+    contact = load_candidate_contact()
     executor = ServiceActionExecutor(
         preparation=preparation,
         packages=packages,
@@ -77,13 +79,17 @@ def build_agent_runtime(
             owner_approved_to_tailor=True,
             override_material_benefit=override_material_benefit,
         ),
-        cv_options=CvGenerationOptions(tailoring_plan_approved=True),
+        cv_options=CvGenerationOptions(
+            tailoring_plan_approved=True,
+            contact=contact,
+        ),
         cover_letter_plan_options=CoverLetterPlanOptions(
             owner_approved_to_plan=True,
             override_material_benefit=override_material_benefit,
         ),
         cover_letter_options=CoverLetterGenerationOptions(
-            cover_letter_plan_approved=True
+            cover_letter_plan_approved=True,
+            contact=contact,
         ),
     )
     store = JsonDirectoryAgentRunStore(

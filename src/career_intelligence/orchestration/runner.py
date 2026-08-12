@@ -20,6 +20,7 @@ from .ids import new_workflow_run_id
 from .models import DomainArtefacts, RetryState, WorkflowControl, WorkflowState
 from .nodes import NodeFailure, NodeOutcome, WorkflowNode
 from .retry import (
+    DEFAULT_RETRY_ELIGIBLE_NODES,
     FailureInjection,
     InjectingNode,
     RetryPolicy,
@@ -206,6 +207,73 @@ class ApplicationWorkflowRunner:
         if state.approval.owner_decision is not None:
             return self._continue_after_decision(state)
 
+        return self._run_loop(state, self._service_nodes, post_approval=False)
+
+    def retry_failed(self, run_id: str) -> WorkflowState:
+        """Owner-initiated reopen of a terminal failed pre-approval LLM node.
+
+        FR-019 M1.1: resume from the next incomplete spike node using the existing
+        checkpoint (typically ``assess`` after successful ``analyse``). Does not
+        touch the mailbox ledger or allocate a new run id.
+
+        Eligible only when ``status=failed`` and the failed node is ``analyse`` or
+        ``assess`` with required upstream artefacts present.
+        """
+        state = self._deps.store.load(run_id)
+
+        if state.status != "failed":
+            raise WorkflowResumeError(
+                f"retry_failed requires status 'failed' "
+                f"(run '{run_id}' has status={state.status})"
+            )
+
+        failed_node = (
+            state.control.last_error.node_id
+            if state.control.last_error is not None
+            else state.control.current_node
+        )
+        if failed_node not in DEFAULT_RETRY_ELIGIBLE_NODES:
+            raise WorkflowResumeError(
+                f"retry_failed supports only analyse/assess failures "
+                f"(run '{run_id}' failed_node={failed_node!r})"
+            )
+
+        if failed_node == "assess":
+            if state.artefacts.job_analysis is None or state.artefacts.profile is None:
+                raise WorkflowResumeError(
+                    f"retry_failed assess requires job_analysis and profile "
+                    f"on checkpoint '{run_id}'"
+                )
+        if failed_node == "analyse" and state.artefacts.posting is None:
+            raise WorkflowResumeError(
+                f"retry_failed analyse requires posting on checkpoint '{run_id}'"
+            )
+
+        stamp = utc_now()
+        prior_message = (
+            state.control.last_error.message
+            if state.control.last_error is not None
+            else "unknown failure"
+        )
+        state = clear_retry(state)
+        state = replace_control(
+            state,
+            status="running",
+            completed_at=None,
+            last_error=None,
+            updated_at=stamp,
+            current_node=failed_node,
+        )
+        state = append_event(
+            state,
+            make_event(
+                state,
+                "run_resumed",
+                timestamp=stamp,
+                message=f"retry_failed from {failed_node}: {prior_message[:200]}",
+            ),
+        )
+        state = self._checkpoint(state, reason="milestone")
         return self._run_loop(state, self._service_nodes, post_approval=False)
 
     def resume(self, run_id: str, decision: OwnerDecisionKind) -> WorkflowState:

@@ -25,5 +25,18 @@ data/preparation_runs/**
 data/truth_reports/
 data/_oat001_*/
 
+# AAS-0 disposable spike local state (sessions, screenshots, metrics)
+spikes/aas0/.browser-profile/
+spikes/aas0/runs/
+spikes/aas0/answers.yaml
+
 # Generated documents
 career-documents/**/generated/
+
+# Local secrets (FR-019 mailbox / future scheduled runs) — never commit
+config/local_secrets.env
+# Owner contact for application packages (not secrets, still private)
+config/candidate_contact.yaml
+data/secrets/
+data/mailbox_intake/
+data/daily_runs/

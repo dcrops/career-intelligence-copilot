@@ -27,17 +27,43 @@ def render_markdown(letter: CoverLetter) -> str:
         "",
         f"**{letter.role_title} - {letter.company}**",
         "",
-        "---",
-        "",
-        letter.salutation,
-        "",
     ]
+    lines.extend(_header_contact_lines(letter.contact))
+    lines.extend(
+        [
+            "---",
+            "",
+            letter.salutation,
+            "",
+        ]
+    )
     for paragraph in letter.paragraphs:
         lines.append(paragraph)
         lines.append("")
     lines.extend(_signature_lines(letter))
     lines.append("")
     return "\n".join(lines)
+
+
+def _header_contact_lines(contact: dict[str, str] | None) -> list[str]:
+    """Render contact under the role line for scanability."""
+    if not contact:
+        return []
+    lines: list[str] = []
+    for key in _CONTACT_ORDER:
+        value = contact.get(key)
+        if not value:
+            continue
+        if key in _LINK_LABELS:
+            display = _compact_url(value)
+            lines.append(f"**{_LINK_LABELS[key]}:** [{display}]({value})")
+        elif key == "email":
+            lines.append(f"[{value}](mailto:{value})")
+        else:
+            lines.append(value)
+    if lines:
+        lines.append("")
+    return lines
 
 
 def _signature_lines(letter: CoverLetter) -> list[str]:

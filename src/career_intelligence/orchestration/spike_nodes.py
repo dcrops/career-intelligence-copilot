@@ -11,7 +11,11 @@ from career_intelligence.application_strategy import (
     SearchOperatingContext,
 )
 from career_intelligence.job_analysis import JobAnalysisService
-from career_intelligence.opportunity_assessment import OpportunityAssessmentService
+from career_intelligence.opportunity_assessment import (
+    OpportunityAssessmentService,
+    OpportunityAssessmentValidationError,
+    assessment_validation_is_retryable,
+)
 from career_intelligence.portfolio_matching import PortfolioMatchingService
 
 from .acquisition import AcquisitionAdapter, AcquisitionError, AcquisitionResult
@@ -261,6 +265,14 @@ class AssessNode:
             assessment = self._service.assess(
                 state.artefacts.job_analysis,
                 state.artefacts.profile,
+            )
+        except OpportunityAssessmentValidationError as error:
+            # FR-019 M1.1: only approved stochastic generated-output codes retry.
+            recoverable = assessment_validation_is_retryable(error)
+            return _failure(
+                f"Opportunity assessment failed: {error}",
+                recoverable=recoverable,
+                detail=type(error).__name__,
             )
         except Exception as error:  # noqa: BLE001
             classification = classify_exception(error)

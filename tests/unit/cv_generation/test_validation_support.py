@@ -55,7 +55,7 @@ def test_certifications_are_profile_baseline_not_plan_content() -> None:
 
     plan = make_plan(profile=profile)
     assert not hasattr(plan, "certifications")
-    assert "certifications" not in plan.model_fields
+    assert "certifications" not in type(plan).model_fields
 
     cv = make_cv(profile=profile, plan=plan)
     assert cv.certifications_source == "profile_active_baseline"

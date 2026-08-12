@@ -766,6 +766,9 @@ def test_public_api_does_not_expose_fixture_module() -> None:
 
 def test_downstream_modules_do_not_import_internal_extractors() -> None:
     source_root = Path(__file__).parents[2] / "src" / "career_intelligence"
+    # Sole in-package composition root for cic discover (FR-018). Parallel to
+    # scripts/run_fr008_workflow_manual.py — must not broaden this allowlist.
+    allowed_composition_root = source_root / "cli" / "composition.py"
     allowed_by_name = {
         "extractor.py",
         "extraction.py",
@@ -776,6 +779,8 @@ def test_downstream_modules_do_not_import_internal_extractors() -> None:
     }
 
     for source_file in source_root.rglob("*.py"):
+        if source_file == allowed_composition_root:
+            continue
         if source_file.name in allowed_by_name:
             continue
         text = source_file.read_text(encoding="utf-8")

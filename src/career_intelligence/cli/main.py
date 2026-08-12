@@ -9,6 +9,7 @@ from pydantic import BaseModel
 
 from career_intelligence.application_package import (
     DEFAULT_PACKAGES_ROOT,
+    ApplicationPackageContactError,
     ApplicationPackageEligibilityError,
     ApplicationPackageError,
     ApplicationPackageIntegrityError,
@@ -31,7 +32,12 @@ from career_intelligence.cover_letter import (
     CoverLetterPlanGateError,
     CoverLetterPlanOptions,
 )
+from career_intelligence.candidate_contact import (
+    CandidateContactConfigError,
+    load_candidate_contact,
+)
 from career_intelligence.cv_generation import (
+    ContactDetails,
     CvGenerationGateError,
     CvGenerationOptions,
     TailoringOptions,
@@ -310,77 +316,6 @@ def _opportunity_service(root: Path | None) -> OpportunityService:
     return OpportunityService.from_path(root) if root else OpportunityService()
 
 
-def _workflow_runner_for_discovery(
-    *,
-    opportunities_dir: Path | None,
-    checkpoint_dir: Path | None,
-    profile_path: Path | None,
-    offline_fixtures: bool,
-) -> object:
-    """Build ApplicationWorkflowRunner for discover (live or offline fixtures)."""
-    import os
-
-    from career_intelligence.application_strategy import ApplicationStrategyService
-    from career_intelligence.application_strategy.deterministic_planner import (
-        DeterministicStrategyPlanner,
-    )
-    from career_intelligence.job_analysis import JobAnalysisService
-    from career_intelligence.opportunity_assessment import OpportunityAssessmentService
-    from career_intelligence.orchestration import (
-        ApplicationWorkflowRunner,
-        JsonDirectoryCheckpointStore,
-        WorkflowDependencies,
-    )
-    from career_intelligence.portfolio_matching import PortfolioMatchingService
-    from career_intelligence.portfolio_matching.deterministic_matcher import (
-        DeterministicMatcher,
-    )
-
-    profile_service = _profile_service(profile_path)
-    profile = profile_service.load()
-    opportunities = _opportunity_service(opportunities_dir)
-    store = JsonDirectoryCheckpointStore(
-        checkpoint_dir or Path("data") / "workflow_runs"
-    )
-
-    if offline_fixtures:
-        from career_intelligence.job_analysis.fixture_extractor import FixtureExtractor
-        from career_intelligence.opportunity_assessment.fixture_assessor import (
-            FixtureAssessor,
-        )
-
-        job_analysis = JobAnalysisService(FixtureExtractor())
-        assessment = OpportunityAssessmentService(FixtureAssessor())
-    else:
-        if not os.getenv("OPENAI_API_KEY"):
-            raise SystemExit(
-                "OPENAI_API_KEY is not set. Pass --offline-fixtures for smoke, "
-                "or set the key for live FR-002/FR-003 analysis."
-            )
-        try:
-            import truststore
-
-            truststore.inject_into_ssl()
-        except ImportError:
-            pass
-        from career_intelligence.job_analysis.openai_extractor import OpenAIJobExtractor
-        from career_intelligence.opportunity_assessment.openai_assessor import OpenAIAssessor
-
-        job_analysis = JobAnalysisService(OpenAIJobExtractor())
-        assessment = OpportunityAssessmentService(OpenAIAssessor())
-
-    deps = WorkflowDependencies(
-        profile=profile,
-        job_analysis=job_analysis,
-        assessment=assessment,
-        portfolio_matching=PortfolioMatchingService(DeterministicMatcher()),
-        application_strategy=ApplicationStrategyService(DeterministicStrategyPlanner()),
-        store=store,
-        opportunities=opportunities,
-    )
-    return ApplicationWorkflowRunner(deps)
-
-
 def _package_service(
     *,
     opportunities_dir: Path | None,
@@ -551,6 +486,7 @@ def _exit_for_package(error: ApplicationPackageError) -> Never:
         (
             ApplicationPackageNotFoundError,
             ApplicationPackageEligibilityError,
+            ApplicationPackageContactError,
             ApplicationPackageIntegrityError,
         ),
     ):
@@ -558,6 +494,15 @@ def _exit_for_package(error: ApplicationPackageError) -> Never:
     if isinstance(error, ApplicationPackageStorageError):
         raise typer.Exit(code=2)
     raise typer.Exit(code=2)
+
+
+def _load_owner_contact() -> ContactDetails:
+    """Load required owner contact for external application packages."""
+    try:
+        return load_candidate_contact()
+    except CandidateContactConfigError as error:
+        typer.echo(error.message, err=True)
+        raise typer.Exit(code=1) from error
 
 
 def _exit_for_preparation(error: ApplicationPreparationError) -> Never:
@@ -766,7 +711,10 @@ def discover_opportunity(
 
     For job-alert emails use: cic opportunity discover-email <file.eml>
     """
-    from career_intelligence.job_analysis.fixtures import MARKER_AI_ENGINEER
+    from career_intelligence.cli.composition import (
+        offline_discovery_fixture_marker,
+        workflow_runner_for_discovery,
+    )
 
     try:
         source = opportunity_source_from_url(url)
@@ -775,10 +723,10 @@ def discover_opportunity(
         raise typer.Exit(code=1) from error
 
     opportunities = _opportunity_service(dir)
-    marker = MARKER_AI_ENGINEER if offline_fixtures else None
+    marker = offline_discovery_fixture_marker(offline_fixtures=offline_fixtures)
 
     def _factory() -> object:
-        return _workflow_runner_for_discovery(
+        return workflow_runner_for_discovery(
             opportunities_dir=dir,
             checkpoint_dir=checkpoint_dir,
             profile_path=profile,
@@ -838,12 +786,15 @@ def discover_opportunity_email(
     per job URL. Unsupported senders and emails without job links fail closed.
     Recruiter CRM / outreach mail is out of scope.
     """
+    from career_intelligence.cli.composition import (
+        offline_discovery_fixture_marker,
+        workflow_runner_for_discovery,
+    )
     from career_intelligence.discovery import (
         DiscoveryRequest,
         ThinDiscoveryIngress,
         opportunity_sources_from_email_file,
     )
-    from career_intelligence.job_analysis.fixtures import MARKER_AI_ENGINEER
 
     try:
         sources = opportunity_sources_from_email_file(eml_path)
@@ -862,10 +813,10 @@ def discover_opportunity_email(
 
     typer.echo(f"Parsed {len(sources)} job(s) from {eml_path.name}")
     opportunities = _opportunity_service(dir)
-    marker = MARKER_AI_ENGINEER if offline_fixtures else None
+    marker = offline_discovery_fixture_marker(offline_fixtures=offline_fixtures)
 
     def _factory() -> object:
-        return _workflow_runner_for_discovery(
+        return workflow_runner_for_discovery(
             opportunities_dir=dir,
             checkpoint_dir=checkpoint_dir,
             profile_path=profile,
@@ -880,6 +831,141 @@ def discover_opportunity_email(
     outcome = ingress.discover(DiscoveryRequest(sources=sources, force=force))
     _print_discovery_outcome(outcome)
     if outcome.failed_count and outcome.acquired_count == 0 and outcome.skipped_count == 0:
+        raise typer.Exit(code=1)
+
+
+@opportunity_app.command("mailbox-intake")
+def mailbox_intake_opportunity(
+    dir: OpportunitiesDirOption = None,
+    checkpoint_dir: Annotated[
+        Path | None,
+        typer.Option(
+            "--checkpoint-dir",
+            help="Workflow checkpoint directory (default data/workflow_runs).",
+        ),
+    ] = None,
+    profile: Annotated[
+        Path | None,
+        typer.Option("--profile", help="Career profile YAML path."),
+    ] = None,
+    drop_folder: Annotated[
+        Path | None,
+        typer.Option(
+            "--drop-folder",
+            help="Fallback/dev: process .eml files from this folder (no IMAP).",
+            exists=True,
+            file_okay=False,
+            dir_okay=True,
+            readable=True,
+        ),
+    ] = None,
+    secrets_file: Annotated[
+        Path | None,
+        typer.Option(
+            "--secrets-file",
+            help="Path to local_secrets.env (default config/local_secrets.env).",
+        ),
+    ] = None,
+    ledger_path: Annotated[
+        Path | None,
+        typer.Option(
+            "--ledger",
+            help="Email-level processed ledger path "
+            "(default data/mailbox_intake/processed.json).",
+        ),
+    ] = None,
+    force: Annotated[
+        bool,
+        typer.Option(
+            "--force",
+            help="Re-process ledger hits and force discovery identity matches.",
+        ),
+    ] = False,
+    offline_fixtures: Annotated[
+        bool,
+        typer.Option(
+            "--offline-fixtures",
+            help="Use FixtureExtractor/Assessor (injects CIC fixture marker).",
+        ),
+    ] = False,
+) -> None:
+    """Fetch Yahoo CIC Job Alerts (or --drop-folder .eml) into FR-018 discovery.
+
+    FR-019 M1: automatic mailbox obtainment. Does not implement cic daily.
+    Card-only content after failed URL enrich fails closed (no Job Analysis).
+    Credentials: config/local_secrets.env (gitignored); env CIC_MAILBOX_* wins.
+    """
+    from career_intelligence.cli.composition import (
+        offline_discovery_fixture_marker,
+        workflow_runner_for_discovery,
+    )
+    from career_intelligence.mailbox import (
+        MailboxConfigError,
+        MailboxImapError,
+        MailboxIntakeError,
+        run_mailbox_intake,
+    )
+    from career_intelligence.mailbox.config import redact_secrets
+
+    marker = offline_discovery_fixture_marker(offline_fixtures=offline_fixtures)
+    opportunities = _opportunity_service(dir)
+
+    def _factory() -> object:
+        return workflow_runner_for_discovery(
+            opportunities_dir=dir,
+            checkpoint_dir=checkpoint_dir,
+            profile_path=profile,
+            offline_fixtures=offline_fixtures,
+        )
+
+    try:
+        result = run_mailbox_intake(
+            opportunities=opportunities,
+            runner_factory=_factory,  # type: ignore[arg-type]
+            drop_folder=drop_folder,
+            secrets_path=secrets_file,
+            ledger_path=ledger_path,
+            offline_fixture_marker=marker,
+            force=force,
+        )
+    except MailboxConfigError as error:
+        typer.secho(f"FAILED config: {error}", fg=typer.colors.RED, err=True)
+        if error.detail:
+            typer.echo(error.detail, err=True)
+        raise typer.Exit(code=1) from error
+    except MailboxImapError as error:
+        typer.secho(
+            f"FAILED imap: {redact_secrets(str(error))}",
+            fg=typer.colors.RED,
+            err=True,
+        )
+        if error.detail:
+            typer.echo(redact_secrets(error.detail), err=True)
+        raise typer.Exit(code=1) from error
+    except MailboxIntakeError as error:
+        typer.secho(f"FAILED intake: {error}", fg=typer.colors.RED, err=True)
+        raise typer.Exit(code=1) from error
+
+    mode = f"drop-folder {drop_folder}" if drop_folder else "Yahoo IMAP"
+    typer.echo(
+        f"Mailbox intake ({mode}): "
+        f"processed={result.processed_count} "
+        f"skipped_ledger={result.skipped_count} "
+        f"failed={result.failed_count}"
+    )
+    for item in result.messages:
+        mid = item.message.message_id[:60]
+        if item.status == "skipped_ledger":
+            typer.echo(f"  SKIP ledger {mid}")
+            continue
+        if item.status == "failed":
+            typer.secho(f"  FAIL {mid}: {item.error}", fg=typer.colors.RED)
+            continue
+        typer.secho(f"  OK {mid} sources={item.sources_count}", fg=typer.colors.GREEN)
+        if item.discovery is not None:
+            _print_discovery_outcome(item.discovery)
+
+    if result.failed_count and result.processed_count == 0 and result.skipped_count == 0:
         raise typer.Exit(code=1)
 
 
@@ -905,13 +991,110 @@ def _print_discovery_outcome(outcome: object) -> None:
         else:
             typer.secho(f"FAILED {item.failure_kind}", fg=typer.colors.RED, err=True)
             typer.echo(f"locator: {item.source.locator}", err=True)
+            if item.workflow_run_id:
+                typer.echo(f"workflow_run_id: {item.workflow_run_id}", err=True)
             if item.message:
                 typer.echo(item.message, err=True)
+            if item.workflow_run_id and (
+                item.message is None
+                or "retry-run" not in item.message
+            ):
+                typer.echo(
+                    f"Retry (if assess/analyse failed): "
+                    f"cic opportunity retry-run {item.workflow_run_id}",
+                    err=True,
+                )
 
     typer.echo(
         f"Summary: acquired={outcome.acquired_count} "
         f"skipped={outcome.skipped_count} failed={outcome.failed_count}"
     )
+
+
+@opportunity_app.command("retry-run")
+def retry_opportunity_workflow_run(
+    workflow_run_id: Annotated[
+        str,
+        typer.Argument(help="Failed workflow run id (wfr_<ULID>)."),
+    ],
+    dir: OpportunitiesDirOption = None,
+    checkpoint_dir: Annotated[
+        Path | None,
+        typer.Option(
+            "--checkpoint-dir",
+            help="Workflow checkpoint directory (default data/workflow_runs).",
+        ),
+    ] = None,
+    profile: Annotated[
+        Path | None,
+        typer.Option("--profile", help="Career profile YAML path."),
+    ] = None,
+    offline_fixtures: Annotated[
+        bool,
+        typer.Option(
+            "--offline-fixtures",
+            help="Use FixtureExtractor/Assessor (injects CIC fixture marker).",
+        ),
+    ] = False,
+) -> None:
+    """Retry a terminal failed analyse/assess workflow from its checkpoint.
+
+    FR-019 M1.1: reuses acquisition + JobAnalysis; does not touch the mailbox
+    ledger or reprocess the parent email.
+    """
+    from career_intelligence.cli.composition import workflow_runner_for_discovery
+    from career_intelligence.orchestration import WorkflowResumeError
+
+    runner = workflow_runner_for_discovery(
+        opportunities_dir=dir,
+        checkpoint_dir=checkpoint_dir,
+        profile_path=profile,
+        offline_fixtures=offline_fixtures,
+    )
+    try:
+        prior = runner.store.load(workflow_run_id)
+    except Exception as error:  # noqa: BLE001
+        typer.secho(f"FAILED load: {error}", fg=typer.colors.RED, err=True)
+        raise typer.Exit(code=1) from error
+
+    failed_node = (
+        prior.control.last_error.node_id
+        if prior.control.last_error is not None
+        else prior.control.current_node
+    )
+    typer.echo(f"workflow_run_id: {workflow_run_id}")
+    typer.echo(f"prior_status: {prior.status}")
+    typer.echo(f"failed_stage: {failed_node}")
+    if prior.artefacts.job_analysis is not None:
+        typer.echo("upstream: job_analysis preserved")
+    if prior.acquisition is not None:
+        typer.echo(f"source_url: {prior.acquisition.source_url}")
+
+    try:
+        state = runner.retry_failed(workflow_run_id)
+    except WorkflowResumeError as error:
+        typer.secho(f"FAILED retry: {error}", fg=typer.colors.RED, err=True)
+        raise typer.Exit(code=1) from error
+    except Exception as error:  # noqa: BLE001
+        typer.secho(f"FAILED retry: {error}", fg=typer.colors.RED, err=True)
+        raise typer.Exit(code=1) from error
+
+    typer.echo(f"result_status: {state.status}")
+    if state.artefacts.opportunity_id:
+        typer.secho(
+            f"opportunity_id: {state.artefacts.opportunity_id}",
+            fg=typer.colors.GREEN,
+        )
+        typer.echo("Next: cic opportunity show <id>  then  cic opportunity decide …")
+    elif state.status == "failed":
+        err = state.control.last_error
+        typer.secho(
+            f"still failed at {err.node_id if err else state.control.current_node}: "
+            f"{err.message if err else 'unknown'}",
+            fg=typer.colors.RED,
+            err=True,
+        )
+        raise typer.Exit(code=1)
 
 
 @opportunity_app.command("decide")
@@ -1289,19 +1472,24 @@ def prepare_package(
             cv_output_dir=cv_dir,
             cover_letter_output_dir=cover_letter_dir,
         )
+        contact = _load_owner_contact()
         manifest = service.prepare(
             opportunity_id,
             tailoring_options=TailoringOptions(
                 owner_approved_to_tailor=True,
                 override_material_benefit=override_material_benefit,
             ),
-            cv_options=CvGenerationOptions(tailoring_plan_approved=True),
+            cv_options=CvGenerationOptions(
+                tailoring_plan_approved=True,
+                contact=contact,
+            ),
             cover_letter_plan_options=CoverLetterPlanOptions(
                 owner_approved_to_plan=True,
                 override_material_benefit=override_material_benefit,
             ),
             cover_letter_options=CoverLetterGenerationOptions(
-                cover_letter_plan_approved=True
+                cover_letter_plan_approved=True,
+                contact=contact,
             ),
         )
     except OpportunityError as error:
@@ -1506,19 +1694,24 @@ def run_preparation(
             cv_output_dir=cv_dir,
             cover_letter_output_dir=cover_letter_dir,
         )
+        contact = _load_owner_contact()
         state = orchestrator.run(
             opportunity_id,
             tailoring_options=TailoringOptions(
                 owner_approved_to_tailor=True,
                 override_material_benefit=override_material_benefit,
             ),
-            cv_options=CvGenerationOptions(tailoring_plan_approved=True),
+            cv_options=CvGenerationOptions(
+                tailoring_plan_approved=True,
+                contact=contact,
+            ),
             cover_letter_plan_options=CoverLetterPlanOptions(
                 owner_approved_to_plan=True,
                 override_material_benefit=override_material_benefit,
             ),
             cover_letter_options=CoverLetterGenerationOptions(
-                cover_letter_plan_approved=True
+                cover_letter_plan_approved=True,
+                contact=contact,
             ),
         )
     except OpportunityError as error:

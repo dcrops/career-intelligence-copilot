@@ -68,6 +68,74 @@ def test_certification_and_domain_support() -> None:
     assert _finding(_report("I have experience in healthcare.", certified), "domain").severity == "blocking"
 
 
+def test_nested_aws_developer_associate_supported_without_truncated_twin() -> None:
+    """FR-019 dogfood: full Associate title must not emit a blocking truncated twin."""
+    certified = _profile(certifications=[{
+        "id": "aws-certified-developer-associate",
+        "name": "AWS Certified Developer - Associate",
+        "issuer": "Amazon Web Services",
+        "status": "active",
+    }])
+    markdown = "- **AWS Certified Developer - Associate** — Amazon Web Services"
+    report = _report(markdown, certified)
+    cert_findings = [f for f in report.findings if f.claim.claim_kind == "certification"]
+    assert len(cert_findings) == 1
+    finding = cert_findings[0]
+    assert finding.claim.object_key == "awscertifieddeveloperassociate"
+    assert finding.evidence_status == "supported"
+    assert finding.severity == "info"
+    assert report.outcome == "pass"
+    assert not any(
+        f.claim.object_key == "awscertifieddeveloper" for f in cert_findings
+    )
+
+
+def test_nested_aws_developer_associate_unsupported_remains_blocking() -> None:
+    """Without profile evidence, the Associate expression still fail-closes."""
+    markdown = "- **AWS Certified Developer - Associate** — Amazon Web Services"
+    report = _report(markdown)
+    cert_findings = [f for f in report.findings if f.claim.claim_kind == "certification"]
+    assert len(cert_findings) == 1
+    finding = cert_findings[0]
+    # Well-known short label is the only lexicon hit without a catalogue entry.
+    assert finding.claim.object_key == "awscertifieddeveloper"
+    assert finding.severity == "blocking"
+    assert finding.evidence_status == "unsupported"
+    assert report.outcome == "fail"
+
+
+def test_distinct_certifications_validated_independently() -> None:
+    certified = _profile(certifications=[
+        {
+            "id": "aws-certified-developer-associate",
+            "name": "AWS Certified Developer - Associate",
+            "issuer": "Amazon Web Services",
+            "status": "active",
+        },
+        {
+            "id": "databricks-certified-data-engineer-professional",
+            "name": "Databricks Certified Data Engineer Professional",
+            "issuer": "Databricks",
+            "status": "active",
+        },
+    ])
+    markdown = (
+        "## Certifications\n"
+        "- **AWS Certified Developer - Associate** — Amazon Web Services\n"
+        "- **Databricks Certified Data Engineer Professional** — Databricks\n"
+        "- **Certified Kubernetes Administrator** — CNCF\n"
+    )
+    report = _report(markdown, certified)
+    cert_findings = [f for f in report.findings if f.claim.claim_kind == "certification"]
+    by_key = {f.claim.object_key: f for f in cert_findings}
+    assert "awscertifieddeveloperassociate" in by_key
+    assert by_key["awscertifieddeveloperassociate"].evidence_status == "supported"
+    assert "awscertifieddeveloper" not in by_key
+    assert by_key["databrickscertifieddataengineerprofessional"].evidence_status == "supported"
+    assert by_key["certifiedkubernetesadministrator"].severity == "blocking"
+    assert report.outcome == "fail"
+
+
 def test_duration_and_project_delivery() -> None:
     supported = _report("I have One year of Python experience.")
     assert _finding(supported, "duration", "python").evidence_status == "supported"

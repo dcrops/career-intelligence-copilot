@@ -56,7 +56,7 @@ class OpportunityAssessmentService:
                             f"assessor payload must not include '{key}'; "
                             "the service binds caller-supplied trusted inputs"
                         ),
-                        type="value_error",
+                        type="forbidden_embedded_input",
                     )
                 )
         if errors:

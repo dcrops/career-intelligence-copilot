@@ -23,6 +23,10 @@ import os
 from datetime import UTC, datetime
 from pathlib import Path
 
+from career_intelligence.candidate_contact import (
+    CandidateContactConfigError,
+    require_contact_details,
+)
 from career_intelligence.cover_letter import (
     CoverLetterGenerationOptions,
     CoverLetterGenerationService,
@@ -49,6 +53,7 @@ from career_intelligence.opportunities import Opportunity, OpportunityService
 from career_intelligence.profile import CareerProfile, CareerProfileService
 
 from .errors import (
+    ApplicationPackageContactError,
     ApplicationPackageEligibilityError,
     ApplicationPackageIntegrityError,
 )
@@ -199,11 +204,12 @@ class ApplicationPackageService:
         resolved_cl = cover_letter_options or CoverLetterGenerationOptions()
 
         contact = resolved_cv.contact or resolved_cl.contact
-        if contact is not None:
-            if resolved_cv.contact is None:
-                resolved_cv = resolved_cv.model_copy(update={"contact": contact})
-            if resolved_cl.contact is None:
-                resolved_cl = resolved_cl.model_copy(update={"contact": contact})
+        try:
+            contact = require_contact_details(contact)
+        except CandidateContactConfigError as error:
+            raise ApplicationPackageContactError(error.message) from error
+        resolved_cv = resolved_cv.model_copy(update={"contact": contact})
+        resolved_cl = resolved_cl.model_copy(update={"contact": contact})
 
         # Fully generate in memory before any durable write.
         plan = self._tailoring_plans.plan(

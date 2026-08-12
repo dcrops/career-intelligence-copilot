@@ -104,15 +104,50 @@ def render_html_from_view(
 def _render_body(view: CoverLetterHtmlView) -> str:
     parts: list[str] = [
         f"<h1>{_esc(view.full_name)}</h1>\n",
-        '<hr class="header-rule" />\n',
         f'<p class="role letter-meta">{_esc(view.role_title)} - '
         f"{_esc(view.company)}</p>\n",
-        f"<p>{_esc(view.salutation)}</p>\n",
     ]
+    parts.extend(_render_header_contact(view.contact))
+    parts.append('<hr class="header-rule" />\n')
+    parts.append(f"<p>{_esc(view.salutation)}</p>\n")
     for paragraph in view.paragraphs:
-        parts.append(f"<p>{_inline_to_html(paragraph)}</p>\n")
+        chunks = [chunk.strip() for chunk in paragraph.split("\n\n") if chunk.strip()]
+        if not chunks:
+            continue
+        for chunk in chunks:
+            parts.append(f"<p>{_inline_to_html(chunk)}</p>\n")
     parts.extend(_render_signature(view))
     return "".join(parts)
+
+
+def _render_header_contact(contact: dict[str, str] | None) -> list[str]:
+    if not contact:
+        return []
+    parts: list[str] = []
+    for key in _CONTACT_ORDER:
+        value = contact.get(key)
+        if not value:
+            continue
+        if key == "email":
+            parts.append(
+                f'<p class="contact"><a href="mailto:{_esc_attr(value)}">'
+                f"{_esc(value)}</a></p>\n"
+            )
+        elif key == "phone":
+            tel = re.sub(r"[^\d+]", "", value)
+            parts.append(
+                f'<p class="contact"><a href="tel:{_esc_attr(tel)}">'
+                f"{_esc(value)}</a></p>\n"
+            )
+        elif key == "location":
+            parts.append(f'<p class="contact">{_esc(value)}</p>\n')
+        elif key in _LINK_LABELS:
+            display = _compact_url(value)
+            parts.append(
+                f'<p class="contact"><strong>{_esc(_LINK_LABELS[key])}:</strong> '
+                f'<a href="{_esc_attr(value)}">{_esc(display)}</a></p>\n'
+            )
+    return parts
 
 
 def _render_signature(view: CoverLetterHtmlView) -> list[str]:

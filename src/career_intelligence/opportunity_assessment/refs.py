@@ -102,7 +102,7 @@ def _validate_job_ref(
                         f"{ref.source} item_index {ref.item_index} is out of range "
                         f"for {len(items)} {list_name} item(s)"
                     ),
-                    type="value_error",
+                    type="evidence_ref_index_out_of_range",
                 )
             )
             return
@@ -116,7 +116,7 @@ def _validate_job_ref(
                             f"technology name '{ref.name}' does not match "
                             f"technologies[{ref.item_index}].name '{item_name}'"
                         ),
-                        type="value_error",
+                        type="evidence_ref_name_mismatch",
                     )
                 )
 

@@ -10,7 +10,11 @@ from career_intelligence.cover_letter import (
     CoverLetterGenerationOptions,
     CoverLetterPlanOptions,
 )
-from career_intelligence.cv_generation import CvGenerationOptions, TailoringOptions
+from career_intelligence.cv_generation import (
+    ContactDetails,
+    CvGenerationOptions,
+    TailoringOptions,
+)
 from career_intelligence.opportunities import OpportunityService
 from career_intelligence.profile import CareerProfile
 from tests.unit.application_strategy.helpers import minimal_profile
@@ -21,12 +25,24 @@ STAMP = datetime(2026, 7, 30, 15, 0, 0, tzinfo=UTC)
 
 def approved_gate_options() -> dict[str, object]:
     """Explicit FR-006 / FR-007 owner-approval options required for package prepare."""
+    contact = ContactDetails(
+        email="candidate@example.com",
+        phone="0400 000 000",
+        location="Melbourne, VIC",
+        linkedin_url="https://www.linkedin.com/in/example/",
+        portfolio_url="https://example.com/portfolio/",
+        github_url="https://github.com/example",
+    )
     return {
         "tailoring_options": TailoringOptions(owner_approved_to_tailor=True),
-        "cv_options": CvGenerationOptions(tailoring_plan_approved=True),
+        "cv_options": CvGenerationOptions(
+            tailoring_plan_approved=True,
+            contact=contact,
+        ),
         "cover_letter_plan_options": CoverLetterPlanOptions(owner_approved_to_plan=True),
         "cover_letter_options": CoverLetterGenerationOptions(
-            cover_letter_plan_approved=True
+            cover_letter_plan_approved=True,
+            contact=contact,
         ),
         "prepared_at": STAMP,
     }

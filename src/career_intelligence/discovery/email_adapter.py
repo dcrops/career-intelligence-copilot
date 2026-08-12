@@ -4,10 +4,14 @@ Reads one job from an owner-supplied ``.eml`` digest and returns FR-008
 ``AcquisitionResult`` with ``source_kind="email"``.
 
 When a job URL is present and offline fixtures are not in use, optionally
-enriches ``raw_content`` via the existing URL adapter (fail-soft: email card
-text remains if fetch/extract fails). Provenance stays email (Message-ID#job).
-"""
+enriches ``raw_content`` via the existing URL adapter (fail-soft by default:
+email card text remains if fetch/extract fails). Provenance stays email
+(Message-ID#job).
 
+FR-019 M1 may set ``fail_closed_on_card_only=True`` so card-only content after
+failed/non-preferred enrich does not proceed to Job Analysis (AcquisitionError).
+Default remains fail-soft to preserve frozen FR-018 discover-email behaviour.
+"""
 from __future__ import annotations
 
 from dataclasses import dataclass
@@ -68,6 +72,8 @@ class EmailAcquisitionAdapter:
     """Optional client for job-URL enrichment (defaults inside UrlAcquisitionAdapter)."""
     enrich_from_job_url: bool = True
     """When True and not offline, attempt URL body enrichment after email parse."""
+    fail_closed_on_card_only: bool = False
+    """FR-019: when True, refuse card-only content after enrich failure/skip."""
 
     @property
     def source_kind(self) -> AcquisitionSourceKind:
@@ -105,11 +111,13 @@ class EmailAcquisitionAdapter:
             f"email_path={parsed.path}",
         ]
 
+        enrich_attempted = False
         if (
             self.enrich_from_job_url
             and self.offline_fixture_marker is None
             and job.job_url
         ):
+            enrich_attempted = True
             raw, title, company, enrich_warnings = _try_enrich_from_job_url(
                 job_url=job.job_url,
                 email_raw=raw,
@@ -123,6 +131,17 @@ class EmailAcquisitionAdapter:
             if self.offline_fixture_marker not in raw:
                 raw = f"{self.offline_fixture_marker}\n{raw}"
             warnings.append("offline fixture marker injected for deterministic analysis")
+        elif self.fail_closed_on_card_only and not _has_jd_signals(raw):
+            enriched_ok = any(w == "enriched_from_job_url" for w in warnings)
+            # Card-only after enrich failure/skip, or no URL to enrich from.
+            if (enrich_attempted and not enriched_ok) or not job.job_url:
+                raise AcquisitionError(
+                    "Insufficient authoritative job content",
+                    detail=(
+                        "content_unavailable: URL enrich failed or email body is "
+                        "discovery card only; owner paste/URL required"
+                    ),
+                )
 
         try:
             posting = JobPosting.model_validate(

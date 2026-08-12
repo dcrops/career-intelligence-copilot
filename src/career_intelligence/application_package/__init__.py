@@ -7,6 +7,7 @@ duplicates generated document content into Opportunity persistence.
 """
 
 from .errors import (
+    ApplicationPackageContactError,
     ApplicationPackageEligibilityError,
     ApplicationPackageError,
     ApplicationPackageIntegrityError,
@@ -26,6 +27,7 @@ from .service import DEFAULT_PACKAGES_ROOT, ApplicationPackageService
 __all__ = [
     "DEFAULT_PACKAGES_ROOT",
     "AcquisitionProvenance",
+    "ApplicationPackageContactError",
     "ApplicationPackageEligibilityError",
     "ApplicationPackageError",
     "ApplicationPackageIntegrityError",

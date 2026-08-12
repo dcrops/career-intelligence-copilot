@@ -4,6 +4,147 @@ Records product strategy and engineering knowledge changes. Routine typo fixes a
 
 ---
 
+## Version 1.133
+
+### FR-019 dogfood — application contact wiring + Portfolio/GitHub visibility
+
+**Date:** 2026-08-11.
+
+External packages from `cic package prepare` / preparation / agent paths omitted
+candidate contact because FR-006 `ContactDetails` was supported but never loaded
+into production defaults (`contact=None`). Cover letters could mention portfolio /
+GitHub without navigable URLs.
+
+**Fix:** owner-authoritative `config/candidate_contact.yaml` (gitignored; example
+committed) → `ContactDetails`; fail-closed incomplete config; wire composition
+roots; dedicated labelled Portfolio/GitHub cover-letter paragraph; remove URL-less
+availability claims.
+
+Live Repurpose It (`opp_01KZQJY6AX3EGX7TGYTHR3ABG1`) regenerated via normal
+prepare path; truth revalidated. See implementation notes § FR-019 dogfood defect
+(application contact wiring).
+
+---
+
+## Version 1.132
+
+### FR-019 dogfood — nested certification claim splitting (truth validator)
+
+**Date:** 2026-08-11.
+
+During the first FR-019 operational application workflow (Repurpose It —
+`opp_01KZQJY6AX3EGX7TGYTHR3ABG1`), `cic truth validate-package` blocked a truthful
+CV on a truncated duplicate certification claim: well-known
+`AWS Certified Developer` nested inside profile-backed
+`AWS Certified Developer - Associate`.
+
+**Fix:** certification/domain label detection now prefers longer spans and skips
+overlapping shorter hits (same occupancy policy as technology/duration detection).
+Gate policy unchanged — unsupported certifications remain fail-closed.
+
+Regression: **1603** passed. Live revalidation: `external_use: ALLOWED`.
+See [docs/08_implementation_notes.md](08_implementation_notes.md) § FR-019 dogfood
+defect (nested certification claims).
+
+---
+
+## Version 1.131
+
+### FR-019 M1.1 — Assess retry + failed-workflow recovery (proposed GO)
+
+**Date:** 2026-08-11.
+
+Pre-M2 reliability hardening inside FR-019:
+
+- Selective Opportunity Assessment validation retries for typed generated-output
+  codes only (`judgment_material_inconsistency`, `evidence_ref_name_mismatch`,
+  `evidence_ref_index_out_of_range`); unknown validation remains unrecoverable;
+  validators unchanged; `max_attempts=3`.
+- `cic opportunity retry-run <workflow_run_id>` reopens terminal failed
+  analyse/assess checkpoints without mailbox ledger changes.
+- FAILED discovery UX surfaces `workflow_run_id` / stage / retry hint.
+- LinkedIn title/company metadata swap documented as non-blocking tracked debt
+  (not fixed).
+
+Live: all three prior LinkedIn assess failures recovered to `awaiting_owner`.
+Regression: **1600** passed.
+[eval/fr019_m1_1_reliability_hardening.md](eval/fr019_m1_1_reliability_hardening.md).
+M2 not started. Propose M1.1 **GO** and lift M1 from CONDITIONAL GO to **GO**.
+
+---
+
+## Version 1.130
+
+### FR-019 M1 — Live Yahoo validation close-out (CONDITIONAL GO)
+
+**Date:** 2026-08-11.
+
+Live SEEK + LinkedIn mailbox dogfood completed. All 11 discovered jobs show
+`enriched_from_job_url` (no card-only Job Analysis). SEEK 5/5 reached owner
+review; LinkedIn 3/6 reached owner review; 3 LinkedIn jobs failed at assess
+validation (strong+gap / evidence-index mismatches) with adequate JD content.
+Email ledger idempotency proven. Norton inbound IMAP scan documented as
+environment prerequisite. M1 recommended **CONDITIONAL GO**; M2 deferred pending
+owner-approved assess reliability / failed-job recovery —
+[eval/fr019_m1_mailbox_intake.md](eval/fr019_m1_mailbox_intake.md). No code fixes
+in this close-out. Superseded for reliability debt by § 1.131 (M1.1).
+
+---
+
+## Version 1.129
+
+### FR-019 M1 — Automatic Yahoo mailbox intake (implementation complete)
+
+**Date:** 2026-08-11.
+
+Implements Yahoo IMAP intake for folder **`CIC Job Alerts`**, email-level ledger,
+`.eml` drop-folder fallback, and `cic opportunity mailbox-intake`. Feeds frozen
+FR-018 parse/ingress. Opt-in `fail_closed_on_card_only` on email acquire for the
+mailbox path (default FR-018 discover-email remains fail-soft). Secrets:
+`config/local_secrets.env` (env wins). Live smoke pending at implementation
+close-out; live verdict in § 1.130 —
+[eval/fr019_m1_mailbox_intake.md](eval/fr019_m1_mailbox_intake.md). M2 not started.
+
+---
+
+## Version 1.128
+
+### FR-019 Core Loop Operationalisation — formalised; M0 Accepted / GO
+
+**Date:** 2026-08-11.
+
+Owner accepted the Core Loop Operationalisation M0 engineering spike
+([eval/fr019_m0_engineering_spike.md](eval/fr019_m0_engineering_spike.md);
+[full report](eval/core_loop_operationalisation_m0_engineering_spike.md)).
+**Capability assigned FR-019** (insert + remap, same pattern as § 1.115).
+
+| Prior ID | New ID | Capability |
+|----------|--------|------------|
+| *(new)* | **FR-019** | Core Loop Operationalisation (**current** — M0 GO; M1 ready) |
+| FR-019 | **FR-020** | Recruiter Intelligence (**deferred**) |
+| FR-020 | **FR-021** | Recruiter Outreach |
+| FR-021 | **FR-022** | Existing Connection Outreach |
+| FR-022 | **FR-023** | LinkedIn Network Intelligence |
+| FR-023 | **FR-024** | Meetup Intelligence |
+| FR-024 | **FR-025** | LinkedIn Content Planning |
+| FR-025 | **FR-026** | Market Intelligence |
+| FR-026 | **FR-027** | Interview Preparation (Horizon 2) |
+| FR-027 | **FR-028** | Career Dashboard |
+| FR-028 | **FR-029** | Daily Prioritisation (cross-domain) |
+
+Horizon 1B retitled range **FR-018–FR-026** (discovery + operationalisation +
+recruiter/network/market). Horizon 2 starts at **FR-027**.
+
+**Roadmap sequence:** FR-019 (compose frozen Horizon 1A + FR-018 into a daily
+owner loop) → after acceptance, **Submission Automation & Channel Adapters**
+investigation (FR number when authorised) → then Recruiter Intelligence
+(**FR-020**). FR-018 remains frozen; M1 is Yahoo IMAP mailbox intake only
+([eval/fr019_m1_mailbox_intake.md](eval/fr019_m1_mailbox_intake.md)).
+Secrets: `config/local_secrets.env.example` (committed) /
+`config/local_secrets.env` (gitignored).
+
+---
+
 ## Version 1.127
 
 ### Career experience positioning — overall engineering maturity

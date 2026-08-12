@@ -187,6 +187,14 @@ def _employment_hits(sentence: str, offset: int, claim_class: ClaimClass, certai
 
 def _label_hits(sentence: str, offset: int, claim_class: ClaimClass, certainty: str,
                 catalogue: CandidateEvidenceCatalogue, kind: ClaimKind) -> list[DetectedExtendedSpan]:
+    """Detect certification/domain labels, preferring longer spans over nested truncations.
+
+    Well-known short labels (e.g. ``AWS Certified Developer``) can be substrings of a more
+    specific certification expression (e.g. ``AWS Certified Developer - Associate``). Without
+    occupancy, both fire and the truncated twin can falsely block when the longer claim is
+    authoritatively supported. Matches technology/duration overlap policy: longest-first,
+    skip spans that overlap an already accepted hit.
+    """
     labels: dict[str, str] = {}
     for entry in catalogue.entries:
         if kind in entry.claim_kinds:
@@ -195,13 +203,34 @@ def _label_hits(sentence: str, offset: int, claim_class: ClaimClass, certainty: 
                     labels[label] = entry.object_key
     for label in WELL_KNOWN_CERTIFICATIONS if kind == "certification" else WELL_KNOWN_DOMAINS:
         labels.setdefault(label, normalise_object_key(label))
-    hits = []
-    for label, key in sorted(labels.items(), key=lambda item: -len(item[0])):
+    hits: list[DetectedExtendedSpan] = []
+    occupied: list[tuple[int, int]] = []
+    predicate = "holds_certification" if kind == "certification" else "has_domain_experience"
+    for label, key in sorted(labels.items(), key=lambda item: (-len(item[0]), item[0].casefold())):
         for match in re.finditer(rf"(?<!\w){re.escape(label)}(?!\w)", sentence, re.I):
-            predicate = "holds_certification" if kind == "certification" else "has_domain_experience"
-            hits.append(_hit(kind, key, match.group(), sentence, claim_class, certainty,
-                             offset + match.start(), offset + match.end(), predicate))
+            start = offset + match.start()
+            end = offset + match.end()
+            if _spans_overlap(occupied, start, end):
+                continue
+            occupied.append((start, end))
+            hits.append(
+                _hit(
+                    kind,
+                    key,
+                    match.group(),
+                    sentence,
+                    claim_class,
+                    certainty,
+                    start,
+                    end,
+                    predicate,
+                )
+            )
     return hits
+
+
+def _spans_overlap(occupied: list[tuple[int, int]], start: int, end: int) -> bool:
+    return any(start < right and end > left for left, right in occupied)
 
 
 def _duration_hits(sentence: str, offset: int, claim_class: ClaimClass, certainty: str,

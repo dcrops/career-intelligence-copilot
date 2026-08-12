@@ -39,6 +39,15 @@ on apply (M2), and bounded recoverable retries with fail-closed unknowns (M3).
   exceptions **fail closed**. Bound automatic retries to eligible LLM-backed
   nodes (`analyse`, `assess`) via injectable `RetryPolicy`. Persist attempt
   counts in checkpoints so process restart does not reset the budget.
+- **Amendment (FR-019 M1.1, 2026-08-11):** selected *generated Opportunity
+  Assessment output* validation failures may be classified recoverable when
+  they carry explicit typed `ErrorDetail.type` codes
+  (`judgment_material_inconsistency`, `evidence_ref_name_mismatch`,
+  `evidence_ref_index_out_of_range`). Unknown validation types, trust-boundary
+  rejects (`forbidden_embedded_input`), and other deterministic defects remain
+  unrecoverable. Validators are not weakened. Owner recovery of terminal failed
+  analyse/assess checkpoints uses `ApplicationWorkflowRunner.retry_failed` /
+  `cic opportunity retry-run` on existing workflow checkpoints (no second store).
 - Prefer **source adapters** (paste/URL/API/feed/export) for acquisition;
   Playwright remains a controlled fallback adapter, not the default strategy.
 - **Do not adopt LangGraph (or another orchestrator framework) now.**

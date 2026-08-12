@@ -65,7 +65,7 @@ Horizon 1 is the primary lens for prioritising near-term features and judging ea
 **Within Horizon 1:**
 
 - **Horizon 1A — Job application workflow (first):** discover, assess, prepare, review, submit and track suitable applications via source-adapter acquisition and orchestrated workflow. **Complete / frozen** (FR-008–FR-017).
-- **Horizon 1B — Scaled acquisition and market engagement (second):** **Opportunity Discovery & Acquisition (FR-018)** first — then recruiter discovery/messaging, connection outreach, meetup intelligence, LinkedIn planning (FR-019–FR-025).
+- **Horizon 1B — Scaled acquisition and market engagement (second):** **Opportunity Discovery & Acquisition (FR-018)** then **Core Loop Operationalisation (FR-019)** — then recruiter discovery/messaging, connection outreach, meetup intelligence, LinkedIn planning (**FR-020–FR-026**). After FR-019 acceptance, Submission Automation investigation precedes Recruiter Intelligence.
 
 **Principle:** Job acquisition first. Recruiter outreach second. After 1A, scale lawful opportunity inflow before recruiter CRM.
 
@@ -261,8 +261,10 @@ The platform will evolve around several intelligence domains:
 
 Near-term delivery: Job Intelligence (Phase 2) and application document generation are
 complete. Horizon 1A (application workflow) is **complete / frozen**. Horizon 1B
-leads with **Opportunity Discovery & Acquisition (FR-018)**; Recruiter Intelligence
-and related engagement domains are FR-019+ — not concurrent with incomplete 1A.
+leads with **Opportunity Discovery & Acquisition (FR-018)** then **Core Loop
+Operationalisation (FR-019)**; Recruiter Intelligence and related engagement
+domains are **FR-020+** (deferred until after FR-019 and the Submission Automation
+investigation) — not concurrent with incomplete 1A.
 
 
 

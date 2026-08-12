@@ -179,27 +179,39 @@ def compose_cover_letter_paragraphs(
 
     opening = _compose_opening(plan, profile, company, role, employer=employer)
     motivation = _compose_motivation(plan, profile, company, employer=employer)
-    project_paragraphs = _compose_project_paragraphs(plan, profile, contact=contact)
+    project_paragraphs = list(
+        _compose_project_paragraphs(plan, profile, contact=contact)
+    )
     portfolio_note = _compose_portfolio_body_note(plan, contact=contact)
     closing = _compose_closing(plan, company, role, employer=employer)
+
+    # CoverLetter schema allows max 5 paragraphs. Reserve slots for opening,
+    # motivation, closing, and the dedicated Portfolio/GitHub navigation block.
+    reserved = 3 + (1 if portfolio_note else 0)
+    project_slots = max(1, 5 - reserved)
+    if len(project_paragraphs) > project_slots:
+        if project_slots == 1:
+            project_paragraphs = [" ".join(project_paragraphs)]
+        else:
+            kept = project_paragraphs[: project_slots - 1]
+            merged_tail = " ".join(project_paragraphs[project_slots - 1 :])
+            project_paragraphs = [*kept, merged_tail]
 
     paragraphs = [opening, motivation, *project_paragraphs]
     if portfolio_note:
         paragraphs.append(portfolio_note)
     paragraphs.append(closing)
-    # Keep within CoverLetter schema (max 5): merge trailing projects if needed.
-    if len(paragraphs) > 5:
-        head = paragraphs[:2]
-        middle = paragraphs[2:-1]
-        closing_part = paragraphs[-1]
-        merged_middle = " ".join(middle)
-        paragraphs = [*head, merged_middle, closing_part]
 
-    validated = [
-        _strip_ai_punctuation(_clamp_sentence_spacing(part))
-        for part in paragraphs
-        if part.strip()
-    ]
+    validated = []
+    for part in paragraphs:
+        if part.strip():
+            if part.startswith("You can view examples of my AI engineering work here:"):
+                # Preserve labelled line breaks; do not collapse whitespace.
+                validated.append(part.strip())
+            else:
+                validated.append(
+                    _strip_ai_punctuation(_clamp_sentence_spacing(part))
+                )
     plain = " ".join(validated).casefold()
     if any(phrase in plain for phrase in _FORBIDDEN_PHRASES):
         return _fallback_paragraphs(plan, profile, contact=contact)
@@ -647,25 +659,45 @@ def _compose_portfolio_body_note(
     *,
     contact: dict[str, str] | None,
 ) -> str | None:
-    """Natural body reference to portfolio/GitHub for engineering role families."""
+    """Dedicated Portfolio/GitHub navigation paragraph (labelled URLs only).
+
+    Emits nothing when authoritative URLs are absent — never claims portfolio or
+    GitHub availability without a navigable path.
+    """
     family = plan.job_analysis.role_family.family
     if family not in _PORTFOLIO_BODY_ROLE_FAMILIES:
         return None
     if not plan.strongest_projects:
         return None
-    display = _portfolio_display(contact)
-    if display:
-        return (
-            "Working demonstrations and architecture notes for the systems above "
-            f"are on my portfolio ({display}), together with matching GitHub "
-            "repositories. Those artefacts matter when you want to inspect delivery "
-            "decisions rather than slideware."
-        )
+    portfolio = _absolute_url((contact or {}).get("portfolio_url"))
+    github = _absolute_url((contact or {}).get("github_url"))
+    if not portfolio or not github:
+        return None
+    portfolio_label = _compact_url_host(portfolio)
+    github_label = _compact_url_host(github)
     return (
-        "Working demonstrations, architecture notes and GitHub repositories for "
-        "the systems above are available in my portfolio. Those artefacts matter "
-        "when you want to inspect delivery decisions rather than slideware."
+        "You can view examples of my AI engineering work here:\n\n"
+        f"**Portfolio:** [{portfolio_label}]({portfolio})\n\n"
+        f"**GitHub:** [{github_label}]({github})"
     )
+
+
+def _absolute_url(value: str | None) -> str | None:
+    if not value:
+        return None
+    cleaned = value.strip()
+    if cleaned.startswith(("http://", "https://")):
+        return cleaned
+    return None
+
+
+def _compact_url_host(url: str) -> str:
+    display = url.strip()
+    for prefix in ("https://", "http://"):
+        if display.startswith(prefix):
+            display = display[len(prefix) :]
+            break
+    return display.rstrip("/")
 
 
 def _role_relevance_bridge(fit_focus: str | None) -> str:
@@ -715,8 +747,8 @@ def _compose_closing(
     if style == 0:
         return (
             f"I would welcome a conversation about {subject}. "
-            "Happy to open the portfolio and walk through working software, "
-            "including architecture decisions behind the systems above."
+            "Happy to walk through working software and architecture decisions "
+            "behind the systems above."
         )
     if style == 1:
         return (
@@ -734,7 +766,7 @@ def _compose_closing(
     return (
         f"I would welcome a technical conversation about {subject}. "
         "Happy to share live demonstrations and the evaluation approach behind "
-        "the portfolio systems above."
+        "the systems above."
     )
 
 
@@ -760,10 +792,8 @@ def _portfolio_lead(contact: dict[str, str] | None, *, count: int = 2) -> str:
             )
         )
     if count == 1:
-        return "One project from my portfolio is especially useful evidence for this role."
-    return (
-        "Two projects from my portfolio are especially useful evidence for this role."
-    )
+        return "One project is especially useful evidence for this role."
+    return "Two projects are especially useful evidence for this role."
 
 
 def _portfolio_display(contact: dict[str, str] | None) -> str | None:
@@ -1271,12 +1301,20 @@ def _fallback_paragraphs(
     projects = _compose_projects(plan, profile, contact=contact)
     if projects:
         paragraphs.append(_strip_ai_punctuation(projects))
+    nav = _compose_portfolio_body_note(plan, contact=contact)
+    if nav:
+        paragraphs.append(nav)
     paragraphs.append(
         f"I would welcome a conversation about {employer['closing_role']}. "
-        "I can share working software and live demonstrations from the portfolio."
+        "I can share working software and live demonstrations of the systems above."
     )
     return [
-        _strip_ai_punctuation(_clamp_sentence_spacing(part)) for part in paragraphs
+        (
+            part.strip()
+            if part.startswith("You can view examples of my AI engineering work here:")
+            else _strip_ai_punctuation(_clamp_sentence_spacing(part))
+        )
+        for part in paragraphs
     ]
 
 

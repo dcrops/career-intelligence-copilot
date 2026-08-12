@@ -14,12 +14,15 @@ reviewed applications as quickly and reliably as possible.
 
 - **Horizon 1A (complete):** Job application workflow — acquire → assess → prepare →
   review → submit → track (FR-008–FR-017 frozen)
-- **Horizon 1B (next, owner request):** Scaled acquisition and market engagement —
-  **FR-018 complete**; next **FR-019 Recruiter Intelligence**, then network/market
-  (FR-020–FR-025); application loop usable; **not** gated on FR-017
+- **Horizon 1B (current):** Scaled acquisition and market engagement —
+  **FR-018 complete**; **FR-019 Core Loop Operationalisation** current (M0 GO;
+  M1 ready); after FR-019: Submission Automation investigation, then Recruiter
+  Intelligence (**FR-020+**, deferred); Horizon 1B range FR-018–FR-026;
+  application loop usable; **not** gated on FR-017
 
 **Principle:** Job acquisition first. Recruiter outreach second. After 1A, scale
-lawful opportunity inflow (**FR-018 frozen**) before recruiter CRM.
+lawful opportunity inflow (**FR-018 frozen**) and operationalise the daily apply
+loop (**FR-019**) before recruiter CRM.
 
 **Horizon 2 (long term):** Evolve into a reusable Career Intelligence Platform for
 ongoing career progression after employment is secured.
@@ -114,16 +117,21 @@ Horizon 1B **not** blocked) —
 [package](docs/masterclass/FR018/);
 [ADR-010](docs/adr/010_opportunity_discovery_ingress.md).
 
-**Current focus:** **FR-019 Recruiter Intelligence** on owner request. Horizon 1A
-and FR-018 frozen. Details: [docs/10_roadmap.md](docs/10_roadmap.md). Changelog § 1.125.
+**Current focus:** **FR-019 Core Loop Operationalisation** (M0 Accepted / GO;
+M1 ready —
+[docs/eval/fr019_core_loop_operationalisation.md](docs/eval/fr019_core_loop_operationalisation.md)).
+Horizon 1A and FR-018 frozen. Details: [docs/10_roadmap.md](docs/10_roadmap.md).
+Changelog § 1.128.
 
 Acquisition today: paste or local export file via
 `scripts/run_fr008_workflow_manual.py` (`--source paste|export`), owner SEEK
 URLs via `cic opportunity discover`, and job-alert `.eml` via
 `cic opportunity discover-email` (email discovers; URL enrich supplies full ads
-when alerts are card-only). Playwright deferred to later FRs.
+when alerts are card-only). Automatic Yahoo mailbox intake is **FR-019 M1**.
+Playwright deferred to later FRs.
 
-**Thereafter — Horizon 1B:** Recruiter / meetup / LinkedIn engagement (FR-019–FR-025).
+**Thereafter — after FR-019:** Submission Automation investigation → Recruiter /
+meetup / LinkedIn engagement (**FR-020–FR-026**).
 
 ### Phase 2 + document generation (baseline — frozen)
 

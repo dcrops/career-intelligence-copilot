@@ -1,0 +1,10 @@
+# Owner-authoritative candidate contact for external CIC application documents.
+# Copy to config/candidate_contact.yaml and fill real values (gitignored).
+# Do not put mailbox passwords or API keys here — use local_secrets.env for those.
+
+email: candidate@example.com
+phone: "0400 000 000"
+location: Melbourne, VIC
+linkedin_url: https://www.linkedin.com/in/example/
+portfolio_url: https://example.com/portfolio/
+github_url: https://github.com/example

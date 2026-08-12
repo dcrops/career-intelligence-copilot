@@ -36,7 +36,7 @@ Objectives.
 |----------|--------|
 | What is this project? | Decision-support for job search (Horizon 1), evolving toward a Career Intelligence Platform (Horizon 2). |
 | What has been completed? | **Phase 1** and **Phase 2** — see [12_phase_history.md](12_phase_history.md) and [eval/phase2_release_report.md](eval/phase2_release_report.md). |
-| What is next? | **FR-019 Recruiter Intelligence** on owner request. **FR-018 Complete / Frozen** ([eval/fr018_opportunity_discovery_acquisition.md](eval/fr018_opportunity_discovery_acquisition.md)). **Horizon 1A complete.** Changelog § 1.125 — [10_roadmap.md](10_roadmap.md). |
+| What is next? | **FR-019 Core Loop Operationalisation** (M0 GO; M1 ready) — [eval/fr019_core_loop_operationalisation.md](eval/fr019_core_loop_operationalisation.md). **FR-018 Complete / Frozen**. After FR-019: Submission Automation investigation, then Recruiter Intelligence (**FR-020**, deferred). Changelog § 1.128 — [10_roadmap.md](10_roadmap.md). |
 | Where should I start reading? | This guide → [AGENTS.md](../AGENTS.md) → [04_functional_specification.md](04_functional_specification.md) → [10_roadmap.md](10_roadmap.md). |
 
 ---
@@ -68,7 +68,10 @@ milestones [M0](eval/fr012_m0_submission_contracts.md),
 ([eval/fr013_application_pipeline_tracking.md](eval/fr013_application_pipeline_tracking.md);
 [ADR-005](adr/005_application_pipeline_lifecycle.md)).
 
-**Active focus:** **FR-019 Recruiter Intelligence** on owner request.
+**Active focus:** **FR-019 Core Loop Operationalisation** (M0 Accepted / GO;
+M1 ready —
+[eval/fr019_core_loop_operationalisation.md](eval/fr019_core_loop_operationalisation.md);
+[M1](eval/fr019_m1_mailbox_intake.md)).
 **FR-018 Complete / Frozen**
 ([eval/fr018_opportunity_discovery_acquisition.md](eval/fr018_opportunity_discovery_acquisition.md);
 [masterclass/FR018/](masterclass/FR018/)). **Horizon 1A complete.**
@@ -88,11 +91,11 @@ Validation is **complete and frozen**
 ([acceptance](eval/fr013_application_pipeline_tracking.md);
 [ADR-005](adr/005_application_pipeline_lifecycle.md)).
 
-**Thereafter:** Horizon 1B when the owner requests it — **FR-019 Recruiter
-Intelligence** (**FR-018 frozen** —
-[eval/fr018_opportunity_discovery_acquisition.md](eval/fr018_opportunity_discovery_acquisition.md)).
+**Thereafter:** After FR-019 acceptance — Submission Automation & Channel
+Adapters investigation, then **FR-020 Recruiter Intelligence** (deferred).
 Horizon 1A (FR-008–FR-017) is complete and frozen. Remap:
-[11_changelog.md](11_changelog.md) § 1.115; FR-018 freeze § 1.125.
+[11_changelog.md](11_changelog.md) § 1.115; FR-018 freeze § 1.125; FR-019
+formalisation § 1.128.
 
 Architecture decisions: `docs/adr/` (ADR-001, ADR-002, **ADR-003** thin in-repo
 workflow runner accepted — LangGraph not required for current FR-008 scope; **ADR-004**
@@ -194,7 +197,7 @@ Do **not** generate presentations in this repository as part of FR close-out.
 Do **not** hand-edit `sources/` snapshots or their sibling PDFs — regenerate from SoT
 (`build_masterclass_package.py`).
 Do **not** replace deep-learning artefacts with interview-only materials.
-FR-019+ inherits Brief/Deck structure automatically — no rediscovery.
+FR-020+ inherits Brief/Deck structure automatically — no rediscovery.
 (FR-018 Academy package: [masterclass/FR018/](masterclass/FR018/); packages still
 follow freeze → package → Lean Masterclass → PDF → Gamma → Brief/Deck.)
 

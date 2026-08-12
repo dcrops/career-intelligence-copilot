@@ -1,6 +1,13 @@
 """Public API for the opportunity-assessment capability (FR-003)."""
 
-from .errors import ErrorDetail, OpportunityAssessmentError, OpportunityAssessmentValidationError
+from .errors import (
+    RETRYABLE_ASSESSMENT_VALIDATION_TYPES,
+    UNRECOVERABLE_ASSESSMENT_VALIDATION_TYPES,
+    ErrorDetail,
+    OpportunityAssessmentError,
+    OpportunityAssessmentValidationError,
+    assessment_validation_is_retryable,
+)
 from .models import (
     AssessmentSummary,
     FitDimensionAssessment,
@@ -24,4 +31,7 @@ __all__ = [
     "OpportunityAssessmentService",
     "OpportunityAssessmentValidationError",
     "ProfileEvidenceRef",
+    "RETRYABLE_ASSESSMENT_VALIDATION_TYPES",
+    "UNRECOVERABLE_ASSESSMENT_VALIDATION_TYPES",
+    "assessment_validation_is_retryable",
 ]

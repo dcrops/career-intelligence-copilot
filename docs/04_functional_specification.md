@@ -60,19 +60,23 @@ bounded agents **FR-015** — see remapping in [11_changelog.md](11_changelog.md
 
 - **Complete:** FR-001–FR-007 (through Cover Letter)
 - **Complete — Horizon 1A (Job application workflow):** FR-008–FR-017
-- **Then — Horizon 1B (Scaled acquisition and market engagement):** FR-018–FR-025
-  (**FR-018** Opportunity Discovery & Acquisition first; recruiter work from FR-019)
-- **Later — Horizon 2:** FR-026+ (interview, dashboard, cross-domain prioritisation)
+- **Then — Horizon 1B (Scaled acquisition and market engagement):** FR-018–FR-026
+  (**FR-018** Opportunity Discovery & Acquisition complete; **FR-019** Core Loop
+  Operationalisation current; recruiter work from **FR-020**)
+- **Later — Horizon 2:** FR-027+ (interview, dashboard, cross-domain prioritisation)
 
 **Principle:** Job acquisition first. Recruiter outreach second. After 1A, that means
-scale lawful opportunity inflow before recruiter CRM/outreach.
+scale lawful opportunity inflow and operationalise the daily apply loop before
+recruiter CRM/outreach.
 
 **Product progression:** Understand the candidate → Understand the opportunity →
 Generate the application → Acquire jobs → Orchestrate applications → Introduce
 bounded agents → Scale to multi-agent systems → **Scale opportunity discovery** →
+**Operationalise the core apply loop** → Investigate submission automation →
 Expand into recruiter and market intelligence.
 
-See [10_roadmap.md](10_roadmap.md). Remap: [11_changelog.md](11_changelog.md) § 1.115.
+See [10_roadmap.md](10_roadmap.md). Remap: [11_changelog.md](11_changelog.md)
+§ 1.115 (FR-018 insert); § 1.128 (FR-019 Core Loop Operationalisation insert).
 
 ---
 
@@ -1491,7 +1495,8 @@ established identifier. **FR-015** Bounded Agentic Workflow is **complete and fr
 [acceptance](eval/fr016_multi_agent_orchestration.md)).
 **FR-017** Agent Evaluation & Observability is **complete and frozen**
 ([acceptance](eval/fr017_agent_evaluation_observability.md)).
-Next product focus: **FR-019 Recruiter Intelligence** on owner request.
+Next product focus: **FR-019 Core Loop Operationalisation**
+([eval/fr019_core_loop_operationalisation.md](eval/fr019_core_loop_operationalisation.md)).
 **FR-018 Opportunity Discovery & Acquisition** is **complete and frozen**
 ([eval/fr018_opportunity_discovery_acquisition.md](eval/fr018_opportunity_discovery_acquisition.md)).
 Remap: [11_changelog.md](11_changelog.md) § 1.115; freeze § 1.125.
@@ -1650,19 +1655,24 @@ Acceptance Criteria (frozen)
 
 ---
 
-## Horizon 1B — Scaled Acquisition and Market Engagement (FR-018–FR-025)
+## Horizon 1B — Scaled Acquisition and Market Engagement (FR-018–FR-026)
 
-**Status:** **FR-018 Complete / Frozen**; FR-019+ planned — after Horizon 1A
-**application loop** is usable (FR-008–FR-015). **Not blocked on FR-017**
+**Status:** **FR-018 Complete / Frozen**; **FR-019 Core Loop Operationalisation**
+in progress (M0 Accepted / GO; M1 ready) — after Horizon 1A **application loop**
+is usable (FR-008–FR-015). **Not blocked on FR-017**
 ([eval/fr017_m0_engineering_spike.md](eval/fr017_m0_engineering_spike.md) §9).  
 *(Recruiter/network FRs previously FR-018–FR-024; remapped 2026-08-07 — changelog
-§ 1.115. Opportunity Discovery & Acquisition leads.)*
+§ 1.115. Opportunity Discovery & Acquisition leads. Core Loop Operationalisation
+inserted as FR-019 2026-08-11 — changelog § 1.128; prior Recruiter Intelligence
+→ FR-020.)*
 
 **Lead capability:** Scale lawful discovery and acquisition of suitable
-opportunities into the frozen FR-008/FR-009 path. Recruiter outreach remains an
-*additional* channel after acquisition can feed the loop at volume. Do not
-displace live application throughput. Horizon 1A (including FR-017) is complete;
-starting 1B is preference timing, not an FR-017 engineering gate.
+opportunities into the frozen FR-008/FR-009 path, then **operationalise** the
+daily owner loop (automatic alert intake → recommend → APPLY/SKIP → prep →
+owner review). Recruiter outreach remains an *additional* channel after the
+apply loop is dogfoodable at volume. Do not displace live application throughput.
+Horizon 1A (including FR-017) is complete; starting 1B is preference timing, not
+an FR-017 engineering gate.
 
 All externally visible outreach must require user review before sending.
 
@@ -1714,121 +1724,161 @@ Indeed `.eml` → `EmailAcquisitionAdapter` → optional **URL enrich** via exis
 `cic opportunity discover-email`. Digests expand to one Opportunity per job URL.
 Email is a **discovery** mechanism; the job URL acquire path remains the
 authoritative advertisement source when enrichment succeeds. No IMAP, no
-recruiter CRM, no Playwright. Recruiter Intelligence is **FR-019+**.
+recruiter CRM, no Playwright. Automatic mailbox intake is **FR-019** (not a
+reopen of FR-018). Recruiter Intelligence is **FR-020+**.
 
 **Do not reopen** without explicit owner request.
 
 ---
 
-## FR-019 Recruiter Intelligence
+## FR-019 Core Loop Operationalisation
 
 **Phase:** Horizon 1B  
-**Status:** Planned  
+**Status:** **In progress** — M0 **Accepted / GO**; M1 **implementation complete —
+live Yahoo validation pending owner setup**  
+([eval/fr019_core_loop_operationalisation.md](eval/fr019_core_loop_operationalisation.md);
+[M0](eval/fr019_m0_engineering_spike.md);
+[M1](eval/fr019_m1_mailbox_intake.md))  
+*(Inserted 2026-08-11 — changelog § 1.128. M1 implementation § 1.129. Composes frozen Horizon 1A + FR-018;
+does not reopen FR-008–FR-018 exit criteria.)*
+
+Operationalise the owner daily job-search loop:
+
+automatic job-alert intake (Yahoo IMAP → dedicated `CIC Job Alerts` folder) →
+existing FR-018 discovery/acquisition → Horizon 1A analysis chain → FR-009
+recommendation → owner APPLY / SKIP / LATER → application preparation + truth →
+owner final review.
+
+Deliberately stops before new external submission automation; FR-012
+assisted/manual submission remains. After acceptance, next core-loop
+investigation is Submission Automation & Channel Adapters (before Recruiter
+Intelligence).
+
+**M0 (complete):** Architecture & source spike — keep Yahoo IMAP; SEEK discovery
+via alert email (not scrape); LinkedIn alert path unchanged; Indeed
+content-unavailable fail-closed; mailbox intake seam; email-level idempotency;
+secrets via `config/local_secrets.env`.
+
+**M1 (implementation complete — live pending):** `career_intelligence.mailbox` +
+`cic opportunity mailbox-intake`; email ledger; drop-folder fallback; fail-closed
+card-only on mailbox path. Live Yahoo smoke requires owner app password + folder.
+
+**M2–M6 (planned):** `cic daily`; recommend CLI; APPLY prep UX; Task Scheduler;
+live dogfood & acceptance.
+
+---
+
+## FR-020 Recruiter Intelligence
+
+**Phase:** Horizon 1B  
+**Status:** Planned — **deferred** until after FR-019 acceptance and the
+Submission Automation & Channel Adapters investigation  
 *(Originally FR-017; renumbered 2026-08-05 to FR-018; renumbered 2026-08-07 to
-FR-019 — changelog § 1.115.)*
+FR-019; renumbered 2026-08-11 to FR-020 — changelog § 1.115, § 1.128.)*
 
 Discover and prioritise suitable recruiters. Track recruiter history. Recommend
 follow-ups. Surface relationship context for outreach decisions.
 
 ---
 
-## FR-020 Recruiter Outreach
+## FR-021 Recruiter Outreach
 
 **Phase:** Horizon 1B  
 **Status:** Planned  
 *(Originally FR-018; renumbered 2026-08-05 to FR-019; renumbered 2026-08-07 to
-FR-020 — changelog § 1.115.)*
+FR-020; renumbered 2026-08-11 to FR-021 — changelog § 1.115, § 1.128.)*
 
 Generate tailored recruiter outreach messages under mandatory owner review. No
 autonomous sending.
 
 ---
 
-## FR-021 Existing Connection Outreach
+## FR-022 Existing Connection Outreach
 
 **Phase:** Horizon 1B  
 **Status:** Planned  
 *(Originally FR-019; renumbered 2026-08-05 to FR-020; renumbered 2026-08-07 to
-FR-021 — changelog § 1.115.)*
+FR-021; renumbered 2026-08-11 to FR-022 — changelog § 1.115, § 1.128.)*
 
 Support outreach to existing LinkedIn connections (and similar) with review gates,
 prioritisation, and follow-up tracking.
 
 ---
 
-## FR-022 LinkedIn Network Intelligence
+## FR-023 LinkedIn Network Intelligence
 
 **Phase:** Horizon 1B  
 **Status:** Planned  
 *(Originally FR-020; renumbered 2026-08-05 to FR-021; renumbered 2026-08-07 to
-FR-022 — changelog § 1.115.)*
+FR-022; renumbered 2026-08-11 to FR-023 — changelog § 1.115, § 1.128.)*
 
 Analyse and develop the owner’s professional network strategically — without
 displacing job-application throughput.
 
 ---
 
-## FR-023 Meetup Intelligence
+## FR-024 Meetup Intelligence
 
 **Phase:** Horizon 1B  
 **Status:** Planned  
 *(Originally FR-021; renumbered 2026-08-05 to FR-022; renumbered 2026-08-07 to
-FR-023 — changelog § 1.115.)*
+FR-023; renumbered 2026-08-11 to FR-024 — changelog § 1.115, § 1.128.)*
 
 Discover and recommend relevant Melbourne AI (and related) meetups as a networking
 and learning channel.
 
 ---
 
-## FR-024 LinkedIn Content Planning
+## FR-025 LinkedIn Content Planning
 
 **Phase:** Horizon 1B  
 **Status:** Planned  
 *(Originally FR-022; renumbered 2026-08-05 to FR-023; renumbered 2026-08-07 to
-FR-024 — changelog § 1.115.)*
+FR-024; renumbered 2026-08-11 to FR-025 — changelog § 1.115, § 1.128.)*
 
 Plan LinkedIn articles and related content to improve visibility — owner-approved
 publishing only.
 
 ---
 
-## FR-025 Market Intelligence
+## FR-026 Market Intelligence
 
 **Phase:** Horizon 1B / Horizon 2 boundary  
 **Status:** Planned  
 *(Originally FR-023; renumbered 2026-08-05 to FR-024; renumbered 2026-08-07 to
-FR-025 — changelog § 1.115.)*
+FR-025; renumbered 2026-08-11 to FR-026 — changelog § 1.115, § 1.128.)*
 
 Track recurring technologies, salary trends, and learning priorities that inform
 search strategy. May begin late in 1B if it directly improves application targeting.
 
 ---
 
-## Horizon 2 — Platform Capabilities (FR-026+)
+## Horizon 2 — Platform Capabilities (FR-027+)
 
 Deferred unless they directly accelerate Horizon 1 during the active search.
-*(Previously FR-025+ before § 1.115 remap; earlier drafts FR-024+ / FR-023+.)*
+*(Previously FR-026+ before § 1.128; FR-025+ before § 1.115; earlier drafts FR-024+ /
+FR-023+.)*
 
 ---
 
-## FR-026 Interview Preparation
+## FR-027 Interview Preparation
 
 **Phase:** Horizon 2  
 **Status:** Planned  
 *(Originally FR-024; renumbered 2026-08-05 to FR-025; renumbered 2026-08-07 to
-FR-026 — changelog § 1.115.)*
+FR-026; renumbered 2026-08-11 to FR-027 — changelog § 1.115, § 1.128.)*
 
 Generate recruiter, technical, and behavioural interview prep; project walkthroughs;
 and questions to ask.
 
 ---
 
-## FR-027 Career Dashboard
+## FR-028 Career Dashboard
 
 **Phase:** Horizon 2  
 **Status:** Planned  
 *(Originally FR-025; renumbered 2026-08-05 to FR-026; renumbered 2026-08-07 to
-FR-027 — changelog § 1.115.)*
+FR-027; renumbered 2026-08-11 to FR-028 — changelog § 1.115, § 1.128.)*
 
 Provide a live dashboard showing applications, recruiters, visibility, portfolio,
 market trends, and priority actions. Phase 2 already provides a simple opportunity
@@ -1836,12 +1886,12 @@ list / CLI comparison — the full dashboard remains out of early scope.
 
 ---
 
-## FR-028 Daily Prioritisation (cross-domain)
+## FR-029 Daily Prioritisation (cross-domain)
 
 **Phase:** Horizon 2  
 **Status:** Planned  
 *(Originally FR-026; renumbered 2026-08-05 to FR-027; renumbered 2026-08-07 to
-FR-028 — changelog § 1.115.)*
+FR-028; renumbered 2026-08-11 to FR-029 — changelog § 1.115, § 1.128.)*
 
 Recommend the highest-value activities for the day across jobs, recruiters,
 networking, and learning. Phase 2 M4 ranked comparison of *open job opportunities*

@@ -421,5 +421,8 @@ def test_portfolio_note_avoids_em_dash_fragments() -> None:
     assert note is not None
     assert "—" not in note
     assert "repositories ." not in note
+    assert "**Portfolio:**" in note
+    assert "**GitHub:**" in note
     assert "github" in note.casefold()
-    assert "slideware" in note.casefold()
+    assert "slideware" not in note.casefold()
+    assert "available in my portfolio" not in note.casefold()

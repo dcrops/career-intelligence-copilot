@@ -201,8 +201,13 @@ def test_letter_includes_collaboration_philosophy_and_portfolio_body() -> None:
     assert "trade-off" in body or "design review" in body or "architect" in body
     assert "architecture-first" in body
     assert "portfolio" in body
-    assert "journey.chaseriskandcompliance.com.au" in body
-    assert "working software" in body or "working demonstration" in body
+    assert "example.com/portfolio" in body
+    assert (
+        "working software" in body
+        or "working demonstration" in body
+        or "demos you can inspect" in body
+        or "live demonstrations" in body
+    )
     assert "—" not in letter.rendered_markdown
     assert "–" not in letter.rendered_markdown
 
@@ -348,9 +353,11 @@ def test_letter_includes_signature_block() -> None:
     letter = make_letter()
     markdown = letter.rendered_markdown
     assert "Kind regards," in markdown
-    assert "linkedin.com/in/david-cropper" in markdown.casefold()
-    assert "journey.chaseriskandcompliance.com.au" in markdown.casefold()
-    assert "github.com/dcrops" in markdown.casefold()
+    assert "linkedin.com/in/example" in markdown.casefold()
+    assert "example.com/portfolio" in markdown.casefold()
+    assert "github.com/example" in markdown.casefold()
+    assert "**Portfolio:**" in markdown
+    assert "**GitHub:**" in markdown
 
 
 def test_composition_is_deterministic() -> None:

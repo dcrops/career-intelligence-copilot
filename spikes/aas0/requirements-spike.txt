@@ -1,0 +1,2 @@
+# Disposable AAS-0 spike only — do NOT add to pyproject.toml production deps.
+playwright>=1.40

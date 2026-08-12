@@ -52,6 +52,8 @@ class ThinDiscoveryIngress:
     runner_factory: RunnerFactory
     http_client: HttpFetchClient | None = None
     offline_fixture_marker: str | None = None
+    fail_closed_on_card_only: bool = False
+    """When True, email acquire refuses card-only content (FR-019 mailbox path)."""
 
     def discover(self, request: DiscoveryRequest) -> DiscoveryOutcome:
         items: list[DiscoveryItemOutcome] = []
@@ -113,6 +115,7 @@ class ThinDiscoveryIngress:
             locator=str(source.locator),
             offline_fixture_marker=self.offline_fixture_marker,
             http_client=self.http_client,
+            fail_closed_on_card_only=self.fail_closed_on_card_only,
         )
         # Pre-acquire skip: try URL facets after a cheap parse via adapter would
         # re-parse; instead acquire then skip — definite match still prevents
@@ -203,15 +206,25 @@ class ThinDiscoveryIngress:
         # failures leave it unset — surface last_error instead of a generic mask.
         if opportunity_id is None:
             if state.status == "failed" and state.control.last_error is not None:
+                err = state.control.last_error
+                stage = err.node_id or state.control.current_node
+                hint = ""
+                if stage in {"analyse", "assess"}:
+                    hint = (
+                        f" Failed stage: {stage}."
+                        f" Retry: cic opportunity retry-run {state.run_id}"
+                    )
                 return _failed(
                     source,
                     "runner_failure",
-                    state.control.last_error.message,
+                    f"{err.message}{hint}",
+                    workflow_run_id=state.run_id,
                 )
             return _failed(
                 source,
                 "runner_failure",
                 "Workflow completed without allocating opportunity_id",
+                workflow_run_id=state.run_id,
             )
 
         message = "Acquired into Horizon 1A workflow"
@@ -241,12 +254,15 @@ def _failed(
     source: OpportunitySource,
     kind: DiscoveryFailureKind,
     message: str,
+    *,
+    workflow_run_id: str | None = None,
 ) -> DiscoveryItemOutcome:
     return DiscoveryItemOutcome(
         source=source,
         status="failed",
         failure_kind=kind,
         message=message[:500] if message else kind,
+        workflow_run_id=workflow_run_id,
     )
 
 
@@ -270,10 +286,11 @@ def _map_acquisition_failure(exc: AcquisitionError) -> DiscoveryFailureKind:
         return "adapter_failure"
     if "extract" in text or "insufficient" in text or "empty" in text or "malformed" in text:
         return "malformed_content"
+    if "content_unavailable" in text or "card only" in text:
+        return "malformed_content"
     if "posting" in text or "provenance" in text:
         return "partial_metadata"
     return "adapter_failure"
-
 
 def _map_discovery_detail(exc: DiscoveryError) -> DiscoveryFailureKind:
     detail = (exc.detail or "").lower()

@@ -34,10 +34,12 @@ updated. Phase 2 established them in practice; they continue to bind Horizon 1 w
 Complete the discover → assess → prepare → review → submit → track loop before
 investing in recruiter discovery, outreach messaging, meetup intelligence, or LinkedIn
 network automation. That loop is **complete** (Horizon 1A). **FR-018** Opportunity
-Discovery & Acquisition is **complete / frozen**. Next: recruiter work (**FR-019+**)
-on owner request. Recruiter work is an additional channel once inflow can feed the loop
-at volume — not a parallel distraction. Prefer APIs/feeds/alerts/exports/URLs over
-browser automation; no scrape-first design.
+Discovery & Acquisition is **complete / frozen**. **FR-019** Core Loop
+Operationalisation is **current** (compose the daily apply loop). After FR-019:
+Submission Automation investigation, then recruiter work (**FR-020+**). Recruiter
+work is an additional channel once inflow can feed the loop at volume — not a
+parallel distraction. Prefer APIs/feeds/alerts/exports/URLs over browser
+automation; no scrape-first design.
 
 ### Validate first, change second
 
@@ -202,8 +204,10 @@ context rather than ranking factors. Absent evidence must never improve a positi
 ### Scope control
 
 Horizon 1A (FR-008–FR-017) owns the application workflow and is **complete / frozen**.
-**FR-018** is **complete / frozen**. Within Horizon 1B, start **FR-019+** only on
-owner request — do not reopen FR-018 or Horizon 1A for polish.
+**FR-018** is **complete / frozen**. **FR-019** Core Loop Operationalisation is
+current — do not reopen FR-018 or Horizon 1A for polish. Start Recruiter
+Intelligence (**FR-020+**) only after FR-019 acceptance and the Submission
+Automation investigation (or explicit owner reprioritisation).
 Resist dashboards and unofficial presentation polish that displace acquisition and
 submission. FR-006/FR-007 document generation is complete; do not reopen for polish
 that displaces live job-search throughput.
@@ -262,7 +266,7 @@ Build extensible seams between decision stages; keep implementations inside each
 
 Avoid these patterns — they are the most likely causes of project failure in this repository:
 
-1. **Starting recruiter outreach (Horizon 1B FR-019+) before the application loop works,
+1. **Starting recruiter outreach (Horizon 1B FR-020+) before the application loop works,
    or before scaling lawful opportunity inflow (FR-018) when that is the approved lead** —
    messaging and networking feel urgent but displace job acquisition, ranking, and
    reviewed submissions

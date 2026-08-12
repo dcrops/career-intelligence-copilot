@@ -36,12 +36,12 @@ def minimal_profile() -> CareerProfile:
 
 def default_contact() -> ContactDetails:
     return ContactDetails(
-        email="djcropster@gmail.com",
-        phone="0400 811 545",
+        email="candidate@example.com",
+        phone="0400 000 000",
         location="Melbourne, VIC",
-        linkedin_url="https://www.linkedin.com/in/david-cropper/",
-        portfolio_url="https://journey.chaseriskandcompliance.com.au/",
-        github_url="https://github.com/dcrops",
+        linkedin_url="https://www.linkedin.com/in/example/",
+        portfolio_url="https://example.com/portfolio/",
+        github_url="https://github.com/example",
     )
 
 

@@ -33,6 +33,10 @@ class ApplicationPackageEligibilityError(ApplicationPackageError):
     """Raised when an Opportunity is not eligible for package preparation."""
 
 
+class ApplicationPackageContactError(ApplicationPackageError):
+    """Raised when owner contact configuration is missing for external packages."""
+
+
 class ApplicationPackageValidationError(ApplicationPackageError):
     """Raised when package data does not satisfy the domain schema."""
 
