@@ -15,6 +15,7 @@ from career_intelligence.truth_validation.gates import (
 )
 
 from .answer_policy import KnownAnswers
+from .artefact_freshness import PdfFreshnessStatus, assess_markdown_pdf_freshness
 
 SPIKE_DIR = Path(__file__).resolve().parent
 REPO_ROOT = SPIKE_DIR.parents[1]
@@ -31,17 +32,23 @@ class SpikeInputs:
     title: str | None
     cv_pdf: Path
     cover_letter_pdf: Path
+    authoritative_cv_pdf: Path
+    authoritative_cover_letter_pdf: Path
     cv_markdown: Path
     cover_letter_markdown: Path
     known: KnownAnswers
     truth: PackageTruthStatus
     package_ok: bool
     warnings: tuple[str, ...]
+    notes: tuple[str, ...] = ()
+    blocking_warnings: tuple[str, ...] = ()
 
 
 def load_spike_inputs(opportunity_id: str = DEFAULT_OPPORTUNITY_ID) -> SpikeInputs:
     """Load authoritative CIC inputs for the spike. Never regenerates documents."""
     warnings: list[str] = []
+    notes: list[str] = []
+    blocking: list[str] = []
     profile = CareerProfileService().load()
     contact = load_candidate_contact()
     opportunities = OpportunityService()
@@ -57,43 +64,61 @@ def load_spike_inputs(opportunity_id: str = DEFAULT_OPPORTUNITY_ID) -> SpikeInpu
         )
 
     manifest = packages.get(opportunity_id, verify=True)
-    cv_pdf = Path(manifest.cv.pdf_path)
-    cl_pdf = Path(manifest.cover_letter.pdf_path)
+    auth_cv_pdf = Path(manifest.cv.pdf_path)
+    auth_cl_pdf = Path(manifest.cover_letter.pdf_path)
     cv_md = Path(manifest.cv.markdown_path)
     cl_md = Path(manifest.cover_letter.markdown_path)
 
     for label, path in (
-        ("CV PDF", cv_pdf),
-        ("cover-letter PDF", cl_pdf),
+        ("CV PDF", auth_cv_pdf),
+        ("cover-letter PDF", auth_cl_pdf),
         ("CV markdown", cv_md),
         ("cover-letter markdown", cl_md),
     ):
         if not path.is_file():
             raise RuntimeError(f"Missing {label}: {path}")
 
-    # Stem / opportunity correspondence check.
-    if opportunity_id not in cv_pdf.name or opportunity_id not in cl_pdf.name:
-        warnings.append(
-            "PDF filenames do not contain opportunity_id — verify artefacts carefully."
+    # Soft advisory only — not a hard AAS block.
+    if opportunity_id not in auth_cv_pdf.name or opportunity_id not in auth_cl_pdf.name:
+        notes.append(
+            "Authoritative PDF filenames do not contain opportunity_id — "
+            "verify artefacts carefully."
         )
 
-    # Warn if markdown newer than PDF (do not auto-regenerate).
-    if cv_md.stat().st_mtime > cv_pdf.stat().st_mtime:
-        warnings.append(
-            f"CV markdown is newer than PDF ({cv_md.name} > {cv_pdf.name}). "
-            "STOP and ask owner before live upload if content drifted."
+    # Content-based freshness (not mtime-only). PDF byte equality is not used.
+    for label, md, pdf in (
+        ("CV", cv_md, auth_cv_pdf),
+        ("cover letter", cl_md, auth_cl_pdf),
+    ):
+        result = assess_markdown_pdf_freshness(
+            markdown_path=md,
+            pdf_path=pdf,
+            label=label,
         )
-    if cl_md.stat().st_mtime > cl_pdf.stat().st_mtime:
-        warnings.append(
-            f"Cover-letter markdown is newer than PDF ({cl_md.name} > {cl_pdf.name}). "
-            "STOP and ask owner before live upload if content drifted."
-        )
+        if result.blocking:
+            blocking.append(result.message)
+            warnings.append(result.message)
+        elif result.status is PdfFreshnessStatus.MTIME_TOUCH_ONLY:
+            notes.append(result.message)
+        # ok — no warning / note
 
     truth = evaluate_package_truth(manifest=manifest, profile=profile, revalidate=False)
     if not truth.external_use_allowed:
-        warnings.append(
+        msg = (
             "Package external-use gate is NOT allowed: "
             + "; ".join(truth.messages)
+        )
+        warnings.append(msg)
+        blocking.append(msg)
+
+    exports = packages.ensure_external_upload_pdfs(manifest)
+    if opportunity_id in exports.cv_pdf.name or opportunity_id in exports.cover_letter_pdf.name:
+        raise RuntimeError("External upload filename contains opportunity_id")
+    if exports.cv_pdf.read_bytes() != auth_cv_pdf.read_bytes():
+        raise RuntimeError("External CV PDF bytes differ from authoritative PDF")
+    if exports.cover_letter_pdf.read_bytes() != auth_cl_pdf.read_bytes():
+        raise RuntimeError(
+            "External cover-letter PDF bytes differ from authoritative PDF"
         )
 
     known = KnownAnswers(
@@ -112,14 +137,18 @@ def load_spike_inputs(opportunity_id: str = DEFAULT_OPPORTUNITY_ID) -> SpikeInpu
         apply_url=str(apply_url),
         company=identity.company,
         title=identity.title,
-        cv_pdf=cv_pdf.resolve(),
-        cover_letter_pdf=cl_pdf.resolve(),
+        cv_pdf=exports.cv_pdf.resolve(),
+        cover_letter_pdf=exports.cover_letter_pdf.resolve(),
+        authoritative_cv_pdf=auth_cv_pdf.resolve(),
+        authoritative_cover_letter_pdf=auth_cl_pdf.resolve(),
         cv_markdown=cv_md.resolve(),
         cover_letter_markdown=cl_md.resolve(),
         known=known,
         truth=truth,
         package_ok=True,
         warnings=tuple(warnings),
+        notes=tuple(notes),
+        blocking_warnings=tuple(blocking),
     )
 
 
@@ -137,11 +166,15 @@ def format_preflight_report(inputs: SpikeInputs) -> str:
         "LIMITATION: This spike targets SEEK-native application assistance,",
         "not a general employer ATS (Greenhouse/Lever/etc.).",
         "",
-        "Artefacts:",
-        f"  CV PDF:            {inputs.cv_pdf}",
-        f"  Cover letter PDF:  {inputs.cover_letter_pdf}",
+        "Authoritative artefacts (internal):",
+        f"  CV PDF:            {inputs.authoritative_cv_pdf}",
+        f"  Cover letter PDF:  {inputs.authoritative_cover_letter_pdf}",
         f"  CV markdown:       {inputs.cv_markdown}",
         f"  CL markdown:       {inputs.cover_letter_markdown}",
+        "",
+        "External/upload artefacts (employer-facing):",
+        f"  CV PDF:            {inputs.cv_pdf}",
+        f"  Cover letter PDF:  {inputs.cover_letter_pdf}",
         "",
         "Truth / external use:",
         f"  external_use_allowed: {truth.external_use_allowed}",
@@ -160,12 +193,17 @@ def format_preflight_report(inputs: SpikeInputs) -> str:
     for key, value in inputs.known.as_lookup().items():
         lines.append(f"  - {key}: {value}")
     lines.append("")
-    if inputs.warnings:
-        lines.append("WARNINGS:")
-        for warning in inputs.warnings:
+    if inputs.blocking_warnings:
+        lines.append("WARNINGS (blocking):")
+        for warning in inputs.blocking_warnings:
             lines.append(f"  ! {warning}")
     else:
         lines.append("WARNINGS: none")
+    if inputs.notes:
+        lines.append("")
+        lines.append("NOTES (non-blocking):")
+        for note in inputs.notes:
+            lines.append(f"  - {note}")
     lines.append("")
     lines.append("Browser profile (dedicated Playwright Chromium):")
     lines.append(f"  {DEFAULT_PROFILE_DIR}")

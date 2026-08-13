@@ -154,3 +154,42 @@ def test_load_artifacts_via_opportunity_service(tmp_path: Path) -> None:
     opportunity = opportunities.get(opportunity_id)
     assert artifacts.strategy.application_tier == opportunity.strategy_summary.application_tier
     assert artifacts.job_analysis.posting.company == opportunity.identity.company
+
+
+def test_prepare_preserves_owner_edited_markdown(tmp_path: Path) -> None:
+    opportunities, opportunity_id, profile = seed_applied_opportunity(tmp_path)
+    service = package_service(tmp_path, opportunities, profile)
+    first = service.prepare(opportunity_id, **approved_gate_options())
+    markdown_path = Path(first.cv.markdown_path)
+    edited = markdown_path.read_text(encoding="utf-8") + "\nOwner edit survives.\n"
+    markdown_path.write_text(edited, encoding="utf-8", newline="\n")
+
+    options = approved_gate_options()
+    options["prepared_at"] = STAMP.replace(minute=30)
+    second = service.prepare(opportunity_id, **options)
+
+    assert "Owner edit survives." in Path(second.cv.markdown_path).read_text(
+        encoding="utf-8"
+    )
+    assert second.cv_generated_markdown_sha256 == first.cv_generated_markdown_sha256
+
+
+def test_prepare_regenerate_overwrites_owner_edited_markdown(tmp_path: Path) -> None:
+    opportunities, opportunity_id, profile = seed_applied_opportunity(tmp_path)
+    service = package_service(tmp_path, opportunities, profile)
+    first = service.prepare(opportunity_id, **approved_gate_options())
+    markdown_path = Path(first.cv.markdown_path)
+    markdown_path.write_text(
+        markdown_path.read_text(encoding="utf-8") + "\nOwner edit should go.\n",
+        encoding="utf-8",
+        newline="\n",
+    )
+
+    options = approved_gate_options()
+    options["prepared_at"] = STAMP.replace(minute=45)
+    options["regenerate"] = True
+    second = service.prepare(opportunity_id, **options)
+
+    assert "Owner edit should go." not in Path(second.cv.markdown_path).read_text(
+        encoding="utf-8"
+    )

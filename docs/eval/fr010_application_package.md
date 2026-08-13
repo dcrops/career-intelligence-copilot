@@ -6,6 +6,12 @@
 **Next:** Begin **FR-011** Application Preparation Orchestration (FR-010 frozen;
 Submission Assistance is now **FR-012**)
 
+**Current production (2026-08-13):** the same FR-010 composition service now
+generates CV via Master-CV adaptation and cover letter via one bounded LLM
+call, with owner-edit fingerprints and human-readable `export/` copies. FR-010
+exit criteria unchanged. See
+[document_quality_remediation.md](document_quality_remediation.md).
+
 Milestone acceptance records: [M0](fr010_m0_application_package.md),
 [M1](fr010_m1_package_durability.md), [M2](fr010_m2_owner_cli.md).
 

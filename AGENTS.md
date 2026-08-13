@@ -61,9 +61,13 @@ is **complete and frozen** —
 Truth Validation is **complete and frozen** —
 [acceptance](docs/eval/fr014_recruiter_document_truth_validation.md);
 milestones [M0](docs/eval/fr014_m0_engineering_spike.md)–[M4](docs/eval/fr014_m4_claim_validation.md);
-[ADR-006](docs/adr/006_recruiter_document_truth_validation.md). **Current focus —
-FR-019 Core Loop Operationalisation** (M0 Accepted / GO; M1 GO proposed with
-M1.1 —
+[ADR-006](docs/adr/006_recruiter_document_truth_validation.md). **Document Quality Remediation is COMPLETE**
+([docs/eval/document_quality_remediation.md](docs/eval/document_quality_remediation.md)).
+**Next engineering work:** Application Assistance, resuming from AAS-0
+([docs/spikes/application_assistance_aas0.md](docs/spikes/application_assistance_aas0.md));
+do not restart Playwright from scratch; do not prioritise Indeed ingestion
+ahead of AAS. **FR-019 Core Loop Operationalisation** remains in progress (M0
+Accepted / GO; M1 GO proposed with M1.1 —
 [docs/eval/fr019_core_loop_operationalisation.md](docs/eval/fr019_core_loop_operationalisation.md);
 [M1](docs/eval/fr019_m1_mailbox_intake.md);
 [M1.1](docs/eval/fr019_m1_1_reliability_hardening.md)). **FR-018** Opportunity Discovery &
@@ -98,6 +102,8 @@ service boundary are recorded in
 [ADR-001](docs/adr/001_python_yaml_profile_foundation.md).
 
 **Immediate priority (Horizon 1):** Help the repository owner secure a suitable AI Engineering role sooner while reducing job-search effort. Horizon 1 wins when objectives conflict. See [docs/03_product_vision.md](docs/03_product_vision.md).
+Document quality remediation is complete; next engineering work is Application
+Assistance from AAS-0.
 
 **Single-user phase:** The repository owner is the user, builder, and product owner.
 
@@ -132,10 +138,12 @@ Bounded Agentic Workflow is **complete and frozen**
 (learning proof only). **FR-017** is **complete and frozen**
 ([docs/eval/fr017_agent_evaluation_observability.md](docs/eval/fr017_agent_evaluation_observability.md);
 [ADR-009](docs/adr/009_orchestration_evaluation_substrate.md)).
-Next: **FR-019 Core Loop Operationalisation** (M0 GO; M1 GO proposed with M1.1;
-M2 not started). After FR-019
-acceptance: Submission Automation investigation, then **FR-020 Recruiter
-Intelligence** (deferred). **FR-018** is **complete and frozen**
+Document quality remediation is **complete**. Immediate next engineering:
+Application Assistance from AAS-0 (do not restart Playwright; do not prioritise
+Indeed). **FR-019 Core Loop Operationalisation** remains in progress (M0 GO; M1
+GO proposed with M1.1; M2 not started). After FR-019 acceptance: Submission
+Automation investigation, then **FR-020 Recruiter Intelligence** (deferred).
+**FR-018** is **complete and frozen**
 ([docs/eval/fr018_opportunity_discovery_acquisition.md](docs/eval/fr018_opportunity_discovery_acquisition.md)).
 See [docs/10_roadmap.md](docs/10_roadmap.md).
 

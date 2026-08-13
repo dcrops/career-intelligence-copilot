@@ -81,6 +81,8 @@ def build_agent_runtime(
         ),
         cv_options=CvGenerationOptions(
             tailoring_plan_approved=True,
+            adapt_from_master=True,
+            rewrite_summary=False,
             contact=contact,
         ),
         cover_letter_plan_options=CoverLetterPlanOptions(

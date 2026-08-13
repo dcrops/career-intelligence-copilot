@@ -67,25 +67,12 @@ def _header_contact_lines(contact: dict[str, str] | None) -> list[str]:
 
 
 def _signature_lines(letter: CoverLetter) -> list[str]:
-    lines = [
+    """Name-only close. Contact belongs in the header, not after the signature."""
+    return [
         "Kind regards,",
         "",
         letter.full_name,
-        "",
     ]
-    contact = letter.contact or {}
-    for key in _CONTACT_ORDER:
-        value = contact.get(key)
-        if not value:
-            continue
-        if key in _LINK_LABELS:
-            display = _compact_url(value)
-            lines.append(f"**{_LINK_LABELS[key]}:** [{display}]({value})")
-        else:
-            lines.append(value)
-    if any(contact.get(key) for key in _CONTACT_ORDER):
-        lines.append("")
-    return lines
 
 
 def _compact_url(url: str) -> str:

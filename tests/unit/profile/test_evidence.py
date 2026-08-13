@@ -6,6 +6,7 @@ from career_intelligence.profile import (
     SkillEvidenceRef,
     evidence_strength_rank,
     resolve_skill_evidence_refs,
+    skill_prominence_band,
     strongest_evidence_kind,
     strongest_evidence_kind_for_capability,
 )
@@ -132,3 +133,45 @@ def test_capability_name_falls_back_to_project_technology() -> None:
     assert strongest_evidence_kind_for_capability(profile, "Python") == (
         "portfolio_project"
     )
+
+
+def test_prominence_band_current_commercial_foundational_and_unspecified() -> None:
+    profile = minimal_profile()
+    pd = ExperienceEntry.model_validate(
+        {
+            "id": "pd-data-eng",
+            "kind": "professional_development",
+            "organisation": "Independent study",
+            "title": "Data Engineering Upskilling",
+            "start_date": "2023-10",
+            "end_date": "2025-06",
+            "highlights": ["Studied Snowflake"],
+            "technologies": ["Snowflake"],
+        }
+    )
+    profile = profile.model_copy(
+        update={
+            "experience": [*profile.experience, pd],
+            "skills": profile.skills.model_copy(
+                update={
+                    "technical": [
+                        Skill(name="Python", evidence="experience:example-role"),
+                        Skill(
+                            name="FastAPI",
+                            evidence="project:example-project",
+                        ),
+                        Skill(
+                            name="Snowflake",
+                            evidence="experience:pd-data-eng",
+                        ),
+                        Skill(name="Mystery", evidence=None),
+                    ]
+                }
+            ),
+        }
+    )
+    by_name = {skill.name: skill for skill in profile.skills.technical}
+    assert skill_prominence_band(profile, by_name["FastAPI"]) == "current_hands_on"
+    assert skill_prominence_band(profile, by_name["Python"]) == "commercial"
+    assert skill_prominence_band(profile, by_name["Snowflake"]) == "foundational"
+    assert skill_prominence_band(profile, by_name["Mystery"]) is None

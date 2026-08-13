@@ -61,6 +61,44 @@ def test_approved_overall_positioning_supported() -> None:
     finding = _duration_finding(report, OVERALL_ENGINEERING_EXPERIENCE_DURATION_KEY)
     assert finding.evidence_status == "supported"
     assert finding.severity == "info"
+    assert report.outcome in {"pass", "warning"}
+
+
+def test_years_of_experience_across_resolves_to_overall_engineering() -> None:
+    report = _report(
+        "I bring over 10 years of experience across testing, automation, "
+        "data engineering and applied AI engineering."
+    )
+    finding = _duration_finding(report, OVERALL_ENGINEERING_EXPERIENCE_DURATION_KEY)
+    assert finding.evidence_status == "supported"
+    assert finding.severity == "info"
+    assert finding.detection_certainty == "certain"
+    assert not any(
+        item.claim.object_key == "experienceacrosstesting"
+        for item in report.findings
+        if item.claim.claim_kind == "duration"
+    )
+
+
+def test_years_of_experience_across_oxford_comma_supported() -> None:
+    report = _report(
+        "I bring over 10 years of experience across testing, automation, "
+        "and data engineering."
+    )
+    finding = _duration_finding(report, OVERALL_ENGINEERING_EXPERIENCE_DURATION_KEY)
+    assert finding.evidence_status == "supported"
+    assert finding.severity == "info"
+
+
+def test_bare_years_of_experience_is_not_overall_engineering() -> None:
+    report = _report("I have 10 years of experience.")
+    overall = [
+        item
+        for item in report.findings
+        if item.claim.claim_kind == "duration"
+        and item.claim.object_key == OVERALL_ENGINEERING_EXPERIENCE_DURATION_KEY
+    ]
+    assert overall == []
 
 
 def test_block_ten_plus_years_of_ai_engineering() -> None:

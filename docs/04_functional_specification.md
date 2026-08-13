@@ -1138,7 +1138,7 @@ Thin `cic package` adapter over `ApplicationPackageService` (no new business rul
 
 | Command | Behaviour |
 |---------|-----------|
-| `cic package prepare <opp_id> --approve` | Prepare/regenerate; `--approve` sets FR-006/FR-007 gates explicitly |
+| `cic package prepare <opp_id> --approve` | Prepare/regenerate; `--approve` sets FR-006/FR-007 gates explicitly. CV uses Master-CV adaptation (no LLM rewrite); cover letter uses one bounded LLM composition call. Ordinary prepare preserves owner-edited Markdown via generated-content fingerprints; `--regenerate` overwrites both documents deliberately. There is no document-specific `--regenerate-cv` CLI flag (usability limitation, not a current build priority). |
 | `cic package show <opp_id>` | Display current package (optional `--yaml`, `--no-verify`) |
 | `cic package verify <opp_id>` | Fail closed if manifest or drafts are missing/incomplete |
 
@@ -1156,6 +1156,13 @@ Optional: `--override-material-benefit`, `--dir`, `--packages-dir`, `--profile`,
 ✓ Packages reload, regenerate, and overwrite safely with deterministic manifests (M1).
 
 ✓ Owner can prepare, show, and verify packages via CLI without duplicating service logic (M2).
+
+Production packages also materialize human-readable external upload copies under
+`data/application_packages/<id>/export/` (for example
+`David Cropper - REPURPOSE IT PL - AI Engineer - CV.pdf`). Authoritative drafts
+keep opportunity-oriented filenames. Filename responsibility is packaging/export,
+not Playwright. Accepted production document path:
+[eval/document_quality_remediation.md](eval/document_quality_remediation.md).
 
 ### Out of scope for FR-010 (frozen)
 
@@ -1511,6 +1518,14 @@ claims (computable tenure only), employment honesty (never equate independent wo
 with commercial employment without evidence), certifications, domain claims, and
 project/delivery claims. Education and identity/contact crawling remain out of scope.
 
+Bounded detector corrections (2026-08-13, not a new FR; gate policy unchanged):
+supported “years of experience across X, Y and Z” follows overall-engineering
+duration semantics and must not be comma-truncated into a domain-specific tenure
+claim; first-person “At [employer], I developed …” may be supported by matching
+employment evidence when the employer is identified. Named-project validation and
+unsupported claims remain fail-closed. See
+[eval/document_quality_remediation.md](eval/document_quality_remediation.md).
+
 Behaviour: deterministic where possible; evidence-backed; explainable; **fail-closed**
 for material unsupported candidate claims; traceable findings (claim, type, source,
 evidence found/missing, severity, recommended owner action). Indicative results:
@@ -1753,6 +1768,10 @@ Deliberately stops before new external submission automation; FR-012
 assisted/manual submission remains. After acceptance, next core-loop
 investigation is Submission Automation & Channel Adapters (before Recruiter
 Intelligence).
+
+**Immediate next engineering (owner-sequenced, 2026-08-13):** Application
+Assistance, resuming from AAS-0. Do not prioritise Indeed ingestion ahead of
+that continuation. Document quality remediation is complete.
 
 **M0 (complete):** Architecture & source spike — keep Yahoo IMAP; SEEK discovery
 via alert email (not scrape); LinkedIn alert path unchanged; Indeed

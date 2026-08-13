@@ -150,6 +150,140 @@ def test_duration_and_project_delivery() -> None:
     assert _finding(uncertain, "project_delivery").severity in {"review_required", "blocking"}
 
 
+def test_employment_highlight_restatement_is_not_unnamed_project_delivery() -> None:
+    profile = _profile(
+        experience=[
+            {
+                "id": "pipeline-role",
+                "kind": "employment",
+                "organisation": "Pipeline Co",
+                "title": "Data Engineer",
+                "start_date": "2020-03",
+                "end_date": "2023-10",
+                "location": "Melbourne",
+                "highlights": [
+                    "Developed and maintained enterprise data pipelines and "
+                    "operational reporting solutions using AWS services, "
+                    "Python, SQL, and Apache NiFi."
+                ],
+                "technologies": ["Python", "SQL", "AWS"],
+            }
+        ]
+    )
+    report = _report(
+        "At Pipeline Co, I developed and maintained enterprise data pipelines "
+        "and operational reporting solutions using AWS, Python, and SQL.",
+        profile,
+    )
+    delivery = [
+        item
+        for item in report.findings
+        if item.claim.claim_kind == "project_delivery"
+    ]
+    assert delivery == []
+    employment = _finding(report, "employment", "experience-pipeline-role")
+    assert employment.evidence_status == "supported"
+    assert employment.severity == "info"
+
+
+def test_employer_name_does_not_support_invented_delivery() -> None:
+    profile = _profile(
+        experience=[
+            {
+                "id": "pipeline-role",
+                "kind": "employment",
+                "organisation": "Pipeline Co",
+                "title": "Data Engineer",
+                "start_date": "2020-03",
+                "end_date": "2023-10",
+                "location": "Melbourne",
+                "highlights": [
+                    "Developed and maintained enterprise data pipelines."
+                ],
+                "technologies": ["Python"],
+            }
+        ]
+    )
+    report = _report(
+        "At Pipeline Co, I developed a satellite billing portal for customer onboarding.",
+        profile,
+    )
+    finding = _finding(report, "project_delivery")
+    assert finding.severity in {"review_required", "blocking"}
+    assert finding.detection_certainty == "ambiguous"
+
+
+def test_employer_name_does_not_waive_unsupported_delivery() -> None:
+    profile = _profile(
+        experience=[
+            {
+                "id": "pipeline-role",
+                "kind": "employment",
+                "organisation": "Pipeline Co",
+                "title": "Data Engineer",
+                "start_date": "2020-03",
+                "end_date": "2023-10",
+                "location": "Melbourne",
+                "highlights": [
+                    "Developed and maintained enterprise data pipelines."
+                ],
+                "technologies": ["Python"],
+            }
+        ]
+    )
+    report = _report(
+        "At Pipeline Co, I built the Redwolf Platform.",
+        profile,
+    )
+    finding = _finding(report, "project_delivery")
+    assert finding.severity in {"review_required", "blocking"}
+    assert finding.detection_certainty == "ambiguous"
+
+
+def test_named_portfolio_project_delivery_remains_supported() -> None:
+    report = _report("I developed the Example Project.")
+    finding = _finding(report, "project_delivery", "exampleproject")
+    assert finding.evidence_status == "supported"
+    assert finding.severity == "info"
+
+
+def test_named_rag_project_delivery_supported_on_live_profile() -> None:
+    live = Path(__file__).resolve().parents[3] / "data" / "career_profile.yaml"
+    profile = CareerProfileService.from_path(live).load()
+    report = TruthValidationService().validate_markdown(
+        markdown=(
+            "I developed the Governance-Aware Document Intelligence RAG."
+        ),
+        profile=profile,
+    )
+    finding = _finding(report, "project_delivery")
+    assert finding.evidence_status == "supported"
+    assert finding.severity == "info"
+
+
+def test_nbn_employment_highlight_restatement_is_supported_employment() -> None:
+    live = Path(__file__).resolve().parents[3] / "data" / "career_profile.yaml"
+    profile = CareerProfileService.from_path(live).load()
+    report = TruthValidationService().validate_markdown(
+        markdown=(
+            "Transitioning to data engineering at nbn Australia, I developed "
+            "and maintained enterprise data pipelines and operational reporting "
+            "solutions using AWS services, Python, and SQL."
+        ),
+        profile=profile,
+    )
+    delivery = [
+        item
+        for item in report.findings
+        if item.claim.claim_kind == "project_delivery"
+    ]
+    assert delivery == []
+    employment = _finding(
+        report, "employment", "experience-nbn-data-engineer-2020"
+    )
+    assert employment.evidence_status == "supported"
+
+
 def test_redwolf_regression_remains_blocking() -> None:
     report = _report(
         "Roles centred on Python, TypeScript, and Vue are where I do my best engineering work.",

@@ -1,5 +1,10 @@
 # AAS-0 Application Assistance Spike Report
 
+Document quality remediation is **complete**
+([eval/document_quality_remediation.md](../eval/document_quality_remediation.md)).
+Resume Application Assistance from this spike rather than restarting Playwright
+from scratch. Do not prioritise Indeed ingestion ahead of AAS continuation.
+
 ## Accurate application state (mandatory)
 
 | Result | Value |

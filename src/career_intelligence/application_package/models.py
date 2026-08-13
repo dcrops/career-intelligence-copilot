@@ -90,3 +90,7 @@ class ApplicationPackageManifest(PackageModel):
     cv: DocumentArtefactRefs
     cover_letter: DocumentArtefactRefs
     owner_review_required: Literal[True] = True
+    # SHA-256 of last *generated* Markdown bytes. Owner edits change the file
+    # without updating these fingerprints, so ordinary prepare will not overwrite.
+    cv_generated_markdown_sha256: NonEmptyString | None = None
+    cover_letter_generated_markdown_sha256: NonEmptyString | None = None

@@ -6,6 +6,8 @@ only via an injected SummaryRewriter; failures fall back to the profile summary.
 
 from __future__ import annotations
 
+from pathlib import Path
+
 from pydantic import ValidationError
 
 from career_intelligence.application_strategy.models import ApplicationStrategy
@@ -25,6 +27,12 @@ from .errors import (
 )
 from .fidelity import validate_fidelity
 from .fixture_summary_rewriter import FixtureSummaryRewriter
+from .master_adapt import (
+    DEFAULT_MASTER_CV_PATH,
+    adapt_master_cv_markdown,
+    extract_master_summary,
+    load_master_cv_markdown,
+)
 from .models import TailoredCv, TailoringPlan
 from .openai_summary_rewriter import OpenAISummaryRewriter
 from .options import CvGenerationOptions
@@ -88,7 +96,7 @@ class CvGenerationService:
             relevance_terms,
             max_items=_MAX_SELECTED_HIGHLIGHTS,
         )
-        methodology = _methodology_payload(profile)
+        methodology = None if resolved.adapt_from_master else _methodology_payload(profile)
 
         summary, summary_source, rewrite_assumptions = self._resolve_summary(
             profile, plan, resolved
@@ -131,7 +139,23 @@ class CvGenerationService:
         }
 
         cv = self._validate(draft)
-        markdown = render_markdown(cv, presentation=resolved.presentation)
+        if resolved.adapt_from_master:
+            master_path = (
+                Path(resolved.master_cv_path)
+                if resolved.master_cv_path
+                else DEFAULT_MASTER_CV_PATH
+            )
+            master_markdown = load_master_cv_markdown(master_path)
+            markdown = adapt_master_cv_markdown(
+                master_markdown,
+                profile=profile,
+                plan=plan,
+                target_role=target_role,
+                contact=resolved.contact,
+                omit_methodology=True,
+            )
+        else:
+            markdown = render_markdown(cv, presentation=resolved.presentation)
         cv = self._validate({**draft, "rendered_markdown": markdown})
         validate_fidelity(cv, plan)
         return cv
@@ -143,6 +167,23 @@ class CvGenerationService:
         options: CvGenerationOptions,
     ) -> tuple[str | None, SummarySource, list[str]]:
         profile_summary = profile.identity.summary
+        if options.adapt_from_master:
+            master_path = (
+                Path(options.master_cv_path)
+                if options.master_cv_path
+                else DEFAULT_MASTER_CV_PATH
+            )
+            master_markdown = load_master_cv_markdown(master_path)
+            master_summary = extract_master_summary(master_markdown) or profile_summary
+            return (
+                master_summary,
+                "master_baseline",
+                [
+                    "Summary taken from the Master CV editorial baseline "
+                    "(adapt_from_master=True); TailoringPlan still owns "
+                    "project inclusion and skill emphasis."
+                ],
+            )
         if not options.rewrite_summary:
             themes = [theme.theme for theme in plan.summary_themes]
             promoted = [skill.skill_name for skill in plan.skills_to_promote]

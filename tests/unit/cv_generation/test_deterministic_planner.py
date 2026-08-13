@@ -45,8 +45,8 @@ def test_planner_promotes_overlapping_skills_in_required_then_preferred_order() 
     assert "TensorFlow" not in promoted  # not on profile
 
 
-def test_evidence_strength_ranks_employment_above_professional_development() -> None:
-    """PD-only skills stay truthful but rank below employment/portfolio evidence."""
+def test_foundational_professional_development_skills_are_not_headlined() -> None:
+    """PD-only skills stay on the CV but are not promoted or used as summary themes."""
     profile = minimal_profile()
     pd = ExperienceEntry.model_validate(
         {
@@ -113,17 +113,14 @@ def test_evidence_strength_ranks_employment_above_professional_development() -> 
     )
     promoted = [item["skill_name"] for item in payload["skills_to_promote"]]
     themes = [item["theme"] for item in payload["summary_themes"]]
+    not_emphasised = [item["skill_name"] for item in payload["skills_not_emphasised"]]
 
-    assert "Snowflake" in promoted
-    assert promoted.index("Python") < promoted.index("Snowflake")
-    assert promoted.index("FastAPI") < promoted.index("Snowflake")
-    assert "Snowflake" in themes
-    assert themes.index("Python") < themes.index("Snowflake")
-
-    snowflake_skill = next(
-        item for item in payload["skills_to_promote"] if item["skill_name"] == "Snowflake"
-    )
-    assert "professional development" in snowflake_skill["rationale"].casefold()
+    assert "Snowflake" not in promoted
+    assert "Snowflake" in not_emphasised
+    assert "Python" in promoted
+    assert "FastAPI" in promoted
+    assert "Snowflake" not in themes
+    assert "Python" in themes
 
 
 def test_planner_follows_portfolio_emphasis_order() -> None:

@@ -338,7 +338,7 @@ def _compose_opening(
         if org_variant == 0:
             return (
                 f"{org} stands out for shipping useful systems under real delivery "
-                f"pressure rather than slideware demos. {intent}"
+                f"pressure. {intent}"
             )
         if org_variant == 1:
             return (
@@ -347,7 +347,7 @@ def _compose_opening(
             )
         return (
             f"I am interested in {org} because the work centres on shipping systems "
-            f"under real constraints, not prototype theatre. {intent}"
+            f"under real constraints. {intent}"
         )
 
     if strategy == "career_transition_led":
@@ -479,7 +479,7 @@ def _compose_motivation(
     if _jd_mentions_stakeholders(plan):
         stakeholder = (
             " I also translate business requirements into practical AI systems "
-            "and support adoption with concrete demos rather than slideware."
+            "and support adoption with working demonstrations."
         )
     close = f"That is the approach I would bring to {employer['challenge_owner']}."
     variant = _motivation_variant_index(plan)

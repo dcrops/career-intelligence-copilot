@@ -124,6 +124,13 @@ def build_catalogue_from_profile(
             years=years,
             years_known=years_known,
         )
+        _add_experience_responsibility_entry(
+            seen_keys,
+            entries,
+            experience=experience,
+            years=years,
+            years_known=years_known,
+        )
 
     _add_overall_engineering_duration(
         seen_keys,
@@ -263,6 +270,44 @@ def catalogue_entry_by_key(
         if any(normalise_object_key(alias) == key for alias in entry.aliases):
             return entry
     return None
+
+
+def _add_experience_responsibility_entry(
+    seen_keys: dict[str, CatalogueEvidenceEntry],
+    entries: list[CatalogueEvidenceEntry],
+    *,
+    experience: ExperienceEntry,
+    years: float | None,
+    years_known: bool,
+) -> None:
+    """Per-role employment evidence for first-person responsibility restatement."""
+    if experience.kind not in {"employment", "independent_engineering"}:
+        return
+    blob = " ".join(
+        part.strip()
+        for part in (experience.title, *experience.highlights)
+        if part and part.strip()
+    )
+    if not blob:
+        return
+    _add_labelled_entry(
+        seen_keys,
+        entries,
+        label=experience.organisation,
+        claim_kinds=("employment",),
+        provenance=EvidenceProvenance(
+            source_kind="profile_experience",
+            authority="candidate_authoritative",
+            provenance_ref=f"experience:{experience.id}",
+            excerpt=blob[:800],
+        ),
+        employment_kind=_employment_kind(experience),
+        recency=_recency_for_experience(experience),
+        supported_years=years if years_known else None,
+        accumulate_years=False,
+        forced_key=f"experience-{experience.id}",
+        extra_aliases=[experience.organisation],
+    )
 
 
 def _add_employment_markers(

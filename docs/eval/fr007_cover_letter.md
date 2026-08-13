@@ -4,6 +4,13 @@
 **Date closed:** 2026-07-29  
 **Package:** `career_intelligence.cover_letter`
 
+**Current production (2026-08-13):** `cic package prepare` uses deterministic
+CoverLetterPlan → evidence pack → one bounded LLM composition call →
+deterministic framing → Truth → owner review. This report records FR-007
+freeze-time behaviour (deterministic composer). See
+[document_quality_remediation.md](document_quality_remediation.md). Do not
+reopen FR-007 exit criteria.
+
 ## Purpose
 
 Produce company-specific, approximately one-page cover letters that feel authentic

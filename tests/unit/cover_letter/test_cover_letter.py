@@ -41,6 +41,8 @@ _FORBIDDEN = (
     "the brief emphasises",
     "relevant evidence",
     "application strategy",
+    "slideware",
+    "prototype theatre",
 )
 
 
@@ -358,6 +360,13 @@ def test_letter_includes_signature_block() -> None:
     assert "github.com/example" in markdown.casefold()
     assert "**Portfolio:**" in markdown
     assert "**GitHub:**" in markdown
+    signature = markdown[markdown.casefold().index("kind regards,") :]
+    assert "candidate@example.com" not in signature
+    assert "0400 000 000" not in signature
+    assert "**LinkedIn:**" not in signature
+    assert "**Portfolio:**" not in signature
+    assert "**GitHub:**" not in signature
+    assert markdown.count("mailto:candidate@example.com") == 1
 
 
 def test_composition_is_deterministic() -> None:

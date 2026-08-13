@@ -46,6 +46,28 @@ _EXPERIENCE_KIND_TO_EVIDENCE: dict[str, SkillEvidenceKind] = {
 }
 
 
+SkillProminenceBand = Literal["current_hands_on", "commercial", "foundational"]
+
+
+def skill_prominence_band(
+    profile: CareerProfile,
+    skill: Skill,
+) -> SkillProminenceBand | None:
+    """Derive a coarse prominence band from existing evidence kinds.
+
+    Returns ``None`` when evidence is unspecified so callers do not demote
+    unclassified skills. Does not apply a recency threshold.
+    """
+    kinds = {ref.kind for ref in resolve_skill_evidence_refs(profile, skill)}
+    if not kinds:
+        return None
+    if "independent_engineering" in kinds or "portfolio_project" in kinds:
+        return "current_hands_on"
+    if "employment" in kinds:
+        return "commercial"
+    return "foundational"
+
+
 def evidence_strength_rank(kind: SkillEvidenceKind) -> int:
     """Return sort key for evidence strength (lower is stronger)."""
     return _EVIDENCE_STRENGTH_RANK[kind]

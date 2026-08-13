@@ -7,6 +7,12 @@
 ([fr015_bounded_agentic_workflow.md](fr015_bounded_agentic_workflow.md)).
 Begin **FR-016** only on explicit owner request.
 
+**Detector corrections (2026-08-13):** overall-engineering “years of experience
+across …” duration semantics, and first-person employment-delivery support when
+the employer is identified. Evidence-boundary corrections only — gate policy
+unchanged; FR-014 not reopened. See
+[document_quality_remediation.md](document_quality_remediation.md).
+
 **ADR:** [ADR-006](../adr/006_recruiter_document_truth_validation.md) (Accepted)
 
 **Milestones:**

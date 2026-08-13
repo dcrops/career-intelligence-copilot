@@ -162,6 +162,8 @@ def _render_section(name: str, lines: list[str]) -> list[str]:
         return _section_projects(name, lines)
     if "methodology" in folded:
         return _section_methodology(name, lines)
+    if folded == "courses & upskilling":
+        return _section_list(name, lines)
     if folded == "certifications":
         return _section_list(name, lines, wrapper_class="closing")
     return _section_paragraphs(name, lines)

@@ -3,6 +3,7 @@ from pathlib import Path
 import pytest
 
 from career_intelligence.profile import CareerProfile, CareerProfileService
+from tests.unit.application_package.helpers import write_mini_master
 
 FIXTURES = Path(__file__).parent / "fixtures"
 
@@ -15,6 +16,14 @@ def _weasyprint_available() -> bool:
     except ImportError:
         return False
     return True
+
+
+@pytest.fixture(autouse=True)
+def _offline_package_generation(tmp_path: Path, monkeypatch: pytest.MonkeyPatch) -> None:
+    """Keep pytest package prepare off the live Master CV and OpenAI network."""
+    master = write_mini_master(tmp_path / "offline_master_cv.md")
+    monkeypatch.setenv("CIC_MASTER_CV_PATH", str(master))
+    monkeypatch.setenv("CIC_COVER_LETTER_COMPOSER", "fixture")
 
 
 @pytest.fixture(autouse=True)

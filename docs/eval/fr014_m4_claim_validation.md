@@ -6,6 +6,10 @@
 **Preceding:** [M3 owner CLI / gates](fr014_m3_owner_workflow.md)  
 **Acceptance:** [fr014_recruiter_document_truth_validation.md](fr014_recruiter_document_truth_validation.md) (frozen)
 
+**Later detector corrections (2026-08-13):** see
+[document_quality_remediation.md](document_quality_remediation.md) § Truth
+Validation corrections. M4 freeze text below is unchanged.
+
 ---
 
 ## 1. Executive summary

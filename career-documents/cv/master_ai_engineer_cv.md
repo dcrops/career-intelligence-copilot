@@ -119,7 +119,7 @@ Full-time professional development from modern Data Engineering platforms into A
 
 ## Earlier Experience
 
-Earlier commercial roles as **Test Analyst** and **Test Automation Engineer** across retail and consulting environments (Bakers Delight, Console, AccessHQ), covering enterprise system delivery, test automation frameworks, Agile delivery, and production support.
+Earlier commercial roles as **Test Analyst** and **Test Automation Engineer** at Bakers Delight, Console, and AccessHQ, covering enterprise system delivery, test automation frameworks, Agile delivery, and production support.
 
 ## AI Engineering Methodology
 

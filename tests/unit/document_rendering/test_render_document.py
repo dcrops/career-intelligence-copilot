@@ -21,6 +21,13 @@ _COVER_LETTER_MD = """# David Cropper
 
 **AI Engineer - Example Corp**
 
+[djcropster@gmail.com](mailto:djcropster@gmail.com)
+0400 811 545
+Melbourne, VIC
+**LinkedIn:** [www.linkedin.com/in/david-cropper](https://www.linkedin.com/in/david-cropper/)
+**Portfolio:** [journey.chaseriskandcompliance.com.au](https://journey.chaseriskandcompliance.com.au/)
+**GitHub:** [github.com/dcrops](https://github.com/dcrops)
+
 ---
 
 Hello,
@@ -34,13 +41,6 @@ Third paragraph inviting a technical conversation.
 Kind regards,
 
 David Cropper
-
-djcropster@gmail.com
-0400 811 545
-Melbourne, VIC
-**LinkedIn:** [www.linkedin.com/in/david-cropper](https://www.linkedin.com/in/david-cropper/)
-**Portfolio:** [journey.chaseriskandcompliance.com.au](https://journey.chaseriskandcompliance.com.au/)
-**GitHub:** [github.com/dcrops](https://github.com/dcrops)
 """
 
 _CV_MD = """# David Cropper
@@ -116,6 +116,9 @@ def test_cover_letter_markdown_renders_html_pdf_and_preserves_edits(
     assert "ALPHA_EDIT_TOKEN" in html
     assert 'href="https://www.linkedin.com/in/david-cropper/"' in html
     assert 'href="mailto:djcropster@gmail.com"' in html
+    assert html.count("mailto:djcropster@gmail.com") == 1
+    signature_html = html[html.casefold().index('class="signature"') :]
+    assert "mailto:" not in signature_html
     assert html.lstrip().lower().startswith("<!doctype html>")
     pdf = result.pdf_path.read_bytes()
     assert pdf.startswith(b"%PDF")
@@ -219,3 +222,46 @@ def test_parse_cover_letter_preserves_paragraph_text() -> None:
     assert parsed.company == "Example Corp"
     assert any("ALPHA_EDIT_TOKEN" in paragraph for paragraph in parsed.paragraphs)
     assert parsed.contact["github_url"] == "https://github.com/dcrops"
+    assert parsed.contact["email"] == "djcropster@gmail.com"
+
+
+def test_parse_cover_letter_accepts_legacy_signature_contact() -> None:
+    parsed = parse_cover_letter_markdown(
+        """# David Cropper
+
+**AI Engineer - Example Corp**
+
+---
+
+Hello,
+
+Body paragraph.
+
+Kind regards,
+
+David Cropper
+
+djcropster@gmail.com
+**GitHub:** [github.com/dcrops](https://github.com/dcrops)
+"""
+    )
+    assert parsed.contact["email"] == "djcropster@gmail.com"
+    assert parsed.contact["github_url"] == "https://github.com/dcrops"
+
+
+def test_courses_upskilling_renders_as_list(tmp_path: Path) -> None:
+    md = _write(
+        tmp_path / "cv" / "generated" / "courses.md",
+        _CV_MD
+        + """
+## Courses & Upskilling
+
+- General Assembly — Data Science Immersive
+- LangChain & LLM Application Development
+""",
+    )
+    html = render_document_from_markdown(md).html_path.read_text(encoding="utf-8")
+    assert "<h2>Courses &amp; Upskilling</h2>" in html
+    assert "<ul>" in html
+    assert "<li>General Assembly" in html
+    assert "<p>- General Assembly" not in html

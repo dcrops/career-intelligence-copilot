@@ -29,7 +29,7 @@ class CoverLetterGenerationOptions(OptionsModel):
     ``cover_letter_plan_approved`` is the explicit acceptance of the Cover Letter
     Plan before rendering. Final ``owner_review_required`` remains mandatory.
 
-    ``contact`` supplies the signature block (same ContactDetails shape as FR-006).
+    ``contact`` supplies the header contact block (same ContactDetails shape as FR-006).
     """
 
     cover_letter_plan_approved: bool = False

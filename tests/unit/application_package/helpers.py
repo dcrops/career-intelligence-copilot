@@ -10,6 +10,7 @@ from career_intelligence.cover_letter import (
     CoverLetterGenerationOptions,
     CoverLetterPlanOptions,
 )
+from career_intelligence.cover_letter.bounded_composer import FixtureCoverLetterComposer
 from career_intelligence.cv_generation import (
     ContactDetails,
     CvGenerationOptions,
@@ -22,8 +23,57 @@ from tests.unit.opportunities.helpers import create_opportunity
 
 STAMP = datetime(2026, 7, 30, 15, 0, 0, tzinfo=UTC)
 
+MINI_MASTER_CV = """# Test Candidate
 
-def approved_gate_options() -> dict[str, object]:
+Melbourne, VIC
+
+**AI Engineer**
+
+---
+
+## Professional Summary
+
+Experienced engineer with commercial data engineering and independent AI work.
+
+## Technical Skills
+
+**AI Engineering:** Python · FastAPI
+
+## Professional Experience
+
+### Data Engineer — Example Company
+
+*Jan 2022 – Jan 2023 · Melbourne*
+
+- Built validated data pipelines.
+
+## Featured AI Projects
+
+### Example Project
+
+**Overview:** A production-minded example kept verbatim.
+
+**Engineering Highlights:**
+
+- Kept highlight
+
+## AI Engineering Methodology
+
+Applies AI to improve engineering quality.
+
+## Certifications
+
+- Example Cert
+"""
+
+
+def write_mini_master(path: Path) -> Path:
+    path.parent.mkdir(parents=True, exist_ok=True)
+    path.write_text(MINI_MASTER_CV, encoding="utf-8", newline="\n")
+    return path
+
+
+def approved_gate_options(*, master_cv_path: Path | None = None) -> dict[str, object]:
     """Explicit FR-006 / FR-007 owner-approval options required for package prepare."""
     contact = ContactDetails(
         email="candidate@example.com",
@@ -33,12 +83,17 @@ def approved_gate_options() -> dict[str, object]:
         portfolio_url="https://example.com/portfolio/",
         github_url="https://github.com/example",
     )
+    cv_kwargs: dict[str, object] = {
+        "tailoring_plan_approved": True,
+        "adapt_from_master": True,
+        "rewrite_summary": False,
+        "contact": contact,
+    }
+    if master_cv_path is not None:
+        cv_kwargs["master_cv_path"] = str(master_cv_path)
     return {
         "tailoring_options": TailoringOptions(owner_approved_to_tailor=True),
-        "cv_options": CvGenerationOptions(
-            tailoring_plan_approved=True,
-            contact=contact,
-        ),
+        "cv_options": CvGenerationOptions(**cv_kwargs),
         "cover_letter_plan_options": CoverLetterPlanOptions(owner_approved_to_plan=True),
         "cover_letter_options": CoverLetterGenerationOptions(
             cover_letter_plan_approved=True,
@@ -67,10 +122,13 @@ def package_service(
     opportunities: OpportunityService,
     profile: CareerProfile,
 ) -> ApplicationPackageService:
+    master_path = write_mini_master(tmp_path / "master_cv.md")
     return ApplicationPackageService(
         opportunities,
         profile=profile,
         packages_root=tmp_path / "application_packages",
         cv_output_dir=tmp_path / "cv_generated",
         cover_letter_output_dir=tmp_path / "cover_letter_generated",
+        cover_letter_composer=FixtureCoverLetterComposer(),
+        master_cv_path=master_path,
     )

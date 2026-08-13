@@ -2,8 +2,10 @@
 
 from .evidence import (
     SkillEvidenceKind,
+    SkillProminenceBand,
     evidence_strength_rank,
     resolve_skill_evidence_refs,
+    skill_prominence_band,
     strongest_evidence_kind,
     strongest_evidence_kind_for_capability,
 )
@@ -54,10 +56,12 @@ __all__ = [
     "Skill",
     "SkillEvidenceKind",
     "SkillEvidenceRef",
+    "SkillProminenceBand",
     "Skills",
     "UnknownSectionError",
     "evidence_strength_rank",
     "resolve_skill_evidence_refs",
+    "skill_prominence_band",
     "strongest_evidence_kind",
     "strongest_evidence_kind_for_capability",
 ]

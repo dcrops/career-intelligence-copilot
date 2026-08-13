@@ -12,6 +12,7 @@ from career_intelligence.application_package import (
     ApplicationPackageEligibilityError,
     ApplicationPackageService,
 )
+from career_intelligence.cover_letter.bounded_composer import FixtureCoverLetterComposer
 from career_intelligence.opportunities import OpportunityService
 from tests.unit.application_package.helpers import (
     STAMP,
@@ -118,6 +119,8 @@ def test_durability_journey_reload_regenerate_and_failure_safety(
         packages_root=tmp_path / "application_packages",
         cv_output_dir=tmp_path / "cv_generated",
         cover_letter_output_dir=tmp_path / "cover_letter_generated",
+        cover_letter_composer=FixtureCoverLetterComposer(),
+        master_cv_path=tmp_path / "master_cv.md",
     )
     assert reloaded_service.exists(opportunity_id) is True
     assert reloaded_service.get(opportunity_id) == created

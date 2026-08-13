@@ -16,6 +16,10 @@ _LINK_LINE = re.compile(
     r"^\*\*(LinkedIn|Portfolio|GitHub):\*\*\s+\[([^\]]+)\]\(([^)]+)\)\s*$",
     re.IGNORECASE,
 )
+_MAILTO_LINE = re.compile(
+    r"^\[([^\]]+)\]\(mailto:([^)]+)\)\s*$",
+    re.IGNORECASE,
+)
 _LINK_KEYS = {
     "linkedin": "linkedin_url",
     "portfolio": "portfolio_url",
@@ -65,9 +69,18 @@ def parse_cover_letter_markdown(markdown: str) -> CoverLetterPresentation:
             "Cover letter Markdown must include a '**Role - Company**' line"
         )
 
-    # Skip horizontal rule / blank lines before salutation.
+    # Header contact lives between the role line and ---. Older drafts may
+    # still place contact after the signature; both are accepted.
     cursor = body_start
-    while cursor < len(lines) and lines[cursor].strip() in {"", "---"}:
+    header_contact_lines: list[str] = []
+    while cursor < len(lines) and lines[cursor].strip() != "---":
+        raw = lines[cursor].strip()
+        if raw:
+            header_contact_lines.append(raw)
+        cursor += 1
+    if cursor < len(lines) and lines[cursor].strip() == "---":
+        cursor += 1
+    while cursor < len(lines) and not lines[cursor].strip():
         cursor += 1
     if cursor >= len(lines):
         raise DocumentRenderInputError("Cover letter Markdown is missing a salutation")
@@ -105,24 +118,14 @@ def parse_cover_letter_markdown(markdown: str) -> CoverLetterPresentation:
         cursor += 1
 
     contact: dict[str, str] = {}
+    for raw in header_contact_lines:
+        _absorb_contact_line(raw, contact)
     while cursor < len(lines):
         raw = lines[cursor].strip()
         cursor += 1
         if not raw:
             continue
-        link = _LINK_LINE.match(raw)
-        if link:
-            key = _LINK_KEYS[link.group(1).casefold()]
-            contact[key] = link.group(3).strip()
-            continue
-        if "@" in raw and "email" not in contact:
-            contact["email"] = raw
-            continue
-        if re.search(r"\d", raw) and len(raw) <= 24 and "phone" not in contact:
-            contact["phone"] = raw
-            continue
-        if "location" not in contact and not raw.startswith("**"):
-            contact["location"] = raw
+        _absorb_contact_line(raw, contact, overwrite=False)
 
     return CoverLetterPresentation(
         full_name=full_name,
@@ -132,3 +135,33 @@ def parse_cover_letter_markdown(markdown: str) -> CoverLetterPresentation:
         paragraphs=paragraphs,
         contact=contact,
     )
+
+
+def _absorb_contact_line(
+    raw: str,
+    contact: dict[str, str],
+    *,
+    overwrite: bool = True,
+) -> None:
+    """Parse one header or leftover-signature contact line into ``contact``."""
+
+    def _set(key: str, value: str) -> None:
+        if overwrite or key not in contact:
+            contact[key] = value
+
+    link = _LINK_LINE.match(raw)
+    if link:
+        _set(_LINK_KEYS[link.group(1).casefold()], link.group(3).strip())
+        return
+    mailto = _MAILTO_LINE.match(raw)
+    if mailto:
+        _set("email", mailto.group(2).strip() or mailto.group(1).strip())
+        return
+    if "@" in raw and not raw.startswith("**"):
+        _set("email", raw)
+        return
+    if re.search(r"\d", raw) and len(raw) <= 24 and not raw.startswith("**"):
+        _set("phone", raw)
+        return
+    if not raw.startswith("**"):
+        _set("location", raw)

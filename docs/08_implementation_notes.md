@@ -1050,6 +1050,80 @@ These are durable lessons for this capability — not prompt instructions:
    manual review (openings, projects, and closings must diverge for different
    employers).
 
+### Slice 1 freeze — CV project selection (known limitation)
+
+Owner accepted the Slice 1 Master-adaptive CV as **PASS / MINOR EDIT**
+(2026-08-13). That satisfies the pre-agreed READY-or-MINOR-EDIT bar. Further
+Slice 1 CV changes, LLM CV rewriting, and a CIC-append project-selection tweak
+are **not** authorised.
+
+**Known non-blocking planner limitation:** for AI-family roles, `_build_projects`
+appends Career Intelligence Copilot when ApplicationStrategy omitted it, then
+drops emphasis projects whose `_AI_PROJECT_CAPABILITY_HINTS` score is strictly
+below CIC. That can omit Operational Intelligence Copilot even when PortfolioMatch
+ranked it first. Distinct-claim cover is not used on the CV path. This is an
+accepted limitation — do not move the acceptance goalposts to require exact
+reproduction of the handcrafted Repurpose benchmark.
+
+### Production document path (Master-CV adapt + bounded cover letter)
+
+Integrated into `cic package prepare` / `ApplicationPackageService.prepare`
+(2026-08-13). Not a new FR.
+
+**CV:** Master CV Markdown is the editorial/prose baseline
+(`adapt_from_master=True`). TailoringPlan still owns inclusion, order, and
+skill-evidence bands. No LLM CV rewriting. Ordinary prepare preserves
+owner-edited Markdown via generated-content fingerprints; `--regenerate`
+overwrites deliberately.
+
+**Cover letter:** deterministic evidence pack → one bounded LLM composition
+call (`BoundedCoverLetterService` + `cover_letter_bounded_v2.md`) → existing
+Truth Validation → owner review. Technical generation failure is fail-closed
+(no silent fallback to the old deterministic composer). Truth failure persists
+the draft and blocks external use; there is no automatic LLM retry.
+
+Deterministic framing owns header contact and a name-only signature
+(`Kind regards,` / full name). Contact details are not repeated after the
+signature. Bounded prompt/pack policy requires: a concrete opening grounded in
+packed employer needs; a short Portfolio/GitHub evidence paragraph that points
+to header links without dumping URLs in the body; and a concise evidence-linked
+close. No extra LLM stage and no autonomous repair.
+
+**Tests:** pytest sets `CIC_COVER_LETTER_COMPOSER=fixture` and
+`CIC_MASTER_CV_PATH` to a mini Master CV so CI does not call OpenAI or the live
+Master CV. Production CLI leaves those unset.
+
+**Accepted (2026-08-13):** owner verdict **DOCUMENT REMEDIATION COMPLETE**.
+Controlled Repurpose CV quality accepted (Truth PASS, 38 supported, 0 blocking);
+cover letter MINOR EDIT accepted (Truth PASS). External-use ALLOWED;
+`owner_review_required=True`. Close-out:
+[eval/document_quality_remediation.md](eval/document_quality_remediation.md).
+
+**Owner-edit lifecycle:** generated Markdown SHA-256 fingerprints; ordinary
+prepare preserves prose when the file differs from the fingerprint or no
+fingerprint exists; `--regenerate` is the deliberate overwrite. Public CLI has
+no document-specific `--regenerate-cv` (underlying prepare already preserves
+documents independently) — minor usability limitation, not a current build
+priority.
+
+**Master CV retail correction:** Earlier Experience no longer claims “retail”;
+accepted wording names Bakers Delight, Console, and AccessHQ. CareerProfile was
+not given a retail domain.
+
+**Truth corrections (evidence-boundary, not gate relaxation):** “years of
+experience across X, Y and Z” follows overall-engineering duration semantics;
+first-person “At [employer], I developed …” may be supported by matching
+employment evidence. Named-project validation and unsupported claims remain
+fail-closed.
+
+### Slice 2 — bounded LLM cover letter (now the production compose path)
+
+The Repurpose experiment (`{opportunity_id}.bounded_llm` /
+`.bounded_llm_retest` stems) proved the architecture. Production package
+prepare now uses the same path on the live `{opportunity_id}` stem. Do not copy
+experimental artefacts into the package; generate through
+`ApplicationPackageService`.
+
 ---
 
 ## Document Rendering (render-only)
@@ -1607,15 +1681,19 @@ cannot be cancelled (already failed).
 
 ### Sequencing (remaining)
 
-1. **FR-019 Core Loop Operationalisation** — current (M0 GO; M1 GO proposed with
-   M1.1; M2 not started) —
+1. **Application Assistance** — immediate next engineering, resuming from AAS-0
+   ([spikes/application_assistance_aas0.md](spikes/application_assistance_aas0.md)).
+   Do not restart Playwright from scratch. Do not prioritise Indeed ahead of AAS.
+2. **FR-019 Core Loop Operationalisation** — remains in progress (M0 GO; M1 GO
+   proposed with M1.1; M2 not started) —
    [eval/fr019_core_loop_operationalisation.md](eval/fr019_core_loop_operationalisation.md).
-2. **Submission Automation & Channel Adapters** investigation — after FR-019
-   acceptance (FR number when authorised).
-3. **FR-020+** — Recruiter Intelligence and later market engagement (deferred).
+3. **Submission Automation & Channel Adapters** investigation — after FR-019
+   acceptance (FR number when authorised). AAS-0 is the existing spike toward
+   assisted application filling.
+4. **FR-020+** — Recruiter Intelligence and later market engagement (deferred).
    **FR-018 Complete / Frozen**
    ([eval/fr018_opportunity_discovery_acquisition.md](eval/fr018_opportunity_discovery_acquisition.md)).
-4. **Horizon 2 (FR-027+)** — interview, dashboard, cross-domain prioritisation.
+5. **Horizon 2 (FR-027+)** — interview, dashboard, cross-domain prioritisation.
 
 **Completed in this sequence:** FR-009 → FR-018; Horizon 1A closed; FR-018 acquisition
 framework frozen. Remap § 1.115; FR-018 freeze § 1.125; FR-019 formalisation § 1.128;

@@ -4,6 +4,62 @@ Records product strategy and engineering knowledge changes. Routine typo fixes a
 
 ---
 
+## Version 1.136
+
+### Document Quality Remediation — close-out
+
+**Date:** 2026-08-13.
+
+Owner verdict: **DOCUMENT REMEDIATION COMPLETE**. Not a new FR.
+
+Accepted production path: Master-CV adaptation (no LLM CV rewrite) and one
+bounded LLM cover-letter call inside existing FR-006 / FR-007 / FR-010
+composition, with FR-014 Truth unchanged as a fail-closed gate. Controlled
+Repurpose package accepted (CV quality READY; cover letter MINOR EDIT; Truth
+PASS; external-use ALLOWED). Close-out record:
+[eval/document_quality_remediation.md](eval/document_quality_remediation.md).
+
+**Next engineering focus:** Application Assistance, resuming from AAS-0. Do not
+prioritise Indeed ingestion ahead of that continuation.
+
+---
+
+## Version 1.135
+
+### Bounded cover letter — signature, Portfolio/GitHub signpost, open/close
+
+**Date:** 2026-08-13.
+
+Owner-authorised editorial correction on the production bounded cover-letter
+path. Not a new FR. Duplicate contact after the signature is removed at the
+deterministic framing/render layer. Evidence-pack constraints and
+`cover_letter_bounded_v2.md` require a concrete role-grounded opening, a short
+Portfolio/GitHub evidence signpost (no body URL dump), and a concise
+evidence-linked close. One bounded LLM call unchanged.
+
+---
+
+## Version 1.134
+
+### Document-quality remediation — production package integration
+
+**Date:** 2026-08-13.
+
+Accepted Slice 1 (Master-CV adaptation) and Slice 2 (bounded LLM cover letter)
+paths are now the normal `cic package prepare` generation path. Not a new FR.
+
+- CV: Master CV editorial baseline + deterministic TailoringPlan adaptation;
+  no LLM CV rewriting.
+- Cover letter: evidence pack + one bounded composition call; technical failure
+  is fail-closed (no deterministic fallback); Truth remains a separate gate.
+- Owner-edit fingerprints and `--regenerate` unchanged for both documents.
+- Human-readable export filenames unchanged.
+
+Owner review of the controlled Repurpose production package is the acceptance
+gate. See implementation notes § Production document path.
+
+---
+
 ## Version 1.133
 
 ### FR-019 dogfood — application contact wiring + Portfolio/GitHub visibility

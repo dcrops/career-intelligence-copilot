@@ -112,20 +112,18 @@ def main(argv: list[str] | None = None) -> int:
     report = format_preflight_report(inputs)
     print(report)
 
-    if inputs.warnings:
+    if inputs.blocking_warnings or not inputs.truth.external_use_allowed:
         blocking_truth = not inputs.truth.external_use_allowed
-        stale_pdf = any("newer than PDF" in w for w in inputs.warnings)
-        if blocking_truth or stale_pdf:
-            print(
-                "PREFLIGHT BLOCK: resolve warnings with the owner before "
-                "--authorize-live. Spike will not auto-regenerate documents.\n"
-            )
-            if args.preflight_only or not args.authorize_live:
-                return 2 if blocking_truth else 0
+        print(
+            "PREFLIGHT BLOCK: resolve blocking warnings with the owner before "
+            "--authorize-live. Spike will not auto-regenerate documents.\n"
+        )
+        if args.preflight_only or not args.authorize_live:
+            return 2 if (blocking_truth or inputs.blocking_warnings) else 0
 
     if args.preflight_only:
         print("Preflight complete. No browser launched.")
-        return 0 if inputs.truth.external_use_allowed else 2
+        return 0 if inputs.truth.external_use_allowed and not inputs.blocking_warnings else 2
 
     if not args.authorize_live:
         print(
@@ -140,14 +138,10 @@ def main(argv: list[str] | None = None) -> int:
         print("Refusing live run: external-use gate not allowed.")
         return 2
 
-    stale_pdf = any("newer than PDF" in w for w in inputs.warnings)
-    if stale_pdf:
-        print(
-            "Refusing live run: markdown is newer than PDF artefacts.\n"
-            "Owner must decide whether to re-render PDFs (outside this spike) "
-            "or confirm PDFs are still the intended upload binaries.\n"
-            "Do not auto-regenerate during AAS-0."
-        )
+    if inputs.blocking_warnings:
+        print("Refusing live run: blocking preflight warnings remain:")
+        for warning in inputs.blocking_warnings:
+            print(f"  - {warning}")
         return 2
 
     return run_live(args, inputs)

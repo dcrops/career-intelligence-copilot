@@ -54,6 +54,7 @@ PlanEvidenceOrigin = Literal["job_analysis", "career_profile", "application_stra
 SummarySourceKind = Literal[
     "profile_copy",
     "theme_aware_composition",
+    "master_baseline",
     "openai_rewrite",
     "fixture_rewrite",
     "fallback_profile_copy",

@@ -583,6 +583,13 @@ def _build_projects(
     # Profile appends must follow all ApplicationStrategy emphasis projects
     # (plan_refs); never interleave. Drop weaker non-AI emphasis entries so CIC
     # is not trapped below pure commercial/rules evidence.
+    #
+    # Known non-blocking limitation (Slice 1 freeze, 2026-08-13): this prune
+    # compares `_AI_PROJECT_CAPABILITY_HINTS` overlap, not distinct-claim cover.
+    # An AI system that scores below CIC (e.g. Operational Intelligence Copilot)
+    # can be omitted even when strategy ranked it first. Owner accepted this as
+    # PASS / MINOR EDIT — do not treat it as a freeze defect, special-case
+    # Repurpose, or expand project taxonomy to force a third project.
     cic_id = "career-intelligence-copilot"
     included = {item["project_id"] for item in projects}
     family = strategy.job_analysis.role_family.family
@@ -671,6 +678,15 @@ def _iter_profile_skills(
     return items
 
 
+def _capability_is_foundational(profile: CareerProfile, name: str) -> bool:
+    from career_intelligence.profile import skill_prominence_band
+
+    for _category, skill in _iter_profile_skills(profile):
+        if skill.name.casefold() == name.casefold():
+            return skill_prominence_band(profile, skill) == "foundational"
+    return False
+
+
 def _build_skills(
     job: JobAnalysis,
     profile: CareerProfile,
@@ -684,6 +700,7 @@ def _build_skills(
     """
     from career_intelligence.profile import (
         evidence_strength_rank,
+        skill_prominence_band,
         strongest_evidence_kind,
     )
 
@@ -707,6 +724,8 @@ def _build_skills(
         if support == "supported" and not _direct_match(skill.name, tech.name):
             return
         if support == "related" and not _related_match(skill.name, tech.name):
+            return
+        if skill_prominence_band(profile, skill) == "foundational":
             return
 
         promoted_names.add(key)
@@ -839,6 +858,8 @@ def _build_summary_themes(
     ) -> None:
         key = theme.casefold()
         if key in seen:
+            return
+        if _capability_is_foundational(profile, theme):
             return
         seen.add(key)
         strength = strongest_evidence_kind_for_capability(profile, theme)
@@ -1049,6 +1070,8 @@ def _ensure_role_family_skill_anchors(
         if match is None:
             continue
         category, skill = match
+        if _capability_is_foundational(profile, skill.name):
+            continue
         promoted_names.add(key)
         added.append(skill.name)
         promoted.append(
@@ -1133,6 +1156,8 @@ def _ensure_role_family_theme_anchors(
         if key in theme_keys:
             continue
         if key not in profile_caps:
+            continue
+        if _capability_is_foundational(profile, label):
             continue
         # Drop a lone weak theme so anchors lead the summary.
         if (

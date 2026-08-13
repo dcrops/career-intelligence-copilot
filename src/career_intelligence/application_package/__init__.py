@@ -10,11 +10,17 @@ from .errors import (
     ApplicationPackageContactError,
     ApplicationPackageEligibilityError,
     ApplicationPackageError,
+    ApplicationPackageGenerationError,
     ApplicationPackageIntegrityError,
     ApplicationPackageNotFoundError,
     ApplicationPackageStorageError,
     ApplicationPackageValidationError,
     ErrorDetail,
+)
+from .external_upload import (
+    ExternalUploadPaths,
+    build_external_upload_filename,
+    materialize_external_upload_pdfs,
 )
 from .models import (
     AcquisitionProvenance,
@@ -30,6 +36,7 @@ __all__ = [
     "ApplicationPackageContactError",
     "ApplicationPackageEligibilityError",
     "ApplicationPackageError",
+    "ApplicationPackageGenerationError",
     "ApplicationPackageIntegrityError",
     "ApplicationPackageManifest",
     "ApplicationPackageNotFoundError",
@@ -39,4 +46,7 @@ __all__ = [
     "DocumentArtefactRefs",
     "ErrorDetail",
     "EvidenceTrace",
+    "ExternalUploadPaths",
+    "build_external_upload_filename",
+    "materialize_external_upload_pdfs",
 ]

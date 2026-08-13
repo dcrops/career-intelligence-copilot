@@ -174,8 +174,12 @@ FR-006 is **complete**. Coverage includes:
 - owner manual validation via `scripts/run_cv_generation_manual.py`
   ([eval/fr006_manual_validation.md](eval/fr006_manual_validation.md)).
 
-Phase C OpenAI calls are opt-in (`--rewrite-summary`) and fail-soft. Automated tests
-use `FixtureSummaryRewriter` and fake OpenAI clients — no network in CI.
+Phase C OpenAI calls remain available on `CvGenerationService` but production
+package prepare never sets `rewrite_summary`. Tailored CVs use Master-CV
+adaptation (`adapt_from_master=True`). Automated tests use a mini Master CV via
+`CIC_MASTER_CV_PATH` and `FixtureSummaryRewriter` — no network in CI.
+Accepted production path and close-out:
+[eval/document_quality_remediation.md](eval/document_quality_remediation.md).
 
 ---
 
@@ -200,13 +204,19 @@ methodology/highlights content.
 FR-007 is **complete** (owner manual validation passed). Coverage includes:
 
 - unit tests under `tests/unit/cover_letter/` (gates, evidence-based selection,
-  composition / AI-boilerplate refusal, signature, draft writer Markdown+HTML,
+  composition / AI-boilerplate refusal, header contact once / name-only
+  signature, Portfolio/GitHub signpost constraints, draft writer Markdown+HTML,
   determinism);
 - fidelity checks that company, role, and planned portfolio projects appear; and
 - owner manual validation via `scripts/run_cover_letter_manual.py`
   ([eval/fr007_cover_letter.md](eval/fr007_cover_letter.md)).
 
-Default path is fully deterministic (no OpenAI). Owner review remains mandatory.
+`CoverLetterGenerationService` remains the legacy deterministic composer for
+existing FR-007 unit tests. Production `cic package prepare` uses bounded LLM
+composition (one call, evidence pack, no retry). Pytest uses
+`FixtureCoverLetterComposer` via `CIC_COVER_LETTER_COMPOSER=fixture` so CI has
+no network. Owner review remains mandatory. Close-out:
+[eval/document_quality_remediation.md](eval/document_quality_remediation.md).
 
 ---
 
@@ -532,12 +542,15 @@ Application Package for an Opportunity with owner decision ``apply``.
 | Invalid inputs | Non-apply refused; missing package; missing draft on verify |
 | Thin adapter | No duplicated FR-006/007 business logic in the CLI |
 
-**Unit:** `tests/unit/application_package/` (incl. `test_cli.py`)  
+**Unit:** `tests/unit/application_package/` (incl. `test_cli.py`,
+`test_prose_guard.py`, `test_external_upload.py`,
+`test_production_integration.py`)  
 **Functional:** `tests/functional/test_fr010_application_package.py`  
 **Manual:** `scripts/run_fr010_application_package_manual.py` (`demo`, `cli`)
 
 Does **not** cover: orchestration nodes, PipelineStatus writes, submission, versioning,
-PDF/DOCX.
+PDF/DOCX. Production document path close-out:
+[eval/document_quality_remediation.md](eval/document_quality_remediation.md).
 
 ---
 

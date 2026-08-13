@@ -117,11 +117,19 @@ Horizon 1B **not** blocked) —
 [package](docs/masterclass/FR018/);
 [ADR-010](docs/adr/010_opportunity_discovery_ingress.md).
 
-**Current focus:** **FR-019 Core Loop Operationalisation** (M0 Accepted / GO;
+**Document Quality Remediation:** **COMPLETE**
+([docs/eval/document_quality_remediation.md](docs/eval/document_quality_remediation.md)).
+
+**Next engineering work:** **Application Assistance**, resuming from AAS-0
+([docs/spikes/application_assistance_aas0.md](docs/spikes/application_assistance_aas0.md)).
+Do not restart Playwright from scratch. Do not prioritise Indeed ingestion
+ahead of AAS.
+
+**FR-019 Core Loop Operationalisation** remains in progress (M0 Accepted / GO;
 M1 ready —
 [docs/eval/fr019_core_loop_operationalisation.md](docs/eval/fr019_core_loop_operationalisation.md)).
 Horizon 1A and FR-018 frozen. Details: [docs/10_roadmap.md](docs/10_roadmap.md).
-Changelog § 1.128.
+Changelog § 1.136.
 
 Acquisition today: paste or local export file via
 `scripts/run_fr008_workflow_manual.py` (`--source paste|export`), owner SEEK
@@ -131,7 +139,8 @@ when alerts are card-only). Automatic Yahoo mailbox intake is **FR-019 M1**.
 Playwright deferred to later FRs.
 
 **Thereafter — after FR-019:** Submission Automation investigation → Recruiter /
-meetup / LinkedIn engagement (**FR-020–FR-026**).
+meetup / LinkedIn engagement (**FR-020–FR-026**). AAS-0 is the existing spike
+toward assisted application filling and is the immediate next engineering work.
 
 ### Phase 2 + document generation (baseline — frozen)
 

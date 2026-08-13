@@ -36,7 +36,7 @@ Objectives.
 |----------|--------|
 | What is this project? | Decision-support for job search (Horizon 1), evolving toward a Career Intelligence Platform (Horizon 2). |
 | What has been completed? | **Phase 1** and **Phase 2** — see [12_phase_history.md](12_phase_history.md) and [eval/phase2_release_report.md](eval/phase2_release_report.md). |
-| What is next? | **FR-019 Core Loop Operationalisation** (M0 GO; M1 ready) — [eval/fr019_core_loop_operationalisation.md](eval/fr019_core_loop_operationalisation.md). **FR-018 Complete / Frozen**. After FR-019: Submission Automation investigation, then Recruiter Intelligence (**FR-020**, deferred). Changelog § 1.128 — [10_roadmap.md](10_roadmap.md). |
+| What is next? | **Application Assistance**, resuming from AAS-0 ([spikes/application_assistance_aas0.md](spikes/application_assistance_aas0.md)). Document quality remediation is **complete** ([eval/document_quality_remediation.md](eval/document_quality_remediation.md)). **FR-019** remains in progress (M0 GO; M1 ready). Do not prioritise Indeed ahead of AAS. — [10_roadmap.md](10_roadmap.md). |
 | Where should I start reading? | This guide → [AGENTS.md](../AGENTS.md) → [04_functional_specification.md](04_functional_specification.md) → [10_roadmap.md](10_roadmap.md). |
 
 ---
@@ -68,7 +68,12 @@ milestones [M0](eval/fr012_m0_submission_contracts.md),
 ([eval/fr013_application_pipeline_tracking.md](eval/fr013_application_pipeline_tracking.md);
 [ADR-005](adr/005_application_pipeline_lifecycle.md)).
 
-**Active focus:** **FR-019 Core Loop Operationalisation** (M0 Accepted / GO;
+**Document Quality Remediation:** **COMPLETE**
+([eval/document_quality_remediation.md](eval/document_quality_remediation.md)).
+**Next engineering work:** Application Assistance from AAS-0
+([spikes/application_assistance_aas0.md](spikes/application_assistance_aas0.md)).
+
+**FR-019 Core Loop Operationalisation** remains in progress (M0 Accepted / GO;
 M1 ready —
 [eval/fr019_core_loop_operationalisation.md](eval/fr019_core_loop_operationalisation.md);
 [M1](eval/fr019_m1_mailbox_intake.md)).

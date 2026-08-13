@@ -49,11 +49,14 @@ class CvGenerationOptions(OptionsModel):
     Phase B still applies deterministic theme-aware summary composition
     (FR-006b) rather than a raw profile dump.
 
-    ``presentation`` selects submit-ready Markdown (default) or the owner-review
-    debug surface.
+    ``adapt_from_master`` uses the Master CV Markdown as the editorial/prose
+    baseline and applies TailoringPlan inclusion/order. Package prepare always
+    enables this path and never rewrites the summary with an LLM.
     """
 
     tailoring_plan_approved: bool = False
     rewrite_summary: bool = False
     presentation: Literal["submit", "review"] = "submit"
     contact: ContactDetails | None = None
+    adapt_from_master: bool = False
+    master_cv_path: NonEmptyString | None = None

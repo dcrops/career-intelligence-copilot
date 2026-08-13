@@ -54,7 +54,7 @@ prior Recruiter Intelligence and later FRs shifted +1 — see
 | **Phase 1** — Product Definition | **Complete** |
 | **Phase 2** — Job Intelligence MVP | **Complete** ([release report](eval/phase2_release_report.md)) |
 | **Horizon 1A** — Job application workflow | **Complete** (FR-008–FR-017 frozen) |
-| **Horizon 1B** — Scaled acquisition and market engagement | **FR-018 Complete / Frozen**; **FR-019 Core Loop Operationalisation** in progress (M0 GO; M1 ready) ([capability](eval/fr019_core_loop_operationalisation.md)); FR-020–FR-026 planned (recruiter deferred) |
+| **Horizon 1B** — Scaled acquisition and market engagement | **FR-018 Complete / Frozen**; document quality remediation **COMPLETE**; next engineering **Application Assistance** (AAS-0); **FR-019** in progress (M0 GO; M1 ready) ([capability](eval/fr019_core_loop_operationalisation.md)); FR-020–FR-026 planned (recruiter deferred) |
 | **Horizon 2** — Platform capabilities | Not started (FR-027+) |
 
 Narrative history of completed phases: [12_phase_history.md](12_phase_history.md).
@@ -126,10 +126,23 @@ CSV bridge connect to `applications/`.
 
 ---
 
-## Current Focus — Horizon 1A + FR-018 complete; FR-019 next (owner choice)
+## Current Focus — Horizon 1A + FR-018 complete; Application Assistance next
 
-FR-008–FR-018 are **complete and frozen**. Next product focus is **FR-019
-Recruiter Intelligence** when the owner requests it.
+FR-008–FR-018 are **complete and frozen**. Document quality remediation is
+**COMPLETE**. Immediate next engineering is **Application Assistance** from
+AAS-0. **FR-019 Core Loop Operationalisation** remains in progress.
+
+**Document Quality Remediation (2026-08-13):** **COMPLETE** — owner accepted the
+production Master-CV + bounded cover-letter path and the controlled Repurpose
+package.
+[eval/document_quality_remediation.md](eval/document_quality_remediation.md).
+Not a new FR.
+
+**Next engineering focus:** **Application Assistance**, resuming from the
+successful AAS-0 Playwright spike
+([spikes/application_assistance_aas0.md](spikes/application_assistance_aas0.md)).
+Do not restart browser automation from scratch. Do not prioritise Indeed
+ingestion ahead of that continuation.
 
 **FR-018 Opportunity Discovery & Acquisition** scaled lawful inflow (SEEK URL +
 email alerts with URL enrich) into the frozen FR-008/FR-009 path —
@@ -382,9 +395,13 @@ M1 mailbox intake **GO** (proposed with M1.1); M1.1 Reliability Hardening
 [M1.1](eval/fr019_m1_1_reliability_hardening.md).
 Changelog § 1.128–1.131. M2 `cic daily` not started.
 
+**Immediate next engineering (owner-sequenced):** Application Assistance from
+AAS-0, before Indeed ingestion. This does not close FR-019 (M2 `cic daily` is
+still not started) and does not design AAS here.
+
 **After FR-019 acceptance:** Submission Automation & Channel Adapters
 investigation (FR number when authorised), then Recruiter Intelligence
-(**FR-020**).
+(**FR-020**). AAS-0 is the existing spike toward assisted application filling.
 
 **Lead FR (done):** Opportunity Acquisition Framework — thin Discovery Ingress +
 URL / email adapters (`cic opportunity discover`, `discover-email`). FR-019

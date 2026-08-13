@@ -21,6 +21,7 @@ SUMMARY_HARD_MAX_WORDS = 140
 SummarySource = Literal[
     "profile_copy",
     "theme_aware_composition",
+    "master_baseline",
     "openai_rewrite",
     "fixture_rewrite",
     "fallback_profile_copy",

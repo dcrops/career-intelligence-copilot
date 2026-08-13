@@ -51,3 +51,7 @@ class ApplicationPackageStorageError(ApplicationPackageError):
 
 class ApplicationPackageIntegrityError(ApplicationPackageError):
     """Raised when a persisted package references missing or unreadable drafts."""
+
+
+class ApplicationPackageGenerationError(ApplicationPackageError):
+    """Raised when CV or cover-letter generation fails closed."""

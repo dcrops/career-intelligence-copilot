@@ -186,4 +186,7 @@ class CoverLetter(CoverLetterModel):
     assumptions: list[NonEmptyString] = Field(default_factory=list)
     cover_letter_plan_approved: Literal[True] = True
     owner_review_required: Literal[True] = True
-    composition_source: Literal["deterministic_composition"] = "deterministic_composition"
+    composition_source: Literal[
+        "deterministic_composition",
+        "bounded_llm_composition",
+    ] = "deterministic_composition"

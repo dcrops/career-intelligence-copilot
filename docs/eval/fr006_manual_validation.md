@@ -1,5 +1,11 @@
 # FR-006 Manual Validation
 
+**Current production (2026-08-13):** package prepare uses Master-CV adaptation
+(`adapt_from_master=True`, `rewrite_summary=False`), then TailoringPlan
+selection/evidence bands, then Truth and owner review. This document remains
+the FR-006 manual-validation process. See
+[document_quality_remediation.md](document_quality_remediation.md).
+
 ## Purpose
 
 Owner validation for FR-006 Tailoring Plan, Tailored CV render, and optional Phase C

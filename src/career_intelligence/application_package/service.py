@@ -7,14 +7,22 @@ records, write PipelineStatus, or duplicate document-generation logic.
 Regeneration semantics (M1)
 ---------------------------
 * One Opportunity → one current package (``opportunity_id`` is the identity).
-* ``prepare`` always replaces the previous package for that id — no versioning.
-* Generation runs fully in memory before any draft or manifest write.
-* Draft files use a stable stem (``opportunity_id``) and overwrite in place.
-* The previous manifest remains the current package until both draft sets and
-  the new manifest write succeed. A failure before manifest save leaves the
-  prior package loadable (draft bytes may already be partially overwritten).
+* ``prepare`` replaces the previous package for that id — no versioning.
+* CV production uses Master-CV editorial adaptation (``adapt_from_master``).
+  Cover-letter production uses one bounded LLM composition call from a
+  deterministic evidence pack. Technical generation failure is fail-closed:
+  no silent fallback to the old deterministic cover-letter composer.
+* Owner-edited Markdown (hash differs from the generated-content fingerprint)
+  is preserved; HTML/PDF are refreshed from the current file.
+* Pass ``regenerate=True`` to overwrite owner-edited Markdown.
+* Both documents are generated in memory before any draft write. A failure
+  before manifest save leaves the prior package loadable and does not write
+  new Markdown.
+* Draft files use a stable stem (``opportunity_id``) and overwrite in place
+  when generation runs.
 * With identical inputs and the same ``prepared_at``, repeated ``prepare`` calls
-  produce identical manifests and identical draft file bytes (idempotent).
+  produce identical manifests and identical draft file bytes when the cover-letter
+  composer is deterministic (tests). Live OpenAI composition is not byte-idempotent.
 """
 
 from __future__ import annotations
@@ -28,15 +36,25 @@ from career_intelligence.candidate_contact import (
     require_contact_details,
 )
 from career_intelligence.cover_letter import (
+    CoverLetterError,
     CoverLetterGenerationOptions,
     CoverLetterGenerationService,
+    CoverLetterGenerationValidationError,
     CoverLetterPlanOptions,
     CoverLetterPlanService,
     DeterministicCoverLetterPlanner,
     write_cover_letter_drafts,
 )
+from career_intelligence.cover_letter.bounded_composer import (
+    CoverLetterComposer,
+    FixtureCoverLetterComposer,
+    OpenAICoverLetterComposer,
+)
 from career_intelligence.cover_letter import (
     default_generated_dir as default_cover_letter_dir,
+)
+from career_intelligence.cover_letter.draft_writer import (
+    DraftWriteResult as CoverLetterDraftWriteResult,
 )
 from career_intelligence.cv_generation import (
     CvGenerationOptions,
@@ -49,15 +67,20 @@ from career_intelligence.cv_generation import (
 from career_intelligence.cv_generation import (
     default_generated_dir as default_cv_dir,
 )
+from career_intelligence.cv_generation.draft_writer import DraftWriteResult
+from career_intelligence.document_rendering.service import render_document_from_markdown
 from career_intelligence.opportunities import Opportunity, OpportunityService
 from career_intelligence.profile import CareerProfile, CareerProfileService
 
 from .errors import (
     ApplicationPackageContactError,
     ApplicationPackageEligibilityError,
+    ApplicationPackageGenerationError,
     ApplicationPackageIntegrityError,
 )
+from .external_upload import ExternalUploadPaths, materialize_external_upload_pdfs
 from .json_store import JsonDirectoryPackageStore
+from .prose_guard import markdown_sha256, should_preserve_owner_markdown
 from .models import (
     AcquisitionProvenance,
     ApplicationPackageManifest,
@@ -89,6 +112,8 @@ class ApplicationPackageService:
         cv_generation_service: CvGenerationService | None = None,
         cover_letter_plan_service: CoverLetterPlanService | None = None,
         cover_letter_generation_service: CoverLetterGenerationService | None = None,
+        cover_letter_composer: CoverLetterComposer | None = None,
+        master_cv_path: Path | None = None,
     ) -> None:
         self._opportunities = opportunities
         self._profile_source = profile
@@ -105,9 +130,9 @@ class ApplicationPackageService:
         self._cover_letter_plans = cover_letter_plan_service or CoverLetterPlanService(
             DeterministicCoverLetterPlanner()
         )
-        self._cover_letters = (
-            cover_letter_generation_service or CoverLetterGenerationService()
-        )
+        self._cover_letters = cover_letter_generation_service
+        self._cover_letter_composer = cover_letter_composer
+        self._master_cv_path = master_cv_path
 
     @classmethod
     def from_paths(
@@ -179,13 +204,17 @@ class ApplicationPackageService:
         cover_letter_plan_options: CoverLetterPlanOptions | None = None,
         cover_letter_options: CoverLetterGenerationOptions | None = None,
         prepared_at: datetime | None = None,
+        regenerate: bool = False,
     ) -> ApplicationPackageManifest:
         """Compose FR-006 / FR-007 outputs into the current Application Package.
 
         Eligibility: owner decision must be ``apply``. Existing FR-006 and FR-007
         approval gates remain enforced via the supplied options. Regeneration
-        replaces the previous package for the same opportunity_id. Opportunity
-        index rows and immutable FR-002–FR-005 artefacts are never modified.
+        replaces the previous package for the same opportunity_id unless existing
+        Markdown has been owner-edited (hash differs from the generated
+        fingerprint). Pass ``regenerate=True`` to overwrite edited Markdown.
+        Opportunity index rows and immutable FR-002–FR-005 artefacts are never
+        modified.
 
         Write order: in-memory generation → CV drafts → cover-letter drafts →
         manifest. The prior manifest remains current until this method returns
@@ -208,36 +237,104 @@ class ApplicationPackageService:
             contact = require_contact_details(contact)
         except CandidateContactConfigError as error:
             raise ApplicationPackageContactError(error.message) from error
-        resolved_cv = resolved_cv.model_copy(update={"contact": contact})
+        cv_update: dict[str, object] = {
+            "contact": contact,
+            "adapt_from_master": True,
+            "rewrite_summary": False,
+        }
+        master_cv_path = (
+            resolved_cv.master_cv_path
+            or (str(self._master_cv_path) if self._master_cv_path else None)
+            or os.environ.get("CIC_MASTER_CV_PATH")
+        )
+        if master_cv_path:
+            cv_update["master_cv_path"] = master_cv_path
+        resolved_cv = resolved_cv.model_copy(update=cv_update)
         resolved_cl = resolved_cl.model_copy(update={"contact": contact})
 
-        # Fully generate in memory before any durable write.
-        plan = self._tailoring_plans.plan(
-            strategy, profile, options=resolved_tailoring
+        stem = opportunity_id
+        previous = self._previous_manifest(opportunity_id)
+        cv_markdown_path = self._cv_output_dir / f"{stem}.md"
+        cl_markdown_path = self._cover_letter_output_dir / f"{stem}.md"
+        preserve_cv = should_preserve_owner_markdown(
+            cv_markdown_path,
+            previous.cv_generated_markdown_sha256 if previous is not None else None,
+            regenerate=regenerate,
         )
-        cv = self._cv_generation.generate(
-            strategy, profile, plan, options=resolved_cv
-        )
-        cover_plan = self._cover_letter_plans.plan(
-            strategy, profile, options=resolved_cl_plan
-        )
-        cover_letter = self._cover_letters.generate(
-            strategy, profile, cover_plan, options=resolved_cl
+        preserve_cl = should_preserve_owner_markdown(
+            cl_markdown_path,
+            (
+                previous.cover_letter_generated_markdown_sha256
+                if previous is not None
+                else None
+            ),
+            regenerate=regenerate,
         )
 
-        stem = opportunity_id
-        cv_drafts = write_tailored_cv_drafts(
-            cv,
-            plan,
-            output_dir=self._cv_output_dir,
-            stem=stem,
-        )
-        cover_drafts = write_cover_letter_drafts(
-            cover_letter,
-            cover_plan,
-            output_dir=self._cover_letter_output_dir,
-            stem=stem,
-        )
+        cv = None
+        plan = None
+        cover_letter = None
+        cover_plan = None
+        evidence_pack = None
+        if not preserve_cv:
+            plan = self._tailoring_plans.plan(
+                strategy, profile, options=resolved_tailoring
+            )
+            cv = self._cv_generation.generate(
+                strategy, profile, plan, options=resolved_cv
+            )
+        if not preserve_cl:
+            cover_plan = self._cover_letter_plans.plan(
+                strategy, profile, options=resolved_cl_plan
+            )
+            cover_letter, evidence_pack = self._compose_cover_letter(
+                strategy, profile, cover_plan, resolved_cl
+            )
+
+        if preserve_cv:
+            render_document_from_markdown(cv_markdown_path)
+            cv_drafts = _existing_cv_drafts(self._cv_output_dir, stem)
+            cv_fingerprint = (
+                previous.cv_generated_markdown_sha256 if previous is not None else None
+            )
+        else:
+            assert cv is not None and plan is not None
+            cv_drafts = write_tailored_cv_drafts(
+                cv,
+                plan,
+                output_dir=self._cv_output_dir,
+                stem=stem,
+            )
+            cv_fingerprint = markdown_sha256(cv_drafts.markdown_path)
+
+        if preserve_cl:
+            render_document_from_markdown(cl_markdown_path)
+            cover_drafts = _existing_cover_letter_drafts(
+                self._cover_letter_output_dir, stem
+            )
+            cl_fingerprint = (
+                previous.cover_letter_generated_markdown_sha256
+                if previous is not None
+                else None
+            )
+        else:
+            assert cover_letter is not None and cover_plan is not None
+            cover_drafts = write_cover_letter_drafts(
+                cover_letter,
+                cover_plan,
+                output_dir=self._cover_letter_output_dir,
+                stem=stem,
+            )
+            if evidence_pack is not None:
+                from career_intelligence.cover_letter.bounded_generation import (
+                    write_evidence_pack,
+                )
+
+                write_evidence_pack(
+                    self._cover_letter_output_dir / f"{stem}.evidence_pack.json",
+                    evidence_pack,
+                )
+            cl_fingerprint = markdown_sha256(cover_drafts.markdown_path)
 
         stamp = prepared_at or datetime.now(UTC)
         persisted = ApplicationPackageManifest(
@@ -247,12 +344,48 @@ class ApplicationPackageService:
             cv=_relative_document_refs(cv_drafts),
             cover_letter=_relative_document_refs(cover_drafts),
             owner_review_required=True,
+            cv_generated_markdown_sha256=cv_fingerprint,
+            cover_letter_generated_markdown_sha256=cl_fingerprint,
         )
         # Manifest is the commit point: prior package stays current until this succeeds.
         self._store.save(persisted)
         resolved = self._resolve_manifest(persisted)
         self.verify_artefacts(resolved)
+        self.ensure_external_upload_pdfs(resolved)
         return resolved
+
+    def ensure_external_upload_pdfs(
+        self,
+        manifest: ApplicationPackageManifest | None = None,
+        *,
+        opportunity_id: str | None = None,
+    ) -> ExternalUploadPaths:
+        """Materialize byte-identical employer-facing PDFs under package ``export/``.
+
+        Authoritative draft paths on the manifest are unchanged. Safe to call
+        repeatedly (idempotent when bytes already match).
+        """
+        if manifest is None:
+            if opportunity_id is None:
+                raise ValueError("opportunity_id or manifest is required")
+            manifest = self.get(opportunity_id, verify=True)
+        else:
+            # Ensure absolute draft paths for copy source.
+            if not Path(manifest.cv.pdf_path or "").is_file():
+                manifest = self._resolve_manifest(manifest)
+        profile = self._load_profile()
+        root = self._packages_root()
+        return materialize_external_upload_pdfs(
+            manifest,
+            packages_root=root,
+            full_name=profile.identity.full_name,
+        )
+
+    def _packages_root(self) -> Path:
+        store = self._store
+        if isinstance(store, JsonDirectoryPackageStore):
+            return store.root
+        return _configured_packages_root()
 
     def _require_apply(self, opportunity: Opportunity) -> None:
         decision = opportunity.decision
@@ -268,6 +401,55 @@ class ApplicationPackageService:
         if isinstance(self._profile_source, CareerProfileService):
             return self._profile_source.load()
         return self._profile_source
+
+    def _compose_cover_letter(
+        self,
+        strategy,
+        profile: CareerProfile,
+        cover_plan,
+        options: CoverLetterGenerationOptions,
+    ):
+        """One bounded LLM composition attempt. Never falls back to deterministic prose."""
+        from career_intelligence.cover_letter.bounded_generation import (
+            BoundedCoverLetterService,
+        )
+
+        try:
+            result = BoundedCoverLetterService(self._resolve_cover_letter_composer()).compose(
+                strategy,
+                profile,
+                cover_plan,
+                options=options,
+            )
+        except CoverLetterGenerationValidationError as error:
+            details = "; ".join(item.msg for item in error.errors) or str(error)
+            raise ApplicationPackageGenerationError(
+                "Bounded cover-letter generation failed closed (unsupported or "
+                f"invalid composition): {details}. The previous package remains "
+                "current; no deterministic fallback was used."
+            ) from error
+        except CoverLetterError as error:
+            raise ApplicationPackageGenerationError(
+                "Bounded cover-letter generation failed closed: "
+                f"{error}. The previous package remains current; no deterministic "
+                "fallback was used."
+            ) from error
+        return result.letter, result.pack
+
+    def _resolve_cover_letter_composer(self) -> CoverLetterComposer:
+        if self._cover_letter_composer is not None:
+            return self._cover_letter_composer
+        mode = os.environ.get("CIC_COVER_LETTER_COMPOSER", "openai").strip().lower()
+        if mode in {"fixture", "offline"}:
+            return FixtureCoverLetterComposer()
+        return OpenAICoverLetterComposer()
+
+    def _previous_manifest(
+        self, opportunity_id: str
+    ) -> ApplicationPackageManifest | None:
+        if not self.exists(opportunity_id):
+            return None
+        return self.get(opportunity_id, verify=False)
 
     def load_profile(self) -> CareerProfile:
         """Return the Career Profile bound to this package service (FR-014 gates)."""
@@ -285,6 +467,32 @@ class ApplicationPackageService:
             },
             deep=True,
         )
+
+
+def _existing_cv_drafts(output_dir: Path, stem: str) -> DraftWriteResult:
+    return DraftWriteResult(
+        output_dir=output_dir,
+        stem=stem,
+        markdown_path=output_dir / f"{stem}.md",
+        json_path=output_dir / f"{stem}.json",
+        plan_json_path=output_dir / f"{stem}.tailoring_plan.json",
+        html_path=output_dir / f"{stem}.html",
+        pdf_path=output_dir / f"{stem}.pdf",
+    )
+
+
+def _existing_cover_letter_drafts(
+    output_dir: Path, stem: str
+) -> CoverLetterDraftWriteResult:
+    return CoverLetterDraftWriteResult(
+        output_dir=output_dir,
+        stem=stem,
+        markdown_path=output_dir / f"{stem}.md",
+        json_path=output_dir / f"{stem}.json",
+        plan_json_path=output_dir / f"{stem}.cover_letter_plan.json",
+        html_path=output_dir / f"{stem}.html",
+        pdf_path=output_dir / f"{stem}.pdf",
+    )
 
 
 def _evidence_trace(opportunity: Opportunity) -> EvidenceTrace:

@@ -1,43 +1,25 @@
-# AAS spike notes — employer-facing export filenames
+# External/upload PDF filenames (AAS-0 dogfood follow-up)
 
-## Problem
+## Convention
 
-AAS-0 uploaded PDFs named `opp_<opportunity_id>.pdf`. That leaks internal IDs to
-SEEK employers and pollutes SEEK CV storage with opaque names.
+Authoritative CIC artefacts stay:
 
-Desired examples:
+    career-documents/**/generated/opp_<id>.pdf
 
-- `David_Cropper_Repurpose_It_AI_Engineer_CV.pdf`
-- `David_Cropper_Repurpose_It_AI_Engineer_Cover_Letter.pdf`
+Employer-facing copies live under the application package:
 
-Internal `opportunity_id` remains metadata / SoT key — not the employer-facing filename.
+    data/application_packages/<opportunity_id>/export/
+        <Candidate> - <Employer> - <Role> - CV.pdf
+        <Candidate> - <Employer> - <Role> - Cover Letter.pdf
 
-## Smallest ownership point (proposal — not implemented in production)
+Byte-identical to the truth-approved authoritative PDFs. Opportunity IDs never
+appear in export filenames. Spaces and ` - ` separators are intentional.
 
-**Own at packaging/export**, not in Playwright and not by renaming Career Profile
-Markdown sources.
+## Code
 
-Recommended seam:
+- `career_intelligence.application_package.external_upload`
+- `ApplicationPackageService.ensure_external_upload_pdfs` (also after `prepare`)
+- AAS-0 `load_inputs` uploads export paths
 
-1. Keep durable drafts under `career-documents/**/generated/` with stable internal
-   stems (`opportunity_id`) for regeneration/truth hashing.
-2. At **Application Package prepare** (or a thin export helper called by package
-   prepare / assist upload), produce or copy employer-facing PDFs with
-   `propose_external_export_filename(...)` into a dedicated export dir
-   (e.g. `career-documents/**/export/` or package artefact refs).
-3. Browser assist / owner upload uses **export** paths only.
-
-Spike helper (design + unit-tested):  
-`spikes/aas0/session_handoff.py::propose_external_export_filename`
-
-## Non-goals
-
-- Do not redesign document architecture.
-- Do not change truth validation content-hash roots without an FR.
-- Do not rename Markdown sources to company/title slugs.
-
-## Next engineering step (when authorized)
-
-Smallest production change: optional export filename on package prepare + spike
-upload preference for export path. Track as part of AAS-1 prep or a tiny FR-010
-follow-on — owner decision.
+Underscore naming in `spikes/aas0/session_handoff.py::propose_external_export_filename`
+is obsolete for employer-facing uploads; production uses spaced names above.

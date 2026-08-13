@@ -151,37 +151,13 @@ def _render_header_contact(contact: dict[str, str] | None) -> list[str]:
 
 
 def _render_signature(view: CoverLetterHtmlView) -> list[str]:
-    parts = [
+    """Name-only close. Contact belongs in the header, not after the signature."""
+    return [
         '<div class="signature">\n',
         "<p>Kind regards,</p>\n",
         f"<p><strong>{_esc(view.full_name)}</strong></p>\n",
+        "</div>\n",
     ]
-    contact = view.contact or {}
-    for key in _CONTACT_ORDER:
-        value = contact.get(key)
-        if not value:
-            continue
-        if key == "email":
-            parts.append(
-                f'<p class="contact"><a href="mailto:{_esc_attr(value)}">'
-                f"{_esc(value)}</a></p>\n"
-            )
-        elif key == "phone":
-            tel = re.sub(r"[^\d+]", "", value)
-            parts.append(
-                f'<p class="contact"><a href="tel:{_esc_attr(tel)}">'
-                f"{_esc(value)}</a></p>\n"
-            )
-        elif key == "location":
-            parts.append(f'<p class="contact">{_esc(value)}</p>\n')
-        elif key in _LINK_LABELS:
-            display = _compact_url(value)
-            parts.append(
-                f'<p class="contact"><strong>{_esc(_LINK_LABELS[key])}:</strong> '
-                f'<a href="{_esc_attr(value)}">{_esc(display)}</a></p>\n'
-            )
-    parts.append("</div>\n")
-    return parts
 
 
 def _inline_to_html(text: str) -> str:

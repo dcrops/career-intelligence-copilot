@@ -18,6 +18,9 @@ from pathlib import Path
 
 from career_intelligence.cv_generation.errors import CvHtmlRenderError, CvPdfRenderError
 from career_intelligence.cv_generation.html_renderer import render_html
+from career_intelligence.document_rendering.cv_markdown import (
+    render_cv_html_from_markdown,
+)
 from career_intelligence.cv_generation.models import TailoredCv, TailoringPlan
 from career_intelligence.cv_generation.pdf_renderer import (
     PdfRenderError,
@@ -81,7 +84,13 @@ def write_tailored_cv_drafts(
     pdf_path = output_dir / f"{resolved_stem}.pdf"
 
     try:
-        html_document = render_html(cv)
+        if cv.summary_source == "master_baseline":
+            html_document = render_cv_html_from_markdown(
+                cv.rendered_markdown,
+                title=f"{cv.full_name} — {cv.target_role}",
+            )
+        else:
+            html_document = render_html(cv)
     except CvHtmlRenderError:
         raise
     except Exception as exc:  # noqa: BLE001

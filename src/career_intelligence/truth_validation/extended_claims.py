@@ -17,6 +17,7 @@ from career_intelligence.truth_validation.catalogue import (
 from career_intelligence.truth_validation.models import (
     ArtefactKind,
     CandidateEvidenceCatalogue,
+    CatalogueEvidenceEntry,
     Claim,
     ClaimClass,
     ClaimKind,
@@ -61,6 +62,26 @@ _DELIVERY = re.compile(
     r"\bI\s+(built|implemented|developed|deployed|delivered|created|shipped)\b",
     re.I,
 )
+_CONTENT_TOKEN = re.compile(r"[a-z0-9+#]+", re.I)
+_STOP_TOKENS = frozenset(
+    {
+        "a",
+        "an",
+        "and",
+        "as",
+        "at",
+        "for",
+        "i",
+        "in",
+        "of",
+        "on",
+        "or",
+        "the",
+        "to",
+        "using",
+        "with",
+    }
+)
 _YEAR_NUMBER = (
     r"(?:\d+(?:\.\d+)?|one|two|three|four|five|six|seven|eight|nine|ten|"
     r"eleven|twelve|thirteen|fourteen|fifteen|sixteen|seventeen|eighteen|"
@@ -73,7 +94,8 @@ _YEARS = re.compile(
     re.I,
 )
 _YEARS_ACROSS = re.compile(
-    rf"\b(?P<years>{_YEAR_NUMBER})\s*(?P<plus>\+|plus)?\s+years?\s+across\s+"
+    rf"\b(?P<years>{_YEAR_NUMBER})\s*(?P<plus>\+|plus)?\s+years?\s+"
+    r"(?:of\s+experience\s+)?across\s+"
     r"(?P<object>[^.!?;]+)",
     re.I,
 )
@@ -372,9 +394,78 @@ def _delivery_hits(sentence: str, offset: int, claim_class: ClaimClass, certaint
                                  claim_class, certainty, offset + match.start(),
                                  offset + project_match.end(), "delivered_project")]
     remainder = sentence[match.end():].strip(" .,:;")
+    employment = _supported_employment_delivery(sentence, remainder, catalogue)
+    if employment is not None:
+        entry, org_match = employment
+        start = min(org_match.start(), match.start())
+        end = max(org_match.end(), match.end())
+        return [
+            _hit(
+                "employment",
+                entry.object_key,
+                org_match.group(),
+                sentence,
+                claim_class,
+                certainty,
+                offset + start,
+                offset + end,
+                "has_employment",
+            )
+        ]
     return [_hit("project_delivery", normalise_object_key(remainder) or "unknown_project",
                  sentence[match.start():], sentence, claim_class, "ambiguous",
                  offset + match.start(), offset + len(sentence), "delivered_project")]
+
+
+def _supported_employment_delivery(
+    sentence: str,
+    remainder: str,
+    catalogue: CandidateEvidenceCatalogue,
+) -> tuple[CatalogueEvidenceEntry, re.Match[str]] | None:
+    """Return catalogue employment evidence when a named employer and highlight match.
+
+    Does not waive unnamed project delivery merely because a company name appears.
+    """
+    for entry in catalogue.entries:
+        if "employment" not in entry.claim_kinds:
+            continue
+        if not (entry.object_key or "").startswith("experience-"):
+            continue
+        labels = [
+            item
+            for item in (entry.display_label, *entry.aliases)
+            if item and len(item.strip()) >= 4
+        ]
+        org_match: re.Match[str] | None = None
+        for label in sorted(labels, key=len, reverse=True):
+            found = re.search(rf"(?<!\w){re.escape(label)}(?!\w)", sentence, re.I)
+            if found:
+                org_match = found
+                break
+        if org_match is None:
+            continue
+        excerpt = entry.provenance.excerpt or ""
+        if _responsibility_supported(remainder, excerpt):
+            return entry, org_match
+    return None
+
+
+def _responsibility_supported(remainder: str, excerpt: str) -> bool:
+    claimed = _content_tokens(remainder)
+    evidence = _content_tokens(excerpt)
+    if len(claimed) < 3 or not evidence:
+        return False
+    overlap = claimed & evidence
+    required = min(5, max(3, (len(claimed) + 1) // 2))
+    return len(overlap) >= required
+
+
+def _content_tokens(text: str) -> set[str]:
+    return {
+        token.casefold()
+        for token in _CONTENT_TOKEN.findall(text)
+        if token.casefold() not in _STOP_TOKENS and len(token) > 1
+    }
 
 
 def _hit(kind: ClaimKind, key: str, surface: str, sentence: str, claim_class: ClaimClass,

@@ -12,6 +12,7 @@ from career_intelligence.application_package import (
     ApplicationPackageContactError,
     ApplicationPackageEligibilityError,
     ApplicationPackageError,
+    ApplicationPackageGenerationError,
     ApplicationPackageIntegrityError,
     ApplicationPackageNotFoundError,
     ApplicationPackageService,
@@ -38,6 +39,7 @@ from career_intelligence.candidate_contact import (
 )
 from career_intelligence.cv_generation import (
     ContactDetails,
+    CvGenerationError,
     CvGenerationGateError,
     CvGenerationOptions,
     TailoringOptions,
@@ -488,6 +490,7 @@ def _exit_for_package(error: ApplicationPackageError) -> Never:
             ApplicationPackageEligibilityError,
             ApplicationPackageContactError,
             ApplicationPackageIntegrityError,
+            ApplicationPackageGenerationError,
         ),
     ):
         raise typer.Exit(code=1)
@@ -1446,6 +1449,16 @@ def prepare_package(
             ),
         ),
     ] = False,
+    regenerate: Annotated[
+        bool,
+        typer.Option(
+            "--regenerate",
+            help=(
+                "Overwrite existing Markdown even when it differs from the "
+                "last generated draft (owner edits are otherwise preserved)."
+            ),
+        ),
+    ] = False,
     yaml_output: Annotated[
         bool,
         typer.Option("--yaml", help="Emit the full package manifest as YAML."),
@@ -1481,6 +1494,8 @@ def prepare_package(
             ),
             cv_options=CvGenerationOptions(
                 tailoring_plan_approved=True,
+                adapt_from_master=True,
+                rewrite_summary=False,
                 contact=contact,
             ),
             cover_letter_plan_options=CoverLetterPlanOptions(
@@ -1491,6 +1506,7 @@ def prepare_package(
                 cover_letter_plan_approved=True,
                 contact=contact,
             ),
+            regenerate=regenerate,
         )
     except OpportunityError as error:
         _exit_for_opportunity(error)
@@ -1499,6 +1515,7 @@ def prepare_package(
     except (
         TailoringPlanGateError,
         CvGenerationGateError,
+        CvGenerationError,
         CoverLetterPlanGateError,
     ) as error:
         typer.echo(str(error), err=True)
@@ -1703,6 +1720,8 @@ def run_preparation(
             ),
             cv_options=CvGenerationOptions(
                 tailoring_plan_approved=True,
+                adapt_from_master=True,
+                rewrite_summary=False,
                 contact=contact,
             ),
             cover_letter_plan_options=CoverLetterPlanOptions(

@@ -1,7 +1,9 @@
 """Public API for cover letter generation (FR-007).
 
 Phase A: CoverLetterPlan via CoverLetterPlanService + DeterministicCoverLetterPlanner.
-Phase B: CoverLetter via CoverLetterGenerationService (deterministic Markdown + HTML).
+Phase B: CoverLetterGenerationService remains the legacy deterministic composer.
+Production package prepare uses bounded LLM composition
+(``BoundedCoverLetterService`` + evidence pack, one call).
 
 Owner review is mandatory before any external use.
 """
