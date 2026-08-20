@@ -199,6 +199,29 @@ methodology/highlights content.
 
 ---
 
+## Document Positioning M0 — catalogue and eval freeze
+
+M0 of the Document Positioning programme is an architectural freeze, not a
+production-path change. Tests live under `tests/unit/document_positioning/`.
+
+- Catalogue v1 semantics (RAG aliases, AWS/Bedrock RELATED-never-claimable,
+  chatbot UNSUPPORTED, Azure/ADF RELATED, Java ≠ JavaScript):
+  `tests/unit/document_positioning/test_catalogue_v1.py`
+- Frozen eval-fixture existence and production isolation (catalogue must not
+  be imported by CV, cover letter, package, or CLI yet):
+  `tests/unit/document_positioning/test_m0_invariants.py`
+- Fixture inventory:
+  [eval/document_positioning_remediation.md](eval/document_positioning_remediation.md)
+  § 6; CSK tracked freeze under
+  `tests/fixtures/document_positioning/eval_jobs/02_csk_mixed_fit/`
+
+Passing catalogue tests does **not** mean the live TailoringPlan planner is
+fixed. PositioningPlan builder tests are M1. The M5 four-job preference
+protocol is frozen in the programme document and must not be scored until
+A/B documents exist.
+
+---
+
 ## FR-007 Cover Letter coverage
 
 FR-007 is **complete** (owner manual validation passed). Coverage includes:
