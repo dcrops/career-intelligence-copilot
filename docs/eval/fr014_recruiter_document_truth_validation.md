@@ -13,6 +13,15 @@ the employer is identified. Evidence-boundary corrections only — gate policy
 unchanged; FR-014 not reopened. See
 [document_quality_remediation.md](document_quality_remediation.md).
 
+**Detector corrections (2026-08-20):** canonical identity alignment with the M2
+catalogue, scoped negation, complete multi-domain duration lists, and
+immediately previous-sentence unique employer bind for first-person delivery.
+`VALIDATOR_VERSION = fr014-truth-alignment-2`. Gate policy unchanged; FR-014 not
+reopened. Original Document Positioning M5 execution remains historically FAIL;
+owner close-out recorded M5 COMPLETE without a fresh end-to-end rerun. See
+[fr014_truth_alignment.md](fr014_truth_alignment.md) and
+[document_positioning_m5_acceptance.md](document_positioning_m5_acceptance.md).
+
 **ADR:** [ADR-006](../adr/006_recruiter_document_truth_validation.md) (Accepted)
 
 **Milestones:**
@@ -36,7 +45,8 @@ FR-014 delivers a **deterministic fail-closed trust boundary** for recruiter-fac
 | M3 | Owner CLI, sidecar persistence, hash freshness, package/submission gates |
 | M4 | Employment honesty, certifications, years, delivery, domain — close-out |
 
-Package: `career_intelligence.truth_validation`. Validator version: `fr014-m4-deterministic-1`.
+Package: `career_intelligence.truth_validation`. Operational validator version:
+`fr014-truth-alignment-2` (M4 freeze recorded `fr014-m4-deterministic-1`).
 
 ---
 
@@ -410,7 +420,7 @@ Detailed retrospective content is in §21–§22 below and in milestone records:
 | `cic package verify` truth gate | Operational |
 | FR-012 submission truth gate (default on) | Operational |
 | Manual validation scripts (M2/M3/M4) | PASS |
-| Validator version pinned | `fr014-m4-deterministic-1` |
+| Validator version pinned | `fr014-m4-deterministic-1` at freeze; operational `fr014-truth-alignment-2` (2026-08-20 detector corrections) |
 | Documentation frozen | This report + ADR-006 + functional spec |
 
 Owner can operate the full correction loop: generate → validate → review findings → edit Markdown → revalidate → verify package → submit.
@@ -510,7 +520,8 @@ Truth Validation assists owner judgment; it does not replace owner review. FAIL 
 - [x] Documentation updated and FR frozen
 - [x] No rewriting; owner review mandatory
 - [x] No future FR (FR-015) started without owner request *(historical at FR-014 freeze; FR-015 later completed under owner request)*
-- [x] Validator version pinned (`fr014-m4-deterministic-1`)
+- [x] Validator version pinned (`fr014-m4-deterministic-1` at freeze; later
+      `fr014-truth-alignment-2` without reopening the FR)
 
 ---
 
@@ -536,7 +547,7 @@ required). Do not increase automation without the FR-014 gate remaining in force
 | FR-015 Bounded Agentic Workflow | **Complete and frozen** |
 | FR-016 Multi-Agent Orchestration | **Active FR — not started** (owner request required) |
 | Package | `career_intelligence.truth_validation` |
-| Validator version | `fr014-m4-deterministic-1` |
+| Validator version | `fr014-truth-alignment-2` (freeze recorded `fr014-m4-deterministic-1`) |
 | ADR | [ADR-006](../adr/006_recruiter_document_truth_validation.md) (Accepted) |
 | Milestones | M0–M4 complete — see links in header |
 

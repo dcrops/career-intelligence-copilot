@@ -1,0 +1,10 @@
+{
+  "note": "One-shot diagnostic after official M5 runs blocked. Not a quality comparison set. Not used for owner scoring.",
+  "cic_cv_model": "gpt-4o-mini",
+  "results": {
+    "E1": {"cv": "FAIL", "letter": "PASS", "cv_error": "project relevance names unknown project 'Public Holiday Entitlements Application'"},
+    "E2": {"cv": "PASS", "letter": "PASS"},
+    "E3": {"cv": "PASS", "letter": "PASS"},
+    "E4": {"cv": "PASS", "letter": "PASS"}
+  }
+}

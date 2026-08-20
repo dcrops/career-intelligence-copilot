@@ -1,0 +1,29 @@
+{
+  "benchmark_run_id": "m5_restart_after_m3_optional_relevance_2026-08-20",
+  "computed_from": "owner_review/owner_scores.json overall + hidden/ab_mapping.json + generation_records/*_truth.json",
+  "owner_scores_persisted_before_unblind": true,
+  "unscored_rubric_rows_left_null": true,
+  "cic_preferred_jobs": ["E1", "E2", "E3", "E4"],
+  "baseline_preferred_jobs": [],
+  "tie_jobs": [],
+  "cic_preferred_or_tied_count": 4,
+  "cic_truth_failures": 3,
+  "baseline_truth_failures": 4,
+  "passed": false,
+  "reason": "FAIL: CIC Truth failures = 3 (zero allowed). CIC preferred or tied on 4/4.",
+  "job_system_decisions": {
+    "E1": "cic",
+    "E2": "cic",
+    "E3": "cic",
+    "E4": "cic"
+  },
+  "mapping": {
+    "E1": {"version_a": "baseline", "version_b": "cic"},
+    "E2": {"version_a": "baseline", "version_b": "cic"},
+    "E3": {"version_a": "cic", "version_b": "baseline"},
+    "E4": {"version_a": "cic", "version_b": "baseline"}
+  },
+  "product_behaviour_modified_after_scores": false,
+  "documents_regenerated": false,
+  "m6_started": false
+}

@@ -1,0 +1,88 @@
+{
+  "cic": {
+    "job_id": "E4",
+    "system": "cic",
+    "cv": {
+      "artefact_kind": "cv_markdown",
+      "outcome": "review_required",
+      "coverage_status": "complete",
+      "detection_performed": true,
+      "validation_performed": true,
+      "external_use_allowed": false,
+      "blocking_count": 0,
+      "review_required_count": 1,
+      "finding_summaries": [
+        "review_required:A:intesting"
+      ],
+      "messages": [
+        "Outcome is 'review_required'; require pass or warning for external use",
+        "Review-required findings block external use (ADR-006)"
+      ],
+      "content_hash": "c96dd08adf44b9ac49853b468b4871e876fdd228b36f0fb713a910348eb06d97",
+      "report_id": "trp_01M0F4QREZ3R3EYVNYMWMA9CK1"
+    },
+    "cover_letter": {
+      "artefact_kind": "cover_letter_markdown",
+      "outcome": "pass",
+      "coverage_status": "complete",
+      "detection_performed": true,
+      "validation_performed": true,
+      "external_use_allowed": true,
+      "blocking_count": 0,
+      "review_required_count": 0,
+      "finding_summaries": [],
+      "messages": [],
+      "content_hash": "a8f1e3de15796c5cf79a8e2c496c8be712ff21662eee3bd0a7b36878cddcce9d",
+      "report_id": "trp_01M0F4QRFH1E69HNQFWKYA0BN3"
+    },
+    "pair_external_use_allowed": false,
+    "truth_failure": true
+  },
+  "baseline": {
+    "job_id": "E4",
+    "system": "baseline",
+    "cv": {
+      "artefact_kind": "cv_markdown",
+      "outcome": "fail",
+      "coverage_status": "complete",
+      "detection_performed": true,
+      "validation_performed": true,
+      "external_use_allowed": false,
+      "blocking_count": 1,
+      "review_required_count": 0,
+      "finding_summaries": [
+        "blocking:A:education"
+      ],
+      "messages": [
+        "Outcome is 'fail'; require pass or warning for external use",
+        "1 blocking finding(s) present (education)"
+      ],
+      "content_hash": "037887eec320c7ab52c25a24f637d3785335872d13e15421c9d134de0bae4d6b",
+      "report_id": "trp_01M0F4QRGJNVT5PS5MMHC91Y36"
+    },
+    "cover_letter": {
+      "artefact_kind": "cover_letter_markdown",
+      "outcome": "fail",
+      "coverage_status": "complete",
+      "detection_performed": true,
+      "validation_performed": true,
+      "external_use_allowed": false,
+      "blocking_count": 4,
+      "review_required_count": 0,
+      "finding_summaries": [
+        "blocking:A:aitools",
+        "blocking:A:copilot",
+        "blocking:A:claude",
+        "blocking:A:aitools"
+      ],
+      "messages": [
+        "Outcome is 'fail'; require pass or warning for external use",
+        "4 blocking finding(s) present (aitools, claude, copilot)"
+      ],
+      "content_hash": "f0e6b2c83b2fbdf032a9f1c608a2ba3114e6eb28304e3718f17e7b87145798b1",
+      "report_id": "trp_01M0F4QRH3CHN7ZR11JS9DNN97"
+    },
+    "pair_external_use_allowed": false,
+    "truth_failure": true
+  }
+}

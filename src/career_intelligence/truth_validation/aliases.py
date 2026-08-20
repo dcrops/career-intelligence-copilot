@@ -64,6 +64,8 @@ WELL_KNOWN_TECHNOLOGY_LABELS: tuple[str, ...] = (
     "PyTorch",
     "LangChain",
     "OpenAI",
+    "AWS Bedrock",
+    "Bedrock",
 )
 
 

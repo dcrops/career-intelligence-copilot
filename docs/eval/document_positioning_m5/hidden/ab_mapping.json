@@ -1,0 +1,25 @@
+{
+  "assignments": [
+    {
+      "job_id": "E1",
+      "version_a": "baseline",
+      "version_b": "cic"
+    },
+    {
+      "job_id": "E2",
+      "version_a": "baseline",
+      "version_b": "cic"
+    },
+    {
+      "job_id": "E3",
+      "version_a": "cic",
+      "version_b": "baseline"
+    },
+    {
+      "job_id": "E4",
+      "version_a": "cic",
+      "version_b": "baseline"
+    }
+  ],
+  "revealed": true
+}

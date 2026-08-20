@@ -36,7 +36,7 @@ Objectives.
 |----------|--------|
 | What is this project? | Decision-support for job search (Horizon 1), evolving toward a Career Intelligence Platform (Horizon 2). |
 | What has been completed? | **Phase 1** and **Phase 2** — see [12_phase_history.md](12_phase_history.md) and [eval/phase2_release_report.md](eval/phase2_release_report.md). |
-| What is next? | **AAS-0.1 paused, not complete** ([spikes/application_assistance_aas0.md](spikes/application_assistance_aas0.md)); employer-question owner-resume open. Document Positioning M0 pending owner review. **FR-019** remains in progress (M0 GO; M1 ready). Do not prioritise Indeed ahead of AAS. — [10_roadmap.md](10_roadmap.md). |
+| What is next? | **AAS-0.1 paused, not complete** ([spikes/application_assistance_aas0.md](spikes/application_assistance_aas0.md)); employer-question owner-resume open. Document Positioning M5 COMPLETE (owner close-out; historical execution FAIL preserved). Do not start M6. **FR-019** remains in progress (M0 GO; M1 ready). Do not prioritise Indeed ahead of AAS. — [10_roadmap.md](10_roadmap.md). |
 | Where should I start reading? | This guide → [AGENTS.md](../AGENTS.md) → [04_functional_specification.md](04_functional_specification.md) → [10_roadmap.md](10_roadmap.md). |
 
 ---
@@ -70,12 +70,17 @@ milestones [M0](eval/fr012_m0_submission_contracts.md),
 
 **Document Quality Remediation:** **COMPLETE**
 ([eval/document_quality_remediation.md](eval/document_quality_remediation.md)).
-**Document Positioning:** M0 audit complete, pending owner review before M1
+**Document Positioning:** M4 owner-approved. M5 **COMPLETE** (owner close-out:
+quality 4/4 frozen blind; Truth PASS on unchanged frozen CIC artefacts through
+corrected FR-014; original execution historically FAIL; no fresh end-to-end
+rerun)
+([eval/document_positioning_m5_acceptance.md](eval/document_positioning_m5_acceptance.md)).
+Do not start M6. PositioningPlan and the M3/M4 composers are not wired into
+package prepare. Production Master-adapt / bounded letter path is otherwise
+unchanged
 ([eval/document_positioning_remediation.md](eval/document_positioning_remediation.md)).
-Production document path is unchanged.
 **Next engineering work:** AAS-0.1 **paused, not complete**
 ([spikes/application_assistance_aas0.md](spikes/application_assistance_aas0.md)).
-Document Positioning M0 pending owner review before M1.
 
 **FR-019 Core Loop Operationalisation** remains in progress (M0 Accepted / GO;
 M1 ready —
@@ -138,8 +143,15 @@ candidate capability). Release evidence:
 | [eval/fr006b_cv_quality_golden_suite.md](eval/fr006b_cv_quality_golden_suite.md) | Supporting | FR-006b permanent CV quality benchmarks |
 | [eval/fr006b_cv_quality_findings.md](eval/fr006b_cv_quality_findings.md) | Supporting | FR-006b quality review (pre-implementation) |
 | [eval/fr006b_cv_quality_validation.md](eval/fr006b_cv_quality_validation.md) | Supporting | FR-006b P0 implementation + G1–G5 results |
-| [eval/document_positioning_remediation.md](eval/document_positioning_remediation.md) | Supporting | Document Positioning programme (M0 freeze; not complete) |
+| [eval/document_positioning_remediation.md](eval/document_positioning_remediation.md) | Supporting | Document Positioning programme (M5 complete; M6 not started) |
 | [eval/document_positioning_m0_audit.md](eval/document_positioning_m0_audit.md) | Supporting | M0 architecture trace and root-cause classifications |
+| [eval/document_positioning_m1_acceptance.md](eval/document_positioning_m1_acceptance.md) | Supporting | M1 PositioningPlan acceptance |
+| [eval/document_positioning_m2_acceptance.md](eval/document_positioning_m2_acceptance.md) | Supporting | M2 catalogue-backed TailoringPlan planning |
+| [eval/document_positioning_m3_acceptance.md](eval/document_positioning_m3_acceptance.md) | Supporting | M3 evidence-bounded CV positioning composer |
+| [eval/document_positioning_m4_acceptance.md](eval/document_positioning_m4_acceptance.md) | Supporting | M4 employer-need-driven cover-letter positioning |
+| [eval/document_positioning_m5_protocol.md](eval/document_positioning_m5_protocol.md) | Supporting | M5 frozen preference-evaluation protocol |
+| [eval/document_positioning_m5_acceptance.md](eval/document_positioning_m5_acceptance.md) | Supporting | M5 COMPLETE (owner close-out; historical execution FAIL preserved) |
+| [eval/fr014_truth_alignment.md](eval/fr014_truth_alignment.md) | Supporting | Post-M5 FR-014 detector correction (replay is not a fresh M5 run) |
 | [eval/fr002_openai_manual_eval.md](eval/fr002_openai_manual_eval.md) | Supporting | FR-002 live eval record |
 | [eval/fr003_openai_manual_eval.md](eval/fr003_openai_manual_eval.md) | Supporting | FR-003 live eval record |
 | [01_executive_summary.md](01_executive_summary.md) | Supporting | Quick narrative overview |

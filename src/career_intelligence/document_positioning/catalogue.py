@@ -1,17 +1,17 @@
-"""Capability identity catalogue v1 (M0).
+"""Canonical capability identity catalogue.
 
-Not wired into TailoringPlan, Master-adapt, cover-letter generation, or
-``cic package prepare``. M1+ may consume this module. Production document
-behaviour must remain unchanged until those milestones.
+M2: TailoringPlan's deterministic planner classifies through this module.
+PositioningPlan and M4 letter selection use the same classifier. Master-adapt,
+production cover-letter generation, and ``cic package prepare`` still must not
+import it.
 
 Design rules:
 - Identities are canonical, not recruiter phrasing.
 - Aliases collapse equivalent names onto one identity (RAG == Retrieval-Augmented Generation).
-- RELATED pairs are explicit and one-directional in meaning: a requested identity
-  may be supported by a *different* profile identity. The requested identity
-  remains unclaimable.
-- Unknown labels are DIRECT only on exact normalised identity match against
-  profile labels; otherwise UNSUPPORTED. Unknown labels never invent RELATED.
+- RELATED pairs are explicit: a *requested* identity may be supported by a
+  *different* profile identity. The requested identity remains unclaimable.
+- Unknown labels are DIRECT on exact normalised match (PositioningPlan) or
+  planner token-compatible match; they never invent RELATED.
 """
 
 from __future__ import annotations
@@ -35,13 +35,21 @@ _IDENTITIES: frozenset[str] = frozenset(
         "aws_bedrock",
         "azure",
         "azure_data_factory",
+        "microsoft_fabric",
+        "data_pipeline",
+        "llm",
+        "openai",
+        "langchain",
+        "rest",
+        "fastapi",
+        "docker",
         "java",
         "javascript",
         "chatbot",
     }
 )
 
-# Normalised phrase -> identity. Justification lives in the M0 audit report.
+# Normalised phrase -> identity. Justification lives in the M0/M2 reports.
 _ALIASES: dict[str, str] = {
     "rag": "rag",
     "retrieval augmented generation": "rag",
@@ -56,6 +64,32 @@ _ALIASES: dict[str, str] = {
     "azure data factory": "azure_data_factory",
     "data factory": "azure_data_factory",
     "adf": "azure_data_factory",
+    "microsoft fabric": "microsoft_fabric",
+    "data pipeline": "data_pipeline",
+    "data pipelines": "data_pipeline",
+    "etl": "data_pipeline",
+    "llm": "llm",
+    "llms": "llm",
+    "llm application development": "llm",
+    "openai": "openai",
+    "openai apis": "openai",
+    "openai api": "openai",
+    "azure openai": "openai",
+    "gpt": "openai",
+    "langchain": "langchain",
+    "rest": "rest",
+    "rest apis": "rest",
+    "rest api": "rest",
+    "api": "rest",
+    "apis": "rest",
+    "backend services": "rest",
+    "backend service": "rest",
+    "fastapi": "fastapi",
+    "docker": "docker",
+    "containers": "docker",
+    "container": "docker",
+    "containerisation": "docker",
+    "containerization": "docker",
     "java": "java",
     "javascript": "javascript",
     "chatbot": "chatbot",
@@ -69,15 +103,21 @@ _ALIASES: dict[str, str] = {
 
 # requested_identity -> frozenset of profile identities that may be promoted
 # as RELATED evidence. Never treat the requested identity as claimed.
-# v1 is not a drop-in for deterministic_planner._RELATED_CAPABILITY_GROUPS
-# (for example Microsoft Fabric is not catalogued here).
+#
+# M2 migrated justified live planner groups here. Deliberately omitted:
+# RAG ↔ LLM (unsafe: retrieval systems are not generic LLM/platform claims)
+# RAG ↔ chatbot, OpenAI ↔ chatbot, AWS ↔ Bedrock DIRECT.
 _RELATED_PROFILE_IDENTITIES: dict[str, frozenset[str]] = {
-    # Same cloud vendor; commercial AWS is transferable evidence for a Bedrock
-    # role. Bedrock itself remains unclaimable without Bedrock evidence.
     "aws_bedrock": frozenset({"aws"}),
-    # Existing FR-006 related-capability behaviour: JD Azure may promote ADF.
-    "azure": frozenset({"azure_data_factory"}),
-    "azure_data_factory": frozenset({"azure"}),
+    "azure": frozenset({"azure_data_factory", "microsoft_fabric"}),
+    "azure_data_factory": frozenset({"azure", "microsoft_fabric", "data_pipeline"}),
+    "microsoft_fabric": frozenset({"azure", "azure_data_factory"}),
+    "data_pipeline": frozenset({"azure_data_factory"}),
+    "llm": frozenset({"openai", "langchain"}),
+    "openai": frozenset({"llm", "langchain"}),
+    "langchain": frozenset({"llm", "openai"}),
+    "rest": frozenset({"fastapi"}),
+    "fastapi": frozenset({"rest"}),
 }
 
 
@@ -170,7 +210,7 @@ def classify_requirement(
                 promotable_profile_label=label,
                 may_claim_requested=True,
                 rationale=(
-                    f"Requested '{requested}' is not in the v1 catalogue; it "
+                    f"Requested '{requested}' is not in the catalogue; it "
                     "matches a profile label exactly after normalisation."
                 ),
             )
@@ -186,6 +226,73 @@ def classify_requirement(
             "exactly match a profile label."
         ),
     )
+
+
+def aliases_for_identity(identity: str) -> tuple[str, ...]:
+    """Return catalogue alias phrases that resolve to ``identity``, longest first."""
+    aliases = [alias for alias, mapped in _ALIASES.items() if mapped == identity]
+    aliases.sort(key=lambda item: (-len(item.split()), -len(item), item))
+    return tuple(aliases)
+
+
+def supporting_identities(identity: str) -> frozenset[str]:
+    """Identities that may pack as evidence for ``identity``.
+
+    Includes the identity itself plus explicit RELATED profile identities.
+    Does not authorise claiming a different requested capability.
+    """
+    related = _RELATED_PROFILE_IDENTITIES.get(identity, frozenset())
+    return frozenset({identity}) | related
+
+
+def identities_mentioned_in_text(text: str) -> tuple[str, ...]:
+    """Return catalogue identities whose aliases appear as token subsequences.
+
+    Longer aliases win. A shorter alias is skipped when its tokens are a subset
+    of an already-matched longer alias (so ``AWS Bedrock`` does not also emit
+    a standalone ``aws`` identity from the same phrase).
+    """
+    tokens = _TOKEN_RE.findall(text.casefold())
+    if not tokens:
+        return ()
+    ranked = sorted(
+        _ALIASES.items(),
+        key=lambda item: (-len(item[0].split()), -len(item[0]), item[0]),
+    )
+    found: list[str] = []
+    matched_token_sets: list[frozenset[str]] = []
+    for alias, identity in ranked:
+        alias_tokens = alias.split()
+        if not alias_tokens:
+            continue
+        if identity in found:
+            continue
+        if _has_contiguous_tokens(tokens, alias_tokens):
+            alias_set = frozenset(alias_tokens)
+            if any(alias_set <= prior for prior in matched_token_sets):
+                continue
+            found.append(identity)
+            matched_token_sets.append(alias_set)
+    return tuple(found)
+
+
+def first_alias_in_text(text: str, identity: str) -> str | None:
+    """Return the longest alias for ``identity`` that appears in ``text``."""
+    tokens = _TOKEN_RE.findall(text.casefold())
+    for alias in aliases_for_identity(identity):
+        if _has_contiguous_tokens(tokens, alias.split()):
+            return alias
+    return None
+
+
+def _has_contiguous_tokens(tokens: list[str], needle: list[str]) -> bool:
+    if not needle or len(needle) > len(tokens):
+        return False
+    width = len(needle)
+    for index in range(len(tokens) - width + 1):
+        if tokens[index : index + width] == needle:
+            return True
+    return False
 
 
 def _profile_identity_hits(profile_labels: Sequence[str]) -> dict[str, str]:

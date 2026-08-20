@@ -900,7 +900,10 @@ planner, composer, or OpenAI. Use it after owner Markdown edits.
 **Shared presentation system:** `src/career_intelligence/cv_generation/assets/cv_print.css`
 is the single CSS source for Master HTML and tailored HTML. Master embeds the CSS between
 `CV_PRINT_CSS_BEGIN/END` markers; keep them aligned with
-`python scripts/sync_master_cv_css.py` (use `--check` in CI-style verification). Layout
+`python scripts/sync_master_cv_css.py` (use `--check` in CI-style verification).
+If a later HTML refresh drops the markers, wrap the existing `<style>` block
+with `CV_PRINT_CSS_BEGIN/END` and re-run sync — inject will not recreate
+markers that are already absent. Layout
 benchmark is archived Master CV v3 readability; current Master content stays canonical.
 Readability is prioritised over minimum page count (≈4–5 pages OK).
 
@@ -1099,14 +1102,48 @@ cover letter MINOR EDIT accepted (Truth PASS). External-use ALLOWED;
 `owner_review_required=True`. Close-out:
 [eval/document_quality_remediation.md](eval/document_quality_remediation.md).
 
-**Follow-on (2026-08-20):** Document Positioning M0 audit is complete and
-pending owner review before M1. The production path above is **unchanged**.
-M0 added an unused capability catalogue under
-`career_intelligence.document_positioning` and froze a four-job evaluation
-protocol. It did not wire PositioningPlan, regenerate documents, or alter
-`cic package prepare`. Programme:
+**Follow-on (2026-08-20):** M5 official restart was owner-scored blind.
+Scores persisted before unblinding. CIC preferred 4/4. CIC Truth failures
+= 3. Formal result FAIL. RCA only; prepare still not wired.
+[eval/document_positioning_m5_unblinded.md](eval/document_positioning_m5_unblinded.md).
+
+**Follow-on (2026-08-20):** Bounded M3 correction: invalid optional CV
+project-relevance lines are discarded and the remainder revalidated; the
+writer prompt requires exact packed project names. The first M5 live run is
+invalidated. Official restart:
+`m5_restart_after_m3_optional_relevance_2026-08-20`. Prepare is still not
+wired.
+
+**Follow-on (2026-08-20):** Document Positioning M5 implemented the frozen
+preference-evaluation harness (factual evidence bundles, CIC M3/M4 live
+composers, independent `gpt-4o` baseline, FR-014 gate, blind mapping,
+threshold calculator). Live generation **blocked** on E1: the bounded CV
+writer repeatedly named an unpacked Master project in optional relevance
+lines and fail-closed. M3/M4 product code was not changed to force a
+comparison set. Protocol:
+[eval/document_positioning_m5_protocol.md](eval/document_positioning_m5_protocol.md);
+acceptance:
+[eval/document_positioning_m5_acceptance.md](eval/document_positioning_m5_acceptance.md).
+
+**Follow-on (2026-08-20):** Document Positioning M4 added
+`BoundedCoverLetterPositioningService` (employer-need coverage selection →
+typed letter pack → bounded writer → fail-closed factual/quality validation).
+M3 remains the unwired CV composer. PositioningPlan and both composers are
+still **not** imported by `cic package prepare`. Production packages still
+use Master-adapt plus the pre-M4 `BoundedCoverLetterService` (tag/concern
+project selection and forced testing→DE→AI packing). Programme:
 [eval/document_positioning_remediation.md](eval/document_positioning_remediation.md);
-audit: [eval/document_positioning_m0_audit.md](eval/document_positioning_m0_audit.md).
+acceptance: [eval/document_positioning_m4_acceptance.md](eval/document_positioning_m4_acceptance.md).
+
+**Follow-on (2026-08-20):** Document Positioning M3 added
+`BoundedCvPositioningService` (pack → bounded writer → fail-closed
+validation → Master-adapt rewrite-surface overrides). M2 already wired the
+capability catalogue into `DeterministicTailoringPlanner`. PositioningPlan
+and the CV composer are still **not** imported by `cic package prepare`.
+Production Master-adapt still copies the Master summary and globally omits
+methodology. Programme:
+[eval/document_positioning_remediation.md](eval/document_positioning_remediation.md);
+acceptance: [eval/document_positioning_m3_acceptance.md](eval/document_positioning_m3_acceptance.md).
 
 **Owner-edit lifecycle:** generated Markdown SHA-256 fingerprints; ordinary
 prepare preserves prose when the file differs from the fingerprint or no
@@ -2694,17 +2731,72 @@ FR-010 manifest schema unchanged. No rewriting. Claim kinds remain technology-on
 
 Extends catalogue + `extended_claims` detection for employment honesty,
 certifications, years (computable tenure only), project delivery, and domain.
-`VALIDATOR_VERSION = fr014-m4-deterministic-1`. Soft skills / subjective claims
-excluded. Redwolf technology regression retained.
+`VALIDATOR_VERSION` at M4 freeze was `fr014-m4-deterministic-1`. Soft skills /
+subjective claims excluded. Redwolf technology regression retained.
 
 **Post-freeze hardening (FR-019 dogfood, 2026-08-11):** certification/domain
 `_label_hits` now skip overlapping shorter labels after a longer match occupies
 the span (nested well-known truncations). Fail-closed unsupported certs unchanged
 — see § FR-019 dogfood defect (nested certification claims); changelog § 1.132.
 
+**Post-freeze hardening (truth alignment, 2026-08-20):**
+`VALIDATOR_VERSION = fr014-truth-alignment-2`. FR-014 reuses M2 canonical
+capability *identity* via
+`career_intelligence.truth_validation.canonical_identity` (`resolve_identity` /
+`aliases_for_identity` only — not RELATED permission). Scoped negation;
+complete multi-domain duration lists; immediately previous-sentence unique
+employer bind for first-person delivery. See § FR-014 truth-alignment detector
+correction and § previous-sentence employment bind; changelog § 1.170–1.171;
+[eval/fr014_truth_alignment.md](eval/fr014_truth_alignment.md).
+
 **Manual:** `scripts/run_fr014_m4_manual.py` — PASS  
 **Status:** FR-014 **complete and frozen**. FR-015 is also complete and frozen —
 [acceptance](eval/fr015_bounded_agentic_workflow.md).
+
+---
+
+## FR-014 truth-alignment detector correction (2026-08-20)
+
+**Context:** Document Positioning M5 official run failed the frozen Truth gate
+on five named CIC findings. Forensic audit: 0 genuine unsupported candidate
+claims among those five. Historical M5 remains FAIL.
+
+| | |
+|--|--|
+| **Symptom** | E1 letter blocking `llm`; E2 letter blocking `rag` / `awsbedrock`; E2/E4 CV review-required `intesting` |
+| **Root causes** | Canonical identity split vs M2 catalogue; `I do` matching inside `I do not claim`; `_YEARS` truncating at the first comma |
+| **Fix** | Shared identity adapter (`canonical_identity.py` → `resolve_identity` / `aliases_for_identity` only); clause-scoped denial; complete multi-domain duration lists. RELATED ≠ DIRECT. M3/M4 unchanged |
+| **Tests** | `tests/unit/truth_validation/test_truth_alignment.py`; duration list case in `test_career_positioning_duration.py` |
+| **Replay** | Frozen M5 CIC artefacts only — named findings gone; E2 letter nbn previous-sentence delivery later bound in § previous-sentence employment bind |
+| **Changelog** | § 1.170 |
+| **Acceptance** | [eval/fr014_truth_alignment.md](eval/fr014_truth_alignment.md) |
+
+Bounded FR-014 detector hardening discovered under Document Positioning M5 —
+not a new FR. Original M5 execution remains historically FAIL. Owner later
+closed M5 COMPLETE on quality 4/4 plus unchanged-artefact Truth replay
+([eval/document_positioning_m5_acceptance.md](eval/document_positioning_m5_acceptance.md)).
+M6 not started.
+
+---
+
+## FR-014 previous-sentence employment bind (2026-08-20)
+
+**Context:** After truth-alignment RC-1–RC-3, frozen E2 CIC letter still
+returned `review_required` on a truthful nbn pipeline restatement because
+`I developed…` was in the sentence after `nbn Australia`.
+
+| | |
+|--|--|
+| **Symptom** | Ambiguous `project_delivery` when first-person delivery had no in-sentence employer or named project |
+| **Root cause** | Employment-delivery binder searched only the current sentence |
+| **Fix** | Immediately previous sentence may supply **exactly one** explicit known employer name; existing highlight-token overlap remains the evidence check. No pronoun/coreference; no two-sentence lookback; invented delivery still unresolved |
+| **Tests** | `tests/unit/truth_validation/test_previous_sentence_employment.py` |
+| **Replay** | Frozen E2 letter PASS; frozen E1–E4 CIC pairs all external-use allowed. Historical M5 records not overwritten |
+| **Changelog** | § 1.171 |
+| **Acceptance** | [eval/fr014_truth_alignment.md](eval/fr014_truth_alignment.md) § 12 |
+
+M3/M4 unchanged. Original M5 execution historically FAIL. Owner close-out
+recorded M5 COMPLETE without a fresh end-to-end rerun. M6 not started.
 
 ---
 

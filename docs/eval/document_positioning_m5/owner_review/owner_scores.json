@@ -1,0 +1,94 @@
+{
+  "E1": {
+    "job_id": "E1",
+    "job_name": "Allura AI Engineer",
+    "overall": "version_b",
+    "dimensions": {
+      "scan_15s": null,
+      "role_positioning": null,
+      "evidence_selection": null,
+      "transfer_argument": null,
+      "honest_gaps": null,
+      "specificity": null,
+      "clarity": null,
+      "concision": null,
+      "overall_submit_preference": "version_b"
+    },
+    "notes": {
+      "scan_15s_version_a": "",
+      "scan_15s_version_b": "",
+      "cv_preference": "version_b",
+      "cover_letter_preference": "version_b",
+      "other": "Version A presents career periods in the wrong order: Dec 2025–Present → Mar 2020–Oct 2023 → Oct 2023–Nov 2025. Version A's Professional Development / transition-to-AI section is too bare. Version A's project descriptions are too thin and do not sufficiently explain what was engineered. Two selected projects is acceptable; the issue is lack of useful project detail, not necessarily the number of projects. Version B gives a much better explanation of the projects and career progression. Version B's cover letter is somewhat repetitive around skills/keywords. Version B handles Azure Data Factory more appropriately as familiarity. Version A's wording around extensive experience with AWS and Azure Data Factory feels too strong, particularly because Azure Data Factory experience is not recent. Despite the repetition, owner would submit Version B."
+    }
+  },
+  "E2": {
+    "job_id": "E2",
+    "job_name": "CSK specialist",
+    "overall": "version_b",
+    "dimensions": {
+      "scan_15s": null,
+      "role_positioning": null,
+      "evidence_selection": null,
+      "transfer_argument": null,
+      "honest_gaps": null,
+      "specificity": null,
+      "clarity": null,
+      "concision": null,
+      "overall_submit_preference": "version_b"
+    },
+    "notes": {
+      "scan_15s_version_a": "",
+      "scan_15s_version_b": "",
+      "cv_preference": "version_b",
+      "cover_letter_preference": "version_b",
+      "other": "Version A again presents career periods in the wrong order. Version A's project descriptions are again too basic/thin. Version B provides a clearer and more convincing explanation of the engineering work. Version B cover letter is preferred overall. Noted American spelling organizations; Australian English organisations would be preferable for Australian applications."
+    }
+  },
+  "E3": {
+    "job_id": "E3",
+    "job_name": "Maincode AI Infrastructure",
+    "overall": "version_a",
+    "dimensions": {
+      "scan_15s": null,
+      "role_positioning": null,
+      "evidence_selection": null,
+      "transfer_argument": null,
+      "honest_gaps": null,
+      "specificity": null,
+      "clarity": null,
+      "concision": null,
+      "overall_submit_preference": "version_a"
+    },
+    "notes": {
+      "scan_15s_version_a": "",
+      "scan_15s_version_b": "",
+      "cv_preference": "version_a",
+      "cover_letter_preference": "version_a",
+      "other": "Version B's Projects section is too thin. Version A provides a better explanation of the project work. Version A cover letter is preferable. Version B describes the candidate as having strong computational skills; owner found that wording vague and potentially broader than the evidence supports, particularly for an infrastructure/HPC-oriented role. Prefer concrete evidenced capabilities over a vague phrase such as strong computational skills."
+    }
+  },
+  "E4": {
+    "job_id": "E4",
+    "job_name": "Repurpose AI Adoption Specialist",
+    "overall": "version_a",
+    "dimensions": {
+      "scan_15s": null,
+      "role_positioning": null,
+      "evidence_selection": null,
+      "transfer_argument": null,
+      "honest_gaps": null,
+      "specificity": null,
+      "clarity": null,
+      "concision": null,
+      "overall_submit_preference": "version_a"
+    },
+    "notes": {
+      "scan_15s_version_a": "",
+      "scan_15s_version_b": "",
+      "cv_preference": "version_a",
+      "cover_letter_preference": "version_a",
+      "other": "Version A CV is preferred overall. Version A cover letter is preferred overall."
+    }
+  }
+}

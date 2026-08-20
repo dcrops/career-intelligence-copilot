@@ -109,7 +109,7 @@ TruthOutcome = Literal["pass", "warning", "review_required", "fail"]
 TRUTH_OUTCOMES: tuple[TruthOutcome, ...] = get_args(TruthOutcome)
 
 # Validator identity for persisted reports (freshness is content-hash based).
-VALIDATOR_VERSION = "fr014-m4-deterministic-1"
+VALIDATOR_VERSION = "fr014-truth-alignment-2"
 
 CoverageStatus = Literal["complete", "partial", "insufficient"]
 COVERAGE_STATUSES: tuple[CoverageStatus, ...] = get_args(CoverageStatus)

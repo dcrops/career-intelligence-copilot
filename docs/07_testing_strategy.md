@@ -199,26 +199,49 @@ methodology/highlights content.
 
 ---
 
-## Document Positioning M0 — catalogue and eval freeze
+## Document Positioning M0–M5 — catalogue, PositioningPlan, composers, benchmark harness
 
-M0 of the Document Positioning programme is an architectural freeze, not a
-production-path change. Tests live under `tests/unit/document_positioning/`.
+Document Positioning M4 added a bounded cover-letter positioning composer
+(`BoundedCoverLetterPositioningService`) that selects evidence by employer-need
+coverage. M5 added evaluation-only benchmark machinery under
+`career_intelligence.document_positioning.benchmark` (not production wiring).
+Production `cic package prepare` still does **not** call the M3/M4 composers. The catalogue remains in TailoringPlan **planning only** plus
+PositioningPlan / M4 selection. PositioningPlan is still not imported by
+Master-adapt callers, production cover-letter generation, or package prepare.
+Tests live under `tests/unit/document_positioning/`.
 
-- Catalogue v1 semantics (RAG aliases, AWS/Bedrock RELATED-never-claimable,
-  chatbot UNSUPPORTED, Azure/ADF RELATED, Java ≠ JavaScript):
+- Catalogue semantics (including M2 identities):
   `tests/unit/document_positioning/test_catalogue_v1.py`
-- Frozen eval-fixture existence and production isolation (catalogue must not
-  be imported by CV, cover letter, package, or CLI yet):
+- Frozen eval-fixture existence and production isolation (PositioningPlan must
+  not be imported by CV generation except catalogue use in
+  `deterministic_planner.py`; cover letter, package, and CLI stay clean):
   `tests/unit/document_positioning/test_m0_invariants.py`
+- PositioningPlan builder (A–S) and four-job inspection assertions:
+  `tests/unit/document_positioning/test_positioning_plan.py`,
+  `tests/unit/document_positioning/test_eval_jobs_m1.py`
+- M2 planner semantics (A–R) and E1–E4 TailoringPlan agreement:
+  `tests/unit/document_positioning/test_m2_semantics.py`,
+  `tests/unit/document_positioning/test_eval_jobs_m2.py`
+- M3 evidence pack, fail-closed writer, rewrite surface, optional relevance
+  sanitisation, and E1–E4 offline positioning:
+  `tests/unit/document_positioning/test_m3_cv_positioning.py`,
+  `tests/unit/document_positioning/test_eval_jobs_m3.py`
+- M4 evidence selection, letter pack, fail-closed writer, quality validators,
+  and E1–E4 offline positioning:
+  `tests/unit/document_positioning/test_m4_cover_letter_positioning.py`,
+  `tests/unit/document_positioning/test_eval_jobs_m4.py`
 - Fixture inventory:
   [eval/document_positioning_remediation.md](eval/document_positioning_remediation.md)
   § 6; CSK tracked freeze under
   `tests/fixtures/document_positioning/eval_jobs/02_csk_mixed_fit/`
 
-Passing catalogue tests does **not** mean the live TailoringPlan planner is
-fixed. PositioningPlan builder tests are M1. The M5 four-job preference
-protocol is frozen in the programme document and must not be scored until
-A/B documents exist.
+Passing these tests does **not** mean production packages are positioned.
+M5 four-job preference evaluation is **blocked** on live E1 CV generation;
+see [eval/document_positioning_m5_acceptance.md](eval/document_positioning_m5_acceptance.md).
+The protocol remains frozen
+([eval/document_positioning_m5_protocol.md](eval/document_positioning_m5_protocol.md)).
+Harness tests: `tests/unit/document_positioning/test_m5_benchmark.py`,
+`tests/unit/document_positioning/test_eval_jobs_m5.py`.
 
 ---
 
@@ -682,15 +705,22 @@ FR-014 **complete and frozen**:
 [docs/eval/fr014_recruiter_document_truth_validation.md](eval/fr014_recruiter_document_truth_validation.md);
 [ADR-006](adr/006_recruiter_document_truth_validation.md).
 
+Post-freeze detector correction (2026-08-20, not a new FR): canonical identity
+alignment, scoped negation, multi-domain duration lists, and immediately
+previous-sentence unique employer bind for first-person delivery —
+[eval/fr014_truth_alignment.md](eval/fr014_truth_alignment.md).
+`VALIDATOR_VERSION = fr014-truth-alignment-2`. Gate policy unchanged.
+
 | Area | Coverage |
 |------|----------|
 | Models | Claim classes/strengths; catalogue (+ `supported_years`); TruthFinding; TruthReport |
 | ADR-006 invariants | Detection ≠ evidence; PASS requires coverage + performed flags; JD context-only |
 | Catalogue builder | Tech, domain, employment markers, certs, project delivery, tenure |
-| Technology detection | Class A/B/C framing; Redwolf pattern; bare-keyword ignore |
-| Extended claims (M4) | Employment honesty; certification; duration; delivery; domain |
+| Canonical identity | Shared M2 `resolve_identity` / aliases; RELATED is not DIRECT |
+| Technology detection | Class A/B/C framing; Redwolf pattern; bare-keyword ignore; clause-scoped denial |
+| Extended claims (M4) | Employment honesty; certification; duration (complete multi-domain lists); delivery (same-sentence or immediately previous unique employer + highlight overlap); domain |
 | Gates / CLI (M3) | Package external-use; FR-012 readiness/submit; `cic truth` |
-| Unit | `tests/unit/truth_validation/` |
+| Unit | `tests/unit/truth_validation/` (including `test_truth_alignment.py`, `test_previous_sentence_employment.py`) |
 | Functional | `test_fr014_m2_*.py`, `test_fr014_m3_*.py`, `test_fr014_m4_*.py` |
 | Manual | `scripts/run_fr014_truth_manual.py`, `run_fr014_m3_manual.py`, `run_fr014_m4_manual.py` |
 

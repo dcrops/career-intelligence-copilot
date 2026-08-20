@@ -17,7 +17,12 @@ from career_intelligence.truth_validation.aliases import (
     WELL_KNOWN_TECHNOLOGY_LABELS,
     alias_keys_for,
 )
+from career_intelligence.truth_validation.canonical_identity import (
+    canonical_identity,
+    scan_labels_for_identity,
+)
 from career_intelligence.truth_validation.catalogue import catalogue_supports_technology
+from career_intelligence.truth_validation.ids import new_claim_id
 from career_intelligence.truth_validation.models import (
     ArtefactKind,
     CandidateEvidenceCatalogue,
@@ -29,7 +34,6 @@ from career_intelligence.truth_validation.normalise import (
     display_label,
     normalise_object_key,
 )
-from career_intelligence.truth_validation.ids import new_claim_id
 
 _SENTENCE_SPLIT = re.compile(r"(?<=[.!?])\s+|\n+")
 
@@ -37,7 +41,8 @@ _SENTENCE_SPLIT = re.compile(r"(?<=[.!?])\s+|\n+")
 _CANDIDATE_CUES = re.compile(
     r"\b("
     r"i\s+(?:am|have|had|built|build|implemented|implement|developed|develop|"
-    r"used|use|wrote|write|shipped|created|deliver|delivered|do|did)|"
+    r"used|use|wrote|write|shipped|created|deliver|delivered|did)|"
+    r"i\s+do(?!\s+not)|"
     r"my\s+(?:best|strongest|experience|background|work|expertise|skills?)|"
     r"where\s+i\s+do\s+my\s+best|"
     r"i'?m\s+(?:proficient|experienced|expert|strongest)|"
@@ -46,6 +51,27 @@ _CANDIDATE_CUES = re.compile(
     r"commercial\s+experience\s+with|"
     r"experience\s+with|experience\s+in"
     r")\b",
+    re.IGNORECASE,
+)
+
+# Explicit denial of THIS span. Matched in the local clause before the span.
+# Do not treat a sentence-level "not" as global negation.
+_DENIAL_BEFORE_SPAN = re.compile(
+    r"\b("
+    r"do\s+not\s+claim|don't\s+claim|"
+    r"do\s+not\s+have|don't\s+have|"
+    r"have\s+not\s+(?:used|worked|claimed)|haven't\s+(?:used|worked|claimed)|"
+    r"has\s+not\s+(?:used|worked)|"
+    r"have\s+not\s+used|did\s+not\s+use|didn't\s+use|"
+    r"never\s+(?:used|claimed|worked\s+with)|"
+    r"no\s+direct\s+experience\s+with|"
+    r"without\s+(?:direct\s+)?experience\s+with"
+    r")\b",
+    re.IGNORECASE,
+)
+
+_CLAUSE_BREAK = re.compile(
+    r",\s*(?:but|however|although|though|yet|and\s+I\b|I\b)\b|;\s+|\.\s+",
     re.IGNORECASE,
 )
 
@@ -130,13 +156,18 @@ def build_technology_lexicon(
             labels[key] = display_label(label)
 
     for entry in catalogue.entries:
-        if "technology" not in entry.claim_kinds:
+        if not ({"technology", "domain"} & set(entry.claim_kinds)):
             continue
         if entry.display_label:
             _add(entry.display_label)
         _add(entry.object_key)
         for alias in entry.aliases:
             _add(alias)
+        for source in (entry.display_label, entry.object_key, *entry.aliases):
+            if not source:
+                continue
+            for phrase in scan_labels_for_identity(source):
+                _add(phrase)
 
     for label in WELL_KNOWN_TECHNOLOGY_LABELS:
         _add(label)
@@ -210,17 +241,22 @@ def detect_technology_spans(
             if _overlaps(occupied, start, end):
                 continue
             sentence = _sentence_at(text, start, end)
+            if _span_is_denied(sentence, text, start):
+                occupied.append((start, end))
+                continue
             classified = _classify_sentence(sentence)
             if classified is None:
                 occupied.append((start, end))  # still occupy so shorter aliases skip
                 continue
             claim_class, certainty = classified
             strength = _infer_strength(sentence, claim_class)
+            identity = canonical_identity(display) or canonical_identity(text[start:end])
+            object_key = normalise_object_key(identity) if identity else key
             occupied.append((start, end))
             hits.append(
                 DetectedTechnologySpan(
                     label=display,
-                    object_key=key,
+                    object_key=object_key,
                     surface_text=text[start:end],
                     sentence=sentence.strip(),
                     claim_class=claim_class,
@@ -261,6 +297,40 @@ def _sentence_at(text: str, start: int, end: int) -> str:
             right = match.end()
             break
     return text[left:right].strip()
+
+
+def _span_is_denied(sentence: str, text: str, span_start: int) -> bool:
+    """True when this span is under an explicit local denial, not a later claim."""
+    folded_sentence = sentence
+    rel = _relative_span_start(sentence, text, span_start)
+    if rel < 0:
+        rel = 0
+    clause_start = 0
+    for break_match in _CLAUSE_BREAK.finditer(folded_sentence):
+        if break_match.end() <= rel:
+            clause_start = break_match.end()
+        elif break_match.start() >= rel:
+            break
+    prefix = folded_sentence[clause_start:rel]
+    return bool(_DENIAL_BEFORE_SPAN.search(prefix))
+
+
+def _relative_span_start(sentence: str, text: str, span_start: int) -> int:
+    """Locate ``sentence`` in ``text`` nearest ``span_start`` and return offset in sentence."""
+    search_from = 0
+    best = -1
+    while True:
+        found = text.find(sentence, search_from)
+        if found < 0:
+            break
+        if found <= span_start < found + len(sentence):
+            return span_start - found
+        if best < 0 or abs(found - span_start) < abs(best - span_start):
+            best = found
+        search_from = found + 1
+    if best < 0:
+        return 0
+    return max(0, span_start - best)
 
 
 def _classify_sentence(sentence: str) -> tuple[ClaimClass, str] | None:

@@ -54,7 +54,7 @@ prior Recruiter Intelligence and later FRs shifted +1 — see
 | **Phase 1** — Product Definition | **Complete** |
 | **Phase 2** — Job Intelligence MVP | **Complete** ([release report](eval/phase2_release_report.md)) |
 | **Horizon 1A** — Job application workflow | **Complete** (FR-008–FR-017 frozen) |
-| **Horizon 1B** — Scaled acquisition and market engagement | **FR-018 Complete / Frozen**; document quality remediation **COMPLETE**; AAS-0.1 **paused, not complete**; Document Positioning M0 pending owner review; **FR-019** in progress (M0 GO; M1 ready) ([capability](eval/fr019_core_loop_operationalisation.md)); FR-020–FR-026 planned (recruiter deferred) |
+| **Horizon 1B** — Scaled acquisition and market engagement | **FR-018 Complete / Frozen**; document quality remediation **COMPLETE**; AAS-0.1 **paused, not complete**; Document Positioning M5 COMPLETE (owner close-out; historical execution FAIL preserved); **FR-019** in progress (M0 GO; M1 ready) ([capability](eval/fr019_core_loop_operationalisation.md)); FR-020–FR-026 planned (recruiter deferred) |
 | **Horizon 2** — Platform capabilities | Not started (FR-027+) |
 
 Narrative history of completed phases: [12_phase_history.md](12_phase_history.md).
@@ -131,8 +131,13 @@ CSV bridge connect to `applications/`.
 FR-008–FR-018 are **complete and frozen**. Document quality remediation is
 **COMPLETE**. AAS-0.1 is **paused, not complete** after the 20 Aug 2026 CSK
 close-out (Review live-proven; employer-question owner-resume open).
-**Document Positioning** M0 is pending owner review before M1.
-**FR-019 Core Loop Operationalisation** remains in progress.
+**Document Positioning** M4 is owner-approved. **M5 COMPLETE** (owner
+close-out: quality 4/4 frozen blind; Truth PASS on unchanged CIC artefacts
+through corrected FR-014; original execution historically FAIL; no fresh
+end-to-end rerun)
+([eval/document_positioning_m5_acceptance.md](eval/document_positioning_m5_acceptance.md)).
+Do not start M6. Production `cic package prepare` still uses Master-adapt with the generic
+Master summary and the pre-M4 bounded cover letter; M6 owns that wiring.
 
 **Document Quality Remediation (2026-08-13):** **COMPLETE** — owner accepted the
 production Master-CV + bounded cover-letter path and the controlled Repurpose
@@ -140,9 +145,14 @@ package.
 [eval/document_quality_remediation.md](eval/document_quality_remediation.md).
 Not a new FR.
 
-**Document Positioning (2026-08-20):** M0 audit complete, pending owner review
-before M1. Production path unchanged.
-[eval/document_positioning_remediation.md](eval/document_positioning_remediation.md).
+**Document Positioning (2026-08-20):** M4 owner-approved. M5 **COMPLETE**
+(owner close-out). Official restart
+`m5_restart_after_m3_optional_relevance_2026-08-20` remains historically
+**FAIL** under the then-current validator. Quality 4/4 frozen blind. Truth
+PASS on unchanged CIC replay through corrected FR-014. No fresh end-to-end
+rerun. Do not start M6. PositioningPlan is not wired into
+`cic package prepare`.
+[eval/document_positioning_m5_acceptance.md](eval/document_positioning_m5_acceptance.md).
 
 **Next engineering focus:** **AAS-0.1 paused, not complete** after CSK
 `20260820T030436Z` (Review exact filenames; owner submitted; AAS did not

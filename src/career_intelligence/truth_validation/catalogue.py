@@ -234,18 +234,25 @@ def catalogue_supports_kind(
     *,
     kinds: tuple[ClaimKind, ...],
 ) -> CatalogueEvidenceEntry | None:
-    """Return an authoritative catalogue entry matching label for any of ``kinds``."""
-    keys = {normalise_object_key(label)}
-    from career_intelligence.truth_validation.aliases import alias_keys_for
+    """Return an authoritative catalogue entry matching label for any of ``kinds``.
 
-    keys |= set(alias_keys_for(label))
+    Matching uses shared M2 canonical *identity* (LLM ↔ LLM application
+    development; RAG ↔ Retrieval-Augmented Generation). RELATED identities
+    are not treated as the same claim (AWS does not authorise AWS Bedrock).
+    """
+    from career_intelligence.truth_validation.canonical_identity import (
+        identity_match_keys,
+    )
+
+    keys = identity_match_keys(label)
     for entry in catalogue.entries:
         if entry.provenance.authority != "candidate_authoritative":
             continue
         if not any(kind in entry.claim_kinds for kind in kinds):
             continue
-        entry_keys = {entry.object_key} | {
-            normalise_object_key(alias) for alias in entry.aliases
+        entry_keys = identity_match_keys(entry.display_label) | {
+            entry.object_key,
+            *(normalise_object_key(alias) for alias in entry.aliases),
         }
         if keys & entry_keys:
             return entry

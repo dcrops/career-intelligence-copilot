@@ -68,8 +68,12 @@ milestones [M0](docs/eval/fr014_m0_engineering_spike.md)–[M4](docs/eval/fr014_
 ([docs/spikes/application_assistance_aas0.md](docs/spikes/application_assistance_aas0.md));
 employer-question owner-resume remains open. Do not restart Playwright from
 scratch; do not prioritise Indeed ingestion ahead of AAS. **Document
-Positioning** M0 is pending owner review before M1
-([docs/eval/document_positioning_remediation.md](docs/eval/document_positioning_remediation.md)). **FR-019 Core Loop Operationalisation** remains in progress (M0
+Positioning** M4 is complete (owner approved). **Document Positioning M5 is
+COMPLETE** (owner close-out: quality 4/4 frozen blind; Truth PASS on unchanged
+frozen CIC artefacts through corrected FR-014; original execution historically
+FAIL; no fresh end-to-end rerun) —
+[docs/eval/document_positioning_m5_acceptance.md](docs/eval/document_positioning_m5_acceptance.md).
+Do not start M6; do not wire `cic package prepare`. **FR-019 Core Loop Operationalisation** remains in progress (M0
 Accepted / GO; M1 GO proposed with M1.1 —
 [docs/eval/fr019_core_loop_operationalisation.md](docs/eval/fr019_core_loop_operationalisation.md);
 [M1](docs/eval/fr019_m1_mailbox_intake.md);
@@ -143,8 +147,11 @@ Bounded Agentic Workflow is **complete and frozen**
 [ADR-009](docs/adr/009_orchestration_evaluation_substrate.md)).
 Document quality remediation is **complete**. AAS-0.1 is **paused, not
 complete** (CSK Review live-proven; question-resume open; do not restart
-Playwright; do not prioritise Indeed). **Document Positioning** M0 is
-pending owner review before M1. **FR-019 Core Loop Operationalisation** remains in progress (M0 GO; M1
+Playwright; do not prioritise Indeed). **Document Positioning** M4 is
+complete (owner approved); **M5 COMPLETE** (owner close-out — historical
+execution FAIL preserved; no fresh end-to-end rerun)
+([docs/eval/document_positioning_m5_acceptance.md](docs/eval/document_positioning_m5_acceptance.md)).
+Do not start M6. **FR-019 Core Loop Operationalisation** remains in progress (M0 GO; M1
 GO proposed with M1.1; M2 not started). After FR-019 acceptance: Submission
 Automation investigation, then **FR-020 Recruiter Intelligence** (deferred).
 **FR-018** is **complete and frozen**

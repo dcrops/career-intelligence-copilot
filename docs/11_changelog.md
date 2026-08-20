@@ -4,6 +4,253 @@ Records product strategy and engineering knowledge changes. Routine typo fixes a
 
 ---
 
+## Version 1.172
+
+### Document Positioning M5 COMPLETE (owner close-out; historical FAIL preserved)
+
+**Date:** 2026-08-20.
+
+Owner accepted M5 as complete. Quality: CIC preferred 4/4 on the frozen blind
+benchmark. Truth: all E1–E4 CIC CV and cover-letter pairs PASS when the
+**unchanged** frozen artefacts are replayed through the corrected FR-014
+validator (`fr014-truth-alignment-2`). The original benchmark execution remains
+historically **FAIL** under the then-current validator. No fresh end-to-end
+benchmark rerun occurred. M6 not started. `cic package prepare` not rewired.
+
+Acceptance:
+[eval/document_positioning_m5_acceptance.md](eval/document_positioning_m5_acceptance.md).
+
+---
+
+## Version 1.171
+
+### FR-014 previous-sentence employment-delivery bind
+
+**Date:** 2026-08-20.
+
+Bounded extension of the existing first-person employment-delivery binder:
+the immediately previous sentence may supply an explicit unique employer
+name; highlight-token overlap against the Career Profile catalogue remains
+the evidence check. Two employers, two-sentence lookback, pronouns, and
+invented delivery stay fail-closed. M3/M4 unchanged. Historical M5 remains
+FAIL. Validator replay of frozen CIC artefacts is not a new M5 PASS.
+
+Acceptance: [eval/fr014_truth_alignment.md](eval/fr014_truth_alignment.md) § 12.
+
+---
+
+## Version 1.170
+
+### FR-014 truth-alignment detector correction (post-M5 false positives)
+
+**Date:** 2026-08-20.
+
+Bounded FR-014 detector hardening after Document Positioning M5. Forensic
+audit of the five named CIC Truth-gate findings found 0 genuine unsupported
+candidate claims. FR-014 now reuses M2 canonical *identity* (not RELATED
+permission); scoped negation no longer treats `I do not claim` as a positive
+claim; multi-domain duration lists are preserved before classification.
+Validator version `fr014-truth-alignment-1`. M3/M4 unchanged. Historical M5
+remains FAIL — Truth gate. Validator replay is not a new M5 PASS. M6 not
+started.
+
+Acceptance: [eval/fr014_truth_alignment.md](eval/fr014_truth_alignment.md).
+Learning: [eval/fr014_truth_alignment_learning.md](eval/fr014_truth_alignment_learning.md).
+
+---
+
+## Version 1.169
+
+### Document Positioning M5 — owner blind review; FAIL on Truth gate
+
+**Date:** 2026-08-20.
+
+Owner overall submit preferences were persisted before the A/B mapping was
+revealed. Unspecified rubric rows were left unscored. CIC was preferred on
+all four jobs (E1–E4). CIC Truth failures = 3 (zero allowed). Baseline Truth
+failures = 4. Frozen contract: FAIL. Quality and Truth recorded separately.
+No M3/M4/M5 product change. No regeneration. M6 not started.
+
+Unblinded report:
+[eval/document_positioning_m5_unblinded.md](eval/document_positioning_m5_unblinded.md).
+
+---
+
+## Version 1.168
+
+### Document Positioning M3 optional-relevance correction; M5 restart
+
+**Date:** 2026-08-20.
+
+Owner-authorised bounded M3 correction after M5 live generation blocked on
+E1. Invalid optional project-relevance lines are dropped and the remainder
+revalidated. The prompt now requires exact packed project names or no line.
+Summary forbidden/unsupported/metric/year/unpacked-project claims still
+fail the whole CV. Candidate-truth controls were not weakened.
+
+The first M5 live attempt is **INVALIDATED — PRE-BENCHMARK PRODUCT BLOCKER**.
+Official restart id: `m5_restart_after_m3_optional_relevance_2026-08-20`.
+Same E1–E4 jobs, evidence rules, models, retry policy, rubric, and
+threshold. No mid-comparison product tuning.
+
+M5 remains incomplete until owner blind review.
+
+---
+
+## Version 1.167
+
+### Document Positioning M5 — frozen benchmark harness; live generation blocked
+
+**Date:** 2026-08-20.
+
+Owner-authorised M5 of
+[eval/document_positioning_remediation.md](eval/document_positioning_remediation.md).
+Implemented evaluation-only machinery: frozen E1–E4 identities, hashed
+factual evidence bundles, CIC M3/M4 OpenAI composers (still unwired from
+prepare), independent `gpt-4o` baseline, FR-014 gate, blind A/B packaging,
+and the frozen ≥ 3/4 + zero Truth-failure threshold.
+
+Live generation **did not produce** a scorable comparison set. CIC's bounded
+CV writer fail-closed on E1 because optional project-relevance named
+Public Holiday Entitlements, which is a real Master project but not in the
+E1 pack. The frozen retry policy was exhausted. M3/M4 product code was not
+changed to force a result. Owner blind review cannot start.
+
+Protocol:
+[eval/document_positioning_m5_protocol.md](eval/document_positioning_m5_protocol.md).
+Acceptance:
+[eval/document_positioning_m5_acceptance.md](eval/document_positioning_m5_acceptance.md).
+Learning:
+[eval/document_positioning_m5_learning.md](eval/document_positioning_m5_learning.md).
+
+M6 was not started. `cic package prepare` was not rewired. CSK live package
+was not regenerated.
+
+---
+
+## Version 1.166
+
+### Document Positioning M4 — employer-need-driven cover-letter positioning
+
+**Date:** 2026-08-20.
+
+Owner-authorised M4 of
+[eval/document_positioning_remediation.md](eval/document_positioning_remediation.md).
+`BoundedCoverLetterPositioningService` builds a deterministic letter pack from
+PositioningPlan + CareerProfile, selecting evidence sources by employer-need
+coverage rather than project tag density. Default two sources; a third only
+for a distinct uncovered high-priority need. PortfolioMatch ranks break ties;
+PositioningPlan may override with an inspectable reason.
+`trajectory_mode` controls whether testing/DE evidence is packed.
+Fail closed: no silent generic-letter success fallback. FR-014 remains a
+separate package gate. The composer is **not** invoked by `cic package prepare`
+(M6). Production still uses `BoundedCoverLetterService`. No CSK regeneration.
+No SEEK / Playwright / AAS. No M5 A/B benchmark.
+
+Acceptance:
+[eval/document_positioning_m4_acceptance.md](eval/document_positioning_m4_acceptance.md).
+Inspection:
+[eval/document_positioning_m4_inspection.md](eval/document_positioning_m4_inspection.md).
+
+Owner review is required before M5.
+
+---
+
+## Version 1.165
+
+### Restore Master CV HTML canonical CSS markers
+
+**Date:** 2026-08-20.
+
+Pre-existing artefact defect, independent of Document Positioning. Commit
+`cad1a98` refreshed Master CV HTML/PDF and dropped the
+`CV_PRINT_CSS_BEGIN/END` marker contract required by
+`tests/unit/cv_generation/test_cv_presentation.py::test_master_html_embeds_canonical_css`.
+Canonical CSS was restored by wrapping the existing `<style>` block so
+`python scripts/sync_master_cv_css.py` could run (`inject_cv_print_css`
+refuses HTML that already lacks markers). Master factual content was not
+changed. The presentation regression is green.
+
+---
+
+## Version 1.164
+
+### Document Positioning M3 — evidence-bounded CV positioning composer
+
+**Date:** 2026-08-20.
+
+Owner-authorised M3 of
+[eval/document_positioning_remediation.md](eval/document_positioning_remediation.md).
+`BoundedCvPositioningService` builds a deterministic CV evidence pack from
+PositioningPlan + CareerProfile + Master CV, then a bounded composer writes
+only the Professional Summary and optional project relevance lines.
+Highlights are selected/reordered, not invented. Methodology follows
+`PositioningPlan.include_methodology`. Locked employment, project bodies,
+courses, certifications, and contact stay Master-authoritative. Fail closed:
+no silent Master-summary success fallback. FR-014 remains a separate package
+gate. The composer is **not** invoked by `cic package prepare` (M6). No CSK
+regeneration. No SEEK / Playwright / AAS. No M5 A/B benchmark.
+
+Acceptance:
+[eval/document_positioning_m3_acceptance.md](eval/document_positioning_m3_acceptance.md).
+Inspection:
+[eval/document_positioning_m3_inspection.md](eval/document_positioning_m3_inspection.md).
+
+Owner review is required before M4.
+
+---
+
+## Version 1.163
+
+### Document Positioning M2 — catalogue in the live TailoringPlan planner
+
+**Date:** 2026-08-20.
+
+Owner-authorised M2 of
+[eval/document_positioning_remediation.md](eval/document_positioning_remediation.md).
+`DeterministicTailoringPlanner` classifies requirements through the shared
+capability catalogue (`classify_requirement`). RAG aliases are DIRECT; AWS
+Bedrock is RELATED via AWS and is never promoted as a candidate skill; LLM is
+DIRECT from CareerProfile skill `LLM application development` (not a RAG
+shortcut). Justified Azure / ADF / Microsoft Fabric relations were migrated;
+unsafe RAG↔LLM group membership was not. PositioningPlan remains unwired into
+`cic package prepare`. Production Master-adapt CV and bounded cover-letter
+generation are otherwise unchanged. No CSK regeneration. No SEEK / Playwright /
+AAS.
+
+Acceptance:
+[eval/document_positioning_m2_acceptance.md](eval/document_positioning_m2_acceptance.md).
+Inspection:
+[eval/document_positioning_m2_inspection.md](eval/document_positioning_m2_inspection.md).
+
+Owner review is required before M3.
+
+---
+
+## Version 1.162
+
+### Document Positioning M1 — PositioningPlan contract
+
+**Date:** 2026-08-20.
+
+Owner-authorised M1 of
+[eval/document_positioning_remediation.md](eval/document_positioning_remediation.md).
+`build_positioning_plan` converts JobAnalysis + CareerProfile into a
+deterministic PositioningPlan (DIRECT / RELATED / UNSUPPORTED, evidence refs,
+argument spine, forbidden claims, trajectory_mode, include_methodology).
+`AssessmentSummary.key_alignments` is ignored. No LLM. Not wired into
+`cic package prepare`. Production CV/cover-letter generation is unchanged.
+
+E2 gained a tracked `job_analysis.json` freeze of employer needs from the
+existing CSK posting (advertisement text not edited). Four-job inspection:
+[eval/document_positioning_m1_inspection.md](eval/document_positioning_m1_inspection.md).
+Acceptance:
+[eval/document_positioning_m1_acceptance.md](eval/document_positioning_m1_acceptance.md).
+
+Owner review is required before M2.
+
+---
+
 ## Version 1.161
 
 ### AAS-0.1 close-out pause (CSK Review live; question-resume open)

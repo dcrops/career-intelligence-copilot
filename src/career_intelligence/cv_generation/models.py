@@ -150,7 +150,9 @@ class JdPriority(CvModel):
     ``candidate_support`` records whether the Career Profile can back CV emphasis
     for this priority (supported / related / unsupported). Unsupported priorities
     remain visible as hiring requirements but must not become summary themes or
-    promoted skills.
+    promoted skills. ``requested_capability_identity`` and ``may_claim_requested``
+    preserve catalogue provenance: RELATED keeps the requested identity unclaimable
+    while ``related_profile_capability`` names the candidate evidence to promote.
     """
 
     rank: int = Field(ge=1)
@@ -160,6 +162,8 @@ class JdPriority(CvModel):
     evidence: list[PlanEvidenceRef] = Field(min_length=1)
     candidate_support: CandidateSupportStatus
     related_profile_capability: NonEmptyString | None = None
+    requested_capability_identity: NonEmptyString | None = None
+    may_claim_requested: bool | None = None
 
 
 class EmphasisedProject(CvModel):

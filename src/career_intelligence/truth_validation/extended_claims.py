@@ -144,13 +144,24 @@ def detect_extended_spans(
     """Detect employment, certifications, duration, delivery, and domain claims."""
     text = markdown or ""
     hits: list[DetectedExtendedSpan] = []
-    for sentence, offset in _sentences(text):
+    sentences = _sentences(text)
+    for index, (sentence, offset) in enumerate(sentences):
+        previous = sentences[index - 1][0] if index > 0 else None
         claim_class, certainty = _classify(sentence)
         hits.extend(_employment_hits(sentence, offset, claim_class, certainty))
         hits.extend(_label_hits(sentence, offset, claim_class, certainty, catalogue, "certification"))
         hits.extend(_label_hits(sentence, offset, claim_class, certainty, catalogue, "domain"))
         hits.extend(_duration_hits(sentence, offset, claim_class, certainty, catalogue))
-        hits.extend(_delivery_hits(sentence, offset, claim_class, certainty, catalogue))
+        hits.extend(
+            _delivery_hits(
+                sentence,
+                offset,
+                claim_class,
+                certainty,
+                catalogue,
+                previous_sentence=previous,
+            )
+        )
     hits.sort(key=lambda hit: (hit.start, hit.end, hit.claim_kind))
     return hits
 
@@ -261,8 +272,13 @@ def _duration_hits(sentence: str, offset: int, claim_class: ClaimClass, certaint
     for pattern in (_YEARS_ACROSS, _YEARS_AS_ROLE, _YEARS):
         for match in pattern.finditer(sentence):
             raw_object = match.group("object").strip()
+            local_end = match.end()
             if pattern is _YEARS:
-                raw_object = _extend_duration_object(raw_object, sentence[match.end() :])
+                raw_object, consumed = _extend_comma_separated_duration_list(
+                    raw_object, sentence[match.end() :]
+                )
+                local_end = match.end() + consumed
+                raw_object = _extend_duration_object(raw_object, sentence[local_end:])
             key = _resolve_duration_key(raw_object, catalogue, pattern=pattern)
             number = _NUMBER_WORDS.get(match.group("years").casefold())
             claimed = number if number is not None else float(match.group("years"))
@@ -271,12 +287,12 @@ def _duration_hits(sentence: str, offset: int, claim_class: ClaimClass, certaint
             hits.append(_hit(
                 "duration",
                 key or normalise_object_key(raw_object) or "unknown_duration",
-                match.group(),
+                sentence[match.start():local_end],
                 sentence,
                 claim_class,
                 "ambiguous" if ambiguous else certainty,
                 offset + match.start(),
-                offset + match.end(),
+                offset + local_end,
                 "has_duration",
                 claimed_years=claimed,
                 years_precision="ambiguous" if ambiguous else precision,
@@ -309,6 +325,44 @@ def _extend_duration_object(raw_object: str, remainder: str) -> str:
     return f"{raw_object} {noun}".strip()
 
 
+_CLAUSE_STARTER_AFTER_COMMA = re.compile(
+    r"^,\s+(?:I|I'm|we|then|later|while|although|however|but)\b",
+    re.I,
+)
+_DURATION_LIST_ITEM = re.compile(
+    r"^,\s+(?:and\s+)?"
+    r"[A-Za-z][A-Za-z0-9+#.\-/]*(?:\s+[A-Za-z][A-Za-z0-9+#.\-/]*){0,5}"
+)
+
+
+def _extend_comma_separated_duration_list(
+    raw_object: str, remainder: str
+) -> tuple[str, int]:
+    """Preserve comma-separated duration domains before classification.
+
+    ``10 years in testing, automation, data engineering, and applied AI
+    engineering`` must keep the full list. A following independent clause
+    (``, I later…``) is not consumed.
+    """
+    if _CLAUSE_STARTER_AFTER_COMMA.match(remainder):
+        return raw_object, 0
+    consumed = 0
+    cursor = remainder
+    pieces: list[str] = []
+    while True:
+        if _CLAUSE_STARTER_AFTER_COMMA.match(cursor):
+            break
+        item = _DURATION_LIST_ITEM.match(cursor)
+        if item is None:
+            break
+        pieces.append(item.group(0))
+        consumed += len(item.group(0))
+        cursor = cursor[len(item.group(0)) :]
+    if not pieces:
+        return raw_object, 0
+    return f"{raw_object}{''.join(pieces)}".strip(), consumed
+
+
 def _resolve_duration_key(
     label: str,
     catalogue: CandidateEvidenceCatalogue,
@@ -317,6 +371,7 @@ def _resolve_duration_key(
 ) -> str | None:
     folded = label.casefold().strip()
     folded = re.sub(r"\s+experience$", "", folded).strip()
+    folded = re.sub(r"^(?:in|of|with|across)\s+", "", folded).strip()
     candidate = normalise_object_key(folded)
 
     # Multi-domain "across …" → overall engineering floor only.
@@ -359,16 +414,21 @@ def _resolve_duration_key(
 
 
 def _is_overall_multi_domain_object(folded: str) -> bool:
-    if "across" not in folded:
-        return False
-    markers = (
-        "testing",
-        "automation",
-        "data engineering",
-        "ai engineering",
-        "applied ai",
-    )
-    return sum(1 for marker in markers if marker in folded) >= 2
+    """True when the duration object names two or more career-domain chapters.
+
+    ``applied AI`` and ``AI engineering`` are one chapter, not two.
+    A single-domain claim must not resolve to overall tenure.
+    """
+    chapters = 0
+    if "testing" in folded:
+        chapters += 1
+    if "automation" in folded:
+        chapters += 1
+    if "data engineering" in folded:
+        chapters += 1
+    if "ai engineering" in folded or "applied ai" in folded:
+        chapters += 1
+    return chapters >= 2
 
 
 def _is_data_and_ai_inflation(folded: str) -> bool:
@@ -379,8 +439,15 @@ def _is_data_and_ai_inflation(folded: str) -> bool:
     return has_data and has_ai
 
 
-def _delivery_hits(sentence: str, offset: int, claim_class: ClaimClass, certainty: str,
-                   catalogue: CandidateEvidenceCatalogue) -> list[DetectedExtendedSpan]:
+def _delivery_hits(
+    sentence: str,
+    offset: int,
+    claim_class: ClaimClass,
+    certainty: str,
+    catalogue: CandidateEvidenceCatalogue,
+    *,
+    previous_sentence: str | None = None,
+) -> list[DetectedExtendedSpan]:
     match = _DELIVERY.search(sentence)
     if not match:
         return []
@@ -395,10 +462,24 @@ def _delivery_hits(sentence: str, offset: int, claim_class: ClaimClass, certaint
                                  offset + project_match.end(), "delivered_project")]
     remainder = sentence[match.end():].strip(" .,:;")
     employment = _supported_employment_delivery(sentence, remainder, catalogue)
+    previous_bind = False
+    if employment is None and previous_sentence:
+        # Immediately previous sentence only. Explicit unique employer name is
+        # context; highlight overlap against the catalogue remains the evidence.
+        employment = _supported_employment_delivery(
+            previous_sentence,
+            remainder,
+            catalogue,
+            require_unique_employer=True,
+        )
+        previous_bind = employment is not None
     if employment is not None:
         entry, org_match = employment
-        start = min(org_match.start(), match.start())
-        end = max(org_match.end(), match.end())
+        if previous_bind:
+            start, end = match.start(), len(sentence)
+        else:
+            start = min(org_match.start(), match.start())
+            end = max(org_match.end(), match.end())
         return [
             _hit(
                 "employment",
@@ -417,15 +498,13 @@ def _delivery_hits(sentence: str, offset: int, claim_class: ClaimClass, certaint
                  offset + match.start(), offset + len(sentence), "delivered_project")]
 
 
-def _supported_employment_delivery(
-    sentence: str,
-    remainder: str,
+def _named_employment_in(
+    text: str,
     catalogue: CandidateEvidenceCatalogue,
-) -> tuple[CatalogueEvidenceEntry, re.Match[str]] | None:
-    """Return catalogue employment evidence when a named employer and highlight match.
-
-    Does not waive unnamed project delivery merely because a company name appears.
-    """
+) -> list[tuple[CatalogueEvidenceEntry, re.Match[str]]]:
+    """Experience entries whose employer labels appear explicitly in ``text``."""
+    named: list[tuple[CatalogueEvidenceEntry, re.Match[str]]] = []
+    seen: set[str] = set()
     for entry in catalogue.entries:
         if "employment" not in entry.claim_kinds:
             continue
@@ -438,12 +517,36 @@ def _supported_employment_delivery(
         ]
         org_match: re.Match[str] | None = None
         for label in sorted(labels, key=len, reverse=True):
-            found = re.search(rf"(?<!\w){re.escape(label)}(?!\w)", sentence, re.I)
+            found = re.search(rf"(?<!\w){re.escape(label)}(?!\w)", text, re.I)
             if found:
                 org_match = found
                 break
-        if org_match is None:
+        if org_match is None or entry.object_key in seen:
             continue
+        seen.add(entry.object_key)
+        named.append((entry, org_match))
+    return named
+
+
+def _supported_employment_delivery(
+    sentence: str,
+    remainder: str,
+    catalogue: CandidateEvidenceCatalogue,
+    *,
+    require_unique_employer: bool = False,
+) -> tuple[CatalogueEvidenceEntry, re.Match[str]] | None:
+    """Return catalogue employment evidence when a named employer and highlight match.
+
+    Does not waive unnamed project delivery merely because a company name appears.
+    The previous-sentence path requires exactly one named employer so two
+    organisations cannot auto-bind.
+    """
+    named = _named_employment_in(sentence, catalogue)
+    if require_unique_employer:
+        if len(named) != 1:
+            return None
+        named = [named[0]]
+    for entry, org_match in named:
         excerpt = entry.provenance.excerpt or ""
         if _responsibility_supported(remainder, excerpt):
             return entry, org_match

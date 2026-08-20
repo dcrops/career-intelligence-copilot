@@ -16,9 +16,11 @@ Separates three concerns:
 from __future__ import annotations
 
 import re
-from typing import Any, Literal
+from typing import Any, Literal, NamedTuple
 
 from career_intelligence.application_strategy.models import ApplicationStrategy
+from career_intelligence.document_positioning.catalogue import classify_requirement
+from career_intelligence.document_positioning.models import SupportStatus
 from career_intelligence.job_analysis.models import JobAnalysis, TechnologyRequirement
 from career_intelligence.profile.models import CareerProfile, Skill
 
@@ -34,6 +36,13 @@ _MAX_PROMOTED_SKILLS = 12
 _MIN_PROMOTED_SKILLS_FOR_AI_FAMILY = 4
 
 CandidateSupport = Literal["supported", "related", "unsupported"]
+
+
+class _CapabilityClass(NamedTuple):
+    support: CandidateSupport
+    promotable_profile_label: str | None
+    requested_identity: str | None
+    may_claim_requested: bool
 
 # Single-token JD labels may extend into multi-token profile skills only when
 # the extra tokens are benign tech qualifiers (python → python programming).
@@ -89,52 +98,11 @@ _ROLE_FAMILY_PROFILE_ANCHORS: dict[str, tuple[str, ...]] = {
     ),
 }
 
-# Bidirectional related-capability groups (normalised token phrases).
-# Exact / containment matches are classified as supported before these apply.
+# Leftover bidirectional phrase groups not yet modelled as catalogue identities.
+# Catalogue DIRECT/RELATED wins first. These groups apply only after a catalogue
+# miss (including known identities with no catalogue relation). The unsafe
+# RAG↔LLM pairing was not carried forward.
 _RELATED_CAPABILITY_GROUPS: tuple[frozenset[str], ...] = (
-    frozenset(
-        {
-            "llm",
-            "llms",
-            "openai",
-            "openai apis",
-            "openai api",
-            "langchain",
-            "gpt",
-            "azure openai",
-            "llm application development",
-            "retrieval augmented generation",
-        }
-    ),
-    frozenset(
-        {
-            "rest",
-            "rest apis",
-            "rest api",
-            "api",
-            "apis",
-            "fastapi",
-            "backend services",
-            "backend service",
-        }
-    ),
-    frozenset(
-        {
-            "azure",
-            "azure data factory",
-            "microsoft fabric",
-            "data factory",
-        }
-    ),
-    frozenset(
-        {
-            "docker",
-            "containers",
-            "container",
-            "containerisation",
-            "containerization",
-        }
-    ),
     frozenset(
         {
             "ci cd",
@@ -157,22 +125,24 @@ _RELATED_CAPABILITY_GROUPS: tuple[frozenset[str], ...] = (
     ),
     frozenset(
         {
-            "data pipeline",
-            "data pipelines",
-            "etl",
-            "azure data factory",
-            "pipeline",
-            "pipelines",
-        }
-    ),
-    frozenset(
-        {
             "ai engineering",
             "ai engineer",
             "applied ai",
             "production ai",
             "operational intelligence",
             "explainable ai",
+        }
+    ),
+    # Bare "pipeline" remains unknown to the catalogue so text mentions of
+    # "evaluation pipelines" are not treated as data-platform evidence.
+    frozenset(
+        {
+            "pipeline",
+            "pipelines",
+            "data pipeline",
+            "data pipelines",
+            "etl",
+            "azure data factory",
         }
     ),
 )
@@ -356,17 +326,78 @@ def _related_match(left: str, right: str) -> bool:
     return False
 
 
+def _classify_capability(
+    label: str,
+    profile_caps: list[str],
+) -> _CapabilityClass:
+    """Classify a requested label against candidate-owned capability names.
+
+    Catalogue identities are authoritative for DIRECT and RELATED. Token
+    compatible DIRECT may still apply (python → python programming). Legacy
+    phrase groups may RELATED-match after a catalogue miss; they no longer
+    contain the unsafe RAG↔LLM pairing.
+    """
+    result = classify_requirement(label, profile_caps)
+    if result.status is SupportStatus.SUPPORTED_DIRECT:
+        return _CapabilityClass(
+            "supported",
+            result.promotable_profile_label,
+            result.requested_identity,
+            True,
+        )
+    if result.status is SupportStatus.SUPPORTED_RELATED:
+        return _CapabilityClass(
+            "related",
+            result.promotable_profile_label,
+            result.requested_identity,
+            False,
+        )
+    for cap in profile_caps:
+        if _direct_match(label, cap):
+            return _CapabilityClass(
+                "supported",
+                cap,
+                result.requested_identity,
+                True,
+            )
+    for cap in profile_caps:
+        if _related_match(label, cap):
+            return _CapabilityClass("related", cap, result.requested_identity, False)
+    if result.requested_identity is not None:
+        return _CapabilityClass("unsupported", None, result.requested_identity, False)
+    return _CapabilityClass("unsupported", None, None, False)
+
+
 def _classify_against_profile(
     label: str,
     profile_caps: list[str],
 ) -> tuple[CandidateSupport, str | None]:
-    for cap in profile_caps:
-        if _direct_match(label, cap):
-            return "supported", cap
-    for cap in profile_caps:
-        if _related_match(label, cap):
-            return "related", cap
-    return "unsupported", None
+    classified = _classify_capability(label, profile_caps)
+    return classified.support, classified.promotable_profile_label
+
+
+def _skill_backs_requirement(
+    skill_name: str,
+    tech_name: str,
+    support: CandidateSupport,
+) -> bool:
+    """Whether one profile skill may be promoted for a JD technology.
+
+    RELATED never promotes a skill that claims the requested identity.
+    """
+    result = classify_requirement(tech_name, [skill_name])
+    if support == "supported":
+        if result.status is SupportStatus.SUPPORTED_DIRECT:
+            return True
+        return _direct_match(skill_name, tech_name)
+    if support == "related":
+        if (
+            result.status is SupportStatus.SUPPORTED_RELATED
+            and result.may_claim_requested is False
+        ):
+            return True
+        return _related_match(skill_name, tech_name)
+    return False
 
 
 def _build_jd_priorities(
@@ -379,10 +410,10 @@ def _build_jd_priorities(
     def _add_tech(index: int, tech: TechnologyRequirement, level_label: str) -> None:
         if len(priorities) >= _MAX_JD_PRIORITIES:
             return
-        support, related_cap = _classify_against_profile(tech.name, profile_caps)
+        classified = _classify_capability(tech.name, profile_caps)
         rationale = (
             f"{tech.name} is listed as {level_label} in the job analysis "
-            f"(employer priority; candidate_support={support})."
+            f"(employer priority; candidate_support={classified.support})."
         )
         priorities.append(
             {
@@ -390,8 +421,10 @@ def _build_jd_priorities(
                 "label": tech.name,
                 "kind": "technology",
                 "rationale": rationale,
-                "candidate_support": support,
-                "related_profile_capability": related_cap,
+                "candidate_support": classified.support,
+                "related_profile_capability": classified.promotable_profile_label,
+                "requested_capability_identity": classified.requested_identity,
+                "may_claim_requested": classified.may_claim_requested,
                 "evidence": [
                     {
                         "origin": "job_analysis",
@@ -421,7 +454,7 @@ def _build_jd_priorities(
     if job.role_family.family not in {"unknown", "other"} and len(priorities) < _MAX_JD_PRIORITIES:
         family = job.role_family.family.replace("_", " ")
         label = family.title()
-        support, related_cap = _classify_against_profile(label, profile_caps)
+        classified = _classify_capability(label, profile_caps)
         priorities.append(
             {
                 "rank": len(priorities) + 1,
@@ -429,10 +462,12 @@ def _build_jd_priorities(
                 "kind": "role_theme",
                 "rationale": (
                     f"Role family '{job.role_family.family}' is an employer "
-                    f"positioning signal (candidate_support={support})."
+                    f"positioning signal (candidate_support={classified.support})."
                 ),
-                "candidate_support": support,
-                "related_profile_capability": related_cap,
+                "candidate_support": classified.support,
+                "related_profile_capability": classified.promotable_profile_label,
+                "requested_capability_identity": classified.requested_identity,
+                "may_claim_requested": classified.may_claim_requested,
                 "evidence": [
                     {
                         "origin": "job_analysis",
@@ -456,7 +491,7 @@ def _build_jd_priorities(
         label = _responsibility_label(responsibility.description)
         # Responsibilities are employer asks; do not treat as candidate-supported
         # themes unless a direct/related capability phrase matches.
-        support, related_cap = _classify_against_profile(label, profile_caps)
+        classified = _classify_capability(label, profile_caps)
         priorities.append(
             {
                 "rank": len(priorities) + 1,
@@ -464,10 +499,12 @@ def _build_jd_priorities(
                 "kind": "responsibility",
                 "rationale": (
                     "Responsibility appears in the job analysis as an employer "
-                    f"priority (candidate_support={support})."
+                    f"priority (candidate_support={classified.support})."
                 ),
-                "candidate_support": support,
-                "related_profile_capability": related_cap,
+                "candidate_support": classified.support,
+                "related_profile_capability": classified.promotable_profile_label,
+                "requested_capability_identity": classified.requested_identity,
+                "may_claim_requested": classified.may_claim_requested,
                 "evidence": [
                     {
                         "origin": "job_analysis",
@@ -721,9 +758,7 @@ def _build_skills(
             return
         if support == "unsupported":
             return
-        if support == "supported" and not _direct_match(skill.name, tech.name):
-            return
-        if support == "related" and not _related_match(skill.name, tech.name):
+        if not _skill_backs_requirement(skill.name, tech.name, support):
             return
         if skill_prominence_band(profile, skill) == "foundational":
             return
@@ -779,10 +814,8 @@ def _build_skills(
             if support == "unsupported":
                 continue
             for category, skill in profile_skills:
-                if support == "supported" and _direct_match(skill.name, tech.name):
-                    _try_promote(category, skill, tech_index, tech, "supported")
-                elif support == "related" and _related_match(skill.name, tech.name):
-                    _try_promote(category, skill, tech_index, tech, "related")
+                if _skill_backs_requirement(skill.name, tech.name, support):
+                    _try_promote(category, skill, tech_index, tech, support)
 
     candidates.sort(
         key=lambda item: (

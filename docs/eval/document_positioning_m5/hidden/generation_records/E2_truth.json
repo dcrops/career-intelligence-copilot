@@ -1,0 +1,95 @@
+{
+  "cic": {
+    "job_id": "E2",
+    "system": "cic",
+    "cv": {
+      "artefact_kind": "cv_markdown",
+      "outcome": "review_required",
+      "coverage_status": "complete",
+      "detection_performed": true,
+      "validation_performed": true,
+      "external_use_allowed": false,
+      "blocking_count": 0,
+      "review_required_count": 1,
+      "finding_summaries": [
+        "review_required:A:intesting"
+      ],
+      "messages": [
+        "Outcome is 'review_required'; require pass or warning for external use",
+        "Review-required findings block external use (ADR-006)"
+      ],
+      "content_hash": "deddec3071832ec7fe122e8138460fa4986dc104b478c6250e50de6104a83649",
+      "report_id": "trp_01M0F4PS7KE7FCZR43HQCGQ6N1"
+    },
+    "cover_letter": {
+      "artefact_kind": "cover_letter_markdown",
+      "outcome": "fail",
+      "coverage_status": "complete",
+      "detection_performed": true,
+      "validation_performed": true,
+      "external_use_allowed": false,
+      "blocking_count": 3,
+      "review_required_count": 1,
+      "finding_summaries": [
+        "blocking:A:rag",
+        "blocking:A:awsbedrock",
+        "blocking:A:rag",
+        "review_required:A:andmaintainedenterprisedatapipelinesusingawsservicespythonandsqlensuringreliableproductiondatasystems"
+      ],
+      "messages": [
+        "Outcome is 'fail'; require pass or warning for external use",
+        "3 blocking finding(s) present (awsbedrock, rag)"
+      ],
+      "content_hash": "ff7b29510201f9b76d76b7b4d6b8f17e6b725ac56c39fcf545b94a64bffa5780",
+      "report_id": "trp_01M0F4PS895X1FKR2E24J69VNX"
+    },
+    "pair_external_use_allowed": false,
+    "truth_failure": true
+  },
+  "baseline": {
+    "job_id": "E2",
+    "system": "baseline",
+    "cv": {
+      "artefact_kind": "cv_markdown",
+      "outcome": "fail",
+      "coverage_status": "complete",
+      "detection_performed": true,
+      "validation_performed": true,
+      "external_use_allowed": false,
+      "blocking_count": 1,
+      "review_required_count": 0,
+      "finding_summaries": [
+        "blocking:A:education"
+      ],
+      "messages": [
+        "Outcome is 'fail'; require pass or warning for external use",
+        "1 blocking finding(s) present (education)"
+      ],
+      "content_hash": "765f1b86d5b5180d14b1848902aab3b7aca64aa8c4e7692c377334e301e98d29",
+      "report_id": "trp_01M0F4PS9P1N1SSJ7R39YJMBW1"
+    },
+    "cover_letter": {
+      "artefact_kind": "cover_letter_markdown",
+      "outcome": "fail",
+      "coverage_status": "complete",
+      "detection_performed": true,
+      "validation_performed": true,
+      "external_use_allowed": false,
+      "blocking_count": 3,
+      "review_required_count": 0,
+      "finding_summaries": [
+        "blocking:A:awsbedrock",
+        "blocking:A:rag",
+        "blocking:A:awscertifieddeveloper"
+      ],
+      "messages": [
+        "Outcome is 'fail'; require pass or warning for external use",
+        "3 blocking finding(s) present (awsbedrock, awscertifieddeveloper, rag)"
+      ],
+      "content_hash": "8b11ebdba3799d4a13598efc4a121386d5224fc985c843f140e262b557258b2d",
+      "report_id": "trp_01M0F4PSA9A6D09KJ6YGB8XXRZ"
+    },
+    "pair_external_use_allowed": false,
+    "truth_failure": true
+  }
+}

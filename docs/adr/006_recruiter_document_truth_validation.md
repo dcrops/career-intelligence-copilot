@@ -117,6 +117,13 @@ risk under a false PASS.
 - FR-012 consumes TruthReport for readiness; it does not own truth policy.
 - FR-006/007 remain generators; they are not the trust boundary.
 
+**Later detector correction (2026-08-20):** FR-014 may reuse M2 canonical
+capability *identity* (`resolve_identity` / `aliases_for_identity`) so that
+equivalent recruiter/profile phrasing is one identity. It must not inherit
+RELATED *permission*. Decision 6 is unchanged: TailoringPlan / PositioningPlan
+remain context-only and never authorise Class A. See
+[eval/fr014_truth_alignment.md](../eval/fr014_truth_alignment.md).
+
 ---
 
 ## Guardrails

@@ -1138,7 +1138,7 @@ Thin `cic package` adapter over `ApplicationPackageService` (no new business rul
 
 | Command | Behaviour |
 |---------|-----------|
-| `cic package prepare <opp_id> --approve` | Prepare/regenerate; `--approve` sets FR-006/FR-007 gates explicitly. CV uses Master-CV adaptation (no LLM rewrite); cover letter uses one bounded LLM composition call. Ordinary prepare preserves owner-edited Markdown via generated-content fingerprints; `--regenerate` overwrites both documents deliberately. There is no document-specific `--regenerate-cv` CLI flag (usability limitation, not a current build priority). Document Positioning M0 audited this path and did not change it ([eval/document_positioning_remediation.md](eval/document_positioning_remediation.md)). |
+| `cic package prepare <opp_id> --approve` | Prepare/regenerate; `--approve` sets FR-006/FR-007 gates explicitly. CV uses Master-CV adaptation (no LLM rewrite); cover letter uses one bounded LLM composition call. Ordinary prepare preserves owner-edited Markdown via generated-content fingerprints; `--regenerate` overwrites both documents deliberately. There is no document-specific `--regenerate-cv` CLI flag (usability limitation, not a current build priority). Document Positioning M3/M4 implement bounded CV and cover-letter composers **off** this path; PositioningPlan is **not** wired into this command ([eval/document_positioning_remediation.md](eval/document_positioning_remediation.md)). |
 | `cic package show <opp_id>` | Display current package (optional `--yaml`, `--no-verify`) |
 | `cic package verify <opp_id>` | Fail closed if manifest or drafts are missing/incomplete |
 
@@ -1528,6 +1528,24 @@ employment evidence when the employer is identified. Named-project validation an
 unsupported claims remain fail-closed. See
 [eval/document_quality_remediation.md](eval/document_quality_remediation.md).
 
+Bounded detector corrections (2026-08-20, not a new FR; gate policy unchanged):
+FR-014 reuses the M2 canonical capability identity catalogue for *identity
+equivalence only* (LLM ↔ LLM application development; RAG ↔ Retrieval-Augmented
+Generation). RELATED identities do not become DIRECT (AWS does not authorise AWS
+Bedrock experience). Explicit local denial (`I do not claim` / `I do not have`)
+is not a positive candidate claim; a later positive clause in the same sentence
+still blocks. Multi-domain duration lists (`over 10 years in testing,
+automation, data engineering, and applied AI engineering`) preserve the complete
+list and resolve to overall-engineering duration when chronology supports that
+career floor; domain-specific inflation (`10+ years of AI engineering`) remains
+fail-closed. Target-role headers naming unsupported technologies are not
+candidate claims. First-person delivery (“I developed …”) may bind to
+employment evidence when the employer is named in the same sentence **or**
+the immediately previous sentence names **exactly one** known employer and
+the remainder overlaps that role’s authorised highlights. Two-sentence
+lookback, pronouns, and invented delivery remain fail-closed. See
+[eval/fr014_truth_alignment.md](eval/fr014_truth_alignment.md).
+
 Behaviour: deterministic where possible; evidence-backed; explainable; **fail-closed**
 for material unsupported candidate claims; traceable findings (claim, type, source,
 evidence found/missing, severity, recommended owner action). Indicative results:
@@ -1775,7 +1793,8 @@ Intelligence).
 2026-08-20):** Application Assistance remains incomplete (employer-question
 owner-resume open). Do not prioritise Indeed ingestion ahead of AAS
 continuation. Document quality remediation is complete. Document Positioning
-M0 is pending owner review before M1.
+M4 is owner-approved. M5 COMPLETE (owner close-out; historical execution FAIL
+preserved; no fresh end-to-end rerun). Do not start M6.
 
 **M0 (complete):** Architecture & source spike — keep Yahoo IMAP; SEEK discovery
 via alert email (not scrape); LinkedIn alert path unchanged; Indeed

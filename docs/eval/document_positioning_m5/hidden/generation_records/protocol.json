@@ -1,0 +1,48 @@
+{
+  "protocol": {
+    "protocol_id": "document_positioning_m5_v1",
+    "benchmark_run_id": "m5_restart_after_m3_optional_relevance_2026-08-20",
+    "cic_cv_model": "gpt-4o-mini",
+    "cic_letter_model": "gpt-4o-mini",
+    "cic_temperature": 0.2,
+    "baseline_model": "gpt-4o",
+    "baseline_temperature": 0.2,
+    "baseline_prompt_version": "v1",
+    "retry": {
+      "max_retries": 2,
+      "retry_on": [
+        "provider_error",
+        "structured_output_error",
+        "local_validation_error"
+      ],
+      "retry_on_quality": false,
+      "applied_symmetrically": true
+    },
+    "release_min_cic_preferred_or_tied": 3,
+    "release_job_count": 4,
+    "cic_truth_failures_allowed": 0,
+    "notes": "A uses implemented M3/M4 bounded OpenAI composers, unwired from cic package prepare. B independently positions from the same factual evidence bundle and the same truth boundaries. B does not receive CIC selection decisions or argument spine. No post-hoc tuning."
+  },
+  "evaluated_at": "2026-08-20T08:31:24.768696+00:00",
+  "live": true,
+  "job_ids": [
+    "E1",
+    "E2",
+    "E3",
+    "E4"
+  ],
+  "evidence_bundle_hashes": {
+    "E1": "51d3c49f6be370657677c53b1a730e6743f8f1f54ab522ecd44267472e4bca9c",
+    "E2": "9e25fa99516ab96f8bbb31d0708e523a52ed42e4e005913467ec829aff3ddbf3",
+    "E3": "7b071bbbde2dc97c2b15c265ce7d61bcac392182c64eb186176d238c7ef8ce07",
+    "E4": "ddf5bd6d546c18119e0abff928e57c91837375c873c8fb85d812cda1fba38b89"
+  },
+  "mapping_revealed": true,
+  "owner_scoring_complete": true,
+  "post_hoc_tuning": false,
+  "production_prepare_wired": false,
+  "csk_live_package_regenerated": false,
+  "seek_playwright_aas_run": false,
+  "m6_started": false,
+  "previous_run_invalidated": "INVALIDATED \u2014 PRE-BENCHMARK PRODUCT BLOCKER"
+}

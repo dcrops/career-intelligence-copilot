@@ -1,0 +1,81 @@
+{
+  "cic": {
+    "job_id": "E3",
+    "system": "cic",
+    "cv": {
+      "artefact_kind": "cv_markdown",
+      "outcome": "pass",
+      "coverage_status": "complete",
+      "detection_performed": true,
+      "validation_performed": true,
+      "external_use_allowed": true,
+      "blocking_count": 0,
+      "review_required_count": 0,
+      "finding_summaries": [],
+      "messages": [],
+      "content_hash": "e41633c9d51682224b3ac9329340630331b752512f9aff7601ded249993c66b1",
+      "report_id": "trp_01M0F4Q9JC38AXKPW5HA7K1JT3"
+    },
+    "cover_letter": {
+      "artefact_kind": "cover_letter_markdown",
+      "outcome": "pass",
+      "coverage_status": "complete",
+      "detection_performed": true,
+      "validation_performed": true,
+      "external_use_allowed": true,
+      "blocking_count": 0,
+      "review_required_count": 0,
+      "finding_summaries": [],
+      "messages": [],
+      "content_hash": "488e2345fed2605d7c004731f73deb381ee2c6af6d31356ce83d092c680c2ea3",
+      "report_id": "trp_01M0F4Q9JYP5D0KSET4M9Q8Q34"
+    },
+    "pair_external_use_allowed": true,
+    "truth_failure": false
+  },
+  "baseline": {
+    "job_id": "E3",
+    "system": "baseline",
+    "cv": {
+      "artefact_kind": "cv_markdown",
+      "outcome": "fail",
+      "coverage_status": "complete",
+      "detection_performed": true,
+      "validation_performed": true,
+      "external_use_allowed": false,
+      "blocking_count": 1,
+      "review_required_count": 0,
+      "finding_summaries": [
+        "blocking:A:education"
+      ],
+      "messages": [
+        "Outcome is 'fail'; require pass or warning for external use",
+        "1 blocking finding(s) present (education)"
+      ],
+      "content_hash": "fee62eaabf96416c9bc4011c5d6455e8412bb2df0c0b38db6f5cdbcdc90f4cc5",
+      "report_id": "trp_01M0F4Q9M6S0FN423G6HGKKDDK"
+    },
+    "cover_letter": {
+      "artefact_kind": "cover_letter_markdown",
+      "outcome": "fail",
+      "coverage_status": "complete",
+      "detection_performed": true,
+      "validation_performed": true,
+      "external_use_allowed": false,
+      "blocking_count": 2,
+      "review_required_count": 0,
+      "finding_summaries": [
+        "blocking:A:gpu",
+        "blocking:A:linux"
+      ],
+      "messages": [
+        "Outcome is 'fail'; require pass or warning for external use",
+        "2 blocking finding(s) present (gpu, linux)"
+      ],
+      "content_hash": "b310f8aaa380692e51bc61d9c638e900d0f25ccf8b7ef3499f6917051d44872d",
+      "report_id": "trp_01M0F4Q9MPR0D98ZEW4B28WSZX"
+    },
+    "pair_external_use_allowed": false,
+    "truth_failure": true
+  }
+}

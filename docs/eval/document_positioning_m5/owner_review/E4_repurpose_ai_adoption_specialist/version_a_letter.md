@@ -1,0 +1,7 @@
+# Cover letter — AI Adoption Specialist — Repurpose It
+
+As an AI Adoption Specialist at Repurpose It, I bring a comprehensive trajectory that spans quality assurance, data engineering, and independent AI engineering. My career progression from a Test Analyst at Bakers Delight, where I honed my skills in software testing and automation, to a Data Engineer at nbn Australia, has equipped me with a robust foundation in both testing methodologies and data management. Currently, I am engaged in independent AI engineering at Chase Risk & Compliance, where I focus on developing innovative solutions that leverage AI technologies.
+
+My project 'Governance-Aware Document Intelligence RAG' exemplifies my ability to create AI systems that provide trustworthy answers grounded in source material. This project is designed for teams requiring reliable AI responses over policies and procedures, incorporating evaluation and explainability controls. It supports multi-format document ingestion and includes methodologies for evaluation and telemetry, aligning well with the structured approach needed for effective AI adoption.
+
+The trajectory of my career, moving from QA to data engineering and now to AI engineering, positions me uniquely to understand the complexities of implementing AI solutions. My experience allows me to evaluate and orchestrate AI methodologies effectively, ensuring that the tools and systems adopted are reliable and meet organisational needs. This aligns with Repurpose It's goal of driving real outcomes through AI adoption.

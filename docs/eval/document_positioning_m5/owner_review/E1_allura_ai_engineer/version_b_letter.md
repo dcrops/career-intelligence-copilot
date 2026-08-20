@@ -1,0 +1,7 @@
+# Cover letter — AI Engineer — Allura Partners
+
+As an AI Engineer, I bring a robust foundation in Python, REST APIs, and LLM application development, demonstrated through my work on projects like the Governance-Aware Document Intelligence RAG. This project showcases my ability to build systems that provide trustworthy AI answers grounded in source material, utilizing Python and REST APIs to ensure seamless integration and functionality. The inclusion of evaluation and explainability controls further aligns with the structured methodologies necessary for effective AI governance.
+
+In addition to the Governance-Aware Document Intelligence RAG, my experience with the Operational Intelligence Copilot reinforces my capabilities in Python, REST APIs, and LLMs. This project highlights my proficiency in combining reliable analytics with AI reasoning to deliver evidence-backed insights, ensuring decision traceability through explainable recommendations. Such skills are essential for developing AI models and workflows that meet the high standards expected at Allura Partners.
+
+While I have extensive experience in building scalable AI solutions, I also have familiarity with Azure Data Factory, which supports the creation and maintenance of data pipelines. This capability complements my direct skills and aligns with the employer's needs for integrating AI infrastructure into core business systems. My background in these areas positions me well to contribute effectively to Allura Partners' AI initiatives.

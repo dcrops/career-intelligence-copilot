@@ -1,0 +1,594 @@
+{
+  "job_id": "E2",
+  "cv_markdown": "# David Cropper\n\n**Senior AI Engineer - AWS Bedrock | Agentic AI | Chatbots & Customer Support Auto**\n\n---\n\n## Professional Summary\n\nExperienced engineer with over 10 years in testing, automation, data engineering, and applied AI engineering. I leverage a disciplined AI Engineering methodology to build end-to-end AI applications using Python, FastAPI, and Docker, focusing on retrieval-augmented generation and operational intelligence.\n\n## Selected Engineering Highlights\n\n- Designed and delivered a **portfolio of AI applications** combining deterministic logic with AI reasoning across RAG, operational intelligence, diagnostics, entitlements, and career decision support.\n- Built modular service architectures with **FastAPI**, containerised services with **Docker**, and unit/regression suites in **PyTest**.\n- Designed explainable, evidence-backed recommendation flows with traceable outputs rather than opaque model responses.\n- Published architecture notes, testing approach, and working demonstrations through a public portfolio and GitHub repositories.\n\n## Core Skills\n\n**AWS** · **Python** · **Retrieval-Augmented Generation** · **FastAPI**\n\n**Also:** Docker · OpenAI APIs · PyTest · Git · SQL · S3 · Athena · Glue\n\n## Professional Experience\n\n### AI Engineer – Independent Research & Development — Chase Risk & Compliance\n*Dec 2025 – Present · Independent engineering · Melbourne, VIC*\n\nIndependently designs and builds AI Engineering systems under a portfolio brand.\n\n- Delivered a portfolio of AI applications spanning retrieval-augmented generation, operational intelligence, explainable diagnostics, and enterprise decision support.\n- Applied **FastAPI**, **Docker**, **OpenAI APIs**, **Git**, and **PyTest** where each portfolio system required them.\n- Designed architectures that separate deterministic business logic from AI reasoning components.\n- Published engineering documentation and public demonstrations of working systems.\n\n### Professional Development — Transition to AI Engineering\n*Oct 2023 – Nov 2025*\n\nFull-time professional development from modern Data Engineering platforms into AI Engineering through structured learning and portfolio projects.\n\n- Completed Data Engineering upskilling across **Microsoft Fabric, Databricks, Snowflake, dbt, and Azure Data Factory**.\n- Advanced into AI Engineering study and portfolio delivery using **Python, OpenAI APIs, and LangChain**.\n- Strengthened delivery discipline through testing, documentation, and milestone-driven project execution.\n\n### Data Engineer — nbn Australia\n*Mar 2020 – Oct 2023*\n\n- Developed and maintained enterprise data pipelines and operational reporting using **AWS, Python, SQL, and Apache NiFi**.\n- Performed SQL transformations, data validation, and production support for geospatial and business-operational datasets.\n- Delivered in Agile teams supporting reliable production data systems with Git and automated testing.\n\n## Featured AI Projects\n\n### Governance-Aware Document Intelligence RAG\n\n*Relevant to this role: Implemented retrieval-augmented generation (RAG) with a focus on evaluation and explainability.*\n\n**Overview:** Allows organisations to answer questions from their own documents with responses that stay grounded in source material. Built for teams that need trustworthy AI answers over policies, procedures, and knowledge bases — with evaluation and explainability controls.\n\n**Engineering Highlights:**\n- Multi-format document ingestion and embedding generation\n- Retrieval orchestration with grounding validation\n- AI evaluation framework, telemetry, and explainability controls\n\n**Technology Stack:** Python · FastAPI · Docker · LangChain · ChromaDB · OpenAI · PyTest · Git\n\n### Career Intelligence Copilot\n\n**Overview:** Supports evidence-based career and application decisions for AI Engineering roles. Reviews job opportunities against a structured career profile, ranks fit, recommends application strategy, and drafts tailored CVs for human review — reducing repetitive search work while keeping decisions explainable.\n\n**Engineering Highlights:**\n- Structured career profile model and evidence-cited opportunity assessment\n- Deterministic application-strategy recommendation and evidence-grounded CV generation pipeline\n- Golden validation suites with GO / NO-GO release gates\n- Human-in-the-loop review of generated outputs\n\n**Technology Stack:** Python · Pydantic · OpenAI APIs · PyTest · Git\n\n### Operational Intelligence Copilot\n\n**Overview:** Demonstrates operational intelligence capability for understanding business data. Combines reliable analytics with AI reasoning to surface anomalies and produce clear, evidence-backed executive insights that can be checked and trusted.\n\n**Engineering Highlights:**\n- Intelligent intent routing and dataset profiling\n- Anomaly detection with regression-tested analytics workflows\n- Explainable, evidence-backed executive reporting\n\n**Technology Stack:** Python · FastAPI · OpenAI APIs · PyTest · Git\n\n### Payroll Diagnostics Engine\n\n**Overview:** Reviews payroll data against deterministic business rules to identify anomalies. Produces explainable findings and executive-ready reports so issues can be investigated with confidence.\n\n**Engineering Highlights:**\n- Deterministic rule engine for payroll anomaly detection\n- Explainable diagnostics and automated validation\n- Executive-ready operational reporting\n\n**Technology Stack:** Python · Pandas · OpenPyXL · PyTest · Git\n\n### Public Holiday Entitlements Application\n\n**Overview:** Determines Australian public-holiday entitlements from location and rules for HR and payroll teams. Combines geospatial logic with external APIs to produce compliance-oriented results.\n\n**Engineering Highlights:**\n- Geospatial entitlement logic and business rules\n- External REST API integration\n- Compliance-oriented reporting\n\n**Technology Stack:** Python · REST APIs · Geospatial Processing · Git\n\n## Earlier Experience\n\nEarlier commercial roles as **Test Analyst** and **Test Automation Engineer** at Bakers Delight, Console, and AccessHQ, covering enterprise system delivery, test automation frameworks, Agile delivery, and production support.\n\n## AI Engineering Methodology\n\nApplies AI to **improve engineering quality and delivery discipline**, not to replace engineering judgement.\n\n**Planning:** Product vision · Architecture-first design · Roadmaps and milestones · Acceptance criteria  \n**Implementation:** Controlled AI-assisted coding · Architecture-aligned standards · Iterative delivery  \n**Quality:** PyTest regression and behavioural testing · Evidence-based debugging · Golden validation suites  \n**Review:** Architecture and maintainability reviews · Human-in-the-loop validation  \n**Delivery:** Git · Living documentation · Documentation freeze · GO / NO-GO release decisions\n\n## Courses & Upskilling\n\n- General Assembly — Data Science Immersive (2019): Python coursework including NLP and predictive modelling projects\n- LangChain & LLM Application Development\n- Microsoft Fabric, Databricks, Snowflake, dbt\n- Azure Data Factory\n\n## Certifications\n\n- AWS Certified Developer - Associate\n- Databricks Certified Data Engineer Professional\n\n---\n",
+  "letter_markdown": "# Cover letter — ai engineering — CSK Nexus Pty Ltd\n\nIn the role of Senior AI Engineer at CSK Nexus Pty Ltd, I bring a strong foundation in AI engineering, particularly through my work on the Governance-Aware Document Intelligence RAG project. This initiative showcases my capabilities in Python and Retrieval-Augmented Generation (RAG), allowing organizations to derive trustworthy AI responses from their documents while maintaining evaluation and explainability controls. This aligns well with your need for robust orchestration and evaluation methodologies in AI solutions.\n\nMy experience as a Data Engineer at nbn Australia further complements the requirements of this position. I developed and maintained enterprise data pipelines using AWS services, Python, and SQL, ensuring reliable production data systems. While I do not claim direct experience with AWS Bedrock, my solid understanding of AWS technologies positions me well to contribute effectively to your team.\n\nThe combination of my direct skills in Python and RAG, along with my related experience in AWS environments, equips me to tackle the challenges presented in the Senior AI Engineer role. I am well-prepared to support CSK Nexus Pty Ltd's mission in advancing AI-driven customer support solutions.\n\n---\n*M4 positioned cover letter (fixture or bounded composer). Owner review required. Not production package output.*\n",
+  "letter_paragraphs": [
+    "In the role of Senior AI Engineer at CSK Nexus Pty Ltd, I bring a strong foundation in AI engineering, particularly through my work on the Governance-Aware Document Intelligence RAG project. This initiative showcases my capabilities in Python and Retrieval-Augmented Generation (RAG), allowing organizations to derive trustworthy AI responses from their documents while maintaining evaluation and explainability controls. This aligns well with your need for robust orchestration and evaluation methodologies in AI solutions.",
+    "My experience as a Data Engineer at nbn Australia further complements the requirements of this position. I developed and maintained enterprise data pipelines using AWS services, Python, and SQL, ensuring reliable production data systems. While I do not claim direct experience with AWS Bedrock, my solid understanding of AWS technologies positions me well to contribute effectively to your team.",
+    "The combination of my direct skills in Python and RAG, along with my related experience in AWS environments, equips me to tackle the challenges presented in the Senior AI Engineer role. I am well-prepared to support CSK Nexus Pty Ltd's mission in advancing AI-driven customer support solutions."
+  ],
+  "cv_model": "gpt-4o-mini",
+  "letter_model": "gpt-4o-mini",
+  "temperature": 0.2,
+  "cv_retries_used": 0,
+  "letter_retries_used": 0,
+  "include_methodology": true,
+  "trajectory_mode": "ai_lead",
+  "selected_highlights": [
+    "Designed and delivered a **portfolio of AI applications** combining deterministic logic with AI reasoning across RAG, operational intelligence, diagnostics, entitlements, and career decision support.",
+    "Built modular service architectures with **FastAPI**, containerised services with **Docker**, and unit/regression suites in **PyTest**.",
+    "Designed explainable, evidence-backed recommendation flows with traceable outputs rather than opaque model responses.",
+    "Published architecture notes, testing approach, and working demonstrations through a public portfolio and GitHub repositories."
+  ],
+  "selected_project_ids": [
+    "governance-document-rag",
+    "career-intelligence-copilot",
+    "operational-intelligence-copilot"
+  ],
+  "selected_letter_sources": [
+    "project:governance-document-rag",
+    "experience:nbn-data-engineer-2020"
+  ],
+  "local_cv_validation": "pass",
+  "local_letter_validation": "pass",
+  "cv_pack": {
+    "company": "CSK Nexus Pty Ltd",
+    "role_title": "Senior AI Engineer - AWS Bedrock | Agentic AI | Chatbots & Customer Support Auto",
+    "role_family": "ai_engineering",
+    "trajectory_mode": "ai_lead",
+    "trajectory_rationale": "Role family is ai_engineering, so positioning leads with AI evidence and does not use the QA→DE→AI chapter walk as the primary argument.",
+    "include_methodology": true,
+    "include_methodology_rationale": "Structured employer needs include evaluation, orchestration, governance, reliability, or equivalent methodology signals.",
+    "employer_needs": [
+      {
+        "label": "AWS Bedrock",
+        "kind": "technology",
+        "status": "supported_related",
+        "requested_identity": "aws_bedrock",
+        "promotable_profile_label": "AWS",
+        "may_claim_requested": false,
+        "employer_excerpt": "Strong hands-on expertise with AWS Bedrock, including model selection, orchestration, and deployment"
+      },
+      {
+        "label": "Python",
+        "kind": "technology",
+        "status": "supported_direct",
+        "requested_identity": null,
+        "promotable_profile_label": "Python",
+        "may_claim_requested": true,
+        "employer_excerpt": "Solid engineering fundamentals: Python, serverless architectures, CI/CD, security best practices"
+      },
+      {
+        "label": "RAG",
+        "kind": "technology",
+        "status": "supported_direct",
+        "requested_identity": "rag",
+        "promotable_profile_label": "Retrieval-Augmented Generation",
+        "may_claim_requested": true,
+        "employer_excerpt": "Implement retrieval-augmented generation (RAG), orchestration, and evaluation pipelines"
+      },
+      {
+        "label": "conversational ai",
+        "kind": "experience_requirement",
+        "status": "unsupported",
+        "requested_identity": "chatbot",
+        "promotable_profile_label": null,
+        "may_claim_requested": false,
+        "employer_excerpt": "Deep experience building chatbots and conversational AI (LLMs, NLU, dialogue management)"
+      }
+    ],
+    "argument_spine": [
+      "Do not claim 'AWS Bedrock'. Promote 'AWS' as related candidate evidence for this employer need.",
+      "Claim 'Python' as a candidate capability via profile evidence 'Python'.",
+      "Claim 'RAG' as a candidate capability via profile evidence 'Retrieval-Augmented Generation'.",
+      "Gap: 'conversational ai' is unsupported by CareerProfile evidence and must not be claimed.",
+      "Trajectory mode is ai_lead. Role family is ai_engineering, so positioning leads with AI evidence and does not use the QA→DE→AI chapter walk as the primary argument.",
+      "Use portfolio project 'Governance-Aware Document Intelligence RAG' as packed evidence; keep Master project body unchanged.",
+      "Use portfolio project 'Career Intelligence Copilot' as packed evidence; keep Master project body unchanged. Do not treat this project as evidence for unsupported employer technologies.",
+      "Use portfolio project 'Operational Intelligence Copilot' as packed evidence; keep Master project body unchanged. Do not treat this project as evidence for unsupported employer technologies."
+    ],
+    "forbidden_claims": [
+      {
+        "requested_label": "AWS Bedrock",
+        "may_not_claim": "AWS Bedrock",
+        "reason": "related_unclaimable",
+        "identity": "aws_bedrock"
+      },
+      {
+        "requested_label": "AWS Bedrock",
+        "may_not_claim": "amazon bedrock",
+        "reason": "related_unclaimable",
+        "identity": "aws_bedrock"
+      },
+      {
+        "requested_label": "AWS Bedrock",
+        "may_not_claim": "bedrock",
+        "reason": "related_unclaimable",
+        "identity": "aws_bedrock"
+      },
+      {
+        "requested_label": "conversational ai",
+        "may_not_claim": "conversational ai",
+        "reason": "unsupported",
+        "identity": "chatbot"
+      },
+      {
+        "requested_label": "conversational ai",
+        "may_not_claim": "customer support automation",
+        "reason": "unsupported",
+        "identity": "chatbot"
+      },
+      {
+        "requested_label": "conversational ai",
+        "may_not_claim": "customer support agents",
+        "reason": "unsupported",
+        "identity": "chatbot"
+      },
+      {
+        "requested_label": "conversational ai",
+        "may_not_claim": "conversational interfaces",
+        "reason": "unsupported",
+        "identity": "chatbot"
+      },
+      {
+        "requested_label": "conversational ai",
+        "may_not_claim": "virtual agents",
+        "reason": "unsupported",
+        "identity": "chatbot"
+      },
+      {
+        "requested_label": "conversational ai",
+        "may_not_claim": "chatbots",
+        "reason": "unsupported",
+        "identity": "chatbot"
+      },
+      {
+        "requested_label": "conversational ai",
+        "may_not_claim": "chatbot",
+        "reason": "unsupported",
+        "identity": "chatbot"
+      }
+    ],
+    "claimable_direct_labels": [
+      "Python",
+      "Retrieval-Augmented Generation"
+    ],
+    "related_profile_labels": [
+      "AWS"
+    ],
+    "unsupported_labels": [
+      "conversational ai"
+    ],
+    "candidate_evidence": [
+      {
+        "ref": "master_summary",
+        "source": "master_summary",
+        "text": "**Experienced engineer with 10+ years across testing, automation, data engineering and applied AI engineering.** Applies software engineering discipline to build end-to-end AI applications with **Python, FastAPI, Docker, and OpenAI APIs**, with independent AI Engineering portfol…"
+      },
+      {
+        "ref": "skill:AWS",
+        "source": "skill",
+        "text": "AWS"
+      },
+      {
+        "ref": "experience:nbn-data-engineer-2020",
+        "source": "experience",
+        "text": "Data Engineer at nbn Australia. Developed and maintained enterprise data pipelines and operational reporting solutions using AWS services, Python, SQL, and Apache NiFi. Performed SQL transformations, data validation, and production support for geospatial and business-operational…"
+      },
+      {
+        "ref": "certification:aws-certified-developer-associate",
+        "source": "certification",
+        "text": "AWS Certified Developer - Associate"
+      },
+      {
+        "ref": "skill:Python",
+        "source": "skill",
+        "text": "Python"
+      },
+      {
+        "ref": "experience:chase-risk-compliance-ai-engineer",
+        "source": "experience",
+        "text": "AI Engineer - Independent Research & Development at Chase Risk & Compliance. Delivered a portfolio of AI applications spanning retrieval-augmented generation, operational intelligence, explainable diagnostics, and enterprise decision support. Applied FastAPI, Docker, OpenAI APIs…"
+      },
+      {
+        "ref": "skill:Retrieval-Augmented Generation",
+        "source": "skill",
+        "text": "Retrieval-Augmented Generation"
+      },
+      {
+        "ref": "project:governance-document-rag",
+        "source": "project",
+        "text": "Governance-Aware Document Intelligence RAG: Allows organisations to answer questions from their own documents with responses that stay grounded in source material. Built for teams that need trustworthy AI answers over policies, procedures, and knowledge bases — with evaluation a…"
+      }
+    ],
+    "master_summary": "**Experienced engineer with 10+ years across testing, automation, data engineering and applied AI engineering.**\n\nApplies software engineering discipline to build end-to-end AI applications with **Python, FastAPI, Docker, and OpenAI APIs**, with independent AI Engineering portfolio work across retrieval systems, operational intelligence, explainable AI, and enterprise decision support.\n\nApplies a disciplined **AI Engineering methodology** — architecture-first design, evidence-based validation, and human-in-the-loop review — to build AI systems with traceable, reviewable outputs for operational decision-making.",
+    "master_highlights": [
+      "Designed and delivered a **portfolio of AI applications** combining deterministic logic with AI reasoning across RAG, operational intelligence, diagnostics, entitlements, and career decision support.",
+      "Built modular service architectures with **FastAPI**, containerised services with **Docker**, and unit/regression suites in **PyTest**.",
+      "Designed explainable, evidence-backed recommendation flows with traceable outputs rather than opaque model responses.",
+      "Published architecture notes, testing approach, and working demonstrations through a public portfolio and GitHub repositories."
+    ],
+    "selected_highlights": [
+      "Designed and delivered a **portfolio of AI applications** combining deterministic logic with AI reasoning across RAG, operational intelligence, diagnostics, entitlements, and career decision support.",
+      "Built modular service architectures with **FastAPI**, containerised services with **Docker**, and unit/regression suites in **PyTest**.",
+      "Designed explainable, evidence-backed recommendation flows with traceable outputs rather than opaque model responses.",
+      "Published architecture notes, testing approach, and working demonstrations through a public portfolio and GitHub repositories."
+    ],
+    "selected_projects": [
+      {
+        "project_id": "governance-document-rag",
+        "name": "Governance-Aware Document Intelligence RAG",
+        "technologies": [
+          "Python",
+          "FastAPI",
+          "Docker",
+          "LangChain",
+          "ChromaDB",
+          "OpenAI",
+          "PyTest",
+          "Git"
+        ],
+        "locked_body": "**Overview:** Allows organisations to answer questions from their own documents with responses that stay grounded in source material. Built for teams that need trustworthy AI answers over policies, procedures, and knowledge bases — with evaluation and explainability controls.\n\n**Engineering Highlights:**\n- Multi-format document ingestion and embedding generation\n- Retrieval orchestration with grounding validation\n- AI evaluation framework, telemetry, and explainability controls\n\n**Technology Stack:** Python · FastAPI · Docker · LangChain · ChromaDB · OpenAI · PyTest · Git"
+      },
+      {
+        "project_id": "career-intelligence-copilot",
+        "name": "Career Intelligence Copilot",
+        "technologies": [
+          "Python",
+          "Pydantic",
+          "OpenAI APIs",
+          "PyTest",
+          "Git"
+        ],
+        "locked_body": "**Overview:** Supports evidence-based career and application decisions for AI Engineering roles. Reviews job opportunities against a structured career profile, ranks fit, recommends application strategy, and drafts tailored CVs for human review — reducing repetitive search work while keeping decisions explainable.\n\n**Engineering Highlights:**\n- Structured career profile model and evidence-cited opportunity assessment\n- Deterministic application-strategy recommendation and evidence-grounded CV generation pipeline\n- Golden validation suites with GO / NO-GO release gates\n- Human-in-the-loop review of generated outputs\n\n**Technology Stack:** Python · Pydantic · OpenAI APIs · PyTest · Git"
+      },
+      {
+        "project_id": "operational-intelligence-copilot",
+        "name": "Operational Intelligence Copilot",
+        "technologies": [
+          "Python",
+          "FastAPI",
+          "OpenAI APIs",
+          "PyTest",
+          "Git"
+        ],
+        "locked_body": "**Overview:** Demonstrates operational intelligence capability for understanding business data. Combines reliable analytics with AI reasoning to surface anomalies and produce clear, evidence-backed executive insights that can be checked and trusted.\n\n**Engineering Highlights:**\n- Intelligent intent routing and dataset profiling\n- Anomaly detection with regression-tested analytics workflows\n- Explainable, evidence-backed executive reporting\n\n**Technology Stack:** Python · FastAPI · OpenAI APIs · PyTest · Git"
+      }
+    ],
+    "assessment_ignored": true
+  },
+  "letter_pack": {
+    "company": "CSK Nexus Pty Ltd",
+    "role_title": "Senior AI Engineer - AWS Bedrock | Agentic AI | Chatbots & Customer Support Auto",
+    "role_family": "ai_engineering",
+    "trajectory_mode": "ai_lead",
+    "trajectory_rationale": "Role family is ai_engineering, so positioning leads with AI evidence and does not use the QA→DE→AI chapter walk as the primary argument.",
+    "include_methodology": true,
+    "include_methodology_rationale": "Structured employer needs include evaluation, orchestration, governance, reliability, or equivalent methodology signals.",
+    "employer_needs": [
+      {
+        "label": "AWS Bedrock",
+        "kind": "technology",
+        "status": "supported_related",
+        "requested_identity": "aws_bedrock",
+        "promotable_profile_label": "AWS",
+        "may_claim_requested": false,
+        "employer_excerpt": "Strong hands-on expertise with AWS Bedrock, including model selection, orchestration, and deployment"
+      },
+      {
+        "label": "Python",
+        "kind": "technology",
+        "status": "supported_direct",
+        "requested_identity": null,
+        "promotable_profile_label": "Python",
+        "may_claim_requested": true,
+        "employer_excerpt": "Solid engineering fundamentals: Python, serverless architectures, CI/CD, security best practices"
+      },
+      {
+        "label": "RAG",
+        "kind": "technology",
+        "status": "supported_direct",
+        "requested_identity": "rag",
+        "promotable_profile_label": "Retrieval-Augmented Generation",
+        "may_claim_requested": true,
+        "employer_excerpt": "Implement retrieval-augmented generation (RAG), orchestration, and evaluation pipelines"
+      },
+      {
+        "label": "conversational ai",
+        "kind": "experience_requirement",
+        "status": "unsupported",
+        "requested_identity": "chatbot",
+        "promotable_profile_label": null,
+        "may_claim_requested": false,
+        "employer_excerpt": "Deep experience building chatbots and conversational AI (LLMs, NLU, dialogue management)"
+      }
+    ],
+    "argument_spine": [
+      "Do not claim 'AWS Bedrock'. Promote 'AWS' as related candidate evidence for this employer need.",
+      "Claim 'Python' as a candidate capability via profile evidence 'Python'.",
+      "Claim 'RAG' as a candidate capability via profile evidence 'Retrieval-Augmented Generation'.",
+      "Gap: 'conversational ai' is unsupported by CareerProfile evidence and must not be claimed.",
+      "Trajectory mode is ai_lead. Role family is ai_engineering, so positioning leads with AI evidence and does not use the QA→DE→AI chapter walk as the primary argument.",
+      "Use portfolio project 'Governance-Aware Document Intelligence RAG' as packed evidence; keep Master project body unchanged.",
+      "Use portfolio project 'Career Intelligence Copilot' as packed evidence; keep Master project body unchanged. Do not treat this project as evidence for unsupported employer technologies.",
+      "Use portfolio project 'Operational Intelligence Copilot' as packed evidence; keep Master project body unchanged. Do not treat this project as evidence for unsupported employer technologies."
+    ],
+    "forbidden_claims": [
+      {
+        "requested_label": "AWS Bedrock",
+        "may_not_claim": "AWS Bedrock",
+        "reason": "related_unclaimable",
+        "identity": "aws_bedrock"
+      },
+      {
+        "requested_label": "AWS Bedrock",
+        "may_not_claim": "amazon bedrock",
+        "reason": "related_unclaimable",
+        "identity": "aws_bedrock"
+      },
+      {
+        "requested_label": "AWS Bedrock",
+        "may_not_claim": "bedrock",
+        "reason": "related_unclaimable",
+        "identity": "aws_bedrock"
+      },
+      {
+        "requested_label": "conversational ai",
+        "may_not_claim": "conversational ai",
+        "reason": "unsupported",
+        "identity": "chatbot"
+      },
+      {
+        "requested_label": "conversational ai",
+        "may_not_claim": "customer support automation",
+        "reason": "unsupported",
+        "identity": "chatbot"
+      },
+      {
+        "requested_label": "conversational ai",
+        "may_not_claim": "customer support agents",
+        "reason": "unsupported",
+        "identity": "chatbot"
+      },
+      {
+        "requested_label": "conversational ai",
+        "may_not_claim": "conversational interfaces",
+        "reason": "unsupported",
+        "identity": "chatbot"
+      },
+      {
+        "requested_label": "conversational ai",
+        "may_not_claim": "virtual agents",
+        "reason": "unsupported",
+        "identity": "chatbot"
+      },
+      {
+        "requested_label": "conversational ai",
+        "may_not_claim": "chatbots",
+        "reason": "unsupported",
+        "identity": "chatbot"
+      },
+      {
+        "requested_label": "conversational ai",
+        "may_not_claim": "chatbot",
+        "reason": "unsupported",
+        "identity": "chatbot"
+      }
+    ],
+    "claimable_direct_labels": [
+      "Python",
+      "Retrieval-Augmented Generation"
+    ],
+    "related_profile_labels": [
+      "AWS"
+    ],
+    "unsupported_labels": [
+      "conversational ai"
+    ],
+    "selected_sources": [
+      {
+        "source_id": "project:governance-document-rag",
+        "source_type": "project",
+        "name": "Governance-Aware Document Intelligence RAG",
+        "organisation": null,
+        "purpose": "Selected because this project covers Python (direct), RAG (direct). PortfolioMatch rank 3.",
+        "employer_needs_covered": [
+          "Python",
+          "RAG"
+        ],
+        "coverage_kinds": [
+          "direct",
+          "direct"
+        ],
+        "portfolio_match_rank": 3,
+        "override_reason": "PortfolioMatch rank 1 project 'Career Intelligence Copilot' was not selected. PositioningPlan need coverage preferred Governance-Aware Document Intelligence RAG (Python, RAG), Data Engineer — nbn Australia (AWS Bedrock, Python) over this project's overlap (Python).; PortfolioMatch rank 2 project 'Operational Intelligence Copilot' was not selected. PositioningPlan need coverage preferred Governance-Aware Document Intelligence RAG (Python, RAG), Data Engineer — nbn Australia (AWS Bedrock, Python) over this project's overlap (Python).",
+        "facts": [
+          "Allows organisations to answer questions from their own documents with responses that stay grounded in source material. Built for teams that need trustworthy AI answers over policies, procedures, and knowledge bases — with evaluation and explainability controls.",
+          "Supports grounded responses over multi-format organisational documents.",
+          "Provides evaluation, telemetry, and explainability controls.",
+          "AI evaluation frameworks",
+          "Grounding validation",
+          "Embedding generation"
+        ],
+        "technologies": [
+          "Python",
+          "FastAPI",
+          "Docker",
+          "LangChain",
+          "ChromaDB",
+          "OpenAI",
+          "PyTest",
+          "Git"
+        ],
+        "labels": [
+          "Python",
+          "FastAPI",
+          "Docker",
+          "LangChain",
+          "ChromaDB",
+          "OpenAI",
+          "PyTest",
+          "Git",
+          "AI evaluation frameworks",
+          "Grounding validation",
+          "Embedding generation",
+          "Retrieval orchestration",
+          "Multi-format document ingestion"
+        ],
+        "chapter": null
+      },
+      {
+        "source_id": "experience:nbn-data-engineer-2020",
+        "source_type": "employment",
+        "name": "Data Engineer — nbn Australia",
+        "organisation": "nbn Australia",
+        "purpose": "Selected because this employment covers AWS Bedrock (related).",
+        "employer_needs_covered": [
+          "AWS Bedrock",
+          "Python"
+        ],
+        "coverage_kinds": [
+          "related",
+          "direct"
+        ],
+        "portfolio_match_rank": null,
+        "override_reason": "PortfolioMatch rank 1 project 'Career Intelligence Copilot' was not selected. PositioningPlan need coverage preferred Governance-Aware Document Intelligence RAG (Python, RAG), Data Engineer — nbn Australia (AWS Bedrock, Python) over this project's overlap (Python).; PortfolioMatch rank 2 project 'Operational Intelligence Copilot' was not selected. PositioningPlan need coverage preferred Governance-Aware Document Intelligence RAG (Python, RAG), Data Engineer — nbn Australia (AWS Bedrock, Python) over this project's overlap (Python).",
+        "facts": [
+          "Data Engineer at nbn Australia.",
+          "Developed and maintained enterprise data pipelines and operational reporting solutions using AWS services, Python, SQL, and Apache NiFi.",
+          "Performed SQL transformations, data validation, and production support for geospatial and business-operational datasets.",
+          "Worked in Agile delivery teams supporting reliable production data systems with Git and automated testing practices."
+        ],
+        "technologies": [
+          "Python",
+          "SQL",
+          "AWS",
+          "S3",
+          "Athena",
+          "Glue",
+          "Cloudwatch",
+          "DynamoDB",
+          "Apache NiFi",
+          "Git",
+          "PyTest"
+        ],
+        "labels": [
+          "Python",
+          "SQL",
+          "AWS",
+          "S3",
+          "Athena",
+          "Glue",
+          "Cloudwatch",
+          "DynamoDB",
+          "Apache NiFi",
+          "Git",
+          "PyTest"
+        ],
+        "chapter": "data_engineering"
+      }
+    ],
+    "portfolio_overrides": [
+      {
+        "project_id": "career-intelligence-copilot",
+        "project_name": "Career Intelligence Copilot",
+        "portfolio_match_rank": 1,
+        "reason": "PortfolioMatch rank 1 project 'Career Intelligence Copilot' was not selected. PositioningPlan need coverage preferred Governance-Aware Document Intelligence RAG (Python, RAG), Data Engineer — nbn Australia (AWS Bedrock, Python) over this project's overlap (Python)."
+      },
+      {
+        "project_id": "operational-intelligence-copilot",
+        "project_name": "Operational Intelligence Copilot",
+        "portfolio_match_rank": 2,
+        "reason": "PortfolioMatch rank 2 project 'Operational Intelligence Copilot' was not selected. PositioningPlan need coverage preferred Governance-Aware Document Intelligence RAG (Python, RAG), Data Engineer — nbn Australia (AWS Bedrock, Python) over this project's overlap (Python)."
+      }
+    ],
+    "high_priority_needs": [
+      "AWS Bedrock",
+      "Python",
+      "RAG"
+    ],
+    "opening_facts": [
+      "Target role is ai engineering at CSK Nexus Pty Ltd.",
+      "Trajectory mode is ai_lead. Role family is ai_engineering, so positioning leads with AI evidence and does not use the QA→DE→AI chapter walk as the primary argument.",
+      "Lead evidence anchor: Governance-Aware Document Intelligence RAG.",
+      "Authorised DIRECT capabilities: Python, Retrieval-Augmented Generation",
+      "Do not open with generic enthusiasm, excitement, or 'I am writing to apply'."
+    ],
+    "body_facts": [
+      "Governance-Aware Document Intelligence RAG: Selected because this project covers Python (direct), RAG (direct). PortfolioMatch rank 3.",
+      "Need coverage: Python, RAG.",
+      "Allows organisations to answer questions from their own documents with responses that stay grounded in source material. Built for teams that need trustworthy AI answers over policies, procedures, and knowledge bases — with evaluation and explainability controls.",
+      "Supports grounded responses over multi-format organisational documents.",
+      "Provides evaluation, telemetry, and explainability controls.",
+      "Data Engineer — nbn Australia: Selected because this employment covers AWS Bedrock (related).",
+      "Need coverage: AWS Bedrock, Python.",
+      "Data Engineer at nbn Australia.",
+      "Developed and maintained enterprise data pipelines and operational reporting solutions using AWS services, Python, SQL, and Apache NiFi.",
+      "Performed SQL transformations, data validation, and production support for geospatial and business-operational datasets.",
+      "RELATED profile evidence is AWS. Promote that real capability. Never claim the employer's requested identity.",
+      "Methodology may be mentioned only from packed CareerProfile engineering methodology; do not invent process claims."
+    ],
+    "closing_facts": [
+      "Close by connecting packed evidence to CSK Nexus Pty Ltd's ai engineering work.",
+      "Do not repeat the opening. Do not request a conversation with filler.",
+      "Unsupported identities must not be claimed: conversational ai"
+    ],
+    "allowed_employer_names": [
+      "CSK Nexus Pty Ltd",
+      "nbn Australia"
+    ],
+    "allowed_project_names": [
+      "Governance-Aware Document Intelligence RAG"
+    ],
+    "allowed_technologies": [
+      "Python",
+      "FastAPI",
+      "Docker",
+      "LangChain",
+      "ChromaDB",
+      "OpenAI",
+      "PyTest",
+      "Git",
+      "SQL",
+      "AWS",
+      "S3",
+      "Athena",
+      "Glue",
+      "Cloudwatch",
+      "DynamoDB",
+      "Apache NiFi",
+      "Retrieval-Augmented Generation"
+    ],
+    "commercial_ai_employment": false,
+    "candidate_has_ml_expertise": false,
+    "contact": {
+      "email": null,
+      "phone": null,
+      "location": null,
+      "linkedin_url": null,
+      "portfolio_url": null,
+      "github_url": null
+    },
+    "constraints": [
+      "Use only facts in this evidence pack. Do not invent employment, technologies, metrics, qualifications, years, or project outcomes.",
+      "Employer needs are job context, not candidate evidence.",
+      "Express DIRECT capabilities as candidate capabilities.",
+      "RELATED: promote the packed profile capability. Never claim the requested employer identity (AWS is not AWS Bedrock experience).",
+      "Never claim UNSUPPORTED capabilities.",
+      "Open with the target role/employer, the strongest truthful argument, and one or two packed evidence anchors. No generic enthusiasm.",
+      "Organise body paragraphs around employer needs and selected sources, not a forced biography. Do not write duplicate source paragraphs.",
+      "Keep the letter concise and recruiter-readable (about one page).",
+      "Write in Australian English.",
+      "Use prose_role_title when naming the vacancy. Do not paste vendor product lists from the posting title into candidate-claim sentences.",
+      "Trajectory mode is ai_lead. It shapes emphasis; it is not a canned paragraph template.",
+      "Lead with current AI Engineering capability. Do not walk QA → data engineering → AI as the primary argument.",
+      "There is no commercial AI Engineering employment. Describe applied AI work as independent / portfolio engineering.",
+      "Do not claim machine learning, deep learning, TensorFlow, PyTorch, or ML expertise.",
+      "Related profile labels: AWS.",
+      "Unsupported labels (do not claim): conversational ai."
+    ],
+    "evidence_count_policy": "Default two evidence sources. A third is allowed only when it covers a distinct high-priority DIRECT or RELATED need not already represented. Maximum three. Sources may be projects, employment, independent engineering, certifications, or trajectory.",
+    "prose_role_title": "ai engineering",
+    "assessment_ignored": true
+  }
+}

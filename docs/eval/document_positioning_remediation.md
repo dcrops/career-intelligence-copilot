@@ -1,18 +1,46 @@
 # Document Positioning & Generalisation Remediation
 
-**Status:** **M0 complete — pending owner review before M1**  
+**Status:** **M5 COMPLETE** (owner close-out 2026-08-20). Quality 4/4 on the
+frozen blind benchmark. Truth PASS on replay of unchanged frozen CIC artefacts
+through corrected FR-014. Original execution remains historically **FAIL**
+under the then-current validator. No fresh end-to-end rerun. M4 is
+owner-approved. M6 is **not started**.  
 **Date opened:** 2026-08-20  
 **Not a new FR.** Production-path change inside existing FR-006 / FR-007 / FR-010 /
 FR-014 boundaries. Frozen FR-008–FR-018 exit criteria are not reopened.
 
 **Owner-approved CV positioning surface:** bounded LLM over a verified evidence
 pack (same production pattern as the cover letter). FR-006c theme-aware
-composition is **not** the production fix.
+composition is **not** the production fix. M3 implements that composer; M6
+still owns wiring it into `cic package prepare`.
 
-**Next:** M1 PositioningPlan contract — only after explicit owner approval of M0.
+**Next:** M6 is **not started**. Do not wire `cic package prepare` until the
+owner authorises M6. Unblinded historical FAIL:
+[document_positioning_m5_unblinded.md](document_positioning_m5_unblinded.md).
+Owner close-out:
+[document_positioning_m5_acceptance.md](document_positioning_m5_acceptance.md).
 
 M0 audit: [document_positioning_m0_audit.md](document_positioning_m0_audit.md)  
-M0 learning note: [document_positioning_m0_learning.md](document_positioning_m0_learning.md)
+M0 learning note: [document_positioning_m0_learning.md](document_positioning_m0_learning.md)  
+M1 acceptance: [document_positioning_m1_acceptance.md](document_positioning_m1_acceptance.md)  
+M1 learning note: [document_positioning_m1_learning.md](document_positioning_m1_learning.md)  
+M1 four-job inspection: [document_positioning_m1_inspection.md](document_positioning_m1_inspection.md)  
+M2 acceptance: [document_positioning_m2_acceptance.md](document_positioning_m2_acceptance.md)  
+M2 learning note: [document_positioning_m2_learning.md](document_positioning_m2_learning.md)  
+M2 four-job inspection: [document_positioning_m2_inspection.md](document_positioning_m2_inspection.md)  
+M3 acceptance: [document_positioning_m3_acceptance.md](document_positioning_m3_acceptance.md)  
+M3 learning note: [document_positioning_m3_learning.md](document_positioning_m3_learning.md)  
+M3 four-job inspection: [document_positioning_m3_inspection.md](document_positioning_m3_inspection.md)
+M4 acceptance: [document_positioning_m4_acceptance.md](document_positioning_m4_acceptance.md)
+M4 learning note: [document_positioning_m4_learning.md](document_positioning_m4_learning.md)
+M4 four-job inspection: [document_positioning_m4_inspection.md](document_positioning_m4_inspection.md)  
+M5 protocol: [document_positioning_m5_protocol.md](document_positioning_m5_protocol.md)  
+M5 acceptance: [document_positioning_m5_acceptance.md](document_positioning_m5_acceptance.md)  
+M5 unblinded report: [document_positioning_m5_unblinded.md](document_positioning_m5_unblinded.md)  
+M5 learning note: [document_positioning_m5_learning.md](document_positioning_m5_learning.md)
+Post-M5 FR-014 detector correction:
+[fr014_truth_alignment.md](fr014_truth_alignment.md)
+([learning](fr014_truth_alignment_learning.md)).
 
 Historical close-out that this programme does **not** rewrite:
 [document_quality_remediation.md](document_quality_remediation.md).
@@ -61,7 +89,7 @@ Deterministic vs bounded LLM (locked):
 | Evidence selection / argument spine | DETERMINISTIC (PositioningPlan — M1) |
 | CV summary / highlight selection / optional project relevance line | BOUNDED LLM over CV pack (M3) |
 | Employment bullets / project bodies | DETERMINISTIC (Master) |
-| Cover-letter prose | BOUNDED LLM over letter pack (M4) |
+| Cover-letter prose | BOUNDED LLM over letter pack (M4; implemented, unwired) |
 | Factual validation | DETERMINISTIC (FR-014) |
 | Quality evaluation | HYBRID (Truth + human preference vs LLM baseline) |
 
@@ -93,9 +121,11 @@ These are documentation corrections, not product-direction changes.
 
 ---
 
-## 4. PositioningPlan terminology (frozen for M1)
+## 4. PositioningPlan terminology (implemented in M1)
 
-Design-level only. No Pydantic PositioningPlan in the package yet.
+Contract: `career_intelligence.document_positioning.PositioningPlan`  
+Builder: `build_positioning_plan(job, profile, assessment=None)` — `assessment`
+is ignored. **Not wired** into `cic package prepare`.
 
 **EmployerNeed** — one ordered hiring requirement from JobAnalysis (technology,
 responsibility, or experience requirement). Needs are employer evidence, not
@@ -148,31 +178,32 @@ courses; certifications; contact.
 
 ---
 
-## 5. Capability catalogue v1
+## 5. Capability catalogue (M0 v1 + M2 expansion)
 
-Module: `career_intelligence.document_positioning`  
-**Not imported** by TailoringPlan, Master-adapt, cover-letter generation, or
-package prepare.
+Module: `career_intelligence.document_positioning.catalogue`  
+**Consumed by** TailoringPlan planning, PositioningPlan, and M4 letter
+selection. **Not imported** by Master-adapt, production cover-letter
+generation, or `cic package prepare`.
 
-Identities: `rag`, `aws`, `aws_bedrock`, `azure`, `azure_data_factory`, `java`,
-`javascript`, `chatbot`.
+Identities: `rag`, `aws`, `aws_bedrock`, `azure`, `azure_data_factory`,
+`microsoft_fabric`, `data_pipeline`, `llm`, `openai`, `langchain`, `rest`,
+`fastapi`, `docker`, `java`, `javascript`, `chatbot`.
 
-Aliases (same identity): RAG / Retrieval-Augmented Generation / retrieval
-augmented generation → `rag`. `data factory` / ADF → `azure_data_factory`.
+Aliases (same identity): RAG / Retrieval-Augmented Generation → `rag`.
+`LLM application development` / `llm` / `llms` → `llm`. `data factory` / ADF →
+`azure_data_factory`. Bare `pipeline` is **not** an alias (would fire on
+“evaluation pipelines”).
 
-RELATED pairs: `aws_bedrock` ← profile `aws`; `azure` ↔ `azure_data_factory`.
+RELATED pairs: `aws_bedrock` ← profile `aws`; Azure family including Fabric and
+ADF; `data_pipeline` ← ADF; `llm` ↔ `openai` ↔ `langchain`; `rest` ↔ `fastapi`.
 
-No Java↔JavaScript relation. No RAG↔chatbot relation. Chatbot remains a gap
-when unevidenced even if RAG/AWS/Python are present.
+**Not related:** RAG↔LLM (legacy LLM group membership was unsafe and was not
+migrated), RAG↔chatbot, OpenAI↔chatbot, Java↔JavaScript, AWS→Bedrock DIRECT.
 
-Unknown labels: exact normalised profile match is DIRECT; otherwise
-UNSUPPORTED; never invented RELATED.
-
-**M2 warning:** catalogue v1 is **not** a drop-in replacement for
-`_RELATED_CAPABILITY_GROUPS`. The production Azure group also includes
-Microsoft Fabric and other pipeline phrases. M2 must not shrink those live
-planner relations when consuming the catalogue. v1 only freezes the
-positioning identities needed for DIRECT / RELATED / GAP tests.
+Unknown labels: exact normalised profile match is DIRECT; leftover phrase
+groups (CI/CD, observability, AI-engineering role family, bare pipeline+ADF)
+apply after a catalogue miss. Never invented RELATED. RAG↔LLM is not a leftover
+or catalogue relation.
 
 ---
 
@@ -185,7 +216,7 @@ facts for a job.
 | ID | Role | Why | Tracked freeze |
 |----|------|-----|----------------|
 | E1 | Generic AI Engineer (control) | G1 Allura; strong applied AI Engineer | [manual_validation/jobs/001_strong_ai_engineer.txt](../../manual_validation/jobs/001_strong_ai_engineer.txt), [manual_validation/outputs/001_strong_ai_engineer.json](../../manual_validation/outputs/001_strong_ai_engineer.json) |
-| E2 | Mixed-fit specialist | Exact vendor tech missing; related AWS + RAG exist; chatbot is a gap | [tests/fixtures/document_positioning/eval_jobs/02_csk_mixed_fit/](../../tests/fixtures/document_positioning/eval_jobs/02_csk_mixed_fit/) — opportunity `opp_01M0E6GQ9XQH9DK9N5T0MS67N0`. Live `data/opportunities/artifacts/…` is gitignored and is **not** the tracked freeze. |
+| E2 | Mixed-fit specialist | Exact vendor tech missing; related AWS + RAG exist; chatbot is a gap | [tests/fixtures/document_positioning/eval_jobs/02_csk_mixed_fit/](../../tests/fixtures/document_positioning/eval_jobs/02_csk_mixed_fit/) — opportunity `opp_01M0E6GQ9XQH9DK9N5T0MS67N0`. Includes M1 `job_analysis.json` (structured employer needs from the frozen posting). Live `data/opportunities/artifacts/…` is gitignored and is **not** the tracked freeze. |
 | E3 | AI infrastructure / platform stretch | G3 Maincode; honest stretch, no invented GPU employment | [manual_validation/jobs/012_maincode_ai_infrastructure_engineer.txt](../../manual_validation/jobs/012_maincode_ai_infrastructure_engineer.txt), [manual_validation/outputs/012_maincode_ai_infrastructure_engineer.json](../../manual_validation/outputs/012_maincode_ai_infrastructure_engineer.json) |
 | E4 | Adoption / enablement | G4 Repurpose AI Adoption Specialist; QA→DE→AI trajectory may be the strongest argument | [manual_validation/jobs/008_repurpose_it_ai_adoption_specialist.txt](../../manual_validation/jobs/008_repurpose_it_ai_adoption_specialist.txt), [manual_validation/outputs/008_repurpose_it_ai_adoption_specialist.json](../../manual_validation/outputs/008_repurpose_it_ai_adoption_specialist.json) |
 
@@ -199,8 +230,11 @@ Do not edit these advertisements to improve scores.
 
 ## 7. M5 evaluation protocol (frozen now)
 
-Do **not** generate A/B documents in M0–M4 as the release gate. Protocol is
-frozen so the goalposts cannot move after seeing outputs.
+M5 executable protocol, including the facts-vs-policy split:
+[document_positioning_m5_protocol.md](document_positioning_m5_protocol.md).
+M5 live generation is **blocked** on E1; see
+[document_positioning_m5_acceptance.md](document_positioning_m5_acceptance.md).
+Do not change the jobs, rubric, or ≥ 3/4 threshold after seeing outputs.
 
 For each of E1–E4:
 
@@ -226,23 +260,37 @@ Do not freeze generated prose as the Gold Standard.
 
 | Milestone | Intent | Status |
 |-----------|--------|--------|
-| M0 Audit / contract | Architecture trace, terminology, catalogue v1, eval freeze, tests | **This document — owner review** |
-| M1 PositioningPlan | Types + deterministic builder | Not started |
-| M2 Related-capability in planner | Production planner consumes catalogue | Not started |
-| M3 CV positioning | Pack + bounded LLM rewrite surface; Master chassis | Not started |
-| M4 Cover-letter positioning | Need coverage, trajectory modes, opening gate | Not started |
-| M5 Preference eval | Four-job A vs B | Not started |
+| M0 Audit / contract | Architecture trace, terminology, catalogue v1, eval freeze, tests | **Complete** |
+| M1 PositioningPlan | Types + deterministic builder | **Complete** |
+| M2 Related-capability in planner | Production planner consumes catalogue | **Complete** (owner approved 2026-08-20) |
+| M3 CV positioning | Pack + bounded LLM rewrite surface; Master chassis | **Complete** (owner approved 2026-08-20) |
+| M4 Cover-letter positioning | Need coverage, trajectory modes, opening gate | **Complete** (owner approved 2026-08-20) |
+| M5 Preference eval | Four-job A vs B | **Complete** (owner close-out: quality 4/4 frozen blind; Truth PASS on unchanged CIC replay through corrected FR-014; historical execution FAIL preserved; no fresh end-to-end rerun) |
 | M6 Production + Gamma | Wire prepare; docs; required Gamma-ready learning artefact | Not started |
 
-M1 acceptance tests (not implemented in M0): PositioningPlan builder on a
-**synthetic** specialist job asserts AWS promoted, Bedrock forbidden, RAG
-DIRECT, chatbot GAP; adoption job prefers `full_chapters` trajectory.
+M4 acceptance:
+[document_positioning_m4_acceptance.md](document_positioning_m4_acceptance.md).
+M4 does **not** wire PositioningPlan or either positioning composer into
+`cic package prepare`. Production packages still use Master-adapt with the
+generic Master summary, global `omit_methodology=True`, and the pre-M4
+bounded cover letter (`BoundedCoverLetterService` + tag/concern project
+selection).
+
+M3 acceptance:
+[document_positioning_m3_acceptance.md](document_positioning_m3_acceptance.md).
+
+M2 acceptance:
+[document_positioning_m2_acceptance.md](document_positioning_m2_acceptance.md).
+M1 tests remain in
+`tests/unit/document_positioning/test_positioning_plan.py` and
+`tests/unit/document_positioning/test_eval_jobs_m1.py`.
 
 ---
 
 ## 9. Explicitly out of scope until later milestones
 
-- Implementing PositioningPlan or wiring the catalogue into production
+- Wiring PositioningPlan into production `cic package prepare` (the catalogue
+  is already used by TailoringPlan planning; PositioningPlan itself stays unwired)
 - Regenerating CSK or any live application documents
 - SEEK / Playwright / AAS
 - CSK-specific aliases or prompts

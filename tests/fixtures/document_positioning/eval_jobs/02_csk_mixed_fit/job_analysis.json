@@ -1,0 +1,104 @@
+{
+  "posting": {
+    "raw_text": "CSK nexus is looking for an experienced\nAI Engineer\nto design, build, and scale next‑generation AI solutions on our\nAWS Bedrock\nplatform. This role is ideal for someone who has already delivered production‑grade chatbots, customer support agents, and agentic AI systems — and wants to push the boundaries of what enterprise automation can do.\nWhat You’ll Work On\nArchitect and build\nLLM‑powered applications\nusing AWS Bedrock (Claude, Llama, Titan, etc.)\nDevelop\nchatbots, conversational interfaces, and customer support agents\nwith real‑world reliability\nDesign\nagentic AI systems\ncapable of planning, tool use, and multi‑step workflows\nIntegrate diverse\nAPIs, data sources, and enterprise systems\ninto AI pipelines\nBuild secure, scalable\nAI microservices\nand automation frameworks\nImplement\nretrieval‑augmented generation (RAG)\n, orchestration, and evaluation pipelines\nWork closely with product, engineering, and operations teams to deliver AI features end‑to‑end\nWhat You Bring\nDeep experience building\nchatbots and conversational AI\n(LLMs, NLU, dialogue management)\nStrong hands‑on expertise with\nAWS Bedrock\n, including model selection, orchestration, and deployment\nProven ability to design\nagentic AI\nsystems (planning, tool‑use, multi‑agent workflows)\nStrong understanding of\nAPIs, data ingestion, and integration patterns\nExperience building\ncustomer support automation\n, virtual agents, or workflow bots\nSolid engineering fundamentals: Python, serverless architectures, CI/CD, security best practices\nAbility to translate business problems into scalable AI solutions\nIf you believe the above role matches your experience, then please do not hesitate to get in touch and APPLY NOW!",
+    "title": "Senior AI Engineer - AWS Bedrock | Agentic AI | Chatbots & Customer Support Auto",
+    "company": "CSK Nexus Pty Ltd",
+    "source_url": "https://www.seek.com.au/job/94018366"
+  },
+  "role_family": {
+    "family": "ai_engineering",
+    "evidence": [
+      {
+        "excerpt": "CSK nexus is looking for an experienced AI Engineer",
+        "section": "JobDescription"
+      }
+    ]
+  },
+  "seniority": {
+    "level": "senior",
+    "ambiguous": false,
+    "candidate_levels": [],
+    "evidence": [
+      {
+        "excerpt": "Senior AI Engineer - AWS Bedrock",
+        "section": "Job title"
+      }
+    ]
+  },
+  "technologies": [
+    {
+      "name": "AWS Bedrock",
+      "level": "required",
+      "evidence": [
+        {
+          "excerpt": "Strong hands-on expertise with AWS Bedrock, including model selection, orchestration, and deployment",
+          "section": "What You Bring"
+        }
+      ]
+    },
+    {
+      "name": "Python",
+      "level": "required",
+      "evidence": [
+        {
+          "excerpt": "Solid engineering fundamentals: Python, serverless architectures, CI/CD, security best practices",
+          "section": "What You Bring"
+        }
+      ]
+    },
+    {
+      "name": "RAG",
+      "level": "required",
+      "evidence": [
+        {
+          "excerpt": "Implement retrieval-augmented generation (RAG), orchestration, and evaluation pipelines",
+          "section": "What You’ll Work On"
+        }
+      ]
+    }
+  ],
+  "responsibilities": [
+    {
+      "description": "Implement retrieval-augmented generation (RAG), orchestration, and evaluation pipelines",
+      "evidence": [
+        {
+          "excerpt": "Implement retrieval-augmented generation (RAG), orchestration, and evaluation pipelines",
+          "section": "What You’ll Work On"
+        }
+      ]
+    },
+    {
+      "description": "Develop chatbots, conversational interfaces, and customer support agents with real-world reliability",
+      "evidence": [
+        {
+          "excerpt": "Develop chatbots, conversational interfaces, and customer support agents with real-world reliability",
+          "section": "What You’ll Work On"
+        }
+      ]
+    }
+  ],
+  "compensation": {
+    "clarity": "unstated"
+  },
+  "location": {
+    "clarity": "unstated"
+  },
+  "work_arrangement": {
+    "arrangement": "unspecified"
+  },
+  "employment": {},
+  "experience_requirements": [
+    {
+      "description": "Deep experience building chatbots and conversational AI",
+      "level": "required",
+      "minimum_years": null,
+      "maximum_years": null,
+      "evidence": [
+        {
+          "excerpt": "Deep experience building chatbots and conversational AI (LLMs, NLU, dialogue management)",
+          "section": "What You Bring"
+        }
+      ]
+    }
+  ]
+}

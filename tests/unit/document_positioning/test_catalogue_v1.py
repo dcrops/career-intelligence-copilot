@@ -127,3 +127,25 @@ def test_data_factory_alias_is_related_evidence_for_azure() -> None:
     assert result.status is SupportStatus.SUPPORTED_RELATED
     assert result.promotable_identity == "azure_data_factory"
     assert result.may_claim_requested is False
+
+
+def test_llm_application_development_is_direct_for_llm_requirement() -> None:
+    result = classify_requirement("LLM", ["LLM application development", "Python"])
+    assert result.status is SupportStatus.SUPPORTED_DIRECT
+    assert result.requested_identity == "llm"
+    assert result.may_claim_requested is True
+    assert result.promotable_profile_label == "LLM application development"
+
+
+def test_rag_does_not_shortcut_to_llm() -> None:
+    result = classify_requirement("LLM", ["Retrieval-Augmented Generation"])
+    assert result.status is SupportStatus.UNSUPPORTED
+    assert result.requested_identity == "llm"
+    assert result.may_claim_requested is False
+
+
+def test_microsoft_fabric_is_related_azure_evidence() -> None:
+    result = classify_requirement("Azure", ["Microsoft Fabric"])
+    assert result.status is SupportStatus.SUPPORTED_RELATED
+    assert result.promotable_identity == "microsoft_fabric"
+    assert result.may_claim_requested is False

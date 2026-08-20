@@ -10,6 +10,10 @@
 [document_quality_remediation.md](document_quality_remediation.md) § Truth
 Validation corrections. M4 freeze text below is unchanged.
 
+**Later detector corrections (2026-08-20):** see
+[fr014_truth_alignment.md](fr014_truth_alignment.md). Operational
+`VALIDATOR_VERSION = fr014-truth-alignment-2`. M4 freeze text below is unchanged.
+
 ---
 
 ## 1. Executive summary
