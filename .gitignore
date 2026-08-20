@@ -40,3 +40,4 @@ config/candidate_contact.yaml
 data/secrets/
 data/mailbox_intake/
 data/daily_runs/
+career-documents/cv/export/
