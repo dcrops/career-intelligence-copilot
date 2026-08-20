@@ -4,6 +4,559 @@ Records product strategy and engineering knowledge changes. Routine typo fixes a
 
 ---
 
+## Version 1.161
+
+### AAS-0.1 close-out pause (CSK Review live; question-resume open)
+
+**Date:** 2026-08-20.
+
+AAS-0.1 is **paused, not complete**. Latest live run
+`spikes/aas0/runs/20260820T030436Z` (CSK Nexus,
+`opp_01M0E6GQ9XQH9DK9N5T0MS67N0`) reused the already-saved expected CV,
+left `David Cropper - AI Engineer CV.pdf` as structural Default, uploaded
+the exact CSK cover letter, passed the Review exact-filename gate, and
+handed off without clicking Submit. The owner submitted; teardown observed
+`likely_submitted` via `/apply/success`.
+
+After documents Continue, the owner answered SEEK employer questions in the
+Playwright window. AAS then blocked on UNKNOWN / AMBIGUOUS APPLICATION
+QUESTION. `ask_question()` watches only `OWNER_ANSWER.json` /
+`OWNER_ANSWER.txt`; `OWNER_CONTINUE` and `OWNER_END_SESSION` do not resume
+that wait. SKIP was the existing workaround. There is still no “owner
+already handled this; resume from the current page” capability.
+
+No production-code change in this close-out slice. Do not launch SEEK from
+this documentation.
+
+See [spikes/application_assistance_aas0.md](spikes/application_assistance_aas0.md).
+
+---
+
+## Version 1.160
+
+### Document Positioning M0 — audit and contract freeze
+
+**Date:** 2026-08-20.
+
+Owner-authorised M0 of
+[eval/document_positioning_remediation.md](eval/document_positioning_remediation.md).
+Production `cic package prepare` behaviour is unchanged. No CSK regeneration.
+No SEEK / Playwright / AAS.
+
+M0 verified the Master-adapt production path (FR-006c bypassed; methodology
+globally omitted; cover-letter two-project cap and testing→DE→AI packing are
+designed). It froze PositioningPlan terminology, a small capability catalogue
+v1 (`career_intelligence.document_positioning`, unused in production), the
+four-job evaluation set, and the M5 A/B preference protocol. Catalogue tests
+cover RAG identity, AWS/Bedrock RELATED-never-claimable, chatbot UNSUPPORTED,
+Azure/ADF, and Java ≠ JavaScript.
+
+Truth is **not** inside prepare — that plan assumption is corrected in the
+M0 audit. Catalogue v1 is not a drop-in for `_RELATED_CAPABILITY_GROUPS`.
+
+See [eval/document_positioning_m0_audit.md](eval/document_positioning_m0_audit.md)
+and [eval/document_positioning_m0_learning.md](eval/document_positioning_m0_learning.md).
+Owner review is required before M1.
+
+---
+
+## Version 1.159
+
+### AAS-0.1 committed-Default checkbox lock (spike)
+
+**Date:** 2026-08-20.
+
+Live run `spikes/aas0/runs/20260820T021350Z` reused the already-saved CSK CV
+(no Upload). That résumé was already structural Default, so SEEK showed
+**Make this my default résumé** checked **and disabled**. AAS still called
+`uncheck()`, Playwright timed out (`element is not enabled`), and settle
+polling ran ~15s. Hatch `20260819T112309Z` remains a different lifecycle:
+after a **new** upload the same checkbox is checked **and enabled**, and
+uncheck asynchronously restores the previous Default.
+
+AAS now discriminates those states. Checked + disabled + selected filename
+equals structural Default → `structural_default_checkbox_locked`, immediate
+STOP, no `uncheck()`, no settle wait, no Default transfer. Checked + enabled
+keeps the existing new-upload uncheck + settle path. Review exact-filename
+and no-Submit gates are unchanged. No live SEEK/Playwright run in this slice.
+
+See [spikes/application_assistance_aas0.md](spikes/application_assistance_aas0.md).
+
+---
+
+## Version 1.158
+
+### AAS-0.1 résumé capacity / existing-CV reuse (spike)
+
+**Date:** 2026-08-20.
+
+Production validation `spikes/aas0/runs/20260820T012418Z` did **not** disprove
+the controlled filechooser interaction (`20260820T004048Z`). That experiment
+changed SEEK account state (9 → 10 saved résumés; expected CSK CV present and
+structural Default). Production then clicked Upload against a full library
+while the exact expected CV already existed. SEEK showed **Résumé limit
+reached** and emitted no filechooser; AAS misclassified that as
+`no_filechooser_event`.
+
+AAS now inspects the saved library first: if the exact expected CV filename is
+already present, it selects that row, records `existing_expected_cv_reused`,
+and does not Upload, wait for filechooser, or rotate. Upload observation now
+accepts either a filechooser event or an explicit capacity UI
+(`resume_capacity_blocked`, including “Résumé limit reached”). Neither within
+the bounded wait remains `no_filechooser_event`. Rotation still runs only when
+the expected CV is absent, capacity/upload failure is proven, and one safe
+oldest non-Default delete is allowed. Continue still refuses when the expected
+application CV is also the structural Default; automation does not restore
+Default by selecting another résumé. Cover letter, Review exact-filename, and
+no-Submit gates are unchanged. No live SEEK/Playwright run in this slice.
+
+See [spikes/application_assistance_aas0.md](spikes/application_assistance_aas0.md).
+
+---
+
+## Version 1.157
+
+### AAS-0.1 résumé Upload filechooser (spike)
+
+**Date:** 2026-08-20.
+
+Controlled CSK experiment `spikes/aas0/runs/20260820T004048Z` proved that
+direct hidden-input `set_input_files` on `#resume-fileFile` is not equivalent
+to SEEK's visible résumé Upload interaction. Playwright can return
+successfully while the Upload control stays spinning and the expected CV never
+appears. Production AAS résumé upload now clicks the visible Upload control
+associated with `#resume-fileFile` and uses Playwright `expect_file_chooser`
+/ `chooser.set_files`. There is no silent hidden-input fallback. SEEK still
+auto-checks **Make this my default résumé** after a successful new upload;
+existing uncheck + settle restores the pre-upload structural Default. Cover
+letter upload is unchanged (radio + hidden input). Rotation/retry counts are
+unchanged except that retry uses the same filechooser path. AAS still requires
+one clean live validation. Do not launch SEEK from this documentation. No new
+FR.
+
+Learning item for the upcoming close-out (not a full close-out): browser
+automation must reproduce the application's semantic interaction sequence, not
+merely manipulate equivalent-looking DOM state.
+
+See [spikes/application_assistance_aas0.md](spikes/application_assistance_aas0.md).
+
+---
+
+## Version 1.156
+
+### Windows external-export absolute path budget
+
+**Date:** 2026-08-20.
+
+CSK Nexus package prepare
+(`opp_01M0E6GQ9XQH9DK9N5T0MS67N0`) proved that a legal employer-facing
+filename can still fail on Windows when the **absolute** destination plus
+atomic `.pdf.tmp` exceeds classic MAX_PATH. The export-directory prefix was
+130 characters; Cover Letter dest was 262 and `.tmp` was 266. The previous
+180-character **filename-component** cap was insufficient because it ignored
+packages-root prefix, opportunity-id directory, `export/`, destination
+suffix, and `.tmp`.
+
+External upload naming now budgets resolved `export_dir / filename` **and**
+`dest.with_suffix(dest.suffix + ".tmp")` against a conservative 240-character
+limit. Canonical opportunity company/title are unchanged internally.
+Employer-facing names prefer the leading role segment before marketing
+delimiters such as `|`, then shorten role, then employer, then truncate with
+a short uniqueness hash only if required. CV and Cover Letter share one
+fitted identity basis. Short names that already fit (Hatch, Repurpose) stay
+unchanged. Re-materialisation removes leftover previous-policy export PDFs
+in the same package `export/` directory.
+
+No new FR. Do not enable Windows long-path support.
+
+See [spikes/aas0/NOTES_EXTERNAL_FILENAMES.md](../spikes/aas0/NOTES_EXTERNAL_FILENAMES.md).
+
+---
+
+## Version 1.155
+
+### AAS-0.1 documents verification after navigation (spike)
+
+**Date:** 2026-08-19.
+
+Hatch live run `20260819T114421Z` attached the exact Hatch CV and cover
+letter, selected Hatch, left Default on the AI Engineer CV, and Continue
+advanced to Answer employer questions. AAS then re-entered résumé
+verification because completed stepper text still said `Choose documents`
+while résumé radios were gone, misread `selected=None` as
+`expected_cv_not_present`, and STOPped. The owner finished the application
+and SEEK showed the application had been sent. Documents verification is
+now limited to real Choose Documents controls plus a documents-complete
+latch after verified Continue-advanced. Empty later-page snapshots are not
+upload failure. Final Review exact-filename gate is unchanged. Owner-session
+teardown now observes submission success. AAS is not complete until one
+clean live run. Do not launch SEEK from this documentation.
+
+See [spikes/application_assistance_aas0.md](spikes/application_assistance_aas0.md).
+
+---
+
+## Version 1.154
+
+### AAS-0.1 Default-checkbox settle wait (spike)
+
+**Date:** 2026-08-19.
+
+Hatch live diagnostic `20260819T112309Z` proved Playwright
+`Locator.uncheck()` can throw `Clicking the checkbox did not change its
+state` while SEEK is still processing: the checkbox is briefly checked and
+disabled, then becomes unchecked and the pre-upload structural Default
+(`David Cropper - AI Engineer CV.pdf` in that run) is restored, with the
+Hatch application CV remaining selected. The Default guard now polls
+checkbox + structural Default after uncheck returns or throws (bounded
+~400ms / ~15s). Success requires both unchecked and the original Default
+restored. Temporary disabled is processing evidence. The exception is
+diagnostic only. No automatic restore. AAS is not complete; live
+confirmation is still required. Do not launch SEEK from this documentation.
+
+See [spikes/application_assistance_aas0.md](spikes/application_assistance_aas0.md).
+
+---
+
+## Version 1.153
+
+### AAS-0.1 résumé upload / retry diagnostic dump (spike)
+
+**Date:** 2026-08-19.
+
+Hatch live run `20260819T110646Z` proved bounded rotation: one oldest
+non-Default delete succeeded and Default stayed
+`David Cropper - AI Engineer CV.pdf`. The expected Hatch CV never appeared
+on first upload or retry (`retry_outcome=expected_cv_not_present`); the
+cover letter did upload. Root cause is unproven because `set_input_files`
+success/skip/throw was not persisted. The spike now writes read-only
+`upload_observation.json` for first + retry upload/wait stages (no selector,
+timing, spinner, retry, or Default-policy change). Next: one instrumented
+Hatch live retest after the open session is ended. Do not launch SEEK from
+this documentation.
+
+See [spikes/application_assistance_aas0.md](spikes/application_assistance_aas0.md).
+
+---
+
+## Version 1.152
+
+### AAS-0.1 Default-checkbox diagnostic dump (spike)
+
+**Date:** 2026-08-19.
+
+Live Global 360 run `20260819T102039Z` stopped
+`default_checkbox_remained_checked` while the visible “Make this my default
+résumé” control looked unchecked, and the structural Default badge had moved
+from `David Cropper - AI Engineer CV.pdf` to the Global 360 CV. The spike now
+writes read-only `default_checkbox_observation.json` across upload / uncheck /
+Default-badge stages (no selector, wait, restore, or STOP-policy change).
+Next: end the open session, then one instrumented Global 360 retest. Do not
+launch SEEK from this documentation.
+
+See [spikes/application_assistance_aas0.md](spikes/application_assistance_aas0.md).
+
+---
+
+## Version 1.151
+
+### AAS-0.1 bounded post-delete inventory wait (spike)
+
+**Date:** 2026-08-19.
+
+Live Global 360 run `20260819T100739Z` clicked the observed confirmation
+Delete successfully; SEEK removed the chosen résumé, but AAS stopped on
+`deleted_filename_count_unexpected` before the saved-résumé list finished
+updating. Post-delete verification now polls boundedly until count −1,
+chosen row gone, remaining rows match, and Default is unchanged — or STOP
+on timeout / Default change / wrong row. One-delete / one-retry is
+unchanged. Next: immediate Global 360 live retest. Do not launch SEEK from
+this documentation.
+
+See [spikes/application_assistance_aas0.md](spikes/application_assistance_aas0.md).
+
+---
+
+## Version 1.150
+
+### AAS-0.1 SEEK confirmation action-name normalisation (spike)
+
+**Date:** 2026-08-19.
+
+Instrumented Global 360 run `20260819T095559Z` proved the remaining
+mismatch: Delete is exposed as U+2060 WORD JOINER + `Delete`, and the
+top-right X accessible name is `Dismiss` (not `Close`). Confirmation action
+names are now normalised (Unicode format characters stripped, whitespace
+trimmed) before Delete/Cancel/allow-list comparison. Allowed non-clicked
+controls: Cancel, Dismiss, Close. Rotation, Default, oldest selection, and
+one-retry policy are unchanged. Next: immediate Global 360 live retest. Do
+not launch SEEK from this documentation.
+
+See [spikes/application_assistance_aas0.md](spikes/application_assistance_aas0.md).
+
+---
+
+## Version 1.149
+
+### AAS-0.1 delete-confirmation observation dump (spike)
+
+**Date:** 2026-08-19.
+
+Live Global 360 run `20260819T094223Z` again stopped
+`resume_delete_confirmation_unobserved` after the Close/X allow-list. The
+confirmation observation was never persisted, so the failing planner branch
+could not be proven. The spike now writes read-only
+`delete_confirmation_observation.json` during deletion observe/plan (no click
+change). Detector policy is unchanged. Next: end the open session, then one
+instrumented Global 360 retest. Do not launch SEEK from this documentation.
+
+See [spikes/application_assistance_aas0.md](spikes/application_assistance_aas0.md).
+
+---
+
+## Version 1.148
+
+### AAS-0.1 SEEK delete confirmation allows Close/X (spike)
+
+**Date:** 2026-08-19.
+
+Live Global 360 run `20260819T092325Z` found the delete-confirmation dialog
+then stopped `resume_delete_confirmation_unobserved` because the Braid modal
+includes a top-right Close/X in addition to Delete and Cancel. Confirmation
+planning now allows Close and Cancel as non-clicked controls; Delete is
+identified by dialog-scoped accessible name (`get_by_role(..., name="Delete",
+exact=True)`). Unknown extra actions, extra dialogs, extra Delete controls,
+and filename mismatches still STOP. Rotation, Default, oldest selection, and
+one-retry policy are unchanged. Next: controlled Global 360 retest. Do not
+launch SEEK from this documentation.
+
+See [spikes/application_assistance_aas0.md](spikes/application_assistance_aas0.md).
+
+---
+
+## Version 1.147
+
+### AAS-0.1 observed SEEK résumé Delete confirmation (spike)
+
+**Date:** 2026-08-19.
+
+Live Global 360 run `20260819T091149Z` stopped on
+`resume_delete_confirmation_unobserved`. The dialog is now observed:
+“Are you sure you want to delete this document?” plus the candidate
+filename, with Delete and Cancel. AAS clicks only the single dialog
+Delete after filename/prompt checks. Cancel and page-level Delete are
+never clicked. Rotation, Default, oldest selection, and one-retry policy
+are unchanged. Next: controlled Global 360 retest. Do not launch SEEK
+from this documentation.
+
+See [spikes/application_assistance_aas0.md](spikes/application_assistance_aas0.md).
+
+---
+
+## Version 1.146
+
+### AAS-0.1 offline whole-flow integration coverage (spike)
+
+**Date:** 2026-08-19.
+
+Added an offline integration harness that sequences current AAS helpers from
+blocked CV upload through bounded rotation, Review document handoff, owner
+success observation, and metrics serialisation. Cover-letter inventory
+exclusion, Default protection, one-delete / one-retry, and no Submit are
+unchanged. This does not replace live SEEK validation. Next: one controlled
+Global 360 retest. Do not launch SEEK from this documentation.
+
+See [spikes/application_assistance_aas0.md](spikes/application_assistance_aas0.md).
+
+---
+
+## Version 1.145
+
+### AAS-0.1 SpikeMetrics review_document_reason runtime fix (spike)
+
+**Date:** 2026-08-19.
+
+Fresh Global 360 retest stopped at OWNER_ATTENTION after
+`SpikeMetrics.to_dict()` raised `AttributeError: review_document_reason`.
+The Review-document gate already wrote and serialised that field, but the
+dataclass never declared it. Field added; lifecycle serialisation now matches
+declared metrics. Owner-attention copy no longer hard-codes Repurpose It.
+Do not launch SEEK from this documentation.
+
+See [spikes/application_assistance_aas0.md](spikes/application_assistance_aas0.md).
+
+---
+
+## Version 1.144
+
+### AAS-0.1 résumé rotation inventory scoped to saved CVs (spike)
+
+**Date:** 2026-08-19.
+
+Live Global 360 run `20260819T083640Z` stopped on `overflow_not_found_on_row`
+after selecting `David Cropper - Global 360 - AI Engineer - Applied - Cover
+Letter.pdf` as the rotation candidate. That file is not a saved SEEK résumé.
+Rotation inventory now includes only saved-résumé radio rows: cover-letter
+PDFs, cover-letter method radios, “Don't include a résumé”, and upload
+controls are excluded. Default protection, oldest non-Default selection, one
+delete / one retry, and no Submit are unchanged. Next: controlled Global 360
+retest. Do not launch SEEK from this documentation.
+
+See [spikes/application_assistance_aas0.md](spikes/application_assistance_aas0.md).
+
+---
+
+## Version 1.143
+
+### AAS-0.1 mixed-age résumé rotation fallback (spike)
+
+**Date:** 2026-08-19.
+
+Live Global 360 run `20260819T082816Z` stopped on `oldest_age_order_ambiguous`
+because some SEEK résumé rows lacked parseable `Added … ago` text. Mixed age
+metadata is no longer fatal. Age is used only when every eligible non-Default
+row has it; otherwise AAS uses newest-first list order and deletes the last
+eligible non-Default row. Default protection, one-delete / one-retry, and
+row-scoped Delete are unchanged. Next: controlled Global 360 retest.
+
+See [spikes/application_assistance_aas0.md](spikes/application_assistance_aas0.md).
+
+---
+
+## Version 1.142
+
+### AAS-0.1 SEEK résumé rotation: Default vs disposable (spike)
+
+**Date:** 2026-08-19.
+
+Owner policy: the SEEK **Default** résumé is protected; every other saved
+résumé is a disposable tailored application CV. Filename and CIC provenance
+no longer decide deletability. After a concrete upload/capacity failure, AAS
+deletes **one** oldest non-Default row (parsed `Added … ago` when complete;
+otherwise last eligible row in newest-first list), then retries the expected
+CV once. Duplicate filenames are separate rows. Confirmation dialogs remain
+unobserved (stop, do not click). No bulk cleanup, no Default restore, no
+Submit. AAS is not complete until live-retested.
+
+See [spikes/application_assistance_aas0.md](spikes/application_assistance_aas0.md).
+
+---
+
+## Version 1.141
+
+### AAS-0.1 observed SEEK résumé Delete (spike)
+
+**Date:** 2026-08-19.
+
+Owner opened a saved-résumé three-dot menu. Visible actions: **Download** and
+**Delete**. AAS now opens the **candidate row's** overflow and clicks exact
+`Delete` after a concrete upload/capacity failure. Ownership is unchanged:
+only a non-Default legacy `opp_<ULID>.pdf` (oldest safe eligible row).
+Human-readable names remain ambiguous.
+
+Confirmation dialogs are still unobserved: if a dialog appears after Delete,
+AAS STOPS (`resume_delete_confirmation_unobserved`) without clicking Yes /
+Confirm / Delete / Remove. Verified deletion (candidate gone, other rows
+remain, Default unchanged and observable) is followed by **one** expected-CV
+upload retry. No second deletion. No Submit. AAS is not complete until a
+controlled live retest.
+
+See [spikes/application_assistance_aas0.md](spikes/application_assistance_aas0.md).
+
+---
+
+## Version 1.140
+
+### AAS-0.1 SEEK résumé capacity / bounded rotation (spike)
+
+**Date:** 2026-08-19.
+
+Novigi (`20260819T064132Z`) and Global 360 (`20260819T073606Z`) both showed the
+same pattern: expected export CV did not appear, Upload stayed busy, a previous
+opportunity CV stayed selected. Wrong-CV fail-open is already closed. Capacity /
+retained-résumé lifecycle is now treated as operationally proven enough to
+justify **bounded** rotation policy.
+
+Automatic deletion remains allowed only for non-Default legacy `opp_<ULID>.pdf`.
+Protected Default (`David Cropper - AI Engineer CV.pdf` when structurally
+Default) and ambiguous human-readable names are never auto-deleted. One
+candidate, one verified deletion, one upload retry, then fail closed. No bulk
+cleanup, no Default restore, no autonomous Submit.
+
+Preserved screenshots show a per-row overflow kebab; **Delete/Remove labels and
+confirmation dialogs were never captured**. AAS therefore inventories and names
+the legal candidate, then **refuses the delete click** (`seek_delete_menu_unobserved`)
+and leaves the browser open. Live auto-delete is not implemented. AAS is not
+complete until live-retested after that evidence exists (or after a manual
+single `opp_*.pdf` deletion).
+
+See [spikes/application_assistance_aas0.md](spikes/application_assistance_aas0.md).
+
+---
+
+## Version 1.139
+
+### AAS-0.1 wrong-CV fail-closed gates (spike)
+
+**Date:** 2026-08-19.
+
+After Novigi live run `20260819T064132Z`: AAS reached Review with a previous
+opportunity CV still selected (Repurpose) while the Novigi cover letter was
+correct. Application was not submitted.
+
+AAS now fail-closes unless the expected export CV filename is a visible
+selected résumé row (bounded wait; spinner remaining → stop). Continue
+requires that selection plus cover-letter readiness. Owner handoff requires
+both expected CV and cover-letter filenames on the SEEK Review page. Default
+protection remains a separate invariant. No deletion, no Default restore, no
+live SEEK retest in this slice.
+
+See [spikes/application_assistance_aas0.md](spikes/application_assistance_aas0.md).
+
+---
+
+## Version 1.138
+
+### AAS-0.1 live-validation corrections (spike)
+
+**Date:** 2026-08-19.
+
+After controlled SEEK run `20260819T042502Z` (owner Submit succeeded). Not a
+new FR. Not live-retested.
+
+Default badge is read from the résumé row container. A Default checkbox that
+stays checked after uncheck **stops** the run (no auto-restore). Submission
+observation accepts `/apply/success` and `application has been sent`. Final
+review handoff requires `Submit application` and ignores stepper-only
+`Review and submit`. Owner still restores the recruiter-discovery Default
+manually after Submit. Next step: one confirmation run.
+
+See [spikes/application_assistance_aas0.md](spikes/application_assistance_aas0.md).
+
+---
+
+## Version 1.137
+
+### AAS-0.1 Application Assistance hardening (spike)
+
+**Date:** 2026-08-19.
+
+Bounded continuation of the AAS-0 Playwright spike. Not a new FR. Not live
+SEEK-validated. Document quality remediation remains closed.
+
+AAS now fail-closes if it would upload an internal `opp_<ULID>.pdf`; it must
+use package `export/` human-readable PDFs. SEEK account Default is observed
+via the structural Default badge (not a hard-coded filename), the Default
+checkbox is never ticked, and automation stops if Default changes after
+upload — without speculative restore. Legacy `opp_<ULID>.pdf` names are the
+only automatically CIC-owned cleanup candidates; live deletion is not
+implemented. Capacity → stop and report. Review-stage owner handoff and the
+no-Submit rule are unchanged.
+
+See [spikes/application_assistance_aas0.md](spikes/application_assistance_aas0.md).
+
+---
+
 ## Version 1.136
 
 ### Document Quality Remediation — close-out

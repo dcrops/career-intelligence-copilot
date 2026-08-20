@@ -12,6 +12,10 @@ AAS-0 Playwright spike
 Do not restart browser automation from scratch. Do not prioritise Indeed
 ingestion ahead of that continuation.
 
+A follow-on **Document Positioning** programme is in M0 owner review and does
+not reopen this close-out:
+[document_positioning_remediation.md](document_positioning_remediation.md).
+
 ---
 
 ## 1. Problem that triggered remediation
@@ -169,6 +173,11 @@ Accepted convention:
 
 `David Cropper - REPURPOSE IT PL - AI Engineer - CV.pdf`  
 `David Cropper - REPURPOSE IT PL - AI Engineer - Cover Letter.pdf`
+
+Windows export copies also budget the absolute destination and atomic
+`.pdf.tmp` path (conservative 240 characters). Filename-component caps alone
+are not sufficient. Canonical opportunity titles are unchanged; short names
+that already fit stay unchanged.
 
 ---
 

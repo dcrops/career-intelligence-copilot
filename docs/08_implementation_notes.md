@@ -1099,6 +1099,15 @@ cover letter MINOR EDIT accepted (Truth PASS). External-use ALLOWED;
 `owner_review_required=True`. Close-out:
 [eval/document_quality_remediation.md](eval/document_quality_remediation.md).
 
+**Follow-on (2026-08-20):** Document Positioning M0 audit is complete and
+pending owner review before M1. The production path above is **unchanged**.
+M0 added an unused capability catalogue under
+`career_intelligence.document_positioning` and froze a four-job evaluation
+protocol. It did not wire PositioningPlan, regenerate documents, or alter
+`cic package prepare`. Programme:
+[eval/document_positioning_remediation.md](eval/document_positioning_remediation.md);
+audit: [eval/document_positioning_m0_audit.md](eval/document_positioning_m0_audit.md).
+
 **Owner-edit lifecycle:** generated Markdown SHA-256 fingerprints; ordinary
 prepare preserves prose when the file differs from the fingerprint or no
 fingerprint exists; `--regenerate` is the deliberate overwrite. Public CLI has
@@ -1681,9 +1690,36 @@ cannot be cancelled (already failed).
 
 ### Sequencing (remaining)
 
-1. **Application Assistance** — immediate next engineering, resuming from AAS-0
+1. **Application Assistance** — AAS-0.1 **paused, not complete**
    ([spikes/application_assistance_aas0.md](spikes/application_assistance_aas0.md)).
-   Do not restart Playwright from scratch. Do not prioritise Indeed ahead of AAS.
+   AAS-0.1 live run 20260819T064132Z reached SEEK Review with a previous
+   opportunity CV still selected (cover letter correct; not submitted).
+   Fail-closed gates now require the expected export CV to be the selected
+   résumé row and both expected filenames on Review before owner handoff.
+   Production résumé upload uses visible Upload + Playwright filechooser
+   (CSK experiment `20260820T004048Z`); hidden-input injection is not the
+   résumé path. If the exact expected CV is already saved, AAS reuses it
+   (no Upload). SEEK **Résumé limit reached** is `resume_capacity_blocked`,
+   not a filechooser failure (`20260820T012418Z` was a changed-account
+   precondition, not a disproof of filechooser). Cover letter remains radio
+   + hidden input.
+   Novigi and Global 360 live runs showed expected-CV upload blocked while a
+   previous CV stayed selected. Bounded rotation deletes one oldest
+   non-Default SEEK résumé (Default badge protected; all other saved CVs
+   disposable) via row overflow **Delete** after proven upload failure when
+   the expected CV is absent. Confirmation Delete is observed and clicked;
+   Cancel / Dismiss / Close are never clicked.
+   No Default restore by selecting another résumé. A checked **and disabled**
+   Default checkbox on the selected résumé is a committed Default
+   (`structural_default_checkbox_locked`); do not `uncheck()`. Enabled
+   auto-check after a new upload still uses uncheck + settle (Hatch).
+   Manual Default restore after Submit remains owner duty.
+   CSK `20260820T030436Z` reached Review with the exact export CV and cover
+   letter; the owner submitted; AAS never clicked Submit. Employer-question
+   owner-resume (`OWNER_ANSWER` only; no resume-from-current-page) remains
+   **open**. AAS-0.1 is **paused, not complete**.
+   Do not launch SEEK from this documentation. Do not restart Playwright from
+   scratch. Do not prioritise Indeed ahead of AAS.
 2. **FR-019 Core Loop Operationalisation** — remains in progress (M0 GO; M1 GO
    proposed with M1.1; M2 not started) —
    [eval/fr019_core_loop_operationalisation.md](eval/fr019_core_loop_operationalisation.md).
@@ -2296,6 +2332,12 @@ Preparation Orchestration (M0 complete; submission is **FR-012**).
 | Opportunity evidence (FR-002–FR-005) remains immutable | Held |
 | Manifest-only persistence; replace-on-regenerate; no versioning | Held |
 | No orchestration / PipelineStatus / submission changes | Held |
+
+Employer-facing `export/` PDF names are a packaging concern (not a new FR).
+A 180-character filename cap is not enough on Windows: the CSK Nexus prepare
+failed because Cover Letter dest + `.pdf.tmp` exceeded classic MAX_PATH.
+Naming now fits dest and `.tmp` to 240 characters; canonical company/title
+are unchanged; short names that already fit are unchanged.
 
 ---
 

@@ -36,7 +36,7 @@ Objectives.
 |----------|--------|
 | What is this project? | Decision-support for job search (Horizon 1), evolving toward a Career Intelligence Platform (Horizon 2). |
 | What has been completed? | **Phase 1** and **Phase 2** — see [12_phase_history.md](12_phase_history.md) and [eval/phase2_release_report.md](eval/phase2_release_report.md). |
-| What is next? | **Application Assistance**, resuming from AAS-0 ([spikes/application_assistance_aas0.md](spikes/application_assistance_aas0.md)). Document quality remediation is **complete** ([eval/document_quality_remediation.md](eval/document_quality_remediation.md)). **FR-019** remains in progress (M0 GO; M1 ready). Do not prioritise Indeed ahead of AAS. — [10_roadmap.md](10_roadmap.md). |
+| What is next? | **AAS-0.1 paused, not complete** ([spikes/application_assistance_aas0.md](spikes/application_assistance_aas0.md)); employer-question owner-resume open. Document Positioning M0 pending owner review. **FR-019** remains in progress (M0 GO; M1 ready). Do not prioritise Indeed ahead of AAS. — [10_roadmap.md](10_roadmap.md). |
 | Where should I start reading? | This guide → [AGENTS.md](../AGENTS.md) → [04_functional_specification.md](04_functional_specification.md) → [10_roadmap.md](10_roadmap.md). |
 
 ---
@@ -70,8 +70,12 @@ milestones [M0](eval/fr012_m0_submission_contracts.md),
 
 **Document Quality Remediation:** **COMPLETE**
 ([eval/document_quality_remediation.md](eval/document_quality_remediation.md)).
-**Next engineering work:** Application Assistance from AAS-0
+**Document Positioning:** M0 audit complete, pending owner review before M1
+([eval/document_positioning_remediation.md](eval/document_positioning_remediation.md)).
+Production document path is unchanged.
+**Next engineering work:** AAS-0.1 **paused, not complete**
 ([spikes/application_assistance_aas0.md](spikes/application_assistance_aas0.md)).
+Document Positioning M0 pending owner review before M1.
 
 **FR-019 Core Loop Operationalisation** remains in progress (M0 Accepted / GO;
 M1 ready —
@@ -134,6 +138,8 @@ candidate capability). Release evidence:
 | [eval/fr006b_cv_quality_golden_suite.md](eval/fr006b_cv_quality_golden_suite.md) | Supporting | FR-006b permanent CV quality benchmarks |
 | [eval/fr006b_cv_quality_findings.md](eval/fr006b_cv_quality_findings.md) | Supporting | FR-006b quality review (pre-implementation) |
 | [eval/fr006b_cv_quality_validation.md](eval/fr006b_cv_quality_validation.md) | Supporting | FR-006b P0 implementation + G1–G5 results |
+| [eval/document_positioning_remediation.md](eval/document_positioning_remediation.md) | Supporting | Document Positioning programme (M0 freeze; not complete) |
+| [eval/document_positioning_m0_audit.md](eval/document_positioning_m0_audit.md) | Supporting | M0 architecture trace and root-cause classifications |
 | [eval/fr002_openai_manual_eval.md](eval/fr002_openai_manual_eval.md) | Supporting | FR-002 live eval record |
 | [eval/fr003_openai_manual_eval.md](eval/fr003_openai_manual_eval.md) | Supporting | FR-003 live eval record |
 | [01_executive_summary.md](01_executive_summary.md) | Supporting | Quick narrative overview |

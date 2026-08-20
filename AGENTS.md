@@ -63,10 +63,13 @@ Truth Validation is **complete and frozen** —
 milestones [M0](docs/eval/fr014_m0_engineering_spike.md)–[M4](docs/eval/fr014_m4_claim_validation.md);
 [ADR-006](docs/adr/006_recruiter_document_truth_validation.md). **Document Quality Remediation is COMPLETE**
 ([docs/eval/document_quality_remediation.md](docs/eval/document_quality_remediation.md)).
-**Next engineering work:** Application Assistance, resuming from AAS-0
+**Next engineering work:** AAS-0.1 is **paused, not complete** after the
+20 Aug 2026 CSK close-out
 ([docs/spikes/application_assistance_aas0.md](docs/spikes/application_assistance_aas0.md));
-do not restart Playwright from scratch; do not prioritise Indeed ingestion
-ahead of AAS. **FR-019 Core Loop Operationalisation** remains in progress (M0
+employer-question owner-resume remains open. Do not restart Playwright from
+scratch; do not prioritise Indeed ingestion ahead of AAS. **Document
+Positioning** M0 is pending owner review before M1
+([docs/eval/document_positioning_remediation.md](docs/eval/document_positioning_remediation.md)). **FR-019 Core Loop Operationalisation** remains in progress (M0
 Accepted / GO; M1 GO proposed with M1.1 —
 [docs/eval/fr019_core_loop_operationalisation.md](docs/eval/fr019_core_loop_operationalisation.md);
 [M1](docs/eval/fr019_m1_mailbox_intake.md);
@@ -102,8 +105,8 @@ service boundary are recorded in
 [ADR-001](docs/adr/001_python_yaml_profile_foundation.md).
 
 **Immediate priority (Horizon 1):** Help the repository owner secure a suitable AI Engineering role sooner while reducing job-search effort. Horizon 1 wins when objectives conflict. See [docs/03_product_vision.md](docs/03_product_vision.md).
-Document quality remediation is complete; next engineering work is Application
-Assistance from AAS-0.
+Document quality remediation is complete. AAS-0.1 is **paused, not complete**
+(CSK Review live-proven; employer-question owner-resume open).
 
 **Single-user phase:** The repository owner is the user, builder, and product owner.
 
@@ -138,9 +141,10 @@ Bounded Agentic Workflow is **complete and frozen**
 (learning proof only). **FR-017** is **complete and frozen**
 ([docs/eval/fr017_agent_evaluation_observability.md](docs/eval/fr017_agent_evaluation_observability.md);
 [ADR-009](docs/adr/009_orchestration_evaluation_substrate.md)).
-Document quality remediation is **complete**. Immediate next engineering:
-Application Assistance from AAS-0 (do not restart Playwright; do not prioritise
-Indeed). **FR-019 Core Loop Operationalisation** remains in progress (M0 GO; M1
+Document quality remediation is **complete**. AAS-0.1 is **paused, not
+complete** (CSK Review live-proven; question-resume open; do not restart
+Playwright; do not prioritise Indeed). **Document Positioning** M0 is
+pending owner review before M1. **FR-019 Core Loop Operationalisation** remains in progress (M0 GO; M1
 GO proposed with M1.1; M2 not started). After FR-019 acceptance: Submission
 Automation investigation, then **FR-020 Recruiter Intelligence** (deferred).
 **FR-018** is **complete and frozen**

@@ -1138,7 +1138,7 @@ Thin `cic package` adapter over `ApplicationPackageService` (no new business rul
 
 | Command | Behaviour |
 |---------|-----------|
-| `cic package prepare <opp_id> --approve` | Prepare/regenerate; `--approve` sets FR-006/FR-007 gates explicitly. CV uses Master-CV adaptation (no LLM rewrite); cover letter uses one bounded LLM composition call. Ordinary prepare preserves owner-edited Markdown via generated-content fingerprints; `--regenerate` overwrites both documents deliberately. There is no document-specific `--regenerate-cv` CLI flag (usability limitation, not a current build priority). |
+| `cic package prepare <opp_id> --approve` | Prepare/regenerate; `--approve` sets FR-006/FR-007 gates explicitly. CV uses Master-CV adaptation (no LLM rewrite); cover letter uses one bounded LLM composition call. Ordinary prepare preserves owner-edited Markdown via generated-content fingerprints; `--regenerate` overwrites both documents deliberately. There is no document-specific `--regenerate-cv` CLI flag (usability limitation, not a current build priority). Document Positioning M0 audited this path and did not change it ([eval/document_positioning_remediation.md](eval/document_positioning_remediation.md)). |
 | `cic package show <opp_id>` | Display current package (optional `--yaml`, `--no-verify`) |
 | `cic package verify <opp_id>` | Fail closed if manifest or drafts are missing/incomplete |
 
@@ -1160,8 +1160,10 @@ Optional: `--override-material-benefit`, `--dir`, `--packages-dir`, `--profile`,
 Production packages also materialize human-readable external upload copies under
 `data/application_packages/<id>/export/` (for example
 `David Cropper - REPURPOSE IT PL - AI Engineer - CV.pdf`). Authoritative drafts
-keep opportunity-oriented filenames. Filename responsibility is packaging/export,
-not Playwright. Accepted production document path:
+keep opportunity-oriented filenames. External names budget the Windows absolute
+destination and atomic `.tmp` path; canonical titles stay on the package
+evidence. Filename responsibility is packaging/export, not Playwright. Accepted
+production document path:
 [eval/document_quality_remediation.md](eval/document_quality_remediation.md).
 
 ### Out of scope for FR-010 (frozen)
@@ -1769,9 +1771,11 @@ assisted/manual submission remains. After acceptance, next core-loop
 investigation is Submission Automation & Channel Adapters (before Recruiter
 Intelligence).
 
-**Immediate next engineering (owner-sequenced, 2026-08-13):** Application
-Assistance, resuming from AAS-0. Do not prioritise Indeed ingestion ahead of
-that continuation. Document quality remediation is complete.
+**Immediate next engineering (owner-sequenced, 2026-08-13; AAS-0.1 paused
+2026-08-20):** Application Assistance remains incomplete (employer-question
+owner-resume open). Do not prioritise Indeed ingestion ahead of AAS
+continuation. Document quality remediation is complete. Document Positioning
+M0 is pending owner review before M1.
 
 **M0 (complete):** Architecture & source spike — keep Yahoo IMAP; SEEK discovery
 via alert email (not scrape); LinkedIn alert path unchanged; Indeed
