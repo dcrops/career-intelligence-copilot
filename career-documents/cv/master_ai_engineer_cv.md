@@ -63,7 +63,7 @@ Full-time professional development from modern Data Engineering platforms into A
 
 ### Career Intelligence Copilot
 
-**Overview:** Enables an AI Engineering job seeker to decide which roles deserve effort. Reviews job ads against a structured career profile, ranks fit, recommends application strategy, and drafts tailored CVs for human review — reducing repetitive search work while keeping decisions explainable.
+**Overview:** Supports evidence-based career and application decisions for AI Engineering roles. Reviews job opportunities against a structured career profile, ranks fit, recommends application strategy, and drafts tailored CVs for human review — reducing repetitive search work while keeping decisions explainable.
 
 **Engineering Highlights:**
 - Structured career profile model and evidence-cited opportunity assessment
