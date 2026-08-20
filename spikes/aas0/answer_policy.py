@@ -13,6 +13,17 @@ class AnswerDecision(str, Enum):
     PAUSE = "pause"
 
 
+_DEFAULT_RESUME_CHECKBOX = re.compile(
+    r"make this my default r[eé]sum[eé]",
+    re.IGNORECASE,
+)
+
+
+def is_default_resume_checkbox_label(label: str | None) -> bool:
+    """True for SEEK's account-Default checkbox. Never auto-fill or owner-prompt."""
+    return bool(_DEFAULT_RESUME_CHECKBOX.search(label or ""))
+
+
 @dataclass(frozen=True)
 class KnownAnswers:
     """Authoritative fill values derived from CIC / owner-approved seed."""
@@ -94,6 +105,11 @@ def resolve_answer(label: str | None, known: KnownAnswers) -> ResolveResult:
     text = (label or "").strip()
     if not text:
         return ResolveResult(AnswerDecision.PAUSE, reason="empty_label")
+    if is_default_resume_checkbox_label(text):
+        return ResolveResult(
+            AnswerDecision.PAUSE,
+            reason="default_resume_checkbox_ignored",
+        )
 
     lookup = known.as_lookup()
     # Owner extras keyed by exact normalized question text.

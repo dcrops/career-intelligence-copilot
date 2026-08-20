@@ -12,6 +12,7 @@ if str(SPIKES) not in sys.path:
 from aas0.answer_policy import (  # noqa: E402
     AnswerDecision,
     KnownAnswers,
+    is_default_resume_checkbox_label,
     merge_owner_extra,
     resolve_answer,
     should_pause,
@@ -73,3 +74,16 @@ def test_never_uses_missing_contact_field() -> None:
     result = resolve_answer("Email", known)
     assert result.decision is AnswerDecision.PAUSE
     assert result.reason == "missing_known_value"
+
+
+def test_default_resume_checkbox_is_ignored() -> None:
+    known = _known()
+    assert is_default_resume_checkbox_label("Make this my default résumé")
+    assert is_default_resume_checkbox_label("Make this my default resume")
+    result = resolve_answer("Make this my default résumé", known)
+    assert result.decision is AnswerDecision.PAUSE
+    assert result.reason == "default_resume_checkbox_ignored"
+    extra = merge_owner_extra(known, "Make this my default résumé", "Yes")
+    still = resolve_answer("Make this my default résumé", extra)
+    assert still.reason == "default_resume_checkbox_ignored"
+    assert still.decision is AnswerDecision.PAUSE

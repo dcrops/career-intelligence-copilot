@@ -18,8 +18,11 @@ from .errors import (
     ErrorDetail,
 )
 from .external_upload import (
+    MAX_EXTERNAL_UPLOAD_ABS_PATH_LEN,
     ExternalUploadPaths,
+    atomic_tmp_path,
     build_external_upload_filename,
+    build_external_upload_filenames,
     materialize_external_upload_pdfs,
 )
 from .models import (
@@ -47,6 +50,9 @@ __all__ = [
     "ErrorDetail",
     "EvidenceTrace",
     "ExternalUploadPaths",
+    "MAX_EXTERNAL_UPLOAD_ABS_PATH_LEN",
+    "atomic_tmp_path",
     "build_external_upload_filename",
+    "build_external_upload_filenames",
     "materialize_external_upload_pdfs",
 ]

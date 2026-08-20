@@ -46,6 +46,51 @@ class SpikeMetrics:
     application_submission: str = "not_completed"
     submission_observation_evidence: str = ""
     notes: list[str] = field(default_factory=list)
+    default_resume_before: str | None = None
+    default_resume_after_upload: str | None = None
+    default_resume_at_handoff: str | None = None
+    default_observable_before: bool = False
+    default_observable_after_upload: bool = False
+    default_observable_at_handoff: bool = False
+    default_changed_unexpected: bool = False
+    default_change_reason: str = ""
+    default_checkbox_reason: str = ""
+    default_checkbox_still_checked: bool = False
+    default_checkbox_uncheck_threw: bool = False
+    default_checkbox_baseline: str | None = None
+    default_checkbox_settled_default: str | None = None
+    default_checkbox_settle_poll_count: int = 0
+    default_checkbox_settle_wait_ms: int = 0
+    resume_capacity_blocked: bool = False
+    resume_capacity_evidence: str = ""
+    cleanup_candidate: str | None = None
+    cleanup_candidate_reason: str = ""
+    resume_list_before: list[dict[str, object]] = field(default_factory=list)
+    resume_list_after: list[dict[str, object]] = field(default_factory=list)
+    expected_cv_filename: str = ""
+    expected_cover_letter_filename: str = ""
+    selected_resume_before: str | None = None
+    selected_resume_after_upload: str | None = None
+    cv_selection_reason: str = ""
+    upload_completion_reason: str = ""
+    review_observed_cv: str | None = None
+    review_observed_cover_letter: str | None = None
+    review_document_reason: str = ""
+    resume_rotation_attempted: bool = False
+    resume_rotation_reason: str = ""
+    resume_deleted_filename: str | None = None
+    resume_rotation_retry_attempted: bool = False
+    resume_rotation_retry_outcome: str = ""
+    cleanup_skips: list[dict[str, object]] = field(default_factory=list)
+    upload_failure_reason: str = ""
+    expected_cv_selected: bool = False
+    resume_default_before_deletion: str | None = None
+    resume_default_after_deletion: str | None = None
+    resume_delete_verification_poll_count: int = 0
+    resume_delete_verification_wait_ms: int = 0
+    resume_delete_verification_reason: str = ""
+    resume_list_count_before: int = 0
+    resume_list_count_after_deletion: int = 0
 
     def record_field(
         self,
@@ -72,6 +117,18 @@ class SpikeMetrics:
 
     def add_note(self, message: str) -> None:
         self.notes.append(message)
+
+    def record_review_document_gate(
+        self,
+        *,
+        observed_cv: str | None,
+        observed_cover_letter: str | None,
+        reason: str,
+    ) -> None:
+        """Record the Review filename invariant without changing its semantics."""
+        self.review_observed_cv = observed_cv
+        self.review_observed_cover_letter = observed_cover_letter
+        self.review_document_reason = reason
 
     def add_automation(self, seconds: float) -> None:
         self.automation_seconds += max(0.0, seconds)
@@ -132,6 +189,63 @@ class SpikeMetrics:
             "browser_kept_open_for_owner": self.browser_kept_open_for_owner,
             "application_submission": self.application_submission,
             "submission_observation_evidence": self.submission_observation_evidence,
+            "resume_lifecycle": {
+                "default_resume_before": self.default_resume_before,
+                "default_resume_after_upload": self.default_resume_after_upload,
+                "default_resume_at_handoff": self.default_resume_at_handoff,
+                "default_observable_before": self.default_observable_before,
+                "default_observable_after_upload": self.default_observable_after_upload,
+                "default_observable_at_handoff": self.default_observable_at_handoff,
+                "default_changed_unexpected": self.default_changed_unexpected,
+                "default_change_reason": self.default_change_reason,
+                "default_checkbox_reason": self.default_checkbox_reason,
+                "default_checkbox_still_checked": self.default_checkbox_still_checked,
+                "default_checkbox_uncheck_threw": self.default_checkbox_uncheck_threw,
+                "default_checkbox_baseline": self.default_checkbox_baseline,
+                "default_checkbox_settled_default": self.default_checkbox_settled_default,
+                "default_checkbox_settle_poll_count": (
+                    self.default_checkbox_settle_poll_count
+                ),
+                "default_checkbox_settle_wait_ms": self.default_checkbox_settle_wait_ms,
+                "resume_capacity_blocked": self.resume_capacity_blocked,
+                "resume_capacity_evidence": self.resume_capacity_evidence,
+                "cleanup_candidate": self.cleanup_candidate,
+                "cleanup_candidate_reason": self.cleanup_candidate_reason,
+                "resume_list_before": list(self.resume_list_before),
+                "resume_list_after": list(self.resume_list_after),
+                "expected_cv_filename": self.expected_cv_filename,
+                "expected_cover_letter_filename": self.expected_cover_letter_filename,
+                "selected_resume_before": self.selected_resume_before,
+                "selected_resume_after_upload": self.selected_resume_after_upload,
+                "cv_selection_reason": self.cv_selection_reason,
+                "upload_completion_reason": self.upload_completion_reason,
+                "review_observed_cv": self.review_observed_cv,
+                "review_observed_cover_letter": self.review_observed_cover_letter,
+                "review_document_reason": self.review_document_reason,
+                "resume_rotation_attempted": self.resume_rotation_attempted,
+                "resume_rotation_reason": self.resume_rotation_reason,
+                "resume_deleted_filename": self.resume_deleted_filename,
+                "resume_rotation_retry_attempted": self.resume_rotation_retry_attempted,
+                "resume_rotation_retry_outcome": self.resume_rotation_retry_outcome,
+                "cleanup_skips": list(self.cleanup_skips),
+                "upload_failure_reason": self.upload_failure_reason,
+                "expected_cv_selected": self.expected_cv_selected,
+                "resume_default_before_deletion": self.resume_default_before_deletion,
+                "resume_default_after_deletion": self.resume_default_after_deletion,
+                "resume_delete_verification_poll_count": (
+                    self.resume_delete_verification_poll_count
+                ),
+                "resume_delete_verification_wait_ms": (
+                    self.resume_delete_verification_wait_ms
+                ),
+                "resume_delete_verification_reason": (
+                    self.resume_delete_verification_reason
+                ),
+                "resume_list_count_before": self.resume_list_count_before,
+                "resume_list_count_after_deletion": (
+                    self.resume_list_count_after_deletion
+                ),
+            },
             "notes": list(self.notes),
             "manual_comparison_prompt": (
                 "Owner should estimate minutes for the same application fully "

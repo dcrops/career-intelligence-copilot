@@ -16,6 +16,7 @@ from career_intelligence.truth_validation.gates import (
 
 from .answer_policy import KnownAnswers
 from .artefact_freshness import PdfFreshnessStatus, assess_markdown_pdf_freshness
+from .upload_artefacts import assert_safe_external_upload_pdf
 
 SPIKE_DIR = Path(__file__).resolve().parent
 REPO_ROOT = SPIKE_DIR.parents[1]
@@ -114,6 +115,10 @@ def load_spike_inputs(opportunity_id: str = DEFAULT_OPPORTUNITY_ID) -> SpikeInpu
     exports = packages.ensure_external_upload_pdfs(manifest)
     if opportunity_id in exports.cv_pdf.name or opportunity_id in exports.cover_letter_pdf.name:
         raise RuntimeError("External upload filename contains opportunity_id")
+    assert_safe_external_upload_pdf(exports.cv_pdf, kind="cv", must_exist=True)
+    assert_safe_external_upload_pdf(
+        exports.cover_letter_pdf, kind="cover_letter", must_exist=True
+    )
     if exports.cv_pdf.read_bytes() != auth_cv_pdf.read_bytes():
         raise RuntimeError("External CV PDF bytes differ from authoritative PDF")
     if exports.cover_letter_pdf.read_bytes() != auth_cl_pdf.read_bytes():

@@ -19,6 +19,7 @@ from aas0.state_progress import (  # noqa: E402
     assert_may_continue_documents_step,
     detect_validation_messages,
     fingerprint_from_text,
+    infer_step_label,
     state_advanced,
 )
 
@@ -93,3 +94,24 @@ def test_click_success_alone_is_not_progress_when_validation_present() -> None:
         ),
     )
     assert not state_advanced(before, after)
+
+
+def test_infer_step_label_ignores_completed_choose_documents_stepper() -> None:
+    questions = (
+        "Choose documents\n"
+        "Answer employer questions\n"
+        "Update SEEK Profile\n"
+        "Review and submit\n"
+        "Right to work in Australia\n"
+        "Continue\n"
+    )
+    documents = (
+        "Choose documents\n"
+        "Answer employer questions\n"
+        "Make this my default résumé\n"
+        "Upload a cover letter\n"
+        "Continue\n"
+    )
+    assert infer_step_label(questions) == "answer employer questions"
+    assert infer_step_label(documents) == "choose documents"
+    assert infer_step_label("Choose documents Continue") == "choose documents"

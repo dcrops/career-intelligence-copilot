@@ -4,38 +4,28 @@ from __future__ import annotations
 
 import re
 from dataclasses import dataclass
-from enum import Enum
 from typing import Literal
 
-
-class CvRotationClass(str, Enum):
-    REPLACEABLE_TAILORED = "replaceable_tailored"
-    PROTECT = "protect"
-    AMBIGUOUS = "ambiguous"
-
-
-# Internal CIC opportunity stems uploaded to SEEK during AAS-0 dogfood.
-_OPP_STEM = re.compile(r"^opp_[0-9A-HJKMNP-TV-Z]{26}(\.pdf)?$", re.I)
-# Future external export pattern (proposed) — underscore form only, not free-text titles.
-_EXTERNAL_TAILORED = re.compile(
-    r"^david_cropper_[A-Za-z0-9]+(?:_[A-Za-z0-9]+)*_(cv|cover_letter)\.pdf$",
-    re.I,
-)
-# Conservative protect list — master/general CVs must not be auto-deleted.
-_PROTECT_NAMES = frozenset(
-    {
-        "david cropper cv.pdf",
-        "david_cropper_cv.pdf",
-        "master cv.pdf",
-        "master_cv.pdf",
-        "general cv.pdf",
-        "general_cv.pdf",
-    }
+from .answer_policy import is_default_resume_checkbox_label  # noqa: F401
+from .resume_lifecycle import (  # noqa: F401
+    CleanupCandidate,
+    CvRotationClass,
+    DefaultChangeResult,
+    DefaultResumeChangedError,
+    ResumeCapacityError,
+    SeekResumeEntry,
+    SeekResumeSnapshot,
+    classify_seek_cv_for_rotation,
+    detect_resume_capacity_message,
+    evaluate_default_change,
+    may_auto_delete_seek_cv,
+    select_cleanup_candidate,
 )
 
 _SUBMIT_SUCCESS_HINTS = (
     "application submitted",
     "application has been submitted",
+    "application has been sent",
     "successfully applied",
     "thanks for applying",
     "thank you for applying",
@@ -89,8 +79,37 @@ def build_final_review_handoff(*, final_submit_control_visible: bool) -> FinalRe
     )
 
 
-def observe_submission_from_page_text(body_text: str) -> SubmissionObservation:
-    """Classify post-submit page text without activating any control."""
+def apply_owner_session_submission_observation(
+    metrics,
+    *,
+    body_text: str,
+    url: str = "",
+) -> SubmissionObservation:
+    """Record post-OWNER_END_SESSION page evidence. Never infers Submit from teardown."""
+    metrics.submit_clicked = False
+    observation = observe_submission_from_page_text(body_text, url=url)
+    metrics.application_submission = observation.status
+    metrics.submission_observation_evidence = observation.evidence
+    return observation
+
+
+def observe_submission_from_page_text(
+    body_text: str,
+    *,
+    url: str = "",
+) -> SubmissionObservation:
+    """Classify post-submit page without activating any control.
+
+    Success is the apply-success URL or a small allow-list of visible phrases.
+    Stepper text ``Review and submit`` alone is not success.
+    """
+    lowered_url = (url or "").lower()
+    if "/apply/success" in lowered_url:
+        return SubmissionObservation(
+            observed=True,
+            evidence="apply_success_url",
+            status="likely_submitted",
+        )
     lowered = (body_text or "").lower()
     for hint in _SUBMIT_SUCCESS_HINTS:
         if hint in lowered:
@@ -99,7 +118,7 @@ def observe_submission_from_page_text(body_text: str) -> SubmissionObservation:
                 evidence=hint,
                 status="likely_submitted",
             )
-    if "submit application" in lowered or "review and submit" in lowered:
+    if "submit application" in lowered:
         return SubmissionObservation(
             observed=False,
             evidence="still_on_review_or_submit_visible",
@@ -112,28 +131,6 @@ def observe_submission_from_page_text(body_text: str) -> SubmissionObservation:
     )
 
 
-def classify_seek_cv_for_rotation(filename: str) -> CvRotationClass:
-    """Conservative classification for disposable tailored CV rotation.
-
-    Only DELETE candidates that CIC can confidently identify as replaceable
-    tailored/application CVs. Ambiguous and master/general documents are protected.
-    """
-    name = (filename or "").replace("\\", "/").rsplit("/", 1)[-1].strip()
-    if not name:
-        return CvRotationClass.AMBIGUOUS
-    lower = name.lower()
-    if lower in _PROTECT_NAMES:
-        return CvRotationClass.PROTECT
-    if _OPP_STEM.match(name):
-        return CvRotationClass.REPLACEABLE_TAILORED
-    # Machine export names only (underscores). Spacey free titles stay ambiguous.
-    if _EXTERNAL_TAILORED.match(name):
-        return CvRotationClass.REPLACEABLE_TAILORED
-    if lower.endswith(".pdf") and "cv" in lower:
-        return CvRotationClass.AMBIGUOUS
-    return CvRotationClass.AMBIGUOUS
-
-
 def propose_external_export_filename(
     *,
     full_name: str,
@@ -141,7 +138,7 @@ def propose_external_export_filename(
     title: str,
     kind: Literal["cv", "cover_letter"],
 ) -> str:
-    """Proposed employer-facing PDF name (packaging/export ownership — not browser)."""
+    """Obsolete underscore helper. Production uploads use spaced export names."""
 
     def slug(value: str) -> str:
         cleaned = re.sub(r"[^\w\s-]+", "", value, flags=re.UNICODE)
@@ -151,7 +148,3 @@ def propose_external_export_filename(
     base = f"{slug(full_name)}_{slug(company)}_{slug(title)}"
     suffix = "CV" if kind == "cv" else "Cover_Letter"
     return f"{base}_{suffix}.pdf"
-
-
-def may_auto_delete_seek_cv(filename: str) -> bool:
-    return classify_seek_cv_for_rotation(filename) is CvRotationClass.REPLACEABLE_TAILORED

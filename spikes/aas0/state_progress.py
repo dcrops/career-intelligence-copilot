@@ -22,6 +22,22 @@ _STEP_PATTERNS: tuple[re.Pattern[str], ...] = (
     re.compile(r"\b(review\s+and\s+submit)\b", re.I),
 )
 
+_DOCUMENTS_STEP_CONTENT = (
+    "make this my default",
+    "don't include a résumé",
+    "don't include a resume",
+    "upload a cover letter",
+    "upload a different cover letter",
+)
+
+_LATER_THAN_DOCUMENTS = frozenset(
+    {
+        "answer employer questions",
+        "update seek profile",
+        "review and submit",
+    }
+)
+
 
 @dataclass(frozen=True)
 class PageFingerprint:
@@ -46,19 +62,43 @@ def detect_validation_messages(body_text: str) -> tuple[str, ...]:
     return tuple(found)
 
 
+def documents_step_content_visible(body_text: str) -> bool:
+    """True when Choose Documents *page* copy is present, not stepper text alone."""
+    text = (body_text or "").lower()
+    return any(needle in text for needle in _DOCUMENTS_STEP_CONTENT)
+
+
 def infer_step_label(body_text: str) -> str:
-    """Best-effort active step label from visible body text."""
+    """Best-effort active step label from visible body text.
+
+    Completed stepper labels stay in the DOM after Continue. Do not treat
+    ``Choose documents`` as active when later-step labels are also present
+    unless documents-step page copy is visible. ``Review and submit`` is
+    ignored unless the page looks like final Review.
+    """
     text = body_text or ""
-    # Prefer first matching known SEEK apply step in document order.
-    earliest: tuple[int, str] | None = None
+    matches: list[tuple[int, str]] = []
     for pattern in _STEP_PATTERNS:
         match = pattern.search(text)
         if match is None:
             continue
         label = re.sub(r"\s+", " ", match.group(1)).strip().lower()
-        if earliest is None or match.start() < earliest[0]:
-            earliest = (match.start(), label)
-    return earliest[1] if earliest else ""
+        matches.append((match.start(), label))
+    labels = {label for _start, label in matches}
+    if (
+        "choose documents" in labels
+        and (labels & _LATER_THAN_DOCUMENTS)
+        and not documents_step_content_visible(text)
+    ):
+        matches = [(start, label) for start, label in matches if label != "choose documents"]
+    if not is_final_review_page(text):
+        matches = [
+            (start, label) for start, label in matches if label != "review and submit"
+        ]
+    if not matches:
+        return ""
+    earliest = min(matches, key=lambda item: item[0])
+    return earliest[1]
 
 
 def fingerprint_from_text(*, url: str, body_text: str, marker: str = "") -> PageFingerprint:
@@ -68,6 +108,26 @@ def fingerprint_from_text(*, url: str, body_text: str, marker: str = "") -> Page
         validation_messages=detect_validation_messages(body_text),
         marker=marker,
     )
+
+
+def looks_like_stepper_review_label(label: str | None) -> bool:
+    """True for the apply-flow stepper/future-step label, not Submit application."""
+    text = re.sub(r"\s+", " ", (label or "")).strip().lower()
+    text = text.replace("\u2060", "")
+    return text == "review and submit" or text.startswith("review and submit")
+
+
+def is_final_review_page(body_text: str) -> bool:
+    """True only with positive Review-stage evidence, not stepper text alone.
+
+    Live 20260819T042502Z: Answer employer questions still contains the future
+    step ``Review and submit``. Handoff requires ``Submit application`` (or
+    send application) copy from the actual Review page.
+    """
+    text = (body_text or "").lower()
+    if "submit application" not in text and "send application" not in text:
+        return False
+    return True
 
 
 def state_advanced(before: PageFingerprint, after: PageFingerprint) -> bool:
